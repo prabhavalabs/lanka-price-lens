@@ -11,15 +11,16 @@ type Overview = { sources: number; running: number; failed: number; quarantined:
 type Source = { id: string; name: string; rights_status: string; review_due_at: string; enabled: number; state: string; last_parse_at: string | null };
 type Run = { id: string; source_id: string; trigger: string; status: string; started_at: string; parsed_count: number; quarantined_count: number; error_code: string | null };
 type Quarantine = { id: string; run_id: string; reason_code: string; source_row_ref: string | null; created_at: string };
+type Release = { data_version: string; schema_version: string; status: string; built_at: string; build_commit: string | null; notes: string };
 type Envelope<T> = { success: boolean; message: string; payload: T };
 
 export function App() {
-  const [data, setData] = useState<{ overview: Overview; sources: Source[]; runs: Run[]; quarantine: Quarantine[] }>();
+  const [data, setData] = useState<{ overview: Overview; sources: Source[]; runs: Run[]; quarantine: Quarantine[]; releases: Release[] }>();
   const [error, setError] = useState<string>();
 
   useEffect(() => {
-    Promise.all([get<Overview>("overview"), get<Source[]>("sources"), get<Run[]>("runs"), get<Quarantine[]>("quarantine")])
-      .then(([overview, sources, runs, quarantine]) => setData({ overview, sources, runs, quarantine }))
+    Promise.all([get<Overview>("overview"), get<Source[]>("sources"), get<Run[]>("runs"), get<Quarantine[]>("quarantine"), get<Release[]>("releases")])
+      .then(([overview, sources, runs, quarantine, releases]) => setData({ overview, sources, runs, quarantine, releases }))
       .catch((reason: unknown) => setError(reason instanceof Error ? reason.message : String(reason)));
   }, []);
 
@@ -41,6 +42,7 @@ export function App() {
             <Metric title="Open quarantine" value={data.overview.quarantined} icon={<ShieldCheck />} tone={data.overview.quarantined ? "warning" : "normal"} />
           </section>
           <Card><CardHeader><CardTitle>Source controls</CardTitle></CardHeader><CardContent className="p-0"><Table><caption className="sr-only">Configured source state and rights review</caption><TableHeader><TableRow><TableHead>Source</TableHead><TableHead>State</TableHead><TableHead>Rights</TableHead><TableHead>Review due</TableHead><TableHead>Last parsed</TableHead></TableRow></TableHeader><TableBody>{data.sources.map((source) => <TableRow key={source.id}><TableCell className="font-medium">{source.name}</TableCell><TableCell><Status value={source.state} /></TableCell><TableCell className="font-mono text-xs">{source.rights_status}</TableCell><TableCell>{date(source.review_due_at)}</TableCell><TableCell>{date(source.last_parse_at)}</TableCell></TableRow>)}</TableBody></Table></CardContent></Card>
+          <Card><CardHeader><CardTitle>Release candidates</CardTitle></CardHeader><CardContent className="p-0"><Table><caption className="sr-only">Immutable release candidates</caption><TableHeader><TableRow><TableHead>Data version</TableHead><TableHead>Status</TableHead><TableHead>Built</TableHead><TableHead>Schema</TableHead><TableHead>Commit</TableHead></TableRow></TableHeader><TableBody>{data.releases.length ? data.releases.map((release) => <TableRow key={release.data_version}><TableCell className="font-mono font-medium">{release.data_version}</TableCell><TableCell><Status value={release.status} /></TableCell><TableCell>{date(release.built_at)}</TableCell><TableCell>{release.schema_version}</TableCell><TableCell className="font-mono text-xs">{release.build_commit}</TableCell></TableRow>) : <TableRow><TableCell colSpan={5} className="text-muted-foreground">No release candidate has been built.</TableCell></TableRow>}</TableBody></Table></CardContent></Card>
           <div className="grid gap-6 xl:grid-cols-[1.55fr_1fr]">
             <Card><CardHeader><CardTitle>Recent ingestion runs</CardTitle></CardHeader><CardContent className="p-0"><Table><caption className="sr-only">Most recent ingestion executions</caption><TableHeader><TableRow><TableHead>Started</TableHead><TableHead>Trigger</TableHead><TableHead>Status</TableHead><TableHead>Parsed</TableHead><TableHead>Held</TableHead></TableRow></TableHeader><TableBody>{data.runs.map((run) => <TableRow key={run.id}><TableCell>{date(run.started_at)}</TableCell><TableCell>{run.trigger}</TableCell><TableCell><Status value={run.status} /></TableCell><TableCell>{run.parsed_count}</TableCell><TableCell>{run.quarantined_count}</TableCell></TableRow>)}</TableBody></Table></CardContent></Card>
             <Card><CardHeader><CardTitle>Latest quarantine</CardTitle></CardHeader><CardContent>{data.quarantine.length ? <ul className="space-y-3">{data.quarantine.slice(0, 8).map((item) => <li key={item.id} className="rounded-xl border border-border bg-muted/40 p-3"><div className="flex items-start justify-between gap-3"><span className="font-mono text-xs font-semibold">{item.reason_code}</span><time className="text-xs text-muted-foreground">{date(item.created_at)}</time></div><p className="mt-1 truncate text-xs text-muted-foreground">{item.source_row_ref ?? item.run_id}</p></li>)}</ul> : <p className="text-sm text-muted-foreground">No records are waiting for review.</p>}</CardContent></Card>

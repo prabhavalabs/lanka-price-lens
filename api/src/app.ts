@@ -87,6 +87,20 @@ export function createApp(database: OperationalDatabase, credentials = credentia
       ),
     ),
   );
+  app.get("/v1/admin/releases", (context) =>
+    context.json(
+      envelope(
+        context.get("requestId"),
+        database
+          .prepare(
+            `SELECT data_version, schema_version, status, built_at, released_at,
+             manifest_sha256, release_path, notes, build_commit
+             FROM data_release ORDER BY data_version DESC LIMIT 30`,
+          )
+          .all(),
+      ),
+    ),
+  );
   return app;
 }
 

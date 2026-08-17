@@ -178,7 +178,121 @@ function migrate(database: OperationalDatabase): void {
       details_json TEXT NOT NULL,
       created_at TEXT NOT NULL
     ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS item (
+      id TEXT PRIMARY KEY,
+      entity_type TEXT NOT NULL,
+      canonical_label_en TEXT NOT NULL,
+      canonical_label_si TEXT,
+      canonical_label_ta TEXT,
+      variety TEXT,
+      grade TEXT,
+      status TEXT NOT NULL DEFAULT 'active'
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS market (
+      id TEXT PRIMARY KEY,
+      type TEXT NOT NULL,
+      label_en TEXT NOT NULL,
+      label_si TEXT,
+      label_ta TEXT,
+      pcode TEXT,
+      scope_note TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'active'
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS unit_conversion_rule (
+      id TEXT PRIMARY KEY,
+      source_unit TEXT NOT NULL,
+      normalized_unit TEXT NOT NULL,
+      factor_numerator INTEGER NOT NULL CHECK (factor_numerator > 0),
+      factor_denominator INTEGER NOT NULL CHECK (factor_denominator > 0),
+      rounding_mode TEXT NOT NULL,
+      mapping_version TEXT NOT NULL
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS source_item_mapping (
+      source_id TEXT NOT NULL REFERENCES source(id),
+      source_label TEXT NOT NULL,
+      item_id TEXT NOT NULL REFERENCES item(id),
+      mapping_version TEXT NOT NULL,
+      reviewed_by TEXT NOT NULL,
+      reviewed_at TEXT NOT NULL,
+      evidence_ref TEXT NOT NULL,
+      PRIMARY KEY (source_id, source_label)
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS source_market_mapping (
+      source_id TEXT NOT NULL REFERENCES source(id),
+      source_label TEXT NOT NULL,
+      market_id TEXT NOT NULL REFERENCES market(id),
+      mapping_version TEXT NOT NULL,
+      reviewed_by TEXT NOT NULL,
+      reviewed_at TEXT NOT NULL,
+      evidence_ref TEXT NOT NULL,
+      PRIMARY KEY (source_id, source_label)
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS price_observation (
+      id TEXT PRIMARY KEY,
+      run_id TEXT NOT NULL REFERENCES ingest_run(id),
+      staging_id TEXT NOT NULL REFERENCES staging_observation(id),
+      source_publication_id TEXT NOT NULL REFERENCES source_publication(id),
+      source_artifact_id TEXT NOT NULL REFERENCES source_artifact(id),
+      item_id TEXT NOT NULL REFERENCES item(id),
+      market_id TEXT NOT NULL REFERENCES market(id),
+      price_type TEXT NOT NULL,
+      currency TEXT NOT NULL,
+      value_kind TEXT NOT NULL CHECK (value_kind IN ('range', 'point')),
+      min_value_minor INTEGER NOT NULL CHECK (min_value_minor > 0),
+      max_value_minor INTEGER NOT NULL CHECK (max_value_minor > 0),
+      normalized_min_value_minor INTEGER NOT NULL CHECK (normalized_min_value_minor > 0),
+      normalized_max_value_minor INTEGER NOT NULL CHECK (normalized_max_value_minor > 0),
+      source_quantity TEXT NOT NULL,
+      source_unit TEXT NOT NULL,
+      normalized_quantity TEXT NOT NULL,
+      normalized_unit TEXT NOT NULL,
+      conversion_rule_id TEXT NOT NULL REFERENCES unit_conversion_rule(id),
+      observed_from TEXT NOT NULL,
+      observed_to TEXT NOT NULL,
+      source_row_ref TEXT NOT NULL,
+      confidence TEXT NOT NULL,
+      comparability_key TEXT NOT NULL,
+      lineage_key TEXT NOT NULL,
+      parser_version TEXT NOT NULL,
+      mapping_version TEXT NOT NULL,
+      status TEXT NOT NULL CHECK (status IN ('active', 'superseded', 'withdrawn')),
+      supersedes_id TEXT REFERENCES price_observation(id),
+      created_at TEXT NOT NULL
+    ) STRICT;
+
+    CREATE UNIQUE INDEX IF NOT EXISTS price_observation_active_lineage_idx
+      ON price_observation(lineage_key) WHERE status = 'active';
+    CREATE INDEX IF NOT EXISTS price_observation_series_idx
+      ON price_observation(comparability_key, observed_from, status);
+
+    CREATE TABLE IF NOT EXISTS release_observation (
+      data_version TEXT NOT NULL REFERENCES data_release(data_version),
+      observation_id TEXT NOT NULL REFERENCES price_observation(id),
+      PRIMARY KEY (data_version, observation_id)
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS release_artifact (
+      data_version TEXT NOT NULL REFERENCES data_release(data_version),
+      filename TEXT NOT NULL,
+      media_type TEXT NOT NULL,
+      byte_size INTEGER NOT NULL CHECK (byte_size > 0),
+      sha256 TEXT NOT NULL,
+      PRIMARY KEY (data_version, filename)
+    ) STRICT;
   `);
+
+  addColumn(database, "data_release", "build_commit", "TEXT");
+}
+
+function addColumn(database: OperationalDatabase, table: string, column: string, definition: string): void {
+  const columns = database.prepare(`PRAGMA table_info(${table})`).all() as Array<{ name: string }>;
+  if (!columns.some((candidate) => candidate.name === column)) database.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
 }
 
 export function syncSource(database: OperationalDatabase, manifest: SourceManifest): void {

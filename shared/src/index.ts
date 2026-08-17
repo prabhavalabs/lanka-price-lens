@@ -100,6 +100,66 @@ export type ApiEnvelope<T> = {
   };
 };
 
+const stableId = z.string().regex(/^[a-z0-9][a-z0-9._:-]*$/u);
+
+export const mappingBundleSchema = z
+  .object({
+    schema_version: z.literal("1.0.0"),
+    mapping_version: z.string().min(1),
+    source_id: stableId,
+    reviewed_by: z.string().min(1),
+    reviewed_at: isoDate,
+    evidence_ref: z.string().min(1),
+    items: z.array(
+      z.object({
+        id: stableId,
+        entity_type: z.enum(["commodity", "variety", "packaged_product"]),
+        canonical_label_en: z.string().min(1),
+        canonical_label_si: z.string().min(1).nullable(),
+        canonical_label_ta: z.string().min(1).nullable(),
+        variety: z.string().min(1).nullable(),
+        grade: z.string().min(1).nullable(),
+        source_labels: z.array(z.string().min(1)).min(1),
+      }),
+    ),
+    markets: z.array(
+      z.object({
+        id: stableId,
+        type: z.enum(["wholesale_market", "retail_market", "administrative_scope"]),
+        label_en: z.string().min(1),
+        label_si: z.string().min(1).nullable(),
+        label_ta: z.string().min(1).nullable(),
+        pcode: z.string().min(1).nullable(),
+        scope_note: z.string().min(1),
+        source_labels: z.array(z.string().min(1)).min(1),
+      }),
+    ),
+    units: z.array(
+      z.object({
+        id: stableId,
+        source_unit: z.string().min(1),
+        normalized_unit: z.string().min(1),
+        factor_numerator: z.number().int().positive(),
+        factor_denominator: z.number().int().positive(),
+        rounding_mode: z.literal("half_away_from_zero"),
+      }),
+    ),
+  })
+  .superRefine((bundle, context) => {
+    checkUnique(bundle.items.map((item) => item.id), context, ["items"], "item IDs");
+    checkUnique(bundle.items.flatMap((item) => item.source_labels), context, ["items"], "item source labels");
+    checkUnique(bundle.markets.map((market) => market.id), context, ["markets"], "market IDs");
+    checkUnique(bundle.markets.flatMap((market) => market.source_labels), context, ["markets"], "market source labels");
+    checkUnique(bundle.units.map((unit) => unit.id), context, ["units"], "unit rule IDs");
+    checkUnique(bundle.units.map((unit) => unit.source_unit), context, ["units"], "unit source labels");
+  });
+
+function checkUnique(values: string[], context: z.RefinementCtx, path: PropertyKey[], label: string): void {
+  if (new Set(values).size !== values.length) context.addIssue({ code: "custom", message: `Duplicate ${label}`, path });
+}
+
+export type MappingBundle = z.infer<typeof mappingBundleSchema>;
+
 export function canPublishSource(manifest: SourceManifest, today = new Date()): boolean {
   const reviewDue = new Date(`${manifest.review_due_at}T23:59:59.999Z`);
   return manifest.enabled && publicRightsStatuses.has(manifest.rights_status) && reviewDue >= today;

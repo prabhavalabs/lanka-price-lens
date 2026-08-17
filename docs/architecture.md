@@ -10,9 +10,10 @@ The operational database and public releases are deliberately separate.
    stable reason.
 6. The owner API exposes operational state but does not mutate ingestion data.
 
-Canonical mapping, validation, immutable public releases, and the consumer
-trend API are the next milestone. Their stages are recorded as `skipped` until
-implemented, so the dashboard does not imply that staging rows are published.
+Reviewed mapping, validation, supersession, and immutable release-candidate
+building are implemented. Candidate artifacts remain private. Public promotion,
+withdrawal, the read API, and the consumer trend interface are separate future
+gates, so a built candidate never implies that staging rows are public.
 
 SQLite is sufficient for the single-owner workflow. Add PostgreSQL only when
 concurrent reviewers or user-generated writes become a real requirement.
