@@ -1,0 +1,13 @@
+.git
+.github
+.agents
+.claude
+.codex
+.cursor
+AGENTS.md
+CLAUDE.md
+node_modules
+**/node_modules
+**/dist
+data/runtime
+*.log

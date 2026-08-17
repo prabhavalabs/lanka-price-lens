@@ -1,0 +1,25 @@
+{
+  "name": "lanka-pricelens",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Open, provenance-rich Sri Lankan price data infrastructure",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "dev:api": "pnpm --filter @lanka-pricelens/api dev",
+    "dev:admin": "pnpm --filter @lanka-pricelens/admin dev",
+    "foundry": "pnpm --filter @lanka-pricelens/foundry cli",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "check": "pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "typescript": "7.0.2"
+  }
+}

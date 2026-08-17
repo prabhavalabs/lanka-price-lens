@@ -1,0 +1,23 @@
+{
+  "name": "@lanka-pricelens/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.ts",
+    "start": "node src/index.ts",
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "2.1.1",
+    "@lanka-pricelens/foundry": "workspace:*",
+    "@lanka-pricelens/shared": "workspace:*",
+    "hono": "4.13.2"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "typescript": "7.0.2"
+  }
+}

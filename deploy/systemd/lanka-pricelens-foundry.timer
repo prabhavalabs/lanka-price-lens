@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Lanka PriceLens ingestion on business days
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 14:00:00
+Persistent=true
+RandomizedDelaySec=5m
+Unit=lanka-pricelens-foundry.service
+
+[Install]
+WantedBy=timers.target

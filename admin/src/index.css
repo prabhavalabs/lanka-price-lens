@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Avenir Next", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-background: #f4f5ef;
+  --color-foreground: #18201d;
+  --color-card: #fffef9;
+  --color-card-foreground: #18201d;
+  --color-border: #dfe3d8;
+  --color-muted: #e9ece3;
+  --color-muted-foreground: #68716c;
+  --color-forest: #132a23;
+  --color-mint: #9fe3bd;
+}
+
+* { border-color: var(--color-border); }
+body { margin: 0; background: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); }
+button, a { outline-offset: 3px; }

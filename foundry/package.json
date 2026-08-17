@@ -1,0 +1,25 @@
+{
+  "name": "@lanka-pricelens/foundry",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./db": "./src/db.ts"
+  },
+  "scripts": {
+    "cli": "node src/cli.ts",
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.ts"
+  },
+  "dependencies": {
+    "@lanka-pricelens/shared": "workspace:*",
+    "better-sqlite3": "13.0.3",
+    "pdfjs-dist": "6.2.108"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "7.6.13",
+    "@types/node": "24.13.3",
+    "typescript": "7.0.2"
+  }
+}

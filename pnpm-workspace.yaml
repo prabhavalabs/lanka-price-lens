@@ -1,0 +1,9 @@
+packages:
+  - shared
+  - foundry
+  - api
+  - admin
+
+allowBuilds:
+  better-sqlite3: true
+  esbuild: true

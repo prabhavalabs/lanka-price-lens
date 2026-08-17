@@ -1,0 +1,29 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+
+# Runtime data and source artifacts
+data/raw/
+data/state/
+data/releases/
+data/quarantine/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Local editor and AI-agent state must never be committed.
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.agents/
+.aider*
+.claude/
+.codex/
+.continue/
+.cursor/
+.harness/

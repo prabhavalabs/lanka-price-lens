@@ -1,0 +1,11 @@
+[Unit]
+Description=Lanka PriceLens scheduled ingestion
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/lanka-pricelens
+EnvironmentFile=/opt/lanka-pricelens/.env
+ExecStart=/usr/bin/docker compose --profile tools run --rm foundry ingest

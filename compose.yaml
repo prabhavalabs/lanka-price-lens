@@ -1,0 +1,26 @@
+services:
+  api:
+    build: .
+    restart: unless-stopped
+    environment:
+      PORT: ${APP_PORT:?set APP_PORT}
+      LPL_DATABASE_PATH: /data/operations.sqlite
+      LPL_ADMIN_ROOT: /app/admin/dist
+      ADMIN_USERNAME: ${ADMIN_USERNAME:?set ADMIN_USERNAME}
+      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:?set ADMIN_PASSWORD_HASH}
+    ports:
+      - "${APP_BIND:?set APP_BIND}:${APP_PORT}:${APP_PORT}"
+    volumes:
+      - operations:/data
+
+  foundry:
+    build: .
+    profiles: [tools]
+    environment:
+      LPL_DATABASE_PATH: /data/operations.sqlite
+    entrypoint: ["corepack", "pnpm", "foundry"]
+    volumes:
+      - operations:/data
+
+volumes:
+  operations:

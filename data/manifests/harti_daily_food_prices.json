@@ -1,0 +1,22 @@
+{
+  "id": "harti_daily_food_prices",
+  "name": "HARTI Daily Food Commodities Bulletin",
+  "owner": "Hector Kobbekaduwa Agrarian Research and Training Institute",
+  "landing_url": "https://www.harti.gov.lk/daily-price.php",
+  "retrieval_method": "scheduled_download",
+  "expected_cadence": "business_daily",
+  "formats": ["pdf"],
+  "geographic_scope": "selected_wholesale_markets",
+  "price_types": ["wholesale_observed"],
+  "rights_status": "unknown",
+  "rights_evidence_ref": null,
+  "attribution_text": null,
+  "retention_policy": "metadata_and_checksum_only",
+  "parser_owner": null,
+  "reviewed_by": null,
+  "reviewed_at": "2026-08-17",
+  "review_due_at": "2026-11-17",
+  "request_interval_ms": 5000,
+  "max_attempts": 3,
+  "enabled": false
+}
