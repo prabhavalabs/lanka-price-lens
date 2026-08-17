@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { canPublishSource, sourceManifestSchema } from "../src/index.ts";
+import { canPublishSource, mappingBundleSchema, sourceManifestSchema } from "../src/index.ts";
 
 const baseManifest = {
   id: "synthetic_prices",
@@ -40,4 +40,34 @@ test("unknown source is blocked", () => {
     reviewed_by: null,
   });
   assert.equal(canPublishSource(manifest, new Date("2026-08-17T00:00:00Z")), false);
+});
+
+test("mapping bundles reject ambiguous exact source labels", () => {
+  const item = {
+    entity_type: "commodity" as const,
+    canonical_label_en: "Beans",
+    canonical_label_si: null,
+    canonical_label_ta: null,
+    variety: null,
+    grade: null,
+    source_labels: ["Beans"],
+  };
+  assert.throws(
+    () =>
+      mappingBundleSchema.parse({
+        schema_version: "1.0.0",
+        mapping_version: "fixture-v1",
+        source_id: "synthetic_prices",
+        reviewed_by: "reviewer",
+        reviewed_at: "2026-08-17",
+        evidence_ref: "test-fixture://mapping",
+        items: [
+          { ...item, id: "item_beans" },
+          { ...item, id: "item_other_beans" },
+        ],
+        markets: [],
+        units: [],
+      }),
+    /Duplicate item source labels/u,
+  );
 });

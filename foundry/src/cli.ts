@@ -2,8 +2,10 @@ import { scryptSync, randomBytes } from "node:crypto";
 import { resolve } from "node:path";
 
 import { openOperationalDatabase } from "./db.ts";
-import { readSourceManifest } from "./manifest.ts";
+import { canonicalizeRun } from "./mapping.ts";
+import { readMappingBundle, readSourceManifest } from "./manifest.ts";
 import { runIngestion } from "./pipeline.ts";
+import { buildRelease } from "./release.ts";
 
 const [command, ...arguments_] = process.argv.slice(2);
 
@@ -29,9 +31,42 @@ if (command === "hash-password") {
   } finally {
     database.close();
   }
+} else if (command === "canonicalize") {
+  const runId = requiredValue("--run");
+  const bundle = await readMappingBundle(requiredValue("--mappings"));
+  const database = openOperationalDatabase(databasePath());
+  try {
+    console.log(JSON.stringify(canonicalizeRun(database, runId, bundle, requiredValue("--parser-version"))));
+  } finally {
+    database.close();
+  }
+} else if (command === "release" && arguments_[0] === "build") {
+  const database = openOperationalDatabase(databasePath());
+  try {
+    console.log(
+      JSON.stringify(
+        buildRelease(database, {
+          dataVersion: requiredValue("--version"),
+          outputRoot: resolve(valueOf("--output") ?? resolve(process.cwd(), "../data/releases")),
+          builtAt: new Date().toISOString(),
+          buildCommit: requiredValue("--commit"),
+          notes: requiredValue("--notes"),
+          actor: requiredValue("--actor"),
+        }),
+      ),
+    );
+  } finally {
+    database.close();
+  }
 } else {
-  console.error("Usage: foundry <init|ingest|hash-password> [options]");
+  console.error("Usage: foundry <init|ingest|canonicalize|release build|hash-password> [options]");
   process.exitCode = 1;
+}
+
+function requiredValue(name: string): string {
+  const value = valueOf(name);
+  if (!value) throw new Error(`${name} is required`);
+  return value;
 }
 
 function valueOf(name: string): string | undefined {

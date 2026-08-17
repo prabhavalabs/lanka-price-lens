@@ -27,11 +27,15 @@ pnpm check
   coordinate parsing, idempotent artifacts, and quarantine records;
 - immediate scheduled ingestion plus explicit date-bounded historical backfill;
 - scrypt-protected owner dashboard built from Shadcn UI primitives;
-- Docker packaging and a persistent VPS systemd timer.
+- Docker packaging and a persistent VPS systemd timer;
+- reviewed exact-label mappings, validation and quarantine resolution;
+- correction-safe canonical observations and immutable release candidates in
+  SQLite, CSV, JSON, manifest, checksum, notice, and release-note formats.
 
-Canonical mapping, validation, signed public data releases, and the consumer
-trend interface intentionally follow this operational foundation. See
-[`docs/self-hosting.md`](docs/self-hosting.md) for deployment.
+Public promotion, the consumer read API, and the trend interface intentionally
+follow this operational foundation. See
+[`docs/self-hosting.md`](docs/self-hosting.md) for deployment and
+[`docs/release-process.md`](docs/release-process.md) for candidate building.
 
 The HARTI source is intentionally rights-blocked. See
 [`docs/source-policy.md`](docs/source-policy.md) before enabling collection or
