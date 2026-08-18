@@ -2,15 +2,25 @@
 set -Eeuo pipefail
 
 sha=${1:-}
+registry_user=${2:-}
 repo=/opt/lanka-price-lens
 config=/etc/lanka-price-lens
 backups=/var/backups/lanka-price-lens
 volume=lanka-price-lens-operations
+docker_config=
 
 if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ ]]; then
-  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA" >&2
+  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME]" >&2
   exit 2
 fi
+
+cleanup() {
+  if [[ -n $docker_config ]]; then
+    rm -rf -- "$docker_config"
+  fi
+}
+
+trap cleanup EXIT
 
 exec 9>/run/lock/lanka-price-lens.lock
 flock -n 9 || { echo "Another deployment or foundry run is active" >&2; exit 1; }
@@ -18,6 +28,13 @@ flock -n 9 || { echo "Another deployment or foundry run is active" >&2; exit 1; 
 cd "$repo"
 git fetch --quiet origin main
 git merge-base --is-ancestor "$sha" origin/main || { echo "Commit is not on origin/main" >&2; exit 1; }
+
+if [[ -n $registry_user ]]; then
+  docker_config=$(mktemp -d /run/lanka-price-lens-docker.XXXXXX)
+  chmod 700 "$docker_config"
+  export DOCKER_CONFIG="$docker_config"
+  docker login ghcr.io --username "$registry_user" --password-stdin
+fi
 
 previous_commit=$(git rev-parse HEAD)
 previous_image=$(sed -n 's/^LPL_IMAGE=//p' "$config/release.env" 2>/dev/null || true)
