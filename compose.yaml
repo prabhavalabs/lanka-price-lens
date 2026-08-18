@@ -1,26 +1,64 @@
 services:
   api:
-    build: .
+    image: ${LPL_IMAGE:-lanka-price-lens:local}
+    build:
+      context: .
+      args:
+        VCS_REF: ${LPL_VCS_REF:-local}
     restart: unless-stopped
+    init: true
     environment:
       PORT: ${APP_PORT:?set APP_PORT}
       LPL_DATABASE_PATH: /data/operations.sqlite
       LPL_ADMIN_ROOT: /app/admin/dist
-      ADMIN_USERNAME: ${ADMIN_USERNAME:?set ADMIN_USERNAME}
+      LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?set ADMIN_EMAIL}
       ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:?set ADMIN_PASSWORD_HASH}
     ports:
       - "${APP_BIND:?set APP_BIND}:${APP_PORT}:${APP_PORT}"
     volumes:
       - operations:/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:'+process.env.PORT+'/v1/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 4
+      start_period: 20s
+    cpus: "0.50"
+    mem_limit: 512m
+    pids_limit: 128
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 30s
 
   foundry:
-    build: .
+    image: ${LPL_IMAGE:-lanka-price-lens:local}
+    build:
+      context: .
+      args:
+        VCS_REF: ${LPL_VCS_REF:-local}
     profiles: [tools]
+    init: true
     environment:
       LPL_DATABASE_PATH: /data/operations.sqlite
+      LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
     entrypoint: ["corepack", "pnpm", "foundry"]
     volumes:
       - operations:/data
+    cpus: "1.00"
+    mem_limit: 1536m
+    pids_limit: 256
+    read_only: true
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
 
 volumes:
   operations:
+    name: ${LPL_OPERATIONS_VOLUME:-lanka-price-lens-operations}

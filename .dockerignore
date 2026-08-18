@@ -1,5 +1,7 @@
 .git
 .github
+.wrangler
+**/.wrangler
 .agents
 .claude
 .codex

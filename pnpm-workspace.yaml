@@ -11,4 +11,5 @@ allowBuilds:
   workerd: true
 
 minimumReleaseAgeExclude:
+  - '@hookform/resolvers@5.9.1'
   - '@cloudflare/workers-types@5.20260817.1'

@@ -67,6 +67,28 @@ function migrate(database: OperationalDatabase): void {
     CREATE INDEX IF NOT EXISTS ingest_run_source_started_idx
       ON ingest_run(source_id, started_at DESC);
 
+    CREATE TABLE IF NOT EXISTS admin_user (
+      id TEXT PRIMARY KEY,
+      email TEXT NOT NULL COLLATE NOCASE UNIQUE,
+      password_hash TEXT NOT NULL,
+      status TEXT NOT NULL CHECK (status IN ('active', 'disabled')),
+      failed_login_count INTEGER NOT NULL DEFAULT 0,
+      locked_until TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS admin_session (
+      token_hash TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL REFERENCES admin_user(id) ON DELETE CASCADE,
+      created_at TEXT NOT NULL,
+      expires_at TEXT NOT NULL,
+      revoked_at TEXT
+    ) STRICT;
+
+    CREATE INDEX IF NOT EXISTS admin_session_user_expiry_idx
+      ON admin_session(user_id, expires_at DESC);
+
     CREATE TABLE IF NOT EXISTS run_stage (
       id INTEGER PRIMARY KEY,
       run_id TEXT NOT NULL REFERENCES ingest_run(id),
@@ -288,6 +310,9 @@ function migrate(database: OperationalDatabase): void {
   `);
 
   addColumn(database, "data_release", "build_commit", "TEXT");
+  addColumn(database, "source_artifact", "run_id", "TEXT REFERENCES ingest_run(id)");
+  addColumn(database, "source_artifact", "original_filename", "TEXT");
+  addColumn(database, "source_artifact", "inspection_json", "TEXT");
 }
 
 function addColumn(database: OperationalDatabase, table: string, column: string, definition: string): void {

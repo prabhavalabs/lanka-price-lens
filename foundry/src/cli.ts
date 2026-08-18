@@ -18,7 +18,7 @@ if (command === "hash-password") {
   openOperationalDatabase(databasePath()).close();
   console.log(`Initialized ${databasePath()}`);
 } else if (command === "ingest") {
-  const manifestPath = valueOf("--manifest") ?? resolve(process.cwd(), "../data/manifests/harti_daily_food_prices.json");
+  const manifestPath = valueOf("--manifest") ?? process.env.LPL_SOURCE_MANIFEST_PATH ?? resolve(process.cwd(), "../data/manifests/harti_daily_food_prices.json");
   const manifest = await readSourceManifest(manifestPath);
   const database = openOperationalDatabase(databasePath());
   try {
