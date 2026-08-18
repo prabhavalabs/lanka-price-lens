@@ -63,6 +63,9 @@ jobs:
     needs: container
     runs-on: ubuntu-latest
     environment: production
+    permissions:
+      contents: read
+      packages: read
     steps:
       - name: Configure restricted SSH access
         env:
@@ -75,9 +78,10 @@ jobs:
           chmod 600 ~/.ssh/lanka-price-lens ~/.ssh/known_hosts
       - name: Deploy immutable release
         env:
+          GHCR_TOKEN: ${{ github.token }}
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
-        run: ssh -i ~/.ssh/lanka-price-lens "$VPS_USER@$VPS_HOST" "sudo /usr/local/sbin/lanka-price-lens-deploy '${{ github.sha }}'"
+        run: printf '%s' "$GHCR_TOKEN" | ssh -i ~/.ssh/lanka-price-lens "$VPS_USER@$VPS_HOST" "sudo /usr/local/sbin/lanka-price-lens-deploy '${{ github.sha }}' '${{ github.actor }}'"
       - name: Verify public health
         run: curl --fail --silent --show-error https://lanka-price-lens.prabhavalabs.com/v1/health >/dev/null
 
