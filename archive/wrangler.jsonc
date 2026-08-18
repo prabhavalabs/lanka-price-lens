@@ -1,0 +1,25 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "lanka-price-lens-archive-sync",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-08-17",
+  "workers_dev": false,
+  "preview_urls": false,
+  "vars": {
+    "SOURCE_LANDING_URL": "https://www.harti.gov.lk/daily-price.php",
+    "MAX_UPLOADS_PER_RUN": "2",
+    "SOURCE_REQUEST_INTERVAL_MS": "5000"
+  },
+  "r2_buckets": [
+    {
+      "binding": "PDF_ARCHIVE",
+      "bucket_name": "lanka-price-lens-pdfs"
+    }
+  ],
+  "triggers": {
+    "crons": ["30 12 * * *"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}

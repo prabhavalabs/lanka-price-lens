@@ -10,6 +10,8 @@
   },
   "packageManager": "pnpm@11.22.0",
   "scripts": {
+    "archive": "pnpm --filter @lanka-pricelens/archive cli",
+    "deploy:archive": "pnpm --filter @lanka-pricelens/archive run deploy",
     "dev:api": "pnpm --filter @lanka-pricelens/api dev",
     "dev:admin": "pnpm --filter @lanka-pricelens/admin dev",
     "foundry": "pnpm --filter @lanka-pricelens/foundry cli",

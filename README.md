@@ -4,6 +4,7 @@ Open, provenance-rich infrastructure for Sri Lankan price observations.
 
 The repository is backend-first:
 
+- `archive/` stores raw source PDFs in private R2 and collects daily updates;
 - `foundry/` discovers, fetches, parses, validates, quarantines, and releases;
 - `api/` exposes public health and authenticated operational data;
 - `admin/` is the single-owner operations interface;
@@ -23,6 +24,7 @@ pnpm check
 
 - Node.js 24 monorepo with pnpm and strict TypeScript;
 - WAL-mode SQLite operational database and overlap-resistant run leases;
+- resumable private R2 archival plus a rate-limited daily Worker cron;
 - rights-gated HARTI archive discovery, bounded downloads, PDF text evidence,
   coordinate parsing, idempotent artifacts, and quarantine records;
 - immediate scheduled ingestion plus explicit date-bounded historical backfill;
@@ -36,7 +38,7 @@ Public promotion, the consumer read API, and the trend interface intentionally
 follow this operational foundation. See
 [`docs/self-hosting.md`](docs/self-hosting.md) for deployment and
 [`docs/release-process.md`](docs/release-process.md) for candidate building.
+See [`docs/pdf-archive.md`](docs/pdf-archive.md) for R2 archival.
 
-The HARTI source is intentionally rights-blocked. See
-[`docs/source-policy.md`](docs/source-policy.md) before enabling collection or
-publication.
+The HARTI source is enabled for non-commercial data preparation under recorded
+permission. See [`docs/source-permission.md`](docs/source-permission.md).
