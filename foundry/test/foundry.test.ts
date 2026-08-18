@@ -10,9 +10,10 @@ import Database from "better-sqlite3";
 
 import { finishRun, openOperationalDatabase, startRun, syncSource, type OperationalDatabase } from "../src/db.ts";
 import { discoverHartiDaily, parseHartiWholesale } from "../src/harti.ts";
+import { ingestManualPdf } from "../src/intake.ts";
 import { canonicalizeRun } from "../src/mapping.ts";
 import { runIngestion } from "../src/pipeline.ts";
-import type { TextItem } from "../src/pdf.ts";
+import type { PdfInspection, TextItem } from "../src/pdf.ts";
 import { buildRelease } from "../src/release.ts";
 
 const manifest = sourceManifestSchema.parse({
@@ -69,26 +70,95 @@ test("HARTI discovery and coordinate parser produce dated price ranges", () => {
   assert.equal(publications[0]?.date, "2026-08-16");
   assert.equal(publications.length, 1);
 
-  const markets = ["Peliyagoda", "Kandy", "Dambulla", "Meegoda", "Norochchole", "Thambuththegama", "Keppetipola", "Nuwaraeliya", "Bandarawela", "Veyangoda"];
-  const items: TextItem[] = [item(0, "Variety", 50, 665)];
-  markets.forEach((market, index) => {
-    const x = 120 + index * 48;
-    items.push(item(items.length, market, x, 665), item(items.length + 1, "2026.08.16", x, 677));
-  });
-  for (let row = 0; row < 2; row += 1) {
-    const y = 630 - row * 12;
-    items.push(item(items.length, row ? "Carrot" : "Beans", 35, y));
-    markets.forEach((_, index) => {
-      const x = 116 + index * 48;
-      items.push(item(items.length, String(100 + row), x, y), item(items.length + 1, String(120 + row), x + 22, y));
-    });
-  }
-  const observations = parseHartiWholesale(items);
+  const observations = parseHartiWholesale(hartiItems());
   assert.equal(observations.length, 20);
   assert.deepEqual(
     { date: observations[0]?.date, minimum: observations[0]?.minValueMinor, maximum: observations[0]?.maxValueMinor },
     { date: "2026-08-16", minimum: 10_000, maximum: 12_000 },
   );
+});
+
+test("scheduled ingestion starts at latest, backfills pending, and catches up new publications", async () => {
+  const database = openOperationalDatabase(":memory:");
+  const approved = sourceManifestSchema.parse({
+    ...manifest,
+    rights_status: "approved_permission",
+    rights_evidence_ref: "test-fixture://permission",
+    attribution_text: "Test source fixture",
+    reviewed_by: "fixture-reviewer",
+    review_due_at: "2999-12-31",
+    enabled: true,
+  });
+  let html = archiveHtml(["16-08-2026", "15-08-2026"]);
+  let requests: string[] = [];
+  const request = async (url: string | URL | Request) => {
+    const href = String(url);
+    requests.push(href);
+    return href === approved.landing_url
+      ? new Response(html, { status: 200, headers: { "content-type": "text/html" } })
+      : new Response(`%PDF-${href}`, { status: 200, headers: { "content-type": "application/pdf" } });
+  };
+  const inspector = async () => ({ inspection: pdfInspection(), items: hartiItems() });
+
+  try {
+    await runIngestion(database, approved, { trigger: "scheduled", request, inspector });
+    assert.equal(requests.length, 2);
+    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM source_artifact").get() as { count: number }).count, 1);
+
+    requests = [];
+    await runIngestion(database, { ...approved, request_interval_ms: 1 }, { trigger: "backfill", request, inspector });
+    assert.equal(requests.length, 2);
+    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM source_artifact").get() as { count: number }).count, 2);
+
+    html = archiveHtml(["18-08-2026", "17-08-2026", "16-08-2026", "15-08-2026"]);
+    requests = [];
+    await runIngestion(database, { ...approved, request_interval_ms: 1 }, { trigger: "scheduled", request, inspector });
+    assert.equal(requests.length, 3);
+    assert.equal((database.prepare("SELECT fetched_count FROM ingest_run ORDER BY started_at DESC LIMIT 1").get() as { fetched_count: number }).fetched_count, 2);
+  } finally {
+    database.close();
+  }
+});
+
+test("manual PDF intake is monitored, idempotent, and quarantines OCR work", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    const items = hartiItems();
+    const parsed = await ingestManualPdf(database, manifest, {
+      fileName: "fixture.pdf",
+      bytes: new TextEncoder().encode("%PDF-fixture"),
+      actor: "fixture-owner",
+      inspector: async () => ({ inspection: pdfInspection(), items }),
+    });
+    assert.equal(parsed.status, "parsed");
+    assert.equal(parsed.parsedCount, 20);
+    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM staging_observation").get() as { count: number }).count, 20);
+    assert.equal(
+      (database.prepare("SELECT action FROM audit_event WHERE target_id = ?").get(parsed.artifactId) as { action: string }).action,
+      "manual_pdf_uploaded",
+    );
+
+    const duplicate = await ingestManualPdf(database, manifest, {
+      fileName: "renamed.pdf",
+      bytes: new TextEncoder().encode("%PDF-fixture"),
+      actor: "fixture-owner",
+      inspector: async () => {
+        throw new Error("duplicate must not be inspected twice");
+      },
+    });
+    assert.equal(duplicate.status, "duplicate");
+
+    const quarantined = await ingestManualPdf(database, manifest, {
+      fileName: "scan.pdf",
+      bytes: new TextEncoder().encode("%PDF-scan"),
+      actor: "fixture-owner",
+      inspector: async () => ({ inspection: pdfInspection({ pdfType: "Scanned", pagesNeedingOcr: [1] }), items: [] }),
+    });
+    assert.equal(quarantined.status, "quarantined");
+    assert.equal(quarantined.reason, "PDF_OCR_REQUIRED");
+  } finally {
+    database.close();
+  }
 });
 
 test("reviewed mappings create correction-safe observations and reconciled release artifacts", () => {
@@ -202,6 +272,43 @@ test("reviewed mappings create correction-safe observations and reconciled relea
 
 function item(index: number, text: string, x: number, y: number): TextItem {
   return { page: 1, index, text, x, y, width: 10, height: 8 };
+}
+
+function hartiItems(): TextItem[] {
+  const markets = ["Peliyagoda", "Kandy", "Dambulla", "Meegoda", "Norochchole", "Thambuththegama", "Keppetipola", "Nuwaraeliya", "Bandarawela", "Veyangoda"];
+  const items: TextItem[] = [item(0, "Variety", 50, 665)];
+  markets.forEach((market, index) => {
+    const x = 120 + index * 48;
+    items.push(item(items.length, market, x, 665), item(items.length + 1, "2026.08.16", x, 677));
+  });
+  for (let row = 0; row < 2; row += 1) {
+    const y = 630 - row * 12;
+    items.push(item(items.length, row ? "Carrot" : "Beans", 35, y));
+    markets.forEach((_, index) => {
+      const x = 116 + index * 48;
+      items.push(item(items.length, `${100 + row} -`, x, y), item(items.length + 1, String(120 + row), x + 22, y));
+    });
+  }
+  return items;
+}
+
+function archiveHtml(dates: string[]): string {
+  return dates.map((date) => `<a href="assets/pdf/food_price/daily/eng/2026/August/daily_${date}.pdf">PDF</a>`).join("");
+}
+
+function pdfInspection(overrides: Partial<PdfInspection> = {}): PdfInspection {
+  return {
+    engine: "pdf-inspector@1.14.2",
+    pdfType: "TextBased",
+    pageCount: 1,
+    confidence: 1,
+    processingTimeMs: 1,
+    pagesNeedingOcr: [],
+    pagesWithTables: [1],
+    pagesWithColumns: [],
+    hasEncodingIssues: false,
+    ...overrides,
+  };
 }
 
 function mappingBundle(itemId: string, itemLabel: string, version: string, sourceLabel = "Beans") {
