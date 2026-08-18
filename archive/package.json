@@ -1,0 +1,22 @@
+{
+  "name": "@lanka-pricelens/archive",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cli": "node src/cli.ts",
+    "deploy": "wrangler deploy",
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.ts"
+  },
+  "dependencies": {
+    "@lanka-pricelens/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260817.1",
+    "@types/node": "24.13.3",
+    "typescript": "7.0.2",
+    "wrangler": "4.123.0"
+  }
+}

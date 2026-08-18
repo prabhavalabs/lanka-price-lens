@@ -1,5 +1,6 @@
 packages:
   - shared
+  - archive
   - foundry
   - api
   - admin
@@ -7,3 +8,8 @@ packages:
 allowBuilds:
   better-sqlite3: true
   esbuild: true
+  workerd: true
+
+minimumReleaseAgeExclude:
+  - '@hookform/resolvers@5.9.1'
+  - '@cloudflare/workers-types@5.20260817.1'

@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./db": "./src/db.ts"
+    "./db": "./src/db.ts",
+    "./intake": "./src/intake.ts",
+    "./pipeline": "./src/pipeline.ts"
   },
   "scripts": {
     "cli": "node src/cli.ts",
@@ -13,9 +15,9 @@
     "test": "node --test test/*.test.ts"
   },
   "dependencies": {
+    "@firecrawl/pdf-inspector": "1.14.2",
     "@lanka-pricelens/shared": "workspace:*",
-    "better-sqlite3": "13.0.3",
-    "pdfjs-dist": "6.2.108"
+    "better-sqlite3": "13.0.3"
   },
   "devDependencies": {
     "@types/better-sqlite3": "7.6.13",

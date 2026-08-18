@@ -12,14 +12,16 @@ import {
   syncSource,
   type OperationalDatabase,
 } from "./db.ts";
+import { persistParsedArtifact } from "./artifact.ts";
 import { discoverHartiDaily, parseHartiWholesale, type Publication } from "./harti.ts";
-import { extractPdfText } from "./pdf.ts";
+import { inspectPdf } from "./pdf.ts";
 
-type IngestionOptions = {
+export type IngestionOptions = {
   trigger: "scheduled" | "manual" | "backfill";
   from?: string | undefined;
   to?: string | undefined;
   request?: typeof fetch | undefined;
+  inspector?: typeof inspectPdf | undefined;
 };
 
 export async function runIngestion(
@@ -47,29 +49,40 @@ export async function runIngestion(
     startStage(database, run.id, "discover");
     const landing = await requestWithRetry(request, manifest.landing_url, manifest.max_attempts, manifest.request_interval_ms);
     const html = new TextDecoder().decode(await limitedBody(landing, 5 * 1024 * 1024));
-    let publications = discoverHartiDaily(html, manifest.landing_url, { from: options.from, to: options.to });
-    if (options.trigger === "scheduled" && !options.from && !options.to) publications = publications.slice(0, 1);
+    const publications = discoverHartiDaily(html, manifest.landing_url, { from: options.from, to: options.to });
     recordPublications(database, manifest.id, publications);
+    const parsedKeys = new Set(
+      (
+        database
+          .prepare(
+            `SELECT publication.source_publication_key AS key
+             FROM source_publication publication
+             JOIN source_artifact artifact ON artifact.publication_id = publication.id
+             WHERE publication.source_id = ? AND artifact.status = 'parsed'`,
+          )
+          .all(manifest.id) as Array<{ key: string }>
+      ).map((row) => row.key),
+    );
+    let pending = publications.filter((publication) => !parsedKeys.has(publication.key));
+    if (options.trigger === "scheduled" && !options.from && !options.to) {
+      const newestCompletedIndex = publications.findIndex((publication) => parsedKeys.has(publication.key));
+      pending = newestCompletedIndex < 0 ? pending.slice(0, 1) : publications.slice(0, newestCompletedIndex);
+    }
     finishStage(database, run.id, "discover", "succeeded", { outputCount: publications.length });
+    database.prepare("UPDATE ingest_run SET discovered_count = ? WHERE id = ?").run(publications.length, run.id);
     database.prepare("UPDATE source SET last_discovery_at = ?, updated_at = ? WHERE id = ?").run(
       new Date().toISOString(),
       new Date().toISOString(),
       manifest.id,
     );
 
-    for (const stage of ["fetch", "extract", "parse"] as const) startStage(database, run.id, stage, publications.length);
-    let fetched = 0;
-    let extracted = 0;
-    let parsed = 0;
+    for (const stage of ["fetch", "extract", "parse"] as const) startStage(database, run.id, stage, pending.length);
 
-    for (const [index, publication] of publications.entries()) {
+    for (const [index, publication] of pending.entries()) {
       heartbeatRun(database, run.id);
       try {
         if (index > 0) await new Promise<void>((resolve) => setTimeout(resolve, manifest.request_interval_ms));
-        const result = await processPublication(database, run.id, manifest, publication, request);
-        fetched += result.fetched;
-        extracted += result.extracted;
-        parsed += result.parsed;
+        await processPublication(database, run.id, manifest, publication, request, options.inspector ?? inspectPdf);
       } catch (error) {
         quarantined += 1;
         const message = error instanceof Error ? error.message : String(error);
@@ -81,17 +94,29 @@ export async function runIngestion(
           .run(
             newId("quarantine"),
             run.id,
-            message.startsWith("SOURCE_TEMPLATE_CHANGED") ? "SOURCE_TEMPLATE_CHANGED" : "PUBLICATION_PROCESSING_FAILED",
+            message.startsWith("SOURCE_TEMPLATE_CHANGED")
+              ? "SOURCE_TEMPLATE_CHANGED"
+              : message.startsWith("PDF_OCR_REQUIRED")
+                ? "PDF_OCR_REQUIRED"
+                : "PUBLICATION_PROCESSING_FAILED",
             publication.key,
             JSON.stringify({ publication, message }),
             new Date().toISOString(),
           );
       }
+      const progress = runProgress(database, run.id);
+      database
+        .prepare(
+          `UPDATE ingest_run SET fetched_count = ?, extracted_count = ?, parsed_count = ?,
+           quarantined_count = ? WHERE id = ?`,
+        )
+        .run(progress.fetched, progress.extracted, progress.parsed, quarantined, run.id);
     }
 
-    finishStage(database, run.id, "fetch", "succeeded", { outputCount: fetched, warningCount: quarantined });
-    finishStage(database, run.id, "extract", "succeeded", { outputCount: extracted, warningCount: quarantined });
-    finishStage(database, run.id, "parse", "succeeded", { outputCount: parsed, warningCount: quarantined });
+    const progress = runProgress(database, run.id);
+    finishStage(database, run.id, "fetch", "succeeded", { outputCount: progress.fetched, warningCount: quarantined });
+    finishStage(database, run.id, "extract", "succeeded", { outputCount: progress.extracted, warningCount: quarantined });
+    finishStage(database, run.id, "parse", "succeeded", { outputCount: progress.parsed, warningCount: quarantined });
     for (const stage of ["map", "validate", "release"] as const) {
       startStage(database, run.id, stage);
       finishStage(database, run.id, stage, "skipped");
@@ -102,10 +127,19 @@ export async function runIngestion(
         `UPDATE ingest_run SET discovered_count = ?, fetched_count = ?, extracted_count = ?,
          parsed_count = ?, quarantined_count = ? WHERE id = ?`,
       )
-      .run(publications.length, fetched, extracted, parsed, quarantined, run.id);
+      .run(publications.length, progress.fetched, progress.extracted, progress.parsed, quarantined, run.id);
     database
-      .prepare("UPDATE source SET state = ?, last_fetch_at = ?, last_parse_at = ?, updated_at = ? WHERE id = ?")
-      .run(quarantined ? "degraded" : "healthy", fetched ? new Date().toISOString() : null, parsed ? new Date().toISOString() : null, new Date().toISOString(), manifest.id);
+      .prepare(
+        `UPDATE source SET state = ?, last_fetch_at = COALESCE(?, last_fetch_at),
+         last_parse_at = COALESCE(?, last_parse_at), updated_at = ? WHERE id = ?`,
+      )
+      .run(
+        quarantined ? "degraded" : "healthy",
+        progress.fetched ? new Date().toISOString() : null,
+        progress.parsed ? new Date().toISOString() : null,
+        new Date().toISOString(),
+        manifest.id,
+      );
     finishRun(database, run.id, "succeeded");
     return { runId: run.id, status: "succeeded" };
   } catch (error) {
@@ -128,12 +162,13 @@ async function processPublication(
   manifest: SourceManifest,
   publication: Publication,
   request: typeof fetch,
-): Promise<{ fetched: number; extracted: number; parsed: number }> {
+  inspector: typeof inspectPdf,
+): Promise<void> {
   const publicationId = `publication_${publication.key}`;
   const done = database
     .prepare("SELECT 1 FROM source_artifact WHERE publication_id = ? AND status = 'parsed' LIMIT 1")
     .get(publicationId);
-  if (done) return { fetched: 0, extracted: 0, parsed: 0 };
+  if (done) return;
 
   const response = await requestWithRetry(request, publication.downloadUrl, manifest.max_attempts, manifest.request_interval_ms);
   const contentType = response.headers.get("content-type")?.split(";", 1)[0]?.trim() ?? "application/octet-stream";
@@ -144,14 +179,16 @@ async function processPublication(
   database
     .prepare(
       `INSERT INTO source_artifact (
-        id, publication_id, requested_url, final_url, fetched_at, media_type, byte_size,
-        sha256, storage_ref, http_etag, http_last_modified, status
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, 'fetched')
-      ON CONFLICT(publication_id, sha256) DO UPDATE SET fetched_at = excluded.fetched_at, status = 'fetched'`,
+        id, publication_id, run_id, requested_url, final_url, fetched_at, media_type, byte_size,
+        sha256, storage_ref, http_etag, http_last_modified, original_filename, status
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, 'fetched')
+      ON CONFLICT(publication_id, sha256) DO UPDATE SET
+        run_id = excluded.run_id, fetched_at = excluded.fetched_at, status = 'fetched'`,
     )
     .run(
       artifactId,
       publicationId,
+      runId,
       publication.downloadUrl,
       response.url || publication.downloadUrl,
       new Date().toISOString(),
@@ -160,52 +197,38 @@ async function processPublication(
       sha256,
       response.headers.get("etag"),
       response.headers.get("last-modified"),
+      publication.title,
     );
 
   const stored = database.prepare("SELECT id FROM source_artifact WHERE publication_id = ? AND sha256 = ?").get(publicationId, sha256) as { id: string };
-  let items;
+  let extraction;
   let observations;
   try {
-    items = await extractPdfText(bytes);
-    observations = parseHartiWholesale(items);
+    extraction = await inspector(bytes);
+    database.prepare("UPDATE source_artifact SET inspection_json = ? WHERE id = ?").run(
+      JSON.stringify(extraction.inspection),
+      stored.id,
+    );
+    if (extraction.inspection.pagesNeedingOcr.length) {
+      throw new Error(`PDF_OCR_REQUIRED: pages ${extraction.inspection.pagesNeedingOcr.join(",")}`);
+    }
+    observations = parseHartiWholesale(extraction.items);
   } catch (error) {
-    database.prepare("UPDATE source_artifact SET status = 'failed' WHERE id = ?").run(stored.id);
+    database.prepare("UPDATE source_artifact SET status = 'quarantined' WHERE id = ?").run(stored.id);
     throw error;
   }
-  const transaction = database.transaction(() => {
-    database.prepare("DELETE FROM extracted_text_item WHERE artifact_id = ?").run(stored.id);
-    const insertText = database.prepare(
-      `INSERT INTO extracted_text_item (artifact_id, page_number, item_index, text, x, y, width, height)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-    );
-    for (const item of items) insertText.run(stored.id, item.page, item.index, item.text, item.x, item.y, item.width, item.height);
+  persistParsedArtifact(database, { artifactId: stored.id, runId, items: extraction.items, observations });
+}
 
-    database.prepare("DELETE FROM staging_observation WHERE artifact_id = ?").run(stored.id);
-    const insertObservation = database.prepare(
-      `INSERT INTO staging_observation (
-        id, run_id, artifact_id, source_row_ref, source_item_label, source_market_label,
-        source_date, price_type, currency, source_quantity, source_unit,
-        min_value_minor, max_value_minor, status, raw_json
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, 'wholesale_observed', 'LKR', '1', 'kg', ?, ?, 'unmapped', ?)`,
-    );
-    for (const observation of observations) {
-      insertObservation.run(
-        newId("staging"),
-        runId,
-        stored.id,
-        observation.rowRef,
-        observation.itemLabel,
-        observation.marketLabel,
-        observation.date,
-        observation.minValueMinor,
-        observation.maxValueMinor,
-        JSON.stringify(observation.raw),
-      );
-    }
-    database.prepare("UPDATE source_artifact SET status = 'parsed' WHERE id = ?").run(stored.id);
-  });
-  transaction();
-  return { fetched: 1, extracted: items.length, parsed: observations.length };
+function runProgress(database: OperationalDatabase, runId: string): { fetched: number; extracted: number; parsed: number } {
+  return database
+    .prepare(
+      `SELECT
+        (SELECT COUNT(*) FROM source_artifact WHERE run_id = ?) AS fetched,
+        (SELECT COUNT(*) FROM extracted_text_item item JOIN source_artifact artifact ON artifact.id = item.artifact_id WHERE artifact.run_id = ?) AS extracted,
+        (SELECT COUNT(*) FROM staging_observation WHERE run_id = ?) AS parsed`,
+    )
+    .get(runId, runId, runId) as { fetched: number; extracted: number; parsed: number };
 }
 
 function recordPublications(database: OperationalDatabase, sourceId: string, publications: Publication[]): void {

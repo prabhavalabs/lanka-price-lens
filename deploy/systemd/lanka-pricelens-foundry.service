@@ -7,5 +7,7 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=/opt/lanka-pricelens
-EnvironmentFile=/opt/lanka-pricelens/.env
-ExecStart=/usr/bin/docker compose --profile tools run --rm foundry ingest
+EnvironmentFile=/etc/lanka-price-lens/app.env
+EnvironmentFile=/etc/lanka-price-lens/release.env
+Nice=10
+ExecStart=/usr/bin/flock -n /run/lock/lanka-price-lens.lock /usr/bin/docker compose --profile tools run --rm --no-deps foundry ingest

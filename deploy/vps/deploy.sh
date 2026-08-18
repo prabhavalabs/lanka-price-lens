@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+sha=${1:-}
+repo=/opt/lanka-price-lens
+config=/etc/lanka-price-lens
+backups=/var/backups/lanka-price-lens
+volume=lanka-price-lens-operations
+
+if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ ]]; then
+  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA" >&2
+  exit 2
+fi
+
+exec 9>/run/lock/lanka-price-lens.lock
+flock -n 9 || { echo "Another deployment or foundry run is active" >&2; exit 1; }
+
+cd "$repo"
+git fetch --quiet origin main
+git merge-base --is-ancestor "$sha" origin/main || { echo "Commit is not on origin/main" >&2; exit 1; }
+
+previous_commit=$(git rev-parse HEAD)
+previous_image=$(sed -n 's/^LPL_IMAGE=//p' "$config/release.env" 2>/dev/null || true)
+image="ghcr.io/prabhavalabs/lanka-price-lens:sha-$sha"
+
+write_release() {
+  local value=$1 temporary
+  temporary=$(mktemp "$config/release.env.XXXXXX")
+  printf 'LPL_IMAGE=%s\nLPL_VCS_REF=%s\n' "$value" "${value##*sha-}" > "$temporary"
+  chmod 600 "$temporary"
+  mv "$temporary" "$config/release.env"
+}
+
+compose() {
+  docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" "$@"
+}
+
+rollback() {
+  trap - ERR
+  echo "Deployment failed; restoring the previous release" >&2
+  git checkout --quiet --detach "$previous_commit" || true
+  if [[ -n $previous_image ]]; then
+    write_release "$previous_image"
+    compose up -d --no-build --wait --wait-timeout 90 api || true
+  fi
+}
+
+git checkout --quiet --detach "$sha"
+docker pull "$image"
+write_release "$image"
+compose config --quiet
+trap rollback ERR
+
+if [[ -n $(compose ps -q api) ]]; then
+  compose stop --timeout 30 api
+fi
+
+if mountpoint=$(docker volume inspect --format '{{ .Mountpoint }}' "$volume" 2>/dev/null) && [[ -n $(find "$mountpoint" -mindepth 1 -maxdepth 1 -print -quit) ]]; then
+  mkdir -p "$backups"
+  tar -czf "$backups/operations-$(date -u +%Y%m%dT%H%M%SZ).tar.gz" -C "$mountpoint" .
+fi
+
+compose up -d --no-build --wait --wait-timeout 90 api
+trap - ERR
+
+install -m 0755 "$repo/deploy/vps/deploy.sh" /usr/local/sbin/lanka-price-lens-deploy
+install -m 0644 "$repo/deploy/systemd/lanka-pricelens-foundry.service" /etc/systemd/system/
+install -m 0644 "$repo/deploy/systemd/lanka-pricelens-foundry.timer" /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable --now lanka-pricelens-foundry.timer
+echo "Deployed $sha"

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Lanka PriceLens">
+  <rect width="64" height="64" fill="#052e27"/>
+  <circle cx="27" cy="27" r="16" fill="none" stroke="#34d399" stroke-width="5"/>
+  <path d="m39 39 14 14" fill="none" stroke="#34d399" stroke-linecap="square" stroke-width="6"/>
+  <path d="M18 33V27M26 33V20M34 33V24" fill="none" stroke="#fbbf24" stroke-width="4"/>
+</svg>
