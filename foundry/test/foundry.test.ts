@@ -76,6 +76,9 @@ test("HARTI discovery and coordinate parser produce dated price ranges", () => {
     { date: observations[0]?.date, minimum: observations[0]?.minValueMinor, maximum: observations[0]?.maxValueMinor },
     { date: "2026-08-16", minimum: 10_000, maximum: 12_000 },
   );
+
+  const movedObservations = parseHartiWholesale(hartiItems().map((item) => ({ ...item, page: 2 })));
+  assert.equal(movedObservations[0]?.rowRef, "p2:y630.00");
 });
 
 test("scheduled ingestion starts at latest, backfills pending, and catches up new publications", async () => {
