@@ -48,9 +48,9 @@ export function discoverHartiDaily(
 }
 
 export function parseHartiWholesale(items: TextItem[]): ParsedObservation[] {
-  const page = items.filter((item) => item.page === 1);
-  const varietyHeader = page.find((item) => item.text === "Variety");
+  const varietyHeader = items.find((item) => item.text === "Variety");
   if (!varietyHeader) throw new Error("SOURCE_TEMPLATE_CHANGED: missing Variety header");
+  const page = items.filter((item) => item.page === varietyHeader.page);
   const headerY = varietyHeader.y;
 
   const markets = expectedMarkets.map((name) => {
@@ -85,7 +85,7 @@ export function parseHartiWholesale(items: TextItem[]): ParsedObservation[] {
       const [minimum, maximum] = values;
       if (minimum === undefined || maximum === undefined || minimum > maximum) continue;
       observations.push({
-        rowRef: `p1:y${row[0]!.y.toFixed(2)}`,
+        rowRef: `p${varietyHeader.page}:y${row[0]!.y.toFixed(2)}`,
         itemLabel,
         marketLabel: market.name,
         date: market.date,
