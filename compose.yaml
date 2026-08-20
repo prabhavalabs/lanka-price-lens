@@ -46,7 +46,7 @@ services:
     environment:
       LPL_DATABASE_PATH: /data/operations.sqlite
       LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
-    entrypoint: ["corepack", "pnpm", "foundry"]
+    entrypoint: ["node", "foundry/src/cli.ts"]
     volumes:
       - operations:/data
     cpus: "1.00"

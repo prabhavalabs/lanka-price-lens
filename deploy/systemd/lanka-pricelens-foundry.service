@@ -6,7 +6,7 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-WorkingDirectory=/opt/lanka-pricelens
+WorkingDirectory=/opt/lanka-price-lens
 EnvironmentFile=/etc/lanka-price-lens/app.env
 EnvironmentFile=/etc/lanka-price-lens/release.env
 Nice=10
