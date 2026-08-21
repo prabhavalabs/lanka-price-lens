@@ -3,15 +3,25 @@ set -Eeuo pipefail
 
 sha=${1:-}
 registry_user=${2:-}
+mode=${3:-}
 repo=/opt/lanka-price-lens
 config=/etc/lanka-price-lens
 backups=/var/backups/lanka-price-lens
 volume=lanka-price-lens-operations
 docker_config=
 
-if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ ]]; then
-  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME]" >&2
+if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ || ( -n $mode && $mode != --verify-only ) ]]; then
+  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME] [--verify-only]" >&2
   exit 2
+fi
+
+if [[ $mode == --verify-only ]]; then
+  if ! systemctl start lanka-pricelens-foundry.service; then
+    journalctl --no-pager -u lanka-pricelens-foundry.service -n 100
+    exit 1
+  fi
+  systemctl is-active lanka-pricelens-foundry.timer
+  exit
 fi
 
 cleanup() {
