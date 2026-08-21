@@ -8,7 +8,8 @@ const AppShell = lazy(() => import("@/components/app-shell").then((module) => ({
 const LoginPage = lazy(() => import("@/pages/login-page").then((module) => ({ default: module.LoginPage })));
 const OverviewPage = lazy(() => import("@/pages/overview-page").then((module) => ({ default: module.OverviewPage })));
 const RunsPage = lazy(() => import("@/pages/operations-pages").then((module) => ({ default: module.RunsPage })));
-const PdfsPage = lazy(() => import("@/pages/operations-pages").then((module) => ({ default: module.PdfsPage })));
+const RunDetailPage = lazy(() => import("@/pages/operations-pages").then((module) => ({ default: module.RunDetailPage })));
+const KnowledgeBasePage = lazy(() => import("@/pages/operations-pages").then((module) => ({ default: module.KnowledgeBasePage })));
 const SourcesPage = lazy(() => import("@/pages/operations-pages").then((module) => ({ default: module.SourcesPage })));
 
 const router = createBrowserRouter(
@@ -22,7 +23,9 @@ const router = createBrowserRouter(
           children: [
             { index: true, element: <OverviewPage /> },
             { path: "runs", element: <RunsPage /> },
-            { path: "pdfs", element: <PdfsPage /> },
+            { path: "runs/:runId", element: <RunDetailPage /> },
+            { path: "knowledge-base", element: <KnowledgeBasePage /> },
+            { path: "pdfs", element: <Navigate to="/knowledge-base" replace /> },
             { path: "sources", element: <SourcesPage /> },
           ],
         },

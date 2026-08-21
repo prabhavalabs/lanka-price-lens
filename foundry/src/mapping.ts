@@ -48,7 +48,7 @@ export function canonicalizeRun(
   if (run.source_id !== bundle.source_id) throw new Error("MAPPING_SOURCE_MISMATCH");
 
   startStage(database, runId, "map");
-  startStage(database, runId, "validate");
+  startStage(database, runId, "canonicalize");
   const result = { accepted: 0, corrected: 0, duplicates: 0, quarantined: 0 };
   try {
     syncMappingBundle(database, bundle);
@@ -66,7 +66,7 @@ export function canonicalizeRun(
       for (const row of rows) canonicalizeRow(database, row, bundle, parserVersion, result);
     })();
     finishStage(database, runId, "map", "succeeded", { outputCount: result.accepted + result.corrected, warningCount: result.quarantined });
-    finishStage(database, runId, "validate", "succeeded", { outputCount: result.accepted + result.corrected, warningCount: result.quarantined });
+    finishStage(database, runId, "canonicalize", "succeeded", { outputCount: result.accepted + result.corrected, warningCount: result.quarantined });
     database
       .prepare("UPDATE ingest_run SET quarantined_count = quarantined_count + ? WHERE id = ?")
       .run(result.quarantined, runId);
@@ -74,7 +74,7 @@ export function canonicalizeRun(
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     finishStage(database, runId, "map", "failed", { errorCode: "CANONICALIZATION_FAILED", errorMessage: message });
-    finishStage(database, runId, "validate", "failed", { errorCode: "CANONICALIZATION_FAILED", errorMessage: message });
+    finishStage(database, runId, "canonicalize", "failed", { errorCode: "CANONICALIZATION_FAILED", errorMessage: message });
     throw error;
   }
 }

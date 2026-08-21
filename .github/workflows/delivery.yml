@@ -82,6 +82,11 @@ jobs:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
         run: printf '%s' "$GHCR_TOKEN" | ssh -i ~/.ssh/lanka-price-lens "$VPS_USER@$VPS_HOST" "sudo /usr/local/sbin/lanka-price-lens-deploy '${{ github.sha }}' '${{ github.actor }}'"
+      - name: Verify ingestion workflow
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: ssh -i ~/.ssh/lanka-price-lens "$VPS_USER@$VPS_HOST" "sudo systemctl start lanka-pricelens-foundry.service && sudo systemctl is-active --quiet lanka-pricelens-foundry.timer"
       - name: Verify public health
         run: curl --fail --silent --show-error https://lanka-price-lens.prabhavalabs.com/v1/health >/dev/null
 

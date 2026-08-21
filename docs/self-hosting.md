@@ -37,14 +37,17 @@ systemctl list-timers lanka-pricelens-foundry.timer
 ```
 
 The timer is persistent, so a missed run executes after the VPS returns. The
-database lease rejects overlaps and expires abandoned runs after 30 minutes.
+source-sync lease rejects overlaps and expires abandoned runs after 30 minutes.
+Set `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN`, and `LPL_R2_BUCKET` in
+`/etc/lanka-price-lens/app.env`; the token needs access only to the archive R2
+bucket.
 
 ## Backfill
 
 Use **Ingest full archive** in the owner dashboard, or run a bounded backfill:
 
 ```bash
-docker compose --profile tools run --rm foundry ingest --backfill --from YYYY-MM-DD --to YYYY-MM-DD
+docker compose --profile tools run --rm foundry sync --backfill --from YYYY-MM-DD --to YYYY-MM-DD
 ```
 
 Backfills are serial and rate-limited. Failed publications are quarantined;

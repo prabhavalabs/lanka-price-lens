@@ -12,6 +12,9 @@ services:
       LPL_DATABASE_PATH: /data/operations.sqlite
       LPL_ADMIN_ROOT: /app/admin/dist
       LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
+      LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
+      CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
       ADMIN_EMAIL: ${ADMIN_EMAIL:?set ADMIN_EMAIL}
       ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:?set ADMIN_PASSWORD_HASH}
     ports:
@@ -46,6 +49,9 @@ services:
     environment:
       LPL_DATABASE_PATH: /data/operations.sqlite
       LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
+      LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
+      CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
     entrypoint: ["node", "foundry/src/cli.ts"]
     volumes:
       - operations:/data

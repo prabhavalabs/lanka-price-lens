@@ -132,7 +132,7 @@ export async function ingestManualPdf(
     return quarantine(database, run.id, artifactId, null, 0, "PDF_INSPECTION_FAILED", error);
   }
 
-  if (extraction.inspection.pagesNeedingOcr.length) {
+  if (!extraction.items.length && extraction.inspection.pagesNeedingOcr.length) {
     return quarantine(
       database,
       run.id,

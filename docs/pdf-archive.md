@@ -22,14 +22,16 @@ permission. No PDFs are parsed and no permanent local copies are created.
 
 ## Daily collection
 
-The `archive/` Worker runs at 12:30 UTC (18:00 Asia/Colombo), checks the latest
-fourteen publication keys, and stores at most two missing PDFs per run. Deploy
-the Worker and its Cron Trigger with:
+The VPS systemd timer is the single scheduler. At 18:00 Asia/Colombo it runs
+`foundry sync`, compares the complete official publication list with both the
+SQLite `archived_pdf` inventory and R2, and downloads only PDFs newer than the
+newest known object. Existing R2 objects missing SQLite metadata are reconciled
+without downloading them again.
 
-```bash
-corepack pnpm deploy:archive
-```
+Each new PDF is uploaded to the private bucket under its deterministic key. Its
+source URL, R2 URI, byte size, checksum, upload time, status, and source-sync
+execution are then stored in SQLite. A separate PDF-processing execution starts
+for every newly archived PDF.
 
-The bucket stays private. Each scheduled object includes its source URL, source
-date, and SHA-256 checksum as R2 metadata. Cron execution logs are available in
-Cloudflare Workers observability.
+The former Cloudflare Worker Cron Trigger is intentionally empty; deploying the
+Worker removes the overlapping Cloudflare schedule.

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@firecrawl/pdf-inspector": "1.14.2",
+    "@lanka-pricelens/archive": "workspace:*",
     "@lanka-pricelens/shared": "workspace:*",
     "better-sqlite3": "13.0.3"
   },
