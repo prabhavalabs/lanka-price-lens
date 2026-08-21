@@ -10,9 +10,42 @@ backups=/var/backups/lanka-price-lens
 volume=lanka-price-lens-operations
 docker_config=
 
-if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ || ( -n $mode && $mode != --verify-only ) ]]; then
-  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME] [--verify-only]" >&2
+if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ || ( -n $mode && $mode != --verify-only && $mode != --configure-r2 ) ]]; then
+  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME] [--verify-only|--configure-r2]" >&2
   exit 2
+fi
+
+update_env() {
+  local key=$1 value=$2 temporary line found=0
+  temporary=$(mktemp "$config/app.env.XXXXXX")
+  {
+    while IFS= read -r line || [[ -n $line ]]; do
+      if [[ $line == "$key="* ]]; then
+        printf '%s=%s\n' "$key" "$value"
+        found=1
+      else
+        printf '%s\n' "$line"
+      fi
+    done < "$config/app.env"
+    if [[ $found -eq 0 ]]; then
+      printf '%s=%s\n' "$key" "$value"
+    fi
+  } > "$temporary"
+  chmod 600 "$temporary"
+  mv "$temporary" "$config/app.env"
+}
+
+if [[ $mode == --configure-r2 ]]; then
+  IFS= read -r cloudflare_account_id
+  IFS= read -r cloudflare_api_token
+  if [[ ! $cloudflare_account_id =~ ^[a-f0-9]{32}$ || -z $cloudflare_api_token ]]; then
+    echo "Valid Cloudflare R2 credentials are required" >&2
+    exit 2
+  fi
+  update_env CLOUDFLARE_ACCOUNT_ID "$cloudflare_account_id"
+  update_env CLOUDFLARE_API_TOKEN "$cloudflare_api_token"
+  docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" up -d --no-build --force-recreate --wait --wait-timeout 90 api
+  exit
 fi
 
 if [[ $mode == --verify-only ]]; then
