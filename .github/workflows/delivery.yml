@@ -82,6 +82,13 @@ jobs:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
         run: printf '%s' "$GHCR_TOKEN" | ssh -i ~/.ssh/lanka-price-lens "$VPS_USER@$VPS_HOST" "sudo /usr/local/sbin/lanka-price-lens-deploy '${{ github.sha }}' '${{ github.actor }}'"
+      - name: Configure VPS R2 access
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: printf '%s\n%s\n' "$CLOUDFLARE_ACCOUNT_ID" "$CLOUDFLARE_API_TOKEN" | ssh -i ~/.ssh/lanka-price-lens "$VPS_USER@$VPS_HOST" "sudo /usr/local/sbin/lanka-price-lens-deploy '${{ github.sha }}' '${{ github.actor }}' --configure-r2"
       - name: Verify ingestion workflow
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
