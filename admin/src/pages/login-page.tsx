@@ -8,8 +8,8 @@ import { z } from "zod";
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { api, type AdminUser } from "@/lib/api";
 
 const loginSchema = z.object({
@@ -31,22 +31,23 @@ export function LoginPage() {
   });
 
   return (
-    <main className="grid min-h-screen bg-neutral-950 lg:grid-cols-[1.15fr_0.85fr]">
-      <section className="relative hidden overflow-hidden p-12 text-white lg:flex lg:flex-col lg:justify-between">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(16,185,129,0.28),transparent_36%),radial-gradient(circle_at_80%_80%,rgba(245,158,11,0.16),transparent_32%)]" />
-        <div className="relative flex items-center gap-3"><img alt="" className="size-12" src="/admin/app-icon.svg" /><div><p className="font-heading text-xl font-semibold">Lanka PriceLens</p><p className="text-sm text-neutral-400">Open price intelligence infrastructure</p></div></div>
-        <div className="relative max-w-xl"><RiPriceTag3Line className="mb-6 size-10 text-emerald-400" /><h1 className="font-heading text-5xl font-semibold leading-tight">Reliable source data starts with a visible pipeline.</h1><p className="mt-5 text-lg leading-8 text-neutral-400">Discover, inspect, parse, and monitor Sri Lanka’s public food-price bulletins from one accountable workspace.</p></div>
-        <p className="relative text-xs text-neutral-500">Non-commercial data preparation · Source-attributed · Self-hosted</p>
+    <main className="grid min-h-svh bg-background lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="hidden border-r border-white/10 bg-sidebar p-12 text-white lg:flex lg:flex-col lg:justify-between xl:p-16">
+        <div className="flex items-center gap-3"><img alt="" className="size-11" src="/admin/app-icon.svg" /><div><p className="text-lg font-semibold tracking-tight">Lanka PriceLens</p><p className="font-mono text-[11px] text-neutral-500">Open price intelligence infrastructure</p></div></div>
+        <div className="max-w-xl"><div className="mb-7 grid size-12 place-items-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"><RiPriceTag3Line className="size-6" /></div><h1 className="font-heading text-4xl font-semibold leading-[1.12] tracking-tight xl:text-5xl">Reliable source data starts with a visible pipeline.</h1><p className="mt-5 max-w-lg text-base leading-7 text-neutral-400">Discover, inspect, parse, and monitor Sri Lanka’s public food-price bulletins from one accountable workspace.</p></div>
+        <p className="font-mono text-[10px] text-neutral-600">Non-commercial data preparation · Source-attributed · Self-hosted</p>
       </section>
-      <section className="grid place-items-center bg-background p-6">
-        <Card className="w-full max-w-md border-0 shadow-none sm:border sm:shadow-xl">
-          <CardHeader className="space-y-3"><div className="grid size-11 place-items-center bg-primary text-primary-foreground"><RiLock2Line className="size-5" /></div><div><CardTitle className="font-heading text-2xl">Administrator sign in</CardTitle><CardDescription className="mt-1">Use your seeded owner account to continue.</CardDescription></div></CardHeader>
+      <section className="grid place-items-center p-5 sm:p-8">
+        <Card className="w-full max-w-md bg-card/80">
+          <CardHeader className="space-y-5"><div className="flex items-center gap-3 lg:hidden"><img alt="" className="size-9" src="/admin/app-icon.svg" /><div><p className="text-sm font-semibold">Lanka PriceLens</p><p className="font-mono text-[10px] text-muted-foreground">Foundry operations</p></div></div><div className="grid size-11 place-items-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"><RiLock2Line className="size-5" /></div><div><CardTitle className="text-2xl">Administrator sign in</CardTitle><CardDescription className="mt-1.5">Use your seeded owner account to continue.</CardDescription></div></CardHeader>
           <CardContent>
-            <form className="space-y-5" onSubmit={form.handleSubmit((values) => login.mutate(values))}>
-              <div className="space-y-2"><Label htmlFor="email">Email</Label><Input autoComplete="username" id="email" type="email" {...form.register("email")} />{form.formState.errors.email ? <p className="text-xs text-destructive">{form.formState.errors.email.message}</p> : null}</div>
-              <div className="space-y-2"><Label htmlFor="password">Password</Label><Input autoComplete="current-password" id="password" type="password" {...form.register("password")} />{form.formState.errors.password ? <p className="text-xs text-destructive">{form.formState.errors.password.message}</p> : null}</div>
+            <form className="flex flex-col gap-5" onSubmit={form.handleSubmit((values) => login.mutate(values))}>
+              <FieldGroup>
+                <Field data-invalid={Boolean(form.formState.errors.email)}><FieldLabel htmlFor="email">Email</FieldLabel><Input aria-invalid={Boolean(form.formState.errors.email)} autoComplete="username" id="email" type="email" {...form.register("email")} /><FieldError errors={[form.formState.errors.email]} /></Field>
+                <Field data-invalid={Boolean(form.formState.errors.password)}><FieldLabel htmlFor="password">Password</FieldLabel><Input aria-invalid={Boolean(form.formState.errors.password)} autoComplete="current-password" id="password" type="password" {...form.register("password")} /><FieldError errors={[form.formState.errors.password]} /></Field>
+              </FieldGroup>
               {login.isError ? <Alert variant="destructive">{login.error.message}</Alert> : null}
-              <Button className="w-full" disabled={login.isPending} type="submit">{login.isPending ? "Signing in…" : "Sign in"}</Button>
+              <Button className="w-full" disabled={login.isPending} size="lg" type="submit">{login.isPending ? "Signing in…" : "Sign in"}</Button>
             </form>
           </CardContent>
         </Card>

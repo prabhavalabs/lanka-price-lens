@@ -4,7 +4,7 @@ import { dirname } from "node:path";
 
 import Database from "better-sqlite3";
 
-import type { RunStatus, SourceManifest, StageName } from "@lanka-pricelens/shared";
+import type { RunStatus, SourceManifest, StageName, WorkflowName } from "@lanka-pricelens/shared";
 
 export type OperationalDatabase = Database.Database;
 
@@ -104,6 +104,19 @@ function migrate(database: OperationalDatabase): void {
       UNIQUE(run_id, stage)
     ) STRICT;
 
+    CREATE TABLE IF NOT EXISTS run_stage_log (
+      id INTEGER PRIMARY KEY,
+      run_id TEXT NOT NULL REFERENCES ingest_run(id),
+      stage TEXT NOT NULL,
+      level TEXT NOT NULL CHECK (level IN ('info', 'warning', 'error')),
+      message TEXT NOT NULL,
+      data_json TEXT,
+      created_at TEXT NOT NULL
+    ) STRICT;
+
+    CREATE INDEX IF NOT EXISTS run_stage_log_run_stage_idx
+      ON run_stage_log(run_id, stage, id);
+
     CREATE TABLE IF NOT EXISTS source_publication (
       id TEXT PRIMARY KEY,
       source_id TEXT NOT NULL REFERENCES source(id),
@@ -120,6 +133,13 @@ function migrate(database: OperationalDatabase): void {
       UNIQUE(source_id, source_publication_key)
     ) STRICT;
 
+    CREATE TABLE IF NOT EXISTS run_publication (
+      run_id TEXT NOT NULL REFERENCES ingest_run(id),
+      publication_id TEXT NOT NULL REFERENCES source_publication(id),
+      ordinal INTEGER NOT NULL,
+      PRIMARY KEY (run_id, publication_id)
+    ) STRICT;
+
     CREATE TABLE IF NOT EXISTS source_artifact (
       id TEXT PRIMARY KEY,
       publication_id TEXT NOT NULL REFERENCES source_publication(id),
@@ -134,6 +154,23 @@ function migrate(database: OperationalDatabase): void {
       http_last_modified TEXT,
       status TEXT NOT NULL,
       UNIQUE(publication_id, sha256)
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS archived_pdf (
+      id TEXT PRIMARY KEY,
+      publication_id TEXT NOT NULL REFERENCES source_publication(id) UNIQUE,
+      source_sync_run_id TEXT REFERENCES ingest_run(id),
+      source_url TEXT NOT NULL,
+      r2_bucket TEXT NOT NULL,
+      r2_key TEXT NOT NULL UNIQUE,
+      r2_uri TEXT NOT NULL UNIQUE,
+      byte_size INTEGER CHECK (byte_size IS NULL OR byte_size > 0),
+      sha256 TEXT,
+      etag TEXT,
+      uploaded_at TEXT,
+      status TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
     ) STRICT;
 
     CREATE TABLE IF NOT EXISTS extracted_text_item (
@@ -313,6 +350,13 @@ function migrate(database: OperationalDatabase): void {
   addColumn(database, "source_artifact", "run_id", "TEXT REFERENCES ingest_run(id)");
   addColumn(database, "source_artifact", "original_filename", "TEXT");
   addColumn(database, "source_artifact", "inspection_json", "TEXT");
+  addColumn(database, "run_stage", "input_json", "TEXT");
+  addColumn(database, "run_stage", "output_json", "TEXT");
+  addColumn(database, "run_stage", "attempt_count", "INTEGER NOT NULL DEFAULT 0");
+  addColumn(database, "ingest_run", "workflow", "TEXT NOT NULL DEFAULT 'legacy_ingestion'");
+  addColumn(database, "ingest_run", "parent_run_id", "TEXT REFERENCES ingest_run(id)");
+  addColumn(database, "ingest_run", "archive_id", "TEXT REFERENCES archived_pdf(id)");
+  addColumn(database, "ingest_run", "artifact_id", "TEXT REFERENCES source_artifact(id)");
 }
 
 function addColumn(database: OperationalDatabase, table: string, column: string, definition: string): void {
@@ -360,11 +404,22 @@ export function syncSource(database: OperationalDatabase, manifest: SourceManife
 
 export function startRun(
   database: OperationalDatabase,
-  options: { sourceId: string; trigger: string; from?: string | undefined; to?: string | undefined; leaseMinutes?: number },
+  options: {
+    sourceId: string;
+    trigger: string;
+    workflow?: WorkflowName;
+    parentRunId?: string | undefined;
+    archiveId?: string | undefined;
+    artifactId?: string | undefined;
+    from?: string | undefined;
+    to?: string | undefined;
+    leaseMinutes?: number;
+  },
 ): { id: string; started: boolean } {
   const transaction = database.transaction(() => {
     const now = new Date();
     const nowIso = now.toISOString();
+    const workflow = options.workflow ?? "legacy_ingestion";
     database
       .prepare(
         `UPDATE ingest_run
@@ -375,8 +430,12 @@ export function startRun(
       .run({ source_id: options.sourceId, now: nowIso });
 
     const active = database
-      .prepare("SELECT id FROM ingest_run WHERE source_id = ? AND status = 'running' LIMIT 1")
-      .get(options.sourceId) as { id: string } | undefined;
+      .prepare(
+        workflow === "pdf_processing"
+          ? "SELECT id FROM ingest_run WHERE source_id = ? AND workflow = ? AND archive_id = ? AND status = 'running' LIMIT 1"
+          : "SELECT id FROM ingest_run WHERE source_id = ? AND workflow != 'pdf_processing' AND status = 'running' LIMIT 1",
+      )
+      .get(...(workflow === "pdf_processing" ? [options.sourceId, workflow, options.archiveId ?? null] : [options.sourceId])) as { id: string } | undefined;
     if (active) return { id: active.id, started: false };
 
     const id = newId("run");
@@ -384,11 +443,24 @@ export function startRun(
     database
       .prepare(
         `INSERT INTO ingest_run (
-          id, source_id, trigger, status, requested_from, requested_to,
-          started_at, heartbeat_at, lease_expires_at
-        ) VALUES (?, ?, ?, 'running', ?, ?, ?, ?, ?)`,
+          id, source_id, trigger, workflow, parent_run_id, archive_id, artifact_id,
+          status, requested_from, requested_to, started_at, heartbeat_at, lease_expires_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, 'running', ?, ?, ?, ?, ?)`,
       )
-      .run(id, options.sourceId, options.trigger, options.from ?? null, options.to ?? null, nowIso, nowIso, leaseExpires);
+      .run(
+        id,
+        options.sourceId,
+        options.trigger,
+        workflow,
+        options.parentRunId ?? null,
+        options.archiveId ?? null,
+        options.artifactId ?? null,
+        options.from ?? null,
+        options.to ?? null,
+        nowIso,
+        nowIso,
+        leaseExpires,
+      );
     return { id, started: true };
   });
 
@@ -402,17 +474,24 @@ export function heartbeatRun(database: OperationalDatabase, runId: string, lease
     .run(now.toISOString(), new Date(now.getTime() + leaseMinutes * 60_000).toISOString(), runId);
 }
 
-export function startStage(database: OperationalDatabase, runId: string, stage: StageName, inputCount = 0): void {
+export function startStage(
+  database: OperationalDatabase,
+  runId: string,
+  stage: StageName,
+  inputCount = 0,
+  input?: unknown,
+): void {
   database
     .prepare(
-      `INSERT INTO run_stage (run_id, stage, status, started_at, input_count)
-       VALUES (?, ?, 'running', ?, ?)
+      `INSERT INTO run_stage (run_id, stage, status, started_at, input_count, input_json, attempt_count)
+       VALUES (?, ?, 'running', ?, ?, ?, 1)
        ON CONFLICT(run_id, stage) DO UPDATE SET
          status = 'running', started_at = excluded.started_at, finished_at = NULL,
          input_count = excluded.input_count, output_count = 0, warning_count = 0,
-         error_code = NULL, error_message = NULL`,
+         error_code = NULL, error_message = NULL, input_json = excluded.input_json,
+         output_json = NULL, attempt_count = run_stage.attempt_count + 1`,
     )
-    .run(runId, stage, new Date().toISOString(), inputCount);
+    .run(runId, stage, new Date().toISOString(), inputCount, input === undefined ? null : JSON.stringify(input));
 }
 
 export function finishStage(
@@ -420,13 +499,13 @@ export function finishStage(
   runId: string,
   stage: StageName,
   status: Exclude<RunStatus, "running">,
-  options: { outputCount?: number; warningCount?: number; errorCode?: string; errorMessage?: string } = {},
+  options: { outputCount?: number; warningCount?: number; errorCode?: string; errorMessage?: string; output?: unknown } = {},
 ): void {
   database
     .prepare(
       `UPDATE run_stage SET status = @status, finished_at = @finished_at,
         output_count = @output_count, warning_count = @warning_count,
-        error_code = @error_code, error_message = @error_message
+        error_code = @error_code, error_message = @error_message, output_json = @output_json
        WHERE run_id = @run_id AND stage = @stage`,
     )
     .run({
@@ -438,7 +517,45 @@ export function finishStage(
       warning_count: options.warningCount ?? 0,
       error_code: options.errorCode ?? null,
       error_message: options.errorMessage ?? null,
+      output_json: options.output === undefined ? null : JSON.stringify(options.output),
     });
+}
+
+export function blockStage(
+  database: OperationalDatabase,
+  runId: string,
+  stage: StageName,
+  message: string,
+  missingDependencies: string[],
+): void {
+  const now = new Date().toISOString();
+  database
+    .prepare(
+      `INSERT INTO run_stage (
+        run_id, stage, status, started_at, finished_at, error_code, error_message, input_json, attempt_count
+       ) VALUES (?, ?, 'blocked', ?, ?, 'DEPENDENCY_BLOCKED', ?, ?, 0)
+       ON CONFLICT(run_id, stage) DO UPDATE SET
+         status = 'blocked', started_at = excluded.started_at, finished_at = excluded.finished_at,
+         error_code = excluded.error_code, error_message = excluded.error_message,
+         input_json = excluded.input_json, output_json = NULL`,
+    )
+    .run(runId, stage, now, now, message, JSON.stringify({ missing_dependencies: missingDependencies }));
+}
+
+export function logStage(
+  database: OperationalDatabase,
+  runId: string,
+  stage: StageName,
+  level: "info" | "warning" | "error",
+  message: string,
+  data?: unknown,
+): void {
+  database
+    .prepare(
+      `INSERT INTO run_stage_log (run_id, stage, level, message, data_json, created_at)
+       VALUES (?, ?, ?, ?, ?, ?)`,
+    )
+    .run(runId, stage, level, message, data === undefined ? null : JSON.stringify(data), new Date().toISOString());
 }
 
 export function finishRun(
