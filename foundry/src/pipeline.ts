@@ -1,20 +1,58 @@
 import { createHash } from "node:crypto";
 
-import { canPublishSource, type SourceManifest } from "@lanka-pricelens/shared";
-
 import {
+  cloudflareCredentials,
+  downloadArchiveObject,
+  listArchiveObjects,
+  uploadArchiveObject,
+  type ArchiveObject,
+} from "@lanka-pricelens/archive/cloudflare-api";
+import { canPublishSource, type SourceManifest, type StageName } from "@lanka-pricelens/shared";
+import { hartiArchiveObjectKey } from "@lanka-pricelens/shared/harti-archive";
+
+import { finalizeProcessedArtifacts, persistExtractedText, persistProcessedArtifact } from "./artifact.ts";
+import {
+  blockStage,
   finishRun,
   finishStage,
   heartbeatRun,
+  logStage,
   newId,
   startRun,
   startStage,
   syncSource,
   type OperationalDatabase,
 } from "./db.ts";
-import { persistParsedArtifact } from "./artifact.ts";
 import { discoverHartiDaily, parseHartiWholesale, type Publication } from "./harti.ts";
-import { inspectPdf } from "./pdf.ts";
+import { inspectPdf, type TextItem } from "./pdf.ts";
+
+export const sourceSyncStages = [
+  "check_source",
+  "compare_inventory",
+  "download_new_pdfs",
+  "upload_to_r2",
+  "record_pdf_metadata",
+] as const satisfies readonly StageName[];
+export const processingStages = [
+  "retrieve_pdf",
+  "parse_pdf",
+  "extract_data",
+  "validate_data",
+  "insert_data",
+] as const satisfies readonly StageName[];
+const legacyStages = ["crawl", "download", "process", "validate", "store"] as const satisfies readonly StageName[];
+
+export type SourceSyncStage = (typeof sourceSyncStages)[number];
+export type ProcessingStage = (typeof processingStages)[number];
+export type WorkflowStage = SourceSyncStage | ProcessingStage;
+
+type StoredArchiveObject = ArchiveObject;
+export type ArchiveStorage = {
+  bucket: string;
+  list: () => Promise<Map<string, StoredArchiveObject>>;
+  upload: (key: string, filename: string, bytes: Uint8Array, metadata: Record<string, string>) => Promise<void>;
+  download: (key: string) => Promise<Uint8Array>;
+};
 
 export type IngestionOptions = {
   trigger: "scheduled" | "manual" | "backfill";
@@ -22,213 +60,802 @@ export type IngestionOptions = {
   to?: string | undefined;
   request?: typeof fetch | undefined;
   inspector?: typeof inspectPdf | undefined;
+  archive?: ArchiveStorage | undefined;
+  artifactRoot?: string | undefined;
+};
+
+type StageResult = { outputCount: number; warningCount?: number; output: Record<string, unknown> };
+type RetryState = { canRetry: boolean; reason: string | null; missingDependencies: string[] };
+type ProcessingResult = { runId: string; status: "succeeded" | "failed" | "blocked" | "skipped" };
+
+type DownloadedPdf = {
+  publication: Publication;
+  bytes: Uint8Array;
+  sha256: string;
+  contentType: string;
+  finalUrl: string;
+  etag: string | null;
+  lastModified: string | null;
+};
+
+type SourceSyncContext = {
+  publications: Publication[];
+  inventory: Map<string, StoredArchiveObject>;
+  pending: Publication[];
+  reconcile: Publication[];
+  downloaded: Map<string, DownloadedPdf>;
+  uploaded: Set<string>;
+  newArchiveIds: string[];
+};
+
+type ProcessingContext = {
+  archiveId: string;
+  artifactId: string | null;
+  bytes: Uint8Array | null;
+  items: TextItem[] | null;
+};
+
+const processingDependencies: Record<ProcessingStage, ProcessingStage[]> = {
+  retrieve_pdf: [],
+  parse_pdf: ["retrieve_pdf"],
+  extract_data: ["parse_pdf"],
+  validate_data: ["extract_data"],
+  insert_data: ["validate_data"],
 };
 
 export async function runIngestion(
   database: OperationalDatabase,
   manifest: SourceManifest,
   options: IngestionOptions,
-): Promise<{ runId: string; status: "succeeded" | "blocked" | "skipped" }> {
-  syncSource(database, manifest);
-  const run = startRun(database, { sourceId: manifest.id, trigger: options.trigger, from: options.from, to: options.to });
-  if (!run.started) return { runId: run.id, status: "skipped" };
+): Promise<{ runId: string; status: "succeeded" | "blocked" | "skipped"; processingRunIds: string[] }> {
+  return runSourceSync(database, manifest, options);
+}
 
-  startStage(database, run.id, "rights");
+export async function runSourceSync(
+  database: OperationalDatabase,
+  manifest: SourceManifest,
+  options: IngestionOptions,
+): Promise<{ runId: string; status: "succeeded" | "blocked" | "skipped"; processingRunIds: string[] }> {
+  syncSource(database, manifest);
+  const run = startRun(database, {
+    sourceId: manifest.id,
+    trigger: options.trigger,
+    workflow: "source_sync",
+    from: options.from,
+    to: options.to,
+  });
+  if (!run.started) return { runId: run.id, status: "skipped", processingRunIds: [] };
+
   if (!canPublishSource(manifest)) {
     const message = "Source is disabled, unapproved, or its rights review has expired";
-    finishStage(database, run.id, "rights", "blocked", { errorCode: "SOURCE_RIGHTS_BLOCKED", errorMessage: message });
+    startStage(database, run.id, "check_source", 1, { source_url: manifest.landing_url });
+    finishStage(database, run.id, "check_source", "blocked", { errorCode: "SOURCE_RIGHTS_BLOCKED", errorMessage: message });
+    logStage(database, run.id, "check_source", "error", message);
+    blockStages(database, run.id, sourceSyncStages, "check_source");
     finishRun(database, run.id, "blocked", { code: "SOURCE_RIGHTS_BLOCKED", message });
     database.prepare("UPDATE source SET state = 'blocked', updated_at = ? WHERE id = ?").run(new Date().toISOString(), manifest.id);
-    return { runId: run.id, status: "blocked" };
+    return { runId: run.id, status: "blocked", processingRunIds: [] };
   }
-  finishStage(database, run.id, "rights", "succeeded");
 
-  const request = options.request ?? fetch;
-  let quarantined = 0;
+  const storage = options.archive ?? await cloudflareArchiveStorage();
+  const context: SourceSyncContext = {
+    publications: [],
+    inventory: new Map(),
+    pending: [],
+    reconcile: [],
+    downloaded: new Map(),
+    uploaded: new Set(),
+    newArchiveIds: [],
+  };
+
   try {
-    startStage(database, run.id, "discover");
-    const landing = await requestWithRetry(request, manifest.landing_url, manifest.max_attempts, manifest.request_interval_ms);
-    const html = new TextDecoder().decode(await limitedBody(landing, 5 * 1024 * 1024));
-    const publications = discoverHartiDaily(html, manifest.landing_url, { from: options.from, to: options.to });
-    recordPublications(database, manifest.id, publications);
-    const parsedKeys = new Set(
-      (
-        database
-          .prepare(
-            `SELECT publication.source_publication_key AS key
-             FROM source_publication publication
-             JOIN source_artifact artifact ON artifact.publication_id = publication.id
-             WHERE publication.source_id = ? AND artifact.status = 'parsed'`,
-          )
-          .all(manifest.id) as Array<{ key: string }>
-      ).map((row) => row.key),
-    );
-    let pending = publications.filter((publication) => !parsedKeys.has(publication.key));
-    if (options.trigger === "scheduled" && !options.from && !options.to) {
-      const newestCompletedIndex = publications.findIndex((publication) => parsedKeys.has(publication.key));
-      pending = newestCompletedIndex < 0 ? pending.slice(0, 1) : publications.slice(0, newestCompletedIndex);
-    }
-    finishStage(database, run.id, "discover", "succeeded", { outputCount: publications.length });
-    database.prepare("UPDATE ingest_run SET discovered_count = ? WHERE id = ?").run(publications.length, run.id);
-    database.prepare("UPDATE source SET last_discovery_at = ?, updated_at = ? WHERE id = ?").run(
-      new Date().toISOString(),
-      new Date().toISOString(),
-      manifest.id,
-    );
-
-    for (const stage of ["fetch", "extract", "parse"] as const) startStage(database, run.id, stage, pending.length);
-
-    for (const [index, publication] of pending.entries()) {
-      heartbeatRun(database, run.id);
-      try {
-        if (index > 0) await new Promise<void>((resolve) => setTimeout(resolve, manifest.request_interval_ms));
-        await processPublication(database, run.id, manifest, publication, request, options.inspector ?? inspectPdf);
-      } catch (error) {
-        quarantined += 1;
-        const message = error instanceof Error ? error.message : String(error);
-        database
-          .prepare(
-            `INSERT INTO quarantine (id, run_id, reason_code, source_row_ref, details_json, created_at)
-             VALUES (?, ?, ?, ?, ?, ?)`,
-          )
-          .run(
-            newId("quarantine"),
-            run.id,
-            message.startsWith("SOURCE_TEMPLATE_CHANGED")
-              ? "SOURCE_TEMPLATE_CHANGED"
-              : message.startsWith("PDF_OCR_REQUIRED")
-                ? "PDF_OCR_REQUIRED"
-                : "PUBLICATION_PROCESSING_FAILED",
-            publication.key,
-            JSON.stringify({ publication, message }),
-            new Date().toISOString(),
-          );
-      }
-      const progress = runProgress(database, run.id);
-      database
-        .prepare(
-          `UPDATE ingest_run SET fetched_count = ?, extracted_count = ?, parsed_count = ?,
-           quarantined_count = ? WHERE id = ?`,
-        )
-        .run(progress.fetched, progress.extracted, progress.parsed, quarantined, run.id);
-    }
-
-    const progress = runProgress(database, run.id);
-    finishStage(database, run.id, "fetch", "succeeded", { outputCount: progress.fetched, warningCount: quarantined });
-    finishStage(database, run.id, "extract", "succeeded", { outputCount: progress.extracted, warningCount: quarantined });
-    finishStage(database, run.id, "parse", "succeeded", { outputCount: progress.parsed, warningCount: quarantined });
-    for (const stage of ["map", "validate", "release"] as const) {
-      startStage(database, run.id, stage);
-      finishStage(database, run.id, stage, "skipped");
-    }
-
+    for (const stage of sourceSyncStages) await executeSourceSyncStage(database, run.id, manifest, stage, options, storage, context);
+    const now = new Date().toISOString();
     database
       .prepare(
-        `UPDATE ingest_run SET discovered_count = ?, fetched_count = ?, extracted_count = ?,
-         parsed_count = ?, quarantined_count = ? WHERE id = ?`,
+        "UPDATE source SET state = 'healthy', last_fetch_at = CASE WHEN ? > 0 THEN ? ELSE last_fetch_at END, updated_at = ? WHERE id = ?",
       )
-      .run(publications.length, progress.fetched, progress.extracted, progress.parsed, quarantined, run.id);
-    database
-      .prepare(
-        `UPDATE source SET state = ?, last_fetch_at = COALESCE(?, last_fetch_at),
-         last_parse_at = COALESCE(?, last_parse_at), updated_at = ? WHERE id = ?`,
-      )
-      .run(
-        quarantined ? "degraded" : "healthy",
-        progress.fetched ? new Date().toISOString() : null,
-        progress.parsed ? new Date().toISOString() : null,
-        new Date().toISOString(),
-        manifest.id,
-      );
+      .run(context.uploaded.size, now, now, manifest.id);
     finishRun(database, run.id, "succeeded");
-    return { runId: run.id, status: "succeeded" };
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    database
-      .prepare(
-        `UPDATE run_stage SET status = 'failed', finished_at = ?, error_code = 'INGESTION_FAILED', error_message = ?
-         WHERE run_id = ? AND status = 'running'`,
-      )
-      .run(new Date().toISOString(), message, run.id);
-    finishRun(database, run.id, "failed", { code: "INGESTION_FAILED", message });
+    const message = errorMessage(error);
+    finishRun(database, run.id, "failed", { code: "SOURCE_SYNC_FAILED", message });
     database.prepare("UPDATE source SET state = 'degraded', updated_at = ? WHERE id = ?").run(new Date().toISOString(), manifest.id);
     throw error;
   }
+
+  const processingRunIds: string[] = [];
+  for (const archiveId of context.newArchiveIds) {
+    const result = await runPdfProcessing(database, manifest, archiveId, {
+      trigger: options.trigger,
+      parentRunId: run.id,
+      archive: storage,
+      inspector: options.inspector,
+    });
+    processingRunIds.push(result.runId);
+  }
+  return { runId: run.id, status: "succeeded", processingRunIds };
 }
 
-async function processPublication(
+export async function runPdfProcessing(
+  database: OperationalDatabase,
+  manifest: SourceManifest,
+  archiveId: string,
+  options: {
+    trigger: "scheduled" | "manual" | "backfill";
+    parentRunId?: string | undefined;
+    archive?: ArchiveStorage | undefined;
+    inspector?: typeof inspectPdf | undefined;
+  },
+): Promise<ProcessingResult> {
+  syncSource(database, manifest);
+  const archived = archivedPdf(database, archiveId);
+  if (!archived) throw new Error("ARCHIVED_PDF_NOT_FOUND");
+  const run = startRun(database, {
+    sourceId: manifest.id,
+    trigger: options.trigger,
+    workflow: "pdf_processing",
+    parentRunId: options.parentRunId,
+    archiveId,
+  });
+  if (!run.started) return { runId: run.id, status: "skipped" };
+
+  if (!canPublishSource(manifest)) {
+    const message = "Source processing is blocked by its rights policy";
+    startStage(database, run.id, "retrieve_pdf", 1, { archive_id: archiveId });
+    finishStage(database, run.id, "retrieve_pdf", "blocked", { errorCode: "SOURCE_RIGHTS_BLOCKED", errorMessage: message });
+    blockStages(database, run.id, processingStages, "retrieve_pdf");
+    finishRun(database, run.id, "blocked", { code: "SOURCE_RIGHTS_BLOCKED", message });
+    return { runId: run.id, status: "blocked" };
+  }
+
+  const storage = options.archive ?? await cloudflareArchiveStorage(archived.r2_bucket);
+  const context: ProcessingContext = { archiveId, artifactId: null, bytes: null, items: null };
+  try {
+    for (const stage of processingStages) {
+      await executeProcessingStage(database, run.id, manifest, stage, storage, context, options.inspector);
+    }
+    completeProcessingRun(database, run.id, manifest.id);
+    return { runId: run.id, status: "succeeded" };
+  } catch (error) {
+    const message = errorMessage(error);
+    finishRun(database, run.id, "failed", { code: "PDF_PROCESSING_FAILED", message });
+    database.prepare("UPDATE source SET state = 'degraded', updated_at = ? WHERE id = ?").run(new Date().toISOString(), manifest.id);
+    return { runId: run.id, status: "failed" };
+  }
+}
+
+export async function retryProcessingStage(
+  database: OperationalDatabase,
+  manifest: SourceManifest,
+  runId: string,
+  stage: ProcessingStage,
+  options: { archive?: ArchiveStorage | undefined; inspector?: typeof inspectPdf | undefined } = {},
+): Promise<void> {
+  const retry = workflowRetryState(database, runId, stage);
+  if (!retry.canRetry) throw new Error(`WORKFLOW_RETRY_BLOCKED: ${retry.reason ?? "Step cannot be retried"}`);
+  const run = database
+    .prepare("SELECT archive_id, artifact_id FROM ingest_run WHERE id = ? AND workflow = 'pdf_processing'")
+    .get(runId) as { archive_id: string; artifact_id: string | null } | undefined;
+  if (!run) throw new Error("RUN_NOT_FOUND");
+  const archived = archivedPdf(database, run.archive_id);
+  if (!archived) throw new Error("ARCHIVED_PDF_NOT_FOUND");
+  const storage = options.archive ?? await cloudflareArchiveStorage(archived.r2_bucket);
+
+  const now = new Date();
+  database
+    .prepare(
+      `UPDATE ingest_run SET status = 'running', finished_at = NULL, heartbeat_at = ?, lease_expires_at = ?,
+       error_code = NULL, error_message = NULL WHERE id = ?`,
+    )
+    .run(now.toISOString(), new Date(now.getTime() + 30 * 60_000).toISOString(), runId);
+  invalidateProcessingOutputs(database, run.artifact_id, stage);
+  blockStages(database, runId, processingStages, stage);
+
+  const context: ProcessingContext = {
+    archiveId: run.archive_id,
+    artifactId: run.artifact_id,
+    bytes: null,
+    items: null,
+  };
+  try {
+    await executeProcessingStage(database, runId, manifest, stage, storage, context, options.inspector);
+    const incomplete = processingStages.some((candidate) => stageStatus(database, runId, candidate) !== "succeeded");
+    if (incomplete) {
+      finishRun(database, runId, "blocked", {
+        code: "WORKFLOW_INCOMPLETE",
+        message: "A downstream step is waiting for its dependency",
+      });
+    } else {
+      completeProcessingRun(database, runId, manifest.id);
+    }
+  } catch (error) {
+    finishRun(database, runId, "failed", { code: "PDF_PROCESSING_FAILED", message: errorMessage(error) });
+    throw error;
+  }
+}
+
+export function workflowRetryState(database: OperationalDatabase, runId: string, stage: ProcessingStage): RetryState {
+  const run = database.prepare("SELECT status, workflow, artifact_id FROM ingest_run WHERE id = ?").get(runId) as
+    | { status: string; workflow: string; artifact_id: string | null }
+    | undefined;
+  if (!run) return { canRetry: false, reason: "Run not found", missingDependencies: [] };
+  if (run.workflow !== "pdf_processing") return { canRetry: false, reason: "Only PDF-processing steps can be retried", missingDependencies: [] };
+  if (run.status === "running") return { canRetry: false, reason: "The workflow is currently running", missingDependencies: [] };
+
+  const current = database.prepare("SELECT status FROM run_stage WHERE run_id = ? AND stage = ?").get(runId, stage) as
+    | { status: string }
+    | undefined;
+  if (!current) return { canRetry: false, reason: "No execution data exists for this step", missingDependencies: [] };
+  if (!["failed", "blocked"].includes(current.status)) {
+    return { canRetry: false, reason: `The step is ${current.status}`, missingDependencies: [] };
+  }
+
+  const missing: string[] = processingDependencies[stage].filter((dependency) => stageStatus(database, runId, dependency) !== "succeeded");
+  missing.push(...missingProcessingInputs(database, run.artifact_id, stage));
+  const unique = [...new Set(missing)];
+  return {
+    canRetry: unique.length === 0,
+    reason: unique.length ? `Missing required input${unique.length === 1 ? "" : "s"}: ${unique.join(", ")}` : null,
+    missingDependencies: unique,
+  };
+}
+
+export function workflowSnapshot(database: OperationalDatabase, runId: string): Array<Record<string, unknown>> {
+  const run = database.prepare("SELECT workflow FROM ingest_run WHERE id = ?").get(runId) as { workflow: string } | undefined;
+  if (!run) return [];
+  const stages: readonly StageName[] = run.workflow === "source_sync"
+    ? sourceSyncStages
+    : run.workflow === "pdf_processing"
+      ? processingStages
+      : legacySnapshotStages(database, runId);
+
+  return stages.map((stage) => {
+    const row = database.prepare("SELECT * FROM run_stage WHERE run_id = ? AND stage = ?").get(runId, stage) as
+      | Record<string, unknown>
+      | undefined;
+    const logs = database
+      .prepare(
+        `SELECT id, level, message, data_json, created_at FROM (
+          SELECT id, level, message, data_json, created_at FROM run_stage_log
+          WHERE run_id = ? AND stage = ? ORDER BY id DESC LIMIT 200
+        ) ORDER BY id`,
+      )
+      .all(runId, stage) as Array<Record<string, unknown>>;
+    const retry = run.workflow === "pdf_processing" && processingStages.includes(stage as ProcessingStage)
+      ? workflowRetryState(database, runId, stage as ProcessingStage)
+      : { canRetry: false, reason: run.workflow === "source_sync" ? "Rerun the source-sync workflow" : "Legacy run is read-only", missingDependencies: [] };
+    const startedAt = typeof row?.started_at === "string" ? row.started_at : null;
+    const finishedAt = typeof row?.finished_at === "string" ? row.finished_at : null;
+    return {
+      ...row,
+      stage,
+      status: row?.status ?? "blocked",
+      error_code: row?.error_code ?? (row ? null : "NO_EXECUTION_DATA"),
+      error_message: row?.error_message ?? (row ? null : "No execution data is available for this step"),
+      input: parseJson(row?.input_json),
+      output: parseJson(row?.output_json),
+      duration_ms: startedAt && finishedAt ? Math.max(0, Date.parse(finishedAt) - Date.parse(startedAt)) : null,
+      can_retry: retry.canRetry,
+      retry_reason: retry.reason,
+      missing_dependencies: retry.missingDependencies,
+      logs: logs.map((log) => ({ ...log, data: parseJson(log.data_json) })),
+      log_count: count(database, "SELECT COUNT(*) AS count FROM run_stage_log WHERE run_id = ? AND stage = ?", runId, stage),
+    };
+  });
+}
+
+async function executeSourceSyncStage(
   database: OperationalDatabase,
   runId: string,
   manifest: SourceManifest,
-  publication: Publication,
-  request: typeof fetch,
-  inspector: typeof inspectPdf,
+  stage: SourceSyncStage,
+  options: IngestionOptions,
+  storage: ArchiveStorage,
+  context: SourceSyncContext,
 ): Promise<void> {
-  const publicationId = `publication_${publication.key}`;
-  const done = database
-    .prepare("SELECT 1 FROM source_artifact WHERE publication_id = ? AND status = 'parsed' LIMIT 1")
-    .get(publicationId);
-  if (done) return;
+  const input = sourceSyncInput(manifest, stage, options, context);
+  await executeLoggedStage(database, runId, stage, sourceSyncInputCount(stage, context), input, async () => {
+    if (stage === "check_source") return checkSource(database, runId, manifest, options, context);
+    if (stage === "compare_inventory") return compareInventory(database, runId, options, storage, context);
+    if (stage === "download_new_pdfs") return downloadNewPdfs(database, runId, manifest, options, context);
+    if (stage === "upload_to_r2") return uploadToR2(database, runId, storage, context);
+    return recordPdfMetadata(database, runId, manifest, storage, context);
+  }, sourceSyncStages);
+}
 
-  const response = await requestWithRetry(request, publication.downloadUrl, manifest.max_attempts, manifest.request_interval_ms);
-  const contentType = response.headers.get("content-type")?.split(";", 1)[0]?.trim() ?? "application/octet-stream";
-  if (contentType !== "application/pdf" && contentType !== "application/octet-stream") throw new Error("SOURCE_MEDIA_TYPE_INVALID");
-  const bytes = await limitedBody(response, 20 * 1024 * 1024);
+async function executeProcessingStage(
+  database: OperationalDatabase,
+  runId: string,
+  manifest: SourceManifest,
+  stage: ProcessingStage,
+  storage: ArchiveStorage,
+  context: ProcessingContext,
+  inspector?: typeof inspectPdf,
+): Promise<void> {
+  const input = processingInput(database, context, stage);
+  await executeLoggedStage(database, runId, stage, processingInputCount(database, context, stage), input, async () => {
+    if (stage === "retrieve_pdf") return retrievePdf(database, runId, storage, context);
+    if (stage === "parse_pdf") return parsePdf(database, storage, context, inspector);
+    if (stage === "extract_data") return extractData(database, runId, context);
+    if (stage === "validate_data") return validateData(database, context);
+    return insertData(database, runId, context);
+  }, processingStages);
+  heartbeatRun(database, runId);
+  void manifest;
+}
+
+async function executeLoggedStage(
+  database: OperationalDatabase,
+  runId: string,
+  stage: StageName,
+  inputCount: number,
+  input: Record<string, unknown>,
+  operation: () => Promise<StageResult> | StageResult,
+  workflow: readonly StageName[],
+): Promise<void> {
+  startStage(database, runId, stage, inputCount, input);
+  logStage(database, runId, stage, "info", `${stageLabel(stage)} started`, input);
+  try {
+    const result = await operation();
+    finishStage(database, runId, stage, "succeeded", {
+      outputCount: result.outputCount,
+      ...(result.warningCount === undefined ? {} : { warningCount: result.warningCount }),
+      output: result.output,
+    });
+    logStage(database, runId, stage, "info", `${stageLabel(stage)} succeeded`, result.output);
+  } catch (error) {
+    const message = errorMessage(error);
+    const code = `${stage.toUpperCase()}_FAILED`;
+    finishStage(database, runId, stage, "failed", { errorCode: code, errorMessage: message });
+    logStage(database, runId, stage, "error", `${stageLabel(stage)} failed`, { code, message });
+    blockStages(database, runId, workflow, stage);
+    throw error;
+  }
+}
+
+async function checkSource(
+  database: OperationalDatabase,
+  runId: string,
+  manifest: SourceManifest,
+  options: IngestionOptions,
+  context: SourceSyncContext,
+): Promise<StageResult> {
+  const request = options.request ?? fetch;
+  const landing = await requestWithRetry(request, manifest.landing_url, manifest.max_attempts, manifest.request_interval_ms);
+  const html = new TextDecoder().decode(await limitedBody(landing, 5 * 1024 * 1024));
+  context.publications = discoverHartiDaily(html, manifest.landing_url, { from: options.from, to: options.to });
+  recordPublications(database, manifest.id, context.publications);
+  const now = new Date().toISOString();
+  database.prepare("UPDATE ingest_run SET discovered_count = ? WHERE id = ?").run(context.publications.length, runId);
+  database.prepare("UPDATE source SET last_discovery_at = ?, updated_at = ? WHERE id = ?").run(now, now, manifest.id);
+  return { outputCount: context.publications.length, output: { discovered: context.publications.length } };
+}
+
+async function compareInventory(
+  database: OperationalDatabase,
+  runId: string,
+  options: IngestionOptions,
+  storage: ArchiveStorage,
+  context: SourceSyncContext,
+): Promise<StageResult> {
+  context.inventory = await storage.list();
+  const recorded = new Set(
+    (database.prepare("SELECT r2_key FROM archived_pdf").all() as Array<{ r2_key: string }>).map((row) => row.r2_key),
+  );
+  const missing: Publication[] = [];
+  context.reconcile = [];
+  for (const publication of context.publications) {
+    const key = archiveKey(publication);
+    if (recorded.has(key)) continue;
+    if (context.inventory.has(key)) context.reconcile.push(publication);
+    else missing.push(publication);
+  }
+  const knownKeys = new Set([...recorded, ...context.inventory.keys()]);
+  const missingKeys = new Set(missing.map((publication) => publication.key));
+  const newestKnownIndex = context.publications.findIndex((publication) => knownKeys.has(archiveKey(publication)));
+  context.pending = options.trigger !== "backfill" && !options.from && !options.to
+    ? newestKnownIndex < 0
+      ? missing.slice(0, 1)
+      : context.publications.slice(0, newestKnownIndex).filter((publication) => missingKeys.has(publication.key))
+    : missing;
+  recordRunPublications(database, runId, context.pending);
+  return {
+    outputCount: context.pending.length,
+    output: {
+      source_pdfs: context.publications.length,
+      recorded: recorded.size,
+      stored_in_r2: context.inventory.size,
+      metadata_to_reconcile: context.reconcile.length,
+      new_pdfs: context.pending.length,
+    },
+  };
+}
+
+async function downloadNewPdfs(
+  database: OperationalDatabase,
+  runId: string,
+  manifest: SourceManifest,
+  options: IngestionOptions,
+  context: SourceSyncContext,
+): Promise<StageResult> {
+  const request = options.request ?? fetch;
+  for (const [index, publication] of context.pending.entries()) {
+    if (index > 0) await delay(manifest.request_interval_ms);
+    const response = await requestWithRetry(request, publication.downloadUrl, manifest.max_attempts, manifest.request_interval_ms);
+    const contentType = response.headers.get("content-type")?.split(";", 1)[0]?.trim() ?? "application/octet-stream";
+    if (!["application/pdf", "application/octet-stream"].includes(contentType)) throw new Error("SOURCE_MEDIA_TYPE_INVALID");
+    const bytes = await limitedBody(response, 20 * 1024 * 1024);
+    if (!isPdf(bytes)) throw new Error("SOURCE_NOT_PDF");
+    const sha256 = createHash("sha256").update(bytes).digest("hex");
+    context.downloaded.set(publication.key, {
+      publication,
+      bytes,
+      sha256,
+      contentType,
+      finalUrl: response.url || publication.downloadUrl,
+      etag: response.headers.get("etag"),
+      lastModified: response.headers.get("last-modified"),
+    });
+    logStage(database, runId, "download_new_pdfs", "info", "New PDF downloaded", {
+      publication_key: publication.key,
+      source_url: publication.downloadUrl,
+      byte_size: bytes.byteLength,
+      sha256,
+    });
+    heartbeatRun(database, runId);
+  }
+  database.prepare("UPDATE ingest_run SET fetched_count = ? WHERE id = ?").run(context.downloaded.size, runId);
+  return { outputCount: context.downloaded.size, output: { downloaded: context.downloaded.size } };
+}
+
+async function uploadToR2(
+  database: OperationalDatabase,
+  runId: string,
+  storage: ArchiveStorage,
+  context: SourceSyncContext,
+): Promise<StageResult> {
+  for (const downloaded of context.downloaded.values()) {
+    const key = archiveKey(downloaded.publication);
+    await storage.upload(key, downloaded.publication.title, downloaded.bytes, {
+      "source-url": downloaded.publication.downloadUrl,
+      "source-date": downloaded.publication.date,
+      sha256: downloaded.sha256,
+    });
+    context.uploaded.add(downloaded.publication.key);
+    logStage(database, runId, "upload_to_r2", "info", "PDF uploaded to R2", {
+      publication_key: downloaded.publication.key,
+      r2_uri: r2Uri(storage.bucket, key),
+      byte_size: downloaded.bytes.byteLength,
+    });
+    heartbeatRun(database, runId);
+  }
+  return { outputCount: context.uploaded.size, output: { bucket: storage.bucket, uploaded: context.uploaded.size } };
+}
+
+function recordPdfMetadata(
+  database: OperationalDatabase,
+  runId: string,
+  manifest: SourceManifest,
+  storage: ArchiveStorage,
+  context: SourceSyncContext,
+): StageResult {
+  const publications = [...context.reconcile, ...context.pending];
+  const now = new Date().toISOString();
+  const inserted = database.transaction(() => {
+    const archiveIds: string[] = [];
+    const statement = database.prepare(
+      `INSERT INTO archived_pdf (
+        id, publication_id, source_sync_run_id, source_url, r2_bucket, r2_key, r2_uri,
+        byte_size, sha256, etag, uploaded_at, status, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'stored', ?, ?)
+      ON CONFLICT(publication_id) DO UPDATE SET
+        source_url = excluded.source_url, r2_bucket = excluded.r2_bucket, r2_key = excluded.r2_key,
+        r2_uri = excluded.r2_uri, byte_size = COALESCE(excluded.byte_size, archived_pdf.byte_size),
+        sha256 = COALESCE(excluded.sha256, archived_pdf.sha256), etag = COALESCE(excluded.etag, archived_pdf.etag),
+        uploaded_at = COALESCE(excluded.uploaded_at, archived_pdf.uploaded_at), status = 'stored',
+        updated_at = excluded.updated_at`,
+    );
+    for (const publication of publications) {
+      const key = archiveKey(publication);
+      const downloaded = context.downloaded.get(publication.key);
+      const existing = context.inventory.get(key);
+      const archiveId = `archive_${publication.key}`;
+      statement.run(
+        archiveId,
+        `publication_${publication.key}`,
+        runId,
+        publication.downloadUrl,
+        storage.bucket,
+        key,
+        r2Uri(storage.bucket, key),
+        downloaded?.bytes.byteLength ?? existing?.size ?? null,
+        downloaded?.sha256 ?? existing?.customMetadata.sha256 ?? null,
+        downloaded?.etag ?? existing?.etag ?? null,
+        existing?.lastModified ?? (downloaded ? now : null),
+        now,
+        now,
+      );
+      database.prepare("UPDATE source_publication SET status = 'archived', last_seen_at = ? WHERE id = ?").run(now, `publication_${publication.key}`);
+      if (context.uploaded.has(publication.key)) archiveIds.push(archiveId);
+    }
+    return archiveIds;
+  })();
+  context.newArchiveIds = inserted;
+  database.prepare("UPDATE source SET updated_at = ? WHERE id = ?").run(now, manifest.id);
+  return {
+    outputCount: publications.length,
+    output: { recorded: publications.length, reconciled: context.reconcile.length, processing_triggered: inserted.length },
+  };
+}
+
+async function retrievePdf(
+  database: OperationalDatabase,
+  runId: string,
+  storage: ArchiveStorage,
+  context: ProcessingContext,
+): Promise<StageResult> {
+  const archived = archivedPdf(database, context.archiveId);
+  if (!archived) throw new Error("ARCHIVED_PDF_NOT_FOUND");
+  const bytes = await storage.download(archived.r2_key);
+  if (!isPdf(bytes)) throw new Error("R2_OBJECT_NOT_PDF");
   const sha256 = createHash("sha256").update(bytes).digest("hex");
-  const artifactId = `artifact_${publication.key}_${sha256.slice(0, 12)}`;
+  if (archived.sha256 && archived.sha256 !== sha256) throw new Error("R2_CHECKSUM_MISMATCH");
+  const artifactId = `artifact_${archived.publication_key}_${sha256.slice(0, 12)}`;
+  const now = new Date().toISOString();
   database
     .prepare(
       `INSERT INTO source_artifact (
-        id, publication_id, run_id, requested_url, final_url, fetched_at, media_type, byte_size,
-        sha256, storage_ref, http_etag, http_last_modified, original_filename, status
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, 'fetched')
+        id, publication_id, run_id, requested_url, final_url, fetched_at, media_type,
+        byte_size, sha256, storage_ref, original_filename, status
+      ) VALUES (?, ?, ?, ?, ?, ?, 'application/pdf', ?, ?, ?, ?, 'fetched')
       ON CONFLICT(publication_id, sha256) DO UPDATE SET
-        run_id = excluded.run_id, fetched_at = excluded.fetched_at, status = 'fetched'`,
+        run_id = excluded.run_id, requested_url = excluded.requested_url, final_url = excluded.final_url,
+        fetched_at = excluded.fetched_at, byte_size = excluded.byte_size, storage_ref = excluded.storage_ref,
+        original_filename = excluded.original_filename, status = 'fetched'`,
     )
     .run(
       artifactId,
-      publicationId,
+      archived.publication_id,
       runId,
-      publication.downloadUrl,
-      response.url || publication.downloadUrl,
-      new Date().toISOString(),
-      contentType,
+      archived.source_url,
+      archived.r2_uri,
+      now,
       bytes.byteLength,
       sha256,
-      response.headers.get("etag"),
-      response.headers.get("last-modified"),
-      publication.title,
+      archived.r2_uri,
+      archived.title,
     );
-
-  const stored = database.prepare("SELECT id FROM source_artifact WHERE publication_id = ? AND sha256 = ?").get(publicationId, sha256) as { id: string };
-  let extraction;
-  let observations;
-  try {
-    extraction = await inspector(bytes);
-    database.prepare("UPDATE source_artifact SET inspection_json = ? WHERE id = ?").run(
-      JSON.stringify(extraction.inspection),
-      stored.id,
-    );
-    if (extraction.inspection.pagesNeedingOcr.length) {
-      throw new Error(`PDF_OCR_REQUIRED: pages ${extraction.inspection.pagesNeedingOcr.join(",")}`);
-    }
-    observations = parseHartiWholesale(extraction.items);
-  } catch (error) {
-    database.prepare("UPDATE source_artifact SET status = 'quarantined' WHERE id = ?").run(stored.id);
-    throw error;
-  }
-  persistParsedArtifact(database, { artifactId: stored.id, runId, items: extraction.items, observations });
+  const stored = database
+    .prepare("SELECT id FROM source_artifact WHERE publication_id = ? AND sha256 = ?")
+    .get(archived.publication_id, sha256) as { id: string };
+  database.prepare("UPDATE ingest_run SET artifact_id = ?, fetched_count = 1 WHERE id = ?").run(stored.id, runId);
+  database.prepare("UPDATE archived_pdf SET sha256 = ?, byte_size = ?, updated_at = ? WHERE id = ?").run(sha256, bytes.byteLength, now, context.archiveId);
+  context.artifactId = stored.id;
+  context.bytes = bytes;
+  return { outputCount: 1, output: { artifact_id: stored.id, r2_uri: archived.r2_uri, byte_size: bytes.byteLength, sha256 } };
 }
 
-function runProgress(database: OperationalDatabase, runId: string): { fetched: number; extracted: number; parsed: number } {
+async function parsePdf(
+  database: OperationalDatabase,
+  storage: ArchiveStorage,
+  context: ProcessingContext,
+  pdfInspector: typeof inspectPdf = inspectPdf,
+): Promise<StageResult> {
+  const artifactId = requiredArtifact(context);
+  const archived = archivedPdf(database, context.archiveId);
+  if (!archived) throw new Error("ARCHIVED_PDF_NOT_FOUND");
+  const bytes = context.bytes ?? await storage.download(archived.r2_key);
+  const extraction = await pdfInspector(bytes);
+  if (!extraction.items.length && extraction.inspection.pagesNeedingOcr.length) {
+    throw new Error(`PDF_OCR_REQUIRED: pages ${extraction.inspection.pagesNeedingOcr.join(",")}`);
+  }
+  persistExtractedText(database, artifactId, extraction.items);
+  database.prepare("UPDATE source_artifact SET inspection_json = ?, status = 'processed' WHERE id = ?").run(
+    JSON.stringify(extraction.inspection),
+    artifactId,
+  );
+  context.bytes = bytes;
+  context.items = extraction.items;
+  return {
+    outputCount: extraction.items.length,
+    output: {
+      engine: extraction.inspection.engine,
+      pages: extraction.inspection.pageCount,
+      text_items: extraction.items.length,
+      pages_needing_ocr: extraction.inspection.pagesNeedingOcr,
+    },
+  };
+}
+
+function extractData(database: OperationalDatabase, runId: string, context: ProcessingContext): StageResult {
+  const artifactId = requiredArtifact(context);
+  const items = context.items ?? extractedItems(database, artifactId);
+  if (!items.length) throw new Error("PARSED_PDF_INPUT_MISSING");
+  const observations = parseHartiWholesale(items);
+  persistProcessedArtifact(database, { artifactId, runId, items, observations });
+  context.items = items;
+  return { outputCount: observations.length, output: { structured_records: observations.length } };
+}
+
+function validateData(database: OperationalDatabase, context: ProcessingContext): StageResult {
+  const artifactId = requiredArtifact(context);
+  const total = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", artifactId);
+  const invalid = count(
+    database,
+    `SELECT COUNT(*) AS count FROM staging_observation
+     WHERE artifact_id = ? AND (
+       min_value_minor <= 0 OR max_value_minor <= 0 OR min_value_minor > max_value_minor OR length(source_date) != 10
+     )`,
+    artifactId,
+  );
+  if (!total || invalid) throw new Error(`VALIDATION_FAILED: ${invalid} invalid records, ${total} total records`);
+  database.prepare("UPDATE staging_observation SET status = 'validated' WHERE artifact_id = ?").run(artifactId);
+  database.prepare("UPDATE source_artifact SET status = 'validated' WHERE id = ?").run(artifactId);
+  return { outputCount: total, output: { validated: total, errors: 0 } };
+}
+
+function insertData(database: OperationalDatabase, runId: string, context: ProcessingContext): StageResult {
+  const artifactId = requiredArtifact(context);
+  const invalid = count(
+    database,
+    "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'validated'",
+    artifactId,
+  );
+  if (invalid) throw new Error("VALIDATED_DATA_INPUT_MISSING");
+  const total = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", artifactId);
+  if (!total) throw new Error("VALIDATED_DATA_INPUT_MISSING");
+  finalizeProcessedArtifacts(database, runId, [artifactId]);
+  return { outputCount: total, output: { inserted: total, artifact_id: artifactId } };
+}
+
+async function cloudflareArchiveStorage(bucket = process.env.LPL_R2_BUCKET ?? "lanka-price-lens-pdfs"): Promise<ArchiveStorage> {
+  const credentials = await cloudflareCredentials();
+  return {
+    bucket,
+    list: () => listArchiveObjects(credentials, bucket),
+    upload: (key, filename, bytes, metadata) => uploadArchiveObject(credentials, bucket, key, filename, bytes, metadata),
+    download: (key) => downloadArchiveObject(credentials, bucket, key),
+  };
+}
+
+function completeProcessingRun(database: OperationalDatabase, runId: string, sourceId: string): void {
+  updateProcessingCounts(database, runId);
+  const now = new Date().toISOString();
+  database.prepare("UPDATE source SET state = 'healthy', last_parse_at = ?, updated_at = ? WHERE id = ?").run(now, now, sourceId);
+  finishRun(database, runId, "succeeded");
+}
+
+function updateProcessingCounts(database: OperationalDatabase, runId: string): void {
+  const run = database.prepare("SELECT artifact_id FROM ingest_run WHERE id = ?").get(runId) as { artifact_id: string | null };
+  const artifactId = run.artifact_id;
+  const extracted = artifactId ? count(database, "SELECT COUNT(*) AS count FROM extracted_text_item WHERE artifact_id = ?", artifactId) : 0;
+  const parsed = artifactId ? count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", artifactId) : 0;
+  const quarantined = artifactId
+    ? count(database, "SELECT COUNT(*) AS count FROM quarantine WHERE artifact_id = ? AND status = 'open'", artifactId)
+    : 0;
+  database
+    .prepare("UPDATE ingest_run SET fetched_count = ?, extracted_count = ?, parsed_count = ?, quarantined_count = ? WHERE id = ?")
+    .run(artifactId ? 1 : 0, extracted, parsed, quarantined, runId);
+}
+
+function invalidateProcessingOutputs(database: OperationalDatabase, artifactId: string | null, stage: ProcessingStage): void {
+  if (!artifactId) return;
+  database.transaction(() => {
+    if (["retrieve_pdf", "parse_pdf"].includes(stage)) {
+      database.prepare("DELETE FROM extracted_text_item WHERE artifact_id = ?").run(artifactId);
+      database.prepare("DELETE FROM staging_observation WHERE artifact_id = ?").run(artifactId);
+      database.prepare("UPDATE source_artifact SET inspection_json = NULL, status = 'fetched' WHERE id = ?").run(artifactId);
+    } else if (stage === "extract_data") {
+      database.prepare("DELETE FROM staging_observation WHERE artifact_id = ?").run(artifactId);
+      database.prepare("UPDATE source_artifact SET status = 'processed' WHERE id = ?").run(artifactId);
+    } else if (stage === "validate_data") {
+      database.prepare("UPDATE staging_observation SET status = 'pending_validation' WHERE artifact_id = ?").run(artifactId);
+      database.prepare("UPDATE source_artifact SET status = 'processed' WHERE id = ?").run(artifactId);
+    }
+  })();
+}
+
+function blockStages(database: OperationalDatabase, runId: string, workflow: readonly StageName[], failedStage: StageName): void {
+  const index = workflow.indexOf(failedStage);
+  for (const stage of workflow.slice(index + 1)) {
+    blockStage(database, runId, stage, `${stageLabel(stage)} is blocked until ${stageLabel(failedStage)} succeeds`, [failedStage]);
+  }
+}
+
+function missingProcessingInputs(database: OperationalDatabase, artifactId: string | null, stage: ProcessingStage): string[] {
+  if (stage === "retrieve_pdf") return [];
+  if (!artifactId) return ["retrieved PDF"];
+  if (stage === "extract_data" && !count(database, "SELECT COUNT(*) AS count FROM extracted_text_item WHERE artifact_id = ?", artifactId)) {
+    return ["parsed PDF text"];
+  }
+  if (stage === "validate_data" && !count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", artifactId)) {
+    return ["structured records"];
+  }
+  if (stage === "insert_data") {
+    const total = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", artifactId);
+    const validated = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status = 'validated'", artifactId);
+    if (!total || total !== validated) return ["validated records"];
+  }
+  return [];
+}
+
+function sourceSyncInput(
+  manifest: SourceManifest,
+  stage: SourceSyncStage,
+  options: IngestionOptions,
+  context: SourceSyncContext,
+): Record<string, unknown> {
+  if (stage === "check_source") return { source_url: manifest.landing_url, from: options.from ?? null, to: options.to ?? null };
+  if (stage === "compare_inventory") return { discovered: context.publications.length };
+  if (stage === "download_new_pdfs") return { new_pdfs: context.pending.length };
+  if (stage === "upload_to_r2") return { downloaded: context.downloaded.size };
+  return { uploaded: context.uploaded.size, reconcile: context.reconcile.length };
+}
+
+function sourceSyncInputCount(stage: SourceSyncStage, context: SourceSyncContext): number {
+  if (stage === "check_source") return 1;
+  if (stage === "compare_inventory") return context.publications.length;
+  if (stage === "download_new_pdfs") return context.pending.length;
+  if (stage === "upload_to_r2") return context.downloaded.size;
+  return context.uploaded.size + context.reconcile.length;
+}
+
+function processingInput(database: OperationalDatabase, context: ProcessingContext, stage: ProcessingStage): Record<string, unknown> {
+  if (stage === "retrieve_pdf") return { archive_id: context.archiveId };
+  if (stage === "parse_pdf") return { artifact_id: context.artifactId, dependency: "retrieve_pdf" };
+  if (stage === "extract_data") return { artifact_id: context.artifactId, dependency: "parse_pdf" };
+  const records = context.artifactId
+    ? count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", context.artifactId)
+    : 0;
+  return { artifact_id: context.artifactId, dependency: processingDependencies[stage][0], records };
+}
+
+function processingInputCount(database: OperationalDatabase, context: ProcessingContext, stage: ProcessingStage): number {
+  if (stage === "retrieve_pdf" || stage === "parse_pdf") return 1;
+  if (!context.artifactId) return 0;
+  if (stage === "extract_data") return count(database, "SELECT COUNT(*) AS count FROM extracted_text_item WHERE artifact_id = ?", context.artifactId);
+  return count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", context.artifactId);
+}
+
+type ArchivedPdf = {
+  id: string;
+  publication_id: string;
+  publication_key: string;
+  title: string;
+  source_url: string;
+  r2_bucket: string;
+  r2_key: string;
+  r2_uri: string;
+  sha256: string | null;
+};
+
+function archivedPdf(database: OperationalDatabase, archiveId: string): ArchivedPdf | undefined {
   return database
     .prepare(
-      `SELECT
-        (SELECT COUNT(*) FROM source_artifact WHERE run_id = ?) AS fetched,
-        (SELECT COUNT(*) FROM extracted_text_item item JOIN source_artifact artifact ON artifact.id = item.artifact_id WHERE artifact.run_id = ?) AS extracted,
-        (SELECT COUNT(*) FROM staging_observation WHERE run_id = ?) AS parsed`,
+      `SELECT archive.id, archive.publication_id, publication.source_publication_key AS publication_key,
+       publication.title, archive.source_url, archive.r2_bucket, archive.r2_key, archive.r2_uri, archive.sha256
+       FROM archived_pdf archive JOIN source_publication publication ON publication.id = archive.publication_id
+       WHERE archive.id = ?`,
     )
-    .get(runId, runId, runId) as { fetched: number; extracted: number; parsed: number };
+    .get(archiveId) as ArchivedPdf | undefined;
+}
+
+function extractedItems(database: OperationalDatabase, artifactId: string): TextItem[] {
+  return database
+    .prepare(
+      `SELECT page_number AS page, item_index AS "index", text, x, y, width, height
+       FROM extracted_text_item WHERE artifact_id = ? ORDER BY page_number, item_index`,
+    )
+    .all(artifactId) as TextItem[];
+}
+
+function recordRunPublications(database: OperationalDatabase, runId: string, publications: Publication[]): void {
+  database.transaction(() => {
+    database.prepare("DELETE FROM run_publication WHERE run_id = ?").run(runId);
+    const insert = database.prepare("INSERT INTO run_publication (run_id, publication_id, ordinal) VALUES (?, ?, ?)");
+    publications.forEach((publication, index) => insert.run(runId, `publication_${publication.key}`, index));
+  })();
 }
 
 function recordPublications(database: OperationalDatabase, sourceId: string, publications: Publication[]): void {
@@ -242,7 +869,7 @@ function recordPublications(database: OperationalDatabase, sourceId: string, pub
       last_seen_at = excluded.last_seen_at`,
   );
   const now = new Date().toISOString();
-  const transaction = database.transaction(() => {
+  database.transaction(() => {
     for (const publication of publications) {
       statement.run(
         `publication_${publication.key}`,
@@ -258,15 +885,81 @@ function recordPublications(database: OperationalDatabase, sourceId: string, pub
         now,
       );
     }
-  });
-  transaction();
+  })();
+}
+
+function legacySnapshotStages(database: OperationalDatabase, runId: string): readonly StageName[] {
+  const rows = database.prepare("SELECT stage FROM run_stage WHERE run_id = ? ORDER BY id").all(runId) as Array<{ stage: StageName }>;
+  if (rows.some((row) => row.stage === "crawl")) return legacyStages;
+  return rows.map((row) => row.stage);
+}
+
+function stageStatus(database: OperationalDatabase, runId: string, stage: StageName): string | null {
+  return (database.prepare("SELECT status FROM run_stage WHERE run_id = ? AND stage = ?").get(runId, stage) as { status: string } | undefined)?.status ?? null;
+}
+
+function requiredArtifact(context: ProcessingContext): string {
+  if (!context.artifactId) throw new Error("RETRIEVED_PDF_INPUT_MISSING");
+  return context.artifactId;
+}
+
+function archiveKey(publication: Publication): string {
+  return hartiArchiveObjectKey(publication);
+}
+
+function r2Uri(bucket: string, key: string): string {
+  return `r2://${bucket}/${key}`;
+}
+
+function isPdf(bytes: Uint8Array): boolean {
+  return bytes.byteLength >= 5 && new TextDecoder().decode(bytes.subarray(0, 5)) === "%PDF-";
+}
+
+function parseJson(value: unknown): unknown {
+  if (typeof value !== "string") return null;
+  try {
+    return JSON.parse(value) as unknown;
+  } catch {
+    return null;
+  }
+}
+
+function count(database: OperationalDatabase, sql: string, ...values: unknown[]): number {
+  return (database.prepare(sql).get(...values) as { count: number }).count;
+}
+
+function stageLabel(stage: StageName): string {
+  const labels: Partial<Record<StageName, string>> = {
+    check_source: "Check official source",
+    compare_inventory: "Compare PDF inventory",
+    download_new_pdfs: "Download new PDFs",
+    upload_to_r2: "Upload PDFs to R2",
+    record_pdf_metadata: "Record PDF metadata",
+    retrieve_pdf: "Retrieve PDF",
+    parse_pdf: "Parse PDF",
+    extract_data: "Extract structured data",
+    validate_data: "Validate extracted data",
+    insert_data: "Insert validated data",
+  };
+  return labels[stage] ?? stage.replaceAll("_", " ");
+}
+
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
+function delay(milliseconds: number): Promise<void> {
+  return new Promise((resolveDelay) => setTimeout(resolveDelay, milliseconds));
 }
 
 async function requestWithRetry(request: typeof fetch, url: string, attempts: number, intervalMs: number): Promise<Response> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
-      const response = await request(url, { headers: { "user-agent": "LankaPriceLens/0.1 (+self-hosted data foundry)" }, signal: AbortSignal.timeout(30_000) });
+      const response = await request(url, {
+        headers: { "user-agent": "LankaPriceLens/0.1 (+self-hosted data foundry)" },
+        signal: AbortSignal.timeout(30_000),
+      });
       if (response.ok) return response;
       if (response.status < 500 && response.status !== 429) throw new Error(`SOURCE_HTTP_${response.status}`);
       lastError = new Error(`SOURCE_HTTP_${response.status}`);
@@ -274,7 +967,7 @@ async function requestWithRetry(request: typeof fetch, url: string, attempts: nu
       lastError = error;
       if (error instanceof Error && /^SOURCE_HTTP_4(?!29)/u.test(error.message)) throw error;
     }
-    if (attempt < attempts) await new Promise<void>((resolve) => setTimeout(resolve, intervalMs));
+    if (attempt < attempts) await delay(intervalMs);
   }
   throw lastError instanceof Error ? lastError : new Error("SOURCE_FETCH_FAILED");
 }

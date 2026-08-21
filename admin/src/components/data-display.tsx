@@ -1,23 +1,144 @@
-import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
-import { Link } from "react-router-dom";
+import { useEffect, type MouseEvent } from "react";
+import { RiCloseLine, RiSearchLine } from "@remixicon/react";
+import { useForm } from "react-hook-form";
+import { useSearchParams } from "react-router-dom";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
+import {
+  Pagination as PaginationRoot,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { TableCell, TableRow } from "@/components/ui/table";
+import type { ListParameters } from "@/lib/api";
+import { cn } from "@/lib/utils";
+import { paginationItems } from "@/lib/pagination";
+
+export type TableState = ListParameters & {
+  update: (values: Partial<ListParameters>, replace?: boolean) => void;
+};
+
+export function useTableState(): TableState {
+  const [parameters, setParameters] = useSearchParams();
+  const requestedPage = Number(parameters.get("page") ?? 1);
+  const requestedSize = Number(parameters.get("pageSize") ?? 10);
+  const page = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+  const pageSize = [10, 20, 50, 100].includes(requestedSize) ? requestedSize : 10;
+  const search = (parameters.get("search") ?? "").slice(0, 100);
+  const status = (parameters.get("status") ?? "").slice(0, 50);
+  const signature = parameters.toString();
+
+  useEffect(() => {
+    const next = new URLSearchParams(parameters);
+    next.set("page", String(page));
+    next.set("pageSize", String(pageSize));
+    if (next.toString() !== signature) setParameters(next, { replace: true });
+  }, [page, pageSize, parameters, setParameters, signature]);
+
+  return {
+    page,
+    pageSize,
+    search,
+    status,
+    update: (values, replace = false) => {
+      const next = new URLSearchParams(parameters);
+      for (const [key, value] of Object.entries(values)) {
+        if (value === "") next.delete(key);
+        else if (value !== undefined) next.set(key, String(value));
+      }
+      setParameters(next, { replace });
+    },
+  };
+}
+
+export function TableControls({
+  state,
+  placeholder,
+  statuses,
+}: {
+  state: TableState;
+  placeholder: string;
+  statuses: Array<{ label: string; value: string }>;
+}) {
+  const form = useForm<{ search: string }>({ values: { search: state.search } });
+  const filtered = Boolean(state.search || state.status);
+  return (
+    <form className="flex flex-col gap-2 border-b border-white/[0.07] p-4 sm:flex-row sm:items-center" onSubmit={form.handleSubmit(({ search }) => state.update({ page: 1, search: search.trim() }))}>
+      <InputGroup className="min-w-0 flex-1 sm:max-w-md">
+        <InputGroupAddon><RiSearchLine /></InputGroupAddon>
+        <InputGroupInput aria-label="Search table" placeholder={placeholder} {...form.register("search")} />
+      </InputGroup>
+      <Button type="submit" variant="outline"><RiSearchLine data-icon="inline-start" />Search</Button>
+      <Select onValueChange={(value) => state.update({ page: 1, status: value === "all" ? "" : value })} value={state.status || "all"}>
+        <SelectTrigger aria-label="Filter by status" className="h-10 w-full sm:w-44"><SelectValue /></SelectTrigger>
+        <SelectContent position="popper"><SelectGroup><SelectItem value="all">All statuses</SelectItem>{statuses.map((option) => <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>)}</SelectGroup></SelectContent>
+      </Select>
+      <Select onValueChange={(value) => state.update({ page: 1, pageSize: Number(value) })} value={String(state.pageSize)}>
+        <SelectTrigger aria-label="Rows per page" className="h-10 w-full sm:w-32"><SelectValue /></SelectTrigger>
+        <SelectContent position="popper"><SelectGroup>{[10, 20, 50, 100].map((size) => <SelectItem key={size} value={String(size)}>{size} rows</SelectItem>)}</SelectGroup></SelectContent>
+      </Select>
+      {filtered ? <Button onClick={() => state.update({ page: 1, search: "", status: "" })} type="button" variant="ghost"><RiCloseLine data-icon="inline-start" />Clear</Button> : null}
+    </form>
+  );
+}
 
 export function Status({ value }: { value: string }) {
   const bad = ["failed", "blocked", "degraded", "review_required", "quarantined"].includes(value);
   const good = ["healthy", "succeeded", "parsed"].includes(value);
-  return <Badge className={bad ? "border-red-200 bg-red-50 text-red-800" : good ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-border bg-muted text-muted-foreground"} variant="outline">{value.replaceAll("_", " ")}</Badge>;
+  const active = ["running", "pending", "processing", "discovered"].includes(value);
+  return <Badge variant={bad ? "destructive" : good ? "default" : active ? "secondary" : "outline"}>{value.replaceAll("_", " ")}</Badge>;
 }
 
-export function Pagination({ page, pages }: { page: number; pages: number }) {
+export function EmptyTableRow({ columns }: { columns: number }) {
+  return <TableRow><TableCell colSpan={columns}><Empty className="min-h-28 p-4"><EmptyHeader><EmptyTitle>No matching records</EmptyTitle><EmptyDescription>Try adjusting the search or filters.</EmptyDescription></EmptyHeader></Empty></TableCell></TableRow>;
+}
+
+export function Pagination({ page, pageSize, pages, pending = false, total }: { page: number; pageSize: number; pages: number; pending?: boolean; total: number }) {
+  const [parameters, setParameters] = useSearchParams();
+  const currentUrlPage = Number(parameters.get("page") ?? 1);
+  useEffect(() => {
+    if (pending || currentUrlPage === page) return;
+    const next = new URLSearchParams(parameters);
+    next.set("page", String(page));
+    setParameters(next, { replace: true });
+  }, [currentUrlPage, page, parameters, pending, setParameters]);
+  const items = paginationItems(page, pages);
+  const href = (target: number) => {
+    const next = new URLSearchParams(parameters);
+    next.set("page", String(target));
+    return `?${next}`;
+  };
+  const navigate = (target: number) => (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    if (target < 1 || target > pages || target === page) return;
+    const next = new URLSearchParams(parameters);
+    next.set("page", String(target));
+    setParameters(next);
+  };
+  const firstItem = total ? (page - 1) * pageSize + 1 : 0;
+  const lastItem = Math.min(page * pageSize, total);
   return (
-    <div className="flex items-center justify-between border-t px-4 py-3 text-sm">
-      <span className="text-muted-foreground">Page {page} of {pages}</span>
-      <div className="flex gap-2">
-        <Button asChild={page > 1} disabled={page <= 1} size="sm" variant="outline">{page > 1 ? <Link to={`?page=${page - 1}`}><RiArrowLeftLine />Previous</Link> : <span><RiArrowLeftLine />Previous</span>}</Button>
-        <Button asChild={page < pages} disabled={page >= pages} size="sm" variant="outline">{page < pages ? <Link to={`?page=${page + 1}`}>Next<RiArrowRightLine /></Link> : <span>Next<RiArrowRightLine /></span>}</Button>
-      </div>
+    <div className="flex flex-col items-center gap-2 border-t border-white/[0.07] px-4 py-3 text-xs">
+      <PaginationRoot aria-label="Table pagination">
+        <PaginationContent>
+          <PaginationItem><PaginationPrevious aria-disabled={page <= 1} className={cn(page <= 1 && "pointer-events-none opacity-50")} href={href(Math.max(1, page - 1))} onClick={navigate(page - 1)} tabIndex={page <= 1 ? -1 : undefined} /></PaginationItem>
+          {items.map((item) => typeof item === "number" ? (
+            <PaginationItem key={item}><PaginationLink href={href(item)} isActive={item === page} onClick={navigate(item)} size="icon-sm">{item}</PaginationLink></PaginationItem>
+          ) : (
+            <PaginationItem key={item}><PaginationEllipsis /></PaginationItem>
+          ))}
+          <PaginationItem><PaginationNext aria-disabled={page >= pages} className={cn(page >= pages && "pointer-events-none opacity-50")} href={href(Math.min(pages, page + 1))} onClick={navigate(page + 1)} tabIndex={page >= pages ? -1 : undefined} /></PaginationItem>
+        </PaginationContent>
+      </PaginationRoot>
+      <span className="font-mono text-muted-foreground">{firstItem}–{lastItem} of {total} · Page {page} of {pages}</span>
     </div>
   );
 }

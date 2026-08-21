@@ -1,29 +1,29 @@
-import { RiAlertLine, RiArchiveLine, RiDatabase2Line, RiHistoryLine, RiRefreshLine, RiUploadCloud2Line } from "@remixicon/react";
+import { RiAlertLine, RiFilePdf2Line, RiHistoryLine, RiPlayCircleLine, RiRefreshLine, RiShieldLine, RiUploadCloud2Line } from "@remixicon/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 import { bytes, date, Status } from "@/components/data-display";
 import { Alert } from "@/components/ui/alert";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { api, type Overview, type Page, type Pdf, type Quarantine, type Run, type Source } from "@/lib/api";
+import { api, type KnowledgeItem, type Overview, type Page, type Run, type Source } from "@/lib/api";
 
-type Dashboard = { overview: Overview; sources: Source[]; runs: Page<Run>; pdfs: Page<Pdf>; quarantine: Quarantine[] };
+type Dashboard = { overview: Overview; sources: Page<Source>; runs: Page<Run>; knowledge: Page<KnowledgeItem> };
 type UploadValues = { file: FileList };
 
 async function dashboard(): Promise<Dashboard> {
-  const [overview, sources, runs, pdfs, quarantine] = await Promise.all([
+  const [overview, sources, runs, knowledge] = await Promise.all([
     api<Overview>("/v1/admin/overview"),
-    api<Source[]>("/v1/admin/sources"),
+    api<Page<Source>>("/v1/admin/sources?page=1&pageSize=6"),
     api<Page<Run>>("/v1/admin/runs?page=1&pageSize=6"),
-    api<Page<Pdf>>("/v1/admin/uploads?page=1&pageSize=6"),
-    api<Quarantine[]>("/v1/admin/quarantine"),
+    api<Page<KnowledgeItem>>("/v1/admin/knowledge-base?page=1&pageSize=6"),
   ]);
-  return { overview, sources, runs, pdfs, quarantine };
+  return { overview, sources, runs, knowledge };
 }
 
 export function OverviewPage() {
@@ -43,35 +43,101 @@ export function OverviewPage() {
     onSuccess: () => {
       uploadForm.reset();
       void queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+      void queryClient.invalidateQueries({ queryKey: ["knowledge-base"] });
+      void queryClient.invalidateQueries({ queryKey: ["runs"] });
     },
   });
 
-  if (data.isPending) return <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{Array.from({ length: 4 }, (_, index) => <Skeleton className="h-28" key={index} />)}</div>;
+  if (data.isPending) return <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{Array.from({ length: 4 }, (_, index) => <Skeleton className="h-32 rounded-xl" key={index} />)}</div>;
   if (data.isError) return <Alert variant="destructive">{data.error.message}</Alert>;
   const active = data.data.runs.items.find((run) => run.status === "running");
 
   return (
-    <div className="space-y-6">
-      <div><p className="text-sm font-medium text-primary">Operations</p><h1 className="font-heading text-3xl font-semibold tracking-tight">Data foundry overview</h1><p className="mt-1 text-sm text-muted-foreground">Monitor the source pipeline, review exceptions, and control ingestion.</p></div>
-      <section aria-label="Operational summary" className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <Metric icon={<RiDatabase2Line />} label="PDF records" value={data.data.overview.pdfs} />
-        <Metric icon={<RiHistoryLine />} label="Running now" value={data.data.overview.running} />
-        <Metric icon={<RiAlertLine />} label="Failed runs" value={data.data.overview.failed} />
-        <Metric icon={<RiArchiveLine />} label="Open quarantine" value={data.data.overview.quarantined} />
-      </section>
-      <Card><CardHeader><CardTitle className="font-heading">Automated ingestion</CardTitle><CardDescription>Run the historical import once, then let the daily incremental scheduler maintain coverage.</CardDescription></CardHeader><CardContent className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"><div>{active ? <p className="text-sm">Running <strong>{active.trigger}</strong>: {active.fetched_count} PDFs fetched, {active.parsed_count} observations parsed.</p> : <p className="text-sm text-muted-foreground">No ingestion is currently running.</p>}{ingestion.isError ? <p className="mt-2 text-sm text-destructive">{ingestion.error.message}</p> : null}</div><div className="flex flex-wrap gap-2"><Button disabled={Boolean(active) || ingestion.isPending} onClick={() => { if (window.confirm("Start the rate-limited full archive import?")) ingestion.mutate("backfill"); }}><RiHistoryLine />Ingest full archive</Button><Button disabled={Boolean(active) || ingestion.isPending} onClick={() => ingestion.mutate("sync")} variant="outline"><RiRefreshLine />Check for updates</Button></div></CardContent></Card>
-      <div className="grid gap-6 xl:grid-cols-[0.75fr_1.25fr]">
-        <Card><CardHeader><CardTitle className="font-heading">Manual PDF intake</CardTitle><CardDescription>Inspect one HARTI bulletin without waiting for discovery.</CardDescription></CardHeader><CardContent><form className="space-y-4" onSubmit={uploadForm.handleSubmit(({ file }) => upload.mutate(file[0]!))}><div className="space-y-2"><Label htmlFor="pdf-file">PDF file</Label><Input accept=".pdf,application/pdf" id="pdf-file" type="file" {...uploadForm.register("file", { required: "Choose a PDF", validate: (files) => files[0]?.size && files[0].size <= 20 * 1024 * 1024 ? true : "PDF must be 20 MiB or smaller" })} />{uploadForm.formState.errors.file ? <p className="text-xs text-destructive">{uploadForm.formState.errors.file.message}</p> : null}</div><Button disabled={upload.isPending} type="submit"><RiUploadCloud2Line />{upload.isPending ? "Inspecting…" : "Upload and inspect"}</Button>{upload.isSuccess ? <p className="text-sm text-emerald-700">{upload.data.parsedCount} observations extracted.</p> : null}{upload.isError ? <p className="text-sm text-destructive">{upload.error.message}</p> : null}</form></CardContent></Card>
-        <Card><CardHeader><CardTitle className="font-heading">Recent PDFs</CardTitle></CardHeader><CardContent className="p-0"><Table><TableHeader><TableRow><TableHead>File</TableHead><TableHead>Status</TableHead><TableHead>Parsed</TableHead><TableHead>Received</TableHead></TableRow></TableHeader><TableBody>{data.data.pdfs.items.map((pdf) => <TableRow key={pdf.artifact_id}><TableCell><p className="max-w-72 truncate font-medium" title={pdf.original_filename}>{pdf.original_filename}</p><p className="text-xs text-muted-foreground">{bytes(pdf.byte_size)} · {pdf.page_count ?? "?"} pages</p></TableCell><TableCell><Status value={pdf.status} /></TableCell><TableCell>{pdf.parsed_count}</TableCell><TableCell>{date(pdf.fetched_at)}</TableCell></TableRow>)}</TableBody></Table></CardContent></Card>
+    <div className="space-y-5 lg:space-y-6">
+      <div>
+        <h1 className="font-heading text-2xl font-semibold tracking-tight sm:text-[28px]">Data foundry overview</h1>
+        <p className="mt-1.5 max-w-2xl text-sm text-muted-foreground">Monitor the source pipeline, review exceptions, and control ingestion.</p>
       </div>
-      <div className="grid gap-6 xl:grid-cols-[1.4fr_0.6fr]">
-        <Card><CardHeader><CardTitle className="font-heading">Recent runs</CardTitle></CardHeader><CardContent className="p-0"><Table><TableHeader><TableRow><TableHead>Started</TableHead><TableHead>Trigger</TableHead><TableHead>Status</TableHead><TableHead>PDFs</TableHead><TableHead>Observations</TableHead></TableRow></TableHeader><TableBody>{data.data.runs.items.map((run) => <TableRow key={run.id}><TableCell>{date(run.started_at)}</TableCell><TableCell>{run.trigger}</TableCell><TableCell><Status value={run.status} /></TableCell><TableCell>{run.fetched_count}/{run.discovered_count}</TableCell><TableCell>{run.parsed_count}</TableCell></TableRow>)}</TableBody></Table></CardContent></Card>
-        <Card><CardHeader><CardTitle className="font-heading">Source status</CardTitle></CardHeader><CardContent className="space-y-3">{data.data.sources.map((source) => <div className="flex items-center justify-between gap-3 border-b pb-3 last:border-0 last:pb-0" key={source.id}><div><p className="text-sm font-medium">{source.name}</p><p className="text-xs text-muted-foreground">Last parsed {date(source.last_parse_at)}</p></div><Status value={source.state} /></div>)}</CardContent></Card>
+
+      <section aria-label="Operational summary" className="grid grid-cols-2 gap-3 xl:grid-cols-4 xl:gap-4">
+        <Metric icon={<RiFilePdf2Line />} label="Knowledge records" value={data.data.overview.pdfs} />
+        <Metric icon={<RiPlayCircleLine />} label="Running now" value={data.data.overview.running} />
+        <Metric icon={<RiAlertLine />} label="Failed runs" tone="warning" value={data.data.overview.failed} />
+        <Metric icon={<RiShieldLine />} label="Open quarantine" value={data.data.overview.quarantined} />
+      </section>
+
+      <Card>
+        <CardContent className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="flex gap-3">
+            <div className="mt-0.5 grid size-10 shrink-0 place-items-center rounded-lg border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"><RiRefreshLine className="size-5" /></div>
+            <div>
+              <h2 className="font-heading text-base font-semibold">Automated ingestion</h2>
+              {active ? <p className="mt-1.5 text-sm text-muted-foreground">Running <strong className="text-foreground">{active.trigger}</strong>: {active.fetched_count} PDFs fetched, {active.parsed_count} observations parsed.</p> : <p className="mt-1.5 text-sm text-muted-foreground">No ingestion is currently running.</p>}
+              {ingestion.isError ? <p className="mt-2 text-sm text-destructive">{ingestion.error.message}</p> : null}
+            </div>
+          </div>
+          <div className="grid gap-2 sm:grid-cols-2 lg:flex">
+            <AlertDialog>
+              <AlertDialogTrigger asChild><Button disabled={Boolean(active) || ingestion.isPending} size="lg"><RiHistoryLine data-icon="inline-start" />Ingest full archive</Button></AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader><AlertDialogTitle>Ingest the full archive?</AlertDialogTitle><AlertDialogDescription>This starts a rate-limited import of every available source publication. It may run for a while.</AlertDialogDescription></AlertDialogHeader>
+                <AlertDialogFooter><AlertDialogCancel>Cancel</AlertDialogCancel><AlertDialogAction onClick={() => ingestion.mutate("backfill")}>Start import</AlertDialogAction></AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+            <Button disabled={Boolean(active) || ingestion.isPending} onClick={() => ingestion.mutate("sync")} size="lg" variant="outline"><RiRefreshLine data-icon="inline-start" />Check for updates</Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <div className="flex items-start gap-3">
+            <div className="grid size-10 shrink-0 place-items-center rounded-lg border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"><RiUploadCloud2Line className="size-5" /></div>
+            <div><CardTitle>Manual PDF intake</CardTitle><CardDescription>Inspect one HARTI bulletin without waiting for discovery.</CardDescription></div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={uploadForm.handleSubmit(({ file }) => upload.mutate(file[0]!))}>
+            <FieldGroup className="grid gap-3 lg:grid-cols-[1fr_auto] lg:items-end">
+              <Field data-invalid={Boolean(uploadForm.formState.errors.file)}><FieldLabel htmlFor="pdf-file">PDF file</FieldLabel><Input accept=".pdf,application/pdf" aria-invalid={Boolean(uploadForm.formState.errors.file)} id="pdf-file" type="file" {...uploadForm.register("file", { required: "Choose a PDF", validate: (files) => files[0]?.size && files[0].size <= 20 * 1024 * 1024 ? true : "PDF must be 20 MiB or smaller" })} /><FieldError errors={[uploadForm.formState.errors.file]} /></Field>
+              <Button className="w-full lg:w-auto" disabled={upload.isPending} size="lg" type="submit"><RiUploadCloud2Line data-icon="inline-start" />{upload.isPending ? "Inspecting…" : "Upload and inspect"}</Button>
+            </FieldGroup>
+          </form>
+          {upload.isSuccess ? <p className="mt-3 text-sm text-emerald-400">{upload.data.parsedCount} observations extracted.</p> : null}
+          {upload.isError ? <p className="mt-3 text-sm text-destructive">{upload.error.message}</p> : null}
+        </CardContent>
+      </Card>
+
+      <div className="grid gap-4 xl:grid-cols-[1.08fr_1fr_0.82fr]">
+        <Card>
+          <PanelHeader title="Recent knowledge" to="/knowledge-base" />
+          <CardContent className="divide-y divide-white/[0.07] p-0">
+            {data.data.knowledge.items.slice(0, 4).map((item) => <div className="flex items-center justify-between gap-3 px-4 py-3" key={item.publication_id}><div className="min-w-0"><p className="truncate text-[13px] font-medium" title={item.title}>{item.title}</p><p className="mt-1 font-mono text-[10px] text-muted-foreground">{item.byte_size === null ? "Not cached" : bytes(item.byte_size)} · {item.page_count ?? "?"} pages · {date(item.published_at)}</p></div><Status value={item.status} /></div>)}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <PanelHeader title="Recent workflow executions" to="/runs" />
+          <CardContent className="divide-y divide-white/[0.07] p-0">
+            {data.data.runs.items.slice(0, 4).map((run) => <div className="grid grid-cols-[1fr_auto_auto] items-center gap-3 px-4 py-3" key={run.id}><div><p className="text-[13px]">{run.workflow === "pdf_processing" ? "PDF processing" : run.workflow === "source_sync" ? "Source synchronisation" : "Legacy ingestion"}</p><p className="mt-1 text-[10px] text-muted-foreground">{date(run.started_at)} · {run.trigger}</p></div><Status value={run.status} /><span className="font-mono text-xs text-muted-foreground">{run.parsed_count}</span></div>)}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <PanelHeader title="Source status" to="/sources" />
+          <CardContent className="space-y-1">
+            {data.data.sources.items.map((source) => <div className="flex items-start justify-between gap-3 border-b border-white/[0.07] py-3 last:border-0" key={source.id}><div className="min-w-0"><p className="text-sm font-medium leading-5">{source.name}</p><p className="mt-1 text-xs text-muted-foreground">Last parsed {date(source.last_parse_at)}</p></div><Status value={source.state} /></div>)}
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
 }
 
-function Metric({ icon, label, value }: { icon: React.ReactNode; label: string; value: number }) {
-  return <Card><CardContent className="flex items-center justify-between pt-6"><div><p className="text-sm text-muted-foreground">{label}</p><p className="font-heading mt-1 text-3xl font-semibold">{value}</p></div><div className="grid size-11 place-items-center bg-primary/10 text-primary [&_svg]:size-5">{icon}</div></CardContent></Card>;
+function Metric({ icon, label, value, tone = "default" }: { icon: React.ReactNode; label: string; value: number; tone?: "default" | "warning" }) {
+  return <Card className="min-h-28"><CardContent className="flex h-full items-center gap-2 p-3 sm:gap-4 sm:p-5"><div className={tone === "warning" ? "grid size-9 shrink-0 place-items-center rounded-lg border border-amber-500/20 bg-amber-500/10 text-amber-400 sm:size-11" : "grid size-9 shrink-0 place-items-center rounded-lg border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 sm:size-11"}>{icon}</div><div className="min-w-0"><p className="text-[11px] leading-4 text-muted-foreground sm:text-sm">{label}</p><p className="mt-1 font-mono text-2xl font-medium tracking-tight sm:text-3xl">{value}</p></div></CardContent></Card>;
+}
+
+function PanelHeader({ title, to }: { title: string; to: string }) {
+  return <CardHeader className="border-b border-white/[0.07]"><div className="flex items-center justify-between gap-4"><CardTitle>{title}</CardTitle><Button asChild size="sm" variant="ghost"><Link to={to}>View all</Link></Button></div></CardHeader>;
 }

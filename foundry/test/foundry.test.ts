@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { spawnSync } from "node:child_process";
 import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -12,7 +13,7 @@ import { finishRun, openOperationalDatabase, startRun, syncSource, type Operatio
 import { discoverHartiDaily, parseHartiWholesale } from "../src/harti.ts";
 import { ingestManualPdf } from "../src/intake.ts";
 import { canonicalizeRun } from "../src/mapping.ts";
-import { runIngestion } from "../src/pipeline.ts";
+import { retryProcessingStage, runIngestion, workflowRetryState, type ArchiveStorage } from "../src/pipeline.ts";
 import type { PdfInspection, TextItem } from "../src/pdf.ts";
 import { buildRelease } from "../src/release.ts";
 
@@ -37,6 +38,16 @@ const manifest = sourceManifestSchema.parse({
   request_interval_ms: 1000,
   max_attempts: 1,
   enabled: false,
+});
+
+test("admin password hashing accepts eight characters and rejects seven", () => {
+  const cli = new URL("../src/cli.ts", import.meta.url);
+  const accepted = spawnSync(process.execPath, [cli.pathname, "hash-password", "12345678"], { encoding: "utf8" });
+  const rejected = spawnSync(process.execPath, [cli.pathname, "hash-password", "1234567"], { encoding: "utf8" });
+  assert.equal(accepted.status, 0);
+  assert.match(accepted.stdout, /^scrypt\$[a-f0-9]{32}\$[a-f0-9]{128}\n$/u);
+  assert.notEqual(rejected.status, 0);
+  assert.match(rejected.stderr, /at least 8 characters/u);
 });
 
 test("rights gate blocks all network activity", async () => {
@@ -71,18 +82,27 @@ test("HARTI discovery and coordinate parser produce dated price ranges", () => {
   assert.equal(publications.length, 1);
 
   const observations = parseHartiWholesale(hartiItems());
-  assert.equal(observations.length, 20);
+  assert.equal(observations.length, 40);
   assert.deepEqual(
     { date: observations[0]?.date, minimum: observations[0]?.minValueMinor, maximum: observations[0]?.maxValueMinor },
     { date: "2026-08-16", minimum: 10_000, maximum: 12_000 },
   );
+  assert.equal(observations.find((observation) => observation.itemLabel === "Anamalu (Rs/Fruits)")?.sourceUnit, "fruit");
+  assert.equal(observations.find((observation) => observation.itemLabel === "Pineapple - Medium")?.sourceUnit, "kg");
+  assert.equal(observations.find((observation) => observation.marketLabel === "Kandy")?.date, "2026-08-16");
 
   const movedObservations = parseHartiWholesale(hartiItems().map((item) => ({ ...item, page: 2 })));
   assert.equal(movedObservations[0]?.rowRef, "p2:y630.00");
+
+  const minMaxObservations = parseHartiWholesale(hartiMinMaxItems());
+  assert.equal(minMaxObservations.length, 10);
+  assert.equal(minMaxObservations.find((observation) => observation.marketLabel === "Kandy")?.date, "2026-08-16");
+  assert.equal(minMaxObservations.find((observation) => observation.marketLabel === "Veyangoda")?.date, "2026-08-15");
 });
 
 test("scheduled ingestion starts at latest, backfills pending, and catches up new publications", async () => {
   const database = openOperationalDatabase(":memory:");
+  const archive = memoryArchive();
   const approved = sourceManifestSchema.parse({
     ...manifest,
     rights_status: "approved_permission",
@@ -104,20 +124,66 @@ test("scheduled ingestion starts at latest, backfills pending, and catches up ne
   const inspector = async () => ({ inspection: pdfInspection(), items: hartiItems() });
 
   try {
-    await runIngestion(database, approved, { trigger: "scheduled", request, inspector });
+    await runIngestion(database, approved, { trigger: "scheduled", request, inspector, archive });
     assert.equal(requests.length, 2);
     assert.equal((database.prepare("SELECT COUNT(*) AS count FROM source_artifact").get() as { count: number }).count, 1);
 
     requests = [];
-    await runIngestion(database, { ...approved, request_interval_ms: 1 }, { trigger: "backfill", request, inspector });
+    await runIngestion(database, { ...approved, request_interval_ms: 1 }, { trigger: "backfill", request, inspector, archive });
     assert.equal(requests.length, 2);
     assert.equal((database.prepare("SELECT COUNT(*) AS count FROM source_artifact").get() as { count: number }).count, 2);
 
     html = archiveHtml(["18-08-2026", "17-08-2026", "16-08-2026", "15-08-2026"]);
     requests = [];
-    await runIngestion(database, { ...approved, request_interval_ms: 1 }, { trigger: "scheduled", request, inspector });
+    await runIngestion(database, { ...approved, request_interval_ms: 1 }, { trigger: "scheduled", request, inspector, archive });
     assert.equal(requests.length, 3);
-    assert.equal((database.prepare("SELECT fetched_count FROM ingest_run ORDER BY started_at DESC LIMIT 1").get() as { fetched_count: number }).fetched_count, 2);
+    assert.equal((database.prepare("SELECT fetched_count FROM ingest_run WHERE workflow = 'source_sync' ORDER BY started_at DESC LIMIT 1").get() as { fetched_count: number }).fetched_count, 2);
+  } finally {
+    database.close();
+  }
+});
+
+test("workflow retries enforce dependencies and resume from durable inputs", async () => {
+  const database = openOperationalDatabase(":memory:");
+  const archive = memoryArchive();
+  const approved = sourceManifestSchema.parse({
+    ...manifest,
+    rights_status: "approved_permission",
+    rights_evidence_ref: "test-fixture://permission",
+    attribution_text: "Test source fixture",
+    reviewed_by: "fixture-reviewer",
+    review_due_at: "2999-12-31",
+    retention_policy: "preserve_source_evidence",
+    enabled: true,
+  });
+  let parseFails = true;
+  const request = async (url: string | URL | Request) => String(url) === approved.landing_url
+    ? new Response(archiveHtml(["16-08-2026"]), { status: 200, headers: { "content-type": "text/html" } })
+    : new Response("%PDF-fixture", { status: 200, headers: { "content-type": "application/pdf" } });
+  const inspector = async () => {
+    if (parseFails) throw new Error("fixture parser failed");
+    return { inspection: pdfInspection(), items: hartiItems() };
+  };
+
+  try {
+    const sync = await runIngestion(database, approved, { trigger: "backfill", request, inspector, archive });
+    const runId = sync.processingRunIds[0]!;
+    assert.equal(workflowRetryState(database, runId, "extract_data").canRetry, false);
+    assert.equal(workflowRetryState(database, runId, "parse_pdf").canRetry, true);
+
+    parseFails = false;
+    await retryProcessingStage(database, approved, runId, "parse_pdf", { inspector, archive });
+    assert.equal(workflowRetryState(database, runId, "extract_data").canRetry, true);
+    await retryProcessingStage(database, approved, runId, "extract_data", { archive });
+    await retryProcessingStage(database, approved, runId, "validate_data", { archive });
+    await retryProcessingStage(database, approved, runId, "insert_data", { archive });
+
+    assert.deepEqual(
+      database.prepare("SELECT status FROM run_stage WHERE run_id = ? ORDER BY id").all(runId),
+      Array.from({ length: 5 }, () => ({ status: "succeeded" })),
+    );
+    assert.equal((database.prepare("SELECT status FROM ingest_run WHERE id = ?").get(runId) as { status: string }).status, "succeeded");
+    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM run_stage_log WHERE run_id = ?").get(runId) as { count: number }).count > 0, true);
   } finally {
     database.close();
   }
@@ -134,12 +200,20 @@ test("manual PDF intake is monitored, idempotent, and quarantines OCR work", asy
       inspector: async () => ({ inspection: pdfInspection(), items }),
     });
     assert.equal(parsed.status, "parsed");
-    assert.equal(parsed.parsedCount, 20);
-    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM staging_observation").get() as { count: number }).count, 20);
+    assert.equal(parsed.parsedCount, 40);
+    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM staging_observation").get() as { count: number }).count, 40);
     assert.equal(
       (database.prepare("SELECT action FROM audit_event WHERE target_id = ?").get(parsed.artifactId) as { action: string }).action,
       "manual_pdf_uploaded",
     );
+
+    const partialOcr = await ingestManualPdf(database, manifest, {
+      fileName: "partial-ocr.pdf",
+      bytes: new TextEncoder().encode("%PDF-partial-ocr"),
+      actor: "fixture-owner",
+      inspector: async () => ({ inspection: pdfInspection({ pageCount: 2, pagesNeedingOcr: [2] }), items }),
+    });
+    assert.equal(partialOcr.status, "parsed");
 
     const duplicate = await ingestManualPdf(database, manifest, {
       fileName: "renamed.pdf",
@@ -282,11 +356,12 @@ function hartiItems(): TextItem[] {
   const items: TextItem[] = [item(0, "Variety", 50, 665)];
   markets.forEach((market, index) => {
     const x = 120 + index * 48;
-    items.push(item(items.length, market, x, 665), item(items.length + 1, "2026.08.16", x, 677));
+    items.push(item(items.length, market, x, 665), item(items.length + 1, index % 2 ? "16/8/2026" : "2026.08.16", x, 677));
   });
-  for (let row = 0; row < 2; row += 1) {
+  const labels = ["Beans", "Anamalu (Rs/Fruits)", "Pineapple - Large", "- Medium"];
+  for (let row = 0; row < labels.length; row += 1) {
     const y = 630 - row * 12;
-    items.push(item(items.length, row ? "Carrot" : "Beans", 35, y));
+    items.push(item(items.length, labels[row]!, 35, y));
     markets.forEach((_, index) => {
       const x = 116 + index * 48;
       items.push(item(items.length, `${100 + row} -`, x, y), item(items.length + 1, String(120 + row), x + 22, y));
@@ -295,8 +370,51 @@ function hartiItems(): TextItem[] {
   return items;
 }
 
+function hartiMinMaxItems(): TextItem[] {
+  const items: TextItem[] = [
+    item(0, "Vegetable wholesale price in main markets on 16/08/2026 (Rs./kg)", 200, 720),
+    item(1, "Serial", 50, 700),
+    item(2, "Item", 90, 700),
+  ];
+  for (let market = 0; market < 10; market += 1) {
+    const x = 160 + market * 60;
+    items.push(item(items.length, "Min", x, 688), item(items.length + 1, "Max", x + 22, 688));
+  }
+  items.push(item(items.length, "1", 60, 670), item(items.length + 1, "Beans", 90, 670));
+  for (let market = 0; market < 10; market += 1) {
+    const x = 160 + market * 60;
+    items.push(item(items.length, String(100 + market), x, 670), item(items.length + 1, String(120 + market), x + 22, 670));
+  }
+  items.push(item(items.length, "Meegoda and Veyangoda prices are previous day (15/08/2026)", 50, 650));
+  return items;
+}
+
 function archiveHtml(dates: string[]): string {
   return dates.map((date) => `<a href="assets/pdf/food_price/daily/eng/2026/August/daily_${date}.pdf">PDF</a>`).join("");
+}
+
+function memoryArchive(): ArchiveStorage {
+  const objects = new Map<string, { bytes: Uint8Array; metadata: Record<string, string>; lastModified: string }>();
+  return {
+    bucket: "fixture-pdfs",
+    list: async () => new Map(
+      [...objects].map(([key, object]) => [key, {
+        key,
+        etag: createHash("md5").update(object.bytes).digest("hex"),
+        size: object.bytes.byteLength,
+        lastModified: object.lastModified,
+        customMetadata: object.metadata,
+      }]),
+    ),
+    upload: async (key, _filename, bytes, metadata) => {
+      objects.set(key, { bytes, metadata, lastModified: new Date().toISOString() });
+    },
+    download: async (key) => {
+      const object = objects.get(key);
+      if (!object) throw new Error("R2_HTTP_404");
+      return object.bytes;
+    },
+  };
 }
 
 function pdfInspection(overrides: Partial<PdfInspection> = {}): PdfInspection {

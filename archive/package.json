@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "exports": {
+    "./cloudflare-api": "./src/cloudflare-api.ts"
+  },
   "scripts": {
     "cli": "node src/cli.ts",
     "deploy": "wrangler deploy",

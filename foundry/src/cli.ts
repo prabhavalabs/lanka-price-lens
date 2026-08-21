@@ -4,20 +4,20 @@ import { resolve } from "node:path";
 import { openOperationalDatabase } from "./db.ts";
 import { canonicalizeRun } from "./mapping.ts";
 import { readMappingBundle, readSourceManifest } from "./manifest.ts";
-import { runIngestion } from "./pipeline.ts";
+import { runSourceSync } from "./pipeline.ts";
 import { buildRelease } from "./release.ts";
 
 const [command, ...arguments_] = process.argv.slice(2);
 
 if (command === "hash-password") {
   const password = arguments_[0];
-  if (!password || password.length < 12) throw new Error("Password must contain at least 12 characters");
+  if (!password || password.length < 8) throw new Error("Password must contain at least 8 characters");
   const salt = randomBytes(16).toString("hex");
   console.log(`scrypt$${salt}$${scryptSync(password, salt, 64).toString("hex")}`);
 } else if (command === "init") {
   openOperationalDatabase(databasePath()).close();
   console.log(`Initialized ${databasePath()}`);
-} else if (command === "ingest") {
+} else if (command === "sync" || command === "ingest") {
   const manifestPath = valueOf("--manifest") ?? process.env.LPL_SOURCE_MANIFEST_PATH ?? resolve(process.cwd(), "../data/manifests/harti_daily_food_prices.json");
   const manifest = await readSourceManifest(manifestPath);
   const database = openOperationalDatabase(databasePath());
@@ -26,8 +26,15 @@ if (command === "hash-password") {
     const from = dateValue("--from");
     const to = dateValue("--to");
     if (from && to && from > to) throw new Error("--from must not be later than --to");
-    const result = await runIngestion(database, manifest, { trigger, from, to });
+    const result = await runSourceSync(database, manifest, { trigger, from, to });
     console.log(JSON.stringify(result));
+    if (result.processingRunIds.length) {
+      const placeholders = result.processingRunIds.map(() => "?").join(",");
+      const failed = database
+        .prepare(`SELECT COUNT(*) AS count FROM ingest_run WHERE id IN (${placeholders}) AND status != 'succeeded'`)
+        .get(...result.processingRunIds) as { count: number };
+      if (failed.count) process.exitCode = 1;
+    }
   } finally {
     database.close();
   }
@@ -59,7 +66,7 @@ if (command === "hash-password") {
     database.close();
   }
 } else {
-  console.error("Usage: foundry <init|ingest|canonicalize|release build|hash-password> [options]");
+  console.error("Usage: foundry <init|sync|ingest|canonicalize|release build|hash-password> [options]");
   process.exitCode = 1;
 }
 
