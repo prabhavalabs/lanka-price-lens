@@ -1,5 +1,5 @@
 [Unit]
-Description=Run Lanka PriceLens daily incremental source ingestion
+Description=Run Lanka PriceLens daily source synchronisation workflow
 
 [Timer]
 OnCalendar=*-*-* 18:00:00 Asia/Colombo

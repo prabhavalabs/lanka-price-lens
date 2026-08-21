@@ -45,8 +45,6 @@ export async function inspectPdf(data: Uint8Array): Promise<{ inspection: PdfIns
     pagesWithColumns: result.pagesWithColumns,
     hasEncodingIssues: result.hasEncodingIssues,
   };
-  if (pagesNeedingOcr.length) return { inspection, items: [] };
-
   // ponytail: uploads are single-owner and size-bounded; use worker_threads if concurrent intake becomes real.
   const items = extractTextWithPositions(buffer)
     .filter((item) => item.itemType === "Text" && item.text.trim())

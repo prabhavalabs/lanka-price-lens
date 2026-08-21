@@ -140,6 +140,9 @@ importers:
       '@firecrawl/pdf-inspector':
         specifier: 1.14.2
         version: 1.14.2
+      '@lanka-pricelens/archive':
+        specifier: workspace:*
+        version: link:../archive
       '@lanka-pricelens/shared':
         specifier: workspace:*
         version: link:../shared

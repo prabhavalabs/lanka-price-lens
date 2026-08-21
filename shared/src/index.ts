@@ -32,15 +32,32 @@ export const runStatuses = [
 ] as const;
 
 export const stageNames = [
+  "check_source",
+  "compare_inventory",
+  "download_new_pdfs",
+  "upload_to_r2",
+  "record_pdf_metadata",
+  "retrieve_pdf",
+  "parse_pdf",
+  "extract_data",
+  "validate_data",
+  "insert_data",
+  "crawl",
+  "download",
+  "process",
+  "store",
   "rights",
   "discover",
   "fetch",
   "extract",
   "parse",
   "map",
+  "canonicalize",
   "validate",
   "release",
 ] as const;
+
+export const workflowNames = ["source_sync", "pdf_processing", "legacy_ingestion"] as const;
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected YYYY-MM-DD");
 
@@ -89,6 +106,7 @@ export type RightsStatus = (typeof rightsStatuses)[number];
 export type SourceState = (typeof sourceStates)[number];
 export type RunStatus = (typeof runStatuses)[number];
 export type StageName = (typeof stageNames)[number];
+export type WorkflowName = (typeof workflowNames)[number];
 
 export type ApiEnvelope<T> = {
   success: boolean;

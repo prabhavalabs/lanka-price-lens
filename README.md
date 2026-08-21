@@ -4,8 +4,8 @@ Open, provenance-rich infrastructure for Sri Lankan price observations.
 
 The repository is backend-first:
 
-- `archive/` stores raw source PDFs in private R2 and collects daily updates;
-- `foundry/` discovers, fetches, parses, validates, quarantines, and releases;
+- `archive/` provides the private R2 client and resumable historical transfer;
+- `foundry/` owns scheduled source sync plus per-PDF processing, validation, and release;
 - `api/` exposes public health and authenticated operational data;
 - `admin/` is the single-owner operations interface;
 - `shared/` contains the source and API contracts;

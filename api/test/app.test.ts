@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { scryptSync } from "node:crypto";
 import test from "node:test";
 
-import { openOperationalDatabase, startRun, syncSource } from "@lanka-pricelens/foundry/db";
+import { finishRun, openOperationalDatabase, startRun, syncSource } from "@lanka-pricelens/foundry/db";
 import { sourceManifestSchema } from "@lanka-pricelens/shared";
 
 import { createApp } from "../src/app.ts";
@@ -81,6 +81,50 @@ test("owner ingestion rejects cross-origin requests and overlapping runs", async
     });
     assert.equal(overlap.status, 409);
     assert.equal(((await overlap.json()) as { payload: { id: string } }).payload.id, active.id);
+  } finally {
+    database.close();
+  }
+});
+
+test("admin tables paginate, search, and filter on the server", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    seedAdminUser(database, "owner@example.com", passwordHash);
+    syncSource(database, manifest);
+    const insertPublication = database.prepare(
+      `INSERT INTO source_publication (
+        id, source_id, source_publication_key, title, published_at, landing_url,
+        download_url, status, first_seen_at, last_seen_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, 'discovered', ?, ?)`,
+    );
+    for (let index = 1; index <= 5; index += 1) {
+      const date = `2026-01-0${index}T00:00:00.000Z`;
+      insertPublication.run(`publication_${index}`, manifest.id, `key_${index}`, `Archive ${index}.pdf`, date, manifest.landing_url, `https://example.com/${index}.pdf`, date, date);
+    }
+    for (const trigger of ["manual", "scheduled"] as const) {
+      const run = startRun(database, { sourceId: manifest.id, trigger });
+      finishRun(database, run.id, trigger === "manual" ? "succeeded" : "failed");
+    }
+    const app = createApp(database, manifest);
+    const cookie = await loginCookie(app);
+
+    const page = (await (await app.request("/v1/admin/knowledge-base?page=2&pageSize=2", { headers: { cookie } })).json()) as { payload: { items: Array<{ title: string }>; page: number; pages: number; total: number } };
+    assert.deepEqual({ page: page.payload.page, pages: page.payload.pages, total: page.payload.total }, { page: 2, pages: 3, total: 5 });
+    assert.deepEqual(page.payload.items.map((item) => item.title), ["Archive 3.pdf", "Archive 2.pdf"]);
+
+    const defaults = (await (await app.request("/v1/admin/knowledge-base", { headers: { cookie } })).json()) as { payload: { pageSize: number } };
+    assert.equal(defaults.payload.pageSize, 10);
+
+    const searched = (await (await app.request("/v1/admin/knowledge-base?page=1&pageSize=20&search=Archive%204&status=discovered", { headers: { cookie } })).json()) as { payload: { items: Array<{ title: string }>; total: number } };
+    assert.equal(searched.payload.total, 1);
+    assert.equal(searched.payload.items[0]?.title, "Archive 4.pdf");
+
+    const runs = (await (await app.request("/v1/admin/runs?page=1&pageSize=20&search=manual&status=succeeded", { headers: { cookie } })).json()) as { payload: { items: Array<{ trigger: string }>; total: number } };
+    assert.equal(runs.payload.total, 1);
+    assert.equal(runs.payload.items[0]?.trigger, "manual");
+
+    const sources = (await (await app.request("/v1/admin/sources?page=1&pageSize=20&search=Test&status=blocked", { headers: { cookie } })).json()) as { payload: { total: number } };
+    assert.equal(sources.payload.total, 1);
   } finally {
     database.close();
   }

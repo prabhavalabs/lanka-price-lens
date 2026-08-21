@@ -1,7 +1,8 @@
 # PDF intake
 
-Both scheduled downloads and owner uploads use the same SQLite run, stage,
-artifact, extraction, parsing, and quarantine records.
+Scheduled collection uses two linked SQLite workflows. Source synchronisation
+archives new PDFs and records metadata; each new archive record triggers its own
+PDF-processing workflow.
 
 ## Scheduled collection
 
@@ -11,17 +12,18 @@ latest publication. The VPS timer runs once daily at 18:00 Asia/Colombo with a
 randomized delay so weekend publications and VPS downtime are handled without
 polling the source repeatedly.
 
-The owner dashboard's **Ingest full archive** action starts a monitored,
-idempotent background import of every unprocessed archive PDF. The command-line
-equivalent can be date-bounded:
+The owner dashboard can rerun either workflow. PDF-processing steps are
+independently retryable when their upstream step succeeded and the required
+durable input is still available. Retrying an earlier step blocks its downstream
+steps until they are rerun. The command-line sync can be date-bounded:
 
 ```bash
-corepack pnpm foundry ingest --backfill --from YYYY-MM-DD --to YYYY-MM-DD
+corepack pnpm foundry sync --backfill --from YYYY-MM-DD --to YYYY-MM-DD
 ```
 
 The source manifest controls request spacing, retry count, and whether network
-collection may run. Re-running a completed range does not parse completed
-artifacts again.
+collection may run. Re-running a completed range does not redownload objects
+already present in R2.
 
 ## Manual inspection
 

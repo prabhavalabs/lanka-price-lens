@@ -4,7 +4,15 @@ import { basename, resolve } from "node:path";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { openOperationalDatabase, type OperationalDatabase } from "@lanka-pricelens/foundry/db";
 import { ingestManualPdf, maximumPdfBytes } from "@lanka-pricelens/foundry/intake";
-import { runIngestion } from "@lanka-pricelens/foundry/pipeline";
+import {
+  processingStages,
+  retryProcessingStage,
+  runPdfProcessing,
+  runSourceSync,
+  workflowRetryState,
+  workflowSnapshot,
+  type ProcessingStage,
+} from "@lanka-pricelens/foundry/pipeline";
 import { canPublishSource, sourceManifestSchema, type ApiEnvelope, type SourceManifest } from "@lanka-pricelens/shared";
 import { Hono, type Context, type Next } from "hono";
 import { bodyLimit } from "hono/body-limit";
@@ -81,7 +89,7 @@ export function createApp(
       .prepare(
         `SELECT
           (SELECT COUNT(*) FROM source) AS sources,
-          (SELECT COUNT(*) FROM source_artifact) AS pdfs,
+          (SELECT COUNT(*) FROM source_publication) AS pdfs,
           (SELECT COUNT(*) FROM ingest_run WHERE status = 'running') AS running,
           (SELECT COUNT(*) FROM ingest_run WHERE status = 'failed') AS failed,
           (SELECT COUNT(*) FROM quarantine WHERE status = 'open') AS quarantined`,
@@ -89,37 +97,39 @@ export function createApp(
       .get();
     return context.json(envelope(context.get("requestId"), counts));
   });
-  app.get("/v1/admin/sources", (context) =>
-    context.json(
-      envelope(
-        context.get("requestId"),
-        database
-          .prepare(
-            `SELECT id, name, owner, rights_status, review_due_at, enabled, state,
-             last_discovery_at, last_fetch_at, last_parse_at FROM source ORDER BY name`,
-          )
-          .all(),
-      ),
-    ),
-  );
+  app.get("/v1/admin/sources", (context) => {
+    const request = listRequest(context);
+    const where = listWhere(request, ["name", "owner", "rights_status"], "state");
+    const total = (database.prepare(`SELECT COUNT(*) AS count FROM source${where.sql}`).get(...where.values) as { count: number }).count;
+    const page = pageRequest(request, total);
+    const items = database
+      .prepare(
+        `SELECT id, name, owner, rights_status, review_due_at, enabled, state,
+         last_discovery_at, last_fetch_at, last_parse_at FROM source${where.sql}
+         ORDER BY name LIMIT ? OFFSET ?`,
+      )
+      .all(...where.values, page.pageSize, page.offset);
+    return context.json(envelope(context.get("requestId"), { items, ...page }));
+  });
   app.get("/v1/admin/runs", (context) => {
-    const { page, pageSize, offset } = pageRequest(context);
-    const total = (database.prepare("SELECT COUNT(*) AS count FROM ingest_run").get() as { count: number }).count;
+    const request = listRequest(context);
+    const where = listWhere(request, ["workflow", "trigger", "status", "error_code", "error_message"], "status");
+    const total = (database.prepare(`SELECT COUNT(*) AS count FROM ingest_run${where.sql}`).get(...where.values) as { count: number }).count;
+    const page = pageRequest(request, total);
     return context.json(
       envelope(
         context.get("requestId"),
         {
           items: database
             .prepare(
-              `SELECT id, source_id, trigger, status, started_at, finished_at,
+              `SELECT id, source_id, workflow, parent_run_id, archive_id, artifact_id,
+               trigger, status, started_at, finished_at,
                discovered_count, fetched_count, parsed_count, quarantined_count,
-               error_code, error_message FROM ingest_run ORDER BY started_at DESC LIMIT ? OFFSET ?`,
+               error_code, error_message FROM ingest_run${where.sql}
+               ORDER BY started_at DESC LIMIT ? OFFSET ?`,
             )
-            .all(pageSize, offset),
-          page,
-          pageSize,
-          total,
-          pages: Math.max(1, Math.ceil(total / pageSize)),
+            .all(...where.values, page.pageSize, page.offset),
+          ...page,
         },
       ),
     );
@@ -127,8 +137,54 @@ export function createApp(
   app.get("/v1/admin/runs/:id", (context) => {
     const run = database.prepare("SELECT * FROM ingest_run WHERE id = ?").get(context.req.param("id"));
     if (!run) return context.json(envelope(context.get("requestId"), null, false, "Run not found"), 404);
-    const stages = database.prepare("SELECT * FROM run_stage WHERE run_id = ? ORDER BY id").all(context.req.param("id"));
-    return context.json(envelope(context.get("requestId"), { run, stages }));
+    const stages = workflowSnapshot(database, context.req.param("id"));
+    const children = database
+      .prepare(
+        `SELECT id, source_id, workflow, parent_run_id, archive_id, artifact_id, trigger, status,
+         started_at, finished_at, discovered_count, fetched_count, extracted_count, parsed_count,
+         quarantined_count, error_code, error_message
+         FROM ingest_run WHERE parent_run_id = ? ORDER BY started_at`,
+      )
+      .all(context.req.param("id"));
+    return context.json(envelope(context.get("requestId"), { run, stages, children }));
+  });
+  app.post("/v1/admin/runs/:id/stages/:stage/retry", (context) => {
+    if (!sourceManifest) return context.json(envelope(context.get("requestId"), null, false, "Automated intake is not configured"), 503);
+    const stage = context.req.param("stage") as ProcessingStage;
+    if (!processingStages.includes(stage)) return context.json(envelope(context.get("requestId"), null, false, "Unknown PDF-processing step"), 404);
+    const run = database.prepare("SELECT id, source_id, workflow FROM ingest_run WHERE id = ?").get(context.req.param("id")) as
+      | { id: string; source_id: string; workflow: string }
+      | undefined;
+    if (!run) return context.json(envelope(context.get("requestId"), null, false, "Run not found"), 404);
+    if (run.source_id !== sourceManifest.id) return context.json(envelope(context.get("requestId"), null, false, "Run source is not configured"), 409);
+    if (run.workflow !== "pdf_processing") return context.json(envelope(context.get("requestId"), null, false, "Only PDF-processing steps can be retried"), 409);
+    const retry = workflowRetryState(database, run.id, stage);
+    if (!retry.canRetry) return context.json(envelope(context.get("requestId"), retry, false, retry.reason ?? "Step cannot be retried"), 409);
+
+    const task = retryProcessingStage(database, sourceManifest, run.id, stage);
+    void task.catch(() => undefined);
+    return context.json(envelope(context.get("requestId"), { run_id: run.id, stage }, true, "Step retry started"), 202);
+  });
+  app.post("/v1/admin/runs/:id/rerun", (context) => {
+    if (!sourceManifest) return context.json(envelope(context.get("requestId"), null, false, "Automated intake is not configured"), 503);
+    const previous = database
+      .prepare("SELECT id, source_id, workflow, archive_id FROM ingest_run WHERE id = ?")
+      .get(context.req.param("id")) as { id: string; source_id: string; workflow: string; archive_id: string | null } | undefined;
+    if (!previous) return context.json(envelope(context.get("requestId"), null, false, "Run not found"), 404);
+    if (previous.source_id !== sourceManifest.id) return context.json(envelope(context.get("requestId"), null, false, "Run source is not configured"), 409);
+    const task = previous.workflow === "pdf_processing" && previous.archive_id
+      ? runPdfProcessing(database, sourceManifest, previous.archive_id, { trigger: "manual" })
+      : runSourceSync(database, sourceManifest, { trigger: "manual" });
+    const run = database
+      .prepare(
+        previous.workflow === "pdf_processing"
+          ? "SELECT id, workflow, status FROM ingest_run WHERE workflow = 'pdf_processing' AND archive_id = ? ORDER BY started_at DESC LIMIT 1"
+          : "SELECT id, workflow, status FROM ingest_run WHERE workflow = 'source_sync' ORDER BY started_at DESC LIMIT 1",
+      )
+      .get(...(previous.workflow === "pdf_processing" ? [previous.archive_id] : []));
+    void task.catch(() => undefined);
+    if (!run) return context.json(envelope(context.get("requestId"), null, false, "Workflow rerun did not start"), 500);
+    return context.json(envelope(context.get("requestId"), run, true, "Workflow rerun started"), 202);
   });
   app.get("/v1/admin/quarantine", (context) =>
     context.json(
@@ -157,41 +213,62 @@ export function createApp(
       ),
     ),
   );
-  app.get("/v1/admin/uploads", (context) => {
-    const { page, pageSize, offset } = pageRequest(context);
-    const total = (database.prepare("SELECT COUNT(*) AS count FROM source_artifact WHERE original_filename IS NOT NULL").get() as { count: number }).count;
+  const listKnowledgeBase = (context: Context<AppBindings>) => {
+    const request = listRequest(context);
+    const latestArtifact = `LEFT JOIN source_artifact artifact ON artifact.id = (
+      SELECT candidate.id FROM source_artifact candidate
+      WHERE candidate.publication_id = publication.id
+      ORDER BY candidate.fetched_at DESC, candidate.id DESC LIMIT 1
+    )`;
+    const archivedPdf = "LEFT JOIN archived_pdf archive ON archive.publication_id = publication.id";
+    const where = listWhere(
+      request,
+      ["publication.title", "publication.download_url", "archive.r2_uri", "artifact.original_filename", "artifact.sha256", "archive.sha256"],
+      "COALESCE(artifact.status, archive.status, publication.status)",
+    );
+    const total = (database
+      .prepare(`SELECT COUNT(*) AS count FROM source_publication publication ${latestArtifact} ${archivedPdf}${where.sql}`)
+      .get(...where.values) as { count: number }).count;
+    const page = pageRequest(request, total);
     const items = database
       .prepare(
-        `SELECT artifact.id AS artifact_id, artifact.run_id, artifact.original_filename,
-         artifact.fetched_at, artifact.byte_size, artifact.sha256, artifact.status,
+        `SELECT publication.id AS publication_id, publication.title,
+         publication.published_at, publication.observed_from, publication.observed_to,
+         publication.download_url, archive.id AS archive_id, archive.r2_uri, archive.r2_key,
+         artifact.id AS artifact_id, artifact.run_id,
+         COALESCE(artifact.original_filename, publication.title) AS original_filename,
+         COALESCE(artifact.fetched_at, archive.uploaded_at) AS fetched_at,
+         COALESCE(artifact.byte_size, archive.byte_size) AS byte_size,
+         COALESCE(artifact.sha256, archive.sha256) AS sha256,
+         COALESCE(artifact.status, archive.status, publication.status) AS status,
          json_extract(artifact.inspection_json, '$.pdfType') AS pdf_type,
          json_extract(artifact.inspection_json, '$.pageCount') AS page_count,
          json_extract(artifact.inspection_json, '$.confidence') AS confidence,
          COALESCE(json_array_length(artifact.inspection_json, '$.pagesNeedingOcr'), 0) AS ocr_page_count,
-         run.status AS run_status,
-         (SELECT COUNT(*) FROM staging_observation observation WHERE observation.artifact_id = artifact.id) AS parsed_count,
-         run.quarantined_count
-         FROM source_artifact artifact
-         LEFT JOIN ingest_run run ON run.id = artifact.run_id
-         WHERE artifact.original_filename IS NOT NULL
-         ORDER BY artifact.fetched_at DESC LIMIT ? OFFSET ?`,
+         COALESCE((SELECT COUNT(*) FROM staging_observation observation WHERE observation.artifact_id = artifact.id), 0) AS parsed_count,
+         COALESCE((SELECT COUNT(*) FROM quarantine issue WHERE issue.artifact_id = artifact.id AND issue.status = 'open'), 0) AS quarantined_count
+         FROM source_publication publication ${latestArtifact} ${archivedPdf}${where.sql}
+         ORDER BY COALESCE(publication.published_at, publication.first_seen_at) DESC, publication.title
+         LIMIT ? OFFSET ?`,
       )
-      .all(pageSize, offset);
-    return context.json(envelope(context.get("requestId"), { items, page, pageSize, total, pages: Math.max(1, Math.ceil(total / pageSize)) }));
-  });
+      .all(...where.values, page.pageSize, page.offset);
+    return context.json(envelope(context.get("requestId"), { items, ...page }));
+  };
+  app.get("/v1/admin/knowledge-base", listKnowledgeBase);
+  app.get("/v1/admin/uploads", listKnowledgeBase);
   app.post("/v1/admin/ingestion/:mode", (context) => {
     if (!sourceManifest) return context.json(envelope(context.get("requestId"), null, false, "Automated intake is not configured"), 503);
     if (!canPublishSource(sourceManifest)) return context.json(envelope(context.get("requestId"), null, false, "Source permission is not current"), 403);
     const mode = context.req.param("mode");
     if (mode !== "backfill" && mode !== "sync") return context.json(envelope(context.get("requestId"), null, false, "Unknown ingestion mode"), 404);
     const active = database
-      .prepare("SELECT id, trigger, status FROM ingest_run WHERE source_id = ? AND status = 'running' LIMIT 1")
+      .prepare("SELECT id, trigger, status FROM ingest_run WHERE source_id = ? AND workflow != 'pdf_processing' AND status = 'running' LIMIT 1")
       .get(sourceManifest.id) as { id: string; trigger: string; status: string } | undefined;
     if (active) return context.json(envelope(context.get("requestId"), active, false, "Another source run is active"), 409);
 
-    const task = runIngestion(database, sourceManifest, { trigger: mode === "backfill" ? "backfill" : "scheduled" });
+    const task = runSourceSync(database, sourceManifest, { trigger: mode === "backfill" ? "backfill" : "manual" });
     const run = database
-      .prepare("SELECT id, trigger, status FROM ingest_run WHERE source_id = ? ORDER BY started_at DESC LIMIT 1")
+      .prepare("SELECT id, workflow, trigger, status FROM ingest_run WHERE source_id = ? AND workflow = 'source_sync' ORDER BY started_at DESC LIMIT 1")
       .get(sourceManifest.id) as { id: string; trigger: string; status: string } | undefined;
     void task.catch(() => undefined);
     if (!run) return context.json(envelope(context.get("requestId"), null, false, "Ingestion did not start"), 500);
@@ -267,12 +344,38 @@ function sameOrigin(context: Context): boolean {
   return !origin || origin === new URL(context.req.url).origin;
 }
 
-function pageRequest(context: Context): { page: number; pageSize: number; offset: number } {
+type ListRequest = { requestedPage: number; pageSize: number; search: string; status: string };
+
+function listRequest(context: Context): ListRequest {
   const requestedPage = Number(context.req.query("page") ?? 1);
-  const requestedSize = Number(context.req.query("pageSize") ?? 20);
-  const page = Number.isInteger(requestedPage) ? Math.max(requestedPage, 1) : 1;
-  const pageSize = Number.isInteger(requestedSize) ? Math.min(Math.max(requestedSize, 1), 100) : 20;
-  return { page, pageSize, offset: (page - 1) * pageSize };
+  const requestedSize = Number(context.req.query("pageSize") ?? 10);
+  const pageSize = Number.isInteger(requestedSize) ? Math.min(Math.max(requestedSize, 1), 100) : 10;
+  return {
+    requestedPage: Number.isInteger(requestedPage) ? Math.max(requestedPage, 1) : 1,
+    pageSize,
+    search: (context.req.query("search") ?? "").trim().slice(0, 100),
+    status: (context.req.query("status") ?? "").trim().slice(0, 50),
+  };
+}
+
+function listWhere(request: ListRequest, searchColumns: string[], statusColumn: string): { sql: string; values: string[] } {
+  const clauses: string[] = [];
+  const values: string[] = [];
+  if (request.search) {
+    clauses.push(`(${searchColumns.map((column) => `${column} LIKE ? ESCAPE '\\' COLLATE NOCASE`).join(" OR ")})`);
+    values.push(...searchColumns.map(() => `%${request.search.replaceAll("\\", "\\\\").replaceAll("%", "\\%").replaceAll("_", "\\_")}%`));
+  }
+  if (request.status) {
+    clauses.push(`${statusColumn} = ?`);
+    values.push(request.status);
+  }
+  return { sql: clauses.length ? ` WHERE ${clauses.join(" AND ")}` : "", values };
+}
+
+function pageRequest(request: ListRequest, total: number): { page: number; pageSize: number; offset: number; total: number; pages: number } {
+  const pages = Math.max(1, Math.ceil(total / request.pageSize));
+  const page = Math.min(request.requestedPage, pages);
+  return { page, pageSize: request.pageSize, offset: (page - 1) * request.pageSize, total, pages };
 }
 
 function envelope<T>(requestId: string, payload: T, success = true, message = "OK"): ApiEnvelope<T> {
