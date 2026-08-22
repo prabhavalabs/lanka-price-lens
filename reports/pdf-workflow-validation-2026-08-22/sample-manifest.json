@@ -1,0 +1,1092 @@
+{
+  "batch_id": "pdf-workflow-validation-2026-08-22",
+  "selected_at": "2026-08-22T17:26:38.826Z",
+  "window": {
+    "from": "2026-04-01",
+    "to": "2026-08-22"
+  },
+  "sampling_method": "SQLite ORDER BY random(), excluding previously successful PDF-processing runs",
+  "sample_size": 120,
+  "documents": [
+    {
+      "publication_id": "publication_5f7b56aa1972c0a8a8cd6f9c",
+      "title": "Vegetables Wholesale Prices (2026.04.05).pdf",
+      "published_date": "2026-04-05",
+      "archive_id": "archive_5f7b56aa1972c0a8a8cd6f9c",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-05/Vegetables-Wholesale-Prices-(2026.04.05).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.05).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_b7f03b8fa89f845616ec1d19",
+      "title": "Vegetable Pricenew ex1(2026.07.17).pdf",
+      "published_date": "2026-07-17",
+      "archive_id": "archive_b7f03b8fa89f845616ec1d19",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-17/Vegetable-Pricenew-ex1(2026.07.17).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.17).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_4b1ed7e89f67e437a11ef753",
+      "title": "Vegetable Pricenew ex1(2026.07.21).pdf",
+      "published_date": "2026-07-21",
+      "archive_id": "archive_4b1ed7e89f67e437a11ef753",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-21/Vegetable-Pricenew-ex1(2026.07.21).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.21).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_6084931ae9f026aa30946d7d",
+      "title": "Vegetable Pricenew ex1(2026.06.22).pdf",
+      "published_date": "2026-06-22",
+      "archive_id": "archive_6084931ae9f026aa30946d7d",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-22/Vegetable-Pricenew-ex1(2026.06.22).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.22).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_c53136238fa7902e971b381d",
+      "title": "Vegetables Wholesale Prices (2026.06.06).pdf",
+      "published_date": "2026-06-06",
+      "archive_id": "archive_c53136238fa7902e971b381d",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-06/Vegetables-Wholesale-Prices-(2026.06.06).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetables%20Wholesale%20Prices%20(2026.06.06).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_7146f7880b7083e3b41661fd",
+      "title": "Vegetable Pricenew ex1(2026.05.22).pdf",
+      "published_date": "2026-05-22",
+      "archive_id": "archive_7146f7880b7083e3b41661fd",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-22/Vegetable-Pricenew-ex1(2026.05.22).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.22).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_66df0b59e16503b314cb2197",
+      "title": "Vegetable Pricenew ex1(2026.06.25).pdf",
+      "published_date": "2026-06-25",
+      "archive_id": "archive_66df0b59e16503b314cb2197",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-25/Vegetable-Pricenew-ex1(2026.06.25).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.25).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_4ce0aab311e66750a9b7ca74",
+      "title": "Vegetable Pricenew ex1(2026.07.23).pdf",
+      "published_date": "2026-07-23",
+      "archive_id": "archive_4ce0aab311e66750a9b7ca74",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-23/Vegetable-Pricenew-ex1(2026.07.23).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.23).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_b0053d2a5e8c3f905ecaf336",
+      "title": "Vegetables Wholesale Prices (2026.08.16).pdf",
+      "published_date": "2026-08-16",
+      "archive_id": "archive_b0053d2a5e8c3f905ecaf336",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-16/Vegetables-Wholesale-Prices-(2026.08.16).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetables%20Wholesale%20Prices%20(2026.08.16).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_0d72657e21ac692ab9ea1fbe",
+      "title": "Vegetable Pricenew ex1(2026.04.30).pdf",
+      "published_date": "2026-04-30",
+      "archive_id": "archive_0d72657e21ac692ab9ea1fbe",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-30/Vegetable-Pricenew-ex1(2026.04.30).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.30).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_ffbf7e26804e6ab950bac762",
+      "title": "Vegetables Wholesale Prices (2026.06.28).pdf",
+      "published_date": "2026-06-28",
+      "archive_id": "archive_ffbf7e26804e6ab950bac762",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-28/Vegetables-Wholesale-Prices-(2026.06.28).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetables%20Wholesale%20Prices%20(2026.06.28).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_bb901d29e7375091072145c9",
+      "title": "Vegetable Pricenew ex1(2026.07.09).pdf",
+      "published_date": "2026-07-09",
+      "archive_id": "archive_bb901d29e7375091072145c9",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-09/Vegetable-Pricenew-ex1(2026.07.09).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.09).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_6e037393dcc2ff277aa0c191",
+      "title": "Vegetables Wholesale Prices (2026.04.25).pdf",
+      "published_date": "2026-04-25",
+      "archive_id": "archive_6e037393dcc2ff277aa0c191",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-25/Vegetables-Wholesale-Prices-(2026.04.25).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.25).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_d00b957f2a263ede2e10224f",
+      "title": "Vegetable Pricenew ex1(2026.04.28).pdf",
+      "published_date": "2026-04-28",
+      "archive_id": "archive_d00b957f2a263ede2e10224f",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-28/Vegetable-Pricenew-ex1(2026.04.28).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.28).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_61f9002d8cbabf3e87bcf242",
+      "title": "Vegetable Pricenew ex1(2026.04.07).pdf",
+      "published_date": "2026-04-07",
+      "archive_id": "archive_61f9002d8cbabf3e87bcf242",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-07/Vegetable-Pricenew-ex1(2026.04.07).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.07).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_62097c8e8b49d9b4c04ae252",
+      "title": "Vegetables Wholesale prices(2026.07.25).pdf",
+      "published_date": "2026-07-25",
+      "archive_id": "archive_62097c8e8b49d9b4c04ae252",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-25/Vegetables-Wholesale-prices(2026.07.25).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetables%20Wholesale%20prices(2026.07.25).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_3af0741e389601aef80d4270",
+      "title": "Vegetable Pricenew ex1(2026.05.07).pdf",
+      "published_date": "2026-05-07",
+      "archive_id": "archive_3af0741e389601aef80d4270",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-07/Vegetable-Pricenew-ex1(2026.05.07).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.07).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_c8d5c6c08bc6fe19a3717cde",
+      "title": "Vegetable Pricenew ex1(2026.07.27).pdf",
+      "published_date": "2026-07-27",
+      "archive_id": "archive_c8d5c6c08bc6fe19a3717cde",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-27/Vegetable-Pricenew-ex1(2026.07.27).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.27).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_74869a6b4432712396ea2b23",
+      "title": "Vegetable Pricenew ex1(2026.04.23).pdf",
+      "published_date": "2026-04-23",
+      "archive_id": "archive_74869a6b4432712396ea2b23",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-23/Vegetable-Pricenew-ex1(2026.04.23).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.23).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_77c78019a0d57944418e9b98",
+      "title": "Vegetables Wholesale Prices (2026.04.04).pdf",
+      "published_date": "2026-04-04",
+      "archive_id": "archive_77c78019a0d57944418e9b98",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-04/Vegetables-Wholesale-Prices-(2026.04.04).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.04).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_5f82013623c39089e87198aa",
+      "title": "Vegetable Pricenew ex1(2026.05.08).pdf",
+      "published_date": "2026-05-08",
+      "archive_id": "archive_5f82013623c39089e87198aa",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-08/Vegetable-Pricenew-ex1(2026.05.08).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.08).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_0277d819217e41988fe442cd",
+      "title": "Vegetable Pricenew ex1(2026.08.21).pdf",
+      "published_date": "2026-08-21",
+      "archive_id": "archive_0277d819217e41988fe442cd",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-21/Vegetable-Pricenew-ex1(2026.08.21).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.21).pdf",
+      "archive_sha256": "30a275c4d9774f81fc5c94b97191016862bdf94a312a446f9a1adaa4ce1c8b2f"
+    },
+    {
+      "publication_id": "publication_142c9310178d4cd6b7a0a052",
+      "title": "Vegetables Wholesale Prices (2026.08.02).pdf",
+      "published_date": "2026-08-02",
+      "archive_id": "archive_142c9310178d4cd6b7a0a052",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-02/Vegetables-Wholesale-Prices-(2026.08.02).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetables%20Wholesale%20Prices%20(2026.08.02).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_7b98d5057ef65c8dee24c718",
+      "title": "Vegetable Pricenew ex1(2026.06.10).pdf",
+      "published_date": "2026-06-10",
+      "archive_id": "archive_7b98d5057ef65c8dee24c718",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-10/Vegetable-Pricenew-ex1(2026.06.10).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.10).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_2a3f6dfce8c1bdf77325a065",
+      "title": "Vegetable Pricenew ex1(2026.05.29).pdf",
+      "published_date": "2026-05-29",
+      "archive_id": "archive_2a3f6dfce8c1bdf77325a065",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-29/Vegetable-Pricenew-ex1(2026.05.29).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.05.29).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_fd9d507a9bc5d3922171357e",
+      "title": "Vegetable Pricenew ex1(2026.08.11).pdf",
+      "published_date": "2026-08-11",
+      "archive_id": "archive_fd9d507a9bc5d3922171357e",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-11/Vegetable-Pricenew-ex1(2026.08.11).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.11).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_5450488fbeacb6c882bfb1af",
+      "title": "Vegetable Pricenew ex1(2026.05.12).pdf",
+      "published_date": "2026-05-12",
+      "archive_id": "archive_5450488fbeacb6c882bfb1af",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-12/Vegetable-Pricenew-ex1(2026.05.12).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.12).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_560985790c47843000f656df",
+      "title": "Vegetable Pricenew ex1(2026.08.17).pdf",
+      "published_date": "2026-08-17",
+      "archive_id": "archive_560985790c47843000f656df",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-17/Vegetable-Pricenew-ex1(2026.08.17).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.17).pdf",
+      "archive_sha256": "01b7d77ac3f18bd2b3b44257d6f6004e3403c424d03ecdf7f2556593518edfae"
+    },
+    {
+      "publication_id": "publication_a364f1800489cc469bbcb0e5",
+      "title": "Vegetables Wholesale Prices (2026.05.10).pdf",
+      "published_date": "2026-05-10",
+      "archive_id": "archive_a364f1800489cc469bbcb0e5",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-10/Vegetables-Wholesale-Prices-(2026.05.10).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetables%20Wholesale%20Prices%20(2026.05.10).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_4ca9a1d4eade66a08b62fafd",
+      "title": "Vegetables Wholesale Prices (2026.04.16).pdf",
+      "published_date": "2026-04-16",
+      "archive_id": "archive_4ca9a1d4eade66a08b62fafd",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-16/Vegetables-Wholesale-Prices-(2026.04.16).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.16).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_dd42a47ced0e7a1a736893dc",
+      "title": "Vegetables Wholesale Prices (2026.07.04).pdf",
+      "published_date": "2026-07-04",
+      "archive_id": "archive_dd42a47ced0e7a1a736893dc",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-04/Vegetables-Wholesale-Prices-(2026.07.04).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetables%20Wholesale%20Prices%20(2026.07.04).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_aac558bed76d18eeb9fe2da7",
+      "title": "Vegetable Pricenew ex1(2026.06.18).pdf",
+      "published_date": "2026-06-18",
+      "archive_id": "archive_aac558bed76d18eeb9fe2da7",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-18/Vegetable-Pricenew-ex1(2026.06.18).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.18).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_b0bc969c9dac297a8152768a",
+      "title": "Vegetable Pricenew ex1(2026.04.09).pdf",
+      "published_date": "2026-04-09",
+      "archive_id": "archive_b0bc969c9dac297a8152768a",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-09/Vegetable-Pricenew-ex1(2026.04.09).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.09).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_5fa8c659d6f30f836ef03c6b",
+      "title": "Vegetable Pricenew ex1(2026.05.04).pdf",
+      "published_date": "2026-05-04",
+      "archive_id": "archive_5fa8c659d6f30f836ef03c6b",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-04/Vegetable-Pricenew-ex1(2026.05.04).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.04).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_a555abb36d99a6d9ebe10112",
+      "title": "Vegetables Wholesale Prices (2026.05.28).pdf",
+      "published_date": "2026-05-28",
+      "archive_id": "archive_a555abb36d99a6d9ebe10112",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-28/Vegetables-Wholesale-Prices-(2026.05.28).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetables%20Wholesale%20Prices%20(2026.05.28).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_b50da6ea34b4f60468d6d8d4",
+      "title": "Vegetable Pricenew ex1(2026.06.08).pdf",
+      "published_date": "2026-06-08",
+      "archive_id": "archive_b50da6ea34b4f60468d6d8d4",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-08/Vegetable-Pricenew-ex1(2026.06.08).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.08).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_c5b535c8b40c0e70239d21b9",
+      "title": "Vegetable Pricenew ex1(2026.06.26).pdf",
+      "published_date": "2026-06-26",
+      "archive_id": "archive_c5b535c8b40c0e70239d21b9",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-26/Vegetable-Pricenew-ex1(2026.06.26).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.26).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_713259a30029b18861cd6081",
+      "title": "Vegetable Pricenew ex1(2026.06.12).pdf",
+      "published_date": "2026-06-12",
+      "archive_id": "archive_713259a30029b18861cd6081",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-12/Vegetable-Pricenew-ex1(2026.06.12).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.12).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_c16a52b25f69289eac4891b0",
+      "title": "Vegetable Pricenew ex1(2026.07.06).pdf",
+      "published_date": "2026-07-06",
+      "archive_id": "archive_c16a52b25f69289eac4891b0",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-06/Vegetable-Pricenew-ex1(2026.07.06).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.06).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_8fc30fdd2c90e14c52c45be6",
+      "title": "Vegetables Wholesale Prices (2026.04.03).pdf",
+      "published_date": "2026-04-03",
+      "archive_id": "archive_8fc30fdd2c90e14c52c45be6",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-03/Vegetables-Wholesale-Prices-(2026.04.03).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.03).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_26d8f72302fb0be5847e76b4",
+      "title": "Vegetables Wholesale Prices (2026.04.11).pdf",
+      "published_date": "2026-04-11",
+      "archive_id": "archive_26d8f72302fb0be5847e76b4",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-11/Vegetables-Wholesale-Prices-(2026.04.11).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.11).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_89cddcaafe3907a65f71b756",
+      "title": "Vegetables Wholesale Prices (2026.04.17).pdf",
+      "published_date": "2026-04-17",
+      "archive_id": "archive_89cddcaafe3907a65f71b756",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-17/Vegetables-Wholesale-Prices-(2026.04.17).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.17).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_e74fced25d19a7a05a1742f6",
+      "title": "Vegetable Pricenew ex1(2026.05.15).pdf",
+      "published_date": "2026-05-15",
+      "archive_id": "archive_e74fced25d19a7a05a1742f6",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-15/Vegetable-Pricenew-ex1(2026.05.15).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.15).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_fba70875617207b46366afb4",
+      "title": "Vegetable Pricenew ex1(2026.08.04).pdf",
+      "published_date": "2026-08-04",
+      "archive_id": "archive_fba70875617207b46366afb4",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-04/Vegetable-Pricenew-ex1(2026.08.04).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.04).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_a7a60a7b8aed8cd00466635f",
+      "title": "Vegetables Wholesale Prices (2026.05.03).pdf",
+      "published_date": "2026-05-03",
+      "archive_id": "archive_a7a60a7b8aed8cd00466635f",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-03/Vegetables-Wholesale-Prices-(2026.05.03).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetables%20Wholesale%20Prices%20(2026.05.03).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_1cfc447d69eeb0311a1e4341",
+      "title": "Vegetables Wholesale Prices (2026.06.30).pdf",
+      "published_date": "2026-06-30",
+      "archive_id": "archive_1cfc447d69eeb0311a1e4341",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-30/Vegetables-Wholesale-Prices-(2026.06.30).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetables%20Wholesale%20Prices%20(2026.06.30).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_7c7ced363d9756efc40a19ed",
+      "title": "Vegetable Pricenew ex1(2026.04.29).pdf",
+      "published_date": "2026-04-29",
+      "archive_id": "archive_7c7ced363d9756efc40a19ed",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-29/Vegetable-Pricenew-ex1(2026.04.29).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.29).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_444f33ee9b0ca1064dcc3a1a",
+      "title": "Vegetable Pricenew ex1(2026.06.09).pdf",
+      "published_date": "2026-06-09",
+      "archive_id": "archive_444f33ee9b0ca1064dcc3a1a",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-09/Vegetable-Pricenew-ex1(2026.06.09).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.09).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_2c33453d4c17ac2793019070",
+      "title": "Vegetable Pricenew ex1(2026.07.16).pdf",
+      "published_date": "2026-07-16",
+      "archive_id": "archive_2c33453d4c17ac2793019070",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-16/Vegetable-Pricenew-ex1(2026.07.16).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.16).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_0e3fee809d8c1f4c007f8f33",
+      "title": "Vegetable Pricenew ex1(2026.08.13).pdf",
+      "published_date": "2026-08-13",
+      "archive_id": "archive_0e3fee809d8c1f4c007f8f33",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-13/Vegetable-Pricenew-ex1(2026.08.13).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.13).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_1801e96f103efe57aa3cc6c8",
+      "title": "Vegetable Pricenew ex1(2026.05.11).pdf",
+      "published_date": "2026-05-11",
+      "archive_id": "archive_1801e96f103efe57aa3cc6c8",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-11/Vegetable-Pricenew-ex1(2026.05.11).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.11).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_42c428fdec980182ad75c788",
+      "title": "Vegetable Pricenew ex1(2026.08.03).pdf",
+      "published_date": "2026-08-03",
+      "archive_id": "archive_42c428fdec980182ad75c788",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-03/Vegetable-Pricenew-ex1(2026.08.03).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.03).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_01e97a1d255e5b774c15e84c",
+      "title": "Vegetables Wholesale Prices (2026.08.09).pdf",
+      "published_date": "2026-08-09",
+      "archive_id": "archive_01e97a1d255e5b774c15e84c",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-09/Vegetables-Wholesale-Prices-(2026.08.09).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetables%20Wholesale%20Prices%20(2026.08.09).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_d0153d1424f6cab53c40a19e",
+      "title": "Vegetable Pricenew ex1(2026.04.08).pdf",
+      "published_date": "2026-04-08",
+      "archive_id": "archive_d0153d1424f6cab53c40a19e",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-08/Vegetable-Pricenew-ex1(2026.04.08).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.08).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_111e01562367bb6cc6965903",
+      "title": "Vegetable Pricenew ex1(2026.04.24).pdf",
+      "published_date": "2026-04-24",
+      "archive_id": "archive_111e01562367bb6cc6965903",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-24/Vegetable-Pricenew-ex1(2026.04.24).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.24).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_ef39b61139e32365c6531425",
+      "title": "Vegetables Wholesale Prices (2026.07.11).pdf",
+      "published_date": "2026-07-11",
+      "archive_id": "archive_ef39b61139e32365c6531425",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-11/Vegetables-Wholesale-Prices-(2026.07.11).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetables%20Wholesale%20Prices%20(2026.07.11).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_dac87a8d7841881543412661",
+      "title": "Vegetables Wholesale Prices (2026.06.27).pdf",
+      "published_date": "2026-06-27",
+      "archive_id": "archive_dac87a8d7841881543412661",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-27/Vegetables-Wholesale-Prices-(2026.06.27).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetables%20Wholesale%20Prices%20(2026.06.27).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_c8b7c86fcecf69df8aaa8080",
+      "title": "Vegetable Pricenew ex1(2026.05.20).pdf",
+      "published_date": "2026-05-20",
+      "archive_id": "archive_c8b7c86fcecf69df8aaa8080",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-20/Vegetable-Pricenew-ex1(2026.05.20).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.20).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_c6abc3c802459871f5058a74",
+      "title": "Vegetables Wholesale Prices (2026.04.12).pdf",
+      "published_date": "2026-04-12",
+      "archive_id": "archive_c6abc3c802459871f5058a74",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-12/Vegetables-Wholesale-Prices-(2026.04.12).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.12).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_2c7bccbf0d4451bb9c382bd7",
+      "title": "Vegetable Pricenew ex1(2026.07.08).pdf",
+      "published_date": "2026-07-08",
+      "archive_id": "archive_2c7bccbf0d4451bb9c382bd7",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-08/Vegetable-Pricenew-ex1(2026.07.08).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.08).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_a6efc5d2c64770dfd85bfdeb",
+      "title": "Vegetable Pricenew ex1(2026.07.10).pdf",
+      "published_date": "2026-07-10",
+      "archive_id": "archive_a6efc5d2c64770dfd85bfdeb",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-10/Vegetable-Pricenew-ex1(2026.07.10).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.10).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_911715eaf82de9585f8ca8af",
+      "title": "Vegetables Wholesale Prices (2026.07.18).pdf",
+      "published_date": "2026-07-18",
+      "archive_id": "archive_911715eaf82de9585f8ca8af",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-18/Vegetables-Wholesale-Prices-(2026.07.18).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetables%20Wholesale%20Prices%20(2026.07.18).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_4f65dca38459512742a37987",
+      "title": "Vegetable Pricenew ex1(2026.07.01).pdf",
+      "published_date": "2026-07-01",
+      "archive_id": "archive_4f65dca38459512742a37987",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-01/Vegetable-Pricenew-ex1(2026.07.01).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.01).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_21354c26810d40a6caadfd41",
+      "title": "Vegetable Pricenew ex1(2026.04.10).pdf",
+      "published_date": "2026-04-10",
+      "archive_id": "archive_21354c26810d40a6caadfd41",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-10/Vegetable-Pricenew-ex1(2026.04.10).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.10).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_d5901e4f7c656a41f4186e26",
+      "title": "Vegetables Wholesale Prices (2026.08.08).pdf",
+      "published_date": "2026-08-08",
+      "archive_id": "archive_d5901e4f7c656a41f4186e26",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-08/Vegetables-Wholesale-Prices-(2026.08.08).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetables%20Wholesale%20Prices%20(2026.08.08).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_704ad8d9e1ac8ffa22f17a4c",
+      "title": "Vegetable Pricenew ex1(2026.06.19).pdf",
+      "published_date": "2026-06-19",
+      "archive_id": "archive_704ad8d9e1ac8ffa22f17a4c",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-19/Vegetable-Pricenew-ex1(2026.06.19).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.19).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_d9cf6005bd7ba9c1ce849190",
+      "title": "Vegetable Pricenew ex1(2026.07.30).pdf",
+      "published_date": "2026-07-30",
+      "archive_id": "archive_d9cf6005bd7ba9c1ce849190",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-30/Vegetable-Pricenew-ex1(2026.07.30).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.30).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_aa41a28baeb35eb4a7421e32",
+      "title": "Vegetable Pricenew ex1(2026.05.25).pdf",
+      "published_date": "2026-05-25",
+      "archive_id": "archive_aa41a28baeb35eb4a7421e32",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-25/Vegetable-Pricenew-ex1(2026.05.25).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.25).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_16ae8af65fbb32e7b10a72fb",
+      "title": "Vegetables Wholesale Prices (2026.07.26).pdf",
+      "published_date": "2026-07-26",
+      "archive_id": "archive_16ae8af65fbb32e7b10a72fb",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-26/Vegetables-Wholesale-Prices-(2026.07.26).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetables%20Wholesale%20Prices%20(2026.07.26).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_7580068c3321de67f6c654c0",
+      "title": "Vegetable Pricenew ex1(2026.06.02).pdf",
+      "published_date": "2026-06-02",
+      "archive_id": "archive_7580068c3321de67f6c654c0",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-02/Vegetable-Pricenew-ex1(2026.06.02).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.02).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_694357ab5c0907c21a72a758",
+      "title": "Vegetable Pricenew ex1(2026.07.24).pdf",
+      "published_date": "2026-07-24",
+      "archive_id": "archive_694357ab5c0907c21a72a758",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-24/Vegetable-Pricenew-ex1(2026.07.24).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.24).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_405bd3c964ce7b9a34a9491c",
+      "title": "Vegetable Pricenew ex1(2026.06.03).pdf",
+      "published_date": "2026-06-03",
+      "archive_id": "archive_405bd3c964ce7b9a34a9491c",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-03/Vegetable-Pricenew-ex1(2026.06.03).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.03).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_f82d5ef60ac80def80b599c5",
+      "title": "Vegetables Wholesale Prices (2026.07.12).pdf",
+      "published_date": "2026-07-12",
+      "archive_id": "archive_f82d5ef60ac80def80b599c5",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-12/Vegetables-Wholesale-Prices-(2026.07.12).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetables%20Wholesale%20Prices%20(2026.07.12).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_fe598b215bbc12569bbd891b",
+      "title": "Vegetables Wholesale Prices (2026.06.20).pdf",
+      "published_date": "2026-06-20",
+      "archive_id": "archive_fe598b215bbc12569bbd891b",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-20/Vegetables-Wholesale-Prices-(2026.06.20).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetables%20Wholesale%20Prices%20(2026.06.20).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_132a3fe734b35a35c61573ef",
+      "title": "Vegetable Pricenew ex1(2026.07.14).pdf",
+      "published_date": "2026-07-14",
+      "archive_id": "archive_132a3fe734b35a35c61573ef",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-14/Vegetable-Pricenew-ex1(2026.07.14).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.14).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_71287150b6f7bc4a7782d2b0",
+      "title": "Vegetables Wholesale Prices (2026.05.24).pdf",
+      "published_date": "2026-05-24",
+      "archive_id": "archive_71287150b6f7bc4a7782d2b0",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-24/Vegetables-Wholesale-Prices-(2026.05.24).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetables%20Wholesale%20Prices%20(2026.05.24).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_838a11cebbb5b256c8b9185e",
+      "title": "Vegetable Pricenew ex1(2026.06.05).pdf",
+      "published_date": "2026-06-05",
+      "archive_id": "archive_838a11cebbb5b256c8b9185e",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-05/Vegetable-Pricenew-ex1(2026.06.05).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.05).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_e7df05aff5bf9cc0bc233906",
+      "title": "Vegetable Pricenew ex1(2026.08.10).pdf",
+      "published_date": "2026-08-10",
+      "archive_id": "archive_e7df05aff5bf9cc0bc233906",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-10/Vegetable-Pricenew-ex1(2026.08.10).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.10).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_86f7968b0b1ef62f83285208",
+      "title": "Vegetables Wholesale Prices (2026.05.23).pdf",
+      "published_date": "2026-05-23",
+      "archive_id": "archive_86f7968b0b1ef62f83285208",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-23/Vegetables-Wholesale-Prices-(2026.05.23).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetables%20Wholesale%20Prices%20(2026.05.23).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_08b6b6388699cc129113a2fe",
+      "title": "Vegetable Pricenew ex1(2026.06.01).pdf",
+      "published_date": "2026-06-01",
+      "archive_id": "archive_08b6b6388699cc129113a2fe",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-01/Vegetable-Pricenew-ex1(2026.06.01).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.01).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_aad79a7980e5dc6db13cd337",
+      "title": "Vegetable Pricenew ex1(2026.06.23).pdf",
+      "published_date": "2026-06-23",
+      "archive_id": "archive_aad79a7980e5dc6db13cd337",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-23/Vegetable-Pricenew-ex1(2026.06.23).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.23).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_61171493c12bccb41573263f",
+      "title": "Vegetable Pricenew ex1(2026.08.07).pdf",
+      "published_date": "2026-08-07",
+      "archive_id": "archive_61171493c12bccb41573263f",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-07/Vegetable-Pricenew-ex1(2026.08.07).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.07).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_4eac1aeab22b1b2c8bdf023d",
+      "title": "Vegetable Pricenew ex1(2026.06.11).pdf",
+      "published_date": "2026-06-11",
+      "archive_id": "archive_4eac1aeab22b1b2c8bdf023d",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-11/Vegetable-Pricenew-ex1(2026.06.11).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.11).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_18fd489d835c904308fafdb9",
+      "title": "Vegetable Pricenew ex1(2026.04.21).pdf",
+      "published_date": "2026-04-21",
+      "archive_id": "archive_18fd489d835c904308fafdb9",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-21/Vegetable-Pricenew-ex1(2026.04.21).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.21).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_ee81cea6978ac286192b5a4b",
+      "title": "Vegetable Pricenew ex1(2026.07.28).pdf",
+      "published_date": "2026-07-28",
+      "archive_id": "archive_ee81cea6978ac286192b5a4b",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-28/Vegetable-Pricenew-ex1(2026.07.28).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.28).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_3728ff1f21686790e76b69fa",
+      "title": "Vegetable Pricenew ex1(2026.07.03).pdf",
+      "published_date": "2026-07-03",
+      "archive_id": "archive_3728ff1f21686790e76b69fa",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-03/Vegetable-Pricenew-ex1(2026.07.03).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.03).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_875238e33b0fe01f10c3fc34",
+      "title": "Vegetable Pricenew ex1(2026.08.12).pdf",
+      "published_date": "2026-08-12",
+      "archive_id": "archive_875238e33b0fe01f10c3fc34",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-12/Vegetable-Pricenew-ex1(2026.08.12).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.12).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_694d7af1e4599e756c307d4a",
+      "title": "Vegetable Pricenew ex1(2026.07.22).pdf",
+      "published_date": "2026-07-22",
+      "archive_id": "archive_694d7af1e4599e756c307d4a",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-22/Vegetable-Pricenew-ex1(2026.07.22).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.22).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_f06f73121bc30d86d50702bd",
+      "title": "Vegetable Pricenew ex1(2026.04.06).pdf",
+      "published_date": "2026-04-06",
+      "archive_id": "archive_f06f73121bc30d86d50702bd",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-06/Vegetable-Pricenew-ex1(2026.04.06).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.06).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_ed4a54e11ba58e823e454fa1",
+      "title": "Vegetable Pricenew ex1(2026.07.20).pdf",
+      "published_date": "2026-07-20",
+      "archive_id": "archive_ed4a54e11ba58e823e454fa1",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-20/Vegetable-Pricenew-ex1(2026.07.20).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.20).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_af0f5b2b2b0c7dd536923640",
+      "title": "Vegetables Wholesale Prices (2026.06.14).pdf",
+      "published_date": "2026-06-14",
+      "archive_id": "archive_af0f5b2b2b0c7dd536923640",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-14/Vegetables-Wholesale-Prices-(2026.06.14).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetables%20Wholesale%20Prices%20(2026.06.14).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_3de0f342590e2d2686b5e9f3",
+      "title": "Vegetable Pricenew ex1(2026.05.13).pdf",
+      "published_date": "2026-05-13",
+      "archive_id": "archive_3de0f342590e2d2686b5e9f3",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-13/Vegetable-Pricenew-ex1(2026.05.13).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.13).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_0bdffa33d4980635b7c24a24",
+      "title": "Vegetable Pricenew ex1(2026.06.24).pdf",
+      "published_date": "2026-06-24",
+      "archive_id": "archive_0bdffa33d4980635b7c24a24",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-24/Vegetable-Pricenew-ex1(2026.06.24).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.24).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_716940a5209aa2e338ced59c",
+      "title": "Vegetable Pricenew ex1(2026.06.15).pdf",
+      "published_date": "2026-06-15",
+      "archive_id": "archive_716940a5209aa2e338ced59c",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-15/Vegetable-Pricenew-ex1(2026.06.15).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.15).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_4ec75427c50b1f1d3607169e",
+      "title": "Vegetable Pricenew ex1(2026.04.22).pdf",
+      "published_date": "2026-04-22",
+      "archive_id": "archive_4ec75427c50b1f1d3607169e",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-22/Vegetable-Pricenew-ex1(2026.04.22).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.22).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_2b7c5d17a6bfe1a76d5fc3dc",
+      "title": "Vegetable Pricenew ex1(2026.06.04).pdf",
+      "published_date": "2026-06-04",
+      "archive_id": "archive_2b7c5d17a6bfe1a76d5fc3dc",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-04/Vegetable-Pricenew-ex1(2026.06.04).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.04).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_65c1b2aba929529a6f19d5d0",
+      "title": "Vegetables Wholesale Prices (2026.04.18).pdf",
+      "published_date": "2026-04-18",
+      "archive_id": "archive_65c1b2aba929529a6f19d5d0",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-18/Vegetables-Wholesale-Prices-(2026.04.18).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.18).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_78918d61ba289507b3daec98",
+      "title": "Vegetable Pricenew ex1(2026.07.15).pdf",
+      "published_date": "2026-07-15",
+      "archive_id": "archive_78918d61ba289507b3daec98",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-15/Vegetable-Pricenew-ex1(2026.07.15).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.15).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_cacf5c18690fc6129198a0e2",
+      "title": "Vegetable Pricenew ex1(2026.08.05).pdf",
+      "published_date": "2026-08-05",
+      "archive_id": "archive_cacf5c18690fc6129198a0e2",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-05/Vegetable-Pricenew-ex1(2026.08.05).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.05).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_4041fbf3db91869583f13e72",
+      "title": "Vegetables Wholesale Prices (2026.07.05).pdf",
+      "published_date": "2026-07-05",
+      "archive_id": "archive_4041fbf3db91869583f13e72",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-05/Vegetables-Wholesale-Prices-(2026.07.05).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetables%20Wholesale%20Prices%20(2026.07.05).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_16471b52a43b5dd5480f4947",
+      "title": "Vegetables Wholesale Prices (2026.06.13).pdf",
+      "published_date": "2026-06-13",
+      "archive_id": "archive_16471b52a43b5dd5480f4947",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-13/Vegetables-Wholesale-Prices-(2026.06.13).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetables%20Wholesale%20Prices%20(2026.06.13).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_1f34ac9e19b85f5ceca8db17",
+      "title": "Vegetable Pricenew ex1(2026.08.20).pdf",
+      "published_date": "2026-08-20",
+      "archive_id": "archive_1f34ac9e19b85f5ceca8db17",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-20/Vegetable-Pricenew-ex1(2026.08.20).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.20).pdf",
+      "archive_sha256": "181888c21477377563dc73750a5c48aa1f4689ea7e4be094ecdf283b18c15f17"
+    },
+    {
+      "publication_id": "publication_58cccb7a2520270814d0aad5",
+      "title": "Vegetable Pricenew ex1(2026.08.06).pdf",
+      "published_date": "2026-08-06",
+      "archive_id": "archive_58cccb7a2520270814d0aad5",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-06/Vegetable-Pricenew-ex1(2026.08.06).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.06).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_bcafe4ea21ea7307bc4bc407",
+      "title": "Vegetable Pricenew ex1(2026.05.05).pdf",
+      "published_date": "2026-05-05",
+      "archive_id": "archive_bcafe4ea21ea7307bc4bc407",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-05/Vegetable-Pricenew-ex1(2026.05.05).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.05).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_9c9c7729fe8887de37bf2646",
+      "title": "Vegetable Pricenew ex1(2026.08.14).pdf",
+      "published_date": "2026-08-14",
+      "archive_id": "archive_9c9c7729fe8887de37bf2646",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-14/Vegetable-Pricenew-ex1(2026.08.14).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.14).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_231ebd1e779444a69b887007",
+      "title": "Vegetables Wholesale Prices (2026.08.15).pdf",
+      "published_date": "2026-08-15",
+      "archive_id": "archive_231ebd1e779444a69b887007",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-15/Vegetables-Wholesale-Prices-(2026.08.15).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetables%20Wholesale%20Prices%20(2026.08.15).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_44fec08766907f4cf3331341",
+      "title": "Vegetable Pricenew ex1(2026.05.06).pdf",
+      "published_date": "2026-05-06",
+      "archive_id": "archive_44fec08766907f4cf3331341",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-06/Vegetable-Pricenew-ex1(2026.05.06).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.06).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_fb209b10aee415f10413c509",
+      "title": "Vegetable Pricenew ex1(2026.04.27).pdf",
+      "published_date": "2026-04-27",
+      "archive_id": "archive_fb209b10aee415f10413c509",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-27/Vegetable-Pricenew-ex1(2026.04.27).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetable%20Pricenew%20ex1(2026.04.27).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_1d28fc76aa06d298d0075d46",
+      "title": "Vegetables Wholesale Prices (2026.06.07).pdf",
+      "published_date": "2026-06-07",
+      "archive_id": "archive_1d28fc76aa06d298d0075d46",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-07/Vegetables-Wholesale-Prices-(2026.06.07).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetables%20Wholesale%20Prices%20(2026.06.07).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_fd53c88da5f169bd45524b70",
+      "title": "Vegetable Pricenew ex1(2026.07.31).pdf",
+      "published_date": "2026-07-31",
+      "archive_id": "archive_fd53c88da5f169bd45524b70",
+      "r2_key": "sources/harti/daily-food-prices/2026/07/2026-07-31/Vegetable-Pricenew-ex1(2026.07.31).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/July/Vegetable%20Pricenew%20ex1(2026.07.31).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_0ad14f1263443af88aae82fc",
+      "title": "Vegetables Wholesale Prices (2026.05.17).pdf",
+      "published_date": "2026-05-17",
+      "archive_id": "archive_0ad14f1263443af88aae82fc",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-17/Vegetables-Wholesale-Prices-(2026.05.17).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetables%20Wholesale%20Prices%20(2026.05.17).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_6a62c1d871d23c52989d379e",
+      "title": "Vegetable Pricenew ex1(2026.05.27).pdf",
+      "published_date": "2026-05-27",
+      "archive_id": "archive_6a62c1d871d23c52989d379e",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-27/Vegetable-Pricenew-ex1(2026.05.27).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.27).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_381311192164673554a97559",
+      "title": "Vegetable Pricenew ex1(2026.05.26).pdf",
+      "published_date": "2026-05-26",
+      "archive_id": "archive_381311192164673554a97559",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-26/Vegetable-Pricenew-ex1(2026.05.26).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.26).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_25134110e0d41481a6058429",
+      "title": "Vegetable Pricenew ex1(2026.05.18).pdf",
+      "published_date": "2026-05-18",
+      "archive_id": "archive_25134110e0d41481a6058429",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-18/Vegetable-Pricenew-ex1(2026.05.18).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.18).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_70a88e5064f5d2985b468fcd",
+      "title": "Vegetables Wholesale Prices (2026.05.09).pdf",
+      "published_date": "2026-05-09",
+      "archive_id": "archive_70a88e5064f5d2985b468fcd",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-09/Vegetables-Wholesale-Prices-(2026.05.09).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetables%20Wholesale%20Prices%20(2026.05.09).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_ba18738ad484d35397f11714",
+      "title": "Vegetable Pricenew ex1(2026.05.19).pdf",
+      "published_date": "2026-05-19",
+      "archive_id": "archive_ba18738ad484d35397f11714",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-19/Vegetable-Pricenew-ex1(2026.05.19).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.19).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_28a8dd926d11984b45be9392",
+      "title": "Vegetable Pricenew ex1(2026.05.14).pdf",
+      "published_date": "2026-05-14",
+      "archive_id": "archive_28a8dd926d11984b45be9392",
+      "r2_key": "sources/harti/daily-food-prices/2026/05/2026-05-14/Vegetable-Pricenew-ex1(2026.05.14).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/May/Vegetable%20Pricenew%20ex1(2026.05.14).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_bdd2f58095403103aa2e2656",
+      "title": "Vegetable Pricenew ex1(2026.08.19).pdf",
+      "published_date": "2026-08-19",
+      "archive_id": "archive_bdd2f58095403103aa2e2656",
+      "r2_key": "sources/harti/daily-food-prices/2026/08/2026-08-19/Vegetable-Pricenew-ex1(2026.08.19).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/August/Vegetable%20Pricenew%20ex1(2026.08.19).pdf",
+      "archive_sha256": "78891318f3bc0b295f91ca4e4e04790bdfe07771e949c102d0b26c29d452773f"
+    },
+    {
+      "publication_id": "publication_9f27e7297dd99d6a4a28806e",
+      "title": "Vegetables Wholesale Prices (2026.04.26).pdf",
+      "published_date": "2026-04-26",
+      "archive_id": "archive_9f27e7297dd99d6a4a28806e",
+      "r2_key": "sources/harti/daily-food-prices/2026/04/2026-04-26/Vegetables-Wholesale-Prices-(2026.04.26).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/April/Vegetables%20Wholesale%20Prices%20(2026.04.26).pdf",
+      "archive_sha256": null
+    },
+    {
+      "publication_id": "publication_ec583ddd078716ebeb94e700",
+      "title": "Vegetable Pricenew ex1(2026.06.17).pdf",
+      "published_date": "2026-06-17",
+      "archive_id": "archive_ec583ddd078716ebeb94e700",
+      "r2_key": "sources/harti/daily-food-prices/2026/06/2026-06-17/Vegetable-Pricenew-ex1(2026.06.17).pdf",
+      "source_url": "https://www.harti.gov.lk/assets/pdf/food_price/daily/eng/2026/June/Vegetable%20Pricenew%20ex1(2026.06.17).pdf",
+      "archive_sha256": null
+    }
+  ]
+}

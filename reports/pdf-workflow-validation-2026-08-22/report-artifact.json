@@ -1,0 +1,6302 @@
+{
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Recent PDF Workflow Validation and Price Trends",
+    "description": "A reproducible validation of 120 recent HARTI PDFs processed through the application workflow, with data-quality and price-trend findings.",
+    "generatedAt": "2026-08-22T17:40:39.642Z",
+    "sources": [
+      {
+        "id": "validation-source",
+        "label": "Lanka PriceLens local validation database",
+        "path": "reports/pdf-workflow-validation-2026-08-22/analysis-output.json",
+        "query": {
+          "engine": "SQLite",
+          "sql": "SELECT observation.source_date,\n       observation.source_item_label AS item,\n       observation.source_market_label AS market,\n       observation.source_unit AS unit,\n       observation.min_value_minor / 100.0 AS min_lkr,\n       observation.max_value_minor / 100.0 AS max_lkr\nFROM staging_observation AS observation\nJOIN source_artifact AS artifact ON artifact.id = observation.artifact_id\nJOIN source_publication AS publication ON publication.id = artifact.publication_id\nWHERE observation.artifact_id IN ('artifact_8fc30fdd2c90e14c52c45be6_7f038d31b48d', 'artifact_77c78019a0d57944418e9b98_cdba127cb6e1', 'artifact_5f7b56aa1972c0a8a8cd6f9c_16840ea21cf9', 'artifact_f06f73121bc30d86d50702bd_0cdf22ee831b', 'artifact_61f9002d8cbabf3e87bcf242_d6149f8d73b5', 'artifact_d0153d1424f6cab53c40a19e_a013137c716b', 'artifact_b0bc969c9dac297a8152768a_ba5e68575ef2', 'artifact_21354c26810d40a6caadfd41_536919d3ebe8', 'artifact_26d8f72302fb0be5847e76b4_864de38148c5', 'artifact_c6abc3c802459871f5058a74_25a1315899d5', 'artifact_4ca9a1d4eade66a08b62fafd_1f751a6edd13', 'artifact_89cddcaafe3907a65f71b756_bb4d97103928', 'artifact_65c1b2aba929529a6f19d5d0_68f0d716b5af', 'artifact_18fd489d835c904308fafdb9_fd4f065a2926', 'artifact_4ec75427c50b1f1d3607169e_1d6468e1486a', 'artifact_74869a6b4432712396ea2b23_d1cdb0172f2a', 'artifact_111e01562367bb6cc6965903_e7879eaa4b7e', 'artifact_6e037393dcc2ff277aa0c191_c3c01688c47c', 'artifact_9f27e7297dd99d6a4a28806e_1b516936d4c0', 'artifact_fb209b10aee415f10413c509_fc957fcd79c5', 'artifact_d00b957f2a263ede2e10224f_1eeaae842a7e', 'artifact_7c7ced363d9756efc40a19ed_ddb8b3d49d94', 'artifact_0d72657e21ac692ab9ea1fbe_e1b3c4ddd851', 'artifact_a7a60a7b8aed8cd00466635f_f5b123d5ea15', 'artifact_5fa8c659d6f30f836ef03c6b_a063928bd468', 'artifact_bcafe4ea21ea7307bc4bc407_3d37dc013d70', 'artifact_44fec08766907f4cf3331341_cd3ad338b784', 'artifact_3af0741e389601aef80d4270_94b1918aa2e4', 'artifact_5f82013623c39089e87198aa_4246b0bc830e', 'artifact_70a88e5064f5d2985b468fcd_aff0ccb7bd68', 'artifact_a364f1800489cc469bbcb0e5_c25987bd40a5', 'artifact_1801e96f103efe57aa3cc6c8_151c1c5eade1', 'artifact_5450488fbeacb6c882bfb1af_be3eb6b02d5f', 'artifact_3de0f342590e2d2686b5e9f3_f29c13afd73e', 'artifact_28a8dd926d11984b45be9392_2e8a6df4b182', 'artifact_e74fced25d19a7a05a1742f6_c1df49d8a08f', 'artifact_0ad14f1263443af88aae82fc_668ccf4f7818', 'artifact_25134110e0d41481a6058429_b28b1be911d3', 'artifact_ba18738ad484d35397f11714_9ecdcc887c0d', 'artifact_c8b7c86fcecf69df8aaa8080_9637a6f01b00', 'artifact_7146f7880b7083e3b41661fd_25a8c58aa4c0', 'artifact_86f7968b0b1ef62f83285208_332a9a5fa4dc', 'artifact_71287150b6f7bc4a7782d2b0_bb49c1fac1b9', 'artifact_aa41a28baeb35eb4a7421e32_229fa3b3cb68', 'artifact_381311192164673554a97559_25d17da008c6', 'artifact_6a62c1d871d23c52989d379e_1cfc67f7283c', 'artifact_a555abb36d99a6d9ebe10112_5d3340a1da0c', 'artifact_2a3f6dfce8c1bdf77325a065_fe10ac58d09b', 'artifact_08b6b6388699cc129113a2fe_db250c3f44a2', 'artifact_7580068c3321de67f6c654c0_79a6c99e915a', 'artifact_405bd3c964ce7b9a34a9491c_50d21e8077e9', 'artifact_2b7c5d17a6bfe1a76d5fc3dc_df7167fd45ee', 'artifact_838a11cebbb5b256c8b9185e_19ad13540050', 'artifact_c53136238fa7902e971b381d_a21db1e9c156', 'artifact_1d28fc76aa06d298d0075d46_316ed620c4d8', 'artifact_b50da6ea34b4f60468d6d8d4_772a33c72495', 'artifact_444f33ee9b0ca1064dcc3a1a_8038b9c96bf0', 'artifact_7b98d5057ef65c8dee24c718_1bda5cea2ec6', 'artifact_4eac1aeab22b1b2c8bdf023d_4a44ba2bae2e', 'artifact_713259a30029b18861cd6081_13b8f0ef055c', 'artifact_16471b52a43b5dd5480f4947_cf9a1e899fa8', 'artifact_af0f5b2b2b0c7dd536923640_a1cd66bfaaa7', 'artifact_716940a5209aa2e338ced59c_ef979f9d397f', 'artifact_ec583ddd078716ebeb94e700_5789f60effc4', 'artifact_aac558bed76d18eeb9fe2da7_43f7722e1b94', 'artifact_704ad8d9e1ac8ffa22f17a4c_57e16cb9e76f', 'artifact_fe598b215bbc12569bbd891b_d74c82fe7189', 'artifact_6084931ae9f026aa30946d7d_9e39f4f3a4de', 'artifact_aad79a7980e5dc6db13cd337_df9954fa6d73', 'artifact_0bdffa33d4980635b7c24a24_812b8cabe508', 'artifact_66df0b59e16503b314cb2197_554fb0cfde11', 'artifact_c5b535c8b40c0e70239d21b9_c30784fd566e', 'artifact_dac87a8d7841881543412661_947af0a5a6c9', 'artifact_ffbf7e26804e6ab950bac762_12fe902082cb', 'artifact_1cfc447d69eeb0311a1e4341_893c5e402ec3', 'artifact_4f65dca38459512742a37987_145c4f3da481', 'artifact_3728ff1f21686790e76b69fa_a245d13d446c', 'artifact_dd42a47ced0e7a1a736893dc_17eb90937bc7', 'artifact_4041fbf3db91869583f13e72_de991c3a93e6', 'artifact_c16a52b25f69289eac4891b0_e4297895b552', 'artifact_2c7bccbf0d4451bb9c382bd7_51386708def5', 'artifact_bb901d29e7375091072145c9_4fde79e874b8', 'artifact_a6efc5d2c64770dfd85bfdeb_33ec4a4fbfb9', 'artifact_ef39b61139e32365c6531425_9314925d2ace', 'artifact_f82d5ef60ac80def80b599c5_636a144b0c6d', 'artifact_132a3fe734b35a35c61573ef_52fc33eb10c4', 'artifact_78918d61ba289507b3daec98_9b7010581093', 'artifact_2c33453d4c17ac2793019070_20a731c39994', 'artifact_b7f03b8fa89f845616ec1d19_be7f4be7784b', 'artifact_911715eaf82de9585f8ca8af_4e654ddc749e', 'artifact_ed4a54e11ba58e823e454fa1_c04c4cb3c751', 'artifact_4b1ed7e89f67e437a11ef753_154921c3f2b3', 'artifact_694d7af1e4599e756c307d4a_63f04728c103', 'artifact_4ce0aab311e66750a9b7ca74_64878b2d987f', 'artifact_694357ab5c0907c21a72a758_880a69ce552a', 'artifact_62097c8e8b49d9b4c04ae252_545e1c194796', 'artifact_16ae8af65fbb32e7b10a72fb_aec88fff7a10', 'artifact_c8d5c6c08bc6fe19a3717cde_c7e09b214c8e', 'artifact_ee81cea6978ac286192b5a4b_5204f9043db7', 'artifact_d9cf6005bd7ba9c1ce849190_a7f225d9e216', 'artifact_fd53c88da5f169bd45524b70_4a2dfe56171c', 'artifact_142c9310178d4cd6b7a0a052_2f87baca1974', 'artifact_42c428fdec980182ad75c788_03ddc384d9db', 'artifact_fba70875617207b46366afb4_23495ffe14c6', 'artifact_cacf5c18690fc6129198a0e2_bef4c7d22e91', 'artifact_58cccb7a2520270814d0aad5_275dd3ff1d80', 'artifact_61171493c12bccb41573263f_20c3636fcb7e', 'artifact_d5901e4f7c656a41f4186e26_b49f598adc39', 'artifact_01e97a1d255e5b774c15e84c_221620d265de', 'artifact_e7df05aff5bf9cc0bc233906_91a72824234e', 'artifact_fd9d507a9bc5d3922171357e_0cf980beacd5', 'artifact_875238e33b0fe01f10c3fc34_55d58d9fc2a1', 'artifact_0e3fee809d8c1f4c007f8f33_d825afc8921b', 'artifact_9c9c7729fe8887de37bf2646_306a802786a7', 'artifact_231ebd1e779444a69b887007_ae3b20877873', 'artifact_b0053d2a5e8c3f905ecaf336_c280e4a7cf9a', 'artifact_560985790c47843000f656df_01b7d77ac3f1', 'artifact_bdd2f58095403103aa2e2656_78891318f3bc', 'artifact_1f34ac9e19b85f5ceca8db17_181888c21477', 'artifact_0277d819217e41988fe442cd_30a275c4d977');",
+          "description": "Staging observations produced by the 120 workflow runs frozen in batch-results.json.",
+          "executed_at": "2026-08-22T17:34:27.697Z",
+          "language": "SQL",
+          "filters": [
+            "Random archived HARTI publications dated 2026-04-01 through 2026-08-22",
+            "Previously successful PDF-processing runs excluded before sampling",
+            "Price charts use Peliyagoda kg observations and prefer the publication closest to each source date"
+          ],
+          "metric_definitions": [
+            "Midpoint price = (published minimum + published maximum) / 2",
+            "Period change = median of first 14 available observations versus median of last 14",
+            "Relative IQR = (75th percentile - 25th percentile) / median midpoint price",
+            "Market date coverage = distinct market source dates / 132 cohort source dates"
+          ],
+          "tables_used": [
+            "staging_observation",
+            "source_artifact",
+            "source_publication",
+            "ingest_run",
+            "run_stage"
+          ]
+        }
+      }
+    ],
+    "cards": [
+      {
+        "id": "documents-card",
+        "description": "PDFs processed through all workflow steps",
+        "dataset": "summary",
+        "sourceId": "validation-source",
+        "metrics": [
+          {
+            "label": "PDFs processed",
+            "field": "selected_documents",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "success-card",
+        "description": "Share of sampled documents completing successfully",
+        "dataset": "summary",
+        "sourceId": "validation-source",
+        "metrics": [
+          {
+            "label": "Workflow success",
+            "field": "success_rate",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "observations-card",
+        "description": "Persisted staging observations",
+        "dataset": "summary",
+        "sourceId": "validation-source",
+        "metrics": [
+          {
+            "label": "Observations stored",
+            "field": "stored_observations",
+            "format": "compact"
+          }
+        ]
+      },
+      {
+        "id": "validity-card",
+        "description": "Rows failing price-range or date checks",
+        "dataset": "summary",
+        "sourceId": "validation-source",
+        "metrics": [
+          {
+            "label": "Invalid rows",
+            "field": "invalid_observations",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "monthly-depth",
+        "title": "Monthly extraction depth",
+        "subtitle": "Typical yield stayed between 220 and 241 observations per PDF",
+        "intent": "trend",
+        "question": "Was extraction depth stable across the validation period?",
+        "rationale": "A monthly bar chart exposes shifts in typical document yield without hiding the number of documents processed.",
+        "type": "bar",
+        "dataset": "monthly_quality",
+        "sourceId": "validation-source",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "Publication month"
+          },
+          "y": {
+            "field": "median_observations_per_pdf",
+            "type": "quantitative",
+            "label": "Median observations"
+          },
+          "tooltip": [
+            {
+              "field": "documents",
+              "type": "quantitative",
+              "label": "PDFs"
+            },
+            {
+              "field": "observations",
+              "type": "quantitative",
+              "label": "Observations"
+            },
+            {
+              "field": "success_rate",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "Success rate"
+            }
+          ]
+        },
+        "xAxisTitle": "Publication month",
+        "yAxisTitle": "Median observations per PDF",
+        "valueFormat": "number",
+        "layout": "full",
+        "settings": {
+          "showValues": true,
+          "sort": "custom"
+        },
+        "surface": {
+          "viewMode": "both",
+          "interactiveLegend": true
+        }
+      },
+      {
+        "id": "price-trend",
+        "title": "Peliyagoda midpoint prices for selected vegetables",
+        "subtitle": "Green Chillies and Tomato rose while Carrot moved lower over the observed period",
+        "intent": "trend",
+        "question": "How did selected Peliyagoda vegetable price ranges move over the observed period?",
+        "rationale": "A multi-series line chart preserves daily direction and turning points across four familiar items.",
+        "type": "line",
+        "dataset": "price_trend",
+        "sourceId": "validation-source",
+        "encodings": {
+          "x": {
+            "field": "date",
+            "type": "temporal",
+            "label": "Source date"
+          },
+          "y": {
+            "field": "midpoint_lkr",
+            "type": "quantitative",
+            "label": "Midpoint price",
+            "unit": "LKR/kg"
+          },
+          "color": {
+            "field": "item",
+            "type": "nominal",
+            "label": "Item"
+          },
+          "tooltip": [
+            {
+              "field": "item",
+              "type": "nominal",
+              "label": "Item"
+            },
+            {
+              "field": "date",
+              "type": "temporal",
+              "label": "Date"
+            },
+            {
+              "field": "min_lkr",
+              "type": "quantitative",
+              "label": "Minimum",
+              "unit": "LKR/kg"
+            },
+            {
+              "field": "max_lkr",
+              "type": "quantitative",
+              "label": "Maximum",
+              "unit": "LKR/kg"
+            }
+          ]
+        },
+        "xAxisTitle": "Source date",
+        "yAxisTitle": "Midpoint price (LKR/kg)",
+        "valueFormat": "number",
+        "unit": "LKR/kg",
+        "layout": "full",
+        "maxRows": 600,
+        "legend": {
+          "position": "bottom",
+          "sort": "labelAsc"
+        },
+        "settings": {
+          "showPoints": "never"
+        },
+        "surface": {
+          "viewMode": "both",
+          "interactiveLegend": true
+        }
+      },
+      {
+        "id": "directional-extremes",
+        "title": "First-to-last period price changes",
+        "subtitle": "Observed changes range from a 63% decline to a 293% increase",
+        "intent": "comparison",
+        "question": "Which items moved most between the first and last 14 available observations?",
+        "rationale": "A diverging horizontal bar chart makes positive and negative price movements directly comparable.",
+        "type": "horizontalBar",
+        "dataset": "directional_extremes",
+        "sourceId": "validation-source",
+        "encodings": {
+          "x": {
+            "field": "item",
+            "type": "nominal",
+            "label": "Item"
+          },
+          "y": {
+            "field": "change_rate",
+            "type": "quantitative",
+            "format": "percent",
+            "label": "Change"
+          },
+          "tooltip": [
+            {
+              "field": "first_period_median_lkr",
+              "type": "quantitative",
+              "label": "First-period median",
+              "unit": "LKR/kg"
+            },
+            {
+              "field": "last_period_median_lkr",
+              "type": "quantitative",
+              "label": "Last-period median",
+              "unit": "LKR/kg"
+            },
+            {
+              "field": "days",
+              "type": "quantitative",
+              "label": "Observed dates"
+            }
+          ]
+        },
+        "xAxisTitle": "Item",
+        "yAxisTitle": "Change in median midpoint price",
+        "valueFormat": "percent",
+        "layout": "full",
+        "palette": {
+          "kind": "diverging",
+          "midpoint": 0
+        },
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 0,
+            "label": "No change",
+            "color": "neutral"
+          }
+        ],
+        "labels": {
+          "values": "all"
+        },
+        "settings": {
+          "sort": "ascending",
+          "showValues": true
+        },
+        "surface": {
+          "viewMode": "both"
+        }
+      },
+      {
+        "id": "market-coverage",
+        "title": "Source-date coverage by wholesale market",
+        "subtitle": "Top markets reach 90% date coverage while Veyangoda reaches 69%",
+        "intent": "comparison",
+        "question": "How evenly does the processed cohort cover each wholesale market?",
+        "rationale": "A ranked horizontal bar chart makes coverage gaps immediately visible.",
+        "type": "horizontalBar",
+        "dataset": "market_coverage",
+        "sourceId": "validation-source",
+        "encodings": {
+          "x": {
+            "field": "market",
+            "type": "nominal",
+            "label": "Market"
+          },
+          "y": {
+            "field": "date_coverage_rate",
+            "type": "quantitative",
+            "format": "percent",
+            "label": "Date coverage"
+          },
+          "tooltip": [
+            {
+              "field": "days",
+              "type": "quantitative",
+              "label": "Observed dates"
+            },
+            {
+              "field": "observations",
+              "type": "quantitative",
+              "label": "Observations"
+            },
+            {
+              "field": "items",
+              "type": "quantitative",
+              "label": "Items"
+            }
+          ]
+        },
+        "xAxisTitle": "Wholesale market",
+        "yAxisTitle": "Date coverage",
+        "valueFormat": "percent",
+        "layout": "full",
+        "palette": {
+          "kind": "sequential",
+          "name": "blue"
+        },
+        "labels": {
+          "values": "all"
+        },
+        "settings": {
+          "sort": "descending",
+          "showValues": true
+        },
+        "surface": {
+          "viewMode": "both"
+        }
+      },
+      {
+        "id": "volatility",
+        "title": "Price level and variability by item",
+        "subtitle": "Green Chillies has the highest relative IQR at 101% of its median",
+        "intent": "relationship",
+        "question": "Which items combine high typical prices with high relative variability?",
+        "rationale": "A scatter plot separates price level from scale-normalized volatility and retains observation coverage as point size.",
+        "type": "scatter",
+        "dataset": "volatility",
+        "sourceId": "validation-source",
+        "encodings": {
+          "x": {
+            "field": "median_midpoint_lkr",
+            "type": "quantitative",
+            "label": "Median midpoint",
+            "unit": "LKR/kg"
+          },
+          "y": {
+            "field": "relative_iqr",
+            "type": "quantitative",
+            "format": "percent",
+            "label": "Relative IQR"
+          },
+          "size": {
+            "field": "days",
+            "type": "quantitative",
+            "label": "Observed dates"
+          },
+          "label": {
+            "field": "item",
+            "type": "text",
+            "label": "Item"
+          },
+          "tooltip": [
+            {
+              "field": "item",
+              "type": "nominal",
+              "label": "Item"
+            },
+            {
+              "field": "median_midpoint_lkr",
+              "type": "quantitative",
+              "label": "Median midpoint",
+              "unit": "LKR/kg"
+            },
+            {
+              "field": "relative_iqr",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "Relative IQR"
+            },
+            {
+              "field": "min_midpoint_lkr",
+              "type": "quantitative",
+              "label": "Minimum midpoint",
+              "unit": "LKR/kg"
+            },
+            {
+              "field": "max_midpoint_lkr",
+              "type": "quantitative",
+              "label": "Maximum midpoint",
+              "unit": "LKR/kg"
+            }
+          ]
+        },
+        "xAxisTitle": "Median midpoint price (LKR/kg)",
+        "yAxisTitle": "IQR ÷ median",
+        "valueFormat": "percent",
+        "layout": "full",
+        "palette": {
+          "kind": "categorical"
+        },
+        "surface": {
+          "viewMode": "both"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "document-extremes",
+        "title": "Lowest and highest observation counts per PDF",
+        "subtitle": "Eight lowest-yield and eight highest-yield documents in the cohort",
+        "dataset": "document_extremes",
+        "defaultSort": {
+          "field": "observations",
+          "direction": "asc"
+        },
+        "density": "dense",
+        "sourceId": "validation-source",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "published_date",
+            "label": "Published",
+            "type": "date"
+          },
+          {
+            "field": "title",
+            "label": "Document",
+            "type": "text"
+          },
+          {
+            "field": "observations",
+            "label": "Observations",
+            "format": "number"
+          },
+          {
+            "field": "pages",
+            "label": "Pages",
+            "format": "number"
+          },
+          {
+            "field": "parser_strategy",
+            "label": "Parser strategy",
+            "type": "text"
+          },
+          {
+            "field": "parser_confidence",
+            "label": "Layout confidence",
+            "format": "percent"
+          },
+          {
+            "field": "duration_seconds",
+            "label": "Duration (s)",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Recent PDF Workflow Validation and Price Trends\n\n**Validation window:** 1 April–22 August 2026  \\n**Cohort:** 120 randomly selected recent HARTI pricing PDFs",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "executive-summary",
+        "type": "markdown",
+        "body": "## Executive Summary\n\nThe current pipeline is reliable for the labelled HARTI market/date-grid family: **all 120 PDFs completed all five workflow steps**, storing **26,893 observations** with no row-level validity failures. The result is strong evidence that recent minor layout variations are now tolerated.\n\nThe main remaining risk is data governance, not workflow execution. All observations remain `unmapped` staging rows, and 48 repeated analytical grains carry revised values across publications. Parser confidence also stayed at 100% while per-document yield ranged from 96 to 252 rows, so a separate completeness score is necessary.\n\nPrice behavior was far from uniform. Under the defined first/last-window comparison, Peliyagoda Green Chillies and Tomato increased sharply, while Carrot and Drumstick declined.",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "metric-strip",
+        "type": "metric-strip",
+        "cardIds": [
+          "documents-card",
+          "success-card",
+          "observations-card",
+          "validity-card"
+        ],
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "reliability-heading",
+        "type": "markdown",
+        "body": "## Workflow Reliability Passed the Scale Test\n\nEvery selected document succeeded, with a median end-to-end workflow duration of **0.94 seconds**. Monthly median extraction depth stayed between 220 and 241 observations per PDF. The 96–252 row spread below is nevertheless important: identical layout confidence does not prove that every expected market/item cell was recovered.",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "monthly-depth-block",
+        "type": "chart",
+        "chartId": "monthly-depth",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "document-table-intro",
+        "type": "markdown",
+        "body": "The document-level extremes identify where a future completeness check should begin. Low-yield PDFs include both two-page and eleven-page files, so page count alone is not a sufficient completeness proxy.",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "document-table",
+        "type": "table",
+        "tableId": "document-extremes",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "trends-heading",
+        "type": "markdown",
+        "body": "## Selected Price Trends Diverged\n\nDaily range midpoints reveal materially different trajectories. Green Chillies reached the highest peaks and finished well above the early-period level; Tomato also rose strongly. Carrot moved in the opposite direction, while Beans increased more moderately. These are descriptive bulletin trends, not transaction-weighted prices.",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "price-trend-block",
+        "type": "chart",
+        "chartId": "price-trend",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "direction-heading",
+        "type": "markdown",
+        "body": "## Commodity Direction Was Broad but Uneven\n\nAmong 39 Peliyagoda kg items with at least 60 observed dates, **31 increased, seven declined, and one was flat** between the first and last 14-observation windows. Green Chillies rose from a median LKR 175/kg to LKR 650/kg (+271%), Tomato from LKR 115 to LKR 325 (+183%), while Drumstick fell from LKR 400 to LKR 150 (−63%).",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "directional-block",
+        "type": "chart",
+        "chartId": "directional-extremes",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "coverage-heading",
+        "type": "markdown",
+        "body": "## Market Coverage Remains Uneven\n\nPeliyagoda, Kandy, and Dambulla each appear on 119 of 132 source dates (90%). Veyangoda appears on 91 dates (69%), and Bandarawela on 99 (75%). Coverage gaps may reflect blanks or schedules in the source bulletins rather than parser failure, but the difference should be visible in downstream analytics.",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "coverage-block",
+        "type": "chart",
+        "chartId": "market-coverage",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "volatility-heading",
+        "type": "markdown",
+        "body": "## Variability Is Concentrated in Specific Items\n\nGreen Chillies had the highest relative IQR (101% of its median midpoint), followed by Cucumber and Luffa (93% each). The chart separates high nominal prices from high scale-normalized variability so operational monitoring can prioritize unstable series rather than simply expensive ones.",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "volatility-block",
+        "type": "chart",
+        "chartId": "volatility",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "recommendations",
+        "type": "markdown",
+        "body": "## Recommended Next Steps\n\n1. **Add a completeness score** independent of parser-strategy confidence: expected markets, expected item labels, recovered cells, and reason-coded blanks.\n2. **Define source versioning before canonical release**: preserve every bulletin revision while choosing one effective value for each source-date × item × market × unit grain.\n3. **Map staging labels to canonical dimensions** and promote only validated, version-resolved rows into `price_observation`.\n4. **Broaden the regression corpus** with scanned/image PDFs, older templates, inferred-column layouts, and deliberately unrelated documents to exercise fallback and rejection paths.\n5. **Expose these controls in workflow monitoring**: completeness score, parser strategy, revision count, mapping status, and rerun history.",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## Further Questions\n\n- Should a later bulletin always supersede an earlier value for the same source date, or should revisions require manual review?\n- What minimum market/item coverage constitutes a complete bulletin for each known template family?\n- Which canonical taxonomy should merge source spellings such as item and market variants?\n- Should price alerts operate on range midpoint, minimum, maximum, or a separately published modal price when available?",
+        "layout": "full",
+        "sourceId": "validation-source"
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "body": "## Caveats and Assumptions\n\n- The cohort is random within recent archived documents but excludes previously successful runs; it covers 120 of 133 eligible publications and is therefore close to a census of that window.\n- All sampled PDFs used `labelled_market_date_grid`; this report does not claim equivalent reliability for scanned PDFs or unrelated document types.\n- The database retains all 26,893 observations as `unmapped` staging rows. The deduplicated 26,840-row analytical view exists only for this report.\n- 5,521 observations carry a source date different from the publication date because some market columns report an earlier date.\n- Price movement uses the midpoint of a published range and is not volume weighted. First/last periods are 14 available observations, not fixed calendar weeks.\n- Coverage gaps can be genuine bulletin omissions, market schedules, or extraction gaps; a completeness model is needed to distinguish them.",
+        "layout": "full",
+        "sourceId": "validation-source"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-22T17:40:39.642Z",
+    "status": "ready",
+    "datasets": {
+      "summary": [
+        {
+          "selected_documents": 120,
+          "success_rate": 1,
+          "stored_observations": 26893,
+          "invalid_observations": 0
+        }
+      ],
+      "monthly_quality": [
+        {
+          "month": "2026-04",
+          "documents": 23,
+          "succeeded": 23,
+          "success_rate": 1,
+          "observations": 5119,
+          "median_observations_per_pdf": 227,
+          "min_observations_per_pdf": 96,
+          "max_observations_per_pdf": 250,
+          "median_duration_seconds": 0.978,
+          "median_pages": 11
+        },
+        {
+          "month": "2026-05",
+          "documents": 25,
+          "succeeded": 25,
+          "success_rate": 1,
+          "observations": 5863,
+          "median_observations_per_pdf": 241,
+          "min_observations_per_pdf": 171,
+          "max_observations_per_pdf": 252,
+          "median_duration_seconds": 0.915,
+          "median_pages": 11
+        },
+        {
+          "month": "2026-06",
+          "documents": 27,
+          "succeeded": 27,
+          "success_rate": 1,
+          "observations": 5776,
+          "median_observations_per_pdf": 220,
+          "min_observations_per_pdf": 131,
+          "max_observations_per_pdf": 248,
+          "median_duration_seconds": 0.862,
+          "median_pages": 11
+        },
+        {
+          "month": "2026-07",
+          "documents": 26,
+          "succeeded": 26,
+          "success_rate": 1,
+          "observations": 5742,
+          "median_observations_per_pdf": 221.5,
+          "min_observations_per_pdf": 168,
+          "max_observations_per_pdf": 250,
+          "median_duration_seconds": 0.9925,
+          "median_pages": 11
+        },
+        {
+          "month": "2026-08",
+          "documents": 19,
+          "succeeded": 19,
+          "success_rate": 1,
+          "observations": 4393,
+          "median_observations_per_pdf": 229,
+          "min_observations_per_pdf": 218,
+          "max_observations_per_pdf": 248,
+          "median_duration_seconds": 0.943,
+          "median_pages": 11
+        }
+      ],
+      "price_trend": [
+        {
+          "date": "2026-04-03",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-04-03"
+        },
+        {
+          "date": "2026-04-03",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 335,
+          "min_lkr": 320,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-04-03"
+        },
+        {
+          "date": "2026-04-03",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 205,
+          "min_lkr": 180,
+          "max_lkr": 230,
+          "unit": "kg",
+          "publication_date": "2026-04-03"
+        },
+        {
+          "date": "2026-04-03",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 75,
+          "min_lkr": 70,
+          "max_lkr": 80,
+          "unit": "kg",
+          "publication_date": "2026-04-03"
+        },
+        {
+          "date": "2026-04-04",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-04"
+        },
+        {
+          "date": "2026-04-04",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 315,
+          "min_lkr": 300,
+          "max_lkr": 330,
+          "unit": "kg",
+          "publication_date": "2026-04-04"
+        },
+        {
+          "date": "2026-04-04",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-04"
+        },
+        {
+          "date": "2026-04-04",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 75,
+          "min_lkr": 70,
+          "max_lkr": 80,
+          "unit": "kg",
+          "publication_date": "2026-04-04"
+        },
+        {
+          "date": "2026-04-05",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 240,
+          "min_lkr": 200,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-04-05"
+        },
+        {
+          "date": "2026-04-05",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 290,
+          "min_lkr": 280,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-05"
+        },
+        {
+          "date": "2026-04-05",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-05"
+        },
+        {
+          "date": "2026-04-05",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 100,
+          "min_lkr": 80,
+          "max_lkr": 120,
+          "unit": "kg",
+          "publication_date": "2026-04-05"
+        },
+        {
+          "date": "2026-04-06",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 150,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-06"
+        },
+        {
+          "date": "2026-04-06",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-06"
+        },
+        {
+          "date": "2026-04-06",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 180,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-04-06"
+        },
+        {
+          "date": "2026-04-06",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 125,
+          "min_lkr": 120,
+          "max_lkr": 130,
+          "unit": "kg",
+          "publication_date": "2026-04-06"
+        },
+        {
+          "date": "2026-04-07",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-07"
+        },
+        {
+          "date": "2026-04-07",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 290,
+          "min_lkr": 280,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-07"
+        },
+        {
+          "date": "2026-04-07",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-07"
+        },
+        {
+          "date": "2026-04-07",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 130,
+          "min_lkr": 120,
+          "max_lkr": 140,
+          "unit": "kg",
+          "publication_date": "2026-04-07"
+        },
+        {
+          "date": "2026-04-08",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-08"
+        },
+        {
+          "date": "2026-04-08",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-04-08"
+        },
+        {
+          "date": "2026-04-08",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 180,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-04-08"
+        },
+        {
+          "date": "2026-04-08",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 140,
+          "min_lkr": 130,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-08"
+        },
+        {
+          "date": "2026-04-09",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-09"
+        },
+        {
+          "date": "2026-04-09",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-04-09"
+        },
+        {
+          "date": "2026-04-09",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 175,
+          "min_lkr": 150,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-09"
+        },
+        {
+          "date": "2026-04-09",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 115,
+          "min_lkr": 100,
+          "max_lkr": 130,
+          "unit": "kg",
+          "publication_date": "2026-04-09"
+        },
+        {
+          "date": "2026-04-10",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 380,
+          "max_lkr": 420,
+          "unit": "kg",
+          "publication_date": "2026-04-10"
+        },
+        {
+          "date": "2026-04-10",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-04-10"
+        },
+        {
+          "date": "2026-04-10",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 160,
+          "min_lkr": 120,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-10"
+        },
+        {
+          "date": "2026-04-10",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-10"
+        },
+        {
+          "date": "2026-04-11",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 515,
+          "min_lkr": 480,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-04-11"
+        },
+        {
+          "date": "2026-04-11",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-04-11"
+        },
+        {
+          "date": "2026-04-11",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 175,
+          "min_lkr": 150,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-11"
+        },
+        {
+          "date": "2026-04-11",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-11"
+        },
+        {
+          "date": "2026-04-12",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-04-12"
+        },
+        {
+          "date": "2026-04-12",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 300,
+          "min_lkr": 280,
+          "max_lkr": 320,
+          "unit": "kg",
+          "publication_date": "2026-04-12"
+        },
+        {
+          "date": "2026-04-12",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 175,
+          "min_lkr": 150,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-12"
+        },
+        {
+          "date": "2026-04-12",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-12"
+        },
+        {
+          "date": "2026-04-17",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-17"
+        },
+        {
+          "date": "2026-04-17",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-17"
+        },
+        {
+          "date": "2026-04-17",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 125,
+          "min_lkr": 100,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-17"
+        },
+        {
+          "date": "2026-04-17",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 115,
+          "min_lkr": 100,
+          "max_lkr": 130,
+          "unit": "kg",
+          "publication_date": "2026-04-17"
+        },
+        {
+          "date": "2026-04-18",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 175,
+          "min_lkr": 150,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-18"
+        },
+        {
+          "date": "2026-04-18",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-18"
+        },
+        {
+          "date": "2026-04-18",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 175,
+          "min_lkr": 150,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-18"
+        },
+        {
+          "date": "2026-04-18",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 90,
+          "min_lkr": 80,
+          "max_lkr": 100,
+          "unit": "kg",
+          "publication_date": "2026-04-18"
+        },
+        {
+          "date": "2026-04-21",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-04-21"
+        },
+        {
+          "date": "2026-04-21",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-04-21"
+        },
+        {
+          "date": "2026-04-21",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 175,
+          "min_lkr": 150,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-21"
+        },
+        {
+          "date": "2026-04-21",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 65,
+          "min_lkr": 50,
+          "max_lkr": 80,
+          "unit": "kg",
+          "publication_date": "2026-04-21"
+        },
+        {
+          "date": "2026-04-22",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 350,
+          "min_lkr": 300,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-04-22"
+        },
+        {
+          "date": "2026-04-22",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-22"
+        },
+        {
+          "date": "2026-04-22",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 100,
+          "min_lkr": 80,
+          "max_lkr": 120,
+          "unit": "kg",
+          "publication_date": "2026-04-22"
+        },
+        {
+          "date": "2026-04-22",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 110,
+          "min_lkr": 100,
+          "max_lkr": 120,
+          "unit": "kg",
+          "publication_date": "2026-04-22"
+        },
+        {
+          "date": "2026-04-23",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 350,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-04-23"
+        },
+        {
+          "date": "2026-04-23",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 215,
+          "min_lkr": 200,
+          "max_lkr": 230,
+          "unit": "kg",
+          "publication_date": "2026-04-23"
+        },
+        {
+          "date": "2026-04-23",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 125,
+          "min_lkr": 100,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-23"
+        },
+        {
+          "date": "2026-04-23",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 135,
+          "min_lkr": 120,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-23"
+        },
+        {
+          "date": "2026-04-24",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-04-24"
+        },
+        {
+          "date": "2026-04-24",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 240,
+          "min_lkr": 230,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-24"
+        },
+        {
+          "date": "2026-04-24",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 90,
+          "min_lkr": 80,
+          "max_lkr": 100,
+          "unit": "kg",
+          "publication_date": "2026-04-24"
+        },
+        {
+          "date": "2026-04-24",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 140,
+          "min_lkr": 130,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-24"
+        },
+        {
+          "date": "2026-04-25",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 500,
+          "min_lkr": 450,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-04-25"
+        },
+        {
+          "date": "2026-04-25",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-25"
+        },
+        {
+          "date": "2026-04-25",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 125,
+          "min_lkr": 100,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-25"
+        },
+        {
+          "date": "2026-04-25",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 215,
+          "min_lkr": 180,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-25"
+        },
+        {
+          "date": "2026-04-26",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-04-26"
+        },
+        {
+          "date": "2026-04-26",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 210,
+          "min_lkr": 200,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-04-26"
+        },
+        {
+          "date": "2026-04-26",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 125,
+          "min_lkr": 100,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-26"
+        },
+        {
+          "date": "2026-04-26",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 90,
+          "min_lkr": 80,
+          "max_lkr": 100,
+          "unit": "kg",
+          "publication_date": "2026-04-26"
+        },
+        {
+          "date": "2026-04-27",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-04-27"
+        },
+        {
+          "date": "2026-04-27",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 190,
+          "min_lkr": 180,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-27"
+        },
+        {
+          "date": "2026-04-27",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 135,
+          "min_lkr": 120,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-27"
+        },
+        {
+          "date": "2026-04-27",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 140,
+          "min_lkr": 130,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-27"
+        },
+        {
+          "date": "2026-04-28",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-04-28"
+        },
+        {
+          "date": "2026-04-28",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 180,
+          "min_lkr": 160,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-28"
+        },
+        {
+          "date": "2026-04-28",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 135,
+          "min_lkr": 120,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-28"
+        },
+        {
+          "date": "2026-04-28",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 150,
+          "min_lkr": 120,
+          "max_lkr": 180,
+          "unit": "kg",
+          "publication_date": "2026-04-28"
+        },
+        {
+          "date": "2026-04-29",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-04-29"
+        },
+        {
+          "date": "2026-04-29",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 240,
+          "min_lkr": 230,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-04-29"
+        },
+        {
+          "date": "2026-04-29",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 100,
+          "min_lkr": 80,
+          "max_lkr": 120,
+          "unit": "kg",
+          "publication_date": "2026-04-29"
+        },
+        {
+          "date": "2026-04-29",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 140,
+          "min_lkr": 130,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-04-29"
+        },
+        {
+          "date": "2026-04-30",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-04-30"
+        },
+        {
+          "date": "2026-04-30",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 215,
+          "min_lkr": 200,
+          "max_lkr": 230,
+          "unit": "kg",
+          "publication_date": "2026-04-30"
+        },
+        {
+          "date": "2026-04-30",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 100,
+          "min_lkr": 80,
+          "max_lkr": 120,
+          "unit": "kg",
+          "publication_date": "2026-04-30"
+        },
+        {
+          "date": "2026-04-30",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 180,
+          "min_lkr": 160,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-04-30"
+        },
+        {
+          "date": "2026-05-03",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-03"
+        },
+        {
+          "date": "2026-05-03",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-03"
+        },
+        {
+          "date": "2026-05-03",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-03"
+        },
+        {
+          "date": "2026-05-03",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-03"
+        },
+        {
+          "date": "2026-05-04",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-04"
+        },
+        {
+          "date": "2026-05-04",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-04"
+        },
+        {
+          "date": "2026-05-04",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 125,
+          "min_lkr": 100,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-05-04"
+        },
+        {
+          "date": "2026-05-04",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-04"
+        },
+        {
+          "date": "2026-05-05",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-05"
+        },
+        {
+          "date": "2026-05-05",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 180,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-05-05"
+        },
+        {
+          "date": "2026-05-05",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 100,
+          "min_lkr": 80,
+          "max_lkr": 120,
+          "unit": "kg",
+          "publication_date": "2026-05-05"
+        },
+        {
+          "date": "2026-05-05",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-05"
+        },
+        {
+          "date": "2026-05-06",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-06"
+        },
+        {
+          "date": "2026-05-06",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 190,
+          "min_lkr": 180,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-05-06"
+        },
+        {
+          "date": "2026-05-06",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 105,
+          "min_lkr": 80,
+          "max_lkr": 130,
+          "unit": "kg",
+          "publication_date": "2026-05-06"
+        },
+        {
+          "date": "2026-05-06",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-06"
+        },
+        {
+          "date": "2026-05-07",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-07"
+        },
+        {
+          "date": "2026-05-07",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 190,
+          "min_lkr": 180,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-05-07"
+        },
+        {
+          "date": "2026-05-07",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 105,
+          "min_lkr": 80,
+          "max_lkr": 130,
+          "unit": "kg",
+          "publication_date": "2026-05-07"
+        },
+        {
+          "date": "2026-05-07",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-05-07"
+        },
+        {
+          "date": "2026-05-08",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 500,
+          "min_lkr": 450,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-05-08"
+        },
+        {
+          "date": "2026-05-08",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 190,
+          "min_lkr": 180,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-05-08"
+        },
+        {
+          "date": "2026-05-08",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 115,
+          "min_lkr": 100,
+          "max_lkr": 130,
+          "unit": "kg",
+          "publication_date": "2026-05-08"
+        },
+        {
+          "date": "2026-05-08",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-08"
+        },
+        {
+          "date": "2026-05-09",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-09"
+        },
+        {
+          "date": "2026-05-09",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 215,
+          "min_lkr": 200,
+          "max_lkr": 230,
+          "unit": "kg",
+          "publication_date": "2026-05-09"
+        },
+        {
+          "date": "2026-05-09",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 165,
+          "min_lkr": 130,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-05-09"
+        },
+        {
+          "date": "2026-05-09",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-05-09"
+        },
+        {
+          "date": "2026-05-10",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-10"
+        },
+        {
+          "date": "2026-05-10",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 180,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-05-10"
+        },
+        {
+          "date": "2026-05-10",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-10"
+        },
+        {
+          "date": "2026-05-10",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 335,
+          "min_lkr": 320,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-05-10"
+        },
+        {
+          "date": "2026-05-11",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-11"
+        },
+        {
+          "date": "2026-05-11",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 210,
+          "min_lkr": 200,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-05-11"
+        },
+        {
+          "date": "2026-05-11",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 250,
+          "min_lkr": 200,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-11"
+        },
+        {
+          "date": "2026-05-11",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-05-11"
+        },
+        {
+          "date": "2026-05-12",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-05-12"
+        },
+        {
+          "date": "2026-05-12",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-12"
+        },
+        {
+          "date": "2026-05-12",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-12"
+        },
+        {
+          "date": "2026-05-12",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 350,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-05-12"
+        },
+        {
+          "date": "2026-05-13",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 500,
+          "min_lkr": 450,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-05-13"
+        },
+        {
+          "date": "2026-05-13",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 150,
+          "min_lkr": 140,
+          "max_lkr": 160,
+          "unit": "kg",
+          "publication_date": "2026-05-13"
+        },
+        {
+          "date": "2026-05-13",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 175,
+          "min_lkr": 150,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-05-13"
+        },
+        {
+          "date": "2026-05-13",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 435,
+          "min_lkr": 420,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-05-13"
+        },
+        {
+          "date": "2026-05-14",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 500,
+          "min_lkr": 450,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-05-14"
+        },
+        {
+          "date": "2026-05-14",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 180,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-05-14"
+        },
+        {
+          "date": "2026-05-14",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-14"
+        },
+        {
+          "date": "2026-05-14",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-05-14"
+        },
+        {
+          "date": "2026-05-15",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 525,
+          "min_lkr": 500,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-05-15"
+        },
+        {
+          "date": "2026-05-15",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 190,
+          "min_lkr": 180,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-05-15"
+        },
+        {
+          "date": "2026-05-15",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 215,
+          "min_lkr": 180,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-15"
+        },
+        {
+          "date": "2026-05-15",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-05-15"
+        },
+        {
+          "date": "2026-05-17",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 625,
+          "min_lkr": 600,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-05-17"
+        },
+        {
+          "date": "2026-05-17",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 210,
+          "min_lkr": 200,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-05-17"
+        },
+        {
+          "date": "2026-05-17",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-17"
+        },
+        {
+          "date": "2026-05-17",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 350,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-05-17"
+        },
+        {
+          "date": "2026-05-18",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-05-18"
+        },
+        {
+          "date": "2026-05-18",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 210,
+          "min_lkr": 200,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-05-18"
+        },
+        {
+          "date": "2026-05-18",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 125,
+          "min_lkr": 100,
+          "max_lkr": 150,
+          "unit": "kg",
+          "publication_date": "2026-05-18"
+        },
+        {
+          "date": "2026-05-18",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-05-18"
+        },
+        {
+          "date": "2026-05-19",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-05-19"
+        },
+        {
+          "date": "2026-05-19",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 215,
+          "min_lkr": 200,
+          "max_lkr": 230,
+          "unit": "kg",
+          "publication_date": "2026-05-19"
+        },
+        {
+          "date": "2026-05-19",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 150,
+          "min_lkr": 100,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-05-19"
+        },
+        {
+          "date": "2026-05-19",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 300,
+          "min_lkr": 250,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-05-19"
+        },
+        {
+          "date": "2026-05-20",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-05-20"
+        },
+        {
+          "date": "2026-05-20",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-20"
+        },
+        {
+          "date": "2026-05-20",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-05-20"
+        },
+        {
+          "date": "2026-05-20",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-20"
+        },
+        {
+          "date": "2026-05-22",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-22"
+        },
+        {
+          "date": "2026-05-22",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-22"
+        },
+        {
+          "date": "2026-05-22",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 150,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-22"
+        },
+        {
+          "date": "2026-05-22",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-05-22"
+        },
+        {
+          "date": "2026-05-23",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-05-23"
+        },
+        {
+          "date": "2026-05-23",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 335,
+          "min_lkr": 320,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-05-23"
+        },
+        {
+          "date": "2026-05-23",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 300,
+          "min_lkr": 250,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-05-23"
+        },
+        {
+          "date": "2026-05-23",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-05-23"
+        },
+        {
+          "date": "2026-05-24",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-05-24"
+        },
+        {
+          "date": "2026-05-24",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-24"
+        },
+        {
+          "date": "2026-05-24",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-24"
+        },
+        {
+          "date": "2026-05-24",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-05-24"
+        },
+        {
+          "date": "2026-05-25",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-05-25"
+        },
+        {
+          "date": "2026-05-25",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 285,
+          "min_lkr": 270,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-25"
+        },
+        {
+          "date": "2026-05-25",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-25"
+        },
+        {
+          "date": "2026-05-25",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-05-25"
+        },
+        {
+          "date": "2026-05-26",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-05-26"
+        },
+        {
+          "date": "2026-05-26",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-26"
+        },
+        {
+          "date": "2026-05-26",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 240,
+          "min_lkr": 200,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-05-26"
+        },
+        {
+          "date": "2026-05-26",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-05-26"
+        },
+        {
+          "date": "2026-05-27",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-05-27"
+        },
+        {
+          "date": "2026-05-27",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 290,
+          "min_lkr": 280,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-27"
+        },
+        {
+          "date": "2026-05-27",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-27"
+        },
+        {
+          "date": "2026-05-27",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-05-27"
+        },
+        {
+          "date": "2026-05-28",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-05-28"
+        },
+        {
+          "date": "2026-05-28",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-05-28"
+        },
+        {
+          "date": "2026-05-28",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-28"
+        },
+        {
+          "date": "2026-05-28",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-05-28"
+        },
+        {
+          "date": "2026-05-29",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 350,
+          "min_lkr": 300,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-05-29"
+        },
+        {
+          "date": "2026-05-29",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 290,
+          "min_lkr": 280,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-05-29"
+        },
+        {
+          "date": "2026-05-29",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-05-29"
+        },
+        {
+          "date": "2026-05-29",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-05-29"
+        },
+        {
+          "date": "2026-06-01",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-01"
+        },
+        {
+          "date": "2026-06-01",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 365,
+          "min_lkr": 350,
+          "max_lkr": 380,
+          "unit": "kg",
+          "publication_date": "2026-06-01"
+        },
+        {
+          "date": "2026-06-01",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-01"
+        },
+        {
+          "date": "2026-06-01",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-01"
+        },
+        {
+          "date": "2026-06-02",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-02"
+        },
+        {
+          "date": "2026-06-02",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 365,
+          "min_lkr": 350,
+          "max_lkr": 380,
+          "unit": "kg",
+          "publication_date": "2026-06-02"
+        },
+        {
+          "date": "2026-06-02",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-02"
+        },
+        {
+          "date": "2026-06-02",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-02"
+        },
+        {
+          "date": "2026-06-03",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-03"
+        },
+        {
+          "date": "2026-06-03",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 380,
+          "max_lkr": 420,
+          "unit": "kg",
+          "publication_date": "2026-06-03"
+        },
+        {
+          "date": "2026-06-03",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-03"
+        },
+        {
+          "date": "2026-06-03",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-03"
+        },
+        {
+          "date": "2026-06-04",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-04"
+        },
+        {
+          "date": "2026-06-04",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-04"
+        },
+        {
+          "date": "2026-06-04",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-04"
+        },
+        {
+          "date": "2026-06-04",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-04"
+        },
+        {
+          "date": "2026-06-05",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-05"
+        },
+        {
+          "date": "2026-06-05",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-05"
+        },
+        {
+          "date": "2026-06-05",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 350,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-05"
+        },
+        {
+          "date": "2026-06-05",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-06-05"
+        },
+        {
+          "date": "2026-06-06",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-06"
+        },
+        {
+          "date": "2026-06-06",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-06"
+        },
+        {
+          "date": "2026-06-06",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-06"
+        },
+        {
+          "date": "2026-06-06",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-06-06"
+        },
+        {
+          "date": "2026-06-07",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-07"
+        },
+        {
+          "date": "2026-06-07",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-07"
+        },
+        {
+          "date": "2026-06-07",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-07"
+        },
+        {
+          "date": "2026-06-07",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-06-07"
+        },
+        {
+          "date": "2026-06-08",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-08"
+        },
+        {
+          "date": "2026-06-08",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 330,
+          "min_lkr": 300,
+          "max_lkr": 360,
+          "unit": "kg",
+          "publication_date": "2026-06-08"
+        },
+        {
+          "date": "2026-06-08",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-08"
+        },
+        {
+          "date": "2026-06-08",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-08"
+        },
+        {
+          "date": "2026-06-09",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-09"
+        },
+        {
+          "date": "2026-06-09",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-09"
+        },
+        {
+          "date": "2026-06-09",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-09"
+        },
+        {
+          "date": "2026-06-09",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 525,
+          "min_lkr": 500,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-06-09"
+        },
+        {
+          "date": "2026-06-10",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-10"
+        },
+        {
+          "date": "2026-06-10",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-06-10"
+        },
+        {
+          "date": "2026-06-10",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-10"
+        },
+        {
+          "date": "2026-06-10",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 500,
+          "min_lkr": 450,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-06-10"
+        },
+        {
+          "date": "2026-06-11",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-11"
+        },
+        {
+          "date": "2026-06-11",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-06-11"
+        },
+        {
+          "date": "2026-06-11",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-11"
+        },
+        {
+          "date": "2026-06-11",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-11"
+        },
+        {
+          "date": "2026-06-12",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-12"
+        },
+        {
+          "date": "2026-06-12",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 300,
+          "min_lkr": 280,
+          "max_lkr": 320,
+          "unit": "kg",
+          "publication_date": "2026-06-12"
+        },
+        {
+          "date": "2026-06-12",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-12"
+        },
+        {
+          "date": "2026-06-12",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-12"
+        },
+        {
+          "date": "2026-06-13",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-13"
+        },
+        {
+          "date": "2026-06-13",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-06-13"
+        },
+        {
+          "date": "2026-06-13",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 525,
+          "min_lkr": 500,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-06-13"
+        },
+        {
+          "date": "2026-06-13",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 625,
+          "min_lkr": 600,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-06-13"
+        },
+        {
+          "date": "2026-06-14",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-14"
+        },
+        {
+          "date": "2026-06-14",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 335,
+          "min_lkr": 320,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-06-14"
+        },
+        {
+          "date": "2026-06-14",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 525,
+          "min_lkr": 500,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-06-14"
+        },
+        {
+          "date": "2026-06-14",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-06-14"
+        },
+        {
+          "date": "2026-06-15",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-15"
+        },
+        {
+          "date": "2026-06-15",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-06-15"
+        },
+        {
+          "date": "2026-06-15",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-15"
+        },
+        {
+          "date": "2026-06-15",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 675,
+          "min_lkr": 650,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-06-15"
+        },
+        {
+          "date": "2026-06-17",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-17"
+        },
+        {
+          "date": "2026-06-17",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-06-17"
+        },
+        {
+          "date": "2026-06-17",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-17"
+        },
+        {
+          "date": "2026-06-17",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 675,
+          "min_lkr": 650,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-06-17"
+        },
+        {
+          "date": "2026-06-18",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-18"
+        },
+        {
+          "date": "2026-06-18",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 365,
+          "min_lkr": 350,
+          "max_lkr": 380,
+          "unit": "kg",
+          "publication_date": "2026-06-18"
+        },
+        {
+          "date": "2026-06-18",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-18"
+        },
+        {
+          "date": "2026-06-18",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 625,
+          "min_lkr": 600,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-06-18"
+        },
+        {
+          "date": "2026-06-19",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 350,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-19"
+        },
+        {
+          "date": "2026-06-19",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-19"
+        },
+        {
+          "date": "2026-06-19",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-19"
+        },
+        {
+          "date": "2026-06-19",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-06-19"
+        },
+        {
+          "date": "2026-06-20",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-20"
+        },
+        {
+          "date": "2026-06-20",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-06-20"
+        },
+        {
+          "date": "2026-06-20",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-20"
+        },
+        {
+          "date": "2026-06-20",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 675,
+          "min_lkr": 650,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-06-20"
+        },
+        {
+          "date": "2026-06-22",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-22"
+        },
+        {
+          "date": "2026-06-22",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 290,
+          "min_lkr": 280,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-06-22"
+        },
+        {
+          "date": "2026-06-22",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-22"
+        },
+        {
+          "date": "2026-06-22",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-06-22"
+        },
+        {
+          "date": "2026-06-23",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-23"
+        },
+        {
+          "date": "2026-06-23",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-06-23"
+        },
+        {
+          "date": "2026-06-23",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-23"
+        },
+        {
+          "date": "2026-06-23",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-23"
+        },
+        {
+          "date": "2026-06-24",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-24"
+        },
+        {
+          "date": "2026-06-24",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 285,
+          "min_lkr": 270,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-06-24"
+        },
+        {
+          "date": "2026-06-24",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 625,
+          "min_lkr": 600,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-06-24"
+        },
+        {
+          "date": "2026-06-24",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 575,
+          "min_lkr": 550,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-06-24"
+        },
+        {
+          "date": "2026-06-25",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-06-25"
+        },
+        {
+          "date": "2026-06-25",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-06-25"
+        },
+        {
+          "date": "2026-06-25",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-06-25"
+        },
+        {
+          "date": "2026-06-25",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-25"
+        },
+        {
+          "date": "2026-06-26",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-26"
+        },
+        {
+          "date": "2026-06-26",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-06-26"
+        },
+        {
+          "date": "2026-06-26",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 625,
+          "min_lkr": 600,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-06-26"
+        },
+        {
+          "date": "2026-06-26",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-26"
+        },
+        {
+          "date": "2026-06-27",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-27"
+        },
+        {
+          "date": "2026-06-27",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-06-27"
+        },
+        {
+          "date": "2026-06-27",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 625,
+          "min_lkr": 600,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-06-27"
+        },
+        {
+          "date": "2026-06-27",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-27"
+        },
+        {
+          "date": "2026-06-28",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 300,
+          "min_lkr": 250,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-06-28"
+        },
+        {
+          "date": "2026-06-28",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-06-28"
+        },
+        {
+          "date": "2026-06-28",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 800,
+          "min_lkr": 750,
+          "max_lkr": 850,
+          "unit": "kg",
+          "publication_date": "2026-06-28"
+        },
+        {
+          "date": "2026-06-28",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-06-28"
+        },
+        {
+          "date": "2026-06-30",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 250,
+          "min_lkr": 200,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-06-30"
+        },
+        {
+          "date": "2026-06-30",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-06-30"
+        },
+        {
+          "date": "2026-06-30",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 850,
+          "min_lkr": 800,
+          "max_lkr": 900,
+          "unit": "kg",
+          "publication_date": "2026-06-30"
+        },
+        {
+          "date": "2026-06-30",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 350,
+          "min_lkr": 300,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-06-30"
+        },
+        {
+          "date": "2026-07-01",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 250,
+          "min_lkr": 200,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-01"
+        },
+        {
+          "date": "2026-07-01",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-01"
+        },
+        {
+          "date": "2026-07-01",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-07-01"
+        },
+        {
+          "date": "2026-07-01",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-01"
+        },
+        {
+          "date": "2026-07-03",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-03"
+        },
+        {
+          "date": "2026-07-03",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-03"
+        },
+        {
+          "date": "2026-07-03",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-07-03"
+        },
+        {
+          "date": "2026-07-03",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 180,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-07-03"
+        },
+        {
+          "date": "2026-07-04",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 350,
+          "min_lkr": 300,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-04"
+        },
+        {
+          "date": "2026-07-04",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 240,
+          "min_lkr": 230,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-04"
+        },
+        {
+          "date": "2026-07-04",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 700,
+          "min_lkr": 650,
+          "max_lkr": 750,
+          "unit": "kg",
+          "publication_date": "2026-07-04"
+        },
+        {
+          "date": "2026-07-04",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-04"
+        },
+        {
+          "date": "2026-07-05",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-05"
+        },
+        {
+          "date": "2026-07-05",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 240,
+          "min_lkr": 220,
+          "max_lkr": 260,
+          "unit": "kg",
+          "publication_date": "2026-07-05"
+        },
+        {
+          "date": "2026-07-05",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 700,
+          "min_lkr": 650,
+          "max_lkr": 750,
+          "unit": "kg",
+          "publication_date": "2026-07-05"
+        },
+        {
+          "date": "2026-07-05",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 250,
+          "min_lkr": 200,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-05"
+        },
+        {
+          "date": "2026-07-06",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-06"
+        },
+        {
+          "date": "2026-07-06",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-06"
+        },
+        {
+          "date": "2026-07-06",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 550,
+          "min_lkr": 500,
+          "max_lkr": 600,
+          "unit": "kg",
+          "publication_date": "2026-07-06"
+        },
+        {
+          "date": "2026-07-06",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-06"
+        },
+        {
+          "date": "2026-07-08",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-08"
+        },
+        {
+          "date": "2026-07-08",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-07-08"
+        },
+        {
+          "date": "2026-07-08",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 675,
+          "min_lkr": 650,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-07-08"
+        },
+        {
+          "date": "2026-07-08",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-08"
+        },
+        {
+          "date": "2026-07-09",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 300,
+          "min_lkr": 250,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-09"
+        },
+        {
+          "date": "2026-07-09",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 240,
+          "min_lkr": 230,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-09"
+        },
+        {
+          "date": "2026-07-09",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-07-09"
+        },
+        {
+          "date": "2026-07-09",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-09"
+        },
+        {
+          "date": "2026-07-10",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 150,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-10"
+        },
+        {
+          "date": "2026-07-10",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-10"
+        },
+        {
+          "date": "2026-07-10",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 675,
+          "min_lkr": 650,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-07-10"
+        },
+        {
+          "date": "2026-07-10",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-10"
+        },
+        {
+          "date": "2026-07-11",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 300,
+          "min_lkr": 250,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-11"
+        },
+        {
+          "date": "2026-07-11",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-11"
+        },
+        {
+          "date": "2026-07-11",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1050,
+          "min_lkr": 1000,
+          "max_lkr": 1100,
+          "unit": "kg",
+          "publication_date": "2026-07-11"
+        },
+        {
+          "date": "2026-07-11",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-11"
+        },
+        {
+          "date": "2026-07-12",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-12"
+        },
+        {
+          "date": "2026-07-12",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-12"
+        },
+        {
+          "date": "2026-07-12",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1150,
+          "min_lkr": 1100,
+          "max_lkr": 1200,
+          "unit": "kg",
+          "publication_date": "2026-07-12"
+        },
+        {
+          "date": "2026-07-12",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-12"
+        },
+        {
+          "date": "2026-07-14",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-14"
+        },
+        {
+          "date": "2026-07-14",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 245,
+          "min_lkr": 230,
+          "max_lkr": 260,
+          "unit": "kg",
+          "publication_date": "2026-07-14"
+        },
+        {
+          "date": "2026-07-14",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1050,
+          "min_lkr": 1000,
+          "max_lkr": 1100,
+          "unit": "kg",
+          "publication_date": "2026-07-14"
+        },
+        {
+          "date": "2026-07-14",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-14"
+        },
+        {
+          "date": "2026-07-15",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 250,
+          "min_lkr": 200,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-15"
+        },
+        {
+          "date": "2026-07-15",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-15"
+        },
+        {
+          "date": "2026-07-15",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1100,
+          "min_lkr": 1000,
+          "max_lkr": 1200,
+          "unit": "kg",
+          "publication_date": "2026-07-15"
+        },
+        {
+          "date": "2026-07-15",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 335,
+          "min_lkr": 320,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-15"
+        },
+        {
+          "date": "2026-07-16",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-16"
+        },
+        {
+          "date": "2026-07-16",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-07-16"
+        },
+        {
+          "date": "2026-07-16",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1100,
+          "min_lkr": 1000,
+          "max_lkr": 1200,
+          "unit": "kg",
+          "publication_date": "2026-07-16"
+        },
+        {
+          "date": "2026-07-16",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-16"
+        },
+        {
+          "date": "2026-07-17",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 330,
+          "min_lkr": 300,
+          "max_lkr": 360,
+          "unit": "kg",
+          "publication_date": "2026-07-17"
+        },
+        {
+          "date": "2026-07-17",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 290,
+          "min_lkr": 280,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-17"
+        },
+        {
+          "date": "2026-07-17",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1000,
+          "min_lkr": 900,
+          "max_lkr": 1100,
+          "unit": "kg",
+          "publication_date": "2026-07-17"
+        },
+        {
+          "date": "2026-07-17",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-17"
+        },
+        {
+          "date": "2026-07-18",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 300,
+          "min_lkr": 250,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-18"
+        },
+        {
+          "date": "2026-07-18",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-07-18"
+        },
+        {
+          "date": "2026-07-18",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1050,
+          "min_lkr": 1000,
+          "max_lkr": 1100,
+          "unit": "kg",
+          "publication_date": "2026-07-18"
+        },
+        {
+          "date": "2026-07-18",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-07-18"
+        },
+        {
+          "date": "2026-07-20",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-20"
+        },
+        {
+          "date": "2026-07-20",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-07-20"
+        },
+        {
+          "date": "2026-07-20",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1150,
+          "min_lkr": 1100,
+          "max_lkr": 1200,
+          "unit": "kg",
+          "publication_date": "2026-07-20"
+        },
+        {
+          "date": "2026-07-20",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-20"
+        },
+        {
+          "date": "2026-07-21",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-21"
+        },
+        {
+          "date": "2026-07-21",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-21"
+        },
+        {
+          "date": "2026-07-21",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1050,
+          "min_lkr": 1000,
+          "max_lkr": 1100,
+          "unit": "kg",
+          "publication_date": "2026-07-21"
+        },
+        {
+          "date": "2026-07-21",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-21"
+        },
+        {
+          "date": "2026-07-22",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-22"
+        },
+        {
+          "date": "2026-07-22",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 245,
+          "min_lkr": 230,
+          "max_lkr": 260,
+          "unit": "kg",
+          "publication_date": "2026-07-22"
+        },
+        {
+          "date": "2026-07-22",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 900,
+          "min_lkr": 800,
+          "max_lkr": 1000,
+          "unit": "kg",
+          "publication_date": "2026-07-22"
+        },
+        {
+          "date": "2026-07-22",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-22"
+        },
+        {
+          "date": "2026-07-23",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-23"
+        },
+        {
+          "date": "2026-07-23",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 240,
+          "min_lkr": 230,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-23"
+        },
+        {
+          "date": "2026-07-23",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1150,
+          "min_lkr": 1100,
+          "max_lkr": 1200,
+          "unit": "kg",
+          "publication_date": "2026-07-23"
+        },
+        {
+          "date": "2026-07-23",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 350,
+          "min_lkr": 300,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-23"
+        },
+        {
+          "date": "2026-07-24",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-24"
+        },
+        {
+          "date": "2026-07-24",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-24"
+        },
+        {
+          "date": "2026-07-24",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 950,
+          "min_lkr": 900,
+          "max_lkr": 1000,
+          "unit": "kg",
+          "publication_date": "2026-07-24"
+        },
+        {
+          "date": "2026-07-24",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-24"
+        },
+        {
+          "date": "2026-07-25",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-25"
+        },
+        {
+          "date": "2026-07-25",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-25"
+        },
+        {
+          "date": "2026-07-25",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1050,
+          "min_lkr": 1000,
+          "max_lkr": 1100,
+          "unit": "kg",
+          "publication_date": "2026-07-25"
+        },
+        {
+          "date": "2026-07-25",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-25"
+        },
+        {
+          "date": "2026-07-26",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-26"
+        },
+        {
+          "date": "2026-07-26",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-07-26"
+        },
+        {
+          "date": "2026-07-26",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1050,
+          "min_lkr": 1000,
+          "max_lkr": 1100,
+          "unit": "kg",
+          "publication_date": "2026-07-26"
+        },
+        {
+          "date": "2026-07-26",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 365,
+          "min_lkr": 350,
+          "max_lkr": 380,
+          "unit": "kg",
+          "publication_date": "2026-07-26"
+        },
+        {
+          "date": "2026-07-27",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-07-27"
+        },
+        {
+          "date": "2026-07-27",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-07-27"
+        },
+        {
+          "date": "2026-07-27",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1150,
+          "min_lkr": 1100,
+          "max_lkr": 1200,
+          "unit": "kg",
+          "publication_date": "2026-07-27"
+        },
+        {
+          "date": "2026-07-27",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-27"
+        },
+        {
+          "date": "2026-07-28",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-07-28"
+        },
+        {
+          "date": "2026-07-28",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 280,
+          "min_lkr": 260,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-28"
+        },
+        {
+          "date": "2026-07-28",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1250,
+          "min_lkr": 1200,
+          "max_lkr": 1300,
+          "unit": "kg",
+          "publication_date": "2026-07-28"
+        },
+        {
+          "date": "2026-07-28",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-28"
+        },
+        {
+          "date": "2026-07-30",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-30"
+        },
+        {
+          "date": "2026-07-30",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-07-30"
+        },
+        {
+          "date": "2026-07-30",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 1150,
+          "min_lkr": 1100,
+          "max_lkr": 1200,
+          "unit": "kg",
+          "publication_date": "2026-07-30"
+        },
+        {
+          "date": "2026-07-30",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-30"
+        },
+        {
+          "date": "2026-07-31",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 250,
+          "min_lkr": 200,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-07-31"
+        },
+        {
+          "date": "2026-07-31",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-07-31"
+        },
+        {
+          "date": "2026-07-31",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 950,
+          "min_lkr": 900,
+          "max_lkr": 1000,
+          "unit": "kg",
+          "publication_date": "2026-07-31"
+        },
+        {
+          "date": "2026-07-31",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-07-31"
+        },
+        {
+          "date": "2026-08-02",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-08-02"
+        },
+        {
+          "date": "2026-08-02",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 290,
+          "min_lkr": 280,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-08-02"
+        },
+        {
+          "date": "2026-08-02",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-08-02"
+        },
+        {
+          "date": "2026-08-02",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-08-02"
+        },
+        {
+          "date": "2026-08-03",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 350,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-08-03"
+        },
+        {
+          "date": "2026-08-03",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-08-03"
+        },
+        {
+          "date": "2026-08-03",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-08-03"
+        },
+        {
+          "date": "2026-08-03",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-08-03"
+        },
+        {
+          "date": "2026-08-04",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-08-04"
+        },
+        {
+          "date": "2026-08-04",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 290,
+          "min_lkr": 280,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-08-04"
+        },
+        {
+          "date": "2026-08-04",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 700,
+          "min_lkr": 650,
+          "max_lkr": 750,
+          "unit": "kg",
+          "publication_date": "2026-08-04"
+        },
+        {
+          "date": "2026-08-04",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-08-04"
+        },
+        {
+          "date": "2026-08-05",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-08-05"
+        },
+        {
+          "date": "2026-08-05",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-08-05"
+        },
+        {
+          "date": "2026-08-05",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-08-05"
+        },
+        {
+          "date": "2026-08-05",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-08-05"
+        },
+        {
+          "date": "2026-08-06",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-08-06"
+        },
+        {
+          "date": "2026-08-06",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 235,
+          "min_lkr": 220,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-08-06"
+        },
+        {
+          "date": "2026-08-06",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-08-06"
+        },
+        {
+          "date": "2026-08-06",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 215,
+          "min_lkr": 180,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-08-06"
+        },
+        {
+          "date": "2026-08-07",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 475,
+          "min_lkr": 450,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-08-07"
+        },
+        {
+          "date": "2026-08-07",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 180,
+          "min_lkr": 160,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-08-07"
+        },
+        {
+          "date": "2026-08-07",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-08-07"
+        },
+        {
+          "date": "2026-08-07",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-08-07"
+        },
+        {
+          "date": "2026-08-08",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 500,
+          "min_lkr": 450,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-08-08"
+        },
+        {
+          "date": "2026-08-08",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-08-08"
+        },
+        {
+          "date": "2026-08-08",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-08-08"
+        },
+        {
+          "date": "2026-08-08",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-08-08"
+        },
+        {
+          "date": "2026-08-09",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-08-09"
+        },
+        {
+          "date": "2026-08-09",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 265,
+          "min_lkr": 250,
+          "max_lkr": 280,
+          "unit": "kg",
+          "publication_date": "2026-08-09"
+        },
+        {
+          "date": "2026-08-09",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-08-09"
+        },
+        {
+          "date": "2026-08-09",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-08-09"
+        },
+        {
+          "date": "2026-08-10",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-08-10"
+        },
+        {
+          "date": "2026-08-10",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 245,
+          "min_lkr": 230,
+          "max_lkr": 260,
+          "unit": "kg",
+          "publication_date": "2026-08-10"
+        },
+        {
+          "date": "2026-08-10",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 750,
+          "min_lkr": 700,
+          "max_lkr": 800,
+          "unit": "kg",
+          "publication_date": "2026-08-10"
+        },
+        {
+          "date": "2026-08-10",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-08-10"
+        },
+        {
+          "date": "2026-08-11",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 525,
+          "min_lkr": 500,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-08-11"
+        },
+        {
+          "date": "2026-08-11",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 245,
+          "min_lkr": 230,
+          "max_lkr": 260,
+          "unit": "kg",
+          "publication_date": "2026-08-11"
+        },
+        {
+          "date": "2026-08-11",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 800,
+          "min_lkr": 750,
+          "max_lkr": 850,
+          "unit": "kg",
+          "publication_date": "2026-08-11"
+        },
+        {
+          "date": "2026-08-11",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-08-11"
+        },
+        {
+          "date": "2026-08-12",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-08-12"
+        },
+        {
+          "date": "2026-08-12",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 180,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-08-12"
+        },
+        {
+          "date": "2026-08-12",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-08-12"
+        },
+        {
+          "date": "2026-08-12",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-08-12"
+        },
+        {
+          "date": "2026-08-13",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-08-13"
+        },
+        {
+          "date": "2026-08-13",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 180,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-08-13"
+        },
+        {
+          "date": "2026-08-13",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-08-13"
+        },
+        {
+          "date": "2026-08-13",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 415,
+          "min_lkr": 400,
+          "max_lkr": 430,
+          "unit": "kg",
+          "publication_date": "2026-08-13"
+        },
+        {
+          "date": "2026-08-14",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-08-14"
+        },
+        {
+          "date": "2026-08-14",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 190,
+          "min_lkr": 180,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-08-14"
+        },
+        {
+          "date": "2026-08-14",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-08-14"
+        },
+        {
+          "date": "2026-08-14",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-08-14"
+        },
+        {
+          "date": "2026-08-15",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-08-15"
+        },
+        {
+          "date": "2026-08-15",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 215,
+          "min_lkr": 200,
+          "max_lkr": 230,
+          "unit": "kg",
+          "publication_date": "2026-08-15"
+        },
+        {
+          "date": "2026-08-15",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 600,
+          "min_lkr": 550,
+          "max_lkr": 650,
+          "unit": "kg",
+          "publication_date": "2026-08-15"
+        },
+        {
+          "date": "2026-08-15",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 425,
+          "min_lkr": 400,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-08-15"
+        },
+        {
+          "date": "2026-08-16",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 500,
+          "min_lkr": 450,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-08-16"
+        },
+        {
+          "date": "2026-08-16",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 165,
+          "min_lkr": 150,
+          "max_lkr": 180,
+          "unit": "kg",
+          "publication_date": "2026-08-16"
+        },
+        {
+          "date": "2026-08-16",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-08-16"
+        },
+        {
+          "date": "2026-08-16",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 375,
+          "min_lkr": 350,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-08-16"
+        },
+        {
+          "date": "2026-08-17",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 500,
+          "min_lkr": 450,
+          "max_lkr": 550,
+          "unit": "kg",
+          "publication_date": "2026-08-17"
+        },
+        {
+          "date": "2026-08-17",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 200,
+          "min_lkr": 180,
+          "max_lkr": 220,
+          "unit": "kg",
+          "publication_date": "2026-08-17"
+        },
+        {
+          "date": "2026-08-17",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 650,
+          "min_lkr": 600,
+          "max_lkr": 700,
+          "unit": "kg",
+          "publication_date": "2026-08-17"
+        },
+        {
+          "date": "2026-08-17",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 325,
+          "min_lkr": 300,
+          "max_lkr": 350,
+          "unit": "kg",
+          "publication_date": "2026-08-17"
+        },
+        {
+          "date": "2026-08-19",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 350,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-08-19"
+        },
+        {
+          "date": "2026-08-19",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 165,
+          "min_lkr": 150,
+          "max_lkr": 180,
+          "unit": "kg",
+          "publication_date": "2026-08-19"
+        },
+        {
+          "date": "2026-08-19",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 450,
+          "min_lkr": 400,
+          "max_lkr": 500,
+          "unit": "kg",
+          "publication_date": "2026-08-19"
+        },
+        {
+          "date": "2026-08-19",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-08-19"
+        },
+        {
+          "date": "2026-08-20",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 350,
+          "min_lkr": 300,
+          "max_lkr": 400,
+          "unit": "kg",
+          "publication_date": "2026-08-20"
+        },
+        {
+          "date": "2026-08-20",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 180,
+          "min_lkr": 160,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-08-20"
+        },
+        {
+          "date": "2026-08-20",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 350,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-08-20"
+        },
+        {
+          "date": "2026-08-20",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 225,
+          "min_lkr": 200,
+          "max_lkr": 250,
+          "unit": "kg",
+          "publication_date": "2026-08-20"
+        },
+        {
+          "date": "2026-08-21",
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 400,
+          "min_lkr": 350,
+          "max_lkr": 450,
+          "unit": "kg",
+          "publication_date": "2026-08-21"
+        },
+        {
+          "date": "2026-08-21",
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 190,
+          "min_lkr": 180,
+          "max_lkr": 200,
+          "unit": "kg",
+          "publication_date": "2026-08-21"
+        },
+        {
+          "date": "2026-08-21",
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 250,
+          "min_lkr": 200,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-08-21"
+        },
+        {
+          "date": "2026-08-21",
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "midpoint_lkr": 275,
+          "min_lkr": 250,
+          "max_lkr": 300,
+          "unit": "kg",
+          "publication_date": "2026-08-21"
+        }
+      ],
+      "directional_extremes": [
+        {
+          "item": "Drumstick",
+          "market": "Peliyagoda",
+          "days": 94,
+          "first_period_median_lkr": 400,
+          "last_period_median_lkr": 150,
+          "change_rate": -0.625,
+          "absolute_change_lkr": -250,
+          "first_period": "2026-04-28 to 2026-05-13",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Avocado",
+          "market": "Peliyagoda",
+          "days": 84,
+          "first_period_median_lkr": 211.3,
+          "last_period_median_lkr": 148.8,
+          "change_rate": -0.2959,
+          "absolute_change_lkr": -62.5,
+          "first_period": "2026-04-06 to 2026-05-04",
+          "last_period": "2026-08-03 to 2026-08-21"
+        },
+        {
+          "item": "Luffa",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 190,
+          "last_period_median_lkr": 135,
+          "change_rate": -0.2895,
+          "absolute_change_lkr": -55,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 280,
+          "last_period_median_lkr": 200,
+          "change_rate": -0.2857,
+          "absolute_change_lkr": -80,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Ladies Fingers",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 135,
+          "last_period_median_lkr": 115,
+          "change_rate": -0.1481,
+          "absolute_change_lkr": -20,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Manioc",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 122.5,
+          "last_period_median_lkr": 115,
+          "change_rate": -0.0612,
+          "absolute_change_lkr": -7.5,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Cucumber",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 85,
+          "last_period_median_lkr": 82.5,
+          "change_rate": -0.0294,
+          "absolute_change_lkr": -2.5,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Brinjals",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 115,
+          "last_period_median_lkr": 300,
+          "change_rate": 1.6087,
+          "absolute_change_lkr": 185,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Beet root",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 70,
+          "last_period_median_lkr": 187.5,
+          "change_rate": 1.6786,
+          "absolute_change_lkr": 117.5,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Mango - Karathakolomban",
+          "market": "Peliyagoda",
+          "days": 81,
+          "first_period_median_lkr": 167.5,
+          "last_period_median_lkr": 458.8,
+          "change_rate": 1.7388,
+          "absolute_change_lkr": 291.3,
+          "first_period": "2026-04-06 to 2026-05-04",
+          "last_period": "2026-07-28 to 2026-08-17"
+        },
+        {
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 115,
+          "last_period_median_lkr": 325,
+          "change_rate": 1.8261,
+          "absolute_change_lkr": 210,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Beet root (N Eliya)",
+          "market": "Peliyagoda",
+          "days": 95,
+          "first_period_median_lkr": 110,
+          "last_period_median_lkr": 335,
+          "change_rate": 2.0455,
+          "absolute_change_lkr": 225,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-07-10 to 2026-07-25"
+        },
+        {
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 175,
+          "last_period_median_lkr": 650,
+          "change_rate": 2.7143,
+          "absolute_change_lkr": 475,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        },
+        {
+          "item": "Eggplant",
+          "market": "Peliyagoda",
+          "days": 119,
+          "first_period_median_lkr": 67.5,
+          "last_period_median_lkr": 265,
+          "change_rate": 2.9259,
+          "absolute_change_lkr": 197.5,
+          "first_period": "2026-04-03 to 2026-04-22",
+          "last_period": "2026-08-07 to 2026-08-21"
+        }
+      ],
+      "market_coverage": [
+        {
+          "market": "Peliyagoda",
+          "days": 119,
+          "date_coverage_rate": 0.9015151515151515,
+          "observations": 4382,
+          "items": 43,
+          "median_midpoint_lkr": 186.3
+        },
+        {
+          "market": "Kandy",
+          "days": 119,
+          "date_coverage_rate": 0.9015151515151515,
+          "observations": 3758,
+          "items": 34,
+          "median_midpoint_lkr": 190
+        },
+        {
+          "market": "Dambulla",
+          "days": 119,
+          "date_coverage_rate": 0.9015151515151515,
+          "observations": 3307,
+          "items": 29,
+          "median_midpoint_lkr": 185
+        },
+        {
+          "market": "Nuwaraeliya",
+          "days": 115,
+          "date_coverage_rate": 0.8712121212121212,
+          "observations": 1149,
+          "items": 10,
+          "median_midpoint_lkr": 250
+        },
+        {
+          "market": "Thambuththegama",
+          "days": 114,
+          "date_coverage_rate": 0.8636363636363636,
+          "observations": 2738,
+          "items": 25,
+          "median_midpoint_lkr": 175
+        },
+        {
+          "market": "Norochchole",
+          "days": 114,
+          "date_coverage_rate": 0.8636363636363636,
+          "observations": 1601,
+          "items": 19,
+          "median_midpoint_lkr": 145
+        },
+        {
+          "market": "Meegoda",
+          "days": 112,
+          "date_coverage_rate": 0.8484848484848485,
+          "observations": 3034,
+          "items": 29,
+          "median_midpoint_lkr": 220
+        },
+        {
+          "market": "Keppetipola",
+          "days": 109,
+          "date_coverage_rate": 0.8257575757575758,
+          "observations": 1911,
+          "items": 20,
+          "median_midpoint_lkr": 185
+        },
+        {
+          "market": "Bandarawela",
+          "days": 99,
+          "date_coverage_rate": 0.75,
+          "observations": 2526,
+          "items": 26,
+          "median_midpoint_lkr": 210
+        },
+        {
+          "market": "Veyangoda",
+          "days": 91,
+          "date_coverage_rate": 0.6893939393939394,
+          "observations": 2434,
+          "items": 30,
+          "median_midpoint_lkr": 210
+        }
+      ],
+      "volatility": [
+        {
+          "item": "Green Chillies",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 475,
+          "p25_lkr": 220,
+          "p75_lkr": 700,
+          "relative_iqr": 1.0105,
+          "min_midpoint_lkr": 90,
+          "max_midpoint_lkr": 1250
+        },
+        {
+          "item": "Cucumber",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 100,
+          "p25_lkr": 72.5,
+          "p75_lkr": 165,
+          "relative_iqr": 0.925,
+          "min_midpoint_lkr": 50,
+          "max_midpoint_lkr": 225
+        },
+        {
+          "item": "Luffa",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 200,
+          "p25_lkr": 140,
+          "p75_lkr": 325,
+          "relative_iqr": 0.925,
+          "min_midpoint_lkr": 100,
+          "max_midpoint_lkr": 475
+        },
+        {
+          "item": "Drumstick",
+          "market": "Peliyagoda",
+          "days": 94,
+          "observations": 94,
+          "median_midpoint_lkr": 387.5,
+          "p25_lkr": 200,
+          "p75_lkr": 537.5,
+          "relative_iqr": 0.871,
+          "min_midpoint_lkr": 115,
+          "max_midpoint_lkr": 1300
+        },
+        {
+          "item": "Knolkhol",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 125,
+          "p25_lkr": 110,
+          "p75_lkr": 212.5,
+          "relative_iqr": 0.82,
+          "min_midpoint_lkr": 80,
+          "max_midpoint_lkr": 325
+        },
+        {
+          "item": "Orange",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 44.8,
+          "p25_lkr": 31,
+          "p75_lkr": 60,
+          "relative_iqr": 0.648,
+          "min_midpoint_lkr": 27.5,
+          "max_midpoint_lkr": 92.5
+        },
+        {
+          "item": "Pumpkin",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 110,
+          "p25_lkr": 85,
+          "p75_lkr": 155,
+          "relative_iqr": 0.6364,
+          "min_midpoint_lkr": 55,
+          "max_midpoint_lkr": 190
+        },
+        {
+          "item": "Ladies Fingers",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 150,
+          "p25_lkr": 115,
+          "p75_lkr": 210,
+          "relative_iqr": 0.6333,
+          "min_midpoint_lkr": 65,
+          "max_midpoint_lkr": 290
+        },
+        {
+          "item": "Lime",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 325,
+          "p25_lkr": 225,
+          "p75_lkr": 425,
+          "relative_iqr": 0.6154,
+          "min_midpoint_lkr": 100,
+          "max_midpoint_lkr": 625
+        },
+        {
+          "item": "Tomato",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 325,
+          "p25_lkr": 225,
+          "p75_lkr": 425,
+          "relative_iqr": 0.6154,
+          "min_midpoint_lkr": 65,
+          "max_midpoint_lkr": 750
+        },
+        {
+          "item": "Raddish",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 90,
+          "p25_lkr": 85,
+          "p75_lkr": 137.5,
+          "relative_iqr": 0.5833,
+          "min_midpoint_lkr": 50,
+          "max_midpoint_lkr": 255
+        },
+        {
+          "item": "Woodapple",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 75,
+          "p25_lkr": 55,
+          "p75_lkr": 95,
+          "relative_iqr": 0.5333,
+          "min_midpoint_lkr": 43,
+          "max_midpoint_lkr": 115
+        },
+        {
+          "item": "Leeks",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 200,
+          "p25_lkr": 170,
+          "p75_lkr": 275,
+          "relative_iqr": 0.525,
+          "min_midpoint_lkr": 115,
+          "max_midpoint_lkr": 380
+        },
+        {
+          "item": "Beet root",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 265,
+          "p25_lkr": 175,
+          "p75_lkr": 310,
+          "relative_iqr": 0.5094,
+          "min_midpoint_lkr": 50,
+          "max_midpoint_lkr": 375
+        },
+        {
+          "item": "Capsicum",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 350,
+          "p25_lkr": 300,
+          "p75_lkr": 475,
+          "relative_iqr": 0.5,
+          "min_midpoint_lkr": 160,
+          "max_midpoint_lkr": 715
+        },
+        {
+          "item": "Bitter Gourd",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 375,
+          "p25_lkr": 295,
+          "p75_lkr": 475,
+          "relative_iqr": 0.48,
+          "min_midpoint_lkr": 135,
+          "max_midpoint_lkr": 625
+        },
+        {
+          "item": "Ambul(Rs/Kg)",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 155,
+          "p25_lkr": 107.5,
+          "p75_lkr": 180,
+          "relative_iqr": 0.4677,
+          "min_midpoint_lkr": 80,
+          "max_midpoint_lkr": 220
+        },
+        {
+          "item": "Beet root (N Eliya)",
+          "market": "Peliyagoda",
+          "days": 95,
+          "observations": 95,
+          "median_midpoint_lkr": 335,
+          "p25_lkr": 220,
+          "p75_lkr": 375,
+          "relative_iqr": 0.4627,
+          "min_midpoint_lkr": 75,
+          "max_midpoint_lkr": 465
+        },
+        {
+          "item": "Brinjals",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 300,
+          "p25_lkr": 225,
+          "p75_lkr": 350,
+          "relative_iqr": 0.4167,
+          "min_midpoint_lkr": 65,
+          "max_midpoint_lkr": 450
+        },
+        {
+          "item": "Beans",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 425,
+          "p25_lkr": 325,
+          "p75_lkr": 500,
+          "relative_iqr": 0.4118,
+          "min_midpoint_lkr": 175,
+          "max_midpoint_lkr": 650
+        },
+        {
+          "item": "Kolikuttu",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 350,
+          "p25_lkr": 260,
+          "p75_lkr": 390,
+          "relative_iqr": 0.3714,
+          "min_midpoint_lkr": 175,
+          "max_midpoint_lkr": 420
+        },
+        {
+          "item": "Mango - Karathakolomban",
+          "market": "Peliyagoda",
+          "days": 81,
+          "observations": 81,
+          "median_midpoint_lkr": 167.5,
+          "p25_lkr": 135,
+          "p75_lkr": 195,
+          "relative_iqr": 0.3582,
+          "min_midpoint_lkr": 117.5,
+          "max_midpoint_lkr": 502.5
+        },
+        {
+          "item": "Eggplant",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 225,
+          "p25_lkr": 165,
+          "p75_lkr": 235,
+          "relative_iqr": 0.3111,
+          "min_midpoint_lkr": 60,
+          "max_midpoint_lkr": 290
+        },
+        {
+          "item": "Avocado",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 167.5,
+          "p25_lkr": 152.5,
+          "p75_lkr": 202.5,
+          "relative_iqr": 0.2985,
+          "min_midpoint_lkr": 102.5,
+          "max_midpoint_lkr": 252.5
+        },
+        {
+          "item": "Papaya (Rs/Kg)",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 160,
+          "p25_lkr": 133.8,
+          "p75_lkr": 180,
+          "relative_iqr": 0.2891,
+          "min_midpoint_lkr": 85,
+          "max_midpoint_lkr": 235
+        },
+        {
+          "item": "Carrot",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 265,
+          "p25_lkr": 225,
+          "p75_lkr": 290,
+          "relative_iqr": 0.2453,
+          "min_midpoint_lkr": 150,
+          "max_midpoint_lkr": 425
+        },
+        {
+          "item": "Cabbage (Kandy)",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 110,
+          "p25_lkr": 90,
+          "p75_lkr": 115,
+          "relative_iqr": 0.2273,
+          "min_midpoint_lkr": 65,
+          "max_midpoint_lkr": 150
+        },
+        {
+          "item": "Long Beans",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 225,
+          "p25_lkr": 200,
+          "p75_lkr": 250,
+          "relative_iqr": 0.2222,
+          "min_midpoint_lkr": 95,
+          "max_midpoint_lkr": 375
+        },
+        {
+          "item": "Snake Gourd",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 235,
+          "p25_lkr": 225,
+          "p75_lkr": 275,
+          "relative_iqr": 0.2128,
+          "min_midpoint_lkr": 165,
+          "max_midpoint_lkr": 425
+        },
+        {
+          "item": "Seeni",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 127.5,
+          "p25_lkr": 110,
+          "p75_lkr": 135,
+          "relative_iqr": 0.1961,
+          "min_midpoint_lkr": 80,
+          "max_midpoint_lkr": 165
+        },
+        {
+          "item": "B'Onion Imported",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 175,
+          "p25_lkr": 157.5,
+          "p75_lkr": 190,
+          "relative_iqr": 0.1857,
+          "min_midpoint_lkr": 110,
+          "max_midpoint_lkr": 270
+        },
+        {
+          "item": "Ash Plantains",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 115,
+          "p25_lkr": 110,
+          "p75_lkr": 130,
+          "relative_iqr": 0.1739,
+          "min_midpoint_lkr": 70,
+          "max_midpoint_lkr": 180
+        },
+        {
+          "item": "Pineapple - Small",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 185,
+          "p25_lkr": 168.8,
+          "p75_lkr": 200,
+          "relative_iqr": 0.1689,
+          "min_midpoint_lkr": 145,
+          "max_midpoint_lkr": 235
+        },
+        {
+          "item": "Sweet Potatoe",
+          "market": "Peliyagoda",
+          "days": 117,
+          "observations": 117,
+          "median_midpoint_lkr": 150,
+          "p25_lkr": 140,
+          "p75_lkr": 165,
+          "relative_iqr": 0.1667,
+          "min_midpoint_lkr": 110,
+          "max_midpoint_lkr": 225
+        },
+        {
+          "item": "Pineapple - Large",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 300,
+          "p25_lkr": 275,
+          "p75_lkr": 325,
+          "relative_iqr": 0.1667,
+          "min_midpoint_lkr": 235,
+          "max_midpoint_lkr": 375
+        },
+        {
+          "item": "Potato (Nuwaraeliya)",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 290,
+          "p25_lkr": 265,
+          "p75_lkr": 310,
+          "relative_iqr": 0.1552,
+          "min_midpoint_lkr": 225,
+          "max_midpoint_lkr": 350
+        },
+        {
+          "item": "Pineapple - Medium",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 235,
+          "p25_lkr": 215,
+          "p75_lkr": 251.3,
+          "relative_iqr": 0.1543,
+          "min_midpoint_lkr": 180,
+          "max_midpoint_lkr": 285
+        },
+        {
+          "item": "Manioc",
+          "market": "Peliyagoda",
+          "days": 119,
+          "observations": 119,
+          "median_midpoint_lkr": 115,
+          "p25_lkr": 110,
+          "p75_lkr": 127.5,
+          "relative_iqr": 0.1522,
+          "min_midpoint_lkr": 90,
+          "max_midpoint_lkr": 145
+        },
+        {
+          "item": "Potato(Imported)",
+          "market": "Peliyagoda",
+          "days": 84,
+          "observations": 84,
+          "median_midpoint_lkr": 170,
+          "p25_lkr": 156.9,
+          "p75_lkr": 181.3,
+          "relative_iqr": 0.1434,
+          "min_midpoint_lkr": 127.5,
+          "max_midpoint_lkr": 202.5
+        }
+      ],
+      "document_extremes": [
+        {
+          "published_date": "2026-04-16",
+          "title": "Vegetables Wholesale Prices (2026.04.16).pdf",
+          "observations": 96,
+          "pages": 2,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.65
+        },
+        {
+          "published_date": "2026-06-30",
+          "title": "Vegetables Wholesale Prices (2026.06.30).pdf",
+          "observations": 131,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.72
+        },
+        {
+          "published_date": "2026-06-01",
+          "title": "Vegetable Pricenew ex1(2026.06.01).pdf",
+          "observations": 154,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.74
+        },
+        {
+          "published_date": "2026-04-17",
+          "title": "Vegetables Wholesale Prices (2026.04.17).pdf",
+          "observations": 158,
+          "pages": 2,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.67
+        },
+        {
+          "published_date": "2026-06-28",
+          "title": "Vegetables Wholesale Prices (2026.06.28).pdf",
+          "observations": 158,
+          "pages": 2,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.88
+        },
+        {
+          "published_date": "2026-07-30",
+          "title": "Vegetable Pricenew ex1(2026.07.30).pdf",
+          "observations": 168,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 1.08
+        },
+        {
+          "published_date": "2026-05-24",
+          "title": "Vegetables Wholesale Prices (2026.05.24).pdf",
+          "observations": 171,
+          "pages": 2,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.68
+        },
+        {
+          "published_date": "2026-06-22",
+          "title": "Vegetable Pricenew ex1(2026.06.22).pdf",
+          "observations": 180,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 1.37
+        },
+        {
+          "published_date": "2026-07-14",
+          "title": "Vegetable Pricenew ex1(2026.07.14).pdf",
+          "observations": 250,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.91
+        },
+        {
+          "published_date": "2026-07-15",
+          "title": "Vegetable Pricenew ex1(2026.07.15).pdf",
+          "observations": 250,
+          "pages": 3,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.99
+        },
+        {
+          "published_date": "2026-07-23",
+          "title": "Vegetable Pricenew ex1(2026.07.23).pdf",
+          "observations": 250,
+          "pages": 3,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 2.24
+        },
+        {
+          "published_date": "2026-05-12",
+          "title": "Vegetable Pricenew ex1(2026.05.12).pdf",
+          "observations": 251,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 1.68
+        },
+        {
+          "published_date": "2026-05-15",
+          "title": "Vegetable Pricenew ex1(2026.05.15).pdf",
+          "observations": 251,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.88
+        },
+        {
+          "published_date": "2026-05-27",
+          "title": "Vegetable Pricenew ex1(2026.05.27).pdf",
+          "observations": 251,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.87
+        },
+        {
+          "published_date": "2026-05-13",
+          "title": "Vegetable Pricenew ex1(2026.05.13).pdf",
+          "observations": 252,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 1.01
+        },
+        {
+          "published_date": "2026-05-14",
+          "title": "Vegetable Pricenew ex1(2026.05.14).pdf",
+          "observations": 252,
+          "pages": 11,
+          "parser_strategy": "labelled_market_date_grid",
+          "parser_confidence": 1,
+          "duration_seconds": 0.81
+        }
+      ]
+    }
+  }
+}
