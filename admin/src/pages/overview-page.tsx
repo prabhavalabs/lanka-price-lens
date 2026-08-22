@@ -38,13 +38,15 @@ export function OverviewPage() {
     mutationFn: (file: File) => {
       const body = new FormData();
       body.set("file", file);
-      return api<{ status: string; parsedCount: number }>("/v1/admin/uploads", { method: "POST", body });
+      return api<{ status: string; parsedCount: number; archiveId: string | null; dispatchId: string | null }>("/v1/admin/uploads", { method: "POST", body });
     },
     onSuccess: () => {
       uploadForm.reset();
       void queryClient.invalidateQueries({ queryKey: ["dashboard"] });
       void queryClient.invalidateQueries({ queryKey: ["knowledge-base"] });
       void queryClient.invalidateQueries({ queryKey: ["runs"] });
+      void queryClient.invalidateQueries({ queryKey: ["workflow-dispatches"] });
+      void queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] });
     },
   });
 
@@ -93,17 +95,17 @@ export function OverviewPage() {
         <CardHeader>
           <div className="flex items-start gap-3">
             <div className="grid size-10 shrink-0 place-items-center rounded-lg border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"><RiUploadCloud2Line className="size-5" /></div>
-            <div><CardTitle>Manual PDF intake</CardTitle><CardDescription>Inspect one HARTI bulletin without waiting for discovery.</CardDescription></div>
+            <div><CardTitle>Manual PDF intake</CardTitle><CardDescription>Archive one HARTI bulletin and queue its monitored processing workflow.</CardDescription></div>
           </div>
         </CardHeader>
         <CardContent>
           <form onSubmit={uploadForm.handleSubmit(({ file }) => upload.mutate(file[0]!))}>
             <FieldGroup className="grid gap-3 lg:grid-cols-[1fr_auto] lg:items-end">
               <Field data-invalid={Boolean(uploadForm.formState.errors.file)}><FieldLabel htmlFor="pdf-file">PDF file</FieldLabel><Input accept=".pdf,application/pdf" aria-invalid={Boolean(uploadForm.formState.errors.file)} id="pdf-file" type="file" {...uploadForm.register("file", { required: "Choose a PDF", validate: (files) => files[0]?.size && files[0].size <= 20 * 1024 * 1024 ? true : "PDF must be 20 MiB or smaller" })} /><FieldError errors={[uploadForm.formState.errors.file]} /></Field>
-              <Button className="w-full lg:w-auto" disabled={upload.isPending} size="lg" type="submit"><RiUploadCloud2Line data-icon="inline-start" />{upload.isPending ? "Inspecting…" : "Upload and inspect"}</Button>
+              <Button className="w-full lg:w-auto" disabled={upload.isPending} size="lg" type="submit"><RiUploadCloud2Line data-icon="inline-start" />{upload.isPending ? "Uploading…" : "Upload and process"}</Button>
             </FieldGroup>
           </form>
-          {upload.isSuccess ? <p className="mt-3 text-sm text-emerald-400">{upload.data.parsedCount} observations extracted.</p> : null}
+          {upload.isSuccess ? <p className="mt-3 text-sm text-emerald-400">{upload.data.status === "duplicate" ? "This PDF already exists; no duplicate workflow was queued." : `${upload.data.parsedCount} observations extracted. The archived PDF processing workflow is queued.`}</p> : null}
           {upload.isError ? <p className="mt-3 text-sm text-destructive">{upload.error.message}</p> : null}
         </CardContent>
       </Card>

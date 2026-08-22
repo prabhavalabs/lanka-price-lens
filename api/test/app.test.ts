@@ -157,6 +157,38 @@ test("admin tables paginate, search, and filter on the server", async () => {
   }
 });
 
+test("workflow APIs expose definitions, schedules, and durable manual dispatches", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    seedAdminUser(database, "owner@example.com", passwordHash);
+    const app = createApp(database, manifest);
+    const cookie = await loginCookie(app);
+    const workflows = (await (await app.request("/v1/admin/workflows", { headers: { cookie } })).json()) as {
+      payload: Array<{ key: string; schedule: { id: string } }>;
+    };
+    assert.deepEqual(workflows.payload.map((workflow) => workflow.key), [
+      "latest_document_collection",
+      "historical_backfill",
+      "document_processing_pipeline",
+    ]);
+
+    const queued = await app.request("/v1/admin/workflows/latest_document_collection/run", { method: "POST", headers: { cookie } });
+    assert.equal(queued.status, 202);
+    assert.equal((await queued.json()).payload.status, "queued");
+
+    const scheduleId = workflows.payload[0]!.schedule.id;
+    const paused = await app.request(`/v1/admin/workflow-schedules/${scheduleId}`, {
+      method: "PATCH",
+      headers: { cookie, "content-type": "application/json" },
+      body: JSON.stringify({ enabled: false }),
+    });
+    assert.equal(paused.status, 200);
+    assert.equal((database.prepare("SELECT enabled FROM workflow_schedule WHERE id = ?").get(scheduleId) as { enabled: number }).enabled, 0);
+  } finally {
+    database.close();
+  }
+});
+
 async function loginCookie(app: ReturnType<typeof createApp>): Promise<string> {
   const response = await loginRequest(app, "correct horse battery staple");
   assert.equal(response.status, 200);

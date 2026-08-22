@@ -11,7 +11,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { api, listUrl, type KnowledgeItem, type Page, type Run, type RunWorkflow, type Source, type WorkflowStep } from "@/lib/api";
+import { api, listUrl, type KnowledgeItem, type Page, type Run, type RunWorkflow, type SchedulerMonitor, type Source, type WorkflowDefinition, type WorkflowDispatch, type WorkflowKey, type WorkflowStep } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 const runStatuses = [
@@ -25,6 +25,7 @@ const knowledgeStatuses = [
   { label: "Archived", value: "stored" },
   { label: "Fetched", value: "fetched" },
   { label: "Parsed", value: "parsed" },
+  { label: "Canonicalized", value: "canonicalized" },
   { label: "Quarantined", value: "quarantined" },
 ];
 const sourceStatuses = [
@@ -37,53 +38,103 @@ const sourceStatuses = [
 
 export function RunsPage() {
   const state = useTableState();
+  const [parameters, setParameters] = useSearchParams();
   const queryClient = useQueryClient();
+  const view = parameters.get("view") === "history" ? "history" : parameters.get("view") === "cron" ? "cron" : "workflows";
   const runs = useQuery({
     queryKey: ["runs", { page: state.page, pageSize: state.pageSize, search: state.search, status: state.status }],
     queryFn: ({ signal }) => api<Page<Run>>(listUrl("/v1/admin/runs", state), { signal }),
     placeholderData: keepPreviousData,
+    enabled: view === "history",
   });
-  const sync = useMutation({
-    mutationFn: () => api<{ id: string }>("/v1/admin/ingestion/sync", { method: "POST" }),
+  const workflows = useQuery({
+    queryKey: ["workflow-definitions"],
+    queryFn: ({ signal }) => api<WorkflowDefinition[]>("/v1/admin/workflows", { signal }),
+    enabled: view === "workflows",
+    refetchInterval: 10_000,
+  });
+  const monitor = useQuery({
+    queryKey: ["workflow-schedules"],
+    queryFn: ({ signal }) => api<SchedulerMonitor>("/v1/admin/workflow-schedules", { signal }),
+    enabled: view === "cron",
+    refetchInterval: 10_000,
+  });
+  const dispatches = useQuery({
+    queryKey: ["workflow-dispatches", "latest"],
+    queryFn: ({ signal }) => api<Page<WorkflowDispatch>>("/v1/admin/workflow-dispatches?page=1&pageSize=10", { signal }),
+    enabled: view === "cron",
+    refetchInterval: 5_000,
+  });
+  const runWorkflow = useMutation({
+    mutationFn: (key: WorkflowKey) => api<WorkflowDispatch>(`/v1/admin/workflows/${key}/run`, { method: "POST" }),
     onSuccess: async () => {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: ["runs"] }),
+        queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] }),
+        queryClient.invalidateQueries({ queryKey: ["workflow-dispatches"] }),
         queryClient.invalidateQueries({ queryKey: ["overview"] }),
         queryClient.invalidateQueries({ queryKey: ["knowledge-base"] }),
       ]);
     },
   });
+  const toggleSchedule = useMutation({
+    mutationFn: ({ id, enabled }: { id: string; enabled: boolean }) => api<{ id: string; enabled: boolean }>(`/v1/admin/workflow-schedules/${encodeURIComponent(id)}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ enabled }),
+    }),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ["workflow-schedules"] }),
+        queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] }),
+      ]);
+    },
+  });
+  const selectView = (nextView: typeof view) => {
+    const next = new URLSearchParams(parameters);
+    next.set("view", nextView);
+    next.delete("page");
+    next.delete("search");
+    next.delete("status");
+    setParameters(next);
+  };
   return (
-    <PageFrame description="Two linked workflows: archive newly published PDFs, then process each new document into validated records." title="Workflows">
-      <div className="grid items-stretch gap-3 lg:grid-cols-[1fr_auto_1fr]">
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>1. Source synchronisation</CardTitle>
-            <CardDescription>Daily at 18:00 Asia/Colombo. Compares the official source with database and R2 inventory.</CardDescription>
-            <CardAction>
-              <Button disabled={sync.isPending} onClick={() => sync.mutate()} size="sm">
-                {sync.isPending ? <RiLoader4Line className="animate-spin" data-icon="inline-start" /> : <RiPlayLine data-icon="inline-start" />}
-                {sync.isPending ? "Starting…" : "Run now"}
-              </Button>
-            </CardAction>
-          </CardHeader>
-          <CardContent className="flex flex-wrap gap-2">
-            {["Check source", "Compare inventory", "Download new", "Upload R2", "Record metadata"].map((step) => <Badge key={step} variant="outline">{step}</Badge>)}
-          </CardContent>
-        </Card>
-        <div className="hidden items-center text-muted-foreground lg:flex"><RiArrowRightLine aria-hidden /></div>
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>2. PDF processing</CardTitle>
-            <CardDescription>Triggered once for every newly archived PDF, with dependency-aware retry at each processing step.</CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-wrap gap-2">
-            {["Retrieve", "Parse", "Extract", "Validate", "Insert"].map((step) => <Badge key={step} variant="outline">{step}</Badge>)}
-          </CardContent>
-        </Card>
+    <PageFrame description="Monitor definitions, execution history, schedules, and scheduler health from one operational view." title="Workflows">
+      <div aria-label="Workflow views" className="grid w-full grid-cols-3 gap-1 rounded-xl border bg-card p-1 sm:w-fit" role="tablist">
+        {([['workflows', 'Workflows'], ['history', 'Run history'], ['cron', 'Cron monitor']] as const).map(([value, label]) => (
+          <Button aria-selected={view === value} className="min-w-0" key={value} onClick={() => selectView(value)} role="tab" size="sm" variant={view === value ? "secondary" : "ghost"}>{label}</Button>
+        ))}
       </div>
-      {sync.isError ? <Alert variant="destructive"><AlertTitle>Source sync did not start</AlertTitle><AlertDescription>{sync.error.message}</AlertDescription></Alert> : null}
-      {runs.isPending ? <Skeleton className="h-80 rounded-xl" /> : runs.isError ? <Alert variant="destructive">{runs.error.message}</Alert> : (
+
+      {view === "workflows" ? workflows.isPending ? <Skeleton className="h-80 rounded-xl" /> : workflows.isError ? <Alert variant="destructive"><AlertTitle>Workflow definitions unavailable</AlertTitle><AlertDescription>{workflows.error.message}</AlertDescription></Alert> : (
+        <div className="grid gap-4 xl:grid-cols-3">
+          {workflows.data.map((workflow) => {
+            const pending = runWorkflow.isPending && runWorkflow.variables === workflow.key;
+            return <Card className="flex flex-col" key={workflow.key}>
+              <CardHeader>
+                <div className="mb-1 flex items-center gap-2"><Badge variant="outline">v{workflow.version}</Badge><Status value={workflow.schedule?.last_status ?? "not run"} /></div>
+                <CardTitle>{workflow.title}</CardTitle>
+                <CardDescription>{workflow.description}</CardDescription>
+                <CardAction>
+                  {workflow.key === "document_processing_pipeline" ? <Button asChild size="sm" variant="outline"><Link to="/knowledge-base">Choose document</Link></Button> : (
+                    <Button disabled={pending} onClick={() => runWorkflow.mutate(workflow.key)} size="sm">
+                      {pending ? <RiLoader4Line className="animate-spin" data-icon="inline-start" /> : <RiPlayLine data-icon="inline-start" />}{pending ? "Queueing…" : "Run now"}
+                    </Button>
+                  )}
+                </CardAction>
+              </CardHeader>
+              <CardContent className="mt-auto flex flex-col gap-4">
+                <div className="grid grid-cols-2 gap-2 text-xs"><Metric label="Schedule" value={workflow.scheduleLabel} /><Metric label="Safety limit" value={`${workflow.maxItems} docs/run`} /></div>
+                <div className="flex flex-wrap gap-2">{workflow.steps.map((step) => <Badge key={step} variant="outline">{stepLabel(step).title}</Badge>)}</div>
+                <p className="text-xs text-muted-foreground">Next: {dateInZone(workflow.schedule?.next_run_at ?? null, workflow.timezone)} <span className="block font-mono text-[10px]">{relativeTime(workflow.schedule?.next_run_at ?? null)} · {workflow.timezone}</span></p>
+              </CardContent>
+            </Card>;
+          })}
+          {runWorkflow.isError ? <Alert className="xl:col-span-3" variant="destructive"><AlertTitle>Workflow did not queue</AlertTitle><AlertDescription>{runWorkflow.error.message}</AlertDescription></Alert> : null}
+        </div>
+      ) : null}
+
+      {view === "history" ? runs.isPending ? <Skeleton className="h-80 rounded-xl" /> : runs.isError ? <Alert variant="destructive">{runs.error.message}</Alert> : (
         <Card>
           <CardHeader><CardTitle>Execution history</CardTitle><CardDescription>{runs.data.total} workflow {runs.data.total === 1 ? "execution" : "executions"} found</CardDescription></CardHeader>
           <TableControls placeholder="Search workflow, trigger, status, or error…" state={state} statuses={runStatuses} />
@@ -95,9 +146,35 @@ export function RunsPage() {
             <Pagination page={runs.data.page} pageSize={runs.data.pageSize} pages={runs.data.pages} pending={runs.isPlaceholderData} total={runs.data.total} />
           </CardContent>
         </Card>
-      )}
+      ) : null}
+
+      {view === "cron" ? monitor.isPending || dispatches.isPending ? <Skeleton className="h-96 rounded-xl" /> : monitor.isError || dispatches.isError ? <Alert variant="destructive"><AlertTitle>Cron monitor unavailable</AlertTitle><AlertDescription>{monitor.error?.message ?? dispatches.error?.message}</AlertDescription></Alert> : (
+        <>
+          <Card size="sm">
+            <CardHeader><CardTitle>Scheduler health</CardTitle><CardDescription>A heartbeat older than {monitor.data.stale_after_seconds} seconds is considered stale.</CardDescription></CardHeader>
+            <CardContent className="flex flex-wrap gap-3">
+              {monitor.data.instances.length ? monitor.data.instances.map((instance) => <div className="min-w-64 rounded-lg border bg-background/40 p-3" key={instance.id}><div className="flex items-center justify-between gap-3"><p className="truncate font-mono text-xs">{instance.id}</p><Status value={instance.healthy ? "healthy" : "degraded"} /></div><p className="mt-2 text-xs text-muted-foreground">{instance.environment} · heartbeat {relativeTime(instance.heartbeat_at)}</p>{instance.last_error ? <p className="mt-2 text-xs text-destructive">{instance.last_error}</p> : null}</div>) : <Alert><AlertTitle>Scheduler is offline</AlertTitle><AlertDescription>Start the local scheduler service to claim queued work and publish heartbeats.</AlertDescription></Alert>}
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader><CardTitle>Cron schedules</CardTitle><CardDescription>Persistent schedules survive restarts and create at most one dispatch per due occurrence.</CardDescription></CardHeader>
+            <CardContent className="p-0"><Table><TableHeader><TableRow><TableHead>Workflow</TableHead><TableHead>Schedule</TableHead><TableHead>Next run</TableHead><TableHead>Status</TableHead><TableHead className="text-right">Control</TableHead></TableRow></TableHeader><TableBody>{monitor.data.items.map((schedule) => <TableRow key={schedule.id}><TableCell className="font-medium">{workflowTitleFromKey(schedule.workflow_key)}</TableCell><TableCell><span className="font-mono text-xs">{schedule.cron_expression}</span><span className="block text-xs text-muted-foreground">{schedule.timezone}</span></TableCell><TableCell>{dateInZone(schedule.next_run_at, schedule.timezone)}<span className="block font-mono text-[10px] text-muted-foreground">{relativeTime(schedule.next_run_at)}</span></TableCell><TableCell><Status value={schedule.enabled ? "scheduled" : "paused"} /></TableCell><TableCell className="text-right"><Button disabled={toggleSchedule.isPending} onClick={() => toggleSchedule.mutate({ id: schedule.id, enabled: !schedule.enabled })} size="sm" variant="outline">{schedule.enabled ? "Pause" : "Resume"}</Button></TableCell></TableRow>)}</TableBody></Table></CardContent>
+          </Card>
+          <Card>
+            <CardHeader><CardTitle>Dispatch queue</CardTitle><CardDescription>The latest durable cron and manual requests, including work waiting for a scheduler.</CardDescription></CardHeader>
+          <CardContent className="p-0"><Table><TableHeader><TableRow><TableHead>Scheduled</TableHead><TableHead>Workflow</TableHead><TableHead>Trigger</TableHead><TableHead>Status</TableHead><TableHead>Execution</TableHead></TableRow></TableHeader><TableBody>{dispatches.data.items.length ? dispatches.data.items.map((dispatch) => <TableRow key={dispatch.id}><TableCell>{date(dispatch.scheduled_for)}<span className="block font-mono text-[10px] text-muted-foreground">{relativeTime(dispatch.scheduled_for)}</span></TableCell><TableCell>{workflowTitleFromKey(dispatch.workflow_key)}</TableCell><TableCell className="capitalize">{dispatch.trigger}</TableCell><TableCell><Status value={dispatch.status} /></TableCell><TableCell>{dispatch.run_id ? <Link className="font-medium underline-offset-4 hover:text-primary hover:underline" to={`/runs/${dispatch.run_id}`}>Open run</Link> : <span className="text-xs text-muted-foreground">{dispatch.error_message ?? (dispatch.status === "succeeded" ? "Sweep complete" : dispatch.status === "failed" ? "Failed" : "Waiting")}</span>}</TableCell></TableRow>) : <EmptyTableRow columns={5} />}</TableBody></Table></CardContent>
+          </Card>
+          {toggleSchedule.isError ? <Alert variant="destructive"><AlertTitle>Schedule was not updated</AlertTitle><AlertDescription>{toggleSchedule.error.message}</AlertDescription></Alert> : null}
+        </>
+      ) : null}
     </PageFrame>
   );
+}
+
+function workflowTitleFromKey(key: WorkflowKey): string {
+  if (key === "latest_document_collection") return "Latest Document Collection";
+  if (key === "historical_backfill") return "Historical Backfill";
+  return "Document Processing Pipeline";
 }
 
 const workflowLabels: Partial<Record<WorkflowStep["stage"], { title: string; description: string }>> = {
@@ -111,6 +188,8 @@ const workflowLabels: Partial<Record<WorkflowStep["stage"], { title: string; des
   extract_data: { title: "Extract structured data", description: "Convert parsed text into machine-readable records" },
   validate_data: { title: "Validate extracted data", description: "Check structure, dates, and numeric values" },
   insert_data: { title: "Insert validated data", description: "Commit validated records to the operational database" },
+  assess_completeness: { title: "Assess completeness", description: "Compare recovered products, markets, cells, and mappings with the reviewed source profile" },
+  canonicalize_data: { title: "Promote canonical observations", description: "Apply reviewed taxonomy and source-version precedence idempotently" },
   crawl: { title: "Crawl source", description: "Discover current source publications" },
   download: { title: "Download PDFs", description: "Retain the source documents" },
   process: { title: "Extract & process", description: "Read PDF text and build records" },
@@ -314,26 +393,62 @@ function durationBetween(startedAt: string, finishedAt: string | null): string {
   return formatDuration(Math.max(0, Date.parse(finishedAt ?? new Date().toISOString()) - Date.parse(startedAt)));
 }
 
+function relativeTime(value: string | null): string {
+  if (!value) return "not scheduled";
+  const milliseconds = Date.parse(value) - Date.now();
+  if (!Number.isFinite(milliseconds)) return "unknown time";
+  const absolute = Math.abs(milliseconds);
+  const [divisor, unit]: [number, Intl.RelativeTimeFormatUnit] = absolute < 60_000
+    ? [1_000, "second"]
+    : absolute < 3_600_000
+      ? [60_000, "minute"]
+      : absolute < 86_400_000
+        ? [3_600_000, "hour"]
+        : [86_400_000, "day"];
+  return new Intl.RelativeTimeFormat(undefined, { numeric: "auto", style: "short" }).format(Math.round(milliseconds / divisor), unit);
+}
+
+function dateInZone(value: string | null, timezone: string): string {
+  return value
+    ? new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short", timeZone: timezone }).format(new Date(value))
+    : "Not scheduled";
+}
+
 export function KnowledgeBasePage() {
   const state = useTableState();
+  const queryClient = useQueryClient();
   const knowledge = useQuery({
     queryKey: ["knowledge-base", { page: state.page, pageSize: state.pageSize, search: state.search, status: state.status }],
     queryFn: ({ signal }) => api<Page<KnowledgeItem>>(listUrl("/v1/admin/knowledge-base", state), { signal }),
     placeholderData: keepPreviousData,
   });
+  const processDocument = useMutation({
+    mutationFn: (publicationId: string) => api<WorkflowDispatch>(`/v1/admin/knowledge-base/${encodeURIComponent(publicationId)}/process`, { method: "POST" }),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ["knowledge-base"] }),
+        queryClient.invalidateQueries({ queryKey: ["runs"] }),
+        queryClient.invalidateQueries({ queryKey: ["workflow-dispatches"] }),
+        queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] }),
+      ]);
+    },
+  });
   return (
     <PageFrame description="Every discovered source bulletin, with processing metadata and direct access to the original PDF." title="Knowledge Base">
+      {processDocument.isError ? <Alert variant="destructive"><AlertTitle>Document workflow did not queue</AlertTitle><AlertDescription>{processDocument.error.message}</AlertDescription></Alert> : null}
       {knowledge.isPending ? <Skeleton className="h-80 rounded-xl" /> : knowledge.isError ? <Alert variant="destructive">{knowledge.error.message}</Alert> : (
         <Card>
           <CardHeader><CardTitle>Source documents</CardTitle><CardDescription>{knowledge.data.total} PDF {knowledge.data.total === 1 ? "document" : "documents"} found</CardDescription></CardHeader>
           <TableControls placeholder="Search title, URL, or checksum…" state={state} statuses={knowledgeStatuses} />
           <CardContent className="p-0">
             <Table>
-              <TableHeader><TableRow><TableHead>Document</TableHead><TableHead>Status</TableHead><TableHead className="hidden sm:table-cell">Published</TableHead><TableHead className="hidden md:table-cell">Type</TableHead><TableHead className="hidden lg:table-cell">Size</TableHead><TableHead className="hidden lg:table-cell">Parsed</TableHead></TableRow></TableHeader>
+              <TableHeader><TableRow><TableHead>Document</TableHead><TableHead>Status</TableHead><TableHead className="hidden sm:table-cell">Published</TableHead><TableHead className="hidden md:table-cell">Type</TableHead><TableHead className="hidden lg:table-cell">Size</TableHead><TableHead className="hidden lg:table-cell">Parsed</TableHead><TableHead>Processing</TableHead><TableHead className="text-right">Action</TableHead></TableRow></TableHeader>
               <TableBody>{knowledge.data.items.length ? knowledge.data.items.map((item) => {
                 const downloadable = /^https?:\/\//u.test(item.download_url);
-                return <TableRow key={item.publication_id}><TableCell className="min-w-0">{downloadable ? <a className="group inline-flex max-w-64 items-center gap-1.5 font-medium text-foreground hover:text-primary sm:max-w-md" href={item.download_url} rel="noreferrer" target="_blank"><span className="truncate" title={item.title}>{item.title}</span><RiExternalLinkLine className="size-3.5 shrink-0 text-muted-foreground group-hover:text-primary" /></a> : <p className="max-w-64 truncate font-medium sm:max-w-md" title={item.title}>{item.title}</p>}<p className="mt-1 font-mono text-[10px] text-muted-foreground">{item.sha256 ? `${item.sha256.slice(0, 16)}…` : item.publication_id.replace("publication_", "")}</p><p className="mt-1 text-[11px] text-muted-foreground sm:hidden">{date(item.published_at)} · {item.pdf_type ?? "PDF"}</p></TableCell><TableCell><Status value={item.status} /></TableCell><TableCell className="hidden text-muted-foreground sm:table-cell">{date(item.published_at)}</TableCell><TableCell className="hidden md:table-cell">{item.pdf_type ?? "PDF"}{item.page_count ? <span className="mt-1 block text-xs text-muted-foreground">{item.page_count} pages</span> : null}</TableCell><TableCell className="hidden font-mono lg:table-cell">{item.byte_size === null ? "Not cached" : bytes(item.byte_size)}</TableCell><TableCell className="hidden font-mono lg:table-cell">{item.parsed_count}</TableCell></TableRow>;
-              }) : <EmptyTableRow columns={6} />}</TableBody>
+                const processingTime = item.processing_finished_at ?? item.processing_started_at;
+                const pending = processDocument.isPending && processDocument.variables === item.publication_id;
+                return <TableRow key={item.publication_id}><TableCell className="min-w-0">{downloadable ? <a className="group inline-flex max-w-64 items-center gap-1.5 font-medium text-foreground hover:text-primary sm:max-w-md" href={item.download_url} rel="noreferrer" target="_blank"><span className="truncate" title={item.title}>{item.title}</span><RiExternalLinkLine className="size-3.5 shrink-0 text-muted-foreground group-hover:text-primary" /></a> : <p className="max-w-64 truncate font-medium sm:max-w-md" title={item.title}>{item.title}</p>}<p className="mt-1 font-mono text-[10px] text-muted-foreground">{item.sha256 ? `${item.sha256.slice(0, 16)}…` : item.publication_id.replace("publication_", "")}</p><p className="mt-1 text-[11px] text-muted-foreground sm:hidden">{date(item.published_at)} · {item.pdf_type ?? "PDF"}</p></TableCell><TableCell><Status value={item.status} /></TableCell><TableCell className="hidden text-muted-foreground sm:table-cell">{date(item.published_at)}</TableCell><TableCell className="hidden md:table-cell">{item.pdf_type ?? "PDF"}{item.page_count ? <span className="mt-1 block text-xs text-muted-foreground">{item.page_count} pages</span> : null}</TableCell><TableCell className="hidden font-mono lg:table-cell">{item.byte_size === null ? "Not cached" : bytes(item.byte_size)}</TableCell><TableCell className="hidden font-mono lg:table-cell">{item.parsed_count}{item.canonical_count ? <span className="mt-1 block text-[10px] text-primary">{item.canonical_count} canonical</span> : null}</TableCell><TableCell>{item.processing_status ? <><Status value={item.processing_status} /><span className="mt-1 block whitespace-nowrap text-[10px] text-muted-foreground">{date(processingTime)} · {relativeTime(processingTime)}</span>{item.parser_confidence !== null ? <span className="mt-1 block whitespace-nowrap text-[10px] text-muted-foreground" title={item.parser_strategy ?? "Adaptive parser"}>Adaptive parse · {Math.round(item.parser_confidence * 100)}%</span> : null}{item.completeness_score !== null ? <span className={cn("mt-1 block whitespace-nowrap text-[10px]", item.quality_status === "complete" ? "text-primary" : "text-amber-400")} title={`Items ${Math.round((item.item_coverage ?? 0) * 100)}% · markets ${Math.round((item.market_coverage ?? 0) * 100)}% · cells ${Math.round((item.cell_coverage ?? 0) * 100)}% · mappings ${Math.round((item.mapping_coverage ?? 0) * 100)}%`}>Completeness · {Math.round(item.completeness_score * 100)}% · {item.quality_status?.replaceAll("_", " ")}</span> : null}{item.processing_error_message ? <span className="mt-1 block max-w-48 truncate text-[10px] text-destructive" title={item.processing_error_message}>{item.processing_error_message}</span> : null}</> : <><Status value={item.archive_id ? "pending" : "not archived"} /><span className="mt-1 block text-[10px] text-muted-foreground">Not processed</span></>}</TableCell><TableCell className="text-right"><div className="flex justify-end gap-1">{item.processing_run_id ? <Button asChild size="sm" variant="ghost"><Link aria-label={`Open processing run for ${item.title}`} to={`/runs/${item.processing_run_id}`}>View</Link></Button> : null}<Button aria-label={`${item.processing_run_id ? "Rerun" : "Run"} processing for ${item.title}`} disabled={!item.archive_id || pending || item.processing_status === "running"} onClick={() => processDocument.mutate(item.publication_id)} size="sm" variant="outline">{pending ? <RiLoader4Line className="animate-spin" /> : item.processing_run_id ? <RiRestartLine /> : <RiPlayLine />}<span className="sr-only">{item.processing_run_id ? "Rerun" : "Run"}</span></Button></div></TableCell></TableRow>;
+              }) : <EmptyTableRow columns={8} />}</TableBody>
             </Table>
             <Pagination page={knowledge.data.page} pageSize={knowledge.data.pageSize} pages={knowledge.data.pages} pending={knowledge.isPlaceholderData} total={knowledge.data.total} />
           </CardContent>
