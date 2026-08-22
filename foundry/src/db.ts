@@ -117,6 +117,67 @@ function migrate(database: OperationalDatabase): void {
     CREATE INDEX IF NOT EXISTS run_stage_log_run_stage_idx
       ON run_stage_log(run_id, stage, id);
 
+    CREATE TABLE IF NOT EXISTS workflow_schedule (
+      id TEXT PRIMARY KEY,
+      workflow_key TEXT NOT NULL,
+      source_id TEXT NOT NULL REFERENCES source(id),
+      cron_expression TEXT NOT NULL,
+      timezone TEXT NOT NULL,
+      enabled INTEGER NOT NULL DEFAULT 0 CHECK (enabled IN (0, 1)),
+      max_items INTEGER CHECK (max_items IS NULL OR max_items > 0),
+      next_run_at TEXT NOT NULL,
+      last_due_at TEXT,
+      last_dispatch_id TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      UNIQUE(workflow_key, source_id)
+    ) STRICT;
+
+    CREATE INDEX IF NOT EXISTS workflow_schedule_due_idx
+      ON workflow_schedule(enabled, next_run_at);
+
+    CREATE TABLE IF NOT EXISTS workflow_dispatch (
+      id TEXT PRIMARY KEY,
+      schedule_id TEXT REFERENCES workflow_schedule(id),
+      workflow_key TEXT NOT NULL,
+      source_id TEXT NOT NULL REFERENCES source(id),
+      archive_id TEXT REFERENCES archived_pdf(id),
+      trigger TEXT NOT NULL,
+      status TEXT NOT NULL CHECK (status IN ('queued', 'running', 'succeeded', 'failed', 'skipped')),
+      scheduled_for TEXT NOT NULL,
+      available_at TEXT NOT NULL,
+      claimed_by TEXT,
+      claimed_at TEXT,
+      started_at TEXT,
+      finished_at TEXT,
+      run_id TEXT REFERENCES ingest_run(id),
+      requested_by TEXT,
+      idempotency_key TEXT NOT NULL UNIQUE,
+      error_code TEXT,
+      error_message TEXT,
+      created_at TEXT NOT NULL
+    ) STRICT;
+
+    CREATE INDEX IF NOT EXISTS workflow_dispatch_queue_idx
+      ON workflow_dispatch(status, available_at, scheduled_for);
+    CREATE INDEX IF NOT EXISTS workflow_dispatch_archive_idx
+      ON workflow_dispatch(archive_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS workflow_dispatch_workflow_status_idx
+      ON workflow_dispatch(workflow_key, status, created_at DESC);
+    CREATE INDEX IF NOT EXISTS workflow_dispatch_workflow_created_idx
+      ON workflow_dispatch(workflow_key, created_at DESC);
+
+    CREATE TABLE IF NOT EXISTS scheduler_instance (
+      id TEXT PRIMARY KEY,
+      environment TEXT NOT NULL,
+      status TEXT NOT NULL,
+      started_at TEXT NOT NULL,
+      heartbeat_at TEXT NOT NULL,
+      last_tick_at TEXT,
+      last_error TEXT,
+      updated_at TEXT NOT NULL
+    ) STRICT;
+
     CREATE TABLE IF NOT EXISTS source_publication (
       id TEXT PRIMARY KEY,
       source_id TEXT NOT NULL REFERENCES source(id),
@@ -249,6 +310,15 @@ function migrate(database: OperationalDatabase): void {
       status TEXT NOT NULL DEFAULT 'active'
     ) STRICT;
 
+    CREATE TABLE IF NOT EXISTS product (
+      id TEXT PRIMARY KEY,
+      category TEXT NOT NULL CHECK (category IN ('vegetable', 'fruit', 'grain', 'fish', 'meat', 'dairy', 'other')),
+      canonical_label_en TEXT NOT NULL,
+      canonical_label_si TEXT,
+      canonical_label_ta TEXT,
+      status TEXT NOT NULL DEFAULT 'active'
+    ) STRICT;
+
     CREATE TABLE IF NOT EXISTS market (
       id TEXT PRIMARY KEY,
       type TEXT NOT NULL,
@@ -290,6 +360,50 @@ function migrate(database: OperationalDatabase): void {
       reviewed_at TEXT NOT NULL,
       evidence_ref TEXT NOT NULL,
       PRIMARY KEY (source_id, source_label)
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS source_item_market_expectation (
+      source_id TEXT NOT NULL REFERENCES source(id),
+      source_item_label TEXT NOT NULL,
+      source_market_label TEXT NOT NULL,
+      mapping_version TEXT NOT NULL,
+      PRIMARY KEY (source_id, source_item_label, source_market_label)
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS mapping_bundle_registry (
+      source_id TEXT NOT NULL REFERENCES source(id),
+      mapping_version TEXT NOT NULL,
+      bundle_sha256 TEXT NOT NULL,
+      reviewed_by TEXT NOT NULL,
+      reviewed_at TEXT NOT NULL,
+      evidence_ref TEXT NOT NULL,
+      synced_at TEXT NOT NULL,
+      PRIMARY KEY (source_id, mapping_version)
+    ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS artifact_quality_assessment (
+      artifact_id TEXT PRIMARY KEY REFERENCES source_artifact(id),
+      run_id TEXT NOT NULL REFERENCES ingest_run(id),
+      mapping_version TEXT,
+      status TEXT NOT NULL CHECK (status IN ('complete', 'review_required', 'incomplete', 'not_configured')),
+      score REAL NOT NULL CHECK (score >= 0 AND score <= 1),
+      item_coverage REAL NOT NULL CHECK (item_coverage >= 0 AND item_coverage <= 1),
+      market_coverage REAL NOT NULL CHECK (market_coverage >= 0 AND market_coverage <= 1),
+      cell_coverage REAL NOT NULL CHECK (cell_coverage >= 0 AND cell_coverage <= 1),
+      mapping_coverage REAL NOT NULL CHECK (mapping_coverage >= 0 AND mapping_coverage <= 1),
+      expected_items INTEGER NOT NULL CHECK (expected_items >= 0),
+      observed_items INTEGER NOT NULL CHECK (observed_items >= 0),
+      expected_markets INTEGER NOT NULL CHECK (expected_markets >= 0),
+      observed_markets INTEGER NOT NULL CHECK (observed_markets >= 0),
+      expected_cells INTEGER NOT NULL CHECK (expected_cells >= 0),
+      observed_cells INTEGER NOT NULL CHECK (observed_cells >= 0),
+      total_rows INTEGER NOT NULL CHECK (total_rows >= 0),
+      mapped_rows INTEGER NOT NULL CHECK (mapped_rows >= 0),
+      unknown_item_rows INTEGER NOT NULL CHECK (unknown_item_rows >= 0),
+      unknown_market_rows INTEGER NOT NULL CHECK (unknown_market_rows >= 0),
+      unknown_unit_rows INTEGER NOT NULL CHECK (unknown_unit_rows >= 0),
+      diagnostics_json TEXT NOT NULL,
+      assessed_at TEXT NOT NULL
     ) STRICT;
 
     CREATE TABLE IF NOT EXISTS price_observation (
@@ -350,6 +464,17 @@ function migrate(database: OperationalDatabase): void {
   addColumn(database, "source_artifact", "run_id", "TEXT REFERENCES ingest_run(id)");
   addColumn(database, "source_artifact", "original_filename", "TEXT");
   addColumn(database, "source_artifact", "inspection_json", "TEXT");
+  addColumn(database, "source_artifact", "parser_strategy", "TEXT");
+  addColumn(database, "source_artifact", "parser_confidence", "REAL");
+  addColumn(database, "source_artifact", "parser_diagnostics_json", "TEXT");
+  addColumn(database, "item", "product_id", "TEXT REFERENCES product(id)");
+  addColumn(database, "item", "origin", "TEXT");
+  addColumn(database, "item", "size", "TEXT");
+  addColumn(database, "price_observation", "effective_key", "TEXT");
+  addColumn(database, "price_observation", "source_published_at", "TEXT");
+  addColumn(database, "price_observation", "source_fetched_at", "TEXT");
+  addColumn(database, "price_observation", "superseded_by_id", "TEXT REFERENCES price_observation(id)");
+  addColumn(database, "price_observation", "revision_reason", "TEXT");
   addColumn(database, "run_stage", "input_json", "TEXT");
   addColumn(database, "run_stage", "output_json", "TEXT");
   addColumn(database, "run_stage", "attempt_count", "INTEGER NOT NULL DEFAULT 0");
@@ -357,6 +482,31 @@ function migrate(database: OperationalDatabase): void {
   addColumn(database, "ingest_run", "parent_run_id", "TEXT REFERENCES ingest_run(id)");
   addColumn(database, "ingest_run", "archive_id", "TEXT REFERENCES archived_pdf(id)");
   addColumn(database, "ingest_run", "artifact_id", "TEXT REFERENCES source_artifact(id)");
+  addColumn(database, "ingest_run", "definition_key", "TEXT");
+  addColumn(database, "ingest_run", "definition_version", "INTEGER");
+  addColumn(database, "ingest_run", "dispatch_id", "TEXT REFERENCES workflow_dispatch(id)");
+  addColumn(database, "ingest_run", "scheduled_for", "TEXT");
+  addColumn(database, "ingest_run", "environment", "TEXT");
+  database.exec(`
+    CREATE INDEX IF NOT EXISTS ingest_run_archive_workflow_started_v2_idx
+      ON ingest_run(archive_id, workflow, started_at DESC, id DESC);
+    CREATE INDEX IF NOT EXISTS ingest_run_dispatch_idx
+      ON ingest_run(dispatch_id);
+    CREATE INDEX IF NOT EXISTS source_publication_timeline_idx
+      ON source_publication(published_at DESC, first_seen_at DESC);
+    CREATE INDEX IF NOT EXISTS source_artifact_publication_fetched_idx
+      ON source_artifact(publication_id, fetched_at DESC, id DESC);
+    CREATE INDEX IF NOT EXISTS quarantine_artifact_status_idx
+      ON quarantine(artifact_id, status);
+    CREATE UNIQUE INDEX IF NOT EXISTS price_observation_active_effective_idx
+      ON price_observation(effective_key) WHERE status = 'active' AND effective_key IS NOT NULL;
+    CREATE UNIQUE INDEX IF NOT EXISTS price_observation_processing_version_idx
+      ON price_observation(staging_id, mapping_version, parser_version);
+    CREATE INDEX IF NOT EXISTS price_observation_effective_history_idx
+      ON price_observation(effective_key, source_published_at DESC, created_at DESC);
+    CREATE INDEX IF NOT EXISTS artifact_quality_status_score_idx
+      ON artifact_quality_assessment(status, score);
+  `);
 }
 
 function addColumn(database: OperationalDatabase, table: string, column: string, definition: string): void {
@@ -411,6 +561,11 @@ export function startRun(
     parentRunId?: string | undefined;
     archiveId?: string | undefined;
     artifactId?: string | undefined;
+    definitionKey?: string | undefined;
+    definitionVersion?: number | undefined;
+    dispatchId?: string | undefined;
+    scheduledFor?: string | undefined;
+    environment?: string | undefined;
     from?: string | undefined;
     to?: string | undefined;
     leaseMinutes?: number;
@@ -444,8 +599,9 @@ export function startRun(
       .prepare(
         `INSERT INTO ingest_run (
           id, source_id, trigger, workflow, parent_run_id, archive_id, artifact_id,
+          definition_key, definition_version, dispatch_id, scheduled_for, environment,
           status, requested_from, requested_to, started_at, heartbeat_at, lease_expires_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, 'running', ?, ?, ?, ?, ?)`,
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'running', ?, ?, ?, ?, ?)`,
       )
       .run(
         id,
@@ -455,6 +611,11 @@ export function startRun(
         options.parentRunId ?? null,
         options.archiveId ?? null,
         options.artifactId ?? null,
+        options.definitionKey ?? null,
+        options.definitionVersion ?? null,
+        options.dispatchId ?? null,
+        options.scheduledFor ?? null,
+        options.environment ?? null,
         options.from ?? null,
         options.to ?? null,
         nowIso,

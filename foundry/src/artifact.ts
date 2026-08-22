@@ -17,13 +17,24 @@ export function persistProcessedArtifact(
   database.transaction(() => {
     replaceExtractedText(database, input.artifactId, input.items);
 
-    database.prepare("DELETE FROM staging_observation WHERE artifact_id = ?").run(input.artifactId);
+    database.prepare("UPDATE staging_observation SET status = 'stale' WHERE artifact_id = ?").run(input.artifactId);
     const insertObservation = database.prepare(
       `INSERT INTO staging_observation (
         id, run_id, artifact_id, source_row_ref, source_item_label, source_market_label,
         source_date, price_type, currency, source_quantity, source_unit,
         min_value_minor, max_value_minor, status, raw_json
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, 'wholesale_observed', 'LKR', ?, ?, ?, ?, 'pending_validation', ?)`,
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, 'wholesale_observed', 'LKR', ?, ?, ?, ?, 'pending_validation', ?)
+      ON CONFLICT(artifact_id, source_row_ref, source_market_label) DO UPDATE SET
+        source_item_label = excluded.source_item_label,
+        source_date = excluded.source_date,
+        price_type = excluded.price_type,
+        currency = excluded.currency,
+        source_quantity = excluded.source_quantity,
+        source_unit = excluded.source_unit,
+        min_value_minor = excluded.min_value_minor,
+        max_value_minor = excluded.max_value_minor,
+        status = 'pending_validation',
+        raw_json = excluded.raw_json`,
     );
     for (const observation of input.observations) {
       insertObservation.run(
@@ -41,6 +52,15 @@ export function persistProcessedArtifact(
         JSON.stringify(observation.raw),
       );
     }
+    database
+      .prepare(
+        `DELETE FROM staging_observation WHERE artifact_id = ? AND status = 'stale'
+         AND NOT EXISTS (
+           SELECT 1 FROM price_observation observation
+           WHERE observation.staging_id = staging_observation.id
+         )`,
+      )
+      .run(input.artifactId);
     database.prepare("UPDATE source_artifact SET status = 'processed' WHERE id = ?").run(input.artifactId);
   })();
 }
@@ -62,7 +82,7 @@ export function finalizeProcessedArtifacts(database: OperationalDatabase, runId:
   database.transaction(() => {
     if (artifactIds?.length) {
       const placeholders = artifactIds.map(() => "?").join(",");
-      database.prepare(`UPDATE staging_observation SET status = 'unmapped' WHERE run_id = ? AND artifact_id IN (${placeholders})`).run(runId, ...artifactIds);
+      database.prepare(`UPDATE staging_observation SET status = 'unmapped' WHERE status = 'validated' AND artifact_id IN (${placeholders})`).run(...artifactIds);
       database.prepare(`UPDATE source_artifact SET status = 'parsed' WHERE id IN (${placeholders})`).run(...artifactIds);
       database.prepare(`UPDATE source_publication SET status = 'parsed' WHERE id IN (SELECT publication_id FROM source_artifact WHERE id IN (${placeholders}))`).run(...artifactIds);
       return;
