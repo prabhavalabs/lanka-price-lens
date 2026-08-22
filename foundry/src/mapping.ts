@@ -21,6 +21,7 @@ type StagingRow = {
   min_value_minor: number;
   max_value_minor: number;
   published_at: string | null;
+  fetched_at: string;
 };
 
 type ActiveObservation = {
@@ -32,6 +33,19 @@ type ActiveObservation = {
   normalized_min_value_minor: number;
   normalized_max_value_minor: number;
   conversion_rule_id: string;
+  source_publication_id: string;
+  source_artifact_id: string;
+  source_published_at: string | null;
+  source_fetched_at: string | null;
+  effective_key: string | null;
+};
+
+export type CanonicalizationResult = {
+  accepted: number;
+  corrected: number;
+  historical: number;
+  duplicates: number;
+  quarantined: number;
 };
 
 export function canonicalizeRun(
@@ -39,7 +53,7 @@ export function canonicalizeRun(
   runId: string,
   bundle: MappingBundle,
   parserVersion: string,
-): { accepted: number; corrected: number; duplicates: number; quarantined: number } {
+): CanonicalizationResult {
   const run = database.prepare("SELECT source_id, status FROM ingest_run WHERE id = ?").get(runId) as
     | { source_id: string; status: string }
     | undefined;
@@ -49,24 +63,26 @@ export function canonicalizeRun(
 
   startStage(database, runId, "map");
   startStage(database, runId, "canonicalize");
-  const result = { accepted: 0, corrected: 0, duplicates: 0, quarantined: 0 };
+  const result = emptyResult();
   try {
     syncMappingBundle(database, bundle);
     const rows = database
       .prepare(
-        `SELECT so.*, sa.publication_id, sp.source_id, sp.published_at
+        `SELECT so.*, sa.publication_id, sa.fetched_at, sp.source_id, sp.published_at
          FROM staging_observation so
          JOIN source_artifact sa ON sa.id = so.artifact_id
          JOIN source_publication sp ON sp.id = sa.publication_id
-         WHERE so.run_id = ? ORDER BY so.artifact_id, so.source_row_ref, so.source_market_label`,
+         WHERE so.run_id = ? AND so.status != 'stale'
+         ORDER BY so.artifact_id, so.source_row_ref, so.source_market_label`,
       )
       .all(runId) as StagingRow[];
 
     database.transaction(() => {
-      for (const row of rows) canonicalizeRow(database, row, bundle, parserVersion, result);
+      for (const row of rows) canonicalizeRow(database, runId, row, bundle, parserVersion, result);
     })();
-    finishStage(database, runId, "map", "succeeded", { outputCount: result.accepted + result.corrected, warningCount: result.quarantined });
-    finishStage(database, runId, "canonicalize", "succeeded", { outputCount: result.accepted + result.corrected, warningCount: result.quarantined });
+    const outputCount = result.accepted + result.corrected + result.historical;
+    finishStage(database, runId, "map", "succeeded", { outputCount, warningCount: result.quarantined, output: result });
+    finishStage(database, runId, "canonicalize", "succeeded", { outputCount, warningCount: result.quarantined, output: result });
     database
       .prepare("UPDATE ingest_run SET quarantined_count = quarantined_count + ? WHERE id = ?")
       .run(result.quarantined, runId);
@@ -79,20 +95,105 @@ export function canonicalizeRun(
   }
 }
 
+export function canonicalizeArtifact(
+  database: OperationalDatabase,
+  runId: string,
+  artifactId: string,
+  bundle: MappingBundle,
+  parserVersion: string,
+): CanonicalizationResult {
+  const run = database.prepare("SELECT source_id FROM ingest_run WHERE id = ?").get(runId) as { source_id: string } | undefined;
+  if (!run) throw new Error("RUN_NOT_FOUND");
+  if (run.source_id !== bundle.source_id) throw new Error("MAPPING_SOURCE_MISMATCH");
+  syncMappingBundle(database, bundle);
+  const rows = database
+    .prepare(
+      `SELECT so.*, sa.publication_id, sa.fetched_at, sp.source_id, sp.published_at
+       FROM staging_observation so
+       JOIN source_artifact sa ON sa.id = so.artifact_id
+       JOIN source_publication sp ON sp.id = sa.publication_id
+       WHERE so.artifact_id = ? AND so.status != 'stale'
+       ORDER BY so.source_row_ref, so.source_market_label`,
+    )
+    .all(artifactId) as StagingRow[];
+  const result = emptyResult();
+  database.transaction(() => {
+    for (const row of rows) canonicalizeRow(database, runId, row, bundle, parserVersion, result);
+  })();
+  database
+    .prepare("UPDATE ingest_run SET quarantined_count = quarantined_count + ? WHERE id = ?")
+    .run(result.quarantined, runId);
+  return result;
+}
+
+function emptyResult(): CanonicalizationResult {
+  return { accepted: 0, corrected: 0, historical: 0, duplicates: 0, quarantined: 0 };
+}
+
 export function syncMappingBundle(database: OperationalDatabase, bundle: MappingBundle): void {
   database.transaction(() => {
+    const bundleSha256 = createHash("sha256").update(JSON.stringify(bundle)).digest("hex");
+    const registered = database
+      .prepare("SELECT bundle_sha256 FROM mapping_bundle_registry WHERE source_id = ? AND mapping_version = ?")
+      .get(bundle.source_id, bundle.mapping_version) as { bundle_sha256: string } | undefined;
+    if (registered && registered.bundle_sha256 !== bundleSha256) {
+      throw new Error(`MAPPING_VERSION_REUSED:${bundle.mapping_version}`);
+    }
+    const registryInsert = database
+      .prepare(
+        `INSERT OR IGNORE INTO mapping_bundle_registry (
+          source_id, mapping_version, bundle_sha256, reviewed_by, reviewed_at, evidence_ref, synced_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      )
+      .run(
+        bundle.source_id,
+        bundle.mapping_version,
+        bundleSha256,
+        bundle.reviewed_by,
+        bundle.reviewed_at,
+        bundle.evidence_ref,
+        new Date().toISOString(),
+      );
     database.prepare("DELETE FROM source_item_mapping WHERE source_id = ?").run(bundle.source_id);
     database.prepare("DELETE FROM source_market_mapping WHERE source_id = ?").run(bundle.source_id);
+    database.prepare("DELETE FROM source_item_market_expectation WHERE source_id = ?").run(bundle.source_id);
+    for (const product of bundle.products) {
+      database
+        .prepare(
+          `INSERT INTO product (id, category, canonical_label_en, canonical_label_si, canonical_label_ta)
+           VALUES (?, ?, ?, ?, ?)
+           ON CONFLICT(id) DO UPDATE SET category = excluded.category,
+             canonical_label_en = excluded.canonical_label_en,
+             canonical_label_si = excluded.canonical_label_si,
+             canonical_label_ta = excluded.canonical_label_ta`,
+        )
+        .run(product.id, product.category, product.canonical_label_en, product.canonical_label_si, product.canonical_label_ta);
+    }
     for (const item of bundle.items) {
       database
         .prepare(
-          `INSERT INTO item (id, entity_type, canonical_label_en, canonical_label_si, canonical_label_ta, variety, grade)
-           VALUES (?, ?, ?, ?, ?, ?, ?)
+          `INSERT INTO item (
+            id, product_id, entity_type, canonical_label_en, canonical_label_si, canonical_label_ta,
+            variety, origin, size, grade
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
            ON CONFLICT(id) DO UPDATE SET entity_type = excluded.entity_type,
+             product_id = excluded.product_id,
              canonical_label_en = excluded.canonical_label_en, canonical_label_si = excluded.canonical_label_si,
-             canonical_label_ta = excluded.canonical_label_ta, variety = excluded.variety, grade = excluded.grade`,
+             canonical_label_ta = excluded.canonical_label_ta, variety = excluded.variety,
+             origin = excluded.origin, size = excluded.size, grade = excluded.grade`,
         )
-        .run(item.id, item.entity_type, item.canonical_label_en, item.canonical_label_si, item.canonical_label_ta, item.variety, item.grade);
+        .run(
+          item.id,
+          item.product_id,
+          item.entity_type,
+          item.canonical_label_en,
+          item.canonical_label_si,
+          item.canonical_label_ta,
+          item.variety,
+          item.origin,
+          item.size,
+          item.grade,
+        );
       for (const label of item.source_labels) {
         database
           .prepare(
@@ -104,6 +205,15 @@ export function syncMappingBundle(database: OperationalDatabase, bundle: Mapping
                reviewed_at = excluded.reviewed_at, evidence_ref = excluded.evidence_ref`,
           )
           .run(bundle.source_id, label, item.id, bundle.mapping_version, bundle.reviewed_by, bundle.reviewed_at, bundle.evidence_ref);
+        for (const marketLabel of item.expected_market_labels) {
+          database
+            .prepare(
+              `INSERT INTO source_item_market_expectation (
+                source_id, source_item_label, source_market_label, mapping_version
+              ) VALUES (?, ?, ?, ?)`,
+            )
+            .run(bundle.source_id, label, marketLabel, bundle.mapping_version);
+        }
       }
     }
     for (const market of bundle.markets) {
@@ -167,36 +277,39 @@ export function syncMappingBundle(database: OperationalDatabase, bundle: Mapping
           );
       }
     }
-    database
-      .prepare(
-        `INSERT INTO audit_event (id, actor, action, target_type, target_id, details_json, created_at)
-         VALUES (?, ?, 'mapping.bundle.synced', 'source', ?, ?, ?)`,
-      )
-      .run(
-        newId("audit"),
-        bundle.reviewed_by,
-        bundle.source_id,
-        JSON.stringify({ mapping_version: bundle.mapping_version, evidence_ref: bundle.evidence_ref }),
-        new Date().toISOString(),
-      );
+    if (registryInsert.changes) {
+      database
+        .prepare(
+          `INSERT INTO audit_event (id, actor, action, target_type, target_id, details_json, created_at)
+           VALUES (?, ?, 'mapping.bundle.synced', 'source', ?, ?, ?)`,
+        )
+        .run(
+          newId("audit"),
+          bundle.reviewed_by,
+          bundle.source_id,
+          JSON.stringify({ mapping_version: bundle.mapping_version, evidence_ref: bundle.evidence_ref }),
+          new Date().toISOString(),
+        );
+    }
   })();
 }
 
 function canonicalizeRow(
   database: OperationalDatabase,
+  runId: string,
   row: StagingRow,
   bundle: MappingBundle,
   parserVersion: string,
-  result: { accepted: number; corrected: number; duplicates: number; quarantined: number },
+  result: CanonicalizationResult,
 ): void {
   const item = database
     .prepare("SELECT item_id FROM source_item_mapping WHERE source_id = ? AND source_label = ?")
     .get(row.source_id, row.source_item_label) as { item_id: string } | undefined;
-  if (!item) return quarantine(database, row, "UNKNOWN_ITEM", result);
+  if (!item) return quarantine(database, runId, row, "UNKNOWN_ITEM", result);
   const market = database
     .prepare("SELECT market_id FROM source_market_mapping WHERE source_id = ? AND source_label = ?")
     .get(row.source_id, row.source_market_label) as { market_id: string } | undefined;
-  if (!market) return quarantine(database, row, "UNKNOWN_MARKET", result);
+  if (!market) return quarantine(database, runId, row, "UNKNOWN_MARKET", result);
   const unit = bundle.units.find((candidate) => candidate.source_unit === row.source_unit);
   const rule = unit
     ? (database
@@ -206,7 +319,7 @@ function canonicalizeRow(
     )
     .get(unit.id) as { id: string; normalized_unit: string; factor_numerator: number; factor_denominator: number } | undefined)
     : undefined;
-  if (!rule) return quarantine(database, row, "UNKNOWN_UNIT", result);
+  if (!rule) return quarantine(database, runId, row, "UNKNOWN_UNIT", result);
   if (
     !Number.isSafeInteger(row.min_value_minor) ||
     !Number.isSafeInteger(row.max_value_minor) ||
@@ -214,17 +327,17 @@ function canonicalizeRow(
     row.max_value_minor <= 0 ||
     row.min_value_minor > row.max_value_minor
   ) {
-    return quarantine(database, row, "INVALID_PRICE_RANGE", result);
+    return quarantine(database, runId, row, "INVALID_PRICE_RANGE", result);
   }
   if (!/^[A-Z]{3}$/u.test(row.currency) || !knownPriceTypes.has(row.price_type)) {
-    return quarantine(database, row, "MISSING_REQUIRED_FIELD", result);
+    return quarantine(database, runId, row, "MISSING_REQUIRED_FIELD", result);
   }
   if (!validDate(row.source_date) || (row.published_at && row.source_date > row.published_at.slice(0, 10))) {
-    return quarantine(database, row, "INVALID_DATE", result);
+    return quarantine(database, runId, row, "INVALID_DATE", result);
   }
 
   const quantity = decimalRatio(row.source_quantity);
-  if (!quantity) return quarantine(database, row, "MISSING_REQUIRED_FIELD", result);
+  if (!quantity) return quarantine(database, runId, row, "MISSING_REQUIRED_FIELD", result);
   const denominator = rule.factor_numerator * quantity.numerator;
   const numerator = rule.factor_denominator * quantity.denominator;
   const normalizedMinimum = Math.round((row.min_value_minor * numerator) / denominator);
@@ -235,9 +348,8 @@ function canonicalizeRow(
     normalizedMinimum <= 0 ||
     normalizedMaximum <= 0
   ) {
-    return quarantine(database, row, "INVALID_PRICE_RANGE", result);
+    return quarantine(database, runId, row, "INVALID_PRICE_RANGE", result);
   }
-  const lineageKey = digest([row.artifact_id, row.source_row_ref, row.source_market_label]);
   const comparabilityKey = digest([
     item.item_id,
     market.market_id,
@@ -246,42 +358,79 @@ function canonicalizeRow(
     rule.normalized_unit,
     row.source_id,
   ]);
-  const active = database
+  const lineageKey = digest([
+    row.source_id,
+    row.source_date,
+    row.source_item_label,
+    row.source_market_label,
+    row.price_type,
+    row.currency,
+    row.source_quantity,
+    row.source_unit,
+  ]);
+  const effectiveKey = digest([comparabilityKey, row.source_date]);
+  const existingVersion = database
+    .prepare(
+      `SELECT id, status FROM price_observation
+       WHERE staging_id = ? AND mapping_version = ? AND parser_version = ? LIMIT 1`,
+    )
+    .get(row.id, bundle.mapping_version, parserVersion) as { id: string; status: string } | undefined;
+  if (existingVersion) {
+    database.prepare("UPDATE staging_observation SET status = 'canonicalized' WHERE id = ?").run(row.id);
+    result.duplicates += 1;
+    return;
+  }
+  const activeLineage = database
     .prepare(
       `SELECT id, item_id, market_id, min_value_minor, max_value_minor,
-       normalized_min_value_minor, normalized_max_value_minor, conversion_rule_id
+       normalized_min_value_minor, normalized_max_value_minor, conversion_rule_id,
+       source_publication_id, source_artifact_id, source_published_at, source_fetched_at, effective_key
        FROM price_observation WHERE lineage_key = ? AND status = 'active'`,
     )
     .get(lineageKey) as ActiveObservation | undefined;
+  const activeEffective = database
+    .prepare(
+      `SELECT id, item_id, market_id, min_value_minor, max_value_minor,
+       normalized_min_value_minor, normalized_max_value_minor, conversion_rule_id,
+       source_publication_id, source_artifact_id, source_published_at, source_fetched_at, effective_key
+       FROM price_observation WHERE effective_key = ? AND status = 'active'`,
+    )
+    .get(effectiveKey) as ActiveObservation | undefined;
   resolveMappingQuarantine(database, row, bundle);
-  if (active && sameObservation(active, item.item_id, market.market_id, row, normalizedMinimum, normalizedMaximum, rule.id)) {
+  if (
+    activeLineage &&
+    sameObservation(activeLineage, item.item_id, market.market_id, row, normalizedMinimum, normalizedMaximum, rule.id)
+  ) {
     database.prepare("UPDATE staging_observation SET status = 'canonicalized' WHERE id = ?").run(row.id);
     result.duplicates += 1;
     return;
   }
 
-  if (!active) {
-    const duplicate = database
-      .prepare(
-        `SELECT id, min_value_minor, max_value_minor FROM price_observation
-         WHERE source_publication_id = ? AND comparability_key = ? AND observed_from = ? AND status = 'active'
-         LIMIT 1`,
-      )
-      .get(row.publication_id, comparabilityKey, row.source_date) as
-      | { id: string; min_value_minor: number; max_value_minor: number }
-      | undefined;
-    if (duplicate) {
-      if (duplicate.min_value_minor === row.min_value_minor && duplicate.max_value_minor === row.max_value_minor) {
-        database.prepare("UPDATE staging_observation SET status = 'duplicate' WHERE id = ?").run(row.id);
-        result.duplicates += 1;
-        return;
-      }
-      return quarantine(database, row, "SOURCE_CORRECTION_PENDING", result);
-    }
-  }
-
   const id = newId("observation");
-  if (active) database.prepare("UPDATE price_observation SET status = 'superseded' WHERE id = ?").run(active.id);
+  const mappingCorrection = activeLineage?.source_publication_id === row.publication_id;
+  const candidateWins =
+    !activeEffective ||
+    (mappingCorrection && activeLineage?.id === activeEffective.id) ||
+    compareSourceVersion(row, activeEffective) > 0;
+  const predecessors = uniqueObservations([activeLineage, activeEffective]);
+  const supersedes = candidateWins ? activeEffective?.id ?? activeLineage?.id ?? null : null;
+  const supersededBy = candidateWins ? null : activeEffective?.id ?? null;
+  const revisionReason = mappingCorrection
+    ? "mapping_or_parser_correction"
+    : activeEffective
+      ? candidateWins
+        ? "newer_source_publication"
+        : "historical_source_version"
+      : "initial_version";
+  if (candidateWins) {
+    for (const predecessor of predecessors) {
+      database.prepare("UPDATE price_observation SET status = 'superseded' WHERE id = ?").run(predecessor.id);
+    }
+  } else if (activeLineage && activeEffective && activeLineage.id !== activeEffective.id) {
+    database
+      .prepare("UPDATE price_observation SET status = 'superseded', superseded_by_id = ? WHERE id = ?")
+      .run(activeEffective.id, activeLineage.id);
+  }
   database
     .prepare(
       `INSERT INTO price_observation (
@@ -289,14 +438,15 @@ function canonicalizeRow(
         price_type, currency, value_kind, min_value_minor, max_value_minor,
         normalized_min_value_minor, normalized_max_value_minor, source_quantity, source_unit,
         normalized_quantity, normalized_unit, conversion_rule_id, observed_from, observed_to, source_row_ref,
-        confidence, comparability_key, lineage_key, parser_version, mapping_version,
-        status, supersedes_id, created_at
+        confidence, comparability_key, lineage_key, effective_key, parser_version, mapping_version,
+        status, supersedes_id, superseded_by_id, source_published_at, source_fetched_at,
+        revision_reason, created_at
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'range', ?, ?, ?, ?, ?, ?, '1', ?, ?, ?, ?, ?,
-        'official_verified', ?, ?, ?, ?, 'active', ?, ?)`,
+        'official_verified', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
     .run(
       id,
-      row.run_id,
+      runId,
       row.id,
       row.publication_id,
       row.artifact_id,
@@ -317,20 +467,39 @@ function canonicalizeRow(
       row.source_row_ref,
       comparabilityKey,
       lineageKey,
+      effectiveKey,
       parserVersion,
       bundle.mapping_version,
-      active?.id ?? null,
+      candidateWins ? "active" : "superseded",
+      supersedes,
+      supersededBy,
+      row.published_at,
+      row.fetched_at,
+      revisionReason,
       new Date().toISOString(),
     );
+  if (candidateWins) {
+    for (const predecessor of predecessors) {
+      database.prepare("UPDATE price_observation SET superseded_by_id = ? WHERE id = ?").run(id, predecessor.id);
+    }
+  }
   database.prepare("UPDATE staging_observation SET status = 'canonicalized' WHERE id = ?").run(row.id);
-  if (active) {
+  if (candidateWins && predecessors.length) {
     result.corrected += 1;
     database
       .prepare(
         `INSERT INTO audit_event (id, actor, action, target_type, target_id, details_json, created_at)
          VALUES (?, ?, 'observation.superseded', 'observation', ?, ?, ?)`,
       )
-      .run(newId("audit"), bundle.reviewed_by, id, JSON.stringify({ supersedes_id: active.id }), new Date().toISOString());
+      .run(
+        newId("audit"),
+        bundle.reviewed_by,
+        id,
+        JSON.stringify({ supersedes_ids: predecessors.map((predecessor) => predecessor.id), revision_reason: revisionReason }),
+        new Date().toISOString(),
+      );
+  } else if (!candidateWins) {
+    result.historical += 1;
   } else {
     result.accepted += 1;
   }
@@ -338,6 +507,7 @@ function canonicalizeRow(
 
 function quarantine(
   database: OperationalDatabase,
+  runId: string,
   row: StagingRow,
   reason: string,
   result: { quarantined: number },
@@ -347,7 +517,7 @@ function quarantine(
       `SELECT 1 FROM quarantine WHERE run_id = ? AND artifact_id = ? AND source_row_ref = ?
        AND reason_code = ? AND status = 'open' AND json_extract(details_json, '$.market') = ?`,
     )
-    .get(row.run_id, row.artifact_id, row.source_row_ref, reason, row.source_market_label);
+    .get(runId, row.artifact_id, row.source_row_ref, reason, row.source_market_label);
   if (!exists) {
     database
       .prepare(
@@ -356,7 +526,7 @@ function quarantine(
       )
       .run(
         newId("quarantine"),
-        row.run_id,
+        runId,
         row.artifact_id,
         reason,
         row.source_row_ref,
@@ -372,14 +542,13 @@ function resolveMappingQuarantine(database: OperationalDatabase, row: StagingRow
   database
     .prepare(
       `UPDATE quarantine SET status = 'resolved', resolved_at = ?, resolution_note = ?
-       WHERE run_id = ? AND artifact_id = ? AND source_row_ref = ? AND status = 'open'
+       WHERE artifact_id = ? AND source_row_ref = ? AND status = 'open'
        AND reason_code IN ('UNKNOWN_ITEM', 'UNKNOWN_MARKET', 'UNKNOWN_UNIT')
        AND json_extract(details_json, '$.market') = ?`,
     )
     .run(
       new Date().toISOString(),
       `Resolved by reviewed mapping ${bundle.mapping_version} (${bundle.evidence_ref})`,
-      row.run_id,
       row.artifact_id,
       row.source_row_ref,
       row.source_market_label,
@@ -414,6 +583,22 @@ function decimalRatio(value: string): { numerator: number; denominator: number }
 
 function digest(parts: string[]): string {
   return createHash("sha256").update(parts.join("\u001f")).digest("hex").slice(0, 32);
+}
+
+function compareSourceVersion(candidate: StagingRow, active: ActiveObservation): number {
+  const candidatePublished = candidate.published_at ?? `${candidate.source_date}T00:00:00.000Z`;
+  const activePublished = active.source_published_at ?? "";
+  const published = candidatePublished.localeCompare(activePublished);
+  if (published) return published;
+  const fetched = candidate.fetched_at.localeCompare(active.source_fetched_at ?? "");
+  if (fetched) return fetched;
+  return candidate.artifact_id.localeCompare(active.source_artifact_id);
+}
+
+function uniqueObservations(values: Array<ActiveObservation | undefined>): ActiveObservation[] {
+  const observations = new Map<string, ActiveObservation>();
+  for (const value of values) if (value) observations.set(value.id, value);
+  return [...observations.values()];
 }
 
 function sameObservation(

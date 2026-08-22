@@ -4,9 +4,11 @@
   "private": true,
   "type": "module",
   "exports": {
+    "./archive-storage": "./src/archive-storage.ts",
     "./db": "./src/db.ts",
     "./intake": "./src/intake.ts",
-    "./pipeline": "./src/pipeline.ts"
+    "./pipeline": "./src/pipeline.ts",
+    "./workflows": "./src/workflows.ts"
   },
   "scripts": {
     "cli": "node src/cli.ts",
@@ -18,7 +20,8 @@
     "@firecrawl/pdf-inspector": "1.14.2",
     "@lanka-pricelens/archive": "workspace:*",
     "@lanka-pricelens/shared": "workspace:*",
-    "better-sqlite3": "13.0.3"
+    "better-sqlite3": "13.0.3",
+    "cron-parser": "5.1.1"
   },
   "devDependencies": {
     "@types/better-sqlite3": "7.6.13",

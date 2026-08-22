@@ -1,16 +1,10 @@
 import { createHash } from "node:crypto";
 
-import {
-  cloudflareCredentials,
-  downloadArchiveObject,
-  listArchiveObjects,
-  uploadArchiveObject,
-  type ArchiveObject,
-} from "@lanka-pricelens/archive/cloudflare-api";
-import { canPublishSource, type SourceManifest, type StageName } from "@lanka-pricelens/shared";
+import { canPublishSource, type MappingBundle, type SourceManifest, type StageName } from "@lanka-pricelens/shared";
 import { hartiArchiveObjectKey } from "@lanka-pricelens/shared/harti-archive";
 
 import { finalizeProcessedArtifacts, persistExtractedText, persistProcessedArtifact } from "./artifact.ts";
+import { configuredArchiveStorage, type ArchiveStorage } from "./archive-storage.ts";
 import {
   blockStage,
   finishRun,
@@ -23,8 +17,10 @@ import {
   syncSource,
   type OperationalDatabase,
 } from "./db.ts";
-import { discoverHartiDaily, parseHartiWholesale, type Publication } from "./harti.ts";
+import { discoverHartiDaily, HartiParseError, parseHartiWholesaleWithDiagnostics, type Publication } from "./harti.ts";
 import { inspectPdf, type TextItem } from "./pdf.ts";
+import { canonicalizeArtifact } from "./mapping.ts";
+import { assessArtifactCompleteness } from "./quality.ts";
 
 export const sourceSyncStages = [
   "check_source",
@@ -39,6 +35,8 @@ export const processingStages = [
   "extract_data",
   "validate_data",
   "insert_data",
+  "assess_completeness",
+  "canonicalize_data",
 ] as const satisfies readonly StageName[];
 const legacyStages = ["crawl", "download", "process", "validate", "store"] as const satisfies readonly StageName[];
 
@@ -46,13 +44,8 @@ export type SourceSyncStage = (typeof sourceSyncStages)[number];
 export type ProcessingStage = (typeof processingStages)[number];
 export type WorkflowStage = SourceSyncStage | ProcessingStage;
 
-type StoredArchiveObject = ArchiveObject;
-export type ArchiveStorage = {
-  bucket: string;
-  list: () => Promise<Map<string, StoredArchiveObject>>;
-  upload: (key: string, filename: string, bytes: Uint8Array, metadata: Record<string, string>) => Promise<void>;
-  download: (key: string) => Promise<Uint8Array>;
-};
+type StoredArchiveObject = Awaited<ReturnType<ArchiveStorage["list"]>> extends Map<string, infer Object> ? Object : never;
+export type { ArchiveStorage } from "./archive-storage.ts";
 
 export type IngestionOptions = {
   trigger: "scheduled" | "manual" | "backfill";
@@ -62,6 +55,17 @@ export type IngestionOptions = {
   inspector?: typeof inspectPdf | undefined;
   archive?: ArchiveStorage | undefined;
   artifactRoot?: string | undefined;
+  limit?: number | undefined;
+  mappingBundle?: MappingBundle | undefined;
+  execution?: WorkflowExecutionOptions | undefined;
+};
+
+export type WorkflowExecutionOptions = {
+  definitionKey: string;
+  definitionVersion: number;
+  dispatchId: string;
+  scheduledFor: string;
+  environment: string;
 };
 
 type StageResult = { outputCount: number; warningCount?: number; output: Record<string, unknown> };
@@ -101,6 +105,8 @@ const processingDependencies: Record<ProcessingStage, ProcessingStage[]> = {
   extract_data: ["parse_pdf"],
   validate_data: ["extract_data"],
   insert_data: ["validate_data"],
+  assess_completeness: ["insert_data"],
+  canonicalize_data: ["assess_completeness"],
 };
 
 export async function runIngestion(
@@ -121,6 +127,7 @@ export async function runSourceSync(
     sourceId: manifest.id,
     trigger: options.trigger,
     workflow: "source_sync",
+    ...options.execution,
     from: options.from,
     to: options.to,
   });
@@ -137,7 +144,7 @@ export async function runSourceSync(
     return { runId: run.id, status: "blocked", processingRunIds: [] };
   }
 
-  const storage = options.archive ?? await cloudflareArchiveStorage();
+  const storage = options.archive ?? await configuredArchiveStorage();
   const context: SourceSyncContext = {
     publications: [],
     inventory: new Map(),
@@ -171,6 +178,8 @@ export async function runSourceSync(
       parentRunId: run.id,
       archive: storage,
       inspector: options.inspector,
+      mappingBundle: options.mappingBundle,
+      execution: options.execution,
     });
     processingRunIds.push(result.runId);
   }
@@ -186,6 +195,8 @@ export async function runPdfProcessing(
     parentRunId?: string | undefined;
     archive?: ArchiveStorage | undefined;
     inspector?: typeof inspectPdf | undefined;
+    mappingBundle?: MappingBundle | undefined;
+    execution?: WorkflowExecutionOptions | undefined;
   },
 ): Promise<ProcessingResult> {
   syncSource(database, manifest);
@@ -197,6 +208,7 @@ export async function runPdfProcessing(
     workflow: "pdf_processing",
     parentRunId: options.parentRunId,
     archiveId,
+    ...options.execution,
   });
   if (!run.started) return { runId: run.id, status: "skipped" };
 
@@ -209,16 +221,23 @@ export async function runPdfProcessing(
     return { runId: run.id, status: "blocked" };
   }
 
-  const storage = options.archive ?? await cloudflareArchiveStorage(archived.r2_bucket);
+  const storage = options.archive ?? await configuredArchiveStorage(archived.r2_bucket);
   const context: ProcessingContext = { archiveId, artifactId: null, bytes: null, items: null };
   try {
     for (const stage of processingStages) {
-      await executeProcessingStage(database, run.id, manifest, stage, storage, context, options.inspector);
+      await executeProcessingStage(database, run.id, manifest, stage, storage, context, options.inspector, options.mappingBundle);
     }
     completeProcessingRun(database, run.id, manifest.id);
     return { runId: run.id, status: "succeeded" };
   } catch (error) {
     const message = errorMessage(error);
+    const quarantineReason = processingQuarantineReason(error);
+    if (quarantineReason && context.artifactId) {
+      recordProcessingQuarantine(database, run.id, context.artifactId, quarantineReason, error);
+      finishRun(database, run.id, "blocked", { code: quarantineReason, message });
+      database.prepare("UPDATE source SET state = 'degraded', updated_at = ? WHERE id = ?").run(new Date().toISOString(), manifest.id);
+      return { runId: run.id, status: "blocked" };
+    }
     finishRun(database, run.id, "failed", { code: "PDF_PROCESSING_FAILED", message });
     database.prepare("UPDATE source SET state = 'degraded', updated_at = ? WHERE id = ?").run(new Date().toISOString(), manifest.id);
     return { runId: run.id, status: "failed" };
@@ -230,7 +249,11 @@ export async function retryProcessingStage(
   manifest: SourceManifest,
   runId: string,
   stage: ProcessingStage,
-  options: { archive?: ArchiveStorage | undefined; inspector?: typeof inspectPdf | undefined } = {},
+  options: {
+    archive?: ArchiveStorage | undefined;
+    inspector?: typeof inspectPdf | undefined;
+    mappingBundle?: MappingBundle | undefined;
+  } = {},
 ): Promise<void> {
   const retry = workflowRetryState(database, runId, stage);
   if (!retry.canRetry) throw new Error(`WORKFLOW_RETRY_BLOCKED: ${retry.reason ?? "Step cannot be retried"}`);
@@ -240,7 +263,7 @@ export async function retryProcessingStage(
   if (!run) throw new Error("RUN_NOT_FOUND");
   const archived = archivedPdf(database, run.archive_id);
   if (!archived) throw new Error("ARCHIVED_PDF_NOT_FOUND");
-  const storage = options.archive ?? await cloudflareArchiveStorage(archived.r2_bucket);
+  const storage = options.archive ?? await configuredArchiveStorage(archived.r2_bucket);
 
   const now = new Date();
   database
@@ -259,7 +282,7 @@ export async function retryProcessingStage(
     items: null,
   };
   try {
-    await executeProcessingStage(database, runId, manifest, stage, storage, context, options.inspector);
+    await executeProcessingStage(database, runId, manifest, stage, storage, context, options.inspector, options.mappingBundle);
     const incomplete = processingStages.some((candidate) => stageStatus(database, runId, candidate) !== "succeeded");
     if (incomplete) {
       finishRun(database, runId, "blocked", {
@@ -372,6 +395,7 @@ async function executeProcessingStage(
   storage: ArchiveStorage,
   context: ProcessingContext,
   inspector?: typeof inspectPdf,
+  mappingBundle?: MappingBundle,
 ): Promise<void> {
   const input = processingInput(database, context, stage);
   await executeLoggedStage(database, runId, stage, processingInputCount(database, context, stage), input, async () => {
@@ -379,7 +403,9 @@ async function executeProcessingStage(
     if (stage === "parse_pdf") return parsePdf(database, storage, context, inspector);
     if (stage === "extract_data") return extractData(database, runId, context);
     if (stage === "validate_data") return validateData(database, context);
-    return insertData(database, runId, context);
+    if (stage === "insert_data") return insertData(database, runId, context);
+    if (stage === "assess_completeness") return assessCompleteness(database, runId, context, mappingBundle);
+    return canonicalizeData(database, runId, context, mappingBundle);
   }, processingStages);
   heartbeatRun(database, runId);
   void manifest;
@@ -406,9 +432,14 @@ async function executeLoggedStage(
     logStage(database, runId, stage, "info", `${stageLabel(stage)} succeeded`, result.output);
   } catch (error) {
     const message = errorMessage(error);
-    const code = `${stage.toUpperCase()}_FAILED`;
-    finishStage(database, runId, stage, "failed", { errorCode: code, errorMessage: message });
-    logStage(database, runId, stage, "error", `${stageLabel(stage)} failed`, { code, message });
+    const code = error instanceof HartiParseError ? error.code : `${stage.toUpperCase()}_FAILED`;
+    const details = {
+      code,
+      message,
+      ...(error instanceof HartiParseError ? { rejected_candidates: error.rejectedCandidates } : {}),
+    };
+    finishStage(database, runId, stage, "failed", { errorCode: code, errorMessage: message, output: details });
+    logStage(database, runId, stage, "error", `${stageLabel(stage)} failed`, details);
     blockStages(database, runId, workflow, stage);
     throw error;
   }
@@ -459,6 +490,7 @@ async function compareInventory(
       ? missing.slice(0, 1)
       : context.publications.slice(0, newestKnownIndex).filter((publication) => missingKeys.has(publication.key))
     : missing;
+  if (options.limit !== undefined) context.pending = context.pending.slice(0, Math.max(0, options.limit));
   recordRunPublications(database, runId, context.pending);
   return {
     outputCount: context.pending.length,
@@ -525,7 +557,7 @@ async function uploadToR2(
     context.uploaded.add(downloaded.publication.key);
     logStage(database, runId, "upload_to_r2", "info", "PDF uploaded to R2", {
       publication_key: downloaded.publication.key,
-      r2_uri: r2Uri(storage.bucket, key),
+      r2_uri: archiveUri(storage, key),
       byte_size: downloaded.bytes.byteLength,
     });
     heartbeatRun(database, runId);
@@ -568,7 +600,7 @@ function recordPdfMetadata(
         publication.downloadUrl,
         storage.bucket,
         key,
-        r2Uri(storage.bucket, key),
+        archiveUri(storage, key),
         downloaded?.bytes.byteLength ?? existing?.size ?? null,
         downloaded?.sha256 ?? existing?.customMetadata.sha256 ?? null,
         downloaded?.etag ?? existing?.etag ?? null,
@@ -672,25 +704,42 @@ function extractData(database: OperationalDatabase, runId: string, context: Proc
   const artifactId = requiredArtifact(context);
   const items = context.items ?? extractedItems(database, artifactId);
   if (!items.length) throw new Error("PARSED_PDF_INPUT_MISSING");
-  const observations = parseHartiWholesale(items);
-  persistProcessedArtifact(database, { artifactId, runId, items, observations });
+  const parsed = parseHartiWholesaleWithDiagnostics(items);
+  persistProcessedArtifact(database, { artifactId, runId, items, observations: parsed.observations });
+  database
+    .prepare(
+      `UPDATE source_artifact SET parser_strategy = ?, parser_confidence = ?, parser_diagnostics_json = ?
+       WHERE id = ?`,
+    )
+    .run(parsed.diagnostics.strategy, parsed.diagnostics.confidence, JSON.stringify(parsed.diagnostics), artifactId);
   context.items = items;
-  return { outputCount: observations.length, output: { structured_records: observations.length } };
+  return {
+    outputCount: parsed.observations.length,
+    warningCount: parsed.diagnostics.warnings.length,
+    output: {
+      structured_records: parsed.observations.length,
+      parser_strategy: parsed.diagnostics.strategy,
+      parser_confidence: parsed.diagnostics.confidence,
+      parser_page: parsed.diagnostics.page,
+      parser_signals: parsed.diagnostics.signals,
+      parser_warnings: parsed.diagnostics.warnings,
+    },
+  };
 }
 
 function validateData(database: OperationalDatabase, context: ProcessingContext): StageResult {
   const artifactId = requiredArtifact(context);
-  const total = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", artifactId);
+  const total = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'stale'", artifactId);
   const invalid = count(
     database,
     `SELECT COUNT(*) AS count FROM staging_observation
-     WHERE artifact_id = ? AND (
+     WHERE artifact_id = ? AND status != 'stale' AND (
        min_value_minor <= 0 OR max_value_minor <= 0 OR min_value_minor > max_value_minor OR length(source_date) != 10
      )`,
     artifactId,
   );
   if (!total || invalid) throw new Error(`VALIDATION_FAILED: ${invalid} invalid records, ${total} total records`);
-  database.prepare("UPDATE staging_observation SET status = 'validated' WHERE artifact_id = ?").run(artifactId);
+  database.prepare("UPDATE staging_observation SET status = 'validated' WHERE artifact_id = ? AND status != 'stale'").run(artifactId);
   database.prepare("UPDATE source_artifact SET status = 'validated' WHERE id = ?").run(artifactId);
   return { outputCount: total, output: { validated: total, errors: 0 } };
 }
@@ -699,38 +748,165 @@ function insertData(database: OperationalDatabase, runId: string, context: Proce
   const artifactId = requiredArtifact(context);
   const invalid = count(
     database,
-    "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'validated'",
+    "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status NOT IN ('validated', 'stale')",
     artifactId,
   );
   if (invalid) throw new Error("VALIDATED_DATA_INPUT_MISSING");
-  const total = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", artifactId);
+  const total = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'stale'", artifactId);
   if (!total) throw new Error("VALIDATED_DATA_INPUT_MISSING");
   finalizeProcessedArtifacts(database, runId, [artifactId]);
   return { outputCount: total, output: { inserted: total, artifact_id: artifactId } };
 }
 
-async function cloudflareArchiveStorage(bucket = process.env.LPL_R2_BUCKET ?? "lanka-price-lens-pdfs"): Promise<ArchiveStorage> {
-  const credentials = await cloudflareCredentials();
+function assessCompleteness(
+  database: OperationalDatabase,
+  runId: string,
+  context: ProcessingContext,
+  bundle?: MappingBundle,
+): StageResult {
+  const artifactId = requiredArtifact(context);
+  const assessment = assessArtifactCompleteness(database, runId, artifactId, bundle);
   return {
-    bucket,
-    list: () => listArchiveObjects(credentials, bucket),
-    upload: (key, filename, bytes, metadata) => uploadArchiveObject(credentials, bucket, key, filename, bytes, metadata),
-    download: (key) => downloadArchiveObject(credentials, bucket, key),
+    outputCount: assessment.observedCells,
+    warningCount: assessment.status === "complete" ? 0 : 1,
+    output: {
+      artifact_id: artifactId,
+      status: assessment.status,
+      score: assessment.score,
+      item_coverage: assessment.itemCoverage,
+      market_coverage: assessment.marketCoverage,
+      cell_coverage: assessment.cellCoverage,
+      mapping_coverage: assessment.mappingCoverage,
+      expected_items: assessment.expectedItems,
+      observed_items: assessment.observedItems,
+      expected_markets: assessment.expectedMarkets,
+      observed_markets: assessment.observedMarkets,
+      expected_cells: assessment.expectedCells,
+      observed_cells: assessment.observedCells,
+      unknown_items: assessment.unknownItems,
+      unknown_markets: assessment.unknownMarkets,
+      unknown_units: assessment.unknownUnits,
+    },
+  };
+}
+
+function canonicalizeData(
+  database: OperationalDatabase,
+  runId: string,
+  context: ProcessingContext,
+  bundle?: MappingBundle,
+): StageResult {
+  const artifactId = requiredArtifact(context);
+  if (!bundle) {
+    const records = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'stale'", artifactId);
+    return {
+      outputCount: 0,
+      warningCount: records,
+      output: { artifact_id: artifactId, status: "not_configured", canonicalized: 0, retained_in_staging: records },
+    };
+  }
+  const parser = database
+    .prepare("SELECT parser_strategy FROM source_artifact WHERE id = ?")
+    .get(artifactId) as { parser_strategy: string | null } | undefined;
+  const result = canonicalizeArtifact(
+    database,
+    runId,
+    artifactId,
+    bundle,
+    `harti-adaptive@2:${parser?.parser_strategy ?? "unknown"}`,
+  );
+  const canonicalized = result.accepted + result.corrected + result.historical;
+  database.prepare("UPDATE source_artifact SET status = 'canonicalized' WHERE id = ?").run(artifactId);
+  database
+    .prepare("UPDATE source_publication SET status = 'canonicalized' WHERE id = (SELECT publication_id FROM source_artifact WHERE id = ?)")
+    .run(artifactId);
+  return {
+    outputCount: canonicalized,
+    warningCount: result.quarantined,
+    output: { artifact_id: artifactId, status: "canonicalized", canonicalized, ...result },
   };
 }
 
 function completeProcessingRun(database: OperationalDatabase, runId: string, sourceId: string): void {
+  resolveRecoveredProcessingQuarantines(database, runId);
   updateProcessingCounts(database, runId);
   const now = new Date().toISOString();
   database.prepare("UPDATE source SET state = 'healthy', last_parse_at = ?, updated_at = ? WHERE id = ?").run(now, now, sourceId);
   finishRun(database, runId, "succeeded");
 }
 
+function processingQuarantineReason(error: unknown): string | null {
+  if (error instanceof HartiParseError) return error.code;
+  const message = errorMessage(error);
+  for (const code of ["PDF_OCR_REQUIRED", "SOURCE_TEMPLATE_CHANGED", "UNSUPPORTED_DOCUMENT", "PDF_PARSE_FAILED"] as const) {
+    if (message === code || message.startsWith(`${code}:`)) return code;
+  }
+  return null;
+}
+
+function recordProcessingQuarantine(
+  database: OperationalDatabase,
+  runId: string,
+  artifactId: string,
+  reasonCode: string,
+  error: unknown,
+): void {
+  const now = new Date().toISOString();
+  const details = {
+    message: errorMessage(error),
+    ...(error instanceof HartiParseError ? { rejected_candidates: error.rejectedCandidates } : {}),
+  };
+  database.transaction(() => {
+    const existing = database
+      .prepare("SELECT 1 FROM quarantine WHERE artifact_id = ? AND reason_code = ? AND status = 'open'")
+      .get(artifactId, reasonCode);
+    if (!existing) {
+      database
+        .prepare(
+          `INSERT INTO quarantine (id, run_id, artifact_id, reason_code, details_json, created_at)
+           VALUES (?, ?, ?, ?, ?, ?)`,
+        )
+        .run(newId("quarantine"), runId, artifactId, reasonCode, JSON.stringify(details), now);
+    }
+    database.prepare("UPDATE source_artifact SET status = 'quarantined' WHERE id = ?").run(artifactId);
+    database
+      .prepare("UPDATE source_publication SET status = 'quarantined' WHERE id = (SELECT publication_id FROM source_artifact WHERE id = ?)")
+      .run(artifactId);
+    database.prepare("UPDATE ingest_run SET quarantined_count = 1 WHERE id = ?").run(runId);
+  })();
+}
+
+function resolveRecoveredProcessingQuarantines(database: OperationalDatabase, runId: string): void {
+  const artifact = database
+    .prepare(
+      `SELECT artifact.id, publication.source_publication_key
+       FROM ingest_run run
+       JOIN source_artifact artifact ON artifact.id = run.artifact_id
+       JOIN source_publication publication ON publication.id = artifact.publication_id
+       WHERE run.id = ?`,
+    )
+    .get(runId) as { id: string; source_publication_key: string } | undefined;
+  if (!artifact) return;
+  database
+    .prepare(
+      `UPDATE quarantine SET status = 'resolved', resolved_at = ?, resolution_note = ?
+       WHERE status = 'open'
+       AND reason_code IN ('PDF_OCR_REQUIRED', 'SOURCE_TEMPLATE_CHANGED', 'UNSUPPORTED_DOCUMENT', 'PDF_PARSE_FAILED')
+       AND (artifact_id = ? OR json_extract(details_json, '$.publication.key') = ?)`,
+    )
+    .run(
+      new Date().toISOString(),
+      `Resolved by successful PDF-processing run ${runId}`,
+      artifact.id,
+      artifact.source_publication_key,
+    );
+}
+
 function updateProcessingCounts(database: OperationalDatabase, runId: string): void {
   const run = database.prepare("SELECT artifact_id FROM ingest_run WHERE id = ?").get(runId) as { artifact_id: string | null };
   const artifactId = run.artifact_id;
   const extracted = artifactId ? count(database, "SELECT COUNT(*) AS count FROM extracted_text_item WHERE artifact_id = ?", artifactId) : 0;
-  const parsed = artifactId ? count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", artifactId) : 0;
+  const parsed = artifactId ? count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'stale'", artifactId) : 0;
   const quarantined = artifactId
     ? count(database, "SELECT COUNT(*) AS count FROM quarantine WHERE artifact_id = ? AND status = 'open'", artifactId)
     : 0;
@@ -744,16 +920,44 @@ function invalidateProcessingOutputs(database: OperationalDatabase, artifactId: 
   database.transaction(() => {
     if (["retrieve_pdf", "parse_pdf"].includes(stage)) {
       database.prepare("DELETE FROM extracted_text_item WHERE artifact_id = ?").run(artifactId);
-      database.prepare("DELETE FROM staging_observation WHERE artifact_id = ?").run(artifactId);
-      database.prepare("UPDATE source_artifact SET inspection_json = NULL, status = 'fetched' WHERE id = ?").run(artifactId);
+      retireStagingRows(database, artifactId);
+      database
+        .prepare(
+          `UPDATE source_artifact SET inspection_json = NULL, parser_strategy = NULL,
+           parser_confidence = NULL, parser_diagnostics_json = NULL, status = 'fetched' WHERE id = ?`,
+        )
+        .run(artifactId);
+      database.prepare("DELETE FROM artifact_quality_assessment WHERE artifact_id = ?").run(artifactId);
     } else if (stage === "extract_data") {
-      database.prepare("DELETE FROM staging_observation WHERE artifact_id = ?").run(artifactId);
-      database.prepare("UPDATE source_artifact SET status = 'processed' WHERE id = ?").run(artifactId);
+      retireStagingRows(database, artifactId);
+      database
+        .prepare(
+          `UPDATE source_artifact SET parser_strategy = NULL, parser_confidence = NULL,
+           parser_diagnostics_json = NULL, status = 'processed' WHERE id = ?`,
+        )
+        .run(artifactId);
+      database.prepare("DELETE FROM artifact_quality_assessment WHERE artifact_id = ?").run(artifactId);
     } else if (stage === "validate_data") {
       database.prepare("UPDATE staging_observation SET status = 'pending_validation' WHERE artifact_id = ?").run(artifactId);
       database.prepare("UPDATE source_artifact SET status = 'processed' WHERE id = ?").run(artifactId);
+      database.prepare("DELETE FROM artifact_quality_assessment WHERE artifact_id = ?").run(artifactId);
+    } else if (stage === "assess_completeness") {
+      database.prepare("DELETE FROM artifact_quality_assessment WHERE artifact_id = ?").run(artifactId);
     }
   })();
+}
+
+function retireStagingRows(database: OperationalDatabase, artifactId: string): void {
+  database.prepare("UPDATE staging_observation SET status = 'stale' WHERE artifact_id = ?").run(artifactId);
+  database
+    .prepare(
+      `DELETE FROM staging_observation WHERE artifact_id = ? AND status = 'stale'
+       AND NOT EXISTS (
+         SELECT 1 FROM price_observation observation
+         WHERE observation.staging_id = staging_observation.id
+       )`,
+    )
+    .run(artifactId);
 }
 
 function blockStages(database: OperationalDatabase, runId: string, workflow: readonly StageName[], failedStage: StageName): void {
@@ -773,9 +977,18 @@ function missingProcessingInputs(database: OperationalDatabase, artifactId: stri
     return ["structured records"];
   }
   if (stage === "insert_data") {
-    const total = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", artifactId);
+    const total = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'stale'", artifactId);
     const validated = count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status = 'validated'", artifactId);
     if (!total || total !== validated) return ["validated records"];
+  }
+  if (stage === "assess_completeness" && !count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'stale'", artifactId)) {
+    return ["inserted staging records"];
+  }
+  if (
+    stage === "canonicalize_data" &&
+    !count(database, "SELECT COUNT(*) AS count FROM artifact_quality_assessment WHERE artifact_id = ?", artifactId)
+  ) {
+    return ["completeness assessment"];
   }
   return [];
 }
@@ -806,7 +1019,7 @@ function processingInput(database: OperationalDatabase, context: ProcessingConte
   if (stage === "parse_pdf") return { artifact_id: context.artifactId, dependency: "retrieve_pdf" };
   if (stage === "extract_data") return { artifact_id: context.artifactId, dependency: "parse_pdf" };
   const records = context.artifactId
-    ? count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", context.artifactId)
+    ? count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'stale'", context.artifactId)
     : 0;
   return { artifact_id: context.artifactId, dependency: processingDependencies[stage][0], records };
 }
@@ -815,7 +1028,7 @@ function processingInputCount(database: OperationalDatabase, context: Processing
   if (stage === "retrieve_pdf" || stage === "parse_pdf") return 1;
   if (!context.artifactId) return 0;
   if (stage === "extract_data") return count(database, "SELECT COUNT(*) AS count FROM extracted_text_item WHERE artifact_id = ?", context.artifactId);
-  return count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ?", context.artifactId);
+  return count(database, "SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND status != 'stale'", context.artifactId);
 }
 
 type ArchivedPdf = {
@@ -907,8 +1120,8 @@ function archiveKey(publication: Publication): string {
   return hartiArchiveObjectKey(publication);
 }
 
-function r2Uri(bucket: string, key: string): string {
-  return `r2://${bucket}/${key}`;
+function archiveUri(storage: ArchiveStorage, key: string): string {
+  return storage.uri?.(key) ?? `r2://${storage.bucket}/${key}`;
 }
 
 function isPdf(bytes: Uint8Array): boolean {
@@ -940,6 +1153,8 @@ function stageLabel(stage: StageName): string {
     extract_data: "Extract structured data",
     validate_data: "Validate extracted data",
     insert_data: "Insert validated data",
+    assess_completeness: "Assess document completeness",
+    canonicalize_data: "Promote canonical observations",
   };
   return labels[stage] ?? stage.replaceAll("_", " ");
 }
