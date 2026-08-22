@@ -1,5 +1,8 @@
 export type Envelope<T> = { success: boolean; message: string; payload: T };
 export type AdminUser = { id: string; email: string };
+export type LoginFailure =
+  | { reason: "invalid_credentials"; attempts_remaining: number }
+  | { reason: "account_locked"; attempts_remaining: 0; locked_until: string; retry_after_seconds: number };
 export type Overview = { sources: number; pdfs: number; running: number; failed: number; quarantined: number };
 export type Source = { id: string; name: string; owner: string; rights_status: string; review_due_at: string; enabled: number; state: string; last_parse_at: string | null };
 export type WorkflowName = "source_sync" | "pdf_processing" | "legacy_ingestion";
@@ -22,10 +25,12 @@ export function listUrl(path: string, parameters: ListParameters): string {
 
 export class ApiError extends Error {
   readonly status: number;
+  readonly payload: unknown;
 
-  constructor(message: string, status: number) {
+  constructor(message: string, status: number, payload: unknown) {
     super(message);
     this.status = status;
+    this.payload = payload;
   }
 }
 
@@ -35,11 +40,11 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   try {
     body = await response.json() as Envelope<T>;
   } catch {
-    throw new ApiError("The server returned an invalid response", response.status);
+    throw new ApiError("The server returned an invalid response", response.status, null);
   }
   if (!response.ok || !body.success) {
     if (response.status === 401 && path !== "/v1/auth/session" && path !== "/v1/auth/login") window.location.assign("/admin/login");
-    throw new ApiError(body.message, response.status);
+    throw new ApiError(body.message, response.status, body.payload);
   }
   return body.payload;
 }

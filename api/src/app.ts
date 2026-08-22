@@ -54,8 +54,38 @@ export function createApp(
     if (typeof email !== "string" || typeof password !== "string" || email.length > 254 || password.length > 1_024) {
       return context.json(envelope(context.get("requestId"), null, false, "Invalid email or password"), 401);
     }
-    const user = authenticateAdmin(database, email, password);
-    if (!user) return context.json(envelope(context.get("requestId"), null, false, "Invalid email or password"), 401);
+    const authentication = authenticateAdmin(database, email, password);
+    if (authentication.status === "invalid_credentials") {
+      return context.json(
+        envelope(
+          context.get("requestId"),
+          authentication.attemptsRemaining === null
+            ? null
+            : { reason: "invalid_credentials" as const, attempts_remaining: authentication.attemptsRemaining },
+          false,
+          "Invalid email or password",
+        ),
+        401,
+      );
+    }
+    if (authentication.status === "locked") {
+      context.header("Retry-After", String(authentication.retryAfterSeconds));
+      return context.json(
+        envelope(
+          context.get("requestId"),
+          {
+            reason: "account_locked" as const,
+            attempts_remaining: authentication.attemptsRemaining,
+            locked_until: authentication.lockedUntil,
+            retry_after_seconds: authentication.retryAfterSeconds,
+          },
+          false,
+          "Sign-in is temporarily locked",
+        ),
+        423,
+      );
+    }
+    const user = authentication.user;
     const token = createAdminSession(database, user.id);
     setCookie(context, adminSessionCookie, token, {
       httpOnly: true,

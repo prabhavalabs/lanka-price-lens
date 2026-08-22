@@ -51,6 +51,33 @@ test("manual upload requires owner authentication and a real PDF signature", asy
   }
 });
 
+test("login reports remaining attempts and a temporary lock", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    seedAdminUser(database, "owner@example.com", passwordHash);
+    const app = createApp(database, manifest);
+    for (const attemptsRemaining of [4, 3, 2, 1]) {
+      const response = await loginRequest(app, "incorrect");
+      assert.equal(response.status, 401);
+      assert.deepEqual((await response.json()).payload, { reason: "invalid_credentials", attempts_remaining: attemptsRemaining });
+    }
+    const locked = await loginRequest(app, "incorrect");
+    assert.equal(locked.status, 423);
+    assert.equal(locked.headers.get("retry-after"), "900");
+    const body = (await locked.json()) as { message: string; payload: { reason: string; attempts_remaining: number; locked_until: string; retry_after_seconds: number } };
+    assert.equal(body.message, "Sign-in is temporarily locked");
+    assert.equal(body.payload.reason, "account_locked");
+    assert.equal(body.payload.attempts_remaining, 0);
+    assert.equal(body.payload.retry_after_seconds, 900);
+    assert.match(body.payload.locked_until, /^\d{4}-\d{2}-\d{2}T/u);
+
+    const stillLocked = await loginRequest(app, "correct horse battery staple");
+    assert.equal(stillLocked.status, 423);
+  } finally {
+    database.close();
+  }
+});
+
 test("owner ingestion rejects cross-origin requests and overlapping runs", async () => {
   const database = openOperationalDatabase(":memory:");
   try {
@@ -131,14 +158,18 @@ test("admin tables paginate, search, and filter on the server", async () => {
 });
 
 async function loginCookie(app: ReturnType<typeof createApp>): Promise<string> {
-  const response = await app.request("http://localhost/v1/auth/login", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ email: "owner@example.com", password: "correct horse battery staple" }),
-  });
+  const response = await loginRequest(app, "correct horse battery staple");
   assert.equal(response.status, 200);
   const setCookie = response.headers.get("set-cookie");
   assert.match(setCookie ?? "", /HttpOnly/u);
   assert.match(setCookie ?? "", /SameSite=Strict/u);
   return setCookie!.split(";", 1)[0]!;
+}
+
+async function loginRequest(app: ReturnType<typeof createApp>, password: string): Promise<Response> {
+  return app.request("http://localhost/v1/auth/login", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email: "owner@example.com", password }),
+  });
 }
