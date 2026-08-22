@@ -4,8 +4,14 @@ import type { OperationalDatabase } from "@lanka-pricelens/foundry/db";
 
 export const adminSessionCookie = "lpl_admin_session";
 export const adminSessionSeconds = 12 * 60 * 60;
+export const maximumFailedLoginAttempts = 5;
+export const adminLockoutSeconds = 15 * 60;
 
 export type AdminUser = { id: string; email: string };
+export type AdminAuthentication =
+  | { status: "authenticated"; user: AdminUser }
+  | { status: "invalid_credentials"; attemptsRemaining: number | null }
+  | { status: "locked"; attemptsRemaining: 0; lockedUntil: string; retryAfterSeconds: number };
 
 const dummySalt = "00000000000000000000000000000000";
 const dummyPasswordHash = `scrypt$${dummySalt}$${scryptSync("invalid-password", dummySalt, 64).toString("hex")}`;
@@ -38,7 +44,7 @@ export function seedAdminUser(database: OperationalDatabase, email: string, pass
   })();
 }
 
-export function authenticateAdmin(database: OperationalDatabase, email: string, password: string): AdminUser | undefined {
+export function authenticateAdmin(database: OperationalDatabase, email: string, password: string): AdminAuthentication {
   const normalizedEmail = normalizeEmail(email);
   const user = normalizedEmail
     ? (database
@@ -53,22 +59,32 @@ export function authenticateAdmin(database: OperationalDatabase, email: string, 
   const now = new Date();
   const locked = user?.locked_until ? new Date(user.locked_until) > now : false;
   const valid = verifyPassword(password, locked || !user ? dummyPasswordHash : user.password_hash);
-  if (!user || locked || !valid) {
-    if (user && !locked) {
-      const failures = user.failed_login_count + 1;
+  if (!user) return { status: "invalid_credentials", attemptsRemaining: null };
+  if (locked) {
+    const lockedUntil = user.locked_until!;
+    return {
+      status: "locked",
+      attemptsRemaining: 0,
+      lockedUntil,
+      retryAfterSeconds: Math.max(1, Math.ceil((new Date(lockedUntil).getTime() - now.getTime()) / 1_000)),
+    };
+  }
+  if (!valid) {
+    const failures = user.failed_login_count + 1;
+    if (failures >= maximumFailedLoginAttempts) {
+      const lockedUntil = new Date(now.getTime() + adminLockoutSeconds * 1_000).toISOString();
       database
-        .prepare("UPDATE admin_user SET failed_login_count = ?, locked_until = ?, updated_at = ? WHERE id = ?")
-        .run(
-          failures >= 5 ? 0 : failures,
-          failures >= 5 ? new Date(now.getTime() + 15 * 60_000).toISOString() : null,
-          now.toISOString(),
-          user.id,
-        );
+        .prepare("UPDATE admin_user SET failed_login_count = 0, locked_until = ?, updated_at = ? WHERE id = ?")
+        .run(lockedUntil, now.toISOString(), user.id);
+      return { status: "locked", attemptsRemaining: 0, lockedUntil, retryAfterSeconds: adminLockoutSeconds };
     }
-    return undefined;
+    database
+      .prepare("UPDATE admin_user SET failed_login_count = ?, locked_until = NULL, updated_at = ? WHERE id = ?")
+      .run(failures, now.toISOString(), user.id);
+    return { status: "invalid_credentials", attemptsRemaining: maximumFailedLoginAttempts - failures };
   }
   database.prepare("UPDATE admin_user SET failed_login_count = 0, locked_until = NULL, updated_at = ? WHERE id = ?").run(now.toISOString(), user.id);
-  return { id: user.id, email: user.email };
+  return { status: "authenticated", user: { id: user.id, email: user.email } };
 }
 
 export function createAdminSession(database: OperationalDatabase, userId: string): string {

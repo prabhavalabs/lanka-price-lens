@@ -1,34 +1,106 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RiLock2Line, RiPriceTag3Line } from "@remixicon/react";
+import { RiErrorWarningLine, RiLock2Line, RiPriceTag3Line } from "@remixicon/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
-import { Alert } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { api, type AdminUser } from "@/lib/api";
+import { api, ApiError, type AdminUser, type LoginFailure } from "@/lib/api";
 
 const loginSchema = z.object({
   email: z.string().trim().email("Enter a valid email address"),
   password: z.string().min(1, "Enter your password").max(1_024),
 });
 type LoginValues = z.infer<typeof loginSchema>;
+type LoginFeedback =
+  | { kind: "invalid_credentials"; attemptsRemaining: number | null }
+  | { kind: "locked"; lockedUntil: string }
+  | { kind: "error"; message: string };
+const lockoutTimeFormatter = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" });
+
+function loginFeedback(error: Error): LoginFeedback {
+  if (!(error instanceof ApiError)) return { kind: "error", message: error.message };
+  if (!isLoginFailure(error.payload)) {
+    return error.status === 401
+      ? { kind: "invalid_credentials", attemptsRemaining: null }
+      : { kind: "error", message: error.message };
+  }
+  if (error.payload.reason === "account_locked") return { kind: "locked", lockedUntil: error.payload.locked_until };
+  return { kind: "invalid_credentials", attemptsRemaining: error.payload.attempts_remaining };
+}
+
+function isLoginFailure(value: unknown): value is LoginFailure {
+  if (!value || typeof value !== "object" || !("reason" in value)) return false;
+  const failure = value as Partial<LoginFailure>;
+  if (failure.reason === "invalid_credentials") return typeof failure.attempts_remaining === "number";
+  return failure.reason === "account_locked" && typeof failure.locked_until === "string";
+}
+
+function LockoutCountdown({ lockedUntil }: { lockedUntil: string }) {
+  const endTime = new Date(lockedUntil).getTime();
+  const [secondsRemaining, setSecondsRemaining] = useState(() => remainingSeconds(endTime));
+
+  useEffect(() => {
+    const update = () => setSecondsRemaining(remainingSeconds(endTime));
+    update();
+    const interval = window.setInterval(update, 1_000);
+    return () => window.clearInterval(interval);
+  }, [endTime]);
+
+  if (secondsRemaining === 0) return <>You can try signing in again now.</>;
+  return <>
+    Too many unsuccessful attempts. Try again in <strong>{shortDuration(secondsRemaining)}</strong>
+    {" "}(at <time dateTime={lockedUntil}>{lockoutTimeFormatter.format(endTime)}</time>).
+  </>;
+}
+
+function remainingSeconds(endTime: number): number {
+  return Math.max(0, Math.ceil((endTime - Date.now()) / 1_000));
+}
+
+function shortDuration(totalSeconds: number): string {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return minutes > 0 ? `${minutes}m ${String(seconds).padStart(2, "0")}s` : `${seconds}s`;
+}
 
 export function LoginPage() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const [feedback, setFeedback] = useState<LoginFeedback | null>(null);
+  const [lockedUntil, setLockedUntil] = useState<string | null>(null);
   const form = useForm<LoginValues>({ resolver: zodResolver(loginSchema), defaultValues: { email: "", password: "" } });
   const login = useMutation({
     mutationFn: (values: LoginValues) => api<AdminUser>("/v1/auth/login", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(values) }),
+    onMutate: () => setFeedback(null),
     onSuccess: (user) => {
       queryClient.setQueryData(["session"], user);
       navigate("/", { replace: true });
     },
+    onError: (error) => {
+      const nextFeedback = loginFeedback(error);
+      setFeedback(nextFeedback);
+      if (nextFeedback.kind === "locked") setLockedUntil(nextFeedback.lockedUntil);
+      form.resetField("password");
+      form.setFocus("password");
+    },
   });
+
+  useEffect(() => {
+    if (!lockedUntil) return;
+    const timeout = window.setTimeout(() => {
+      setLockedUntil(null);
+      setFeedback(null);
+      form.setFocus("password");
+    }, Math.max(0, new Date(lockedUntil).getTime() - Date.now()));
+    return () => window.clearTimeout(timeout);
+  }, [form, lockedUntil]);
 
   return (
     <main className="grid min-h-svh bg-background lg:grid-cols-[1.1fr_0.9fr]">
@@ -44,10 +116,10 @@ export function LoginPage() {
             <form className="flex flex-col gap-5" onSubmit={form.handleSubmit((values) => login.mutate(values))}>
               <FieldGroup>
                 <Field data-invalid={Boolean(form.formState.errors.email)}><FieldLabel htmlFor="email">Email</FieldLabel><Input aria-invalid={Boolean(form.formState.errors.email)} autoComplete="username" id="email" type="email" {...form.register("email")} /><FieldError errors={[form.formState.errors.email]} /></Field>
-                <Field data-invalid={Boolean(form.formState.errors.password)}><FieldLabel htmlFor="password">Password</FieldLabel><Input aria-invalid={Boolean(form.formState.errors.password)} autoComplete="current-password" id="password" type="password" {...form.register("password")} /><FieldError errors={[form.formState.errors.password]} /></Field>
+                <Field data-invalid={Boolean(form.formState.errors.password)}><FieldLabel htmlFor="password">Password</FieldLabel><Input aria-describedby={feedback ? "login-feedback" : undefined} aria-invalid={Boolean(form.formState.errors.password)} autoComplete="current-password" disabled={Boolean(lockedUntil)} id="password" type="password" {...form.register("password")} /><FieldError errors={[form.formState.errors.password]} /></Field>
               </FieldGroup>
-              {login.isError ? <Alert variant="destructive">{login.error.message}</Alert> : null}
-              <Button className="w-full" disabled={login.isPending} size="lg" type="submit">{login.isPending ? "Signing in…" : "Sign in"}</Button>
+              {feedback ? <Alert id="login-feedback" variant="destructive"><RiErrorWarningLine /><AlertTitle>{feedback.kind === "locked" ? "Sign-in temporarily locked" : "Sign-in failed"}</AlertTitle><AlertDescription>{feedback.kind === "locked" ? <LockoutCountdown lockedUntil={feedback.lockedUntil} /> : feedback.kind === "invalid_credentials" ? <>The email or password is incorrect. {feedback.attemptsRemaining === null ? <>Check your details and try again.</> : <>You have <strong>{feedback.attemptsRemaining} {feedback.attemptsRemaining === 1 ? "attempt" : "attempts"}</strong> remaining before sign-in is locked for 15 minutes. Check your details and try again.</>}</> : <>We couldn’t sign you in. {feedback.message} Try again.</>}</AlertDescription></Alert> : null}
+              <Button className="w-full" disabled={login.isPending || Boolean(lockedUntil)} size="lg" type="submit">{lockedUntil ? "Sign-in temporarily locked" : login.isPending ? "Signing in…" : "Sign in"}</Button>
             </form>
           </CardContent>
         </Card>
