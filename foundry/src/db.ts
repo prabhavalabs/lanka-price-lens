@@ -488,6 +488,135 @@ function migrate(database: OperationalDatabase): void {
   addColumn(database, "ingest_run", "scheduled_for", "TEXT");
   addColumn(database, "ingest_run", "environment", "TEXT");
   database.exec(`
+    CREATE TABLE IF NOT EXISTS workflow_event (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      event_type TEXT NOT NULL CHECK (event_type IN ('dispatch', 'run', 'stage')),
+      dispatch_id TEXT,
+      run_id TEXT,
+      archive_id TEXT,
+      publication_id TEXT,
+      stage TEXT,
+      status TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    ) STRICT;
+
+    CREATE INDEX IF NOT EXISTS workflow_event_created_idx
+      ON workflow_event(id);
+    CREATE INDEX IF NOT EXISTS workflow_event_publication_idx
+      ON workflow_event(publication_id, id DESC);
+    CREATE INDEX IF NOT EXISTS workflow_event_run_idx
+      ON workflow_event(run_id, id DESC);
+
+    CREATE TRIGGER IF NOT EXISTS workflow_dispatch_event_insert
+    AFTER INSERT ON workflow_dispatch
+    BEGIN
+      INSERT INTO workflow_event (
+        event_type, dispatch_id, run_id, archive_id, publication_id, status, created_at
+      ) VALUES (
+        'dispatch', NEW.id, NEW.run_id, NEW.archive_id,
+        (SELECT publication_id FROM archived_pdf WHERE id = NEW.archive_id),
+        NEW.status, strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      );
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS workflow_dispatch_event_update
+    AFTER UPDATE ON workflow_dispatch
+    WHEN OLD.status IS NOT NEW.status OR OLD.run_id IS NOT NEW.run_id
+      OR OLD.error_code IS NOT NEW.error_code OR OLD.error_message IS NOT NEW.error_message
+    BEGIN
+      INSERT INTO workflow_event (
+        event_type, dispatch_id, run_id, archive_id, publication_id, status, created_at
+      ) VALUES (
+        'dispatch', NEW.id, NEW.run_id, NEW.archive_id,
+        (SELECT publication_id FROM archived_pdf WHERE id = NEW.archive_id),
+        NEW.status, strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      );
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS ingest_run_event_insert
+    AFTER INSERT ON ingest_run
+    BEGIN
+      INSERT INTO workflow_event (
+        event_type, dispatch_id, run_id, archive_id, publication_id, status, created_at
+      ) VALUES (
+        'run', NEW.dispatch_id, NEW.id, NEW.archive_id,
+        (SELECT publication_id FROM archived_pdf WHERE id = NEW.archive_id),
+        NEW.status, strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      );
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS ingest_run_event_update
+    AFTER UPDATE ON ingest_run
+    WHEN OLD.status IS NOT NEW.status OR OLD.error_code IS NOT NEW.error_code
+      OR OLD.error_message IS NOT NEW.error_message
+    BEGIN
+      INSERT INTO workflow_event (
+        event_type, dispatch_id, run_id, archive_id, publication_id, status, created_at
+      ) VALUES (
+        'run', NEW.dispatch_id, NEW.id, NEW.archive_id,
+        (SELECT publication_id FROM archived_pdf WHERE id = NEW.archive_id),
+        NEW.status, strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      );
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS run_stage_event_insert
+    AFTER INSERT ON run_stage
+    BEGIN
+      INSERT INTO workflow_event (
+        event_type, dispatch_id, run_id, archive_id, publication_id, stage, status, created_at
+      ) VALUES (
+        'stage',
+        (SELECT dispatch_id FROM ingest_run WHERE id = NEW.run_id),
+        NEW.run_id,
+        (SELECT archive_id FROM ingest_run WHERE id = NEW.run_id),
+        (SELECT archive.publication_id FROM ingest_run run
+          JOIN archived_pdf archive ON archive.id = run.archive_id WHERE run.id = NEW.run_id),
+        NEW.stage, NEW.status, strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      );
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS run_stage_event_update
+    AFTER UPDATE ON run_stage
+    WHEN OLD.status IS NOT NEW.status OR OLD.attempt_count IS NOT NEW.attempt_count
+    BEGIN
+      INSERT INTO workflow_event (
+        event_type, dispatch_id, run_id, archive_id, publication_id, stage, status, created_at
+      ) VALUES (
+        'stage',
+        (SELECT dispatch_id FROM ingest_run WHERE id = NEW.run_id),
+        NEW.run_id,
+        (SELECT archive_id FROM ingest_run WHERE id = NEW.run_id),
+        (SELECT archive.publication_id FROM ingest_run run
+          JOIN archived_pdf archive ON archive.id = run.archive_id WHERE run.id = NEW.run_id),
+        NEW.stage, NEW.status, strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      );
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS run_stage_log_event_insert
+    AFTER INSERT ON run_stage_log
+    BEGIN
+      INSERT INTO workflow_event (
+        event_type, dispatch_id, run_id, archive_id, publication_id, stage, status, created_at
+      ) VALUES (
+        'stage',
+        (SELECT dispatch_id FROM ingest_run WHERE id = NEW.run_id),
+        NEW.run_id,
+        (SELECT archive_id FROM ingest_run WHERE id = NEW.run_id),
+        (SELECT archive.publication_id FROM ingest_run run
+          JOIN archived_pdf archive ON archive.id = run.archive_id WHERE run.id = NEW.run_id),
+        NEW.stage,
+        COALESCE((SELECT status FROM run_stage WHERE run_id = NEW.run_id AND stage = NEW.stage), 'running'),
+        NEW.created_at
+      );
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS workflow_event_retention
+    AFTER INSERT ON workflow_event
+    WHEN NEW.id % 1000 = 0
+    BEGIN
+      DELETE FROM workflow_event WHERE id < NEW.id - 50000;
+    END;
+
     CREATE INDEX IF NOT EXISTS ingest_run_archive_workflow_started_v2_idx
       ON ingest_run(archive_id, workflow, started_at DESC, id DESC);
     CREATE INDEX IF NOT EXISTS ingest_run_dispatch_idx
@@ -502,6 +631,8 @@ function migrate(database: OperationalDatabase): void {
       ON price_observation(effective_key) WHERE status = 'active' AND effective_key IS NOT NULL;
     CREATE UNIQUE INDEX IF NOT EXISTS price_observation_processing_version_idx
       ON price_observation(staging_id, mapping_version, parser_version);
+    CREATE INDEX IF NOT EXISTS price_observation_source_artifact_idx
+      ON price_observation(source_artifact_id);
     CREATE INDEX IF NOT EXISTS price_observation_effective_history_idx
       ON price_observation(effective_key, source_published_at DESC, created_at DESC);
     CREATE INDEX IF NOT EXISTS artifact_quality_status_score_idx

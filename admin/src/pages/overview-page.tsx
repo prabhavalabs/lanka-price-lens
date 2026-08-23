@@ -11,9 +11,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import { api, type KnowledgeItem, type Overview, type Page, type Run, type Source } from "@/lib/api";
+import { api, type KnowledgeListItem, type Overview, type Page, type Run, type Source } from "@/lib/api";
 
-type Dashboard = { overview: Overview; sources: Page<Source>; runs: Page<Run>; knowledge: Page<KnowledgeItem> };
+type Dashboard = { overview: Overview; sources: Page<Source>; runs: Page<Run>; knowledge: Page<KnowledgeListItem> };
 type UploadValues = { file: FileList };
 
 async function dashboard(): Promise<Dashboard> {
@@ -21,7 +21,7 @@ async function dashboard(): Promise<Dashboard> {
     api<Overview>("/v1/admin/overview"),
     api<Page<Source>>("/v1/admin/sources?page=1&pageSize=6"),
     api<Page<Run>>("/v1/admin/runs?page=1&pageSize=6"),
-    api<Page<KnowledgeItem>>("/v1/admin/knowledge-base?page=1&pageSize=6"),
+    api<Page<KnowledgeListItem>>("/v1/admin/knowledge-base?page=1&pageSize=6"),
   ]);
   return { overview, sources, runs, knowledge };
 }
@@ -114,7 +114,7 @@ export function OverviewPage() {
         <Card>
           <PanelHeader title="Recent knowledge" to="/knowledge-base" />
           <CardContent className="divide-y divide-white/[0.07] p-0">
-            {data.data.knowledge.items.slice(0, 4).map((item) => <div className="flex items-center justify-between gap-3 px-4 py-3" key={item.publication_id}><div className="min-w-0"><p className="truncate text-[13px] font-medium" title={item.title}>{item.title}</p><p className="mt-1 font-mono text-[10px] text-muted-foreground">{item.byte_size === null ? "Not cached" : bytes(item.byte_size)} · {item.page_count ?? "?"} pages · {date(item.published_at)}</p></div><Status value={item.status} /></div>)}
+            {data.data.knowledge.items.slice(0, 4).map((item) => <div className="flex items-center justify-between gap-3 px-4 py-3" key={item.publication_id}><div className="min-w-0"><Link className="block truncate text-[13px] font-medium underline-offset-4 hover:text-primary hover:underline" title={item.title} to={`/knowledge-base/${encodeURIComponent(item.publication_id)}`}>{item.title}</Link><p className="mt-1 font-mono text-[10px] text-muted-foreground">{item.byte_size === null ? "Not cached" : bytes(item.byte_size)} · {item.page_count ?? "?"} pages · {date(item.published_at)}</p></div><Status value={item.status} /></div>)}
           </CardContent>
         </Card>
 

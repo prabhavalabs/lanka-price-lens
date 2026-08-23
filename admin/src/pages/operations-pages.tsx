@@ -7,7 +7,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -260,7 +260,7 @@ export function RunDetailPage() {
               <CardAction className="flex items-center gap-3"><span className="font-mono text-xs text-muted-foreground">{durationBetween(workflow.data.run.started_at, workflow.data.run.finished_at)}</span><Button disabled={rerun.isPending} onClick={() => rerun.mutate()} size="sm" variant="outline"><RiRestartLine className={cn(rerun.isPending && "animate-spin")} data-icon="inline-start" />{rerun.isPending ? "Starting…" : "Rerun workflow"}</Button></CardAction>
             </CardHeader>
             <CardContent>
-              <ScrollArea className="w-full pb-3">
+              <ScrollArea className="w-full pb-3" orientation="horizontal">
                 <div className="flex min-w-max items-stretch gap-2 pb-3">
                   {workflow.data.stages.map((stage, index) => (
                     <div className="flex items-center gap-2" key={stage.stage}>
@@ -277,7 +277,6 @@ export function RunDetailPage() {
                     </div>
                   ))}
                 </div>
-                <ScrollBar orientation="horizontal" />
               </ScrollArea>
             </CardContent>
           </Card>
@@ -344,7 +343,7 @@ function StepInspector({ stage, retry, pending, mutationError }: { stage: Workfl
         {stage.error_message ? <Alert variant="destructive"><RiCloseLine /><AlertTitle>{stage.error_code ?? "Step failed"}</AlertTitle><AlertDescription>{stage.error_message}</AlertDescription></Alert> : null}
         {stage.retry_reason && !stage.can_retry ? <Alert><RiLockLine /><AlertTitle>Retry unavailable</AlertTitle><AlertDescription>{stage.retry_reason}</AlertDescription></Alert> : null}
         {mutationError ? <Alert variant="destructive"><AlertTitle>Retry did not start</AlertTitle><AlertDescription>{mutationError}</AlertDescription></Alert> : null}
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="grid min-w-0 gap-4 lg:grid-cols-2">
           <JsonPanel title="Input" value={stage.input} />
           <JsonPanel title="Output" value={stage.output} />
         </div>
@@ -353,7 +352,7 @@ function StepInspector({ stage, retry, pending, mutationError }: { stage: Workfl
           <div className="mb-3 flex items-center justify-between gap-3"><h3 className="font-heading text-sm font-semibold">Execution logs</h3><Badge variant="outline">{stage.log_count} entries</Badge></div>
           <ScrollArea className="h-72 rounded-lg border bg-background/40">
             <div className="divide-y divide-border">
-              {stage.logs.length ? stage.logs.map((log) => <div className="grid gap-1 px-4 py-3 sm:grid-cols-[8rem_5rem_1fr] sm:gap-3" key={log.id}><time className="font-mono text-[10px] text-muted-foreground">{date(log.created_at)}</time><Badge className="self-start" variant={log.level === "error" ? "destructive" : log.level === "warning" ? "secondary" : "outline"}>{log.level}</Badge><div className="min-w-0"><p className="text-xs font-medium">{log.message}</p>{log.data !== null ? <pre className="mt-1 overflow-x-auto whitespace-pre-wrap break-words font-mono text-[10px] leading-4 text-muted-foreground">{formatJson(log.data)}</pre> : null}</div></div>) : <p className="p-6 text-center text-xs text-muted-foreground">No structured logs were recorded for this step.</p>}
+              {stage.logs.length ? stage.logs.map((log) => <div className="grid gap-1 px-4 py-3 sm:grid-cols-[8rem_5rem_1fr] sm:gap-3" key={log.id}><time className="font-mono text-[10px] text-muted-foreground">{date(log.created_at)}</time><Badge className="self-start" variant={log.level === "error" ? "destructive" : log.level === "warning" ? "secondary" : "outline"}>{log.level}</Badge><div className="min-w-0"><p className="text-xs font-medium">{log.message}</p>{log.data !== null ? <pre className="mt-1 whitespace-pre-wrap break-words font-mono text-[10px] leading-4 text-muted-foreground">{formatJson(log.data)}</pre> : null}</div></div>) : <p className="p-6 text-center text-xs text-muted-foreground">No structured logs were recorded for this step.</p>}
             </div>
           </ScrollArea>
           {stage.log_count > stage.logs.length ? <p className="mt-2 text-[10px] text-muted-foreground">Showing the latest {stage.logs.length} entries.</p> : null}
@@ -368,7 +367,7 @@ function Metric({ label, value }: { label: string; value: string }) {
 }
 
 function JsonPanel({ title, value }: { title: string; value: unknown }) {
-  return <div><h3 className="mb-2 font-heading text-sm font-semibold">{title}</h3><ScrollArea className="h-44 rounded-lg border bg-background/40"><pre className="p-4 font-mono text-[11px] leading-5 text-muted-foreground">{formatJson(value)}</pre></ScrollArea></div>;
+  return <div className="min-w-0"><h3 className="mb-2 font-heading text-sm font-semibold">{title}</h3><ScrollArea className="h-44 w-full min-w-0 rounded-lg border bg-background/40" orientation="both"><pre className="w-max min-w-full p-4 font-mono text-[11px] leading-5 text-muted-foreground">{formatJson(value)}</pre></ScrollArea></div>;
 }
 
 function StepIcon({ status }: { status: string }) {

@@ -19,7 +19,8 @@ export type ArchiveStorage = {
 };
 
 export async function configuredArchiveStorage(bucket = process.env.LPL_R2_BUCKET ?? "lanka-price-lens-pdfs"): Promise<ArchiveStorage> {
-  if ((process.env.LPL_ARCHIVE_DRIVER ?? "cloudflare") === "filesystem") {
+  const driver = process.env.LPL_ARCHIVE_DRIVER;
+  if (driver === "filesystem" || (!driver && bucket === "local-dev")) {
     return filesystemArchiveStorage(resolve(process.env.LPL_LOCAL_ARCHIVE_ROOT ?? "../data/raw/archive"));
   }
   const credentials = await cloudflareCredentials();

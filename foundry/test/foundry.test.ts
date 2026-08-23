@@ -10,8 +10,8 @@ import { mappingBundleSchema, sourceManifestSchema } from "@lanka-pricelens/shar
 import Database from "better-sqlite3";
 
 import { persistExtractedText } from "../src/artifact.ts";
-import { filesystemArchiveStorage } from "../src/archive-storage.ts";
-import { finishRun, openOperationalDatabase, startRun, syncSource, type OperationalDatabase } from "../src/db.ts";
+import { configuredArchiveStorage, filesystemArchiveStorage } from "../src/archive-storage.ts";
+import { finishRun, finishStage, logStage, openOperationalDatabase, startRun, startStage, syncSource, type OperationalDatabase } from "../src/db.ts";
 import {
   discoverHartiDaily,
   HartiParseError,
@@ -24,7 +24,7 @@ import { retryProcessingStage, runIngestion, workflowRetryState, type ArchiveSto
 import type { PdfInspection, TextItem } from "../src/pdf.ts";
 import { assessArtifactCompleteness } from "../src/quality.ts";
 import { buildRelease } from "../src/release.ts";
-import { claimNextDispatch, enqueueDueSchedules, ensureWorkflowSchedules, recoverInterruptedDispatches } from "../src/workflows.ts";
+import { claimNextDispatch, enqueueDueSchedules, enqueueWorkflow, ensureWorkflowSchedules, recoverInterruptedDispatches } from "../src/workflows.ts";
 
 const manifest = sourceManifestSchema.parse({
   id: "test_source",
@@ -98,6 +98,64 @@ test("scheduler creates one durable dispatch per due occurrence", () => {
   database.close();
 });
 
+test("workflow lifecycle transitions create durable realtime events", () => {
+  const database = openOperationalDatabase(":memory:");
+  syncSource(database, manifest);
+  const now = "2026-08-22T10:00:00.000Z";
+  database.prepare(
+    `INSERT INTO source_publication (
+      id, source_id, source_publication_key, title, published_at, landing_url,
+      download_url, status, first_seen_at, last_seen_at
+    ) VALUES ('publication_events', ?, 'events', 'Events.pdf', ?, ?,
+      'https://example.com/events.pdf', 'discovered', ?, ?)`,
+  ).run(manifest.id, now, manifest.landing_url, now, now);
+  database.prepare(
+    `INSERT INTO archived_pdf (
+      id, publication_id, source_url, r2_bucket, r2_key, r2_uri, byte_size,
+      sha256, uploaded_at, status, created_at, updated_at
+    ) VALUES ('archive_events', 'publication_events', 'https://example.com/events.pdf',
+      'test', 'events.pdf', 'r2://test/events.pdf', 100, 'events-sha', ?, 'stored', ?, ?)`,
+  ).run(now, now, now);
+
+  const dispatch = enqueueWorkflow(database, {
+    workflowKey: "document_processing_pipeline",
+    sourceId: manifest.id,
+    archiveId: "archive_events",
+    requestedBy: "owner@example.com",
+    now: new Date(now),
+  });
+  assert.equal(claimNextDispatch(database, "test-scheduler", new Date(now))?.id, dispatch.id);
+  const run = startRun(database, {
+    sourceId: manifest.id,
+    trigger: "manual",
+    workflow: "pdf_processing",
+    archiveId: "archive_events",
+    dispatchId: dispatch.id,
+  });
+  startStage(database, run.id, "retrieve_pdf", 1);
+  logStage(database, run.id, "retrieve_pdf", "info", "PDF retrieved");
+  finishStage(database, run.id, "retrieve_pdf", "succeeded", { outputCount: 1 });
+  finishRun(database, run.id, "succeeded");
+
+  const events = database.prepare(
+    `SELECT event_type, dispatch_id, run_id, publication_id, stage, status
+     FROM workflow_event ORDER BY id`,
+  ).all() as Array<{ event_type: string; dispatch_id: string | null; run_id: string | null; publication_id: string | null; stage: string | null; status: string }>;
+  assert.deepEqual(events.map((event) => `${event.event_type}:${event.status}`), [
+    "dispatch:queued",
+    "dispatch:running",
+    "run:running",
+    "stage:running",
+    "stage:running",
+    "stage:succeeded",
+    "run:succeeded",
+  ]);
+  assert.ok(events.every((event) => event.publication_id === "publication_events"));
+  assert.ok(events.every((event) => event.dispatch_id === dispatch.id));
+  assert.equal(events.find((event) => event.event_type === "stage")?.run_id, run.id);
+  database.close();
+});
+
 test("filesystem archive stores isolated objects and metadata", async () => {
   const root = mkdtempSync(join(tmpdir(), "lpl-archive-"));
   try {
@@ -109,6 +167,26 @@ test("filesystem archive stores isolated objects and metadata", async () => {
     assert.deepEqual(await archive.download("sources/test/document.pdf"), bytes);
     await assert.rejects(() => archive.download("../outside.pdf"), /ARCHIVE_KEY_INVALID/u);
   } finally {
+    rmSync(root, { force: true, recursive: true });
+  }
+});
+
+test("local-dev archive records resolve to filesystem storage without extra environment configuration", async () => {
+  const root = mkdtempSync(join(tmpdir(), "lpl-local-dev-archive-"));
+  const previousDriver = process.env.LPL_ARCHIVE_DRIVER;
+  const previousRoot = process.env.LPL_LOCAL_ARCHIVE_ROOT;
+  try {
+    delete process.env.LPL_ARCHIVE_DRIVER;
+    process.env.LPL_LOCAL_ARCHIVE_ROOT = root;
+    const archive = await configuredArchiveStorage("local-dev");
+    const bytes = new TextEncoder().encode("%PDF-local-bucket");
+    await archive.upload("documents/local.pdf", "local.pdf", bytes, {});
+    assert.deepEqual(await archive.download("documents/local.pdf"), bytes);
+  } finally {
+    if (previousDriver === undefined) delete process.env.LPL_ARCHIVE_DRIVER;
+    else process.env.LPL_ARCHIVE_DRIVER = previousDriver;
+    if (previousRoot === undefined) delete process.env.LPL_LOCAL_ARCHIVE_ROOT;
+    else process.env.LPL_LOCAL_ARCHIVE_ROOT = previousRoot;
     rmSync(root, { force: true, recursive: true });
   }
 });
