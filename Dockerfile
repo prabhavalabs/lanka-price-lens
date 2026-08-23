@@ -43,6 +43,7 @@ COPY archive/src archive/src
 COPY foundry/src foundry/src
 COPY api/src api/src
 COPY data/manifests data/manifests
+COPY data/mappings data/mappings
 COPY --from=build /app/admin/dist admin/dist
 RUN mkdir /data && chown node:node /data
 USER node
