@@ -6,6 +6,7 @@ import { canonicalizeRun } from "./mapping.ts";
 import { readMappingBundle, readSourceManifest } from "./manifest.ts";
 import { runSourceSync } from "./pipeline.ts";
 import { buildRelease } from "./release.ts";
+import { startScheduler } from "./scheduler.ts";
 
 const [command, ...arguments_] = process.argv.slice(2);
 
@@ -20,13 +21,14 @@ if (command === "hash-password") {
 } else if (command === "sync" || command === "ingest") {
   const manifestPath = valueOf("--manifest") ?? process.env.LPL_SOURCE_MANIFEST_PATH ?? resolve(process.cwd(), "../data/manifests/harti_daily_food_prices.json");
   const manifest = await readSourceManifest(manifestPath);
+  const mappingBundle = await readMappingBundle(mappingPath());
   const database = openOperationalDatabase(databasePath());
   try {
     const trigger = arguments_.includes("--backfill") ? "backfill" : arguments_.includes("--manual") ? "manual" : "scheduled";
     const from = dateValue("--from");
     const to = dateValue("--to");
     if (from && to && from > to) throw new Error("--from must not be later than --to");
-    const result = await runSourceSync(database, manifest, { trigger, from, to });
+    const result = await runSourceSync(database, manifest, { trigger, from, to, mappingBundle });
     console.log(JSON.stringify(result));
     if (result.processingRunIds.length) {
       const placeholders = result.processingRunIds.map(() => "?").join(",");
@@ -38,6 +40,19 @@ if (command === "hash-password") {
   } finally {
     database.close();
   }
+} else if (command === "scheduler") {
+  const manifestPath = valueOf("--manifest") ?? process.env.LPL_SOURCE_MANIFEST_PATH ?? resolve(process.cwd(), "../data/manifests/harti_daily_food_prices.json");
+  const manifest = await readSourceManifest(manifestPath);
+  const mappingBundle = await readMappingBundle(mappingPath());
+  const database = openOperationalDatabase(databasePath());
+  const stop = startScheduler(database, manifest, mappingBundle);
+  const shutdown = () => {
+    stop();
+    database.close();
+  };
+  process.once("SIGINT", shutdown);
+  process.once("SIGTERM", shutdown);
+  console.log(JSON.stringify({ status: "online", service: "scheduler", database: databasePath() }));
 } else if (command === "canonicalize") {
   const runId = requiredValue("--run");
   const bundle = await readMappingBundle(requiredValue("--mappings"));
@@ -66,7 +81,7 @@ if (command === "hash-password") {
     database.close();
   }
 } else {
-  console.error("Usage: foundry <init|sync|ingest|canonicalize|release build|hash-password> [options]");
+  console.error("Usage: foundry <init|sync|ingest|scheduler|canonicalize|release build|hash-password> [options]");
   process.exitCode = 1;
 }
 
@@ -93,4 +108,12 @@ function dateValue(name: string): string | undefined {
 
 function databasePath(): string {
   return resolve(process.env.LPL_DATABASE_PATH ?? resolve(process.cwd(), "../data/runtime/operations.sqlite"));
+}
+
+function mappingPath(): string {
+  return resolve(
+    valueOf("--mappings") ??
+      process.env.LPL_MAPPING_BUNDLE_PATH ??
+      resolve(process.cwd(), "../data/mappings/harti_daily_food_prices.json"),
+  );
 }

@@ -12,8 +12,9 @@ import {
   syncSource,
   type OperationalDatabase,
 } from "./db.ts";
-import { parseHartiWholesale } from "./harti.ts";
+import { HartiParseError, parseHartiWholesaleWithDiagnostics } from "./harti.ts";
 import { inspectPdf, type PdfInspection } from "./pdf.ts";
+import type { ArchiveStorage } from "./archive-storage.ts";
 
 export const maximumPdfBytes = 20 * 1024 * 1024;
 
@@ -25,6 +26,55 @@ export type ManualIntakeResult = {
   inspection: PdfInspection | null;
   reason: string | null;
 };
+
+export async function archiveManualArtifact(
+  database: OperationalDatabase,
+  manifest: SourceManifest,
+  input: { artifactId: string; fileName: string; bytes: Uint8Array; actor: string; archive: ArchiveStorage },
+): Promise<string> {
+  const artifact = database
+    .prepare("SELECT publication_id, sha256 FROM source_artifact WHERE id = ?")
+    .get(input.artifactId) as { publication_id: string; sha256: string } | undefined;
+  if (!artifact) throw new Error("ARTIFACT_NOT_FOUND");
+  const existing = database.prepare("SELECT id FROM archived_pdf WHERE publication_id = ?").get(artifact.publication_id) as { id: string } | undefined;
+  if (existing) return existing.id;
+  const key = `sources/${manifest.id}/manual/${artifact.sha256}.pdf`;
+  await input.archive.upload(key, input.fileName, input.bytes, {
+    "source-url": `manual-upload://${artifact.sha256}`,
+    sha256: artifact.sha256,
+  });
+  const archiveId = `archive_manual_${artifact.sha256.slice(0, 24)}`;
+  const now = new Date().toISOString();
+  database.transaction(() => {
+    database
+      .prepare(
+        `INSERT INTO archived_pdf (
+          id, publication_id, source_url, r2_bucket, r2_key, r2_uri, byte_size,
+          sha256, uploaded_at, status, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'stored', ?, ?)`,
+      )
+      .run(
+        archiveId,
+        artifact.publication_id,
+        `manual-upload://${artifact.sha256}`,
+        input.archive.bucket,
+        key,
+        input.archive.uri?.(key) ?? `r2://${input.archive.bucket}/${key}`,
+        input.bytes.byteLength,
+        artifact.sha256,
+        now,
+        now,
+        now,
+      );
+    database
+      .prepare(
+        `INSERT INTO audit_event (id, actor, action, target_type, target_id, details_json, created_at)
+         VALUES (?, ?, 'manual_pdf_archived', 'archived_pdf', ?, ?, ?)`,
+      )
+      .run(newId("audit"), input.actor, archiveId, JSON.stringify({ artifact_id: input.artifactId, storage_key: key }), now);
+  })();
+  return archiveId;
+}
 
 export async function ingestManualPdf(
   database: OperationalDatabase,
@@ -147,15 +197,31 @@ export async function ingestManualPdf(
 
   startStage(database, run.id, "parse", extraction.items.length);
   try {
-    const observations = parseHartiWholesale(extraction.items);
-    persistParsedArtifact(database, { artifactId, runId: run.id, items: extraction.items, observations });
-    finishStage(database, run.id, "parse", "succeeded", { outputCount: observations.length });
+    const parsed = parseHartiWholesaleWithDiagnostics(extraction.items);
+    persistParsedArtifact(database, { artifactId, runId: run.id, items: extraction.items, observations: parsed.observations });
+    database
+      .prepare(
+        `UPDATE source_artifact SET parser_strategy = ?, parser_confidence = ?, parser_diagnostics_json = ?
+         WHERE id = ?`,
+      )
+      .run(parsed.diagnostics.strategy, parsed.diagnostics.confidence, JSON.stringify(parsed.diagnostics), artifactId);
+    finishStage(database, run.id, "parse", "succeeded", {
+      outputCount: parsed.observations.length,
+      warningCount: parsed.diagnostics.warnings.length,
+      output: {
+        parser_strategy: parsed.diagnostics.strategy,
+        parser_confidence: parsed.diagnostics.confidence,
+        parser_page: parsed.diagnostics.page,
+        parser_signals: parsed.diagnostics.signals,
+        parser_warnings: parsed.diagnostics.warnings,
+      },
+    });
     skipDownstreamStages(database, run.id);
     database
       .prepare(
         `UPDATE ingest_run SET fetched_count = 1, extracted_count = ?, parsed_count = ? WHERE id = ?`,
       )
-      .run(extraction.items.length, observations.length, run.id);
+      .run(extraction.items.length, parsed.observations.length, run.id);
     database
       .prepare("UPDATE source SET last_fetch_at = ?, last_parse_at = ?, updated_at = ? WHERE id = ?")
       .run(now, new Date().toISOString(), new Date().toISOString(), manifest.id);
@@ -164,7 +230,7 @@ export async function ingestManualPdf(
       runId: run.id,
       artifactId,
       status: "parsed",
-      parsedCount: observations.length,
+      parsedCount: parsed.observations.length,
       inspection: extraction.inspection,
       reason: null,
     };
@@ -176,7 +242,7 @@ export async function ingestManualPdf(
       artifactId,
       extraction.inspection,
       extraction.items.length,
-      message.startsWith("SOURCE_TEMPLATE_CHANGED") ? "SOURCE_TEMPLATE_CHANGED" : "PDF_PARSE_FAILED",
+      error instanceof HartiParseError ? error.code : message.startsWith("SOURCE_TEMPLATE_CHANGED") ? "SOURCE_TEMPLATE_CHANGED" : "PDF_PARSE_FAILED",
       error,
     );
   }
@@ -200,7 +266,18 @@ function quarantine(
         `INSERT INTO quarantine (id, run_id, artifact_id, reason_code, details_json, created_at)
          VALUES (?, ?, ?, ?, ?, ?)`,
       )
-      .run(newId("quarantine"), runId, artifactId, reasonCode, JSON.stringify({ message, inspection }), now);
+      .run(
+        newId("quarantine"),
+        runId,
+        artifactId,
+        reasonCode,
+        JSON.stringify({
+          message,
+          inspection,
+          ...(error instanceof HartiParseError ? { rejected_candidates: error.rejectedCandidates } : {}),
+        }),
+        now,
+      );
     database
       .prepare("UPDATE ingest_run SET fetched_count = 1, extracted_count = ?, quarantined_count = 1 WHERE id = ?")
       .run(extractedCount, runId);

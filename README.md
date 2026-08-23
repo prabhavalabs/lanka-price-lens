@@ -36,6 +36,9 @@ pnpm check
   SQLite, CSV, JSON, manifest, checksum, notice, and release-note formats.
 - owner-only manual PDF intake with checksum deduplication, OCR routing, and
   run-stage monitoring in the ShadCN operations interface.
+- durable, timezone-aware workflow scheduling with a separate worker,
+  idempotent dispatches, scheduler heartbeats, bounded backfill, and local
+  filesystem archive isolation.
 
 Public promotion, the consumer read API, and the trend interface intentionally
 follow this operational foundation. See
@@ -43,6 +46,10 @@ follow this operational foundation. See
 [`docs/release-process.md`](docs/release-process.md) for candidate building.
 See [`docs/pdf-intake.md`](docs/pdf-intake.md) for scheduled and manual PDF
 processing and [`docs/pdf-archive.md`](docs/pdf-archive.md) for R2 archival.
+See [`docs/workflows.md`](docs/workflows.md) for local scheduler operation,
+monitoring, and the production cutover boundary. See
+[`docs/canonical-taxonomy.md`](docs/canonical-taxonomy.md) for the reviewed
+product hierarchy, completeness baseline, and source-revision policy.
 
 The HARTI source is enabled for non-commercial data preparation under recorded
 permission. See [`docs/source-permission.md`](docs/source-permission.md).
