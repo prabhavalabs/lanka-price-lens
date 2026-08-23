@@ -51,6 +51,33 @@ test("manual upload requires owner authentication and a real PDF signature", asy
   }
 });
 
+test("login reports remaining attempts and a temporary lock", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    seedAdminUser(database, "owner@example.com", passwordHash);
+    const app = createApp(database, manifest);
+    for (const attemptsRemaining of [4, 3, 2, 1]) {
+      const response = await loginRequest(app, "incorrect");
+      assert.equal(response.status, 401);
+      assert.deepEqual((await response.json()).payload, { reason: "invalid_credentials", attempts_remaining: attemptsRemaining });
+    }
+    const locked = await loginRequest(app, "incorrect");
+    assert.equal(locked.status, 423);
+    assert.equal(locked.headers.get("retry-after"), "900");
+    const body = (await locked.json()) as { message: string; payload: { reason: string; attempts_remaining: number; locked_until: string; retry_after_seconds: number } };
+    assert.equal(body.message, "Sign-in is temporarily locked");
+    assert.equal(body.payload.reason, "account_locked");
+    assert.equal(body.payload.attempts_remaining, 0);
+    assert.equal(body.payload.retry_after_seconds, 900);
+    assert.match(body.payload.locked_until, /^\d{4}-\d{2}-\d{2}T/u);
+
+    const stillLocked = await loginRequest(app, "correct horse battery staple");
+    assert.equal(stillLocked.status, 423);
+  } finally {
+    database.close();
+  }
+});
+
 test("owner ingestion rejects cross-origin requests and overlapping runs", async () => {
   const database = openOperationalDatabase(":memory:");
   try {
@@ -101,6 +128,20 @@ test("admin tables paginate, search, and filter on the server", async () => {
       const date = `2026-01-0${index}T00:00:00.000Z`;
       insertPublication.run(`publication_${index}`, manifest.id, `key_${index}`, `Archive ${index}.pdf`, date, manifest.landing_url, `https://example.com/${index}.pdf`, date, date);
     }
+    database.prepare(
+      `INSERT INTO source_artifact (
+        id, publication_id, requested_url, final_url, fetched_at, media_type, byte_size, sha256, status
+      ) VALUES ('artifact_5', 'publication_5', 'https://example.com/5.pdf', 'https://example.com/5.pdf',
+        '2026-01-05T00:00:00.000Z', 'application/pdf', 100, ?, 'quarantined')`,
+    ).run("5".repeat(64));
+    const archivedAt = "2026-01-03T00:00:00.000Z";
+    database.prepare(
+      `INSERT INTO archived_pdf (
+        id, publication_id, source_url, r2_bucket, r2_key, r2_uri, byte_size,
+        sha256, uploaded_at, status, created_at, updated_at
+      ) VALUES ('archive_3', 'publication_3', 'https://example.com/3.pdf', 'test-bucket',
+        'documents/3.pdf', 'r2://test-bucket/documents/3.pdf', 100, 'archive-3-sha', ?, 'stored', ?, ?)`,
+    ).run(archivedAt, archivedAt, archivedAt);
     for (const trigger of ["manual", "scheduled"] as const) {
       const run = startRun(database, { sourceId: manifest.id, trigger });
       finishRun(database, run.id, trigger === "manual" ? "succeeded" : "failed");
@@ -108,16 +149,55 @@ test("admin tables paginate, search, and filter on the server", async () => {
     const app = createApp(database, manifest);
     const cookie = await loginCookie(app);
 
-    const page = (await (await app.request("/v1/admin/knowledge-base?page=2&pageSize=2", { headers: { cookie } })).json()) as { payload: { items: Array<{ title: string }>; page: number; pages: number; total: number } };
+    const page = (await (await app.request("/v1/admin/knowledge-base?page=2&pageSize=2", { headers: { cookie } })).json()) as { payload: { items: Array<{ title: string; index_status: string }>; page: number; pages: number; total: number } };
     assert.deepEqual({ page: page.payload.page, pages: page.payload.pages, total: page.payload.total }, { page: 2, pages: 3, total: 5 });
     assert.deepEqual(page.payload.items.map((item) => item.title), ["Archive 3.pdf", "Archive 2.pdf"]);
+    assert.ok(page.payload.items.every((item) => item.index_status === "not_indexed"));
 
     const defaults = (await (await app.request("/v1/admin/knowledge-base", { headers: { cookie } })).json()) as { payload: { pageSize: number } };
     assert.equal(defaults.payload.pageSize, 10);
 
-    const searched = (await (await app.request("/v1/admin/knowledge-base?page=1&pageSize=20&search=Archive%204&status=discovered", { headers: { cookie } })).json()) as { payload: { items: Array<{ title: string }>; total: number } };
+    const searched = (await (await app.request("/v1/admin/knowledge-base?page=1&pageSize=20&search=Archive%204&status=not_indexed", { headers: { cookie } })).json()) as { payload: { items: Array<{ title: string }>; total: number } };
     assert.equal(searched.payload.total, 1);
     assert.equal(searched.payload.items[0]?.title, "Archive 4.pdf");
+
+    const failed = (await (await app.request("/v1/admin/knowledge-base?page=1&pageSize=20&status=failed", { headers: { cookie } })).json()) as { payload: { items: Array<{ title: string; index_status: string }>; total: number } };
+    assert.equal(failed.payload.total, 1);
+    assert.equal(failed.payload.items[0]?.title, "Archive 5.pdf");
+    assert.equal(failed.payload.items[0]?.index_status, "failed");
+
+    const document = (await (await app.request("/v1/admin/knowledge-base/publication_4", { headers: { cookie } })).json()) as { payload: { document_id: string; title: string; index_status: string } };
+    assert.equal(document.payload.document_id, "publication_4");
+    assert.equal(document.payload.title, "Archive 4.pdf");
+    assert.equal(document.payload.index_status, "not_indexed");
+
+    assert.equal((await app.request("/v1/admin/knowledge-base/missing", { headers: { cookie } })).status, 404);
+
+    const queuedResponse = await app.request("/v1/admin/knowledge-base/publication_3/process", { method: "POST", headers: { cookie } });
+    assert.equal(queuedResponse.status, 202);
+    const queued = (await queuedResponse.json()) as { payload: { id: string; status: string } };
+    assert.equal(queued.payload.status, "queued");
+    const indexing = (await (await app.request("/v1/admin/knowledge-base?status=indexing", { headers: { cookie } })).json()) as { payload: { items: Array<{ processing_dispatch_id: string; processing_run_id: string | null; processing_status: string; index_status: string }>; total: number } };
+    assert.equal(indexing.payload.total, 1);
+    const indexingItem = indexing.payload.items[0]!;
+    assert.deepEqual({
+      processing_dispatch_id: indexingItem.processing_dispatch_id,
+      processing_run_id: indexingItem.processing_run_id,
+      processing_status: indexingItem.processing_status,
+      index_status: indexingItem.index_status,
+    }, { processing_dispatch_id: queued.payload.id, processing_run_id: null, processing_status: "queued", index_status: "indexing" });
+    assert.equal((await app.request("/v1/admin/knowledge-base/publication_3/process", { method: "POST", headers: { cookie } })).status, 409);
+
+    assert.equal((await app.request("/v1/admin/events/workflows")).status, 401);
+    const controller = new AbortController();
+    const stream = await app.request("/v1/admin/events/workflows", { headers: { cookie }, signal: controller.signal });
+    assert.equal(stream.status, 200);
+    assert.match(stream.headers.get("content-type") ?? "", /^text\/event-stream/u);
+    const reader = stream.body!.getReader();
+    const firstEvent = await reader.read();
+    assert.match(new TextDecoder().decode(firstEvent.value), /event: ready/u);
+    controller.abort();
+    await reader.cancel();
 
     const runs = (await (await app.request("/v1/admin/runs?page=1&pageSize=20&search=manual&status=succeeded", { headers: { cookie } })).json()) as { payload: { items: Array<{ trigger: string }>; total: number } };
     assert.equal(runs.payload.total, 1);
@@ -130,15 +210,98 @@ test("admin tables paginate, search, and filter on the server", async () => {
   }
 });
 
+test("knowledge base serves an authenticated stored PDF inline", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    seedAdminUser(database, "owner@example.com", passwordHash);
+    syncSource(database, manifest);
+    const now = "2026-01-05T00:00:00.000Z";
+    database.prepare(
+      `INSERT INTO source_publication (
+        id, source_id, source_publication_key, title, published_at, landing_url,
+        download_url, status, first_seen_at, last_seen_at
+      ) VALUES ('publication_pdf', ?, 'key_pdf', 'Stored prices.pdf', ?, ?, 'https://example.com/stored.pdf', 'discovered', ?, ?)`,
+    ).run(manifest.id, now, manifest.landing_url, now, now);
+    database.prepare(
+      `INSERT INTO archived_pdf (
+        id, publication_id, source_url, r2_bucket, r2_key, r2_uri, byte_size,
+        sha256, uploaded_at, status, created_at, updated_at
+      ) VALUES ('archive_pdf', 'publication_pdf', 'https://example.com/stored.pdf', 'test-bucket',
+        'documents/stored.pdf', 'r2://test-bucket/documents/stored.pdf', 12, 'fixture-sha', ?, 'stored', ?, ?)`,
+    ).run(now, now, now);
+    const app = createApp(database, manifest, undefined, {
+      archiveStorage: {
+        bucket: "test-bucket",
+        list: async () => new Map(),
+        upload: async () => undefined,
+        download: async (key) => {
+          assert.equal(key, "documents/stored.pdf");
+          return new TextEncoder().encode("%PDF-fixture");
+        },
+      },
+    });
+    const cookie = await loginCookie(app);
+
+    assert.equal((await app.request("/v1/admin/knowledge-base/publication_pdf/file")).status, 401);
+    const response = await app.request("/v1/admin/knowledge-base/publication_pdf/file", { headers: { cookie } });
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("content-type"), "application/pdf");
+    assert.equal(response.headers.get("content-disposition"), 'inline; filename="Stored prices.pdf"');
+    assert.equal(new TextDecoder().decode(await response.arrayBuffer()), "%PDF-fixture");
+
+    const detail = (await (await app.request("/v1/admin/knowledge-base/publication_pdf", { headers: { cookie } })).json()) as { payload: { document_id: string; archive_id: string } };
+    assert.equal(detail.payload.document_id, "archive_pdf");
+    assert.equal(detail.payload.archive_id, "archive_pdf");
+  } finally {
+    database.close();
+  }
+});
+
+test("workflow APIs expose definitions, schedules, and durable manual dispatches", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    seedAdminUser(database, "owner@example.com", passwordHash);
+    const app = createApp(database, manifest);
+    const cookie = await loginCookie(app);
+    const workflows = (await (await app.request("/v1/admin/workflows", { headers: { cookie } })).json()) as {
+      payload: Array<{ key: string; schedule: { id: string } }>;
+    };
+    assert.deepEqual(workflows.payload.map((workflow) => workflow.key), [
+      "latest_document_collection",
+      "historical_backfill",
+      "document_processing_pipeline",
+    ]);
+
+    const queued = await app.request("/v1/admin/workflows/latest_document_collection/run", { method: "POST", headers: { cookie } });
+    assert.equal(queued.status, 202);
+    assert.equal((await queued.json()).payload.status, "queued");
+
+    const scheduleId = workflows.payload[0]!.schedule.id;
+    const paused = await app.request(`/v1/admin/workflow-schedules/${scheduleId}`, {
+      method: "PATCH",
+      headers: { cookie, "content-type": "application/json" },
+      body: JSON.stringify({ enabled: false }),
+    });
+    assert.equal(paused.status, 200);
+    assert.equal((database.prepare("SELECT enabled FROM workflow_schedule WHERE id = ?").get(scheduleId) as { enabled: number }).enabled, 0);
+  } finally {
+    database.close();
+  }
+});
+
 async function loginCookie(app: ReturnType<typeof createApp>): Promise<string> {
-  const response = await app.request("http://localhost/v1/auth/login", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ email: "owner@example.com", password: "correct horse battery staple" }),
-  });
+  const response = await loginRequest(app, "correct horse battery staple");
   assert.equal(response.status, 200);
   const setCookie = response.headers.get("set-cookie");
   assert.match(setCookie ?? "", /HttpOnly/u);
   assert.match(setCookie ?? "", /SameSite=Strict/u);
   return setCookie!.split(";", 1)[0]!;
+}
+
+async function loginRequest(app: ReturnType<typeof createApp>, password: string): Promise<Response> {
+  return app.request("http://localhost/v1/auth/login", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email: "owner@example.com", password }),
+  });
 }

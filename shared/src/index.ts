@@ -42,6 +42,8 @@ export const stageNames = [
   "extract_data",
   "validate_data",
   "insert_data",
+  "assess_completeness",
+  "canonicalize_data",
   "crawl",
   "download",
   "process",
@@ -128,16 +130,29 @@ export const mappingBundleSchema = z
     reviewed_by: z.string().min(1),
     reviewed_at: isoDate,
     evidence_ref: z.string().min(1),
+    products: z.array(
+      z.object({
+        id: stableId,
+        category: z.enum(["vegetable", "fruit", "grain", "fish", "meat", "dairy", "other"]),
+        canonical_label_en: z.string().min(1),
+        canonical_label_si: z.string().min(1).nullable(),
+        canonical_label_ta: z.string().min(1).nullable(),
+      }),
+    ).default([]),
     items: z.array(
       z.object({
         id: stableId,
+        product_id: stableId.nullable().default(null),
         entity_type: z.enum(["commodity", "variety", "packaged_product"]),
         canonical_label_en: z.string().min(1),
         canonical_label_si: z.string().min(1).nullable(),
         canonical_label_ta: z.string().min(1).nullable(),
         variety: z.string().min(1).nullable(),
+        origin: z.string().min(1).nullable().default(null),
+        size: z.string().min(1).nullable().default(null),
         grade: z.string().min(1).nullable(),
         source_labels: z.array(z.string().min(1)).min(1),
+        expected_market_labels: z.array(z.string().min(1)).default([]),
       }),
     ),
     markets: z.array(
@@ -162,14 +177,40 @@ export const mappingBundleSchema = z
         rounding_mode: z.literal("half_away_from_zero"),
       }),
     ),
+    completeness: z.object({
+      minimum_item_coverage: z.number().min(0).max(1),
+      minimum_market_coverage: z.number().min(0).max(1),
+      minimum_cell_coverage: z.number().min(0).max(1),
+      minimum_mapping_coverage: z.number().min(0).max(1),
+      minimum_score: z.number().min(0).max(1),
+    }).default({
+      minimum_item_coverage: 0.7,
+      minimum_market_coverage: 0.7,
+      minimum_cell_coverage: 0.6,
+      minimum_mapping_coverage: 0.98,
+      minimum_score: 0.7,
+    }),
   })
   .superRefine((bundle, context) => {
+    checkUnique(bundle.products.map((product) => product.id), context, ["products"], "product IDs");
     checkUnique(bundle.items.map((item) => item.id), context, ["items"], "item IDs");
     checkUnique(bundle.items.flatMap((item) => item.source_labels), context, ["items"], "item source labels");
     checkUnique(bundle.markets.map((market) => market.id), context, ["markets"], "market IDs");
     checkUnique(bundle.markets.flatMap((market) => market.source_labels), context, ["markets"], "market source labels");
     checkUnique(bundle.units.map((unit) => unit.id), context, ["units"], "unit rule IDs");
     checkUnique(bundle.units.map((unit) => unit.source_unit), context, ["units"], "unit source labels");
+    const productIds = new Set(bundle.products.map((product) => product.id));
+    const marketLabels = new Set(bundle.markets.flatMap((market) => market.source_labels));
+    for (const [index, item] of bundle.items.entries()) {
+      if (item.product_id && !productIds.has(item.product_id)) {
+        context.addIssue({ code: "custom", message: `Unknown product ID ${item.product_id}`, path: ["items", index, "product_id"] });
+      }
+      for (const label of item.expected_market_labels) {
+        if (!marketLabels.has(label)) {
+          context.addIssue({ code: "custom", message: `Unknown expected market label ${label}`, path: ["items", index, "expected_market_labels"] });
+        }
+      }
+    }
   });
 
 function checkUnique(values: string[], context: z.RefinementCtx, path: PropertyKey[], label: string): void {

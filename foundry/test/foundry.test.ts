@@ -9,13 +9,22 @@ import test from "node:test";
 import { mappingBundleSchema, sourceManifestSchema } from "@lanka-pricelens/shared";
 import Database from "better-sqlite3";
 
-import { finishRun, openOperationalDatabase, startRun, syncSource, type OperationalDatabase } from "../src/db.ts";
-import { discoverHartiDaily, parseHartiWholesale } from "../src/harti.ts";
-import { ingestManualPdf } from "../src/intake.ts";
+import { persistExtractedText } from "../src/artifact.ts";
+import { configuredArchiveStorage, filesystemArchiveStorage } from "../src/archive-storage.ts";
+import { finishRun, finishStage, logStage, openOperationalDatabase, startRun, startStage, syncSource, type OperationalDatabase } from "../src/db.ts";
+import {
+  discoverHartiDaily,
+  HartiParseError,
+  parseHartiWholesale,
+  parseHartiWholesaleWithDiagnostics,
+} from "../src/harti.ts";
+import { archiveManualArtifact, ingestManualPdf } from "../src/intake.ts";
 import { canonicalizeRun } from "../src/mapping.ts";
 import { retryProcessingStage, runIngestion, workflowRetryState, type ArchiveStorage } from "../src/pipeline.ts";
 import type { PdfInspection, TextItem } from "../src/pdf.ts";
+import { assessArtifactCompleteness } from "../src/quality.ts";
 import { buildRelease } from "../src/release.ts";
+import { claimNextDispatch, enqueueDueSchedules, enqueueWorkflow, ensureWorkflowSchedules, recoverInterruptedDispatches } from "../src/workflows.ts";
 
 const manifest = sourceManifestSchema.parse({
   id: "test_source",
@@ -73,6 +82,115 @@ test("run lease prevents overlapping source runs", () => {
   database.close();
 });
 
+test("scheduler creates one durable dispatch per due occurrence", () => {
+  const database = openOperationalDatabase(":memory:");
+  const now = new Date("2026-08-22T10:00:00.000Z");
+  ensureWorkflowSchedules(database, manifest, now);
+  database.prepare("UPDATE workflow_schedule SET next_run_at = ? WHERE workflow_key = 'latest_document_collection'").run(now.toISOString());
+  assert.equal(enqueueDueSchedules(database, now), 1);
+  assert.equal(enqueueDueSchedules(database, now), 0);
+  const dispatch = claimNextDispatch(database, "test-scheduler", now);
+  assert.equal(dispatch?.workflow_key, "latest_document_collection");
+  assert.equal(dispatch?.status, "running");
+  assert.equal((database.prepare("SELECT COUNT(*) AS count FROM workflow_dispatch").get() as { count: number }).count, 1);
+  assert.equal(recoverInterruptedDispatches(database, new Date(now.getTime() + 61 * 60_000)), 1);
+  assert.equal((database.prepare("SELECT status FROM workflow_dispatch WHERE id = ?").get(dispatch!.id) as { status: string }).status, "queued");
+  database.close();
+});
+
+test("workflow lifecycle transitions create durable realtime events", () => {
+  const database = openOperationalDatabase(":memory:");
+  syncSource(database, manifest);
+  const now = "2026-08-22T10:00:00.000Z";
+  database.prepare(
+    `INSERT INTO source_publication (
+      id, source_id, source_publication_key, title, published_at, landing_url,
+      download_url, status, first_seen_at, last_seen_at
+    ) VALUES ('publication_events', ?, 'events', 'Events.pdf', ?, ?,
+      'https://example.com/events.pdf', 'discovered', ?, ?)`,
+  ).run(manifest.id, now, manifest.landing_url, now, now);
+  database.prepare(
+    `INSERT INTO archived_pdf (
+      id, publication_id, source_url, r2_bucket, r2_key, r2_uri, byte_size,
+      sha256, uploaded_at, status, created_at, updated_at
+    ) VALUES ('archive_events', 'publication_events', 'https://example.com/events.pdf',
+      'test', 'events.pdf', 'r2://test/events.pdf', 100, 'events-sha', ?, 'stored', ?, ?)`,
+  ).run(now, now, now);
+
+  const dispatch = enqueueWorkflow(database, {
+    workflowKey: "document_processing_pipeline",
+    sourceId: manifest.id,
+    archiveId: "archive_events",
+    requestedBy: "owner@example.com",
+    now: new Date(now),
+  });
+  assert.equal(claimNextDispatch(database, "test-scheduler", new Date(now))?.id, dispatch.id);
+  const run = startRun(database, {
+    sourceId: manifest.id,
+    trigger: "manual",
+    workflow: "pdf_processing",
+    archiveId: "archive_events",
+    dispatchId: dispatch.id,
+  });
+  startStage(database, run.id, "retrieve_pdf", 1);
+  logStage(database, run.id, "retrieve_pdf", "info", "PDF retrieved");
+  finishStage(database, run.id, "retrieve_pdf", "succeeded", { outputCount: 1 });
+  finishRun(database, run.id, "succeeded");
+
+  const events = database.prepare(
+    `SELECT event_type, dispatch_id, run_id, publication_id, stage, status
+     FROM workflow_event ORDER BY id`,
+  ).all() as Array<{ event_type: string; dispatch_id: string | null; run_id: string | null; publication_id: string | null; stage: string | null; status: string }>;
+  assert.deepEqual(events.map((event) => `${event.event_type}:${event.status}`), [
+    "dispatch:queued",
+    "dispatch:running",
+    "run:running",
+    "stage:running",
+    "stage:running",
+    "stage:succeeded",
+    "run:succeeded",
+  ]);
+  assert.ok(events.every((event) => event.publication_id === "publication_events"));
+  assert.ok(events.every((event) => event.dispatch_id === dispatch.id));
+  assert.equal(events.find((event) => event.event_type === "stage")?.run_id, run.id);
+  database.close();
+});
+
+test("filesystem archive stores isolated objects and metadata", async () => {
+  const root = mkdtempSync(join(tmpdir(), "lpl-archive-"));
+  try {
+    const archive = filesystemArchiveStorage(root);
+    const bytes = new TextEncoder().encode("%PDF-local-test");
+    await archive.upload("sources/test/document.pdf", "document.pdf", bytes, { sha256: "fixture" });
+    const objects = await archive.list();
+    assert.equal(objects.get("sources/test/document.pdf")?.customMetadata.sha256, "fixture");
+    assert.deepEqual(await archive.download("sources/test/document.pdf"), bytes);
+    await assert.rejects(() => archive.download("../outside.pdf"), /ARCHIVE_KEY_INVALID/u);
+  } finally {
+    rmSync(root, { force: true, recursive: true });
+  }
+});
+
+test("local-dev archive records resolve to filesystem storage without extra environment configuration", async () => {
+  const root = mkdtempSync(join(tmpdir(), "lpl-local-dev-archive-"));
+  const previousDriver = process.env.LPL_ARCHIVE_DRIVER;
+  const previousRoot = process.env.LPL_LOCAL_ARCHIVE_ROOT;
+  try {
+    delete process.env.LPL_ARCHIVE_DRIVER;
+    process.env.LPL_LOCAL_ARCHIVE_ROOT = root;
+    const archive = await configuredArchiveStorage("local-dev");
+    const bytes = new TextEncoder().encode("%PDF-local-bucket");
+    await archive.upload("documents/local.pdf", "local.pdf", bytes, {});
+    assert.deepEqual(await archive.download("documents/local.pdf"), bytes);
+  } finally {
+    if (previousDriver === undefined) delete process.env.LPL_ARCHIVE_DRIVER;
+    else process.env.LPL_ARCHIVE_DRIVER = previousDriver;
+    if (previousRoot === undefined) delete process.env.LPL_LOCAL_ARCHIVE_ROOT;
+    else process.env.LPL_LOCAL_ARCHIVE_ROOT = previousRoot;
+    rmSync(root, { force: true, recursive: true });
+  }
+});
+
 test("HARTI discovery and coordinate parser produce dated price ranges", () => {
   const publications = discoverHartiDaily(
     '<a href="assets/pdf/food_price/daily/eng/2026/August/daily_16-08-2026.pdf">PDF</a><a href="https://evil.example/assets/pdf/food_price/daily/eng/2026/August/daily_15-08-2026.pdf">bad</a>',
@@ -98,6 +216,56 @@ test("HARTI discovery and coordinate parser produce dated price ranges", () => {
   assert.equal(minMaxObservations.length, 10);
   assert.equal(minMaxObservations.find((observation) => observation.marketLabel === "Kandy")?.date, "2026-08-16");
   assert.equal(minMaxObservations.find((observation) => observation.marketLabel === "Veyangoda")?.date, "2026-08-15");
+});
+
+test("HARTI parser adapts to harmless header, date, and market-label variations", () => {
+  const varied = hartiItems().map((textItem) => {
+    if (textItem.text === "Variety") return { ...textItem, text: "  Commodity. " };
+    if (textItem.text === "Nuwaraeliya") return { ...textItem, text: "Nuwara Eliya" };
+    if (textItem.text === "2026.08.16") return { ...textItem, text: "2026-08-16" };
+    if (textItem.text === "16/8/2026") return { ...textItem, text: "16-8-2026" };
+    return textItem;
+  });
+  const result = parseHartiWholesaleWithDiagnostics(varied);
+  assert.equal(result.observations.length, 40);
+  assert.equal(result.diagnostics.strategy, "labelled_market_date_grid");
+  assert.equal(result.diagnostics.headerLabel, "  Commodity. ");
+  assert.ok(result.diagnostics.confidence >= 0.9);
+  assert.equal(result.observations.find((observation) => observation.marketLabel === "Nuwaraeliya")?.date, "2026-08-16");
+
+  const minMaxResult = parseHartiWholesaleWithDiagnostics(hartiMinMaxItems().map((textItem) => {
+    if (textItem.text === "Item") return { ...textItem, text: "Product" };
+    if (textItem.text === "Serial") return { ...textItem, text: "S. No." };
+    if (textItem.text === "Min") return { ...textItem, text: "Minimum" };
+    if (textItem.text === "Max") return { ...textItem, text: "Maximum" };
+    return textItem;
+  }));
+  assert.equal(minMaxResult.observations.length, 10);
+  assert.equal(minMaxResult.diagnostics.strategy, "min_max_market_grid");
+});
+
+test("HARTI parser can infer a missing label header from trusted table geometry", () => {
+  const result = parseHartiWholesaleWithDiagnostics(hartiItems().filter((textItem) => textItem.text !== "Variety"));
+  assert.equal(result.observations.length, 40);
+  assert.equal(result.diagnostics.strategy, "inferred_market_date_grid");
+  assert.equal(result.diagnostics.headerLabel, null);
+  assert.ok(result.diagnostics.warnings.includes("label_header_inferred_from_table_geometry"));
+});
+
+test("HARTI parser evaluates later candidates after an earlier table-shaped candidate fails", () => {
+  const invalidFirstPage = hartiItems().filter((textItem) => textItem.y >= 650);
+  const validSecondPage = hartiItems().map((textItem) => ({ ...textItem, page: 2 }));
+  const result = parseHartiWholesaleWithDiagnostics([...invalidFirstPage, ...validSecondPage]);
+  assert.equal(result.observations.length, 40);
+  assert.equal(result.diagnostics.page, 2);
+  assert.ok(result.diagnostics.rejectedCandidates.some((candidate) => candidate.page === 1));
+});
+
+test("HARTI parser rejects an unrelated numeric grid instead of guessing", () => {
+  assert.throws(
+    () => parseHartiWholesaleWithDiagnostics(unrelatedGridItems()),
+    (error) => error instanceof HartiParseError && error.code === "UNSUPPORTED_DOCUMENT",
+  );
 });
 
 test("scheduled ingestion starts at latest, backfills pending, and catches up new publications", async () => {
@@ -177,13 +345,64 @@ test("workflow retries enforce dependencies and resume from durable inputs", asy
     await retryProcessingStage(database, approved, runId, "extract_data", { archive });
     await retryProcessingStage(database, approved, runId, "validate_data", { archive });
     await retryProcessingStage(database, approved, runId, "insert_data", { archive });
+    await retryProcessingStage(database, approved, runId, "assess_completeness", { archive });
+    await retryProcessingStage(database, approved, runId, "canonicalize_data", { archive });
 
     assert.deepEqual(
       database.prepare("SELECT status FROM run_stage WHERE run_id = ? ORDER BY id").all(runId),
-      Array.from({ length: 5 }, () => ({ status: "succeeded" })),
+      Array.from({ length: 7 }, () => ({ status: "succeeded" })),
     );
     assert.equal((database.prepare("SELECT status FROM ingest_run WHERE id = ?").get(runId) as { status: string }).status, "succeeded");
     assert.equal((database.prepare("SELECT COUNT(*) AS count FROM run_stage_log WHERE run_id = ?").get(runId) as { count: number }).count > 0, true);
+  } finally {
+    database.close();
+  }
+});
+
+test("structural parser failures are quarantined and a successful rerun resolves the issue", async () => {
+  const database = openOperationalDatabase(":memory:");
+  const archive = memoryArchive();
+  const approved = sourceManifestSchema.parse({
+    ...manifest,
+    rights_status: "approved_permission",
+    rights_evidence_ref: "test-fixture://permission",
+    attribution_text: "Test source fixture",
+    reviewed_by: "fixture-reviewer",
+    review_due_at: "2999-12-31",
+    retention_policy: "preserve_source_evidence",
+    enabled: true,
+  });
+  const request = async (url: string | URL | Request) => String(url) === approved.landing_url
+    ? new Response(archiveHtml(["16-08-2026"]), { status: 200, headers: { "content-type": "text/html" } })
+    : new Response("%PDF-fixture", { status: 200, headers: { "content-type": "application/pdf" } });
+
+  try {
+    const sync = await runIngestion(database, approved, {
+      trigger: "backfill",
+      request,
+      archive,
+      inspector: async () => ({ inspection: pdfInspection(), items: unrelatedGridItems() }),
+    });
+    const runId = sync.processingRunIds[0]!;
+    const run = database
+      .prepare("SELECT status, artifact_id, quarantined_count FROM ingest_run WHERE id = ?")
+      .get(runId) as { status: string; artifact_id: string; quarantined_count: number };
+    assert.equal(run.status, "blocked");
+    assert.equal(run.quarantined_count, 1);
+    assert.deepEqual(
+      database.prepare("SELECT status, reason_code FROM quarantine WHERE artifact_id = ?").get(run.artifact_id),
+      { status: "open", reason_code: "UNSUPPORTED_DOCUMENT" },
+    );
+
+    persistExtractedText(database, run.artifact_id, hartiItems());
+    await retryProcessingStage(database, approved, runId, "extract_data", { archive });
+    await retryProcessingStage(database, approved, runId, "validate_data", { archive });
+    await retryProcessingStage(database, approved, runId, "insert_data", { archive });
+    await retryProcessingStage(database, approved, runId, "assess_completeness", { archive });
+    await retryProcessingStage(database, approved, runId, "canonicalize_data", { archive });
+
+    assert.equal((database.prepare("SELECT status FROM quarantine WHERE artifact_id = ?").get(run.artifact_id) as { status: string }).status, "resolved");
+    assert.equal((database.prepare("SELECT quarantined_count FROM ingest_run WHERE id = ?").get(runId) as { quarantined_count: number }).quarantined_count, 0);
   } finally {
     database.close();
   }
@@ -202,9 +421,26 @@ test("manual PDF intake is monitored, idempotent, and quarantines OCR work", asy
     assert.equal(parsed.status, "parsed");
     assert.equal(parsed.parsedCount, 40);
     assert.equal((database.prepare("SELECT COUNT(*) AS count FROM staging_observation").get() as { count: number }).count, 40);
+    const parserMetadata = database
+      .prepare("SELECT parser_strategy, parser_confidence, parser_diagnostics_json FROM source_artifact WHERE id = ?")
+      .get(parsed.artifactId) as { parser_strategy: string; parser_confidence: number; parser_diagnostics_json: string };
+    assert.equal(parserMetadata.parser_strategy, "labelled_market_date_grid");
+    assert.ok(parserMetadata.parser_confidence >= 0.9);
+    assert.equal((JSON.parse(parserMetadata.parser_diagnostics_json) as { observationCount: number }).observationCount, 40);
     assert.equal(
       (database.prepare("SELECT action FROM audit_event WHERE target_id = ?").get(parsed.artifactId) as { action: string }).action,
       "manual_pdf_uploaded",
+    );
+    const archiveId = await archiveManualArtifact(database, manifest, {
+      artifactId: parsed.artifactId,
+      fileName: "fixture.pdf",
+      bytes: new TextEncoder().encode("%PDF-fixture"),
+      actor: "fixture-owner",
+      archive: memoryArchive(),
+    });
+    assert.equal(
+      (database.prepare("SELECT status FROM archived_pdf WHERE id = ?").get(archiveId) as { status: string }).status,
+      "stored",
     );
 
     const partialOcr = await ingestManualPdf(database, manifest, {
@@ -233,6 +469,19 @@ test("manual PDF intake is monitored, idempotent, and quarantines OCR work", asy
     });
     assert.equal(quarantined.status, "quarantined");
     assert.equal(quarantined.reason, "PDF_OCR_REQUIRED");
+
+    const unrelated = await ingestManualPdf(database, manifest, {
+      fileName: "unrelated.pdf",
+      bytes: new TextEncoder().encode("%PDF-unrelated"),
+      actor: "fixture-owner",
+      inspector: async () => ({ inspection: pdfInspection(), items: unrelatedGridItems() }),
+    });
+    assert.equal(unrelated.status, "quarantined");
+    assert.equal(unrelated.reason, "UNSUPPORTED_DOCUMENT");
+    const quarantineDetails = database
+      .prepare("SELECT details_json FROM quarantine WHERE artifact_id = ?")
+      .get(unrelated.artifactId) as { details_json: string };
+    assert.ok(Array.isArray((JSON.parse(quarantineDetails.details_json) as { rejected_candidates: unknown[] }).rejected_candidates));
   } finally {
     database.close();
   }
@@ -255,7 +504,7 @@ test("reviewed mappings create correction-safe observations and reconciled relea
     const runId = insertStagingFixture(database, approved.id, "known", "Beans");
 
     const first = canonicalizeRun(database, runId, mappingBundle("item_beans", "Beans", "fixture-v1"), "fixture-parser@1");
-    assert.deepEqual(first, { accepted: 1, corrected: 0, duplicates: 0, quarantined: 0 });
+    assert.deepEqual(first, { accepted: 1, corrected: 0, historical: 0, duplicates: 0, quarantined: 0 });
     const corrected = canonicalizeRun(
       database,
       runId,
@@ -347,6 +596,108 @@ test("reviewed mappings create correction-safe observations and reconciled relea
   }
 });
 
+test("reviewed HARTI taxonomy contains 44 price series across 34 product families", () => {
+  const path = new URL("../../data/mappings/harti_daily_food_prices.json", import.meta.url);
+  const bundle = mappingBundleSchema.parse(JSON.parse(readFileSync(path, "utf8")));
+  assert.equal(bundle.items.length, 44);
+  assert.equal(bundle.products.length, 34);
+  assert.deepEqual(
+    Object.fromEntries(
+      ["vegetable", "fruit"].map((category) => [category, bundle.products.filter((product) => product.category === category).length]),
+    ),
+    { vegetable: 25, fruit: 9 },
+  );
+  assert.equal(bundle.items.flatMap((item) => item.expected_market_labels).length, 265);
+  assert.equal(bundle.items.some((item) => item.source_labels.includes("- Medium")), false);
+});
+
+test("completeness is independent from parser confidence and records exact coverage", () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    const approved = sourceManifestSchema.parse({
+      ...manifest,
+      rights_status: "approved_permission",
+      rights_evidence_ref: "test-fixture://permission",
+      attribution_text: "Test source fixture",
+      reviewed_by: "fixture-reviewer",
+      review_due_at: "2999-12-31",
+      enabled: true,
+    });
+    syncSource(database, approved);
+    const runId = insertStagingFixture(database, approved.id, "quality", "Beans");
+    const bundle = mappingBundle("item_beans", "Beans", "fixture-quality-v1");
+    bundle.items[0]!.expected_market_labels = ["Peliyagoda"];
+    const artifactId = (database.prepare("SELECT artifact_id FROM staging_observation WHERE run_id = ?").get(runId) as { artifact_id: string }).artifact_id;
+    const quality = assessArtifactCompleteness(database, runId, artifactId, bundle);
+    assert.equal(quality.status, "complete");
+    assert.equal(quality.score, 1);
+    assert.equal(quality.expectedCells, 1);
+    assert.equal(quality.observedCells, 1);
+    assert.deepEqual(
+      database.prepare("SELECT status, score, expected_cells, observed_cells FROM artifact_quality_assessment").get(),
+      { status: "complete", score: 1, expected_cells: 1, observed_cells: 1 },
+    );
+  } finally {
+    database.close();
+  }
+});
+
+test("later source publications remain effective when revisions are processed out of order", () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    const approved = sourceManifestSchema.parse({
+      ...manifest,
+      rights_status: "approved_permission",
+      rights_evidence_ref: "test-fixture://permission",
+      attribution_text: "Test source fixture",
+      reviewed_by: "fixture-reviewer",
+      review_due_at: "2999-12-31",
+      enabled: true,
+    });
+    syncSource(database, approved);
+    const olderRun = insertStagingFixture(database, approved.id, "revision_older", "Beans");
+    const newerRun = insertStagingFixture(database, approved.id, "revision_newer", "Beans");
+    database.prepare("UPDATE source_publication SET published_at = '2026-08-17T00:00:00.000Z' WHERE id = 'publication_revision_older'").run();
+    database.prepare("UPDATE source_publication SET published_at = '2026-08-18T00:00:00.000Z' WHERE id = 'publication_revision_newer'").run();
+    database.prepare("UPDATE staging_observation SET min_value_minor = 13000, max_value_minor = 15000 WHERE run_id = ?").run(newerRun);
+    const bundle = mappingBundle("item_beans", "Beans", "fixture-revision-v1");
+
+    assert.deepEqual(canonicalizeRun(database, newerRun, bundle, "fixture-parser@1"), {
+      accepted: 1,
+      corrected: 0,
+      historical: 0,
+      duplicates: 0,
+      quarantined: 0,
+    });
+    assert.deepEqual(canonicalizeRun(database, olderRun, bundle, "fixture-parser@1"), {
+      accepted: 0,
+      corrected: 0,
+      historical: 1,
+      duplicates: 0,
+      quarantined: 0,
+    });
+    assert.deepEqual(
+      database
+        .prepare(
+          `SELECT publication.title, observation.status, observation.revision_reason
+           FROM price_observation observation
+           JOIN source_publication publication ON publication.id = observation.source_publication_id
+           ORDER BY publication.published_at`,
+        )
+        .all(),
+      [
+        { title: "Fixture revision_older", status: "superseded", revision_reason: "historical_source_version" },
+        { title: "Fixture revision_newer", status: "active", revision_reason: "initial_version" },
+      ],
+    );
+    const rerun = canonicalizeRun(database, olderRun, bundle, "fixture-parser@1");
+    assert.equal(rerun.duplicates, 1);
+    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM price_observation").get() as { count: number }).count, 2);
+  } finally {
+    database.close();
+  }
+});
+
 function item(index: number, text: string, x: number, y: number): TextItem {
   return { page: 1, index, text, x, y, width: 10, height: 8 };
 }
@@ -387,6 +738,23 @@ function hartiMinMaxItems(): TextItem[] {
   }
   items.push(item(items.length, "Meegoda and Veyangoda prices are previous day (15/08/2026)", 50, 650));
   return items;
+}
+
+function unrelatedGridItems(): TextItem[] {
+  const unrelated: TextItem[] = [item(0, "Quarterly staffing report", 40, 720), item(1, "Department", 50, 665)];
+  for (let column = 0; column < 10; column += 1) {
+    const x = 120 + column * 48;
+    unrelated.push(item(unrelated.length, "2026-08-16", x, 677));
+  }
+  for (let row = 0; row < 3; row += 1) {
+    const y = 630 - row * 12;
+    unrelated.push(item(unrelated.length, `Team ${row + 1}`, 35, y));
+    for (let column = 0; column < 10; column += 1) {
+      const x = 116 + column * 48;
+      unrelated.push(item(unrelated.length, String(100 + row), x, y), item(unrelated.length + 1, String(120 + row), x + 22, y));
+    }
+  }
+  return unrelated;
 }
 
 function archiveHtml(dates: string[]): string {
