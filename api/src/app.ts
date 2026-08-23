@@ -3,7 +3,7 @@ import { basename, resolve } from "node:path";
 
 import { serveStatic } from "@hono/node-server/serve-static";
 import { openOperationalDatabase, type OperationalDatabase } from "@lanka-pricelens/foundry/db";
-import { configuredArchiveStorage } from "@lanka-pricelens/foundry/archive-storage";
+import { configuredArchiveStorage, type ArchiveStorage } from "@lanka-pricelens/foundry/archive-storage";
 import { archiveManualArtifact, ingestManualPdf, maximumPdfBytes } from "@lanka-pricelens/foundry/intake";
 import {
   processingStages,
@@ -33,6 +33,7 @@ import { bodyLimit } from "hono/body-limit";
 import { deleteCookie, getCookie, setCookie } from "hono/cookie";
 import { requestId } from "hono/request-id";
 import { secureHeaders } from "hono/secure-headers";
+import { streamSSE } from "hono/streaming";
 
 import {
   adminSessionCookie,
@@ -51,6 +52,7 @@ export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
+  options: { archiveStorage?: ArchiveStorage } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
   if (sourceManifest) ensureWorkflowSchedules(database, sourceManifest);
@@ -129,6 +131,47 @@ export function createApp(
     return context.json(envelope(context.get("requestId"), null, true, "Signed out"));
   });
   app.use("/v1/admin/*", requireOwner);
+
+  app.get("/v1/admin/events/workflows", (context) => {
+    const suppliedCursor = context.req.header("Last-Event-ID") ?? context.req.query("after");
+    const parsedCursor = suppliedCursor === undefined ? null : Number.parseInt(suppliedCursor, 10);
+    let cursor = parsedCursor !== null && Number.isSafeInteger(parsedCursor) && parsedCursor >= 0
+      ? parsedCursor
+      : (database.prepare("SELECT COALESCE(MAX(id), 0) AS id FROM workflow_event").get() as { id: number }).id;
+    context.header("Cache-Control", "no-cache, no-transform");
+    context.header("Connection", "keep-alive");
+    context.header("X-Accel-Buffering", "no");
+
+    return streamSSE(context, async (stream) => {
+      let aborted = false;
+      let lastHeartbeat = Date.now();
+      stream.onAbort(() => { aborted = true; });
+      await stream.writeSSE({
+        data: JSON.stringify({ cursor }),
+        event: "ready",
+        id: String(cursor),
+        retry: 2_000,
+      });
+
+      while (!aborted) {
+        const events = database
+          .prepare(
+            `SELECT id, event_type, dispatch_id, run_id, archive_id, publication_id,
+             stage, status, created_at FROM workflow_event WHERE id > ? ORDER BY id LIMIT 100`,
+          )
+          .all(cursor) as Array<Record<string, unknown> & { id: number }>;
+        for (const event of events) {
+          cursor = event.id;
+          await stream.writeSSE({ data: JSON.stringify(event), event: "workflow", id: String(event.id) });
+        }
+        if (Date.now() - lastHeartbeat >= 15_000) {
+          await stream.writeSSE({ data: JSON.stringify({ cursor }), event: "heartbeat", id: String(cursor) });
+          lastHeartbeat = Date.now();
+        }
+        await new Promise<void>((resolveDelay) => setTimeout(resolveDelay, events.length === 100 ? 0 : 500));
+      }
+    });
+  });
 
   app.get("/v1/admin/overview", (context) => {
     const counts = database
@@ -362,58 +405,109 @@ export function createApp(
       ),
     ),
   );
+  const latestKnowledgeArtifact = `LEFT JOIN source_artifact artifact ON artifact.id = (
+    SELECT candidate.id FROM source_artifact candidate
+    WHERE candidate.publication_id = publication.id
+    ORDER BY candidate.fetched_at DESC, candidate.id DESC LIMIT 1
+  )`;
+  const archivedKnowledgePdf = "LEFT JOIN archived_pdf archive ON archive.publication_id = publication.id";
+  const latestKnowledgeProcessing = `LEFT JOIN ingest_run processing ON processing.id = (
+    SELECT candidate.id FROM ingest_run candidate
+    WHERE candidate.archive_id = archive.id AND candidate.workflow = 'pdf_processing'
+    ORDER BY candidate.started_at DESC, candidate.id DESC LIMIT 1
+  ) LEFT JOIN ingest_run artifact_run ON artifact_run.id = artifact.run_id`;
+  const latestKnowledgeDispatch = `LEFT JOIN workflow_dispatch dispatch ON dispatch.id = (
+    SELECT candidate.id FROM workflow_dispatch candidate
+    WHERE candidate.archive_id = archive.id AND candidate.workflow_key = 'document_processing_pipeline'
+    ORDER BY candidate.created_at DESC, candidate.id DESC LIMIT 1
+  )`;
+  const knowledgeIndexStatus = `CASE
+    WHEN dispatch.status IN ('queued', 'running')
+      OR COALESCE(processing.status, artifact_run.status) IN ('queued', 'pending', 'running') THEN 'indexing'
+    WHEN artifact.id IS NOT NULL AND EXISTS (
+      SELECT 1 FROM price_observation indexed_observation
+      WHERE indexed_observation.source_artifact_id = artifact.id
+    ) THEN 'indexed'
+    WHEN dispatch.status = 'failed' OR artifact.status = 'quarantined'
+      OR COALESCE(processing.status, artifact_run.status) IN ('failed', 'blocked') THEN 'failed'
+    ELSE 'not_indexed'
+  END`;
+  const knowledgeSelect = `SELECT publication.id AS publication_id,
+    COALESCE(artifact.id, archive.id, publication.id) AS document_id,
+    publication.title, publication.published_at, publication.observed_from, publication.observed_to,
+    publication.download_url, archive.id AS archive_id, archive.r2_uri, archive.r2_key,
+    artifact.id AS artifact_id, artifact.run_id,
+    COALESCE(artifact.original_filename, publication.title) AS original_filename,
+    COALESCE(artifact.fetched_at, archive.uploaded_at) AS fetched_at,
+    COALESCE(artifact.byte_size, archive.byte_size) AS byte_size,
+    COALESCE(artifact.sha256, archive.sha256) AS sha256,
+    COALESCE(artifact.status, archive.status, publication.status) AS status,
+    ${knowledgeIndexStatus} AS index_status,
+    json_extract(artifact.inspection_json, '$.pdfType') AS pdf_type,
+    json_extract(artifact.inspection_json, '$.pageCount') AS page_count,
+    json_extract(artifact.inspection_json, '$.confidence') AS confidence,
+    COALESCE(json_array_length(artifact.inspection_json, '$.pagesNeedingOcr'), 0) AS ocr_page_count,
+    artifact.parser_strategy, artifact.parser_confidence,
+    quality.status AS quality_status, quality.score AS completeness_score,
+    quality.item_coverage, quality.market_coverage, quality.cell_coverage, quality.mapping_coverage,
+    COALESCE((SELECT COUNT(*) FROM staging_observation observation WHERE observation.artifact_id = artifact.id), 0) AS parsed_count,
+    COALESCE((SELECT COUNT(*) FROM price_observation observation WHERE observation.source_artifact_id = artifact.id), 0) AS canonical_count,
+    COALESCE((SELECT COUNT(*) FROM quarantine issue WHERE issue.artifact_id = artifact.id AND issue.status = 'open'), 0) AS quarantined_count,
+    dispatch.id AS processing_dispatch_id,
+    CASE WHEN dispatch.status IN ('queued', 'running')
+         THEN CASE WHEN processing.dispatch_id = dispatch.id THEN processing.id ELSE dispatch.run_id END
+         ELSE COALESCE(processing.id, artifact_run.id, dispatch.run_id) END AS processing_run_id,
+    CASE WHEN dispatch.status IN ('queued', 'running') THEN
+           CASE WHEN processing.dispatch_id = dispatch.id THEN processing.status ELSE dispatch.status END
+         WHEN processing.id IS NULL AND artifact.status = 'quarantined' THEN 'blocked'
+         ELSE COALESCE(processing.status, artifact_run.status, dispatch.status) END AS processing_status,
+    COALESCE(CASE WHEN processing.dispatch_id = dispatch.id THEN processing.started_at END,
+      dispatch.started_at, processing.started_at, artifact_run.started_at) AS processing_started_at,
+    COALESCE(CASE WHEN processing.dispatch_id = dispatch.id THEN processing.finished_at END,
+      dispatch.finished_at, processing.finished_at, artifact_run.finished_at) AS processing_finished_at,
+    COALESCE(CASE WHEN processing.dispatch_id = dispatch.id THEN processing.error_code END,
+      dispatch.error_code, processing.error_code, artifact_run.error_code) AS processing_error_code,
+    COALESCE(CASE WHEN processing.dispatch_id = dispatch.id THEN processing.error_message END,
+      dispatch.error_message, processing.error_message, artifact_run.error_message) AS processing_error_message
+    FROM source_publication publication ${latestKnowledgeArtifact} ${archivedKnowledgePdf} ${latestKnowledgeProcessing} ${latestKnowledgeDispatch}
+    LEFT JOIN artifact_quality_assessment quality ON quality.artifact_id = artifact.id`;
+  const knowledgeListSelect = `SELECT publication.id AS publication_id,
+    COALESCE(artifact.id, archive.id, publication.id) AS document_id,
+    publication.title, publication.published_at, publication.download_url,
+    archive.id AS archive_id,
+    COALESCE(artifact.byte_size, archive.byte_size) AS byte_size,
+    COALESCE(artifact.status, archive.status, publication.status) AS status,
+    ${knowledgeIndexStatus} AS index_status,
+    json_extract(artifact.inspection_json, '$.pdfType') AS pdf_type,
+    json_extract(artifact.inspection_json, '$.pageCount') AS page_count,
+    dispatch.id AS processing_dispatch_id,
+    CASE WHEN dispatch.status IN ('queued', 'running')
+         THEN CASE WHEN processing.dispatch_id = dispatch.id THEN processing.id ELSE dispatch.run_id END
+         ELSE COALESCE(processing.id, artifact_run.id, dispatch.run_id) END AS processing_run_id,
+    CASE WHEN dispatch.status IN ('queued', 'running') THEN
+           CASE WHEN processing.dispatch_id = dispatch.id THEN processing.status ELSE dispatch.status END
+         WHEN processing.id IS NULL AND artifact.status = 'quarantined' THEN 'blocked'
+         ELSE COALESCE(processing.status, artifact_run.status, dispatch.status) END AS processing_status
+    FROM source_publication publication ${latestKnowledgeArtifact} ${archivedKnowledgePdf} ${latestKnowledgeProcessing} ${latestKnowledgeDispatch}`;
+  const readKnowledgeItem = (publicationId: string): Record<string, unknown> | undefined => database
+    .prepare(`${knowledgeSelect} WHERE publication.id = ?`)
+    .get(publicationId) as Record<string, unknown> | undefined;
+
   const listKnowledgeBase = (context: Context<AppBindings>) => {
     const request = listRequest(context);
-    const latestArtifact = `LEFT JOIN source_artifact artifact ON artifact.id = (
-      SELECT candidate.id FROM source_artifact candidate
-      WHERE candidate.publication_id = publication.id
-      ORDER BY candidate.fetched_at DESC, candidate.id DESC LIMIT 1
-    )`;
-    const archivedPdf = "LEFT JOIN archived_pdf archive ON archive.publication_id = publication.id";
-    const latestProcessing = `LEFT JOIN ingest_run processing ON processing.id = (
-      SELECT candidate.id FROM ingest_run candidate
-      WHERE candidate.archive_id = archive.id AND candidate.workflow = 'pdf_processing'
-      ORDER BY candidate.started_at DESC, candidate.id DESC LIMIT 1
-    ) LEFT JOIN ingest_run artifact_run ON artifact_run.id = artifact.run_id`;
     const where = listWhere(
       request,
-      ["publication.title", "publication.download_url", "archive.r2_uri", "artifact.original_filename", "artifact.sha256", "archive.sha256"],
-      "COALESCE(artifact.status, archive.status, publication.status)",
+      ["publication.id", "publication.title", "publication.download_url", "archive.id", "archive.r2_uri", "artifact.id", "artifact.original_filename", "artifact.sha256", "archive.sha256"],
+      knowledgeIndexStatus,
     );
+    const countStatusJoins = request.status ? ` ${latestKnowledgeProcessing} ${latestKnowledgeDispatch}` : "";
     const total = (database
-      .prepare(`SELECT COUNT(*) AS count FROM source_publication publication ${latestArtifact} ${archivedPdf}${where.sql}`)
+      .prepare(`SELECT COUNT(*) AS count FROM source_publication publication ${latestKnowledgeArtifact} ${archivedKnowledgePdf}${countStatusJoins}${where.sql}`)
       .get(...where.values) as { count: number }).count;
     const page = pageRequest(request, total);
     const items = database
       .prepare(
-        `SELECT publication.id AS publication_id, publication.title,
-         publication.published_at, publication.observed_from, publication.observed_to,
-         publication.download_url, archive.id AS archive_id, archive.r2_uri, archive.r2_key,
-         artifact.id AS artifact_id, artifact.run_id,
-         COALESCE(artifact.original_filename, publication.title) AS original_filename,
-         COALESCE(artifact.fetched_at, archive.uploaded_at) AS fetched_at,
-         COALESCE(artifact.byte_size, archive.byte_size) AS byte_size,
-         COALESCE(artifact.sha256, archive.sha256) AS sha256,
-         COALESCE(artifact.status, archive.status, publication.status) AS status,
-         json_extract(artifact.inspection_json, '$.pdfType') AS pdf_type,
-         json_extract(artifact.inspection_json, '$.pageCount') AS page_count,
-         json_extract(artifact.inspection_json, '$.confidence') AS confidence,
-         COALESCE(json_array_length(artifact.inspection_json, '$.pagesNeedingOcr'), 0) AS ocr_page_count,
-         artifact.parser_strategy, artifact.parser_confidence,
-         quality.status AS quality_status, quality.score AS completeness_score,
-         quality.item_coverage, quality.market_coverage, quality.cell_coverage, quality.mapping_coverage,
-         COALESCE((SELECT COUNT(*) FROM staging_observation observation WHERE observation.artifact_id = artifact.id), 0) AS parsed_count,
-         COALESCE((SELECT COUNT(*) FROM price_observation observation WHERE observation.source_artifact_id = artifact.id), 0) AS canonical_count,
-         COALESCE((SELECT COUNT(*) FROM quarantine issue WHERE issue.artifact_id = artifact.id AND issue.status = 'open'), 0) AS quarantined_count,
-         COALESCE(processing.id, artifact_run.id) AS processing_run_id,
-         CASE WHEN processing.id IS NULL AND artifact.status = 'quarantined' THEN 'blocked'
-              ELSE COALESCE(processing.status, artifact_run.status) END AS processing_status,
-         COALESCE(processing.started_at, artifact_run.started_at) AS processing_started_at,
-         COALESCE(processing.finished_at, artifact_run.finished_at) AS processing_finished_at,
-         COALESCE(processing.error_code, artifact_run.error_code) AS processing_error_code,
-         COALESCE(processing.error_message, artifact_run.error_message) AS processing_error_message
-         FROM source_publication publication ${latestArtifact} ${archivedPdf} ${latestProcessing}
-         LEFT JOIN artifact_quality_assessment quality ON quality.artifact_id = artifact.id${where.sql}
+        `${knowledgeListSelect}${where.sql}
          ORDER BY publication.published_at DESC, publication.first_seen_at DESC, publication.title
          LIMIT ? OFFSET ?`,
       )
@@ -422,6 +516,38 @@ export function createApp(
   };
   app.get("/v1/admin/knowledge-base", listKnowledgeBase);
   app.get("/v1/admin/uploads", listKnowledgeBase);
+  app.get("/v1/admin/knowledge-base/:publicationId/file", async (context) => {
+    const document = database
+      .prepare(
+        `SELECT publication.title, archive.r2_bucket, archive.r2_key
+         FROM source_publication publication
+         LEFT JOIN archived_pdf archive ON archive.publication_id = publication.id
+         WHERE publication.id = ?`,
+      )
+      .get(context.req.param("publicationId")) as { title: string; r2_bucket: string | null; r2_key: string | null } | undefined;
+    if (!document) return context.json(envelope(context.get("requestId"), null, false, "Document not found"), 404);
+    if (!document.r2_key) return context.json(envelope(context.get("requestId"), null, false, "Document is not archived yet"), 409);
+    try {
+      const storage = options.archiveStorage ?? await configuredArchiveStorage(document.r2_bucket ?? undefined);
+      const pdf = Uint8Array.from(await storage.download(document.r2_key));
+      const filename = basename(document.title).replace(/[\r\n"]/gu, "_") || "document.pdf";
+      return new Response(pdf, {
+        headers: {
+          "Cache-Control": "private, max-age=300",
+          "Content-Disposition": `inline; filename="${filename}"`,
+          "Content-Type": "application/pdf",
+        },
+      });
+    } catch {
+      return context.json(envelope(context.get("requestId"), null, false, "Stored PDF could not be read"), 502);
+    }
+  });
+  app.get("/v1/admin/knowledge-base/:publicationId", (context) => {
+    const document = readKnowledgeItem(context.req.param("publicationId"));
+    return document
+      ? context.json(envelope(context.get("requestId"), document))
+      : context.json(envelope(context.get("requestId"), null, false, "Document not found"), 404);
+  });
   app.post("/v1/admin/knowledge-base/:publicationId/process", (context) => {
     if (!sourceManifest) return context.json(envelope(context.get("requestId"), null, false, "Document processing is not configured"), 503);
     const document = database
