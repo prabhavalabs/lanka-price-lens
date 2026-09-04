@@ -20,7 +20,7 @@ import {
 } from "../src/harti.ts";
 import { archiveManualArtifact, ingestManualPdf } from "../src/intake.ts";
 import { canonicalizeRun } from "../src/mapping.ts";
-import { retryProcessingStage, runIngestion, workflowRetryState, type ArchiveStorage } from "../src/pipeline.ts";
+import { recoverFailedProcessing, retryProcessingStage, runIngestion, workflowRetryState, type ArchiveStorage } from "../src/pipeline.ts";
 import type { PdfInspection, TextItem } from "../src/pdf.ts";
 import { assessArtifactCompleteness } from "../src/quality.ts";
 import { buildRelease } from "../src/release.ts";
@@ -957,4 +957,44 @@ test("processing recovery re-queues documents that were processed without a mapp
   database.prepare("DELETE FROM workflow_dispatch WHERE archive_id = 'archive_unconfigured'").run();
   database.prepare("UPDATE artifact_quality_assessment SET status = 'complete', score = 1 WHERE artifact_id = 'artifact_unconfigured'").run();
   assert.equal(enqueueProcessingRecovery(database, manifest.id, 10, now), 0);
+});
+
+test("sync recovers processing runs that failed after parsing once the bundle is fixed", async () => {
+  const database = openOperationalDatabase(":memory:");
+  const archive = memoryArchive();
+  const approved = sourceManifestSchema.parse({
+    ...manifest,
+    rights_status: "approved_permission",
+    rights_evidence_ref: "test-fixture://permission",
+    attribution_text: "Test source fixture",
+    reviewed_by: "fixture-reviewer",
+    review_due_at: "2999-12-31",
+    retention_policy: "preserve_source_evidence",
+    enabled: true,
+  });
+  const listing = (dates: string[]) => async (url: string | URL | Request) => String(url) === approved.landing_url
+    ? new Response(archiveHtml(dates), { status: 200, headers: { "content-type": "text/html" } })
+    : new Response("%PDF-fixture", { status: 200, headers: { "content-type": "application/pdf" } });
+  const inspector = async () => ({ inspection: pdfInspection(), items: hartiItems() });
+  try {
+    const first = await runIngestion(database, approved, { trigger: "backfill", request: listing(["16-08-2026"]), archive, inspector, mappingBundle: mappingBundle("item_beans", "Beans", "fixture-v1") });
+    assert.equal((database.prepare("SELECT status FROM ingest_run WHERE id = ?").get(first.processingRunIds[0]!) as { status: string }).status, "succeeded");
+
+    // The same mapping version with different content is rejected, so the new document's run fails after parsing.
+    const second = await runIngestion(database, approved, { trigger: "scheduled", request: listing(["17-08-2026", "16-08-2026"]), archive, inspector, mappingBundle: mappingBundle("item_green_beans", "Green beans", "fixture-v1") });
+    const failedId = second.processingRunIds[0]!;
+    const failed = database.prepare("SELECT status, error_message FROM ingest_run WHERE id = ?").get(failedId) as { status: string; error_message: string };
+    assert.equal(failed.status, "failed");
+    assert.match(failed.error_message, /MAPPING_VERSION_REUSED/u);
+    assert.equal((database.prepare("SELECT status FROM run_stage WHERE run_id = ? AND stage = 'assess_completeness'").get(failedId) as { status: string }).status, "failed");
+
+    const fixed = mappingBundle("item_green_beans", "Green beans", "fixture-v2");
+    const recovery = await recoverFailedProcessing(database, approved, { archive, mappingBundle: fixed });
+    assert.deepEqual(recovery, { retried: [failedId], recovered: [failedId], failed: [] });
+    assert.equal((database.prepare("SELECT status FROM ingest_run WHERE id = ?").get(failedId) as { status: string }).status, "succeeded");
+    assert.ok((database.prepare("SELECT COUNT(*) AS count FROM price_observation WHERE run_id = ? AND status = 'active'").get(failedId) as { count: number }).count > 0, "the recovered document's prices are promoted");
+    assert.deepEqual(await recoverFailedProcessing(database, approved, { archive, mappingBundle: fixed }), { retried: [], recovered: [], failed: [] }, "nothing is left to recover");
+  } finally {
+    database.close();
+  }
 });

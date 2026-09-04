@@ -5,7 +5,7 @@ import { configuredArchiveStorage } from "./archive-storage.ts";
 import { openOperationalDatabase } from "./db.ts";
 import { canonicalizeRun } from "./mapping.ts";
 import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
-import { runSourceSync } from "./pipeline.ts";
+import { recoverFailedProcessing, runSourceSync } from "./pipeline.ts";
 import { remapRecentSnapshots, retailAdapterFor, runRetailCapture } from "./retail/index.ts";
 import { connectWarehouse, migrateWarehouse, renderReportMarkdown, syncWarehouse, warehouseReport } from "./warehouse/index.ts";
 import { buildRelease } from "./release.ts";
@@ -40,6 +40,10 @@ if (command === "hash-password") {
         const result = await runSourceSync(database, manifest, { trigger, from, to, mappingBundle });
         console.log(JSON.stringify({ source: manifest.id, ...result }));
         if (result.status !== "succeeded") process.exitCode = 1;
+        // Documents that failed after parsing (a rejected bundle, a missing mapping) are retried now that the configuration may have changed.
+        const recovery = await recoverFailedProcessing(database, manifest, { mappingBundle });
+        if (recovery.retried.length) console.log(JSON.stringify({ source: manifest.id, recovery }));
+        if (recovery.failed.length) process.exitCode = 1;
         if (result.processingRunIds.length) {
           const placeholders = result.processingRunIds.map(() => "?").join(",");
           const failed = database
