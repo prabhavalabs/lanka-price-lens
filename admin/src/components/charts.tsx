@@ -293,7 +293,7 @@ export function MarketSeriesChart({ series, unit }: { series: ExplorerSeries[]; 
   const config: ChartConfig = Object.fromEntries(
     shown.map((entry, index) => [
       entry.chartKey,
-      { label: entry.market_label, color: seriesColors[index % seriesColors.length]!, icon: () => <SellerMark className="size-4!" label={entry.market_label} marketId={entry.market_id} type={entry.market_type} /> },
+      { label: entry.market_label, color: seriesColors[index % seriesColors.length]!, icon: () => <SellerMark label={entry.market_label} marketId={entry.market_id} size="xs" type={entry.market_type} /> },
     ]),
   );
   const dates = [...new Set(shown.flatMap((entry) => entry.points.map((point) => point.date)))].sort();

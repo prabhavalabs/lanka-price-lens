@@ -1,24 +1,33 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
 /**
- * A distinctive mark for every seller. Supermarkets get a brand-coloured monogram;
- * wholesale and retail markets get a glyph drawn from the place itself (Pettah's
- * clock tower, Dambulla's rock, the Kelani bridge at Peliyagoda), so a reader tells
- * sellers apart at a glance in tables and chart legends. Retail-market marks are
- * tinted rather than solid, so Pettah wholesale and Pettah retail share a symbol
- * but never look the same. Any market without a drawn mark still gets a stable
- * colour and initials derived from its id, so a new market never renders blank.
+ * A distinctive mark for every seller. Supermarkets show their official logo
+ * (files under `admin/public/sellers/`, sources listed there) on a chip in the
+ * brand's own background colour, falling back to a brand-coloured monogram if the
+ * file cannot load. Wholesale and retail markets get a glyph drawn from the place
+ * itself (Pettah's clock tower, Dambulla's rock, the Kelani bridge at Peliyagoda),
+ * so a reader tells sellers apart at a glance in tables and chart legends.
+ * Retail-market marks are tinted rather than solid, so Pettah wholesale and Pettah
+ * retail share a symbol but never look the same. Any market without a drawn mark
+ * still gets a stable colour and initials derived from its id.
  */
 
-type Place = { color: string; glyph?: ReactNode; monogram?: string; accent?: string };
+type Logo = {
+  src: string;
+  /** Chip background; a white wordmark needs its brand colour behind it, a full-colour mark sits on white. */
+  background: string;
+  /** Square marks fill the chip edge to edge; wordmarks keep a little breathing room. */
+  inset: boolean;
+};
+type Place = { color: string; glyph?: ReactNode; monogram?: string; accent?: string; logo?: Logo };
 
 const places: Record<string, Place> = {
-  keells: { color: "#1E9E4A", monogram: "K" },
-  cargills: { color: "#D9262B", monogram: "C" },
-  spar: { color: "#0B6E46", monogram: "S", accent: "#E1251B" },
-  glomark: { color: "#E8590C", monogram: "G" },
+  keells: { color: "#1E9E4A", monogram: "K", logo: { src: "/admin/sellers/keells.png", background: "#2DB84B", inset: false } },
+  cargills: { color: "#D9262B", monogram: "C", logo: { src: "/admin/sellers/cargills.png", background: "#D9262B", inset: true } },
+  spar: { color: "#0B6E46", monogram: "S", accent: "#E1251B", logo: { src: "/admin/sellers/spar.png", background: "#ffffff", inset: false } },
+  glomark: { color: "#E8590C", monogram: "G", logo: { src: "/admin/sellers/glomark.png", background: "#ffffff", inset: true } },
   pettah: {
     color: "#B45309",
     glyph: (
@@ -167,6 +176,8 @@ const places: Record<string, Place> = {
 };
 
 const sizes = { xs: "size-4", sm: "size-6", md: "size-8", lg: "size-10" } as const;
+/** Logo chips keep the mark's height and let a wordmark run wider, up to three times the height. */
+const chipSizes = { xs: "h-4 min-w-4 max-w-12 rounded", sm: "h-6 min-w-6 max-w-18 rounded-md", md: "h-8 min-w-8 max-w-24 rounded-lg", lg: "h-10 min-w-10 max-w-30 rounded-lg" } as const;
 
 /** "market_pettah_retail" and "market_pettah" both draw Pettah; "market_keells_online" draws Keells. */
 export function placeOf(marketId: string): string {
@@ -190,6 +201,15 @@ export function sellerColor(marketId: string): string {
 
 export function SellerMark({ marketId, label, type, size = "sm", className }: { marketId: string; label: string; type: string; size?: keyof typeof sizes; className?: string | undefined }) {
   const place = places[placeOf(marketId)];
+  // Remembered per logo file: a chip whose image cannot load shows the monogram instead of an empty box.
+  const [failedLogo, setFailedLogo] = useState<string | null>(null);
+  if (place?.logo && failedLogo !== place.logo.src) {
+    return (
+      <span className={cn("inline-flex shrink-0 items-center justify-center overflow-hidden ring-1 ring-white/15", chipSizes[size], place.logo.inset && "px-1", className)} role="img" aria-label={label} style={{ backgroundColor: place.logo.background }}>
+        <img alt="" className="h-full w-auto max-w-full object-contain" decoding="async" onError={() => setFailedLogo(place.logo!.src)} src={place.logo.src} />
+      </span>
+    );
+  }
   const color = place?.color ?? hashedColor(marketId);
   // Retail markets are drawn tinted so they never pass for the wholesale market of the same town.
   const tinted = type === "retail_market";
