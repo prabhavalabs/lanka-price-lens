@@ -76,3 +76,18 @@ tens of millions of rows: partition it by month on `observed_on` (declarative
 range partitioning; every serving query filters on the day), add a BRIN index on
 `observed_on`, and move the materialized views to incremental rollup tables
 maintained by the sync. None of that changes the sync contract or the row ids.
+
+## Serving: the price explorer
+
+The admin portal's **Price explorer** page reads the warehouse only. Item search
+matches canonical labels, varieties, origins, and every alias in `item_alias`
+(the labels bulletins and stores use, synced from the operational mapping table),
+so "bandakka" finds ladies fingers and "B'Onion Imported" finds the imported big
+onion. The item view combines `latest_item_price` (latest price per seller, grouped
+into wholesale markets, retail markets, and supermarkets, with the group average in
+the group's most common unit and the shelf-over-wholesale markup) with
+`daily_item_price` over the chosen period (one trend line per seller, first-to-last
+change per seller). Endpoints: `GET /v1/admin/explorer/search?q=` and
+`GET /v1/admin/explorer/items/:id?days=|from=&to=`. When `LPL_POSTGRES_URL` is not
+set or the database is unreachable, the endpoints answer 503 and the rest of the
+admin keeps working.
