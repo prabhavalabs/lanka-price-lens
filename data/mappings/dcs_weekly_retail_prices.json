@@ -1,0 +1,2461 @@
+{
+  "schema_version": "1.0.0",
+  "mapping_version": "dcs-weekly-2026-09-04.1",
+  "source_id": "dcs_weekly_retail_prices",
+  "reviewed_by": "repository-owner",
+  "reviewed_at": "2026-09-04",
+  "evidence_ref": "docs/official-sources.md",
+  "products": [
+    {
+      "id": "product_arecanut",
+      "category": "other",
+      "canonical_label_en": "Arecanut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_ash_plantain",
+      "category": "vegetable",
+      "canonical_label_en": "Ash Plantain",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_ash_pumpkin",
+      "category": "vegetable",
+      "canonical_label_en": "Ash Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_balaya",
+      "category": "fish",
+      "canonical_label_en": "Balaya (Skipjack Tuna)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_banana",
+      "category": "fruit",
+      "canonical_label_en": "Banana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_beans",
+      "category": "vegetable",
+      "canonical_label_en": "Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_beef",
+      "category": "meat",
+      "canonical_label_en": "Beef",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_beetroot",
+      "category": "vegetable",
+      "canonical_label_en": "Beetroot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_betel_leaves",
+      "category": "other",
+      "canonical_label_en": "Betel Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_big_onion",
+      "category": "vegetable",
+      "canonical_label_en": "Big Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_bitter_gourd",
+      "category": "vegetable",
+      "canonical_label_en": "Bitter Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_bread",
+      "category": "other",
+      "canonical_label_en": "Bread",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_brinjals",
+      "category": "vegetable",
+      "canonical_label_en": "Brinjals",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_butter_beans",
+      "category": "vegetable",
+      "canonical_label_en": "Butter Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cabbage",
+      "category": "vegetable",
+      "canonical_label_en": "Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_capsicum",
+      "category": "vegetable",
+      "canonical_label_en": "Capsicum",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_carrot",
+      "category": "vegetable",
+      "canonical_label_en": "Carrot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_chicken",
+      "category": "meat",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_chickpea",
+      "category": "grain",
+      "canonical_label_en": "Chickpea (Kadalai)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cinnamon",
+      "category": "other",
+      "canonical_label_en": "Cinnamon",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coconut",
+      "category": "vegetable",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coconut_oil",
+      "category": "other",
+      "canonical_label_en": "Coconut Oil",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coriander",
+      "category": "other",
+      "canonical_label_en": "Coriander Seed",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cowpea",
+      "category": "grain",
+      "canonical_label_en": "Cowpea",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cucumber",
+      "category": "vegetable",
+      "canonical_label_en": "Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cumin",
+      "category": "other",
+      "canonical_label_en": "Cumin Seed",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_dried_chillies",
+      "category": "other",
+      "canonical_label_en": "Dried Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_dried_fish_katta",
+      "category": "fish",
+      "canonical_label_en": "Dried Fish (Katta)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_drumstick",
+      "category": "vegetable",
+      "canonical_label_en": "Drumstick",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_egg",
+      "category": "other",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_fennel",
+      "category": "other",
+      "canonical_label_en": "Fennel Seed",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_fenugreek",
+      "category": "other",
+      "canonical_label_en": "Fenugreek (Methi)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_garlic",
+      "category": "vegetable",
+      "canonical_label_en": "Garlic",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_gorakka",
+      "category": "other",
+      "canonical_label_en": "Gorakka (Garcinia)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_gotukola",
+      "category": "vegetable",
+      "canonical_label_en": "Gotukola",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_green_chillies",
+      "category": "vegetable",
+      "canonical_label_en": "Green Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_green_gram",
+      "category": "grain",
+      "canonical_label_en": "Green Gram",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_hurulla",
+      "category": "fish",
+      "canonical_label_en": "Hurulla (Herring)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_kankun",
+      "category": "vegetable",
+      "canonical_label_en": "Kankun",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_kathurumurunga",
+      "category": "vegetable",
+      "canonical_label_en": "Kathurumurunga",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_kelawalla",
+      "category": "fish",
+      "canonical_label_en": "Kelawalla (Yellowfin Tuna)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_knolkhol",
+      "category": "vegetable",
+      "canonical_label_en": "Knolkhol",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_kohila",
+      "category": "vegetable",
+      "canonical_label_en": "Kohila (Lasia)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_ladies_fingers",
+      "category": "vegetable",
+      "canonical_label_en": "Ladies Fingers",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_leeks",
+      "category": "vegetable",
+      "canonical_label_en": "Leeks",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_lime",
+      "category": "fruit",
+      "canonical_label_en": "Lime",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_linna",
+      "category": "fish",
+      "canonical_label_en": "Linna",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_long_beans",
+      "category": "vegetable",
+      "canonical_label_en": "Long Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_luffa",
+      "category": "vegetable",
+      "canonical_label_en": "Luffa",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_maldive_fish",
+      "category": "fish",
+      "canonical_label_en": "Maldive Fish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mora",
+      "category": "fish",
+      "canonical_label_en": "Mora (Shark)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mukunuwenna",
+      "category": "vegetable",
+      "canonical_label_en": "Mukunuwenna",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mullet",
+      "category": "fish",
+      "canonical_label_en": "Mullet",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mustard",
+      "category": "other",
+      "canonical_label_en": "Mustard Seed",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mutton",
+      "category": "meat",
+      "canonical_label_en": "Mutton",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_papaya",
+      "category": "fruit",
+      "canonical_label_en": "Papaya",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_parati",
+      "category": "fish",
+      "canonical_label_en": "Parati",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_paraw",
+      "category": "fish",
+      "canonical_label_en": "Paraw (Trevally)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_pepper",
+      "category": "other",
+      "canonical_label_en": "Black Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_pineapple",
+      "category": "fruit",
+      "canonical_label_en": "Pineapple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_pork",
+      "category": "meat",
+      "canonical_label_en": "Pork",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_potato",
+      "category": "vegetable",
+      "canonical_label_en": "Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_prawns",
+      "category": "fish",
+      "canonical_label_en": "Prawns",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_pumpkin",
+      "category": "vegetable",
+      "canonical_label_en": "Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_radish",
+      "category": "vegetable",
+      "canonical_label_en": "Radish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_red_dhal",
+      "category": "grain",
+      "canonical_label_en": "Red Dhal (Mysore Dhal)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_red_onion",
+      "category": "vegetable",
+      "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_nadu",
+      "category": "grain",
+      "canonical_label_en": "Nadu Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_nadu_red",
+      "category": "grain",
+      "canonical_label_en": "Nadu Rice (Red)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_ponni_samba",
+      "category": "grain",
+      "canonical_label_en": "Ponni Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_raw_red",
+      "category": "grain",
+      "canonical_label_en": "Raw Red Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_raw_white",
+      "category": "grain",
+      "canonical_label_en": "Raw White Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_samba",
+      "category": "grain",
+      "canonical_label_en": "Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_salaya",
+      "category": "fish",
+      "canonical_label_en": "Salaya (Sardinella)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_salt",
+      "category": "other",
+      "canonical_label_en": "Salt",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sarana",
+      "category": "vegetable",
+      "canonical_label_en": "Sarana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_snake_gourd",
+      "category": "vegetable",
+      "canonical_label_en": "Snake Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_spinach",
+      "category": "vegetable",
+      "canonical_label_en": "Spinach (Nivithi)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sprats",
+      "category": "fish",
+      "canonical_label_en": "Sprats (Dried)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sugar_white",
+      "category": "other",
+      "canonical_label_en": "White Sugar",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_tamarind",
+      "category": "other",
+      "canonical_label_en": "Tamarind",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_thalapath",
+      "category": "fish",
+      "canonical_label_en": "Thalapath (Sailfish)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_thampala",
+      "category": "vegetable",
+      "canonical_label_en": "Thampala",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_tin_fish",
+      "category": "fish",
+      "canonical_label_en": "Tinned Fish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_tomato",
+      "category": "vegetable",
+      "canonical_label_en": "Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_turmeric",
+      "category": "other",
+      "canonical_label_en": "Turmeric",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_wheat_flour",
+      "category": "grain",
+      "canonical_label_en": "Wheat Flour",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    }
+  ],
+  "items": [
+    {
+      "id": "item_ash_plantains",
+      "product_id": "product_ash_plantain",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ash Plantains",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Ash Plantain"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_ash_pumpkin",
+      "product_id": "product_ash_pumpkin",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ash Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Ash Pumpkin"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_ladies_fingers",
+      "product_id": "product_ladies_fingers",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ladies Fingers",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Bandakka"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_brinjals",
+      "product_id": "product_brinjals",
+      "entity_type": "commodity",
+      "canonical_label_en": "Brinjals",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Brinjal"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_bitter_gourd",
+      "product_id": "product_bitter_gourd",
+      "entity_type": "commodity",
+      "canonical_label_en": "Bitter Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Bitter Guard",
+        "Bitter Gourd"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_cucumber",
+      "product_id": "product_cucumber",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cucumber"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_pumpkin",
+      "product_id": "product_pumpkin",
+      "entity_type": "commodity",
+      "canonical_label_en": "Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Red Pumpkin"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_snake_gourd",
+      "product_id": "product_snake_gourd",
+      "entity_type": "commodity",
+      "canonical_label_en": "Snake Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Snake Gourd"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_gotukola",
+      "product_id": "product_gotukola",
+      "entity_type": "commodity",
+      "canonical_label_en": "Gotukola",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Gotukola"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_kankun",
+      "product_id": "product_kankun",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kankun",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kankun"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_kathurumurunga",
+      "product_id": "product_kathurumurunga",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kathurumurunga",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kathurumurunga"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_kohila_leaves",
+      "product_id": "product_kohila",
+      "entity_type": "variety",
+      "canonical_label_en": "Kohila Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Leaves",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kohila Leaves"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_kohila",
+      "product_id": "product_kohila",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kohila (Lasia)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kohila Yams"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_luffa",
+      "product_id": "product_luffa",
+      "entity_type": "commodity",
+      "canonical_label_en": "Luffa",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Vetakolu"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_green_chillies",
+      "product_id": "product_green_chillies",
+      "entity_type": "commodity",
+      "canonical_label_en": "Green Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Green Chillies"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_capsicum",
+      "product_id": "product_capsicum",
+      "entity_type": "commodity",
+      "canonical_label_en": "Capsicum",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Capsicum"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_leeks",
+      "product_id": "product_leeks",
+      "entity_type": "commodity",
+      "canonical_label_en": "Leeks",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Leeks"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_lime",
+      "product_id": "product_lime",
+      "entity_type": "commodity",
+      "canonical_label_en": "Lime",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Limes"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_coconut",
+      "product_id": "product_coconut",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Coconut - Average"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_coconut_large",
+      "product_id": "product_coconut",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": "Large",
+      "source_labels": [
+        "Coconut ( Large )"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_coconut_medium",
+      "product_id": "product_coconut",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": "Medium",
+      "source_labels": [
+        "Coconut ( Medium)"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_coconut_small",
+      "product_id": "product_coconut",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": "Small",
+      "source_labels": [
+        "Coconut ( small)"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_betel_leaves",
+      "product_id": "product_betel_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Betel Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Betel Leaves ( Average )"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_arecanut",
+      "product_id": "product_arecanut",
+      "entity_type": "commodity",
+      "canonical_label_en": "Arecanut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Arecanuts ( Average )"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_potato_local",
+      "product_id": "product_potato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Local",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Potatoes - Local"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_potato_imported",
+      "product_id": "product_potato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Potato — Imported",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Potatoes - Imported"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_coconut_oil_750ml",
+      "product_id": "product_coconut_oil",
+      "entity_type": "packaged_product",
+      "canonical_label_en": "Coconut Oil",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Coconut Oil"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_mukunuwenna",
+      "product_id": "product_mukunuwenna",
+      "entity_type": "commodity",
+      "canonical_label_en": "Mukunuwenna",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Mukunuwenna"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_spinach",
+      "product_id": "product_spinach",
+      "entity_type": "commodity",
+      "canonical_label_en": "Spinach (Nivithi)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Nivithi"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_sarana",
+      "product_id": "product_sarana",
+      "entity_type": "commodity",
+      "canonical_label_en": "Sarana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Sarana"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_thampala",
+      "product_id": "product_thampala",
+      "entity_type": "commodity",
+      "canonical_label_en": "Thampala",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Thampala"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_butter_beans",
+      "product_id": "product_butter_beans",
+      "entity_type": "commodity",
+      "canonical_label_en": "Butter Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Beans - Butter"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_beans",
+      "product_id": "product_beans",
+      "entity_type": "commodity",
+      "canonical_label_en": "Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Beans - Green"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_long_beans",
+      "product_id": "product_long_beans",
+      "entity_type": "commodity",
+      "canonical_label_en": "Long Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Long Beans"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_beetroot_general",
+      "product_id": "product_beetroot",
+      "entity_type": "commodity",
+      "canonical_label_en": "Beetroot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BeetRoot",
+        "Beetroot"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_cabbage",
+      "product_id": "product_cabbage",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cabbagge Seed",
+        "Cabbage"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_carrot",
+      "product_id": "product_carrot",
+      "entity_type": "commodity",
+      "canonical_label_en": "Carrot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Carrot"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_drumstick",
+      "product_id": "product_drumstick",
+      "entity_type": "commodity",
+      "canonical_label_en": "Drumstick",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Drumstick"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_knolkhol",
+      "product_id": "product_knolkhol",
+      "entity_type": "commodity",
+      "canonical_label_en": "Knolkhol",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Knol Khol"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_radish",
+      "product_id": "product_radish",
+      "entity_type": "commodity",
+      "canonical_label_en": "Radish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Raddish"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_tomato",
+      "product_id": "product_tomato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Tomatoe - No 1.",
+        "Tomato"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_dried_chillies",
+      "product_id": "product_dried_chillies",
+      "entity_type": "commodity",
+      "canonical_label_en": "Dried Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Dried Chillies - No 1."
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_coriander",
+      "product_id": "product_coriander",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coriander Seed",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Corriander"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_pepper",
+      "product_id": "product_pepper",
+      "entity_type": "commodity",
+      "canonical_label_en": "Black Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Pepper - Powder"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_turmeric",
+      "product_id": "product_turmeric",
+      "entity_type": "commodity",
+      "canonical_label_en": "Turmeric",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Turmeric -Powder"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_garlic",
+      "product_id": "product_garlic",
+      "entity_type": "commodity",
+      "canonical_label_en": "Garlic",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Garlic"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_cumin",
+      "product_id": "product_cumin",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cumin Seed",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cummin Seed"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_fennel",
+      "product_id": "product_fennel",
+      "entity_type": "commodity",
+      "canonical_label_en": "Fennel Seed",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Fennel Seed"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_mustard",
+      "product_id": "product_mustard",
+      "entity_type": "commodity",
+      "canonical_label_en": "Mustard Seed",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Mustard"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_fenugreek",
+      "product_id": "product_fenugreek",
+      "entity_type": "commodity",
+      "canonical_label_en": "Fenugreek (Methi)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Mathe Seed"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_cinnamon",
+      "product_id": "product_cinnamon",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cinnamon",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cinnamon"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_gorakka",
+      "product_id": "product_gorakka",
+      "entity_type": "commodity",
+      "canonical_label_en": "Gorakka (Garcinia)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Gorakka"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_maldive_fish",
+      "product_id": "product_maldive_fish",
+      "entity_type": "commodity",
+      "canonical_label_en": "Maldive Fish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Maldive Fish"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_salt",
+      "product_id": "product_salt",
+      "entity_type": "commodity",
+      "canonical_label_en": "Salt",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Salt"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_tamarind",
+      "product_id": "product_tamarind",
+      "entity_type": "commodity",
+      "canonical_label_en": "Tamarind",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Tamarind"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_red_onion",
+      "product_id": "product_red_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Red Onions - Average"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_big_onion_imported",
+      "product_id": "product_big_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Big Onion — Imported",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "B.Onions - Imported"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_big_onion_local",
+      "product_id": "product_big_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Big Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Local",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "B.Onions - Local"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_rice_raw_red",
+      "product_id": "product_rice_raw_red",
+      "entity_type": "commodity",
+      "canonical_label_en": "Raw Red Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Raw Red - ( Average )"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_rice_raw_white",
+      "product_id": "product_rice_raw_white",
+      "entity_type": "commodity",
+      "canonical_label_en": "Raw White Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Raw White local"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_rice_nadu_red",
+      "product_id": "product_rice_nadu_red",
+      "entity_type": "commodity",
+      "canonical_label_en": "Nadu Rice (Red)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Nadu - Red"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_rice_nadu",
+      "product_id": "product_rice_nadu",
+      "entity_type": "commodity",
+      "canonical_label_en": "Nadu Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Nadu - White local"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_rice_samba",
+      "product_id": "product_rice_samba",
+      "entity_type": "commodity",
+      "canonical_label_en": "Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Samba - ( Average )"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_rice_ponni_samba_imported",
+      "product_id": "product_rice_ponni_samba",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ponni Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Ponni Samba Imported"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_wheat_flour",
+      "product_id": "product_wheat_flour",
+      "entity_type": "commodity",
+      "canonical_label_en": "Wheat Flour",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Wheat Flour"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_red_dhal",
+      "product_id": "product_red_dhal",
+      "entity_type": "commodity",
+      "canonical_label_en": "Red Dhal (Mysore Dhal)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Mysore Dhall - ( Average )"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_cowpea",
+      "product_id": "product_cowpea",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cowpea",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cowpea Whole - Average"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_green_gram",
+      "product_id": "product_green_gram",
+      "entity_type": "commodity",
+      "canonical_label_en": "Green Gram",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Green Gram - Average"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_chickpea",
+      "product_id": "product_chickpea",
+      "entity_type": "commodity",
+      "canonical_label_en": "Chickpea (Kadalai)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kadalai - Average"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_sugar_white",
+      "product_id": "product_sugar_white",
+      "entity_type": "commodity",
+      "canonical_label_en": "White Sugar",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Sugar"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_paraw",
+      "product_id": "product_paraw",
+      "entity_type": "commodity",
+      "canonical_label_en": "Paraw (Trevally)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Fresh Fish - Paraw"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_mullet",
+      "product_id": "product_mullet",
+      "entity_type": "commodity",
+      "canonical_label_en": "Mullet",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Mullet"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_thalapath",
+      "product_id": "product_thalapath",
+      "entity_type": "commodity",
+      "canonical_label_en": "Thalapath (Sailfish)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Thalapath"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_balaya",
+      "product_id": "product_balaya",
+      "entity_type": "commodity",
+      "canonical_label_en": "Balaya (Skipjack Tuna)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Balaya"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_kelawalla",
+      "product_id": "product_kelawalla",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kelawalla (Yellowfin Tuna)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kelewella",
+        "Kelawalla"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_mora",
+      "product_id": "product_mora",
+      "entity_type": "commodity",
+      "canonical_label_en": "Mora (Shark)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Mora"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_salaya",
+      "product_id": "product_salaya",
+      "entity_type": "commodity",
+      "canonical_label_en": "Salaya (Sardinella)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Salaya"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_parati",
+      "product_id": "product_parati",
+      "entity_type": "commodity",
+      "canonical_label_en": "Parati",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Parati"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_hurulla",
+      "product_id": "product_hurulla",
+      "entity_type": "commodity",
+      "canonical_label_en": "Hurulla (Herring)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Hurulla"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_linna",
+      "product_id": "product_linna",
+      "entity_type": "commodity",
+      "canonical_label_en": "Linna",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Linna"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_prawns",
+      "product_id": "product_prawns",
+      "entity_type": "commodity",
+      "canonical_label_en": "Prawns",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Prawns"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_dried_fish_katta",
+      "product_id": "product_dried_fish_katta",
+      "entity_type": "commodity",
+      "canonical_label_en": "Dried Fish (Katta)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Dried Fish - Katta"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_sprats",
+      "product_id": "product_sprats",
+      "entity_type": "commodity",
+      "canonical_label_en": "Sprats (Dried)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Spratts"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_beef",
+      "product_id": "product_beef",
+      "entity_type": "commodity",
+      "canonical_label_en": "Beef",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Beef"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_mutton",
+      "product_id": "product_mutton",
+      "entity_type": "commodity",
+      "canonical_label_en": "Mutton",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Mutton"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_chicken",
+      "product_id": "product_chicken",
+      "entity_type": "commodity",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Chicken - Fresh"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_chicken_broiler",
+      "product_id": "product_chicken",
+      "entity_type": "variety",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Broiler",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Chicken - Broiler"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_pork",
+      "product_id": "product_pork",
+      "entity_type": "commodity",
+      "canonical_label_en": "Pork",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Pork"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_egg",
+      "product_id": "product_egg",
+      "entity_type": "commodity",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Egg - ( Average )"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_egg_red",
+      "product_id": "product_egg",
+      "entity_type": "variety",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Red",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Egg - Red"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_egg_white",
+      "product_id": "product_egg",
+      "entity_type": "variety",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "White",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Egg - White"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_tin_fish",
+      "product_id": "product_tin_fish",
+      "entity_type": "commodity",
+      "canonical_label_en": "Tinned Fish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Tin Fish"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_banana_ambul",
+      "product_id": "product_banana",
+      "entity_type": "variety",
+      "canonical_label_en": "Banana — Ambul",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Ambul",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Sour Plantain"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_banana_anamalu",
+      "product_id": "product_banana",
+      "entity_type": "variety",
+      "canonical_label_en": "Banana — Anamalu",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Anamalu",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Anamalu"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_banana_kolikuttu",
+      "product_id": "product_banana",
+      "entity_type": "variety",
+      "canonical_label_en": "Banana — Kolikuttu",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Kolikuttu",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kolikuttu"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_papaya",
+      "product_id": "product_papaya",
+      "entity_type": "commodity",
+      "canonical_label_en": "Papaya",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Papaw"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_pineapple",
+      "product_id": "product_pineapple",
+      "entity_type": "commodity",
+      "canonical_label_en": "Pineapple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Pineapple"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_bread",
+      "product_id": "product_bread",
+      "entity_type": "commodity",
+      "canonical_label_en": "Bread",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Bread"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    }
+  ],
+  "markets": [
+    {
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "id": "market_colombo_district_retail",
+      "type": "retail_market",
+      "label_en": "Colombo District (retail)",
+      "scope_note": "Weekly average open-market retail prices across the main markets in the Colombo district (DCS)",
+      "source_labels": [
+        "Colombo District (retail)"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "unit_kg_exact",
+      "source_unit": "kg",
+      "normalized_unit": "kg",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_g_to_kg",
+      "source_unit": "g",
+      "normalized_unit": "kg",
+      "factor_numerator": 1,
+      "factor_denominator": 1000,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_piece_exact",
+      "source_unit": "piece",
+      "normalized_unit": "piece",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_bunch_exact",
+      "source_unit": "bunch",
+      "normalized_unit": "bunch",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_ml_to_l",
+      "source_unit": "ml",
+      "normalized_unit": "l",
+      "factor_numerator": 1,
+      "factor_denominator": 1000,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_l_exact",
+      "source_unit": "l",
+      "normalized_unit": "l",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    }
+  ],
+  "completeness": {
+    "minimum_item_coverage": 0.6,
+    "minimum_market_coverage": 1,
+    "minimum_cell_coverage": 0.5,
+    "minimum_mapping_coverage": 0.7,
+    "minimum_score": 0.5
+  }
+}

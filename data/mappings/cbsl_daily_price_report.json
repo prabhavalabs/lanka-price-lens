@@ -1,0 +1,1043 @@
+{
+  "schema_version": "1.0.0",
+  "mapping_version": "cbsl-daily-2026-09-04.1",
+  "source_id": "cbsl_daily_price_report",
+  "reviewed_by": "repository-owner",
+  "reviewed_at": "2026-09-04",
+  "evidence_ref": "docs/official-sources.md",
+  "products": [
+    {
+      "id": "product_apple",
+      "category": "fruit",
+      "canonical_label_en": "Apple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_balaya",
+      "category": "fish",
+      "canonical_label_en": "Balaya (Skipjack Tuna)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_banana",
+      "category": "fruit",
+      "canonical_label_en": "Banana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_beans",
+      "category": "vegetable",
+      "canonical_label_en": "Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_big_onion",
+      "category": "vegetable",
+      "canonical_label_en": "Big Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_brinjals",
+      "category": "vegetable",
+      "canonical_label_en": "Brinjals",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cabbage",
+      "category": "vegetable",
+      "canonical_label_en": "Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_carrot",
+      "category": "vegetable",
+      "canonical_label_en": "Carrot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coconut",
+      "category": "vegetable",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coconut_oil",
+      "category": "other",
+      "canonical_label_en": "Coconut Oil",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_dried_chillies",
+      "category": "other",
+      "canonical_label_en": "Dried Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_dried_fish_katta",
+      "category": "fish",
+      "canonical_label_en": "Dried Fish (Katta)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_egg",
+      "category": "other",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_green_chillies",
+      "category": "vegetable",
+      "canonical_label_en": "Green Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_hurulla",
+      "category": "fish",
+      "canonical_label_en": "Hurulla (Herring)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_kelawalla",
+      "category": "fish",
+      "canonical_label_en": "Kelawalla (Yellowfin Tuna)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_lime",
+      "category": "fruit",
+      "canonical_label_en": "Lime",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_linna",
+      "category": "fish",
+      "canonical_label_en": "Linna",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_orange",
+      "category": "fruit",
+      "canonical_label_en": "Orange",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_papaya",
+      "category": "fruit",
+      "canonical_label_en": "Papaya",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_paraw",
+      "category": "fish",
+      "canonical_label_en": "Paraw (Trevally)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_pineapple",
+      "category": "fruit",
+      "canonical_label_en": "Pineapple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_potato",
+      "category": "vegetable",
+      "canonical_label_en": "Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_pumpkin",
+      "category": "vegetable",
+      "canonical_label_en": "Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_red_dhal",
+      "category": "grain",
+      "canonical_label_en": "Red Dhal (Mysore Dhal)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_red_onion",
+      "category": "vegetable",
+      "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_kekulu_red",
+      "category": "grain",
+      "canonical_label_en": "Kekulu Rice (Red)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_kekulu_white",
+      "category": "grain",
+      "canonical_label_en": "Kekulu Rice (White)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_nadu",
+      "category": "grain",
+      "canonical_label_en": "Nadu Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_ponni_samba",
+      "category": "grain",
+      "canonical_label_en": "Ponni Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_samba",
+      "category": "grain",
+      "canonical_label_en": "Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_salaya",
+      "category": "fish",
+      "canonical_label_en": "Salaya (Sardinella)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_snake_gourd",
+      "category": "vegetable",
+      "canonical_label_en": "Snake Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sprats",
+      "category": "fish",
+      "canonical_label_en": "Sprats (Dried)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sugar_white",
+      "category": "other",
+      "canonical_label_en": "White Sugar",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_thalapath",
+      "category": "fish",
+      "canonical_label_en": "Thalapath (Sailfish)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_tomato",
+      "category": "vegetable",
+      "canonical_label_en": "Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    }
+  ],
+  "items": [
+    {
+      "id": "item_beans",
+      "product_id": "product_beans",
+      "entity_type": "commodity",
+      "canonical_label_en": "Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Beans"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_carrot",
+      "product_id": "product_carrot",
+      "entity_type": "commodity",
+      "canonical_label_en": "Carrot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Carrot"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_cabbage",
+      "product_id": "product_cabbage",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cabbage"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_tomato",
+      "product_id": "product_tomato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Tomato"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_brinjals",
+      "product_id": "product_brinjals",
+      "entity_type": "commodity",
+      "canonical_label_en": "Brinjals",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Brinjal"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_pumpkin",
+      "product_id": "product_pumpkin",
+      "entity_type": "commodity",
+      "canonical_label_en": "Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Pumpkin"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_snake_gourd",
+      "product_id": "product_snake_gourd",
+      "entity_type": "commodity",
+      "canonical_label_en": "Snake Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Snake gourd"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_green_chillies",
+      "product_id": "product_green_chillies",
+      "entity_type": "commodity",
+      "canonical_label_en": "Green Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Green Chilli"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_lime",
+      "product_id": "product_lime",
+      "entity_type": "commodity",
+      "canonical_label_en": "Lime",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Lime"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_red_onion_local",
+      "product_id": "product_red_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Local",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Red Onion (Local)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_red_onion_imported",
+      "product_id": "product_red_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Red Onion (lmp)",
+        "Red Onion (Imp)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_big_onion_local",
+      "product_id": "product_big_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Big Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Local",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Big Onion (Local)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_big_onion_imported",
+      "product_id": "product_big_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Big Onion — Imported",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Big Onion (Imp)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_potato_local",
+      "product_id": "product_potato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Local",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Potato (Local)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_potato_imported",
+      "product_id": "product_potato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Potato — Imported",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Potato (Imp)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_dried_chillies",
+      "product_id": "product_dried_chillies",
+      "entity_type": "commodity",
+      "canonical_label_en": "Dried Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Dried Chilli (Imp)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_coconut",
+      "product_id": "product_coconut",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Coconut (Avg.)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_coconut_oil",
+      "product_id": "product_coconut_oil",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coconut Oil",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Coconut oil"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_red_dhal",
+      "product_id": "product_red_dhal",
+      "entity_type": "commodity",
+      "canonical_label_en": "Red Dhal (Mysore Dhal)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Red Dhal"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_sugar_white",
+      "product_id": "product_sugar_white",
+      "entity_type": "commodity",
+      "canonical_label_en": "White Sugar",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Sugar (White)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_egg_white",
+      "product_id": "product_egg",
+      "entity_type": "variety",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "White",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Egg (White)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_dried_fish_katta",
+      "product_id": "product_dried_fish_katta",
+      "entity_type": "commodity",
+      "canonical_label_en": "Dried Fish (Katta)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Katta (Imp)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_sprats",
+      "product_id": "product_sprats",
+      "entity_type": "commodity",
+      "canonical_label_en": "Sprats (Dried)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Sprat (Imp)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_banana_ambul",
+      "product_id": "product_banana",
+      "entity_type": "variety",
+      "canonical_label_en": "Banana — Ambul",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Ambul",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Banana (Sour)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_papaya",
+      "product_id": "product_papaya",
+      "entity_type": "commodity",
+      "canonical_label_en": "Papaya",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Papaw"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_pineapple",
+      "product_id": "product_pineapple",
+      "entity_type": "commodity",
+      "canonical_label_en": "Pineapple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Pineapple"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_apple_imported",
+      "product_id": "product_apple",
+      "entity_type": "commodity",
+      "canonical_label_en": "Apple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Apple (Imp)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_orange_imported",
+      "product_id": "product_orange",
+      "entity_type": "commodity",
+      "canonical_label_en": "Orange",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Orange (Imp)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_rice_samba",
+      "product_id": "product_rice_samba",
+      "entity_type": "commodity",
+      "canonical_label_en": "Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Samba"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_rice_nadu",
+      "product_id": "product_rice_nadu",
+      "entity_type": "commodity",
+      "canonical_label_en": "Nadu Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Nadu"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_rice_kekulu_white",
+      "product_id": "product_rice_kekulu_white",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kekulu Rice (White)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kekulu (White)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_rice_kekulu_red",
+      "product_id": "product_rice_kekulu_red",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kekulu Rice (Red)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kekulu (Red)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_rice_ponni_samba_imported",
+      "product_id": "product_rice_ponni_samba",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ponni Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Ponni Samba (Imp)"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_kelawalla",
+      "product_id": "product_kelawalla",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kelawalla (Yellowfin Tuna)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kelawalla"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_thalapath",
+      "product_id": "product_thalapath",
+      "entity_type": "commodity",
+      "canonical_label_en": "Thalapath (Sailfish)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Thalapath"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_balaya",
+      "product_id": "product_balaya",
+      "entity_type": "commodity",
+      "canonical_label_en": "Balaya (Skipjack Tuna)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Balaya"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_paraw",
+      "product_id": "product_paraw",
+      "entity_type": "commodity",
+      "canonical_label_en": "Paraw (Trevally)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Paraw"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_salaya",
+      "product_id": "product_salaya",
+      "entity_type": "commodity",
+      "canonical_label_en": "Salaya (Sardinella)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Salaya"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_hurulla",
+      "product_id": "product_hurulla",
+      "entity_type": "commodity",
+      "canonical_label_en": "Hurulla (Herring)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Hurulla"
+      ],
+      "expected_market_labels": []
+    },
+    {
+      "id": "item_linna",
+      "product_id": "product_linna",
+      "entity_type": "commodity",
+      "canonical_label_en": "Linna",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Linna"
+      ],
+      "expected_market_labels": []
+    }
+  ],
+  "markets": [
+    {
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "id": "market_pettah",
+      "type": "wholesale_market",
+      "label_en": "Pettah",
+      "scope_note": "Pettah (Colombo) wholesale market, CBSL daily price report",
+      "source_labels": [
+        "Pettah (wholesale)"
+      ]
+    },
+    {
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "id": "market_dambulla",
+      "type": "wholesale_market",
+      "label_en": "Dambulla",
+      "scope_note": "HARTI wholesale market column",
+      "source_labels": [
+        "Dambulla (wholesale)"
+      ]
+    },
+    {
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "id": "market_peliyagoda",
+      "type": "wholesale_market",
+      "label_en": "Peliyagoda",
+      "scope_note": "HARTI wholesale market column",
+      "source_labels": [
+        "Peliyagoda (wholesale)"
+      ]
+    },
+    {
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "id": "market_negombo",
+      "type": "wholesale_market",
+      "label_en": "Negombo",
+      "scope_note": "Negombo wholesale fish market, CBSL daily price report",
+      "source_labels": [
+        "Negombo (wholesale)"
+      ]
+    },
+    {
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "id": "market_pettah_retail",
+      "type": "retail_market",
+      "label_en": "Pettah (retail)",
+      "scope_note": "Pettah retail prices, CBSL daily price report",
+      "source_labels": [
+        "Pettah (retail)"
+      ]
+    },
+    {
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "id": "market_dambulla_retail",
+      "type": "retail_market",
+      "label_en": "Dambulla (retail)",
+      "scope_note": "Dambulla retail prices, CBSL daily price report",
+      "source_labels": [
+        "Dambulla (retail)"
+      ]
+    },
+    {
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "id": "market_narahenpita_retail",
+      "type": "retail_market",
+      "label_en": "Narahenpita (retail)",
+      "scope_note": "Narahenpita economic centre retail prices, CBSL daily price report",
+      "source_labels": [
+        "Narahenpita (retail)"
+      ]
+    },
+    {
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "id": "market_negombo_retail",
+      "type": "retail_market",
+      "label_en": "Negombo (retail)",
+      "scope_note": "Negombo retail fish prices, CBSL daily price report",
+      "source_labels": [
+        "Negombo (retail)"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "unit_kg_exact",
+      "source_unit": "kg",
+      "normalized_unit": "kg",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_piece_exact",
+      "source_unit": "piece",
+      "normalized_unit": "piece",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_l_exact",
+      "source_unit": "l",
+      "normalized_unit": "l",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    }
+  ],
+  "completeness": {
+    "minimum_item_coverage": 0.6,
+    "minimum_market_coverage": 0.6,
+    "minimum_cell_coverage": 0.4,
+    "minimum_mapping_coverage": 0.8,
+    "minimum_score": 0.5
+  }
+}

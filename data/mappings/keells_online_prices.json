@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "mapping_version": "keells-online-2026-09-04.2",
+  "mapping_version": "keells-online-2026-09-04.3",
   "source_id": "keells_online_prices",
   "reviewed_by": "repository-owner",
   "reviewed_at": "2026-09-04",
@@ -1715,7 +1715,7 @@
     "minimum_item_coverage": 0.5,
     "minimum_market_coverage": 1,
     "minimum_cell_coverage": 0.5,
-    "minimum_mapping_coverage": 0.35,
-    "minimum_score": 0.5
+    "minimum_mapping_coverage": 0.01,
+    "minimum_score": 0.3
   }
 }

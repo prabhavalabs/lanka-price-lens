@@ -1,0 +1,28 @@
+{
+  "id": "cbsl_daily_price_report",
+  "name": "CBSL Daily Price Report",
+  "owner": "Central Bank of Sri Lanka",
+  "landing_url": "https://www.cbsl.gov.lk/en/statistics/economic-indicators/price-report",
+  "retrieval_method": "scheduled_download",
+  "expected_cadence": "business_daily",
+  "formats": [
+    "pdf"
+  ],
+  "geographic_scope": "selected_wholesale_and_retail_markets",
+  "price_types": [
+    "wholesale_observed",
+    "retail_observed"
+  ],
+  "document_adapter": "cbsl_daily_price",
+  "request_interval_ms": 3000,
+  "rights_status": "internal_evaluation",
+  "rights_evidence_ref": "docs/official-sources.md",
+  "attribution_text": "Source: CBSL Daily Price Report, Central Bank of Sri Lanka. Official statistics captured for internal evaluation; attribution required on any release.",
+  "retention_policy": "preserve_source_evidence",
+  "parser_owner": "Prabhava Labs maintainers",
+  "reviewed_by": "repository-owner",
+  "reviewed_at": "2026-09-04",
+  "review_due_at": "2027-03-04",
+  "max_attempts": 3,
+  "enabled": true
+}
