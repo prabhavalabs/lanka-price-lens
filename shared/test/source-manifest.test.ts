@@ -71,3 +71,36 @@ test("mapping bundles reject ambiguous exact source labels", () => {
     /Duplicate item source labels/u,
   );
 });
+
+const baseBundle = {
+  schema_version: "1.0.0" as const,
+  mapping_version: "v1",
+  source_id: "synthetic_prices",
+  reviewed_by: "maintainer",
+  reviewed_at: "2026-08-17",
+  evidence_ref: "docs/fixtures.md",
+  products: [{ id: "product_egg", category: "other" as const, canonical_label_en: "Egg", canonical_label_si: null, canonical_label_ta: null }],
+  markets: [{ id: "market_store", type: "online_store" as const, label_en: "Store", label_si: null, label_ta: null, pcode: null, scope_note: "fixture", source_labels: ["Store"] }],
+  units: [],
+};
+const eggItem = {
+  id: "item_egg",
+  product_id: "product_egg",
+  entity_type: "commodity" as const,
+  canonical_label_en: "Egg",
+  canonical_label_si: null,
+  canonical_label_ta: null,
+  variety: null,
+  grade: null,
+  source_labels: [],
+  source_patterns: [{ match: "\\beggs?\\b", exclude: ["mayonnaise"], units: ["piece"], pack: "count" as const }],
+};
+
+test("mapping bundles accept pattern-mapped items and reject bad rules", () => {
+  const parsed = mappingBundleSchema.parse({ ...baseBundle, items: [eggItem] });
+  assert.deepEqual(parsed.items[0]?.source_patterns[0], { match: "\\beggs?\\b", exclude: ["mayonnaise"], units: ["piece"], min_quantity: null, pack: "count" });
+  assert.deepEqual(parsed.excluded_patterns, []);
+  assert.throws(() => mappingBundleSchema.parse({ ...baseBundle, items: [{ ...eggItem, source_patterns: [] }] }), /at least one source label or pattern/u);
+  assert.throws(() => mappingBundleSchema.parse({ ...baseBundle, items: [{ ...eggItem, source_patterns: [{ match: "(" }] }] }), /Invalid regular expression/u);
+  assert.throws(() => mappingBundleSchema.parse({ ...baseBundle, excluded_patterns: ["["], items: [eggItem] }), /Invalid regular expression/u);
+});
