@@ -6,7 +6,7 @@ import { openOperationalDatabase } from "./db.ts";
 import { canonicalizeRun } from "./mapping.ts";
 import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
 import { runSourceSync } from "./pipeline.ts";
-import { retailAdapterFor, runRetailCapture } from "./retail/index.ts";
+import { remapRecentSnapshots, retailAdapterFor, runRetailCapture } from "./retail/index.ts";
 import { connectWarehouse, migrateWarehouse, renderReportMarkdown, syncWarehouse, warehouseReport } from "./warehouse/index.ts";
 import { buildRelease } from "./release.ts";
 import { startScheduler } from "./scheduler.ts";
@@ -90,6 +90,31 @@ if (command === "hash-password") {
       console.log(JSON.stringify({ source: entry.manifest.id, ...result }));
       // A paused source is expected to skip; anything else short of success fails the command.
       if (result.status !== "succeeded" && result.code !== "CAPTURE_PAUSED") process.exitCode = 1;
+    }
+  } finally {
+    database.close();
+  }
+} else if (command === "remap") {
+  // Re-promote stored retail snapshots through the current bundles after a mapping change: remap --source <id> | --all [--days N] [--force]
+  const catalog = await loadCatalog();
+  const all = arguments_.includes("--all");
+  const entries = all
+    ? catalog.entries.filter((entry) => entry.manifest.enabled && retailAdapterFor(entry.manifest))
+    : [catalog.find(requiredValue("--source")) ?? (() => { throw new Error("Unknown source; pass --source <manifest id> or --all"); })()];
+  if (!entries.length) throw new Error("No retail sources are configured");
+  const days = Number(valueOf("--days") ?? 7);
+  if (!Number.isInteger(days) || days < 1) throw new Error("--days must be a positive whole number");
+  const database = openOperationalDatabase(databasePath());
+  try {
+    for (const entry of entries) {
+      const adapter = retailAdapterFor(entry.manifest);
+      if (!adapter || !entry.mappingBundle) {
+        console.log(JSON.stringify({ source: entry.manifest.id, status: "skipped", message: adapter ? "No mapping bundle" : "Not a retail source" }));
+        continue;
+      }
+      const result = await remapRecentSnapshots(database, entry.manifest, adapter, entry.mappingBundle, { days, force: arguments_.includes("--force") });
+      console.log(JSON.stringify({ source: entry.manifest.id, ...result }));
+      if (result.status === "failed") process.exitCode = 1;
     }
   } finally {
     database.close();

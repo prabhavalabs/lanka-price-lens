@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import type { MappingBundle } from "@lanka-pricelens/shared";
 
 import { finishStage, newId, startStage, type OperationalDatabase } from "./db.ts";
+import { matchItemPattern } from "./patterns.ts";
 
 type StagingRow = {
   id: string;
@@ -59,6 +60,13 @@ export type CanonicalizeOptions = {
    * are deliberately unmapped and a per-row quarantine would drown real problems.
    */
   unknownLabels?: "quarantine" | "record";
+  /**
+   * What counts as "the same price" for supersession. "item" (default) keeps one
+   * active observation per item, market, and day, right for bulletins. "label"
+   * keeps one per source label, so a store's several brands of one item each hold
+   * their own daily price and the warehouse aggregates them into a range.
+   */
+  effectiveKeyScope?: "item" | "label";
 };
 
 export function canonicalizeRun(
@@ -168,7 +176,10 @@ export function syncMappingBundle(database: OperationalDatabase, bundle: Mapping
         bundle.evidence_ref,
         new Date().toISOString(),
       );
-    database.prepare("DELETE FROM source_item_mapping WHERE source_id = ?").run(bundle.source_id);
+    // Reviewed labels are rewritten from the bundle; pattern-derived labels stay while the bundle version they came from is current.
+    database
+      .prepare("DELETE FROM source_item_mapping WHERE source_id = ? AND (origin = 'bundle' OR mapping_version != ?)")
+      .run(bundle.source_id, bundle.mapping_version);
     database.prepare("DELETE FROM source_market_mapping WHERE source_id = ?").run(bundle.source_id);
     database.prepare("DELETE FROM source_item_market_expectation WHERE source_id = ?").run(bundle.source_id);
     for (const product of bundle.products) {
@@ -212,11 +223,11 @@ export function syncMappingBundle(database: OperationalDatabase, bundle: Mapping
         database
           .prepare(
             `INSERT INTO source_item_mapping
-             (source_id, source_label, item_id, mapping_version, reviewed_by, reviewed_at, evidence_ref)
-             VALUES (?, ?, ?, ?, ?, ?, ?)
+             (source_id, source_label, item_id, mapping_version, reviewed_by, reviewed_at, evidence_ref, origin)
+             VALUES (?, ?, ?, ?, ?, ?, ?, 'bundle')
              ON CONFLICT(source_id, source_label) DO UPDATE SET item_id = excluded.item_id,
                mapping_version = excluded.mapping_version, reviewed_by = excluded.reviewed_by,
-               reviewed_at = excluded.reviewed_at, evidence_ref = excluded.evidence_ref`,
+               reviewed_at = excluded.reviewed_at, evidence_ref = excluded.evidence_ref, origin = 'bundle'`,
           )
           .run(bundle.source_id, label, item.id, bundle.mapping_version, bundle.reviewed_by, bundle.reviewed_at, bundle.evidence_ref);
         for (const marketLabel of item.expected_market_labels) {
@@ -317,15 +328,16 @@ function canonicalizeRow(
   result: CanonicalizationResult,
   options: CanonicalizeOptions = {},
 ): void {
-  const item = database
-    .prepare("SELECT item_id FROM source_item_mapping WHERE source_id = ? AND source_label = ?")
-    .get(row.source_id, row.source_item_label) as { item_id: string } | undefined;
+  const item = resolveItem(database, row, bundle);
   if (!item) return unknownLabel(database, runId, row, "UNKNOWN_ITEM", "item", row.source_item_label, result, options);
+  // A pattern rule may re-read the pack (a count of eggs); everything downstream prices that pack.
+  const sourceQuantity = item.quantity;
+  const sourceUnit = item.unit;
   const market = database
     .prepare("SELECT market_id FROM source_market_mapping WHERE source_id = ? AND source_label = ?")
     .get(row.source_id, row.source_market_label) as { market_id: string } | undefined;
   if (!market) return unknownLabel(database, runId, row, "UNKNOWN_MARKET", "market", row.source_market_label, result, options);
-  const unit = bundle.units.find((candidate) => candidate.source_unit === row.source_unit);
+  const unit = bundle.units.find((candidate) => candidate.source_unit === sourceUnit);
   const rule = unit
     ? (database
     .prepare(
@@ -334,7 +346,7 @@ function canonicalizeRow(
     )
     .get(unit.id) as { id: string; normalized_unit: string; factor_numerator: number; factor_denominator: number } | undefined)
     : undefined;
-  if (!rule) return unknownLabel(database, runId, row, "UNKNOWN_UNIT", "unit", row.source_unit, result, options);
+  if (!rule) return unknownLabel(database, runId, row, "UNKNOWN_UNIT", "unit", sourceUnit, result, options);
   if (
     !Number.isSafeInteger(row.min_value_minor) ||
     !Number.isSafeInteger(row.max_value_minor) ||
@@ -351,7 +363,7 @@ function canonicalizeRow(
     return quarantine(database, runId, row, "INVALID_DATE", result);
   }
 
-  const quantity = decimalRatio(row.source_quantity);
+  const quantity = decimalRatio(sourceQuantity);
   if (!quantity) return quarantine(database, runId, row, "MISSING_REQUIRED_FIELD", result);
   const denominator = rule.factor_numerator * quantity.numerator;
   const numerator = rule.factor_denominator * quantity.denominator;
@@ -383,7 +395,8 @@ function canonicalizeRow(
     row.source_quantity,
     row.source_unit,
   ]);
-  const effectiveKey = digest([comparabilityKey, row.source_date]);
+  // Bulletins carry one price per item and market a day; store snapshots carry one per product label, so each label keeps its own daily truth.
+  const effectiveKey = digest(options.effectiveKeyScope === "label" ? [comparabilityKey, row.source_date, row.source_item_label] : [comparabilityKey, row.source_date]);
   const existingVersion = database
     .prepare(
       `SELECT id, status FROM price_observation
@@ -473,8 +486,8 @@ function canonicalizeRow(
       row.max_value_minor,
       normalizedMinimum,
       normalizedMaximum,
-      row.source_quantity,
-      row.source_unit,
+      sourceQuantity,
+      sourceUnit,
       rule.normalized_unit,
       rule.id,
       row.source_date,
@@ -520,6 +533,36 @@ function canonicalizeRow(
   }
 }
 
+type ResolvedItem = { item_id: string; quantity: string; unit: string };
+
+/** Exact reviewed label first, then the bundle's pattern rules; a pattern match is recorded so aliases, search, and audits see it. */
+function resolveItem(database: OperationalDatabase, row: StagingRow, bundle: MappingBundle): ResolvedItem | undefined {
+  const mapped = database
+    .prepare("SELECT item_id, origin FROM source_item_mapping WHERE source_id = ? AND source_label = ?")
+    .get(row.source_id, row.source_item_label) as { item_id: string; origin: string } | undefined;
+  if (mapped?.origin === "bundle") return { item_id: mapped.item_id, quantity: row.source_quantity, unit: row.source_unit };
+  const match = matchItemPattern(bundle, row.source_item_label, row.source_quantity, row.source_unit);
+  if (match) {
+    if (mapped?.item_id !== match.itemId) recordDerivedMapping(database, row, bundle, match.itemId);
+    return { item_id: match.itemId, quantity: match.quantity, unit: match.unit };
+  }
+  // A derived mapping is a cache of the rules; when the rules no longer match, the label is unmapped again.
+  if (mapped) database.prepare("DELETE FROM source_item_mapping WHERE source_id = ? AND source_label = ? AND origin = 'pattern'").run(row.source_id, row.source_item_label);
+  return undefined;
+}
+
+function recordDerivedMapping(database: OperationalDatabase, row: StagingRow, bundle: MappingBundle, itemId: string): void {
+  database
+    .prepare(
+      `INSERT INTO source_item_mapping (source_id, source_label, item_id, mapping_version, reviewed_by, reviewed_at, evidence_ref, origin)
+       VALUES (?, ?, ?, ?, ?, ?, ?, 'pattern')
+       ON CONFLICT(source_id, source_label) DO UPDATE SET item_id = excluded.item_id, mapping_version = excluded.mapping_version,
+         reviewed_by = excluded.reviewed_by, reviewed_at = excluded.reviewed_at, evidence_ref = excluded.evidence_ref, origin = 'pattern'`,
+    )
+    .run(row.source_id, row.source_item_label, itemId, bundle.mapping_version, bundle.reviewed_by, bundle.reviewed_at, `${bundle.evidence_ref}#pattern`);
+  database.prepare("DELETE FROM source_unmapped_label WHERE source_id = ? AND label_type = 'item' AND label = ?").run(row.source_id, row.source_item_label);
+}
+
 function unknownLabel(
   database: OperationalDatabase,
   runId: string,
@@ -532,6 +575,10 @@ function unknownLabel(
 ): void {
   if (options.unknownLabels !== "record") return quarantine(database, runId, row, reason, result);
   const now = new Date().toISOString();
+  // A label a previous bundle mapped and this one does not: its price must not stay in force under a mapping no longer reviewed.
+  database
+    .prepare("UPDATE price_observation SET status = 'superseded', revision_reason = 'mapping_or_parser_correction', updated_at = ? WHERE staging_id = ? AND status = 'active'")
+    .run(now, row.id);
   database
     .prepare(
       `INSERT INTO source_unmapped_label (

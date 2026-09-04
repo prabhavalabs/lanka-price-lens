@@ -146,6 +146,36 @@ export type ApiEnvelope<T> = {
 
 const stableId = z.string().regex(/^[a-z0-9][a-z0-9._:-]*$/u);
 
+/**
+ * Maps every source label that matches `match` (and none of `exclude`) to an item.
+ * Whole-catalogue stores list one commodity under many branded, pack-sized labels
+ * ("Bairaha Whole Chicken", "CIC Whole Chicken 1300G"); one reviewed pattern covers
+ * them all and keeps covering new brands without a bundle change.
+ */
+export const itemPatternSchema = z.object({
+  /** Case-insensitive regular expression tested against the source label. */
+  match: z.string().min(1),
+  /** Labels matching any of these are not this item (processed variants, flavours, pet food). */
+  exclude: z.array(z.string().min(1)).default([]),
+  /** Source units the rule accepts after pack parsing; empty accepts any unit the bundle converts. */
+  units: z.array(z.string().min(1)).default([]),
+  /** Smallest pack, in the item's normalized unit, that counts as a comparable price (keeps 180 ml tetra packs out of a per-litre series). */
+  min_quantity: z.number().positive().nullable().default(null),
+  /** "count" re-reads the pack as a piece count from the label ("Eggs 10S" is 10 pieces even when a tray weight is printed too). */
+  pack: z.enum(["as_captured", "count"]).default("as_captured"),
+});
+
+export type ItemPattern = z.infer<typeof itemPatternSchema>;
+
+function validRegex(source: string): boolean {
+  try {
+    new RegExp(source, "iu");
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export const mappingBundleSchema = z
   .object({
     schema_version: z.literal("1.0.0"),
@@ -175,10 +205,15 @@ export const mappingBundleSchema = z
         origin: z.string().min(1).nullable().default(null),
         size: z.string().min(1).nullable().default(null),
         grade: z.string().min(1).nullable(),
-        source_labels: z.array(z.string().min(1)).min(1),
+        /** Exact source labels, as the source prints them. */
+        source_labels: z.array(z.string().min(1)).default([]),
+        /** Pattern rules tried in order when no exact label matches; the first item whose rule matches wins. */
+        source_patterns: z.array(itemPatternSchema).default([]),
         expected_market_labels: z.array(z.string().min(1)).default([]),
       }),
     ),
+    /** Labels matching any of these are never mapped by a pattern (bundle-wide: sausages, ready meals, pet food, cosmetics). */
+    excluded_patterns: z.array(z.string().min(1)).default([]),
     markets: z.array(
       z.object({
         id: stableId,
@@ -225,9 +260,20 @@ export const mappingBundleSchema = z
     checkUnique(bundle.units.map((unit) => unit.source_unit), context, ["units"], "unit source labels");
     const productIds = new Set(bundle.products.map((product) => product.id));
     const marketLabels = new Set(bundle.markets.flatMap((market) => market.source_labels));
+    for (const [index, pattern] of bundle.excluded_patterns.entries()) {
+      if (!validRegex(pattern)) context.addIssue({ code: "custom", message: `Invalid regular expression ${pattern}`, path: ["excluded_patterns", index] });
+    }
     for (const [index, item] of bundle.items.entries()) {
       if (item.product_id && !productIds.has(item.product_id)) {
         context.addIssue({ code: "custom", message: `Unknown product ID ${item.product_id}`, path: ["items", index, "product_id"] });
+      }
+      if (!item.source_labels.length && !item.source_patterns.length) {
+        context.addIssue({ code: "custom", message: "An item needs at least one source label or pattern", path: ["items", index, "source_labels"] });
+      }
+      for (const [patternIndex, pattern] of item.source_patterns.entries()) {
+        for (const source of [pattern.match, ...pattern.exclude]) {
+          if (!validRegex(source)) context.addIssue({ code: "custom", message: `Invalid regular expression ${source}`, path: ["items", index, "source_patterns", patternIndex] });
+        }
       }
       for (const label of item.expected_market_labels) {
         if (!marketLabels.has(label)) {

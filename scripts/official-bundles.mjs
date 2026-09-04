@@ -142,11 +142,13 @@ const sources = {
       item_thalapath: ["Thalapath"], item_balaya: ["Balaya"], item_kelawalla: ["Kelewella", "Kelawalla"], item_mora: ["Mora"], item_salaya: ["Salaya"], item_parati: ["Parati"], item_hurulla: ["Hurulla"], item_linna: ["Linna"],
       item_prawns: ["Prawns"], item_dried_fish_katta: ["Dried Fish - Katta"], item_sprats: ["Spratts"], item_beef: ["Beef"], item_mutton: ["Mutton"], item_chicken: ["Chicken - Fresh"], item_chicken_broiler: ["Chicken - Broiler"],
       item_pork: ["Pork"], item_egg: ["Egg - ( Average )"], item_egg_red: ["Egg - Red"], item_egg_white: ["Egg - White"], item_tin_fish: ["Tin Fish"], item_banana_ambul: ["Sour Plantain"], item_banana_anamalu: ["Anamalu"],
+      // The weekly table lists full cream milk powder (400 g) by brand under one heading; the brand rows are that item.
+      item_milk_powder: ["Anchor", "Maliban", "Pelwatta"],
       item_banana_kolikuttu: ["Kolikuttu"], item_papaya: ["Papaw"], item_pineapple: ["Pineapple"], item_bread: ["Bread"],
     },
     units: ["kg", "g", "piece", "bunch", "ml", "l"],
     completeness: { minimum_item_coverage: 0.6, minimum_market_coverage: 1, minimum_cell_coverage: 0.5, minimum_mapping_coverage: 0.7, minimum_score: 0.5 },
-    mapping_version: "dcs-weekly-2026-09-04.1",
+    mapping_version: "dcs-weekly-2026-09-04.2",
   },
 };
 

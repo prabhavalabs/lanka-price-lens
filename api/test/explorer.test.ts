@@ -74,7 +74,9 @@ function seed(database: ReturnType<typeof openOperationalDatabase>): void {
   add("pub_h", "art_h", "item_big_onion", "market_dambulla", "wholesale_observed", "2026-09-01", 250);
   add("pub_h", "art_h", "item_big_onion", "market_dambulla", "wholesale_observed", "2026-09-03", 275);
   add("pub_h", "art_h", "item_big_onion", "market_pettah", "wholesale_observed", "2026-09-03", 268);
+  // Two product labels on the Keells shelf the same day: the store's price is their range.
   add("pub_k", "art_k", "item_big_onion", "market_keells_online", "retail_online_store", "2026-09-04", 370);
+  add("pub_k", "art_k", "item_big_onion", "market_keells_online", "retail_online_store", "2026-09-04", 390);
   add("pub_c", "art_c", "item_big_onion", "market_cargills_online", "retail_online_store", "2026-09-04", 400);
   add("pub_h", "art_h", "item_big_onion_imported", "market_dambulla", "wholesale_observed", "2026-09-03", 255);
 }
@@ -123,9 +125,12 @@ test("explorer item view groups sellers, averages within a unit, and trends per 
     const wholesale = detail.summary.find((entry) => entry.group === "wholesale")!;
     assert.deepEqual([wholesale.sellers, wholesale.average, wholesale.lowest?.market_id, wholesale.highest?.market_id, wholesale.unit], [2, 271.5, "market_pettah", "market_dambulla", "kg"]);
     const supermarket = detail.summary.find((entry) => entry.group === "supermarket")!;
-    assert.deepEqual([supermarket.sellers, supermarket.average, supermarket.lowest?.market_label], [2, 385, "Keells Online"]);
+    assert.deepEqual([supermarket.sellers, supermarket.average, supermarket.lowest?.market_label], [2, 390, "Keells Online"]);
+    const keells = detail.latest.find((entry) => entry.market_id === "market_keells_online")!;
+    assert.deepEqual([keells.low, keells.high, keells.mid, keells.products], [370, 390, 380, 2], "a store's daily price spans every product label of the item");
+    assert.equal(detail.latest.find((entry) => entry.market_id === "market_cargills_online")?.products, 1);
     assert.equal(detail.summary.find((entry) => entry.group === "retail_market")?.sellers, 0);
-    assert.equal(detail.markup_pct, 41.8);
+    assert.equal(detail.markup_pct, 43.6);
     const dambulla = detail.series.find((series) => series.market_id === "market_dambulla")!;
     assert.deepEqual([dambulla.days, dambulla.first.mid, dambulla.last.mid, dambulla.change_pct], [2, 250, 275, 10]);
     assert.equal(detail.series[0]?.group, "wholesale", "wholesale series come first");

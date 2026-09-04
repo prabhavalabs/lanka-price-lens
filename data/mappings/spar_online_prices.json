@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "mapping_version": "spar-online-2026-09-04.3",
+  "mapping_version": "spar-online-2026-09-04.5",
   "source_id": "spar_online_prices",
   "reviewed_by": "repository-owner",
   "reviewed_at": "2026-09-04",
@@ -42,6 +42,13 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_beef",
+      "category": "meat",
+      "canonical_label_en": "Beef",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_beetroot",
       "category": "vegetable",
       "canonical_label_en": "Beetroot",
@@ -70,6 +77,13 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_bread",
+      "category": "other",
+      "canonical_label_en": "Bread",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_brinjals",
       "category": "vegetable",
       "canonical_label_en": "Brinjals",
@@ -80,6 +94,13 @@
       "id": "product_broccoli",
       "category": "vegetable",
       "canonical_label_en": "Broccoli",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_butter",
+      "category": "dairy",
+      "canonical_label_en": "Butter",
       "canonical_label_si": null,
       "canonical_label_ta": null
     },
@@ -119,9 +140,44 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_chicken",
+      "category": "meat",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_chickpea",
+      "category": "grain",
+      "canonical_label_en": "Chickpea (Kadalai)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coconut",
+      "category": "vegetable",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coconut_oil",
+      "category": "other",
+      "canonical_label_en": "Coconut Oil",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_coriander_leaves",
       "category": "vegetable",
       "canonical_label_en": "Coriander Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cowpea",
+      "category": "grain",
+      "canonical_label_en": "Cowpea",
       "canonical_label_si": null,
       "canonical_label_ta": null
     },
@@ -140,6 +196,13 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_dried_chillies",
+      "category": "other",
+      "canonical_label_en": "Dried Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_drumstick",
       "category": "vegetable",
       "canonical_label_en": "Drumstick",
@@ -147,9 +210,23 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_egg",
+      "category": "other",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_eggplant",
       "category": "vegetable",
       "canonical_label_en": "Eggplant",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_fresh_milk",
+      "category": "dairy",
+      "canonical_label_en": "Fresh Milk",
       "canonical_label_si": null,
       "canonical_label_ta": null
     },
@@ -171,6 +248,13 @@
       "id": "product_green_chillies",
       "category": "vegetable",
       "canonical_label_en": "Green Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_green_gram",
+      "category": "grain",
+      "canonical_label_en": "Green Gram",
       "canonical_label_si": null,
       "canonical_label_ta": null
     },
@@ -231,6 +315,13 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_maldive_fish",
+      "category": "fish",
+      "canonical_label_en": "Maldive Fish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_mango",
       "category": "fruit",
       "canonical_label_en": "Mango",
@@ -245,9 +336,23 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_milk_powder",
+      "category": "dairy",
+      "canonical_label_en": "Full Cream Milk Powder",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_mint_leaves",
       "category": "vegetable",
       "canonical_label_en": "Mint Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mutton",
+      "category": "meat",
+      "canonical_label_en": "Mutton",
       "canonical_label_si": null,
       "canonical_label_ta": null
     },
@@ -294,6 +399,13 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_pork",
+      "category": "meat",
+      "canonical_label_en": "Pork",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_potato",
       "category": "vegetable",
       "canonical_label_en": "Potato",
@@ -315,9 +427,79 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_red_dhal",
+      "category": "grain",
+      "canonical_label_en": "Red Dhal (Mysore Dhal)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_red_onion",
       "category": "vegetable",
       "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_keeri_samba",
+      "category": "grain",
+      "canonical_label_en": "Keeri Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_kekulu_red",
+      "category": "grain",
+      "canonical_label_en": "Kekulu Rice (Red)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_kekulu_white",
+      "category": "grain",
+      "canonical_label_en": "Kekulu Rice (White)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_nadu",
+      "category": "grain",
+      "canonical_label_en": "Nadu Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_nadu_red",
+      "category": "grain",
+      "canonical_label_en": "Nadu Rice (Red)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_ponni_samba",
+      "category": "grain",
+      "canonical_label_en": "Ponni Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_raw_red",
+      "category": "grain",
+      "canonical_label_en": "Raw Red Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_raw_white",
+      "category": "grain",
+      "canonical_label_en": "Raw White Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_rice_samba",
+      "category": "grain",
+      "canonical_label_en": "Samba Rice",
       "canonical_label_si": null,
       "canonical_label_ta": null
     },
@@ -336,6 +518,13 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_salt",
+      "category": "other",
+      "canonical_label_en": "Salt",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_snake_gourd",
       "category": "vegetable",
       "canonical_label_en": "Snake Gourd",
@@ -346,6 +535,20 @@
       "id": "product_spinach",
       "category": "vegetable",
       "canonical_label_en": "Spinach (Nivithi)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sprats",
+      "category": "fish",
+      "canonical_label_en": "Sprats (Dried)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sugar_white",
+      "category": "other",
+      "canonical_label_en": "White Sugar",
       "canonical_label_si": null,
       "canonical_label_ta": null
     },
@@ -364,9 +567,23 @@
       "canonical_label_ta": null
     },
     {
+      "id": "product_tin_fish",
+      "category": "fish",
+      "canonical_label_en": "Tinned Fish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
       "id": "product_tomato",
       "category": "vegetable",
       "canonical_label_en": "Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_wheat_flour",
+      "category": "grain",
+      "canonical_label_en": "Wheat Flour",
       "canonical_label_si": null,
       "canonical_label_ta": null
     },
@@ -395,7 +612,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_beans",
@@ -413,7 +631,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_beetroot_general",
@@ -431,7 +650,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_bitter_gourd",
@@ -449,7 +669,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_brinjals",
@@ -467,7 +688,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_capsicum",
@@ -485,7 +707,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_carrot",
@@ -503,7 +726,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_cucumber",
@@ -521,7 +745,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_drumstick",
@@ -539,7 +764,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_eggplant",
@@ -557,7 +783,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_green_chillies",
@@ -575,7 +802,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_ladies_fingers",
@@ -593,7 +821,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_leeks",
@@ -611,7 +840,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_long_beans",
@@ -629,7 +859,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_luffa",
@@ -647,7 +878,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_manioc",
@@ -665,7 +897,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_pumpkin",
@@ -683,7 +916,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_radish",
@@ -701,7 +935,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_snake_gourd",
@@ -719,7 +954,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_sweet_potato",
@@ -737,7 +973,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_tomato",
@@ -755,7 +992,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_lime",
@@ -773,7 +1011,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_big_onion",
@@ -791,7 +1030,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_cabbage",
@@ -809,7 +1049,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_potato",
@@ -827,7 +1068,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_red_onion",
@@ -845,7 +1087,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_garlic",
@@ -863,7 +1106,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_ginger",
@@ -881,7 +1125,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_cauliflower",
@@ -899,7 +1144,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_broccoli",
@@ -917,7 +1163,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_iceberg_lettuce",
@@ -935,7 +1182,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_spinach",
@@ -953,7 +1201,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_curry_leaves",
@@ -971,7 +1220,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_thalana_batu",
@@ -989,7 +1239,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_batana",
@@ -1007,7 +1258,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_plantain_flower",
@@ -1025,7 +1277,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_cabbage_leaves",
@@ -1043,7 +1296,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_salad_cucumber",
@@ -1061,7 +1315,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_coriander_leaves",
@@ -1079,7 +1334,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_salad_leaves",
@@ -1097,7 +1353,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_mint_leaves",
@@ -1115,7 +1372,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_onion_leaves",
@@ -1133,7 +1391,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_bell_pepper_green",
@@ -1151,7 +1410,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_bell_pepper_red",
@@ -1169,7 +1429,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_bell_pepper_yellow",
@@ -1187,7 +1448,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_avocado",
@@ -1205,7 +1467,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_passion_fruit",
@@ -1223,7 +1486,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_wood_apple",
@@ -1241,7 +1505,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_papaya",
@@ -1259,7 +1524,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_pineapple",
@@ -1277,7 +1543,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_lemon",
@@ -1295,7 +1562,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_banana_ambul",
@@ -1313,7 +1581,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_banana_kolikuttu",
@@ -1331,7 +1600,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_banana_seeni",
@@ -1349,7 +1619,27 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
+    },
+    {
+      "id": "item_coconut",
+      "product_id": "product_coconut",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "COCONUTS, each"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_banana",
@@ -1367,7 +1657,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_mango_tjc",
@@ -1385,7 +1676,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_mango_karathakolomban",
@@ -1403,7 +1695,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_orange",
@@ -1421,7 +1714,8 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
-      ]
+      ],
+      "source_patterns": []
     },
     {
       "id": "item_guava",
@@ -1439,6 +1733,1253 @@
       ],
       "expected_market_labels": [
         "SPAR Online"
+      ],
+      "source_patterns": []
+    },
+    {
+      "id": "item_chicken",
+      "product_id": "product_chicken",
+      "entity_type": "commodity",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bwhole\\b)(?=.*\\bchicken\\b)",
+          "exclude": [
+            "skin ?less|s\\/l\\b",
+            "pre.?cut|precut|\\bcut\\b|pieces|curry",
+            "breast|thigh|drum ?(stick|let)|wing|\\blegs?\\b|fillet|gizzard|liver|feet|neck|cubes?",
+            "sea chicken"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.8,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_chicken_whole_skinless",
+      "product_id": "product_chicken",
+      "entity_type": "variety",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Whole, skinless",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bwhole\\b)(?=.*\\bchicken\\b)(?=.*(skin ?less|s\\/l\\b))",
+          "exclude": [
+            "pre.?cut|precut|\\bcut\\b|pieces|curry",
+            "breast|thigh|drum ?(stick|let)|wing|\\blegs?\\b|fillet|gizzard|liver|feet|neck|cubes?"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.8,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_chicken_curry_cut",
+      "product_id": "product_chicken",
+      "entity_type": "variety",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Curry cut",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bchicken\\b)(?=.*(pre.?cut|precut|curry cut|curry pieces|chicken pieces))",
+          "exclude": [
+            "skin ?less|s\\/l\\b",
+            "breast|thigh|drum ?(stick|let)|wing|\\blegs?\\b|fillet|gizzard|liver|feet|neck|cubes?",
+            "boneless"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.8,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_chicken_curry_cut_skinless",
+      "product_id": "product_chicken",
+      "entity_type": "variety",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Curry cut, skinless",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bchicken\\b)(?=.*(pre.?cut|precut|curry cut|curry pieces))(?=.*(skin ?less|s\\/l\\b))",
+          "exclude": [
+            "breast|thigh|drum ?(stick|let)|wing|\\blegs?\\b|fillet|gizzard|liver|feet|neck|cubes?",
+            "boneless"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.8,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_chicken_breast",
+      "product_id": "product_chicken",
+      "entity_type": "variety",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Breast, boneless",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bchicken\\b)(?=.*breast)",
+          "exclude": [
+            "stuffed|sea chicken|bone.?in",
+            "krest|crizzpy|sam[’'`]?s\\b|snacky|goldi|crescent|elephant house|\\beh\\b|prima\\b|wow.?b|drumlet"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_chicken_drumsticks",
+      "product_id": "product_chicken",
+      "entity_type": "variety",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Drumsticks",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bchicken\\b)(?=.*drum ?stick)",
+          "exclude": [
+            "krest|crizzpy|sam[’'`]?s\\b|snacky|goldi|crescent|elephant house|\\beh\\b|prima\\b|wow.?b|drumlet"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.24,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_chicken_thighs",
+      "product_id": "product_chicken",
+      "entity_type": "variety",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Thighs",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bchicken\\b)(?=.*thigh)",
+          "exclude": [
+            "krest|crizzpy|sam[’'`]?s\\b|snacky|goldi|crescent|elephant house|\\beh\\b|prima\\b|wow.?b|drumlet"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_chicken_legs",
+      "product_id": "product_chicken",
+      "entity_type": "variety",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Whole legs",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bchicken\\b)(?=.*\\blegs?\\b)",
+          "exclude": [
+            "thigh|drum",
+            "krest|crizzpy|sam[’'`]?s\\b|snacky|goldi|crescent|elephant house|\\beh\\b|prima\\b|wow.?b|drumlet"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_chicken_wings",
+      "product_id": "product_chicken",
+      "entity_type": "variety",
+      "canonical_label_en": "Chicken",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Wings",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bchicken\\b)(?=.*wing)",
+          "exclude": [
+            "krest|crizzpy|sam[’'`]?s\\b|snacky|goldi|crescent|elephant house|\\beh\\b|prima\\b|wow.?b|drumlet"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_beef",
+      "product_id": "product_beef",
+      "entity_type": "commodity",
+      "canonical_label_en": "Beef",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "\\bbeef\\b",
+          "exclude": [
+            "corned|canned|aust|australian|imported|\\bnz\\b|new zealand|liver|tripe|babath|bones?\\b|peanut|tomato|curry\\b(?! beef)",
+            "krest|crizzpy|sam[’'`]?s\\b|snacky|goldi|crescent|elephant house|\\beh\\b|prima\\b|wow.?b|drumlet"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_pork",
+      "product_id": "product_pork",
+      "entity_type": "commodity",
+      "canonical_label_en": "Pork",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "\\bpork\\b",
+          "exclude": [
+            "corned|canned|aust|australian|imported|gammon|mortadella|stuffing|knuckle|bones?\\b|belly|fillet|chops?\\b|paprika|cumberland",
+            "krest|crizzpy|sam[’'`]?s\\b|snacky|goldi|crescent|elephant house|\\beh\\b|prima\\b|wow.?b|drumlet"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_mutton",
+      "product_id": "product_mutton",
+      "entity_type": "commodity",
+      "canonical_label_en": "Mutton",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "\\bmutton\\b",
+          "exclude": [
+            "aust|australian|imported|\\bnz\\b|corned|canned|bir[iy]?yani|bones?\\b",
+            "krest|crizzpy|sam[’'`]?s\\b|snacky|goldi|crescent|elephant house|\\beh\\b|prima\\b|wow.?b|drumlet"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_egg_white",
+      "product_id": "product_egg",
+      "entity_type": "variety",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "White",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\beggs?\\b)(?=.*\\bwhite\\b)",
+          "exclude": [
+            "omega|free range|organic|quail|duck|colou?ring|mayonn?aise|noodle|eggless|egg ?plants?|hopper|dressing|yolk|liquid|\\bnest\\b"
+          ],
+          "units": [
+            "piece"
+          ],
+          "min_quantity": null,
+          "pack": "count"
+        }
+      ]
+    },
+    {
+      "id": "item_egg_red",
+      "product_id": "product_egg",
+      "entity_type": "variety",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Red",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\beggs?\\b)(?=.*(\\bbrown\\b|\\bred\\b))",
+          "exclude": [
+            "omega|free range|organic|quail|duck|colou?ring|mayonn?aise|noodle|eggless|egg ?plants?|hopper|dressing|yolk|liquid|\\bnest\\b"
+          ],
+          "units": [
+            "piece"
+          ],
+          "min_quantity": null,
+          "pack": "count"
+        }
+      ]
+    },
+    {
+      "id": "item_egg",
+      "product_id": "product_egg",
+      "entity_type": "commodity",
+      "canonical_label_en": "Egg",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "\\beggs?\\b",
+          "exclude": [
+            "omega|free range|organic|quail|duck|colou?ring|mayonn?aise|noodle|eggless|egg ?plants?|hopper|dressing|yolk|liquid|\\bnest\\b",
+            "\\bwhite\\b|\\bbrown\\b|\\bred\\b"
+          ],
+          "units": [
+            "piece"
+          ],
+          "min_quantity": null,
+          "pack": "count"
+        }
+      ]
+    },
+    {
+      "id": "item_fresh_milk",
+      "product_id": "product_fresh_milk",
+      "entity_type": "commodity",
+      "canonical_label_en": "Fresh Milk",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bmilk\\b)(?=.*(fresh|uht|u h t|pasteuri[sz]ed|pasturi[sz]ed|full cream|tetra|white milk|pouch))",
+          "exclude": [
+            "powder|strawberry|vanilla|banana|faluda|coffee|\\btea\\b|malt|non.?fat|low.?fat|skim|lactose|goat|almond|\\bsoy|\\boat|coconut|condensed|evaporated|yog|curd|formula|baby|infant|kids|pedia|ensure|anlene|glucerna|horlicks|milo|nestomalt|ovaltine|\\bdrink\\b|shake|kiri|whipping|cooking cream|sour cream|thickened|creamer"
+          ],
+          "units": [
+            "l",
+            "ml"
+          ],
+          "min_quantity": 0.45,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_milk_powder",
+      "product_id": "product_milk_powder",
+      "entity_type": "commodity",
+      "canonical_label_en": "Full Cream Milk Powder",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "milk powder|\\bmilk\\b.*powder|powder.*\\bmilk\\b",
+          "exclude": [
+            "non.?fat|skim|low.?fat|high calcium|anlene|glucerna|ensure|protinex|pediasure|lactogen|lactogrow|activgro|\\bnan\\b|s-?26|similac|cow ?& ?gate|formula|infant|baby|months|years|\\d\\s*-\\s*\\d|kids|junior|coconut|goat|malt|creamer|whitener|ariya|\\d\\s*in\\s*1|kirithe|blend|everyday|melko|enfamama|\\bmama\\b|materna|anmum"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.35,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_butter_unsalted",
+      "product_id": "product_butter",
+      "entity_type": "variety",
+      "canonical_label_en": "Butter",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Unsalted",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bbutter\\b)(?=.*unsal\\w*)",
+          "exclude": [
+            "peanut|p\\/butter|b\\/butter|cocoa|shea|coconut|garlic|chicken|beans?\\b|cashew|almond|\\bnuts?\\b|caramel|popcorn|ghee|croissant|scotch|milk\\b|margarine|butterfly|kiri|naan|prawn|corn|lettuce|cultured|body|curd|chil+i|chiplet|bread"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_butter_salted",
+      "product_id": "product_butter",
+      "entity_type": "variety",
+      "canonical_label_en": "Butter",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Salted",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "\\bbutter\\b",
+          "exclude": [
+            "peanut|p\\/butter|b\\/butter|cocoa|shea|coconut|garlic|chicken|beans?\\b|cashew|almond|\\bnuts?\\b|caramel|popcorn|ghee|croissant|scotch|milk\\b|margarine|butterfly|kiri|naan|prawn|corn|lettuce|cultured|body|curd|chil+i|chiplet|bread",
+            "unsal\\w*"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_rice_nadu_red",
+      "product_id": "product_rice_nadu_red",
+      "entity_type": "commodity",
+      "canonical_label_en": "Nadu Rice (Red)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\bnadu\\b)(?=.*(\\bred\\b|rathu|rosa))",
+          "exclude": [
+            "flour|noodle|flake|milk|kanji|porridge|bran|vinegar|paper|wine|bir[iy]?yani|pilau|instant|ready|\\bcook\\b|\\bmix\\b|papadam|murukku|hopper|pittu|roti|treat|cereal|oats|quinoa|brown rice|basmati|broken|suduru|glutinous|sticky|jasmine|sushi|arborio|sprout|puffed|\\bbags?\\b|traditional|heirloom|organic|kalu ?heenati|heenati|suwandel|pachchaperumal|madathawalu|rathdel|kuruluthuda"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_rice_nadu",
+      "product_id": "product_rice_nadu",
+      "entity_type": "commodity",
+      "canonical_label_en": "Nadu Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "\\bnadu\\b",
+          "exclude": [
+            "flour|noodle|flake|milk|kanji|porridge|bran|vinegar|paper|wine|bir[iy]?yani|pilau|instant|ready|\\bcook\\b|\\bmix\\b|papadam|murukku|hopper|pittu|roti|treat|cereal|oats|quinoa|brown rice|basmati|broken|suduru|glutinous|sticky|jasmine|sushi|arborio|sprout|puffed|\\bbags?\\b|traditional|heirloom|organic|kalu ?heenati|heenati|suwandel|pachchaperumal|madathawalu|rathdel|kuruluthuda",
+            "\\bred\\b|rathu|rosa"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_rice_keeri_samba",
+      "product_id": "product_rice_keeri_samba",
+      "entity_type": "commodity",
+      "canonical_label_en": "Keeri Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "kee?ri ?samba|keerisamba",
+          "exclude": [
+            "flour|noodle|flake|milk|kanji|porridge|bran|vinegar|paper|wine|bir[iy]?yani|pilau|instant|ready|\\bcook\\b|\\bmix\\b|papadam|murukku|hopper|pittu|roti|treat|cereal|oats|quinoa|brown rice|basmati|broken|suduru|glutinous|sticky|jasmine|sushi|arborio|sprout|puffed|\\bbags?\\b|traditional|heirloom|organic|kalu ?heenati|heenati|suwandel|pachchaperumal|madathawalu|rathdel|kuruluthuda",
+            "ponni"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_rice_ponni_samba_imported",
+      "product_id": "product_rice_ponni_samba",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ponni Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": "Imported",
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "\\bponni\\b",
+          "exclude": [
+            "flour|noodle|flake|milk|kanji|porridge|bran|vinegar|paper|wine|bir[iy]?yani|pilau|instant|ready|\\bcook\\b|\\bmix\\b|papadam|murukku|hopper|pittu|roti|treat|cereal|oats|quinoa|brown rice|basmati|broken|suduru|glutinous|sticky|jasmine|sushi|arborio|sprout|puffed|\\bbags?\\b|traditional|heirloom|organic|kalu ?heenati|heenati|suwandel|pachchaperumal|madathawalu|rathdel|kuruluthuda"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_rice_samba",
+      "product_id": "product_rice_samba",
+      "entity_type": "commodity",
+      "canonical_label_en": "Samba Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "\\bsamba\\b",
+          "exclude": [
+            "flour|noodle|flake|milk|kanji|porridge|bran|vinegar|paper|wine|bir[iy]?yani|pilau|instant|ready|\\bcook\\b|\\bmix\\b|papadam|murukku|hopper|pittu|roti|treat|cereal|oats|quinoa|brown rice|basmati|broken|suduru|glutinous|sticky|jasmine|sushi|arborio|sprout|puffed|\\bbags?\\b|traditional|heirloom|organic|kalu ?heenati|heenati|suwandel|pachchaperumal|madathawalu|rathdel|kuruluthuda",
+            "kee?ri|kiri|ponni|\\bred\\b|rathu|rosa|kekulu"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_rice_kekulu_red",
+      "product_id": "product_rice_kekulu_red",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kekulu Rice (Red)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*kekulu)(?=.*(\\bred\\b|rosa|rathu))",
+          "exclude": [
+            "flour|noodle|flake|milk|kanji|porridge|bran|vinegar|paper|wine|bir[iy]?yani|pilau|instant|ready|\\bcook\\b|\\bmix\\b|papadam|murukku|hopper|pittu|roti|treat|cereal|oats|quinoa|brown rice|basmati|broken|suduru|glutinous|sticky|jasmine|sushi|arborio|sprout|puffed|\\bbags?\\b|traditional|heirloom|organic|kalu ?heenati|heenati|suwandel|pachchaperumal|madathawalu|rathdel|kuruluthuda"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_rice_kekulu_white",
+      "product_id": "product_rice_kekulu_white",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kekulu Rice (White)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*kekulu)(?!.*(\\bred\\b|rosa|rathu))",
+          "exclude": [
+            "flour|noodle|flake|milk|kanji|porridge|bran|vinegar|paper|wine|bir[iy]?yani|pilau|instant|ready|\\bcook\\b|\\bmix\\b|papadam|murukku|hopper|pittu|roti|treat|cereal|oats|quinoa|brown rice|basmati|broken|suduru|glutinous|sticky|jasmine|sushi|arborio|sprout|puffed|\\bbags?\\b|traditional|heirloom|organic|kalu ?heenati|heenati|suwandel|pachchaperumal|madathawalu|rathdel|kuruluthuda"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_rice_raw_red",
+      "product_id": "product_rice_raw_red",
+      "entity_type": "commodity",
+      "canonical_label_en": "Raw Red Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\brice\\b)(?=.*\\braw\\b)(?=.*(\\bred\\b|rathu))",
+          "exclude": [
+            "flour|noodle|flake|milk|kanji|porridge|bran|vinegar|paper|wine|bir[iy]?yani|pilau|instant|ready|\\bcook\\b|\\bmix\\b|papadam|murukku|hopper|pittu|roti|treat|cereal|oats|quinoa|brown rice|basmati|broken|suduru|glutinous|sticky|jasmine|sushi|arborio|sprout|puffed|\\bbags?\\b|traditional|heirloom|organic|kalu ?heenati|heenati|suwandel|pachchaperumal|madathawalu|rathdel|kuruluthuda",
+            "nadu|samba|kekulu"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_rice_raw_white",
+      "product_id": "product_rice_raw_white",
+      "entity_type": "commodity",
+      "canonical_label_en": "Raw White Rice",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "^(?=.*\\brice\\b)(?=.*\\braw\\b)(?=.*(white|sudu))",
+          "exclude": [
+            "flour|noodle|flake|milk|kanji|porridge|bran|vinegar|paper|wine|bir[iy]?yani|pilau|instant|ready|\\bcook\\b|\\bmix\\b|papadam|murukku|hopper|pittu|roti|treat|cereal|oats|quinoa|brown rice|basmati|broken|suduru|glutinous|sticky|jasmine|sushi|arborio|sprout|puffed|\\bbags?\\b|traditional|heirloom|organic|kalu ?heenati|heenati|suwandel|pachchaperumal|madathawalu|rathdel|kuruluthuda",
+            "nadu|samba|kekulu"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.1,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_red_dhal",
+      "product_id": "product_red_dhal",
+      "entity_type": "commodity",
+      "canonical_label_en": "Red Dhal (Mysore Dhal)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "(\\bred|mysoo?re?|masoor|masur|jumbo|\\bparippu)\\s*dha+l|^dhal\\s*-?\\s*bulk|dha+l\\b.*bulk",
+          "exclude": [
+            "salted|toor|chann?a|gram|orid|urad|moong|vadai|wade|cup dhal|papadam|curry"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_green_gram",
+      "product_id": "product_green_gram",
+      "entity_type": "commodity",
+      "canonical_label_en": "Green Gram",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "green gram",
+          "exclude": [
+            "dha+l|flour|sprout|kadala|papadam"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_chickpea",
+      "product_id": "product_chickpea",
+      "entity_type": "commodity",
+      "canonical_label_en": "Chickpea (Kadalai)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "chick ?peas?|\\bkadala\\b|\\bchann?a\\b",
+          "exclude": [
+            "flour|dha+l|boiled|tinned|canned|rata|peanut|ground|besan|parippu|thel"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_cowpea",
+      "product_id": "product_cowpea",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cowpea",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "cow ?peas?",
+          "exclude": [
+            "flour|sprout"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.25,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_sugar_white",
+      "product_id": "product_sugar_white",
+      "entity_type": "commodity",
+      "canonical_label_en": "White Sugar",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "white sugar|sugar white|^sugar\\b|sugar bulk",
+          "exclude": [
+            "soft|brown|icing|castor|caster|cane|jaggery|palm|coconut|cube|syrup|substitute|sweetener|free|less|reduced|zero|jam|drink|juice|cereal|kithul|demerara|vanilla|dark|lump|treacle|plantain|crystals?\\b"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.4,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_wheat_flour",
+      "product_id": "product_wheat_flour",
+      "entity_type": "commodity",
+      "canonical_label_en": "Wheat Flour",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "(wheat|all purpose|family|plain) flour|flour.*\\bwheat\\b",
+          "exclude": [
+            "steamed|atta|self.?rais|bread flour|whole ?wheat|whole ?meal|rice|kurakkan|gram|besan|chickpea|ulundu|undu|semolina|tapioca|manioc|coconut|oat|almond|tempura|crumb|dosa|idli|kithul|pancake|hopper|pittu|roti|string|batter|corn|maize"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.5,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_coconut_oil",
+      "product_id": "product_coconut_oil",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coconut Oil",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "coconut oil",
+          "exclude": [
+            "virgin|massage|infused|chilli|garlic|ghee|scented|organic|jelly|miracle"
+          ],
+          "units": [
+            "l",
+            "ml"
+          ],
+          "min_quantity": 0.35,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_salt",
+      "product_id": "product_salt",
+      "entity_type": "commodity",
+      "canonical_label_en": "Salt",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "(table|cooking|crystal|iodi[sz]ed|refined|fine|powder|pvd|rock|sea) salt|^salt\\b|salt bulk",
+          "exclude": [
+            "pepper|lime|himalayan|pink|bath|peanut|cashew|butter|mixture|caramel|lemon|garlic|celery|onion|bamboo|black|sprinkle|mint|sozo|spray|epsom|salted"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.35,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_bread",
+      "product_id": "product_bread",
+      "entity_type": "commodity",
+      "canonical_label_en": "Bread",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "sandwich bread|white bread|\\bbread\\b",
+          "exclude": [
+            "kurakkan|garlic|fruit|butter|kimbula|malt|whole|brown|wheat|multigrain|crust|stick|pita|naan|flour|sour|cheese|milk bread|arabic|flat|crumb|talk|diet|\\boat|rye|seed|sugar|tea bread|kithul|coconut|pudding|toast|french|banana|bakery|\\(\\s*[sml]\\s*\\)"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.3,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_sprats",
+      "product_id": "product_sprats",
+      "entity_type": "commodity",
+      "canonical_label_en": "Sprats (Dried)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "\\bsprat+s?\\b",
+          "exclude": [
+            "ready to cook|\\bhot\\b"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.09,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_maldive_fish",
+      "product_id": "product_maldive_fish",
+      "entity_type": "commodity",
+      "canonical_label_en": "Maldive Fish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "maldive fish|umbalakada",
+          "exclude": [
+            "katta|\\bmix\\b"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.09,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_tin_fish",
+      "product_id": "product_tin_fish",
+      "entity_type": "commodity",
+      "canonical_label_en": "Tinned Fish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "canned fish|tin(ned)? fish|canned mackerel|\\bmackerel\\b|jack mackerel",
+          "exclude": [
+            "ambul|thiyal|fillet|fresh|frozen|in .*oil|canola|sardine|tuna|salmon|dried|dry fish"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.15,
+          "pack": "as_captured"
+        }
+      ]
+    },
+    {
+      "id": "item_dried_chillies",
+      "product_id": "product_dried_chillies",
+      "entity_type": "commodity",
+      "canonical_label_en": "Dried Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [],
+      "expected_market_labels": [
+        "SPAR Online"
+      ],
+      "source_patterns": [
+        {
+          "match": "dr(ied|y) (red )?chill?i?e?s?\\b|chill?ies? dr(ied|y)",
+          "exclude": [
+            "powder|flake|crush|pieces|green|capsicum"
+          ],
+          "units": [
+            "kg",
+            "g"
+          ],
+          "min_quantity": 0.09,
+          "pack": "as_captured"
+        }
       ]
     }
   ],
@@ -1488,7 +3029,30 @@
       "factor_numerator": 1,
       "factor_denominator": 1,
       "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_l_exact",
+      "source_unit": "l",
+      "normalized_unit": "l",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_ml_to_l",
+      "source_unit": "ml",
+      "normalized_unit": "l",
+      "factor_numerator": 1,
+      "factor_denominator": 1000,
+      "rounding_mode": "half_away_from_zero"
     }
+  ],
+  "excluded_patterns": [
+    "saus\\w*|bockwurst|hot ?dog|frank|salami|pepperoni|mortadella|\\bham\\b|bacon|gammon|luncheon|lingus|chorizo|nugget|meat ?balls?|burger|patt(y|ies)|cutlet|kiev|satay|kebab|kochchi|bites|fingers\\b(?! )|strips|crispy|crumbed|breaded|battered|dumpling|samosa|spring roll|\\brolls?\\b|pizza|lasagn[ae]|pastry|puff|\\bbuns?\\b|jerky|murukku|shortbread",
+    "marinated|seasoned|smoke\\w*|roast\\w*|fried|devilled|grilled|bbq|barbecue|spicy|kuruma|curry paste|curry mix|masala|seasoning|flavou?r|vanilla|strawberry|stock cube|soup|gravy|sauce|spread|paste|pickle|chutney|sambol|badu[mn]|bedun|ready to (eat|cook)|\\brte\\b|heat ?& ?eat|cooked|snack|cracker|biscuit|cookie|cake|mousse|dessert|ice cream|chocolate|toffee|candy|dosa|\\bmix\\b|mixture",
+    "soya|\\bsoy\\b|vegan|tofu|mock|plant.based|analogue",
+    "\\bdog\\b|puppy|\\bcat\\b|kitten|\\bpet\\b|drools|pedigree|whiskas|aquarium|\\bbird\\b",
+    "soap|shampoo|lotion|body (milk|wash|butter)|\\bhair\\b|\\bface\\b|\\bskin\\b(?!less)|detergent|cleaner|scrub|toothpaste|t\\/paste|\\bpen\\b|\\bscales?\\b|beater|whisk|scraper|cooker|\\bgel\\b"
   ],
   "completeness": {
     "minimum_item_coverage": 0.5,
