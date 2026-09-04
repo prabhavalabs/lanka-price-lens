@@ -10,6 +10,7 @@
     "./manifest": "./src/manifest.ts",
     "./pipeline": "./src/pipeline.ts",
     "./retail": "./src/retail/index.ts",
+    "./warehouse": "./src/warehouse/index.ts",
     "./workflows": "./src/workflows.ts"
   },
   "scripts": {

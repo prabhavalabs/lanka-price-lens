@@ -19,6 +19,7 @@ function seededDatabase(): { database: OperationalDatabase; cleanup: () => void 
     INSERT INTO product (id, category, canonical_label_en) VALUES ('product_carrot', 'vegetable', 'Carrot');
     INSERT INTO item (id, product_id, entity_type, canonical_label_en) VALUES ('item_carrot', 'product_carrot', 'commodity', 'Carrot');
     INSERT INTO unit_conversion_rule (id, source_unit, normalized_unit, factor_numerator, factor_denominator, rounding_mode, mapping_version) VALUES ('unit_kg_exact', 'kg', 'kg', 1, 1, 'half_away_from_zero', 'v1');
+    INSERT INTO source_item_mapping (source_id, source_label, item_id, mapping_version, reviewed_by, reviewed_at, evidence_ref) VALUES ('harti', 'Carrot', 'item_carrot', 'v1', 'tests', '2026-09-01', 'docs'), ('keells', 'Carrot', 'item_carrot', 'v1', 'tests', '2026-09-01', 'docs');
     INSERT INTO source_publication (id, source_id, source_publication_key, title, published_at, observed_from, observed_to, landing_url, download_url, status, first_seen_at, last_seen_at)
     VALUES ('pub_h1', 'harti', 'h1', 'Bulletin 1', '2026-09-01T00:00:00.000Z', '2026-09-01', '2026-09-01', 'https://harti.example', 'https://harti.example/1.pdf', 'canonicalized', '${now}', '${now}'),
            ('pub_k1', 'keells', 'snapshot_2026-09-02', 'Keells snapshot', '2026-09-02T00:00:00.000Z', '2026-09-02', '2026-09-02', 'https://keells.example', 'snapshot://keells/2026-09-02', 'canonicalized', '${now}', '${now}');
@@ -46,7 +47,7 @@ async function count(client: WarehouseClient, sql: string, params: unknown[] = [
 test("warehouse schema migrates once and stays idempotent", async () => {
   const client = await embeddedWarehouse();
   try {
-    assert.deepEqual(await migrateWarehouse(client), [1, 2, 3]);
+    assert.deepEqual(await migrateWarehouse(client), [1, 2, 3, 4]);
     assert.deepEqual(await migrateWarehouse(client), []);
     const tables = await client.query<{ table_name: string }>("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name");
     for (const expected of ["source", "market", "product", "item", "unit_rule", "publication", "price_observation", "sync_state", "schema_migration"]) {
@@ -64,8 +65,8 @@ test("sync copies the canonical layer, resumes from its cursor, and propagates s
   const client = await embeddedWarehouse();
   try {
     const first = await syncWarehouse(database, client, { batchSize: 1 });
-    assert.deepEqual(first.migrations, [1, 2, 3]);
-    assert.deepEqual(first.references, { source: 2, market: 2, product: 1, item: 1, unit_rule: 1, publication: 2 });
+    assert.deepEqual(first.migrations, [1, 2, 3, 4]);
+    assert.deepEqual(first.references, { source: 2, market: 2, product: 1, item: 1, unit_rule: 1, publication: 2, item_alias: 2 });
     assert.equal(first.observations.upserted, 2);
     assert.equal(first.observations.batches, 2, "batches follow the batch size");
     assert.deepEqual(first.refreshed, ["daily_item_price", "latest_item_price"]);

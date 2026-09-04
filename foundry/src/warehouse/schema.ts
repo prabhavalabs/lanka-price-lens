@@ -162,6 +162,21 @@ export const warehouseMigrations: ReadonlyArray<{ version: number; name: string;
     name: "source cadence",
     statements: [`ALTER TABLE source ADD COLUMN IF NOT EXISTS cadence TEXT`],
   },
+  {
+    version: 4,
+    name: "item aliases",
+    statements: [
+      // Every label a source uses for an item (bulletin wording, store product names) so search finds items by any spelling.
+      `CREATE TABLE IF NOT EXISTS item_alias (
+        source_id TEXT NOT NULL REFERENCES source(id),
+        label TEXT NOT NULL,
+        item_id TEXT NOT NULL REFERENCES item(id),
+        PRIMARY KEY (source_id, label)
+      )`,
+      `CREATE INDEX IF NOT EXISTS item_alias_item_idx ON item_alias (item_id)`,
+      `CREATE INDEX IF NOT EXISTS item_alias_label_idx ON item_alias (lower(label))`,
+    ],
+  },
 ];
 
 export const materializedViews = ["daily_item_price", "latest_item_price"] as const;
