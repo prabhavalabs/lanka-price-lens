@@ -27,8 +27,8 @@ pnpm check
 - rights-gated HARTI archive discovery, bounded downloads, PDF Inspector
   classification, coordinate parsing, idempotent artifacts, and quarantine;
 - owner-triggered full historical ingestion plus daily incremental collection;
-- routed React owner portal using the supplied Shadcn preset, TanStack Query,
-  React Hook Form, and minimal Zustand UI state;
+- routed React owner portal built on shadcn/ui (sidebar, charts, tables,
+  dialogs), TanStack Query, and React Hook Form;
 - scrypt-protected SQLite administrator and revocable HttpOnly cookie sessions;
 - Docker packaging and a persistent VPS systemd timer;
 - reviewed exact-label mappings, validation and quarantine resolution;
@@ -36,6 +36,12 @@ pnpm check
   SQLite, CSV, JSON, manifest, checksum, notice, and release-note formats.
 - owner-only manual PDF intake with checksum deduplication, OCR routing, and
   run-stage monitoring in the ShadCN operations interface.
+- owner-only insight endpoints and a price insights page: daily wholesale
+  trends with a 7-day average and the cheapest-to-dearest market band, 7/30/90
+  day price changes, trend direction and stability, monthly summaries, an
+  all-produce basket index with top risers and fallers, preset or custom
+  date ranges, product photos, plus archive growth, index coverage, and
+  workflow outcomes on the overview.
 - durable, timezone-aware workflow scheduling with a separate worker,
   idempotent dispatches, scheduler heartbeats, bounded backfill, and local
   filesystem archive isolation.
