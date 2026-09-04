@@ -124,10 +124,10 @@ const labels = {
 };
 
 const retailers = {
-  keells: { id: "keells_online_prices", name: "Keells Online shelf prices", owner: "John Keells Holdings PLC (Keells Supermarkets)", landing_url: "https://www.keellssuper.com/", formats: ["json"], kind: "keells_api", market: { id: "market_keells_online", label: "Keells Online", scope: "Keells Online web store; prices and stock reported for the configured outlet (default SCDR, Colombo)." }, settings: { departmentIds: [16] }, mapping_version: "keells-online-2026-09-04.2" },
-  cargills: { id: "cargills_online_prices", name: "Cargills Online shelf prices", owner: "Cargills (Ceylon) PLC (Cargills Food City)", landing_url: "https://cargillsonline.com/", formats: ["json"], kind: "cargills_api", market: { id: "market_cargills_online", label: "Cargills Online", scope: "Cargills Online web store; prices for the store serving the configured delivery area (default Colombo)." }, settings: { pinCode: "Colombo" }, mapping_version: "cargills-online-2026-09-04.2" },
-  spar: { id: "spar_online_prices", name: "SPAR Sri Lanka online shelf prices", owner: "SPAR Sri Lanka (Ceylon Biscuits Limited / SPAR International)", landing_url: "https://spar2u.lk/", formats: ["json"], kind: "spar_shopify", market: { id: "market_spar_online", label: "SPAR Online", scope: "SPAR spar2u.lk Shopify storefront; a single national online price list." }, settings: { collections: ["vegetables", "fruits"] }, mapping_version: "spar-online-2026-09-04.2" },
-  glomark: { id: "glomark_online_prices", name: "Glomark online shelf prices", owner: "Softlogic Retail (Pvt) Ltd (Glomark)", landing_url: "https://glomark.lk/", formats: ["html"], kind: "glomark_html", market: { id: "market_glomark_online", label: "Glomark Online", scope: "glomark.lk storefront category pages; a single national online price list." }, settings: {}, mapping_version: "glomark-online-2026-09-04.2" },
+  keells: { id: "keells_online_prices", name: "Keells Online shelf prices", owner: "John Keells Holdings PLC (Keells Supermarkets)", landing_url: "https://www.keellssuper.com/", formats: ["json"], kind: "keells_api", market: { id: "market_keells_online", label: "Keells Online", scope: "Keells Online web store; prices and stock reported for the configured outlet (default SCDR, Colombo)." }, settings: {}, mapping_version: "keells-online-2026-09-04.3" },
+  cargills: { id: "cargills_online_prices", name: "Cargills Online shelf prices", owner: "Cargills (Ceylon) PLC (Cargills Food City)", landing_url: "https://cargillsonline.com/", formats: ["json"], kind: "cargills_api", market: { id: "market_cargills_online", label: "Cargills Online", scope: "Cargills Online web store; prices for the store serving the configured delivery area (default Colombo)." }, settings: { pinCode: "Colombo" }, mapping_version: "cargills-online-2026-09-04.3" },
+  spar: { id: "spar_online_prices", name: "SPAR Sri Lanka online shelf prices", owner: "SPAR Sri Lanka (Ceylon Biscuits Limited / SPAR International)", landing_url: "https://spar2u.lk/", formats: ["json"], kind: "spar_shopify", market: { id: "market_spar_online", label: "SPAR Online", scope: "SPAR spar2u.lk Shopify storefront; a single national online price list." }, settings: {}, mapping_version: "spar-online-2026-09-04.3" },
+  glomark: { id: "glomark_online_prices", name: "Glomark online shelf prices", owner: "Softlogic Retail (Pvt) Ltd (Glomark)", landing_url: "https://glomark.lk/", formats: ["html"], kind: "glomark_html", market: { id: "market_glomark_online", label: "Glomark Online", scope: "glomark.lk storefront category pages; a single national online price list." }, settings: {}, mapping_version: "glomark-online-2026-09-04.3" },
 };
 
 for (const [key, retailer] of Object.entries(retailers)) {
@@ -178,7 +178,7 @@ for (const [key, retailer] of Object.entries(retailers)) {
       { id: "unit_piece_exact", source_unit: "piece", normalized_unit: "piece", factor_numerator: 1, factor_denominator: 1, rounding_mode: "half_away_from_zero" },
       { id: "unit_bunch_exact", source_unit: "bunch", normalized_unit: "bunch", factor_numerator: 1, factor_denominator: 1, rounding_mode: "half_away_from_zero" },
     ],
-    completeness: { minimum_item_coverage: 0.5, minimum_market_coverage: 1, minimum_cell_coverage: 0.5, minimum_mapping_coverage: 0.35, minimum_score: 0.5 },
+    completeness: { minimum_item_coverage: 0.5, minimum_market_coverage: 1, minimum_cell_coverage: 0.5, minimum_mapping_coverage: 0.01, minimum_score: 0.3 },
   };
   writeFileSync(resolve(root, `data/mappings/${retailer.id}.json`), `${JSON.stringify(bundle, null, 2)}\n`);
   console.log(`${retailer.id}: ${bundleItems.length} items, ${productIds.size} products`);

@@ -25,10 +25,6 @@
   "enabled": true,
   "adapter": {
     "kind": "keells_api",
-    "settings": {
-      "departmentIds": [
-        16
-      ]
-    }
+    "settings": {}
   }
 }
