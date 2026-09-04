@@ -588,7 +588,7 @@ function dateInZone(value: string | null, timezone: string): string {
 }
 
 const rightsLabels: Record<string, { label: string; description: string }> = {
-  approved_permission: { label: "Permission granted", description: "HARTI has given written permission for non-commercial data preparation." },
+  approved_permission: { label: "Permission granted", description: "The publisher has given permission to prepare and show this data; see the evidence reference for the record." },
   approved_open: { label: "Open data", description: "The source is published for reuse." },
   internal_evaluation: { label: "Internal evaluation", description: "Publicly listed prices are captured for internal analysis only and are not redistributed until the rights review is complete." },
   link_only: { label: "Link only", description: "We may point to the source but not store its data." },

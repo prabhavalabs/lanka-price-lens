@@ -123,12 +123,12 @@ their descriptions.
 
 ## Rights position
 
-Retail manifests are marked `rights_status: "internal_evaluation"`. Captures are
-allowed in that state (see `canCaptureSource`), but the sources are **not** eligible
-for public release (`canPublishSource` still requires `approved_open` or
-`approved_permission`). The retailers list these prices publicly; the review of
-their terms of use is the owner's decision and must be recorded before anything
-derived from them is redistributed.
+The repository owner recorded on 2026-09-04 that permission has been received to
+show the captured retail prices. Retail manifests therefore carry
+`rights_status: "approved_permission"` with this section as the evidence reference,
+and the sources are eligible for public release (`canPublishSource`). Keep the
+retailer's attribution text on any published view.
+
 
 ## Adding a retailer
 
