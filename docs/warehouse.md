@@ -14,7 +14,7 @@ as the data grows.
 | `source`, `market`, `product`, `item`, `unit_rule`, `publication` | reference | Same ids as SQLite, so mappings stay valid across both stores |
 | `price_observation` | one canonical observation | Same row ids as SQLite; `observed_on` is the trading day; `mid_value_minor` is a stored generated column (midpoint of the normalised range); `status` is active / superseded / withdrawn |
 | `daily_item_price` (materialized) | item, market, source, price type, day | Low, high, mid, and count of active observations; refreshed after each sync |
-| `latest_item_price` (materialized) | item, market, price type | Newest day per series; what a consumer screen shows first |
+| `latest_item_price` (materialized) | item, market, price type | Newest day per series with its low, high, mid, and the count of observations behind it (one for a bulletin, one per product label for a store); what a consumer screen shows first |
 | `sync_state` | one row per synced stream | Cursor (change stamp, id) of the last observation copied |
 | `schema_migration` | one row per migration | Migrations apply in order and are recorded |
 
@@ -87,7 +87,14 @@ onion. The item view combines `latest_item_price` (latest price per seller, grou
 into wholesale markets, retail markets, and supermarkets, with the group average in
 the group's most common unit and the shelf-over-wholesale markup) with
 `daily_item_price` over the chosen period (one trend line per seller, first-to-last
-change per seller). Endpoints: `GET /v1/admin/explorer/search?q=` and
+change per seller). A supermarket's price is the range across every brand and pack
+of the item on its shelf that day, and the seller table says how many products
+stand behind it. Every seller carries a mark (`admin/src/components/seller-mark.tsx`):
+supermarkets a brand-coloured monogram, markets a glyph drawn from the place
+(Pettah's clock tower, Dambulla's rock, the Kelani bridge at Peliyagoda), with
+retail markets tinted so they never pass for the wholesale market of the same town;
+a market without a drawn mark gets a stable colour and initials from its id.
+Endpoints: `GET /v1/admin/explorer/search?q=` and
 `GET /v1/admin/explorer/items/:id?days=|from=&to=`. When `LPL_POSTGRES_URL` is not
 set or the database is unreachable, the endpoints answer 503 and the rest of the
 admin keeps working.

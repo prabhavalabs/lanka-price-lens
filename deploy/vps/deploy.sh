@@ -143,6 +143,9 @@ fi
 
 compose up -d --no-build --wait --wait-timeout 90 api
 compose --profile tools run --rm --no-deps foundry warehouse migrate
+# A deploy may ship new mapping labels or rules: promote the snapshots of the last week under them and refresh the warehouse.
+compose --profile tools run --rm --no-deps foundry remap --all --days 7
+compose --profile tools run --rm --no-deps foundry warehouse sync
 trap - ERR
 
 install -m 0755 "$repo/deploy/vps/deploy.sh" /usr/local/sbin/lanka-price-lens-deploy

@@ -27,3 +27,6 @@ GEMINI.md
 .continue/
 .cursor/
 .harness/
+
+# Browser automation session files
+.playwright-cli/
