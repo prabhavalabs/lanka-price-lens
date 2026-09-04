@@ -47,10 +47,11 @@ pipeline picks the parser from it.
 
 ## Rights
 
-Both manifests are marked `internal_evaluation`: the reports are public official
-statistics and the pipeline may capture and process them, but nothing derived from
-them is publishable until the owner records the terms of use and moves the status
-to `approved_open`. Attribution text is set on each manifest.
+The repository owner recorded on 2026-09-04 that permission has been received to
+show this data. Both manifests carry `rights_status: "approved_permission"` with
+this section as the evidence reference; the publisher attribution text on each
+manifest must accompany any release.
+
 
 ## Operating
 

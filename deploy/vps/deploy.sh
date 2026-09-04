@@ -111,6 +111,12 @@ rollback() {
 
 git checkout --quiet --detach "$sha"
 
+# The warehouse database needs a password in app.env; generate one on first use so a deploy never fails on a missing setting.
+if ! grep -q '^POSTGRES_PASSWORD=.\+' "$config/app.env"; then
+  update_env POSTGRES_PASSWORD "$(openssl rand -hex 24)"
+  echo "Generated POSTGRES_PASSWORD in $config/app.env"
+fi
+
 # Continue with the deploy script from the commit being deployed, so changes to this
 # file (new systemd units, new steps) apply to the deployment that introduces them
 # rather than the next one. The lock (fd 9), docker login, and the rollback target
@@ -136,6 +142,7 @@ if mountpoint=$(docker volume inspect --format '{{ .Mountpoint }}' "$volume" 2>/
 fi
 
 compose up -d --no-build --wait --wait-timeout 90 api
+compose --profile tools run --rm --no-deps foundry warehouse migrate
 trap - ERR
 
 install -m 0755 "$repo/deploy/vps/deploy.sh" /usr/local/sbin/lanka-price-lens-deploy

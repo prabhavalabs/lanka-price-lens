@@ -12,9 +12,9 @@
   "price_types": [
     "retail_online_store"
   ],
-  "rights_status": "internal_evaluation",
-  "rights_evidence_ref": "docs/retail-capture.md",
-  "attribution_text": "Source: Cargills Online, publicly listed shelf prices captured for internal evaluation. Not redistributed until the rights review is complete.",
+  "rights_status": "approved_permission",
+  "rights_evidence_ref": "docs/retail-capture.md#rights-position",
+  "attribution_text": "Source: Cargills Online, publicly listed shelf prices. Reproduced with the retailer's permission as recorded by the repository owner.",
   "retention_policy": "preserve_source_evidence",
   "parser_owner": "Prabhava Labs maintainers",
   "reviewed_by": "repository-owner",

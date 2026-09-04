@@ -439,11 +439,11 @@ function canonicalizeRow(
       : "initial_version";
   if (candidateWins) {
     for (const predecessor of predecessors) {
-      database.prepare("UPDATE price_observation SET status = 'superseded' WHERE id = ?").run(predecessor.id);
+      database.prepare("UPDATE price_observation SET status = 'superseded', updated_at = ? WHERE id = ?").run(new Date().toISOString(), predecessor.id);
     }
   } else if (activeLineage && activeEffective && activeLineage.id !== activeEffective.id) {
     database
-      .prepare("UPDATE price_observation SET status = 'superseded', superseded_by_id = ? WHERE id = ?")
+      .prepare("UPDATE price_observation SET status = 'superseded', superseded_by_id = ?, updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = ?")
       .run(activeEffective.id, activeLineage.id);
   }
   database
@@ -495,7 +495,7 @@ function canonicalizeRow(
     );
   if (candidateWins) {
     for (const predecessor of predecessors) {
-      database.prepare("UPDATE price_observation SET superseded_by_id = ? WHERE id = ?").run(id, predecessor.id);
+      database.prepare("UPDATE price_observation SET superseded_by_id = ?, updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = ?").run(id, predecessor.id);
     }
   }
   database.prepare("UPDATE staging_observation SET status = 'canonicalized' WHERE id = ?").run(row.id);

@@ -162,9 +162,9 @@ const unitRules = {
 for (const source of Object.values(sources)) {
   const manifest = {
     ...source.manifest,
-    rights_status: "internal_evaluation",
-    rights_evidence_ref: "docs/official-sources.md",
-    attribution_text: `Source: ${source.manifest.name}, ${source.manifest.owner}. Official statistics captured for internal evaluation; attribution required on any release.`,
+    rights_status: "approved_permission",
+    rights_evidence_ref: "docs/official-sources.md#rights",
+    attribution_text: `Source: ${source.manifest.name}, ${source.manifest.owner}. Official statistics reproduced with permission as recorded by the repository owner; attribution required on any release.`,
     retention_policy: "preserve_source_evidence",
     parser_owner: "Prabhava Labs maintainers",
     reviewed_by: "repository-owner",
