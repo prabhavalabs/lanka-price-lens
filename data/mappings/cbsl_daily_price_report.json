@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "mapping_version": "cbsl-daily-2026-09-04.1",
+  "mapping_version": "cbsl-daily-2026-09-04.2",
   "source_id": "cbsl_daily_price_report",
   "reviewed_by": "repository-owner",
   "reviewed_at": "2026-09-04",
@@ -25,7 +25,8 @@
       "category": "fruit",
       "canonical_label_en": "Banana",
       "canonical_label_si": null,
-      "canonical_label_ta": null
+      "canonical_label_ta": null,
+      "comparison": "by_variety"
     },
     {
       "id": "product_beans",

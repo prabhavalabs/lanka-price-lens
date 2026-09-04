@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "mapping_version": "dcs-weekly-2026-09-04.2",
+  "mapping_version": "dcs-weekly-2026-09-04.3",
   "source_id": "dcs_weekly_retail_prices",
   "reviewed_by": "repository-owner",
   "reviewed_at": "2026-09-04",
@@ -39,7 +39,8 @@
       "category": "fruit",
       "canonical_label_en": "Banana",
       "canonical_label_si": null,
-      "canonical_label_ta": null
+      "canonical_label_ta": null,
+      "comparison": "by_variety"
     },
     {
       "id": "product_beans",
@@ -130,7 +131,8 @@
       "category": "meat",
       "canonical_label_en": "Chicken",
       "canonical_label_si": null,
-      "canonical_label_ta": null
+      "canonical_label_ta": null,
+      "comparison": "by_variety"
     },
     {
       "id": "product_chickpea",
@@ -305,7 +307,8 @@
       "category": "vegetable",
       "canonical_label_en": "Kohila (Lasia)",
       "canonical_label_si": null,
-      "canonical_label_ta": null
+      "canonical_label_ta": null,
+      "comparison": "by_variety"
     },
     {
       "id": "product_ladies_fingers",
@@ -1094,9 +1097,9 @@
       ]
     },
     {
-      "id": "item_coconut_oil_750ml",
+      "id": "item_coconut_oil",
       "product_id": "product_coconut_oil",
-      "entity_type": "packaged_product",
+      "entity_type": "commodity",
       "canonical_label_en": "Coconut Oil",
       "canonical_label_si": null,
       "canonical_label_ta": null,
@@ -2162,11 +2165,11 @@
     {
       "id": "item_chicken",
       "product_id": "product_chicken",
-      "entity_type": "commodity",
+      "entity_type": "variety",
       "canonical_label_en": "Chicken",
       "canonical_label_si": null,
       "canonical_label_ta": null,
-      "variety": null,
+      "variety": "Whole",
       "origin": null,
       "size": null,
       "grade": null,

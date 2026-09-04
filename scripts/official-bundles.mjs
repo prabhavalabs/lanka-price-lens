@@ -24,8 +24,9 @@ const reuseItem = (id) => {
   items[id] = { ...item, source_labels: [], expected_market_labels: [] };
   products[item.product_id] = hartiProducts.get(item.product_id);
 };
-const product = (id, label, category = "vegetable") => {
-  products[id] = hartiProducts.get(id) ?? { id, category, canonical_label_en: label, canonical_label_si: null, canonical_label_ta: null };
+// comparison "by_variety" marks products whose items are different things under one name (chicken cuts); the default pools origins, grades, and sizes.
+const product = (id, label, category = "vegetable", comparison = "pooled") => {
+  products[id] = hartiProducts.get(id) ?? { id, category, canonical_label_en: label, canonical_label_si: null, canonical_label_ta: null, ...(comparison === "pooled" ? {} : { comparison }) };
 };
 const item = (id, productId, label, { variety = null, origin = null, grade = null, entity = "commodity" } = {}) => {
   if (!products[productId]) throw new Error(`define product ${productId} before ${id}`);
@@ -49,19 +50,21 @@ const simple = [
   ["dried_fish_katta", "Dried Fish (Katta)", "fish"], ["sprats", "Sprats (Dried)", "fish"], ["apple", "Apple", "fruit"], ["rice_samba", "Samba Rice", "grain"], ["rice_nadu", "Nadu Rice", "grain"],
   ["rice_kekulu_white", "Kekulu Rice (White)", "grain"], ["rice_kekulu_red", "Kekulu Rice (Red)", "grain"], ["rice_ponni_samba", "Ponni Samba Rice", "grain"], ["rice_raw_red", "Raw Red Rice", "grain"],
   ["rice_raw_white", "Raw White Rice", "grain"], ["rice_nadu_red", "Nadu Rice (Red)", "grain"], ["wheat_flour", "Wheat Flour", "grain"], ["cowpea", "Cowpea", "grain"], ["green_gram", "Green Gram", "grain"],
-  ["chickpea", "Chickpea (Kadalai)", "grain"], ["bread", "Bread", "other"], ["beef", "Beef", "meat"], ["mutton", "Mutton", "meat"], ["chicken", "Chicken", "meat"], ["pork", "Pork", "meat"],
+  ["chickpea", "Chickpea (Kadalai)", "grain"], ["bread", "Bread", "other"], ["beef", "Beef", "meat"], ["mutton", "Mutton", "meat"], ["chicken", "Chicken", "meat", "by_variety"], ["pork", "Pork", "meat"],
   ["prawns", "Prawns", "fish"], ["tin_fish", "Tinned Fish", "fish"], ["milk_powder", "Full Cream Milk Powder", "dairy"], ["infant_milk", "Infant Milk Formula", "dairy"],
   ["kelawalla", "Kelawalla (Yellowfin Tuna)", "fish"], ["thalapath", "Thalapath (Sailfish)", "fish"], ["balaya", "Balaya (Skipjack Tuna)", "fish"], ["paraw", "Paraw (Trevally)", "fish"],
   ["salaya", "Salaya (Sardinella)", "fish"], ["hurulla", "Hurulla (Herring)", "fish"], ["linna", "Linna", "fish"], ["mullet", "Mullet", "fish"], ["mora", "Mora (Shark)", "fish"], ["parati", "Parati", "fish"],
-  ["ash_pumpkin", "Ash Pumpkin"], ["kohila", "Kohila (Lasia)"], ["gotukola", "Gotukola"], ["kankun", "Kankun"], ["mukunuwenna", "Mukunuwenna"], ["kathurumurunga", "Kathurumurunga"], ["spinach", "Spinach (Nivithi)"],
+  ["ash_pumpkin", "Ash Pumpkin"], ["kohila", "Kohila (Lasia)", "vegetable", "by_variety"], ["gotukola", "Gotukola"], ["kankun", "Kankun"], ["mukunuwenna", "Mukunuwenna"], ["kathurumurunga", "Kathurumurunga"], ["spinach", "Spinach (Nivithi)"],
   ["sarana", "Sarana"], ["thampala", "Thampala"], ["butter_beans", "Butter Beans"], ["garlic", "Garlic"], ["ginger", "Ginger"], ["tamarind", "Tamarind", "other"], ["coriander", "Coriander Seed", "other"],
   ["pepper", "Black Pepper", "other"], ["turmeric", "Turmeric", "other"], ["cumin", "Cumin Seed", "other"], ["fennel", "Fennel Seed", "other"], ["mustard", "Mustard Seed", "other"], ["fenugreek", "Fenugreek (Methi)", "other"],
   ["cinnamon", "Cinnamon", "other"], ["gorakka", "Gorakka (Garcinia)", "other"], ["maldive_fish", "Maldive Fish", "fish"], ["salt", "Salt", "other"], ["betel_leaves", "Betel Leaves", "other"], ["arecanut", "Arecanut", "other"],
 ];
-for (const [key, label, category] of simple) {
-  product(`product_${key}`, label, category ?? "vegetable");
+for (const [key, label, category, comparison] of simple) {
+  product(`product_${key}`, label, category ?? "vegetable", comparison ?? "pooled");
   item(`item_${key}`, `product_${key}`, label);
 }
+// The survey's fresh chicken is the whole bird; the supermarket cuts are separate items of the same product.
+item("item_chicken", "product_chicken", "Chicken", { variety: "Whole", entity: "variety" });
 item("item_egg_white", "product_egg", "Egg", { variety: "White", entity: "variety" });
 item("item_egg_red", "product_egg", "Egg", { variety: "Red", entity: "variety" });
 item("item_chicken_broiler", "product_chicken", "Chicken", { variety: "Broiler", entity: "variety" });
@@ -69,7 +72,7 @@ item("item_apple_imported", "product_apple", "Apple", { origin: "Imported" });
 item("item_orange_imported", "product_orange", "Orange", { origin: "Imported" });
 item("item_kohila_leaves", "product_kohila", "Kohila Leaves", { variety: "Leaves", entity: "variety" });
 item("item_rice_ponni_samba_imported", "product_rice_ponni_samba", "Ponni Samba Rice", { origin: "Imported" });
-item("item_coconut_oil_750ml", "product_coconut_oil", "Coconut Oil", { entity: "packaged_product" });
+
 
 const sources = {
   cbsl: {
@@ -107,7 +110,7 @@ const sources = {
     },
     units: ["kg", "piece", "l"],
     completeness: { minimum_item_coverage: 0.6, minimum_market_coverage: 0.6, minimum_cell_coverage: 0.4, minimum_mapping_coverage: 0.8, minimum_score: 0.5 },
-    mapping_version: "cbsl-daily-2026-09-04.1",
+    mapping_version: "cbsl-daily-2026-09-04.2",
   },
   dcs: {
     manifest: {
@@ -131,7 +134,7 @@ const sources = {
       item_pumpkin: ["Red Pumpkin"], item_snake_gourd: ["Snake Gourd"], item_gotukola: ["Gotukola"], item_kankun: ["Kankun"], item_kathurumurunga: ["Kathurumurunga"], item_kohila_leaves: ["Kohila Leaves"],
       item_kohila: ["Kohila Yams"], item_luffa: ["Vetakolu"], item_green_chillies: ["Green Chillies"], item_capsicum: ["Capsicum"], item_leeks: ["Leeks"], item_lime: ["Limes"], item_coconut: ["Coconut - Average"],
       item_coconut_large: ["Coconut ( Large )"], item_coconut_medium: ["Coconut ( Medium)"], item_coconut_small: ["Coconut ( small)"], item_betel_leaves: ["Betel Leaves ( Average )"], item_arecanut: ["Arecanuts ( Average )"],
-      item_potato_local: ["Potatoes - Local"], item_potato_imported: ["Potatoes - Imported"], item_coconut_oil_750ml: ["Coconut Oil"], item_mukunuwenna: ["Mukunuwenna"], item_spinach: ["Nivithi"], item_sarana: ["Sarana"],
+      item_potato_local: ["Potatoes - Local"], item_potato_imported: ["Potatoes - Imported"], item_coconut_oil: ["Coconut Oil"], item_mukunuwenna: ["Mukunuwenna"], item_spinach: ["Nivithi"], item_sarana: ["Sarana"],
       item_thampala: ["Thampala"], item_butter_beans: ["Beans - Butter"], item_beans: ["Beans - Green"], item_long_beans: ["Long Beans"], item_beetroot_general: ["BeetRoot", "Beetroot"], item_cabbage: ["Cabbagge Seed", "Cabbage"],
       item_carrot: ["Carrot"], item_drumstick: ["Drumstick"], item_knolkhol: ["Knol Khol"], item_radish: ["Raddish"], item_tomato: ["Tomatoe - No 1.", "Tomato"], item_dried_chillies: ["Dried Chillies - No 1."],
       item_coriander: ["Corriander"], item_pepper: ["Pepper - Powder"], item_turmeric: ["Turmeric -Powder"], item_garlic: ["Garlic"], item_cumin: ["Cummin Seed"], item_fennel: ["Fennel Seed"], item_mustard: ["Mustard"],
@@ -148,7 +151,7 @@ const sources = {
     },
     units: ["kg", "g", "piece", "bunch", "ml", "l"],
     completeness: { minimum_item_coverage: 0.6, minimum_market_coverage: 1, minimum_cell_coverage: 0.5, minimum_mapping_coverage: 0.7, minimum_score: 0.5 },
-    mapping_version: "dcs-weekly-2026-09-04.2",
+    mapping_version: "dcs-weekly-2026-09-04.3",
   },
 };
 
