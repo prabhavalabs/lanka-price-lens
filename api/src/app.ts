@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 
 import { serveStatic } from "@hono/node-server/serve-static";
@@ -51,6 +51,7 @@ import { secureHeaders } from "hono/secure-headers";
 import { streamSSE } from "hono/streaming";
 
 import { productDetail, searchProducts } from "./explorer.ts";
+import { dishDetail, ingredientPrices, listDishes, pricedProducts, productLabels, readRecipeStore, recipeOverview, type RecipeStore } from "./recipes.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
 import {
   archivedKnowledgePdf,
@@ -76,7 +77,7 @@ export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
-  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient> } = {},
+  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
   /** The PostgreSQL warehouse behind the price explorer; null when not configured or unreachable (the routes answer 503). */
@@ -376,6 +377,37 @@ export function createApp(
     const detail = await productDetail(client, context.req.param("id").slice(0, 120), range, { varieties });
     if (!detail) return context.json(envelope(context.get("requestId"), null, false, "Product not found"), 404);
     return context.json(envelope(context.get("requestId"), detail));
+  });
+  // The recipe corpus: the reviewed dish catalogue with what the warehouse can price for each dish today.
+  const noRecipes = (context: Context) => context.json(envelope(context.get("requestId"), null, false, "No recipe catalogue is configured (LPL_RECIPES_DIR)"), 503);
+  const pricedNow = async (): Promise<Set<string> | null> => {
+    const client = await warehouse();
+    return client ? pricedProducts(client).catch(() => null) : null;
+  };
+  app.get("/v1/admin/recipes/overview", async (context) => {
+    if (!options.recipes) return noRecipes(context);
+    return context.json(envelope(context.get("requestId"), recipeOverview(options.recipes, await pricedNow())));
+  });
+  app.get("/v1/admin/recipes/references", (context) => {
+    if (!options.recipes) return noRecipes(context);
+    return context.json(envelope(context.get("requestId"), options.recipes.references));
+  });
+  app.get("/v1/admin/recipes/dishes", async (context) => {
+    if (!options.recipes) return noRecipes(context);
+    const request = listRequest(context);
+    const pick = (name: string) => (context.req.query(name) ?? "").slice(0, 40);
+    const filters = { search: request.search, category: pick("category"), meal: pick("meal"), protein: pick("protein"), diet: pick("diet"), region: pick("region"), occasion: pick("occasion"), page: request.requestedPage, pageSize: request.pageSize };
+    return context.json(envelope(context.get("requestId"), listDishes(options.recipes, filters, await pricedNow())));
+  });
+  app.get("/v1/admin/recipes/dishes/:id", async (context) => {
+    if (!options.recipes) return noRecipes(context);
+    const dishId = context.req.param("id").slice(0, 120);
+    const dish = options.recipes.catalogue.dishes.find((candidate) => candidate.id === dishId);
+    if (!dish) return context.json(envelope(context.get("requestId"), null, false, "Dish not found"), 404);
+    const client = await warehouse();
+    const labels = client ? await productLabels(client, dish.key_ingredients).catch(() => new Map<string, string>()) : new Map<string, string>();
+    const prices = client ? await ingredientPrices(client, dish.key_ingredients).catch(() => null) : null;
+    return context.json(envelope(context.get("requestId"), dishDetail(options.recipes, dishId, labels, prices)));
   });
   app.get("/v1/admin/sources/:id/unmapped-labels", (context) => {
     const entry = catalog.find(context.req.param("id"));
@@ -870,7 +902,10 @@ export function createProductionApp(): Hono<AppBindings> {
     { manifest, mappingBundle },
   );
   const warehouseUrl = process.env.LPL_POSTGRES_URL;
-  const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}) });
+  // The recipe catalogue is optional at runtime: an image built before it existed still serves everything else.
+  const recipesDirectory = resolve(process.env.LPL_RECIPES_DIR ?? "../data/recipes");
+  const recipes = existsSync(resolve(recipesDirectory, "catalogue.json")) ? readRecipeStore(recipesDirectory) : undefined;
+  const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}), ...(recipes ? { recipes } : {}) });
   const adminRoot = resolve(process.env.LPL_ADMIN_ROOT ?? "../admin/dist");
   app.use("/admin/*", serveStatic({ root: adminRoot, rewriteRequestPath: (path) => path.replace(/^\/admin/u, "") || "/index.html" }));
   app.get("/admin/*", serveStatic({ root: adminRoot, rewriteRequestPath: () => "/index.html" }));

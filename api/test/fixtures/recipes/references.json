@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0.0",
+  "reviewed_at": "2026-09-05",
+  "channels": [{ "id": "channel_fixture", "name": "Fixture Kitchen", "url": "https://www.youtube.com/@fixture", "languages": ["si", "en"], "subscribers_approx": 100000, "focus": "Everyday village cooking.", "sri_lankan_run": true, "verified_on": "2026-09-05" }],
+  "blogs": [],
+  "institutional": []
+}
