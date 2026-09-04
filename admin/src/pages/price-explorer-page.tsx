@@ -5,16 +5,17 @@ import { useSearchParams } from "react-router-dom";
 import { formatDay, MarketSeriesChart, maxChartSeries, rupees, StatTile } from "@/components/charts";
 import { PageFrame } from "@/components/data-display";
 import { DateRangeControl, describeRange } from "@/components/date-range-control";
-import { ItemSearch } from "@/components/item-search";
 import { ProductImage } from "@/components/product-image";
+import { ProductSearch } from "@/components/product-search";
 import { SellerMark } from "@/components/seller-mark";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { api, priceRangePresets, rangeQuery, type ExplorerDetail, type ExplorerGroup, type ExplorerItem, type ExplorerLatest, type ExplorerSeries, type PriceRangePreset, type RangeSelection } from "@/lib/api";
+import { api, priceRangePresets, rangeQuery, type ExplorerDetail, type ExplorerGroup, type ExplorerLatest, type ExplorerProduct, type ExplorerSeries, type PriceRangePreset, type RangeSelection } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 const isoDate = /^\d{4}-\d{2}-\d{2}$/u;
@@ -34,16 +35,19 @@ const groupCopy: Record<ExplorerGroup, { title: string; short: string; descripti
 };
 const groupIcon: Record<ExplorerGroup, typeof RiStore2Line> = { wholesale: RiScales3Line, retail_market: RiShoppingBasket2Line, supermarket: RiStore2Line };
 const percent = (value: number) => `${Math.abs(value).toFixed(1)}%`;
+const plural = (count: number, noun: string, many = `${noun}s`) => `${count} ${count === 1 ? noun : many}`;
 
 export function PriceExplorerPage() {
   const [parameters, setParameters] = useSearchParams();
   const selection = readSelection(parameters);
-  const itemId = (parameters.get("item") ?? "").slice(0, 120);
+  const productId = (parameters.get("product") ?? "").slice(0, 120);
+  const varieties = (parameters.get("varieties") ?? "").slice(0, 2000);
   const query = rangeQuery(selection);
+  if (varieties) query.set("varieties", varieties);
   const detail = useQuery({
-    queryKey: ["explorer-item", itemId, query.toString()],
-    queryFn: ({ signal }) => api<ExplorerDetail>(`/v1/admin/explorer/items/${encodeURIComponent(itemId)}?${query}`, { signal }),
-    enabled: Boolean(itemId),
+    queryKey: ["explorer-product", productId, query.toString()],
+    queryFn: ({ signal }) => api<ExplorerDetail>(`/v1/admin/explorer/products/${encodeURIComponent(productId)}?${query}`, { signal }),
+    enabled: Boolean(productId),
     placeholderData: keepPreviousData,
     staleTime: 60_000,
   });
@@ -53,34 +57,36 @@ export function PriceExplorerPage() {
     setParameters(next, { replace: true });
   };
   const selectRange = (next: RangeSelection) => update("preset" in next ? { days: String(next.preset), from: "", to: "" } : { days: "", from: next.from, to: next.to });
-  const selectItem = (item: ExplorerItem) => update({ item: item.id });
+  const selectProduct = (product: ExplorerProduct) => update({ product: product.id, varieties: "" });
   const data = detail.data;
-  const selected: ExplorerItem | null = data?.item ?? null;
+  const selected: ExplorerProduct | null = data?.product ?? null;
   const fading = detail.isPlaceholderData ? "opacity-60" : "";
   const wholesale = data?.summary.find((entry) => entry.group === "wholesale");
   const retail = data?.summary.find((entry) => entry.group === "retail_market");
   const supermarket = data?.summary.find((entry) => entry.group === "supermarket");
   const groups = (["wholesale", "retail_market", "supermarket"] as const).map((group) => ({ group, series: data?.series.filter((entry) => entry.group === group) ?? [], latest: data?.latest.filter((entry) => entry.group === group) ?? [] }));
+  const pooledVarieties = data ? data.selected.length : 0;
+  const allSelected = data ? data.selected.length === data.product.varieties.length : false;
 
   return (
     <PageFrame
-      description="Search any item and see what it costs today at wholesale markets, in open retail markets, and on each supermarket's shelf, with the trend for every seller over the period you choose."
+      description="Search any product and see what it costs today at wholesale markets, in open retail markets, and on each supermarket's shelf, with the trend for every seller over the period you choose."
       eyebrow="Intelligence"
       title="Price explorer"
     >
       <Card size="sm">
         <CardContent className="flex flex-col gap-2 lg:flex-row lg:items-center">
-          <ItemSearch onSelect={selectItem} selected={selected} />
+          <ProductSearch onSelect={selectProduct} selected={selected} />
           <DateRangeControl className="lg:ml-auto" earliest={data?.bounds.first} latest={data?.bounds.last} onChange={selectRange} value={selection} />
         </CardContent>
       </Card>
 
-      {!itemId ? (
+      {!productId ? (
         <Empty className="min-h-64">
           <EmptyHeader>
             <EmptyMedia variant="icon"><RiStore2Line /></EmptyMedia>
-            <EmptyTitle>Pick an item to explore</EmptyTitle>
-            <EmptyDescription>Type a name in any spelling a bulletin or store uses. Try eggs, carrot, red onion, samba, or dhal.</EmptyDescription>
+            <EmptyTitle>Pick a product to explore</EmptyTitle>
+            <EmptyDescription>Type a name in any spelling a bulletin or store uses. Try eggs, potato, red onion, samba, or dhal.</EmptyDescription>
           </EmptyHeader>
         </Empty>
       ) : detail.isPending ? (
@@ -90,20 +96,39 @@ export function PriceExplorerPage() {
       ) : data ? (
         <div className={cn("flex flex-col gap-3.5 transition-opacity", fading)}>
           <div className="flex flex-wrap items-center gap-3">
-            <ProductImage id={data.item.product_id} label={data.item.display} size="sm" />
+            <ProductImage id={data.product.id} label={data.product.label} size="sm" />
             <div className="min-w-0">
-              <h2 className="font-heading text-xl font-semibold tracking-tight">{data.item.display}</h2>
-              <p className="text-xs text-muted-foreground">{data.item.product_label} · {data.item.category} · {data.latest.length} sellers · {describeRange(selection)}{data.item.aliases.length ? ` · also known as ${data.item.aliases.slice(0, 4).join(", ")}` : ""}</p>
+              <h2 className="font-heading text-xl font-semibold tracking-tight">{data.product.label}</h2>
+              <p className="text-xs text-muted-foreground">
+                {data.product.category} · {plural(data.product.varieties.length, "variety", "varieties")} · {plural(data.latest.length, "seller")} · {describeRange(selection)}
+                {data.product.aliases.length ? ` · also known as ${data.product.aliases.slice(0, 4).join(", ")}` : ""}
+              </p>
             </div>
           </div>
+
+          {data.product.varieties.length > 1 ? (
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="mr-1 text-xs text-muted-foreground">{data.product.comparison === "pooled" ? "Varieties pooled per seller:" : "Different products under one name; compare one at a time:"}</span>
+              <Button className="h-7 rounded-full px-3 text-xs" onClick={() => update({ varieties: "all" })} size="sm" variant={allSelected ? "default" : "outline"}>All varieties</Button>
+              {data.product.varieties.map((variety) => {
+                const active = !allSelected && data.selected.length === 1 && data.selected[0] === variety.id;
+                return (
+                  <Button className="h-7 rounded-full px-3 text-xs" key={variety.id} onClick={() => update({ varieties: variety.id })} size="sm" variant={active ? "default" : "outline"}>
+                    {variety.qualifier}
+                    <span className={cn("ml-1 font-mono text-[10px]", active ? "text-primary-foreground/70" : "text-muted-foreground")}>{variety.sellers}</span>
+                  </Button>
+                );
+              })}
+            </div>
+          ) : null}
 
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
             {[wholesale, retail, supermarket].map((summary) => summary ? (
               <StatTile
-                hint={summary.average === null ? "No seller reports this item" : summary.lowest && summary.highest && summary.lowest.market_id !== summary.highest.market_id ? <>Lowest {summary.lowest.market_label} {rupees(summary.lowest.mid)} · highest {summary.highest.market_label} {rupees(summary.highest.mid)}</> : summary.lowest ? <>{summary.lowest.market_label} · {formatDay(summary.lowest.observed_on)}</> : null}
+                hint={summary.average === null ? "No seller reports this product" : summary.lowest && summary.highest && summary.lowest.market_id !== summary.highest.market_id ? <>Lowest {summary.lowest.market_label} {rupees(summary.lowest.mid)} · highest {summary.highest.market_label} {rupees(summary.highest.mid)}</> : summary.lowest ? <>{summary.lowest.market_label} · {formatDay(summary.lowest.observed_on)}</> : null}
                 icon={(() => { const Icon = groupIcon[summary.group]; return <Icon />; })()}
                 key={summary.group}
-                label={`${groupCopy[summary.group].short} · ${summary.sellers} seller${summary.sellers === 1 ? "" : "s"}`}
+                label={`${groupCopy[summary.group].short} · ${plural(summary.sellers, "seller")}`}
                 value={summary.average === null ? "—" : `${rupees(summary.average)}${summary.unit ? `/${summary.unit}` : ""}`}
               />
             ) : null)}
@@ -119,7 +144,9 @@ export function PriceExplorerPage() {
           <Card size="sm">
             <CardHeader>
               <CardTitle>How each seller prices it</CardTitle>
-              <CardDescription>Latest price per seller. A supermarket's price spans every brand and pack of the item on its shelf that day. Change compares the first and last day the seller reported within the selected period.</CardDescription>
+              <CardDescription>
+                Latest price per seller{pooledVarieties > 1 ? `, pooling the ${pooledVarieties} varieties each seller reports` : ""}. A supermarket's price spans every brand and pack of the product on its shelf that day. Change compares the first and last day the seller reported within the selected period.
+              </CardDescription>
             </CardHeader>
             <CardContent className="px-0">
               <Table>
@@ -137,7 +164,7 @@ export function PriceExplorerPage() {
                   {groups.flatMap(({ group, latest, series }) => {
                     const comparable = latest.filter((entry) => entry.unit === (data.summary.find((summary) => summary.group === group)?.unit ?? entry.unit));
                     const cheapest = comparable.length > 1 ? comparable.reduce((best, entry) => (entry.mid < best.mid ? entry : best)) : null;
-                    return [...latest].sort((left, right) => left.mid - right.mid).map((entry) => <SellerRow cheapest={cheapest?.market_id === entry.market_id} entry={entry} key={`${entry.market_id}|${entry.price_type}`} series={series.find((candidate) => candidate.market_id === entry.market_id && candidate.price_type === entry.price_type) ?? null} />);
+                    return [...latest].sort((left, right) => left.mid - right.mid).map((entry) => <SellerRow cheapest={cheapest?.market_id === entry.market_id} entry={entry} key={`${entry.market_id}|${entry.price_type}|${entry.unit}`} pooled={pooledVarieties > 1} series={series.find((candidate) => candidate.market_id === entry.market_id && candidate.price_type === entry.price_type) ?? null} />);
                   })}
                 </TableBody>
               </Table>
@@ -154,7 +181,7 @@ export function PriceExplorerPage() {
                   <CardHeader>
                     <CardTitle>{groupCopy[group].title}</CardTitle>
                     <CardDescription>
-                      {groupCopy[group].description}.{shown.length > maxChartSeries ? ` Showing the ${maxChartSeries} sellers with the most days of data; the table above lists all ${shown.length}.` : ""}{units.length > 1 ? ` Only sellers priced per ${shown[0]!.unit} are drawn; others use a different unit.` : ""}
+                      {groupCopy[group].description}.{pooledVarieties > 1 ? " Each line is the seller's daily average across the pooled varieties." : ""}{shown.length > maxChartSeries ? ` Showing the ${maxChartSeries} sellers with the most days of data; the table above lists all ${shown.length}.` : ""}{units.length > 1 ? ` Only sellers priced per ${shown[0]!.unit} are drawn; others use a different unit.` : ""}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -164,15 +191,19 @@ export function PriceExplorerPage() {
               );
             })}
           </div>
-          {!data.series.length ? <Alert><AlertTitle>No prices in this period</AlertTitle><AlertDescription>Prices exist from {data.bounds.first ? formatDay(data.bounds.first) : "—"} to {data.bounds.last ? formatDay(data.bounds.last) : "—"}. Widen the period to see the trend.</AlertDescription></Alert> : null}
+          {!data.series.length ? <Alert><AlertTitle>No prices in this period</AlertTitle><AlertDescription>Prices exist from {data.bounds.first ? formatDay(data.bounds.first) : "—"} to {data.bounds.last ? formatDay(data.bounds.last) : "—"}. Widen the period or choose another variety to see the trend.</AlertDescription></Alert> : null}
         </div>
       ) : null}
     </PageFrame>
   );
 }
 
-function SellerRow({ entry, series, cheapest }: { entry: ExplorerLatest; series: ExplorerSeries | null; cheapest: boolean }) {
+function SellerRow({ entry, series, cheapest, pooled }: { entry: ExplorerLatest; series: ExplorerSeries | null; cheapest: boolean; pooled: boolean }) {
   const change = series?.change_pct ?? null;
+  const notes = [
+    pooled && entry.varieties.length ? entry.varieties.join(" · ") : null,
+    entry.products > 1 ? (entry.group === "supermarket" ? `${plural(entry.products, "product")} on the shelf` : plural(entry.products, "price")) : null,
+  ].filter(Boolean);
   return (
     <TableRow>
       <TableCell className="pl-4 font-medium">
@@ -180,7 +211,7 @@ function SellerRow({ entry, series, cheapest }: { entry: ExplorerLatest; series:
           <SellerMark label={entry.market_label} marketId={entry.market_id} type={entry.market_type} />
           <span className="min-w-0">
             <span className="block truncate">{entry.market_label}{cheapest ? <Badge className="ml-2" variant="secondary">Cheapest</Badge> : null}</span>
-            {entry.products > 1 ? <span className="block text-[11px] font-normal text-muted-foreground">Range across {entry.products} products on the shelf</span> : null}
+            {notes.length ? <span className="block truncate text-[11px] font-normal text-muted-foreground">{notes.join(" · ")}</span> : null}
           </span>
         </span>
       </TableCell>
