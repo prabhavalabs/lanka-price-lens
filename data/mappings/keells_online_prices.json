@@ -1,0 +1,1721 @@
+{
+  "schema_version": "1.0.0",
+  "mapping_version": "keells-online-2026-09-04.2",
+  "source_id": "keells_online_prices",
+  "reviewed_by": "repository-owner",
+  "reviewed_at": "2026-09-04",
+  "evidence_ref": "docs/retail-capture.md",
+  "products": [
+    {
+      "id": "product_ambarella",
+      "category": "fruit",
+      "canonical_label_en": "Ambarella",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_ash_plantain",
+      "category": "vegetable",
+      "canonical_label_en": "Ash Plantain",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_batana",
+      "category": "vegetable",
+      "canonical_label_en": "Batana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_beans",
+      "category": "vegetable",
+      "canonical_label_en": "Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_beetroot",
+      "category": "vegetable",
+      "canonical_label_en": "Beetroot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_bell_pepper",
+      "category": "vegetable",
+      "canonical_label_en": "Bell Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_big_onion",
+      "category": "vegetable",
+      "canonical_label_en": "Big Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_bitter_gourd",
+      "category": "vegetable",
+      "canonical_label_en": "Bitter Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_bread_fruit",
+      "category": "vegetable",
+      "canonical_label_en": "Bread Fruit",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_brinjals",
+      "category": "vegetable",
+      "canonical_label_en": "Brinjals",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_broccoli",
+      "category": "vegetable",
+      "canonical_label_en": "Broccoli",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cabbage",
+      "category": "vegetable",
+      "canonical_label_en": "Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cabbage_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Cabbage Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_capsicum",
+      "category": "vegetable",
+      "canonical_label_en": "Capsicum",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_carrot",
+      "category": "vegetable",
+      "canonical_label_en": "Carrot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cauliflower",
+      "category": "vegetable",
+      "canonical_label_en": "Cauliflower",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_celery",
+      "category": "vegetable",
+      "canonical_label_en": "Celery",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cherry_tomato",
+      "category": "vegetable",
+      "canonical_label_en": "Cherry Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_chinese_cabbage",
+      "category": "vegetable",
+      "canonical_label_en": "Chinese Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coconut",
+      "category": "vegetable",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coriander_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Coriander Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cucumber",
+      "category": "vegetable",
+      "canonical_label_en": "Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_curry_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Curry Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_dambala",
+      "category": "vegetable",
+      "canonical_label_en": "Winged Beans (Dambala)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_drumstick",
+      "category": "vegetable",
+      "canonical_label_en": "Drumstick",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_eggplant",
+      "category": "vegetable",
+      "canonical_label_en": "Eggplant",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_garlic",
+      "category": "vegetable",
+      "canonical_label_en": "Garlic",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_ginger",
+      "category": "vegetable",
+      "canonical_label_en": "Ginger",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_gotukola",
+      "category": "vegetable",
+      "canonical_label_en": "Gotukola",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_green_chillies",
+      "category": "vegetable",
+      "canonical_label_en": "Green Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_green_cucumber",
+      "category": "vegetable",
+      "canonical_label_en": "Green Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_iceberg_lettuce",
+      "category": "vegetable",
+      "canonical_label_en": "Iceberg Lettuce",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_kankun",
+      "category": "vegetable",
+      "canonical_label_en": "Kankun",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_kathurumurunga",
+      "category": "vegetable",
+      "canonical_label_en": "Kathurumurunga",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_kekiri",
+      "category": "vegetable",
+      "canonical_label_en": "Kekiri",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_knolkhol",
+      "category": "vegetable",
+      "canonical_label_en": "Knolkhol",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_kohila",
+      "category": "vegetable",
+      "canonical_label_en": "Kohila",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_ladies_fingers",
+      "category": "vegetable",
+      "canonical_label_en": "Ladies Fingers",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_leeks",
+      "category": "vegetable",
+      "canonical_label_en": "Leeks",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_lemon",
+      "category": "vegetable",
+      "canonical_label_en": "Lemon",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_lime",
+      "category": "fruit",
+      "canonical_label_en": "Lime",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_long_beans",
+      "category": "vegetable",
+      "canonical_label_en": "Long Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_luffa",
+      "category": "vegetable",
+      "canonical_label_en": "Luffa",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_manioc",
+      "category": "vegetable",
+      "canonical_label_en": "Manioc",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mint_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Mint Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mukunuwenna",
+      "category": "vegetable",
+      "canonical_label_en": "Mukunuwenna",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_onion_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Onion Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_plantain_flower",
+      "category": "vegetable",
+      "canonical_label_en": "Plantain Flower",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_polos",
+      "category": "vegetable",
+      "canonical_label_en": "Polos (Young Jackfruit)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_potato",
+      "category": "vegetable",
+      "canonical_label_en": "Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_pumpkin",
+      "category": "vegetable",
+      "canonical_label_en": "Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_radish",
+      "category": "vegetable",
+      "canonical_label_en": "Radish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_red_cabbage",
+      "category": "vegetable",
+      "canonical_label_en": "Red Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_red_onion",
+      "category": "vegetable",
+      "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_salad_cucumber",
+      "category": "vegetable",
+      "canonical_label_en": "Salad Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_salad_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Salad Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_snake_gourd",
+      "category": "vegetable",
+      "canonical_label_en": "Snake Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_spinach",
+      "category": "vegetable",
+      "canonical_label_en": "Spinach (Nivithi)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sweet_corn",
+      "category": "vegetable",
+      "canonical_label_en": "Sweet Corn",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sweet_potato",
+      "category": "vegetable",
+      "canonical_label_en": "Sweet Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_thalana_batu",
+      "category": "vegetable",
+      "canonical_label_en": "Thalana Batu",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_tibbatu",
+      "category": "vegetable",
+      "canonical_label_en": "Tibbatu",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_tomato",
+      "category": "vegetable",
+      "canonical_label_en": "Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_zucchini",
+      "category": "vegetable",
+      "canonical_label_en": "Zucchini",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    }
+  ],
+  "items": [
+    {
+      "id": "item_ash_plantains",
+      "product_id": "product_ash_plantain",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ash Plantains",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Ash Plantains"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_beans",
+      "product_id": "product_beans",
+      "entity_type": "commodity",
+      "canonical_label_en": "Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Green Beans"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_beetroot_general",
+      "product_id": "product_beetroot",
+      "entity_type": "commodity",
+      "canonical_label_en": "Beetroot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Beetroot"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_bitter_gourd",
+      "product_id": "product_bitter_gourd",
+      "entity_type": "commodity",
+      "canonical_label_en": "Bitter Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Bitter Gourd"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_brinjals",
+      "product_id": "product_brinjals",
+      "entity_type": "commodity",
+      "canonical_label_en": "Brinjals",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Brinjals"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_capsicum",
+      "product_id": "product_capsicum",
+      "entity_type": "commodity",
+      "canonical_label_en": "Capsicum",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Capsicum"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_carrot",
+      "product_id": "product_carrot",
+      "entity_type": "commodity",
+      "canonical_label_en": "Carrot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Carrot"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_cucumber",
+      "product_id": "product_cucumber",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cucumber"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_drumstick",
+      "product_id": "product_drumstick",
+      "entity_type": "commodity",
+      "canonical_label_en": "Drumstick",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Drumsticks"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_eggplant",
+      "product_id": "product_eggplant",
+      "entity_type": "commodity",
+      "canonical_label_en": "Eggplant",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Egg Plants"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_green_chillies",
+      "product_id": "product_green_chillies",
+      "entity_type": "commodity",
+      "canonical_label_en": "Green Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Green Chilies"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_knolkhol",
+      "product_id": "product_knolkhol",
+      "entity_type": "commodity",
+      "canonical_label_en": "Knolkhol",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Knol Khol"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_ladies_fingers",
+      "product_id": "product_ladies_fingers",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ladies Fingers",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Ladies Fingers"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_leeks",
+      "product_id": "product_leeks",
+      "entity_type": "commodity",
+      "canonical_label_en": "Leeks",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Leeks"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_long_beans",
+      "product_id": "product_long_beans",
+      "entity_type": "commodity",
+      "canonical_label_en": "Long Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Long Beans"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_luffa",
+      "product_id": "product_luffa",
+      "entity_type": "commodity",
+      "canonical_label_en": "Luffa",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Ribbed Gourd"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_manioc",
+      "product_id": "product_manioc",
+      "entity_type": "commodity",
+      "canonical_label_en": "Manioc",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Manioc"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_pumpkin",
+      "product_id": "product_pumpkin",
+      "entity_type": "commodity",
+      "canonical_label_en": "Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Pumpkin"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_radish",
+      "product_id": "product_radish",
+      "entity_type": "commodity",
+      "canonical_label_en": "Radish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Raddish"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_snake_gourd",
+      "product_id": "product_snake_gourd",
+      "entity_type": "commodity",
+      "canonical_label_en": "Snake Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Snake Gourd"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_sweet_potato",
+      "product_id": "product_sweet_potato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Sweet Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Sweet Potato"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_tomato",
+      "product_id": "product_tomato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Tomatoes"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_lime",
+      "product_id": "product_lime",
+      "entity_type": "commodity",
+      "canonical_label_en": "Lime",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Lime"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_big_onion",
+      "product_id": "product_big_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Big Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Big Onions"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_cabbage",
+      "product_id": "product_cabbage",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cabbage"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_potato",
+      "product_id": "product_potato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Potatoes"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_red_onion",
+      "product_id": "product_red_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Red Onions"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_garlic",
+      "product_id": "product_garlic",
+      "entity_type": "commodity",
+      "canonical_label_en": "Garlic",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Garlic"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_ginger",
+      "product_id": "product_ginger",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ginger",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Ginger"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_coconut",
+      "product_id": "product_coconut",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coconut",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Coconut"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_cauliflower",
+      "product_id": "product_cauliflower",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cauliflower",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cauliflower"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_broccoli",
+      "product_id": "product_broccoli",
+      "entity_type": "commodity",
+      "canonical_label_en": "Broccoli",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Broccoli"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_iceberg_lettuce",
+      "product_id": "product_iceberg_lettuce",
+      "entity_type": "commodity",
+      "canonical_label_en": "Iceberg Lettuce",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Iceberg Lettuce"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_spinach",
+      "product_id": "product_spinach",
+      "entity_type": "commodity",
+      "canonical_label_en": "Spinach (Nivithi)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Nivithi"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_gotukola",
+      "product_id": "product_gotukola",
+      "entity_type": "commodity",
+      "canonical_label_en": "Gotukola",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Gotukola"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_kankun",
+      "product_id": "product_kankun",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kankun",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kankun"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_mukunuwenna",
+      "product_id": "product_mukunuwenna",
+      "entity_type": "commodity",
+      "canonical_label_en": "Mukunuwenna",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Mukunuwenna"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_kathurumurunga",
+      "product_id": "product_kathurumurunga",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kathurumurunga",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kathurumurunga"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_curry_leaves",
+      "product_id": "product_curry_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Curry Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Curry Leaves"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_dambala",
+      "product_id": "product_dambala",
+      "entity_type": "commodity",
+      "canonical_label_en": "Winged Beans (Dambala)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Dambala"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_thalana_batu",
+      "product_id": "product_thalana_batu",
+      "entity_type": "commodity",
+      "canonical_label_en": "Thalana Batu",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Thalana Batu"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_tibbatu",
+      "product_id": "product_tibbatu",
+      "entity_type": "commodity",
+      "canonical_label_en": "Tibbatu",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Tib Batu"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_batana",
+      "product_id": "product_batana",
+      "entity_type": "commodity",
+      "canonical_label_en": "Batana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Batana"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_kekiri",
+      "product_id": "product_kekiri",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kekiri",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kekiri"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_celery",
+      "product_id": "product_celery",
+      "entity_type": "commodity",
+      "canonical_label_en": "Celery",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Celery"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_red_cabbage",
+      "product_id": "product_red_cabbage",
+      "entity_type": "commodity",
+      "canonical_label_en": "Red Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Red Cabbage"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_chinese_cabbage",
+      "product_id": "product_chinese_cabbage",
+      "entity_type": "commodity",
+      "canonical_label_en": "Chinese Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Chinese Cabbage"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_lemon",
+      "product_id": "product_lemon",
+      "entity_type": "commodity",
+      "canonical_label_en": "Lemon",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Lemon"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_cherry_tomato",
+      "product_id": "product_cherry_tomato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cherry Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cherry Tomato"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_sweet_corn",
+      "product_id": "product_sweet_corn",
+      "entity_type": "commodity",
+      "canonical_label_en": "Sweet Corn",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Sweet Corn"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_plantain_flower",
+      "product_id": "product_plantain_flower",
+      "entity_type": "commodity",
+      "canonical_label_en": "Plantain Flower",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Plantain Flower"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_cabbage_leaves",
+      "product_id": "product_cabbage_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cabbage Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Cabbage Leaves"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_salad_cucumber",
+      "product_id": "product_salad_cucumber",
+      "entity_type": "commodity",
+      "canonical_label_en": "Salad Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Salad Cucumber"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_green_cucumber",
+      "product_id": "product_green_cucumber",
+      "entity_type": "commodity",
+      "canonical_label_en": "Green Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Green Cucumber"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_kohila",
+      "product_id": "product_kohila",
+      "entity_type": "commodity",
+      "canonical_label_en": "Kohila",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Kohila"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_ambarella",
+      "product_id": "product_ambarella",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ambarella",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Ambarella"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_bread_fruit",
+      "product_id": "product_bread_fruit",
+      "entity_type": "commodity",
+      "canonical_label_en": "Bread Fruit",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Bread Fruit"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_polos",
+      "product_id": "product_polos",
+      "entity_type": "commodity",
+      "canonical_label_en": "Polos (Young Jackfruit)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Polos"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_coriander_leaves",
+      "product_id": "product_coriander_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coriander Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Coriander Leaves"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_salad_leaves",
+      "product_id": "product_salad_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Salad Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Salad Leaves"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_mint_leaves",
+      "product_id": "product_mint_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Mint Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Minchi Leaves"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_onion_leaves",
+      "product_id": "product_onion_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Onion Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Onion Leaves"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_bell_pepper_green",
+      "product_id": "product_bell_pepper",
+      "entity_type": "variety",
+      "canonical_label_en": "Bell Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Green",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Bell Pepper Green"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_bell_pepper_red",
+      "product_id": "product_bell_pepper",
+      "entity_type": "variety",
+      "canonical_label_en": "Bell Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Red",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Bell Pepper Red"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_bell_pepper_yellow",
+      "product_id": "product_bell_pepper",
+      "entity_type": "variety",
+      "canonical_label_en": "Bell Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Yellow",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Bell Pepper Yellow"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_zucchini",
+      "product_id": "product_zucchini",
+      "entity_type": "variety",
+      "canonical_label_en": "Zucchini",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Green",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Zucchini"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    },
+    {
+      "id": "item_zucchini_yellow",
+      "product_id": "product_zucchini",
+      "entity_type": "variety",
+      "canonical_label_en": "Zucchini",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Yellow",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Yellow Zucchini"
+      ],
+      "expected_market_labels": [
+        "Keells Online"
+      ]
+    }
+  ],
+  "markets": [
+    {
+      "id": "market_keells_online",
+      "type": "online_store",
+      "label_en": "Keells Online",
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "scope_note": "Keells Online web store; prices and stock reported for the configured outlet (default SCDR, Colombo).",
+      "source_labels": [
+        "Keells Online"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "unit_kg_exact",
+      "source_unit": "kg",
+      "normalized_unit": "kg",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_g_to_kg",
+      "source_unit": "g",
+      "normalized_unit": "kg",
+      "factor_numerator": 1,
+      "factor_denominator": 1000,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_piece_exact",
+      "source_unit": "piece",
+      "normalized_unit": "piece",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_bunch_exact",
+      "source_unit": "bunch",
+      "normalized_unit": "bunch",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    }
+  ],
+  "completeness": {
+    "minimum_item_coverage": 0.5,
+    "minimum_market_coverage": 1,
+    "minimum_cell_coverage": 0.5,
+    "minimum_mapping_coverage": 0.35,
+    "minimum_score": 0.5
+  }
+}
