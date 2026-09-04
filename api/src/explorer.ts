@@ -3,27 +3,38 @@ import type { WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 import type { PriceRange, RangeRequest } from "./insights.ts";
 
 /**
- * Price explorer: item search and a per-item view of the latest price in every
- * market plus trends over a window. Reads the PostgreSQL warehouse only
- * (daily_item_price, latest_item_price, item_alias), never the operational store.
+ * Price explorer: product search and a per-product view of the latest price in
+ * every market plus trends over a window. A product is what a consumer names
+ * ("potato"); its items are the varieties the sources tell apart (imported, local,
+ * Nuwara Eliya, or the unlabelled potato a supermarket sells). The view pools the
+ * selected varieties per seller so a shop's shelf price sits beside the market
+ * price of the same food. Reads the PostgreSQL warehouse only.
  */
 
-export type ExplorerItem = {
+export type ExplorerGroup = "wholesale" | "retail_market" | "supermarket";
+export type ExplorerComparison = "pooled" | "by_variety";
+
+export type ExplorerVariety = {
+  id: string;
+  /** Full item label, "Potato (Imported)". */
+  label: string;
+  /** What sets the variety apart ("Imported", "Nuwara Eliya", "Whole"), or "Unspecified" when the source states nothing. */
+  qualifier: string;
+  sellers: number;
+  /** The variety a by-variety product opens on. */
+  base: boolean;
+};
+
+export type ExplorerProduct = {
   id: string;
   label: string;
-  display: string;
-  product_id: string;
-  product_label: string;
   category: string;
-  variety: string | null;
-  origin: string | null;
-  grade: string | null;
-  markets: number;
+  comparison: ExplorerComparison;
+  varieties: ExplorerVariety[];
+  sellers: number;
   last_day: string | null;
   aliases: string[];
 };
-
-export type ExplorerGroup = "wholesale" | "retail_market" | "supermarket";
 
 export type ExplorerLatest = {
   market_id: string;
@@ -37,8 +48,10 @@ export type ExplorerLatest = {
   low: number;
   high: number;
   mid: number;
-  /** Product labels (brands, pack sizes) behind the price that day; one for a bulletin, several for a store. */
+  /** Product labels (brands, packs, varieties) behind the price; one for a bulletin row, several for a store or a pooled view. */
   products: number;
+  /** Qualifiers of the varieties this seller reported, for the pooled view. */
+  varieties: string[];
 };
 
 export type ExplorerPoint = { date: string; mid: number; low: number; high: number };
@@ -68,7 +81,9 @@ export type ExplorerSummary = {
 };
 
 export type ExplorerDetail = {
-  item: ExplorerItem;
+  product: ExplorerProduct;
+  /** Item ids the view pools; the product's default when the caller named none. */
+  selected: string[];
   range: PriceRange;
   bounds: { first: string | null; last: string | null };
   latest: ExplorerLatest[];
@@ -78,58 +93,82 @@ export type ExplorerDetail = {
   series: ExplorerSeries[];
 };
 
-const itemSelect = `
-  SELECT item.id, item.label_en AS label, item.product_id, product.label_en AS product_label, product.category,
-         item.variety, item.origin, item.grade,
-         COALESCE(stats.markets, 0)::INTEGER AS markets, stats.last_day::TEXT AS last_day,
+type ItemRow = { id: string; label: string; variety: string | null; origin: string | null; grade: string | null; size: string | null; sellers: number | string };
+type ProductRow = { id: string; label: string; category: string; comparison: ExplorerComparison; sellers: number | string; last_day: string | null; items: ItemRow[]; aliases: string[] };
+
+const productSelect = `
+  SELECT product.id, product.label_en AS label, product.category, product.comparison,
+         (SELECT COUNT(DISTINCT (priced.market_id, priced.price_type)) FROM latest_item_price priced JOIN item owned ON owned.id = priced.item_id
+          WHERE owned.product_id = product.id)::INTEGER AS sellers,
+         MAX(stats.last_day)::TEXT AS last_day,
+         json_agg(json_build_object('id', item.id, 'label', item.label_en, 'variety', item.variety, 'origin', item.origin, 'grade', item.grade, 'size', item.size,
+                                    'sellers', COALESCE(stats.markets, 0)) ORDER BY item.id) AS items,
          ARRAY(SELECT alias.label FROM (SELECT DISTINCT alias.label, MIN(CASE WHEN alias.origin = 'bundle' THEN 0 ELSE 1 END) AS rank
-                                        FROM item_alias alias WHERE alias.item_id = item.id GROUP BY alias.label) alias
+                                        FROM item_alias alias JOIN item owner ON owner.id = alias.item_id WHERE owner.product_id = product.id GROUP BY alias.label) alias
                ORDER BY alias.rank, alias.label LIMIT 6) AS aliases
-  FROM item
-  JOIN product ON product.id = item.product_id
+  FROM product
+  JOIN item ON item.product_id = product.id AND item.status = 'active'
   LEFT JOIN (SELECT item_id, COUNT(*) AS markets, MAX(observed_on) AS last_day FROM latest_item_price GROUP BY item_id) stats ON stats.item_id = item.id`;
+const productGroup = "GROUP BY product.id, product.label_en, product.category, product.comparison";
 
-type ItemRow = Omit<ExplorerItem, "display" | "markets"> & { markets: number | string };
-
-export async function searchItems(client: WarehouseClient, query: string, limit = 20): Promise<ExplorerItem[]> {
+export async function searchProducts(client: WarehouseClient, query: string, limit = 20): Promise<ExplorerProduct[]> {
   const tokens = query.trim().split(/\s+/u).filter(Boolean).slice(0, 5);
   const params: unknown[] = [];
   const conditions = tokens.map((token) => {
     params.push(`%${escapeLike(token)}%`);
     const index = `$${params.length}`;
-    return `(item.label_en ILIKE ${index} OR product.label_en ILIKE ${index} OR COALESCE(item.variety, '') ILIKE ${index}
-      OR COALESCE(item.origin, '') ILIKE ${index} OR EXISTS (SELECT 1 FROM item_alias alias WHERE alias.item_id = item.id AND alias.label ILIKE ${index}))`;
+    return `(product.label_en ILIKE ${index} OR EXISTS (
+      SELECT 1 FROM item candidate WHERE candidate.product_id = product.id AND (candidate.label_en ILIKE ${index}
+        OR COALESCE(candidate.variety, '') ILIKE ${index} OR COALESCE(candidate.origin, '') ILIKE ${index}
+        OR EXISTS (SELECT 1 FROM item_alias alias WHERE alias.item_id = candidate.id AND alias.label ILIKE ${index}))))`;
   });
   params.push(query.trim().toLowerCase());
   const exact = `$${params.length}`;
   params.push(Math.min(50, Math.max(1, limit)));
-  const rows = await client.query<ItemRow>(
-    `${itemSelect}
-     WHERE item.status = 'active'${conditions.length ? ` AND ${conditions.join(" AND ")}` : ""}
-     ORDER BY CASE WHEN lower(item.label_en) = ${exact} OR lower(product.label_en) = ${exact} THEN 0
-                   WHEN lower(item.label_en) LIKE ${exact} || '%' OR lower(product.label_en) LIKE ${exact} || '%' THEN 1 ELSE 2 END,
-              COALESCE(stats.markets, 0) DESC, item.label_en, item.id
+  const rows = await client.query<ProductRow>(
+    `${productSelect}
+     WHERE product.status = 'active'${conditions.length ? ` AND ${conditions.join(" AND ")}` : ""}
+     ${productGroup}
+     ORDER BY CASE WHEN lower(product.label_en) = ${exact} THEN 0 WHEN lower(product.label_en) LIKE ${exact} || '%' THEN 1 ELSE 2 END, sellers DESC, product.label_en
      LIMIT $${params.length}`,
     params,
   );
-  return rows.map(toItem);
+  return rows.map(toProduct);
 }
 
-export async function itemDetail(client: WarehouseClient, itemId: string, request: RangeRequest, today = new Date()): Promise<ExplorerDetail | null> {
-  const [row] = await client.query<ItemRow>(`${itemSelect} WHERE item.id = $1`, [itemId]);
+export async function productDetail(
+  client: WarehouseClient,
+  productId: string,
+  request: RangeRequest,
+  /** Which varieties to pool: item ids, "all", or nothing for the product's default view. */
+  options: { varieties?: string[] | "all" | undefined } = {},
+  today = new Date(),
+): Promise<ExplorerDetail | null> {
+  const [row] = await client.query<ProductRow>(`${productSelect} WHERE product.id = $1 ${productGroup}`, [productId]);
   if (!row) return null;
-  const item = toItem(row);
+  const product = toProduct(row);
+  const known = new Set(product.varieties.map((variety) => variety.id));
+  const requested = options.varieties === "all" ? [...known] : (options.varieties ?? []).filter((id) => known.has(id));
+  const selected = requested.length ? requested : defaultSelection(product);
+  const qualifierOf = new Map(product.varieties.map((variety) => [variety.id, variety.qualifier]));
+
   const [bounds] = await client.query<{ first: string | null; last: string | null }>(
-    "SELECT MIN(observed_on)::TEXT AS first, MAX(observed_on)::TEXT AS last FROM daily_item_price WHERE item_id = $1",
-    [itemId],
+    "SELECT MIN(observed_on)::TEXT AS first, MAX(observed_on)::TEXT AS last FROM daily_item_price WHERE item_id = ANY($1::text[])",
+    [selected],
   );
   const range = resolveRange(request, bounds?.last ?? today.toISOString().slice(0, 10));
-  const latestRows = await client.query<{ market_id: string; market_label: string; market_type: string; source_id: string; price_type: string; observed_on: string; unit: string; low_minor: string; high_minor: string; mid_minor: string; observations: string }>(
-    `SELECT latest.market_id, market.label_en AS market_label, market.type AS market_type, latest.source_id, latest.price_type,
-            latest.observed_on::TEXT, latest.normalized_unit AS unit, latest.low_minor::TEXT, latest.high_minor::TEXT, latest.mid_minor::TEXT, latest.observations::TEXT
+
+  // One row per seller: the selected varieties pooled into that seller's low, high, and average.
+  const latestRows = await client.query<{ market_id: string; market_label: string; market_type: string; source_id: string; price_type: string; observed_on: string; unit: string; low_minor: string; high_minor: string; mid_minor: string; observations: string; items: string[] }>(
+    `SELECT latest.market_id, market.label_en AS market_label, market.type AS market_type, latest.price_type, latest.normalized_unit AS unit,
+            MIN(latest.source_id) AS source_id, MAX(latest.observed_on)::TEXT AS observed_on,
+            MIN(latest.low_minor)::TEXT AS low_minor, MAX(latest.high_minor)::TEXT AS high_minor, ROUND(AVG(latest.mid_minor))::TEXT AS mid_minor,
+            SUM(latest.observations)::TEXT AS observations, array_agg(DISTINCT latest.item_id) AS items
      FROM latest_item_price latest JOIN market ON market.id = latest.market_id
-     WHERE latest.item_id = $1 ORDER BY latest.price_type, market.type, market.label_en`,
-    [itemId],
+     WHERE latest.item_id = ANY($1::text[])
+     GROUP BY latest.market_id, market.label_en, market.type, latest.price_type, latest.normalized_unit
+     ORDER BY latest.price_type, market.type, market.label_en`,
+    [selected],
   );
   const latest: ExplorerLatest[] = latestRows.map((entry) => ({
     market_id: entry.market_id,
@@ -144,15 +183,17 @@ export async function itemDetail(client: WarehouseClient, itemId: string, reques
     high: Number(entry.high_minor) / 100,
     mid: Number(entry.mid_minor) / 100,
     products: Number(entry.observations),
+    varieties: [...new Set(entry.items.map((id) => qualifierOf.get(id) ?? id))].sort(),
   }));
+
   const seriesRows = await client.query<{ market_id: string; market_label: string; market_type: string; price_type: string; unit: string; date: string; low: string; high: string; mid: string }>(
     `SELECT daily.market_id, market.label_en AS market_label, market.type AS market_type, daily.price_type, daily.normalized_unit AS unit,
             daily.observed_on::TEXT AS date, MIN(daily.low_minor)::TEXT AS low, MAX(daily.high_minor)::TEXT AS high, ROUND(AVG(daily.mid_minor))::TEXT AS mid
      FROM daily_item_price daily JOIN market ON market.id = daily.market_id
-     WHERE daily.item_id = $1 AND daily.observed_on BETWEEN $2 AND $3
+     WHERE daily.item_id = ANY($1::text[]) AND daily.observed_on BETWEEN $2 AND $3
      GROUP BY daily.market_id, market.label_en, market.type, daily.price_type, daily.normalized_unit, daily.observed_on
      ORDER BY daily.observed_on`,
-    [itemId, range.from, range.to],
+    [selected, range.from, range.to],
   );
   const bySeries = new Map<string, ExplorerSeries>();
   for (const entry of seriesRows) {
@@ -187,7 +228,14 @@ export async function itemDetail(client: WarehouseClient, itemId: string, reques
   const wholesale = summary.find((entry) => entry.group === "wholesale");
   const supermarket = summary.find((entry) => entry.group === "supermarket");
   const markup = wholesale?.average && supermarket?.average && wholesale.unit === supermarket.unit ? Math.round(((supermarket.average - wholesale.average) / wholesale.average) * 1000) / 10 : null;
-  return { item, range, bounds: { first: bounds?.first ?? null, last: bounds?.last ?? null }, latest, summary, markup_pct: markup, series };
+  return { product, selected, range, bounds: { first: bounds?.first ?? null, last: bounds?.last ?? null }, latest, summary, markup_pct: markup, series };
+}
+
+/** Pooled products open on every variety; by-variety products open on the base variety alone. */
+export function defaultSelection(product: ExplorerProduct): string[] {
+  if (product.comparison === "pooled") return product.varieties.map((variety) => variety.id);
+  const base = product.varieties.filter((variety) => variety.base).map((variety) => variety.id);
+  return base.length ? base : product.varieties.map((variety) => variety.id);
 }
 
 const groupOrder: Record<ExplorerGroup, number> = { wholesale: 0, retail_market: 1, supermarket: 2 };
@@ -220,19 +268,25 @@ function daysBetween(from: string, to: string): number {
   return Math.round((Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 86_400_000);
 }
 
-function toItem(row: ItemRow): ExplorerItem {
-  const qualifiers = [row.variety, row.origin, row.grade].filter((value): value is string => Boolean(value));
+function toProduct(row: ProductRow): ExplorerProduct {
+  const items = (Array.isArray(row.items) ? row.items : []).map((item) => {
+    const qualifiers = [item.variety, item.origin, item.grade, item.size].filter((value): value is string => Boolean(value));
+    return { id: item.id, label: qualifiers.length ? `${item.label} (${qualifiers.join(", ")})` : item.label, qualifier: qualifiers.join(", ") || "Unspecified", sellers: Number(item.sellers), plain: qualifiers.length === 0 };
+  });
+  // The base variety: the unqualified item when there is one, else the item named after the product, else the most widely priced.
+  const baseId = items.find((item) => item.plain)?.id
+    ?? items.find((item) => item.id === row.id.replace(/^product_/u, "item_"))?.id
+    ?? [...items].sort((left, right) => right.sellers - left.sellers)[0]?.id;
+  const varieties: ExplorerVariety[] = items
+    .map(({ plain: _plain, ...item }) => ({ ...item, base: item.id === baseId }))
+    .sort((left, right) => Number(right.base) - Number(left.base) || right.sellers - left.sellers || left.qualifier.localeCompare(right.qualifier));
   return {
     id: row.id,
     label: row.label,
-    display: qualifiers.length ? `${row.label} (${qualifiers.join(", ")})` : row.label,
-    product_id: row.product_id,
-    product_label: row.product_label,
     category: row.category,
-    variety: row.variety,
-    origin: row.origin,
-    grade: row.grade,
-    markets: Number(row.markets),
+    comparison: row.comparison === "by_variety" ? "by_variety" : "pooled",
+    varieties,
+    sellers: Number(row.sellers),
     last_day: row.last_day,
     aliases: Array.isArray(row.aliases) ? row.aliases : [],
   };

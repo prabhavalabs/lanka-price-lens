@@ -50,7 +50,7 @@ import { requestId } from "hono/request-id";
 import { secureHeaders } from "hono/secure-headers";
 import { streamSSE } from "hono/streaming";
 
-import { itemDetail, searchItems } from "./explorer.ts";
+import { productDetail, searchProducts } from "./explorer.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
 import {
   archivedKnowledgePdf,
@@ -363,15 +363,18 @@ export function createApp(
     if (!client) return context.json(envelope(context.get("requestId"), null, false, "The price explorer needs the PostgreSQL warehouse (LPL_POSTGRES_URL)"), 503);
     const query = (context.req.query("q") ?? "").slice(0, 80);
     const limit = Number(context.req.query("limit") ?? 20) || 20;
-    return context.json(envelope(context.get("requestId"), await searchItems(client, query, limit)));
+    return context.json(envelope(context.get("requestId"), await searchProducts(client, query, limit)));
   });
-  app.get("/v1/admin/explorer/items/:id", async (context) => {
+  app.get("/v1/admin/explorer/products/:id", async (context) => {
     const client = await warehouse();
     if (!client) return context.json(envelope(context.get("requestId"), null, false, "The price explorer needs the PostgreSQL warehouse (LPL_POSTGRES_URL)"), 503);
     const range = parseRangeRequest({ days: context.req.query("days"), from: context.req.query("from"), to: context.req.query("to") });
     if ("error" in range) return context.json(envelope(context.get("requestId"), null, false, range.error), 400);
-    const detail = await itemDetail(client, context.req.param("id").slice(0, 120), range);
-    if (!detail) return context.json(envelope(context.get("requestId"), null, false, "Item not found"), 404);
+    // varieties: omitted for the product's default view, "all" for every variety, or a comma-separated list of item ids.
+    const requested = (context.req.query("varieties") ?? "").slice(0, 2000);
+    const varieties = requested === "all" ? "all" : requested.split(",").map((id) => id.trim()).filter(Boolean).slice(0, 50);
+    const detail = await productDetail(client, context.req.param("id").slice(0, 120), range, { varieties });
+    if (!detail) return context.json(envelope(context.get("requestId"), null, false, "Product not found"), 404);
     return context.json(envelope(context.get("requestId"), detail));
   });
   app.get("/v1/admin/sources/:id/unmapped-labels", (context) => {
