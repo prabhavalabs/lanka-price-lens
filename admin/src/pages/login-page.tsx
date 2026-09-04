@@ -103,14 +103,16 @@ export function LoginPage() {
   }, [form, lockedUntil]);
 
   return (
-    <main className="grid min-h-svh bg-background lg:grid-cols-[1.1fr_0.9fr]">
-      <section className="hidden border-r border-white/10 bg-sidebar p-12 text-white lg:flex lg:flex-col lg:justify-between xl:p-16">
-        <div className="flex items-center gap-3"><img alt="" className="size-11" src="/admin/app-icon.svg" /><div><p className="text-lg font-semibold tracking-tight">Lanka PriceLens</p><p className="font-mono text-[11px] text-neutral-500">Open price intelligence infrastructure</p></div></div>
-        <div className="max-w-xl"><div className="mb-7 grid size-12 place-items-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"><RiPriceTag3Line className="size-6" /></div><h1 className="font-heading text-4xl font-semibold leading-[1.12] tracking-tight xl:text-5xl">Reliable source data starts with a visible pipeline.</h1><p className="mt-5 max-w-lg text-base leading-7 text-neutral-400">Discover, inspect, parse, and monitor Sri Lanka’s public food-price bulletins from one accountable workspace.</p></div>
-        <p className="font-mono text-[10px] text-neutral-600">Non-commercial data preparation · Source-attributed · Self-hosted</p>
+    <main className="relative grid min-h-svh bg-background lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="relative hidden overflow-hidden border-r bg-sidebar p-12 text-white lg:flex lg:flex-col lg:justify-between xl:p-16">
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_top_left,black_35%,transparent_75%)]" />
+        <div aria-hidden className="pointer-events-none absolute -left-32 -top-32 size-[28rem] rounded-full bg-primary/15 blur-3xl" />
+        <div className="relative flex items-center gap-3"><img alt="" className="size-11" src="/admin/app-icon.svg" /><div><p className="text-lg font-semibold tracking-tight">Lanka PriceLens</p><p className="font-mono text-[11px] text-neutral-500">Open price intelligence infrastructure</p></div></div>
+        <div className="relative max-w-xl"><div className="mb-7 grid size-12 place-items-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"><RiPriceTag3Line className="size-6" /></div><h1 className="font-heading text-4xl font-semibold leading-[1.12] tracking-tight xl:text-5xl">Reliable source data starts with a visible pipeline.</h1><p className="mt-5 max-w-lg text-base leading-7 text-neutral-400">Discover, inspect, parse, and monitor Sri Lanka’s public food-price bulletins from one accountable workspace.</p></div>
+        <p className="relative font-mono text-[10px] text-neutral-500">Non-commercial data preparation · Source-attributed · Self-hosted</p>
       </section>
       <section className="grid place-items-center p-5 sm:p-8">
-        <Card className="w-full max-w-md bg-card/80">
+        <Card className="w-full max-w-md border-border/80 bg-card/90 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur">
           <CardHeader className="space-y-5"><div className="flex items-center gap-3 lg:hidden"><img alt="" className="size-9" src="/admin/app-icon.svg" /><div><p className="text-sm font-semibold">Lanka PriceLens</p><p className="font-mono text-[10px] text-muted-foreground">Foundry operations</p></div></div><div className="grid size-11 place-items-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"><RiLock2Line className="size-5" /></div><div><CardTitle className="text-2xl">Administrator sign in</CardTitle><CardDescription className="mt-1.5">Use your seeded owner account to continue.</CardDescription></div></CardHeader>
           <CardContent>
             <form className="flex flex-col gap-5" onSubmit={form.handleSubmit((values) => login.mutate(values))}>

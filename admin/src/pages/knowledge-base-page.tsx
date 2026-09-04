@@ -17,10 +17,11 @@ import {
 } from "@remixicon/react";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
+import { wholeNumber } from "@/components/charts";
 import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
 
-import { bytes, date, Pagination, Status, useTableState, type TableState } from "@/components/data-display";
+import { bytes, date, PageFrame, Pagination, Status, useTableState, type TableState } from "@/components/data-display";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -60,11 +61,13 @@ import {
 } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { setKnowledgeProcessingState } from "@/hooks/use-workflow-events";
 import {
   api,
   listUrl,
+  type Insights,
   type KnowledgeItem,
   type KnowledgeIndexStatus,
   type KnowledgeListItem,
@@ -76,11 +79,11 @@ import {
 } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
-const knowledgeIndexStatuses: Array<{ label: string; value: KnowledgeIndexStatus }> = [
-  { label: "Indexed", value: "indexed" },
-  { label: "Indexing", value: "indexing" },
-  { label: "Index failed", value: "failed" },
-  { label: "Not indexed", value: "not_indexed" },
+const knowledgeIndexStatuses: Array<{ label: string; value: KnowledgeIndexStatus; summary: string; description: string }> = [
+  { label: "Prices available", value: "indexed", summary: "Prices available", description: "Prices extracted and shown in Price insights" },
+  { label: "Extracting now", value: "indexing", summary: "Extracting now", description: "A processing run is working on them" },
+  { label: "Extraction failed", value: "failed", summary: "Failed", description: "The last attempt failed; open the steps to see why" },
+  { label: "Not extracted yet", value: "not_indexed", summary: "Not extracted yet", description: "Archived, waiting for a processing run" },
 ];
 
 const workflowLabels: Partial<Record<WorkflowStep["stage"], { title: string; description: string }>> = {
@@ -143,7 +146,8 @@ export function KnowledgeBasePage() {
   });
 
   return (
-    <PageFrame description="The PDFs retained in the source archive, with a clear path to each document and its processing history." title="Knowledge Base">
+    <PageFrame description="Every HARTI bulletin we know about. A bulletin counts as 'prices available' once its numbers have been extracted into the database, where Price insights can use them." eyebrow="Operations" title="Knowledge Base">
+      <KnowledgeSummary state={state} />
       {processDocument.isError ? (
         <Alert variant="destructive">
           <AlertTitle>Document workflow did not queue</AlertTitle>
@@ -155,8 +159,8 @@ export function KnowledgeBasePage() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Source documents</CardTitle>
-            <CardDescription>{knowledge.data.total} PDF {knowledge.data.total === 1 ? "document" : "documents"} in the knowledge base</CardDescription>
+            <CardTitle>Bulletins</CardTitle>
+            <CardDescription>{knowledge.data.total} PDF {knowledge.data.total === 1 ? "bulletin" : "bulletins"}{state.status ? ` · showing "${knowledgeIndexStatuses.find((option) => option.value === state.status)?.label ?? state.status}"` : ""}</CardDescription>
           </CardHeader>
           <KnowledgeControls state={state} />
           <CardContent className="p-0">
@@ -164,10 +168,11 @@ export function KnowledgeBasePage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[40%]">Document</TableHead>
-                    <TableHead className="w-[18%]">Published</TableHead>
-                    <TableHead className="w-[21%]">File</TableHead>
-                    <TableHead className="w-[14%]">Index status</TableHead>
+                    <TableHead className="w-[34%]">Bulletin</TableHead>
+                    <TableHead className="w-[14%]">Published</TableHead>
+                    <TableHead className="w-[13%]">Prices extracted</TableHead>
+                    <TableHead className="w-[18%]">File</TableHead>
+                    <TableHead className="w-[14%]">Status</TableHead>
                     <TableHead className="w-[7%] text-right">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -177,7 +182,8 @@ export function KnowledgeBasePage() {
                       <TableCell className="max-w-0 whitespace-normal">
                         <DocumentIdentity item={item} />
                       </TableCell>
-                      <TableCell className="min-w-40 text-muted-foreground">{date(item.published_at)}</TableCell>
+                      <TableCell className="min-w-36 text-muted-foreground">{date(item.published_at)}</TableCell>
+                      <TableCell className="min-w-28 font-mono text-xs tabular">{item.canonical_count ? `${wholeNumber.format(item.canonical_count)} prices` : <span className="text-muted-foreground">None yet</span>}</TableCell>
                       <TableCell className="min-w-44 whitespace-normal"><FileMetadata item={item} /></TableCell>
                       <TableCell className="min-w-32"><IndexStatusBadge status={item.index_status} /></TableCell>
                       <TableCell className="w-16 text-right">
@@ -206,6 +212,8 @@ export function KnowledgeBasePage() {
                           <span>{date(item.published_at)}</span>
                           <span aria-hidden>·</span>
                           <span>{fileSummary(item)}</span>
+                          <span aria-hidden>·</span>
+                          <span className="font-mono tabular">{item.canonical_count ? `${wholeNumber.format(item.canonical_count)} prices` : "No prices yet"}</span>
                         </div>
                       </div>
                       <DocumentActions
@@ -239,7 +247,7 @@ export function DocumentDetailPage() {
   });
 
   return (
-    <PageFrame description="Inspect the retained source file and its core archive metadata." title="Document">
+    <PageFrame description="The archived copy of this bulletin and what we know about it." eyebrow="Knowledge Base" title="Bulletin">
       <div><Button asChild size="sm" variant="ghost"><Link to="/knowledge-base"><RiArrowLeftLine data-icon="inline-start" />Back to Knowledge Base</Link></Button></div>
       {document.isPending ? <Skeleton className="h-[40rem] rounded-xl" /> : document.isError ? (
         <Alert variant="destructive"><AlertTitle>Document unavailable</AlertTitle><AlertDescription>{document.error.message}</AlertDescription></Alert>
@@ -307,7 +315,7 @@ function KnowledgeControls({ state }: { state: TableState }) {
       </InputGroup>
       <Select onValueChange={(value) => state.update({ page: 1, status: value === "all" ? "" : value })} value={state.status || "all"}>
         <SelectTrigger aria-label="Filter by index status" className="w-full data-[size=default]:h-11 sm:data-[size=default]:h-10"><SelectValue /></SelectTrigger>
-        <SelectContent position="popper"><SelectGroup><SelectItem value="all">All index states</SelectItem>{knowledgeIndexStatuses.map((option) => <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>)}</SelectGroup></SelectContent>
+        <SelectContent position="popper"><SelectGroup><SelectItem value="all">All bulletins</SelectItem>{knowledgeIndexStatuses.map((option) => <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>)}</SelectGroup></SelectContent>
       </Select>
       <Select onValueChange={(value) => state.update({ page: 1, pageSize: Number(value) })} value={String(state.pageSize)}>
         <SelectTrigger aria-label="Documents per page" className="w-full data-[size=default]:h-11 sm:data-[size=default]:h-10"><SelectValue /></SelectTrigger>
@@ -337,11 +345,19 @@ function FileMetadata({ item }: { item: KnowledgeListItem }) {
   return <div><p className="font-medium text-foreground">{formatPdfType(item.pdf_type)}</p><p className="mt-1 text-xs text-muted-foreground">{item.page_count ? `${item.page_count} ${item.page_count === 1 ? "page" : "pages"}` : "Pages not recorded"} · {item.byte_size === null ? "Not cached" : bytes(item.byte_size)}</p></div>;
 }
 
+const indexStatusCopy: Record<KnowledgeIndexStatus, string> = {
+  indexed: "Prices from this bulletin are in the database and appear in Price insights.",
+  indexing: "Prices are being extracted from this bulletin right now.",
+  failed: "The last extraction attempt failed. Choose 'See processing steps' to find out why.",
+  not_indexed: "No prices have been extracted from this bulletin yet. Choose 'Extract prices' to process it.",
+};
+
 function IndexStatusBadge({ status }: { status: KnowledgeIndexStatus }) {
-  if (status === "indexed") return <Badge title="Canonical price records from this document are stored and queryable"><RiCheckLine data-icon="inline-start" />Indexed</Badge>;
-  if (status === "indexing") return <Badge title="The document indexing workflow is currently running" variant="secondary"><RiLoader4Line className="animate-spin" data-icon="inline-start" />Indexing</Badge>;
-  if (status === "failed") return <Badge title="The latest indexing attempt failed or was blocked" variant="destructive"><RiCloseLine data-icon="inline-start" />Index failed</Badge>;
-  return <Badge title="No canonical price records have been stored for this document yet" variant="outline"><RiDatabase2Line data-icon="inline-start" />Not indexed</Badge>;
+  const badge = status === "indexed" ? <Badge><RiCheckLine data-icon="inline-start" />Prices available</Badge>
+    : status === "indexing" ? <Badge variant="secondary"><RiLoader4Line className="animate-spin" data-icon="inline-start" />Extracting</Badge>
+      : status === "failed" ? <Badge variant="destructive"><RiCloseLine data-icon="inline-start" />Failed</Badge>
+        : <Badge variant="outline"><RiDatabase2Line data-icon="inline-start" />Not extracted</Badge>;
+  return <Tooltip><TooltipTrigger asChild><span className="inline-flex">{badge}</span></TooltipTrigger><TooltipContent>{indexStatusCopy[status]}</TooltipContent></Tooltip>;
 }
 
 function DocumentActions({ item, onDelete, onProcess, onWorkflow, processing }: { item: KnowledgeListItem; onDelete: () => void; onProcess: () => void; onWorkflow: () => void; processing: boolean }) {
@@ -355,13 +371,13 @@ function DocumentActions({ item, onDelete, onProcess, onWorkflow, processing }: 
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild><Link to={documentPath(item.publication_id)}><RiFilePdf2Line />View document</Link></DropdownMenuItem>
-          <DropdownMenuItem disabled={!canViewWorkflow} onSelect={onWorkflow}>{workflowActive ? <RiLoader4Line className="animate-spin" /> : <RiListCheck3 />}View workflow status</DropdownMenuItem>
-          {isExternalUrl(item.download_url) ? <DropdownMenuItem asChild><a href={item.download_url} rel="noreferrer" target="_blank"><RiExternalLinkLine />Open source</a></DropdownMenuItem> : <DropdownMenuItem disabled><RiExternalLinkLine />Open source</DropdownMenuItem>}
+          <DropdownMenuItem asChild><Link to={documentPath(item.publication_id)}><RiFilePdf2Line />Open the PDF</Link></DropdownMenuItem>
+          <DropdownMenuItem disabled={!canViewWorkflow} onSelect={onWorkflow}>{workflowActive ? <RiLoader4Line className="animate-spin" /> : <RiListCheck3 />}See processing steps</DropdownMenuItem>
+          {isExternalUrl(item.download_url) ? <DropdownMenuItem asChild><a href={item.download_url} rel="noreferrer" target="_blank"><RiExternalLinkLine />Open on HARTI website</a></DropdownMenuItem> : <DropdownMenuItem disabled><RiExternalLinkLine />Open on HARTI website</DropdownMenuItem>}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem disabled={!canProcess} onSelect={onProcess}>{workflowActive ? <RiLoader4Line className="animate-spin" /> : <RiRestartLine />}{processing ? "Queueing workflow…" : workflowActive ? "Workflow running…" : item.processing_run_id ? "Rerun workflow" : "Run workflow"}</DropdownMenuItem>
+          <DropdownMenuItem disabled={!canProcess} onSelect={onProcess}>{workflowActive ? <RiLoader4Line className="animate-spin" /> : <RiRestartLine />}{processing ? "Queueing…" : workflowActive ? "Extracting prices…" : item.processing_run_id ? "Extract prices again" : "Extract prices"}</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
@@ -392,8 +408,8 @@ function WorkflowSheet({ document, onOpenChange }: { document: KnowledgeListItem
     <Sheet onOpenChange={onOpenChange} open={Boolean(document)}>
       <SheetContent className={cn("w-full min-w-0 overflow-hidden data-[side=right]:sm:max-w-xl", mobile && "max-h-[88dvh] rounded-t-xl data-[side=bottom]:h-[88dvh]")} side={mobile ? "bottom" : "right"}>
         <SheetHeader className="border-b pr-14">
-          <SheetTitle>Workflow status</SheetTitle>
-          <SheetDescription className="truncate" title={document?.title}>{document?.title ?? "Document processing details"}</SheetDescription>
+          <SheetTitle>Processing steps</SheetTitle>
+          <SheetDescription className="truncate" title={document?.title}>{document?.title ?? "How this bulletin was processed"}</SheetDescription>
         </SheetHeader>
         <ScrollArea className="min-h-0 w-full min-w-0 flex-1 overflow-hidden">
           <div className="w-0 min-w-full space-y-5 p-5 sm:p-6">
@@ -490,11 +506,40 @@ function EmptyDocumentRow() {
 }
 
 function EmptyDocuments() {
-  return <Empty className="min-h-48 p-6"><EmptyHeader><EmptyTitle>No matching documents</EmptyTitle><EmptyDescription>Try another document name, ID, or filter.</EmptyDescription></EmptyHeader></Empty>;
+  return <Empty className="min-h-48 p-6"><EmptyHeader><EmptyTitle>No matching bulletins</EmptyTitle><EmptyDescription>Try another name, ID, or filter.</EmptyDescription></EmptyHeader></Empty>;
 }
 
-function PageFrame({ title, description, children }: { title: string; description: string; children: ReactNode }) {
-  return <div className="flex flex-col gap-5 lg:gap-6"><div><h1 className="font-heading text-2xl font-semibold tracking-tight sm:text-[28px]">{title}</h1><p className="mt-1.5 max-w-3xl text-sm text-muted-foreground">{description}</p></div>{children}</div>;
+function KnowledgeSummary({ state }: { state: TableState }) {
+  const insights = useQuery({ queryKey: ["insights"], queryFn: ({ signal }) => api<Insights>("/v1/admin/insights", { signal }), staleTime: 60_000 });
+  if (!insights.data) return null;
+  const rows = insights.data.documents.index_status;
+  const total = rows.reduce((sum, row) => sum + row.count, 0);
+  return (
+    <section aria-label="Bulletins by status" className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      {knowledgeIndexStatuses.map((option) => {
+        const count = rows.find((row) => row.status === option.value)?.count ?? 0;
+        const active = state.status === option.value;
+        return (
+          <Card
+            aria-pressed={active}
+            className={cn("cursor-pointer gap-1 transition-colors hover:border-primary/40 hover:bg-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring", active && "border-primary/60 bg-primary/5")}
+            key={option.value}
+            onClick={() => state.update({ page: 1, status: active ? "" : option.value })}
+            onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); state.update({ page: 1, status: active ? "" : option.value }); } }}
+            role="button"
+            size="sm"
+            tabIndex={0}
+          >
+            <CardContent className="flex flex-col gap-1">
+              <div className="flex items-center justify-between gap-2"><p className="text-xs text-muted-foreground">{option.summary}</p><IndexStatusBadge status={option.value} /></div>
+              <p className="font-heading text-2xl font-semibold tracking-tight">{wholeNumber.format(count)}<span className="ml-1.5 font-sans text-xs font-normal text-muted-foreground">{total ? `${Math.round((count / total) * 100)}%` : ""}</span></p>
+              <p className="text-[11px] text-muted-foreground">{option.description}</p>
+            </CardContent>
+          </Card>
+        );
+      })}
+    </section>
+  );
 }
 
 type RawWorkflow = { run: Run; stages: Array<Partial<WorkflowStep> & { stage: string; status: string }>; children: Run[] };
