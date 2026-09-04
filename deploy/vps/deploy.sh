@@ -8,7 +8,8 @@ repo=/opt/lanka-price-lens
 config=/etc/lanka-price-lens
 backups=/var/backups/lanka-price-lens
 volume=lanka-price-lens-operations
-docker_config=
+# Set when this script re-executes itself from the commit being deployed (see below).
+docker_config=${LPL_DEPLOY_DOCKER_CONFIG:-}
 
 if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ || ( -n $mode && $mode != --verify-only && $mode != --configure-r2 ) ]]; then
   echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME] [--verify-only|--configure-r2]" >&2
@@ -66,21 +67,23 @@ cleanup() {
 
 trap cleanup EXIT
 
-exec 9>/run/lock/lanka-price-lens.lock
-flock -n 9 || { echo "Another deployment or foundry run is active" >&2; exit 1; }
+if [[ -z ${LPL_DEPLOY_REEXEC:-} ]]; then
+  exec 9>/run/lock/lanka-price-lens.lock
+  flock -n 9 || { echo "Another deployment or foundry run is active" >&2; exit 1; }
+fi
 
 cd "$repo"
 git fetch --quiet origin main
 git merge-base --is-ancestor "$sha" origin/main || { echo "Commit is not on origin/main" >&2; exit 1; }
 
-if [[ -n $registry_user ]]; then
+if [[ -n $registry_user && -z ${LPL_DEPLOY_REEXEC:-} ]]; then
   docker_config=$(mktemp -d /run/lanka-price-lens-docker.XXXXXX)
   chmod 700 "$docker_config"
   export DOCKER_CONFIG="$docker_config"
   docker login ghcr.io --username "$registry_user" --password-stdin
 fi
 
-previous_commit=$(git rev-parse HEAD)
+previous_commit=${LPL_DEPLOY_PREVIOUS_COMMIT:-$(git rev-parse HEAD)}
 previous_image=$(sed -n 's/^LPL_IMAGE=//p' "$config/release.env" 2>/dev/null || true)
 image="ghcr.io/prabhavalabs/lanka-price-lens:sha-$sha"
 
@@ -107,6 +110,17 @@ rollback() {
 }
 
 git checkout --quiet --detach "$sha"
+
+# Continue with the deploy script from the commit being deployed, so changes to this
+# file (new systemd units, new steps) apply to the deployment that introduces them
+# rather than the next one. The lock (fd 9), docker login, and the rollback target
+# carry over to the re-executed process.
+if [[ -z ${LPL_DEPLOY_REEXEC:-} ]] && ! cmp -s "$0" "$repo/deploy/vps/deploy.sh"; then
+  echo "Deploy script changed in $sha; continuing with the new version"
+  exec env LPL_DEPLOY_REEXEC=1 LPL_DEPLOY_PREVIOUS_COMMIT="$previous_commit" LPL_DEPLOY_DOCKER_CONFIG="$docker_config" \
+    bash "$repo/deploy/vps/deploy.sh" "$sha" "$registry_user" ${mode:+"$mode"}
+fi
+
 docker pull "$image"
 write_release "$image"
 compose config --quiet
