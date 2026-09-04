@@ -15,6 +15,7 @@ const DocumentDetailPage = lazy(() => import("@/pages/knowledge-base-page").then
 const SourcesPage = lazy(() => import("@/pages/operations-pages").then((module) => ({ default: module.SourcesPage })));
 const InsightsPage = lazy(() => import("@/pages/insights-page").then((module) => ({ default: module.InsightsPage })));
 const PriceExplorerPage = lazy(() => import("@/pages/price-explorer-page").then((module) => ({ default: module.PriceExplorerPage })));
+const RecipesPage = lazy(() => import("@/pages/recipes-page").then((module) => ({ default: module.RecipesPage })));
 
 const router = createBrowserRouter(
   [
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
             { path: "sources", element: <SourcesPage /> },
             { path: "insights", element: <InsightsPage /> },
             { path: "explorer", element: <PriceExplorerPage /> },
+            { path: "recipes", element: <RecipesPage /> },
           ],
         },
       ],

@@ -5,6 +5,7 @@ import {
   RiFilePdf2Line,
   RiHistoryLine,
   RiLineChartLine,
+  RiRestaurantLine,
   RiSearchEyeLine,
   RiLogoutBoxRLine,
   RiShieldUserLine,
@@ -50,6 +51,7 @@ const operations: NavigationItem[] = [
 const intelligence: NavigationItem[] = [
   { to: "/insights", label: "Price insights", icon: RiLineChartLine, end: false },
   { to: "/explorer", label: "Price explorer", icon: RiSearchEyeLine, end: false },
+  { to: "/recipes", label: "Recipes", icon: RiRestaurantLine, end: false },
 ];
 const navigation = [...operations, ...intelligence];
 

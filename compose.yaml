@@ -37,6 +37,7 @@ services:
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
       LPL_MANIFESTS_DIR: /app/data/manifests
       LPL_MAPPINGS_DIR: /app/data/mappings
+      LPL_RECIPES_DIR: /app/data/recipes
       LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@postgres:5432/pricelens
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
@@ -81,6 +82,7 @@ services:
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
       LPL_MANIFESTS_DIR: /app/data/manifests
       LPL_MAPPINGS_DIR: /app/data/mappings
+      LPL_RECIPES_DIR: /app/data/recipes
       LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@postgres:5432/pricelens
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
@@ -113,6 +115,7 @@ services:
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
       LPL_MANIFESTS_DIR: /app/data/manifests
       LPL_MAPPINGS_DIR: /app/data/mappings
+      LPL_RECIPES_DIR: /app/data/recipes
       LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@postgres:5432/pricelens
       LPL_ARCHIVE_DRIVER: ${LPL_ARCHIVE_DRIVER:-cloudflare}
       LPL_LOCAL_ARCHIVE_ROOT: /archive

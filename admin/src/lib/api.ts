@@ -146,6 +146,45 @@ export type PriceSeries = {
   window_average: number | null;
   monthly: PriceMonth[];
 };
+export type Dish = {
+  id: string;
+  names: { en: string; si: string | null; si_latn: string | null; ta: string | null; ta_latn: string | null };
+  category: string;
+  roles: string[];
+  meal_slots: string[];
+  region: string;
+  popularity: 1 | 2 | 3;
+  prep_minutes: number;
+  cook_minutes: number;
+  difficulty: "easy" | "moderate" | "involved";
+  diet: string[];
+  protein_source: string[];
+  spice: "none" | "mild" | "medium" | "hot";
+  key_ingredients: string[];
+  other_ingredients: string[];
+  summary: string;
+  occasions: string[];
+  variants: string[];
+  pairs_with: string[];
+};
+export type DishCoverage = { priced: number; total: number } | null;
+export type DishSummary = Dish & { coverage: DishCoverage };
+export type IngredientPrice = { product_id: string; label: string; sellers: number; cheapest: number; unit: string };
+export type DishDetail = Dish & { ingredients: Array<{ product_id: string; label: string | null; price: IngredientPrice | null }>; pairs: Array<{ id: string; label: string }>; coverage: DishCoverage };
+export type RecipeOverview = {
+  dishes: number;
+  by_category: Array<{ category: string; dishes: number }>;
+  by_meal: Array<{ meal: string; dishes: number }>;
+  coverage: { products: number; priced: number; dishes_fully_priced: number } | null;
+  unpriced_ingredients: Array<{ ingredient: string; dishes: number }>;
+  references: { channels: number; blogs: number; institutional: number };
+  reviewed_at: string;
+};
+export type RecipeReferences = {
+  channels: Array<{ id: string; name: string; url: string; languages: string[]; subscribers_approx: number | null; focus: string; sri_lankan_run: boolean | null }>;
+  blogs: Array<{ id: string; name: string; url: string; languages: string[]; author: string | null; active: boolean | null; focus: string }>;
+  institutional: Array<{ id: string; name: string; url: string; publisher: string; kind: string; licence: string | null; notes: string }>;
+};
 export type ExplorerComparison = "pooled" | "by_variety";
 export type ExplorerVariety = { id: string; label: string; qualifier: string; sellers: number; base: boolean };
 export type ExplorerProduct = { id: string; label: string; category: string; comparison: ExplorerComparison; varieties: ExplorerVariety[]; sellers: number; last_day: string | null; aliases: string[] };

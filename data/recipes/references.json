@@ -1,0 +1,557 @@
+{
+  "schema_version": "1.0.0",
+  "reviewed_at": "2026-09-05",
+  "channels": [
+    {
+      "id": "channel_wild_cookbook",
+      "name": "Wild Cookbook",
+      "url": "https://www.youtube.com/@WildCookbook",
+      "languages": [
+        "si",
+        "en"
+      ],
+      "subscribers_approx": 10700000,
+      "focus": "Outdoor, fire-cooked Sri Lankan and fusion dishes shot cinematically in wilderness settings, blending village technique with modern production.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_ape_amma",
+      "name": "Apé Amma",
+      "url": "https://www.youtube.com/@ApeAmma",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": 3300000,
+      "focus": "Home-style Sri Lankan and pan-Asian recipes from a veteran home-science teacher, with occasional ayurvedic ingredient notes.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_mr_kitchen",
+      "name": "M.R Kitchen",
+      "url": "https://www.youtube.com/@MRkitchenlk",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": 2100000,
+      "focus": "Everyday Sri Lankan home curries and rice-and-curry meals presented by creator Madu Rajapaksha.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_bandi_full",
+      "name": "Bandi Full",
+      "url": "https://www.youtube.com/@Bandifull",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": 1000000,
+      "focus": "Simple, spice-forward Sri Lankan home cooking from creator Chapa Madushani under the tagline 'simple cooking, premium taste'.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_anomas_kitchen",
+      "name": "Anoma's Kitchen",
+      "url": "https://www.youtube.com/@AnomasKitchen",
+      "languages": [
+        "en"
+      ],
+      "subscribers_approx": 900000,
+      "focus": "Long-running, step-by-step authentic Sri Lankan home recipes alongside occasional international dishes, running since 2016.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_warunis_kitchen",
+      "name": "Waruni's Kitchen",
+      "url": "https://www.youtube.com/channel/UCVpjudnF83VEmqVBLNG1rbg",
+      "languages": [
+        "si",
+        "en"
+      ],
+      "subscribers_approx": 927000,
+      "focus": "Sri Lankan and internationally inspired home cooking shaped by the creator's travels and her mother's recipes.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_village_kitchen_sri_lanka",
+      "name": "Village Kitchen SRI LANKA",
+      "url": "https://www.youtube.com/channel/UCv798L0ggk2lovVAVVLk8bQ",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": null,
+      "focus": "Traditional village recipes and rural Sri Lankan lifestyle documented by creator Anoma Siriwardena.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_poorna_the_nature_girl",
+      "name": "Poorna - The Nature Girl",
+      "url": "https://www.youtube.com/channel/UCtVDQNGBmS8DTP5fPzM_GmQ",
+      "languages": [
+        "si",
+        "en"
+      ],
+      "subscribers_approx": null,
+      "focus": "Hand-harvested, garden-to-pot traditional Sri Lankan village cooking paired with countryside vlogging.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_chef_sapumal",
+      "name": "Chef Sapumal Wijesinghe with Cooking Fever",
+      "url": "https://www.youtube.com/channel/UC5dezjl-rF4Sw6BRPM8Q6Zg",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": null,
+      "focus": "Sri Lankan home recipes and cooking tips from a hotel-trained Sri Lankan chef.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_dishing_with_dush",
+      "name": "Dishing with Dush",
+      "url": "https://www.youtube.com/channel/UC00_-80fa61z1QJPFc919GQ",
+      "languages": [
+        "en"
+      ],
+      "subscribers_approx": 24000,
+      "focus": "Sri Lankan heritage recipes reworked with global, quirky twists by cookbook author Dush.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_sri_lankan_cooking_in_nature",
+      "name": "Sri Lankan Cooking In Nature",
+      "url": "https://www.youtube.com/@SriLankanCookingInNature",
+      "languages": [
+        "si",
+        "en"
+      ],
+      "subscribers_approx": null,
+      "focus": "Traditional outdoor Sri Lankan cooking presented as a window into a natural, healthy village lifestyle.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_sri_lanka_kitchen",
+      "name": "Sri Lanka Kitchen",
+      "url": "https://www.youtube.com/channel/UC7xgIstc_5GfzFbjN5AyhkQ",
+      "languages": [
+        "en"
+      ],
+      "subscribers_approx": null,
+      "focus": "Step-by-step homestyle Sri Lankan staples including rice and curry, hoppers, roti and sambols.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_shanthys_jaffna_kitchen",
+      "name": "Shanthy's Jaffna Kitchen",
+      "url": "https://www.youtube.com/channel/UCCGGM7SY5uWDr3wZ-jSmhbA",
+      "languages": [
+        "ta"
+      ],
+      "subscribers_approx": null,
+      "focus": "Traditional Jaffna Tamil home cooking passed down through the creator's family.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_yarl_samayal",
+      "name": "Yarl Samayal",
+      "url": "https://www.youtube.com/yarlsamayal",
+      "languages": [
+        "ta"
+      ],
+      "subscribers_approx": null,
+      "focus": "Documents lesser-known, age-old Jaffna Tamil recipes in which coconut anchors nearly every dish.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_kusalas_simple_life",
+      "name": "Kusala's Simple Life",
+      "url": "https://www.youtube.com/@KusalasSimpleLife",
+      "languages": [
+        "si",
+        "en"
+      ],
+      "subscribers_approx": null,
+      "focus": "Natural, low-processed Sri Lankan home cooking framed around health, nutrition and simple living.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_aasai_rasai",
+      "name": "Aasai Rasai: Sri Lankan Recipes in English",
+      "url": "https://www.youtube.com/@AasaiRasaiRecipes",
+      "languages": [
+        "en"
+      ],
+      "subscribers_approx": null,
+      "focus": "Easily followable Sri Lankan home recipes narrated in English, from everyday curries to Burgher-influenced dishes like lamprais.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_niras_cuisine",
+      "name": "Nira's Cuisine",
+      "url": "https://www.youtube.com/@nirascuisine",
+      "languages": [
+        "si",
+        "en"
+      ],
+      "subscribers_approx": null,
+      "focus": "Healthy Sri Lankan home cooking with a focus on festive New Year sweets and beverages.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_athal_kitchen",
+      "name": "Athal Kitchen",
+      "url": "https://www.youtube.com/channel/UCxtv9HrpePOtC7amZkgmM-Q",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": null,
+      "focus": "Affordable, easy Sri Lankan home meals from creator Avishka Nirmal.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_naveenas_tiny_tips",
+      "name": "Naveena's Tiny Tips",
+      "url": "https://www.youtube.com/channel/UCdrwRxHEcFFTrUPVvuFO5Bw",
+      "languages": [
+        "ta"
+      ],
+      "subscribers_approx": null,
+      "focus": "Sri Lankan Tamil home recipes for the diaspora, filmed by a Sri Lankan creator living abroad.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_recipes_sinhala",
+      "name": "Recipes Sinhala",
+      "url": "https://www.youtube.com/@recipessinhala",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": null,
+      "focus": "Sinhala-language home curries, desserts and beverages covering everyday Sri Lankan cooking.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_gami_rasa",
+      "name": "GAMI RASA",
+      "url": "https://www.youtube.com/c/GAMIRASA",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": null,
+      "focus": "Toxin-free, village-style Sri Lankan meals taught simply by a husband-and-wife team who grew up cooking them.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_chammi_imalka",
+      "name": "Chammi Imalka",
+      "url": "https://www.youtube.com/@chammiimalka",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": 1300000,
+      "focus": "Home baking, snacks and Sri Lankan dessert content alongside occasional cake-design tutorials.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_rasa_rahasa",
+      "name": "RASA RAHASA රස රහස",
+      "url": "https://www.youtube.com/@rasarahasa1003",
+      "languages": [
+        "si"
+      ],
+      "subscribers_approx": null,
+      "focus": "Everyday Sri Lankan home cooking, kitchen basics and family recipes shared for a home audience.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "channel_yummy_mummy",
+      "name": "Yummy Mummy",
+      "url": "https://www.youtube.com/channel/UCtxorZ9fnl26W2ZEWGd1AAg",
+      "languages": [
+        "si",
+        "en"
+      ],
+      "subscribers_approx": null,
+      "focus": "Homemade Sri Lankan cake and dessert recipes the creator learned from family since childhood.",
+      "sri_lankan_run": true,
+      "verified_on": "2026-09-05"
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog_hungry_lankan",
+      "name": "Hungry Lankan",
+      "url": "https://www.hungrylankan.com/",
+      "languages": [
+        "en"
+      ],
+      "author": "Roshani Wickramasinghe",
+      "active": true,
+      "focus": "Seattle-based Sri Lankan home cook's blog of everyday Sri Lankan recipes and kitchen experiments, updated regularly.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_island_smile",
+      "name": "Island Smile",
+      "url": "https://www.islandsmile.org/",
+      "languages": [
+        "en"
+      ],
+      "author": null,
+      "active": true,
+      "focus": "Family-style Sri Lankan and South Asian home recipes for breakfast, lunch and dinner, framed around everyday family life.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_food_corner",
+      "name": "Food Corner",
+      "url": "https://foodcnr.com/",
+      "languages": [
+        "en"
+      ],
+      "author": "Amila",
+      "active": true,
+      "focus": "Singapore-based Sri Lankan expat's collection of authentic home recipes, food travel notes and lifestyle articles.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_my_lankan_food_journal",
+      "name": "My Lankan Food Journal",
+      "url": "https://www.mylankanfoodjournal.com/",
+      "languages": [
+        "en"
+      ],
+      "author": "Nuzrath Shazeen",
+      "active": false,
+      "focus": "Chef and food stylist's record of Sri Lankan and international recipes inspired by her late mother's cooking.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_the_flavor_bender",
+      "name": "The Flavor Bender - Sri Lankan recipes",
+      "url": "https://www.theflavorbender.com/category/recipes/cuisines/sri-lankan/",
+      "languages": [
+        "en"
+      ],
+      "author": "Dini",
+      "active": true,
+      "focus": "Sri Lankan heritage recipes as a category within a broader baking-and-cooking blog run by a Sri Lankan-born food writer.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_aasai_rasai",
+      "name": "Aasai Rasai Sri Lankan Recipes",
+      "url": "https://aasairasai.blogspot.com/",
+      "languages": [
+        "en"
+      ],
+      "author": "Aasai Rasai (Sri Lankan Burgher/Sinhalese home cook)",
+      "active": false,
+      "focus": "Companion blog to the Aasai Rasai YouTube channel documenting Sri Lankan family recipes in English.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_thaayaka_unavukal",
+      "name": "Thaayaka Unavukal - Jaffna Kitchen",
+      "url": "https://www.thaayakaunavukal.com/",
+      "languages": [
+        "en",
+        "ta"
+      ],
+      "author": "Uma",
+      "active": true,
+      "focus": "Jaffna and Sri Lankan Tamil home recipes plus stories and tips on sourcing Sri Lankan ingredients abroad.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_serendib_kitchen",
+      "name": "Serendib Kitchen",
+      "url": "https://serendibkitchen.com/",
+      "languages": [
+        "en"
+      ],
+      "author": "Mary Anne Mohanraj",
+      "active": true,
+      "focus": "Sri Lankan-American home recipes and vegan adaptations from the author of the cookbook A Feast of Serendib.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_a_taste_of_sri_lankan_cuisine",
+      "name": "A Taste of Sri Lankan Cuisine",
+      "url": "https://srilankancuisine.org/",
+      "languages": [
+        "en"
+      ],
+      "author": "Ahila Thillainathan (recipes from her mother, Raji Thillainathan)",
+      "active": false,
+      "focus": "Family Sri Lankan home recipes organised by province and meal type, kept online as an archive after the contributing cook's death.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_daily_food_recipes",
+      "name": "Sri Lankan Food & Recipe Blog (Daily Food Recipes)",
+      "url": "https://www.dailyfoodrecipes.com/",
+      "languages": [
+        "en",
+        "si"
+      ],
+      "author": null,
+      "active": null,
+      "focus": "Bilingual English/Sinhala collection of tried-and-tested Sri Lankan and international home recipes.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_anomas_kitchen_site",
+      "name": "Anoma's Kitchen (website)",
+      "url": "https://www.anomaskitchen.com/",
+      "languages": [
+        "en"
+      ],
+      "author": "Anoma Wijethunga",
+      "active": true,
+      "focus": "Companion website to the Anoma's Kitchen YouTube channel with Sri Lankan, international and dessert recipes.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_top_sri_lankan_recipe",
+      "name": "Top Sri Lankan Recipe",
+      "url": "https://topsrilankanrecipe.com/",
+      "languages": [
+        "en"
+      ],
+      "author": "Rocy",
+      "active": null,
+      "focus": "Toronto-based Sri Lankan mother's blog of home-style vegetarian, non-vegetarian and dessert recipes.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_pulse_recipes",
+      "name": "Pulse Recipes",
+      "url": "https://pulse.lk/pulse-recipes/",
+      "languages": [
+        "en"
+      ],
+      "author": "Derana Macroentertainment (Pulse.lk)",
+      "active": true,
+      "focus": "Sri Lankan lifestyle site's recipe section mixing traditional Sri Lankan dishes with written and video demonstrations.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_sri_lanka_by_ish",
+      "name": "Sri Lanka by Ish",
+      "url": "https://www.srilankabyish.com/blog/tag/sri+lankan+food",
+      "languages": [
+        "en"
+      ],
+      "author": "Ishanthi",
+      "active": false,
+      "focus": "Contemporary Sri Lankan culture blog featuring family recipes and food heritage stories alongside travel and design content.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "blog_ceylon_cooking",
+      "name": "CeylonCooking",
+      "url": "https://ceyloncooking.com/recipes",
+      "languages": [
+        "en"
+      ],
+      "author": null,
+      "active": null,
+      "focus": "Recipe site covering regional Sri Lankan home cooking across Jaffna, Southern, Muslim and Burgher culinary traditions.",
+      "verified_on": "2026-09-05"
+    }
+  ],
+  "institutional": [
+    {
+      "id": "inst_mri_nutrition_division",
+      "name": "Medical Research Institute - Department of Nutrition",
+      "url": "https://www.mri.gov.lk/units/nutrition/",
+      "publisher": "Medical Research Institute, Ministry of Health, Sri Lanka",
+      "kind": "food_composition",
+      "licence": null,
+      "notes": "Government department that has compiled Sri Lanka's Food Composition Tables since the 1970s and hosts nutrition survey reports.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "inst_mri_dietary_reference_intakes",
+      "name": "Dietary Reference Intakes for Sri Lanka (2022)",
+      "url": "https://www.mri.gov.lk/wp-content/uploads/2024/02/Dietary-Referance-Intakes-for-Sri-Lanka.pdf",
+      "publisher": "Medical Research Institute, Department of Nutrition",
+      "kind": "dietary_guidelines",
+      "licence": null,
+      "notes": "Official Sri Lankan dietary reference intake tables PDF published by the Medical Research Institute.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "inst_food_composition_database_lk",
+      "name": "Sri Lankan Food Composition Database",
+      "url": "https://www.foodcompositiondb.lk/",
+      "publisher": "IRD, developed under the CoTaSS3 (Colombo Twin and Singleton Study 3) project, funded by the UK Medical Research Council",
+      "kind": "food_composition",
+      "licence": null,
+      "notes": "Open-access online database of nutrient values for 243 ready-to-eat Sri Lankan foods; site copyright dated 2023, no explicit reuse licence stated.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "inst_nutrition_division_moh",
+      "name": "Nutrition Division, Ministry of Health",
+      "url": "https://nutrition.health.gov.lk/",
+      "publisher": "Ministry of Health, Sri Lanka",
+      "kind": "dietary_guidelines",
+      "licence": null,
+      "notes": "Ministry unit hosting Sri Lanka's food-based dietary guidelines, disease-specific dietary guidance and nutrition circulars in English, Sinhala and Tamil.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "inst_nutrition_society_guidelines",
+      "name": "Nutrition Society of Sri Lanka - Guidelines",
+      "url": "https://nutritionsocietyofsrilanka.org/guidelines/",
+      "publisher": "Nutrition Society of Sri Lanka",
+      "kind": "dietary_guidelines",
+      "licence": null,
+      "notes": "Hosts the government's Food Based Dietary Guidelines for Sri Lankans (practitioners' handbook) in Sinhala and English.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "inst_doa_publications",
+      "name": "Department of Agriculture Sri Lanka - Publications",
+      "url": "https://doa.gov.lk/naicc-books/",
+      "publisher": "Department of Agriculture, Sri Lanka",
+      "kind": "recipes",
+      "licence": null,
+      "notes": "Government publication list including 'Recipes of tuber crops' and nutrition/food guides, each offered in English, Sinhala and Tamil.",
+      "verified_on": "2026-09-05"
+    },
+    {
+      "id": "inst_fao_sri_lanka_dietary_guidelines",
+      "name": "FAO - Food-based dietary guidelines: Sri Lanka",
+      "url": "https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/sri-lanka/en/",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "kind": "dietary_guidelines",
+      "licence": null,
+      "notes": "FAO regional page summarising and linking to the editions of Sri Lanka's food-based dietary guidelines published since 2002.",
+      "verified_on": "2026-09-05"
+    }
+  ]
+}

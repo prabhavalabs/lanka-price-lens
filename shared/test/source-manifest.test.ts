@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { canPublishSource, mappingBundleSchema, sourceManifestSchema } from "../src/index.ts";
+import { canPublishSource, dishCatalogueSchema, mappingBundleSchema, sourceManifestSchema } from "../src/index.ts";
 
 const baseManifest = {
   id: "synthetic_prices",
@@ -104,4 +104,34 @@ test("mapping bundles accept pattern-mapped items and reject bad rules", () => {
   assert.throws(() => mappingBundleSchema.parse({ ...baseBundle, items: [{ ...eggItem, source_patterns: [] }] }), /at least one source label or pattern/u);
   assert.throws(() => mappingBundleSchema.parse({ ...baseBundle, items: [{ ...eggItem, source_patterns: [{ match: "(" }] }] }), /Invalid regular expression/u);
   assert.throws(() => mappingBundleSchema.parse({ ...baseBundle, excluded_patterns: ["["], items: [eggItem] }), /Invalid regular expression/u);
+});
+
+test("dish catalogue validates ids, enums, and pairings", () => {
+  const dish = {
+    id: "dish_pol_sambol",
+    names: { en: "Coconut sambol", si: "පොල් සම්බෝල", si_latn: "Pol sambol", ta: null, ta_latn: null },
+    category: "sambol_and_condiment",
+    roles: ["condiment"],
+    meal_slots: ["breakfast", "lunch", "dinner"],
+    region: "island_wide",
+    popularity: 1,
+    prep_minutes: 10,
+    cook_minutes: 0,
+    difficulty: "easy",
+    diet: ["vegetarian", "gluten_free"],
+    protein_source: ["none"],
+    spice: "hot",
+    key_ingredients: ["product_coconut", "product_red_onion", "product_dried_chillies", "product_lime"],
+    other_ingredients: ["salt"],
+    summary: "Grated coconut pounded with chilli, onion, and lime, on the table at almost every meal.",
+    occasions: ["everyday"],
+    variants: [],
+    pairs_with: ["dish_kiribath"],
+  };
+  const kiribath = { ...dish, id: "dish_kiribath", names: { ...dish.names, en: "Milk rice" }, category: "rice_and_grains", roles: ["staple"], pairs_with: ["dish_pol_sambol"] };
+  const parsed = dishCatalogueSchema.parse({ schema_version: "1.0.0", reviewed_by: "owner", reviewed_at: "2026-09-05", dishes: [dish, kiribath] });
+  assert.equal(parsed.dishes.length, 2);
+  assert.throws(() => dishCatalogueSchema.parse({ schema_version: "1.0.0", reviewed_by: "owner", reviewed_at: "2026-09-05", dishes: [dish] }), /Unknown paired dish/u);
+  assert.throws(() => dishCatalogueSchema.parse({ schema_version: "1.0.0", reviewed_by: "owner", reviewed_at: "2026-09-05", dishes: [dish, dish] }), /Duplicate dish IDs/u);
+  assert.throws(() => dishCatalogueSchema.parse({ schema_version: "1.0.0", reviewed_by: "owner", reviewed_at: "2026-09-05", dishes: [{ ...dish, pairs_with: [], category: "dessert" }] }));
 });
