@@ -24,7 +24,7 @@ import { retryProcessingStage, runIngestion, workflowRetryState, type ArchiveSto
 import type { PdfInspection, TextItem } from "../src/pdf.ts";
 import { assessArtifactCompleteness } from "../src/quality.ts";
 import { buildRelease } from "../src/release.ts";
-import { claimNextDispatch, enqueueDueSchedules, enqueueWorkflow, ensureWorkflowSchedules, recoverInterruptedDispatches } from "../src/workflows.ts";
+import { archiveUriPrefix, claimNextDispatch, enqueueDueSchedules, enqueueProcessingRecovery, enqueueWorkflow, ensureWorkflowSchedules, recoverInterruptedDispatches } from "../src/workflows.ts";
 
 const manifest = sourceManifestSchema.parse({
   id: "test_source",
@@ -886,3 +886,75 @@ function insertStagingFixture(
   finishRun(database, run.id, "succeeded");
   return run.id;
 }
+
+test("processing recovery re-queues documents that were processed without a mapping bundle", () => {
+  const database = openOperationalDatabase(":memory:");
+  syncSource(database, manifest);
+  const now = "2026-08-22T10:00:00.000Z";
+  database.prepare(
+    `INSERT INTO source_publication (
+      id, source_id, source_publication_key, title, published_at, landing_url,
+      download_url, status, first_seen_at, last_seen_at
+    ) VALUES ('publication_unconfigured', ?, 'unconfigured', 'Unconfigured.pdf', ?, ?,
+      'https://example.com/unconfigured.pdf', 'parsed', ?, ?)`,
+  ).run(manifest.id, now, manifest.landing_url, now, now);
+  database.prepare(
+    `INSERT INTO archived_pdf (
+      id, publication_id, source_url, r2_bucket, r2_key, r2_uri, byte_size,
+      sha256, uploaded_at, status, created_at, updated_at
+    ) VALUES ('archive_unconfigured', 'publication_unconfigured', 'https://example.com/unconfigured.pdf',
+      'test', 'unconfigured.pdf', 'r2://test/unconfigured.pdf', 100, 'unconfigured-sha', ?, 'stored', ?, ?)`,
+  ).run(now, now, now);
+  const run = startRun(database, { sourceId: manifest.id, trigger: "manual", workflow: "pdf_processing", archiveId: "archive_unconfigured" });
+  finishRun(database, run.id, "succeeded");
+  database.prepare(
+    `INSERT INTO source_artifact (
+      id, publication_id, requested_url, final_url, fetched_at, media_type, byte_size, sha256, status, run_id
+    ) VALUES ('artifact_unconfigured', 'publication_unconfigured', 'https://example.com/unconfigured.pdf',
+      'https://example.com/unconfigured.pdf', ?, 'application/pdf', 100, ?, 'parsed', ?)`,
+  ).run(now, "unconfigured".padEnd(64, "0"), run.id);
+  database.prepare(
+    `INSERT INTO artifact_quality_assessment (
+      artifact_id, run_id, mapping_version, status, score, item_coverage, market_coverage, cell_coverage, mapping_coverage,
+      expected_items, observed_items, expected_markets, observed_markets, expected_cells, observed_cells,
+      total_rows, mapped_rows, unknown_item_rows, unknown_market_rows, unknown_unit_rows, diagnostics_json, assessed_at
+    ) VALUES ('artifact_unconfigured', ?, NULL, 'not_configured', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 5, 5, '{}', ?)`,
+  ).run(run.id, now);
+
+  // An older archive that already failed through a recovery dispatch must not starve the sweep.
+  database.prepare(
+    `INSERT INTO source_publication (
+      id, source_id, source_publication_key, title, published_at, landing_url,
+      download_url, status, first_seen_at, last_seen_at
+    ) VALUES ('publication_stuck', ?, 'stuck', 'Stuck.pdf', ?, ?, 'https://example.com/stuck.pdf', 'archived', ?, ?)`,
+  ).run(manifest.id, "2026-08-01T10:00:00.000Z", manifest.landing_url, now, now);
+  database.prepare(
+    `INSERT INTO archived_pdf (
+      id, publication_id, source_url, r2_bucket, r2_key, r2_uri, byte_size,
+      sha256, uploaded_at, status, created_at, updated_at
+    ) VALUES ('archive_stuck', 'publication_stuck', 'https://example.com/stuck.pdf',
+      'test', 'stuck.pdf', 'r2://test/stuck.pdf', 100, 'stuck-sha', ?, 'stored', ?, ?)`,
+  ).run("2026-08-01T10:00:00.000Z", now, now);
+  assert.equal(enqueueProcessingRecovery(database, manifest.id, 1, now), 1);
+  database.prepare("UPDATE workflow_dispatch SET status = 'failed' WHERE archive_id = 'archive_stuck'").run();
+
+  // The run "succeeded" but published nothing, so the sweep must pick the document up again,
+  // even with a limit of one and an older failed archive ahead of it.
+  assert.equal(enqueueProcessingRecovery(database, manifest.id, 1, now), 1);
+  const queued = database
+    .prepare("SELECT status, trigger FROM workflow_dispatch WHERE archive_id = 'archive_unconfigured'")
+    .get() as { status: string; trigger: string };
+  assert.deepEqual(queued, { status: "queued", trigger: "recovery" });
+  // While that request is queued a second sweep must not duplicate it.
+  assert.equal(enqueueProcessingRecovery(database, manifest.id, 10, now), 0);
+  // A storage prefix limits the sweep to documents the configured driver can actually read.
+  database.prepare("DELETE FROM workflow_dispatch WHERE archive_id = 'archive_unconfigured'").run();
+  assert.equal(enqueueProcessingRecovery(database, manifest.id, 10, now, "file:///archive/"), 0);
+  assert.equal(enqueueProcessingRecovery(database, manifest.id, 10, now, "r2://test/"), 1);
+  assert.equal(archiveUriPrefix({ uri: (key) => `r2://bucket/${key}` }), "r2://bucket/");
+  assert.equal(archiveUriPrefix({}), null);
+  // Once the assessment is real, a succeeded run means the document is done.
+  database.prepare("DELETE FROM workflow_dispatch WHERE archive_id = 'archive_unconfigured'").run();
+  database.prepare("UPDATE artifact_quality_assessment SET status = 'complete', score = 1 WHERE artifact_id = 'artifact_unconfigured'").run();
+  assert.equal(enqueueProcessingRecovery(database, manifest.id, 10, now), 0);
+});

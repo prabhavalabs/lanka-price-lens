@@ -15,7 +15,11 @@ workflows can be dispatched:
   25 missing documents per occurrence.
 - **Document Processing Pipeline** is normally event-driven. A five-minute
   recovery schedule finds archived documents without a successful processing
-  run and queues at most 10 at a time.
+  run (or whose last run finished without a mapping bundle and therefore
+  published nothing) and queues at most 10 at a time. It only considers
+  documents the configured archive driver can read, so a local filesystem
+  scheduler never spends its slots on PDFs that live in R2, and an archive that
+  already used its recovery slot is skipped rather than blocking the queue.
 
 Each schedule occurrence is inserted into `workflow_dispatch` with a unique
 idempotency key before execution. SQLite transactions prevent two scheduler

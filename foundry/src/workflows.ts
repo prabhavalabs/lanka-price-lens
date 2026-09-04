@@ -284,12 +284,12 @@ export async function executeDispatch(
     environment,
   };
   try {
+    const archive = await configuredArchiveStorage();
     if (definition.key === "document_processing_pipeline" && !dispatch.archive_id) {
-      const queued = enqueueProcessingRecovery(database, dispatch.source_id, definition.maxItems, dispatch.scheduled_for);
+      const queued = enqueueProcessingRecovery(database, dispatch.source_id, definition.maxItems, dispatch.scheduled_for, archiveUriPrefix(archive));
       finishDispatch(database, dispatch.id, "succeeded", null, queued ? `${queued} document workflows queued` : null);
       return;
     }
-    const archive = await configuredArchiveStorage();
     const result = definition.executor === "pdf_processing"
       ? await runPdfProcessing(database, manifest, requiredArchive(dispatch), {
           trigger: dispatch.trigger === "manual" ? "manual" : "scheduled",
@@ -358,25 +358,49 @@ export async function schedulerTick(
   return { enqueued, executed };
 }
 
-function enqueueProcessingRecovery(database: OperationalDatabase, sourceId: string, limit: number, scheduledFor: string): number {
+/** The URI prefix (for example `r2://bucket/` or `file:///root/`) that the configured storage can actually read. */
+export function archiveUriPrefix(storage: { uri?: ((key: string) => string) | undefined }): string | null {
+  const probe = storage.uri?.("probe");
+  return probe?.endsWith("probe") ? probe.slice(0, -"probe".length) : null;
+}
+
+export function enqueueProcessingRecovery(database: OperationalDatabase, sourceId: string, limit: number, scheduledFor: string, uriPrefix: string | null = null): number {
   const archives = database
     .prepare(
       `SELECT archive.id
        FROM archived_pdf archive
        JOIN source_publication publication ON publication.id = archive.publication_id
        WHERE publication.source_id = ?
-         AND NOT EXISTS (
-           SELECT 1 FROM ingest_run run
-           WHERE run.archive_id = archive.id AND run.workflow = 'pdf_processing' AND run.status = 'succeeded'
+         AND (
+           NOT EXISTS (
+             SELECT 1 FROM ingest_run run
+             WHERE run.archive_id = archive.id AND run.workflow = 'pdf_processing' AND run.status = 'succeeded'
+           )
+           -- A run that finished without a mapping bundle parsed rows but published nothing;
+           -- pick it up again so the prices land once the bundle is configured.
+           OR EXISTS (
+             SELECT 1 FROM source_artifact artifact
+             JOIN artifact_quality_assessment quality ON quality.artifact_id = artifact.id
+             WHERE artifact.publication_id = publication.id AND quality.status = 'not_configured'
+           )
          )
          AND NOT EXISTS (
            SELECT 1 FROM workflow_dispatch queued
            WHERE queued.archive_id = archive.id AND queued.workflow_key = 'document_processing_pipeline'
              AND queued.status IN ('queued', 'running')
          )
+         -- Archives already swept once keep their idempotency key, so re-selecting them would only
+         -- burn the LIMIT and starve newer documents.
+         AND NOT EXISTS (
+           SELECT 1 FROM workflow_dispatch prior
+           WHERE prior.idempotency_key = 'processing:' || archive.id || ':v' || ?
+         )
+         -- Only documents the configured archive driver can read; a local filesystem run must not
+         -- burn its slots on PDFs that live in R2 (and vice versa).
+         AND (? IS NULL OR substr(archive.r2_uri, 1, length(?)) = ?)
        ORDER BY COALESCE(archive.uploaded_at, archive.created_at) LIMIT ?`,
     )
-    .all(sourceId, limit) as Array<{ id: string }>;
+    .all(sourceId, String(workflowDefinitionVersion), uriPrefix, uriPrefix ?? "", uriPrefix ?? "", limit) as Array<{ id: string }>;
   const now = new Date().toISOString();
   const statement = database.prepare(
     `INSERT OR IGNORE INTO workflow_dispatch (

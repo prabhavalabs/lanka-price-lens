@@ -13,6 +13,7 @@ const RunDetailPage = lazy(() => import("@/pages/operations-pages").then((module
 const KnowledgeBasePage = lazy(() => import("@/pages/knowledge-base-page").then((module) => ({ default: module.KnowledgeBasePage })));
 const DocumentDetailPage = lazy(() => import("@/pages/knowledge-base-page").then((module) => ({ default: module.DocumentDetailPage })));
 const SourcesPage = lazy(() => import("@/pages/operations-pages").then((module) => ({ default: module.SourcesPage })));
+const InsightsPage = lazy(() => import("@/pages/insights-page").then((module) => ({ default: module.InsightsPage })));
 
 const router = createBrowserRouter(
   [
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
             { path: "knowledge-base/:publicationId", element: <DocumentDetailPage /> },
             { path: "pdfs", element: <Navigate to="/knowledge-base" replace /> },
             { path: "sources", element: <SourcesPage /> },
+            { path: "insights", element: <InsightsPage /> },
           ],
         },
       ],
