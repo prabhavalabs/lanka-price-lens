@@ -177,6 +177,26 @@ export const warehouseMigrations: ReadonlyArray<{ version: number; name: string;
       `CREATE INDEX IF NOT EXISTS item_alias_label_idx ON item_alias (lower(label))`,
     ],
   },
+  {
+    version: 5,
+    name: "latest price carries its observation count",
+    statements: [
+      // How many product labels (brands, pack sizes) stand behind a store's price that day; bulletins report one.
+      `DROP MATERIALIZED VIEW IF EXISTS latest_item_price`,
+      `CREATE MATERIALIZED VIEW latest_item_price AS
+        SELECT DISTINCT ON (item_id, market_id, price_type)
+               item_id, market_id, source_id, price_type, observed_on, normalized_unit, low_minor, high_minor, mid_minor, observations
+        FROM daily_item_price
+        ORDER BY item_id, market_id, price_type, observed_on DESC`,
+      `CREATE UNIQUE INDEX IF NOT EXISTS latest_item_price_uidx ON latest_item_price (item_id, market_id, price_type)`,
+    ],
+  },
+  {
+    version: 6,
+    name: "alias origin",
+    // 'bundle' aliases are reviewed wording (bulletin rows, a store's plain label); 'pattern' aliases are the branded labels a rule matched.
+    statements: [`ALTER TABLE item_alias ADD COLUMN IF NOT EXISTS origin TEXT NOT NULL DEFAULT 'bundle'`],
+  },
 ];
 
 export const materializedViews = ["daily_item_price", "latest_item_price"] as const;

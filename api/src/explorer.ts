@@ -37,6 +37,8 @@ export type ExplorerLatest = {
   low: number;
   high: number;
   mid: number;
+  /** Product labels (brands, pack sizes) behind the price that day; one for a bulletin, several for a store. */
+  products: number;
 };
 
 export type ExplorerPoint = { date: string; mid: number; low: number; high: number };
@@ -80,7 +82,9 @@ const itemSelect = `
   SELECT item.id, item.label_en AS label, item.product_id, product.label_en AS product_label, product.category,
          item.variety, item.origin, item.grade,
          COALESCE(stats.markets, 0)::INTEGER AS markets, stats.last_day::TEXT AS last_day,
-         ARRAY(SELECT DISTINCT alias.label FROM item_alias alias WHERE alias.item_id = item.id ORDER BY alias.label LIMIT 6) AS aliases
+         ARRAY(SELECT alias.label FROM (SELECT DISTINCT alias.label, MIN(CASE WHEN alias.origin = 'bundle' THEN 0 ELSE 1 END) AS rank
+                                        FROM item_alias alias WHERE alias.item_id = item.id GROUP BY alias.label) alias
+               ORDER BY alias.rank, alias.label LIMIT 6) AS aliases
   FROM item
   JOIN product ON product.id = item.product_id
   LEFT JOIN (SELECT item_id, COUNT(*) AS markets, MAX(observed_on) AS last_day FROM latest_item_price GROUP BY item_id) stats ON stats.item_id = item.id`;
@@ -120,9 +124,9 @@ export async function itemDetail(client: WarehouseClient, itemId: string, reques
     [itemId],
   );
   const range = resolveRange(request, bounds?.last ?? today.toISOString().slice(0, 10));
-  const latestRows = await client.query<{ market_id: string; market_label: string; market_type: string; source_id: string; price_type: string; observed_on: string; unit: string; low_minor: string; high_minor: string; mid_minor: string }>(
+  const latestRows = await client.query<{ market_id: string; market_label: string; market_type: string; source_id: string; price_type: string; observed_on: string; unit: string; low_minor: string; high_minor: string; mid_minor: string; observations: string }>(
     `SELECT latest.market_id, market.label_en AS market_label, market.type AS market_type, latest.source_id, latest.price_type,
-            latest.observed_on::TEXT, latest.normalized_unit AS unit, latest.low_minor::TEXT, latest.high_minor::TEXT, latest.mid_minor::TEXT
+            latest.observed_on::TEXT, latest.normalized_unit AS unit, latest.low_minor::TEXT, latest.high_minor::TEXT, latest.mid_minor::TEXT, latest.observations::TEXT
      FROM latest_item_price latest JOIN market ON market.id = latest.market_id
      WHERE latest.item_id = $1 ORDER BY latest.price_type, market.type, market.label_en`,
     [itemId],
@@ -139,6 +143,7 @@ export async function itemDetail(client: WarehouseClient, itemId: string, reques
     low: Number(entry.low_minor) / 100,
     high: Number(entry.high_minor) / 100,
     mid: Number(entry.mid_minor) / 100,
+    products: Number(entry.observations),
   }));
   const seriesRows = await client.query<{ market_id: string; market_label: string; market_type: string; price_type: string; unit: string; date: string; low: string; high: string; mid: string }>(
     `SELECT daily.market_id, market.label_en AS market_label, market.type AS market_type, daily.price_type, daily.normalized_unit AS unit,

@@ -47,7 +47,7 @@ async function count(client: WarehouseClient, sql: string, params: unknown[] = [
 test("warehouse schema migrates once and stays idempotent", async () => {
   const client = await embeddedWarehouse();
   try {
-    assert.deepEqual(await migrateWarehouse(client), [1, 2, 3, 4]);
+    assert.deepEqual(await migrateWarehouse(client), [1, 2, 3, 4, 5, 6]);
     assert.deepEqual(await migrateWarehouse(client), []);
     const tables = await client.query<{ table_name: string }>("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name");
     for (const expected of ["source", "market", "product", "item", "unit_rule", "publication", "price_observation", "sync_state", "schema_migration"]) {
@@ -65,7 +65,7 @@ test("sync copies the canonical layer, resumes from its cursor, and propagates s
   const client = await embeddedWarehouse();
   try {
     const first = await syncWarehouse(database, client, { batchSize: 1 });
-    assert.deepEqual(first.migrations, [1, 2, 3, 4]);
+    assert.deepEqual(first.migrations, [1, 2, 3, 4, 5, 6]);
     assert.deepEqual(first.references, { source: 2, market: 2, product: 1, item: 1, unit_rule: 1, publication: 2, item_alias: 2 });
     assert.equal(first.observations.upserted, 2);
     assert.equal(first.observations.batches, 2, "batches follow the batch size");

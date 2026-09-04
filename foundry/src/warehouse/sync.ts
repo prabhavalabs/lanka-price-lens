@@ -152,7 +152,7 @@ async function syncReferences(database: OperationalDatabase, client: WarehouseCl
   const publications = (database.prepare("SELECT id, source_id, source_publication_key, title, published_at, observed_from, observed_to, landing_url, download_url, status FROM source_publication").all() as Array<Record<string, unknown>>).map((row) => [row.id, row.source_id, row.source_publication_key, row.title, row.published_at, row.observed_from, row.observed_to, row.landing_url, row.download_url, row.status]);
   counts.publication = await upsertRows(client, "publication", ["id", "source_id", "publication_key", "title", "published_at", "observed_from", "observed_to", "landing_url", "download_url", "status"], publications, batchSize);
 
-  const aliases = (database.prepare("SELECT source_id, source_label, item_id FROM source_item_mapping").all() as Array<Record<string, unknown>>).map((row) => [row.source_id, row.source_label, row.item_id]);
+  const aliases = (database.prepare("SELECT source_id, source_label, item_id, origin FROM source_item_mapping").all() as Array<Record<string, unknown>>).map((row) => [row.source_id, row.source_label, row.item_id, row.origin ?? "bundle"]);
   counts.item_alias = await upsertAliases(client, aliases, batchSize);
   return counts;
 }
@@ -162,8 +162,8 @@ async function upsertAliases(client: WarehouseClient, rows: unknown[][], batchSi
     const batch = rows.slice(offset, offset + batchSize);
     await withRetry(() =>
       client.query(
-        `INSERT INTO item_alias (source_id, label, item_id) VALUES ${valuesPlaceholders(batch.length, 3)}
-         ON CONFLICT (source_id, label) DO UPDATE SET item_id = EXCLUDED.item_id`,
+        `INSERT INTO item_alias (source_id, label, item_id, origin) VALUES ${valuesPlaceholders(batch.length, 4)}
+         ON CONFLICT (source_id, label) DO UPDATE SET item_id = EXCLUDED.item_id, origin = EXCLUDED.origin`,
         batch.flat(),
       ),
     );
