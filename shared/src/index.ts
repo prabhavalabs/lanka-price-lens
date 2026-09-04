@@ -71,6 +71,10 @@ export type RetailAdapterKind = (typeof retailAdapterKinds)[number];
 
 export const priceTypes = ["wholesale_observed", "retail_observed", "retail_online_store", "producer_observed"] as const;
 
+/** Parsers for PDF publications the document pipeline can process. */
+export const documentAdapterKinds = ["harti_daily", "cbsl_daily_price", "dcs_weekly_retail"] as const;
+export type DocumentAdapterKind = (typeof documentAdapterKinds)[number];
+
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected YYYY-MM-DD");
 
 export const sourceManifestSchema = z
@@ -99,6 +103,8 @@ export const sourceManifestSchema = z
     request_interval_ms: z.number().int().min(1_000),
     max_attempts: z.number().int().min(1).max(10),
     enabled: z.boolean(),
+    /** Which document parser reads this source's PDFs; ignored for retail adapter sources. */
+    document_adapter: z.enum(documentAdapterKinds).default("harti_daily"),
     /** Present for sources captured through a retail adapter; absent for PDF bulletin sources. */
     adapter: z
       .object({

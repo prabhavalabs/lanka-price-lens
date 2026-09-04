@@ -1,7 +1,6 @@
 import { createHash } from "node:crypto";
 
-import { canPublishSource, type MappingBundle, type SourceManifest, type StageName } from "@lanka-pricelens/shared";
-import { hartiArchiveObjectKey } from "@lanka-pricelens/shared/harti-archive";
+import { canCaptureSource, type MappingBundle, type SourceManifest, type StageName } from "@lanka-pricelens/shared";
 
 import { finalizeProcessedArtifacts, persistExtractedText, persistProcessedArtifact } from "./artifact.ts";
 import { configuredArchiveStorage, type ArchiveStorage } from "./archive-storage.ts";
@@ -17,7 +16,8 @@ import {
   syncSource,
   type OperationalDatabase,
 } from "./db.ts";
-import { discoverHartiDaily, HartiParseError, parseHartiWholesaleWithDiagnostics, type Publication } from "./harti.ts";
+import { documentAdapterFor, documentParseCode, documentParseDetails } from "./documents/index.ts";
+import type { Publication } from "./harti.ts";
 import { inspectPdf, type TextItem } from "./pdf.ts";
 import { canonicalizeArtifact } from "./mapping.ts";
 import { assessArtifactCompleteness } from "./quality.ts";
@@ -140,7 +140,7 @@ export async function runSourceSync(
   });
   if (!run.started) return { runId: run.id, status: "skipped", processingRunIds: [] };
 
-  if (!canPublishSource(manifest)) {
+  if (!canCaptureSource(manifest)) {
     const message = "Source is disabled, unapproved, or its rights review has expired";
     startStage(database, run.id, "check_source", 1, { source_url: manifest.landing_url });
     finishStage(database, run.id, "check_source", "blocked", { errorCode: "SOURCE_RIGHTS_BLOCKED", errorMessage: message });
@@ -219,7 +219,7 @@ export async function runPdfProcessing(
   });
   if (!run.started) return { runId: run.id, status: "skipped" };
 
-  if (!canPublishSource(manifest)) {
+  if (!canCaptureSource(manifest)) {
     const message = "Source processing is blocked by its rights policy";
     startStage(database, run.id, "retrieve_pdf", 1, { archive_id: archiveId });
     finishStage(database, run.id, "retrieve_pdf", "blocked", { errorCode: "SOURCE_RIGHTS_BLOCKED", errorMessage: message });
@@ -389,9 +389,9 @@ async function executeSourceSyncStage(
   const input = sourceSyncInput(manifest, stage, options, context);
   await executeLoggedStage(database, runId, stage, sourceSyncInputCount(stage, context), input, async () => {
     if (stage === "check_source") return checkSource(database, runId, manifest, options, context);
-    if (stage === "compare_inventory") return compareInventory(database, runId, options, storage, context);
+    if (stage === "compare_inventory") return compareInventory(database, runId, manifest, options, storage, context);
     if (stage === "download_new_pdfs") return downloadNewPdfs(database, runId, manifest, options, context);
-    if (stage === "upload_to_r2") return uploadToR2(database, runId, storage, context);
+    if (stage === "upload_to_r2") return uploadToR2(database, runId, manifest, storage, context);
     return recordPdfMetadata(database, runId, manifest, storage, context);
   }, sourceSyncStages);
 }
@@ -410,14 +410,13 @@ async function executeProcessingStage(
   await executeLoggedStage(database, runId, stage, processingInputCount(database, context, stage), input, async () => {
     if (stage === "retrieve_pdf") return retrievePdf(database, runId, storage, context);
     if (stage === "parse_pdf") return parsePdf(database, storage, context, inspector);
-    if (stage === "extract_data") return extractData(database, runId, context);
+    if (stage === "extract_data") return extractData(database, runId, manifest, context);
     if (stage === "validate_data") return validateData(database, context);
     if (stage === "insert_data") return insertData(database, runId, context);
     if (stage === "assess_completeness") return assessCompleteness(database, runId, context, mappingBundle);
-    return canonicalizeData(database, runId, context, mappingBundle);
+    return canonicalizeData(database, runId, manifest, context, mappingBundle);
   }, processingStages);
   heartbeatRun(database, runId);
-  void manifest;
 }
 
 export async function executeLoggedStage(
@@ -441,12 +440,8 @@ export async function executeLoggedStage(
     logStage(database, runId, stage, "info", `${stageLabel(stage)} succeeded`, result.output);
   } catch (error) {
     const message = errorMessage(error);
-    const code = error instanceof HartiParseError ? error.code : `${stage.toUpperCase()}_FAILED`;
-    const details = {
-      code,
-      message,
-      ...(error instanceof HartiParseError ? { rejected_candidates: error.rejectedCandidates } : {}),
-    };
+    const code = documentParseCode(error) ?? `${stage.toUpperCase()}_FAILED`;
+    const details = { code, message, ...documentParseDetails(error) };
     finishStage(database, runId, stage, "failed", { errorCode: code, errorMessage: message, output: details });
     logStage(database, runId, stage, "error", `${stageLabel(stage)} failed`, details);
     blockStages(database, runId, workflow, stage);
@@ -464,7 +459,16 @@ async function checkSource(
   const request = options.request ?? fetch;
   const landing = await requestWithRetry(request, manifest.landing_url, manifest.max_attempts, manifest.request_interval_ms);
   const html = new TextDecoder().decode(await limitedBody(landing, 5 * 1024 * 1024));
-  context.publications = discoverHartiDaily(html, manifest.landing_url, { from: options.from, to: options.to });
+  context.publications = await documentAdapterFor(manifest).discover({
+    manifest,
+    html,
+    range: { from: options.from, to: options.to },
+    request,
+    fetchWithRetry: (url, init) => requestWithRetry(request, url, manifest.max_attempts, manifest.request_interval_ms, init),
+    readBody: limitedBody,
+    log: (level, message, data) => logStage(database, runId, "check_source", level, message, data),
+    now: new Date(),
+  });
   recordPublications(database, manifest.id, context.publications);
   const now = new Date().toISOString();
   database.prepare("UPDATE ingest_run SET discovered_count = ? WHERE id = ?").run(context.publications.length, runId);
@@ -475,6 +479,7 @@ async function checkSource(
 async function compareInventory(
   database: OperationalDatabase,
   runId: string,
+  manifest: SourceManifest,
   options: IngestionOptions,
   storage: ArchiveStorage,
   context: SourceSyncContext,
@@ -486,14 +491,14 @@ async function compareInventory(
   const missing: Publication[] = [];
   context.reconcile = [];
   for (const publication of context.publications) {
-    const key = archiveKey(publication);
+    const key = archiveKey(manifest, publication);
     if (recorded.has(key)) continue;
     if (context.inventory.has(key)) context.reconcile.push(publication);
     else missing.push(publication);
   }
   const knownKeys = new Set([...recorded, ...context.inventory.keys()]);
   const missingKeys = new Set(missing.map((publication) => publication.key));
-  const newestKnownIndex = context.publications.findIndex((publication) => knownKeys.has(archiveKey(publication)));
+  const newestKnownIndex = context.publications.findIndex((publication) => knownKeys.has(archiveKey(manifest, publication)));
   context.pending = options.trigger !== "backfill" && !options.from && !options.to
     ? newestKnownIndex < 0
       ? missing.slice(0, 1)
@@ -553,11 +558,12 @@ async function downloadNewPdfs(
 async function uploadToR2(
   database: OperationalDatabase,
   runId: string,
+  manifest: SourceManifest,
   storage: ArchiveStorage,
   context: SourceSyncContext,
 ): Promise<StageResult> {
   for (const downloaded of context.downloaded.values()) {
-    const key = archiveKey(downloaded.publication);
+    const key = archiveKey(manifest, downloaded.publication);
     await storage.upload(key, downloaded.publication.title, downloaded.bytes, {
       "source-url": downloaded.publication.downloadUrl,
       "source-date": downloaded.publication.date,
@@ -598,7 +604,7 @@ function recordPdfMetadata(
         updated_at = excluded.updated_at`,
     );
     for (const publication of publications) {
-      const key = archiveKey(publication);
+      const key = archiveKey(manifest, publication);
       const downloaded = context.downloaded.get(publication.key);
       const existing = context.inventory.get(key);
       const archiveId = `archive_${publication.key}`;
@@ -709,29 +715,40 @@ async function parsePdf(
   };
 }
 
-function extractData(database: OperationalDatabase, runId: string, context: ProcessingContext): StageResult {
+function extractData(database: OperationalDatabase, runId: string, manifest: SourceManifest, context: ProcessingContext): StageResult {
   const artifactId = requiredArtifact(context);
   const items = context.items ?? extractedItems(database, artifactId);
   if (!items.length) throw new Error("PARSED_PDF_INPUT_MISSING");
-  const parsed = parseHartiWholesaleWithDiagnostics(items);
-  persistProcessedArtifact(database, { artifactId, runId, items, observations: parsed.observations });
+  const publication = database
+    .prepare(
+      `SELECT publication.title, publication.published_at FROM source_artifact artifact
+       JOIN source_publication publication ON publication.id = artifact.publication_id WHERE artifact.id = ?`,
+    )
+    .get(artifactId) as { title: string; published_at: string | null } | undefined;
+  const parsed = documentAdapterFor(manifest).parse(items, {
+    title: publication?.title ?? "",
+    date: publication?.published_at?.slice(0, 10) ?? new Date().toISOString().slice(0, 10),
+  });
+  const priceType = manifest.price_types[0] ?? "wholesale_observed";
+  persistProcessedArtifact(database, { artifactId, runId, items, observations: parsed.observations, priceType });
+  const diagnostics = { strategy: parsed.strategy, confidence: parsed.confidence, page: parsed.page, warnings: parsed.warnings, signals: parsed.signals };
   database
     .prepare(
       `UPDATE source_artifact SET parser_strategy = ?, parser_confidence = ?, parser_diagnostics_json = ?
        WHERE id = ?`,
     )
-    .run(parsed.diagnostics.strategy, parsed.diagnostics.confidence, JSON.stringify(parsed.diagnostics), artifactId);
+    .run(parsed.strategy, parsed.confidence, JSON.stringify(diagnostics), artifactId);
   context.items = items;
   return {
     outputCount: parsed.observations.length,
-    warningCount: parsed.diagnostics.warnings.length,
+    warningCount: parsed.warnings.length,
     output: {
       structured_records: parsed.observations.length,
-      parser_strategy: parsed.diagnostics.strategy,
-      parser_confidence: parsed.diagnostics.confidence,
-      parser_page: parsed.diagnostics.page,
-      parser_signals: parsed.diagnostics.signals,
-      parser_warnings: parsed.diagnostics.warnings,
+      parser_strategy: parsed.strategy,
+      parser_confidence: parsed.confidence,
+      parser_page: parsed.page,
+      parser_signals: parsed.signals,
+      parser_warnings: parsed.warnings,
     },
   };
 }
@@ -802,6 +819,7 @@ function assessCompleteness(
 function canonicalizeData(
   database: OperationalDatabase,
   runId: string,
+  manifest: SourceManifest,
   context: ProcessingContext,
   bundle?: MappingBundle,
 ): StageResult {
@@ -822,7 +840,7 @@ function canonicalizeData(
     runId,
     artifactId,
     bundle,
-    `harti-adaptive@2:${parser?.parser_strategy ?? "unknown"}`,
+    `${documentAdapterFor(manifest).parserVersion}:${parser?.parser_strategy ?? "unknown"}`,
   );
   const canonicalized = result.accepted + result.corrected + result.historical;
   database.prepare("UPDATE source_artifact SET status = 'canonicalized' WHERE id = ?").run(artifactId);
@@ -845,7 +863,8 @@ function completeProcessingRun(database: OperationalDatabase, runId: string, sou
 }
 
 function processingQuarantineReason(error: unknown): string | null {
-  if (error instanceof HartiParseError) return error.code;
+  const parseCode = documentParseCode(error);
+  if (parseCode) return parseCode;
   const message = errorMessage(error);
   for (const code of ["PDF_OCR_REQUIRED", "SOURCE_TEMPLATE_CHANGED", "UNSUPPORTED_DOCUMENT", "PDF_PARSE_FAILED"] as const) {
     if (message === code || message.startsWith(`${code}:`)) return code;
@@ -861,10 +880,7 @@ function recordProcessingQuarantine(
   error: unknown,
 ): void {
   const now = new Date().toISOString();
-  const details = {
-    message: errorMessage(error),
-    ...(error instanceof HartiParseError ? { rejected_candidates: error.rejectedCandidates } : {}),
-  };
+  const details = { message: errorMessage(error), ...documentParseDetails(error) };
   database.transaction(() => {
     const existing = database
       .prepare("SELECT 1 FROM quarantine WHERE artifact_id = ? AND reason_code = ? AND status = 'open'")
@@ -1125,8 +1141,8 @@ function requiredArtifact(context: ProcessingContext): string {
   return context.artifactId;
 }
 
-function archiveKey(publication: Publication): string {
-  return hartiArchiveObjectKey(publication);
+function archiveKey(manifest: SourceManifest, publication: Publication): string {
+  return documentAdapterFor(manifest).archiveKey(publication);
 }
 
 function archiveUri(storage: ArchiveStorage, key: string): string {
@@ -1180,12 +1196,13 @@ function delay(milliseconds: number): Promise<void> {
   return new Promise((resolveDelay) => setTimeout(resolveDelay, milliseconds));
 }
 
-async function requestWithRetry(request: typeof fetch, url: string, attempts: number, intervalMs: number): Promise<Response> {
+async function requestWithRetry(request: typeof fetch, url: string, attempts: number, intervalMs: number, init?: RequestInit): Promise<Response> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
       const response = await request(url, {
-        headers: { "user-agent": "LankaPriceLens/0.1 (+self-hosted data foundry)" },
+        ...init,
+        headers: { "user-agent": "LankaPriceLens/0.1 (+self-hosted data foundry)", ...(init?.headers as Record<string, string> | undefined) },
         signal: AbortSignal.timeout(30_000),
       });
       if (response.ok) return response;

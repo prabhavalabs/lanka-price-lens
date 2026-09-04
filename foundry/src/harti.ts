@@ -21,6 +21,8 @@ export type ParsedObservation = {
   sourceUnit: string;
   minValueMinor: number;
   maxValueMinor: number;
+  /** Overrides the artifact-level price type when a document mixes several. */
+  priceType?: string | undefined;
   raw: unknown;
 };
 
