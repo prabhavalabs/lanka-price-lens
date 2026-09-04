@@ -26,7 +26,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
-      - run: pnpm audit --prod
+      - run: bash scripts/audit-prod.sh
 
   container:
     needs: quality
