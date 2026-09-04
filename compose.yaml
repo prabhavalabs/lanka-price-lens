@@ -13,6 +13,8 @@ services:
       LPL_ADMIN_ROOT: /app/admin/dist
       LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
+      LPL_MANIFESTS_DIR: /app/data/manifests
+      LPL_MAPPINGS_DIR: /app/data/mappings
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
@@ -51,6 +53,8 @@ services:
       LPL_DATABASE_PATH: /data/operations.sqlite
       LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
+      LPL_MANIFESTS_DIR: /app/data/manifests
+      LPL_MAPPINGS_DIR: /app/data/mappings
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
@@ -80,6 +84,8 @@ services:
       LPL_DATABASE_PATH: /data/operations.sqlite
       LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
+      LPL_MANIFESTS_DIR: /app/data/manifests
+      LPL_MAPPINGS_DIR: /app/data/mappings
       LPL_ARCHIVE_DRIVER: ${LPL_ARCHIVE_DRIVER:-cloudflare}
       LPL_LOCAL_ARCHIVE_ROOT: /archive
       LPL_ENVIRONMENT: ${LPL_ENVIRONMENT:-production}

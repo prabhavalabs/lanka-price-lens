@@ -87,3 +87,13 @@ scheduler container, and confirm its heartbeat in the Cron monitor.
 
 Cloudflare credentials remain external environment secrets. Production must use
 `LPL_ARCHIVE_DRIVER=cloudflare`; local validation should use `filesystem`.
+
+## Retail price capture
+
+`retail_price_capture` runs daily at 06:30 (Asia/Colombo) for every source whose
+manifest carries an `adapter` block. Each dispatch runs the stages
+`fetch_snapshot → normalize_records → validate_records → store_snapshot → canonicalize_data`
+for one retailer, with a run lease per source, content-hash dedupe of identical
+snapshots, review holds for suspicious snapshots, and a circuit breaker that pauses
+a failing source. See [retail-capture.md](retail-capture.md) for the adapters, the
+admin controls, and the API.
