@@ -33,7 +33,8 @@ working directory if required, then enable the timer:
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable --now lanka-pricelens-foundry.timer
-systemctl list-timers lanka-pricelens-foundry.timer
+sudo systemctl enable --now lanka-pricelens-retail.timer
+systemctl list-timers lanka-pricelens-foundry.timer lanka-pricelens-retail.timer
 ```
 
 The timer is persistent, so a missed run executes after the VPS returns. The
