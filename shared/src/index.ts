@@ -191,6 +191,14 @@ export const mappingBundleSchema = z
         canonical_label_en: z.string().min(1),
         canonical_label_si: z.string().min(1).nullable(),
         canonical_label_ta: z.string().min(1).nullable(),
+        /**
+         * How the product's items compare. "pooled": the items are one food told apart
+         * only by origin, grade, or size (local and imported potatoes), so a consumer
+         * view pools every item by default. "by_variety": the items are different
+         * things sold under one name (chicken cuts, banana types), so the view opens
+         * on the base item and offers the others separately.
+         */
+        comparison: z.enum(["pooled", "by_variety"]).default("pooled"),
       }),
     ).default([]),
     items: z.array(
@@ -288,6 +296,7 @@ function checkUnique(values: string[], context: z.RefinementCtx, path: PropertyK
 }
 
 export type MappingBundle = z.infer<typeof mappingBundleSchema>;
+export type ProductComparison = MappingBundle["products"][number]["comparison"];
 
 export type SourceKind = "pdf_bulletin" | "retail_snapshot";
 

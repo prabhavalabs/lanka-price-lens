@@ -44,6 +44,9 @@ pipeline picks the parser from it.
   inherit the group of the row above ("Potatoes - Imported", "Egg - White").
 - Observations use the price range as min/max (falling back to the average) and
   keep all averages and changes in the raw record.
+- The survey's 750 ml coconut oil maps to the same per-litre item as the Central
+  Bank's and the supermarkets' coconut oil; the earlier packaged-product item is no
+  longer mapped.
 - Full cream milk powder (400 g) is listed by brand under one heading; the brand
   rows (`Anchor`, `Maliban`, `Pelwatta`) map to the one canonical item, so the
   survey's milk powder price compares with the supermarkets' per-kilogram prices.

@@ -140,8 +140,8 @@ async function syncReferences(database: OperationalDatabase, client: WarehouseCl
   const markets = (database.prepare("SELECT id, type, label_en, label_si, label_ta, pcode, scope_note, status FROM market").all() as Array<Record<string, unknown>>).map((row) => [row.id, row.type, row.label_en, row.label_si, row.label_ta, row.pcode, row.scope_note, row.status]);
   counts.market = await upsertRows(client, "market", ["id", "type", "label_en", "label_si", "label_ta", "pcode", "scope_note", "status"], markets, batchSize);
 
-  const products = (database.prepare("SELECT id, category, canonical_label_en, canonical_label_si, canonical_label_ta, status FROM product").all() as Array<Record<string, unknown>>).map((row) => [row.id, row.category, row.canonical_label_en, row.canonical_label_si, row.canonical_label_ta, row.status]);
-  counts.product = await upsertRows(client, "product", ["id", "category", "label_en", "label_si", "label_ta", "status"], products, batchSize);
+  const products = (database.prepare("SELECT id, category, canonical_label_en, canonical_label_si, canonical_label_ta, status, comparison FROM product").all() as Array<Record<string, unknown>>).map((row) => [row.id, row.category, row.canonical_label_en, row.canonical_label_si, row.canonical_label_ta, row.status, row.comparison ?? "pooled"]);
+  counts.product = await upsertRows(client, "product", ["id", "category", "label_en", "label_si", "label_ta", "status", "comparison"], products, batchSize);
 
   const items = (database.prepare("SELECT id, product_id, entity_type, canonical_label_en, canonical_label_si, canonical_label_ta, variety, origin, size, grade, status FROM item").all() as Array<Record<string, unknown>>).map((row) => [row.id, row.product_id, row.entity_type, row.canonical_label_en, row.canonical_label_si, row.canonical_label_ta, row.variety, row.origin, row.size, row.grade, row.status]);
   counts.item = await upsertRows(client, "item", ["id", "product_id", "entity_type", "label_en", "label_si", "label_ta", "variety", "origin", "size", "grade", "status"], items, batchSize);
@@ -157,17 +157,21 @@ async function syncReferences(database: OperationalDatabase, client: WarehouseCl
   return counts;
 }
 
+/** Aliases mirror the operational mapping table exactly, so labels a bundle or rule no longer maps disappear from search too. */
 async function upsertAliases(client: WarehouseClient, rows: unknown[][], batchSize: number): Promise<number> {
-  for (let offset = 0; offset < rows.length; offset += batchSize) {
-    const batch = rows.slice(offset, offset + batchSize);
-    await withRetry(() =>
-      client.query(
-        `INSERT INTO item_alias (source_id, label, item_id, origin) VALUES ${valuesPlaceholders(batch.length, 4)}
-         ON CONFLICT (source_id, label) DO UPDATE SET item_id = EXCLUDED.item_id, origin = EXCLUDED.origin`,
-        batch.flat(),
-      ),
-    );
-  }
+  await withRetry(() =>
+    client.transaction(async (tx) => {
+      await tx.query("DELETE FROM item_alias");
+      for (let offset = 0; offset < rows.length; offset += batchSize) {
+        const batch = rows.slice(offset, offset + batchSize);
+        await tx.query(
+          `INSERT INTO item_alias (source_id, label, item_id, origin) VALUES ${valuesPlaceholders(batch.length, 4)}
+           ON CONFLICT (source_id, label) DO UPDATE SET item_id = EXCLUDED.item_id, origin = EXCLUDED.origin`,
+          batch.flat(),
+        );
+      }
+    }),
+  );
   return rows.length;
 }
 

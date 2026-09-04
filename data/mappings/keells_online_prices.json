@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "mapping_version": "keells-online-2026-09-04.5",
+  "mapping_version": "keells-online-2026-09-04.6",
   "source_id": "keells_online_prices",
   "reviewed_by": "repository-owner",
   "reviewed_at": "2026-09-04",
@@ -53,7 +53,8 @@
       "category": "vegetable",
       "canonical_label_en": "Bell Pepper",
       "canonical_label_si": null,
-      "canonical_label_ta": null
+      "canonical_label_ta": null,
+      "comparison": "by_variety"
     },
     {
       "id": "product_big_onion",
@@ -102,7 +103,8 @@
       "category": "dairy",
       "canonical_label_en": "Butter",
       "canonical_label_si": null,
-      "canonical_label_ta": null
+      "canonical_label_ta": null,
+      "comparison": "by_variety"
     },
     {
       "id": "product_cabbage",
@@ -158,7 +160,8 @@
       "category": "meat",
       "canonical_label_en": "Chicken",
       "canonical_label_si": null,
-      "canonical_label_ta": null
+      "canonical_label_ta": null,
+      "comparison": "by_variety"
     },
     {
       "id": "product_chickpea",
@@ -340,7 +343,8 @@
       "category": "vegetable",
       "canonical_label_en": "Kohila (Lasia)",
       "canonical_label_si": null,
-      "canonical_label_ta": null
+      "canonical_label_ta": null,
+      "comparison": "by_variety"
     },
     {
       "id": "product_ladies_fingers",
@@ -662,7 +666,8 @@
       "category": "vegetable",
       "canonical_label_en": "Zucchini",
       "canonical_label_si": null,
-      "canonical_label_ta": null
+      "canonical_label_ta": null,
+      "comparison": "by_variety"
     }
   ],
   "items": [
@@ -1942,11 +1947,11 @@
     {
       "id": "item_chicken",
       "product_id": "product_chicken",
-      "entity_type": "commodity",
+      "entity_type": "variety",
       "canonical_label_en": "Chicken",
       "canonical_label_si": null,
       "canonical_label_ta": null,
-      "variety": null,
+      "variety": "Whole",
       "origin": null,
       "size": null,
       "grade": null,

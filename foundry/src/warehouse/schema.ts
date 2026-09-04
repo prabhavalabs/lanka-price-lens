@@ -197,6 +197,12 @@ export const warehouseMigrations: ReadonlyArray<{ version: number; name: string;
     // 'bundle' aliases are reviewed wording (bulletin rows, a store's plain label); 'pattern' aliases are the branded labels a rule matched.
     statements: [`ALTER TABLE item_alias ADD COLUMN IF NOT EXISTS origin TEXT NOT NULL DEFAULT 'bundle'`],
   },
+  {
+    version: 7,
+    name: "product comparison",
+    // 'pooled': items differ only by origin, grade, or size and pool in a consumer view; 'by_variety': different things under one name.
+    statements: [`ALTER TABLE product ADD COLUMN IF NOT EXISTS comparison TEXT NOT NULL DEFAULT 'pooled'`],
+  },
 ];
 
 export const materializedViews = ["daily_item_price", "latest_item_price"] as const;

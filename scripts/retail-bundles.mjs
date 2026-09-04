@@ -30,8 +30,9 @@ const reuseItem = (id) => {
   items[id] = { ...item, source_labels: [], expected_market_labels: [] };
   products[item.product_id] = hartiProducts.get(item.product_id);
 };
-const product = (id, label, category = "vegetable") => {
-  products[id] = hartiProducts.get(id) ?? { id, category, canonical_label_en: label, canonical_label_si: null, canonical_label_ta: null };
+// comparison "by_variety" marks products whose items are different things under one name (pepper colours); the default pools origins, grades, and sizes.
+const product = (id, label, category = "vegetable", comparison = "pooled") => {
+  products[id] = hartiProducts.get(id) ?? { id, category, canonical_label_en: label, canonical_label_si: null, canonical_label_ta: null, ...(comparison === "pooled" ? {} : { comparison }) };
 };
 const item = (id, productId, label, variety = null, entity = "commodity") => {
   if (!products[productId]) throw new Error(`define product ${productId} before ${id}`);
@@ -64,8 +65,8 @@ for (const [key, label, category] of fresh) {
   product(`product_${key}`, label, category ?? "vegetable");
   item(`item_${key}`, `product_${key}`, label);
 }
-product("product_bell_pepper", "Bell Pepper");
-product("product_zucchini", "Zucchini");
+product("product_bell_pepper", "Bell Pepper", "vegetable", "by_variety");
+product("product_zucchini", "Zucchini", "vegetable", "by_variety");
 item("item_bell_pepper_green", "product_bell_pepper", "Bell Pepper", "Green", "variety");
 item("item_bell_pepper_red", "product_bell_pepper", "Bell Pepper", "Red", "variety");
 item("item_bell_pepper_yellow", "product_bell_pepper", "Bell Pepper", "Yellow", "variety");
@@ -89,7 +90,7 @@ item("item_chicken_thighs", "product_chicken", "Chicken", "Thighs", "variety");
 item("item_chicken_legs", "product_chicken", "Chicken", "Whole legs", "variety");
 item("item_chicken_wings", "product_chicken", "Chicken", "Wings", "variety");
 product("product_fresh_milk", "Fresh Milk", "dairy"); item("item_fresh_milk", "product_fresh_milk", "Fresh Milk");
-product("product_butter", "Butter", "dairy");
+product("product_butter", "Butter", "dairy", "by_variety");
 item("item_butter_salted", "product_butter", "Butter", "Salted", "variety");
 item("item_butter_unsalted", "product_butter", "Butter", "Unsalted", "variety");
 product("product_rice_keeri_samba", "Keeri Samba Rice", "grain"); item("item_rice_keeri_samba", "product_rice_keeri_samba", "Keeri Samba Rice");
@@ -227,10 +228,10 @@ const labels = {
 };
 
 const retailers = {
-  keells: { id: "keells_online_prices", name: "Keells Online shelf prices", owner: "John Keells Holdings PLC (Keells Supermarkets)", landing_url: "https://www.keellssuper.com/", formats: ["json"], kind: "keells_api", market: { id: "market_keells_online", label: "Keells Online", scope: "Keells Online web store; prices and stock reported for the configured outlet (default SCDR, Colombo)." }, settings: {}, mapping_version: "keells-online-2026-09-04.5" },
-  cargills: { id: "cargills_online_prices", name: "Cargills Online shelf prices", owner: "Cargills (Ceylon) PLC (Cargills Food City)", landing_url: "https://cargillsonline.com/", formats: ["json"], kind: "cargills_api", market: { id: "market_cargills_online", label: "Cargills Online", scope: "Cargills Online web store; prices for the store serving the configured delivery area (default Colombo)." }, settings: { pinCode: "Colombo" }, mapping_version: "cargills-online-2026-09-04.5" },
-  spar: { id: "spar_online_prices", name: "SPAR Sri Lanka online shelf prices", owner: "SPAR Sri Lanka (Ceylon Biscuits Limited / SPAR International)", landing_url: "https://spar2u.lk/", formats: ["json"], kind: "spar_shopify", market: { id: "market_spar_online", label: "SPAR Online", scope: "SPAR spar2u.lk Shopify storefront; a single national online price list." }, settings: {}, mapping_version: "spar-online-2026-09-04.5" },
-  glomark: { id: "glomark_online_prices", name: "Glomark online shelf prices", owner: "Softlogic Retail (Pvt) Ltd (Glomark)", landing_url: "https://glomark.lk/", formats: ["html"], kind: "glomark_html", market: { id: "market_glomark_online", label: "Glomark Online", scope: "glomark.lk storefront category pages; a single national online price list." }, settings: {}, mapping_version: "glomark-online-2026-09-04.5" },
+  keells: { id: "keells_online_prices", name: "Keells Online shelf prices", owner: "John Keells Holdings PLC (Keells Supermarkets)", landing_url: "https://www.keellssuper.com/", formats: ["json"], kind: "keells_api", market: { id: "market_keells_online", label: "Keells Online", scope: "Keells Online web store; prices and stock reported for the configured outlet (default SCDR, Colombo)." }, settings: {}, mapping_version: "keells-online-2026-09-04.6" },
+  cargills: { id: "cargills_online_prices", name: "Cargills Online shelf prices", owner: "Cargills (Ceylon) PLC (Cargills Food City)", landing_url: "https://cargillsonline.com/", formats: ["json"], kind: "cargills_api", market: { id: "market_cargills_online", label: "Cargills Online", scope: "Cargills Online web store; prices for the store serving the configured delivery area (default Colombo)." }, settings: { pinCode: "Colombo" }, mapping_version: "cargills-online-2026-09-04.6" },
+  spar: { id: "spar_online_prices", name: "SPAR Sri Lanka online shelf prices", owner: "SPAR Sri Lanka (Ceylon Biscuits Limited / SPAR International)", landing_url: "https://spar2u.lk/", formats: ["json"], kind: "spar_shopify", market: { id: "market_spar_online", label: "SPAR Online", scope: "SPAR spar2u.lk Shopify storefront; a single national online price list." }, settings: {}, mapping_version: "spar-online-2026-09-04.6" },
+  glomark: { id: "glomark_online_prices", name: "Glomark online shelf prices", owner: "Softlogic Retail (Pvt) Ltd (Glomark)", landing_url: "https://glomark.lk/", formats: ["html"], kind: "glomark_html", market: { id: "market_glomark_online", label: "Glomark Online", scope: "glomark.lk storefront category pages; a single national online price list." }, settings: {}, mapping_version: "glomark-online-2026-09-04.6" },
 };
 
 for (const [key, retailer] of Object.entries(retailers)) {

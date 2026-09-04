@@ -479,6 +479,8 @@ function migrate(database: OperationalDatabase): void {
   addColumn(database, "price_observation", "updated_at", "TEXT");
   // 'bundle' rows are reviewed labels rewritten from the bundle; 'pattern' rows were derived by a bundle rule at canonicalization.
   addColumn(database, "source_item_mapping", "origin", "TEXT NOT NULL DEFAULT 'bundle'");
+  // 'pooled': the product's items differ only by origin, grade, or size; 'by_variety': they are different things under one name.
+  addColumn(database, "product", "comparison", "TEXT NOT NULL DEFAULT 'pooled'");
   database.exec("CREATE INDEX IF NOT EXISTS price_observation_change_stamp_idx ON price_observation(COALESCE(updated_at, created_at), id)");
   addColumn(database, "run_stage", "input_json", "TEXT");
   addColumn(database, "run_stage", "output_json", "TEXT");

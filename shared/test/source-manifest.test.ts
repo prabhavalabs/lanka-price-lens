@@ -100,6 +100,7 @@ test("mapping bundles accept pattern-mapped items and reject bad rules", () => {
   const parsed = mappingBundleSchema.parse({ ...baseBundle, items: [eggItem] });
   assert.deepEqual(parsed.items[0]?.source_patterns[0], { match: "\\beggs?\\b", exclude: ["mayonnaise"], units: ["piece"], min_quantity: null, pack: "count" });
   assert.deepEqual(parsed.excluded_patterns, []);
+  assert.equal(parsed.products[0]?.comparison, "pooled", "products pool their varieties unless told otherwise");
   assert.throws(() => mappingBundleSchema.parse({ ...baseBundle, items: [{ ...eggItem, source_patterns: [] }] }), /at least one source label or pattern/u);
   assert.throws(() => mappingBundleSchema.parse({ ...baseBundle, items: [{ ...eggItem, source_patterns: [{ match: "(" }] }] }), /Invalid regular expression/u);
   assert.throws(() => mappingBundleSchema.parse({ ...baseBundle, excluded_patterns: ["["], items: [eggItem] }), /Invalid regular expression/u);
