@@ -1,10 +1,12 @@
 import { scryptSync, randomBytes } from "node:crypto";
 import { resolve } from "node:path";
 
+import { configuredArchiveStorage } from "./archive-storage.ts";
 import { openOperationalDatabase } from "./db.ts";
 import { canonicalizeRun } from "./mapping.ts";
-import { readMappingBundle, readSourceManifest } from "./manifest.ts";
+import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
 import { runSourceSync } from "./pipeline.ts";
+import { retailAdapterFor, runRetailCapture } from "./retail/index.ts";
 import { buildRelease } from "./release.ts";
 import { startScheduler } from "./scheduler.ts";
 
@@ -19,9 +21,9 @@ if (command === "hash-password") {
   openOperationalDatabase(databasePath()).close();
   console.log(`Initialized ${databasePath()}`);
 } else if (command === "sync" || command === "ingest") {
-  const manifestPath = valueOf("--manifest") ?? process.env.LPL_SOURCE_MANIFEST_PATH ?? resolve(process.cwd(), "../data/manifests/harti_daily_food_prices.json");
-  const manifest = await readSourceManifest(manifestPath);
-  const mappingBundle = await readMappingBundle(mappingPath());
+  const catalog = await loadCatalog();
+  if (!catalog.primary) throw new Error("No PDF bulletin source is configured");
+  const { manifest, mappingBundle } = catalog.primary;
   const database = openOperationalDatabase(databasePath());
   try {
     const trigger = arguments_.includes("--backfill") ? "backfill" : arguments_.includes("--manual") ? "manual" : "scheduled";
@@ -41,18 +43,43 @@ if (command === "hash-password") {
     database.close();
   }
 } else if (command === "scheduler") {
-  const manifestPath = valueOf("--manifest") ?? process.env.LPL_SOURCE_MANIFEST_PATH ?? resolve(process.cwd(), "../data/manifests/harti_daily_food_prices.json");
-  const manifest = await readSourceManifest(manifestPath);
-  const mappingBundle = await readMappingBundle(mappingPath());
+  const catalog = await loadCatalog();
   const database = openOperationalDatabase(databasePath());
-  const stop = startScheduler(database, manifest, mappingBundle);
+  const stop = startScheduler(database, catalog);
   const shutdown = () => {
     stop();
     database.close();
   };
   process.once("SIGINT", shutdown);
   process.once("SIGTERM", shutdown);
-  console.log(JSON.stringify({ status: "online", service: "scheduler", database: databasePath() }));
+  console.log(JSON.stringify({ status: "online", service: "scheduler", database: databasePath(), sources: catalog.entries.map((entry) => entry.manifest.id) }));
+} else if (command === "capture") {
+  // One retailer with --source <id>, or every enabled retail source with --all (used by the production timer).
+  const catalog = await loadCatalog();
+  const all = arguments_.includes("--all");
+  const entries = all
+    ? catalog.entries.filter((entry) => entry.manifest.enabled && retailAdapterFor(entry.manifest))
+    : [catalog.find(requiredValue("--source")) ?? (() => { throw new Error("Unknown source; pass --source <manifest id> or --all"); })()];
+  if (!entries.length) throw new Error("No retail sources are configured");
+  const archive = arguments_.includes("--no-archive") ? undefined : await configuredArchiveStorage();
+  const database = openOperationalDatabase(databasePath());
+  try {
+    for (const entry of entries) {
+      const adapter = retailAdapterFor(entry.manifest);
+      if (!adapter) throw new Error(`Source ${entry.manifest.id} has no retail adapter`);
+      const result = await runRetailCapture(database, entry.manifest, adapter, {
+        trigger: all ? "scheduled" : "manual",
+        archive,
+        mappingBundle: entry.mappingBundle,
+        captureDate: dateValue("--date"),
+      });
+      console.log(JSON.stringify({ source: entry.manifest.id, ...result }));
+      // A paused source is expected to skip; anything else short of success fails the command.
+      if (result.status !== "succeeded" && result.code !== "CAPTURE_PAUSED") process.exitCode = 1;
+    }
+  } finally {
+    database.close();
+  }
 } else if (command === "canonicalize") {
   const runId = requiredValue("--run");
   const bundle = await readMappingBundle(requiredValue("--mappings"));
@@ -108,6 +135,16 @@ function dateValue(name: string): string | undefined {
 
 function databasePath(): string {
   return resolve(process.env.LPL_DATABASE_PATH ?? resolve(process.cwd(), "../data/runtime/operations.sqlite"));
+}
+
+/** One manifest when --manifest or LPL_SOURCE_MANIFEST_PATH is given; otherwise every manifest in the manifests directory. */
+async function loadCatalog(): Promise<SourceCatalog> {
+  const single = valueOf("--manifest") ?? process.env.LPL_SOURCE_MANIFEST_PATH;
+  if (single) return singleSourceCatalog(await readSourceManifest(single), await readMappingBundle(mappingPath()));
+  return readSourceCatalog(
+    resolve(valueOf("--manifests") ?? process.env.LPL_MANIFESTS_DIR ?? resolve(process.cwd(), "../data/manifests")),
+    resolve(valueOf("--mappings-dir") ?? process.env.LPL_MAPPINGS_DIR ?? resolve(process.cwd(), "../data/mappings")),
+  );
 }
 
 function mappingPath(): string {

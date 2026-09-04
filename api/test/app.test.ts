@@ -270,6 +270,7 @@ test("workflow APIs expose definitions, schedules, and durable manual dispatches
       "latest_document_collection",
       "historical_backfill",
       "document_processing_pipeline",
+      "retail_price_capture",
     ]);
 
     const queued = await app.request("/v1/admin/workflows/latest_document_collection/run", { method: "POST", headers: { cookie } });

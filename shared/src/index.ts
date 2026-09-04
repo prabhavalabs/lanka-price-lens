@@ -57,9 +57,19 @@ export const stageNames = [
   "canonicalize",
   "validate",
   "release",
+  "fetch_snapshot",
+  "normalize_records",
+  "validate_records",
+  "store_snapshot",
 ] as const;
 
-export const workflowNames = ["source_sync", "pdf_processing", "legacy_ingestion"] as const;
+export const workflowNames = ["source_sync", "pdf_processing", "legacy_ingestion", "retail_capture"] as const;
+
+/** Retail price adapters the foundry can run against an online store or a price publication. */
+export const retailAdapterKinds = ["spar_shopify", "glomark_html", "keells_api", "cargills_api"] as const;
+export type RetailAdapterKind = (typeof retailAdapterKinds)[number];
+
+export const priceTypes = ["wholesale_observed", "retail_observed", "retail_online_store", "producer_observed"] as const;
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected YYYY-MM-DD");
 
@@ -69,7 +79,7 @@ export const sourceManifestSchema = z
     name: z.string().min(1),
     owner: z.string().min(1),
     landing_url: z.url(),
-    retrieval_method: z.enum(["scheduled_download", "manual", "partner_feed"]),
+    retrieval_method: z.enum(["scheduled_download", "manual", "partner_feed", "api_snapshot"]),
     expected_cadence: z.enum(["business_daily", "daily", "weekly", "event_driven"]),
     formats: z.array(z.enum(["pdf", "csv", "json", "xlsx", "html"])).min(1),
     geographic_scope: z.string().min(1),
@@ -89,6 +99,14 @@ export const sourceManifestSchema = z
     request_interval_ms: z.number().int().min(1_000),
     max_attempts: z.number().int().min(1).max(10),
     enabled: z.boolean(),
+    /** Present for sources captured through a retail adapter; absent for PDF bulletin sources. */
+    adapter: z
+      .object({
+        kind: z.enum(retailAdapterKinds),
+        settings: z.record(z.string(), z.unknown()).default({}),
+      })
+      .nullable()
+      .default(null),
   })
   .superRefine((manifest, context) => {
     if (
@@ -158,7 +176,7 @@ export const mappingBundleSchema = z
     markets: z.array(
       z.object({
         id: stableId,
-        type: z.enum(["wholesale_market", "retail_market", "administrative_scope"]),
+        type: z.enum(["wholesale_market", "retail_market", "online_store", "administrative_scope"]),
         label_en: z.string().min(1),
         label_si: z.string().min(1).nullable(),
         label_ta: z.string().min(1).nullable(),
@@ -218,6 +236,22 @@ function checkUnique(values: string[], context: z.RefinementCtx, path: PropertyK
 }
 
 export type MappingBundle = z.infer<typeof mappingBundleSchema>;
+
+export type SourceKind = "pdf_bulletin" | "retail_snapshot";
+
+/** How a source is collected: PDF bulletins go through the document pipeline, retail adapters take snapshots. */
+export function sourceKind(manifest: Pick<SourceManifest, "adapter">): SourceKind {
+  return manifest.adapter ? "retail_snapshot" : "pdf_bulletin";
+}
+
+/** Rights states under which prices may be captured into the operational store (not necessarily released publicly). */
+export const captureRightsStatuses = new Set<(typeof rightsStatuses)[number]>(["approved_open", "approved_permission", "internal_evaluation"]);
+
+/** Capture is allowed while the source is enabled, its rights review is current, and it is public or under internal evaluation. */
+export function canCaptureSource(manifest: SourceManifest, today = new Date()): boolean {
+  const reviewDue = new Date(`${manifest.review_due_at}T23:59:59.999Z`);
+  return manifest.enabled && captureRightsStatuses.has(manifest.rights_status) && reviewDue >= today;
+}
 
 export function canPublishSource(manifest: SourceManifest, today = new Date()): boolean {
   const reviewDue = new Date(`${manifest.review_due_at}T23:59:59.999Z`);

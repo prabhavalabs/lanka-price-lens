@@ -54,6 +54,7 @@ if [[ $mode == --verify-only ]]; then
     exit 1
   fi
   systemctl is-active lanka-pricelens-foundry.timer
+  systemctl is-active lanka-pricelens-retail.timer
   exit
 fi
 
@@ -126,6 +127,9 @@ trap - ERR
 install -m 0755 "$repo/deploy/vps/deploy.sh" /usr/local/sbin/lanka-price-lens-deploy
 install -m 0644 "$repo/deploy/systemd/lanka-pricelens-foundry.service" /etc/systemd/system/
 install -m 0644 "$repo/deploy/systemd/lanka-pricelens-foundry.timer" /etc/systemd/system/
+install -m 0644 "$repo/deploy/systemd/lanka-pricelens-retail.service" /etc/systemd/system/
+install -m 0644 "$repo/deploy/systemd/lanka-pricelens-retail.timer" /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable --now lanka-pricelens-foundry.timer
+systemctl enable --now lanka-pricelens-retail.timer
 echo "Deployed $sha"

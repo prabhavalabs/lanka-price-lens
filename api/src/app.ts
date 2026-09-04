@@ -1,10 +1,11 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 
 import { serveStatic } from "@hono/node-server/serve-static";
 import { openOperationalDatabase, type OperationalDatabase } from "@lanka-pricelens/foundry/db";
 import { configuredArchiveStorage, type ArchiveStorage } from "@lanka-pricelens/foundry/archive-storage";
 import { archiveManualArtifact, ingestManualPdf, maximumPdfBytes } from "@lanka-pricelens/foundry/intake";
+import { createSourceCatalog, singleSourceCatalog, type CatalogEntry, type SourceCatalog } from "@lanka-pricelens/foundry/manifest";
 import {
   processingStages,
   retryProcessingStage,
@@ -15,12 +16,25 @@ import {
   type ProcessingStage,
 } from "@lanka-pricelens/foundry/pipeline";
 import {
+  clearAdapterSettings,
+  readAdapterOverrides,
+  resolveAdapterSettings,
+  resumeSourceCapture,
+  retailAdapterFor,
+  runRetailCapture,
+  saveAdapterSettings,
+  SettingsError,
+  settingsJsonSchema,
+  type AnyRetailAdapter,
+} from "@lanka-pricelens/foundry/retail";
+import {
   enqueueWorkflow,
   ensureWorkflowSchedules,
   workflowDefinitions,
   type WorkflowKey,
 } from "@lanka-pricelens/foundry/workflows";
 import {
+  canCaptureSource,
   canPublishSource,
   mappingBundleSchema,
   sourceManifestSchema,
@@ -60,10 +74,34 @@ export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
-  options: { archiveStorage?: ArchiveStorage } = {},
+  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
-  if (sourceManifest) ensureWorkflowSchedules(database, sourceManifest);
+  const catalog = options.catalog ?? (sourceManifest ? singleSourceCatalog(sourceManifest, mappingBundle) : createSourceCatalog([]));
+  for (const entry of catalog.entries) ensureWorkflowSchedules(database, entry.manifest);
+
+  /** Starts a retail capture for one source and answers like the ingestion route: 202 with the run, or 409 when it cannot start. */
+  const startCapture = async (context: Context<AppBindings>, entry: CatalogEntry, adapter: AnyRetailAdapter) => {
+    if (!canCaptureSource(entry.manifest)) return context.json(envelope(context.get("requestId"), null, false, "Source permission is not current"), 403);
+    const health = database
+      .prepare("SELECT consecutive_failures, paused_until FROM source WHERE id = ?")
+      .get(entry.manifest.id) as { consecutive_failures: number; paused_until: string | null } | undefined;
+    if (health?.paused_until && health.paused_until > new Date().toISOString()) {
+      return context.json(envelope(context.get("requestId"), health, false, `Capture is paused until ${health.paused_until}; resume it first`), 409);
+    }
+    const active = database
+      .prepare("SELECT id, trigger, status FROM ingest_run WHERE source_id = ? AND workflow != 'pdf_processing' AND status = 'running' LIMIT 1")
+      .get(entry.manifest.id) as { id: string; trigger: string; status: string } | undefined;
+    if (active) return context.json(envelope(context.get("requestId"), active, false, "Another run for this source is active"), 409);
+    const archive = options.archiveStorage ?? (await configuredArchiveStorage().catch(() => undefined));
+    const task = runRetailCapture(database, entry.manifest, adapter, { trigger: "manual", mappingBundle: entry.mappingBundle, archive });
+    void task.catch(() => undefined);
+    const run = database
+      .prepare("SELECT id, workflow, trigger, status FROM ingest_run WHERE source_id = ? AND workflow = 'retail_capture' ORDER BY started_at DESC LIMIT 1")
+      .get(entry.manifest.id) as { id: string; trigger: string; status: string } | undefined;
+    if (!run) return context.json(envelope(context.get("requestId"), null, false, "Capture did not start"), 500);
+    return context.json(envelope(context.get("requestId"), run, true, "Capture started"), 202);
+  };
   app.use("*", requestId(), secureHeaders());
   app.get("/v1/health", (context) => context.json(envelope(context.get("requestId"), { status: "ok" })));
 
@@ -204,6 +242,8 @@ export function createApp(
       .prepare(
         `SELECT id, name, owner, landing_url, rights_status, rights_evidence_ref, reviewed_at, review_due_at, enabled, state,
          last_discovery_at, last_fetch_at, last_parse_at, last_release_at,
+         consecutive_failures, paused_until, last_capture_error, last_capture_at,
+         json_extract(manifest_json, '$.adapter.kind') AS adapter_kind,
          json_extract(manifest_json, '$.expected_cadence') AS expected_cadence,
          json_extract(manifest_json, '$.retrieval_method') AS retrieval_method,
          json_extract(manifest_json, '$.attribution_text') AS attribution_text,
@@ -226,6 +266,85 @@ export function createApp(
       )
       .all(failureWindowStart, ...where.values, page.pageSize, page.offset);
     return context.json(envelope(context.get("requestId"), { items, ...page }));
+  });
+  app.get("/v1/admin/sources/:id/adapter", (context) => {
+    const entry = catalog.find(context.req.param("id"));
+    if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Source not found"), 404);
+    const adapter = retailAdapterFor(entry.manifest);
+    if (!adapter) return context.json(envelope(context.get("requestId"), { adapter: null }));
+    const overrides = readAdapterOverrides(database, entry.manifest.id);
+    let effective: unknown = null;
+    let error: string | null = null;
+    try {
+      effective = resolveAdapterSettings(database, entry.manifest, adapter);
+    } catch (settingsError) {
+      error = settingsError instanceof Error ? settingsError.message : String(settingsError);
+    }
+    const health = database
+      .prepare("SELECT state, consecutive_failures, paused_until, last_capture_error, last_capture_at FROM source WHERE id = ?")
+      .get(entry.manifest.id);
+    const lastRun = database
+      .prepare(
+        `SELECT id, status, trigger, started_at, finished_at, parsed_count, quarantined_count, error_code, error_message
+         FROM ingest_run WHERE source_id = ? AND workflow = 'retail_capture' ORDER BY started_at DESC LIMIT 1`,
+      )
+      .get(entry.manifest.id);
+    const overridesUpdated = database.prepare("SELECT updated_by, updated_at FROM source_adapter_setting WHERE source_id = ?").get(entry.manifest.id);
+    return context.json(
+      envelope(context.get("requestId"), {
+        adapter: { kind: adapter.kind, label: adapter.label, description: adapter.description, market_label: adapter.marketLabel, price_type: adapter.priceType },
+        schema: settingsJsonSchema(adapter),
+        defaults: entry.manifest.adapter?.settings ?? {},
+        overrides,
+        overrides_updated: overridesUpdated ?? null,
+        effective,
+        error,
+        health: health ?? null,
+        last_run: lastRun ?? null,
+        mapping_configured: Boolean(entry.mappingBundle),
+      }),
+    );
+  });
+  app.put("/v1/admin/sources/:id/adapter", bodyLimit({ maxSize: 64 * 1024 }), async (context) => {
+    const entry = catalog.find(context.req.param("id"));
+    if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Source not found"), 404);
+    const adapter = retailAdapterFor(entry.manifest);
+    if (!adapter) return context.json(envelope(context.get("requestId"), null, false, "This source has no adapter to configure"), 409);
+    let body: unknown;
+    try {
+      body = await context.req.json();
+    } catch {
+      return context.json(envelope(context.get("requestId"), null, false, "Settings must be a JSON object"), 400);
+    }
+    const overrides = typeof body === "object" && body && !Array.isArray(body) && "overrides" in body ? (body as { overrides: unknown }).overrides : body;
+    if (typeof overrides !== "object" || !overrides || Array.isArray(overrides)) return context.json(envelope(context.get("requestId"), null, false, "Settings must be a JSON object"), 400);
+    try {
+      const effective = saveAdapterSettings(database, entry.manifest, adapter, overrides as Record<string, unknown>, context.get("adminUser").email);
+      return context.json(envelope(context.get("requestId"), { overrides, effective }, true, "Settings saved"));
+    } catch (error) {
+      if (error instanceof SettingsError) return context.json(envelope(context.get("requestId"), { issues: error.issues }, false, "Settings rejected"), 400);
+      throw error;
+    }
+  });
+  app.delete("/v1/admin/sources/:id/adapter", (context) => {
+    const entry = catalog.find(context.req.param("id"));
+    if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Source not found"), 404);
+    clearAdapterSettings(database, entry.manifest.id, context.get("adminUser").email);
+    return context.json(envelope(context.get("requestId"), { overrides: {} }, true, "Settings reset to the manifest defaults"));
+  });
+  app.post("/v1/admin/sources/:id/capture", async (context) => {
+    const entry = catalog.find(context.req.param("id"));
+    if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Source not found"), 404);
+    const adapter = retailAdapterFor(entry.manifest);
+    if (!adapter) return context.json(envelope(context.get("requestId"), null, false, "This source is collected through the document workflows"), 409);
+    return startCapture(context, entry, adapter);
+  });
+  app.post("/v1/admin/sources/:id/resume", (context) => {
+    const entry = catalog.find(context.req.param("id"));
+    if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Source not found"), 404);
+    resumeSourceCapture(database, entry.manifest.id, context.get("adminUser").email);
+    const health = database.prepare("SELECT state, consecutive_failures, paused_until, last_capture_error, last_capture_at FROM source WHERE id = ?").get(entry.manifest.id);
+    return context.json(envelope(context.get("requestId"), health ?? null, true, "Capture resumed"));
   });
   app.get("/v1/admin/runs", (context) => {
     const request = listRequest(context);
@@ -275,6 +394,7 @@ export function createApp(
           cronExpression: definition.schedule,
           version: 1,
           schedule: scheduleByKey.get(definition.key) ?? null,
+          schedules: schedules.filter((schedule) => schedule.workflow_key === definition.key),
         })),
       ),
     );
@@ -345,6 +465,13 @@ export function createApp(
         .get(archiveId, sourceManifest.id);
       if (!ownedArchive) return context.json(envelope(context.get("requestId"), null, false, "Archived document not found"), 404);
     }
+    if (definition.executor === "retail_capture") {
+      const dispatches = catalog.entries
+        .filter((entry) => entry.manifest.enabled && retailAdapterFor(entry.manifest))
+        .map((entry) => enqueueWorkflow(database, { workflowKey: definition.key as WorkflowKey, sourceId: entry.manifest.id, requestedBy: context.get("adminUser").email }));
+      if (!dispatches.length) return context.json(envelope(context.get("requestId"), null, false, "No retail sources are configured"), 409);
+      return context.json(envelope(context.get("requestId"), dispatches, true, `${dispatches.length} capture${dispatches.length === 1 ? "" : "s"} queued`), 202);
+    }
     const dispatch = enqueueWorkflow(database, {
       workflowKey: definition.key as WorkflowKey,
       sourceId: sourceManifest.id,
@@ -384,12 +511,18 @@ export function createApp(
     void task.catch(() => undefined);
     return context.json(envelope(context.get("requestId"), { run_id: run.id, stage }, true, "Step retry started"), 202);
   });
-  app.post("/v1/admin/runs/:id/rerun", (context) => {
+  app.post("/v1/admin/runs/:id/rerun", async (context) => {
     if (!sourceManifest) return context.json(envelope(context.get("requestId"), null, false, "Automated intake is not configured"), 503);
     const previous = database
       .prepare("SELECT id, source_id, workflow, archive_id FROM ingest_run WHERE id = ?")
       .get(context.req.param("id")) as { id: string; source_id: string; workflow: string; archive_id: string | null } | undefined;
     if (!previous) return context.json(envelope(context.get("requestId"), null, false, "Run not found"), 404);
+    if (previous.workflow === "retail_capture") {
+      const entry = catalog.find(previous.source_id);
+      const adapter = entry ? retailAdapterFor(entry.manifest) : null;
+      if (!entry || !adapter) return context.json(envelope(context.get("requestId"), null, false, "Run source is not configured"), 409);
+      return startCapture(context, entry, adapter);
+    }
     if (previous.source_id !== sourceManifest.id) return context.json(envelope(context.get("requestId"), null, false, "Run source is not configured"), 409);
     const task = previous.workflow === "pdf_processing" && previous.archive_id
       ? runPdfProcessing(database, sourceManifest, previous.archive_id, { trigger: "manual", mappingBundle })
@@ -687,12 +820,37 @@ export function createProductionApp(): Hono<AppBindings> {
   const manifest = sourceManifestSchema.parse(JSON.parse(readFileSync(manifestPath, "utf8")));
   const mappingPath = resolve(process.env.LPL_MAPPING_BUNDLE_PATH ?? "../data/mappings/harti_daily_food_prices.json");
   const mappingBundle = mappingBundleSchema.parse(JSON.parse(readFileSync(mappingPath, "utf8")));
-  const app = createApp(database, manifest, mappingBundle);
+  const catalog = readCatalogSync(
+    resolve(process.env.LPL_MANIFESTS_DIR ?? "../data/manifests"),
+    resolve(process.env.LPL_MAPPINGS_DIR ?? "../data/mappings"),
+    { manifest, mappingBundle },
+  );
+  const app = createApp(database, manifest, mappingBundle, { catalog });
   const adminRoot = resolve(process.env.LPL_ADMIN_ROOT ?? "../admin/dist");
   app.use("/admin/*", serveStatic({ root: adminRoot, rewriteRequestPath: (path) => path.replace(/^\/admin/u, "") || "/index.html" }));
   app.get("/admin/*", serveStatic({ root: adminRoot, rewriteRequestPath: () => "/index.html" }));
   app.get("/admin", (context) => context.redirect("/admin/"));
   return app;
+}
+
+/** Every manifest in the directory, paired with its bundle by source_id; the explicitly configured primary source always wins. */
+function readCatalogSync(manifestsDirectory: string, mappingsDirectory: string, primary: CatalogEntry): SourceCatalog {
+  const files = (directory: string): string[] => {
+    try {
+      return readdirSync(directory).filter((name) => name.endsWith(".json") && !name.startsWith(".")).sort().map((name) => resolve(directory, name));
+    } catch {
+      return [];
+    }
+  };
+  const bundles = files(mappingsDirectory).map((file) => mappingBundleSchema.parse(JSON.parse(readFileSync(file, "utf8"))));
+  const bundleBySource = new Map(bundles.map((bundle) => [bundle.source_id, bundle]));
+  const entries = new Map<string, CatalogEntry>();
+  for (const file of files(manifestsDirectory)) {
+    const manifest = sourceManifestSchema.parse(JSON.parse(readFileSync(file, "utf8")));
+    entries.set(manifest.id, { manifest, mappingBundle: bundleBySource.get(manifest.id) });
+  }
+  entries.set(primary.manifest.id, primary);
+  return createSourceCatalog([...entries.values()].sort((left, right) => left.manifest.id.localeCompare(right.manifest.id)));
 }
 
 function sameOrigin(context: Context): boolean {

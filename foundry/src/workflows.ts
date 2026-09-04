@@ -2,13 +2,16 @@ import { hostname } from "node:os";
 
 import { CronExpressionParser } from "cron-parser";
 
-import type { MappingBundle, SourceManifest, StageName, WorkflowName } from "@lanka-pricelens/shared";
+import { sourceKind, type MappingBundle, type SourceManifest, type StageName, type WorkflowName } from "@lanka-pricelens/shared";
 
 import { configuredArchiveStorage } from "./archive-storage.ts";
 import { newId, syncSource, type OperationalDatabase } from "./db.ts";
-import { processingStages, runPdfProcessing, runSourceSync, sourceSyncStages } from "./pipeline.ts";
+import { singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
+import { processingStages, retailCaptureStages, runPdfProcessing, runSourceSync, sourceSyncStages } from "./pipeline.ts";
+import { retailAdapterFor } from "./retail/index.ts";
+import { runRetailCapture } from "./retail/capture.ts";
 
-export const workflowDefinitionVersion = 2;
+export const workflowDefinitionVersion = 3;
 export const workflowDefinitions = [
   {
     key: "latest_document_collection",
@@ -45,6 +48,18 @@ export const workflowDefinitions = [
     timezone: "Asia/Colombo",
     maxItems: 10,
     steps: processingStages,
+  },
+  {
+    key: "retail_price_capture",
+    title: "Retail Price Capture",
+    description: "Captures shelf prices from each configured supermarket adapter once a day, stores the snapshot as evidence, and promotes mapped items into canonical observations.",
+    executor: "retail_capture",
+    trigger: "scheduled",
+    schedule: "30 6 * * *",
+    scheduleLabel: "Daily at 06:30",
+    timezone: "Asia/Colombo",
+    maxItems: 1,
+    steps: retailCaptureStages,
   },
 ] as const satisfies readonly WorkflowDefinition[];
 
@@ -87,6 +102,12 @@ export function workflowDefinition(key: string): (typeof workflowDefinitions)[nu
   return workflowDefinitions.find((definition) => definition.key === key);
 }
 
+/** Retail sources run only the capture workflow; PDF bulletin sources run the document workflows. */
+export function applicableWorkflowDefinitions(manifest: Pick<SourceManifest, "adapter">): Array<(typeof workflowDefinitions)[number]> {
+  const retail = sourceKind(manifest) === "retail_snapshot";
+  return workflowDefinitions.filter((definition) => (definition.executor === "retail_capture") === retail);
+}
+
 export function ensureWorkflowSchedules(database: OperationalDatabase, manifest: SourceManifest, now = new Date()): void {
   syncSource(database, manifest);
   const enabled = process.env.LPL_SCHEDULER_ENABLED === "false" ? 0 : 1;
@@ -102,7 +123,7 @@ export function ensureWorkflowSchedules(database: OperationalDatabase, manifest:
       max_items = excluded.max_items,
       updated_at = excluded.updated_at`,
   );
-  for (const definition of workflowDefinitions) {
+  for (const definition of applicableWorkflowDefinitions(manifest)) {
     statement.run(
       `schedule_${definition.key}_${manifest.id}`,
       definition.key,
@@ -290,6 +311,19 @@ export async function executeDispatch(
       finishDispatch(database, dispatch.id, "succeeded", null, queued ? `${queued} document workflows queued` : null);
       return;
     }
+    if (definition.executor === "retail_capture") {
+      const adapter = retailAdapterFor(manifest);
+      if (!adapter) return failDispatch(database, dispatch.id, "ADAPTER_NOT_CONFIGURED", `Source ${manifest.id} has no retail adapter`);
+      const capture = await runRetailCapture(database, manifest, adapter, {
+        trigger: dispatch.trigger === "manual" ? "manual" : "scheduled",
+        archive,
+        execution,
+        mappingBundle,
+      });
+      if (capture.status === "succeeded") return finishDispatch(database, dispatch.id, "succeeded", capture.runId, capture.unchanged ? "Prices unchanged since the previous snapshot" : null);
+      if (capture.status === "skipped") return finishDispatch(database, dispatch.id, "skipped", capture.runId, capture.message);
+      return failDispatch(database, dispatch.id, capture.code ?? "CAPTURE_FAILED", capture.message ?? "Capture failed", capture.runId);
+    }
     const result = definition.executor === "pdf_processing"
       ? await runPdfProcessing(database, manifest, requiredArchive(dispatch), {
           trigger: dispatch.trigger === "manual" ? "manual" : "scheduled",
@@ -338,12 +372,13 @@ export function schedulerHeartbeat(
 
 export async function schedulerTick(
   database: OperationalDatabase,
-  manifest: SourceManifest,
+  sources: SourceCatalog | SourceManifest,
   instanceId = `${hostname()}:${process.pid}`,
   now = new Date(),
   mappingBundle?: MappingBundle,
 ): Promise<{ enqueued: number; executed: number }> {
-  ensureWorkflowSchedules(database, manifest, now);
+  const catalog = "entries" in sources ? sources : singleSourceCatalog(sources, mappingBundle);
+  for (const entry of catalog.entries) ensureWorkflowSchedules(database, entry.manifest, now);
   recoverInterruptedDispatches(database, now);
   const enqueued = enqueueDueSchedules(database, now);
   schedulerHeartbeat(database, instanceId, { now });
@@ -351,7 +386,12 @@ export async function schedulerTick(
   for (;;) {
     const dispatch = claimNextDispatch(database, instanceId);
     if (!dispatch) break;
-    await executeDispatch(database, manifest, dispatch, process.env.LPL_ENVIRONMENT ?? "local", mappingBundle);
+    const entry = catalog.find(dispatch.source_id);
+    if (!entry) {
+      failDispatch(database, dispatch.id, "SOURCE_NOT_CONFIGURED", `No manifest loaded for source ${dispatch.source_id}`);
+    } else {
+      await executeDispatch(database, entry.manifest, dispatch, process.env.LPL_ENVIRONMENT ?? "local", entry.mappingBundle);
+    }
     executed += 1;
   }
   schedulerHeartbeat(database, instanceId);
@@ -423,12 +463,12 @@ function finishDispatch(database: OperationalDatabase, id: string, status: Dispa
     .run(status, runId, new Date().toISOString(), note, id);
 }
 
-function failDispatch(database: OperationalDatabase, id: string, code: string, message: string): void {
+function failDispatch(database: OperationalDatabase, id: string, code: string, message: string, runId: string | null = null): void {
   database
     .prepare(
-      `UPDATE workflow_dispatch SET status = 'failed', error_code = ?, error_message = ?, finished_at = ? WHERE id = ?`,
+      `UPDATE workflow_dispatch SET status = 'failed', error_code = ?, error_message = ?, finished_at = ?, run_id = COALESCE(?, run_id) WHERE id = ?`,
     )
-    .run(code, message, new Date().toISOString(), id);
+    .run(code, message, new Date().toISOString(), runId, id);
 }
 
 function requiredArchive(dispatch: WorkflowDispatch): string {

@@ -1,0 +1,6 @@
+{
+ "statusCode": 200,
+ "result": {
+  "userSessionID": "test-session-id"
+ }
+}

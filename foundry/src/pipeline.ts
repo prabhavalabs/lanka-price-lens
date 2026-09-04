@@ -38,6 +38,13 @@ export const processingStages = [
   "assess_completeness",
   "canonicalize_data",
 ] as const satisfies readonly StageName[];
+export const retailCaptureStages = [
+  "fetch_snapshot",
+  "normalize_records",
+  "validate_records",
+  "store_snapshot",
+  "canonicalize_data",
+] as const satisfies readonly StageName[];
 const legacyStages = ["crawl", "download", "process", "validate", "store"] as const satisfies readonly StageName[];
 
 export type SourceSyncStage = (typeof sourceSyncStages)[number];
@@ -331,7 +338,9 @@ export function workflowSnapshot(database: OperationalDatabase, runId: string): 
     ? sourceSyncStages
     : run.workflow === "pdf_processing"
       ? processingStages
-      : legacySnapshotStages(database, runId);
+      : run.workflow === "retail_capture"
+        ? retailCaptureStages
+        : legacySnapshotStages(database, runId);
 
   return stages.map((stage) => {
     const row = database.prepare("SELECT * FROM run_stage WHERE run_id = ? AND stage = ?").get(runId, stage) as
@@ -347,7 +356,7 @@ export function workflowSnapshot(database: OperationalDatabase, runId: string): 
       .all(runId, stage) as Array<Record<string, unknown>>;
     const retry = run.workflow === "pdf_processing" && processingStages.includes(stage as ProcessingStage)
       ? workflowRetryState(database, runId, stage as ProcessingStage)
-      : { canRetry: false, reason: run.workflow === "source_sync" ? "Rerun the source-sync workflow" : "Legacy run is read-only", missingDependencies: [] };
+      : { canRetry: false, reason: run.workflow === "source_sync" ? "Rerun the source-sync workflow" : run.workflow === "retail_capture" ? "Run the capture again" : "Legacy run is read-only", missingDependencies: [] };
     const startedAt = typeof row?.started_at === "string" ? row.started_at : null;
     const finishedAt = typeof row?.finished_at === "string" ? row.finished_at : null;
     return {
@@ -411,7 +420,7 @@ async function executeProcessingStage(
   void manifest;
 }
 
-async function executeLoggedStage(
+export async function executeLoggedStage(
   database: OperationalDatabase,
   runId: string,
   stage: StageName,
@@ -960,7 +969,7 @@ function retireStagingRows(database: OperationalDatabase, artifactId: string): v
     .run(artifactId);
 }
 
-function blockStages(database: OperationalDatabase, runId: string, workflow: readonly StageName[], failedStage: StageName): void {
+export function blockStages(database: OperationalDatabase, runId: string, workflow: readonly StageName[], failedStage: StageName): void {
   const index = workflow.indexOf(failedStage);
   for (const stage of workflow.slice(index + 1)) {
     blockStage(database, runId, stage, `${stageLabel(stage)} is blocked until ${stageLabel(failedStage)} succeeds`, [failedStage]);
@@ -1141,7 +1150,7 @@ function count(database: OperationalDatabase, sql: string, ...values: unknown[])
   return (database.prepare(sql).get(...values) as { count: number }).count;
 }
 
-function stageLabel(stage: StageName): string {
+export function stageLabel(stage: StageName): string {
   const labels: Partial<Record<StageName, string>> = {
     check_source: "Check official source",
     compare_inventory: "Compare PDF inventory",
@@ -1155,6 +1164,10 @@ function stageLabel(stage: StageName): string {
     insert_data: "Insert validated data",
     assess_completeness: "Assess document completeness",
     canonicalize_data: "Promote canonical observations",
+    fetch_snapshot: "Fetch price snapshot",
+    normalize_records: "Normalise records",
+    validate_records: "Validate records",
+    store_snapshot: "Store snapshot",
   };
   return labels[stage] ?? stage.replaceAll("_", " ");
 }

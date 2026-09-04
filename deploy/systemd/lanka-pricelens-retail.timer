@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Lanka PriceLens retail price capture every morning
+
+[Timer]
+OnCalendar=*-*-* 06:30:00 Asia/Colombo
+Persistent=true
+RandomizedDelaySec=10m
+Unit=lanka-pricelens-retail.service
+
+[Install]
+WantedBy=timers.target
