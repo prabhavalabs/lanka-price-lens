@@ -27,6 +27,7 @@ import {
   settingsJsonSchema,
   type AnyRetailAdapter,
 } from "@lanka-pricelens/foundry/retail";
+import { connectWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 import {
   enqueueWorkflow,
   ensureWorkflowSchedules,
@@ -49,6 +50,7 @@ import { requestId } from "hono/request-id";
 import { secureHeaders } from "hono/secure-headers";
 import { streamSSE } from "hono/streaming";
 
+import { itemDetail, searchItems } from "./explorer.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
 import {
   archivedKnowledgePdf,
@@ -74,9 +76,19 @@ export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
-  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog } = {},
+  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient> } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
+  /** The PostgreSQL warehouse behind the price explorer; null when not configured or unreachable (the routes answer 503). */
+  const warehouse = async (): Promise<WarehouseClient | null> => {
+    if (!options.warehouse) return null;
+    try {
+      return await options.warehouse();
+    } catch (error) {
+      console.error(JSON.stringify({ level: "error", message: "Warehouse unavailable", detail: error instanceof Error ? error.message : String(error) }));
+      return null;
+    }
+  };
   const catalog = options.catalog ?? (sourceManifest ? singleSourceCatalog(sourceManifest, mappingBundle) : createSourceCatalog([]));
   for (const entry of catalog.entries) ensureWorkflowSchedules(database, entry.manifest);
 
@@ -345,6 +357,22 @@ export function createApp(
     resumeSourceCapture(database, entry.manifest.id, context.get("adminUser").email);
     const health = database.prepare("SELECT state, consecutive_failures, paused_until, last_capture_error, last_capture_at FROM source WHERE id = ?").get(entry.manifest.id);
     return context.json(envelope(context.get("requestId"), health ?? null, true, "Capture resumed"));
+  });
+  app.get("/v1/admin/explorer/search", async (context) => {
+    const client = await warehouse();
+    if (!client) return context.json(envelope(context.get("requestId"), null, false, "The price explorer needs the PostgreSQL warehouse (LPL_POSTGRES_URL)"), 503);
+    const query = (context.req.query("q") ?? "").slice(0, 80);
+    const limit = Number(context.req.query("limit") ?? 20) || 20;
+    return context.json(envelope(context.get("requestId"), await searchItems(client, query, limit)));
+  });
+  app.get("/v1/admin/explorer/items/:id", async (context) => {
+    const client = await warehouse();
+    if (!client) return context.json(envelope(context.get("requestId"), null, false, "The price explorer needs the PostgreSQL warehouse (LPL_POSTGRES_URL)"), 503);
+    const range = parseRangeRequest({ days: context.req.query("days"), from: context.req.query("from"), to: context.req.query("to") });
+    if ("error" in range) return context.json(envelope(context.get("requestId"), null, false, range.error), 400);
+    const detail = await itemDetail(client, context.req.param("id").slice(0, 120), range);
+    if (!detail) return context.json(envelope(context.get("requestId"), null, false, "Item not found"), 404);
+    return context.json(envelope(context.get("requestId"), detail));
   });
   app.get("/v1/admin/sources/:id/unmapped-labels", (context) => {
     const entry = catalog.find(context.req.param("id"));
@@ -838,12 +866,25 @@ export function createProductionApp(): Hono<AppBindings> {
     resolve(process.env.LPL_MAPPINGS_DIR ?? "../data/mappings"),
     { manifest, mappingBundle },
   );
-  const app = createApp(database, manifest, mappingBundle, { catalog });
+  const warehouseUrl = process.env.LPL_POSTGRES_URL;
+  const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}) });
   const adminRoot = resolve(process.env.LPL_ADMIN_ROOT ?? "../admin/dist");
   app.use("/admin/*", serveStatic({ root: adminRoot, rewriteRequestPath: (path) => path.replace(/^\/admin/u, "") || "/index.html" }));
   app.get("/admin/*", serveStatic({ root: adminRoot, rewriteRequestPath: () => "/index.html" }));
   app.get("/admin", (context) => context.redirect("/admin/"));
   return app;
+}
+
+/** Connects on first use and retries on the next request after a failure, so a database outage never takes the API down with it. */
+function lazyWarehouse(url: string): () => Promise<WarehouseClient> {
+  let pending: Promise<WarehouseClient> | null = null;
+  return () => {
+    pending ??= connectWarehouse(url).catch((error: unknown) => {
+      pending = null;
+      throw error;
+    });
+    return pending;
+  };
 }
 
 /** Every manifest in the directory, paired with its bundle by source_id; the explicitly configured primary source always wins. */
