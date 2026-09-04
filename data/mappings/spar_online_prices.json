@@ -1,0 +1,1500 @@
+{
+  "schema_version": "1.0.0",
+  "mapping_version": "spar-online-2026-09-04.2",
+  "source_id": "spar_online_prices",
+  "reviewed_by": "repository-owner",
+  "reviewed_at": "2026-09-04",
+  "evidence_ref": "docs/retail-capture.md",
+  "products": [
+    {
+      "id": "product_ash_plantain",
+      "category": "vegetable",
+      "canonical_label_en": "Ash Plantain",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_avocado",
+      "category": "fruit",
+      "canonical_label_en": "Avocado",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_banana",
+      "category": "fruit",
+      "canonical_label_en": "Banana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_batana",
+      "category": "vegetable",
+      "canonical_label_en": "Batana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_beans",
+      "category": "vegetable",
+      "canonical_label_en": "Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_beetroot",
+      "category": "vegetable",
+      "canonical_label_en": "Beetroot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_bell_pepper",
+      "category": "vegetable",
+      "canonical_label_en": "Bell Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_big_onion",
+      "category": "vegetable",
+      "canonical_label_en": "Big Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_bitter_gourd",
+      "category": "vegetable",
+      "canonical_label_en": "Bitter Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_brinjals",
+      "category": "vegetable",
+      "canonical_label_en": "Brinjals",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_broccoli",
+      "category": "vegetable",
+      "canonical_label_en": "Broccoli",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cabbage",
+      "category": "vegetable",
+      "canonical_label_en": "Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cabbage_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Cabbage Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_capsicum",
+      "category": "vegetable",
+      "canonical_label_en": "Capsicum",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_carrot",
+      "category": "vegetable",
+      "canonical_label_en": "Carrot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cauliflower",
+      "category": "vegetable",
+      "canonical_label_en": "Cauliflower",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_coriander_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Coriander Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_cucumber",
+      "category": "vegetable",
+      "canonical_label_en": "Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_curry_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Curry Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_drumstick",
+      "category": "vegetable",
+      "canonical_label_en": "Drumstick",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_eggplant",
+      "category": "vegetable",
+      "canonical_label_en": "Eggplant",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_garlic",
+      "category": "vegetable",
+      "canonical_label_en": "Garlic",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_ginger",
+      "category": "vegetable",
+      "canonical_label_en": "Ginger",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_green_chillies",
+      "category": "vegetable",
+      "canonical_label_en": "Green Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_guava",
+      "category": "fruit",
+      "canonical_label_en": "Guava",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_iceberg_lettuce",
+      "category": "vegetable",
+      "canonical_label_en": "Iceberg Lettuce",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_ladies_fingers",
+      "category": "vegetable",
+      "canonical_label_en": "Ladies Fingers",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_leeks",
+      "category": "vegetable",
+      "canonical_label_en": "Leeks",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_lemon",
+      "category": "vegetable",
+      "canonical_label_en": "Lemon",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_lime",
+      "category": "fruit",
+      "canonical_label_en": "Lime",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_long_beans",
+      "category": "vegetable",
+      "canonical_label_en": "Long Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_luffa",
+      "category": "vegetable",
+      "canonical_label_en": "Luffa",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mango",
+      "category": "fruit",
+      "canonical_label_en": "Mango",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_manioc",
+      "category": "vegetable",
+      "canonical_label_en": "Manioc",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_mint_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Mint Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_onion_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Onion Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_orange",
+      "category": "fruit",
+      "canonical_label_en": "Orange",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_papaya",
+      "category": "fruit",
+      "canonical_label_en": "Papaya",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_passion_fruit",
+      "category": "fruit",
+      "canonical_label_en": "Passion Fruit",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_pineapple",
+      "category": "fruit",
+      "canonical_label_en": "Pineapple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_plantain_flower",
+      "category": "vegetable",
+      "canonical_label_en": "Plantain Flower",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_potato",
+      "category": "vegetable",
+      "canonical_label_en": "Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_pumpkin",
+      "category": "vegetable",
+      "canonical_label_en": "Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_radish",
+      "category": "vegetable",
+      "canonical_label_en": "Radish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_red_onion",
+      "category": "vegetable",
+      "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_salad_cucumber",
+      "category": "vegetable",
+      "canonical_label_en": "Salad Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_salad_leaves",
+      "category": "vegetable",
+      "canonical_label_en": "Salad Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_snake_gourd",
+      "category": "vegetable",
+      "canonical_label_en": "Snake Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_spinach",
+      "category": "vegetable",
+      "canonical_label_en": "Spinach (Nivithi)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_sweet_potato",
+      "category": "vegetable",
+      "canonical_label_en": "Sweet Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_thalana_batu",
+      "category": "vegetable",
+      "canonical_label_en": "Thalana Batu",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_tomato",
+      "category": "vegetable",
+      "canonical_label_en": "Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_wood_apple",
+      "category": "fruit",
+      "canonical_label_en": "Wood Apple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    }
+  ],
+  "items": [
+    {
+      "id": "item_ash_plantains",
+      "product_id": "product_ash_plantain",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ash Plantains",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "ASH Plantain"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_beans",
+      "product_id": "product_beans",
+      "entity_type": "commodity",
+      "canonical_label_en": "Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "GREEN Beans"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_beetroot_general",
+      "product_id": "product_beetroot",
+      "entity_type": "commodity",
+      "canonical_label_en": "Beetroot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BEETROOT"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_bitter_gourd",
+      "product_id": "product_bitter_gourd",
+      "entity_type": "commodity",
+      "canonical_label_en": "Bitter Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BITTER Gourd"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_brinjals",
+      "product_id": "product_brinjals",
+      "entity_type": "commodity",
+      "canonical_label_en": "Brinjals",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BRINJALS"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_capsicum",
+      "product_id": "product_capsicum",
+      "entity_type": "commodity",
+      "canonical_label_en": "Capsicum",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "CAPSICUM"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_carrot",
+      "product_id": "product_carrot",
+      "entity_type": "commodity",
+      "canonical_label_en": "Carrot",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "CARROTS"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_cucumber",
+      "product_id": "product_cucumber",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "CUCUMBER"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_drumstick",
+      "product_id": "product_drumstick",
+      "entity_type": "commodity",
+      "canonical_label_en": "Drumstick",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "DRUMSTICKS"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_eggplant",
+      "product_id": "product_eggplant",
+      "entity_type": "commodity",
+      "canonical_label_en": "Eggplant",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "EGG Plants"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_green_chillies",
+      "product_id": "product_green_chillies",
+      "entity_type": "commodity",
+      "canonical_label_en": "Green Chillies",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "GREEN Chilies"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_ladies_fingers",
+      "product_id": "product_ladies_fingers",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ladies Fingers",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "LADIES Fingers"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_leeks",
+      "product_id": "product_leeks",
+      "entity_type": "commodity",
+      "canonical_label_en": "Leeks",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "LEEKS"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_long_beans",
+      "product_id": "product_long_beans",
+      "entity_type": "commodity",
+      "canonical_label_en": "Long Beans",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "LONG Beans"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_luffa",
+      "product_id": "product_luffa",
+      "entity_type": "commodity",
+      "canonical_label_en": "Luffa",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "RIBBED Gourd"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_manioc",
+      "product_id": "product_manioc",
+      "entity_type": "commodity",
+      "canonical_label_en": "Manioc",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "MANIOC"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_pumpkin",
+      "product_id": "product_pumpkin",
+      "entity_type": "commodity",
+      "canonical_label_en": "Pumpkin",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "PUMPKIN"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_radish",
+      "product_id": "product_radish",
+      "entity_type": "commodity",
+      "canonical_label_en": "Radish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "RADDISH"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_snake_gourd",
+      "product_id": "product_snake_gourd",
+      "entity_type": "commodity",
+      "canonical_label_en": "Snake Gourd",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "SNAKE Gourd"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_sweet_potato",
+      "product_id": "product_sweet_potato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Sweet Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "SWEET Potato"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_tomato",
+      "product_id": "product_tomato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Tomato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "TOMATOES"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_lime",
+      "product_id": "product_lime",
+      "entity_type": "commodity",
+      "canonical_label_en": "Lime",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "LIMES"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_big_onion",
+      "product_id": "product_big_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Big Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BIG Onions"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_cabbage",
+      "product_id": "product_cabbage",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cabbage",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "CABBAGE"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_potato",
+      "product_id": "product_potato",
+      "entity_type": "commodity",
+      "canonical_label_en": "Potato",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "POTATOES"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_red_onion",
+      "product_id": "product_red_onion",
+      "entity_type": "commodity",
+      "canonical_label_en": "Red Onion",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Red Onions"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_garlic",
+      "product_id": "product_garlic",
+      "entity_type": "commodity",
+      "canonical_label_en": "Garlic",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "GARLIC"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_ginger",
+      "product_id": "product_ginger",
+      "entity_type": "commodity",
+      "canonical_label_en": "Ginger",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "GINGER"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_cauliflower",
+      "product_id": "product_cauliflower",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cauliflower",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "CAULIFLOWER"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_broccoli",
+      "product_id": "product_broccoli",
+      "entity_type": "commodity",
+      "canonical_label_en": "Broccoli",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BROCCOLI"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_iceberg_lettuce",
+      "product_id": "product_iceberg_lettuce",
+      "entity_type": "commodity",
+      "canonical_label_en": "Iceberg Lettuce",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "ICEBERG (LETTUCE)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_spinach",
+      "product_id": "product_spinach",
+      "entity_type": "commodity",
+      "canonical_label_en": "Spinach (Nivithi)",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Nivithi"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_curry_leaves",
+      "product_id": "product_curry_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Curry Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "CURRY Leaves"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_thalana_batu",
+      "product_id": "product_thalana_batu",
+      "entity_type": "commodity",
+      "canonical_label_en": "Thalana Batu",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Thalana Batu"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_batana",
+      "product_id": "product_batana",
+      "entity_type": "commodity",
+      "canonical_label_en": "Batana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BATANA"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_plantain_flower",
+      "product_id": "product_plantain_flower",
+      "entity_type": "commodity",
+      "canonical_label_en": "Plantain Flower",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "PLANTAIN Flower"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_cabbage_leaves",
+      "product_id": "product_cabbage_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Cabbage Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "CABBAGE Leaves"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_salad_cucumber",
+      "product_id": "product_salad_cucumber",
+      "entity_type": "commodity",
+      "canonical_label_en": "Salad Cucumber",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "SALAD Cucumber"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_coriander_leaves",
+      "product_id": "product_coriander_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Coriander Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "CORIANDER Leaves"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_salad_leaves",
+      "product_id": "product_salad_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Salad Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "SALAD Leaves"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_mint_leaves",
+      "product_id": "product_mint_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Mint Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "MINCHI Leaves"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_onion_leaves",
+      "product_id": "product_onion_leaves",
+      "entity_type": "commodity",
+      "canonical_label_en": "Onion Leaves",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "ONION Leaves"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_bell_pepper_green",
+      "product_id": "product_bell_pepper",
+      "entity_type": "variety",
+      "canonical_label_en": "Bell Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Green",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BELL Pepper, Green"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_bell_pepper_red",
+      "product_id": "product_bell_pepper",
+      "entity_type": "variety",
+      "canonical_label_en": "Bell Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Red",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BELL Pepper, Red"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_bell_pepper_yellow",
+      "product_id": "product_bell_pepper",
+      "entity_type": "variety",
+      "canonical_label_en": "Bell Pepper",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Yellow",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "BELL Pepper, Yellow"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_avocado",
+      "product_id": "product_avocado",
+      "entity_type": "commodity",
+      "canonical_label_en": "Avocado",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "AVOCADO"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_passion_fruit",
+      "product_id": "product_passion_fruit",
+      "entity_type": "commodity",
+      "canonical_label_en": "Passion Fruit",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Passion Fruit"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_wood_apple",
+      "product_id": "product_wood_apple",
+      "entity_type": "commodity",
+      "canonical_label_en": "Wood Apple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Woodapple"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_papaya",
+      "product_id": "product_papaya",
+      "entity_type": "commodity",
+      "canonical_label_en": "Papaya",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "PAPAYA, each (about 1.2kg)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_pineapple",
+      "product_id": "product_pineapple",
+      "entity_type": "commodity",
+      "canonical_label_en": "Pineapple",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "PINEAPPLE, each (about 1.3kg)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_lemon",
+      "product_id": "product_lemon",
+      "entity_type": "commodity",
+      "canonical_label_en": "Lemon",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "LEMON"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_banana_ambul",
+      "product_id": "product_banana",
+      "entity_type": "variety",
+      "canonical_label_en": "Banana — Ambul",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Ambul",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "AMBUL Banana, (about 1kg)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_banana_kolikuttu",
+      "product_id": "product_banana",
+      "entity_type": "variety",
+      "canonical_label_en": "Banana — Kolikuttu",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Kolikuttu",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "KOLIKUTTU Banana, (about 1kg)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_banana_seeni",
+      "product_id": "product_banana",
+      "entity_type": "variety",
+      "canonical_label_en": "Banana — Seeni",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Seeni",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "SEENI Banana, (about 1kg)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_banana",
+      "product_id": "product_banana",
+      "entity_type": "commodity",
+      "canonical_label_en": "Banana",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "CAVENDISH Banana, (about 1kg)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_mango_tjc",
+      "product_id": "product_mango",
+      "entity_type": "variety",
+      "canonical_label_en": "Mango",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "TJC",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "MANGO TJC, each (about 500g)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_mango_karathakolomban",
+      "product_id": "product_mango",
+      "entity_type": "variety",
+      "canonical_label_en": "Mango — Karathakolomban",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": "Karathakolomban",
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "MANGO KC, each (about 300g)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_orange",
+      "product_id": "product_orange",
+      "entity_type": "commodity",
+      "canonical_label_en": "Orange",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "ORANGE Local, 2's (about 400g)"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    },
+    {
+      "id": "item_guava",
+      "product_id": "product_guava",
+      "entity_type": "commodity",
+      "canonical_label_en": "Guava",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "GUAVA"
+      ],
+      "expected_market_labels": [
+        "SPAR Online"
+      ]
+    }
+  ],
+  "markets": [
+    {
+      "id": "market_spar_online",
+      "type": "online_store",
+      "label_en": "SPAR Online",
+      "label_si": null,
+      "label_ta": null,
+      "pcode": null,
+      "scope_note": "SPAR spar2u.lk Shopify storefront; a single national online price list.",
+      "source_labels": [
+        "SPAR Online"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "unit_kg_exact",
+      "source_unit": "kg",
+      "normalized_unit": "kg",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_g_to_kg",
+      "source_unit": "g",
+      "normalized_unit": "kg",
+      "factor_numerator": 1,
+      "factor_denominator": 1000,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_piece_exact",
+      "source_unit": "piece",
+      "normalized_unit": "piece",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    },
+    {
+      "id": "unit_bunch_exact",
+      "source_unit": "bunch",
+      "normalized_unit": "bunch",
+      "factor_numerator": 1,
+      "factor_denominator": 1,
+      "rounding_mode": "half_away_from_zero"
+    }
+  ],
+  "completeness": {
+    "minimum_item_coverage": 0.5,
+    "minimum_market_coverage": 1,
+    "minimum_cell_coverage": 0.5,
+    "minimum_mapping_coverage": 0.35,
+    "minimum_score": 0.5
+  }
+}
