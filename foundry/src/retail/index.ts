@@ -23,6 +23,7 @@ export function retailAdapterFor(manifest: Pick<SourceManifest, "adapter">): Any
   return (retailAdapters[manifest.adapter.kind] as AnyRetailAdapter | undefined) ?? null;
 }
 
-export { colomboDay, resumeSourceCapture, runRetailCapture, type RetailCaptureOptions, type RetailCaptureResult, type RetailCaptureStatus } from "./capture.ts";
+export { colomboDay, pendingCanonicalization, resumeSourceCapture, runRetailCapture, type RetailCaptureOptions, type RetailCaptureResult, type RetailCaptureStatus } from "./capture.ts";
+export { remapRecentSnapshots, type RemapOptions, type RemapResult } from "./remap.ts";
 export { clearAdapterSettings, parseSettings, readAdapterOverrides, resolveAdapterSettings, saveAdapterSettings, SettingsError, settingsJsonSchema, type BaseSettings } from "./settings.ts";
 export type { NormalizedRecord, RetailAdapter, SnapshotPayload } from "./types.ts";

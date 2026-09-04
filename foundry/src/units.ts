@@ -8,17 +8,30 @@ const packPattern = /(\d+(?:\.\d+)?)\s*(kg|kgs|g|gm|grams?|ml|l|ltr|litre|liter)
  */
 export function packFromLabel(label: string): { quantity: string; unit: string } | null {
   const match = label.match(packPattern);
-  if (!match?.[1] || !match[2]) return null;
-  return { quantity: trimNumber(match[1]), unit: normalizeUnit(match[2]) };
+  if (match?.[1] && match[2]) return { quantity: trimNumber(match[1]), unit: normalizeUnit(match[2]) };
+  const count = countFromLabel(label);
+  return count ? { quantity: String(count), unit: "piece" } : null;
+}
+
+const packOfPattern = /\bpack\s+of\s+(\d{1,3})\b/iu;
+// "10S", "10's", "30S'", "12Pcs", "6 pieces", "2 Nos", "10 Pack"; digits must start a token so "300g" or "1.5L" never read as a count.
+const countPattern = /(?<![\w.])(\d{1,3})\s*(?:'s|s'|s|pcs?|pieces?|nos?|packs?)(?![\w'])/iu;
+
+/** Reads a piece count printed in a label ("Happy Hen Eggs Large 10S" is 10). Returns null when none is printed. */
+export function countFromLabel(label: string): number | null {
+  const match = label.match(packOfPattern) ?? label.match(countPattern);
+  const count = match?.[1] ? Number(match[1]) : Number.NaN;
+  return Number.isInteger(count) && count > 0 ? count : null;
 }
 
 export function normalizeUnit(unit: string): string {
   const lower = unit.trim().toLowerCase().replace(/[.\s]+$/u, "");
   if (["kg", "kgs", "kilogram", "kilograms", "kilo"].includes(lower)) return "kg";
-  if (["g", "gm", "gms", "gram", "grams"].includes(lower)) return "g";
-  if (["l", "ltr", "litre", "liter", "litres", "liters"].includes(lower)) return "l";
+  if (["g", "gm", "gms", "gr", "gram", "grams"].includes(lower)) return "g";
+  if (["l", "lt", "ltr", "litre", "liter", "litres", "liters"].includes(lower)) return "l";
   if (lower === "ml") return "ml";
-  if (["pcs", "pc", "piece", "pieces", "each", "no", "nos", "unit", "units", "nut", "nuts", "fruit", "fruits", "egg", "eggs"].includes(lower)) return "piece";
+  // "S" is how some store systems abbreviate a count of pieces ("10 S" of eggs).
+  if (["pcs", "pc", "piece", "pieces", "each", "no", "nos", "s", "unit", "units", "nut", "nuts", "fruit", "fruits", "egg", "eggs"].includes(lower)) return "piece";
   if (["bunch", "bunches", "bundle", "bundles"].includes(lower)) return "bunch";
   return lower;
 }

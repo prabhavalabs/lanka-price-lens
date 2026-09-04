@@ -2,6 +2,7 @@ import type { MappingBundle } from "@lanka-pricelens/shared";
 
 import { type OperationalDatabase } from "./db.ts";
 import { syncMappingBundle } from "./mapping.ts";
+import { matchItemPattern } from "./patterns.ts";
 
 type QualityStatus = "complete" | "review_required" | "incomplete" | "not_configured";
 
@@ -96,15 +97,15 @@ export function assessArtifactCompleteness(
       .map((row) => cellKey(row.source_item_label, row.source_market_label))
       .filter((key) => expectedCells.has(key)),
   );
-  const mappedRows = rows.filter(
-    (row) => itemLabels.has(row.source_item_label) && marketLabels.has(row.source_market_label) && units.has(row.source_unit),
-  ).length;
+  // A label a pattern rule maps counts as mapped, so whole-catalogue bundles are scored on what they promote, not only on exact labels.
+  const itemMapped = (row: SourceRow) => itemLabels.has(row.source_item_label) || matchItemPattern(bundle, row.source_item_label, "1", row.source_unit) !== null;
+  const mappedRows = rows.filter((row) => itemMapped(row) && marketLabels.has(row.source_market_label) && units.has(row.source_unit)).length;
   const itemCoverage = ratio(observedItems.size, itemLabels.size);
   const marketCoverage = ratio(observedMarkets.size, expectedMarkets.size);
   const cellCoverage = ratio(observedCells.size, expectedCells.size);
   const mappingCoverage = ratio(mappedRows, rows.length);
   const score = round(itemCoverage * 0.25 + marketCoverage * 0.15 + cellCoverage * 0.45 + mappingCoverage * 0.15);
-  const unknownItems = unique(rows.filter((row) => !itemLabels.has(row.source_item_label)).map((row) => row.source_item_label));
+  const unknownItems = unique(rows.filter((row) => !itemMapped(row)).map((row) => row.source_item_label));
   const unknownMarkets = unique(rows.filter((row) => !marketLabels.has(row.source_market_label)).map((row) => row.source_market_label));
   const unknownUnits = unique(rows.filter((row) => !units.has(row.source_unit)).map((row) => row.source_unit));
   const belowThreshold =
@@ -133,7 +134,7 @@ export function assessArtifactCompleteness(
     observedCells: observedCells.size,
     totalRows: rows.length,
     mappedRows,
-    unknownItemRows: rows.filter((row) => !itemLabels.has(row.source_item_label)).length,
+    unknownItemRows: rows.filter((row) => !itemMapped(row)).length,
     unknownMarketRows: rows.filter((row) => !marketLabels.has(row.source_market_label)).length,
     unknownUnitRows: rows.filter((row) => !units.has(row.source_unit)).length,
     missingItems: [...itemLabels].filter((label) => !observedItems.has(label)).sort(),

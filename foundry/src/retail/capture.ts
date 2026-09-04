@@ -5,7 +5,7 @@ import { canCaptureSource, type MappingBundle, type SourceManifest } from "@lank
 import type { ArchiveStorage } from "../archive-storage.ts";
 import { finalizeProcessedArtifacts, persistProcessedArtifact } from "../artifact.ts";
 import { finishRun, heartbeatRun, logStage, newId, startRun, syncSource, type OperationalDatabase } from "../db.ts";
-import { canonicalizeArtifact } from "../mapping.ts";
+import { canonicalizeArtifact, type CanonicalizeOptions } from "../mapping.ts";
 import { executeLoggedStage, retailCaptureStages, type WorkflowExecutionOptions } from "../pipeline.ts";
 import { assessArtifactCompleteness } from "../quality.ts";
 import { resolveAdapterSettings, SettingsError, type BaseSettings } from "./settings.ts";
@@ -291,7 +291,10 @@ function canonicalize<S>(
   bundle: MappingBundle | undefined,
 ): { outputCount: number; warningCount?: number; output: Record<string, unknown> } {
   if (!context.artifactId) throw new Error("ARTIFACT_MISSING");
-  if (context.unchanged) return { outputCount: 0, output: { artifact_id: context.artifactId, status: "unchanged" } };
+  // An identical re-capture still promotes rows once a newer bundle can map them; otherwise there is nothing to do.
+  if (context.unchanged && !(bundle && pendingCanonicalization(database, context.artifactId, bundle))) {
+    return { outputCount: 0, output: { artifact_id: context.artifactId, status: "unchanged" } };
+  }
   const assessment = assessArtifactCompleteness(database, runId, context.artifactId, bundle);
   if (!bundle) {
     return {
@@ -300,10 +303,9 @@ function canonicalize<S>(
       output: { artifact_id: context.artifactId, status: "not_configured", message: "No mapping bundle for this source; records stay in staging" },
     };
   }
-  // Whole-catalogue snapshots carry thousands of deliberately unmapped labels; record them instead of quarantining each row.
-  const result = canonicalizeArtifact(database, runId, context.artifactId, bundle, `retail-${adapter.kind}@1`, { unknownLabels: "record" });
+  const result = canonicalizeArtifact(database, runId, context.artifactId, bundle, retailParserVersion(adapter), retailCanonicalizeOptions);
   const canonicalized = result.accepted + result.corrected + result.historical;
-  database.prepare("UPDATE source_artifact SET status = 'canonicalized' WHERE id = ?").run(context.artifactId);
+  database.prepare("UPDATE source_artifact SET status = 'canonicalized', mapping_version = ? WHERE id = ?").run(bundle.mapping_version, context.artifactId);
   database
     .prepare("UPDATE source_publication SET status = 'canonicalized' WHERE id = (SELECT publication_id FROM source_artifact WHERE id = ?)")
     .run(context.artifactId);
@@ -320,6 +322,23 @@ function canonicalize<S>(
       unknown_units: assessment.unknownUnits.length,
     },
   };
+}
+
+/**
+ * Whole-catalogue snapshots carry thousands of deliberately unmapped labels (recorded,
+ * not quarantined row by row) and several brands of one item, each keeping its own
+ * daily price so the warehouse can show a store's range.
+ */
+export const retailCanonicalizeOptions: CanonicalizeOptions = { unknownLabels: "record", effectiveKeyScope: "label" };
+
+export function retailParserVersion<S>(adapter: RetailAdapter<S>): string {
+  return `retail-${adapter.kind}@1`;
+}
+
+/** True until the artifact has been promoted with the bundle version now in force, so a bundle change reaches snapshots already stored. */
+export function pendingCanonicalization(database: OperationalDatabase, artifactId: string, bundle: MappingBundle): boolean {
+  const artifact = database.prepare("SELECT mapping_version FROM source_artifact WHERE id = ?").get(artifactId) as { mapping_version: string | null } | undefined;
+  return artifact?.mapping_version !== bundle.mapping_version;
 }
 
 function ensurePublication(database: OperationalDatabase, manifest: SourceManifest, date: string, nowIso: string): string {

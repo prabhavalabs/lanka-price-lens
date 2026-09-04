@@ -13,6 +13,9 @@ import { discoverGlomarkCategories, extractGlomarkProducts, glomarkAdapter, glom
 import { keellsAdapter, keellsPack } from "../src/retail/adapters/keells.ts";
 import { outletCode, sparAdapter, sparLabel, sparPack } from "../src/retail/adapters/spar.ts";
 import { pauseHours } from "../src/retail/capture.ts";
+import { remapRecentSnapshots } from "../src/retail/remap.ts";
+import { matchItemPattern } from "../src/patterns.ts";
+import { countFromLabel, normalizeUnit } from "../src/units.ts";
 import { backoff, CookieJar, fetchWithPolicy } from "../src/retail/http.ts";
 import {
   resolveAdapterSettings,
@@ -67,11 +70,17 @@ const bundle = mappingBundleSchema.parse({
   products: [
     { id: "product_carrot", category: "vegetable", canonical_label_en: "Carrot", canonical_label_si: null, canonical_label_ta: null },
     { id: "product_big_onion", category: "vegetable", canonical_label_en: "Big Onion", canonical_label_si: null, canonical_label_ta: null },
+    { id: "product_egg", category: "other", canonical_label_en: "Egg", canonical_label_si: null, canonical_label_ta: null },
+    { id: "product_chicken", category: "meat", canonical_label_en: "Chicken", canonical_label_si: null, canonical_label_ta: null },
   ],
   items: [
     { id: "item_carrot", product_id: "product_carrot", entity_type: "commodity", canonical_label_en: "Carrot", canonical_label_si: null, canonical_label_ta: null, variety: null, grade: null, source_labels: ["Carrot"], expected_market_labels: ["Keells Online"] },
     { id: "item_big_onion", product_id: "product_big_onion", entity_type: "commodity", canonical_label_en: "Big Onion", canonical_label_si: null, canonical_label_ta: null, variety: null, grade: null, source_labels: ["Big Onions"], expected_market_labels: ["Keells Online"] },
+    // Branded, pack-sized labels are mapped by pattern: eggs are counted, whole chicken must weigh at least 800 g and be skin on.
+    { id: "item_egg", product_id: "product_egg", entity_type: "commodity", canonical_label_en: "Egg", canonical_label_si: null, canonical_label_ta: null, variety: null, grade: null, source_patterns: [{ match: "\\beggs?\\b", exclude: ["mayonnaise"], units: ["piece"], pack: "count" }], expected_market_labels: ["Keells Online"] },
+    { id: "item_chicken", product_id: "product_chicken", entity_type: "commodity", canonical_label_en: "Chicken", canonical_label_si: null, canonical_label_ta: null, variety: null, grade: null, source_patterns: [{ match: "^(?=.*\\bwhole\\b)(?=.*\\bchicken\\b)", exclude: ["skinless"], units: ["kg", "g"], min_quantity: 0.8 }], expected_market_labels: ["Keells Online"] },
   ],
+  excluded_patterns: ["sausage"],
   markets: [{ id: "market_keells_online", type: "online_store", label_en: "Keells Online", label_si: null, label_ta: null, pcode: null, scope_note: "test", source_labels: ["Keells Online"] }],
   units: [
     { id: "unit_kg_exact", source_unit: "kg", normalized_unit: "kg", factor_numerator: 1, factor_denominator: 1, rounding_mode: "half_away_from_zero" },
@@ -285,6 +294,15 @@ test("capture stores a snapshot once, promotes mapped prices, records unmapped l
     const unmapped = database.prepare("SELECT label, occurrences FROM source_unmapped_label WHERE source_id = ? AND label_type = 'item' ORDER BY label").all(manifest.id) as Array<{ label: string; occurrences: number }>;
     assert.ok(unmapped.length >= 10 && unmapped.every((row) => row.occurrences === 1));
     assert.ok(!unmapped.some((row) => row.label === "Carrot"));
+    assert.ok(!unmapped.some((row) => row.label === "Bairaha Whole Chicken" || row.label === "Happy Hen Brown Eggs Large 10S"), "pattern-mapped labels are not waiting for a mapping");
+    assert.ok(unmapped.some((row) => row.label === "Bairaha Chicken Sausages 500g"), "bundle-wide exclusions keep processed foods out");
+    assert.ok(unmapped.some((row) => row.label === "Bairaha Whole Chicken Skinless"), "rule exclusions keep other forms out");
+    const eggs = database.prepare("SELECT source_quantity, source_unit, normalized_min_value_minor, normalized_unit FROM price_observation WHERE item_id = 'item_egg' AND status = 'active'").all();
+    assert.deepEqual(eggs, [{ source_quantity: "10", source_unit: "piece", normalized_min_value_minor: 6100, normalized_unit: "piece" }], "a tray of ten is priced per egg");
+    const chicken = database.prepare("SELECT normalized_min_value_minor, normalized_unit FROM price_observation WHERE item_id = 'item_chicken' AND status = 'active'").all();
+    assert.deepEqual(chicken, [{ normalized_min_value_minor: 135000, normalized_unit: "kg" }]);
+    const derived = database.prepare("SELECT source_label, item_id FROM source_item_mapping WHERE source_id = ? AND origin = 'pattern' ORDER BY source_label").all(manifest.id);
+    assert.deepEqual(derived, [{ source_label: "Bairaha Whole Chicken", item_id: "item_chicken" }, { source_label: "Happy Hen Brown Eggs Large 10S", item_id: "item_egg" }], "pattern matches are recorded as mappings for search and audit");
 
     const carrot = database
       .prepare("SELECT normalized_min_value_minor, normalized_unit, price_type, market_id FROM price_observation WHERE item_id = 'item_carrot' AND status = 'active'")
@@ -380,6 +398,76 @@ test("invalid settings fail the run without tripping the breaker", async () => {
     assert.deepEqual([result.status, result.code], ["failed", "SETTINGS_INVALID"]);
     const health = database.prepare("SELECT consecutive_failures FROM source WHERE id = ?").get(manifest.id) as { consecutive_failures: number };
     assert.equal(health.consecutive_failures, 0);
+  } finally {
+    cleanup();
+  }
+});
+
+test("count packs and pattern rules read branded labels", () => {
+  assert.equal(countFromLabel("Happy Hen Brown Eggs Large 10S"), 10);
+  assert.equal(countFromLabel("Happy Hen Eggs 30S' (1.890Kg)"), 30);
+  assert.equal(countFromLabel("Besto Pre Cut Whole Chicken(12Pcs)"), 12);
+  assert.equal(countFromLabel("Nel Farm Brown Egg Large 6S"), 6);
+  assert.equal(countFromLabel("NEL FARMS Egg Large, 10's"), 10);
+  assert.equal(countFromLabel("Dettol Soap Pack of 3"), 3);
+  assert.equal(countFromLabel("SPAR LOCAL Eggs - Medium, 10 Pack"), 10);
+  assert.equal(countFromLabel("Cic Besto Eggs Omega 3 Standard 10S"), 10, "a digit followed by a word is not a count");
+  assert.equal(countFromLabel("Anchor Milk Powder 400g"), null);
+  assert.equal(countFromLabel("Coca Cola 1.5L"), null);
+  assert.equal(countFromLabel("Kandos 21 Collection Milk Chocolate"), null);
+  assert.deepEqual(packFromLabel("Lakmo Eggs Medium 10S"), { quantity: "10", unit: "piece" });
+  assert.deepEqual(packFromLabel("Keells Arabic Bread 500G 5S"), { quantity: "500", unit: "g" }, "a printed weight still wins over a count");
+  assert.equal(normalizeUnit("S"), "piece");
+
+  const tray = matchItemPattern(bundle, "Happy Hen Eggs 30S' (1.890Kg)", "1.89", "kg");
+  assert.deepEqual([tray?.itemId, tray?.quantity, tray?.unit], ["item_egg", "30", "piece"], "a count rule re-reads a weighed tray as pieces");
+  assert.equal(matchItemPattern(bundle, "Edinborough Egg Mayonnaise 360g", "360", "g"), null, "rule exclusions");
+  assert.equal(matchItemPattern(bundle, "Bairaha Chicken Sausages 500g", "500", "g"), null, "bundle-wide exclusions");
+  assert.equal(matchItemPattern(bundle, "Bairaha Whole Chicken Skinless", "1", "kg"), null);
+  assert.equal(matchItemPattern(bundle, "CIC Whole Chicken", "300", "g"), null, "below the minimum pack");
+  assert.equal(matchItemPattern(bundle, "CIC Whole Chicken", "1300", "g")?.itemId, "item_chicken");
+  assert.equal(matchItemPattern(bundle, "Prima Whole Chicken", "1", "piece"), null, "unit the rule does not accept");
+  assert.equal(matchItemPattern(bundle, "Carrot", "1", "kg"), null, "exact labels are not the pattern engine's business");
+});
+
+test("an unchanged re-capture and remap promote rows a newer bundle maps", async () => {
+  const { database, root, cleanup } = temporaryDatabase();
+  try {
+    const adapter = retailAdapterFor(manifest)!;
+    const archive = filesystemArchiveStorage(join(root, "archive"));
+    const { http } = fakeHttp(keellsResponder());
+    const first = await runRetailCapture(database, manifest, adapter, { trigger: "manual", http, archive, mappingBundle: bundle, captureDate: "2026-09-04" });
+    assert.equal(first.status, "succeeded", first.message ?? "");
+    assert.deepEqual(database.prepare("SELECT COUNT(*) AS count FROM price_observation WHERE item_id = 'item_chicken_whole_skinless'").get(), { count: 0 });
+
+    const skinless = { id: "item_chicken_whole_skinless", product_id: "product_chicken", entity_type: "variety", canonical_label_en: "Chicken", canonical_label_si: null, canonical_label_ta: null, variety: "Whole, skinless", grade: null, source_patterns: [{ match: "^(?=.*\\bwhole\\b)(?=.*\\bchicken\\b)(?=.*skinless)", units: ["kg", "g"], min_quantity: 0.8 }], expected_market_labels: ["Keells Online"] };
+    const wider = mappingBundleSchema.parse({ ...bundle, mapping_version: "keells-test.2", items: [...bundle.items, skinless] });
+    const second = await runRetailCapture(database, manifest, adapter, { trigger: "manual", http, archive, mappingBundle: wider, captureDate: "2026-09-04" });
+    assert.deepEqual([second.status, second.unchanged, second.artifactId], ["succeeded", true, first.artifactId]);
+    const promoted = database.prepare("SELECT normalized_min_value_minor FROM price_observation WHERE item_id = 'item_chicken_whole_skinless' AND status = 'active'").all();
+    assert.deepEqual(promoted, [{ normalized_min_value_minor: 145000 }], "the stored snapshot is promoted under the wider bundle");
+    const artifact = database.prepare("SELECT mapping_version FROM source_artifact WHERE id = ?").get(first.artifactId) as { mapping_version: string };
+    assert.equal(artifact.mapping_version, "keells-test.2");
+    const carrots = database.prepare("SELECT COUNT(*) AS count FROM price_observation WHERE item_id = 'item_carrot' AND status = 'active'").get() as { count: number };
+    assert.equal(carrots.count, 1, "rows already promoted are corrected in place, not duplicated");
+    const stillOnce = database.prepare("SELECT MAX(occurrences) AS most FROM source_unmapped_label WHERE source_id = ?").get(manifest.id) as { most: number };
+    assert.equal(stillOnce.most, 2, "the re-promotion counts the labels still waiting once more");
+
+    const nothing = await remapRecentSnapshots(database, manifest, adapter, wider, { days: 7, now: new Date("2026-09-05T00:00:00Z") });
+    assert.equal(nothing.status, "skipped");
+    const forced = await remapRecentSnapshots(database, manifest, adapter, wider, { days: 7, now: new Date("2026-09-05T00:00:00Z"), force: true });
+    assert.deepEqual([forced.status, forced.artifacts], ["succeeded", 1]);
+    const runs = database.prepare("SELECT COUNT(*) AS count FROM ingest_run WHERE source_id = ? AND status = 'succeeded'").get(manifest.id) as { count: number };
+    assert.equal(runs.count, 3, "a remap is its own audited run");
+
+    // A bundle that stops mapping eggs retires the egg prices and puts the label back in the waiting list.
+    const narrower = mappingBundleSchema.parse({ ...wider, mapping_version: "keells-test.3", items: wider.items.filter((item) => item.id !== "item_egg") });
+    const third = await runRetailCapture(database, manifest, adapter, { trigger: "manual", http, archive, mappingBundle: narrower, captureDate: "2026-09-04" });
+    assert.deepEqual([third.status, third.unchanged], ["succeeded", true]);
+    const eggStatuses = database.prepare("SELECT status, revision_reason FROM price_observation WHERE item_id = 'item_egg' ORDER BY created_at").all();
+    assert.deepEqual(eggStatuses, [{ status: "superseded", revision_reason: "mapping_or_parser_correction" }]);
+    assert.ok(database.prepare("SELECT 1 FROM source_unmapped_label WHERE source_id = ? AND label = 'Happy Hen Brown Eggs Large 10S'").get(manifest.id));
+    assert.deepEqual(database.prepare("SELECT COUNT(*) AS count FROM source_item_mapping WHERE source_id = ? AND source_label = 'Happy Hen Brown Eggs Large 10S'").get(manifest.id), { count: 0 }, "the derived mapping is dropped with the rule");
   } finally {
     cleanup();
   }

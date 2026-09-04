@@ -467,6 +467,7 @@ function migrate(database: OperationalDatabase): void {
   addColumn(database, "source_artifact", "parser_strategy", "TEXT");
   addColumn(database, "source_artifact", "parser_confidence", "REAL");
   addColumn(database, "source_artifact", "parser_diagnostics_json", "TEXT");
+  addColumn(database, "source_artifact", "mapping_version", "TEXT");
   addColumn(database, "item", "product_id", "TEXT REFERENCES product(id)");
   addColumn(database, "item", "origin", "TEXT");
   addColumn(database, "item", "size", "TEXT");
@@ -476,6 +477,8 @@ function migrate(database: OperationalDatabase): void {
   addColumn(database, "price_observation", "superseded_by_id", "TEXT REFERENCES price_observation(id)");
   addColumn(database, "price_observation", "revision_reason", "TEXT");
   addColumn(database, "price_observation", "updated_at", "TEXT");
+  // 'bundle' rows are reviewed labels rewritten from the bundle; 'pattern' rows were derived by a bundle rule at canonicalization.
+  addColumn(database, "source_item_mapping", "origin", "TEXT NOT NULL DEFAULT 'bundle'");
   database.exec("CREATE INDEX IF NOT EXISTS price_observation_change_stamp_idx ON price_observation(COALESCE(updated_at, created_at), id)");
   addColumn(database, "run_stage", "input_json", "TEXT");
   addColumn(database, "run_stage", "output_json", "TEXT");
