@@ -29,6 +29,16 @@ whole chicken lands on the item the DCS retail survey reports) and add one
 the API and the scheduler; a manifest without a bundle still captures, but its
 records stay in staging with quality status `not_configured`.
 
+### Products and their varieties
+
+A product is what a shopper names; its items are the varieties the sources tell
+apart. A product's `comparison` setting says how a consumer view should treat
+them: `pooled` (the default) when the items are one food told apart only by
+origin, grade, or size (local and imported potatoes, coconut sizes), `by_variety`
+when they are different things sold under one name (chicken cuts, pepper colours,
+salted and unsalted butter). The price explorer opens a pooled product on every
+variety and a by-variety product on its base variety, with chips for the rest.
+
 ### Exact labels and pattern rules
 
 Produce is mapped by exact label: a store prints one label per vegetable, and the

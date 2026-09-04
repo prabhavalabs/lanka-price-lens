@@ -79,23 +79,40 @@ maintained by the sync. None of that changes the sync contract or the row ids.
 
 ## Serving: the price explorer
 
-The admin portal's **Price explorer** page reads the warehouse only. Item search
-matches canonical labels, varieties, origins, and every alias in `item_alias`
-(the labels bulletins and stores use, synced from the operational mapping table),
-so "bandakka" finds ladies fingers and "B'Onion Imported" finds the imported big
-onion. The item view combines `latest_item_price` (latest price per seller, grouped
+The admin portal's **Price explorer** page reads the warehouse only. It works at
+the level a shopper thinks at: the **product** ("Potato"), not the items the
+sources tell apart ("Potato (Imported)", "Potato (Welimada)", the unlabelled potato
+a supermarket sells). Search matches product and item labels, varieties, origins,
+and every alias in `item_alias` (the labels bulletins and stores use, synced from
+the operational mapping table), so "bandakka" finds ladies fingers and "B'Onion
+Imported" finds Big Onion; each product is one result, whatever its varieties.
+
+The product view pools the selected varieties **per seller**: one row per market or
+store with the low, high, and average across the varieties it reports, the
+varieties named on the row, and the count of prices behind it. Bulletins price by
+origin and supermarkets by unlabelled produce, so pooling is what finally puts a
+shelf price beside the market price of the same food. Variety chips narrow the
+view to one variety; the URL keeps the choice (`varieties=all` or a list of item
+ids). Which varieties open by default is the product's `comparison` setting in the
+mapping bundle: `pooled` (the default) opens on every variety, right for origins,
+grades, and sizes; `by_variety` opens on the base variety alone, right for
+products whose items are different things under one name (chicken cuts, banana
+and mango types, pepper colours, salted and unsalted butter). Endpoints:
+`GET /v1/admin/explorer/search?q=` and
+`GET /v1/admin/explorer/products/:id?days=|from=&to=&varieties=`.
+
+Under the hood it combines `latest_item_price` (latest price per seller, grouped
 into wholesale markets, retail markets, and supermarkets, with the group average in
 the group's most common unit and the shelf-over-wholesale markup) with
-`daily_item_price` over the chosen period (one trend line per seller, first-to-last
-change per seller). A supermarket's price is the range across every brand and pack
-of the item on its shelf that day, and the seller table says how many products
-stand behind it. Every seller carries a mark (`admin/src/components/seller-mark.tsx`):
+`daily_item_price` over the chosen period (one trend line per seller, the seller's
+daily average across the pooled varieties, first-to-last change per seller). A
+supermarket's price is the range across every brand and pack of the product on its
+shelf that day. Every seller carries a mark (`admin/src/components/seller-mark.tsx`):
 supermarkets their official logo (files and sources under `admin/public/sellers/`,
 with a monogram fallback if a file cannot load), markets a glyph drawn from the place
 (Pettah's clock tower, Dambulla's rock, the Kelani bridge at Peliyagoda), with
 retail markets tinted so they never pass for the wholesale market of the same town;
 a market without a drawn mark gets a stable colour and initials from its id.
-Endpoints: `GET /v1/admin/explorer/search?q=` and
-`GET /v1/admin/explorer/items/:id?days=|from=&to=`. When `LPL_POSTGRES_URL` is not
+When `LPL_POSTGRES_URL` is not
 set or the database is unreachable, the endpoints answer 503 and the rest of the
 admin keeps working.
