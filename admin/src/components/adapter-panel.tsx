@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { api, ApiError, type AdapterConfig, type AdapterSchemaProperty } from "@/lib/api";
+import { api, ApiError, type AdapterConfig, type AdapterSchemaProperty, type UnmappedLabel } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 type Overrides = Record<string, unknown>;
@@ -32,8 +32,13 @@ export function AdapterPanel({ sourceId }: { sourceId: string }) {
     queryFn: ({ signal }) => api<AdapterConfig>(`${path}/adapter`, { signal }),
     refetchInterval: 10_000,
   });
+  const unmapped = useQuery({
+    queryKey: ["unmapped-labels", sourceId],
+    queryFn: ({ signal }) => api<{ items: UnmappedLabel[]; total: number }>(`${path}/unmapped-labels?limit=12`, { signal }),
+    refetchInterval: 30_000,
+  });
   const [draft, setDraft] = useState<Overrides | null>(null);
-  const invalidate = () => Promise.all(["adapter", "sources", "runs", "overview", "dashboard", "workflow-dispatches"].map((key) => queryClient.invalidateQueries({ queryKey: [key] })));
+  const invalidate = () => Promise.all(["adapter", "unmapped-labels", "sources", "runs", "overview", "dashboard", "workflow-dispatches"].map((key) => queryClient.invalidateQueries({ queryKey: [key] })));
   const save = useMutation({
     mutationFn: (overrides: Overrides) => api<{ overrides: Overrides }>(`${path}/adapter`, { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify({ overrides }) }),
     onSuccess: async () => { setDraft(null); await invalidate(); },
@@ -106,6 +111,27 @@ export function AdapterPanel({ sourceId }: { sourceId: string }) {
       </dl>
 
       <Accordion className="rounded-lg border bg-background/40 px-3" collapsible type="single" {...(changed || data.error ? { defaultValue: "settings" } : {})}>
+        <AccordionItem className="border-0 border-b" value="labels">
+          <AccordionTrigger className="py-2.5 text-sm hover:no-underline">
+            <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Labels waiting for a mapping</span>
+              <span className="text-[11px] font-normal text-muted-foreground">{unmapped.data ? `${unmapped.data.total.toLocaleString()} store labels are captured but not yet linked to a product` : "Loading…"}</span>
+            </span>
+          </AccordionTrigger>
+          <AccordionContent className="pb-3">
+            {unmapped.data?.items.length ? (
+              <ul className="grid gap-1 text-xs sm:grid-cols-2">
+                {unmapped.data.items.map((label) => (
+                  <li className="flex items-baseline justify-between gap-2 rounded-md border bg-card/60 px-2 py-1.5" key={`${label.label_type}:${label.label}`}>
+                    <span className="min-w-0 truncate" title={label.label}>{label.label}</span>
+                    <span className="shrink-0 font-mono text-[11px] text-muted-foreground">{label.last_price_minor !== null ? `Rs ${(label.last_price_minor / 100).toLocaleString()} / ${label.last_quantity ?? ""}${label.last_unit ?? ""}` : label.label_type} · {label.occurrences}×</span>
+                  </li>
+                ))}
+              </ul>
+            ) : <p className="text-xs text-muted-foreground">Every captured label is mapped.</p>}
+            <p className="mt-2 text-[11px] text-muted-foreground">Add a label to the source's mapping bundle (scripts/retail-bundles.mjs) to promote it on the next capture.</p>
+          </AccordionContent>
+        </AccordionItem>
         <AccordionItem className="border-0" value="settings">
           <AccordionTrigger className="py-2.5 text-sm hover:no-underline">
             <span className="flex flex-wrap items-center gap-x-3 gap-y-1">

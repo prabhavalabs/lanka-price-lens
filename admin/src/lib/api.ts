@@ -52,6 +52,7 @@ export type AdapterConfig = {
   last_run?: AdapterLastRun | null;
   mapping_configured?: boolean;
 };
+export type UnmappedLabel = { label_type: "item" | "market" | "unit"; label: string; occurrences: number; first_seen_at: string; last_seen_at: string; last_market_label: string | null; last_quantity: string | null; last_unit: string | null; last_price_minor: number | null };
 export type WorkflowName = "source_sync" | "pdf_processing" | "legacy_ingestion" | "retail_capture";
 export type WorkflowStageName = "check_source" | "compare_inventory" | "download_new_pdfs" | "upload_to_r2" | "record_pdf_metadata" | "retrieve_pdf" | "parse_pdf" | "extract_data" | "validate_data" | "insert_data" | "assess_completeness" | "canonicalize_data" | "fetch_snapshot" | "normalize_records" | "validate_records" | "store_snapshot" | "crawl" | "download" | "process" | "validate" | "store" | "rights" | "discover" | "fetch" | "extract" | "parse" | "map" | "canonicalize" | "release";
 export type Run = { id: string; source_id: string; workflow: WorkflowName; parent_run_id: string | null; archive_id: string | null; artifact_id: string | null; definition_key?: WorkflowKey | null; definition_version?: number | null; dispatch_id?: string | null; scheduled_for?: string | null; environment?: string | null; trigger: string; status: string; started_at: string; finished_at: string | null; discovered_count: number; fetched_count: number; extracted_count?: number; parsed_count: number; quarantined_count: number; error_code: string | null; error_message: string | null };

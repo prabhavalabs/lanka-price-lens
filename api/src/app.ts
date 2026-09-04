@@ -346,6 +346,19 @@ export function createApp(
     const health = database.prepare("SELECT state, consecutive_failures, paused_until, last_capture_error, last_capture_at FROM source WHERE id = ?").get(entry.manifest.id);
     return context.json(envelope(context.get("requestId"), health ?? null, true, "Capture resumed"));
   });
+  app.get("/v1/admin/sources/:id/unmapped-labels", (context) => {
+    const entry = catalog.find(context.req.param("id"));
+    if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Source not found"), 404);
+    const limit = Math.min(500, Math.max(1, Number(context.req.query("limit") ?? 50) || 50));
+    const total = (database.prepare("SELECT COUNT(*) AS count FROM source_unmapped_label WHERE source_id = ?").get(entry.manifest.id) as { count: number }).count;
+    const items = database
+      .prepare(
+        `SELECT label_type, label, occurrences, first_seen_at, last_seen_at, last_market_label, last_quantity, last_unit, last_price_minor
+         FROM source_unmapped_label WHERE source_id = ? ORDER BY occurrences DESC, last_seen_at DESC, label LIMIT ?`,
+      )
+      .all(entry.manifest.id, limit);
+    return context.json(envelope(context.get("requestId"), { items, total }));
+  });
   app.get("/v1/admin/runs", (context) => {
     const request = listRequest(context);
     const where = listWhere(request, ["workflow", "trigger", "status", "error_code", "error_message"], "status");
