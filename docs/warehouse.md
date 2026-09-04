@@ -90,7 +90,8 @@ the group's most common unit and the shelf-over-wholesale markup) with
 change per seller). A supermarket's price is the range across every brand and pack
 of the item on its shelf that day, and the seller table says how many products
 stand behind it. Every seller carries a mark (`admin/src/components/seller-mark.tsx`):
-supermarkets a brand-coloured monogram, markets a glyph drawn from the place
+supermarkets their official logo (files and sources under `admin/public/sellers/`,
+with a monogram fallback if a file cannot load), markets a glyph drawn from the place
 (Pettah's clock tower, Dambulla's rock, the Kelani bridge at Peliyagoda), with
 retail markets tinted so they never pass for the wholesale market of the same town;
 a market without a drawn mark gets a stable colour and initials from its id.
