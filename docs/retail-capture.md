@@ -142,6 +142,11 @@ Add `--date YYYY-MM-DD` to file the snapshot under another trading day and
 `LPL_MAPPINGS_DIR` point the CLI, scheduler, and API at the manifest and bundle
 directories (defaults: `data/manifests`, `data/mappings`).
 
+When both a single manifest (`LPL_SOURCE_MANIFEST_PATH`) and a manifests directory
+(`LPL_MANIFESTS_DIR`) are set, as the compose tools service does, the directory
+wins: `sync`, `capture --all`, and `remap --all` see every source, and the single
+manifest only matters for tooling that takes exactly one source.
+
 ## Shared adapter settings
 
 | Setting | Default | Meaning |
