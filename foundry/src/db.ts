@@ -644,6 +644,22 @@ function migrate(database: OperationalDatabase): void {
       updated_by TEXT NOT NULL,
       updated_at TEXT NOT NULL
     ) STRICT;
+
+    CREATE TABLE IF NOT EXISTS source_unmapped_label (
+      source_id TEXT NOT NULL REFERENCES source(id),
+      label_type TEXT NOT NULL CHECK (label_type IN ('item', 'market', 'unit')),
+      label TEXT NOT NULL,
+      occurrences INTEGER NOT NULL DEFAULT 0,
+      first_seen_at TEXT NOT NULL,
+      last_seen_at TEXT NOT NULL,
+      last_market_label TEXT,
+      last_quantity TEXT,
+      last_unit TEXT,
+      last_price_minor INTEGER,
+      last_artifact_id TEXT,
+      PRIMARY KEY (source_id, label_type, label)
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS source_unmapped_label_seen_idx ON source_unmapped_label(source_id, last_seen_at DESC);
   `);
   // Capture health for adapter-driven sources (circuit breaker state).
   addColumn(database, "source", "consecutive_failures", "INTEGER NOT NULL DEFAULT 0");

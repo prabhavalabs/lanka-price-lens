@@ -15,6 +15,33 @@ export const baseSettingsSchema = z.object({
 });
 export type BaseSettings = z.infer<typeof baseSettingsSchema>;
 
+/** An optional case-insensitive regular expression setting, validated at save time so a typo cannot break the next run. */
+export function patternSetting(description: string) {
+  return z
+    .string()
+    .min(1)
+    .nullable()
+    .default(null)
+    .refine((value) => value === null || compilePattern(value) !== null, { message: "must be a valid regular expression" })
+    .describe(description);
+}
+
+export function compilePattern(pattern: string | null | undefined): RegExp | null {
+  if (!pattern) return null;
+  try {
+    return new RegExp(pattern, "iu");
+  } catch {
+    return null;
+  }
+}
+
+/** Keeps a category (or product type) when it matches the include pattern (if any) and does not match the exclude pattern. */
+export function categoryAllowed(name: string, include: RegExp | null, exclude: RegExp | null): boolean {
+  if (include && !include.test(name)) return false;
+  if (exclude && exclude.test(name)) return false;
+  return true;
+}
+
 export class SettingsError extends Error {
   readonly issues: string[];
 
