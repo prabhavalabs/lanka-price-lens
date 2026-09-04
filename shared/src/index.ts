@@ -318,3 +318,116 @@ export function canPublishSource(manifest: SourceManifest, today = new Date()): 
   const reviewDue = new Date(`${manifest.review_due_at}T23:59:59.999Z`);
   return manifest.enabled && publicRightsStatuses.has(manifest.rights_status) && reviewDue >= today;
 }
+
+/**
+ * The dish catalogue: an original, reviewed inventory of Sri Lankan dishes. A dish
+ * names what a household cooks; key ingredients point at the priced product
+ * vocabulary so a dish can be costed from the warehouse, and everything else that
+ * goes into it is plain text until it is priced too. Recipes (quantities, method)
+ * hang off dishes in a later layer; this file is the vocabulary they share.
+ */
+export const dishCategories = ["rice_and_grains", "vegetable", "pulses_and_eggs", "sambol_and_condiment", "fish_and_seafood", "meat_and_poultry", "snack", "sweet", "drink"] as const;
+export const dishRoles = ["staple", "main", "side", "snack", "sweet", "drink", "condiment"] as const;
+export const mealSlots = ["breakfast", "lunch", "dinner", "tea", "snack"] as const;
+export const dishRegions = ["island_wide", "up_country", "coastal", "southern", "northern", "eastern", "kandyan", "muslim", "burgher", "malay"] as const;
+export const dietTags = ["vegetarian", "vegan", "gluten_free", "contains_egg", "contains_dairy", "contains_fish", "contains_meat"] as const;
+export const proteinSources = ["chicken", "fish", "seafood", "egg", "dhal", "pulses", "dairy", "soya", "beef", "pork", "mutton", "none"] as const;
+export const dishOccasions = ["everyday", "festive", "new_year", "poya", "ramadan", "christmas", "wedding", "almsgiving"] as const;
+
+const dishId = z.string().regex(/^dish_[a-z0-9]+(?:_[a-z0-9]+)*$/u);
+
+export const dishSchema = z.object({
+  id: dishId,
+  names: z.object({
+    en: z.string().min(1),
+    si: z.string().min(1).nullable().default(null),
+    si_latn: z.string().min(1).nullable().default(null),
+    ta: z.string().min(1).nullable().default(null),
+    ta_latn: z.string().min(1).nullable().default(null),
+  }),
+  category: z.enum(dishCategories),
+  roles: z.array(z.enum(dishRoles)).min(1),
+  meal_slots: z.array(z.enum(mealSlots)).min(1),
+  region: z.enum(dishRegions),
+  /** 1 everyday, 2 common, 3 occasional or festive. */
+  popularity: z.union([z.literal(1), z.literal(2), z.literal(3)]),
+  prep_minutes: z.number().int().min(0),
+  cook_minutes: z.number().int().min(0),
+  difficulty: z.enum(["easy", "moderate", "involved"]),
+  diet: z.array(z.enum(dietTags)).default([]),
+  protein_source: z.array(z.enum(proteinSources)).default([]),
+  spice: z.enum(["none", "mild", "medium", "hot"]),
+  /** Product ids from the price vocabulary; what the warehouse can cost today. */
+  key_ingredients: z.array(stableId).default([]),
+  /** Ingredients not yet in the price vocabulary, as plain lowercase text. */
+  other_ingredients: z.array(z.string().min(1)).default([]),
+  /** One original sentence; never copied from another publication. */
+  summary: z.string().min(1),
+  occasions: z.array(z.enum(dishOccasions)).default([]),
+  variants: z.array(z.string().min(1)).default([]),
+  pairs_with: z.array(dishId).default([]),
+});
+
+export const dishCatalogueSchema = z
+  .object({
+    schema_version: z.literal("1.0.0"),
+    reviewed_by: z.string().min(1),
+    reviewed_at: isoDate,
+    dishes: z.array(dishSchema),
+  })
+  .superRefine((catalogue, context) => {
+    checkUnique(catalogue.dishes.map((dish) => dish.id), context, ["dishes"], "dish IDs");
+    const ids = new Set(catalogue.dishes.map((dish) => dish.id));
+    for (const [index, dish] of catalogue.dishes.entries()) {
+      for (const pair of dish.pairs_with) {
+        if (!ids.has(pair)) context.addIssue({ code: "custom", message: `Unknown paired dish ${pair}`, path: ["dishes", index, "pairs_with"] });
+      }
+    }
+  });
+
+export type Dish = z.infer<typeof dishSchema>;
+export type DishCatalogue = z.infer<typeof dishCatalogueSchema>;
+
+/** Where Sri Lankan home cooking is published: consulted and linked, never copied. */
+export const recipeReferencesSchema = z.object({
+  schema_version: z.literal("1.0.0"),
+  reviewed_at: isoDate,
+  channels: z.array(
+    z.object({
+      id: z.string().regex(/^channel_[a-z0-9_]+$/u),
+      name: z.string().min(1),
+      url: z.string().url(),
+      languages: z.array(z.enum(["si", "ta", "en"])).min(1),
+      subscribers_approx: z.number().int().positive().nullable().default(null),
+      focus: z.string().min(1),
+      sri_lankan_run: z.boolean().nullable().default(null),
+      verified_on: isoDate,
+    }),
+  ).default([]),
+  blogs: z.array(
+    z.object({
+      id: z.string().regex(/^blog_[a-z0-9_]+$/u),
+      name: z.string().min(1),
+      url: z.string().url(),
+      languages: z.array(z.enum(["si", "ta", "en"])).min(1),
+      author: z.string().min(1).nullable().default(null),
+      active: z.boolean().nullable().default(null),
+      focus: z.string().min(1),
+      verified_on: isoDate,
+    }),
+  ).default([]),
+  institutional: z.array(
+    z.object({
+      id: z.string().regex(/^inst_[a-z0-9_]+$/u),
+      name: z.string().min(1),
+      url: z.string().url(),
+      publisher: z.string().min(1),
+      kind: z.enum(["recipes", "food_composition", "dietary_guidelines", "other"]),
+      licence: z.string().min(1).nullable().default(null),
+      notes: z.string().min(1),
+      verified_on: isoDate,
+    }),
+  ).default([]),
+});
+
+export type RecipeReferences = z.infer<typeof recipeReferencesSchema>;
