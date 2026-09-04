@@ -1,4 +1,26 @@
 services:
+  postgres:
+    image: postgres:18.4-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: pricelens
+      POSTGRES_USER: pricelens
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+    volumes:
+      - postgres:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pricelens -d pricelens"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+    cpus: "0.75"
+    mem_limit: 768m
+    pids_limit: 256
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 30s
+
   api:
     image: ${LPL_IMAGE:-lanka-price-lens:local}
     build:
@@ -15,6 +37,7 @@ services:
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
       LPL_MANIFESTS_DIR: /app/data/manifests
       LPL_MAPPINGS_DIR: /app/data/mappings
+      LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@postgres:5432/pricelens
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
@@ -22,6 +45,9 @@ services:
       ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:?set ADMIN_PASSWORD_HASH}
     ports:
       - "${APP_BIND:?set APP_BIND}:${APP_PORT}:${APP_PORT}"
+    depends_on:
+      postgres:
+        condition: service_healthy
     volumes:
       - operations:/data
     healthcheck:
@@ -55,6 +81,7 @@ services:
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
       LPL_MANIFESTS_DIR: /app/data/manifests
       LPL_MAPPINGS_DIR: /app/data/mappings
+      LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@postgres:5432/pricelens
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
@@ -86,6 +113,7 @@ services:
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
       LPL_MANIFESTS_DIR: /app/data/manifests
       LPL_MAPPINGS_DIR: /app/data/mappings
+      LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@postgres:5432/pricelens
       LPL_ARCHIVE_DRIVER: ${LPL_ARCHIVE_DRIVER:-cloudflare}
       LPL_LOCAL_ARCHIVE_ROOT: /archive
       LPL_ENVIRONMENT: ${LPL_ENVIRONMENT:-production}
@@ -109,6 +137,8 @@ services:
       - no-new-privileges:true
 
 volumes:
+  postgres:
+    name: ${LPL_POSTGRES_VOLUME:-lanka-price-lens-postgres}
   operations:
     name: ${LPL_OPERATIONS_VOLUME:-lanka-price-lens-operations}
   local_archive:
