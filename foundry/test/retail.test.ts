@@ -9,9 +9,9 @@ import { mappingBundleSchema, sourceManifestSchema } from "@lanka-pricelens/shar
 import { filesystemArchiveStorage } from "../src/archive-storage.ts";
 import { openOperationalDatabase, type OperationalDatabase } from "../src/db.ts";
 import { cargillsAdapter, cargillsPack } from "../src/retail/adapters/cargills.ts";
-import { glomarkAdapter, parseGlomarkProducts } from "../src/retail/adapters/glomark.ts";
+import { discoverGlomarkCategories, extractGlomarkProducts, glomarkAdapter, glomarkPack } from "../src/retail/adapters/glomark.ts";
 import { keellsAdapter, keellsPack } from "../src/retail/adapters/keells.ts";
-import { sparAdapter, sparPack } from "../src/retail/adapters/spar.ts";
+import { outletCode, sparAdapter, sparLabel, sparPack } from "../src/retail/adapters/spar.ts";
 import { pauseHours } from "../src/retail/capture.ts";
 import { backoff, CookieJar, fetchWithPolicy } from "../src/retail/http.ts";
 import {
@@ -23,13 +23,14 @@ import {
   SettingsError,
   settingsJsonSchema,
 } from "../src/retail/index.ts";
+import { categoryAllowed, compilePattern } from "../src/retail/settings.ts";
 import { packFromLabel, priceToMinor } from "../src/retail/types.ts";
 import { applicableWorkflowDefinitions, ensureWorkflowSchedules } from "../src/workflows.ts";
 
 const fixturesRoot = new URL("./fixtures/retail/", import.meta.url);
 const fixture = (name: string): string => readFileSync(new URL(name, fixturesRoot), "utf8");
 
-const keellsItems = JSON.parse(fixture("keells-items.json")) as { result: { itemDetailResult: { itemDetails: Array<{ name: string; amount: number; uom: string; isAvailable: boolean }> } } };
+const keellsItems = JSON.parse(fixture("keells-items.json")) as { result: { itemDetailResult: { itemDetails: Array<{ name: string; amount: number; uom: string; isAvailable: boolean; departmentCode?: string; subDepartmentCode?: string }> } } };
 const guestBody = fixture("keells-guest.json");
 
 const manifest = sourceManifestSchema.parse({
@@ -102,6 +103,7 @@ function keellsResponder(items = keellsItems.result.itemDetailResult.itemDetails
       const headers = new Headers(init?.headers);
       assert.equal(headers.get("usersessionid"), "test-session-id");
       assert.match(headers.get("cookie") ?? "", /ARRAffinity=abc123/u);
+      assert.match(url, /departmentId=&/u, "whole-catalogue listing leaves the department blank");
       return Response.json({ statusCode: 200, result: { itemDetailResult: { pageCount: 1, itemDetails: items } } });
     }
     throw new Error(`unexpected ${url}`);
@@ -117,47 +119,79 @@ function temporaryDatabase(): { database: OperationalDatabase; root: string; cle
 test("pack and price helpers read retailer conventions", () => {
   assert.deepEqual(sparPack("WT / 1000", "CARROTS"), { quantity: "1000", unit: "g" });
   assert.deepEqual(sparPack("WT", "GARLIC"), { quantity: "1", unit: "kg" });
+  assert.deepEqual(sparPack("GL / 500", "PUMPKIN"), { quantity: "500", unit: "g" });
   assert.deepEqual(sparPack("Default Title", "Papaya, each (about 1.2kg)"), { quantity: "1", unit: "piece" });
+  assert.deepEqual(sparPack("KY", "SPAR Steamed Basmathi Rice, 1Kg"), { quantity: "1", unit: "kg" });
+  assert.equal(outletCode("WT / 1000"), "WT");
+  assert.equal(outletCode("GP"), "GP");
+  assert.equal(outletCode("Default Title"), null);
+  assert.deepEqual(sparPack("Default Title", "Anchor Milk Powder 400g"), { quantity: "400", unit: "g" });
+  assert.deepEqual(sparPack("Default Title", "Mystery Pack", 250), { quantity: "250", unit: "g" });
+  assert.equal(sparLabel("Coca Cola", "1.5L"), "Coca Cola 1.5L");
+  assert.equal(sparLabel("CARROTS", "WT / 1000"), "CARROTS");
+  assert.equal(sparLabel("SUDU NELUM Soya Bean Curd - Tofu, 300g", "GL"), "SUDU NELUM Soya Bean Curd - Tofu, 300g");
   assert.deepEqual(keellsPack("KG", "Carrot"), { quantity: "1", unit: "kg" });
   assert.deepEqual(keellsPack("NO", "Basil Leaves 50g"), { quantity: "50", unit: "g" });
   assert.deepEqual(keellsPack("NO", "Coconut"), { quantity: "1", unit: "piece" });
   assert.deepEqual(cargillsPack(500, "g"), { quantity: "500", unit: "g" });
   assert.deepEqual(cargillsPack("3.0", "pcs"), { quantity: "3", unit: "piece" });
+  assert.deepEqual(cargillsPack(null, null, "Munchee Cream Cracker 190g"), { quantity: "190", unit: "g" });
+  assert.deepEqual(glomarkPack("g", 100, "Chinese Cabbage"), { quantity: "100", unit: "g" });
+  assert.deepEqual(glomarkPack("unit", 1, "Aigrow Butter Head Lettuce 110G"), { quantity: "110", unit: "g" });
+  assert.deepEqual(glomarkPack("unit", 1, "Karapincha"), { quantity: "1", unit: "piece" });
   assert.deepEqual(packFromLabel("Myco Farm Abalone Mushroom 200G"), { quantity: "200", unit: "g" });
   assert.equal(priceToMinor("1,345.00"), 134_500);
   assert.equal(priceToMinor(157.5), 15_750);
   assert.equal(pauseHours(0), 6);
   assert.equal(pauseHours(2), 24);
   assert.equal(pauseHours(9), 48);
+  assert.ok(categoryAllowed("Vegetables", compilePattern("^(Vegetables|Fruits)$"), null));
+  assert.ok(!categoryAllowed("Dairy", compilePattern("^(Vegetables|Fruits)$"), null));
+  assert.ok(!categoryAllowed("Baby Products", null, compilePattern("baby")));
+  assert.equal(compilePattern("("), null, "invalid patterns compile to null");
 });
 
 test("adapters normalise captured payloads into the unified record shape", () => {
-  const spar = sparAdapter.normalize({ fetchedAt: "2026-09-04T01:00:00.000Z", requests: 1, data: { collections: [{ handle: "vegetables", products: (JSON.parse(fixture("spar-vegetables.json")) as { products: unknown[] }).products }] } }, sparAdapter.settingsSchema.parse({}), "2026-09-04");
+  const sparProducts = (JSON.parse(fixture("spar-vegetables.json")) as { products: unknown[] }).products;
+  const spar = sparAdapter.normalize({ fetchedAt: "2026-09-04T01:00:00.000Z", requests: 1, data: { feeds: [{ handle: null, pages: 1, truncated: false, products: sparProducts }] } }, sparAdapter.settingsSchema.parse({}), "2026-09-04");
   const carrots = spar.find((record) => record.itemLabel === "CARROTS");
   assert.ok(carrots);
   assert.deepEqual([carrots.sourceQuantity, carrots.sourceUnit, carrots.minValueMinor, carrots.marketLabel], ["1000", "g", 36_000, "SPAR Online"]);
   assert.equal(spar.find((record) => record.itemLabel === "GARLIC")?.sourceUnit, "kg");
   assert.equal(new Set(spar.map((record) => record.rowRef)).size, spar.length);
+  assert.ok(spar.every((record) => record.raw.outlet_code === "WT"), "only the first outlet's variants are kept by default");
+  const everyOutlet = sparAdapter.normalize({ fetchedAt: "", requests: 1, data: { feeds: [{ handle: null, pages: 1, truncated: false, products: sparProducts }] } }, sparAdapter.settingsSchema.parse({ outletVariants: "all" }), "2026-09-04");
+  assert.ok(everyOutlet.length > spar.length * 5, "outletVariants=all keeps every outlet");
+  const onlyFruit = sparAdapter.normalize({ fetchedAt: "", requests: 1, data: { feeds: [{ handle: null, pages: 1, truncated: false, products: sparProducts }] } }, sparAdapter.settingsSchema.parse({ includeProductTypes: "^Fruits$" }), "2026-09-04");
+  assert.equal(onlyFruit.length, 0, "vegetable fixture has no fruit product types");
 
-  const keells = keellsAdapter.normalize({ fetchedAt: "", requests: 1, data: { departments: [{ departmentId: 16, pages: 1, items: keellsItems.result.itemDetailResult.itemDetails }] } }, keellsAdapter.settingsSchema.parse({ includeUnavailable: true }), "2026-09-04");
+  const keellsRaw = keellsItems.result.itemDetailResult.itemDetails;
+  const keells = keellsAdapter.normalize({ fetchedAt: "", requests: 1, data: { departments: [{ departmentId: null, pages: 1, truncated: false, items: keellsRaw }] } }, keellsAdapter.settingsSchema.parse({ includeUnavailable: true }), "2026-09-04");
   const carrot = keells.find((record) => record.itemLabel === "Carrot");
   assert.ok(carrot);
   assert.equal(carrot.sourceUnit, "kg");
-  assert.equal(carrot.minValueMinor, priceToMinor(keellsItems.result.itemDetailResult.itemDetails.find((item) => item.name.trim() === "Carrot")!.amount));
+  assert.equal(carrot.minValueMinor, priceToMinor(keellsRaw.find((item) => item.name.trim() === "Carrot")!.amount));
   assert.ok(keells.every((record) => record.itemLabel === record.itemLabel.trim()), "labels are trimmed");
+  const excluded = keellsAdapter.normalize({ fetchedAt: "", requests: 1, data: { departments: [{ departmentId: null, pages: 1, truncated: false, items: keellsRaw }] } }, keellsAdapter.settingsSchema.parse({ includeUnavailable: true, excludeDepartments: "^V/" }), "2026-09-04");
+  assert.ok(excluded.length < keells.length, "department patterns filter records");
 
-  const cargills = cargillsAdapter.normalize({ fetchedAt: "", requests: 1, data: { categories: [{ categoryId: "MjM=", items: JSON.parse(fixture("cargills-items.json")) }] } }, cargillsAdapter.settingsSchema.parse({}), "2026-09-04");
+  const cargills = cargillsAdapter.normalize({ fetchedAt: "", requests: 1, data: { categories: [{ categoryId: "MjM=", name: "Vegetables", pages: 1, truncated: false, items: JSON.parse(fixture("cargills-items.json")) }] } }, cargillsAdapter.settingsSchema.parse({}), "2026-09-04");
   const cargillsCarrot = cargills.find((record) => record.itemLabel === "Carrot");
   assert.ok(cargillsCarrot);
-  assert.deepEqual([cargillsCarrot.sourceQuantity, cargillsCarrot.sourceUnit, cargillsCarrot.minValueMinor], ["500", "g", 18_000]);
+  assert.deepEqual([cargillsCarrot.sourceQuantity, cargillsCarrot.sourceUnit, cargillsCarrot.minValueMinor, cargillsCarrot.raw.category], ["500", "g", 18_000, "Vegetables"]);
   assert.equal(cargills.find((record) => record.itemLabel === "Coconut")?.sourceUnit, "piece");
 
-  const glomarkProducts = parseGlomarkProducts(fixture("glomark-category.html"), "/fresh/vegetable/c/1", 1);
-  assert.ok(glomarkProducts.length >= 15, `parsed ${glomarkProducts.length} cards`);
-  const cabbage = glomarkProducts.find((product) => product.name === "Chinese Cabbage");
-  assert.deepEqual(cabbage && [cabbage.quantity, cabbage.unit, cabbage.price, cabbage.id], ["100", "g", 90, "12720"]);
-  const glomark = glomarkAdapter.normalize({ fetchedAt: "", requests: 1, data: { pages: [{ path: "/x", page: 1, products: glomarkProducts }] } }, glomarkAdapter.settingsSchema.parse({}), "2026-09-04");
-  assert.equal(glomark.find((record) => record.itemLabel === "Chinese Cabbage")?.minValueMinor, 9_000);
+  const glomarkProducts = extractGlomarkProducts(fixture("glomark-category.html"));
+  assert.ok(glomarkProducts && glomarkProducts.length === 30, "embedded product list is read with bracket matching");
+  assert.equal(extractGlomarkProducts("<html><script>let productList = []; productCount = productList.length;</script></html>")?.length, 0);
+  assert.equal(extractGlomarkProducts("<html><script>let productList = [];</script>throttled</html>"), null, "a page without the category script is unreadable, not empty");
+  assert.equal(extractGlomarkProducts("<html>no list here</html>"), null);
+  const glomark = glomarkAdapter.normalize({ fetchedAt: "", requests: 1, data: { discovered: 1, pages: [{ path: "/fresh/vegetable/c/145", products: glomarkProducts! }] } }, glomarkAdapter.settingsSchema.parse({}), "2026-09-04");
+  const cabbage = glomark.find((record) => record.itemLabel === "Chinese Cabbage");
+  assert.deepEqual(cabbage && [cabbage.sourceQuantity, cabbage.sourceUnit, cabbage.minValueMinor, cabbage.raw.category], ["100", "g", 9_000, "Fresh > Exotic Vegetable"]);
+  const categories = discoverGlomarkCategories(fixture("glomark-home.html"));
+  assert.ok(categories.length >= 100 && categories.includes("/fresh/vegetable/c/145") && categories.every((path) => /\/c\/\d+$/u.test(path)));
+  assert.deepEqual(discoverGlomarkCategories('<a href="/Beverages/Malt/c/573">x</a><a href="/beverages/malt/c/573">y</a><a href="/Beverages/Milk%2520Foods/c/129">z</a>'), ["/Beverages/Milk%2520Foods/c/129", "/beverages/malt/c/573"], "one path per category id, plain lower-case preferred");
 });
 
 test("http policy retries transient failures, stops on client errors, and keeps cookies", async () => {
@@ -193,11 +227,13 @@ test("settings merge manifest defaults with reviewed overrides and reject bad va
     const before = resolveAdapterSettings(database, manifest, adapter);
     assert.equal(before.minimumRecords, 10);
     assert.throws(() => saveAdapterSettings(database, manifest, adapter, { maxAttempts: 99 }, "tests"), SettingsError);
+    assert.throws(() => saveAdapterSettings(database, manifest, adapter, { includeDepartments: "(" }, "tests"), /valid regular expression/u);
     saveAdapterSettings(database, manifest, adapter, { minimumRecords: 3, outletCode: "KOTT" }, "tests");
     const after = resolveAdapterSettings(database, manifest, adapter) as unknown as { minimumRecords: number; outletCode: string; maxAttempts: number };
     assert.deepEqual([after.minimumRecords, after.outletCode, after.maxAttempts], [3, "KOTT", 1]);
     const schema = settingsJsonSchema(adapter) as { properties: Record<string, { description?: string }> };
     assert.ok(schema.properties.departmentIds);
+    assert.ok(schema.properties.includeDepartments?.description);
     assert.ok(schema.properties.minimumRecords?.description);
     const audit = database.prepare("SELECT COUNT(*) AS count FROM audit_event WHERE action = 'adapter.settings.updated'").get() as { count: number };
     assert.equal(audit.count, 1);
@@ -219,7 +255,7 @@ test("retail sources schedule only the capture workflow", () => {
   }
 });
 
-test("capture stores a snapshot once, promotes mapped prices, and dedupes identical re-captures", async () => {
+test("capture stores a snapshot once, promotes mapped prices, records unmapped labels, and dedupes identical re-captures", async () => {
   const { database, root, cleanup } = temporaryDatabase();
   try {
     const adapter = retailAdapterFor(manifest)!;
@@ -241,8 +277,14 @@ test("capture stores a snapshot once, promotes mapped prices, and dedupes identi
     assert.equal(artifact.status, "canonicalized");
     assert.equal(artifact.media_type, "application/json");
     assert.match(artifact.storage_ref, /snapshots\/2026\/09\//u);
-    const staging = database.prepare("SELECT COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND price_type = 'retail_online_store'").get(first.artifactId) as { count: number };
-    assert.equal(staging.count, first.records);
+    const staging = database.prepare("SELECT status, COUNT(*) AS count FROM staging_observation WHERE artifact_id = ? AND price_type = 'retail_online_store' GROUP BY status").all(first.artifactId) as Array<{ status: string; count: number }>;
+    assert.equal(staging.reduce((sum, row) => sum + row.count, 0), first.records);
+    assert.ok(staging.some((row) => row.status === "unmapped"), "labels without a mapping stay in staging as unmapped");
+    const quarantined = database.prepare("SELECT COUNT(*) AS count FROM quarantine WHERE run_id = ?").get(first.runId) as { count: number };
+    assert.equal(quarantined.count, 0, "unknown labels are recorded, not quarantined row by row");
+    const unmapped = database.prepare("SELECT label, occurrences FROM source_unmapped_label WHERE source_id = ? AND label_type = 'item' ORDER BY label").all(manifest.id) as Array<{ label: string; occurrences: number }>;
+    assert.ok(unmapped.length >= 10 && unmapped.every((row) => row.occurrences === 1));
+    assert.ok(!unmapped.some((row) => row.label === "Carrot"));
 
     const carrot = database
       .prepare("SELECT normalized_min_value_minor, normalized_unit, price_type, market_id FROM price_observation WHERE item_id = 'item_carrot' AND status = 'active'")
@@ -261,6 +303,8 @@ test("capture stores a snapshot once, promotes mapped prices, and dedupes identi
     assert.equal(artifacts.count, 1, "identical prices do not create a second artifact");
     const observations = database.prepare("SELECT COUNT(*) AS count FROM price_observation WHERE item_id = 'item_carrot' AND status = 'active'").get() as { count: number };
     assert.equal(observations.count, 1, "re-capture does not duplicate canonical rows");
+    const stillOnce = database.prepare("SELECT MAX(occurrences) AS most FROM source_unmapped_label WHERE source_id = ?").get(manifest.id) as { most: number };
+    assert.equal(stillOnce.most, 1, "an unchanged snapshot does not count labels again");
   } finally {
     cleanup();
   }

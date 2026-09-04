@@ -139,3 +139,48 @@ derived from them is redistributed.
 3. Add a manifest and a mapping bundle under `data/`.
 4. Capture a fixture payload into `foundry/test/fixtures/retail/` and cover
    `normalize` in `foundry/test/retail.test.ts`.
+
+## Whole-catalogue capture and category filters
+
+Adapters capture each store's **entire catalogue** by default and discover the
+store's own category structure at run time (Cargills' category menu, Glomark's
+navigation links, Keells' store-wide listing, SPAR's store-wide product feed), so
+nothing about a store's departments is hard-coded. Operators narrow or widen the
+capture from the admin settings form:
+
+| Setting | Stores | Effect |
+| --- | --- | --- |
+| `includeCategories` / `excludeCategories` | Cargills, Glomark | Case-insensitive regular expressions on category names or paths |
+| `includeDepartments` / `excludeDepartments` | Keells | Regular expressions on the department/sub-department code |
+| `includeProductTypes` / `excludeProductTypes` | SPAR | Regular expressions on the Shopify product type |
+| `categoryIds`, `categoryPaths`, `departmentIds`, `collections` | all | Explicit scope; empty means "discover everything" |
+| `maxPages`, `maxCategories`, `requestGapMs` | all | Safety caps and pacing |
+
+Patterns are validated when saved, so a typo cannot break the next run.
+
+### Labels waiting for a mapping
+
+A whole catalogue carries thousands of labels that no bundle maps (branded packs,
+household goods). Instead of quarantining every such row daily, retail captures
+record each unmapped item, market, or unit label once in `source_unmapped_label`
+with how often it was seen and its last price. The admin source card lists the
+most frequent ones ("Labels waiting for a mapping"), and
+`GET /v1/admin/sources/:id/unmapped-labels` returns them for mapping work. Rows
+stay in staging as `unmapped` and are promoted automatically once a bundle maps
+their label.
+
+### Store quirks handled by the adapters
+
+- **SPAR** lists every product once per outlet as a Shopify variant (`WT`, `GL`,
+  `GP`, … with `<outlet> / <grams>` for weight-priced produce). Prices are the same
+  across outlets, so the adapter keeps one outlet by default (`outletVariants:
+  "first"`) and records the outlet code; set `"all"` to keep every outlet.
+- **Glomark** throttles fast crawlers by serving a page without the embedded
+  product list. The adapter paces requests (`requestGapMs`, default 2 s), retries
+  such pages with growing pauses (`pageRetries`), and fails the capture rather than
+  storing a partial snapshot when more than `maxUnreadablePagesPct` of the category
+  pages stay unreadable. The navigation repeats categories in several spellings;
+  they are deduplicated by category id.
+- **Keells** and **Cargills** paginate; both adapters stop when a page brings
+  nothing new even if the server's page count says otherwise, and cap pages with
+  `maxPages`.

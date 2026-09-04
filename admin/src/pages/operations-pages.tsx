@@ -69,8 +69,8 @@ const automationPlainNames: Record<WorkflowKey, string> = {
   retail_price_capture: "Capture supermarket prices",
 };
 const automationPlainSummaries: Record<WorkflowKey, string> = {
-  latest_document_collection: "Looks at the HARTI website for bulletins published since the last check and downloads any that are missing.",
-  historical_backfill: "Walks back through HARTI's history and downloads older bulletins the archive does not have yet, a few at a time.",
+  latest_document_collection: "Looks at each source's website for documents published since the last check and downloads any that are missing.",
+  historical_backfill: "Walks back through each source's history and downloads older documents the archive does not have yet, a few at a time.",
   document_processing_pipeline: "Reads each archived PDF, pulls out the price table, checks it, and saves the prices so they show up in Price insights.",
   retail_price_capture: "Every morning, reads the shelf prices listed by each supermarket's online store, keeps the snapshot as evidence, and saves the mapped items as retail prices.",
 };
@@ -342,7 +342,7 @@ function workSummary(run: Run): string {
 }
 
 const workflowLabels: Partial<Record<WorkflowStep["stage"], { title: string; description: string }>> = {
-  check_source: { title: "Check the HARTI website", description: "List every bulletin currently published on the source website" },
+  check_source: { title: "Check the source website", description: "List every document currently published on the source website" },
   compare_inventory: { title: "Compare with the archive", description: "Work out which bulletins the archive is still missing" },
   download_new_pdfs: { title: "Download missing bulletins", description: "Fetch only the PDFs that are not archived yet" },
   upload_to_r2: { title: "Store the PDFs", description: "Keep the originals in the private archive" },
@@ -600,7 +600,12 @@ const rightsLabels: Record<string, { label: string; description: string }> = {
 const cadenceLabels: Record<string, string> = { business_daily: "Every working day", daily: "Every day", weekly: "Every week", event_driven: "Whenever published" };
 const methodLabels: Record<string, string> = { scheduled_download: "Automatic download on a timetable", manual: "Uploaded by hand", partner_feed: "Delivered by the partner", api_snapshot: "Daily snapshot of the online store" };
 const retentionLabels: Record<string, string> = { preserve_source_evidence: "Original PDFs are kept as evidence", metadata_and_checksum_only: "Only metadata and checksums are kept" };
-const scopeLabels: Record<string, string> = { selected_wholesale_markets: "Selected wholesale markets across Sri Lanka", online_store_national: "Online store shelf prices (one national price list)" };
+const scopeLabels: Record<string, string> = {
+  selected_wholesale_markets: "Selected wholesale markets across Sri Lanka",
+  selected_wholesale_and_retail_markets: "Selected wholesale and retail markets (Pettah, Dambulla, Narahenpita, Peliyagoda, Negombo)",
+  colombo_district_main_markets: "Main retail markets in the Colombo district (weekly averages)",
+  online_store_national: "Online store shelf prices (one national price list)",
+};
 const stateCopy: Record<string, string> = {
   healthy: "Recent runs succeeded and the rights review is current.",
   degraded: "A recent run failed. Check the run history for the error.",
