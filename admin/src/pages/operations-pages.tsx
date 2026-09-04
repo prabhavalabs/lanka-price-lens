@@ -1,17 +1,43 @@
-import { RiArrowLeftLine, RiArrowRightLine, RiCheckLine, RiCloseLine, RiExternalLinkLine, RiLoader4Line, RiLockLine, RiPlayLine, RiRestartLine } from "@remixicon/react";
+import {
+  RiAlertLine,
+  RiArrowLeftLine,
+  RiArrowRightLine,
+  RiCalendarScheduleLine,
+  RiCheckLine,
+  RiCloseLine,
+  RiDatabase2Line,
+  RiExternalLinkLine,
+  RiFilePdf2Line,
+  RiHistoryLine,
+  RiLoader4Line,
+  RiLockLine,
+  RiPlayLine,
+  RiRestartLine,
+  RiShieldCheckLine,
+  RiTimeLine,
+} from "@remixicon/react";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import type { ReactNode } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 
-import { bytes, date, EmptyTableRow, Pagination, Status, TableControls, useTableState } from "@/components/data-display";
+import { compactNumber, wholeNumber } from "@/components/charts";
+import { date, EmptyTableRow, PageFrame, Pagination, Status, TableControls, useTableState } from "@/components/data-display";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
+import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle } from "@/components/ui/item";
+import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Switch } from "@/components/ui/switch";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { api, listUrl, type KnowledgeItem, type Page, type Run, type RunWorkflow, type SchedulerMonitor, type Source, type WorkflowDefinition, type WorkflowDispatch, type WorkflowKey, type WorkflowStep } from "@/lib/api";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { api, listUrl, type Page, type Run, type RunWorkflow, type SchedulerMonitor, type Source, type WorkflowDefinition, type WorkflowDispatch, type WorkflowKey, type WorkflowStep } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 const runStatuses = [
@@ -20,14 +46,6 @@ const runStatuses = [
   { label: "Failed", value: "failed" },
   { label: "Blocked", value: "blocked" },
 ];
-const knowledgeStatuses = [
-  { label: "Discovered", value: "discovered" },
-  { label: "Archived", value: "stored" },
-  { label: "Fetched", value: "fetched" },
-  { label: "Parsed", value: "parsed" },
-  { label: "Canonicalized", value: "canonicalized" },
-  { label: "Quarantined", value: "quarantined" },
-];
 const sourceStatuses = [
   { label: "Healthy", value: "healthy" },
   { label: "Paused", value: "paused" },
@@ -35,6 +53,22 @@ const sourceStatuses = [
   { label: "Blocked", value: "blocked" },
   { label: "Review required", value: "review_required" },
 ];
+
+const automationIcons: Record<WorkflowKey, typeof RiHistoryLine> = {
+  latest_document_collection: RiCalendarScheduleLine,
+  historical_backfill: RiHistoryLine,
+  document_processing_pipeline: RiDatabase2Line,
+};
+const automationPlainNames: Record<WorkflowKey, string> = {
+  latest_document_collection: "Collect new bulletins",
+  historical_backfill: "Fill gaps in the archive",
+  document_processing_pipeline: "Extract prices from bulletins",
+};
+const automationPlainSummaries: Record<WorkflowKey, string> = {
+  latest_document_collection: "Looks at the HARTI website for bulletins published since the last check and downloads any that are missing.",
+  historical_backfill: "Walks back through HARTI's history and downloads older bulletins the archive does not have yet, a few at a time.",
+  document_processing_pipeline: "Reads each archived PDF, pulls out the price table, checks it, and saves the prices so they show up in Price insights.",
+};
 
 export function RunsPage() {
   const state = useTableState();
@@ -56,7 +90,6 @@ export function RunsPage() {
   const monitor = useQuery({
     queryKey: ["workflow-schedules"],
     queryFn: ({ signal }) => api<SchedulerMonitor>("/v1/admin/workflow-schedules", { signal }),
-    enabled: view === "cron",
     refetchInterval: 10_000,
   });
   const dispatches = useQuery({
@@ -68,13 +101,7 @@ export function RunsPage() {
   const runWorkflow = useMutation({
     mutationFn: (key: WorkflowKey) => api<WorkflowDispatch>(`/v1/admin/workflows/${key}/run`, { method: "POST" }),
     onSuccess: async () => {
-      await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["runs"] }),
-        queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] }),
-        queryClient.invalidateQueries({ queryKey: ["workflow-dispatches"] }),
-        queryClient.invalidateQueries({ queryKey: ["overview"] }),
-        queryClient.invalidateQueries({ queryKey: ["knowledge-base"] }),
-      ]);
+      await Promise.all(["runs", "workflow-definitions", "workflow-dispatches", "overview", "knowledge-base", "dashboard"].map((key) => queryClient.invalidateQueries({ queryKey: [key] })));
     },
   });
   const toggleSchedule = useMutation({
@@ -84,10 +111,7 @@ export function RunsPage() {
       body: JSON.stringify({ enabled }),
     }),
     onSuccess: async () => {
-      await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["workflow-schedules"] }),
-        queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] }),
-      ]);
+      await Promise.all([queryClient.invalidateQueries({ queryKey: ["workflow-schedules"] }), queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] })]);
     },
   });
   const selectView = (nextView: typeof view) => {
@@ -98,77 +122,190 @@ export function RunsPage() {
     next.delete("status");
     setParameters(next);
   };
-  return (
-    <PageFrame description="Monitor definitions, execution history, schedules, and scheduler health from one operational view." title="Workflows">
-      <div aria-label="Workflow views" className="grid w-full grid-cols-3 gap-1 rounded-xl border bg-card p-1 sm:w-fit" role="tablist">
-        {([['workflows', 'Workflows'], ['history', 'Run history'], ['cron', 'Cron monitor']] as const).map(([value, label]) => (
-          <Button aria-selected={view === value} className="min-w-0" key={value} onClick={() => selectView(value)} role="tab" size="sm" variant={view === value ? "secondary" : "ghost"}>{label}</Button>
-        ))}
-      </div>
+  const schedulerOnline = monitor.data?.instances.some((instance) => instance.healthy) ?? false;
 
-      {view === "workflows" ? workflows.isPending ? <Skeleton className="h-80 rounded-xl" /> : workflows.isError ? <Alert variant="destructive"><AlertTitle>Workflow definitions unavailable</AlertTitle><AlertDescription>{workflows.error.message}</AlertDescription></Alert> : (
+  return (
+    <PageFrame description="Three automations keep the archive current: one collects new bulletins, one fills historical gaps, and one extracts prices. Each runs on a schedule and can also be started by hand." eyebrow="Operations" title="Automations">
+      <Tabs onValueChange={(value) => selectView(value as typeof view)} value={view}>
+        <TabsList aria-label="Automation views" className="w-full sm:w-fit" variant="line">
+          <TabsTrigger value="workflows">Automations</TabsTrigger>
+          <TabsTrigger value="history">Run history</TabsTrigger>
+          <TabsTrigger value="cron">Scheduler</TabsTrigger>
+        </TabsList>
+      </Tabs>
+
+      {monitor.isSuccess && !schedulerOnline ? (
+        <Alert className="items-center *:[svg]:self-center *:[svg]:translate-y-0">
+          <RiAlertLine />
+          <AlertTitle>The scheduler is not running</AlertTitle>
+          <AlertDescription>Scheduled automations will not start until it is. Manual runs are queued and will start as soon as it comes back. Locally, start it with <code className="rounded bg-muted px-1 py-0.5 font-mono text-[11px]">pnpm dev:scheduler</code>.</AlertDescription>
+        </Alert>
+      ) : null}
+
+      {view === "workflows" ? workflows.isPending ? <Skeleton className="h-96 rounded-xl" /> : workflows.isError ? <Alert variant="destructive"><AlertTitle>Automations unavailable</AlertTitle><AlertDescription>{workflows.error.message}</AlertDescription></Alert> : (
         <div className="grid gap-4 xl:grid-cols-3">
-          {workflows.data.map((workflow) => {
-            const pending = runWorkflow.isPending && runWorkflow.variables === workflow.key;
-            return <Card className="flex flex-col" key={workflow.key}>
-              <CardHeader>
-                <div className="mb-1 flex items-center gap-2"><Badge variant="outline">v{workflow.version}</Badge><Status value={workflow.schedule?.last_status ?? "not run"} /></div>
-                <CardTitle>{workflow.title}</CardTitle>
-                <CardDescription>{workflow.description}</CardDescription>
-                <CardAction>
-                  {workflow.key === "document_processing_pipeline" ? <Button asChild size="sm" variant="outline"><Link to="/knowledge-base">Choose document</Link></Button> : (
-                    <Button disabled={pending} onClick={() => runWorkflow.mutate(workflow.key)} size="sm">
-                      {pending ? <RiLoader4Line className="animate-spin" data-icon="inline-start" /> : <RiPlayLine data-icon="inline-start" />}{pending ? "Queueing…" : "Run now"}
-                    </Button>
-                  )}
-                </CardAction>
-              </CardHeader>
-              <CardContent className="mt-auto flex flex-col gap-4">
-                <div className="grid grid-cols-2 gap-2 text-xs"><Metric label="Schedule" value={workflow.scheduleLabel} /><Metric label="Safety limit" value={`${workflow.maxItems} docs/run`} /></div>
-                <div className="flex flex-wrap gap-2">{workflow.steps.map((step) => <Badge key={step} variant="outline">{stepLabel(step).title}</Badge>)}</div>
-                <p className="text-xs text-muted-foreground">Next: {dateInZone(workflow.schedule?.next_run_at ?? null, workflow.timezone)} <span className="block font-mono text-[10px]">{relativeTime(workflow.schedule?.next_run_at ?? null)} · {workflow.timezone}</span></p>
-              </CardContent>
-            </Card>;
-          })}
-          {runWorkflow.isError ? <Alert className="xl:col-span-3" variant="destructive"><AlertTitle>Workflow did not queue</AlertTitle><AlertDescription>{runWorkflow.error.message}</AlertDescription></Alert> : null}
+          {workflows.data.map((workflow) => <AutomationCard key={workflow.key} pending={runWorkflow.isPending && runWorkflow.variables === workflow.key} run={() => runWorkflow.mutate(workflow.key)} workflow={workflow} />)}
+          {runWorkflow.isError ? <Alert className="xl:col-span-3" variant="destructive"><AlertTitle>The automation could not be queued</AlertTitle><AlertDescription>{runWorkflow.error.message}</AlertDescription></Alert> : null}
         </div>
       ) : null}
 
-      {view === "history" ? runs.isPending ? <Skeleton className="h-80 rounded-xl" /> : runs.isError ? <Alert variant="destructive">{runs.error.message}</Alert> : (
+      {view === "history" ? runs.isPending ? <Skeleton className="h-80 rounded-xl" /> : runs.isError ? <Alert variant="destructive"><AlertTitle>Run history unavailable</AlertTitle><AlertDescription>{runs.error.message}</AlertDescription></Alert> : (
         <Card>
-          <CardHeader><CardTitle>Execution history</CardTitle><CardDescription>{runs.data.total} workflow {runs.data.total === 1 ? "execution" : "executions"} found</CardDescription></CardHeader>
-          <TableControls placeholder="Search workflow, trigger, status, or error…" state={state} statuses={runStatuses} />
+          <CardHeader>
+            <CardTitle>Run history</CardTitle>
+            <CardDescription>{runs.data.total} {runs.data.total === 1 ? "run" : "runs"} so far. Click a row to see every step, its inputs, outputs, and logs.</CardDescription>
+          </CardHeader>
+          <TableControls placeholder="Search by automation, trigger, or error message…" state={state} statuses={runStatuses} />
           <CardContent className="p-0">
             <Table>
-              <TableHeader><TableRow><TableHead>Started</TableHead><TableHead>Workflow</TableHead><TableHead className="hidden sm:table-cell">Trigger</TableHead><TableHead>Status</TableHead><TableHead className="hidden md:table-cell">PDFs</TableHead><TableHead className="hidden lg:table-cell">Records</TableHead></TableRow></TableHeader>
-              <TableBody>{runs.data.items.length ? runs.data.items.map((run) => <TableRow key={run.id}><TableCell className="text-muted-foreground"><Link className="font-medium text-foreground underline-offset-4 hover:text-primary hover:underline" to={run.id}>{date(run.started_at)}</Link><span className="mt-1 block text-xs capitalize text-foreground sm:hidden">{run.trigger}</span></TableCell><TableCell><span className="text-xs font-medium">{workflowTitle(run.workflow)}</span></TableCell><TableCell className="hidden capitalize sm:table-cell">{run.trigger}</TableCell><TableCell><Status value={run.status} /></TableCell><TableCell className="hidden font-mono md:table-cell">{run.fetched_count}/{run.discovered_count || 1}</TableCell><TableCell className="hidden font-mono lg:table-cell">{run.parsed_count}</TableCell></TableRow>) : <EmptyTableRow columns={6} />}</TableBody>
+              <TableHeader><TableRow><TableHead>Started</TableHead><TableHead>Automation</TableHead><TableHead className="hidden sm:table-cell">Started by</TableHead><TableHead>Outcome</TableHead><TableHead className="hidden md:table-cell">Work done</TableHead><TableHead className="w-10" /></TableRow></TableHeader>
+              <TableBody>{runs.data.items.length ? runs.data.items.map((run) => (
+                <TableRow className="cursor-pointer" key={run.id} onClick={() => window.location.assign(`/admin/runs/${run.id}`)}>
+                  <TableCell><Link className="font-medium underline-offset-4 hover:underline" onClick={(event) => event.stopPropagation()} to={run.id}>{date(run.started_at)}</Link><span className="mt-1 block text-[11px] text-muted-foreground">{durationBetween(run.started_at, run.finished_at)}</span></TableCell>
+                  <TableCell><span className="text-xs font-medium">{workflowTitle(run.workflow)}</span><span className="mt-0.5 block text-[11px] text-muted-foreground sm:hidden">{triggerLabel(run.trigger)}</span></TableCell>
+                  <TableCell className="hidden sm:table-cell">{triggerLabel(run.trigger)}</TableCell>
+                  <TableCell><Status value={run.status} />{run.error_message ? <span className="mt-1 block max-w-64 truncate text-[11px] text-destructive" title={run.error_message}>{run.error_message}</span> : null}</TableCell>
+                  <TableCell className="hidden text-xs text-muted-foreground md:table-cell">{workSummary(run)}</TableCell>
+                  <TableCell className="text-right"><RiArrowRightLine className="size-4 text-muted-foreground" /></TableCell>
+                </TableRow>
+              )) : <EmptyTableRow columns={6} />}</TableBody>
             </Table>
             <Pagination page={runs.data.page} pageSize={runs.data.pageSize} pages={runs.data.pages} pending={runs.isPlaceholderData} total={runs.data.total} />
           </CardContent>
         </Card>
       ) : null}
 
-      {view === "cron" ? monitor.isPending || dispatches.isPending ? <Skeleton className="h-96 rounded-xl" /> : monitor.isError || dispatches.isError ? <Alert variant="destructive"><AlertTitle>Cron monitor unavailable</AlertTitle><AlertDescription>{monitor.error?.message ?? dispatches.error?.message}</AlertDescription></Alert> : (
+      {view === "cron" ? monitor.isPending || dispatches.isPending ? <Skeleton className="h-96 rounded-xl" /> : monitor.isError || dispatches.isError ? <Alert variant="destructive"><AlertTitle>Scheduler details unavailable</AlertTitle><AlertDescription>{monitor.error?.message ?? dispatches.error?.message}</AlertDescription></Alert> : (
         <>
-          <Card size="sm">
-            <CardHeader><CardTitle>Scheduler health</CardTitle><CardDescription>A heartbeat older than {monitor.data.stale_after_seconds} seconds is considered stale.</CardDescription></CardHeader>
-            <CardContent className="flex flex-wrap gap-3">
-              {monitor.data.instances.length ? monitor.data.instances.map((instance) => <div className="min-w-64 rounded-lg border bg-background/40 p-3" key={instance.id}><div className="flex items-center justify-between gap-3"><p className="truncate font-mono text-xs">{instance.id}</p><Status value={instance.healthy ? "healthy" : "degraded"} /></div><p className="mt-2 text-xs text-muted-foreground">{instance.environment} · heartbeat {relativeTime(instance.heartbeat_at)}</p>{instance.last_error ? <p className="mt-2 text-xs text-destructive">{instance.last_error}</p> : null}</div>) : <Alert><AlertTitle>Scheduler is offline</AlertTitle><AlertDescription>Start the local scheduler service to claim queued work and publish heartbeats.</AlertDescription></Alert>}
+          <section className="grid gap-4 xl:grid-cols-[1fr_1.6fr]">
+            <Card size="sm">
+              <CardHeader>
+                <CardTitle>Scheduler</CardTitle>
+                <CardDescription>The background service that starts automations on time and picks up manual requests. A heartbeat older than {monitor.data.stale_after_seconds} seconds means it has stopped.</CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-3">
+                <div className="flex items-center gap-3 rounded-lg border bg-background/40 p-3">
+                  <span className={cn("size-2.5 shrink-0 rounded-full", schedulerOnline ? "bg-primary shadow-[0_0_0_4px_color-mix(in_oklab,var(--primary)_25%,transparent)]" : "bg-amber-400 shadow-[0_0_0_4px_rgba(251,191,36,0.2)]")} />
+                  <div className="min-w-0"><p className="text-sm font-medium">{schedulerOnline ? "Online" : "Offline"}</p><p className="text-[11px] text-muted-foreground">{schedulerOnline ? "Automations will start on schedule." : "Nothing will start until it is running again."}</p></div>
+                </div>
+                {monitor.data.instances.length ? (
+                  <ItemGroup>
+                    {monitor.data.instances.map((instance, index) => (
+                      <div key={instance.id}>
+                        {index ? <ItemSeparator /> : null}
+                        <Item className="px-0" size="sm">
+                          <ItemContent>
+                            <ItemTitle className="font-mono text-xs">{instance.id}</ItemTitle>
+                            <ItemDescription>{instance.environment} · last heartbeat {relativeTime(instance.heartbeat_at)}{instance.last_error ? ` · ${instance.last_error}` : ""}</ItemDescription>
+                          </ItemContent>
+                          <ItemActions><Status value={instance.healthy ? "online" : "stale"} /></ItemActions>
+                        </Item>
+                      </div>
+                    ))}
+                  </ItemGroup>
+                ) : <p className="text-xs text-muted-foreground">No scheduler has ever reported in.</p>}
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Timetable</CardTitle>
+                <CardDescription>When each automation runs. Switch one off to pause it; nothing already running is interrupted.</CardDescription>
+              </CardHeader>
+              <CardContent className="p-0">
+                <Table>
+                  <TableHeader><TableRow><TableHead>Automation</TableHead><TableHead>Runs</TableHead><TableHead>Next run</TableHead><TableHead className="text-right">Enabled</TableHead></TableRow></TableHeader>
+                  <TableBody>{monitor.data.items.map((schedule) => (
+                    <TableRow key={schedule.id}>
+                      <TableCell><span className="font-medium">{automationPlainNames[schedule.workflow_key]}</span><span className="block text-[11px] text-muted-foreground">{workflowTitleFromKey(schedule.workflow_key)}</span></TableCell>
+                      <TableCell>{scheduleLabelFromKey(schedule.workflow_key)}<span className="block font-mono text-[10px] text-muted-foreground">{schedule.cron_expression} · {schedule.timezone}</span></TableCell>
+                      <TableCell>{schedule.enabled ? <>{dateInZone(schedule.next_run_at, schedule.timezone)}<span className="block text-[11px] text-muted-foreground">{relativeTime(schedule.next_run_at)}</span></> : <span className="text-muted-foreground">Paused</span>}</TableCell>
+                      <TableCell className="text-right"><div className="flex items-center justify-end gap-2"><Label className="text-[11px] text-muted-foreground" htmlFor={`schedule-${schedule.id}`}>{schedule.enabled ? "On" : "Off"}</Label><Switch aria-label={`${schedule.enabled ? "Pause" : "Resume"} ${automationPlainNames[schedule.workflow_key]}`} checked={Boolean(schedule.enabled)} disabled={toggleSchedule.isPending} id={`schedule-${schedule.id}`} onCheckedChange={(enabled) => toggleSchedule.mutate({ id: schedule.id, enabled })} /></div></TableCell>
+                    </TableRow>
+                  ))}</TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+          </section>
+          <Card>
+            <CardHeader>
+              <CardTitle>Recent requests</CardTitle>
+              <CardDescription>Each row is one request to run an automation, whether from the timetable or a manual click. The scheduler works through them in order.</CardDescription>
+            </CardHeader>
+            <CardContent className="p-0">
+              <Table>
+                <TableHeader><TableRow><TableHead>Scheduled for</TableHead><TableHead>Automation</TableHead><TableHead className="hidden sm:table-cell">Requested by</TableHead><TableHead>Status</TableHead><TableHead>Result</TableHead></TableRow></TableHeader>
+                <TableBody>{dispatches.data.items.length ? dispatches.data.items.map((dispatch) => (
+                  <TableRow key={dispatch.id}>
+                    <TableCell>{date(dispatch.scheduled_for)}<span className="block text-[11px] text-muted-foreground">{relativeTime(dispatch.scheduled_for)}</span></TableCell>
+                    <TableCell>{automationPlainNames[dispatch.workflow_key]}</TableCell>
+                    <TableCell className="hidden sm:table-cell">{triggerLabel(dispatch.trigger)}</TableCell>
+                    <TableCell><Status value={dispatch.status} /></TableCell>
+                    <TableCell>{dispatch.run_id ? <Button asChild size="sm" variant="outline"><Link to={`/runs/${dispatch.run_id}`}>Open run<RiArrowRightLine data-icon="inline-end" /></Link></Button> : <span className="text-xs text-muted-foreground">{dispatch.error_message ?? (dispatch.status === "succeeded" ? "Nothing new to do" : dispatch.status === "failed" ? "Failed before a run started" : dispatch.status === "skipped" ? "Skipped" : "Waiting for the scheduler")}</span>}</TableCell>
+                  </TableRow>
+                )) : <EmptyTableRow columns={5} />}</TableBody>
+              </Table>
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader><CardTitle>Cron schedules</CardTitle><CardDescription>Persistent schedules survive restarts and create at most one dispatch per due occurrence.</CardDescription></CardHeader>
-            <CardContent className="p-0"><Table><TableHeader><TableRow><TableHead>Workflow</TableHead><TableHead>Schedule</TableHead><TableHead>Next run</TableHead><TableHead>Status</TableHead><TableHead className="text-right">Control</TableHead></TableRow></TableHeader><TableBody>{monitor.data.items.map((schedule) => <TableRow key={schedule.id}><TableCell className="font-medium">{workflowTitleFromKey(schedule.workflow_key)}</TableCell><TableCell><span className="font-mono text-xs">{schedule.cron_expression}</span><span className="block text-xs text-muted-foreground">{schedule.timezone}</span></TableCell><TableCell>{dateInZone(schedule.next_run_at, schedule.timezone)}<span className="block font-mono text-[10px] text-muted-foreground">{relativeTime(schedule.next_run_at)}</span></TableCell><TableCell><Status value={schedule.enabled ? "scheduled" : "paused"} /></TableCell><TableCell className="text-right"><Button disabled={toggleSchedule.isPending} onClick={() => toggleSchedule.mutate({ id: schedule.id, enabled: !schedule.enabled })} size="sm" variant="outline">{schedule.enabled ? "Pause" : "Resume"}</Button></TableCell></TableRow>)}</TableBody></Table></CardContent>
-          </Card>
-          <Card>
-            <CardHeader><CardTitle>Dispatch queue</CardTitle><CardDescription>The latest durable cron and manual requests, including work waiting for a scheduler.</CardDescription></CardHeader>
-          <CardContent className="p-0"><Table><TableHeader><TableRow><TableHead>Scheduled</TableHead><TableHead>Workflow</TableHead><TableHead>Trigger</TableHead><TableHead>Status</TableHead><TableHead>Execution</TableHead></TableRow></TableHeader><TableBody>{dispatches.data.items.length ? dispatches.data.items.map((dispatch) => <TableRow key={dispatch.id}><TableCell>{date(dispatch.scheduled_for)}<span className="block font-mono text-[10px] text-muted-foreground">{relativeTime(dispatch.scheduled_for)}</span></TableCell><TableCell>{workflowTitleFromKey(dispatch.workflow_key)}</TableCell><TableCell className="capitalize">{dispatch.trigger}</TableCell><TableCell><Status value={dispatch.status} /></TableCell><TableCell>{dispatch.run_id ? <Link className="font-medium underline-offset-4 hover:text-primary hover:underline" to={`/runs/${dispatch.run_id}`}>Open run</Link> : <span className="text-xs text-muted-foreground">{dispatch.error_message ?? (dispatch.status === "succeeded" ? "Sweep complete" : dispatch.status === "failed" ? "Failed" : "Waiting")}</span>}</TableCell></TableRow>) : <EmptyTableRow columns={5} />}</TableBody></Table></CardContent>
-          </Card>
-          {toggleSchedule.isError ? <Alert variant="destructive"><AlertTitle>Schedule was not updated</AlertTitle><AlertDescription>{toggleSchedule.error.message}</AlertDescription></Alert> : null}
+          {toggleSchedule.isError ? <Alert variant="destructive"><AlertTitle>The timetable was not updated</AlertTitle><AlertDescription>{toggleSchedule.error.message}</AlertDescription></Alert> : null}
         </>
       ) : null}
     </PageFrame>
   );
+}
+
+function AutomationCard({ workflow, pending, run }: { workflow: WorkflowDefinition; pending: boolean; run: () => void }) {
+  const Icon = automationIcons[workflow.key];
+  const lastStatus = workflow.schedule?.last_status ?? null;
+  const running = workflow.schedule?.running_count ?? 0;
+  const failed = workflow.schedule?.failed_count ?? 0;
+  return (
+    <Card className="flex flex-col">
+      <CardHeader>
+        <div className="flex items-start gap-3">
+          <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-primary/25 bg-primary/10 text-primary"><Icon className="size-5" /></span>
+          <div className="min-w-0">
+            <CardTitle>{automationPlainNames[workflow.key]}</CardTitle>
+            <CardDescription className="mt-1">{automationPlainSummaries[workflow.key]}</CardDescription>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4">
+        <div className="flex flex-wrap items-center gap-2">
+          {running ? <Badge variant="secondary"><RiLoader4Line className="animate-spin" data-icon="inline-start" />{running} running now</Badge> : null}
+          {lastStatus ? <Badge variant={lastStatus === "failed" ? "destructive" : lastStatus === "succeeded" ? "default" : "outline"}>{lastStatus === "succeeded" ? <RiCheckLine data-icon="inline-start" /> : lastStatus === "failed" ? <RiCloseLine data-icon="inline-start" /> : null}Last run {lastStatus}</Badge> : <Badge variant="outline">Never run</Badge>}
+          {failed ? <Tooltip><TooltipTrigger asChild><Badge variant="outline"><RiAlertLine data-icon="inline-start" />{failed} failed</Badge></TooltipTrigger><TooltipContent>Requests that failed before a run could start. See the Scheduler tab.</TooltipContent></Tooltip> : null}
+        </div>
+        <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 text-xs">
+          <Fact icon={<RiCalendarScheduleLine />} label="Runs">{workflow.scheduleLabel} <span className="text-muted-foreground">({workflow.timezone})</span></Fact>
+          <Fact icon={<RiTimeLine />} label="Next run">{workflow.schedule?.enabled ? <>{dateInZone(workflow.schedule.next_run_at, workflow.timezone)} <span className="text-muted-foreground">· {relativeTime(workflow.schedule.next_run_at)}</span></> : <span className="text-muted-foreground">Paused in the timetable</span>}</Fact>
+          <Fact icon={<RiShieldCheckLine />} label="Limit">At most {workflow.maxItems} bulletins per run, so one run never overwhelms HARTI or the database</Fact>
+          <Fact icon={<RiHistoryLine />} label="Last finished">{workflow.schedule?.last_finished_at ? date(workflow.schedule.last_finished_at) : <span className="text-muted-foreground">Not yet</span>}</Fact>
+        </dl>
+        <Accordion collapsible type="single">
+          <AccordionItem className="border-b-0" value="steps">
+            <AccordionTrigger className="py-2 text-xs hover:no-underline">What it does, step by step ({workflow.steps.length} steps)</AccordionTrigger>
+            <AccordionContent>
+              <ol className="flex flex-col gap-2">
+                {workflow.steps.map((step, index) => {
+                  const label = stepLabel(step);
+                  return <li className="flex gap-2.5" key={step}><span className="grid size-5 shrink-0 place-items-center rounded-full bg-muted font-mono text-[10px]">{index + 1}</span><span><span className="block text-xs font-medium">{label.title}</span><span className="block text-[11px] text-muted-foreground">{label.description}</span></span></li>;
+                })}
+              </ol>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </CardContent>
+      <CardFooter className="mt-auto">
+        {workflow.key === "document_processing_pipeline"
+          ? <Button asChild className="w-full" variant="outline"><Link to="/knowledge-base"><RiFilePdf2Line data-icon="inline-start" />Pick a bulletin to extract</Link></Button>
+          : <Button className="w-full" disabled={pending} onClick={run}>{pending ? <RiLoader4Line className="animate-spin" data-icon="inline-start" /> : <RiPlayLine data-icon="inline-start" />}{pending ? "Queueing…" : "Run now"}</Button>}
+      </CardFooter>
+    </Card>
+  );
+}
+
+function Fact({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
+  return <><dt className="flex items-center gap-1.5 text-muted-foreground [&_svg]:size-3.5">{icon}{label}</dt><dd className="min-w-0">{children}</dd></>;
 }
 
 function workflowTitleFromKey(key: WorkflowKey): string {
@@ -177,22 +314,44 @@ function workflowTitleFromKey(key: WorkflowKey): string {
   return "Document Processing Pipeline";
 }
 
+function scheduleLabelFromKey(key: WorkflowKey): string {
+  if (key === "latest_document_collection") return "Every hour, at quarter past";
+  if (key === "historical_backfill") return "Every night at 00:15";
+  return "After each new bulletin, plus a sweep every 5 minutes";
+}
+
+function triggerLabel(trigger: string): string {
+  if (trigger === "scheduled") return "Timetable";
+  if (trigger === "manual") return "Manually";
+  if (trigger === "backfill") return "Backfill request";
+  return trigger.replaceAll("_", " ");
+}
+
+function workSummary(run: Run): string {
+  const parts: string[] = [];
+  if (run.discovered_count) parts.push(`${compactNumber.format(run.discovered_count)} bulletins seen`);
+  if (run.fetched_count) parts.push(`${run.fetched_count} downloaded`);
+  if (run.parsed_count) parts.push(`${wholeNumber.format(run.parsed_count)} prices extracted`);
+  if (run.quarantined_count) parts.push(`${run.quarantined_count} rows held for review`);
+  return parts.length ? parts.join(" · ") : "Nothing to do";
+}
+
 const workflowLabels: Partial<Record<WorkflowStep["stage"], { title: string; description: string }>> = {
-  check_source: { title: "Check official source", description: "Discover the complete current source publication list" },
-  compare_inventory: { title: "Compare PDF inventory", description: "Compare source PDFs with database and R2 records" },
-  download_new_pdfs: { title: "Download new PDFs", description: "Download only documents missing from both inventories" },
-  upload_to_r2: { title: "Upload PDFs to R2", description: "Store new source documents in the private archive" },
-  record_pdf_metadata: { title: "Record PDF metadata", description: "Persist source, storage, checksum, and execution metadata" },
-  retrieve_pdf: { title: "Retrieve PDF", description: "Retrieve and verify the archived document from R2" },
-  parse_pdf: { title: "Parse PDF", description: "Read the document layout and positional text" },
-  extract_data: { title: "Extract structured data", description: "Convert parsed text into machine-readable records" },
-  validate_data: { title: "Validate extracted data", description: "Check structure, dates, and numeric values" },
-  insert_data: { title: "Insert validated data", description: "Commit validated records to the operational database" },
-  assess_completeness: { title: "Assess completeness", description: "Compare recovered products, markets, cells, and mappings with the reviewed source profile" },
-  canonicalize_data: { title: "Promote canonical observations", description: "Apply reviewed taxonomy and source-version precedence idempotently" },
+  check_source: { title: "Check the HARTI website", description: "List every bulletin currently published on the source website" },
+  compare_inventory: { title: "Compare with the archive", description: "Work out which bulletins the archive is still missing" },
+  download_new_pdfs: { title: "Download missing bulletins", description: "Fetch only the PDFs that are not archived yet" },
+  upload_to_r2: { title: "Store the PDFs", description: "Keep the originals in the private archive" },
+  record_pdf_metadata: { title: "Record what was stored", description: "Save checksums, sizes, and where each PDF came from" },
+  retrieve_pdf: { title: "Fetch the PDF", description: "Get the archived copy and verify its checksum" },
+  parse_pdf: { title: "Read the PDF", description: "Read the page layout and the positions of every piece of text" },
+  extract_data: { title: "Find the price table", description: "Turn the text into rows of product, market, and price" },
+  validate_data: { title: "Check the rows", description: "Reject rows with impossible dates, prices, or structure" },
+  insert_data: { title: "Save the rows", description: "Write the checked rows to the database" },
+  assess_completeness: { title: "Score completeness", description: "Compare what was found with what this bulletin normally contains" },
+  canonicalize_data: { title: "Publish the prices", description: "Map product and market names to the reviewed list so Price insights can use them" },
   crawl: { title: "Crawl source", description: "Discover current source publications" },
   download: { title: "Download PDFs", description: "Retain the source documents" },
-  process: { title: "Extract & process", description: "Read PDF text and build records" },
+  process: { title: "Extract and process", description: "Read PDF text and build records" },
   validate: { title: "Validate data", description: "Check structure, dates, and values" },
   store: { title: "Store results", description: "Commit validated records" },
 };
@@ -205,8 +364,8 @@ function stepLabel(stage: WorkflowStep["stage"]): { title: string; description: 
 }
 
 function workflowTitle(workflow: Run["workflow"]): string {
-  if (workflow === "source_sync") return "Source synchronisation";
-  if (workflow === "pdf_processing") return "PDF processing";
+  if (workflow === "source_sync") return "Collect bulletins";
+  if (workflow === "pdf_processing") return "Extract prices";
   return "Legacy ingestion";
 }
 
@@ -224,11 +383,7 @@ export function RunDetailPage() {
   const retry = useMutation({
     mutationFn: (stage: WorkflowStep["stage"]) => api<{ run_id: string; stage: string }>(`/v1/admin/runs/${encodeURIComponent(runId)}/stages/${stage}/retry`, { method: "POST" }),
     onSuccess: async () => {
-      await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["run-workflow", runId] }),
-        queryClient.invalidateQueries({ queryKey: ["runs"] }),
-        queryClient.invalidateQueries({ queryKey: ["overview"] }),
-      ]);
+      await Promise.all([queryClient.invalidateQueries({ queryKey: ["run-workflow", runId] }), queryClient.invalidateQueries({ queryKey: ["runs"] }), queryClient.invalidateQueries({ queryKey: ["overview"] })]);
     },
   });
   const rerun = useMutation({
@@ -247,42 +402,52 @@ export function RunDetailPage() {
     next.set("step", stage);
     setParameters(next);
   };
+  const run = workflow.data?.run;
+  const failedStage = workflow.data?.stages.find((stage) => stage.status === "failed");
 
   return (
-    <PageFrame description="Follow every dependency, inspect step inputs and outputs, and retry failures safely." title={workflow.data ? `${workflowTitle(workflow.data.run.workflow)} execution` : "Workflow execution"}>
-      <Button asChild size="sm" variant="ghost"><Link to="/runs"><RiArrowLeftLine data-icon="inline-start" />Back to runs</Link></Button>
-      {workflow.isPending ? <Skeleton className="h-[36rem] rounded-xl" /> : workflow.isError ? <Alert variant="destructive"><AlertTitle>Workflow unavailable</AlertTitle><AlertDescription>{workflow.error.message}</AlertDescription></Alert> : (
+    <PageFrame description="Every step this run went through, with what went in, what came out, and the log of what happened." eyebrow="Automations" title={run ? `${workflowTitle(run.workflow)} · ${date(run.started_at)}` : "Run"}>
+      <div><Button asChild size="sm" variant="ghost"><Link to="/runs?view=history"><RiArrowLeftLine data-icon="inline-start" />Back to run history</Link></Button></div>
+      {workflow.isPending ? <Skeleton className="h-[36rem] rounded-xl" /> : workflow.isError || !workflow.data || !run ? <Alert variant="destructive"><AlertTitle>Run unavailable</AlertTitle><AlertDescription>{workflow.error?.message ?? "This run could not be loaded."}</AlertDescription></Alert> : (
         <>
           <Card>
             <CardHeader>
-              <CardTitle className="flex flex-wrap items-center gap-2">{workflowTitle(workflow.data.run.workflow)} <Status value={workflow.data.run.status} /></CardTitle>
-              <CardDescription>{workflow.data.run.source_id} · {workflow.data.run.trigger} · Started {date(workflow.data.run.started_at)}{workflow.data.run.parent_run_id ? <> · <Link className="underline-offset-4 hover:underline" to={`/runs/${workflow.data.run.parent_run_id}`}>Parent source sync</Link></> : null}</CardDescription>
-              <CardAction className="flex items-center gap-3"><span className="font-mono text-xs text-muted-foreground">{durationBetween(workflow.data.run.started_at, workflow.data.run.finished_at)}</span><Button disabled={rerun.isPending} onClick={() => rerun.mutate()} size="sm" variant="outline"><RiRestartLine className={cn(rerun.isPending && "animate-spin")} data-icon="inline-start" />{rerun.isPending ? "Starting…" : "Rerun workflow"}</Button></CardAction>
+              <CardTitle className="flex flex-wrap items-center gap-2">{workflowTitle(run.workflow)} <Status value={run.status} /></CardTitle>
+              <CardDescription>
+                {run.status === "succeeded" ? "Finished without problems." : run.status === "failed" ? `Stopped at "${failedStage ? stepLabel(failedStage.stage).title : "an unknown step"}".` : run.status === "running" ? "Still working; this page refreshes itself." : "Waiting on an earlier step."}
+                {" "}{workSummary(run)}.
+              </CardDescription>
+              <CardAction className="flex items-center gap-3"><Button disabled={rerun.isPending} onClick={() => rerun.mutate()} size="sm" variant="outline"><RiRestartLine className={cn(rerun.isPending && "animate-spin")} data-icon="inline-start" />{rerun.isPending ? "Starting…" : "Run again"}</Button></CardAction>
             </CardHeader>
-            <CardContent>
-              <ScrollArea className="w-full pb-3" orientation="horizontal">
-                <div className="flex min-w-max items-stretch gap-2 pb-3">
-                  {workflow.data.stages.map((stage, index) => (
-                    <div className="flex items-center gap-2" key={stage.stage}>
-                      <Button
-                        aria-pressed={selected?.stage === stage.stage}
-                        className={cn("h-auto w-52 items-start justify-start gap-3 whitespace-normal px-4 py-3 text-left", selected?.stage === stage.stage && "border-primary/60 bg-primary/10")}
-                        onClick={() => selectStage(stage.stage)}
-                        variant="outline"
-                      >
-                        <StepIcon status={stage.status} />
-                        <span className="min-w-0"><span className="block font-semibold">{stepLabel(stage.stage).title}</span><span className="mt-1 block text-[11px] font-normal leading-4 text-muted-foreground">{stage.status === "blocked" && stage.missing_dependencies.length ? `Waiting for ${stage.missing_dependencies.join(", ")}` : formatDuration(stage.duration_ms)}</span></span>
-                      </Button>
-                      {index < workflow.data.stages.length - 1 ? <RiArrowRightLine aria-hidden className="size-4 shrink-0 text-muted-foreground" /> : null}
-                    </div>
-                  ))}
-                </div>
-              </ScrollArea>
+            <CardContent className="flex flex-col gap-5">
+              <dl className="grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-4">
+                <Metric label="Started" value={date(run.started_at)} />
+                <Metric label="Took" value={durationBetween(run.started_at, run.finished_at)} />
+                <Metric label="Started by" value={triggerLabel(run.trigger)} />
+                <Metric label="Source" value={run.source_id} />
+              </dl>
+              {run.parent_run_id ? <p className="text-xs text-muted-foreground">This extraction was started by a <Link className="underline underline-offset-4" to={`/runs/${run.parent_run_id}`}>bulletin collection run</Link>.</p> : null}
+              <div>
+                <p className="mb-2 text-xs font-medium">Steps <span className="font-normal text-muted-foreground">· click one to inspect it</span></p>
+                <ScrollArea className="w-full pb-3" orientation="horizontal">
+                  <div className="flex min-w-max items-stretch gap-2 pb-3">
+                    {workflow.data.stages.map((stage, index) => (
+                      <div className="flex items-center gap-2" key={stage.stage}>
+                        <Button aria-pressed={selected?.stage === stage.stage} className={cn("h-auto w-52 items-start justify-start gap-3 whitespace-normal px-4 py-3 text-left", selected?.stage === stage.stage && "border-primary/60 bg-primary/10")} onClick={() => selectStage(stage.stage)} variant="outline">
+                          <StepIcon status={stage.status} />
+                          <span className="min-w-0"><span className="block font-semibold">{index + 1}. {stepLabel(stage.stage).title}</span><span className="mt-1 block text-[11px] font-normal leading-4 text-muted-foreground">{stage.status === "blocked" && stage.missing_dependencies.length ? `Waiting for ${stage.missing_dependencies.map((dependency) => stepLabel(dependency as WorkflowStep["stage"]).title).join(", ")}` : `${stage.status.replaceAll("_", " ")} · ${formatDuration(stage.duration_ms)}`}</span></span>
+                        </Button>
+                        {index < workflow.data.stages.length - 1 ? <RiArrowRightLine aria-hidden className="size-4 shrink-0 text-muted-foreground" /> : null}
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
+              </div>
             </CardContent>
           </Card>
-          {workflow.data.children.length ? <Card size="sm"><CardHeader><CardTitle>Triggered PDF-processing executions</CardTitle><CardDescription>{workflow.data.children.length} new PDF {workflow.data.children.length === 1 ? "workflow was" : "workflows were"} started by this source sync.</CardDescription></CardHeader><CardContent className="flex flex-col gap-2">{workflow.data.children.map((child) => <Button asChild className="h-auto justify-between px-3 py-2" key={child.id} variant="outline"><Link to={`/runs/${child.id}`}><span className="truncate">{child.archive_id ?? child.id}</span><Status value={child.status} /></Link></Button>)}</CardContent></Card> : null}
+          {workflow.data.children.length ? <Card size="sm"><CardHeader><CardTitle>Extractions started by this run</CardTitle><CardDescription>{workflow.data.children.length} new {workflow.data.children.length === 1 ? "bulletin was" : "bulletins were"} downloaded, and each one got its own extraction run.</CardDescription></CardHeader><CardContent className="flex flex-col gap-2">{workflow.data.children.map((child) => <Button asChild className="h-auto justify-between px-3 py-2" key={child.id} variant="outline"><Link to={`/runs/${child.id}`}><span className="truncate">{child.archive_id ?? child.id}</span><Status value={child.status} /></Link></Button>)}</CardContent></Card> : null}
           {selected ? <StepInspector mutationError={retry.error?.message ?? null} pending={retry.isPending && retry.variables === selected.stage} retry={() => retry.mutate(selected.stage)} stage={selected} /> : null}
-          {rerun.isError ? <Alert variant="destructive"><AlertTitle>Workflow rerun did not start</AlertTitle><AlertDescription>{rerun.error.message}</AlertDescription></Alert> : null}
+          {rerun.isError ? <Alert variant="destructive"><AlertTitle>The run could not be started again</AlertTitle><AlertDescription>{rerun.error.message}</AlertDescription></Alert> : null}
         </>
       )}
     </PageFrame>
@@ -326,33 +491,33 @@ function StepInspector({ stage, retry, pending, mutationError }: { stage: Workfl
     <Card>
       <CardHeader>
         <CardTitle className="flex flex-wrap items-center gap-2">{label.title} <Status value={stage.status} /></CardTitle>
-        <CardDescription>{label.description}</CardDescription>
+        <CardDescription>{label.description}.</CardDescription>
         <CardAction>
           <Button disabled={!stage.can_retry || pending} onClick={retry} size="sm" title={stage.retry_reason ?? "Retry this step"} variant="outline">
-            <RiRestartLine className={cn(pending && "animate-spin")} data-icon="inline-start" />{pending ? "Starting…" : "Retry step"}
+            <RiRestartLine className={cn(pending && "animate-spin")} data-icon="inline-start" />{pending ? "Starting…" : "Retry this step"}
           </Button>
         </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <Metric label="Duration" value={formatDuration(stage.duration_ms)} />
+          <Metric label="Took" value={formatDuration(stage.duration_ms)} />
           <Metric label="Attempts" value={String(stage.attempt_count ?? 0)} />
-          <Metric label="Input records" value={String(stage.input_count ?? 0)} />
-          <Metric label="Output records" value={String(stage.output_count ?? 0)} />
+          <Metric label="Went in" value={`${wholeNumber.format(stage.input_count ?? 0)} records`} />
+          <Metric label="Came out" value={`${wholeNumber.format(stage.output_count ?? 0)} records`} />
         </div>
-        {stage.error_message ? <Alert variant="destructive"><RiCloseLine /><AlertTitle>{stage.error_code ?? "Step failed"}</AlertTitle><AlertDescription>{stage.error_message}</AlertDescription></Alert> : null}
-        {stage.retry_reason && !stage.can_retry ? <Alert><RiLockLine /><AlertTitle>Retry unavailable</AlertTitle><AlertDescription>{stage.retry_reason}</AlertDescription></Alert> : null}
+        {stage.error_message ? <Alert variant="destructive"><RiCloseLine /><AlertTitle>{stage.error_code ?? "This step failed"}</AlertTitle><AlertDescription>{stage.error_message}</AlertDescription></Alert> : null}
+        {stage.retry_reason && !stage.can_retry ? <Alert><RiLockLine /><AlertTitle>Cannot retry just this step</AlertTitle><AlertDescription>{stage.retry_reason}</AlertDescription></Alert> : null}
         {mutationError ? <Alert variant="destructive"><AlertTitle>Retry did not start</AlertTitle><AlertDescription>{mutationError}</AlertDescription></Alert> : null}
         <div className="grid min-w-0 gap-4 lg:grid-cols-2">
-          <JsonPanel title="Input" value={stage.input} />
-          <JsonPanel title="Output" value={stage.output} />
+          <JsonPanel title="What went in" value={stage.input} />
+          <JsonPanel title="What came out" value={stage.output} />
         </div>
         <Separator />
         <div>
-          <div className="mb-3 flex items-center justify-between gap-3"><h3 className="font-heading text-sm font-semibold">Execution logs</h3><Badge variant="outline">{stage.log_count} entries</Badge></div>
+          <div className="mb-3 flex items-center justify-between gap-3"><h3 className="font-heading text-sm font-semibold">Log</h3><Badge variant="outline">{stage.log_count} entries</Badge></div>
           <ScrollArea className="h-72 rounded-lg border bg-background/40">
             <div className="divide-y divide-border">
-              {stage.logs.length ? stage.logs.map((log) => <div className="grid gap-1 px-4 py-3 sm:grid-cols-[8rem_5rem_1fr] sm:gap-3" key={log.id}><time className="font-mono text-[10px] text-muted-foreground">{date(log.created_at)}</time><Badge className="self-start" variant={log.level === "error" ? "destructive" : log.level === "warning" ? "secondary" : "outline"}>{log.level}</Badge><div className="min-w-0"><p className="text-xs font-medium">{log.message}</p>{log.data !== null ? <pre className="mt-1 whitespace-pre-wrap break-words font-mono text-[10px] leading-4 text-muted-foreground">{formatJson(log.data)}</pre> : null}</div></div>) : <p className="p-6 text-center text-xs text-muted-foreground">No structured logs were recorded for this step.</p>}
+              {stage.logs.length ? stage.logs.map((log) => <div className="grid gap-1 px-4 py-3 sm:grid-cols-[8rem_5rem_1fr] sm:gap-3" key={log.id}><time className="font-mono text-[10px] text-muted-foreground">{date(log.created_at)}</time><Badge className="self-start" variant={log.level === "error" ? "destructive" : log.level === "warning" ? "secondary" : "outline"}>{log.level}</Badge><div className="min-w-0"><p className="text-xs font-medium">{log.message}</p>{log.data !== null ? <pre className="mt-1 whitespace-pre-wrap break-words font-mono text-[10px] leading-4 text-muted-foreground">{formatJson(log.data)}</pre> : null}</div></div>) : <p className="p-6 text-center text-xs text-muted-foreground">Nothing was logged for this step.</p>}
             </div>
           </ScrollArea>
           {stage.log_count > stage.logs.length ? <p className="mt-2 text-[10px] text-muted-foreground">Showing the latest {stage.logs.length} entries.</p> : null}
@@ -363,7 +528,7 @@ function StepInspector({ stage, retry, pending, mutationError }: { stage: Workfl
 }
 
 function Metric({ label, value }: { label: string; value: string }) {
-  return <div className="rounded-lg border bg-background/40 p-3"><p className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</p><p className="mt-1 font-mono text-sm font-medium">{value}</p></div>;
+  return <div className="rounded-lg border bg-background/40 p-3"><dt className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</dt><dd className="mt-1 truncate font-mono text-sm font-medium" title={value}>{value}</dd></div>;
 }
 
 function JsonPanel({ title, value }: { title: string; value: unknown }) {
@@ -382,7 +547,7 @@ function formatJson(value: unknown): string {
 }
 
 function formatDuration(milliseconds: number | null): string {
-  if (milliseconds === null) return "Not completed";
+  if (milliseconds === null) return "Not finished";
   if (milliseconds < 1_000) return `${milliseconds} ms`;
   if (milliseconds < 60_000) return `${(milliseconds / 1_000).toFixed(1)} s`;
   return `${Math.floor(milliseconds / 60_000)}m ${Math.round((milliseconds % 60_000) / 1_000)}s`;
@@ -413,49 +578,24 @@ function dateInZone(value: string | null, timezone: string): string {
     : "Not scheduled";
 }
 
-export function KnowledgeBasePage() {
-  const state = useTableState();
-  const queryClient = useQueryClient();
-  const knowledge = useQuery({
-    queryKey: ["knowledge-base", { page: state.page, pageSize: state.pageSize, search: state.search, status: state.status }],
-    queryFn: ({ signal }) => api<Page<KnowledgeItem>>(listUrl("/v1/admin/knowledge-base", state), { signal }),
-    placeholderData: keepPreviousData,
-  });
-  const processDocument = useMutation({
-    mutationFn: (publicationId: string) => api<WorkflowDispatch>(`/v1/admin/knowledge-base/${encodeURIComponent(publicationId)}/process`, { method: "POST" }),
-    onSuccess: async () => {
-      await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["knowledge-base"] }),
-        queryClient.invalidateQueries({ queryKey: ["runs"] }),
-        queryClient.invalidateQueries({ queryKey: ["workflow-dispatches"] }),
-        queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] }),
-      ]);
-    },
-  });
-  return (
-    <PageFrame description="Every discovered source bulletin, with processing metadata and direct access to the original PDF." title="Knowledge Base">
-      {processDocument.isError ? <Alert variant="destructive"><AlertTitle>Document workflow did not queue</AlertTitle><AlertDescription>{processDocument.error.message}</AlertDescription></Alert> : null}
-      {knowledge.isPending ? <Skeleton className="h-80 rounded-xl" /> : knowledge.isError ? <Alert variant="destructive">{knowledge.error.message}</Alert> : (
-        <Card>
-          <CardHeader><CardTitle>Source documents</CardTitle><CardDescription>{knowledge.data.total} PDF {knowledge.data.total === 1 ? "document" : "documents"} found</CardDescription></CardHeader>
-          <TableControls placeholder="Search title, URL, or checksum…" state={state} statuses={knowledgeStatuses} />
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader><TableRow><TableHead>Document</TableHead><TableHead>Status</TableHead><TableHead className="hidden sm:table-cell">Published</TableHead><TableHead className="hidden md:table-cell">Type</TableHead><TableHead className="hidden lg:table-cell">Size</TableHead><TableHead className="hidden lg:table-cell">Parsed</TableHead><TableHead>Processing</TableHead><TableHead className="text-right">Action</TableHead></TableRow></TableHeader>
-              <TableBody>{knowledge.data.items.length ? knowledge.data.items.map((item) => {
-                const downloadable = /^https?:\/\//u.test(item.download_url);
-                const processingTime = item.processing_finished_at ?? item.processing_started_at;
-                const pending = processDocument.isPending && processDocument.variables === item.publication_id;
-                return <TableRow key={item.publication_id}><TableCell className="min-w-0">{downloadable ? <a className="group inline-flex max-w-64 items-center gap-1.5 font-medium text-foreground hover:text-primary sm:max-w-md" href={item.download_url} rel="noreferrer" target="_blank"><span className="truncate" title={item.title}>{item.title}</span><RiExternalLinkLine className="size-3.5 shrink-0 text-muted-foreground group-hover:text-primary" /></a> : <p className="max-w-64 truncate font-medium sm:max-w-md" title={item.title}>{item.title}</p>}<p className="mt-1 font-mono text-[10px] text-muted-foreground">{item.sha256 ? `${item.sha256.slice(0, 16)}…` : item.publication_id.replace("publication_", "")}</p><p className="mt-1 text-[11px] text-muted-foreground sm:hidden">{date(item.published_at)} · {item.pdf_type ?? "PDF"}</p></TableCell><TableCell><Status value={item.status} /></TableCell><TableCell className="hidden text-muted-foreground sm:table-cell">{date(item.published_at)}</TableCell><TableCell className="hidden md:table-cell">{item.pdf_type ?? "PDF"}{item.page_count ? <span className="mt-1 block text-xs text-muted-foreground">{item.page_count} pages</span> : null}</TableCell><TableCell className="hidden font-mono lg:table-cell">{item.byte_size === null ? "Not cached" : bytes(item.byte_size)}</TableCell><TableCell className="hidden font-mono lg:table-cell">{item.parsed_count}{item.canonical_count ? <span className="mt-1 block text-[10px] text-primary">{item.canonical_count} canonical</span> : null}</TableCell><TableCell>{item.processing_status ? <><Status value={item.processing_status} /><span className="mt-1 block whitespace-nowrap text-[10px] text-muted-foreground">{date(processingTime)} · {relativeTime(processingTime)}</span>{item.parser_confidence !== null ? <span className="mt-1 block whitespace-nowrap text-[10px] text-muted-foreground" title={item.parser_strategy ?? "Adaptive parser"}>Adaptive parse · {Math.round(item.parser_confidence * 100)}%</span> : null}{item.completeness_score !== null ? <span className={cn("mt-1 block whitespace-nowrap text-[10px]", item.quality_status === "complete" ? "text-primary" : "text-amber-400")} title={`Items ${Math.round((item.item_coverage ?? 0) * 100)}% · markets ${Math.round((item.market_coverage ?? 0) * 100)}% · cells ${Math.round((item.cell_coverage ?? 0) * 100)}% · mappings ${Math.round((item.mapping_coverage ?? 0) * 100)}%`}>Completeness · {Math.round(item.completeness_score * 100)}% · {item.quality_status?.replaceAll("_", " ")}</span> : null}{item.processing_error_message ? <span className="mt-1 block max-w-48 truncate text-[10px] text-destructive" title={item.processing_error_message}>{item.processing_error_message}</span> : null}</> : <><Status value={item.archive_id ? "pending" : "not archived"} /><span className="mt-1 block text-[10px] text-muted-foreground">Not processed</span></>}</TableCell><TableCell className="text-right"><div className="flex justify-end gap-1">{item.processing_run_id ? <Button asChild size="sm" variant="ghost"><Link aria-label={`Open processing run for ${item.title}`} to={`/runs/${item.processing_run_id}`}>View</Link></Button> : null}<Button aria-label={`${item.processing_run_id ? "Rerun" : "Run"} processing for ${item.title}`} disabled={!item.archive_id || pending || item.processing_status === "running"} onClick={() => processDocument.mutate(item.publication_id)} size="sm" variant="outline">{pending ? <RiLoader4Line className="animate-spin" /> : item.processing_run_id ? <RiRestartLine /> : <RiPlayLine />}<span className="sr-only">{item.processing_run_id ? "Rerun" : "Run"}</span></Button></div></TableCell></TableRow>;
-              }) : <EmptyTableRow columns={8} />}</TableBody>
-            </Table>
-            <Pagination page={knowledge.data.page} pageSize={knowledge.data.pageSize} pages={knowledge.data.pages} pending={knowledge.isPlaceholderData} total={knowledge.data.total} />
-          </CardContent>
-        </Card>
-      )}
-    </PageFrame>
-  );
-}
+const rightsLabels: Record<string, { label: string; description: string }> = {
+  approved_permission: { label: "Permission granted", description: "HARTI has given written permission for non-commercial data preparation." },
+  public_domain: { label: "Public domain", description: "The source is free to reuse." },
+  open_license: { label: "Open licence", description: "The source is published under an open licence." },
+  unknown: { label: "Not yet confirmed", description: "Rights have not been confirmed, so nothing from this source can be published." },
+  restricted: { label: "Restricted", description: "Reuse is restricted; only internal processing is allowed." },
+};
+const cadenceLabels: Record<string, string> = { business_daily: "Every working day", daily: "Every day", weekly: "Every week", event_driven: "Whenever published" };
+const methodLabels: Record<string, string> = { scheduled_download: "Automatic download on a timetable", manual: "Uploaded by hand", partner_feed: "Delivered by the partner" };
+const retentionLabels: Record<string, string> = { preserve_source_evidence: "Original PDFs are kept as evidence", metadata_and_checksum_only: "Only metadata and checksums are kept" };
+const scopeLabels: Record<string, string> = { selected_wholesale_markets: "Selected wholesale markets across Sri Lanka" };
+const stateCopy: Record<string, string> = {
+  healthy: "Recent runs succeeded and the rights review is current.",
+  degraded: "A recent run failed. Check the run history for the error.",
+  paused: "Collection is switched off for this source.",
+  blocked: "Rights or review are overdue, so nothing can run.",
+  review_required: "The rights review is due; confirm it to keep collecting.",
+};
 
 export function SourcesPage() {
   const state = useTableState();
@@ -465,24 +605,99 @@ export function SourcesPage() {
     placeholderData: keepPreviousData,
   });
   return (
-    <PageFrame description="Permission, cadence, and processing health for each configured source." title="Sources">
-      {sources.isPending ? <Skeleton className="h-60 rounded-xl" /> : sources.isError ? <Alert variant="destructive">{sources.error.message}</Alert> : (
-        <Card>
-          <CardHeader><CardTitle>Configured sources</CardTitle><CardDescription>{sources.data.total} monitored {sources.data.total === 1 ? "source" : "sources"} found</CardDescription></CardHeader>
-          <TableControls placeholder="Search source, owner, or rights…" state={state} statuses={sourceStatuses} />
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader><TableRow><TableHead>Source</TableHead><TableHead>State</TableHead><TableHead className="hidden sm:table-cell">Rights</TableHead><TableHead className="hidden lg:table-cell">Review due</TableHead><TableHead className="hidden md:table-cell">Last parsed</TableHead></TableRow></TableHeader>
-              <TableBody>{sources.data.items.length ? sources.data.items.map((source) => <TableRow key={source.id}><TableCell><p className="max-w-56 truncate font-medium">{source.name}</p><p className="mt-1 text-xs text-muted-foreground">{source.owner}</p><p className="mt-1 font-mono text-[10px] text-muted-foreground sm:hidden">{source.rights_status}</p></TableCell><TableCell><Status value={source.state} /></TableCell><TableCell className="hidden font-mono text-xs sm:table-cell">{source.rights_status}</TableCell><TableCell className="hidden text-muted-foreground lg:table-cell">{date(source.review_due_at)}</TableCell><TableCell className="hidden text-muted-foreground md:table-cell">{date(source.last_parse_at)}</TableCell></TableRow>) : <EmptyTableRow columns={5} />}</TableBody>
-            </Table>
-            <Pagination page={sources.data.page} pageSize={sources.data.pageSize} pages={sources.data.pages} pending={sources.isPlaceholderData} total={sources.data.total} />
-          </CardContent>
-        </Card>
+    <PageFrame description="Where the price data comes from, whether we are allowed to use it, and how collection is going." eyebrow="Operations" title="Sources">
+      {sources.isPending ? <Skeleton className="h-96 rounded-xl" /> : sources.isError ? <Alert variant="destructive"><AlertTitle>Sources unavailable</AlertTitle><AlertDescription>{sources.error.message}</AlertDescription></Alert> : (
+        <>
+          {sources.data.total > 1 ? <Card size="sm"><TableControls placeholder="Search by name, owner, or rights…" state={state} statuses={sourceStatuses} /></Card> : null}
+          {sources.data.items.length ? sources.data.items.map((source) => <SourceCard key={source.id} source={source} />) : <Empty className="min-h-48"><EmptyHeader><EmptyTitle>No sources configured</EmptyTitle><EmptyDescription>Add a source manifest under data/manifests to start collecting.</EmptyDescription></EmptyHeader></Empty>}
+          {sources.data.pages > 1 ? <Card size="sm"><Pagination page={sources.data.page} pageSize={sources.data.pageSize} pages={sources.data.pages} pending={sources.isPlaceholderData} total={sources.data.total} /></Card> : null}
+        </>
       )}
     </PageFrame>
   );
 }
 
-function PageFrame({ title, description, children }: { title: string; description: string; children: React.ReactNode }) {
-  return <div className="flex flex-col gap-5 lg:gap-6"><div><h1 className="font-heading text-2xl font-semibold tracking-tight sm:text-[28px]">{title}</h1><p className="mt-1.5 max-w-3xl text-sm text-muted-foreground">{description}</p></div>{children}</div>;
+function SourceCard({ source }: { source: Source }) {
+  const rights = rightsLabels[source.rights_status] ?? { label: source.rights_status.replaceAll("_", " "), description: "" };
+  const reviewOverdue = Date.parse(source.review_due_at) < Date.now();
+  const extractedShare = source.publication_count ? Math.round((source.canonicalized_count / source.publication_count) * 100) : 0;
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-start gap-3">
+          <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-primary/25 bg-primary/10 text-primary"><RiDatabase2Line className="size-5" /></span>
+          <div className="min-w-0">
+            <CardTitle className="text-lg">{source.name}</CardTitle>
+            <CardDescription className="mt-1">Published by {source.owner}.</CardDescription>
+          </div>
+        </div>
+        <CardAction className="flex flex-wrap items-center gap-2">
+          <Tooltip><TooltipTrigger asChild><span className="inline-flex"><Status value={source.state} /></span></TooltipTrigger><TooltipContent>{stateCopy[source.state] ?? "Current collection state."}</TooltipContent></Tooltip>
+          {source.enabled ? null : <Badge variant="outline">Collection off</Badge>}
+        </CardAction>
+      </CardHeader>
+      <CardContent className="grid gap-6 lg:grid-cols-[1.1fr_1fr]">
+        <div className="flex flex-col gap-5">
+          <section aria-label="What we collect">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">What we collect</h3>
+            <dl className="grid gap-x-4 gap-y-2 text-sm sm:grid-cols-[auto_1fr]">
+              <Definition label="How often">{cadenceLabels[source.expected_cadence ?? ""] ?? source.expected_cadence ?? "Unknown"}</Definition>
+              <Definition label="How">{methodLabels[source.retrieval_method ?? ""] ?? source.retrieval_method ?? "Unknown"}</Definition>
+              <Definition label="Covers">{scopeLabels[source.geographic_scope ?? ""] ?? source.geographic_scope ?? "Unknown"}</Definition>
+              <Definition label="We keep">{retentionLabels[source.retention_policy ?? ""] ?? source.retention_policy ?? "Unknown"}</Definition>
+              <Definition label="Website"><a className="inline-flex items-center gap-1 underline underline-offset-4 hover:text-primary" href={source.landing_url} rel="noreferrer" target="_blank">{source.landing_url.replace(/^https?:\/\//u, "")}<RiExternalLinkLine className="size-3.5" /></a></Definition>
+            </dl>
+          </section>
+          <section aria-label="Permission">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Permission to use it</h3>
+            <div className="rounded-lg border bg-background/40 p-3">
+              <div className="flex flex-wrap items-center gap-2"><RiShieldCheckLine className={cn("size-4", source.rights_status === "approved_permission" ? "text-primary" : "text-amber-400")} /><p className="text-sm font-medium">{rights.label}</p>{reviewOverdue ? <Badge variant="destructive">Review overdue</Badge> : null}</div>
+              {rights.description ? <p className="mt-1 text-xs text-muted-foreground">{rights.description}</p> : null}
+              <p className="mt-2 text-xs text-muted-foreground">Reviewed {date(source.reviewed_at)} · next review due {date(source.review_due_at)}{source.rights_evidence_ref ? <> · evidence: <code className="rounded bg-muted px-1 py-0.5 font-mono text-[10px]">{source.rights_evidence_ref}</code></> : null}</p>
+              {source.attribution_text ? <p className="mt-2 border-l-2 border-primary/40 pl-3 text-xs italic text-muted-foreground">{source.attribution_text}</p> : null}
+            </div>
+          </section>
+        </div>
+        <div className="flex flex-col gap-5">
+          <section aria-label="Progress">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Progress so far</h3>
+            <div className="grid grid-cols-2 gap-3">
+              <Figure label="Bulletins found" value={wholeNumber.format(source.publication_count)} />
+              <Figure hint={`${extractedShare}% of bulletins`} label="Prices extracted" value={wholeNumber.format(source.canonicalized_count)} />
+              <Figure label="Price rows" value={compactNumber.format(source.observation_count)} />
+              <Figure label="Failed runs, 30 days" tone={source.failed_runs_30d ? "warning" : "default"} value={wholeNumber.format(source.failed_runs_30d)} />
+            </div>
+          </section>
+          <section aria-label="Recent activity">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Recent activity</h3>
+            <ItemGroup className="rounded-lg border">
+              <Activity label="Last checked the website" value={source.last_discovery_at} />
+              <ItemSeparator />
+              <Activity label="Last downloaded a bulletin" value={source.last_fetch_at} />
+              <ItemSeparator />
+              <Activity label="Last extracted prices" value={source.last_parse_at} />
+              {source.last_failure_at ? <><ItemSeparator /><Item size="sm"><ItemMedia variant="icon"><RiAlertLine className="text-destructive" /></ItemMedia><ItemContent><ItemTitle>Last failure {date(source.last_failure_at)}</ItemTitle><ItemDescription className="line-clamp-2" title={source.last_error_message ?? undefined}>{source.last_error_message ?? "No error message was recorded."}</ItemDescription></ItemContent></Item></> : null}
+            </ItemGroup>
+          </section>
+        </div>
+      </CardContent>
+      <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
+        <Button asChild size="sm" variant="outline"><Link to="/knowledge-base"><RiFilePdf2Line data-icon="inline-start" />See its bulletins</Link></Button>
+        <Button asChild size="sm" variant="outline"><Link to="/runs?view=history"><RiHistoryLine data-icon="inline-start" />See its runs</Link></Button>
+        <Button asChild size="sm" variant="ghost"><Link to="/insights">Explore prices<RiArrowRightLine data-icon="inline-end" /></Link></Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+function Definition({ label, children }: { label: string; children: ReactNode }) {
+  return <><dt className="text-xs text-muted-foreground sm:pt-0.5">{label}</dt><dd className="min-w-0 text-sm">{children}</dd></>;
+}
+
+function Figure({ label, value, hint, tone = "default" }: { label: string; value: string; hint?: string; tone?: "default" | "warning" }) {
+  return <div className="rounded-lg border bg-background/40 p-3"><p className="text-[11px] text-muted-foreground">{label}</p><p className={cn("mt-1 font-heading text-2xl font-semibold tracking-tight", tone === "warning" && "text-amber-400")}>{value}</p>{hint ? <p className="mt-1 text-[11px] text-muted-foreground">{hint}</p> : null}</div>;
+}
+
+function Activity({ label, value }: { label: string; value: string | null }) {
+  return <Item size="sm"><ItemMedia variant="icon"><RiTimeLine /></ItemMedia><ItemContent><ItemTitle>{label}</ItemTitle><ItemDescription>{value ? `${date(value)} · ${relativeTime(value)}` : "Never"}</ItemDescription></ItemContent></Item>;
 }

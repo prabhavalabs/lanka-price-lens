@@ -13,3 +13,7 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - '@hookform/resolvers@5.9.1'
   - '@cloudflare/workers-types@5.20260817.1'
+
+# Security pins for transitive dependencies flagged by `pnpm audit --prod`.
+overrides:
+  fast-uri: '^3.1.6'

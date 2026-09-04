@@ -1,43 +1,154 @@
 import {
-  RiArrowLeftSLine,
-  RiArrowRightSLine,
-  RiCloseLine,
   RiDashboardLine,
   RiDatabase2Line,
+  RiExpandUpDownLine,
   RiFilePdf2Line,
   RiHistoryLine,
-  RiHome4Line,
+  RiLineChartLine,
   RiLogoutBoxRLine,
-  RiMenuLine,
   RiShieldUserLine,
+  type RemixiconComponentType,
 } from "@remixicon/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { api, type AdminUser } from "@/lib/api";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Separator } from "@/components/ui/separator";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarTrigger,
+  useSidebar,
+} from "@/components/ui/sidebar";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { api, type AdminUser, type SchedulerMonitor } from "@/lib/api";
 import { cn } from "@/lib/utils";
-import { useUiStore } from "@/store/ui";
 
-const navigation = [
+type NavigationItem = { to: string; label: string; icon: RemixiconComponentType; end: boolean; detail?: string };
+
+const operations: NavigationItem[] = [
   { to: "/", label: "Overview", icon: RiDashboardLine, end: true },
-  { to: "/runs", label: "Workflows", icon: RiHistoryLine, end: false },
-  { to: "/knowledge-base", label: "Knowledge Base", icon: RiFilePdf2Line, end: false },
+  { to: "/runs", label: "Workflows", icon: RiHistoryLine, end: false, detail: "Execution" },
+  { to: "/knowledge-base", label: "Knowledge Base", icon: RiFilePdf2Line, end: false, detail: "Document" },
   { to: "/sources", label: "Sources", icon: RiDatabase2Line, end: false },
 ];
+const intelligence: NavigationItem[] = [
+  { to: "/insights", label: "Price insights", icon: RiLineChartLine, end: false },
+];
+const navigation = [...operations, ...intelligence];
+
+function sidebarPreference(): boolean {
+  return typeof document === "undefined" || !document.cookie.split("; ").includes("sidebar_state=false");
+}
 
 export function AppShell() {
   const location = useLocation();
+  const current = navigation.find(({ to, end }) => end ? location.pathname === "/" : location.pathname.startsWith(to));
+  const detail = current?.detail && location.pathname.split("/").filter(Boolean).length > 1 ? current.detail : null;
+
+  return (
+    <SidebarProvider defaultOpen={sidebarPreference()}>
+      <Sidebar collapsible="icon" variant="inset">
+        <SidebarHeader>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild size="lg" tooltip="Lanka PriceLens">
+                <Link to="/">
+                  <img alt="" className="size-8 shrink-0 rounded-lg" src="/admin/app-icon.svg" />
+                  <div className="grid flex-1 text-left leading-tight">
+                    <span className="truncate font-heading text-sm font-semibold">Lanka PriceLens</span>
+                    <span className="truncate font-mono text-[10px] text-muted-foreground">Foundry operations</span>
+                  </div>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarHeader>
+        <SidebarContent>
+          <NavigationGroup items={operations} label="Operations" pathname={location.pathname} />
+          <NavigationGroup items={intelligence} label="Intelligence" pathname={location.pathname} />
+        </SidebarContent>
+        <SidebarFooter>
+          <UserMenu />
+        </SidebarFooter>
+        <SidebarRail />
+      </Sidebar>
+      <SidebarInset className="min-w-0">
+        <header className="sticky top-0 z-20 flex h-14 shrink-0 items-center gap-2 border-b bg-background/85 px-4 backdrop-blur-md md:rounded-t-xl">
+          <SidebarTrigger className="-ml-1" />
+          <Separator className="mr-1 data-[orientation=vertical]:h-4" orientation="vertical" />
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem className="hidden md:block"><BreadcrumbLink asChild><Link to="/">Operations</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
+              {detail && current ? (
+                <>
+                  <BreadcrumbItem><BreadcrumbLink asChild><Link to={current.to}>{current.label}</Link></BreadcrumbLink></BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem><BreadcrumbPage>{detail}</BreadcrumbPage></BreadcrumbItem>
+                </>
+              ) : (
+                <BreadcrumbItem><BreadcrumbPage>{current?.label ?? "Overview"}</BreadcrumbPage></BreadcrumbItem>
+              )}
+            </BreadcrumbList>
+          </Breadcrumb>
+          <div className="ml-auto flex items-center gap-2"><SchedulerStatus /></div>
+        </header>
+        <main className="flex-1 p-3 md:p-4 xl:p-5">
+          <div className="mx-auto w-full max-w-[1480px]"><Outlet /></div>
+        </main>
+      </SidebarInset>
+    </SidebarProvider>
+  );
+}
+
+function NavigationGroup({ items, label, pathname }: { items: NavigationItem[]; label: string; pathname: string }) {
+  const { isMobile, setOpenMobile } = useSidebar();
+  return (
+    <SidebarGroup>
+      <SidebarGroupLabel>{label}</SidebarGroupLabel>
+      <SidebarGroupContent>
+        <SidebarMenu>
+          {items.map(({ to, label: itemLabel, icon: Icon, end }) => {
+            const active = end ? pathname === "/" : pathname.startsWith(to);
+            return (
+              <SidebarMenuItem key={to}>
+                <SidebarMenuButton asChild isActive={active} tooltip={itemLabel}>
+                  <NavLink end={end} onClick={() => { if (isMobile) setOpenMobile(false); }} to={to}>
+                    <Icon className="size-4" />
+                    <span>{itemLabel}</span>
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            );
+          })}
+        </SidebarMenu>
+      </SidebarGroupContent>
+    </SidebarGroup>
+  );
+}
+
+function UserMenu() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const { isMobile } = useSidebar();
   const user = useQuery({ queryKey: ["session"], queryFn: () => api<AdminUser>("/v1/auth/session"), staleTime: 60_000 });
-  const navigationCollapsed = useUiStore((state) => state.navigationCollapsed);
-  const navigationOpen = useUiStore((state) => state.navigationOpen);
-  const setNavigationOpen = useUiStore((state) => state.setNavigationOpen);
-  const toggleNavigationCollapsed = useUiStore((state) => state.toggleNavigationCollapsed);
-  const currentPage = navigation.find(({ to, end }) => end ? location.pathname === "/" : location.pathname.startsWith(to))?.label ?? "Overview";
+  const email = user.data?.email ?? "";
+  const initials = email.slice(0, 2).toUpperCase() || "LP";
   const logout = useMutation({
     mutationFn: () => api<null>("/v1/auth/logout", { method: "POST" }),
     onSuccess: () => {
@@ -45,57 +156,57 @@ export function AppShell() {
       navigate("/login", { replace: true });
     },
   });
-
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Sheet onOpenChange={setNavigationOpen} open={navigationOpen}>
-        <SheetContent className="w-72 border-white/10 bg-sidebar p-0 text-sidebar-foreground lg:hidden" showCloseButton={false} side="left">
-          <SheetHeader className="sr-only"><SheetTitle>Navigation</SheetTitle><SheetDescription>Administrator navigation</SheetDescription></SheetHeader>
-          <NavigationPanel email={user.data?.email ?? ""} logoutPending={logout.isPending} onClose={() => setNavigationOpen(false)} onLogout={() => logout.mutate()} />
-        </SheetContent>
-      </Sheet>
-      <aside className={cn(
-        "fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-white/10 bg-sidebar text-sidebar-foreground transition-[width] duration-200 lg:flex",
-        navigationCollapsed ? "lg:w-20" : "lg:w-64",
-      )}>
-        <NavigationPanel collapsed={navigationCollapsed} email={user.data?.email ?? ""} logoutPending={logout.isPending} onCollapse={toggleNavigationCollapsed} onLogout={() => logout.mutate()} />
-      </aside>
-      <div className={cn("min-w-0 transition-[padding] duration-200", navigationCollapsed ? "lg:pl-20" : "lg:pl-64")}>
-        <header className="sticky top-0 z-20 flex h-16 items-center border-b border-white/10 bg-background/95 px-4 backdrop-blur md:px-6">
-          <Button aria-label="Open navigation" className="-ml-2 lg:hidden" onClick={() => setNavigationOpen(true)} size="icon" variant="ghost"><RiMenuLine /></Button>
-          <div className="ml-2 flex items-center gap-2 lg:hidden">
-            <img alt="" className="size-7" src="/admin/app-icon.svg" />
-            <span className="text-sm font-semibold">Lanka PriceLens</span>
-          </div>
-          <div className="hidden items-center gap-2 text-xs text-muted-foreground lg:flex">
-            <RiHome4Line className="size-4" />
-            <RiArrowRightSLine className="size-4 text-neutral-600" />
-            <span className="font-medium text-foreground">{currentPage}</span>
-          </div>
-          <div className="ml-auto flex items-center gap-2 font-mono text-[10px] text-muted-foreground sm:text-xs"><span className="size-2 rounded-full bg-emerald-500 shadow-[0_0_0_3px_rgba(16,185,129,0.1)]" />System online</div>
-        </header>
-        <main className="mx-auto w-full max-w-[1600px] p-4 sm:p-6 lg:p-7"><Outlet /></main>
-      </div>
-    </div>
+    <SidebarMenu>
+      <SidebarMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground" size="lg">
+              <Avatar className="size-8 rounded-lg"><AvatarFallback className="rounded-lg bg-primary/15 font-mono text-[11px] font-semibold text-primary">{initials}</AvatarFallback></Avatar>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate text-xs font-medium">{email || "Administrator"}</span>
+                <span className="truncate text-[10px] text-muted-foreground">Administrator</span>
+              </div>
+              <RiExpandUpDownLine className="ml-auto size-4" />
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-60" side={isMobile ? "bottom" : "right"} sideOffset={8}>
+            <DropdownMenuLabel className="flex items-center gap-2 font-normal">
+              <RiShieldUserLine className="size-4 text-primary" />
+              <span className="grid leading-tight"><span className="truncate text-xs font-medium">{email}</span><span className="text-[10px] text-muted-foreground">Owner session · HttpOnly cookie</span></span>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem disabled={logout.isPending} onSelect={() => logout.mutate()}>
+              <RiLogoutBoxRLine />{logout.isPending ? "Signing out…" : "Sign out"}
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </SidebarMenuItem>
+    </SidebarMenu>
   );
 }
 
-function NavigationPanel({ collapsed = false, email, logoutPending, onClose, onCollapse, onLogout }: { collapsed?: boolean; email?: string; logoutPending: boolean; onClose?: () => void; onCollapse?: () => void; onLogout: () => void }) {
-  return <>
-    <div className={cn("flex h-16 shrink-0 items-center gap-3 border-b border-white/10 px-4", collapsed && "lg:justify-center lg:px-2")}>
-      <img alt="" className="size-9 shrink-0" src="/admin/app-icon.svg" />
-      <div className={cn("min-w-0", collapsed && "lg:hidden")}><p className="truncate text-[15px] font-semibold tracking-tight">Lanka PriceLens</p><p className="truncate font-mono text-[10px] text-neutral-500">Foundry operations</p></div>
-      {onClose ? <Button aria-label="Close navigation" className="ml-auto" onClick={onClose} size="icon" variant="ghost"><RiCloseLine /></Button> : null}
-      {onCollapse ? <Button aria-label={collapsed ? "Expand navigation" : "Collapse navigation"} className={cn("ml-auto border-white/10 text-neutral-400 hover:bg-white/5 hover:text-white", collapsed && "absolute -right-3 top-5 rounded-full bg-neutral-900")} onClick={onCollapse} size="icon-sm" variant="outline">{collapsed ? <RiArrowRightSLine /> : <RiArrowLeftSLine />}</Button> : null}
-    </div>
-    <ScrollArea className="flex-1">
-      <nav aria-label="Operations" className="flex flex-col gap-1.5 p-3">
-        {navigation.map(({ to, label, icon: Icon, end }) => <NavLink aria-label={label} className={({ isActive }) => cn("flex min-h-11 items-center gap-3 rounded-lg border border-transparent px-3 text-[13px] font-medium text-neutral-400 transition-colors hover:bg-white/5 hover:text-neutral-100", isActive && "border-emerald-500/20 bg-emerald-500/10 text-emerald-400", collapsed && "lg:justify-center lg:px-0")} end={end} key={to} onClick={onClose} title={collapsed ? label : undefined} to={to}><Icon className="size-[18px] shrink-0" /><span className={cn(collapsed && "lg:hidden")}>{label}</span></NavLink>)}
-      </nav>
-    </ScrollArea>
-    <div className="border-t border-white/10 p-3">
-      <div className={cn("mb-2 flex items-center gap-3 rounded-lg px-3 py-2", collapsed && "lg:justify-center lg:px-0")}><RiShieldUserLine className="size-[18px] shrink-0 text-emerald-400" /><div className={cn("min-w-0", collapsed && "lg:hidden")}><p className="truncate text-xs font-medium">{email}</p><p className="text-[11px] text-neutral-500">Administrator</p></div></div>
-      <Button aria-label="Sign out" className={cn("w-full justify-start text-neutral-400 hover:bg-white/5 hover:text-white", collapsed && "lg:justify-center lg:px-0")} disabled={logoutPending} onClick={onLogout} title={collapsed ? "Sign out" : undefined} variant="ghost"><RiLogoutBoxRLine data-icon="inline-start" /><span className={cn(collapsed && "lg:hidden")}>Sign out</span></Button>
-    </div>
-  </>;
+function SchedulerStatus() {
+  const monitor = useQuery({
+    queryKey: ["workflow-schedules"],
+    queryFn: ({ signal }) => api<SchedulerMonitor>("/v1/admin/workflow-schedules", { signal }),
+    refetchInterval: 30_000,
+  });
+  const healthy = monitor.data?.instances.some((instance) => instance.healthy) ?? false;
+  const label = monitor.isPending ? "Checking scheduler" : healthy ? "Scheduler online" : "Scheduler offline";
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Badge className="gap-1.5 font-mono text-[10px]" variant="outline">
+          <span aria-hidden className={cn("size-1.5 rounded-full", healthy ? "bg-primary shadow-[0_0_0_3px_color-mix(in_oklab,var(--primary)_25%,transparent)]" : monitor.isPending ? "bg-muted-foreground" : "bg-amber-400 shadow-[0_0_0_3px_rgba(251,191,36,0.2)]")} />
+          {label}
+        </Badge>
+      </TooltipTrigger>
+      <TooltipContent side="bottom">
+        {healthy
+          ? `${monitor.data?.instances.filter((instance) => instance.healthy).length ?? 0} scheduler instance(s) heart-beating within ${monitor.data?.stale_after_seconds ?? 45}s.`
+          : "No live scheduler heartbeat. Queued workflows wait until the Foundry scheduler starts."}
+      </TooltipContent>
+    </Tooltip>
+  );
 }

@@ -305,3 +305,68 @@ async function loginRequest(app: ReturnType<typeof createApp>, password: string)
     body: JSON.stringify({ email: "owner@example.com", password }),
   });
 }
+
+test("insights endpoints require the owner and describe an empty foundry honestly", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    seedAdminUser(database, "owner@example.com", passwordHash);
+    syncSource(database, manifest);
+    const app = createApp(database, manifest);
+    assert.equal((await app.request("/v1/admin/insights")).status, 401);
+    const cookie = await loginCookie(app);
+
+    const summary = await app.request("/v1/admin/insights", { headers: { cookie } });
+    assert.equal(summary.status, 200);
+    const payload = ((await summary.json()) as { payload: { documents: { total: number; by_month: unknown[]; index_status: Array<{ status: string; count: number }> }; observations: { total: number; by_week: unknown[] }; runs: { by_day: unknown[]; succeeded_30d: number; failed_30d: number }; quality: { average_score: number | null }; markets: unknown[]; products: unknown[] } }).payload;
+    assert.equal(payload.documents.total, 0);
+    assert.deepEqual(payload.documents.by_month, []);
+    assert.deepEqual(payload.documents.index_status.map((row) => row.status), ["indexed", "indexing", "failed", "not_indexed"]);
+    assert.equal(payload.observations.total, 0);
+    assert.equal(payload.runs.by_day.length, 30);
+    assert.equal(payload.runs.succeeded_30d + payload.runs.failed_30d, 0);
+    assert.equal(payload.quality.average_score, null);
+    assert.deepEqual(payload.products, []);
+    assert.deepEqual((payload as { varieties?: unknown[] }).varieties, []);
+
+    const badRange = await app.request("/v1/admin/insights/prices?days=45", { headers: { cookie } });
+    assert.equal(badRange.status, 400);
+    const noProducts = await app.request("/v1/admin/insights/prices", { headers: { cookie } });
+    assert.equal(noProducts.status, 404);
+    const unknownProduct = await app.request("/v1/admin/insights/prices?product=product_missing&days=30", { headers: { cookie } });
+    assert.equal(unknownProduct.status, 404);
+    const unknownVariety = await app.request("/v1/admin/insights/prices?item=item_missing&days=30", { headers: { cookie } });
+    assert.equal(unknownVariety.status, 404);
+  } finally {
+    database.close();
+  }
+});
+
+test("price insights accept custom windows, expose a basket index, and describe sources plainly", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    seedAdminUser(database, "owner@example.com", passwordHash);
+    syncSource(database, manifest);
+    const app = createApp(database, manifest);
+    const cookie = await loginCookie(app);
+    assert.equal((await app.request("/v1/admin/insights/prices?from=2026-06-30&to=2026-04-01", { headers: { cookie } })).status, 400);
+    assert.equal((await app.request("/v1/admin/insights/basket?days=7", { headers: { cookie } })).status, 400);
+    assert.equal((await app.request("/v1/admin/insights/basket")).status, 401);
+    const basket = await app.request("/v1/admin/insights/basket?from=2026-04-01&to=2026-04-30", { headers: { cookie } });
+    assert.equal(basket.status, 200);
+    const basketPayload = ((await basket.json()) as { payload: { range: { from: string; to: string; days: number; preset: number | null }; points: unknown[]; products_included: number; risers: unknown[] } }).payload;
+    assert.deepEqual(basketPayload.range, { from: "2026-04-01", to: "2026-04-30", days: 30, preset: null });
+    assert.deepEqual(basketPayload.points, []);
+    assert.equal((basketPayload as { change_pct_7d?: number | null }).change_pct_7d, null);
+    assert.equal(basketPayload.products_included, 0);
+    const sources = await app.request("/v1/admin/sources", { headers: { cookie } });
+    assert.equal(sources.status, 200);
+    const [source] = ((await sources.json()) as { payload: { items: Array<Record<string, unknown>> } }).payload.items;
+    assert.equal(source?.expected_cadence, "business_daily");
+    assert.equal(source?.retrieval_method, "scheduled_download");
+    assert.equal(source?.publication_count, 0);
+    assert.equal(source?.observation_count, 0);
+    assert.equal(source?.failed_runs_30d, 0);
+  } finally {
+    database.close();
+  }
+});

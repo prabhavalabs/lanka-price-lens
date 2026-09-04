@@ -1,4 +1,4 @@
-import { useEffect, type MouseEvent } from "react";
+import { useEffect, type MouseEvent, type ReactNode } from "react";
 import { RiCloseLine, RiSearchLine } from "@remixicon/react";
 import { useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
@@ -71,7 +71,7 @@ export function TableControls({
   const form = useForm<{ search: string }>({ values: { search: state.search } });
   const filtered = Boolean(state.search || state.status);
   return (
-    <form className="flex flex-col gap-2 border-b border-white/[0.07] p-4 sm:flex-row sm:items-center" onSubmit={form.handleSubmit(({ search }) => state.update({ page: 1, search: search.trim() }))}>
+    <form className="flex flex-col gap-2 border-b border-white/[0.07] px-3 py-2.5 sm:flex-row sm:items-center" onSubmit={form.handleSubmit(({ search }) => state.update({ page: 1, search: search.trim() }))}>
       <InputGroup className="min-w-0 flex-1 sm:max-w-md">
         <InputGroupAddon><RiSearchLine /></InputGroupAddon>
         <InputGroupInput aria-label="Search table" placeholder={placeholder} {...form.register("search")} />
@@ -90,11 +90,33 @@ export function TableControls({
   );
 }
 
-export function Status({ value }: { value: string }) {
+export function Status({ value, className }: { value: string; className?: string }) {
   const bad = ["failed", "blocked", "degraded", "review_required", "quarantined"].includes(value);
-  const good = ["healthy", "succeeded", "parsed"].includes(value);
-  const active = ["running", "pending", "processing", "discovered"].includes(value);
-  return <Badge variant={bad ? "destructive" : good ? "default" : active ? "secondary" : "outline"}>{value.replaceAll("_", " ")}</Badge>;
+  const good = ["healthy", "succeeded", "parsed", "canonicalized", "indexed", "scheduled", "online"].includes(value);
+  const active = ["running", "pending", "processing", "discovered", "queued", "indexing"].includes(value);
+  return (
+    <Badge className={cn("capitalize", className)} variant={bad ? "destructive" : good ? "default" : active ? "secondary" : "outline"}>
+      {active ? <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-current" data-icon="inline-start" /> : null}
+      {value.replaceAll("_", " ")}
+    </Badge>
+  );
+}
+
+export function PageHeader({ title, description, eyebrow, actions }: { title: string; description: string; eyebrow?: string | undefined; actions?: ReactNode }) {
+  return (
+    <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div className="min-w-0">
+        {eyebrow ? <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{eyebrow}</p> : null}
+        <h1 className="font-heading text-xl font-semibold tracking-tight sm:text-2xl">{title}</h1>
+        <p className="mt-1 max-w-3xl text-[13px] leading-5 text-muted-foreground">{description}</p>
+      </div>
+      {actions ? <div className="flex flex-wrap gap-2 md:justify-end">{actions}</div> : null}
+    </div>
+  );
+}
+
+export function PageFrame({ title, description, eyebrow, actions, children }: { title: string; description: string; eyebrow?: string | undefined; actions?: ReactNode; children: ReactNode }) {
+  return <div className="flex flex-col gap-3.5"><PageHeader actions={actions} description={description} eyebrow={eyebrow} title={title} />{children}</div>;
 }
 
 export function EmptyTableRow({ columns }: { columns: number }) {
@@ -126,7 +148,7 @@ export function Pagination({ page, pageSize, pages, pending = false, total }: { 
   const firstItem = total ? (page - 1) * pageSize + 1 : 0;
   const lastItem = Math.min(page * pageSize, total);
   return (
-    <div className="flex flex-col items-center gap-2 border-t border-white/[0.07] px-4 py-3 text-xs">
+    <div className="flex flex-col items-center gap-1.5 border-t border-white/[0.07] px-3 py-2 text-xs">
       <PaginationRoot aria-label="Table pagination">
         <PaginationContent>
           <PaginationItem><PaginationPrevious aria-disabled={page <= 1} className={cn(page <= 1 && "pointer-events-none opacity-50")} href={href(Math.max(1, page - 1))} onClick={navigate(page - 1)} tabIndex={page <= 1 ? -1 : undefined} /></PaginationItem>
