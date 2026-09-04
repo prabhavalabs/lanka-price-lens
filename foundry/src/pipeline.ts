@@ -305,6 +305,56 @@ export async function retryProcessingStage(
   }
 }
 
+export type ProcessingRecovery = { retried: string[]; recovered: string[]; failed: string[] };
+
+/** Stages whose failure leaves a parsed document behind; a rerun from there needs no new download or parse. */
+const recoverableStages: readonly ProcessingStage[] = ["extract_data", "validate_data", "insert_data", "assess_completeness", "canonicalize_data"];
+
+/**
+ * Retries processing runs of a source that failed after the PDF was parsed, from
+ * the stage that failed. Such failures are almost always configuration (a bundle
+ * rejected, a mapping missing) rather than the document, so the next sync heals
+ * them once the configuration is fixed. Each stage is retried at most
+ * `maxAttempts` times in total; anything still failing stays for the operator.
+ */
+export async function recoverFailedProcessing(
+  database: OperationalDatabase,
+  manifest: SourceManifest,
+  options: { archive?: ArchiveStorage | undefined; mappingBundle?: MappingBundle | undefined; maxAttempts?: number | undefined } = {},
+): Promise<ProcessingRecovery> {
+  const maxAttempts = options.maxAttempts ?? 3;
+  const candidates = database
+    .prepare(
+      `SELECT run.id, stage.stage, stage.attempt_count
+       FROM ingest_run run
+       JOIN run_stage stage ON stage.run_id = run.id AND stage.status = 'failed'
+       WHERE run.source_id = ? AND run.workflow = 'pdf_processing' AND run.status = 'failed'
+       ORDER BY run.started_at`,
+    )
+    .all(manifest.id) as Array<{ id: string; stage: string; attempt_count: number }>;
+  const recovery: ProcessingRecovery = { retried: [], recovered: [], failed: [] };
+  for (const candidate of candidates) {
+    const stage = candidate.stage as ProcessingStage;
+    if (!recoverableStages.includes(stage) || candidate.attempt_count >= maxAttempts) continue;
+    if (!workflowRetryState(database, candidate.id, stage).canRetry) continue;
+    recovery.retried.push(candidate.id);
+    // Rerun the failed stage and every stage after it, in order, stopping at the first that fails again.
+    for (const next of processingStages.slice(processingStages.indexOf(stage))) {
+      if (stageStatus(database, candidate.id, next) === "succeeded") continue;
+      if (!workflowRetryState(database, candidate.id, next).canRetry) break;
+      try {
+        await retryProcessingStage(database, manifest, candidate.id, next, { archive: options.archive, mappingBundle: options.mappingBundle });
+      } catch {
+        // The run row already records the failure; the next sync tries again until the attempts are spent.
+        break;
+      }
+    }
+    const status = (database.prepare("SELECT status FROM ingest_run WHERE id = ?").get(candidate.id) as { status: string }).status;
+    (status === "succeeded" ? recovery.recovered : recovery.failed).push(candidate.id);
+  }
+  return recovery;
+}
+
 export function workflowRetryState(database: OperationalDatabase, runId: string, stage: ProcessingStage): RetryState {
   const run = database.prepare("SELECT status, workflow, artifact_id FROM ingest_run WHERE id = ?").get(runId) as
     | { status: string; workflow: string; artifact_id: string | null }

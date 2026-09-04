@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -14,6 +15,7 @@ import { keellsAdapter, keellsPack } from "../src/retail/adapters/keells.ts";
 import { outletCode, sparAdapter, sparLabel, sparPack } from "../src/retail/adapters/spar.ts";
 import { pauseHours } from "../src/retail/capture.ts";
 import { remapRecentSnapshots } from "../src/retail/remap.ts";
+import { bundleFingerprint } from "../src/mapping.ts";
 import { matchItemPattern } from "../src/patterns.ts";
 import { countFromLabel, normalizeUnit } from "../src/units.ts";
 import { backoff, CookieJar, fetchWithPolicy } from "../src/retail/http.ts";
@@ -471,4 +473,13 @@ test("an unchanged re-capture and remap promote rows a newer bundle maps", async
   } finally {
     cleanup();
   }
+});
+
+test("bundle fingerprints ignore empty pattern fields so earlier registrations stay valid", () => {
+  const plain = mappingBundleSchema.parse({ ...bundle, mapping_version: "keells-test.plain", excluded_patterns: [], items: bundle.items.filter((item) => !item.source_patterns.length) });
+  const legacy = JSON.parse(JSON.stringify(plain)) as { excluded_patterns?: unknown; items: Array<{ source_patterns?: unknown }> };
+  delete legacy.excluded_patterns;
+  for (const item of legacy.items) delete item.source_patterns;
+  assert.equal(bundleFingerprint(plain), createHash("sha256").update(JSON.stringify(legacy)).digest("hex"), "a bundle without rules hashes as it did before rules existed");
+  assert.notEqual(bundleFingerprint(bundle), bundleFingerprint(plain), "rules are part of the fingerprint");
 });

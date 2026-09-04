@@ -152,14 +152,30 @@ function emptyResult(): CanonicalizationResult {
   return { accepted: 0, corrected: 0, historical: 0, duplicates: 0, quarantined: 0, unmapped: 0 };
 }
 
+/**
+ * The registry fingerprint of a bundle. Fields that only exist as empty defaults
+ * (an item's `source_patterns`, the bundle's `excluded_patterns`) are left out, so
+ * a bundle written before those fields existed keeps the fingerprint it was
+ * registered with and a schema addition never reads as a reused version.
+ */
+export function bundleFingerprint(bundle: MappingBundle): string {
+  // Key order is preserved so the serialization of an older bundle is byte-for-byte what was registered.
+  const canonical: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(bundle)) {
+    if (key === "excluded_patterns" && Array.isArray(value) && !value.length) continue;
+    canonical[key] = key === "items" ? bundle.items.map(({ source_patterns, ...item }) => (source_patterns.length ? { ...item, source_patterns } : item)) : value;
+  }
+  return createHash("sha256").update(JSON.stringify(canonical)).digest("hex");
+}
+
 export function syncMappingBundle(database: OperationalDatabase, bundle: MappingBundle): void {
   database.transaction(() => {
-    const bundleSha256 = createHash("sha256").update(JSON.stringify(bundle)).digest("hex");
+    const bundleSha256 = bundleFingerprint(bundle);
     const registered = database
       .prepare("SELECT bundle_sha256 FROM mapping_bundle_registry WHERE source_id = ? AND mapping_version = ?")
       .get(bundle.source_id, bundle.mapping_version) as { bundle_sha256: string } | undefined;
     if (registered && registered.bundle_sha256 !== bundleSha256) {
-      throw new Error(`MAPPING_VERSION_REUSED:${bundle.mapping_version}`);
+      throw new Error(`MAPPING_VERSION_REUSED:${bundle.mapping_version} (the bundle changed; give it a new mapping_version)`);
     }
     const registryInsert = database
       .prepare(

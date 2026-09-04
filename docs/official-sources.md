@@ -68,3 +68,10 @@ manifest must accompany any release.
 - Fixtures under `foundry/test/fixtures/documents/` hold the extracted text of one
   real report per series; `foundry/test/documents.test.ts` covers discovery,
   parsing, and error codes.
+- A document that fails after parsing (a bundle rejected as a reused version, a
+  mapping missing) is retried by the next `sync` from the stage that failed, up to
+  three attempts per stage, once the configuration has changed; the sync reports
+  `recovery` with the runs retried, recovered, and still failing. A bundle's
+  registry fingerprint ignores empty pattern fields, so adding schema fields never
+  turns an unchanged bundle into a "reused version"; any real change to a bundle's
+  content still needs a new `mapping_version`.
