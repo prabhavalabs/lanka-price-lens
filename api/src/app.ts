@@ -35,6 +35,14 @@ import { requestId } from "hono/request-id";
 import { secureHeaders } from "hono/secure-headers";
 import { streamSSE } from "hono/streaming";
 
+import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
+import {
+  archivedKnowledgePdf,
+  knowledgeIndexStatus,
+  latestKnowledgeArtifact,
+  latestKnowledgeDispatch,
+  latestKnowledgeProcessing,
+} from "./knowledge-sql.ts";
 import {
   adminSessionCookie,
   adminSessionSeconds,
@@ -191,13 +199,32 @@ export function createApp(
     const where = listWhere(request, ["name", "owner", "rights_status"], "state");
     const total = (database.prepare(`SELECT COUNT(*) AS count FROM source${where.sql}`).get(...where.values) as { count: number }).count;
     const page = pageRequest(request, total);
+    const failureWindowStart = new Date(Date.now() - 30 * 86_400_000).toISOString();
     const items = database
       .prepare(
-        `SELECT id, name, owner, rights_status, review_due_at, enabled, state,
-         last_discovery_at, last_fetch_at, last_parse_at FROM source${where.sql}
+        `SELECT id, name, owner, landing_url, rights_status, rights_evidence_ref, reviewed_at, review_due_at, enabled, state,
+         last_discovery_at, last_fetch_at, last_parse_at, last_release_at,
+         json_extract(manifest_json, '$.expected_cadence') AS expected_cadence,
+         json_extract(manifest_json, '$.retrieval_method') AS retrieval_method,
+         json_extract(manifest_json, '$.attribution_text') AS attribution_text,
+         json_extract(manifest_json, '$.geographic_scope') AS geographic_scope,
+         json_extract(manifest_json, '$.retention_policy') AS retention_policy,
+         (SELECT COUNT(*) FROM source_publication publication WHERE publication.source_id = source.id) AS publication_count,
+         (SELECT COUNT(*) FROM source_publication publication
+          WHERE publication.source_id = source.id AND publication.status = 'canonicalized') AS canonicalized_count,
+         (SELECT COUNT(*) FROM ingest_run run
+          WHERE run.source_id = source.id AND run.status = 'failed' AND run.started_at >= ?) AS failed_runs_30d,
+         (SELECT COUNT(*) FROM price_observation observation
+          JOIN source_publication publication ON publication.id = observation.source_publication_id
+          WHERE publication.source_id = source.id AND observation.status = 'active') AS observation_count,
+         (SELECT run.started_at FROM ingest_run run
+          WHERE run.source_id = source.id AND run.status = 'failed' ORDER BY run.started_at DESC LIMIT 1) AS last_failure_at,
+         (SELECT run.error_message FROM ingest_run run
+          WHERE run.source_id = source.id AND run.status = 'failed' ORDER BY run.started_at DESC LIMIT 1) AS last_error_message
+         FROM source${where.sql}
          ORDER BY name LIMIT ? OFFSET ?`,
       )
-      .all(...where.values, page.pageSize, page.offset);
+      .all(failureWindowStart, ...where.values, page.pageSize, page.offset);
     return context.json(envelope(context.get("requestId"), { items, ...page }));
   });
   app.get("/v1/admin/runs", (context) => {
@@ -405,33 +432,6 @@ export function createApp(
       ),
     ),
   );
-  const latestKnowledgeArtifact = `LEFT JOIN source_artifact artifact ON artifact.id = (
-    SELECT candidate.id FROM source_artifact candidate
-    WHERE candidate.publication_id = publication.id
-    ORDER BY candidate.fetched_at DESC, candidate.id DESC LIMIT 1
-  )`;
-  const archivedKnowledgePdf = "LEFT JOIN archived_pdf archive ON archive.publication_id = publication.id";
-  const latestKnowledgeProcessing = `LEFT JOIN ingest_run processing ON processing.id = (
-    SELECT candidate.id FROM ingest_run candidate
-    WHERE candidate.archive_id = archive.id AND candidate.workflow = 'pdf_processing'
-    ORDER BY candidate.started_at DESC, candidate.id DESC LIMIT 1
-  ) LEFT JOIN ingest_run artifact_run ON artifact_run.id = artifact.run_id`;
-  const latestKnowledgeDispatch = `LEFT JOIN workflow_dispatch dispatch ON dispatch.id = (
-    SELECT candidate.id FROM workflow_dispatch candidate
-    WHERE candidate.archive_id = archive.id AND candidate.workflow_key = 'document_processing_pipeline'
-    ORDER BY candidate.created_at DESC, candidate.id DESC LIMIT 1
-  )`;
-  const knowledgeIndexStatus = `CASE
-    WHEN dispatch.status IN ('queued', 'running')
-      OR COALESCE(processing.status, artifact_run.status) IN ('queued', 'pending', 'running') THEN 'indexing'
-    WHEN artifact.id IS NOT NULL AND EXISTS (
-      SELECT 1 FROM price_observation indexed_observation
-      WHERE indexed_observation.source_artifact_id = artifact.id
-    ) THEN 'indexed'
-    WHEN dispatch.status = 'failed' OR artifact.status = 'quarantined'
-      OR COALESCE(processing.status, artifact_run.status) IN ('failed', 'blocked') THEN 'failed'
-    ELSE 'not_indexed'
-  END`;
   const knowledgeSelect = `SELECT publication.id AS publication_id,
     COALESCE(artifact.id, archive.id, publication.id) AS document_id,
     publication.title, publication.published_at, publication.observed_from, publication.observed_to,
@@ -480,6 +480,7 @@ export function createApp(
     ${knowledgeIndexStatus} AS index_status,
     json_extract(artifact.inspection_json, '$.pdfType') AS pdf_type,
     json_extract(artifact.inspection_json, '$.pageCount') AS page_count,
+    COALESCE((SELECT COUNT(*) FROM price_observation observation WHERE observation.source_artifact_id = artifact.id), 0) AS canonical_count,
     dispatch.id AS processing_dispatch_id,
     CASE WHEN dispatch.status IN ('queued', 'running')
          THEN CASE WHEN processing.dispatch_id = dispatch.id THEN processing.id ELSE dispatch.run_id END
@@ -516,6 +517,21 @@ export function createApp(
   };
   app.get("/v1/admin/knowledge-base", listKnowledgeBase);
   app.get("/v1/admin/uploads", listKnowledgeBase);
+  app.get("/v1/admin/insights", (context) => context.json(envelope(context.get("requestId"), insightsSummary(database))));
+  const rangeRequest = (context: Context<AppBindings>) =>
+    parseRangeRequest({ days: context.req.query("days"), from: context.req.query("from"), to: context.req.query("to") });
+  app.get("/v1/admin/insights/prices", (context) => {
+    const range = rangeRequest(context);
+    if ("error" in range) return context.json(envelope(context.get("requestId"), null, false, range.error), 400);
+    const series = priceSeries(database, (context.req.query("product") ?? "").trim().slice(0, 100), (context.req.query("item") ?? "").trim().slice(0, 100), range);
+    if (!series) return context.json(envelope(context.get("requestId"), null, false, "No canonical prices exist for that product or variety"), 404);
+    return context.json(envelope(context.get("requestId"), series));
+  });
+  app.get("/v1/admin/insights/basket", (context) => {
+    const range = rangeRequest(context);
+    if ("error" in range) return context.json(envelope(context.get("requestId"), null, false, range.error), 400);
+    return context.json(envelope(context.get("requestId"), basketIndex(database, range)));
+  });
   app.get("/v1/admin/knowledge-base/:publicationId/file", async (context) => {
     const document = database
       .prepare(
@@ -585,7 +601,7 @@ export function createApp(
       .get(sourceManifest.id) as { id: string; trigger: string; status: string } | undefined;
     if (active) return context.json(envelope(context.get("requestId"), active, false, "Another source run is active"), 409);
 
-    const task = runSourceSync(database, sourceManifest, { trigger: mode === "backfill" ? "backfill" : "manual" });
+    const task = runSourceSync(database, sourceManifest, { trigger: mode === "backfill" ? "backfill" : "manual", mappingBundle, archive: options.archiveStorage });
     const run = database
       .prepare("SELECT id, workflow, trigger, status FROM ingest_run WHERE source_id = ? AND workflow = 'source_sync' ORDER BY started_at DESC LIMIT 1")
       .get(sourceManifest.id) as { id: string; trigger: string; status: string } | undefined;
