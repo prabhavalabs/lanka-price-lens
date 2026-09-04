@@ -21,23 +21,36 @@ if (command === "hash-password") {
   openOperationalDatabase(databasePath()).close();
   console.log(`Initialized ${databasePath()}`);
 } else if (command === "sync" || command === "ingest") {
+  // One PDF source with --source <id>; otherwise every enabled PDF source in turn (what the production timer runs).
   const catalog = await loadCatalog();
-  if (!catalog.primary) throw new Error("No PDF bulletin source is configured");
-  const { manifest, mappingBundle } = catalog.primary;
+  const requested = valueOf("--source");
+  const entries = requested
+    ? [catalog.find(requested) ?? (() => { throw new Error(`Unknown source ${requested}`); })()]
+    : catalog.entries.filter((entry) => !entry.manifest.adapter && entry.manifest.enabled);
+  if (!entries.length) throw new Error("No PDF bulletin source is configured");
   const database = openOperationalDatabase(databasePath());
   try {
     const trigger = arguments_.includes("--backfill") ? "backfill" : arguments_.includes("--manual") ? "manual" : "scheduled";
     const from = dateValue("--from");
     const to = dateValue("--to");
     if (from && to && from > to) throw new Error("--from must not be later than --to");
-    const result = await runSourceSync(database, manifest, { trigger, from, to, mappingBundle });
-    console.log(JSON.stringify(result));
-    if (result.processingRunIds.length) {
-      const placeholders = result.processingRunIds.map(() => "?").join(",");
-      const failed = database
-        .prepare(`SELECT COUNT(*) AS count FROM ingest_run WHERE id IN (${placeholders}) AND status != 'succeeded'`)
-        .get(...result.processingRunIds) as { count: number };
-      if (failed.count) process.exitCode = 1;
+    for (const { manifest, mappingBundle } of entries) {
+      try {
+        const result = await runSourceSync(database, manifest, { trigger, from, to, mappingBundle });
+        console.log(JSON.stringify({ source: manifest.id, ...result }));
+        if (result.status !== "succeeded") process.exitCode = 1;
+        if (result.processingRunIds.length) {
+          const placeholders = result.processingRunIds.map(() => "?").join(",");
+          const failed = database
+            .prepare(`SELECT COUNT(*) AS count FROM ingest_run WHERE id IN (${placeholders}) AND status != 'succeeded'`)
+            .get(...result.processingRunIds) as { count: number };
+          if (failed.count) process.exitCode = 1;
+        }
+      } catch (error) {
+        // One source failing must not stop the others; the run row already records the failure.
+        console.log(JSON.stringify({ source: manifest.id, status: "failed", message: error instanceof Error ? error.message : String(error) }));
+        process.exitCode = 1;
+      }
     }
   } finally {
     database.close();

@@ -46,6 +46,19 @@ export type CanonicalizationResult = {
   historical: number;
   duplicates: number;
   quarantined: number;
+  /** Rows left in staging because no mapping exists yet (only with unknownLabels: "record"). */
+  unmapped: number;
+};
+
+export type CanonicalizeOptions = {
+  /**
+   * What to do with rows whose item, market, or unit has no mapping. "quarantine"
+   * (default) opens a quarantine row per staging row, right for curated bulletins.
+   * "record" leaves the row in staging as unmapped and upserts the label into
+   * source_unmapped_label, right for whole-catalogue snapshots where most labels
+   * are deliberately unmapped and a per-row quarantine would drown real problems.
+   */
+  unknownLabels?: "quarantine" | "record";
 };
 
 export function canonicalizeRun(
@@ -101,6 +114,7 @@ export function canonicalizeArtifact(
   artifactId: string,
   bundle: MappingBundle,
   parserVersion: string,
+  options: CanonicalizeOptions = {},
 ): CanonicalizationResult {
   const run = database.prepare("SELECT source_id FROM ingest_run WHERE id = ?").get(runId) as { source_id: string } | undefined;
   if (!run) throw new Error("RUN_NOT_FOUND");
@@ -118,7 +132,7 @@ export function canonicalizeArtifact(
     .all(artifactId) as StagingRow[];
   const result = emptyResult();
   database.transaction(() => {
-    for (const row of rows) canonicalizeRow(database, runId, row, bundle, parserVersion, result);
+    for (const row of rows) canonicalizeRow(database, runId, row, bundle, parserVersion, result, options);
   })();
   database
     .prepare("UPDATE ingest_run SET quarantined_count = quarantined_count + ? WHERE id = ?")
@@ -127,7 +141,7 @@ export function canonicalizeArtifact(
 }
 
 function emptyResult(): CanonicalizationResult {
-  return { accepted: 0, corrected: 0, historical: 0, duplicates: 0, quarantined: 0 };
+  return { accepted: 0, corrected: 0, historical: 0, duplicates: 0, quarantined: 0, unmapped: 0 };
 }
 
 export function syncMappingBundle(database: OperationalDatabase, bundle: MappingBundle): void {
@@ -301,15 +315,16 @@ function canonicalizeRow(
   bundle: MappingBundle,
   parserVersion: string,
   result: CanonicalizationResult,
+  options: CanonicalizeOptions = {},
 ): void {
   const item = database
     .prepare("SELECT item_id FROM source_item_mapping WHERE source_id = ? AND source_label = ?")
     .get(row.source_id, row.source_item_label) as { item_id: string } | undefined;
-  if (!item) return quarantine(database, runId, row, "UNKNOWN_ITEM", result);
+  if (!item) return unknownLabel(database, runId, row, "UNKNOWN_ITEM", "item", row.source_item_label, result, options);
   const market = database
     .prepare("SELECT market_id FROM source_market_mapping WHERE source_id = ? AND source_label = ?")
     .get(row.source_id, row.source_market_label) as { market_id: string } | undefined;
-  if (!market) return quarantine(database, runId, row, "UNKNOWN_MARKET", result);
+  if (!market) return unknownLabel(database, runId, row, "UNKNOWN_MARKET", "market", row.source_market_label, result, options);
   const unit = bundle.units.find((candidate) => candidate.source_unit === row.source_unit);
   const rule = unit
     ? (database
@@ -319,7 +334,7 @@ function canonicalizeRow(
     )
     .get(unit.id) as { id: string; normalized_unit: string; factor_numerator: number; factor_denominator: number } | undefined)
     : undefined;
-  if (!rule) return quarantine(database, runId, row, "UNKNOWN_UNIT", result);
+  if (!rule) return unknownLabel(database, runId, row, "UNKNOWN_UNIT", "unit", row.source_unit, result, options);
   if (
     !Number.isSafeInteger(row.min_value_minor) ||
     !Number.isSafeInteger(row.max_value_minor) ||
@@ -503,6 +518,35 @@ function canonicalizeRow(
   } else {
     result.accepted += 1;
   }
+}
+
+function unknownLabel(
+  database: OperationalDatabase,
+  runId: string,
+  row: StagingRow,
+  reason: "UNKNOWN_ITEM" | "UNKNOWN_MARKET" | "UNKNOWN_UNIT",
+  labelType: "item" | "market" | "unit",
+  label: string,
+  result: CanonicalizationResult,
+  options: CanonicalizeOptions,
+): void {
+  if (options.unknownLabels !== "record") return quarantine(database, runId, row, reason, result);
+  const now = new Date().toISOString();
+  database
+    .prepare(
+      `INSERT INTO source_unmapped_label (
+        source_id, label_type, label, occurrences, first_seen_at, last_seen_at,
+        last_market_label, last_quantity, last_unit, last_price_minor, last_artifact_id
+      ) VALUES (?, ?, ?, 1, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(source_id, label_type, label) DO UPDATE SET
+        occurrences = occurrences + 1, last_seen_at = excluded.last_seen_at,
+        last_market_label = excluded.last_market_label, last_quantity = excluded.last_quantity,
+        last_unit = excluded.last_unit, last_price_minor = excluded.last_price_minor,
+        last_artifact_id = excluded.last_artifact_id`,
+    )
+    .run(row.source_id, labelType, label, now, now, row.source_market_label, row.source_quantity, row.source_unit, row.min_value_minor, row.artifact_id);
+  database.prepare("UPDATE staging_observation SET status = 'unmapped' WHERE id = ?").run(row.id);
+  result.unmapped += 1;
 }
 
 function quarantine(

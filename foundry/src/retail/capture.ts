@@ -300,7 +300,8 @@ function canonicalize<S>(
       output: { artifact_id: context.artifactId, status: "not_configured", message: "No mapping bundle for this source; records stay in staging" },
     };
   }
-  const result = canonicalizeArtifact(database, runId, context.artifactId, bundle, `retail-${adapter.kind}@1`);
+  // Whole-catalogue snapshots carry thousands of deliberately unmapped labels; record them instead of quarantining each row.
+  const result = canonicalizeArtifact(database, runId, context.artifactId, bundle, `retail-${adapter.kind}@1`, { unknownLabels: "record" });
   const canonicalized = result.accepted + result.corrected + result.historical;
   database.prepare("UPDATE source_artifact SET status = 'canonicalized' WHERE id = ?").run(context.artifactId);
   database
