@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 
 import { configuredArchiveStorage } from "./archive-storage.ts";
 import { openOperationalDatabase } from "./db.ts";
-import { canonicalizeRun } from "./mapping.ts";
+import { canonicalizeRun, syncMappingBundle } from "./mapping.ts";
 import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
 import { recoverFailedProcessing, runSourceSync } from "./pipeline.ts";
 import { remapRecentSnapshots, retailAdapterFor, runRetailCapture } from "./retail/index.ts";
@@ -37,6 +37,8 @@ if (command === "hash-password") {
     if (from && to && from > to) throw new Error("--from must not be later than --to");
     for (const { manifest, mappingBundle } of entries) {
       try {
+        // Register the bundle first so vocabulary changes (new items, product settings) reach the operational store even on a day without new documents.
+        if (mappingBundle) syncMappingBundle(database, mappingBundle);
         const result = await runSourceSync(database, manifest, { trigger, from, to, mappingBundle });
         console.log(JSON.stringify({ source: manifest.id, ...result }));
         if (result.status !== "succeeded") process.exitCode = 1;

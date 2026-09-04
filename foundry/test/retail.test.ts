@@ -477,9 +477,10 @@ test("an unchanged re-capture and remap promote rows a newer bundle maps", async
 
 test("bundle fingerprints ignore empty pattern fields so earlier registrations stay valid", () => {
   const plain = mappingBundleSchema.parse({ ...bundle, mapping_version: "keells-test.plain", excluded_patterns: [], items: bundle.items.filter((item) => !item.source_patterns.length) });
-  const legacy = JSON.parse(JSON.stringify(plain)) as { excluded_patterns?: unknown; items: Array<{ source_patterns?: unknown }> };
+  const legacy = JSON.parse(JSON.stringify(plain)) as { excluded_patterns?: unknown; items: Array<{ source_patterns?: unknown }>; products: Array<{ comparison?: unknown }> };
   delete legacy.excluded_patterns;
   for (const item of legacy.items) delete item.source_patterns;
+  for (const product of legacy.products) delete product.comparison;
   assert.equal(bundleFingerprint(plain), createHash("sha256").update(JSON.stringify(legacy)).digest("hex"), "a bundle without rules hashes as it did before rules existed");
   assert.notEqual(bundleFingerprint(bundle), bundleFingerprint(plain), "rules are part of the fingerprint");
 });

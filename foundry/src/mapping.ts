@@ -163,7 +163,9 @@ export function bundleFingerprint(bundle: MappingBundle): string {
   const canonical: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(bundle)) {
     if (key === "excluded_patterns" && Array.isArray(value) && !value.length) continue;
-    canonical[key] = key === "items" ? bundle.items.map(({ source_patterns, ...item }) => (source_patterns.length ? { ...item, source_patterns } : item)) : value;
+    if (key === "items") canonical[key] = bundle.items.map(({ source_patterns, ...item }) => (source_patterns.length ? { ...item, source_patterns } : item));
+    else if (key === "products") canonical[key] = bundle.products.map(({ comparison, ...product }) => (comparison === "pooled" ? product : { ...product, comparison }));
+    else canonical[key] = value;
   }
   return createHash("sha256").update(JSON.stringify(canonical)).digest("hex");
 }
@@ -201,14 +203,15 @@ export function syncMappingBundle(database: OperationalDatabase, bundle: Mapping
     for (const product of bundle.products) {
       database
         .prepare(
-          `INSERT INTO product (id, category, canonical_label_en, canonical_label_si, canonical_label_ta)
-           VALUES (?, ?, ?, ?, ?)
+          `INSERT INTO product (id, category, canonical_label_en, canonical_label_si, canonical_label_ta, comparison)
+           VALUES (?, ?, ?, ?, ?, ?)
            ON CONFLICT(id) DO UPDATE SET category = excluded.category,
              canonical_label_en = excluded.canonical_label_en,
              canonical_label_si = excluded.canonical_label_si,
-             canonical_label_ta = excluded.canonical_label_ta`,
+             canonical_label_ta = excluded.canonical_label_ta,
+             comparison = excluded.comparison`,
         )
-        .run(product.id, product.category, product.canonical_label_en, product.canonical_label_si, product.canonical_label_ta);
+        .run(product.id, product.category, product.canonical_label_en, product.canonical_label_si, product.canonical_label_ta, product.comparison);
     }
     for (const item of bundle.items) {
       database
