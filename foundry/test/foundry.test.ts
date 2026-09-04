@@ -504,7 +504,7 @@ test("reviewed mappings create correction-safe observations and reconciled relea
     const runId = insertStagingFixture(database, approved.id, "known", "Beans");
 
     const first = canonicalizeRun(database, runId, mappingBundle("item_beans", "Beans", "fixture-v1"), "fixture-parser@1");
-    assert.deepEqual(first, { accepted: 1, corrected: 0, historical: 0, duplicates: 0, quarantined: 0 });
+    assert.deepEqual(first, { accepted: 1, corrected: 0, historical: 0, duplicates: 0, quarantined: 0, unmapped: 0 });
     const corrected = canonicalizeRun(
       database,
       runId,
@@ -667,14 +667,14 @@ test("later source publications remain effective when revisions are processed ou
       corrected: 0,
       historical: 0,
       duplicates: 0,
-      quarantined: 0,
+      quarantined: 0, unmapped: 0,
     });
     assert.deepEqual(canonicalizeRun(database, olderRun, bundle, "fixture-parser@1"), {
       accepted: 0,
       corrected: 0,
       historical: 1,
       duplicates: 0,
-      quarantined: 0,
+      quarantined: 0, unmapped: 0,
     });
     assert.deepEqual(
       database
