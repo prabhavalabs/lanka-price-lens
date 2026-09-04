@@ -2,6 +2,7 @@ import { RiArrowDownLine, RiArrowRightLine, RiArrowUpLine } from "@remixicon/rea
 import type { ReactNode } from "react";
 import { Area, Bar, BarChart, CartesianGrid, ComposedChart, LabelList, Line, LineChart, ReferenceDot, ReferenceLine, XAxis, YAxis } from "recharts";
 
+import { SellerMark } from "@/components/seller-mark";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
 import type { BasketPoint, ExplorerSeries, InsightsIndexStatus, InsightsMarket, InsightsMonth, InsightsRunDay, PriceMarket, PricePoint } from "@/lib/api";
@@ -288,7 +289,13 @@ export const maxChartSeries = seriesColors.length;
 export function MarketSeriesChart({ series, unit }: { series: ExplorerSeries[]; unit: string | null }) {
   // Chart keys become CSS variable names, so they must be plain identifiers rather than the API's "market|price type|unit" keys.
   const shown = series.slice(0, maxChartSeries).map((entry, index) => ({ ...entry, chartKey: `series_${index}` }));
-  const config: ChartConfig = Object.fromEntries(shown.map((entry, index) => [entry.chartKey, { label: entry.market_label, color: seriesColors[index % seriesColors.length]! }]));
+  // Each legend entry carries the seller's mark so a line is recognisable by more than its hue.
+  const config: ChartConfig = Object.fromEntries(
+    shown.map((entry, index) => [
+      entry.chartKey,
+      { label: entry.market_label, color: seriesColors[index % seriesColors.length]!, icon: () => <SellerMark className="size-4!" label={entry.market_label} marketId={entry.market_id} type={entry.market_type} /> },
+    ]),
+  );
   const dates = [...new Set(shown.flatMap((entry) => entry.points.map((point) => point.date)))].sort();
   const data = dates.map((date) => {
     const row: Record<string, string | number | null> = { date };
@@ -313,7 +320,7 @@ export function MarketSeriesChart({ series, unit }: { series: ExplorerSeries[]; 
         />
         <ChartLegend content={<ChartLegendContent />} itemSorter={null} />
         {shown.map((entry) => (
-          <Line activeDot={{ r: 4, stroke: "var(--card)", strokeWidth: 2 }} animationDuration={600} animationEasing="ease-out" connectNulls dataKey={entry.chartKey} dot={entry.points.length === 1 ? { r: 4, strokeWidth: 0 } : false} key={entry.key} stroke={`var(--color-${entry.chartKey})`} strokeLinecap="round" strokeWidth={2} type="monotone" />
+          <Line activeDot={{ r: 4, stroke: "var(--card)", strokeWidth: 2 }} animationDuration={600} animationEasing="ease-out" connectNulls dataKey={entry.chartKey} dot={entry.points.length === 1 ? { r: 4, strokeWidth: 0, fill: `var(--color-${entry.chartKey})` } : false} key={entry.key} stroke={`var(--color-${entry.chartKey})`} strokeLinecap="round" strokeWidth={2} type="monotone" />
         ))}
       </LineChart>
     </ChartContainer>

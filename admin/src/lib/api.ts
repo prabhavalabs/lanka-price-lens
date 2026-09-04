@@ -148,7 +148,7 @@ export type PriceSeries = {
 };
 export type ExplorerItem = { id: string; label: string; display: string; product_id: string; product_label: string; category: string; variety: string | null; origin: string | null; grade: string | null; markets: number; last_day: string | null; aliases: string[] };
 export type ExplorerGroup = "wholesale" | "retail_market" | "supermarket";
-export type ExplorerLatest = { market_id: string; market_label: string; market_type: string; group: ExplorerGroup; price_type: string; source_id: string; observed_on: string; unit: string; low: number; high: number; mid: number };
+export type ExplorerLatest = { market_id: string; market_label: string; market_type: string; group: ExplorerGroup; price_type: string; source_id: string; observed_on: string; unit: string; low: number; high: number; mid: number; products: number };
 export type ExplorerPoint = { date: string; mid: number; low: number; high: number };
 export type ExplorerSeries = { key: string; market_id: string; market_label: string; market_type: string; group: ExplorerGroup; price_type: string; unit: string; days: number; first: { date: string; mid: number }; last: { date: string; mid: number }; change_pct: number | null; points: ExplorerPoint[] };
 export type ExplorerSummary = { group: ExplorerGroup; unit: string | null; sellers: number; average: number | null; lowest: ExplorerLatest | null; highest: ExplorerLatest | null };

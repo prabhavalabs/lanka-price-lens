@@ -7,6 +7,7 @@ import { PageFrame } from "@/components/data-display";
 import { DateRangeControl, describeRange } from "@/components/date-range-control";
 import { ItemSearch } from "@/components/item-search";
 import { ProductImage } from "@/components/product-image";
+import { SellerMark } from "@/components/seller-mark";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -118,7 +119,7 @@ export function PriceExplorerPage() {
           <Card size="sm">
             <CardHeader>
               <CardTitle>How each seller prices it</CardTitle>
-              <CardDescription>Latest price per seller. Change compares the first and last day the seller reported within the selected period.</CardDescription>
+              <CardDescription>Latest price per seller. A supermarket's price spans every brand and pack of the item on its shelf that day. Change compares the first and last day the seller reported within the selected period.</CardDescription>
             </CardHeader>
             <CardContent className="px-0">
               <Table>
@@ -174,7 +175,15 @@ function SellerRow({ entry, series, cheapest }: { entry: ExplorerLatest; series:
   const change = series?.change_pct ?? null;
   return (
     <TableRow>
-      <TableCell className="pl-4 font-medium">{entry.market_label}{cheapest ? <Badge className="ml-2" variant="secondary">Cheapest</Badge> : null}</TableCell>
+      <TableCell className="pl-4 font-medium">
+        <span className="flex items-center gap-2.5">
+          <SellerMark label={entry.market_label} marketId={entry.market_id} type={entry.market_type} />
+          <span className="min-w-0">
+            <span className="block truncate">{entry.market_label}{cheapest ? <Badge className="ml-2" variant="secondary">Cheapest</Badge> : null}</span>
+            {entry.products > 1 ? <span className="block text-[11px] font-normal text-muted-foreground">Range across {entry.products} products on the shelf</span> : null}
+          </span>
+        </span>
+      </TableCell>
       <TableCell className="text-muted-foreground">{groupCopy[entry.group].short}</TableCell>
       <TableCell className="text-right font-mono">{rupees(entry.mid)}<span className="text-muted-foreground">/{entry.unit}</span></TableCell>
       <TableCell className="text-right font-mono text-muted-foreground">{entry.low === entry.high ? "—" : `${rupees(entry.low)} – ${rupees(entry.high)}`}</TableCell>
