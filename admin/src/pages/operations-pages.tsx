@@ -9,6 +9,7 @@ import {
   RiExternalLinkLine,
   RiFilePdf2Line,
   RiHistoryLine,
+  RiStore2Line,
   RiLoader4Line,
   RiLockLine,
   RiPlayLine,
@@ -20,6 +21,7 @@ import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tansta
 import type { ReactNode } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 
+import { AdapterPanel } from "@/components/adapter-panel";
 import { compactNumber, wholeNumber } from "@/components/charts";
 import { date, EmptyTableRow, PageFrame, Pagination, Status, TableControls, useTableState } from "@/components/data-display";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -58,16 +60,19 @@ const automationIcons: Record<WorkflowKey, typeof RiHistoryLine> = {
   latest_document_collection: RiCalendarScheduleLine,
   historical_backfill: RiHistoryLine,
   document_processing_pipeline: RiDatabase2Line,
+  retail_price_capture: RiStore2Line,
 };
 const automationPlainNames: Record<WorkflowKey, string> = {
   latest_document_collection: "Collect new bulletins",
   historical_backfill: "Fill gaps in the archive",
   document_processing_pipeline: "Extract prices from bulletins",
+  retail_price_capture: "Capture supermarket prices",
 };
 const automationPlainSummaries: Record<WorkflowKey, string> = {
   latest_document_collection: "Looks at the HARTI website for bulletins published since the last check and downloads any that are missing.",
   historical_backfill: "Walks back through HARTI's history and downloads older bulletins the archive does not have yet, a few at a time.",
   document_processing_pipeline: "Reads each archived PDF, pulls out the price table, checks it, and saves the prices so they show up in Price insights.",
+  retail_price_capture: "Every morning, reads the shelf prices listed by each supermarket's online store, keeps the snapshot as evidence, and saves the mapped items as retail prices.",
 };
 
 export function RunsPage() {
@@ -125,7 +130,7 @@ export function RunsPage() {
   const schedulerOnline = monitor.data?.instances.some((instance) => instance.healthy) ?? false;
 
   return (
-    <PageFrame description="Three automations keep the archive current: one collects new bulletins, one fills historical gaps, and one extracts prices. Each runs on a schedule and can also be started by hand." eyebrow="Operations" title="Automations">
+    <PageFrame description="Four automations keep the data current: one collects new bulletins, one fills historical gaps, one extracts prices from them, and one captures supermarket shelf prices each morning. Each runs on a schedule and can also be started by hand." eyebrow="Operations" title="Automations">
       <Tabs onValueChange={(value) => selectView(value as typeof view)} value={view}>
         <TabsList aria-label="Automation views" className="w-full sm:w-fit" variant="line">
           <TabsTrigger value="workflows">Automations</TabsTrigger>
@@ -278,7 +283,7 @@ function AutomationCard({ workflow, pending, run }: { workflow: WorkflowDefiniti
         <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 text-xs">
           <Fact icon={<RiCalendarScheduleLine />} label="Runs">{workflow.scheduleLabel} <span className="text-muted-foreground">({workflow.timezone})</span></Fact>
           <Fact icon={<RiTimeLine />} label="Next run">{workflow.schedule?.enabled ? <>{dateInZone(workflow.schedule.next_run_at, workflow.timezone)} <span className="text-muted-foreground">· {relativeTime(workflow.schedule.next_run_at)}</span></> : <span className="text-muted-foreground">Paused in the timetable</span>}</Fact>
-          <Fact icon={<RiShieldCheckLine />} label="Limit">At most {workflow.maxItems} bulletins per run, so one run never overwhelms HARTI or the database</Fact>
+          <Fact icon={<RiShieldCheckLine />} label="Limit">{workflow.key === "retail_price_capture" ? "One store per run, paced with pauses between page requests, so no retailer is overwhelmed" : `At most ${workflow.maxItems} bulletins per run, so one run never overwhelms HARTI or the database`}</Fact>
           <Fact icon={<RiHistoryLine />} label="Last finished">{workflow.schedule?.last_finished_at ? date(workflow.schedule.last_finished_at) : <span className="text-muted-foreground">Not yet</span>}</Fact>
         </dl>
         <Accordion collapsible type="single">
@@ -349,6 +354,10 @@ const workflowLabels: Partial<Record<WorkflowStep["stage"], { title: string; des
   insert_data: { title: "Save the rows", description: "Write the checked rows to the database" },
   assess_completeness: { title: "Score completeness", description: "Compare what was found with what this bulletin normally contains" },
   canonicalize_data: { title: "Publish the prices", description: "Map product and market names to the reviewed list so Price insights can use them" },
+  fetch_snapshot: { title: "Fetch the store's prices", description: "Call the retailer's online store the same way its website does and collect every listed item" },
+  normalize_records: { title: "Tidy the records", description: "Turn each listing into one row of product, pack size, and price" },
+  validate_records: { title: "Check the snapshot", description: "Drop broken rows and hold the snapshot for review if it looks too small or very different from yesterday" },
+  store_snapshot: { title: "Store the snapshot", description: "Keep the raw snapshot as evidence and save the rows, skipping it when prices are unchanged" },
   crawl: { title: "Crawl source", description: "Discover current source publications" },
   download: { title: "Download PDFs", description: "Retain the source documents" },
   process: { title: "Extract and process", description: "Read PDF text and build records" },
@@ -580,19 +589,22 @@ function dateInZone(value: string | null, timezone: string): string {
 
 const rightsLabels: Record<string, { label: string; description: string }> = {
   approved_permission: { label: "Permission granted", description: "HARTI has given written permission for non-commercial data preparation." },
+  approved_open: { label: "Open data", description: "The source is published for reuse." },
+  internal_evaluation: { label: "Internal evaluation", description: "Publicly listed prices are captured for internal analysis only and are not redistributed until the rights review is complete." },
+  link_only: { label: "Link only", description: "We may point to the source but not store its data." },
   public_domain: { label: "Public domain", description: "The source is free to reuse." },
   open_license: { label: "Open licence", description: "The source is published under an open licence." },
   unknown: { label: "Not yet confirmed", description: "Rights have not been confirmed, so nothing from this source can be published." },
   restricted: { label: "Restricted", description: "Reuse is restricted; only internal processing is allowed." },
 };
 const cadenceLabels: Record<string, string> = { business_daily: "Every working day", daily: "Every day", weekly: "Every week", event_driven: "Whenever published" };
-const methodLabels: Record<string, string> = { scheduled_download: "Automatic download on a timetable", manual: "Uploaded by hand", partner_feed: "Delivered by the partner" };
+const methodLabels: Record<string, string> = { scheduled_download: "Automatic download on a timetable", manual: "Uploaded by hand", partner_feed: "Delivered by the partner", api_snapshot: "Daily snapshot of the online store" };
 const retentionLabels: Record<string, string> = { preserve_source_evidence: "Original PDFs are kept as evidence", metadata_and_checksum_only: "Only metadata and checksums are kept" };
-const scopeLabels: Record<string, string> = { selected_wholesale_markets: "Selected wholesale markets across Sri Lanka" };
+const scopeLabels: Record<string, string> = { selected_wholesale_markets: "Selected wholesale markets across Sri Lanka", online_store_national: "Online store shelf prices (one national price list)" };
 const stateCopy: Record<string, string> = {
   healthy: "Recent runs succeeded and the rights review is current.",
   degraded: "A recent run failed. Check the run history for the error.",
-  paused: "Collection is switched off for this source.",
+  paused: "Captures are on hold after repeated failures; resume from the source card once the cause is fixed.",
   blocked: "Rights or review are overdue, so nothing can run.",
   review_required: "The rights review is due; confirm it to keep collecting.",
 };
@@ -621,6 +633,7 @@ function SourceCard({ source }: { source: Source }) {
   const rights = rightsLabels[source.rights_status] ?? { label: source.rights_status.replaceAll("_", " "), description: "" };
   const reviewOverdue = Date.parse(source.review_due_at) < Date.now();
   const extractedShare = source.publication_count ? Math.round((source.canonicalized_count / source.publication_count) * 100) : 0;
+  const retail = Boolean(source.adapter_kind);
   return (
     <Card>
       <CardHeader>
@@ -628,7 +641,7 @@ function SourceCard({ source }: { source: Source }) {
           <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-primary/25 bg-primary/10 text-primary"><RiDatabase2Line className="size-5" /></span>
           <div className="min-w-0">
             <CardTitle className="text-lg">{source.name}</CardTitle>
-            <CardDescription className="mt-1">Published by {source.owner}.</CardDescription>
+            <CardDescription className="mt-1">{retail ? `Online store run by ${source.owner}.` : `Published by ${source.owner}.`}</CardDescription>
           </div>
         </div>
         <CardAction className="flex flex-wrap items-center gap-2">
@@ -644,7 +657,7 @@ function SourceCard({ source }: { source: Source }) {
               <Definition label="How often">{cadenceLabels[source.expected_cadence ?? ""] ?? source.expected_cadence ?? "Unknown"}</Definition>
               <Definition label="How">{methodLabels[source.retrieval_method ?? ""] ?? source.retrieval_method ?? "Unknown"}</Definition>
               <Definition label="Covers">{scopeLabels[source.geographic_scope ?? ""] ?? source.geographic_scope ?? "Unknown"}</Definition>
-              <Definition label="We keep">{retentionLabels[source.retention_policy ?? ""] ?? source.retention_policy ?? "Unknown"}</Definition>
+              <Definition label="We keep">{retail && source.retention_policy === "preserve_source_evidence" ? "Every price snapshot is kept as evidence" : retentionLabels[source.retention_policy ?? ""] ?? source.retention_policy ?? "Unknown"}</Definition>
               <Definition label="Website"><a className="inline-flex items-center gap-1 underline underline-offset-4 hover:text-primary" href={source.landing_url} rel="noreferrer" target="_blank">{source.landing_url.replace(/^https?:\/\//u, "")}<RiExternalLinkLine className="size-3.5" /></a></Definition>
             </dl>
           </section>
@@ -662,8 +675,8 @@ function SourceCard({ source }: { source: Source }) {
           <section aria-label="Progress">
             <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Progress so far</h3>
             <div className="grid grid-cols-2 gap-3">
-              <Figure label="Bulletins found" value={wholeNumber.format(source.publication_count)} />
-              <Figure hint={`${extractedShare}% of bulletins`} label="Prices extracted" value={wholeNumber.format(source.canonicalized_count)} />
+              <Figure label={retail ? "Daily snapshots" : "Bulletins found"} value={wholeNumber.format(source.publication_count)} />
+              <Figure hint={`${extractedShare}% of ${retail ? "snapshots" : "bulletins"}`} label={retail ? "Snapshots published" : "Prices extracted"} value={wholeNumber.format(source.canonicalized_count)} />
               <Figure label="Price rows" value={compactNumber.format(source.observation_count)} />
               <Figure label="Failed runs, 30 days" tone={source.failed_runs_30d ? "warning" : "default"} value={wholeNumber.format(source.failed_runs_30d)} />
             </div>
@@ -671,18 +684,15 @@ function SourceCard({ source }: { source: Source }) {
           <section aria-label="Recent activity">
             <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Recent activity</h3>
             <ItemGroup className="rounded-lg border">
-              <Activity label="Last checked the website" value={source.last_discovery_at} />
-              <ItemSeparator />
-              <Activity label="Last downloaded a bulletin" value={source.last_fetch_at} />
-              <ItemSeparator />
-              <Activity label="Last extracted prices" value={source.last_parse_at} />
+              {retail ? <Activity label="Last successful capture" value={source.last_capture_at} /> : <><Activity label="Last checked the website" value={source.last_discovery_at} /><ItemSeparator /><Activity label="Last downloaded a bulletin" value={source.last_fetch_at} /><ItemSeparator /><Activity label="Last extracted prices" value={source.last_parse_at} /></>}
               {source.last_failure_at ? <><ItemSeparator /><Item size="sm"><ItemMedia variant="icon"><RiAlertLine className="text-destructive" /></ItemMedia><ItemContent><ItemTitle>Last failure {date(source.last_failure_at)}</ItemTitle><ItemDescription className="line-clamp-2" title={source.last_error_message ?? undefined}>{source.last_error_message ?? "No error message was recorded."}</ItemDescription></ItemContent></Item></> : null}
             </ItemGroup>
           </section>
         </div>
+        {retail ? <div className="border-t pt-4 lg:col-span-2"><AdapterPanel sourceId={source.id} /></div> : null}
       </CardContent>
       <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
-        <Button asChild size="sm" variant="outline"><Link to="/knowledge-base"><RiFilePdf2Line data-icon="inline-start" />See its bulletins</Link></Button>
+        {retail ? null : <Button asChild size="sm" variant="outline"><Link to="/knowledge-base"><RiFilePdf2Line data-icon="inline-start" />See its bulletins</Link></Button>}
         <Button asChild size="sm" variant="outline"><Link to="/runs?view=history"><RiHistoryLine data-icon="inline-start" />See its runs</Link></Button>
         <Button asChild size="sm" variant="ghost"><Link to="/insights">Explore prices<RiArrowRightLine data-icon="inline-end" /></Link></Button>
       </CardFooter>

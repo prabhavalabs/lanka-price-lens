@@ -122,13 +122,13 @@ export function insightsSummary(database: OperationalDatabase, now = new Date())
     .prepare(
       `SELECT COUNT(*) AS total, COUNT(DISTINCT item.product_id) AS products, COUNT(DISTINCT observation.market_id) AS markets,
        MIN(observation.observed_from) AS first_observed, MAX(observation.observed_from) AS last_observed
-       FROM ${activeObservations} WHERE observation.status = 'active'`,
+       FROM ${activeObservations} WHERE observation.status = 'active' AND observation.price_type = 'wholesale_observed'`,
     )
     .get() as { total: number; products: number; markets: number; first_observed: string | null; last_observed: string | null };
   const byWeek = (database
     .prepare(
       `SELECT date(observed_from, 'weekday 0', '-6 days') AS week, COUNT(*) AS count
-       FROM price_observation WHERE status = 'active' GROUP BY week ORDER BY week DESC LIMIT 26`,
+       FROM price_observation WHERE status = 'active' AND price_type = 'wholesale_observed' GROUP BY week ORDER BY week DESC LIMIT 26`,
     )
     .all() as Array<{ week: string; count: number }>).reverse();
   const windowStart = isoDate(addDays(now, -29));
@@ -155,7 +155,7 @@ export function insightsSummary(database: OperationalDatabase, now = new Date())
   const markets = database
     .prepare(
       `SELECT market.id, market.label_en AS label, COUNT(observation.id) AS observations, COUNT(DISTINCT item.product_id) AS products
-       FROM market LEFT JOIN price_observation observation ON observation.market_id = market.id AND observation.status = 'active'
+       FROM market LEFT JOIN price_observation observation ON observation.market_id = market.id AND observation.status = 'active' AND observation.price_type = 'wholesale_observed'
        LEFT JOIN item ON item.id = observation.item_id
        WHERE market.status = 'active' GROUP BY market.id ORDER BY observations DESC, label`,
     )
@@ -191,7 +191,7 @@ export function canonicalProducts(database: OperationalDatabase): InsightsProduc
     .prepare(
       `SELECT product.id, product.canonical_label_en AS label, product.category, COUNT(observation.id) AS observations
        FROM product LEFT JOIN item ON item.product_id = product.id
-       LEFT JOIN price_observation observation ON observation.item_id = item.id AND observation.status = 'active'
+       LEFT JOIN price_observation observation ON observation.item_id = item.id AND observation.status = 'active' AND observation.price_type = 'wholesale_observed'
        WHERE product.status = 'active' GROUP BY product.id HAVING observations > 0
        ORDER BY observations DESC, label`,
     )
@@ -204,7 +204,7 @@ export function canonicalVarieties(database: OperationalDatabase, productId?: st
       `SELECT item.id, item.product_id, item.canonical_label_en AS label, product.category,
        COUNT(observation.id) AS observations, COALESCE(AVG(${midPriceMinor}) / 100.0, 0) AS average
        FROM item JOIN product ON product.id = item.product_id
-       LEFT JOIN price_observation observation ON observation.item_id = item.id AND observation.status = 'active'
+       LEFT JOIN price_observation observation ON observation.item_id = item.id AND observation.status = 'active' AND observation.price_type = 'wholesale_observed'
        WHERE item.status = 'active' AND product.status = 'active'${productId ? " AND item.product_id = ?" : ""}
        GROUP BY item.id HAVING observations > 0 ORDER BY observations DESC, label`,
     )
@@ -222,7 +222,7 @@ export function priceSeries(database: OperationalDatabase, productId: string, it
   const scope = variety ? "observation.item_id = ?" : "item.product_id = ?";
   const scopeValue = variety ? variety.id : product.id;
   const last = (database
-    .prepare(`SELECT MAX(observation.observed_from) AS last FROM ${activeObservations} WHERE observation.status = 'active' AND ${scope}`)
+    .prepare(`SELECT MAX(observation.observed_from) AS last FROM ${activeObservations} WHERE observation.status = 'active' AND observation.price_type = 'wholesale_observed' AND ${scope}`)
     .get(scopeValue) as { last: string | null }).last;
   const empty = (range: PriceRange): PriceSeries => ({
     product, variety, varieties, unit: null, range, points: [], latest: null, previous: null, by_market: [],
@@ -233,7 +233,7 @@ export function priceSeries(database: OperationalDatabase, productId: string, it
   const unit = (database
     .prepare(
       `SELECT observation.normalized_unit AS unit, COUNT(*) AS count FROM ${activeObservations}
-       WHERE observation.status = 'active' AND ${scope} GROUP BY unit ORDER BY count DESC LIMIT 1`,
+       WHERE observation.status = 'active' AND observation.price_type = 'wholesale_observed' AND ${scope} GROUP BY unit ORDER BY count DESC LIMIT 1`,
     )
     .get(scopeValue) as { unit: string } | undefined)?.unit ?? null;
   const rawPoints = database
@@ -242,7 +242,7 @@ export function priceSeries(database: OperationalDatabase, productId: string, it
        MIN(observation.normalized_min_value_minor) / 100.0 AS low, MAX(observation.normalized_max_value_minor) / 100.0 AS high,
        COUNT(DISTINCT observation.market_id) AS markets
        FROM ${activeObservations}
-       WHERE observation.status = 'active' AND ${scope} AND observation.observed_from BETWEEN ? AND ?
+       WHERE observation.status = 'active' AND observation.price_type = 'wholesale_observed' AND ${scope} AND observation.observed_from BETWEEN ? AND ?
        GROUP BY date ORDER BY date`,
     )
     .all(scopeValue, range.from, range.to) as Array<Omit<PricePoint, "moving_average" | "index">>;
@@ -257,7 +257,7 @@ export function priceSeries(database: OperationalDatabase, productId: string, it
        MIN(observation.normalized_min_value_minor) / 100.0 AS low, MAX(observation.normalized_max_value_minor) / 100.0 AS high,
        COUNT(*) AS observations
        FROM ${activeObservations} JOIN market ON market.id = observation.market_id
-       WHERE observation.status = 'active' AND ${scope} AND observation.observed_from > ? AND observation.observed_from <= ?
+       WHERE observation.status = 'active' AND observation.price_type = 'wholesale_observed' AND ${scope} AND observation.observed_from > ? AND observation.observed_from <= ?
        GROUP BY market.id ORDER BY average DESC, label`,
     )
     .all(scopeValue, weekEarlier, latestDate) as PriceMarket[]).map((market) => ({
@@ -269,7 +269,7 @@ export function priceSeries(database: OperationalDatabase, productId: string, it
   const referenceAverage = (date: string) => database
     .prepare(
       `SELECT observation.observed_from AS date, AVG(${midPriceMinor}) / 100.0 AS average FROM ${activeObservations}
-       WHERE observation.status = 'active' AND ${scope} AND observation.observed_from <= ?
+       WHERE observation.status = 'active' AND observation.price_type = 'wholesale_observed' AND ${scope} AND observation.observed_from <= ?
        GROUP BY observation.observed_from ORDER BY observation.observed_from DESC LIMIT 1`,
     )
     .get(scopeValue, date) as { date: string; average: number } | undefined;
@@ -305,14 +305,14 @@ export function priceSeries(database: OperationalDatabase, productId: string, it
 export function basketIndex(database: OperationalDatabase, request: RangeRequest): BasketIndex {
   const varieties = canonicalVarieties(database);
   const last = (database
-    .prepare("SELECT MAX(observed_from) AS last FROM price_observation WHERE status = 'active'")
+    .prepare("SELECT MAX(observed_from) AS last FROM price_observation WHERE status = 'active' AND price_type = 'wholesale_observed'")
     .get() as { last: string | null }).last;
   const range = resolveRange(request, last ?? isoDate(new Date()));
   const rows = database
     .prepare(
       `SELECT observation.item_id AS item, observation.observed_from AS date, AVG(${midPriceMinor}) / 100.0 AS average
        FROM price_observation observation
-       WHERE observation.status = 'active' AND observation.observed_from BETWEEN ? AND ?
+       WHERE observation.status = 'active' AND observation.price_type = 'wholesale_observed' AND observation.observed_from BETWEEN ? AND ?
        GROUP BY item, date ORDER BY item, date`,
     )
     .all(range.from, range.to) as Array<{ item: string; date: string; average: number }>;

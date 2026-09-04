@@ -1,0 +1,34 @@
+{
+  "id": "keells_online_prices",
+  "name": "Keells Online shelf prices",
+  "owner": "John Keells Holdings PLC (Keells Supermarkets)",
+  "landing_url": "https://www.keellssuper.com/",
+  "retrieval_method": "api_snapshot",
+  "expected_cadence": "daily",
+  "formats": [
+    "json"
+  ],
+  "geographic_scope": "online_store_national",
+  "price_types": [
+    "retail_online_store"
+  ],
+  "rights_status": "internal_evaluation",
+  "rights_evidence_ref": "docs/retail-capture.md",
+  "attribution_text": "Source: Keells Online, publicly listed shelf prices captured for internal evaluation. Not redistributed until the rights review is complete.",
+  "retention_policy": "preserve_source_evidence",
+  "parser_owner": "Prabhava Labs maintainers",
+  "reviewed_by": "repository-owner",
+  "reviewed_at": "2026-09-04",
+  "review_due_at": "2027-03-04",
+  "request_interval_ms": 1500,
+  "max_attempts": 3,
+  "enabled": true,
+  "adapter": {
+    "kind": "keells_api",
+    "settings": {
+      "departmentIds": [
+        16
+      ]
+    }
+  }
+}

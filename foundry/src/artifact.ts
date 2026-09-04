@@ -12,8 +12,9 @@ export function persistParsedArtifact(
 
 export function persistProcessedArtifact(
   database: OperationalDatabase,
-  input: { artifactId: string; runId: string; items: TextItem[]; observations: ParsedObservation[] },
+  input: { artifactId: string; runId: string; items: TextItem[]; observations: ParsedObservation[]; priceType?: string | undefined },
 ): void {
+  const priceType = input.priceType ?? "wholesale_observed";
   database.transaction(() => {
     replaceExtractedText(database, input.artifactId, input.items);
 
@@ -23,7 +24,7 @@ export function persistProcessedArtifact(
         id, run_id, artifact_id, source_row_ref, source_item_label, source_market_label,
         source_date, price_type, currency, source_quantity, source_unit,
         min_value_minor, max_value_minor, status, raw_json
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, 'wholesale_observed', 'LKR', ?, ?, ?, ?, 'pending_validation', ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'LKR', ?, ?, ?, ?, 'pending_validation', ?)
       ON CONFLICT(artifact_id, source_row_ref, source_market_label) DO UPDATE SET
         source_item_label = excluded.source_item_label,
         source_date = excluded.source_date,
@@ -45,6 +46,7 @@ export function persistProcessedArtifact(
         observation.itemLabel,
         observation.marketLabel,
         observation.date,
+        priceType,
         observation.sourceQuantity,
         observation.sourceUnit,
         observation.minValueMinor,
