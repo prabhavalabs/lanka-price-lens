@@ -4,7 +4,7 @@ import { Area, Bar, BarChart, CartesianGrid, ComposedChart, LabelList, Line, Lin
 
 import { Card, CardContent } from "@/components/ui/card";
 import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
-import type { BasketPoint, InsightsIndexStatus, InsightsMarket, InsightsMonth, InsightsRunDay, PriceMarket, PricePoint } from "@/lib/api";
+import type { BasketPoint, ExplorerSeries, InsightsIndexStatus, InsightsMarket, InsightsMonth, InsightsRunDay, PriceMarket, PricePoint } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 export const compactNumber = new Intl.NumberFormat(undefined, { notation: "compact", maximumFractionDigits: 1 });
@@ -276,6 +276,46 @@ export function BasketIndexChart({ points }: { points: BasketPoint[] }) {
         <Area activeDot={false} baseValue={100} dataKey="index" fill="var(--color-index)" fillOpacity={0.1} animationDuration={600} animationEasing="ease-out" stroke="none" type="monotone" />
         <Line activeDot={{ r: 4, stroke: "var(--card)", strokeWidth: 2 }} dataKey="index" dot={false} animationDuration={600} animationEasing="ease-out" stroke="var(--color-index)" strokeLinecap="round" strokeWidth={2} type="monotone" />
       </ComposedChart>
+    </ChartContainer>
+  );
+}
+
+const seriesColors = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)", "var(--chart-4)", "var(--chart-5)"] as const;
+/** Lines per market are limited to the palette; callers pass the markets with the most data first. */
+export const maxChartSeries = seriesColors.length;
+
+/** One line per market for a single item; hues are assigned in a fixed order so a market keeps its colour across ranges. */
+export function MarketSeriesChart({ series, unit }: { series: ExplorerSeries[]; unit: string | null }) {
+  // Chart keys become CSS variable names, so they must be plain identifiers rather than the API's "market|price type|unit" keys.
+  const shown = series.slice(0, maxChartSeries).map((entry, index) => ({ ...entry, chartKey: `series_${index}` }));
+  const config: ChartConfig = Object.fromEntries(shown.map((entry, index) => [entry.chartKey, { label: entry.market_label, color: seriesColors[index % seriesColors.length]! }]));
+  const dates = [...new Set(shown.flatMap((entry) => entry.points.map((point) => point.date)))].sort();
+  const data = dates.map((date) => {
+    const row: Record<string, string | number | null> = { date };
+    for (const entry of shown) row[entry.chartKey] = entry.points.find((point) => point.date === date)?.mid ?? null;
+    return row;
+  });
+  const unitLabel = unit ? `/${unit}` : "";
+  return (
+    <ChartContainer className="aspect-auto h-60 w-full" config={config}>
+      <LineChart data={data} margin={{ top: 8, right: 12, bottom: 0, left: 0 }}>
+        <CartesianGrid vertical={false} />
+        <XAxis axisLine={false} dataKey="date" minTickGap={32} tick={axisTick} tickFormatter={formatDay} tickLine={false} tickMargin={8} />
+        <YAxis axisLine={false} domain={["auto", "auto"]} tick={axisTick} tickFormatter={(value: number) => compactNumber.format(value)} tickLine={false} width={44} />
+        <ChartTooltip
+          content={
+            <ChartTooltipContent
+              formatter={(value, name) => <TooltipRow color={config[String(name)]?.color ?? "var(--chart-muted)"} label={config[String(name)]?.label ?? String(name)} value={value === null || value === undefined ? "—" : `${rupees(Number(value))}${unitLabel}`} />}
+              labelFormatter={(label) => formatDay(String(label))}
+            />
+          }
+          cursor={{ stroke: "var(--border)", strokeWidth: 1 }}
+        />
+        <ChartLegend content={<ChartLegendContent />} itemSorter={null} />
+        {shown.map((entry) => (
+          <Line activeDot={{ r: 4, stroke: "var(--card)", strokeWidth: 2 }} animationDuration={600} animationEasing="ease-out" connectNulls dataKey={entry.chartKey} dot={entry.points.length === 1 ? { r: 4, strokeWidth: 0 } : false} key={entry.key} stroke={`var(--color-${entry.chartKey})`} strokeLinecap="round" strokeWidth={2} type="monotone" />
+        ))}
+      </LineChart>
     </ChartContainer>
   );
 }
