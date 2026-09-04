@@ -14,6 +14,7 @@ const KnowledgeBasePage = lazy(() => import("@/pages/knowledge-base-page").then(
 const DocumentDetailPage = lazy(() => import("@/pages/knowledge-base-page").then((module) => ({ default: module.DocumentDetailPage })));
 const SourcesPage = lazy(() => import("@/pages/operations-pages").then((module) => ({ default: module.SourcesPage })));
 const InsightsPage = lazy(() => import("@/pages/insights-page").then((module) => ({ default: module.InsightsPage })));
+const PriceExplorerPage = lazy(() => import("@/pages/price-explorer-page").then((module) => ({ default: module.PriceExplorerPage })));
 
 const router = createBrowserRouter(
   [
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
             { path: "pdfs", element: <Navigate to="/knowledge-base" replace /> },
             { path: "sources", element: <SourcesPage /> },
             { path: "insights", element: <InsightsPage /> },
+            { path: "explorer", element: <PriceExplorerPage /> },
           ],
         },
       ],

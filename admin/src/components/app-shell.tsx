@@ -5,6 +5,7 @@ import {
   RiFilePdf2Line,
   RiHistoryLine,
   RiLineChartLine,
+  RiSearchEyeLine,
   RiLogoutBoxRLine,
   RiShieldUserLine,
   type RemixiconComponentType,
@@ -48,6 +49,7 @@ const operations: NavigationItem[] = [
 ];
 const intelligence: NavigationItem[] = [
   { to: "/insights", label: "Price insights", icon: RiLineChartLine, end: false },
+  { to: "/explorer", label: "Price explorer", icon: RiSearchEyeLine, end: false },
 ];
 const navigation = [...operations, ...intelligence];
 
