@@ -7,6 +7,7 @@ import { canonicalizeRun } from "./mapping.ts";
 import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
 import { runSourceSync } from "./pipeline.ts";
 import { retailAdapterFor, runRetailCapture } from "./retail/index.ts";
+import { connectWarehouse, migrateWarehouse, renderReportMarkdown, syncWarehouse, warehouseReport } from "./warehouse/index.ts";
 import { buildRelease } from "./release.ts";
 import { startScheduler } from "./scheduler.ts";
 
@@ -92,6 +93,34 @@ if (command === "hash-password") {
     }
   } finally {
     database.close();
+  }
+} else if (command === "warehouse") {
+  // warehouse migrate | sync [--full] | report [--json]; the PostgreSQL URL comes from --url or LPL_POSTGRES_URL.
+  const action = arguments_[0];
+  const url = valueOf("--url") ?? process.env.LPL_POSTGRES_URL;
+  if (!url) throw new Error("Set LPL_POSTGRES_URL or pass --url postgres://…");
+  if (!action || !["migrate", "sync", "report"].includes(action)) throw new Error("Usage: warehouse migrate | sync [--full] | report [--json]");
+  const client = await connectWarehouse(url);
+  try {
+    if (action === "migrate") {
+      console.log(JSON.stringify({ migrated: await migrateWarehouse(client) }));
+    } else if (action === "sync") {
+      const database = openOperationalDatabase(databasePath());
+      try {
+        const result = await syncWarehouse(database, client, {
+          full: arguments_.includes("--full"),
+          log: (level, message, data) => console.error(JSON.stringify({ level, message, ...data })),
+        });
+        console.log(JSON.stringify(result));
+      } finally {
+        database.close();
+      }
+    } else {
+      const report = await warehouseReport(client);
+      console.log(arguments_.includes("--json") ? JSON.stringify(report, null, 2) : renderReportMarkdown(report));
+    }
+  } finally {
+    await client.close();
   }
 } else if (command === "canonicalize") {
   const runId = requiredValue("--run");

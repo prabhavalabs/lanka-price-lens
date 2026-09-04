@@ -475,6 +475,8 @@ function migrate(database: OperationalDatabase): void {
   addColumn(database, "price_observation", "source_fetched_at", "TEXT");
   addColumn(database, "price_observation", "superseded_by_id", "TEXT REFERENCES price_observation(id)");
   addColumn(database, "price_observation", "revision_reason", "TEXT");
+  addColumn(database, "price_observation", "updated_at", "TEXT");
+  database.exec("CREATE INDEX IF NOT EXISTS price_observation_change_stamp_idx ON price_observation(COALESCE(updated_at, created_at), id)");
   addColumn(database, "run_stage", "input_json", "TEXT");
   addColumn(database, "run_stage", "output_json", "TEXT");
   addColumn(database, "run_stage", "attempt_count", "INTEGER NOT NULL DEFAULT 0");
