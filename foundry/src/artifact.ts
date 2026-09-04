@@ -46,7 +46,7 @@ export function persistProcessedArtifact(
         observation.itemLabel,
         observation.marketLabel,
         observation.date,
-        priceType,
+        observation.priceType ?? priceType,
         observation.sourceQuantity,
         observation.sourceUnit,
         observation.minValueMinor,
