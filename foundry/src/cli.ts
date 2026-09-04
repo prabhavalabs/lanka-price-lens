@@ -101,7 +101,8 @@ if (command === "hash-password") {
   const entries = all
     ? catalog.entries.filter((entry) => entry.manifest.enabled && retailAdapterFor(entry.manifest))
     : [catalog.find(requiredValue("--source")) ?? (() => { throw new Error("Unknown source; pass --source <manifest id> or --all"); })()];
-  if (!entries.length) throw new Error("No retail sources are configured");
+  // A deployment without retail sources has nothing to re-promote; that is not a failure.
+  if (!entries.length) console.log(JSON.stringify({ status: "skipped", message: "No retail sources are configured" }));
   const days = Number(valueOf("--days") ?? 7);
   if (!Number.isInteger(days) || days < 1) throw new Error("--days must be a positive whole number");
   const database = openOperationalDatabase(databasePath());
@@ -205,11 +206,20 @@ function databasePath(): string {
 }
 
 /** One manifest when --manifest or LPL_SOURCE_MANIFEST_PATH is given; otherwise every manifest in the manifests directory. */
+/**
+ * The catalogue of every configured source. A manifests directory (--manifests or
+ * LPL_MANIFESTS_DIR) wins over a single manifest (--manifest or
+ * LPL_SOURCE_MANIFEST_PATH): deployments set both so that older single-source
+ * tooling keeps working, and the multi-source commands (sync, capture --all,
+ * remap --all) must see every source, not only the first one that was configured.
+ */
 async function loadCatalog(): Promise<SourceCatalog> {
-  const single = valueOf("--manifest") ?? process.env.LPL_SOURCE_MANIFEST_PATH;
+  const explicitSingle = valueOf("--manifest");
+  const directory = valueOf("--manifests") ?? process.env.LPL_MANIFESTS_DIR;
+  const single = explicitSingle ?? (directory ? undefined : process.env.LPL_SOURCE_MANIFEST_PATH);
   if (single) return singleSourceCatalog(await readSourceManifest(single), await readMappingBundle(mappingPath()));
   return readSourceCatalog(
-    resolve(valueOf("--manifests") ?? process.env.LPL_MANIFESTS_DIR ?? resolve(process.cwd(), "../data/manifests")),
+    resolve(directory ?? resolve(process.cwd(), "../data/manifests")),
     resolve(valueOf("--mappings-dir") ?? process.env.LPL_MAPPINGS_DIR ?? resolve(process.cwd(), "../data/mappings")),
   );
 }
