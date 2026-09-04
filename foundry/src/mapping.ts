@@ -562,6 +562,7 @@ function validDate(value: string): boolean {
 
 const knownPriceTypes = new Set([
   "retail_observed",
+  "retail_online_store",
   "wholesale_observed",
   "producer_observed",
   "regulated_maximum",

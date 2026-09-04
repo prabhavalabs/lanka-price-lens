@@ -637,7 +637,19 @@ function migrate(database: OperationalDatabase): void {
       ON price_observation(effective_key, source_published_at DESC, created_at DESC);
     CREATE INDEX IF NOT EXISTS artifact_quality_status_score_idx
       ON artifact_quality_assessment(status, score);
+
+    CREATE TABLE IF NOT EXISTS source_adapter_setting (
+      source_id TEXT PRIMARY KEY REFERENCES source(id),
+      settings_json TEXT NOT NULL,
+      updated_by TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    ) STRICT;
   `);
+  // Capture health for adapter-driven sources (circuit breaker state).
+  addColumn(database, "source", "consecutive_failures", "INTEGER NOT NULL DEFAULT 0");
+  addColumn(database, "source", "paused_until", "TEXT");
+  addColumn(database, "source", "last_capture_error", "TEXT");
+  addColumn(database, "source", "last_capture_at", "TEXT");
 }
 
 function addColumn(database: OperationalDatabase, table: string, column: string, definition: string): void {

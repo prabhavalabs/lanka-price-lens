@@ -7,7 +7,9 @@
     "./archive-storage": "./src/archive-storage.ts",
     "./db": "./src/db.ts",
     "./intake": "./src/intake.ts",
+    "./manifest": "./src/manifest.ts",
     "./pipeline": "./src/pipeline.ts",
+    "./retail": "./src/retail/index.ts",
     "./workflows": "./src/workflows.ts"
   },
   "scripts": {
@@ -21,7 +23,8 @@
     "@lanka-pricelens/archive": "workspace:*",
     "@lanka-pricelens/shared": "workspace:*",
     "better-sqlite3": "13.0.3",
-    "cron-parser": "5.1.1"
+    "cron-parser": "5.1.1",
+    "zod": "4.4.3"
   },
   "devDependencies": {
     "@types/better-sqlite3": "7.6.13",
