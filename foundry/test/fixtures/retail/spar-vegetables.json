@@ -1,0 +1,8341 @@
+{
+ "products": [
+  {
+   "id": 9120487702693,
+   "title": "BIG Onions",
+   "handle": "big-onions-500g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548521095333,
+     "title": "WT / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45683094913189,
+     "title": "WT / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45683094945957,
+     "title": "WT / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45683094978725,
+     "title": "WT / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45683095011493,
+     "title": "GL / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45683095044261,
+     "title": "GL / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45683095077029,
+     "title": "GL / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375697573,
+     "title": "GL / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375730341,
+     "title": "GP / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375763109,
+     "title": "GP / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375795877,
+     "title": "GP / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375828645,
+     "title": "GP / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375861413,
+     "title": "KB / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375894181,
+     "title": "KB / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375926949,
+     "title": "KB / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375959717,
+     "title": "KB / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704375992485,
+     "title": "KY / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704376025253,
+     "title": "KY / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704376058021,
+     "title": "KY / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45704376090789,
+     "title": "KY / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438376613,
+     "title": "MB / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438409381,
+     "title": "MB / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438442149,
+     "title": "MB / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438474917,
+     "title": "MB / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438507685,
+     "title": "NG / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438540453,
+     "title": "NG / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438573221,
+     "title": "NG / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438605989,
+     "title": "NG / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438638757,
+     "title": "SD / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438671525,
+     "title": "SD / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438704293,
+     "title": "SD / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438737061,
+     "title": "SD / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438769829,
+     "title": "TG / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438802597,
+     "title": "TG / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438835365,
+     "title": "TG / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438868133,
+     "title": "TG / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438900901,
+     "title": "UP / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438933669,
+     "title": "UP / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438966437,
+     "title": "UP / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796438999205,
+     "title": "UP / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796439031973,
+     "title": "PY / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796439064741,
+     "title": "PY / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796439097509,
+     "title": "PY / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 45796439130277,
+     "title": "PY / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 47800558583973,
+     "title": "KD / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 47800558616741,
+     "title": "KD / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 47800558649509,
+     "title": "KD / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 47800558682277,
+     "title": "KD / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 47800558715045,
+     "title": "KU / 1000",
+     "price": "370.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 47800558747813,
+     "title": "KU / 750",
+     "price": "277.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 47800558780581,
+     "title": "KU / 500",
+     "price": "185.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    },
+    {
+     "id": 47800558813349,
+     "title": "KU / 250",
+     "price": "92.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00000269"
+    }
+   ]
+  },
+  {
+   "id": 9120484819109,
+   "title": "CARROTS",
+   "handle": "carrots-500g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548368429221,
+     "title": "WT / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45548368461989,
+     "title": "WT / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704356888741,
+     "title": "WT / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704356921509,
+     "title": "WT / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704356954277,
+     "title": "GL / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704356987045,
+     "title": "GL / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704357019813,
+     "title": "GL / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704357052581,
+     "title": "GL / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704357085349,
+     "title": "GP / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704357183653,
+     "title": "GP / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704357216421,
+     "title": "KB / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704357249189,
+     "title": "KB / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704357281957,
+     "title": "KB / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704357314725,
+     "title": "KB / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704357347493,
+     "title": "KY / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704377303205,
+     "title": "GP / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704377335973,
+     "title": "GP / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704377368741,
+     "title": "KY / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704377401509,
+     "title": "KY / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704377434277,
+     "title": "KY / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704377467045,
+     "title": "MB / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704377499813,
+     "title": "MB / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45704377532581,
+     "title": "MB / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406658213,
+     "title": "MB / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406690981,
+     "title": "NG / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406723749,
+     "title": "NG / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406756517,
+     "title": "NG / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406789285,
+     "title": "NG / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406822053,
+     "title": "SD / 1000",
+     "price": "360.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406854821,
+     "title": "SD / 750",
+     "price": "270.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406887589,
+     "title": "SD / 500",
+     "price": "180.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406920357,
+     "title": "SD / 250",
+     "price": "90.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406953125,
+     "title": "TG / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706406985893,
+     "title": "TG / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407018661,
+     "title": "TG / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407051429,
+     "title": "TG / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407084197,
+     "title": "UP / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407116965,
+     "title": "UP / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407149733,
+     "title": "UP / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407182501,
+     "title": "UP / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407215269,
+     "title": "PY / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407248037,
+     "title": "PY / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407280805,
+     "title": "PY / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 45706407313573,
+     "title": "PY / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 47800571068581,
+     "title": "KD / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 47800571101349,
+     "title": "KD / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 47800571134117,
+     "title": "KD / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 47800571166885,
+     "title": "KD / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 47800571199653,
+     "title": "KU / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 47800571232421,
+     "title": "KU / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 47800571265189,
+     "title": "KU / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    },
+    {
+     "id": 47800571297957,
+     "title": "KU / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001860"
+    }
+   ]
+  },
+  {
+   "id": 9120484688037,
+   "title": "POTATOES",
+   "handle": "potatoes-500g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548328321189,
+     "title": "WT / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45548328353957,
+     "title": "WT / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45548328386725,
+     "title": "GP / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704352891045,
+     "title": "GL / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704352923813,
+     "title": "GL / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704352956581,
+     "title": "GP / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704352989349,
+     "title": "KB / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353022117,
+     "title": "KB / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353054885,
+     "title": "KY / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353087653,
+     "title": "KY / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353120421,
+     "title": "MB / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353153189,
+     "title": "MB / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353185957,
+     "title": "NG / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353218725,
+     "title": "NG / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353251493,
+     "title": "SD / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353284261,
+     "title": "SD / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353317029,
+     "title": "TG / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353349797,
+     "title": "TG / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353382565,
+     "title": "UP / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45704353415333,
+     "title": "UP / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45728336314533,
+     "title": "PY / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 45728336347301,
+     "title": "PY / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 47800572182693,
+     "title": "KD / 1000",
+     "price": "450.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 47800572215461,
+     "title": "KD / 500",
+     "price": "225.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 47800572248229,
+     "title": "KU / 1000",
+     "price": "450.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    },
+    {
+     "id": 47800572280997,
+     "title": "KU / 500",
+     "price": "225.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001883"
+    }
+   ]
+  },
+  {
+   "id": 9120483541157,
+   "title": "PUMPKIN",
+   "handle": "pumpkin-500g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45547778212005,
+     "title": "WT / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778244773,
+     "title": "WT / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778277541,
+     "title": "GP / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778310309,
+     "title": "GP / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778343077,
+     "title": "KB / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778375845,
+     "title": "KB / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778408613,
+     "title": "KY / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778441381,
+     "title": "KY / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778474149,
+     "title": "MB / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778506917,
+     "title": "MB / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778539685,
+     "title": "NG / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778572453,
+     "title": "NG / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778605221,
+     "title": "SD / 500",
+     "price": "120.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778637989,
+     "title": "SD / 250",
+     "price": "60.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778670757,
+     "title": "TG / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45547778703525,
+     "title": "TG / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45749523939493,
+     "title": "GL / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45749523972261,
+     "title": "GL / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45749524005029,
+     "title": "UP / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45749524037797,
+     "title": "UP / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45749524070565,
+     "title": "PY / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 45749524103333,
+     "title": "PY / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 47800583061669,
+     "title": "KD / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 47800583094437,
+     "title": "KD / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 47800583127205,
+     "title": "KU / 500",
+     "price": "120.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    },
+    {
+     "id": 47800583159973,
+     "title": "KU / 250",
+     "price": "60.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002490"
+    }
+   ]
+  },
+  {
+   "id": 9120484032677,
+   "title": "TOMATOES",
+   "handle": "tomatoes-200g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45547930222757,
+     "title": "WT / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136331941,
+     "title": "WT / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136364709,
+     "title": "WT / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136397477,
+     "title": "WT / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136430245,
+     "title": "GL / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136463013,
+     "title": "GL / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136495781,
+     "title": "GL / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136528549,
+     "title": "GL / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45547930353829,
+     "title": "GP / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136561317,
+     "title": "GP / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136594085,
+     "title": "GP / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45683136626853,
+     "title": "GP / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45547930484901,
+     "title": "KB / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413277349,
+     "title": "KB / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413310117,
+     "title": "KB / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413342885,
+     "title": "KB / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413375653,
+     "title": "KY / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413408421,
+     "title": "KY / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413441189,
+     "title": "KY / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413473957,
+     "title": "KY / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413506725,
+     "title": "MB / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413539493,
+     "title": "MB / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413572261,
+     "title": "MB / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413605029,
+     "title": "MB / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413637797,
+     "title": "NG / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413670565,
+     "title": "NG / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413703333,
+     "title": "NG / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413736101,
+     "title": "NG / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413768869,
+     "title": "SD / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413801637,
+     "title": "SD / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413834405,
+     "title": "SD / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413867173,
+     "title": "SD / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413899941,
+     "title": "TG / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413932709,
+     "title": "TG / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413965477,
+     "title": "TG / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706413998245,
+     "title": "TG / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706414031013,
+     "title": "UP / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706414063781,
+     "title": "UP / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706414096549,
+     "title": "UP / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706414129317,
+     "title": "UP / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706414162085,
+     "title": "PY / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706414194853,
+     "title": "PY / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706414227621,
+     "title": "PY / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 45706414260389,
+     "title": "PY / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 47800580014245,
+     "title": "KD / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 47800580047013,
+     "title": "KD / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 47800580079781,
+     "title": "KD / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 47800580112549,
+     "title": "KD / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 47800580145317,
+     "title": "KU / 250",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 47800580178085,
+     "title": "KU / 500",
+     "price": "465.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 47800580210853,
+     "title": "KU / 750",
+     "price": "697.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    },
+    {
+     "id": 47800580243621,
+     "title": "KU / 1000",
+     "price": "930.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002352"
+    }
+   ]
+  },
+  {
+   "id": 9120484786341,
+   "title": "GREEN Beans",
+   "handle": "green-beans",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548348178597,
+     "title": "WT / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45548348211365,
+     "title": "WT / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45670799769765,
+     "title": "WT / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354332837,
+     "title": "WT / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354365605,
+     "title": "GL / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354398373,
+     "title": "GL / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354431141,
+     "title": "GL / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354463909,
+     "title": "GL / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354496677,
+     "title": "GP / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354529445,
+     "title": "GP / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354562213,
+     "title": "GP / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354594981,
+     "title": "GP / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354627749,
+     "title": "KB / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354660517,
+     "title": "KB / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354693285,
+     "title": "KB / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354726053,
+     "title": "KB / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354758821,
+     "title": "KY / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45704354791589,
+     "title": "KY / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407346341,
+     "title": "KY / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407379109,
+     "title": "KY / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407411877,
+     "title": "MB / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407444645,
+     "title": "MB / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407477413,
+     "title": "MB / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407510181,
+     "title": "MB / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407542949,
+     "title": "NG / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407575717,
+     "title": "NG / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407608485,
+     "title": "NG / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407641253,
+     "title": "NG / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407674021,
+     "title": "SD / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407706789,
+     "title": "SD / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407739557,
+     "title": "SD / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407772325,
+     "title": "SD / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407805093,
+     "title": "TG / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407837861,
+     "title": "TG / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407870629,
+     "title": "TG / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407903397,
+     "title": "TG / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407936165,
+     "title": "UP / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706407968933,
+     "title": "UP / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706408001701,
+     "title": "UP / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706408034469,
+     "title": "UP / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706408067237,
+     "title": "PY / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706408100005,
+     "title": "PY / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706408132773,
+     "title": "PY / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 45706408165541,
+     "title": "PY / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 47800571363493,
+     "title": "KD / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 47800571396261,
+     "title": "KD / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 47800571429029,
+     "title": "KD / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 47800571461797,
+     "title": "KD / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 47800571494565,
+     "title": "KU / 1000",
+     "price": "390.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 47800571527333,
+     "title": "KU / 750",
+     "price": "292.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 47800571560101,
+     "title": "KU / 500",
+     "price": "195.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    },
+    {
+     "id": 47800571592869,
+     "title": "KU / 250",
+     "price": "97.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001869"
+    }
+   ]
+  },
+  {
+   "id": 9120485834917,
+   "title": "GREEN Chilies",
+   "handle": "green-chilli",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548452839589,
+     "title": "WT / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45548452872357,
+     "title": "WT / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45548452905125,
+     "title": "WT / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45548452937893,
+     "title": "WT / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859571365,
+     "title": "WT / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859604133,
+     "title": "GL / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859636901,
+     "title": "GL / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859669669,
+     "title": "GL / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859702437,
+     "title": "GL / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859735205,
+     "title": "GL / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859767973,
+     "title": "GP / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859800741,
+     "title": "GP / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859833509,
+     "title": "GP / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859866277,
+     "title": "GP / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859899045,
+     "title": "GP / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45670859931813,
+     "title": "KB / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45683109560485,
+     "title": "KB / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45683109593253,
+     "title": "KB / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363278501,
+     "title": "KB / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363311269,
+     "title": "KB / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363344037,
+     "title": "KY / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363376805,
+     "title": "KY / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363409573,
+     "title": "KY / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363442341,
+     "title": "KY / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363475109,
+     "title": "KY / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363507877,
+     "title": "MB / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363540645,
+     "title": "MB / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363573413,
+     "title": "MB / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363606181,
+     "title": "MB / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363638949,
+     "title": "MB / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363704485,
+     "title": "NG / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45704363737253,
+     "title": "NG / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706403971237,
+     "title": "NG / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404004005,
+     "title": "NG / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404036773,
+     "title": "NG / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404069541,
+     "title": "SD / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404102309,
+     "title": "SD / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404135077,
+     "title": "SD / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404167845,
+     "title": "SD / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404200613,
+     "title": "SD / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404233381,
+     "title": "TG / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404266149,
+     "title": "TG / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404298917,
+     "title": "TG / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404331685,
+     "title": "TG / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404364453,
+     "title": "TG / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404397221,
+     "title": "UP / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404429989,
+     "title": "UP / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404462757,
+     "title": "UP / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404495525,
+     "title": "UP / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404528293,
+     "title": "UP / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404561061,
+     "title": "PY / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404593829,
+     "title": "PY / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404626597,
+     "title": "PY / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404659365,
+     "title": "PY / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 45706404692133,
+     "title": "PY / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566055077,
+     "title": "KD / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566087845,
+     "title": "KD / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566120613,
+     "title": "KD / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566153381,
+     "title": "KD / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566186149,
+     "title": "KD / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566218917,
+     "title": "KU / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566251685,
+     "title": "KU / 400",
+     "price": "396.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566284453,
+     "title": "KU / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566317221,
+     "title": "KU / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    },
+    {
+     "id": 47800566349989,
+     "title": "KU / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001739"
+    }
+   ]
+  },
+  {
+   "id": 9120484753573,
+   "title": "LEEKS",
+   "handle": "leeks-400g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548333629605,
+     "title": "WT / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45548333760677,
+     "title": "GP / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45548333891749,
+     "title": "KB / 250",
+     "price": "80.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45548334022821,
+     "title": "KY / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45548334153893,
+     "title": "MB / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45548334284965,
+     "title": "NG / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45548334416037,
+     "title": "SD / 250",
+     "price": "80.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45548334547109,
+     "title": "TG / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45548334678181,
+     "title": "UP / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45548334809253,
+     "title": "PY / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118178469,
+     "title": "WT / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118211237,
+     "title": "WT / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118244005,
+     "title": "GL / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118276773,
+     "title": "GL / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118309541,
+     "title": "GL / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118342309,
+     "title": "GP / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118375077,
+     "title": "GP / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118407845,
+     "title": "KB / 500",
+     "price": "160.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118440613,
+     "title": "KB / 1000",
+     "price": "320.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118473381,
+     "title": "KY / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118506149,
+     "title": "KY / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118538917,
+     "title": "MB / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118571685,
+     "title": "MB / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118604453,
+     "title": "NG / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118637221,
+     "title": "NG / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118669989,
+     "title": "SD / 500",
+     "price": "160.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118702757,
+     "title": "SD / 1000",
+     "price": "320.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118735525,
+     "title": "TG / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118768293,
+     "title": "TG / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118801061,
+     "title": "UP / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118833829,
+     "title": "UP / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118866597,
+     "title": "PY / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 45683118899365,
+     "title": "PY / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 47800571855013,
+     "title": "KD / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 47800571887781,
+     "title": "KD / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 47800571920549,
+     "title": "KD / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 47800571953317,
+     "title": "KU / 250",
+     "price": "80.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 47800571986085,
+     "title": "KU / 500",
+     "price": "160.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    },
+    {
+     "id": 47800572018853,
+     "title": "KU / 1000",
+     "price": "320.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001881"
+    }
+   ]
+  },
+  {
+   "id": 9120484917413,
+   "title": "CABBAGE",
+   "handle": "cabbage",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548408242341,
+     "title": "WT / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45548408340645,
+     "title": "GP / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45548408438949,
+     "title": "KB / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45548408537253,
+     "title": "KY / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45664806666405,
+     "title": "GL / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45676835766437,
+     "title": "WT / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45676835799205,
+     "title": "GL / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704360886437,
+     "title": "WT / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704360919205,
+     "title": "WT / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704360951973,
+     "title": "GL / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704360984741,
+     "title": "GL / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361017509,
+     "title": "GP / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361050277,
+     "title": "GP / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361083045,
+     "title": "GP / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361148581,
+     "title": "KB / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361181349,
+     "title": "KB / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361214117,
+     "title": "KB / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361246885,
+     "title": "KY / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361279653,
+     "title": "KY / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361312421,
+     "title": "KY / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361345189,
+     "title": "MB / 1000",
+     "price": "360.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361377957,
+     "title": "MB / 750",
+     "price": "270.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361410725,
+     "title": "MB / 500",
+     "price": "180.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361443493,
+     "title": "MB / 250",
+     "price": "90.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361476261,
+     "title": "NG / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361509029,
+     "title": "NG / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361541797,
+     "title": "NG / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361574565,
+     "title": "NG / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361607333,
+     "title": "SD / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361640101,
+     "title": "SD / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361672869,
+     "title": "SD / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361705637,
+     "title": "SD / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361738405,
+     "title": "TG / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361771173,
+     "title": "TG / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361803941,
+     "title": "TG / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361836709,
+     "title": "TG / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361869477,
+     "title": "UP / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361902245,
+     "title": "UP / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361935013,
+     "title": "UP / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704361967781,
+     "title": "UP / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704362000549,
+     "title": "PY / 1000",
+     "price": "360.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704362033317,
+     "title": "PY / 750",
+     "price": "270.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704362066085,
+     "title": "PY / 500",
+     "price": "180.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 45704362098853,
+     "title": "PY / 250",
+     "price": "90.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 47800570282149,
+     "title": "KD / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 47800570314917,
+     "title": "KD / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 47800570347685,
+     "title": "KD / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 47800570380453,
+     "title": "KD / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 47800570413221,
+     "title": "KU / 1000",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 47800570445989,
+     "title": "KU / 750",
+     "price": "270.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 47800570478757,
+     "title": "KU / 500",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    },
+    {
+     "id": 47800570511525,
+     "title": "KU / 250",
+     "price": "90.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001845"
+    }
+   ]
+  },
+  {
+   "id": 9120483737765,
+   "title": "LADIES Fingers",
+   "handle": "ladies-fingers",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45547818090661,
+     "title": "WT / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45547818221733,
+     "title": "GP / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45547818352805,
+     "title": "KB / 250",
+     "price": "62.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45547818483877,
+     "title": "KY / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45547818614949,
+     "title": "MB / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45547818746021,
+     "title": "NG / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45547818877093,
+     "title": "SD / 250",
+     "price": "62.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45547819008165,
+     "title": "TG / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45547819139237,
+     "title": "UP / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45547819270309,
+     "title": "PY / 250",
+     "price": "62.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45664825016485,
+     "title": "GL / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45670757433509,
+     "title": "WT / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45683147997349,
+     "title": "WT / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45683148226725,
+     "title": "KY / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749056995493,
+     "title": "GL / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057028261,
+     "title": "GL / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057061029,
+     "title": "GP / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057093797,
+     "title": "GP / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057126565,
+     "title": "KB / 500",
+     "price": "125.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057159333,
+     "title": "KB / 1000",
+     "price": "250.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057192101,
+     "title": "KY / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057224869,
+     "title": "MB / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057257637,
+     "title": "MB / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057290405,
+     "title": "NG / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057323173,
+     "title": "NG / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057355941,
+     "title": "SD / 500",
+     "price": "125.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057388709,
+     "title": "SD / 1000",
+     "price": "250.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057421477,
+     "title": "TG / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057454245,
+     "title": "TG / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057487013,
+     "title": "UP / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057519781,
+     "title": "UP / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057552549,
+     "title": "PY / 500",
+     "price": "125.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 45749057585317,
+     "title": "PY / 1000",
+     "price": "250.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 47800581947557,
+     "title": "KD / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 47800581980325,
+     "title": "KD / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 47800582013093,
+     "title": "KD / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 47800582045861,
+     "title": "KU / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 47800582078629,
+     "title": "KU / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    },
+    {
+     "id": 47800582111397,
+     "title": "KU / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002445"
+    }
+   ]
+  },
+  {
+   "id": 9120487669925,
+   "title": "GARLIC",
+   "handle": "garlic-200g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45540906008741,
+     "title": "WT",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551075745957,
+     "title": "GL",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551075778725,
+     "title": "GP",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551075811493,
+     "title": "KB",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551075844261,
+     "title": "KY",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551075877029,
+     "title": "MB",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551075909797,
+     "title": "NG",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551075942565,
+     "title": "SD",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551075975333,
+     "title": "TG",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551076008101,
+     "title": "UP",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47551076040869,
+     "title": "PY",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47800558878885,
+     "title": "KD",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    },
+    {
+     "id": 47800558911653,
+     "title": "KU",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00012393"
+    }
+   ]
+  },
+  {
+   "id": 9120483770533,
+   "title": "GINGER",
+   "handle": "ginger",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45670753927333,
+     "title": "WT / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45683145932965,
+     "title": "WT / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45683145965733,
+     "title": "WT / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45683145998501,
+     "title": "WT / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45683146031269,
+     "title": "WT / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45683146064037,
+     "title": "GL / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45683146096805,
+     "title": "GL / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45683146129573,
+     "title": "GL / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45683146162341,
+     "title": "GL / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414293157,
+     "title": "GL / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414325925,
+     "title": "GP / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414358693,
+     "title": "GP / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414391461,
+     "title": "GP / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414424229,
+     "title": "GP / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414456997,
+     "title": "GP / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414489765,
+     "title": "KB / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414522533,
+     "title": "KB / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414555301,
+     "title": "KB / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414588069,
+     "title": "KB / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414620837,
+     "title": "KB / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414653605,
+     "title": "KY / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414686373,
+     "title": "KY / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414719141,
+     "title": "KY / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414751909,
+     "title": "KY / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414784677,
+     "title": "KY / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414817445,
+     "title": "MB / 100",
+     "price": "99.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414850213,
+     "title": "MB / 200",
+     "price": "198.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414882981,
+     "title": "MB / 300",
+     "price": "297.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414915749,
+     "title": "MB / 500",
+     "price": "495.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414948517,
+     "title": "MB / 1000",
+     "price": "990.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706414981285,
+     "title": "NG / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415014053,
+     "title": "NG / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415046821,
+     "title": "NG / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415079589,
+     "title": "NG / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415112357,
+     "title": "NG / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415145125,
+     "title": "SD / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415177893,
+     "title": "SD / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415210661,
+     "title": "SD / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415243429,
+     "title": "SD / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415276197,
+     "title": "SD / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415308965,
+     "title": "TG / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415341733,
+     "title": "TG / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415374501,
+     "title": "TG / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415407269,
+     "title": "TG / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415440037,
+     "title": "TG / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415472805,
+     "title": "UP / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415505573,
+     "title": "UP / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415538341,
+     "title": "UP / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415571109,
+     "title": "UP / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415603877,
+     "title": "UP / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415636645,
+     "title": "PY / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415669413,
+     "title": "PY / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415702181,
+     "title": "PY / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415734949,
+     "title": "PY / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 45706415767717,
+     "title": "PY / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581488805,
+     "title": "KD / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581521573,
+     "title": "KD / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581554341,
+     "title": "KD / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581587109,
+     "title": "KD / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581619877,
+     "title": "KD / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581652645,
+     "title": "KU / 100",
+     "price": "99.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581685413,
+     "title": "KU / 200",
+     "price": "198.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581718181,
+     "title": "KU / 300",
+     "price": "297.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581750949,
+     "title": "KU / 500",
+     "price": "495.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    },
+    {
+     "id": 47800581783717,
+     "title": "KU / 1000",
+     "price": "990.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002417"
+    }
+   ]
+  },
+  {
+   "id": 9120485736613,
+   "title": "Red Onions",
+   "handle": "red-onions",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548435472549,
+     "title": "WT / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45548435505317,
+     "title": "WT / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45548435538085,
+     "title": "GP / 1000",
+     "price": "560.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45548435570853,
+     "title": "GP / 500",
+     "price": "280.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45548435603621,
+     "title": "KB / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45548435636389,
+     "title": "KB / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45548435669157,
+     "title": "KY / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45548435701925,
+     "title": "KY / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45548435734693,
+     "title": "MB / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625127589,
+     "title": "GL / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625160357,
+     "title": "GL / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625193125,
+     "title": "MB / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625225893,
+     "title": "NG / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625258661,
+     "title": "NG / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625291429,
+     "title": "SD / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625324197,
+     "title": "SD / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625356965,
+     "title": "TG / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625389733,
+     "title": "TG / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625422501,
+     "title": "UP / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625455269,
+     "title": "UP / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625488037,
+     "title": "PY / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 45832625520805,
+     "title": "PY / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 47800566808741,
+     "title": "KD / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 47800566841509,
+     "title": "KD / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 47800566874277,
+     "title": "KU / 1000",
+     "price": "560.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    },
+    {
+     "id": 47800566907045,
+     "title": "KU / 500",
+     "price": "280.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001787"
+    }
+   ]
+  },
+  {
+   "id": 9120484622501,
+   "title": "SALAD Cucumber",
+   "handle": "salad-cucumber",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548224348325,
+     "title": "WT / 1000",
+     "price": "350.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45548224381093,
+     "title": "WT / 750",
+     "price": "262.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45548224413861,
+     "title": "WT / 500",
+     "price": "175.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45548224446629,
+     "title": "WT / 250",
+     "price": "87.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348139685,
+     "title": "GL / 1000",
+     "price": "350.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348172453,
+     "title": "GL / 750",
+     "price": "262.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348205221,
+     "title": "GL / 500",
+     "price": "175.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348237989,
+     "title": "GL / 250",
+     "price": "87.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348270757,
+     "title": "GP / 1000",
+     "price": "350.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348303525,
+     "title": "GP / 750",
+     "price": "262.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348336293,
+     "title": "GP / 500",
+     "price": "175.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348369061,
+     "title": "GP / 250",
+     "price": "87.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348401829,
+     "title": "KB / 1000",
+     "price": "350.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348434597,
+     "title": "KB / 750",
+     "price": "262.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348467365,
+     "title": "KB / 500",
+     "price": "175.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348500133,
+     "title": "KB / 250",
+     "price": "87.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348532901,
+     "title": "KY / 1000",
+     "price": "350.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348565669,
+     "title": "KY / 750",
+     "price": "262.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348598437,
+     "title": "KY / 500",
+     "price": "175.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348631205,
+     "title": "KY / 250",
+     "price": "87.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348663973,
+     "title": "MB / 1000",
+     "price": "350.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348696741,
+     "title": "MB / 750",
+     "price": "262.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348729509,
+     "title": "MB / 500",
+     "price": "175.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348762277,
+     "title": "MB / 250",
+     "price": "87.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348795045,
+     "title": "NG / 1000",
+     "price": "350.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348827813,
+     "title": "NG / 750",
+     "price": "262.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348860581,
+     "title": "NG / 500",
+     "price": "175.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348893349,
+     "title": "NG / 250",
+     "price": "87.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348926117,
+     "title": "SD / 1000",
+     "price": "350.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348958885,
+     "title": "SD / 750",
+     "price": "262.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704348991653,
+     "title": "SD / 500",
+     "price": "175.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349024421,
+     "title": "SD / 250",
+     "price": "87.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349057189,
+     "title": "TG / 1000",
+     "price": "350.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349089957,
+     "title": "TG / 750",
+     "price": "262.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349122725,
+     "title": "TG / 500",
+     "price": "175.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349155493,
+     "title": "TG / 250",
+     "price": "87.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349188261,
+     "title": "UP / 1000",
+     "price": "350.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349221029,
+     "title": "UP / 750",
+     "price": "262.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349253797,
+     "title": "UP / 500",
+     "price": "175.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349286565,
+     "title": "UP / 250",
+     "price": "87.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349319333,
+     "title": "PY / 1000",
+     "price": "350.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349352101,
+     "title": "PY / 750",
+     "price": "262.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349384869,
+     "title": "PY / 500",
+     "price": "175.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 45704349417637,
+     "title": "PY / 250",
+     "price": "87.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 47800573427877,
+     "title": "KD / 1000",
+     "price": "350.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 47800573460645,
+     "title": "KD / 750",
+     "price": "262.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 47800573493413,
+     "title": "KD / 500",
+     "price": "175.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 47800573526181,
+     "title": "KD / 250",
+     "price": "87.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 47800573558949,
+     "title": "KU / 1000",
+     "price": "350.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 47800573591717,
+     "title": "KU / 750",
+     "price": "262.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 47800573624485,
+     "title": "KU / 500",
+     "price": "175.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    },
+    {
+     "id": 47800573657253,
+     "title": "KU / 250",
+     "price": "87.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001891"
+    }
+   ]
+  },
+  {
+   "id": 9120484851877,
+   "title": "CAPSICUM",
+   "handle": "capsicum-250g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548386615461,
+     "title": "WT / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45548386648229,
+     "title": "WT / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45548386680997,
+     "title": "WT / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45548386713765,
+     "title": "WT / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45548386746533,
+     "title": "GP / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405347493,
+     "title": "GL / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405380261,
+     "title": "GL / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405413029,
+     "title": "GL / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405445797,
+     "title": "GL / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405478565,
+     "title": "GP / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405511333,
+     "title": "GP / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405544101,
+     "title": "GP / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405576869,
+     "title": "KB / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405609637,
+     "title": "KB / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405642405,
+     "title": "KB / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405675173,
+     "title": "KB / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405707941,
+     "title": "KY / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405740709,
+     "title": "KY / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405773477,
+     "title": "KY / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405806245,
+     "title": "KY / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405839013,
+     "title": "MB / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405871781,
+     "title": "MB / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405904549,
+     "title": "MB / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405937317,
+     "title": "MB / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706405970085,
+     "title": "NG / 1000",
+     "price": "720.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406297765,
+     "title": "TG / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406330533,
+     "title": "TG / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406363301,
+     "title": "UP / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406396069,
+     "title": "UP / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406428837,
+     "title": "UP / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406461605,
+     "title": "UP / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406494373,
+     "title": "PY / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406527141,
+     "title": "PY / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406559909,
+     "title": "PY / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45706406592677,
+     "title": "PY / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45728315768997,
+     "title": "NG / 750",
+     "price": "540.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45728315801765,
+     "title": "NG / 500",
+     "price": "360.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45728315834533,
+     "title": "NG / 250",
+     "price": "180.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45728315867301,
+     "title": "SD / 1000",
+     "price": "720.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45728315900069,
+     "title": "SD / 750",
+     "price": "540.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45728315932837,
+     "title": "SD / 500",
+     "price": "360.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45728315965605,
+     "title": "SD / 250",
+     "price": "180.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45728315998373,
+     "title": "TG / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 45728316031141,
+     "title": "TG / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 47800570740901,
+     "title": "KD / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 47800570773669,
+     "title": "KD / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 47800570806437,
+     "title": "KD / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 47800570839205,
+     "title": "KD / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 47800570871973,
+     "title": "KU / 1000",
+     "price": "720.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 47800570904741,
+     "title": "KU / 750",
+     "price": "540.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 47800570937509,
+     "title": "KU / 500",
+     "price": "360.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    },
+    {
+     "id": 47800570970277,
+     "title": "KU / 250",
+     "price": "180.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001850"
+    }
+   ]
+  },
+  {
+   "id": 9120484655269,
+   "title": "RADDISH",
+   "handle": "raddish",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548323733669,
+     "title": "WT / 1000",
+     "price": "250.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548323766437,
+     "title": "WT / 750",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548323799205,
+     "title": "WT / 500",
+     "price": "125.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548323831973,
+     "title": "WT / 250",
+     "price": "62.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548323864741,
+     "title": "GP / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548323897509,
+     "title": "GP / 750",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548323930277,
+     "title": "GP / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548323963045,
+     "title": "GP / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548323995813,
+     "title": "KB / 1000",
+     "price": "250.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548324028581,
+     "title": "KB / 750",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548324061349,
+     "title": "KB / 500",
+     "price": "125.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45548324094117,
+     "title": "KB / 250",
+     "price": "62.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350236837,
+     "title": "GL / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350269605,
+     "title": "GL / 750",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350302373,
+     "title": "GL / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350335141,
+     "title": "GL / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350367909,
+     "title": "KY / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350400677,
+     "title": "KY / 750",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350433445,
+     "title": "KY / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350466213,
+     "title": "KY / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350498981,
+     "title": "MB / 1000",
+     "price": "250.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350531749,
+     "title": "MB / 750",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350564517,
+     "title": "MB / 500",
+     "price": "125.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350597285,
+     "title": "MB / 250",
+     "price": "62.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350630053,
+     "title": "NG / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350793893,
+     "title": "SD / 750",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350826661,
+     "title": "SD / 500",
+     "price": "125.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350859429,
+     "title": "SD / 250",
+     "price": "62.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350892197,
+     "title": "TG / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350924965,
+     "title": "TG / 750",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350957733,
+     "title": "TG / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704350990501,
+     "title": "TG / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704351023269,
+     "title": "UP / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704351056037,
+     "title": "UP / 750",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704351088805,
+     "title": "UP / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704351121573,
+     "title": "UP / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704351154341,
+     "title": "PY / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704351187109,
+     "title": "PY / 750",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704351219877,
+     "title": "PY / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45704351252645,
+     "title": "PY / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45749470560421,
+     "title": "NG / 750",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45749470593189,
+     "title": "NG / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45749470625957,
+     "title": "NG / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 45749470658725,
+     "title": "SD / 1000",
+     "price": "250.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 47800572641445,
+     "title": "KD / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 47800572674213,
+     "title": "KD / 750",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 47800572706981,
+     "title": "KD / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 47800572739749,
+     "title": "KD / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 47800572772517,
+     "title": "KU / 1000",
+     "price": "250.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 47800572805285,
+     "title": "KU / 750",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 47800572838053,
+     "title": "KU / 500",
+     "price": "125.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    },
+    {
+     "id": 47800572870821,
+     "title": "KU / 250",
+     "price": "62.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001890"
+    }
+   ]
+  },
+  {
+   "id": 9120484229285,
+   "title": "SALAD Leaves",
+   "handle": "salad-leaves",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45547943624869,
+     "title": "WT / 500",
+     "price": "285.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45547943657637,
+     "title": "WT / 400",
+     "price": "228.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45547943690405,
+     "title": "WT / 300",
+     "price": "171.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45670810550437,
+     "title": "WT / 200",
+     "price": "114.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45670810583205,
+     "title": "WT / 100",
+     "price": "57.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45670810615973,
+     "title": "GL / 500",
+     "price": "285.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45670810648741,
+     "title": "GL / 400",
+     "price": "228.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132432549,
+     "title": "GL / 300",
+     "price": "171.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132465317,
+     "title": "GL / 200",
+     "price": "114.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132498085,
+     "title": "GL / 100",
+     "price": "57.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132530853,
+     "title": "GP / 500",
+     "price": "285.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132563621,
+     "title": "GP / 400",
+     "price": "228.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132596389,
+     "title": "GP / 300",
+     "price": "171.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132629157,
+     "title": "GP / 200",
+     "price": "114.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132661925,
+     "title": "GP / 100",
+     "price": "57.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132694693,
+     "title": "KB / 500",
+     "price": "285.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132727461,
+     "title": "KB / 400",
+     "price": "228.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132760229,
+     "title": "KB / 300",
+     "price": "171.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132792997,
+     "title": "KB / 200",
+     "price": "114.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132825765,
+     "title": "KB / 100",
+     "price": "57.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45683132858533,
+     "title": "KY / 500",
+     "price": "285.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704332705957,
+     "title": "KY / 400",
+     "price": "228.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704332738725,
+     "title": "KY / 300",
+     "price": "171.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704332771493,
+     "title": "KY / 200",
+     "price": "114.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704332804261,
+     "title": "KY / 100",
+     "price": "57.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704332837029,
+     "title": "MB / 500",
+     "price": "285.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704332869797,
+     "title": "MB / 400",
+     "price": "228.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704332902565,
+     "title": "MB / 300",
+     "price": "171.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704332935333,
+     "title": "MB / 200",
+     "price": "114.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704332968101,
+     "title": "MB / 100",
+     "price": "57.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333000869,
+     "title": "NG / 500",
+     "price": "285.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333033637,
+     "title": "NG / 400",
+     "price": "228.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333066405,
+     "title": "NG / 300",
+     "price": "171.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333099173,
+     "title": "NG / 200",
+     "price": "114.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333131941,
+     "title": "NG / 100",
+     "price": "57.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333164709,
+     "title": "SD / 500",
+     "price": "285.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333197477,
+     "title": "SD / 400",
+     "price": "228.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333230245,
+     "title": "SD / 300",
+     "price": "171.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333263013,
+     "title": "SD / 200",
+     "price": "114.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333295781,
+     "title": "SD / 100",
+     "price": "57.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333328549,
+     "title": "TG / 500",
+     "price": "285.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333361317,
+     "title": "TG / 400",
+     "price": "228.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333394085,
+     "title": "TG / 300",
+     "price": "171.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333426853,
+     "title": "TG / 200",
+     "price": "114.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333459621,
+     "title": "TG / 100",
+     "price": "57.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333492389,
+     "title": "UP / 500",
+     "price": "285.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333525157,
+     "title": "UP / 400",
+     "price": "228.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333557925,
+     "title": "UP / 300",
+     "price": "171.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333590693,
+     "title": "UP / 200",
+     "price": "114.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333623461,
+     "title": "UP / 100",
+     "price": "57.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333656229,
+     "title": "PY / 500",
+     "price": "285.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333688997,
+     "title": "PY / 400",
+     "price": "228.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333721765,
+     "title": "PY / 300",
+     "price": "171.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333754533,
+     "title": "PY / 200",
+     "price": "114.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 45704333787301,
+     "title": "PY / 100",
+     "price": "57.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579063973,
+     "title": "KD / 500",
+     "price": "285.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579096741,
+     "title": "KD / 400",
+     "price": "228.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579129509,
+     "title": "KD / 300",
+     "price": "171.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579162277,
+     "title": "KD / 200",
+     "price": "114.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579195045,
+     "title": "KD / 100",
+     "price": "57.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579227813,
+     "title": "KU / 500",
+     "price": "285.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579260581,
+     "title": "KU / 400",
+     "price": "228.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579293349,
+     "title": "KU / 300",
+     "price": "171.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579326117,
+     "title": "KU / 200",
+     "price": "114.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    },
+    {
+     "id": 47800579358885,
+     "title": "KU / 100",
+     "price": "57.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002266"
+    }
+   ]
+  },
+  {
+   "id": 9120483672229,
+   "title": "LIMES",
+   "handle": "limes-100g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45547805245605,
+     "title": "WT / 1000",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45670789742757,
+     "title": "WT / 750",
+     "price": "667.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45670789775525,
+     "title": "WT / 500",
+     "price": "445.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45670789808293,
+     "title": "WT / 250",
+     "price": "222.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45670789841061,
+     "title": "GL / 1000",
+     "price": "890.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45670789873829,
+     "title": "GL / 750",
+     "price": "667.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45683149308069,
+     "title": "GL / 500",
+     "price": "445.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45683149340837,
+     "title": "GL / 250",
+     "price": "222.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45683149373605,
+     "title": "GP / 1000",
+     "price": "890.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45683149406373,
+     "title": "GP / 750",
+     "price": "667.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45683149439141,
+     "title": "GP / 500",
+     "price": "445.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45683149471909,
+     "title": "GP / 250",
+     "price": "222.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704329724069,
+     "title": "KB / 1000",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704329756837,
+     "title": "KB / 750",
+     "price": "667.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704329789605,
+     "title": "KB / 500",
+     "price": "445.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704329822373,
+     "title": "KB / 250",
+     "price": "222.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704329855141,
+     "title": "KY / 1000",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704329887909,
+     "title": "KY / 750",
+     "price": "667.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704329920677,
+     "title": "KY / 500",
+     "price": "445.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704329953445,
+     "title": "KY / 250",
+     "price": "222.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704329986213,
+     "title": "MB / 1000",
+     "price": "890.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330018981,
+     "title": "MB / 750",
+     "price": "667.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330051749,
+     "title": "MB / 500",
+     "price": "445.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330084517,
+     "title": "MB / 250",
+     "price": "222.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330117285,
+     "title": "NG / 1000",
+     "price": "890.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330150053,
+     "title": "NG / 750",
+     "price": "667.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330182821,
+     "title": "NG / 500",
+     "price": "445.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330215589,
+     "title": "NG / 250",
+     "price": "222.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330248357,
+     "title": "SD / 1000",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330281125,
+     "title": "SD / 750",
+     "price": "667.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330313893,
+     "title": "SD / 500",
+     "price": "445.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330346661,
+     "title": "SD / 250",
+     "price": "222.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330379429,
+     "title": "TG / 1000",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330412197,
+     "title": "TG / 750",
+     "price": "667.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330444965,
+     "title": "TG / 500",
+     "price": "445.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330477733,
+     "title": "TG / 250",
+     "price": "222.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330510501,
+     "title": "UP / 1000",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330543269,
+     "title": "UP / 750",
+     "price": "667.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330576037,
+     "title": "UP / 500",
+     "price": "445.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330608805,
+     "title": "UP / 250",
+     "price": "222.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330641573,
+     "title": "PY / 1000",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330674341,
+     "title": "PY / 750",
+     "price": "667.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330707109,
+     "title": "PY / 500",
+     "price": "445.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 45704330739877,
+     "title": "PY / 250",
+     "price": "222.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 47800582373541,
+     "title": "KD / 1000",
+     "price": "890.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 47800582406309,
+     "title": "KD / 750",
+     "price": "667.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 47800582439077,
+     "title": "KD / 500",
+     "price": "445.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 47800582471845,
+     "title": "KD / 250",
+     "price": "222.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 47800582504613,
+     "title": "KU / 1000",
+     "price": "890.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 47800582537381,
+     "title": "KU / 750",
+     "price": "667.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 47800582570149,
+     "title": "KU / 500",
+     "price": "445.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    },
+    {
+     "id": 47800582602917,
+     "title": "KU / 250",
+     "price": "222.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00002459"
+    }
+   ]
+  },
+  {
+   "id": 9120484982949,
+   "title": "BEETROOT",
+   "handle": "beetroot",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548415549605,
+     "title": "WT / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45548415582373,
+     "title": "WT / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979469477,
+     "title": "WT / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979502245,
+     "title": "WT / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979535013,
+     "title": "GL / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979567781,
+     "title": "GL / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979600549,
+     "title": "GL / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979633317,
+     "title": "GL / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979666085,
+     "title": "GP / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979698853,
+     "title": "GP / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979731621,
+     "title": "GP / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979764389,
+     "title": "GP / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979797157,
+     "title": "KB / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45670979829925,
+     "title": "KB / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116310693,
+     "title": "KY / 1000",
+     "price": "310.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116343461,
+     "title": "KY / 750",
+     "price": "232.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116376229,
+     "title": "KY / 500",
+     "price": "155.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116408997,
+     "title": "KY / 250",
+     "price": "77.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116441765,
+     "title": "MB / 1000",
+     "price": "310.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116474533,
+     "title": "MB / 750",
+     "price": "232.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116507301,
+     "title": "MB / 500",
+     "price": "155.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116540069,
+     "title": "MB / 250",
+     "price": "77.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116572837,
+     "title": "NG / 1000",
+     "price": "310.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45683116605605,
+     "title": "NG / 750",
+     "price": "232.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360231077,
+     "title": "KB / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360263845,
+     "title": "KB / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360296613,
+     "title": "NG / 500",
+     "price": "155.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360329381,
+     "title": "NG / 250",
+     "price": "77.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360362149,
+     "title": "SD / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360394917,
+     "title": "SD / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360427685,
+     "title": "SD / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360460453,
+     "title": "SD / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360493221,
+     "title": "TG / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360525989,
+     "title": "TG / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360558757,
+     "title": "TG / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360591525,
+     "title": "TG / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360624293,
+     "title": "UP / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360657061,
+     "title": "UP / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360689829,
+     "title": "UP / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360722597,
+     "title": "UP / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360755365,
+     "title": "PY / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360788133,
+     "title": "PY / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360820901,
+     "title": "PY / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 45704360853669,
+     "title": "PY / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 47800569987237,
+     "title": "KD / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 47800570020005,
+     "title": "KD / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 47800570052773,
+     "title": "KD / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 47800570085541,
+     "title": "KD / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 47800570118309,
+     "title": "KU / 1000",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 47800570151077,
+     "title": "KU / 750",
+     "price": "232.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 47800570183845,
+     "title": "KU / 500",
+     "price": "155.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    },
+    {
+     "id": 47800570216613,
+     "title": "KU / 250",
+     "price": "77.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001837"
+    }
+   ]
+  },
+  {
+   "id": 9120485671077,
+   "title": "SWEET Potato",
+   "handle": "sweet-potato",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548423413925,
+     "title": "WT / 1000",
+     "price": "375.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423446693,
+     "title": "WT / 500",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423479461,
+     "title": "GP / 1000",
+     "price": "375.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423512229,
+     "title": "GP / 500",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423544997,
+     "title": "KB / 1000",
+     "price": "375.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423577765,
+     "title": "KB / 500",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423610533,
+     "title": "KY / 1000",
+     "price": "375.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423643301,
+     "title": "KY / 500",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423676069,
+     "title": "MB / 1000",
+     "price": "375.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423708837,
+     "title": "MB / 500",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423741605,
+     "title": "NG / 1000",
+     "price": "375.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423774373,
+     "title": "NG / 500",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423807141,
+     "title": "SD / 1000",
+     "price": "375.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423839909,
+     "title": "SD / 500",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45548423872677,
+     "title": "TG / 1000",
+     "price": "375.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45704362655909,
+     "title": "GL / 1000",
+     "price": "375.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45704362688677,
+     "title": "GL / 500",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45704362721445,
+     "title": "TG / 500",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45704362754213,
+     "title": "UP / 1000",
+     "price": "375.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45704362786981,
+     "title": "UP / 500",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45728316063909,
+     "title": "PY / 1000",
+     "price": "375.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 45728316096677,
+     "title": "PY / 500",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 47800566939813,
+     "title": "KD / 1000",
+     "price": "375.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 47800566972581,
+     "title": "KD / 500",
+     "price": "187.50",
+     "available": true,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 47800567005349,
+     "title": "KU / 1000",
+     "price": "375.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    },
+    {
+     "id": 47800567038117,
+     "title": "KU / 500",
+     "price": "187.50",
+     "available": false,
+     "grams": 0,
+     "sku": "00001797"
+    }
+   ]
+  },
+  {
+   "id": 9120483901605,
+   "title": "BRINJALS",
+   "handle": "brinjals",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45683143377061,
+     "title": "WT",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45683143409829,
+     "title": "GL",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45683143442597,
+     "title": "GP",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45683143475365,
+     "title": "KB",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45683143508133,
+     "title": "KY",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45683143540901,
+     "title": "MB",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45683143573669,
+     "title": "NG",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45683143606437,
+     "title": "SD",
+     "price": "650.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45683143639205,
+     "title": "TG",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45683143671973,
+     "title": "UP",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 45749063680165,
+     "title": "PY",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 47800580604069,
+     "title": "KD",
+     "price": "650.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002384"
+    },
+    {
+     "id": 47800580636837,
+     "title": "KU",
+     "price": "650.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002384"
+    }
+   ]
+  },
+  {
+   "id": 9120484393125,
+   "title": "CAULIFLOWER",
+   "handle": "cauliflower-500g",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45548095242405,
+     "title": "WT / 1000",
+     "price": "620.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095275173,
+     "title": "WT / 500",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095307941,
+     "title": "GP / 1000",
+     "price": "620.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095340709,
+     "title": "GP / 500",
+     "price": "310.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095373477,
+     "title": "KB / 1000",
+     "price": "620.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095439013,
+     "title": "KB / 500",
+     "price": "310.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095471781,
+     "title": "KY / 1000",
+     "price": "620.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095504549,
+     "title": "KY / 500",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095537317,
+     "title": "MB / 1000",
+     "price": "620.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095570085,
+     "title": "MB / 500",
+     "price": "310.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095602853,
+     "title": "NG / 1000",
+     "price": "620.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095635621,
+     "title": "NG / 500",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095668389,
+     "title": "SD / 1000",
+     "price": "620.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095701157,
+     "title": "SD / 500",
+     "price": "310.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095733925,
+     "title": "TG / 1000",
+     "price": "620.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45548095766693,
+     "title": "TG / 500",
+     "price": "310.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45704343257253,
+     "title": "GL / 1000",
+     "price": "620.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45704343290021,
+     "title": "GL / 500",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45704343322789,
+     "title": "UP / 1000",
+     "price": "620.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45704343355557,
+     "title": "UP / 500",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45704343388325,
+     "title": "PY / 1000",
+     "price": "620.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 45704343421093,
+     "title": "PY / 500",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 47800578375845,
+     "title": "KD / 1000",
+     "price": "620.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 47800578408613,
+     "title": "KD / 500",
+     "price": "310.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 47800578441381,
+     "title": "KU / 1000",
+     "price": "620.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    },
+    {
+     "id": 47800578474149,
+     "title": "KU / 500",
+     "price": "310.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002069"
+    }
+   ]
+  },
+  {
+   "id": 9120483934373,
+   "title": "BITTER Gourd",
+   "handle": "bitter-gourd",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45547918524581,
+     "title": "WT / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918557349,
+     "title": "WT / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918590117,
+     "title": "GP / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918622885,
+     "title": "GP / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918655653,
+     "title": "KB / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918688421,
+     "title": "KB / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918721189,
+     "title": "KY / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918753957,
+     "title": "KY / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918786725,
+     "title": "MB / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918819493,
+     "title": "MB / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918852261,
+     "title": "NG / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918885029,
+     "title": "NG / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918917797,
+     "title": "SD / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918950565,
+     "title": "SD / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547918983333,
+     "title": "TG / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547919016101,
+     "title": "TG / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547919048869,
+     "title": "UP / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547919081637,
+     "title": "UP / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547919114405,
+     "title": "PY / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45547919147173,
+     "title": "PY / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45664821772453,
+     "title": "GL / 1000",
+     "price": "530.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 45664821805221,
+     "title": "GL / 500",
+     "price": "265.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 47800580472997,
+     "title": "KD / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 47800580505765,
+     "title": "KD / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 47800580538533,
+     "title": "KU / 1000",
+     "price": "530.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    },
+    {
+     "id": 47800580571301,
+     "title": "KU / 500",
+     "price": "265.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002377"
+    }
+   ]
+  },
+  {
+   "id": 9120483475621,
+   "title": "SNAKE Gourd",
+   "handle": "snake-gourd",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45547764383909,
+     "title": "WT / 1000",
+     "price": "420.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45547764416677,
+     "title": "WT / 500",
+     "price": "210.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45547764449445,
+     "title": "GP / 1000",
+     "price": "420.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45547764482213,
+     "title": "GP / 500",
+     "price": "210.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45547764514981,
+     "title": "KB / 1000",
+     "price": "420.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45547764547749,
+     "title": "KB / 500",
+     "price": "210.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45547764580517,
+     "title": "KY / 1000",
+     "price": "420.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45547764613285,
+     "title": "KY / 500",
+     "price": "210.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45547764646053,
+     "title": "MB / 1000",
+     "price": "420.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556158629,
+     "title": "GL / 1000",
+     "price": "420.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556191397,
+     "title": "GL / 500",
+     "price": "210.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556224165,
+     "title": "MB / 500",
+     "price": "210.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556256933,
+     "title": "NG / 1000",
+     "price": "420.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556289701,
+     "title": "NG / 500",
+     "price": "210.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556322469,
+     "title": "SD / 1000",
+     "price": "420.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556355237,
+     "title": "SD / 500",
+     "price": "210.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556388005,
+     "title": "TG / 1000",
+     "price": "420.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556420773,
+     "title": "TG / 500",
+     "price": "210.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556453541,
+     "title": "UP / 1000",
+     "price": "420.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556486309,
+     "title": "UP / 500",
+     "price": "210.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556519077,
+     "title": "PY / 1000",
+     "price": "420.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 45797556551845,
+     "title": "PY / 500",
+     "price": "210.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 47800583356581,
+     "title": "KD / 1000",
+     "price": "420.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 47800583389349,
+     "title": "KD / 500",
+     "price": "210.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 47800583422117,
+     "title": "KU / 1000",
+     "price": "420.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    },
+    {
+     "id": 47800583454885,
+     "title": "KU / 500",
+     "price": "210.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002499"
+    }
+   ]
+  },
+  {
+   "id": 9120483836069,
+   "title": "CURRY Leaves",
+   "handle": "curry-leaves-bundle",
+   "updated_at": "2026-09-04T07:09:53+05:30",
+   "product_type": "Vegetables",
+   "variants": [
+    {
+     "id": 45540986912933,
+     "title": "WT",
+     "price": "75.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45540986945701,
+     "title": "GP",
+     "price": "75.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45540987044005,
+     "title": "KB",
+     "price": "75.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45540987142309,
+     "title": "KY",
+     "price": "75.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45540987175077,
+     "title": "MB",
+     "price": "75.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45540987273381,
+     "title": "NG",
+     "price": "75.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45683145015461,
+     "title": "GL",
+     "price": "75.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45706418258085,
+     "title": "SD",
+     "price": "75.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45706418290853,
+     "title": "TG",
+     "price": "75.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45706418323621,
+     "title": "UP",
+     "price": "75.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 45706418356389,
+     "title": "PY",
+     "price": "75.00",
+     "available": true,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 47800581423269,
+     "title": "KD",
+     "price": "75.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002392"
+    },
+    {
+     "id": 47800581456037,
+     "title": "KU",
+     "price": "75.00",
+     "available": false,
+     "grams": 0,
+     "sku": "00002392"
+    }
+   ]
+  }
+ ]
+}
