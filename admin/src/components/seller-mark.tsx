@@ -16,16 +16,17 @@ import { cn } from "@/lib/utils";
 
 type Logo = {
   src: string;
-  /** Chip background; a white wordmark needs its brand colour behind it, a full-colour mark sits on white. */
+  /** Chip background behind a mark with transparent corners; a full-bleed icon brings its own. */
   background: string;
-  /** Square marks fill the chip edge to edge; wordmarks keep a little breathing room. */
+  /** Marks that are not full-bleed keep a little breathing room inside the square. */
   inset: boolean;
 };
 type Place = { color: string; glyph?: ReactNode; monogram?: string; accent?: string; logo?: Logo };
 
 const places: Record<string, Place> = {
+  // Every logo file is the retailer's own square icon, so all marks share one size and shape.
   keells: { color: "#1E9E4A", monogram: "K", logo: { src: "/admin/sellers/keells.png", background: "#2DB84B", inset: false } },
-  cargills: { color: "#D9262B", monogram: "C", logo: { src: "/admin/sellers/cargills.png", background: "#D9262B", inset: true } },
+  cargills: { color: "#D9262B", monogram: "C", logo: { src: "/admin/sellers/cargills.png", background: "#E31E24", inset: false } },
   spar: { color: "#0B6E46", monogram: "S", accent: "#E1251B", logo: { src: "/admin/sellers/spar.png", background: "#ffffff", inset: false } },
   glomark: { color: "#E8590C", monogram: "G", logo: { src: "/admin/sellers/glomark.png", background: "#ffffff", inset: true } },
   pettah: {
@@ -176,8 +177,7 @@ const places: Record<string, Place> = {
 };
 
 const sizes = { xs: "size-4", sm: "size-6", md: "size-8", lg: "size-10" } as const;
-/** Logo chips keep the mark's height and let a wordmark run wider, up to three times the height. */
-const chipSizes = { xs: "h-4 min-w-4 max-w-12 rounded", sm: "h-6 min-w-6 max-w-18 rounded-md", md: "h-8 min-w-8 max-w-24 rounded-lg", lg: "h-10 min-w-10 max-w-30 rounded-lg" } as const;
+const radii = { xs: "rounded", sm: "rounded-md", md: "rounded-lg", lg: "rounded-lg" } as const;
 
 /** "market_pettah_retail" and "market_pettah" both draw Pettah; "market_keells_online" draws Keells. */
 export function placeOf(marketId: string): string {
@@ -205,8 +205,8 @@ export function SellerMark({ marketId, label, type, size = "sm", className }: { 
   const [failedLogo, setFailedLogo] = useState<string | null>(null);
   if (place?.logo && failedLogo !== place.logo.src) {
     return (
-      <span className={cn("inline-flex shrink-0 items-center justify-center overflow-hidden ring-1 ring-white/15", chipSizes[size], place.logo.inset && "px-1", className)} role="img" aria-label={label} style={{ backgroundColor: place.logo.background }}>
-        <img alt="" className="h-full w-auto max-w-full object-contain" decoding="async" onError={() => setFailedLogo(place.logo!.src)} src={place.logo.src} />
+      <span className={cn("inline-grid shrink-0 place-items-center overflow-hidden ring-1 ring-white/15", sizes[size], radii[size], place.logo.inset && "p-0.5", className)} role="img" aria-label={label} style={{ backgroundColor: place.logo.background }}>
+        <img alt="" className="size-full object-contain" decoding="async" onError={() => setFailedLogo(place.logo!.src)} src={place.logo.src} />
       </span>
     );
   }
