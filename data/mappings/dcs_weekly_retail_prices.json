@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "mapping_version": "dcs-weekly-2026-09-04.1",
+  "mapping_version": "dcs-weekly-2026-09-04.2",
   "source_id": "dcs_weekly_retail_prices",
   "reviewed_by": "repository-owner",
   "reviewed_at": "2026-09-04",
@@ -353,6 +353,13 @@
       "id": "product_maldive_fish",
       "category": "fish",
       "canonical_label_en": "Maldive Fish",
+      "canonical_label_si": null,
+      "canonical_label_ta": null
+    },
+    {
+      "id": "product_milk_powder",
+      "category": "dairy",
+      "canonical_label_en": "Full Cream Milk Powder",
       "canonical_label_si": null,
       "canonical_label_ta": null
     },
@@ -2309,6 +2316,26 @@
       "grade": null,
       "source_labels": [
         "Anamalu"
+      ],
+      "expected_market_labels": [
+        "Colombo District (retail)"
+      ]
+    },
+    {
+      "id": "item_milk_powder",
+      "product_id": "product_milk_powder",
+      "entity_type": "commodity",
+      "canonical_label_en": "Full Cream Milk Powder",
+      "canonical_label_si": null,
+      "canonical_label_ta": null,
+      "variety": null,
+      "origin": null,
+      "size": null,
+      "grade": null,
+      "source_labels": [
+        "Anchor",
+        "Maliban",
+        "Pelwatta"
       ],
       "expected_market_labels": [
         "Colombo District (retail)"
