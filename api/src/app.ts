@@ -950,9 +950,26 @@ function readCatalogSync(manifestsDirectory: string, mappingsDirectory: string, 
   return createSourceCatalog([...entries.values()].sort((left, right) => left.manifest.id.localeCompare(right.manifest.id)));
 }
 
+/**
+ * Same-origin check that survives a reverse proxy. The proxy terminates TLS and
+ * talks to the API over plain HTTP, so the request URL alone would name the wrong
+ * scheme; the host comes from the forwarded or plain Host header and the scheme
+ * from X-Forwarded-Proto when the proxy sends it. A browser cannot forge either
+ * header on a cross-site request, so the protection against forged posts stands.
+ */
 function sameOrigin(context: Context): boolean {
   const origin = context.req.header("origin");
-  return !origin || origin === new URL(context.req.url).origin;
+  if (!origin) return true;
+  let requested: URL;
+  try {
+    requested = new URL(origin);
+  } catch {
+    return false;
+  }
+  const host = context.req.header("x-forwarded-host")?.split(",")[0]?.trim() || context.req.header("host") || new URL(context.req.url).host;
+  if (requested.host !== host) return false;
+  const protocol = context.req.header("x-forwarded-proto")?.split(",")[0]?.trim();
+  return protocol ? requested.protocol === `${protocol}:` : true;
 }
 
 type ListRequest = { requestedPage: number; pageSize: number; search: string; status: string };
