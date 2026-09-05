@@ -192,6 +192,17 @@ run is recorded with trigger `import`, and the API route syncs the warehouse
 before answering, so the explorer shows the new prices immediately. Imports never
 contact the retailer.
 
+## Going through a proxy
+
+A retailer's bot protection may refuse the server's own network while serving a residential
+address. Set the adapter setting `proxyEnv` to the **name** of an environment variable that
+holds an HTTP proxy URL (`http://user:password@host:port`); the URL itself never enters the
+database or the manifest. Keells is configured this way (`LPL_KEELLS_PROXY_URL`, passed to the
+containers by `compose.yaml` from the host's `app.env`). With a proxy set, every request of that
+source is tunnelled (HTTP CONNECT, TLS end to end inside the tunnel) whatever transport the
+adapter declares. A named variable that is missing or malformed fails the capture at once as a
+settings error, which the retry policy does not retry.
+
 ## Shared adapter settings
 
 | Setting | Default | Meaning |

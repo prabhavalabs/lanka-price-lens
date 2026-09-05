@@ -25,6 +25,8 @@
   "enabled": true,
   "adapter": {
     "kind": "keells_api",
-    "settings": {}
+    "settings": {
+      "proxyEnv": "LPL_KEELLS_PROXY_URL"
+    }
   }
 }

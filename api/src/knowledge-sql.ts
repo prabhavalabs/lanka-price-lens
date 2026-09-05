@@ -27,6 +27,7 @@ export const knowledgeIndexStatus = `CASE
       SELECT 1 FROM price_observation indexed_observation
       WHERE indexed_observation.source_artifact_id = artifact.id
     ) THEN 'indexed'
+    WHEN artifact.status = 'reviewed' THEN 'reviewed'
     WHEN dispatch.status = 'failed' OR artifact.status = 'quarantined'
       OR COALESCE(processing.status, artifact_run.status) IN ('failed', 'blocked') THEN 'failed'
     ELSE 'not_indexed'

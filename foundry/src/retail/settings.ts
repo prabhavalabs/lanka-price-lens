@@ -12,8 +12,33 @@ export const baseSettingsSchema = z.object({
   minimumRecords: z.number().int().min(1).default(20).describe("Fewest records a snapshot may contain before it is treated as broken"),
   maxConsecutiveFailures: z.number().int().min(1).max(20).default(3).describe("Failures in a row before the source is paused automatically"),
   maxRecordCountChangePct: z.number().min(5).max(100).default(50).describe("Largest swing in record count against the previous snapshot before the run is held for review"),
+  proxyEnv: z
+    .string()
+    .regex(/^[A-Z][A-Z0-9_]*$/u, "must be an environment variable name such as LPL_KEELLS_PROXY_URL")
+    .nullable()
+    .default(null)
+    .describe("Name of an environment variable holding an HTTP proxy URL (http://user:password@host:port); this source's requests go through it. The URL itself stays out of the database"),
 });
 export type BaseSettings = z.infer<typeof baseSettingsSchema>;
+
+/**
+ * The proxy this source's requests go through, read from the environment variable its settings
+ * name, or null when none is configured. A named variable that is missing or malformed is a settings
+ * error: the capture fails at once and is not retried, because no retry can supply it.
+ */
+export function proxyUrlFor(settings: Pick<BaseSettings, "proxyEnv">, environment: Record<string, string | undefined> = process.env): string | null {
+  if (!settings.proxyEnv) return null;
+  const value = environment[settings.proxyEnv]?.trim();
+  if (!value) throw new SettingsError([`${settings.proxyEnv} is not set in the environment`]);
+  let url: URL;
+  try {
+    url = new URL(value);
+  } catch {
+    throw new SettingsError([`${settings.proxyEnv} is not a valid URL`]);
+  }
+  if ((url.protocol !== "http:" && url.protocol !== "https:") || !url.hostname) throw new SettingsError([`${settings.proxyEnv} must be an http:// or https:// proxy URL with a host`]);
+  return url.href;
+}
 
 /** An optional case-insensitive regular expression setting, validated at save time so a typo cannot break the next run. */
 export function patternSetting(description: string) {
