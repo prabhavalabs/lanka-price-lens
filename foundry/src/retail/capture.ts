@@ -22,6 +22,12 @@ export type RetailCaptureOptions = {
   /** Trading day the snapshot is filed under; defaults to today in Asia/Colombo. */
   captureDate?: string | undefined;
   userAgent?: string | undefined;
+  /**
+   * Records captured elsewhere (another machine, an exported snapshot) to file
+   * instead of fetching from the retailer. Validation, storage, dedupe, and
+   * promotion run exactly as for a live capture; only the fetch is skipped.
+   */
+  snapshot?: { records: NormalizedRecord[]; payload?: SnapshotPayload | undefined } | undefined;
 };
 
 export type RetailCaptureStatus = "succeeded" | "failed" | "blocked" | "skipped";
@@ -102,21 +108,24 @@ export async function runRetailCapture<S extends BaseSettings>(
   try {
     const settings = resolveAdapterSettings(database, manifest, adapter);
 
-    await executeLoggedStage(database, run.id, "fetch_snapshot", 0, { adapter: adapter.kind, capture_date: context.date }, async () => {
-      const payload = await adapter.fetch(settings, {
-        http,
-        now,
-        userAgent,
-        log: (level, message, data) => logStage(database, run.id, "fetch_snapshot", level, message, data),
-      });
+    const imported = options.snapshot;
+    await executeLoggedStage(database, run.id, "fetch_snapshot", 0, { adapter: adapter.kind, capture_date: context.date, imported: Boolean(imported) }, async () => {
+      const payload = imported
+        ? imported.payload ?? { fetchedAt: nowIso, requests: 0, data: { imported: true, records: imported.records.length } }
+        : await adapter.fetch(settings, {
+            http,
+            now,
+            userAgent,
+            log: (level, message, data) => logStage(database, run.id, "fetch_snapshot", level, message, data),
+          });
       context.payload = payload;
-      return { outputCount: payload.requests, output: { requests: payload.requests, fetched_at: payload.fetchedAt } };
+      return { outputCount: payload.requests, output: { requests: payload.requests, fetched_at: payload.fetchedAt, imported: Boolean(imported) } };
     }, stages);
     heartbeatRun(database, run.id);
 
     await executeLoggedStage(database, run.id, "normalize_records", context.payload?.requests ?? 0, {}, () => {
       if (!context.payload) throw new Error("SNAPSHOT_EMPTY");
-      context.records = adapter.normalize(context.payload, settings, context.date);
+      context.records = imported ? imported.records.map((record) => ({ ...record, date: context.date })) : adapter.normalize(context.payload, settings, context.date);
       return { outputCount: context.records.length, output: { records: context.records.length } };
     }, stages);
 
