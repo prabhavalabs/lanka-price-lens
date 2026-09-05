@@ -6,6 +6,7 @@ import { RecipeCard } from "@/components/recipe-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
 import { fetchRecipes } from "@/lib/api";
 import { dishCategoryLabel } from "@/lib/format";
@@ -36,10 +37,13 @@ export function RecipesPage() {
       </header>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <Input aria-label="Search recipes" className="sm:max-w-sm" onChange={(event) => { setQuery(event.target.value); setParam("q", event.target.value.trim()); }} placeholder="Search dishes or ingredients, e.g. parippu, pol sambol, chicken" value={query} />
-        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0">
-          <Button className="shrink-0 rounded-full" onClick={() => setParam("category", "")} size="sm" variant={category ? "outline" : "default"}>All</Button>
-          {categories.map((entry) => <Button className={cn("shrink-0 rounded-full")} key={entry} onClick={() => setParam("category", entry)} size="sm" variant={category === entry ? "default" : "outline"}>{dishCategoryLabel(entry)}</Button>)}
-        </div>
+        <ScrollArea className="-mx-4 sm:mx-0">
+          <div className="flex gap-2 px-4 pb-3 sm:px-0">
+            <Button className="shrink-0 rounded-full" onClick={() => setParam("category", "")} size="sm" variant={category ? "outline" : "default"}>All</Button>
+            {categories.map((entry) => <Button className={cn("shrink-0 rounded-full")} key={entry} onClick={() => setParam("category", entry)} size="sm" variant={category === entry ? "default" : "outline"}>{dishCategoryLabel(entry)}</Button>)}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
       {list.isPending ? <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{Array.from({ length: 6 }, (_, index) => <Skeleton key={index} className="h-36 rounded-xl" />)}</div> : null}
       {list.isError ? <p className="py-12 text-center text-destructive">{list.error.message}</p> : null}

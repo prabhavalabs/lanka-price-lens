@@ -32,10 +32,11 @@ taken to zero removes the line.
   and the cheapest badged, and a history chart (30 days, 90 days, a year) with a line per seller
   in the seller's colour and toggles per group. Share via the device share sheet, WhatsApp, or
   copy link.
-- **Quick basket:** the header's basket opens a dropdown to adjust or remove items on the go,
-  with a button to the full comparison. On a card, the "Add" button in the top-right corner turns
-  into a −/count/+ control once the product is in the basket (a short zoom-in on the swap and on
-  each count change) and the card is marked.
+- **Quick basket:** the header's basket opens a dropdown to adjust or remove items on the go
+  (a scroll area past eight items), clear the whole list in two taps, or go to the full
+  comparison. On a card, the "Add" button in the top-right corner turns into a −/count/+ control
+  once the product is in the basket (a short zoom-in on the swap and on each count change) and
+  the card is marked.
 - **Basket (`/basket`):** the shopper's list, kept in the browser, priced at every seller
   through `GET /v1/public/basket?products=`: sellers that carry the whole list first, then by
   total, with what each one is missing; quantities per item; share the result. Sellers whose
@@ -53,7 +54,17 @@ taken to zero removes the line.
   report, a message, an optional email, with the page URL and browser attached. It posts to
   `POST /v1/public/feedback` (five per hour per address, a honeypot field for bots). The owner
   reads and works through them in the admin's **Feedback** page (new, seen, done) through
-  `GET /v1/admin/feedback` and `PATCH /v1/admin/feedback/:id`.
+  `GET /v1/admin/feedback` and `PATCH /v1/admin/feedback/:id`, and receives each one by mail
+  when `LPL_FEEDBACK_EMAIL_TO` and `LPL_SMTP_URL` are set (nodemailer; a Gmail app password works
+  as `smtps://you%40gmail.com:app-password@smtp.gmail.com:465`). Mail never blocks or fails the
+  request; without the settings the messages simply stay in the admin.
+- **Who is here:** the footer shows how many people are on the site. Each tab keeps a random id
+  in session storage and posts a beat to `POST /v1/public/presence` once a minute while visible;
+  the API counts ids seen in the last three minutes, in memory, no cookies.
+- **Analytics:** with `LPL_GA_MEASUREMENT_ID` set (a GA4 id, `G-…`), `GET /v1/public/config`
+  hands it to the site, which loads gtag with IP anonymisation, sends a page view on every route
+  change, `add_to_basket` and `feedback_sent` events, and stays silent for visitors whose browser
+  says "do not track". Without the id nothing is loaded.
 - **Quantities:** a basket line holds a decimal amount in the unit the product is priced in (0.5
   for half a kilo, 6 for six eggs, 0.75 for 750 ml). "Add" starts at half a kilo or litre, or one
   piece; the −/+ steps are a quarter kilo or litre, or one piece; tapping the amount opens presets
@@ -105,6 +116,8 @@ cacheable (`Cache-Control: public, max-age=300, s-maxage=900`) and readable from
 | `GET /v1/public/recipes?q=&category=&meal=&page=` | Browse the dish catalogue (24 per page) |
 | `GET /v1/public/recipes/recommend?products=a,b,c&limit=` | Dishes ranked by fit to those products, with names and cheapest prices of every ingredient involved |
 | `GET /v1/public/recipes/:id` | One dish with its key ingredients priced |
+| `GET /v1/public/config` | What the site needs from the deployment: the analytics id, when set |
+| `POST /v1/public/presence` `{ id }` / `GET /v1/public/presence` | Beat for the online count / the count; never cached |
 
 All three answer 503 when the warehouse is unavailable.
 

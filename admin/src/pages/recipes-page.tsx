@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -193,8 +194,12 @@ export function RecipesPage() {
       </div>
 
       <Dialog onOpenChange={(open) => { if (!open) update({ dish: "" }); }} open={Boolean(dishId)}>
-        <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-2xl">
-          {detail.data ? <DishSheet dish={detail.data} onOpen={(id) => update({ dish: id })} /> : <DialogHeader><DialogTitle>{detail.isError ? "Dish unavailable" : "Loading"}</DialogTitle><DialogDescription>{detail.isError ? detail.error.message : "Fetching the dish."}</DialogDescription></DialogHeader>}
+        <DialogContent className="max-h-[85vh] overflow-hidden p-0 sm:max-w-2xl">
+          <ScrollArea className="[&_[data-slot=scroll-area-viewport]]:max-h-[85vh]">
+            <div className="p-6">
+            {detail.data ? <DishSheet dish={detail.data} onOpen={(id) => update({ dish: id })} /> : <DialogHeader><DialogTitle>{detail.isError ? "Dish unavailable" : "Loading"}</DialogTitle><DialogDescription>{detail.isError ? detail.error.message : "Fetching the dish."}</DialogDescription></DialogHeader>}
+            </div>
+          </ScrollArea>
         </DialogContent>
       </Dialog>
     </PageFrame>

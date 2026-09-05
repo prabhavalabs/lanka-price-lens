@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { basketStore, formatQuantity, stepFor, useBasketLine } from "@/store/basket";
 import { cn } from "@/lib/utils";
 
@@ -73,9 +74,9 @@ function AmountPicker({ id, label, quantity, unit, size }: { id: string; label: 
   return (
     <Popover onOpenChange={setOpen} open={open}>
       <PopoverTrigger asChild>
-        <button aria-label={`Change ${label} quantity, now ${formatQuantity(quantity, unit)}`} className={cn("min-w-12 rounded px-1 text-center font-medium tabular-nums hover:bg-primary/10", size === "md" ? "text-sm" : "text-xs")} type="button">
+        <Button aria-label={`Change ${label} quantity, now ${formatQuantity(quantity, unit)}`} className={cn("h-7 min-w-12 px-1.5 font-medium tabular-nums", size === "md" ? "text-sm" : "text-xs")} size="sm" variant="ghost">
           <span className="inline-block animate-in fade-in zoom-in-50 duration-150 ease-out motion-reduce:animate-none" key={quantity}>{formatQuantity(quantity, unit)}</span>
-        </button>
+        </Button>
       </PopoverTrigger>
       <PopoverContent align="center" className="w-64 p-3">
         <p className="mb-2 text-xs font-medium">How much {label.toLowerCase()}?</p>
@@ -87,10 +88,10 @@ function AmountPicker({ id, label, quantity, unit, size }: { id: string; label: 
         <form className="mt-3 flex items-center gap-1.5" onSubmit={(event) => { event.preventDefault(); apply(); }}>
           <Input aria-label="Exact amount" className="h-8 flex-1 tabular-nums" inputMode="decimal" min="0" onChange={(event) => setDraft(event.target.value)} placeholder={metric ? (draftUnit === "small" ? "e.g. 300" : "e.g. 1.5") : "e.g. 4"} step="any" type="number" value={draft} />
           {metric ? (
-            <div className="inline-flex rounded-md border p-0.5 text-xs">
-              <button className={cn("rounded px-2 py-0.5", draftUnit === "small" && "bg-primary text-primary-foreground")} onClick={() => setDraftUnit("small")} type="button">{smallUnit}</button>
-              <button className={cn("rounded px-2 py-0.5", draftUnit === "large" && "bg-primary text-primary-foreground")} onClick={() => setDraftUnit("large")} type="button">{unit}</button>
-            </div>
+            <ToggleGroup aria-label="Unit" onValueChange={(value) => { if (value === "small" || value === "large") setDraftUnit(value); }} size="sm" type="single" value={draftUnit} variant="outline">
+              <ToggleGroupItem className="px-2 text-xs" value="small">{smallUnit}</ToggleGroupItem>
+              <ToggleGroupItem className="px-2 text-xs" value="large">{unit}</ToggleGroupItem>
+            </ToggleGroup>
           ) : <span className="text-xs text-muted-foreground">{unit === "piece" ? "pcs" : unit}</span>}
           <Button className="h-8" disabled={!draft} size="sm" type="submit">Set</Button>
         </form>

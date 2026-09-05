@@ -12,8 +12,9 @@ test("visitors can send feedback within a budget and the owner works through it 
   const database = openOperationalDatabase(":memory:");
   const salt = randomBytes(16).toString("hex");
   seedAdminUser(database, "owner@example.com", `scrypt$${salt}$${scryptSync("correct horse battery staple", salt, 64).toString("hex")}`);
+  const sent: Array<{ subject: string; text: string }> = [];
   try {
-    const app = createApp(database);
+    const app = createApp(database, undefined, undefined, { mailer: { configured: true, send: async (message) => { sent.push(message); } } });
     const send = (body: unknown, address = "203.0.113.7") =>
       app.request("http://localhost/v1/public/feedback", { method: "POST", headers: { "content-type": "application/json", "x-forwarded-for": address, "user-agent": "TestBrowser/1.0" }, body: JSON.stringify(body) });
 
@@ -26,6 +27,8 @@ test("visitors can send feedback within a budget and the owner works through it 
     assert.equal(first.status, 201);
     const stored = database.prepare("SELECT kind, message, email, page, user_agent, status FROM feedback").all() as Array<Record<string, unknown>>;
     assert.equal(stored.length, 1, "the bot's message was not stored");
+    assert.equal(sent.length, 1, "the owner is mailed once per stored message, never for the bot");
+    assert.match(sent[0]!.subject, /^\[PriceLens\] Bug report: The chart does not load/u);
     assert.deepEqual(stored[0], { kind: "bug", message: "The chart does not load on my phone in Safari.", email: "reader@example.com", page: "https://price.example/p/product_potato", user_agent: "TestBrowser/1.0", status: "new" });
 
     // The honeypot submission and the bug report used two of the five; three more go through, the sixth is refused.
