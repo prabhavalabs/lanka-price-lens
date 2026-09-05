@@ -102,6 +102,18 @@ test("owner ingestion rejects cross-origin requests and overlapping runs", async
     });
     assert.equal(crossOrigin.status, 403);
 
+    // Behind a TLS-terminating proxy the API sees plain HTTP; the browser's https origin must still count as same-origin.
+    const proxied = await app.request("http://localhost/v1/admin/ingestion/backfill", {
+      method: "POST",
+      headers: { cookie, origin: "https://lanka.example", host: "lanka.example", "x-forwarded-proto": "https" },
+    });
+    assert.equal(proxied.status, 409, "a forwarded https origin on the same host is not cross-origin");
+    const wrongScheme = await app.request("http://localhost/v1/admin/ingestion/backfill", {
+      method: "POST",
+      headers: { cookie, origin: "http://lanka.example", host: "lanka.example", "x-forwarded-proto": "https" },
+    });
+    assert.equal(wrongScheme.status, 403, "the forwarded scheme still has to match");
+
     const overlap = await app.request("http://localhost/v1/admin/ingestion/backfill", {
       method: "POST",
       headers: { cookie },
