@@ -6,7 +6,7 @@ import { configuredArchiveStorage } from "./archive-storage.ts";
 import { openOperationalDatabase } from "./db.ts";
 import { canonicalizeRun, syncMappingBundle } from "./mapping.ts";
 import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
-import { recoverFailedProcessing, runSourceSync } from "./pipeline.ts";
+import { processPendingArchives, recoverFailedProcessing, runSourceSync } from "./pipeline.ts";
 import { exportSnapshot, remapRecentSnapshots, retailAdapterFor, runRetailCapture, snapshotFileSchema } from "./retail/index.ts";
 import { connectWarehouse, migrateWarehouse, renderReportMarkdown, syncWarehouse, warehouseReport } from "./warehouse/index.ts";
 import { buildRelease } from "./release.ts";
@@ -47,6 +47,11 @@ if (command === "hash-password") {
         const recovery = await recoverFailedProcessing(database, manifest, { mappingBundle });
         if (recovery.retried.length) console.log(JSON.stringify({ source: manifest.id, recovery }));
         if (recovery.failed.length) process.exitCode = 1;
+        // Archived documents whose processing never ran (an interrupted sync, an archive filled before processing existed)
+        // or ran without a bundle are processed now, newest first, within a budget that keeps the timer run bounded.
+        const pending = await processPendingArchives(database, manifest, { trigger, mappingBundle, limit: Number(valueOf("--process-limit") ?? 150) });
+        if (pending.candidates) console.log(JSON.stringify({ source: manifest.id, pending: { ...pending, runs: undefined } }));
+        if (pending.failed) process.exitCode = 1;
         if (result.processingRunIds.length) {
           const placeholders = result.processingRunIds.map(() => "?").join(",");
           const failed = database
@@ -97,6 +102,35 @@ if (command === "hash-password") {
       console.log(JSON.stringify({ source: entry.manifest.id, ...result }));
       // A paused source is expected to skip; anything else short of success fails the command.
       if (result.status !== "succeeded" && result.code !== "CAPTURE_PAUSED") process.exitCode = 1;
+    }
+  } finally {
+    database.close();
+  }
+} else if (command === "process") {
+  // process [--source <id>] [--limit N] [--since yyyy-mm-dd]: process archived documents whose prices never landed.
+  const catalog = await loadCatalog();
+  const requested = valueOf("--source");
+  const entries = requested
+    ? [catalog.find(requested) ?? (() => { throw new Error(`Unknown source ${requested}`); })()]
+    : catalog.entries.filter((entry) => !entry.manifest.adapter && entry.manifest.enabled);
+  if (!entries.length) throw new Error("No PDF bulletin source is configured");
+  const database = openOperationalDatabase(databasePath());
+  try {
+    const archive = await configuredArchiveStorage();
+    const limit = Number(valueOf("--limit") ?? 200);
+    const since = dateValue("--since");
+    for (const { manifest, mappingBundle } of entries) {
+      if (mappingBundle) syncMappingBundle(database, mappingBundle);
+      const result = await processPendingArchives(database, manifest, {
+        trigger: "manual",
+        archive,
+        mappingBundle,
+        limit,
+        since,
+        onProgress: (done, total) => { if (done % 25 === 0 || done === total) console.error(`${manifest.id}: ${done}/${total}`); },
+      });
+      console.log(JSON.stringify({ source: manifest.id, ...result, runs: result.runs.filter((run) => run.status !== "succeeded") }));
+      if (result.failed) process.exitCode = 1;
     }
   } finally {
     database.close();
@@ -219,7 +253,7 @@ if (command === "hash-password") {
     database.close();
   }
 } else {
-  console.error("Usage: foundry <init|sync|ingest|scheduler|canonicalize|release build|hash-password> [options]");
+  console.error("Usage: foundry <init|sync|ingest|process|capture|remap|snapshot|warehouse|scheduler|canonicalize|release build|hash-password> [options]");
   process.exitCode = 1;
 }
 

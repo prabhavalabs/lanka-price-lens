@@ -20,7 +20,7 @@ import {
 } from "../src/harti.ts";
 import { archiveManualArtifact, ingestManualPdf } from "../src/intake.ts";
 import { canonicalizeRun } from "../src/mapping.ts";
-import { recoverFailedProcessing, retryProcessingStage, runIngestion, workflowRetryState, type ArchiveStorage } from "../src/pipeline.ts";
+import { archiveReadPrefix, pendingArchives, processPendingArchives, recoverFailedProcessing, retryProcessingStage, runIngestion, workflowRetryState, type ArchiveStorage } from "../src/pipeline.ts";
 import type { PdfInspection, TextItem } from "../src/pdf.ts";
 import { assessArtifactCompleteness } from "../src/quality.ts";
 import { buildRelease } from "../src/release.ts";
@@ -306,6 +306,16 @@ test("scheduled ingestion starts at latest, backfills pending, and catches up ne
     await runIngestion(database, { ...approved, request_interval_ms: 1 }, { trigger: "scheduled", request, inspector, archive });
     assert.equal(requests.length, 3);
     assert.equal((database.prepare("SELECT fetched_count FROM ingest_run WHERE workflow = 'source_sync' ORDER BY started_at DESC LIMIT 1").get() as { fetched_count: number }).fetched_count, 2);
+
+    // A hole older than the newest archived day is filled only inside the lookback window.
+    html = archiveHtml(["19-08-2026", "18-08-2026", "17-08-2026", "16-08-2026", "15-08-2026", "14-08-2026"]);
+    requests = [];
+    await runIngestion(database, { ...approved, request_interval_ms: 1 }, { trigger: "scheduled", request, inspector, archive, now: new Date("2026-08-20T00:00:00Z"), lookbackDays: 3 });
+    assert.deepEqual(requests.filter((href) => href !== approved.landing_url).map((href) => href.match(/\d{2}-\d{2}-\d{4}/u)?.[0]), ["19-08-2026"], "a 6-day-old hole is outside a 3-day window");
+    requests = [];
+    await runIngestion(database, { ...approved, request_interval_ms: 1 }, { trigger: "scheduled", request, inspector, archive, now: new Date("2026-08-20T00:00:00Z") });
+    assert.deepEqual(requests.filter((href) => href !== approved.landing_url).map((href) => href.match(/\d{2}-\d{2}-\d{4}/u)?.[0]), ["14-08-2026"], "the default 45-day window fills it");
+    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM archived_pdf").get() as { count: number }).count, 6);
   } finally {
     database.close();
   }
@@ -994,6 +1004,56 @@ test("sync recovers processing runs that failed after parsing once the bundle is
     assert.equal((database.prepare("SELECT status FROM ingest_run WHERE id = ?").get(failedId) as { status: string }).status, "succeeded");
     assert.ok((database.prepare("SELECT COUNT(*) AS count FROM price_observation WHERE run_id = ? AND status = 'active'").get(failedId) as { count: number }).count > 0, "the recovered document's prices are promoted");
     assert.deepEqual(await recoverFailedProcessing(database, approved, { archive, mappingBundle: fixed }), { retried: [], recovered: [], failed: [] }, "nothing is left to recover");
+  } finally {
+    database.close();
+  }
+});
+
+test("pending processing sweeps archived documents that were never processed or were processed without a bundle", async () => {
+  const database = openOperationalDatabase(":memory:");
+  const archive = memoryArchive();
+  const approved = sourceManifestSchema.parse({
+    ...manifest,
+    rights_status: "approved_permission",
+    rights_evidence_ref: "test-fixture://permission",
+    attribution_text: "Test source fixture",
+    reviewed_by: "fixture-reviewer",
+    review_due_at: "2999-12-31",
+    retention_policy: "preserve_source_evidence",
+    enabled: true,
+  });
+  const quick = { ...approved, request_interval_ms: 1 };
+  const listing = (dates: string[]) => async (url: string | URL | Request) => String(url) === approved.landing_url
+    ? new Response(archiveHtml(dates), { status: 200, headers: { "content-type": "text/html" } })
+    : new Response(`%PDF-${String(url)}`, { status: 200, headers: { "content-type": "application/pdf" } });
+  const inspector = async () => ({ inspection: pdfInspection(), items: hartiItems() });
+  try {
+    // Three documents archived and processed without a mapping bundle: parsed, nothing published.
+    const first = await runIngestion(database, quick, { trigger: "backfill", request: listing(["17-08-2026", "16-08-2026", "15-08-2026"]), archive, inspector });
+    assert.equal(first.processingRunIds.length, 3);
+    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM price_observation").get() as { count: number }).count, 0);
+
+    // One of them never completed processing, as if the sync had been interrupted right after the download.
+    database.prepare("UPDATE ingest_run SET status = 'skipped' WHERE id = ?").run(first.processingRunIds[2]!);
+
+    const pending = pendingArchives(database, approved, { uriPrefix: archiveReadPrefix(archive) });
+    assert.deepEqual(pending.map((candidate) => [candidate.publishedAt.slice(0, 10), candidate.reason]), [["2026-08-17", "unconfigured"], ["2026-08-16", "unconfigured"], ["2026-08-15", "never_processed"]], "newest first, with the reason each document is pending");
+    assert.equal(pendingArchives(database, approved, { since: "2026-08-16" }).length, 2, "since narrows the sweep");
+    assert.equal(pendingArchives(database, approved, { uriPrefix: "r2://elsewhere/" }).length, 0, "documents another driver holds are left alone");
+
+    const bundle = mappingBundle("item_beans", "Beans", "fixture-v1");
+    const swept = await processPendingArchives(database, approved, { trigger: "manual", archive, inspector, mappingBundle: bundle, limit: 2 });
+    assert.deepEqual([swept.candidates, swept.succeeded, swept.failed, swept.runs.length], [2, 2, 0, 2], "the limit bounds one sweep");
+    const rest = await processPendingArchives(database, approved, { trigger: "manual", archive, inspector, mappingBundle: bundle });
+    assert.deepEqual([rest.candidates, rest.succeeded], [1, 1]);
+    // The fixture documents carry the same prices for the same day, so later ones dedupe against the first; each run still canonicalizes.
+    for (const run of [...swept.runs, ...rest.runs]) {
+      const stage = database.prepare("SELECT output_json FROM run_stage WHERE run_id = ? AND stage = 'canonicalize_data'").get(run.runId) as { output_json: string };
+      assert.equal((JSON.parse(stage.output_json) as { status: string }).status, "canonicalized", `run ${run.runId} canonicalizes with the bundle`);
+    }
+    assert.ok((database.prepare("SELECT COUNT(*) AS count FROM price_observation WHERE status = 'active'").get() as { count: number }).count > 0, "the swept documents' prices are promoted");
+    assert.deepEqual(pendingArchives(database, approved), [], "a real assessment means the document is done");
+    assert.deepEqual(await processPendingArchives(database, approved, { trigger: "manual", archive, inspector, mappingBundle: bundle }), { candidates: 0, runs: [], succeeded: 0, failed: 0, blocked: 0, skipped: 0 });
   } finally {
     database.close();
   }

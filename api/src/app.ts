@@ -10,6 +10,9 @@ import {
   processingStages,
   retryProcessingStage,
   runPdfProcessing,
+  archiveReadPrefix,
+  pendingArchives,
+  processPendingArchives,
   runSourceSync,
   workflowRetryState,
   workflowSnapshot,
@@ -91,6 +94,18 @@ export function createApp(
       return null;
     }
   };
+  /** Brings the warehouse up to date after a background job lands prices, so the explorer shows them without waiting for the evening timer. */
+  const refreshWarehouse = async (): Promise<void> => {
+    const client = await warehouse();
+    if (!client) return;
+    try {
+      await syncWarehouse(database, client);
+    } catch (error) {
+      console.error(JSON.stringify({ level: "error", message: "Warehouse sync failed", detail: error instanceof Error ? error.message : String(error) }));
+    }
+  };
+  /** Sources with a pending-archive sweep running in this process; one at a time per source. */
+  const sweeping = new Set<string>();
   const catalog = options.catalog ?? (sourceManifest ? singleSourceCatalog(sourceManifest, mappingBundle) : createSourceCatalog([]));
   for (const entry of catalog.entries) ensureWorkflowSchedules(database, entry.manifest);
 
@@ -396,6 +411,85 @@ export function createApp(
     const ok = result.status === "succeeded";
     const message = !ok ? result.message ?? "Snapshot import failed" : result.unchanged ? "Snapshot already stored" : `Snapshot stored: ${result.records} records`;
     return context.json(envelope(context.get("requestId"), { ...result, capture_date: parsed.data.capture_date, warehouse: synced }, ok, message), ok ? 200 : 422);
+  });
+
+  /**
+   * Runs a document source's sync now. `sync` takes what is newer than the newest archived publication plus recent
+   * holes; `backfill` with `from`/`to` fetches a range. New documents are processed in the same background task and
+   * the warehouse is refreshed when it finishes.
+   */
+  app.post("/v1/admin/sources/:id/sync", bodyLimit({ maxSize: 4 * 1024 }), async (context) => {
+    const entry = catalog.find(context.req.param("id"));
+    if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Unknown source"), 404);
+    if (entry.manifest.adapter) return context.json(envelope(context.get("requestId"), null, false, "Retail sources are captured, not synced"), 409);
+    if (!canPublishSource(entry.manifest)) return context.json(envelope(context.get("requestId"), null, false, "Source permission is not current"), 403);
+    const body = await jsonObject(context);
+    if (!body) return context.json(envelope(context.get("requestId"), null, false, "Body must be a JSON object"), 400);
+    const mode = body.mode ?? "sync";
+    if (mode !== "sync" && mode !== "backfill") return context.json(envelope(context.get("requestId"), null, false, "mode must be sync or backfill"), 400);
+    const from = optionalDate(body.from);
+    const to = optionalDate(body.to);
+    const limit = optionalLimit(body.limit);
+    if (from === false || to === false) return context.json(envelope(context.get("requestId"), null, false, "from and to must be yyyy-mm-dd"), 400);
+    if (from && to && from > to) return context.json(envelope(context.get("requestId"), null, false, "from must not be later than to"), 400);
+    if (limit === false) return context.json(envelope(context.get("requestId"), null, false, "limit must be a whole number from 1 to 5000"), 400);
+    const active = database
+      .prepare("SELECT id, trigger, status FROM ingest_run WHERE source_id = ? AND workflow != 'pdf_processing' AND status = 'running' LIMIT 1")
+      .get(entry.manifest.id) as { id: string; trigger: string; status: string } | undefined;
+    if (active) return context.json(envelope(context.get("requestId"), active, false, "Another run for this source is active"), 409);
+    const task = runSourceSync(database, entry.manifest, {
+      trigger: mode === "backfill" ? "backfill" : "manual",
+      from,
+      to,
+      limit,
+      mappingBundle: entry.mappingBundle,
+      archive: options.archiveStorage,
+    }).then(refreshWarehouse);
+    void task.catch(() => undefined);
+    const run = database
+      .prepare("SELECT id, workflow, trigger, status FROM ingest_run WHERE source_id = ? AND workflow = 'source_sync' ORDER BY started_at DESC LIMIT 1")
+      .get(entry.manifest.id) as { id: string; trigger: string; status: string } | undefined;
+    if (!run) return context.json(envelope(context.get("requestId"), null, false, "Sync did not start"), 500);
+    return context.json(envelope(context.get("requestId"), { ...run, mode, from: from ?? null, to: to ?? null, limit: limit ?? null }, true, "Sync started"), 202);
+  });
+
+  /**
+   * Processes a document source's archived PDFs whose prices never landed (never processed, or processed without a
+   * mapping bundle), newest first, in the background; the warehouse is refreshed when the sweep finishes.
+   */
+  app.post("/v1/admin/sources/:id/process-pending", bodyLimit({ maxSize: 4 * 1024 }), async (context) => {
+    const entry = catalog.find(context.req.param("id"));
+    if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Unknown source"), 404);
+    if (entry.manifest.adapter) return context.json(envelope(context.get("requestId"), null, false, "Retail sources have no documents to process"), 409);
+    if (!canCaptureSource(entry.manifest)) return context.json(envelope(context.get("requestId"), null, false, "Source permission is not current"), 403);
+    const body = await jsonObject(context);
+    if (!body) return context.json(envelope(context.get("requestId"), null, false, "Body must be a JSON object"), 400);
+    const since = optionalDate(body.since);
+    const limit = optionalLimit(body.limit);
+    if (since === false) return context.json(envelope(context.get("requestId"), null, false, "since must be yyyy-mm-dd"), 400);
+    if (limit === false) return context.json(envelope(context.get("requestId"), null, false, "limit must be a whole number from 1 to 5000"), 400);
+    if (sweeping.has(entry.manifest.id)) return context.json(envelope(context.get("requestId"), null, false, "A processing sweep is already running for this source"), 409);
+    const archive = options.archiveStorage ?? (await configuredArchiveStorage().catch(() => undefined));
+    if (!archive) return context.json(envelope(context.get("requestId"), null, false, "Archive storage is not configured"), 503);
+    const candidates = pendingArchives(database, entry.manifest, { limit: limit ?? 200, since, uriPrefix: archiveReadPrefix(archive) });
+    const summary = {
+      candidates: candidates.length,
+      newest: candidates[0]?.publishedAt ?? null,
+      oldest: candidates.at(-1)?.publishedAt ?? null,
+      never_processed: candidates.filter((candidate) => candidate.reason === "never_processed").length,
+      unconfigured: candidates.filter((candidate) => candidate.reason === "unconfigured").length,
+    };
+    if (!candidates.length) return context.json(envelope(context.get("requestId"), summary, true, "Nothing to process"));
+    sweeping.add(entry.manifest.id);
+    const task = processPendingArchives(database, entry.manifest, { trigger: "manual", limit: limit ?? 200, since, archive, mappingBundle: entry.mappingBundle })
+      .then((result) => {
+        console.log(JSON.stringify({ level: "info", message: "Pending documents processed", source: entry.manifest.id, ...result, runs: undefined }));
+        return refreshWarehouse();
+      })
+      .catch((error: unknown) => console.error(JSON.stringify({ level: "error", message: "Pending processing failed", source: entry.manifest.id, detail: error instanceof Error ? error.message : String(error) })))
+      .finally(() => sweeping.delete(entry.manifest.id));
+    void task;
+    return context.json(envelope(context.get("requestId"), summary, true, `Processing ${candidates.length} documents`), 202);
   });
 
   app.post("/v1/admin/sources/:id/capture", async (context) => {
@@ -1077,4 +1171,28 @@ function pageRequest(request: ListRequest, total: number): { page: number; pageS
 
 function envelope<T>(requestId: string, payload: T, success = true, message = "OK"): ApiEnvelope<T> {
   return { success, message, payload, meta: { request_id: requestId, generated_at: new Date().toISOString() } };
+}
+
+/** The request body as a plain object, or null when it is missing, not JSON, or not an object. An empty body counts as `{}`. */
+async function jsonObject(context: Context): Promise<Record<string, unknown> | null> {
+  const text = await context.req.text();
+  if (!text.trim()) return {};
+  try {
+    const parsed: unknown = JSON.parse(text);
+    return typeof parsed === "object" && parsed && !Array.isArray(parsed) ? (parsed as Record<string, unknown>) : null;
+  } catch {
+    return null;
+  }
+}
+
+/** A `yyyy-mm-dd` string, undefined when absent, false when malformed. */
+function optionalDate(value: unknown): string | undefined | false {
+  if (value === undefined || value === null || value === "") return undefined;
+  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/u.test(value) ? value : false;
+}
+
+/** A whole number from 1 to 5000, undefined when absent, false when out of range. */
+function optionalLimit(value: unknown): number | undefined | false {
+  if (value === undefined || value === null) return undefined;
+  return typeof value === "number" && Number.isInteger(value) && value >= 1 && value <= 5000 ? value : false;
 }
