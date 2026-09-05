@@ -77,6 +77,17 @@ export type DocumentAdapterKind = (typeof documentAdapterKinds)[number];
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected YYYY-MM-DD");
 
+/**
+ * How a failed workflow run (a source sync, a retail capture) is retried before it counts as failed:
+ * `attempts` tries in total with `cooldown_minutes` between them. Rights blocks, bad settings, and
+ * documents held for review are never retried; a retry helps only against outages.
+ */
+export const retryPolicySchema = z.object({
+  attempts: z.number().int().min(1).max(10).default(3),
+  cooldown_minutes: z.number().int().min(0).max(1440).default(10),
+});
+export type RetryPolicy = z.infer<typeof retryPolicySchema>;
+
 export const sourceManifestSchema = z
   .object({
     id: z.string().regex(/^[a-z0-9][a-z0-9_]*$/),
@@ -102,6 +113,7 @@ export const sourceManifestSchema = z
     review_due_at: isoDate,
     request_interval_ms: z.number().int().min(1_000),
     max_attempts: z.number().int().min(1).max(10),
+    retry: retryPolicySchema.default({ attempts: 3, cooldown_minutes: 10 }),
     enabled: z.boolean(),
     /** Which document parser reads this source's PDFs; ignored for retail adapter sources. */
     document_adapter: z.enum(documentAdapterKinds).default("harti_daily"),

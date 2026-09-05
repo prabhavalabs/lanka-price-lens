@@ -2,7 +2,7 @@ import { hostname } from "node:os";
 
 import { CronExpressionParser } from "cron-parser";
 
-import { sourceKind, type MappingBundle, type SourceManifest, type StageName, type WorkflowName } from "@lanka-pricelens/shared";
+import { sourceKind, type MappingBundle, type RetryPolicy, type SourceManifest, type StageName, type WorkflowName } from "@lanka-pricelens/shared";
 
 import { configuredArchiveStorage } from "./archive-storage.ts";
 import { newId, syncSource, type OperationalDatabase } from "./db.ts";
@@ -10,6 +10,7 @@ import { singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
 import { processingStages, retailCaptureStages, runPdfProcessing, runSourceSync, sourceSyncStages } from "./pipeline.ts";
 import { retailAdapterFor } from "./retail/index.ts";
 import { runRetailCapture } from "./retail/capture.ts";
+import { failureCodeOf, retryableFailure } from "./retry.ts";
 
 export const workflowDefinitionVersion = 3;
 export const workflowDefinitions = [
@@ -96,7 +97,34 @@ export type WorkflowDispatch = {
   error_code: string | null;
   error_message: string | null;
   created_at: string;
+  /** Which attempt of a retried dispatch this is (1 for a first attempt) and the dispatch it retries. */
+  attempt: number;
+  retry_of: string | null;
 };
+
+/**
+ * Queues the next attempt of a failed dispatch after the policy's cooldown, or returns null when the
+ * attempts are spent. The new dispatch keeps the workflow, source, document, trigger, and schedule slot
+ * of the failed one, so the history reads as one job tried several times.
+ */
+export function scheduleRetryDispatch(database: OperationalDatabase, dispatch: WorkflowDispatch, policy: RetryPolicy, now = new Date()): WorkflowDispatch | null {
+  const attempt = (dispatch.attempt ?? 1) + 1;
+  if (attempt > policy.attempts) return null;
+  const id = newId("dispatch");
+  const availableAt = new Date(now.getTime() + Math.max(0, policy.cooldown_minutes) * 60_000).toISOString();
+  const inserted = database
+    .prepare(
+      `INSERT OR IGNORE INTO workflow_dispatch (
+        id, schedule_id, workflow_key, source_id, archive_id, trigger, status, scheduled_for,
+        available_at, requested_by, idempotency_key, created_at, attempt, retry_of
+      ) VALUES (?, ?, ?, ?, ?, ?, 'queued', ?, ?, ?, ?, ?, ?, ?)`,
+    )
+    .run(
+      id, dispatch.schedule_id, dispatch.workflow_key, dispatch.source_id, dispatch.archive_id, dispatch.trigger, dispatch.scheduled_for,
+      availableAt, dispatch.requested_by, `retry:${dispatch.retry_of ?? dispatch.id}:${attempt}`, now.toISOString(), attempt, dispatch.id,
+    );
+  return inserted.changes ? (database.prepare("SELECT * FROM workflow_dispatch WHERE id = ?").get(id) as WorkflowDispatch) : null;
+}
 
 export function workflowDefinition(key: string): (typeof workflowDefinitions)[number] | undefined {
   return workflowDefinitions.find((definition) => definition.key === key);
@@ -320,9 +348,10 @@ export async function executeDispatch(
         execution,
         mappingBundle,
       });
+      linkRetriedRun(database, dispatch, capture.runId);
       if (capture.status === "succeeded") return finishDispatch(database, dispatch.id, "succeeded", capture.runId, capture.unchanged ? "Prices unchanged since the previous snapshot" : null);
       if (capture.status === "skipped") return finishDispatch(database, dispatch.id, "skipped", capture.runId, capture.message);
-      return failDispatch(database, dispatch.id, capture.code ?? "CAPTURE_FAILED", capture.message ?? "Capture failed", capture.runId);
+      return failDispatchWithRetry(database, manifest, dispatch, capture.code ?? "CAPTURE_FAILED", capture.message ?? "Capture failed", capture.runId, capture.status);
     }
     const result = definition.executor === "pdf_processing"
       ? await runPdfProcessing(database, manifest, requiredArchive(dispatch), {
@@ -338,10 +367,36 @@ export async function executeDispatch(
           execution,
           mappingBundle,
         });
+    linkRetriedRun(database, dispatch, result.runId);
+    if (result.status === "failed") return failDispatchWithRetry(database, manifest, dispatch, "PDF_PROCESSING_FAILED", "Document processing failed", result.runId, "failed");
     finishDispatch(database, dispatch.id, result.status === "blocked" ? "failed" : result.status, result.runId);
   } catch (error) {
-    failDispatch(database, dispatch.id, "WORKFLOW_EXECUTION_FAILED", error instanceof Error ? error.message : String(error));
+    const message = error instanceof Error ? error.message : String(error);
+    // A source sync marks its run failed and throws; the run this dispatch opened is the source's newest one.
+    const run = database
+      .prepare("SELECT id FROM ingest_run WHERE dispatch_id = ? ORDER BY started_at DESC LIMIT 1")
+      .get(dispatch.id) as { id: string } | undefined;
+    linkRetriedRun(database, dispatch, run?.id ?? null);
+    failDispatchWithRetry(database, manifest, dispatch, failureCodeOf(error) ?? "WORKFLOW_EXECUTION_FAILED", message, run?.id ?? null, "failed");
   }
+}
+
+/** Fails the dispatch and, when the failure is one a retry can help with and attempts remain, queues the next attempt after the cooldown. */
+function failDispatchWithRetry(database: OperationalDatabase, manifest: SourceManifest, dispatch: WorkflowDispatch, code: string, message: string, runId: string | null, status: string): void {
+  const retry = retryableFailure({ status, code }) ? scheduleRetryDispatch(database, dispatch, manifest.retry) : null;
+  const note = retry
+    ? `${message} (attempt ${dispatch.attempt ?? 1} of ${manifest.retry.attempts}; retrying at ${retry.available_at})`
+    : (dispatch.attempt ?? 1) > 1
+      ? `${message} (attempt ${dispatch.attempt} of ${manifest.retry.attempts}; attempts exhausted)`
+      : message;
+  failDispatch(database, dispatch.id, code, note, runId);
+}
+
+/** Marks the run a retried dispatch opened with its attempt number and the run it retries. */
+function linkRetriedRun(database: OperationalDatabase, dispatch: WorkflowDispatch, runId: string | null): void {
+  if (!runId || (dispatch.attempt ?? 1) <= 1 || !dispatch.retry_of) return;
+  const previous = database.prepare("SELECT run_id FROM workflow_dispatch WHERE id = ?").get(dispatch.retry_of) as { run_id: string | null } | undefined;
+  database.prepare("UPDATE ingest_run SET attempt = ?, retry_of = ? WHERE id = ?").run(dispatch.attempt, previous?.run_id ?? null, runId);
 }
 
 export function schedulerHeartbeat(

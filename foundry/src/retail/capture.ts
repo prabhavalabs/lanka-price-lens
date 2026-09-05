@@ -23,6 +23,12 @@ export type RetailCaptureOptions = {
   captureDate?: string | undefined;
   userAgent?: string | undefined;
   /**
+   * Whether a failure counts towards the source's consecutive-failure breaker. A retry policy
+   * passes false for the attempts it will retry, so one bad day trips the breaker once, not once
+   * per attempt. Default true.
+   */
+  countFailure?: boolean | undefined;
+  /**
    * Records captured elsewhere (another machine, an exported snapshot) to file
    * instead of fetching from the retailer. Validation, storage, dedupe, and
    * promotion run exactly as for a live capture; only the fetch is skipped.
@@ -153,7 +159,7 @@ export async function runRetailCapture<S extends BaseSettings>(
     if (review) recordReviewHold(database, run.id, context, code, message);
     finishRun(database, run.id, review ? "blocked" : "failed", { code, message });
     // A bad setting is an operator mistake, not a source outage; it must not trip the breaker.
-    if (!(error instanceof SettingsError)) recordFailure(database, manifest.id, code, message, health.consecutive_failures + 1, now, maxFailures(database, manifest, adapter));
+    if (!(error instanceof SettingsError) && options.countFailure !== false) recordFailure(database, manifest.id, code, message, health.consecutive_failures + 1, now, maxFailures(database, manifest, adapter));
     return { runId: run.id, status: review ? "blocked" : "failed", code, message, records: context.records.length, unchanged: false, artifactId: context.artifactId };
   }
 }

@@ -24,7 +24,7 @@ import { archiveReadPrefix, pendingArchives, processPendingArchives, recoverFail
 import type { PdfInspection, TextItem } from "../src/pdf.ts";
 import { assessArtifactCompleteness } from "../src/quality.ts";
 import { buildRelease } from "../src/release.ts";
-import { archiveUriPrefix, claimNextDispatch, enqueueDueSchedules, enqueueProcessingRecovery, enqueueWorkflow, ensureWorkflowSchedules, recoverInterruptedDispatches } from "../src/workflows.ts";
+import { archiveUriPrefix, claimNextDispatch, enqueueDueSchedules, enqueueProcessingRecovery, enqueueWorkflow, ensureWorkflowSchedules, recoverInterruptedDispatches, scheduleRetryDispatch } from "../src/workflows.ts";
 
 const manifest = sourceManifestSchema.parse({
   id: "test_source",
@@ -1054,6 +1054,59 @@ test("pending processing sweeps archived documents that were never processed or 
     assert.ok((database.prepare("SELECT COUNT(*) AS count FROM price_observation WHERE status = 'active'").get() as { count: number }).count > 0, "the swept documents' prices are promoted");
     assert.deepEqual(pendingArchives(database, approved), [], "a real assessment means the document is done");
     assert.deepEqual(await processPendingArchives(database, approved, { trigger: "manual", archive, inspector, mappingBundle: bundle }), { candidates: 0, runs: [], succeeded: 0, failed: 0, blocked: 0, skipped: 0 });
+  } finally {
+    database.close();
+  }
+});
+
+test("a failed dispatch is queued again after the cooldown until the policy's attempts are spent", () => {
+  const database = openOperationalDatabase(":memory:");
+  const approved = sourceManifestSchema.parse({ ...manifest, rights_status: "approved_permission", rights_evidence_ref: "test", attribution_text: "Test", reviewed_by: "tests", review_due_at: "2999-12-31", enabled: true, retry: { attempts: 3, cooldown_minutes: 20 } });
+  syncSource(database, approved);
+  try {
+    const now = new Date("2026-09-05T18:00:00.000Z");
+    const first = enqueueWorkflow(database, { workflowKey: "latest_document_collection", sourceId: approved.id, requestedBy: "tests", now });
+    assert.deepEqual([first.attempt, first.retry_of], [1, null]);
+    const second = scheduleRetryDispatch(database, first, approved.retry, now);
+    assert.ok(second);
+    assert.deepEqual([second.attempt, second.retry_of, second.status, second.available_at, second.trigger, second.workflow_key], [2, first.id, "queued", "2026-09-05T18:20:00.000Z", "manual", "latest_document_collection"]);
+    assert.equal(scheduleRetryDispatch(database, first, approved.retry, now), null, "the same attempt is never queued twice");
+    database.prepare("UPDATE workflow_dispatch SET status = 'failed' WHERE id = ?").run(first.id);
+    assert.equal(claimNextDispatch(database, "tests", now), null, "the retry is not claimable before its cooldown");
+    const later = new Date(now.getTime() + 21 * 60_000);
+    assert.equal(claimNextDispatch(database, "tests", later)?.id, second.id, "the retry becomes claimable after the cooldown");
+    const third = scheduleRetryDispatch(database, second, approved.retry, later);
+    assert.ok(third);
+    assert.deepEqual([third.attempt, third.retry_of], [3, second.id]);
+    assert.equal(scheduleRetryDispatch(database, third, approved.retry, later), null, "attempts exhausted");
+  } finally {
+    database.close();
+  }
+});
+
+test("pending processing retries failed documents in rounds after the cooldown", async () => {
+  const database = openOperationalDatabase(":memory:");
+  const store = memoryArchive();
+  let outages = 2;
+  // Storage that fails the first two reads, as a rate limit would.
+  const archive: ArchiveStorage = { ...store, download: async (key: string) => { if (outages > 0) { outages -= 1; throw new Error("R2_HTTP_429: slow down"); } return store.download(key); } };
+  const approved = sourceManifestSchema.parse({ ...manifest, rights_status: "approved_permission", rights_evidence_ref: "test", attribution_text: "Test", reviewed_by: "tests", review_due_at: "2999-12-31", retention_policy: "preserve_source_evidence", enabled: true });
+  const quick = { ...approved, request_interval_ms: 1 };
+  const listing = async (url: string | URL | Request) => String(url) === approved.landing_url
+    ? new Response(archiveHtml(["17-08-2026", "16-08-2026", "15-08-2026"]), { status: 200, headers: { "content-type": "text/html" } })
+    : new Response(`%PDF-${String(url)}`, { status: 200, headers: { "content-type": "application/pdf" } });
+  const inspector = async () => ({ inspection: pdfInspection(), items: hartiItems() });
+  try {
+    const synced = await runIngestion(database, quick, { trigger: "backfill", request: listing, archive: store, inspector });
+    for (const runId of synced.processingRunIds) database.prepare("UPDATE ingest_run SET status = 'skipped' WHERE id = ?").run(runId);
+    const waits: number[] = [];
+    const swept = await processPendingArchives(database, approved, {
+      trigger: "manual", archive, inspector, mappingBundle: mappingBundle("item_beans", "Beans", "fixture-v1"),
+      retry: { attempts: 3, cooldown_minutes: 10 }, wait: async (ms) => { waits.push(ms); },
+    });
+    assert.deepEqual([swept.candidates, swept.succeeded, swept.failed, waits], [3, 3, 0, [600_000]], "one cooldown covers every document that failed in the round");
+    const retried = database.prepare("SELECT status, attempt, retry_of FROM ingest_run WHERE workflow = 'pdf_processing' AND attempt > 1 ORDER BY started_at").all() as Array<{ status: string; attempt: number; retry_of: string | null }>;
+    assert.deepEqual(retried.map((run) => [run.status, run.attempt, Boolean(run.retry_of)]), [["succeeded", 2, true], ["succeeded", 2, true]]);
   } finally {
     database.close();
   }

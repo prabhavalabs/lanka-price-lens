@@ -11,7 +11,8 @@
     "./pipeline": "./src/pipeline.ts",
     "./retail": "./src/retail/index.ts",
     "./warehouse": "./src/warehouse/index.ts",
-    "./workflows": "./src/workflows.ts"
+    "./workflows": "./src/workflows.ts",
+    "./retry": "./src/retry.ts"
   },
   "scripts": {
     "cli": "node src/cli.ts",
