@@ -53,3 +53,13 @@ Start the API with the database, admin credentials, admin build, and source
 manifest environment variables from `.env.example`, then open `/admin/` and use
 **Manual PDF intake**. The upload and its run stages appear immediately in the
 dashboard.
+
+## Closing a quarantined document by hand
+
+Some documents cannot be extracted and never will be: a scanned issue without a text layer
+(`PDF_OCR_REQUIRED`; OCR is not part of the pipeline), or an issue that carries no price table
+(`UNSUPPORTED_DOCUMENT`). In the admin's Knowledge Base, "Mark as reviewed" on a failed document
+asks for a short note, resolves its open quarantine entries with that note and the reviewer,
+sets the artifact and publication to `reviewed`, and the document leaves the failed list under
+the "Reviewed" status. The route is `POST /v1/admin/knowledge-base/:publicationId/review`
+(`{ "note": "…" }`). Reviewed documents are not swept again by pending processing.

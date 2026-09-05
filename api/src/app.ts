@@ -1015,6 +1015,34 @@ export function createApp(
       ? context.json(envelope(context.get("requestId"), document))
       : context.json(envelope(context.get("requestId"), null, false, "Document not found"), 404);
   });
+  /**
+   * Closes a quarantined document by hand: the owner has looked at it and it cannot or need not be
+   * extracted (scanned pages with no text layer, an issue without a price table). Its open quarantine
+   * entries are resolved with the note and the document leaves the failed list as "reviewed".
+   */
+  app.post("/v1/admin/knowledge-base/:publicationId/review", bodyLimit({ maxSize: 4 * 1024 }), async (context) => {
+    const body = await jsonObject(context);
+    const note = typeof body?.note === "string" ? body.note.trim().slice(0, 500) : "";
+    if (note.length < 3) return context.json(envelope(context.get("requestId"), null, false, "A short note saying why is required"), 400);
+    const publicationId = context.req.param("publicationId");
+    const publication = database.prepare("SELECT id, status FROM source_publication WHERE id = ?").get(publicationId) as { id: string; status: string } | undefined;
+    if (!publication) return context.json(envelope(context.get("requestId"), null, false, "Document not found"), 404);
+    const now = new Date().toISOString();
+    const reviewedBy = context.get("adminUser").email;
+    const result = database.transaction(() => {
+      const artifacts = (database.prepare("SELECT id FROM source_artifact WHERE publication_id = ?").all(publicationId) as Array<{ id: string }>).map((row) => row.id);
+      let quarantines = 0;
+      for (const artifactId of artifacts) {
+        quarantines += database
+          .prepare("UPDATE quarantine SET status = 'resolved', resolved_at = ?, resolution_note = ? WHERE artifact_id = ? AND status = 'open'")
+          .run(now, `Reviewed by ${reviewedBy}: ${note}`, artifactId).changes;
+      }
+      const reviewed = database.prepare("UPDATE source_artifact SET status = 'reviewed' WHERE publication_id = ? AND status IN ('quarantined', 'fetched', 'parsed')").run(publicationId).changes;
+      database.prepare("UPDATE source_publication SET status = 'reviewed' WHERE id = ?").run(publicationId);
+      return { quarantines_resolved: quarantines, artifacts_reviewed: reviewed };
+    })();
+    return context.json(envelope(context.get("requestId"), { publication_id: publicationId, ...result, note }, true, "Marked as reviewed"));
+  });
   app.post("/v1/admin/knowledge-base/:publicationId/process", (context) => {
     if (!sourceManifest) return context.json(envelope(context.get("requestId"), null, false, "Document processing is not configured"), 503);
     const document = database

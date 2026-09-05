@@ -45,6 +45,7 @@ services:
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
+      LPL_KEELLS_PROXY_URL: ${LPL_KEELLS_PROXY_URL:-}
       ADMIN_EMAIL: ${ADMIN_EMAIL:?set ADMIN_EMAIL}
       ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:?set ADMIN_PASSWORD_HASH}
     ports:
@@ -90,6 +91,7 @@ services:
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
+      LPL_KEELLS_PROXY_URL: ${LPL_KEELLS_PROXY_URL:-}
     entrypoint: ["node", "foundry/src/cli.ts"]
     volumes:
       - operations:/data
@@ -128,6 +130,7 @@ services:
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
+      LPL_KEELLS_PROXY_URL: ${LPL_KEELLS_PROXY_URL:-}
     entrypoint: ["node", "foundry/src/cli.ts", "scheduler"]
     volumes:
       - operations:/data

@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   DropdownMenu,
@@ -48,6 +49,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input-group";
+import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
@@ -61,6 +63,7 @@ import {
 } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Textarea } from "@/components/ui/textarea";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { setKnowledgeProcessingState } from "@/hooks/use-workflow-events";
@@ -84,6 +87,7 @@ const knowledgeIndexStatuses: Array<{ label: string; value: KnowledgeIndexStatus
   { label: "Extracting now", value: "indexing", summary: "Extracting now", description: "A processing run is working on them" },
   { label: "Extraction failed", value: "failed", summary: "Failed", description: "The last attempt failed; open the steps to see why" },
   { label: "Not extracted yet", value: "not_indexed", summary: "Not extracted yet", description: "Archived, waiting for a processing run" },
+  { label: "Reviewed", value: "reviewed", summary: "Reviewed", description: "Looked at by hand and closed: nothing to extract" },
 ];
 
 const workflowLabels: Partial<Record<WorkflowStep["stage"], { title: string; description: string }>> = {
@@ -108,6 +112,16 @@ export function KnowledgeBasePage() {
     queryKey: ["knowledge-base", { page: state.page, pageSize: state.pageSize, search: state.search, status: state.status }],
     queryFn: ({ signal }) => api<Page<KnowledgeListItem>>(listUrl("/v1/admin/knowledge-base", state), { signal }),
     placeholderData: keepPreviousData,
+  });
+  const [reviewing, setReviewing] = useState<KnowledgeListItem | null>(null);
+  const [reviewNote, setReviewNote] = useState("");
+  const reviewDocument = useMutation({
+    mutationFn: ({ publicationId, note }: { publicationId: string; note: string }) => api<unknown>(`/v1/admin/knowledge-base/${encodeURIComponent(publicationId)}/review`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ note }) }),
+    onSuccess: () => {
+      setReviewing(null);
+      setReviewNote("");
+      void queryClient.invalidateQueries({ queryKey: ["knowledge-base"] });
+    },
   });
   const processDocument = useMutation({
     mutationKey: ["process-document"],
@@ -191,6 +205,7 @@ export function KnowledgeBasePage() {
                           item={item}
                           onDelete={() => setDeleteDocument(item)}
                           onProcess={() => processDocument.mutate(item.publication_id)}
+                          onReview={() => { setReviewing(item); setReviewNote(item.status === "quarantined" ? "Cannot be extracted: scanned pages without a text layer." : "Reviewed by hand; nothing to extract."); }}
                           onWorkflow={() => setWorkflowDocument(item)}
                           processing={processDocument.isPending && processDocument.variables === item.publication_id}
                         />
@@ -220,6 +235,7 @@ export function KnowledgeBasePage() {
                         item={item}
                         onDelete={() => setDeleteDocument(item)}
                         onProcess={() => processDocument.mutate(item.publication_id)}
+                          onReview={() => { setReviewing(item); setReviewNote(item.status === "quarantined" ? "Cannot be extracted: scanned pages without a text layer." : "Reviewed by hand; nothing to extract."); }}
                         onWorkflow={() => setWorkflowDocument(item)}
                         processing={processDocument.isPending && processDocument.variables === item.publication_id}
                       />
@@ -232,6 +248,23 @@ export function KnowledgeBasePage() {
           </CardContent>
         </Card>
       )}
+      <Dialog onOpenChange={(open) => { if (!open) setReviewing(null); }} open={Boolean(reviewing)}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Mark as reviewed</DialogTitle>
+            <DialogDescription className="truncate">{reviewing?.title}. Closes its quarantine with your note; the document leaves the failed list.</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-1.5">
+            <Label htmlFor="review-note">Why it cannot or need not be extracted</Label>
+            <Textarea id="review-note" minLength={3} onChange={(event) => setReviewNote(event.target.value)} rows={3} value={reviewNote} />
+          </div>
+          {reviewDocument.isError ? <Alert variant="destructive"><AlertTitle>Could not mark as reviewed</AlertTitle><AlertDescription>{reviewDocument.error.message}</AlertDescription></Alert> : null}
+          <DialogFooter>
+            <Button onClick={() => setReviewing(null)} variant="ghost">Cancel</Button>
+            <Button disabled={reviewDocument.isPending || reviewNote.trim().length < 3} onClick={() => { if (reviewing) reviewDocument.mutate({ publicationId: reviewing.publication_id, note: reviewNote.trim() }); }}>{reviewDocument.isPending ? "Saving…" : "Mark as reviewed"}</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <WorkflowSheet document={workflowDocument} onOpenChange={(open) => { if (!open) setWorkflowDocument(null); }} />
       <ProtectedDeleteDialog document={deleteDocument} onOpenChange={(open) => { if (!open) setDeleteDocument(null); }} />
     </PageFrame>
@@ -350,17 +383,19 @@ const indexStatusCopy: Record<KnowledgeIndexStatus, string> = {
   indexing: "Prices are being extracted from this bulletin right now.",
   failed: "The last extraction attempt failed. Choose 'See processing steps' to find out why.",
   not_indexed: "No prices have been extracted from this bulletin yet. Choose 'Extract prices' to process it.",
+  reviewed: "Looked at by hand and closed: this document cannot or need not be extracted (a scan without text, an issue without a price table).",
 };
 
 function IndexStatusBadge({ status }: { status: KnowledgeIndexStatus }) {
   const badge = status === "indexed" ? <Badge><RiCheckLine data-icon="inline-start" />Prices available</Badge>
     : status === "indexing" ? <Badge variant="secondary"><RiLoader4Line className="animate-spin" data-icon="inline-start" />Extracting</Badge>
       : status === "failed" ? <Badge variant="destructive"><RiCloseLine data-icon="inline-start" />Failed</Badge>
-        : <Badge variant="outline"><RiDatabase2Line data-icon="inline-start" />Not extracted</Badge>;
+        : status === "reviewed" ? <Badge variant="secondary"><RiCheckLine data-icon="inline-start" />Reviewed</Badge>
+          : <Badge variant="outline"><RiDatabase2Line data-icon="inline-start" />Not extracted</Badge>;
   return <Tooltip><TooltipTrigger asChild><span className="inline-flex">{badge}</span></TooltipTrigger><TooltipContent>{indexStatusCopy[status]}</TooltipContent></Tooltip>;
 }
 
-function DocumentActions({ item, onDelete, onProcess, onWorkflow, processing }: { item: KnowledgeListItem; onDelete: () => void; onProcess: () => void; onWorkflow: () => void; processing: boolean }) {
+function DocumentActions({ item, onDelete, onProcess, onReview, onWorkflow, processing }: { item: KnowledgeListItem; onDelete: () => void; onProcess: () => void; onReview: () => void; onWorkflow: () => void; processing: boolean }) {
   const workflowActive = processing || item.index_status === "indexing" || ["queued", "running"].includes(item.processing_status ?? "");
   const canProcess = Boolean(item.archive_id) && !workflowActive;
   const canViewWorkflow = workflowActive || Boolean(item.processing_dispatch_id || item.processing_run_id);
@@ -378,6 +413,7 @@ function DocumentActions({ item, onDelete, onProcess, onWorkflow, processing }: 
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem disabled={!canProcess} onSelect={onProcess}>{workflowActive ? <RiLoader4Line className="animate-spin" /> : <RiRestartLine />}{processing ? "Queueing…" : workflowActive ? "Extracting prices…" : item.processing_run_id ? "Extract prices again" : "Extract prices"}</DropdownMenuItem>
+          {item.index_status === "failed" ? <DropdownMenuItem onSelect={onReview}><RiCheckLine />Mark as reviewed</DropdownMenuItem> : null}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>

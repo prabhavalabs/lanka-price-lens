@@ -8,8 +8,8 @@ import { finishRun, heartbeatRun, logStage, newId, startRun, syncSource, type Op
 import { canonicalizeArtifact, type CanonicalizeOptions } from "../mapping.ts";
 import { executeLoggedStage, retailCaptureStages, type WorkflowExecutionOptions } from "../pipeline.ts";
 import { assessArtifactCompleteness } from "../quality.ts";
-import { resolveAdapterSettings, SettingsError, type BaseSettings } from "./settings.ts";
-import { nodeHttpsFetch } from "./http.ts";
+import { proxyUrlFor, resolveAdapterSettings, SettingsError, type BaseSettings } from "./settings.ts";
+import { nodeHttpsFetch, proxiedNodeHttpsFetch } from "./http.ts";
 import type { FetchLike, NormalizedRecord, RetailAdapter, SnapshotPayload } from "./types.ts";
 
 export type RetailCaptureOptions = {
@@ -107,12 +107,15 @@ export async function runRetailCapture<S extends BaseSettings>(
   }
 
   const context: CaptureContext = { date: options.captureDate ?? colomboDay(now), payload: null, records: [], artifactId: null, unchanged: false };
-  const http = options.http ?? (adapter.transport === "node_https" ? nodeHttpsFetch : fetch);
+  let http = options.http ?? (adapter.transport === "node_https" ? nodeHttpsFetch : fetch);
   const userAgent = options.userAgent ?? DEFAULT_USER_AGENT;
   const stages = retailCaptureStages;
 
   try {
     const settings = resolveAdapterSettings(database, manifest, adapter);
+    // A source whose settings name a proxy is tunnelled through it, whatever transport the adapter declares; an injected transport (tests) wins.
+    const proxy = options.http ? null : proxyUrlFor(settings);
+    if (proxy) http = proxiedNodeHttpsFetch(proxy);
 
     const imported = options.snapshot;
     await executeLoggedStage(database, run.id, "fetch_snapshot", 0, { adapter: adapter.kind, capture_date: context.date, imported: Boolean(imported) }, async () => {

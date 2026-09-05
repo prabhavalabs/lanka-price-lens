@@ -1,4 +1,6 @@
-import { request as httpsRequest } from "node:https";
+import { request as httpsRequest, type RequestOptions } from "node:https";
+import { connect as netConnect } from "node:net";
+import { connect as tlsConnect } from "node:tls";
 
 import type { FetchLike } from "./types.ts";
 
@@ -137,8 +139,20 @@ async function limitedBody(response: Response, maximumBytes: number): Promise<Ui
  * `transport: "node_https"`. No automatic decompression: it never advertises
  * accept-encoding, so servers send plain bodies.
  */
-export const nodeHttpsFetch: FetchLike = (input, init = {}) =>
-  new Promise<Response>((resolveResponse, reject) => {
+export const nodeHttpsFetch: FetchLike = nodeHttpsTransport();
+
+/**
+ * The same transport through an HTTP proxy (`http://user:password@host:port`): a CONNECT tunnel is
+ * opened to the proxy for every request and TLS runs end to end inside it, so the origin sees the
+ * proxy's address and the proxy sees only an encrypted stream. Used when a retailer refuses the
+ * server's own network but serves the proxy's.
+ */
+export function proxiedNodeHttpsFetch(proxyUrl: string): FetchLike {
+  return nodeHttpsTransport(new URL(proxyUrl));
+}
+
+function nodeHttpsTransport(proxy?: URL): FetchLike {
+  return (input, init = {}) => new Promise<Response>((resolveResponse, reject) => {
     const url = new URL(typeof input === "string" ? input : input instanceof URL ? input.href : input.url);
     const headers: Record<string, string> = {};
     new Headers(init.headers ?? {}).forEach((value, key) => {
@@ -147,8 +161,19 @@ export const nodeHttpsFetch: FetchLike = (input, init = {}) =>
     const method = (init.method ?? "GET").toUpperCase();
     const body = typeof init.body === "string" ? Buffer.from(init.body) : init.body instanceof Uint8Array ? Buffer.from(init.body) : null;
     if (method !== "GET" && method !== "HEAD" && !headers["content-length"]) headers["content-length"] = String(body?.byteLength ?? 0);
+    const options: RequestOptions = { hostname: url.hostname, port: url.port || 443, path: `${url.pathname}${url.search}`, method, headers };
+    if (proxy) {
+      // Each request gets its own tunnel; the agent is bypassed so the socket we hand over is the one used.
+      options.agent = false;
+      options.createConnection = ((_connectOptions: unknown, callback: (error: Error | null, socket?: import("node:tls").TLSSocket) => void) => {
+        openTunnel(proxy, url.hostname, Number(url.port || 443))
+          .then((socket) => callback(null, socket))
+          .catch((error: Error) => callback(error));
+        return undefined;
+      }) as unknown as RequestOptions["createConnection"];
+    }
     const request = httpsRequest(
-      { hostname: url.hostname, port: url.port || 443, path: `${url.pathname}${url.search}`, method, headers },
+      options,
       (response) => {
         const chunks: Buffer[] = [];
         response.on("data", (chunk: Buffer) => chunks.push(chunk));
@@ -174,6 +199,42 @@ export const nodeHttpsFetch: FetchLike = (input, init = {}) =>
     if (body) request.write(body);
     request.end();
   });
+}
+
+/** Opens a CONNECT tunnel through the proxy to host:port and returns a TLS socket to the origin inside it. */
+function openTunnel(proxy: URL, host: string, port: number): Promise<import("node:tls").TLSSocket> {
+  return new Promise((resolveSocket, reject) => {
+    const socket = netConnect({ host: proxy.hostname, port: Number(proxy.port || (proxy.protocol === "https:" ? 443 : 80)) });
+    const fail = (error: Error) => {
+      socket.destroy();
+      reject(error);
+    };
+    socket.setTimeout(20_000, () => fail(new Error("SOURCE_TIMEOUT: proxy connect")));
+    socket.once("error", fail);
+    socket.once("connect", () => {
+      const auth = proxy.username ? `Proxy-Authorization: Basic ${Buffer.from(`${decodeURIComponent(proxy.username)}:${decodeURIComponent(proxy.password)}`).toString("base64")}\r\n` : "";
+      socket.write(`CONNECT ${host}:${port} HTTP/1.1\r\nHost: ${host}:${port}\r\n${auth}Proxy-Connection: keep-alive\r\n\r\n`);
+    });
+    let received = "";
+    const onData = (chunk: Buffer) => {
+      received += chunk.toString("latin1");
+      const end = received.indexOf("\r\n\r\n");
+      if (end < 0) return;
+      socket.off("data", onData);
+      const statusLine = received.slice(0, received.indexOf("\r\n"));
+      const status = Number(statusLine.split(" ")[1]);
+      if (status !== 200) return fail(new Error(`PROXY_HTTP_${status || "ERROR"}: ${statusLine.trim()}`));
+      socket.setTimeout(0);
+      const tls = tlsConnect({ socket, servername: host });
+      tls.once("error", fail);
+      tls.once("secureConnect", () => {
+        tls.off("error", fail);
+        resolveSocket(tls);
+      });
+    };
+    socket.on("data", onData);
+  });
+}
 
 function delay(milliseconds: number): Promise<void> {
   return new Promise((resolveDelay) => setTimeout(resolveDelay, milliseconds));

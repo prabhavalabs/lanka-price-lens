@@ -20,7 +20,7 @@ import { runWithRetry } from "../src/retry.ts";
 import { bundleFingerprint } from "../src/mapping.ts";
 import { matchItemPattern } from "../src/patterns.ts";
 import { countFromLabel, normalizeUnit } from "../src/units.ts";
-import { backoff, CookieJar, fetchWithPolicy } from "../src/retail/http.ts";
+import { backoff, CookieJar, fetchWithPolicy, proxiedNodeHttpsFetch } from "../src/retail/http.ts";
 import {
   resolveAdapterSettings,
   resumeSourceCapture,
@@ -30,7 +30,7 @@ import {
   SettingsError,
   settingsJsonSchema,
 } from "../src/retail/index.ts";
-import { categoryAllowed, compilePattern } from "../src/retail/settings.ts";
+import { baseSettingsSchema, categoryAllowed, compilePattern, proxyUrlFor } from "../src/retail/settings.ts";
 import { packFromLabel, priceToMinor } from "../src/retail/types.ts";
 import { applicableWorkflowDefinitions, ensureWorkflowSchedules } from "../src/workflows.ts";
 
@@ -563,4 +563,18 @@ test("a capture outage is retried after the cooldown and trips the breaker once,
   } finally {
     cleanup();
   }
+});
+
+test("a source's proxy comes from the environment variable its settings name, and a bad one is a settings error", () => {
+  assert.equal(proxyUrlFor({ proxyEnv: null }), null);
+  assert.equal(proxyUrlFor({ proxyEnv: "LPL_TEST_PROXY_URL" }, { LPL_TEST_PROXY_URL: "http://user:pass@geo.example.com:12321" }), "http://user:pass@geo.example.com:12321/");
+  assert.throws(() => proxyUrlFor({ proxyEnv: "LPL_TEST_PROXY_URL" }, {}), /not set/u);
+  assert.throws(() => proxyUrlFor({ proxyEnv: "LPL_TEST_PROXY_URL" }, { LPL_TEST_PROXY_URL: "geo.example.com:12321" }), /valid URL|http/u);
+  assert.throws(() => proxyUrlFor({ proxyEnv: "LPL_TEST_PROXY_URL" }, { LPL_TEST_PROXY_URL: "socks5://geo.example.com:1080" }), /http/u);
+  const parsed = baseSettingsSchema.parse({ proxyEnv: "LPL_KEELLS_PROXY_URL" });
+  assert.equal(parsed.proxyEnv, "LPL_KEELLS_PROXY_URL");
+  assert.equal(baseSettingsSchema.parse({}).proxyEnv, null);
+  assert.throws(() => baseSettingsSchema.parse({ proxyEnv: "http://geo.example.com" }), /environment variable name/u);
+  // The proxied transport is a fetch-compatible function; the tunnel itself needs a live proxy and is exercised on the server.
+  assert.equal(typeof proxiedNodeHttpsFetch("http://user:pass@geo.example.com:12321"), "function");
 });
