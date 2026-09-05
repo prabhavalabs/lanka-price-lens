@@ -370,6 +370,12 @@ export type PendingProcessing = {
   skipped: number;
 };
 
+/** A failed run's code and message together, for matching the underlying cause (`R2_HTTP_429`) wherever it was recorded. */
+function runFailure(database: OperationalDatabase, runId: string): string {
+  const row = database.prepare("SELECT error_code, error_message FROM ingest_run WHERE id = ?").get(runId) as { error_code: string | null; error_message: string | null } | undefined;
+  return `${row?.error_code ?? ""} ${row?.error_message ?? ""}`;
+}
+
 /** The storage URI prefix the configured archive driver can read (`r2://bucket/`, `file:///root/`), or null when unknown. */
 export function archiveReadPrefix(storage: { uri?: ((key: string) => string) | undefined }): string | null {
   const probe = storage.uri?.("probe");
@@ -380,7 +386,8 @@ export function archiveReadPrefix(storage: { uri?: ((key: string) => string) | u
  * Archived documents whose prices never landed: the processing run never started (a sync interrupted
  * after the download, an archive filled before processing existed) or it finished without a mapping
  * bundle and published nothing. Quarantined documents and documents that already failed `maxAttempts`
- * times wait for an operator instead. Newest first, so recent prices land before history.
+ * times (failures that examined the document; a fetch that never reached it does not count) wait for an
+ * operator instead. Newest first, so recent prices land before history.
  */
 export function pendingArchives(
   database: OperationalDatabase,
@@ -418,9 +425,14 @@ export function pendingArchives(
            SELECT 1 FROM ingest_run run
            WHERE run.archive_id = archive.id AND run.workflow = 'pdf_processing' AND run.status IN ('blocked', 'running')
          )
+         -- Only failures that examined the document count against it; a run that could not even fetch
+         -- the file (a storage outage or rate limit) says nothing about the document.
          AND (
            SELECT COUNT(*) FROM ingest_run run
            WHERE run.archive_id = archive.id AND run.workflow = 'pdf_processing' AND run.status = 'failed'
+             AND NOT EXISTS (
+               SELECT 1 FROM run_stage stage WHERE stage.run_id = run.id AND stage.stage = 'retrieve_pdf' AND stage.status = 'failed'
+             )
          ) < ?
          AND NOT EXISTS (
            SELECT 1 FROM workflow_dispatch queued
@@ -467,6 +479,12 @@ export async function processPendingArchives(
   const storage = options.archive ?? await configuredArchiveStorage();
   const candidates = pendingArchives(database, manifest, { limit: options.limit, since: options.since, uriPrefix: archiveReadPrefix(storage), maxAttempts: options.maxAttempts });
   const outcomes = new Map<string, { runId: string; status: ProcessingResult["status"] }>();
+  const wait = options.wait ?? ((ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms)));
+  const pace = Math.max(0, options.paceMs ?? 0);
+  // A rate-limited archive (HTTP 429) is given room: the pause before the next document doubles from
+  // 30 s up to 10 min while the limit lasts and resets on the first document that gets through, so a
+  // sweep does not spend its whole budget on refusals.
+  let throttled = 0;
   const process = async (archiveId: string) => {
     const run = await runPdfProcessing(database, manifest, archiveId, {
       trigger: options.trigger,
@@ -475,12 +493,17 @@ export async function processPendingArchives(
       mappingBundle: options.mappingBundle,
     });
     outcomes.set(archiveId, { runId: run.runId, status: run.status });
+    const rateLimited = run.status === "failed" && /_429\b/u.test(runFailure(database, run.runId));
+    throttled = rateLimited ? throttled + 1 : 0;
+    if (rateLimited) {
+      const backoff = Math.min(600_000, 30_000 * 2 ** (throttled - 1));
+      options.log?.(`Archive rate limit; pausing ${Math.round(backoff / 1000)} s before the next document`, { source: manifest.id, archive_id: archiveId, throttled, backoff_ms: backoff });
+      await wait(backoff);
+    }
     return run;
   };
-  const wait = options.wait ?? ((ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms)));
-  const pace = Math.max(0, options.paceMs ?? 0);
   for (const [index, candidate] of candidates.entries()) {
-    if (index > 0 && pace > 0) await wait(pace);
+    if (index > 0 && pace > 0 && throttled === 0) await wait(pace);
     await process(candidate.archiveId);
     options.onProgress?.(index + 1, candidates.length);
   }
@@ -493,8 +516,9 @@ export async function processPendingArchives(
     if (!failed.length) break;
     options.log?.(`${failed.length} documents failed; attempt ${attempt} of ${attempts} in ${options.retry?.cooldown_minutes ?? 0} min`, { source: manifest.id, attempt, attempts, failed: failed.length });
     if (cooldownMs > 0) await wait(cooldownMs);
+    throttled = 0;
     for (const [index, [archiveId, previous]] of failed.entries()) {
-      if (index > 0 && pace > 0) await wait(pace);
+      if (index > 0 && pace > 0 && throttled === 0) await wait(pace);
       const run = await process(archiveId);
       if (run.runId !== previous.runId) database.prepare("UPDATE ingest_run SET attempt = ?, retry_of = ? WHERE id = ?").run(attempt, previous.runId, run.runId);
     }

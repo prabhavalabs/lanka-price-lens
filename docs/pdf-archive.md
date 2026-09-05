@@ -42,7 +42,10 @@ download, an archive filled before processing existed) or one that ran without a
 mapping bundle and published nothing. Newest documents go first, up to
 `--process-limit` (default 150) per run, so a large backlog drains over a few
 days while each timer run stays bounded. Quarantined documents and documents
-that already failed three times wait for an operator. `foundry process
+that already failed three times while being examined wait for an operator; a
+fetch the archive refused (an outage, a rate limit) never counts against the
+document, and a sweep that meets HTTP 429 pauses with a doubling backoff (30 s
+to 10 min) instead of spending its budget on refusals. `foundry process
 [--source <id>] [--limit N] [--since yyyy-mm-dd]` runs the same sweep on demand,
 and the admin API offers it as `POST /v1/admin/sources/:id/process-pending`
 (`{ "limit", "since" }`) next to `POST /v1/admin/sources/:id/sync`
