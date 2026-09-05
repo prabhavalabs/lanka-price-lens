@@ -52,7 +52,7 @@ if (command === "hash-password") {
         if (recovery.failed.length) process.exitCode = 1;
         // Archived documents whose processing never ran (an interrupted sync, an archive filled before processing existed)
         // or ran without a bundle are processed now, newest first, within a budget that keeps the timer run bounded.
-        const pending = await processPendingArchives(database, manifest, { trigger, mappingBundle, limit: Number(valueOf("--process-limit") ?? 150), retry: retryPolicyFor(manifest, retryOverrides()), log: logRetry });
+        const pending = await processPendingArchives(database, manifest, { trigger, mappingBundle, limit: Number(valueOf("--process-limit") ?? 150), retry: retryPolicyFor(manifest, retryOverrides()), log: logRetry, paceMs: 250 });
         if (pending.candidates) console.log(JSON.stringify({ source: manifest.id, pending: { ...pending, runs: undefined } }));
         if (pending.failed) process.exitCode = 1;
         if (result.processingRunIds.length) {
@@ -135,6 +135,7 @@ if (command === "hash-password") {
         since,
         retry: retryPolicyFor(manifest, retryOverrides()),
         log: logRetry,
+        paceMs: 250,
         onProgress: (done, total) => { if (done % 25 === 0 || done === total) console.error(`${manifest.id}: ${done}/${total}`); },
       });
       console.log(JSON.stringify({ source: manifest.id, ...result, runs: result.runs.filter((run) => run.status !== "succeeded") }));

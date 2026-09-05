@@ -484,7 +484,7 @@ export function createApp(
     };
     if (!candidates.length) return context.json(envelope(context.get("requestId"), summary, true, "Nothing to process"));
     sweeping.add(entry.manifest.id);
-    const task = processPendingArchives(database, entry.manifest, { trigger: "manual", limit: limit ?? 200, since, archive, mappingBundle: entry.mappingBundle, retry: entry.manifest.retry, log: logRetry })
+    const task = processPendingArchives(database, entry.manifest, { trigger: "manual", limit: limit ?? 200, since, archive, mappingBundle: entry.mappingBundle, retry: entry.manifest.retry, log: logRetry, paceMs: 250 })
       .then((result) => {
         console.log(JSON.stringify({ level: "info", message: "Pending documents processed", source: entry.manifest.id, ...result, runs: undefined }));
         return refreshWarehouse();
