@@ -94,16 +94,15 @@ admin at `/admin/` with `/` redirecting there. On the public host `/admin/*` red
 first admin host. With neither variable set (a single-host or local install) the public site
 answers at `/` wherever `web/dist` exists and the admin stays at `/admin/`.
 
-`deploy/nginx/lanka-price-lens.conf` has a server block for the two new hosts and keeps the
-original host answering `/v1/` (the deploy health check) while redirecting browsers to the
-admin. Adding the hosts on the VPS is a one-time operation outside the deploy workflow:
-
-```bash
-# DNS first: A records for price and admin.price pointing at the VPS.
-sudo install -m 0644 /opt/lanka-price-lens/deploy/nginx/lanka-price-lens.conf /etc/nginx/sites-available/lanka-price-lens.conf
-sudo nginx -t && sudo systemctl reload nginx
-sudo certbot --nginx -d price.prabhavalabs.com -d admin.price.prabhavalabs.com
-```
+`deploy/nginx/lanka-price-lens.conf` is the reference configuration: one server block for the
+two new hosts, and the original host kept for `/v1/` (the deploy health check) with browsers
+redirected to the admin. On the production VPS (2026-09-05) the hosts live in two certbot-managed
+site files, because the original host's file already carried its TLS blocks:
+`/etc/nginx/sites-available/lanka-price-lens` (original host) and
+`/etc/nginx/sites-available/lanka-price-lens-public` (`price` and `admin.price`, one certificate
+covering both, HTTP redirected to HTTPS). Both proxy to the API container on 127.0.0.1:8651.
+Adding a host is a one-time operation outside the deploy workflow: write the server block, enable
+it, `nginx -t`, reload, then `certbot --nginx --redirect -d <host>`.
 
 ## Development
 
