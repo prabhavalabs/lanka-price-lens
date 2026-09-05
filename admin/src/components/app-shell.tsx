@@ -196,8 +196,14 @@ function SchedulerStatus() {
     queryFn: ({ signal }) => api<SchedulerMonitor>("/v1/admin/workflow-schedules", { signal }),
     refetchInterval: 30_000,
   });
-  const healthy = monitor.data?.instances.some((instance) => instance.healthy) ?? false;
-  const label = monitor.isPending ? "Checking scheduler" : healthy ? "Scheduler online" : "Scheduler offline";
+  // Production runs its daily work from timers; the scheduler process is one way to be healthy, a fresh scheduled run is the other.
+  const automation = monitor.data?.automation;
+  const healthy = automation?.healthy ?? false;
+  const label = monitor.isPending ? "Checking automation" : automation?.mode === "scheduler" ? "Scheduler online" : automation?.mode === "timers" ? "Timers on schedule" : "Automation stale";
+  const ago = (iso: string) => {
+    const hours = Math.max(0, Math.round((Date.now() - Date.parse(iso)) / 3_600_000));
+    return hours < 1 ? "under an hour ago" : hours === 1 ? "an hour ago" : hours < 48 ? `${hours} hours ago` : `${Math.round(hours / 24)} days ago`;
+  };
   return (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -206,10 +212,12 @@ function SchedulerStatus() {
           {label}
         </Badge>
       </TooltipTrigger>
-      <TooltipContent side="bottom">
-        {healthy
+      <TooltipContent className="max-w-xs" side="bottom">
+        {automation?.mode === "scheduler"
           ? `${monitor.data?.instances.filter((instance) => instance.healthy).length ?? 0} scheduler instance(s) heart-beating within ${monitor.data?.stale_after_seconds ?? 45}s.`
-          : "No live scheduler heartbeat. Queued workflows wait until the Foundry scheduler starts."}
+          : automation
+            ? automation.timers.filter((timer) => timer.expected).map((timer) => `${timer.label}: ${timer.last_run_at ? `${ago(timer.last_run_at)}, ${timer.last_status}` : "never ran"}`).join(" · ") + (automation.healthy ? "" : ` · Automation counts as stale after ${automation.stale_after_hours} hours without a scheduled run.`)
+            : "Checking the last scheduled runs."}
       </TooltipContent>
     </Tooltip>
   );

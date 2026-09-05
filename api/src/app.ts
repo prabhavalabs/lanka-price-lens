@@ -483,11 +483,27 @@ export function createApp(
       healthy: instance.status === "online" && now - Date.parse(instance.heartbeat_at) <= 45_000,
     }));
     const activeInstances = monitoredInstances.filter((instance) => instance.healthy);
+    // Production runs its daily work from systemd timers, not the scheduler process; a fresh scheduled run is the proof that automation is alive.
+    const staleAfterHours = 26;
+    const timers = [
+      { workflow: "source_sync", label: "Source sync (official bulletins)", expected: true },
+      { workflow: "retail_capture", label: "Retail capture (supermarkets)", expected: catalog.entries.some((entry) => entry.manifest.enabled && Boolean(entry.manifest.adapter)) },
+    ].map((timer) => {
+      const last = database
+        .prepare("SELECT started_at, status FROM ingest_run WHERE workflow = ? AND trigger = 'scheduled' ORDER BY started_at DESC LIMIT 1")
+        .get(timer.workflow) as { started_at: string; status: string } | undefined;
+      const fresh = Boolean(last && now - Date.parse(last.started_at) <= staleAfterHours * 3_600_000);
+      return { ...timer, last_run_at: last?.started_at ?? null, last_status: last?.status ?? null, fresh };
+    });
+    const expectedTimers = timers.filter((timer) => timer.expected);
+    const timersHealthy = expectedTimers.length > 0 && expectedTimers.every((timer) => timer.fresh);
+    const mode = activeInstances.length ? "scheduler" : timersHealthy ? "timers" : "none";
     return context.json(
       envelope(context.get("requestId"), {
         items: database.prepare("SELECT * FROM workflow_schedule ORDER BY next_run_at").all(),
         instances: activeInstances.length ? activeInstances : monitoredInstances.slice(0, 1),
         stale_after_seconds: 45,
+        automation: { mode, healthy: activeInstances.length > 0 || timersHealthy, stale_after_hours: staleAfterHours, timers },
       }),
     );
   });

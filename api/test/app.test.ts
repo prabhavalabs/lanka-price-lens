@@ -383,3 +383,26 @@ test("price insights accept custom windows, expose a basket index, and describe 
     database.close();
   }
 });
+
+test("automation health counts a fresh scheduled run as alive when no scheduler process is running", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    seedAdminUser(database, "owner@example.com", passwordHash);
+    const approved = sourceManifestSchema.parse({ ...manifest, rights_status: "approved_permission", rights_evidence_ref: "test-fixture://permission", attribution_text: "Test source fixture", reviewed_by: "fixture-reviewer", review_due_at: "2999-12-31", enabled: true });
+    syncSource(database, approved);
+    const app = createApp(database, approved);
+    const cookie = await loginCookie(app);
+    const read = async () => ((await (await app.request("http://localhost/v1/admin/workflow-schedules", { headers: { cookie } })).json()) as { payload: { automation: { mode: string; healthy: boolean; timers: Array<{ workflow: string; expected: boolean; fresh: boolean }> } } }).payload.automation;
+
+    const before = await read();
+    assert.deepEqual([before.mode, before.healthy], ["none", false], "nothing has run and no scheduler heart-beats");
+    assert.deepEqual(before.timers.map((timer) => [timer.workflow, timer.expected]), [["source_sync", true], ["retail_capture", false]], "retail capture is only expected when a retail source is configured");
+
+    startRun(database, { sourceId: approved.id, trigger: "scheduled", workflow: "source_sync" });
+    const after = await read();
+    assert.deepEqual([after.mode, after.healthy], ["timers", true], "a scheduled run within the last day means the timers are doing their job");
+    assert.ok(after.timers.find((timer) => timer.workflow === "source_sync")?.fresh);
+  } finally {
+    database.close();
+  }
+});
