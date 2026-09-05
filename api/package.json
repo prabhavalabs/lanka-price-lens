@@ -15,7 +15,7 @@
     "@lanka-pricelens/foundry": "workspace:*",
     "@lanka-pricelens/shared": "workspace:*",
     "hono": "4.13.2",
-    "nodemailer": "^7.0.13"
+    "nodemailer": "^8.0.11"
   },
   "devDependencies": {
     "@types/node": "24.13.3",
