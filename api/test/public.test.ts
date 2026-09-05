@@ -88,3 +88,22 @@ test("public routes need no sign-in, are cacheable, filter to published sources,
     database.close();
   }
 });
+
+test("the basket route prices a shopper's list at every published seller", async () => {
+  const database = openOperationalDatabase(":memory:");
+  seed(database);
+  const client = await warehouseFor(database);
+  try {
+    const catalog = createSourceCatalog([{ manifest: harti }, { manifest: keells }, { manifest: cargills }]);
+    const app = createApp(database, harti, undefined, { catalog, warehouse: async () => client });
+    assert.equal((await app.request("http://localhost/v1/public/basket")).status, 400);
+    const response = await app.request("http://localhost/v1/public/basket?products=product_big_onion,product_egg,product_missing,bad%20id");
+    assert.equal(response.status, 200);
+    const basket = ((await response.json()) as { payload: Array<{ id: string; sellers: Array<{ market_label: string; group: string; mid: number }> }> }).payload;
+    assert.deepEqual(basket.map((product) => product.id), ["product_big_onion"], "unknown, unpriced, and malformed ids are dropped");
+    assert.deepEqual(basket[0]!.sellers.map((seller) => [seller.market_label, seller.group, seller.mid]).sort(), [["Dambulla", "wholesale", 265], ["Keells Online", "supermarket", 380], ["Pettah", "wholesale", 268]], "Cargills stays unpublished; Keells' two labels average");
+  } finally {
+    await client.close();
+    database.close();
+  }
+});

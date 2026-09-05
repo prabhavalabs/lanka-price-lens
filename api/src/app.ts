@@ -33,7 +33,7 @@ import {
   type AnyRetailAdapter,
 } from "@lanka-pricelens/foundry/retail";
 import { runWithRetry } from "@lanka-pricelens/foundry/retry";
-import { publicOverview } from "./public.ts";
+import { publicBasket, publicOverview } from "./public.ts";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 import {
   enqueueWorkflow,
@@ -157,6 +157,13 @@ export function createApp(
     const query = (context.req.query("q") ?? "").trim().slice(0, 100);
     if (query.length < 2) return context.json(envelope(context.get("requestId"), []));
     return context.json(envelope(context.get("requestId"), await searchProducts(client, query, 12)));
+  });
+  app.get("/v1/public/basket", async (context) => {
+    const client = await warehouse();
+    if (!client) return context.json(envelope(context.get("requestId"), null, false, "Prices are not available right now"), 503);
+    const ids = (context.req.query("products") ?? "").split(",").map((id) => id.trim()).filter(Boolean);
+    if (!ids.length) return context.json(envelope(context.get("requestId"), null, false, "products is required: a comma-separated list of product ids"), 400);
+    return context.json(envelope(context.get("requestId"), await publicBasket(client, published(), ids)));
   });
   app.get("/v1/public/products/:id", async (context) => {
     const client = await warehouse();
@@ -1113,6 +1120,13 @@ export function createProductionApp(): Hono<AppBindings> {
   const recipesDirectory = resolve(process.env.LPL_RECIPES_DIR ?? "../data/recipes");
   const recipes = existsSync(resolve(recipesDirectory, "catalogue.json")) ? readRecipeStore(recipesDirectory) : undefined;
   const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}), ...(recipes ? { recipes } : {}) });
+  // Product photos and store logos, shared by the admin and the public site.
+  const imagesRoot = resolve(process.env.LPL_IMAGES_ROOT ?? fileURLToPath(new URL("../../data/images/", import.meta.url)));
+  app.use("/images/*", async (context, next) => {
+    await next();
+    if (context.res.ok) context.header("Cache-Control", "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800");
+  });
+  app.use("/images/*", serveStatic({ root: imagesRoot, rewriteRequestPath: (path) => path.replace(/^\/images/u, "") }));
   const adminRoot = resolve(process.env.LPL_ADMIN_ROOT ?? "../admin/dist");
   // The site's build lives next to the API in the repository and the image alike, so the default is relative to this file, not the working directory.
   const webRoot = resolve(process.env.LPL_WEB_ROOT ?? fileURLToPath(new URL("../../web/dist/", import.meta.url)));
@@ -1135,6 +1149,7 @@ export function createProductionApp(): Hono<AppBindings> {
   app.get("/admin/*", serveStatic({ root: adminRoot, rewriteRequestPath: () => "/index.html" }));
   app.get("/admin", (context) => context.redirect("/admin/"));
   const webFiles = serveStatic({ root: webRoot });
+  const webPages = serveStatic({ root: webRoot, rewriteRequestPath: (path) => `${path.replace(/\/$/u, "")}/index.html` });
   const webIndex = serveStatic({ root: webRoot, rewriteRequestPath: () => "/index.html" });
   app.use("*", async (context, next) => {
     if (context.req.path.startsWith("/v1") || context.req.path.startsWith("/admin")) return next();
@@ -1143,7 +1158,9 @@ export function createProductionApp(): Hono<AppBindings> {
       const asset = await webFiles(context, async () => undefined);
       if (asset) return asset;
       if (context.req.path.startsWith("/assets/")) return context.notFound();
-      return webIndex(context, next);
+      // A prerendered page for this path (dist/p/<id>/index.html) carries the product's title and description for crawlers and previews.
+      const prerendered = await webPages(context, async () => undefined);
+      return prerendered ?? webIndex(context, next);
     }
     if (context.req.path === "/") return context.redirect("/admin/");
     return next();
