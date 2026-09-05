@@ -51,6 +51,13 @@ stale after 45 seconds. Knowledge Base rows show their latest processing result
 and link to full step logs; reruns enqueue a new immutable dispatch and preserve
 prior history.
 
+The admin's status badge reads automation health from two signals: a live
+scheduler heartbeat ("Scheduler online") or, where production runs its daily
+work from systemd timers instead, a scheduled run of each expected workflow
+within the last 26 hours ("Timers on schedule"). Retail capture is expected only
+when a retail source is configured. With neither signal the badge says
+"Automation stale" and names the last scheduled run of each workflow.
+
 The document-processing pipeline has seven durable steps: retrieve the PDF,
 inspect/extract its text, adaptively parse the price grid, validate the staged
 rows, persist them, assess structural completeness, and promote reviewed exact
