@@ -163,8 +163,8 @@ function nodeHttpsTransport(proxy?: URL): FetchLike {
     if (method !== "GET" && method !== "HEAD" && !headers["content-length"]) headers["content-length"] = String(body?.byteLength ?? 0);
     const options: RequestOptions = { hostname: url.hostname, port: url.port || 443, path: `${url.pathname}${url.search}`, method, headers };
     if (proxy) {
-      // Each request gets its own tunnel; the agent is bypassed so the socket we hand over is the one used.
-      options.agent = false;
+      // Each request gets its own tunnel. No agent may be set: Node honours a request-level createConnection only when
+      // the request has no agent at all (`agent: false` would build a fresh agent that opens its own socket instead).
       options.createConnection = ((_connectOptions: unknown, callback: (error: Error | null, socket?: import("node:tls").TLSSocket) => void) => {
         openTunnel(proxy, url.hostname, Number(url.port || 443))
           .then((socket) => callback(null, socket))
