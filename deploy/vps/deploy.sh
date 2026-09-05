@@ -52,7 +52,8 @@ if [[ $mode == --configure-admin ]]; then
     exit 2
   fi
   update_env ADMIN_EMAIL "$admin_email"
-  update_env ADMIN_PASSWORD_HASH "$admin_password_hash"
+  # Compose interpolates `$name` inside its env files, so every dollar in the hash must be written as `$$` to survive intact.
+  update_env ADMIN_PASSWORD_HASH "${admin_password_hash//\$/\$\$}"
   docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" up -d --no-build --force-recreate --wait --wait-timeout 90 api
   exit
 fi
