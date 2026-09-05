@@ -25,9 +25,10 @@ import {
   saveAdapterSettings,
   SettingsError,
   settingsJsonSchema,
+  snapshotFileSchema,
   type AnyRetailAdapter,
 } from "@lanka-pricelens/foundry/retail";
-import { connectWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
+import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 import {
   enqueueWorkflow,
   ensureWorkflowSchedules,
@@ -345,6 +346,58 @@ export function createApp(
     clearAdapterSettings(database, entry.manifest.id, context.get("adminUser").email);
     return context.json(envelope(context.get("requestId"), { overrides: {} }, true, "Settings reset to the manifest defaults"));
   });
+  /**
+   * Files a snapshot captured elsewhere (exported with `foundry snapshot export`) as if this
+   * server had captured it: same validation, evidence, dedupe, and pricing, then the
+   * warehouse catches up. The way round a retailer that refuses this server's network.
+   */
+  app.post("/v1/admin/sources/:id/snapshots", bodyLimit({ maxSize: 40 * 1024 * 1024 }), async (context) => {
+    const entry = catalog.find(context.req.param("id"));
+    if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Unknown source"), 404);
+    const adapter = retailAdapterFor(entry.manifest);
+    if (!adapter) return context.json(envelope(context.get("requestId"), null, false, "Source has no retail adapter"), 400);
+    if (!canCaptureSource(entry.manifest)) return context.json(envelope(context.get("requestId"), null, false, "Source permission is not current"), 403);
+    let body: unknown;
+    try {
+      body = await context.req.json();
+    } catch {
+      return context.json(envelope(context.get("requestId"), null, false, "Body must be a JSON snapshot file"), 400);
+    }
+    const parsed = snapshotFileSchema.safeParse(body);
+    if (!parsed.success) {
+      return context.json(envelope(context.get("requestId"), parsed.error.issues.slice(0, 5).map((issue) => ({ path: issue.path.join("."), message: issue.message })), false, "Snapshot file is invalid"), 400);
+    }
+    if (parsed.data.source_id !== entry.manifest.id) {
+      return context.json(envelope(context.get("requestId"), null, false, `Snapshot belongs to ${parsed.data.source_id}`), 400);
+    }
+    const active = database
+      .prepare("SELECT id, trigger, status FROM ingest_run WHERE source_id = ? AND workflow != 'pdf_processing' AND status = 'running' LIMIT 1")
+      .get(entry.manifest.id) as { id: string; trigger: string; status: string } | undefined;
+    if (active) return context.json(envelope(context.get("requestId"), active, false, "Another run for this source is active"), 409);
+    const archive = options.archiveStorage ?? (await configuredArchiveStorage().catch(() => undefined));
+    const result = await runRetailCapture(database, entry.manifest, adapter, {
+      trigger: "import",
+      mappingBundle: entry.mappingBundle,
+      archive,
+      captureDate: parsed.data.capture_date,
+      snapshot: {
+        records: parsed.data.records,
+        payload: { fetchedAt: parsed.data.captured_at, requests: 0, data: { imported_from: parsed.data.adapter, records: parsed.data.records.length } },
+      },
+    });
+    let synced: { observations: number; refreshed: number } | null = null;
+    if (result.status === "succeeded" && !result.unchanged) {
+      const client = await warehouse();
+      if (client) {
+        const sync = await syncWarehouse(database, client);
+        synced = { observations: sync.observations.upserted, refreshed: sync.refreshed.length };
+      }
+    }
+    const ok = result.status === "succeeded";
+    const message = !ok ? result.message ?? "Snapshot import failed" : result.unchanged ? "Snapshot already stored" : `Snapshot stored: ${result.records} records`;
+    return context.json(envelope(context.get("requestId"), { ...result, capture_date: parsed.data.capture_date, warehouse: synced }, ok, message), ok ? 200 : 422);
+  });
+
   app.post("/v1/admin/sources/:id/capture", async (context) => {
     const entry = catalog.find(context.req.param("id"));
     if (!entry) return context.json(envelope(context.get("requestId"), null, false, "Source not found"), 404);

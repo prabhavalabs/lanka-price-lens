@@ -15,6 +15,7 @@ import { keellsAdapter, keellsPack } from "../src/retail/adapters/keells.ts";
 import { outletCode, sparAdapter, sparLabel, sparPack } from "../src/retail/adapters/spar.ts";
 import { pauseHours } from "../src/retail/capture.ts";
 import { remapRecentSnapshots } from "../src/retail/remap.ts";
+import { exportSnapshot, snapshotFileSchema } from "../src/retail/snapshot.ts";
 import { bundleFingerprint } from "../src/mapping.ts";
 import { matchItemPattern } from "../src/patterns.ts";
 import { countFromLabel, normalizeUnit } from "../src/units.ts";
@@ -483,4 +484,50 @@ test("bundle fingerprints ignore empty pattern fields so earlier registrations s
   for (const product of legacy.products) delete product.comparison;
   assert.equal(bundleFingerprint(plain), createHash("sha256").update(JSON.stringify(legacy)).digest("hex"), "a bundle without rules hashes as it did before rules existed");
   assert.notEqual(bundleFingerprint(bundle), bundleFingerprint(plain), "rules are part of the fingerprint");
+});
+
+test("a snapshot exported from one store imports into another as the same artifact and prices", async () => {
+  const origin = temporaryDatabase();
+  const target = temporaryDatabase();
+  try {
+    const adapter = retailAdapterFor(manifest)!;
+    const captured = await runRetailCapture(origin.database, manifest, adapter, { trigger: "manual", http: fakeHttp(keellsResponder()).http, archive: filesystemArchiveStorage(join(origin.root, "archive")), mappingBundle: bundle, captureDate: "2026-09-04" });
+    assert.equal(captured.status, "succeeded", captured.message ?? "");
+
+    const snapshot = exportSnapshot(origin.database, manifest.id, "2026-09-04");
+    assert.ok(snapshot, "the stored snapshot exports");
+    assert.equal(snapshot.records.length, captured.records);
+    assert.equal(snapshot.adapter, "keells_api");
+    assert.ok(snapshot.records.every((record) => Object.keys(record.raw).length === 0), "raw payloads stay behind unless asked for");
+    assert.equal(exportSnapshot(origin.database, manifest.id, "2026-09-01"), null);
+    const parsed = snapshotFileSchema.parse(JSON.parse(JSON.stringify(snapshot)));
+
+    const failing = fakeHttp(() => { throw new Error("the retailer refuses this network"); });
+    const imported = await runRetailCapture(target.database, manifest, adapter, {
+      trigger: "import",
+      http: failing.http,
+      archive: filesystemArchiveStorage(join(target.root, "archive")),
+      mappingBundle: bundle,
+      captureDate: parsed.capture_date,
+      snapshot: { records: parsed.records, payload: { fetchedAt: parsed.captured_at, requests: 0, data: { imported: true } } },
+    });
+    assert.equal(imported.status, "succeeded", imported.message ?? "");
+    assert.equal(failing.calls.length, 0, "an import never contacts the retailer");
+    assert.equal(imported.records, captured.records);
+    assert.equal(imported.unchanged, false);
+
+    const count = (database: OperationalDatabase, artifactId: string) =>
+      (database.prepare("SELECT COUNT(*) AS count FROM price_observation WHERE source_artifact_id = ? AND status = 'active'").get(artifactId) as { count: number }).count;
+    assert.equal(count(target.database, imported.artifactId!), count(origin.database, captured.artifactId!), "the import prices exactly what the capture priced");
+    const run = target.database.prepare("SELECT trigger, status FROM ingest_run WHERE id = ?").get(imported.runId) as { trigger: string; status: string };
+    assert.deepEqual(run, { trigger: "import", status: "succeeded" });
+    const stage = target.database.prepare("SELECT output_json FROM run_stage WHERE run_id = ? AND stage = 'fetch_snapshot'").get(imported.runId) as { output_json: string };
+    assert.equal((JSON.parse(stage.output_json) as { imported: boolean }).imported, true);
+
+    const again = await runRetailCapture(target.database, manifest, adapter, { trigger: "import", http: failing.http, mappingBundle: bundle, captureDate: parsed.capture_date, snapshot: { records: parsed.records } });
+    assert.equal(again.unchanged, true, "importing the same snapshot twice is a no-op");
+  } finally {
+    origin.cleanup();
+    target.cleanup();
+  }
 });

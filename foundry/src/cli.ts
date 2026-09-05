@@ -1,4 +1,5 @@
 import { scryptSync, randomBytes } from "node:crypto";
+import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { configuredArchiveStorage } from "./archive-storage.ts";
@@ -6,7 +7,7 @@ import { openOperationalDatabase } from "./db.ts";
 import { canonicalizeRun, syncMappingBundle } from "./mapping.ts";
 import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
 import { recoverFailedProcessing, runSourceSync } from "./pipeline.ts";
-import { remapRecentSnapshots, retailAdapterFor, runRetailCapture } from "./retail/index.ts";
+import { exportSnapshot, remapRecentSnapshots, retailAdapterFor, runRetailCapture, snapshotFileSchema } from "./retail/index.ts";
 import { connectWarehouse, migrateWarehouse, renderReportMarkdown, syncWarehouse, warehouseReport } from "./warehouse/index.ts";
 import { buildRelease } from "./release.ts";
 import { startScheduler } from "./scheduler.ts";
@@ -96,6 +97,42 @@ if (command === "hash-password") {
       console.log(JSON.stringify({ source: entry.manifest.id, ...result }));
       // A paused source is expected to skip; anything else short of success fails the command.
       if (result.status !== "succeeded" && result.code !== "CAPTURE_PAUSED") process.exitCode = 1;
+    }
+  } finally {
+    database.close();
+  }
+} else if (command === "snapshot") {
+  // snapshot export --source <id> --date <yyyy-mm-dd> [--out file] [--raw]: a stored snapshot as a portable file.
+  // snapshot import --source <id> --file <file> [--no-archive]: file a snapshot captured elsewhere as if captured here.
+  const action = arguments_[0];
+  const catalog = await loadCatalog();
+  const entry = catalog.find(requiredValue("--source")) ?? (() => { throw new Error("Unknown source; pass --source <manifest id>"); })();
+  const database = openOperationalDatabase(databasePath());
+  try {
+    if (action === "export") {
+      const date = dateValue("--date") ?? (() => { throw new Error("--date is required"); })();
+      const snapshot = exportSnapshot(database, entry.manifest.id, date, { raw: arguments_.includes("--raw") });
+      if (!snapshot) throw new Error(`No stored snapshot for ${entry.manifest.id} on ${date}`);
+      const out = valueOf("--out") ?? `${entry.manifest.id}-${date}.snapshot.json`;
+      writeFileSync(out, `${JSON.stringify(snapshot)}\n`);
+      console.log(JSON.stringify({ source: entry.manifest.id, capture_date: date, records: snapshot.records.length, file: resolve(out) }));
+    } else if (action === "import") {
+      const adapter = retailAdapterFor(entry.manifest);
+      if (!adapter) throw new Error(`Source ${entry.manifest.id} has no retail adapter`);
+      const snapshot = snapshotFileSchema.parse(JSON.parse(readFileSync(requiredValue("--file"), "utf8")));
+      if (snapshot.source_id !== entry.manifest.id) throw new Error(`Snapshot belongs to ${snapshot.source_id}, not ${entry.manifest.id}`);
+      const archive = arguments_.includes("--no-archive") ? undefined : await configuredArchiveStorage();
+      const result = await runRetailCapture(database, entry.manifest, adapter, {
+        trigger: "import",
+        archive,
+        mappingBundle: entry.mappingBundle,
+        captureDate: snapshot.capture_date,
+        snapshot: { records: snapshot.records, payload: { fetchedAt: snapshot.captured_at, requests: 0, data: { imported_from: snapshot.adapter, records: snapshot.records.length } } },
+      });
+      console.log(JSON.stringify({ source: entry.manifest.id, ...result }));
+      if (result.status !== "succeeded") process.exitCode = 1;
+    } else {
+      throw new Error("Usage: snapshot export --source <id> --date <yyyy-mm-dd> [--out file] [--raw] | snapshot import --source <id> --file <file>");
     }
   } finally {
     database.close();

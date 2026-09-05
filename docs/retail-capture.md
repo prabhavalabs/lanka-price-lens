@@ -140,6 +140,7 @@ stages with plain-language labels.
 | DELETE | `/v1/admin/sources/:id/adapter` | Reset overrides to the manifest defaults |
 | POST | `/v1/admin/sources/:id/capture` | Start a capture now (202), 409 when paused or already running |
 | POST | `/v1/admin/sources/:id/resume` | Clear the pause and failure streak |
+| POST | `/v1/admin/sources/:id/snapshots` | File a snapshot exported elsewhere (200 with the run; 400 invalid or wrong source; 409 while another run is active; 422 when validation fails) |
 
 ## Command line
 
@@ -156,6 +157,35 @@ When both a single manifest (`LPL_SOURCE_MANIFEST_PATH`) and a manifests directo
 (`LPL_MANIFESTS_DIR`) are set, as the compose tools service does, the directory
 wins: `sync`, `capture --all`, and `remap --all` see every source, and the single
 manifest only matters for tooling that takes exactly one source.
+
+## Moving a snapshot between stores
+
+A retailer's bot protection may accept one network and refuse another: Keells
+answers a laptop on a home connection and returns 403 to the server. The store
+that can reach the retailer captures, and the one that cannot imports the result.
+
+```bash
+# on the machine that captured it
+pnpm --filter @lanka-pricelens/foundry cli snapshot export --source keells_online_prices --date 2026-09-05 --out keells-2026-09-05.snapshot.json
+
+# into another store on the same machine
+pnpm --filter @lanka-pricelens/foundry cli snapshot import --source keells_online_prices --file keells-2026-09-05.snapshot.json
+
+# into a server, with an owner session cookie
+curl -sS --cookie "$COOKIE" -H 'content-type: application/json' \
+  --data-binary @keells-2026-09-05.snapshot.json \
+  https://example.org/v1/admin/sources/keells_online_prices/snapshots
+```
+
+The export is the snapshot's normalised records (label, store, quantity, unit,
+price range) rebuilt from the latest complete artifact for that trading day;
+`--raw` also carries each row's original payload. An import runs the capture
+workflow with the fetch replaced by the file: the same validation, the same
+evidence record (the artifact notes it was imported), the same hashing, so the
+same snapshot imported twice is a no-op, and the same mapping and promotion. The
+run is recorded with trigger `import`, and the API route syncs the warehouse
+before answering, so the explorer shows the new prices immediately. Imports never
+contact the retailer.
 
 ## Shared adapter settings
 
