@@ -8,9 +8,9 @@ you have.
 
 | | |
 | --- | --- |
-| ![The price board](docs/screenshots/board.png) | ![A product page](docs/screenshots/product.png) |
+| ![The price board](web/public/guide/board.png) | ![A product page](web/public/guide/product.png) |
 | The board: every product, open markets and supermarkets side by side, the month's movers | A product: sellers by group, the cheapest marked, a year of history |
-| ![The basket](docs/screenshots/basket.png) | ![A recipe](docs/screenshots/recipe.png) |
+| ![The basket](web/public/guide/basket.png) | ![A recipe](web/public/guide/recipe.png) |
 | The basket: your list priced at every store, in the amounts you set, and dishes to cook from it | A recipe: what you have, what is still to buy at today's cheapest price |
 
 ## What it does
@@ -28,13 +28,18 @@ you have.
 
 ## Using the site
 
-See [docs/user-guide.md](docs/user-guide.md) for a walkthrough: the board, a product's history,
-the basket with real amounts, store comparison, recipe suggestions, theme, feedback, and privacy.
+The site has its own guide with screenshots at
+[price.prabhavalabs.com/guide](https://price.prabhavalabs.com/guide): finding a product, reading
+a price and its history, building a basket in real amounts, comparing stores, cooking from the
+basket, phone and theme, feedback and privacy. The same guide is in the repository as
+[docs/user-guide.md](docs/user-guide.md); the screenshots live in `web/public/guide/` and are
+refreshed from the live site with `web/scripts/guide-screenshots.js`.
 
 ## Documentation
 
 | Topic | Where |
 | --- | --- |
+| Using the site | [docs/user-guide.md](docs/user-guide.md), live at [/guide](https://price.prabhavalabs.com/guide) |
 | How the site works and its public API | [docs/public-site.md](docs/public-site.md) |
 | Architecture and the separation of operational data from public views | [docs/architecture.md](docs/architecture.md) |
 | Official PDF sources and their parsers | [docs/official-sources.md](docs/official-sources.md), [docs/pdf-archive.md](docs/pdf-archive.md), [docs/pdf-intake.md](docs/pdf-intake.md) |

@@ -1,4 +1,4 @@
-import { RiInformationLine, RiRestaurantLine } from "@remixicon/react";
+import { RiBookOpenLine, RiInformationLine, RiRestaurantLine } from "@remixicon/react";
 import type { ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
 
@@ -23,14 +23,17 @@ export function Layout({ children }: { children: ReactNode }) {
             </span>
           </Link>
           <div className="order-last w-full sm:order-none sm:ml-4 sm:w-auto sm:max-w-md sm:flex-1"><SearchBox /></div>
-          <nav className="ml-auto flex items-center gap-0.5 sm:gap-1">
+          <nav className="ml-auto flex items-center gap-0 sm:gap-1">
             <NavLink to="/recipes" className={({ isActive }) => cn("no-underline", isActive && "text-primary")}>
-              <Button className="gap-1.5" size="sm" variant="ghost"><RiRestaurantLine className="size-4" /><span className="hidden sm:inline">Recipes</span></Button>
+              <Button className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost"><RiRestaurantLine className="size-4" /><span className="hidden sm:inline">Recipes</span></Button>
             </NavLink>
             <QuickBasket />
+            <NavLink to="/guide" className={({ isActive }) => cn("no-underline", isActive && "text-primary")}>
+              <Button className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost"><RiBookOpenLine className="size-4" /><span className="hidden sm:inline">Guide</span></Button>
+            </NavLink>
             <FeedbackDialog />
-            <NavLink to="/about" className={({ isActive }) => cn("no-underline", isActive && "text-primary")}>
-              <Button className="gap-1.5" size="sm" variant="ghost"><RiInformationLine className="size-4" /><span className="hidden sm:inline">About</span></Button>
+            <NavLink to="/about" className={({ isActive }) => cn("hidden no-underline sm:inline-flex", isActive && "text-primary")}>
+              <Button className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost"><RiInformationLine className="size-4" /><span className="hidden sm:inline">About</span></Button>
             </NavLink>
             <ThemeToggle />
           </nav>
@@ -45,6 +48,8 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
           <p>
             Open-market prices: Central Bank of Sri Lanka daily price report, Department of Census and Statistics weekly retail prices, HARTI daily bulletin. Supermarket prices: the retailers' online stores.{" "}
+            <Link to="/guide" className="underline">How to use the site</Link>
+            {" · "}
             <Link to="/about" className="underline">Sources and method</Link>
             {" · "}
             <FeedbackDialog trigger={<Button className="h-auto p-0 text-xs underline" size="sm" variant="link">Send feedback or report a bug</Button>} />

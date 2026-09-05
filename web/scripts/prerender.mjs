@@ -33,7 +33,9 @@ const page = (title, description, path, image) => shell
     "  </head>",
   ].filter(Boolean).join("\n"));
 
-const urls = ["/", "/basket", "/recipes", "/about"];
+const urls = ["/", "/basket", "/recipes", "/about", "/guide"];
+mkdirSync(resolve(dist, "guide"), { recursive: true });
+writeFileSync(resolve(dist, "guide", "index.html"), page("How to use PriceLens · a five-minute guide", "From the front page to a priced shopping list and a dish to cook from it: finding a product, reading its history, building a basket in real amounts, comparing stores, recipes, theme, feedback.", "/guide", "/guide/board.png"));
 writeFileSync(resolve(dist, "index.html"), page("PriceLens · Sri Lanka food prices today", "Today's food prices across Sri Lanka's open markets and supermarkets, from official bulletins and store shelves, with history.", "/", null));
 for (const product of products.values()) {
   const path = `/p/${product.id}`;

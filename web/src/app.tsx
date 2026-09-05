@@ -7,6 +7,7 @@ import { startAnalytics, trackPageView } from "@/lib/analytics";
 import { AboutPage } from "@/pages/about";
 import { BasketPage } from "@/pages/basket";
 import { BoardPage } from "@/pages/board";
+import { GuidePage } from "@/pages/guide";
 import { ProductPage } from "@/pages/product";
 import { RecipePage } from "@/pages/recipe";
 import { RecipesPage } from "@/pages/recipes";
@@ -36,6 +37,7 @@ export function App() {
         <Route path="/recipes" element={<RecipesPage />} />
         <Route path="/r/:id" element={<RecipePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/guide" element={<GuidePage />} />
         <Route path="*" element={<p className="py-16 text-center text-muted-foreground">This page does not exist.</p>} />
       </Routes>
     </Layout>
