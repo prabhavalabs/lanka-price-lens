@@ -18,7 +18,8 @@ export function openOperationalDatabase(path: string): OperationalDatabase {
   const database = new Database(path);
   database.pragma("foreign_keys = ON");
   database.pragma("journal_mode = WAL");
-  database.pragma("busy_timeout = 5000");
+  // The API's document sweeps and the timers' captures share this file; a writer waits out another's transaction rather than failing.
+  database.pragma("busy_timeout = 30000");
   migrate(database);
   return database;
 }
