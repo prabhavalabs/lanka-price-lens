@@ -58,6 +58,11 @@ within the last 26 hours ("Timers on schedule"). Retail capture is expected only
 when a retail source is configured. With neither signal the badge says
 "Automation stale" and names the last scheduled run of each workflow.
 
+Under timers the recovery sweep the scheduler would run every five minutes is
+part of `foundry sync` instead: after each source's discovery and downloads it
+processes archived documents that were never processed or were processed without
+a mapping bundle (see `docs/pdf-archive.md`).
+
 The document-processing pipeline has seven durable steps: retrieve the PDF,
 inspect/extract its text, adaptively parse the price grid, validate the staged
 rows, persist them, assess structural completeness, and promote reviewed exact

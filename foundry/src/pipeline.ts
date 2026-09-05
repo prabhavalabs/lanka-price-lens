@@ -65,6 +65,10 @@ export type IngestionOptions = {
   limit?: number | undefined;
   mappingBundle?: MappingBundle | undefined;
   execution?: WorkflowExecutionOptions | undefined;
+  /** How far back a routine sync also fills holes (publications older than the newest known one that were never archived). Default 45 days. */
+  lookbackDays?: number | undefined;
+  /** The clock the lookback window is measured from; tests pin it. */
+  now?: Date | undefined;
 };
 
 export type WorkflowExecutionOptions = {
@@ -355,6 +359,119 @@ export async function recoverFailedProcessing(
   return recovery;
 }
 
+export type PendingArchive = { archiveId: string; publishedAt: string; title: string; reason: "never_processed" | "unconfigured" };
+
+export type PendingProcessing = {
+  candidates: number;
+  runs: Array<{ archiveId: string; runId: string; status: ProcessingResult["status"] }>;
+  succeeded: number;
+  failed: number;
+  blocked: number;
+  skipped: number;
+};
+
+/** The storage URI prefix the configured archive driver can read (`r2://bucket/`, `file:///root/`), or null when unknown. */
+export function archiveReadPrefix(storage: { uri?: ((key: string) => string) | undefined }): string | null {
+  const probe = storage.uri?.("probe");
+  return probe?.endsWith("probe") ? probe.slice(0, -"probe".length) : null;
+}
+
+/**
+ * Archived documents whose prices never landed: the processing run never started (a sync interrupted
+ * after the download, an archive filled before processing existed) or it finished without a mapping
+ * bundle and published nothing. Quarantined documents and documents that already failed `maxAttempts`
+ * times wait for an operator instead. Newest first, so recent prices land before history.
+ */
+export function pendingArchives(
+  database: OperationalDatabase,
+  manifest: SourceManifest,
+  options: { limit?: number | undefined; since?: string | undefined; uriPrefix?: string | null | undefined; maxAttempts?: number | undefined } = {},
+): PendingArchive[] {
+  const prefix = options.uriPrefix ?? null;
+  const rows = database
+    .prepare(
+      `SELECT archive.id AS archive_id, publication.published_at, publication.title,
+         EXISTS (
+           SELECT 1 FROM ingest_run run
+           WHERE run.archive_id = archive.id AND run.workflow = 'pdf_processing' AND run.status = 'succeeded'
+         ) AS processed
+       FROM archived_pdf archive
+       JOIN source_publication publication ON publication.id = archive.publication_id
+       WHERE publication.source_id = ?
+         AND (? IS NULL OR substr(publication.published_at, 1, 10) >= ?)
+         AND (
+           NOT EXISTS (
+             SELECT 1 FROM ingest_run run
+             WHERE run.archive_id = archive.id AND run.workflow = 'pdf_processing' AND run.status = 'succeeded'
+           )
+           OR EXISTS (
+             SELECT 1 FROM source_artifact artifact
+             JOIN artifact_quality_assessment quality ON quality.artifact_id = artifact.id
+             WHERE artifact.publication_id = publication.id AND quality.status = 'not_configured'
+               AND NOT EXISTS (
+                 SELECT 1 FROM artifact_quality_assessment later
+                 WHERE later.artifact_id = artifact.id AND later.status != 'not_configured'
+               )
+           )
+         )
+         AND NOT EXISTS (
+           SELECT 1 FROM ingest_run run
+           WHERE run.archive_id = archive.id AND run.workflow = 'pdf_processing' AND run.status IN ('blocked', 'running')
+         )
+         AND (
+           SELECT COUNT(*) FROM ingest_run run
+           WHERE run.archive_id = archive.id AND run.workflow = 'pdf_processing' AND run.status = 'failed'
+         ) < ?
+         AND NOT EXISTS (
+           SELECT 1 FROM workflow_dispatch queued
+           WHERE queued.archive_id = archive.id AND queued.workflow_key = 'document_processing_pipeline'
+             AND queued.status IN ('queued', 'running')
+         )
+         AND (? IS NULL OR substr(archive.r2_uri, 1, length(?)) = ?)
+       ORDER BY publication.published_at DESC, archive.created_at DESC
+       LIMIT ?`,
+    )
+    .all(manifest.id, options.since ?? null, options.since ?? null, options.maxAttempts ?? 3, prefix, prefix ?? "", prefix ?? "", options.limit ?? 200) as Array<{
+    archive_id: string;
+    published_at: string;
+    title: string;
+    processed: number;
+  }>;
+  return rows.map((row) => ({ archiveId: row.archive_id, publishedAt: row.published_at, title: row.title, reason: row.processed ? "unconfigured" : "never_processed" }));
+}
+
+/** Processes the pending archives of a source in place, newest first, and reports how each run ended. */
+export async function processPendingArchives(
+  database: OperationalDatabase,
+  manifest: SourceManifest,
+  options: {
+    trigger: "scheduled" | "manual" | "backfill";
+    limit?: number | undefined;
+    since?: string | undefined;
+    archive?: ArchiveStorage | undefined;
+    inspector?: typeof inspectPdf | undefined;
+    mappingBundle?: MappingBundle | undefined;
+    maxAttempts?: number | undefined;
+    onProgress?: ((done: number, total: number) => void) | undefined;
+  },
+): Promise<PendingProcessing> {
+  const storage = options.archive ?? await configuredArchiveStorage();
+  const candidates = pendingArchives(database, manifest, { limit: options.limit, since: options.since, uriPrefix: archiveReadPrefix(storage), maxAttempts: options.maxAttempts });
+  const result: PendingProcessing = { candidates: candidates.length, runs: [], succeeded: 0, failed: 0, blocked: 0, skipped: 0 };
+  for (const [index, candidate] of candidates.entries()) {
+    const run = await runPdfProcessing(database, manifest, candidate.archiveId, {
+      trigger: options.trigger,
+      archive: storage,
+      inspector: options.inspector,
+      mappingBundle: options.mappingBundle,
+    });
+    result.runs.push({ archiveId: candidate.archiveId, runId: run.runId, status: run.status });
+    result[run.status] += 1;
+    options.onProgress?.(index + 1, candidates.length);
+  }
+  return result;
+}
+
 export function workflowRetryState(database: OperationalDatabase, runId: string, stage: ProcessingStage): RetryState {
   const run = database.prepare("SELECT status, workflow, artifact_id FROM ingest_run WHERE id = ?").get(runId) as
     | { status: string; workflow: string; artifact_id: string | null }
@@ -547,12 +664,17 @@ async function compareInventory(
     else missing.push(publication);
   }
   const knownKeys = new Set([...recorded, ...context.inventory.keys()]);
-  const missingKeys = new Set(missing.map((publication) => publication.key));
   const newestKnownIndex = context.publications.findIndex((publication) => knownKeys.has(archiveKey(manifest, publication)));
+  // A routine sync (no range, not a backfill) takes what is newer than the newest archived publication, plus any
+  // hole inside the lookback window: a day whose download failed, or one skipped by a store that started mid-series.
+  // Anything older than the window is left to an explicit backfill so the historical archive is never pulled by accident.
+  const newer = new Set(context.publications.slice(0, Math.max(newestKnownIndex, 0)).map((publication) => publication.key));
+  const lookbackDays = options.lookbackDays ?? 45;
+  const cutoff = new Date((options.now ?? new Date()).getTime() - lookbackDays * 86_400_000).toISOString().slice(0, 10);
   context.pending = options.trigger !== "backfill" && !options.from && !options.to
     ? newestKnownIndex < 0
       ? missing.slice(0, 1)
-      : context.publications.slice(0, newestKnownIndex).filter((publication) => missingKeys.has(publication.key))
+      : missing.filter((publication) => newer.has(publication.key) || publication.date >= cutoff)
     : missing;
   if (options.limit !== undefined) context.pending = context.pending.slice(0, Math.max(0, options.limit));
   recordRunPublications(database, runId, context.pending);
