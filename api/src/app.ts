@@ -59,7 +59,7 @@ import { secureHeaders } from "hono/secure-headers";
 import { streamSSE } from "hono/streaming";
 
 import { productDetail, searchProducts } from "./explorer.ts";
-import { dishDetail, ingredientPrices, listDishes, pricedProducts, productLabels, readRecipeStore, recipeOverview, type RecipeStore } from "./recipes.ts";
+import { dishDetail, ingredientPrices, listDishes, pricedProducts, productLabels, readRecipeStore, recipeOverview, recommendDishes, type RecipeStore } from "./recipes.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
 import {
   archivedKnowledgePdf,
@@ -177,6 +177,41 @@ export function createApp(
     if (parsed.honeypot) return context.json(envelope(context.get("requestId"), { received: true }, true, "Thank you"), 201);
     const item = submitFeedback(database, parsed.input);
     return context.json(envelope(context.get("requestId"), { received: true, id: item.id }, true, "Thank you"), 201);
+  });
+  // Recipes for the public site: browse, look one up with today's ingredient prices, and match the basket.
+  app.get("/v1/public/recipes", async (context) => {
+    if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
+    const pick = (name: string) => (context.req.query(name) ?? "").slice(0, 40);
+    const page = Math.max(1, Number(context.req.query("page") ?? "1") || 1);
+    const pageSize = Math.min(60, Math.max(1, Number(context.req.query("pageSize") ?? "24") || 24));
+    const filters = { search: (context.req.query("q") ?? context.req.query("search") ?? "").slice(0, 100), category: pick("category"), meal: pick("meal"), protein: pick("protein"), diet: pick("diet"), region: pick("region"), occasion: pick("occasion"), page, pageSize };
+    const client = await warehouse();
+    const priced = client ? await pricedProducts(client).catch(() => null) : null;
+    return context.json(envelope(context.get("requestId"), listDishes(options.recipes, filters, priced)));
+  });
+  app.get("/v1/public/recipes/recommend", async (context) => {
+    if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
+    const ids = [...new Set((context.req.query("products") ?? "").split(",").map((id) => id.trim()).filter((id) => /^[a-z0-9_]+$/u.test(id)))].slice(0, 60);
+    if (!ids.length) return context.json(envelope(context.get("requestId"), { recommendations: [], labels: {}, prices: {} }));
+    const limit = Math.min(30, Math.max(1, Number(context.req.query("limit") ?? "12") || 12));
+    const client = await warehouse();
+    const priced = client ? await pricedProducts(client).catch(() => null) : null;
+    const recommendations = recommendDishes(options.recipes, ids, { limit, priced });
+    // Names and today's cheapest price for every ingredient the shopper still needs, so the cards can say what and roughly how much.
+    const wanted = [...new Set([...recommendations.flatMap((entry) => [...entry.missing, ...entry.matched])])];
+    const labels = client ? await productLabels(client, wanted).catch(() => new Map<string, string>()) : new Map<string, string>();
+    const prices = client ? await ingredientPrices(client, wanted).catch(() => new Map()) : new Map();
+    return context.json(envelope(context.get("requestId"), { recommendations, labels: Object.fromEntries(labels), prices: Object.fromEntries(prices) }));
+  });
+  app.get("/v1/public/recipes/:id", async (context) => {
+    if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
+    const dishId = context.req.param("id").slice(0, 120);
+    const dish = options.recipes.catalogue.dishes.find((candidate) => candidate.id === dishId);
+    if (!dish) return context.json(envelope(context.get("requestId"), null, false, "Recipe not found"), 404);
+    const client = await warehouse();
+    const labels = client ? await productLabels(client, dish.key_ingredients).catch(() => new Map<string, string>()) : new Map<string, string>();
+    const prices = client ? await ingredientPrices(client, dish.key_ingredients).catch(() => null) : null;
+    return context.json(envelope(context.get("requestId"), dishDetail(options.recipes, dishId, labels, prices)));
   });
   app.get("/v1/public/basket", async (context) => {
     const client = await warehouse();

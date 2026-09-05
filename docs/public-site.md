@@ -54,6 +54,23 @@ taken to zero removes the line.
   `POST /v1/public/feedback` (five per hour per address, a honeypot field for bots). The owner
   reads and works through them in the admin's **Feedback** page (new, seen, done) through
   `GET /v1/admin/feedback` and `PATCH /v1/admin/feedback/:id`.
+- **Quantities:** a basket line holds a decimal amount in the unit the product is priced in (0.5
+  for half a kilo, 6 for six eggs, 0.75 for 750 ml). "Add" starts at half a kilo or litre, or one
+  piece; the −/+ steps are a quarter kilo or litre, or one piece; tapping the amount opens presets
+  (100 g to 5 kg, 250 ml to 2 l, 1 to 30 pieces) and a free field in grams or kilos. Below 50 g,
+  50 ml, or one piece the line is removed. Totals multiply a seller's average price by the amount
+  and only count sellers priced in the same unit as the line.
+- **Recipes (`/recipes`, `/r/:id`):** the dish catalogue, searchable by name in any of its languages
+  or by ingredient, with a category filter. A dish page lists its key ingredients split into "from
+  your basket" and "still to buy" (today's cheapest price per unit, add in the amount you want),
+  the pantry items the price vocabulary does not carry, variants, and dishes it goes with, plus a
+  rough extra cost (one unit of each missing ingredient at its cheapest seller).
+- **Cook with your basket:** the basket page suggests dishes from what is in it. A dish scores by
+  how much of its key ingredients the basket covers (40%), how much of the basket it uses (30%),
+  how many basket items it brings together (30%, up to three), a nudge for everyday dishes, and a
+  small cost per ingredient still to buy; one shared ingredient is enough to appear, dishes that
+  use the basket well come first. Each card shows how many key ingredients are in the basket and
+  names what is still needed.
 - **About (`/about`):** how prices are collected, the sources with their marks, attribution and
   cadence, and what is coming.
 
@@ -85,6 +102,9 @@ cacheable (`Cache-Control: public, max-age=300, s-maxage=900`) and readable from
 | `GET /v1/public/search?q=` | Products matching a label, variety, or a source's own wording (two characters or more) |
 | `GET /v1/public/basket?products=a,b,c` | The latest price of each product at every published seller (up to 60 products) |
 | `POST /v1/public/feedback` | `{ kind: "feedback" \| "bug", message, email?, page?, website? }`; 201, 400 on a bad message, 429 past five an hour |
+| `GET /v1/public/recipes?q=&category=&meal=&page=` | Browse the dish catalogue (24 per page) |
+| `GET /v1/public/recipes/recommend?products=a,b,c&limit=` | Dishes ranked by fit to those products, with names and cheapest prices of every ingredient involved |
+| `GET /v1/public/recipes/:id` | One dish with its key ingredients priced |
 
 All three answer 503 when the warehouse is unavailable.
 

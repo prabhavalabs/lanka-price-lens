@@ -203,7 +203,7 @@ function ProductTile({ product }: { product: ProductCard }) {
               {change ? <Badge className={cn("text-[10px]", change.direction === "rise" ? "bg-status-critical/10 text-status-critical" : change.direction === "fall" ? "bg-status-good/10 text-status-good" : "")} variant="outline" title="Change over 30 days">{change.text}</Badge> : null}
             </div>
           </div>
-          <div className="shrink-0"><QuantityControl id={product.id} label={product.label} /></div>
+          <div className="shrink-0"><QuantityControl id={product.id} label={product.label} unit={headline?.unit ?? "kg"} /></div>
         </div>
         <dl className="mt-3 space-y-1.5">
           {product.prices.map((price) => <PriceLine key={price.group} price={price} />)}

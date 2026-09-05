@@ -92,7 +92,7 @@ export function ProductPage() {
             </div>
           ) : null}
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            <QuantityControl id={data.product.id} label={data.product.label} size="md" />
+            <QuantityControl id={data.product.id} label={data.product.label} size="md" unit={unitOf(data.latest)} />
             <ShareButtons title={`${data.product.label} price today`} text={shareText} />
           </div>
         </div>
@@ -238,6 +238,11 @@ export function sellerName(row: { market_label: string }): string {
 function seriesName(label: string, group: Group): string {
   const plain = label.replace(/\s*\((retail|wholesale)\)\s*$/iu, "");
   return group === "retail_market" ? `${plain} market` : plain;
+}
+
+/** The unit most of today's sellers price in; what a basket line of this product is counted in. */
+function unitOf(rows: Latest[]): string {
+  return mostCommonUnit(rows) ?? "kg";
 }
 
 function mostCommonUnit(rows: Latest[]): string | null {

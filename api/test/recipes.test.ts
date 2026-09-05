@@ -83,3 +83,50 @@ test("recipe routes serve the catalogue to a signed-in owner and answer 503 with
     database.close();
   }
 });
+
+test("recipes are recommended from the basket, best fit first, with what is still to buy", async () => {
+  const { recommendDishes } = await import("../src/recipes.ts");
+  // Dhal, onion, and coconut: parippu is fully covered; chicken curry shares two of five.
+  const full = recommendDishes(store, ["product_red_dhal", "product_big_onion", "product_coconut"]);
+  assert.deepEqual(full.map((entry) => entry.dish.id), ["dish_parippu", "dish_chicken_curry"]);
+  assert.deepEqual([full[0]!.coverage, full[0]!.usage, full[0]!.missing], [1, 1, []]);
+  assert.deepEqual(full[1]!.missing, ["product_chicken", "product_garlic", "product_ginger"]);
+  // One shared ingredient is enough to appear; a dish with none does not.
+  const onion = recommendDishes(store, ["product_big_onion"]);
+  assert.deepEqual(onion.map((entry) => entry.dish.id), ["dish_parippu", "dish_chicken_curry"], "the smaller dish that onion covers more of comes first");
+  assert.ok(!onion.some((entry) => entry.dish.id === "dish_red_rice"));
+  assert.deepEqual(recommendDishes(store, []), []);
+  assert.deepEqual(recommendDishes(store, ["product_unknown"]), []);
+  assert.equal(recommendDishes(store, ["product_big_onion"], { limit: 1 }).length, 1);
+});
+
+test("public recipe routes browse, look up, and recommend without sign-in", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    const app = createApp(database, undefined, undefined, { recipes: store });
+    const list = await app.request("http://localhost/v1/public/recipes?q=parippu");
+    assert.equal(list.status, 200);
+    assert.equal(list.headers.get("cache-control")?.includes("public"), true);
+    const listed = (await list.json()) as { payload: { total: number; items: Array<{ id: string }> } };
+    assert.deepEqual([listed.payload.total, listed.payload.items[0]?.id], [1, "dish_parippu"]);
+
+    const detail = await app.request("http://localhost/v1/public/recipes/dish_chicken_curry");
+    assert.equal(detail.status, 200);
+    const dish = (await detail.json()) as { payload: { id: string; ingredients: Array<{ product_id: string; price: unknown }>; pairs: unknown[] } };
+    assert.equal(dish.payload.ingredients.length, 5, "every key ingredient is listed, priced or not");
+    assert.equal((await app.request("http://localhost/v1/public/recipes/dish_missing")).status, 404);
+
+    const recommend = await app.request("http://localhost/v1/public/recipes/recommend?products=product_red_dhal,product_coconut,bad%20id");
+    assert.equal(recommend.status, 200);
+    const body = (await recommend.json()) as { payload: { recommendations: Array<{ dish: { id: string }; missing: string[] }>; labels: Record<string, string> } };
+    assert.equal(body.payload.recommendations[0]?.dish.id, "dish_parippu");
+    assert.deepEqual(body.payload.recommendations[0]?.missing, ["product_big_onion"]);
+    const empty = (await (await app.request("http://localhost/v1/public/recipes/recommend")).json()) as { payload: { recommendations: unknown[] } };
+    assert.deepEqual(empty.payload.recommendations, []);
+
+    const dark = createApp(database);
+    assert.equal((await dark.request("http://localhost/v1/public/recipes")).status, 503);
+  } finally {
+    database.close();
+  }
+});

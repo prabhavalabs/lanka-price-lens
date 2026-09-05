@@ -20,6 +20,7 @@ COPY admin admin
 COPY web web
 # The site's build prerenders one page per product from the mapping bundles.
 COPY data/mappings data/mappings
+COPY data/recipes data/recipes
 RUN pnpm build
 
 FROM node:${NODE_VERSION}-bookworm-slim

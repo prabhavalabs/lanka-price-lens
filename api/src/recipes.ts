@@ -145,3 +145,44 @@ function coverageOf(dish: Dish, priced: Set<string> | null): Coverage | null {
   if (!priced) return null;
   return { priced: dish.key_ingredients.filter((id) => priced.has(id)).length, total: dish.key_ingredients.length };
 }
+
+export type Recommendation = {
+  dish: DishSummary;
+  /** Key ingredients the shopper already has, and the ones still to buy (product ids). */
+  matched: string[];
+  missing: string[];
+  /** How much of the dish the basket covers (0 to 1) and how much of the basket the dish uses (0 to 1). */
+  coverage: number;
+  usage: number;
+  score: number;
+};
+
+/**
+ * Dishes a shopper could cook from what is in their basket, best fit first. A dish scores by how
+ * much of its key ingredients the basket covers, how much of the basket it uses, and how many
+ * basket items it brings together (so a curry using four of the shopper's items beats a drink
+ * whose single ingredient happens to be in the basket), with a small nudge for everyday dishes and
+ * a small cost for every ingredient still to buy. It need not be a perfect match: one shared
+ * ingredient is enough to appear, but dishes that use the basket well come first.
+ */
+export function recommendDishes(store: RecipeStore, basket: string[], options: { limit?: number | undefined; priced?: Set<string> | null | undefined } = {}): Recommendation[] {
+  const have = new Set(basket.filter(Boolean));
+  if (!have.size) return [];
+  const limit = Math.min(50, Math.max(1, options.limit ?? 12));
+  const recommendations: Recommendation[] = [];
+  for (const dish of store.catalogue.dishes) {
+    if (!dish.key_ingredients.length) continue;
+    const matched = dish.key_ingredients.filter((id) => have.has(id));
+    if (!matched.length) continue;
+    const missing = dish.key_ingredients.filter((id) => !have.has(id));
+    const coverage = matched.length / dish.key_ingredients.length;
+    const usage = matched.length / have.size;
+    const depth = Math.min(matched.length, 3) / 3;
+    const popularity = dish.popularity === 1 ? 0.08 : dish.popularity === 2 ? 0.04 : 0;
+    const score = coverage * 0.4 + usage * 0.3 + depth * 0.3 + popularity - Math.min(0.15, missing.length * 0.03);
+    recommendations.push({ dish: { ...dish, coverage: coverageOf(dish, options.priced ?? null) }, matched, missing, coverage: Math.round(coverage * 100) / 100, usage: Math.round(usage * 100) / 100, score: Math.round(score * 1000) / 1000 });
+  }
+  return recommendations
+    .sort((left, right) => right.score - left.score || left.missing.length - right.missing.length || left.dish.popularity - right.dish.popularity || left.dish.names.en.localeCompare(right.dish.names.en))
+    .slice(0, limit);
+}
