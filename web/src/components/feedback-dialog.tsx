@@ -8,8 +8,9 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { trackEvent } from "@/lib/analytics";
 import { postFeedback, type FeedbackKind } from "@/lib/api";
-import { cn } from "@/lib/utils";
 
 /** Feedback or a bug report in two taps: what kind, what happened, an optional address for a reply. The page you were on comes along. */
 export function FeedbackDialog({ trigger }: { trigger?: ReactNode }) {
@@ -21,6 +22,7 @@ export function FeedbackDialog({ trigger }: { trigger?: ReactNode }) {
   const [website, setWebsite] = useState("");
   const send = useMutation({
     mutationFn: () => postFeedback({ kind, message: message.trim(), email: email.trim() || undefined, page: `${window.location.origin}${location.pathname}${location.search}`, website: website || undefined }),
+    onSuccess: () => trackEvent("feedback_sent", { kind }),
   });
   const reset = () => {
     setMessage("");
@@ -49,13 +51,10 @@ export function FeedbackDialog({ trigger }: { trigger?: ReactNode }) {
               <DialogTitle>Tell us what you think</DialogTitle>
               <DialogDescription>A wrong price, a missing product, something broken, or an idea. The page you are on is included.</DialogDescription>
             </DialogHeader>
-            <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="Kind">
-              {([["feedback", "Feedback", RiChat3Line], ["bug", "Report a bug", RiBugLine]] as const).map(([value, label, Icon]) => (
-                <button aria-checked={kind === value} className={cn("flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-sm", kind === value ? "border-primary bg-primary/10 text-primary" : "text-muted-foreground hover:border-primary/40")} key={value} onClick={() => setKind(value)} role="radio" type="button">
-                  <Icon className="size-4" />{label}
-                </button>
-              ))}
-            </div>
+            <ToggleGroup aria-label="Kind" className="grid w-full grid-cols-2" onValueChange={(value) => { if (value === "feedback" || value === "bug") setKind(value); }} type="single" value={kind} variant="outline">
+              <ToggleGroupItem className="gap-2" value="feedback"><RiChat3Line className="size-4" />Feedback</ToggleGroupItem>
+              <ToggleGroupItem className="gap-2" value="bug"><RiBugLine className="size-4" />Report a bug</ToggleGroupItem>
+            </ToggleGroup>
             <div className="space-y-1.5">
               <Label htmlFor="feedback-message">{kind === "bug" ? "What went wrong?" : "Your message"}</Label>
               <Textarea id="feedback-message" maxLength={4000} minLength={10} onChange={(event) => setMessage(event.target.value)} placeholder={kind === "bug" ? "What you did, what you expected, what happened instead…" : "What would make this more useful for you?"} required rows={5} value={message} />

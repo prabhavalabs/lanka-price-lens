@@ -38,6 +38,12 @@ export function AboutPage() {
       </Card>
       <Card>
         <CardContent className="space-y-2 p-5 text-sm">
+          <h2 className="font-heading text-lg font-semibold">Privacy</h2>
+          <p>Your basket and theme stay in your browser. The count of people online uses a random id kept only for the open tab, no cookies. Where the site runs Google Analytics it does so with IP anonymisation and respects your browser's "do not track" setting. Feedback is stored with the page you sent it from and, if you gave one, your email, and forwarded to the site's owner.</p>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent className="space-y-2 p-5 text-sm">
           <h2 className="font-heading text-lg font-semibold">What is coming</h2>
           <ul className="list-disc space-y-1 pl-5">
             <li>Sinhala and Tamil names for every product.</li>

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { FeedbackDialog } from "@/components/feedback-dialog";
+import { PresenceNote } from "@/components/presence";
 import { QuickBasket } from "@/components/quick-basket";
 import { SearchBox } from "@/components/search-box";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -38,12 +39,15 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:py-8">{children}</main>
       <footer className="border-t border-border/70">
         <div className="mx-auto max-w-6xl space-y-2 px-4 py-6 text-xs text-muted-foreground">
-          <p>Prices are as observed on the date shown and may differ in store or at the stall. Rupees, per unit as stated.</p>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p>Prices are as observed on the date shown and may differ in store or at the stall. Rupees, per unit as stated.</p>
+            <PresenceNote />
+          </div>
           <p>
             Open-market prices: Central Bank of Sri Lanka daily price report, Department of Census and Statistics weekly retail prices, HARTI daily bulletin. Supermarket prices: the retailers' online stores.{" "}
             <Link to="/about" className="underline">Sources and method</Link>
             {" · "}
-            <FeedbackDialog trigger={<button className="underline" type="button">Send feedback or report a bug</button>} />
+            <FeedbackDialog trigger={<Button className="h-auto p-0 text-xs underline" size="sm" variant="link">Send feedback or report a bug</Button>} />
           </p>
         </div>
       </footer>

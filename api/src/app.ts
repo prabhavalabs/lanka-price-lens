@@ -34,6 +34,8 @@ import {
 } from "@lanka-pricelens/foundry/retail";
 import { runWithRetry } from "@lanka-pricelens/foundry/retry";
 import { listFeedback, parseFeedback, RateLimiter, submitFeedback, updateFeedbackStatus } from "./feedback.ts";
+import { createMailer, feedbackMessage, type Mailer } from "./mail.ts";
+import { Presence, presenceIdPattern } from "./presence.ts";
 import { publicBasket, publicOverview } from "./public.ts";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 import {
@@ -85,9 +87,11 @@ export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
-  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore } = {},
+  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; mailer?: Mailer; presence?: Presence } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
+  const mailer = options.mailer ?? createMailer();
+  const presence = options.presence ?? new Presence();
   /** The PostgreSQL warehouse behind the price explorer; null when not configured or unreachable (the routes answer 503). */
   const warehouse = async (): Promise<WarehouseClient | null> => {
     if (!options.warehouse) return null;
@@ -147,7 +151,7 @@ export function createApp(
   app.use("/v1/public/*", async (context, next) => {
     await next();
     context.header("Access-Control-Allow-Origin", "*");
-    if (context.res.ok) context.header("Cache-Control", "public, max-age=300, s-maxage=900, stale-while-revalidate=1800");
+    if (context.res.ok && !context.res.headers.get("Cache-Control")) context.header("Cache-Control", "public, max-age=300, s-maxage=900, stale-while-revalidate=1800");
   });
   app.get("/v1/public/overview", async (context) => {
     const client = await warehouse();
@@ -176,7 +180,26 @@ export function createApp(
     if (!feedbackBudget.allow(address)) return context.json(envelope(context.get("requestId"), null, false, "Too many messages from this connection; please try again in an hour"), 429);
     if (parsed.honeypot) return context.json(envelope(context.get("requestId"), { received: true }, true, "Thank you"), 201);
     const item = submitFeedback(database, parsed.input);
+    // The owner hears about it by mail when mail is configured; the message is stored either way.
+    void mailer.send(feedbackMessage(item)).catch((error: unknown) => console.error(JSON.stringify({ level: "error", message: "Feedback mail failed", detail: error instanceof Error ? error.message : String(error) })));
     return context.json(envelope(context.get("requestId"), { received: true, id: item.id }, true, "Thank you"), 201);
+  });
+  // What the site needs to know about this deployment: analytics id when one is set.
+  app.get("/v1/public/config", (context) => {
+    const measurementId = process.env.LPL_GA_MEASUREMENT_ID?.trim();
+    return context.json(envelope(context.get("requestId"), { analytics: { ga_measurement_id: measurementId && /^G-[A-Z0-9]{4,16}$/u.test(measurementId) ? measurementId : null } }));
+  });
+  // Who is here now: a beat per open tab per minute, counted for three minutes. No cookies, no account.
+  app.post("/v1/public/presence", bodyLimit({ maxSize: 1024 }), async (context) => {
+    const body = await jsonObject(context);
+    const id = typeof body?.id === "string" ? body.id : "";
+    if (!presenceIdPattern.test(id)) return context.json(envelope(context.get("requestId"), null, false, "id must be 8 to 64 lowercase letters, digits, or dashes"), 400);
+    context.header("Cache-Control", "no-store");
+    return context.json(envelope(context.get("requestId"), { online: presence.beat(id) }));
+  });
+  app.get("/v1/public/presence", (context) => {
+    context.header("Cache-Control", "no-store");
+    return context.json(envelope(context.get("requestId"), { online: presence.count() }));
   });
   // Recipes for the public site: browse, look one up with today's ingredient prices, and match the basket.
   app.get("/v1/public/recipes", async (context) => {

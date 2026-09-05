@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { fetchOverview, type GroupPrice, type ProductCard } from "@/lib/api";
 import { useBasketLine } from "@/store/basket";
 import { categoryLabel, changeLabel, groupLabel, relativeDay, rupeeRange, rupees, unitLabel } from "@/lib/format";
@@ -76,12 +77,15 @@ export function BoardPage() {
       ) : null}
 
       <section className="space-y-4">
-        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0">
-          <Chip active={!category} onClick={() => setParams(withParam(params, "category", ""))}>All</Chip>
-          {categories.map((entry) => (
-            <Chip key={entry} active={category === entry} onClick={() => setParams(withParam(params, "category", entry))}>{categoryLabel(entry)}</Chip>
-          ))}
-        </div>
+        <ScrollArea className="-mx-4 sm:mx-0">
+          <div className="flex gap-2 px-4 pb-3 sm:px-0">
+            <Chip active={!category} onClick={() => setParams(withParam(params, "category", ""))}>All</Chip>
+            {categories.map((entry) => (
+              <Chip key={entry} active={category === entry} onClick={() => setParams(withParam(params, "category", entry))}>{categoryLabel(entry)}</Chip>
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
         {query ? <p className="text-sm text-muted-foreground">{shown.length} {shown.length === 1 ? "result" : "results"} for “{query}” · <Link to={category ? `/?category=${category}` : "/"} className="underline">clear</Link></p> : null}
         {shown.length === 0 ? <p className="py-12 text-center text-muted-foreground">Nothing matches. Try another spelling or clear the filter.</p> : null}
 

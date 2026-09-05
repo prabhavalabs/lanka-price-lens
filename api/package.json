@@ -14,10 +14,12 @@
     "@hono/node-server": "2.1.1",
     "@lanka-pricelens/foundry": "workspace:*",
     "@lanka-pricelens/shared": "workspace:*",
-    "hono": "4.13.2"
+    "hono": "4.13.2",
+    "nodemailer": "^7.0.13"
   },
   "devDependencies": {
     "@types/node": "24.13.3",
+    "@types/nodemailer": "^8.0.1",
     "typescript": "7.0.2"
   }
 }

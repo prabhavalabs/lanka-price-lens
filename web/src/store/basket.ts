@@ -1,5 +1,7 @@
 import { useSyncExternalStore } from "react";
 
+import { trackEvent } from "../lib/analytics.ts";
+
 /**
  * The shopper's basket: one store for the whole site, so the card on the board, the quick
  * basket in the header, the product page, the basket page, and the recipe pages all show the
@@ -127,7 +129,10 @@ function subscribe(listener: () => void): () => void {
 export const basketStore = {
   get: () => state,
   subscribe,
-  add: (id: string, label: string, unit: string, quantity = 1) => commit(addLine(state, id, label, unit, quantity)),
+  add: (id: string, label: string, unit: string, quantity = 1) => {
+    commit(addLine(state, id, label, unit, quantity));
+    trackEvent("add_to_basket", { product: id });
+  },
   setQuantity: (id: string, quantity: number) => commit(setQuantity(state, id, quantity)),
   increment: (id: string) => {
     const line = state.lines.find((entry) => entry.id === id);

@@ -1,61 +1,84 @@
 # Lanka PriceLens
 
-Open, provenance-rich infrastructure for Sri Lankan price observations.
+Sri Lanka's food prices, every day, in one place: open markets and supermarkets side by side,
+with history, a basket that prices your shopping list at every store, and recipes matched to what
+you have.
 
-The repository is backend-first:
+**Public site:** [price.prabhavalabs.com](https://price.prabhavalabs.com)
 
-- `archive/` provides the private R2 client and resumable historical transfer;
-- `foundry/` owns scheduled source sync plus per-PDF processing, validation, and release;
-- `api/` exposes public health and authenticated operational data;
-- `admin/` is the single-owner operations interface;
-- `shared/` contains the source and API contracts;
-- `data/manifests/` records source rights and operating policy;
-- `deploy/` contains the VPS packaging and scheduler units.
+| | |
+| --- | --- |
+| ![The price board](docs/screenshots/board.png) | ![A product page](docs/screenshots/product.png) |
+| The board: every product, open markets and supermarkets side by side, the month's movers | A product: sellers by group, the cheapest marked, a year of history |
+| ![The basket](docs/screenshots/basket.png) | ![A recipe](docs/screenshots/recipe.png) |
+| The basket: your list priced at every store, in the amounts you set, and dishes to cook from it | A recipe: what you have, what is still to buy at today's cheapest price |
 
-## Local check
+## What it does
+
+- **Collects** official price bulletins (HARTI daily wholesale prices, the Central Bank's daily
+  price report, the Department of Census and Statistics' weekly retail prices) as published,
+  archives the originals, and parses them with the page and row every price came from.
+- **Captures** supermarket shelf prices from the online stores of Keells, Cargills, Glomark, and
+  SPAR every morning.
+- **Matches** every label to a reviewed product vocabulary, so a bulletin's "B'Onion Imported"
+  and a shelf's "Big Onions" compare as the same thing; unknown labels wait for review instead of
+  being guessed.
+- **Serves** a public site for households and an admin for the operator, from one API on one
+  server, with a PostgreSQL warehouse behind the price views.
+
+## Using the site
+
+See [docs/user-guide.md](docs/user-guide.md) for a walkthrough: the board, a product's history,
+the basket with real amounts, store comparison, recipe suggestions, theme, feedback, and privacy.
+
+## Documentation
+
+| Topic | Where |
+| --- | --- |
+| How the site works and its public API | [docs/public-site.md](docs/public-site.md) |
+| Architecture and the separation of operational data from public views | [docs/architecture.md](docs/architecture.md) |
+| Official PDF sources and their parsers | [docs/official-sources.md](docs/official-sources.md), [docs/pdf-archive.md](docs/pdf-archive.md), [docs/pdf-intake.md](docs/pdf-intake.md) |
+| Supermarket capture, mapping rules, proxies, snapshots | [docs/retail-capture.md](docs/retail-capture.md) |
+| Workflows, retries, automation health | [docs/workflows.md](docs/workflows.md) |
+| The warehouse and the explorer | [docs/warehouse.md](docs/warehouse.md) |
+| The recipe catalogue and recommendations | [docs/recipes.md](docs/recipes.md) |
+| Canonical taxonomy and release process | [docs/canonical-taxonomy.md](docs/canonical-taxonomy.md), [docs/release-process.md](docs/release-process.md) |
+| Source rights and policy | [docs/source-permission.md](docs/source-permission.md), [docs/source-policy.md](docs/source-policy.md) |
+| Running it yourself | [docs/self-hosting.md](docs/self-hosting.md) |
+
+## Repository layout
+
+| Package | Purpose |
+| --- | --- |
+| `shared/` | Schemas and vocabulary shared by everything (manifests, mapping bundles, dishes) |
+| `foundry/` | The data pipeline: discovery, archive, parsing, mapping, retail capture, warehouse sync, the CLI |
+| `api/` | The Hono API: public read routes, the owner's admin routes, both sites' static files |
+| `admin/` | The operator's console (React) |
+| `web/` | The public site (React) |
+| `archive/` | The Cloudflare Worker that fronts the PDF archive |
+| `data/` | Source manifests, mapping bundles, the recipe catalogue, product photos and store marks |
+| `deploy/` | The VPS deploy script, systemd units, nginx configuration |
+
+## Development
 
 ```bash
-corepack enable
-pnpm install
-pnpm check
+corepack pnpm install
+pnpm dev:api      # API on :3000 (serves the built admin and site)
+pnpm dev:admin    # admin on :5173
+pnpm dev:web      # site on :5174
+pnpm check        # typecheck, tests, build for every package
 ```
 
-## Current backend milestone
+Node 24 and pnpm 11. The API needs a PostgreSQL warehouse for the price views (`LPL_POSTGRES_URL`);
+see `.env.example` for every setting and [docs/self-hosting.md](docs/self-hosting.md) for a full
+install.
 
-- Node.js 24 monorepo with pnpm and strict TypeScript;
-- WAL-mode SQLite operational database and overlap-resistant run leases;
-- rights-gated HARTI archive discovery, bounded downloads, PDF Inspector
-  classification, coordinate parsing, idempotent artifacts, and quarantine;
-- owner-triggered full historical ingestion plus daily incremental collection;
-- routed React owner portal built on shadcn/ui (sidebar, charts, tables,
-  dialogs), TanStack Query, and React Hook Form;
-- scrypt-protected SQLite administrator and revocable HttpOnly cookie sessions;
-- Docker packaging and a persistent VPS systemd timer;
-- reviewed exact-label mappings, validation and quarantine resolution;
-- correction-safe canonical observations and immutable release candidates in
-  SQLite, CSV, JSON, manifest, checksum, notice, and release-note formats.
-- owner-only manual PDF intake with checksum deduplication, OCR routing, and
-  run-stage monitoring in the ShadCN operations interface.
-- owner-only insight endpoints and a price insights page: daily wholesale
-  trends with a 7-day average and the cheapest-to-dearest market band, 7/30/90
-  day price changes, trend direction and stability, monthly summaries, an
-  all-produce basket index with top risers and fallers, preset or custom
-  date ranges, product photos, plus archive growth, index coverage, and
-  workflow outcomes on the overview.
-- durable, timezone-aware workflow scheduling with a separate worker,
-  idempotent dispatches, scheduler heartbeats, bounded backfill, and local
-  filesystem archive isolation.
+## Data and rights
 
-Public promotion, the consumer read API, and the trend interface intentionally
-follow this operational foundation. See
-[`docs/self-hosting.md`](docs/self-hosting.md) for deployment and
-[`docs/release-process.md`](docs/release-process.md) for candidate building.
-See [`docs/pdf-intake.md`](docs/pdf-intake.md) for scheduled and manual PDF
-processing and [`docs/pdf-archive.md`](docs/pdf-archive.md) for R2 archival.
-See [`docs/workflows.md`](docs/workflows.md) for local scheduler operation,
-monitoring, and the production cutover boundary. See
-[`docs/canonical-taxonomy.md`](docs/canonical-taxonomy.md) for the reviewed
-product hierarchy, completeness baseline, and source-revision policy.
+Every source is used with the publisher's recorded permission and carries the publisher's
+attribution on the site. Prices are shown as observed on the date stated and may differ in store
+or at the stall.
 
-The HARTI source is enabled for non-commercial data preparation under recorded
-permission. See [`docs/source-permission.md`](docs/source-permission.md).
+## Licence
+
+MIT.
