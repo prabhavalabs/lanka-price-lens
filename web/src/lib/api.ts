@@ -16,7 +16,7 @@ export type Latest = { market_id: string; market_label: string; market_type: str
 
 export type Point = { date: string; mid: number; low: number; high: number };
 
-export type Series = { key: string; market_id: string; market_label: string; group: Group; price_type: string; unit: string; days: number; first: { date: string; mid: number }; last: { date: string; mid: number }; change_pct: number | null; points: Point[] };
+export type Series = { key: string; market_id: string; market_label: string; market_type: string; group: Group; price_type: string; unit: string; days: number; first: { date: string; mid: number }; last: { date: string; mid: number }; change_pct: number | null; points: Point[] };
 
 export type Summary = { group: Group; unit: string | null; sellers: number; average: number | null; lowest: Latest | null; highest: Latest | null };
 
@@ -43,3 +43,13 @@ async function get<T>(path: string): Promise<T> {
 export const fetchOverview = (): Promise<Overview> => get<Overview>("/v1/public/overview");
 
 export const fetchProduct = (id: string, days: number): Promise<Detail> => get<Detail>(`/v1/public/products/${encodeURIComponent(id)}?days=${days}`);
+
+export type BasketSeller = { market_id: string; market_label: string; group: Group; unit: string; low: number; high: number; mid: number; observed_on: string };
+
+export type BasketProduct = { id: string; label: string; category: string; sellers: BasketSeller[] };
+
+export const fetchBasket = (ids: string[]): Promise<BasketProduct[]> => (ids.length ? get<BasketProduct[]>(`/v1/public/basket?products=${encodeURIComponent(ids.join(","))}`) : Promise.resolve([]));
+
+export type SearchResult = { id: string; label: string; category: string; sellers: number; aliases: string[]; varieties: Array<{ id: string; qualifier: string }> };
+
+export const fetchSearch = (query: string, signal?: AbortSignal): Promise<SearchResult[]> => fetch(`/v1/public/search?q=${encodeURIComponent(query)}`, signal ? { signal } : {}).then(async (response) => ((await response.json()) as Envelope<SearchResult[]>).payload ?? []);

@@ -48,6 +48,7 @@ COPY api/src api/src
 COPY data/manifests data/manifests
 COPY data/mappings data/mappings
 COPY data/recipes data/recipes
+COPY data/images data/images
 COPY --from=build /app/admin/dist admin/dist
 COPY --from=build /app/web/dist web/dist
 RUN mkdir /data && chown node:node /data

@@ -147,3 +147,40 @@ export async function publicOverview(client: WarehouseClient, sources: SourceMan
 }
 
 const groupRank: Record<ExplorerGroup, number> = { retail_market: 0, supermarket: 1, wholesale: 2 };
+
+export type BasketSeller = { market_id: string; market_label: string; group: ExplorerGroup; unit: string; low: number; high: number; mid: number; observed_on: string };
+
+export type BasketProduct = { id: string; label: string; category: string; sellers: BasketSeller[] };
+
+/**
+ * The latest price of each requested product at every seller, so a shopper's list can be totalled
+ * per store. Varieties pool as on the product page (the product's default view), and only published
+ * sources count.
+ */
+export async function publicBasket(client: WarehouseClient, sources: SourceManifest[], productIds: string[]): Promise<BasketProduct[]> {
+  const ids = [...new Set(productIds.filter((id) => /^[a-z0-9_]+$/u.test(id)))].slice(0, 60);
+  const sourceIds = sources.map((source) => source.id);
+  if (!ids.length || !sourceIds.length) return [];
+  const rows = await client.query<{ id: string; label: string; category: string; market_id: string; market_label: string; price_type: string; unit: string; observed_on: string; low: string; high: string; mid: string }>(
+    `SELECT product.id, product.label_en AS label, product.category, latest.market_id, market.label_en AS market_label, latest.price_type,
+            latest.normalized_unit AS unit, MAX(latest.observed_on)::TEXT AS observed_on,
+            MIN(latest.low_minor)::TEXT AS low, MAX(latest.high_minor)::TEXT AS high, ROUND(AVG(latest.mid_minor))::TEXT AS mid
+     FROM latest_item_price latest
+     JOIN item ON item.id = latest.item_id AND item.status = 'active'
+     JOIN product ON product.id = item.product_id AND product.status = 'active'
+     JOIN market ON market.id = latest.market_id
+     WHERE product.id = ANY($1::text[]) AND latest.source_id = ANY($2::text[])
+       -- A by-variety product is priced on its base variety, as the product page opens.
+       AND (product.comparison = 'pooled' OR item.variety IS NULL OR NOT EXISTS (SELECT 1 FROM item base WHERE base.product_id = product.id AND base.variety IS NULL AND base.status = 'active'))
+     GROUP BY product.id, product.label_en, product.category, latest.market_id, market.label_en, latest.price_type, latest.normalized_unit
+     ORDER BY product.label_en, latest.price_type, market.label_en`,
+    [ids, sourceIds],
+  );
+  const products = new Map<string, BasketProduct>();
+  for (const row of rows) {
+    const product = products.get(row.id) ?? { id: row.id, label: row.label, category: row.category, sellers: [] };
+    product.sellers.push({ market_id: row.market_id, market_label: row.market_label, group: groupOf(row.price_type), unit: row.unit, low: Number(row.low) / 100, high: Number(row.high) / 100, mid: Number(row.mid) / 100, observed_on: row.observed_on });
+    products.set(row.id, product);
+  }
+  return ids.map((id) => products.get(id)).filter((product): product is BasketProduct => Boolean(product));
+}

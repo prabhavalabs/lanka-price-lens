@@ -41,6 +41,7 @@ export default defineConfig({
   resolve: { alias: { "@": path.resolve(import.meta.dirname, "src") } },
   server: {
     proxy: {
+      "/images": { target: apiTarget, changeOrigin: true },
       "/v1": {
         target: apiTarget,
         changeOrigin: true,

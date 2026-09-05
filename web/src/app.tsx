@@ -1,9 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 
-import { Layout } from "./components/layout.tsx";
-import { AboutPage } from "./pages/about.tsx";
-import { BoardPage } from "./pages/board.tsx";
-import { ProductPage } from "./pages/product.tsx";
+import { Layout } from "@/components/layout";
+import { AboutPage } from "@/pages/about";
+import { BasketPage } from "@/pages/basket";
+import { BoardPage } from "@/pages/board";
+import { ProductPage } from "@/pages/product";
 
 export function App() {
   return (
@@ -11,8 +12,9 @@ export function App() {
       <Routes>
         <Route path="/" element={<BoardPage />} />
         <Route path="/p/:id" element={<ProductPage />} />
+        <Route path="/basket" element={<BasketPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="*" element={<p className="py-16 text-center text-ink-soft">This page does not exist.</p>} />
+        <Route path="*" element={<p className="py-16 text-center text-muted-foreground">This page does not exist.</p>} />
       </Routes>
     </Layout>
   );

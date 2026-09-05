@@ -1,56 +1,111 @@
+import { RiAddLine, RiArrowDownLine, RiArrowUpLine, RiCheckLine } from "@remixicon/react";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
-import { fetchOverview, type GroupPrice, type ProductCard } from "../lib/api.ts";
-import { categoryLabel, changeLabel, groupLabel, relativeDay, rupeeRange, unitLabel } from "../lib/format.ts";
+import { ProductImage } from "@/components/product-image";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { fetchOverview, type GroupPrice, type ProductCard } from "@/lib/api";
+import { useBasket } from "@/lib/basket";
+import { categoryLabel, changeLabel, groupLabel, relativeDay, rupeeRange, rupees, unitLabel } from "@/lib/format";
+import { fuzzySearch } from "@/lib/fuzzy";
+import { cn } from "@/lib/utils";
+
+const categoryOrder = ["vegetable", "fruit", "grain", "pulse", "fish", "meat", "dairy", "other"];
+
+/** The headline line of a card: what a shopper pays at the market, else at a supermarket, else wholesale. */
+export function headlineOf(product: ProductCard): GroupPrice | undefined {
+  return product.prices.find((price) => price.group === "retail_market") ?? product.prices.find((price) => price.group === "supermarket") ?? product.prices[0];
+}
 
 export function BoardPage() {
   const [params, setParams] = useSearchParams();
-  const query = (params.get("q") ?? "").trim().toLowerCase();
+  const query = (params.get("q") ?? "").trim();
   const category = params.get("category") ?? "";
   const overview = useQuery({ queryKey: ["overview"], queryFn: fetchOverview });
+  const products = overview.data?.products ?? [];
 
-  const categories = useMemo(() => [...new Set(overview.data?.products.map((product) => product.category) ?? [])].sort(), [overview.data]);
-  const products = useMemo(() => {
-    const all = overview.data?.products ?? [];
-    return all.filter((product) => {
-      if (category && product.category !== category) return false;
-      if (!query) return true;
-      return [product.label, product.label_si ?? "", product.label_ta ?? ""].some((label) => label.toLowerCase().includes(query));
-    });
-  }, [overview.data, category, query]);
+  const categories = useMemo(() => [...new Set(products.map((product) => product.category))].sort((left, right) => rank(left) - rank(right)), [products]);
+  const shown = useMemo(() => {
+    const inCategory = category ? products.filter((product) => product.category === category) : products;
+    if (!query) return inCategory;
+    const index = inCategory.map((product) => ({ id: product.id, label: product.label, terms: [product.label_si ?? "", product.label_ta ?? ""].filter(Boolean), product }));
+    return fuzzySearch(index, query, 60).map((match) => match.item.product);
+  }, [products, category, query]);
+  const movers = useMemo(() => {
+    const scored = products
+      .map((product) => ({ product, price: headlineOf(product) }))
+      .filter((entry): entry is { product: ProductCard; price: GroupPrice } => Boolean(entry.price) && entry.price!.change_30d_pct !== null && Math.abs(entry.price!.change_30d_pct!) >= 5);
+    const up = scored.filter((entry) => entry.price.change_30d_pct! > 0).sort((left, right) => right.price.change_30d_pct! - left.price.change_30d_pct!).slice(0, 4);
+    const down = scored.filter((entry) => entry.price.change_30d_pct! < 0).sort((left, right) => left.price.change_30d_pct! - right.price.change_30d_pct!).slice(0, 4);
+    return { up, down };
+  }, [products]);
 
-  if (overview.isPending) return <p className="py-16 text-center text-ink-soft">Loading today's prices…</p>;
-  if (overview.isError) return <p className="py-16 text-center text-rise">Prices are not available right now. Please try again in a few minutes.</p>;
+  if (overview.isError) return <p className="py-16 text-center text-destructive">Prices are not available right now. Please try again in a few minutes.</p>;
+  if (overview.isPending) return <BoardSkeleton />;
 
-  const asOf = overview.data.as_of;
+  const data = overview.data;
+  const supermarkets = data.sources.filter((source) => source.kind === "supermarket").length;
+  const filtering = Boolean(query || category);
   return (
-    <div className="space-y-5">
-      <div className="flex flex-wrap items-end justify-between gap-2">
+    <div className="space-y-8">
+      <section className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Food prices today</h1>
-          <p className="text-sm text-ink-soft">
-            {asOf ? `Latest observations ${relativeDay(asOf)} · ` : ""}
-            open markets and supermarkets side by side, in rupees per unit.
+          <h1 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">Food prices today</h1>
+          <p className="mt-1 max-w-xl text-sm text-muted-foreground sm:text-base">
+            Open markets and supermarkets side by side, from official bulletins and store shelves.
+            {data.as_of ? ` Latest observations ${relativeDay(data.as_of)}.` : ""}
           </p>
         </div>
-        {query ? <p className="text-sm text-ink-soft">{products.length} results for “{params.get("q")}” · <Link to="/" className="underline">clear</Link></p> : null}
-      </div>
+        <dl className="flex gap-6 text-sm">
+          <Stat label="Products" value={String(products.length)} />
+          <Stat label="Supermarkets" value={String(supermarkets)} />
+          <Stat label="Official sources" value={String(data.sources.length - supermarkets)} />
+        </dl>
+      </section>
 
-      <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 sm:mx-0 sm:px-0">
-        <Chip active={!category} onClick={() => setParams(withParam(params, "category", ""))}>All</Chip>
-        {categories.map((entry) => (
-          <Chip key={entry} active={category === entry} onClick={() => setParams(withParam(params, "category", entry))}>{categoryLabel(entry)}</Chip>
-        ))}
-      </div>
+      {!filtering && (movers.up.length || movers.down.length) ? (
+        <section className="grid gap-3 sm:grid-cols-2">
+          <MoverCard title="Rising this month" tone="rise" entries={movers.up} />
+          <MoverCard title="Falling this month" tone="fall" entries={movers.down} />
+        </section>
+      ) : null}
 
-      {products.length === 0 ? <p className="py-12 text-center text-ink-soft">Nothing matches. Try another spelling or clear the filter.</p> : null}
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {products.map((product) => <Card key={product.id} product={product} />)}
-      </div>
+      <section className="space-y-4">
+        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0">
+          <Chip active={!category} onClick={() => setParams(withParam(params, "category", ""))}>All</Chip>
+          {categories.map((entry) => (
+            <Chip key={entry} active={category === entry} onClick={() => setParams(withParam(params, "category", entry))}>{categoryLabel(entry)}</Chip>
+          ))}
+        </div>
+        {query ? <p className="text-sm text-muted-foreground">{shown.length} {shown.length === 1 ? "result" : "results"} for “{query}” · <Link to={category ? `/?category=${category}` : "/"} className="underline">clear</Link></p> : null}
+        {shown.length === 0 ? <p className="py-12 text-center text-muted-foreground">Nothing matches. Try another spelling or clear the filter.</p> : null}
+
+        {filtering ? (
+          <ProductGrid products={shown} />
+        ) : (
+          categories.map((entry) => {
+            const inCategory = shown.filter((product) => product.category === entry);
+            if (!inCategory.length) return null;
+            return (
+              <section key={entry} className="space-y-3">
+                <CategoryHeader category={entry} products={inCategory} />
+                <ProductGrid products={inCategory} />
+              </section>
+            );
+          })
+        )}
+      </section>
     </div>
   );
+}
+
+function rank(category: string): number {
+  const index = categoryOrder.indexOf(category);
+  return index < 0 ? categoryOrder.length : index;
 }
 
 function withParam(params: URLSearchParams, key: string, value: string): URLSearchParams {
@@ -60,46 +115,126 @@ function withParam(params: URLSearchParams, key: string, value: string): URLSear
   return next;
 }
 
-function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: string }) {
+function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`shrink-0 rounded-full border px-3 py-1 text-sm ${active ? "border-brand bg-brand text-white" : "border-line bg-white text-ink-soft hover:border-brand"}`}
-    >
-      {children}
-    </button>
+    <div>
+      <dt className="text-[11px] uppercase tracking-wide text-muted-foreground">{label}</dt>
+      <dd className="m-0 font-heading text-xl font-semibold tabular">{value}</dd>
+    </div>
   );
 }
 
-function Card({ product }: { product: ProductCard }) {
-  const headline = product.prices.find((price) => price.group === "retail_market") ?? product.prices.find((price) => price.group === "supermarket") ?? product.prices[0];
-  const change = changeLabel(headline?.change_30d_pct ?? null);
+function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: string }) {
   return (
-    <Link to={`/p/${product.id}`} className="block rounded-xl border border-line bg-white p-4 no-underline hover:border-brand hover:shadow-sm">
-      <div className="flex items-start justify-between gap-2">
-        <div>
-          <h2 className="font-semibold leading-tight">{product.label}</h2>
-          {product.label_si || product.label_ta ? <p className="text-xs text-ink-soft">{[product.label_si, product.label_ta].filter(Boolean).join(" · ")}</p> : null}
-        </div>
-        {change ? <span className={`shrink-0 rounded-md px-1.5 py-0.5 text-xs font-medium ${change.direction === "rise" ? "bg-red-50 text-rise" : change.direction === "fall" ? "bg-brand-soft text-fall" : "bg-paper text-ink-soft"}`} title="Change over 30 days">{change.text}</span> : null}
+    <Button className={cn("shrink-0 rounded-full", active && "shadow-sm")} onClick={onClick} size="sm" type="button" variant={active ? "default" : "outline"}>{children}</Button>
+  );
+}
+
+function CategoryHeader({ category, products }: { category: string; products: ProductCard[] }) {
+  const faces = products.slice(0, 4);
+  return (
+    <div className="flex items-center gap-3">
+      <div className="flex -space-x-2">
+        {faces.map((product) => <ProductImage key={product.id} id={product.id} label={product.label} size="sm" className="ring-2 ring-background" />)}
       </div>
-      <dl className="mt-3 space-y-1.5">
-        {product.prices.map((price) => <PriceLine key={price.group} price={price} />)}
-      </dl>
-    </Link>
+      <div>
+        <h2 className="font-heading text-lg font-semibold leading-tight">{categoryLabel(category)}</h2>
+        <p className="text-xs text-muted-foreground">{products.length} {products.length === 1 ? "product" : "products"}</p>
+      </div>
+      <Link to={`/?category=${category}`} className="ml-auto text-xs text-muted-foreground hover:text-primary">See all</Link>
+    </div>
+  );
+}
+
+function MoverCard({ title, tone, entries }: { title: string; tone: "rise" | "fall"; entries: Array<{ product: ProductCard; price: GroupPrice }> }) {
+  if (!entries.length) return null;
+  return (
+    <Card>
+      <CardContent className="p-4">
+        <h2 className="flex items-center gap-1.5 text-sm font-semibold">
+          {tone === "rise" ? <RiArrowUpLine className="size-4 text-status-critical" /> : <RiArrowDownLine className="size-4 text-status-good" />}
+          {title}
+          <span className="font-normal text-muted-foreground">· 30 days</span>
+        </h2>
+        <ul className="mt-3 divide-y divide-border/60">
+          {entries.map(({ product, price }) => (
+            <li key={product.id}>
+              <Link to={`/p/${product.id}`} className="flex items-center gap-3 py-2 no-underline">
+                <ProductImage id={product.id} label={product.label} size="sm" />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-sm font-medium">{product.label}</span>
+                  <span className="block text-[11px] text-muted-foreground">{groupLabel(price.group)} · {rupees(price.mid)} {unitLabel(price.unit)}</span>
+                </span>
+                <span className={cn("text-sm font-semibold tabular", tone === "rise" ? "text-status-critical" : "text-status-good")}>{changeLabel(price.change_30d_pct)?.text}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+    </Card>
+  );
+}
+
+function ProductGrid({ products }: { products: ProductCard[] }) {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {products.map((product) => <ProductTile key={product.id} product={product} />)}
+    </div>
+  );
+}
+
+function ProductTile({ product }: { product: ProductCard }) {
+  const basket = useBasket();
+  const headline = headlineOf(product);
+  const change = changeLabel(headline?.change_30d_pct ?? null);
+  const inBasket = basket.has(product.id);
+  return (
+    <Card className="group relative overflow-hidden transition-colors hover:border-primary/50">
+      <CardContent className="p-4">
+        <div className="flex items-start gap-3">
+          <Link to={`/p/${product.id}`} className="shrink-0"><ProductImage id={product.id} label={product.label} size="lg" /></Link>
+          <div className="min-w-0 flex-1">
+            <Link to={`/p/${product.id}`} className="no-underline">
+              <h3 className="truncate font-heading text-base font-semibold leading-tight hover:text-primary">{product.label}</h3>
+            </Link>
+            {product.label_si || product.label_ta ? <p className="truncate text-xs text-muted-foreground">{[product.label_si, product.label_ta].filter(Boolean).join(" · ")}</p> : null}
+            <div className="mt-1 flex flex-wrap items-center gap-1.5">
+              <Badge variant="secondary" className="text-[10px]">{categoryLabel(product.category)}</Badge>
+              {change ? <Badge className={cn("text-[10px]", change.direction === "rise" ? "bg-status-critical/10 text-status-critical" : change.direction === "fall" ? "bg-status-good/10 text-status-good" : "")} variant="outline" title="Change over 30 days">{change.text}</Badge> : null}
+            </div>
+          </div>
+          <Button aria-label={inBasket ? "In your basket" : "Add to basket"} className="shrink-0" onClick={() => basket.add(product.id, product.label)} size="icon-sm" variant={inBasket ? "secondary" : "ghost"}>
+            {inBasket ? <RiCheckLine className="size-4 text-primary" /> : <RiAddLine className="size-4" />}
+          </Button>
+        </div>
+        <dl className="mt-3 space-y-1.5">
+          {product.prices.map((price) => <PriceLine key={price.group} price={price} />)}
+        </dl>
+      </CardContent>
+    </Card>
   );
 }
 
 function PriceLine({ price }: { price: GroupPrice }) {
   return (
     <div className="flex items-baseline justify-between gap-3 text-sm">
-      <dt className="text-ink-soft">{groupLabel(price.group)}</dt>
+      <dt className="text-muted-foreground">{groupLabel(price.group)}</dt>
       <dd className="m-0 text-right">
-        <span className="font-medium">{rupeeRange(price.low, price.high)}</span>
-        <span className="text-ink-soft"> {unitLabel(price.unit)}</span>
-        <span className="block text-[11px] text-ink-soft">{price.sellers} {price.sellers === 1 ? "seller" : "sellers"} · {relativeDay(price.observed_on)}</span>
+        <span className="font-medium tabular">{rupeeRange(price.low, price.high)}</span>
+        <span className="text-muted-foreground"> {unitLabel(price.unit)}</span>
+        <span className="block text-[11px] text-muted-foreground">{price.sellers} {price.sellers === 1 ? "seller" : "sellers"} · {relativeDay(price.observed_on)}</span>
       </dd>
+    </div>
+  );
+}
+
+function BoardSkeleton() {
+  return (
+    <div className="space-y-8">
+      <div className="space-y-2"><Skeleton className="h-9 w-64" /><Skeleton className="h-4 w-96" /></div>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {Array.from({ length: 6 }, (_, index) => <Skeleton key={index} className="h-40 rounded-xl" />)}
+      </div>
     </div>
   );
 }
