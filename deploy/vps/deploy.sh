@@ -11,8 +11,8 @@ volume=lanka-price-lens-operations
 # Set when this script re-executes itself from the commit being deployed (see below).
 docker_config=${LPL_DEPLOY_DOCKER_CONFIG:-}
 
-if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ || ( -n $mode && $mode != --verify-only && $mode != --configure-r2 ) ]]; then
-  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME] [--verify-only|--configure-r2]" >&2
+if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ || ( -n $mode && $mode != --verify-only && $mode != --configure-r2 && $mode != --configure-admin ) ]]; then
+  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME] [--verify-only|--configure-r2|--configure-admin]" >&2
   exit 2
 fi
 
@@ -44,7 +44,10 @@ if [[ $mode == --configure-admin ]]; then
     echo "No admin sign-in secrets configured; keeping the existing ADMIN_EMAIL and ADMIN_PASSWORD_HASH"
     exit
   fi
-  if [[ ! $admin_email =~ ^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$ || ! $admin_password_hash =~ ^scrypt\$[a-f0-9]{32}\$[a-f0-9]{128}$ ]]; then
+  # Patterns live in variables: an unquoted `\$` inside [[ =~ ]] reaches the regex as an end anchor, not a literal dollar.
+  email_pattern='^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$'
+  hash_pattern='^scrypt\$[a-f0-9]{32}\$[a-f0-9]{128}$'
+  if [[ ! $admin_email =~ $email_pattern || ! $admin_password_hash =~ $hash_pattern ]]; then
     echo "ADMIN_EMAIL must be an email address and ADMIN_PASSWORD_HASH a scrypt hash from 'foundry hash-password'" >&2
     exit 2
   fi
