@@ -462,6 +462,11 @@ function migrate(database: OperationalDatabase): void {
 
   addColumn(database, "data_release", "build_commit", "TEXT");
   addColumn(database, "source_artifact", "run_id", "TEXT REFERENCES ingest_run(id)");
+  // Retry policy: attempts after the first record which attempt they are and which run they retry.
+  addColumn(database, "ingest_run", "attempt", "INTEGER NOT NULL DEFAULT 1");
+  addColumn(database, "ingest_run", "retry_of", "TEXT");
+  addColumn(database, "workflow_dispatch", "attempt", "INTEGER NOT NULL DEFAULT 1");
+  addColumn(database, "workflow_dispatch", "retry_of", "TEXT");
   addColumn(database, "source_artifact", "original_filename", "TEXT");
   addColumn(database, "source_artifact", "inspection_json", "TEXT");
   addColumn(database, "source_artifact", "parser_strategy", "TEXT");

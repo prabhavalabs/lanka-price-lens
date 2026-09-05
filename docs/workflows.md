@@ -63,6 +63,38 @@ part of `foundry sync` instead: after each source's discovery and downloads it
 processes archived documents that were never processed or were processed without
 a mapping bundle (see `docs/pdf-archive.md`).
 
+## Retries and cooldown
+
+A workflow run that fails is tried again after a cooldown before it counts as
+failed. Each manifest carries the policy:
+
+```json
+"retry": { "attempts": 3, "cooldown_minutes": 10 }
+```
+
+`attempts` is the total number of tries (default 3) and `cooldown_minutes` the
+wait between them (default 10). `foundry sync`, `foundry capture`, and the admin
+API's capture, sync, and backfill routes run the policy in place; the scheduler
+queues the next attempt as a new dispatch that becomes claimable after the
+cooldown. `--retry-attempts N` and `--retry-cooldown-minutes M` override the
+manifest for one invocation.
+
+Every attempt is its own run with its own steps, logs, and evidence. Attempts
+after the first carry `attempt` and `retry_of`, so the Runs page reads
+"Scheduled · retry 2" and the run detail names the attempt. Only failures a
+retry can help with are retried: an outage, a timeout, a 5xx, a storage rate
+limit. A rights block, a bad adapter setting, a snapshot held for review, a
+paused source, or a document quarantined by the parser ends the attempts at
+once. When the last attempt fails, the failure stands exactly as it would have
+without the policy: the run is failed, the source degraded, and the timer or
+scheduler tries again on its next slot.
+
+Retail capture's consecutive-failure breaker counts a day once: attempts that
+will be retried do not count, only the last one does, so one outage cannot pause
+a store for six hours by itself. Document processing applies the policy in
+rounds: everything that failed in a sweep is tried again together after one
+cooldown, so a rate limit costs one wait rather than one per document.
+
 The document-processing pipeline has seven durable steps: retrieve the PDF,
 inspect/extract its text, adaptively parse the price grid, validate the staged
 rows, persist them, assess structural completeness, and promote reviewed exact

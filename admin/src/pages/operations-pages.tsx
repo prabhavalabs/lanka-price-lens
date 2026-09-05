@@ -168,7 +168,7 @@ export function RunsPage() {
                 <TableRow className="cursor-pointer" key={run.id} onClick={() => window.location.assign(`/admin/runs/${run.id}`)}>
                   <TableCell><Link className="font-medium underline-offset-4 hover:underline" onClick={(event) => event.stopPropagation()} to={run.id}>{date(run.started_at)}</Link><span className="mt-1 block text-[11px] text-muted-foreground">{durationBetween(run.started_at, run.finished_at)}</span></TableCell>
                   <TableCell><span className="text-xs font-medium">{workflowTitle(run.workflow)}</span><span className="mt-0.5 block text-[11px] text-muted-foreground sm:hidden">{triggerLabel(run.trigger)}</span></TableCell>
-                  <TableCell className="hidden sm:table-cell">{triggerLabel(run.trigger)}</TableCell>
+                  <TableCell className="hidden sm:table-cell">{triggerLabel(run.trigger)}{(run.attempt ?? 1) > 1 ? <span className="ml-1 text-[11px] text-muted-foreground">· retry {run.attempt}</span> : null}</TableCell>
                   <TableCell><Status value={run.status} />{run.error_message ? <span className="mt-1 block max-w-64 truncate text-[11px] text-destructive" title={run.error_message}>{run.error_message}</span> : null}</TableCell>
                   <TableCell className="hidden text-xs text-muted-foreground md:table-cell">{workSummary(run)}</TableCell>
                   <TableCell className="text-right"><RiArrowRightLine className="size-4 text-muted-foreground" /></TableCell>
@@ -432,7 +432,7 @@ export function RunDetailPage() {
               <dl className="grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-4">
                 <Metric label="Started" value={date(run.started_at)} />
                 <Metric label="Took" value={durationBetween(run.started_at, run.finished_at)} />
-                <Metric label="Started by" value={triggerLabel(run.trigger)} />
+                <Metric label="Started by" value={(run.attempt ?? 1) > 1 ? `${triggerLabel(run.trigger)} · attempt ${run.attempt}` : triggerLabel(run.trigger)} />
                 <Metric label="Source" value={run.source_id} />
               </dl>
               {run.parent_run_id ? <p className="text-xs text-muted-foreground">This extraction was started by a <Link className="underline underline-offset-4" to={`/runs/${run.parent_run_id}`}>bulletin collection run</Link>.</p> : null}

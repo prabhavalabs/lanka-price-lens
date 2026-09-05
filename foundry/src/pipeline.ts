@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 
-import { canCaptureSource, type MappingBundle, type SourceManifest, type StageName } from "@lanka-pricelens/shared";
+import { canCaptureSource, type MappingBundle, type RetryPolicy, type SourceManifest, type StageName } from "@lanka-pricelens/shared";
 
 import { finalizeProcessedArtifacts, persistExtractedText, persistProcessedArtifact } from "./artifact.ts";
 import { configuredArchiveStorage, type ArchiveStorage } from "./archive-storage.ts";
@@ -453,21 +453,52 @@ export async function processPendingArchives(
     mappingBundle?: MappingBundle | undefined;
     maxAttempts?: number | undefined;
     onProgress?: ((done: number, total: number) => void) | undefined;
+    /**
+     * Documents that fail (not quarantined: an outage, a storage rate limit) are tried again in
+     * rounds, after the cooldown, up to the policy's attempts. Default: one round, no retry.
+     */
+    retry?: RetryPolicy | undefined;
+    wait?: ((ms: number) => Promise<void>) | undefined;
+    log?: ((message: string, data: Record<string, unknown>) => void) | undefined;
   },
 ): Promise<PendingProcessing> {
   const storage = options.archive ?? await configuredArchiveStorage();
   const candidates = pendingArchives(database, manifest, { limit: options.limit, since: options.since, uriPrefix: archiveReadPrefix(storage), maxAttempts: options.maxAttempts });
-  const result: PendingProcessing = { candidates: candidates.length, runs: [], succeeded: 0, failed: 0, blocked: 0, skipped: 0 };
-  for (const [index, candidate] of candidates.entries()) {
-    const run = await runPdfProcessing(database, manifest, candidate.archiveId, {
+  const outcomes = new Map<string, { runId: string; status: ProcessingResult["status"] }>();
+  const process = async (archiveId: string) => {
+    const run = await runPdfProcessing(database, manifest, archiveId, {
       trigger: options.trigger,
       archive: storage,
       inspector: options.inspector,
       mappingBundle: options.mappingBundle,
     });
-    result.runs.push({ archiveId: candidate.archiveId, runId: run.runId, status: run.status });
-    result[run.status] += 1;
+    outcomes.set(archiveId, { runId: run.runId, status: run.status });
+    return run;
+  };
+  for (const [index, candidate] of candidates.entries()) {
+    await process(candidate.archiveId);
     options.onProgress?.(index + 1, candidates.length);
+  }
+  // Retry rounds: everything that failed in the round before is tried again together after one cooldown,
+  // so a rate limit or a short outage costs one wait, not one per document.
+  const attempts = Math.max(1, options.retry?.attempts ?? 1);
+  const cooldownMs = Math.max(0, options.retry?.cooldown_minutes ?? 0) * 60_000;
+  const wait = options.wait ?? ((ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms)));
+  for (let attempt = 2; attempt <= attempts; attempt += 1) {
+    const failed = [...outcomes.entries()].filter(([, outcome]) => outcome.status === "failed");
+    if (!failed.length) break;
+    options.log?.(`${failed.length} documents failed; attempt ${attempt} of ${attempts} in ${options.retry?.cooldown_minutes ?? 0} min`, { source: manifest.id, attempt, attempts, failed: failed.length });
+    if (cooldownMs > 0) await wait(cooldownMs);
+    for (const [archiveId, previous] of failed) {
+      const run = await process(archiveId);
+      if (run.runId !== previous.runId) database.prepare("UPDATE ingest_run SET attempt = ?, retry_of = ? WHERE id = ?").run(attempt, previous.runId, run.runId);
+    }
+  }
+  const result: PendingProcessing = { candidates: candidates.length, runs: [], succeeded: 0, failed: 0, blocked: 0, skipped: 0 };
+  for (const candidate of candidates) {
+    const outcome = outcomes.get(candidate.archiveId)!;
+    result.runs.push({ archiveId: candidate.archiveId, ...outcome });
+    result[outcome.status] += 1;
   }
   return result;
 }

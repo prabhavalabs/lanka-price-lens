@@ -28,6 +28,7 @@ const manifest = sourceManifestSchema.parse({
   review_due_at: "2099-01-01",
   request_interval_ms: 1000,
   max_attempts: 1,
+  retry: { attempts: 1, cooldown_minutes: 0 },
   enabled: true,
 });
 

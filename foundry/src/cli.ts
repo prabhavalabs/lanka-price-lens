@@ -8,6 +8,7 @@ import { canonicalizeRun, syncMappingBundle } from "./mapping.ts";
 import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
 import { processPendingArchives, recoverFailedProcessing, runSourceSync } from "./pipeline.ts";
 import { exportSnapshot, remapRecentSnapshots, retailAdapterFor, runRetailCapture, snapshotFileSchema } from "./retail/index.ts";
+import { retryPolicyFor, runWithRetry } from "./retry.ts";
 import { connectWarehouse, migrateWarehouse, renderReportMarkdown, syncWarehouse, warehouseReport } from "./warehouse/index.ts";
 import { buildRelease } from "./release.ts";
 import { startScheduler } from "./scheduler.ts";
@@ -40,8 +41,10 @@ if (command === "hash-password") {
       try {
         // Register the bundle first so vocabulary changes (new items, product settings) reach the operational store even on a day without new documents.
         if (mappingBundle) syncMappingBundle(database, mappingBundle);
-        const result = await runSourceSync(database, manifest, { trigger, from, to, mappingBundle });
-        console.log(JSON.stringify({ source: manifest.id, ...result }));
+        // An outage is retried after a cooldown, up to the manifest's policy; each attempt is its own run.
+        const { result, attempts } = await runWithRetry(database, retryPolicyFor(manifest, retryOverrides()), { sourceId: manifest.id, workflow: "source_sync" },
+          () => runSourceSync(database, manifest, { trigger, from, to, mappingBundle }), { log: logRetry });
+        console.log(JSON.stringify({ source: manifest.id, ...result, attempts }));
         if (result.status !== "succeeded") process.exitCode = 1;
         // Documents that failed after parsing (a rejected bundle, a missing mapping) are retried now that the configuration may have changed.
         const recovery = await recoverFailedProcessing(database, manifest, { mappingBundle });
@@ -49,7 +52,7 @@ if (command === "hash-password") {
         if (recovery.failed.length) process.exitCode = 1;
         // Archived documents whose processing never ran (an interrupted sync, an archive filled before processing existed)
         // or ran without a bundle are processed now, newest first, within a budget that keeps the timer run bounded.
-        const pending = await processPendingArchives(database, manifest, { trigger, mappingBundle, limit: Number(valueOf("--process-limit") ?? 150) });
+        const pending = await processPendingArchives(database, manifest, { trigger, mappingBundle, limit: Number(valueOf("--process-limit") ?? 150), retry: retryPolicyFor(manifest, retryOverrides()), log: logRetry });
         if (pending.candidates) console.log(JSON.stringify({ source: manifest.id, pending: { ...pending, runs: undefined } }));
         if (pending.failed) process.exitCode = 1;
         if (result.processingRunIds.length) {
@@ -93,13 +96,16 @@ if (command === "hash-password") {
     for (const entry of entries) {
       const adapter = retailAdapterFor(entry.manifest);
       if (!adapter) throw new Error(`Source ${entry.manifest.id} has no retail adapter`);
-      const result = await runRetailCapture(database, entry.manifest, adapter, {
-        trigger: all ? "scheduled" : "manual",
-        archive,
-        mappingBundle: entry.mappingBundle,
-        captureDate: dateValue("--date"),
-      });
-      console.log(JSON.stringify({ source: entry.manifest.id, ...result }));
+      // An outage is retried after a cooldown, up to the manifest's policy; only the last attempt counts towards the breaker.
+      const { result, attempts } = await runWithRetry(database, retryPolicyFor(entry.manifest, retryOverrides()), { sourceId: entry.manifest.id, workflow: "retail_capture" },
+        ({ final }) => runRetailCapture(database, entry.manifest, adapter, {
+          trigger: all ? "scheduled" : "manual",
+          archive,
+          mappingBundle: entry.mappingBundle,
+          captureDate: dateValue("--date"),
+          countFailure: final,
+        }), { log: logRetry });
+      console.log(JSON.stringify({ source: entry.manifest.id, ...result, attempts }));
       // A paused source is expected to skip; anything else short of success fails the command.
       if (result.status !== "succeeded" && result.code !== "CAPTURE_PAUSED") process.exitCode = 1;
     }
@@ -127,6 +133,8 @@ if (command === "hash-password") {
         mappingBundle,
         limit,
         since,
+        retry: retryPolicyFor(manifest, retryOverrides()),
+        log: logRetry,
         onProgress: (done, total) => { if (done % 25 === 0 || done === total) console.error(`${manifest.id}: ${done}/${total}`); },
       });
       console.log(JSON.stringify({ source: manifest.id, ...result, runs: result.runs.filter((run) => run.status !== "succeeded") }));
@@ -255,6 +263,17 @@ if (command === "hash-password") {
 } else {
   console.error("Usage: foundry <init|sync|ingest|process|capture|remap|snapshot|warehouse|scheduler|canonicalize|release build|hash-password> [options]");
   process.exitCode = 1;
+}
+
+/** `--retry-attempts N` and `--retry-cooldown-minutes M` override the manifest's retry policy for this invocation. */
+function retryOverrides(): { attempts?: number | undefined; cooldownMinutes?: number | undefined } {
+  const attempts = valueOf("--retry-attempts");
+  const cooldown = valueOf("--retry-cooldown-minutes");
+  return { attempts: attempts === undefined ? undefined : Number(attempts), cooldownMinutes: cooldown === undefined ? undefined : Number(cooldown) };
+}
+
+function logRetry(message: string, data: Record<string, unknown>): void {
+  console.error(JSON.stringify({ level: "warning", message, ...data }));
 }
 
 function requiredValue(name: string): string {

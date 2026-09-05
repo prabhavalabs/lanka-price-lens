@@ -31,6 +31,7 @@ import {
   snapshotFileSchema,
   type AnyRetailAdapter,
 } from "@lanka-pricelens/foundry/retail";
+import { runWithRetry } from "@lanka-pricelens/foundry/retry";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 import {
   enqueueWorkflow,
@@ -123,7 +124,8 @@ export function createApp(
       .get(entry.manifest.id) as { id: string; trigger: string; status: string } | undefined;
     if (active) return context.json(envelope(context.get("requestId"), active, false, "Another run for this source is active"), 409);
     const archive = options.archiveStorage ?? (await configuredArchiveStorage().catch(() => undefined));
-    const task = runRetailCapture(database, entry.manifest, adapter, { trigger: "manual", mappingBundle: entry.mappingBundle, archive });
+    const task = runWithRetry(database, entry.manifest.retry, { sourceId: entry.manifest.id, workflow: "retail_capture" }, ({ final }) =>
+      runRetailCapture(database, entry.manifest, adapter, { trigger: "manual", mappingBundle: entry.mappingBundle, archive, countFailure: final }), { log: logRetry });
     void task.catch(() => undefined);
     const run = database
       .prepare("SELECT id, workflow, trigger, status FROM ingest_run WHERE source_id = ? AND workflow = 'retail_capture' ORDER BY started_at DESC LIMIT 1")
@@ -437,14 +439,15 @@ export function createApp(
       .prepare("SELECT id, trigger, status FROM ingest_run WHERE source_id = ? AND workflow != 'pdf_processing' AND status = 'running' LIMIT 1")
       .get(entry.manifest.id) as { id: string; trigger: string; status: string } | undefined;
     if (active) return context.json(envelope(context.get("requestId"), active, false, "Another run for this source is active"), 409);
-    const task = runSourceSync(database, entry.manifest, {
-      trigger: mode === "backfill" ? "backfill" : "manual",
-      from,
-      to,
-      limit,
-      mappingBundle: entry.mappingBundle,
-      archive: options.archiveStorage,
-    }).then(refreshWarehouse);
+    const task = runWithRetry(database, entry.manifest.retry, { sourceId: entry.manifest.id, workflow: "source_sync" }, () =>
+      runSourceSync(database, entry.manifest, {
+        trigger: mode === "backfill" ? "backfill" : "manual",
+        from,
+        to,
+        limit,
+        mappingBundle: entry.mappingBundle,
+        archive: options.archiveStorage,
+      }), { log: logRetry }).then(refreshWarehouse);
     void task.catch(() => undefined);
     const run = database
       .prepare("SELECT id, workflow, trigger, status FROM ingest_run WHERE source_id = ? AND workflow = 'source_sync' ORDER BY started_at DESC LIMIT 1")
@@ -481,7 +484,7 @@ export function createApp(
     };
     if (!candidates.length) return context.json(envelope(context.get("requestId"), summary, true, "Nothing to process"));
     sweeping.add(entry.manifest.id);
-    const task = processPendingArchives(database, entry.manifest, { trigger: "manual", limit: limit ?? 200, since, archive, mappingBundle: entry.mappingBundle })
+    const task = processPendingArchives(database, entry.manifest, { trigger: "manual", limit: limit ?? 200, since, archive, mappingBundle: entry.mappingBundle, retry: entry.manifest.retry, log: logRetry })
       .then((result) => {
         console.log(JSON.stringify({ level: "info", message: "Pending documents processed", source: entry.manifest.id, ...result, runs: undefined }));
         return refreshWarehouse();
@@ -582,7 +585,7 @@ export function createApp(
             .prepare(
               `SELECT id, source_id, workflow, parent_run_id, archive_id, artifact_id,
                definition_key, definition_version, dispatch_id, scheduled_for, environment,
-               trigger, status, started_at, finished_at,
+               trigger, status, started_at, finished_at, attempt, retry_of,
                discovered_count, fetched_count, parsed_count, quarantined_count,
                error_code, error_message FROM ingest_run${where.sql}
                ORDER BY started_at DESC LIMIT ? OFFSET ?`,
@@ -973,7 +976,8 @@ export function createApp(
       .get(sourceManifest.id) as { id: string; trigger: string; status: string } | undefined;
     if (active) return context.json(envelope(context.get("requestId"), active, false, "Another source run is active"), 409);
 
-    const task = runSourceSync(database, sourceManifest, { trigger: mode === "backfill" ? "backfill" : "manual", mappingBundle, archive: options.archiveStorage });
+    const task = runWithRetry(database, sourceManifest.retry, { sourceId: sourceManifest.id, workflow: "source_sync" }, () =>
+      runSourceSync(database, sourceManifest, { trigger: mode === "backfill" ? "backfill" : "manual", mappingBundle, archive: options.archiveStorage }), { log: logRetry });
     const run = database
       .prepare("SELECT id, workflow, trigger, status FROM ingest_run WHERE source_id = ? AND workflow = 'source_sync' ORDER BY started_at DESC LIMIT 1")
       .get(sourceManifest.id) as { id: string; trigger: string; status: string } | undefined;
@@ -1195,4 +1199,8 @@ function optionalDate(value: unknown): string | undefined | false {
 function optionalLimit(value: unknown): number | undefined | false {
   if (value === undefined || value === null) return undefined;
   return typeof value === "number" && Number.isInteger(value) && value >= 1 && value <= 5000 ? value : false;
+}
+
+function logRetry(message: string, data: Record<string, unknown>): void {
+  console.error(JSON.stringify({ level: "warning", message, ...data }));
 }

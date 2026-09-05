@@ -102,6 +102,11 @@ source (one dispatch per source). Stages:
 
 ## Fault tolerance
 
+A capture that fails with an outage (a timeout, a 5xx, a refused connection) is
+retried after a cooldown, up to the manifest's retry policy (default three
+attempts ten minutes apart; see `docs/workflows.md`). Each attempt is its own
+run; only the last attempt counts towards the breaker described below.
+
 - **One run per source at a time.** `startRun` takes a lease; a second capture while
   one is running is skipped as `RUN_ALREADY_ACTIVE`.
 - **No duplicates.** Staging rows are unique per artifact and row reference;

@@ -16,6 +16,7 @@ import { outletCode, sparAdapter, sparLabel, sparPack } from "../src/retail/adap
 import { pauseHours } from "../src/retail/capture.ts";
 import { remapRecentSnapshots } from "../src/retail/remap.ts";
 import { exportSnapshot, snapshotFileSchema } from "../src/retail/snapshot.ts";
+import { runWithRetry } from "../src/retry.ts";
 import { bundleFingerprint } from "../src/mapping.ts";
 import { matchItemPattern } from "../src/patterns.ts";
 import { countFromLabel, normalizeUnit } from "../src/units.ts";
@@ -529,5 +530,37 @@ test("a snapshot exported from one store imports into another as the same artifa
   } finally {
     origin.cleanup();
     target.cleanup();
+  }
+});
+
+test("a capture outage is retried after the cooldown and trips the breaker once, not once per attempt", async () => {
+  const { database, cleanup } = temporaryDatabase();
+  try {
+    const adapter = retailAdapterFor(manifest)!;
+    let calls = 0;
+    const flaky = fakeHttp((url, init) => {
+      calls += 1;
+      if (calls <= 2) return new Response("down", { status: 503 });
+      return keellsResponder()(url, init);
+    }).http;
+    const waits: number[] = [];
+    const outcome = await runWithRetry(database, { attempts: 3, cooldown_minutes: 15 }, { sourceId: manifest.id, workflow: "retail_capture" }, ({ final }) =>
+      runRetailCapture(database, manifest, adapter, { trigger: "scheduled", http: flaky, mappingBundle: bundle, captureDate: "2026-09-04", countFailure: final }), { wait: async (ms) => { waits.push(ms); } });
+    assert.deepEqual([outcome.attempts, outcome.result.status, waits], [3, "succeeded", [900_000, 900_000]]);
+    const runs = database.prepare("SELECT status, attempt, retry_of, error_code FROM ingest_run WHERE source_id = ? AND workflow = 'retail_capture' ORDER BY started_at, rowid").all(manifest.id) as Array<{ status: string; attempt: number; retry_of: string | null; error_code: string | null }>;
+    assert.deepEqual(runs.map((run) => [run.status, run.attempt, run.error_code]), [["failed", 1, "SOURCE_HTTP_503"], ["failed", 2, "SOURCE_HTTP_503"], ["succeeded", 3, null]]);
+    assert.ok(runs[1]!.retry_of && runs[2]!.retry_of, "retries point at the run they retry");
+    const health = database.prepare("SELECT state, consecutive_failures FROM source WHERE id = ?").get(manifest.id) as { state: string; consecutive_failures: number };
+    assert.deepEqual([health.state, health.consecutive_failures], ["healthy", 0], "attempts that will be retried do not count as failures");
+
+    // When every attempt fails, the breaker counts the day once.
+    const broken = fakeHttp(() => new Response("down", { status: 502 })).http;
+    const failed = await runWithRetry(database, { attempts: 2, cooldown_minutes: 0 }, { sourceId: manifest.id, workflow: "retail_capture" }, ({ final }) =>
+      runRetailCapture(database, manifest, adapter, { trigger: "scheduled", http: broken, mappingBundle: bundle, captureDate: "2026-09-05", countFailure: final }));
+    assert.deepEqual([failed.attempts, failed.result.status, failed.result.code], [2, "failed", "SOURCE_HTTP_502"]);
+    const after = database.prepare("SELECT state, consecutive_failures FROM source WHERE id = ?").get(manifest.id) as { state: string; consecutive_failures: number };
+    assert.deepEqual([after.state, after.consecutive_failures], ["degraded", 1]);
+  } finally {
+    cleanup();
   }
 });
