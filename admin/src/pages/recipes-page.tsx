@@ -1,5 +1,6 @@
-import { RiBookOpenLine, RiExternalLinkLine, RiFireLine, RiLeafLine, RiPriceTag3Line, RiTimeLine } from "@remixicon/react";
+import { RiArrowLeftSLine, RiArrowRightSLine, RiBookOpenLine, RiExternalLinkLine, RiFireLine, RiLeafLine, RiPriceTag3Line, RiTimeLine } from "@remixicon/react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useState, type ReactNode } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { rupees, StatTile } from "@/components/charts";
@@ -10,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { api, type DishDetail, type DishSummary, type Page, type RecipeOverview, type RecipeReferences } from "@/lib/api";
@@ -36,6 +37,7 @@ const categoryLabels: Record<string, string> = {
   drink: "Drinks",
 };
 const label = (value: string, table: Record<string, string> = {}) => table[value] ?? value.replaceAll("_", " ").replace(/^\w/u, (character) => character.toUpperCase());
+const plural = (count: number, noun: string, many = `${noun}s`) => `${count} ${count === 1 ? noun : many}`;
 const meals = ["breakfast", "lunch", "dinner", "tea", "snack"];
 const proteins = ["chicken", "fish", "seafood", "egg", "dhal", "pulses", "dairy", "soya", "beef", "pork", "mutton", "none"];
 const diets = ["vegetarian", "vegan", "gluten_free", "contains_egg", "contains_dairy", "contains_fish", "contains_meat"];
@@ -153,31 +155,74 @@ export function RecipesPage() {
       </Card>
 
       <div className="grid gap-3 xl:grid-cols-2">
-        <Card size="sm">
+        <Card className="flex flex-col" size="sm">
           <CardHeader><CardTitle>Pantry backlog</CardTitle><CardDescription>Ingredients the catalogue names most often that the price vocabulary does not carry yet. Mapping these makes more dishes fully priceable.</CardDescription></CardHeader>
-          <CardContent className="flex flex-wrap gap-1.5">
-            {overview.data?.unpriced_ingredients.slice(0, 30).map((entry) => <Badge key={entry.ingredient} variant="outline">{entry.ingredient} <span className="ml-1 font-mono text-[10px] text-muted-foreground">{entry.dishes}</span></Badge>) ?? <Skeleton className="h-6 w-full" />}
+          <CardContent className="flex flex-1 flex-col px-0">
+            {overview.data ? (
+              <PagedList
+                items={overview.data.unpriced_ingredients}
+                pageSize={11}
+                render={(entry, index) => (
+                  <div className="flex items-center gap-3 px-4 py-1.5 text-sm" key={entry.ingredient}>
+                    <span className="w-5 shrink-0 font-mono text-[11px] text-muted-foreground">{index + 1}</span>
+                    <span className="flex-1 truncate">{entry.ingredient}</span>
+                    <span className="font-mono text-xs text-muted-foreground">{plural(entry.dishes, "dish", "dishes")}</span>
+                  </div>
+                )}
+              />
+            ) : <Skeleton className="mx-4 h-6" />}
           </CardContent>
         </Card>
-        <Card size="sm">
+        <Card className="flex flex-col" size="sm">
           <CardHeader><CardTitle>Where cooks publish</CardTitle><CardDescription>Sri Lankan cookery channels, blogs, and institutional sources the corpus consults and links to. Method text in this product is always our own.</CardDescription></CardHeader>
-          <CardContent className="space-y-1.5 text-sm">
-            {references.data ? [...references.data.channels.map((entry) => ({ ...entry, kind: "YouTube" })), ...references.data.blogs.map((entry) => ({ ...entry, kind: "Blog" })), ...references.data.institutional.map((entry) => ({ ...entry, kind: label(entry.kind), languages: [] as string[], focus: entry.notes }))].slice(0, 40).map((entry) => (
-              <a className="flex items-start gap-2 rounded-md px-1 py-0.5 hover:bg-muted/60" href={entry.url} key={entry.id} rel="noreferrer" target="_blank">
-                <Badge className="mt-0.5 shrink-0" variant="secondary">{entry.kind}</Badge>
-                <span className="min-w-0"><span className="block truncate font-medium">{entry.name}{entry.languages.length ? <span className="ml-1 font-mono text-[10px] uppercase text-muted-foreground">{entry.languages.join(" ")}</span> : null}</span><span className="block truncate text-[11px] text-muted-foreground">{entry.focus}</span></span>
-              </a>
-            )) : <Skeleton className="h-6 w-full" />}
+          <CardContent className="flex flex-1 flex-col px-0">
+            {references.data ? (
+              <PagedList
+                items={[...references.data.channels.map((entry) => ({ ...entry, kind: "YouTube" })), ...references.data.blogs.map((entry) => ({ ...entry, kind: "Blog" })), ...references.data.institutional.map((entry) => ({ ...entry, kind: label(entry.kind), languages: [] as string[], focus: entry.notes }))]}
+                pageSize={8}
+                render={(entry) => (
+                  <a className="flex items-start gap-2 px-4 py-1 text-sm hover:bg-muted/60" href={entry.url} key={entry.id} rel="noreferrer" target="_blank">
+                    <Badge className="mt-0.5 w-16 shrink-0 justify-center" variant="secondary">{entry.kind}</Badge>
+                    <span className="min-w-0"><span className="block truncate font-medium">{entry.name}{entry.languages.length ? <span className="ml-1 font-mono text-[10px] uppercase text-muted-foreground">{entry.languages.join(" ")}</span> : null}</span><span className="block truncate text-[11px] text-muted-foreground">{entry.focus}</span></span>
+                  </a>
+                )}
+              />
+            ) : <Skeleton className="mx-4 h-6" />}
           </CardContent>
         </Card>
       </div>
 
-      <Sheet onOpenChange={(open) => { if (!open) update({ dish: "" }); }} open={Boolean(dishId)}>
-        <SheetContent className="overflow-y-auto sm:max-w-lg">
-          {detail.data ? <DishSheet dish={detail.data} onOpen={(id) => update({ dish: id })} /> : <SheetHeader><SheetTitle>{detail.isError ? "Dish unavailable" : "Loading"}</SheetTitle><SheetDescription>{detail.isError ? detail.error.message : "Fetching the dish."}</SheetDescription></SheetHeader>}
-        </SheetContent>
-      </Sheet>
+      <Dialog onOpenChange={(open) => { if (!open) update({ dish: "" }); }} open={Boolean(dishId)}>
+        <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-2xl">
+          {detail.data ? <DishSheet dish={detail.data} onOpen={(id) => update({ dish: id })} /> : <DialogHeader><DialogTitle>{detail.isError ? "Dish unavailable" : "Loading"}</DialogTitle><DialogDescription>{detail.isError ? detail.error.message : "Fetching the dish."}</DialogDescription></DialogHeader>}
+        </DialogContent>
+      </Dialog>
     </PageFrame>
+  );
+}
+
+/** A fixed number of rows per page with a small pager, so two cards side by side stay the same height whatever their lists hold. */
+function PagedList<T>({ items, pageSize, render }: { items: T[]; pageSize: number; render: (item: T, index: number) => ReactNode }) {
+  const [page, setPage] = useState(1);
+  const pages = Math.max(1, Math.ceil(items.length / pageSize));
+  const current = Math.min(page, pages);
+  const start = (current - 1) * pageSize;
+  const slice = items.slice(start, start + pageSize);
+  return (
+    <>
+      <div className="flex-1 divide-y divide-white/[0.05]">
+        {slice.map((item, index) => render(item, start + index))}
+        {!slice.length ? <p className="px-4 py-6 text-center text-sm text-muted-foreground">Nothing to show.</p> : null}
+      </div>
+      <div className="flex items-center justify-between border-t border-white/[0.07] px-4 pt-2.5 text-xs text-muted-foreground">
+        <span>{items.length ? `${start + 1}–${Math.min(start + pageSize, items.length)} of ${items.length}` : "0 of 0"}</span>
+        <span className="flex items-center gap-1">
+          <Button aria-label="Previous page" className="size-7" disabled={current <= 1} onClick={() => setPage(current - 1)} size="icon" variant="ghost"><RiArrowLeftSLine className="size-4" /></Button>
+          <span className="font-mono">{current}/{pages}</span>
+          <Button aria-label="Next page" className="size-7" disabled={current >= pages} onClick={() => setPage(current + 1)} size="icon" variant="ghost"><RiArrowRightSLine className="size-4" /></Button>
+        </span>
+      </div>
+    </>
   );
 }
 
@@ -197,10 +242,10 @@ function DishSheet({ dish, onOpen }: { dish: DishDetail; onOpen: (id: string) =>
   const names = [dish.names.si, dish.names.si_latn, dish.names.ta, dish.names.ta_latn].filter(Boolean).join(" · ");
   return (
     <div className="space-y-5">
-      <SheetHeader className="p-0">
-        <SheetTitle className="font-heading text-xl">{dish.names.en}</SheetTitle>
-        <SheetDescription>{names || label(dish.category, categoryLabels)}</SheetDescription>
-      </SheetHeader>
+      <DialogHeader>
+        <DialogTitle className="font-heading text-xl">{dish.names.en}</DialogTitle>
+        <DialogDescription>{names || label(dish.category, categoryLabels)}</DialogDescription>
+      </DialogHeader>
       <p className="text-sm leading-relaxed">{dish.summary}</p>
       <div className="flex flex-wrap gap-1.5">
         <Badge variant="secondary">{label(dish.category, categoryLabels)}</Badge>
@@ -224,7 +269,7 @@ function DishSheet({ dish, onOpen }: { dish: DishDetail; onOpen: (id: string) =>
             <li className="flex items-center gap-2.5 text-sm" key={ingredient.product_id}>
               <ProductImage id={ingredient.product_id} label={ingredient.label ?? ingredient.product_id} size="xs" />
               <span className="flex-1 truncate">{ingredient.label ?? ingredient.product_id.replace(/^product_/u, "").replaceAll("_", " ")}</span>
-              {ingredient.price ? <span className="font-mono text-xs text-muted-foreground">from {rupees(ingredient.price.cheapest)}/{ingredient.price.unit} · {ingredient.price.sellers} sellers</span> : <span className="text-xs text-muted-foreground">no price today</span>}
+              {ingredient.price ? <span className="font-mono text-xs text-muted-foreground">from {rupees(ingredient.price.cheapest)}/{ingredient.price.unit} · {plural(ingredient.price.sellers, "seller")}</span> : <span className="text-xs text-muted-foreground">no price today</span>}
             </li>
           ))}
         </ul>
