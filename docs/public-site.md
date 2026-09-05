@@ -55,9 +55,10 @@ taken to zero removes the line.
   `POST /v1/public/feedback` (five per hour per address, a honeypot field for bots). The owner
   reads and works through them in the admin's **Feedback** page (new, seen, done) through
   `GET /v1/admin/feedback` and `PATCH /v1/admin/feedback/:id`, and receives each one by mail
-  when `LPL_FEEDBACK_EMAIL_TO` and `LPL_SMTP_URL` are set (nodemailer; a Gmail app password works
-  as `smtps://you%40gmail.com:app-password@smtp.gmail.com:465`). Mail never blocks or fails the
-  request; without the settings the messages simply stay in the admin.
+  through Resend when `LPL_FEEDBACK_EMAIL_TO` and `LPL_RESEND_API_KEY` are set (`LPL_MAIL_FROM`
+  names the sender: a verified domain, or Resend's shared `onboarding@resend.dev` while testing).
+  Mail never blocks or fails the request; without the settings the messages simply stay in the
+  admin.
 - **Who is here:** the footer shows how many people are on the site. Each tab keeps a random id
   in session storage and posts a beat to `POST /v1/public/presence` once a minute while visible;
   the API counts ids seen in the last three minutes, in memory, no cookies.
