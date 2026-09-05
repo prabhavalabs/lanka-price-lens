@@ -50,8 +50,12 @@ if [[ $mode == --configure-r2 ]]; then
 fi
 
 if [[ $mode == --verify-only ]]; then
-  if ! systemctl start lanka-pricelens-foundry.service; then
-    journalctl --no-pager -u lanka-pricelens-foundry.service -n 100
+  # A short, bounded sync proves the workflow runs on this host with the deployed image and settings:
+  # discovery, downloads, and a handful of pending documents, without retry cooldowns. The nightly timer
+  # does the full sweep. The lock is the timer's, so verification waits for a running sync instead of overlapping it.
+  if ! flock -w 1800 /run/lock/lanka-price-lens.lock \
+    docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" \
+    --profile tools run --rm --no-deps foundry sync --process-limit 5 --retry-attempts 1; then
     exit 1
   fi
   systemctl is-active lanka-pricelens-foundry.timer
