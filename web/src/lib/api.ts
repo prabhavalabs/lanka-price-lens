@@ -12,7 +12,7 @@ export type Overview = { generated_at: string; as_of: string | null; sources: So
 
 export type Variety = { id: string; label: string; qualifier: string; sellers: number; base: boolean };
 
-export type Latest = { market_id: string; market_label: string; market_type: string; group: Group; price_type: string; source_id: string; observed_on: string; unit: string; low: number; high: number; mid: number; products: number; varieties: string[] };
+export type Latest = { market_id: string; market_label: string; market_type: string; group: Group; price_type: string; source_id: string; observed_on: string; unit: string; low: number; high: number; mid: number; products: number; varieties: string[]; age_days: number; stale: boolean };
 
 export type Point = { date: string; mid: number; low: number; high: number };
 
@@ -53,3 +53,11 @@ export const fetchBasket = (ids: string[]): Promise<BasketProduct[]> => (ids.len
 export type SearchResult = { id: string; label: string; category: string; sellers: number; aliases: string[]; varieties: Array<{ id: string; qualifier: string }> };
 
 export const fetchSearch = (query: string, signal?: AbortSignal): Promise<SearchResult[]> => fetch(`/v1/public/search?q=${encodeURIComponent(query)}`, signal ? { signal } : {}).then(async (response) => ((await response.json()) as Envelope<SearchResult[]>).payload ?? []);
+
+export type FeedbackKind = "feedback" | "bug";
+
+export async function postFeedback(input: { kind: FeedbackKind; message: string; email?: string | undefined; page: string; website?: string | undefined }): Promise<void> {
+  const response = await fetch("/v1/public/feedback", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(input) });
+  const body = (await response.json().catch(() => null)) as Envelope<unknown> | null;
+  if (!response.ok || !body || body.success === false) throw new Error(body?.message ?? `Could not send (${response.status})`);
+}

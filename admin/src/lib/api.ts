@@ -215,3 +215,8 @@ export type BasketIndex = {
 export function rangeQuery(selection: RangeSelection): URLSearchParams {
   return new URLSearchParams("preset" in selection ? { days: String(selection.preset) } : { from: selection.from, to: selection.to });
 }
+
+export type FeedbackKind = "feedback" | "bug";
+export type FeedbackStatus = "new" | "seen" | "done";
+export type FeedbackItem = { id: string; kind: FeedbackKind; message: string; email: string | null; page: string | null; user_agent: string | null; status: FeedbackStatus; created_at: string; updated_at: string };
+export type FeedbackList = { items: FeedbackItem[]; total: number; page: number; pageSize: number; counts: Record<FeedbackStatus, number> };

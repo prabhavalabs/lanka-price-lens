@@ -24,3 +24,14 @@ test("prices, units, dates, and changes read as a shopper expects", () => {
   assert.deepEqual(changeLabel(0.4), { text: "steady", direction: "steady" });
   assert.equal(changeLabel(null), null);
 });
+
+test("ages read in words and grow coarser with time", async () => {
+  const { ageLabel, daysAgo } = await import("../src/lib/format.ts");
+  const today = new Date("2026-09-05T10:00:00Z");
+  assert.equal(daysAgo("2026-09-05", today), 0);
+  assert.equal(ageLabel("2026-09-04", today), "yesterday");
+  assert.equal(ageLabel("2026-08-01", today), "35 days ago");
+  assert.equal(ageLabel("2026-05-05", today), "4 months ago");
+  assert.equal(ageLabel("2025-11-25", today), "9 months ago");
+  assert.equal(ageLabel("2024-09-01", today), "2 years ago");
+});

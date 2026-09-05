@@ -52,6 +52,10 @@ export type ExplorerLatest = {
   products: number;
   /** Qualifiers of the varieties this seller reported, for the pooled view. */
   varieties: string[];
+  /** Days since the price was observed, as of the request. */
+  age_days: number;
+  /** Older than the source's cadence allows (a week for a daily source, three weeks for a weekly one): shown, but not a price to shop on. */
+  stale: boolean;
 };
 
 export type ExplorerPoint = { date: string; mid: number; low: number; high: number };
@@ -140,8 +144,12 @@ export async function productDetail(
   client: WarehouseClient,
   productId: string,
   request: RangeRequest,
-  /** Which varieties to pool: item ids, "all", or nothing for the product's default view; `sources` limits the view to those sources (the public site passes the published ones). */
-  options: { varieties?: string[] | "all" | undefined; sources?: string[] | undefined } = {},
+  /**
+   * Which varieties to pool: item ids, "all", or nothing for the product's default view; `sources` limits the view
+   * to those sources (the public site passes the published ones); `cadence` (source id to expected cadence) decides
+   * how old a price may be before it counts as stale.
+   */
+  options: { varieties?: string[] | "all" | undefined; sources?: string[] | undefined; cadence?: Record<string, string> | undefined } = {},
   today = new Date(),
 ): Promise<ExplorerDetail | null> {
   const sourceFilter = options.sources ? " AND source_id = ANY($2::text[])" : "";
@@ -172,21 +180,27 @@ export async function productDetail(
      ORDER BY latest.price_type, market.type, market.label_en`,
     [selected, ...sourceParams],
   );
-  const latest: ExplorerLatest[] = latestRows.map((entry) => ({
-    market_id: entry.market_id,
-    market_label: entry.market_label,
-    market_type: entry.market_type,
-    group: groupOf(entry.price_type),
-    price_type: entry.price_type,
-    source_id: entry.source_id,
-    observed_on: entry.observed_on,
-    unit: entry.unit,
-    low: Number(entry.low_minor) / 100,
-    high: Number(entry.high_minor) / 100,
-    mid: Number(entry.mid_minor) / 100,
-    products: Number(entry.observations),
-    varieties: [...new Set(entry.items.map((id) => qualifierOf.get(id) ?? id))].sort(),
-  }));
+  const todayIso = today.toISOString().slice(0, 10);
+  const latest: ExplorerLatest[] = latestRows.map((entry) => {
+    const age = Math.max(0, daysBetween(entry.observed_on, todayIso));
+    return {
+      market_id: entry.market_id,
+      market_label: entry.market_label,
+      market_type: entry.market_type,
+      group: groupOf(entry.price_type),
+      price_type: entry.price_type,
+      source_id: entry.source_id,
+      observed_on: entry.observed_on,
+      unit: entry.unit,
+      low: Number(entry.low_minor) / 100,
+      high: Number(entry.high_minor) / 100,
+      mid: Number(entry.mid_minor) / 100,
+      products: Number(entry.observations),
+      varieties: [...new Set(entry.items.map((id) => qualifierOf.get(id) ?? id))].sort(),
+      age_days: age,
+      stale: age > staleAfterDays(options.cadence?.[entry.source_id]),
+    };
+  });
 
   const seriesRows = await client.query<{ market_id: string; market_label: string; market_type: string; price_type: string; unit: string; date: string; low: string; high: string; mid: string }>(
     `SELECT daily.market_id, market.label_en AS market_label, market.type AS market_type, daily.price_type, daily.normalized_unit AS unit,
@@ -226,7 +240,12 @@ export async function productDetail(
   }));
   series.sort((left, right) => groupOrder[left.group] - groupOrder[right.group] || right.days - left.days || left.market_label.localeCompare(right.market_label));
 
-  const summary = (["wholesale", "retail_market", "supermarket"] as const).map((group) => summarise(group, latest.filter((entry) => entry.group === group)));
+  // A stale price is shown but never the "cheapest": the summary counts fresh sellers only, unless a group has nothing fresh at all.
+  const summary = (["wholesale", "retail_market", "supermarket"] as const).map((group) => {
+    const rows = latest.filter((entry) => entry.group === group);
+    const fresh = rows.filter((entry) => !entry.stale);
+    return summarise(group, fresh.length ? fresh : rows);
+  });
   const wholesale = summary.find((entry) => entry.group === "wholesale");
   const supermarket = summary.find((entry) => entry.group === "supermarket");
   const markup = wholesale?.average && supermarket?.average && wholesale.unit === supermarket.unit ? Math.round(((supermarket.average - wholesale.average) / wholesale.average) * 1000) / 10 : null;
@@ -264,6 +283,11 @@ function resolveRange(request: RangeRequest, last: string): PriceRange {
   const to = last;
   const from = new Date(Date.parse(`${to}T00:00:00Z`) - (request.days - 1) * 86_400_000).toISOString().slice(0, 10);
   return { from, to, days: request.days, preset: request.days };
+}
+
+/** How many days a price may be old before it counts as stale: a week for a daily source (weekends, holidays), three weeks for a weekly one. */
+export function staleAfterDays(cadence: string | undefined): number {
+  return cadence === "weekly" ? 21 : 7;
 }
 
 function daysBetween(from: string, to: string): number {

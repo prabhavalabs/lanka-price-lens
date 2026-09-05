@@ -672,6 +672,20 @@ function migrate(database: OperationalDatabase): void {
       PRIMARY KEY (source_id, label_type, label)
     ) STRICT;
     CREATE INDEX IF NOT EXISTS source_unmapped_label_seen_idx ON source_unmapped_label(source_id, last_seen_at DESC);
+
+    -- Feedback and bug reports sent from the public site; the owner reads them in the admin.
+    CREATE TABLE IF NOT EXISTS feedback (
+      id TEXT PRIMARY KEY,
+      kind TEXT NOT NULL CHECK (kind IN ('feedback', 'bug')),
+      message TEXT NOT NULL,
+      email TEXT,
+      page TEXT,
+      user_agent TEXT,
+      status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'seen', 'done')),
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS feedback_status_created_idx ON feedback(status, created_at DESC);
   `);
   // Capture health for adapter-driven sources (circuit breaker state).
   addColumn(database, "source", "consecutive_failures", "INTEGER NOT NULL DEFAULT 0");

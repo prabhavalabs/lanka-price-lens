@@ -7,6 +7,17 @@
     <meta name="description" content="Today's food prices across Sri Lanka's open markets and supermarkets, from official bulletins and store shelves, with history." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>PriceLens · Sri Lanka food prices today</title>
+    <script>
+      // Apply the saved theme (or the device's) before the first paint so the page never flashes.
+      (function () {
+        try {
+          var saved = localStorage.getItem("pricelens.theme");
+          var dark = saved === "dark" || (saved !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.classList.add(dark ? "dark" : "light");
+          document.documentElement.style.colorScheme = dark ? "dark" : "light";
+        } catch (error) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -7,7 +7,15 @@ and reads only the public API.
 ## What it shows
 
 The site shares the admin's design system (shadcn components, the same tokens and fonts,
-product photos and store logos) and opens in light, following the device into dark.
+product photos and store logos). The theme follows the device by default; the header's
+toggle sets light, dark, or back to the device, remembered in the browser and applied before
+the first paint by a small script in `index.html`.
+
+State that several parts of the page share lives in one store per concern
+(`web/src/store/basket.ts`, `web/src/store/theme.ts`, both on `useSyncExternalStore`): the
+board card, the header's quick basket, the product page, and the basket page read and change
+the same basket, which is persisted in the browser and kept in step across tabs. A quantity
+taken to zero removes the line.
 
 - **Board (`/`):** the day's headline, the biggest 30-day rises and falls, then every product
   with a published price grouped by category (vegetables first), one card each with its photo
@@ -24,9 +32,25 @@ product photos and store logos) and opens in light, following the device into da
   and the cheapest badged, and a history chart (30 days, 90 days, a year) with a line per seller
   in the seller's colour and toggles per group. Share via the device share sheet, WhatsApp, or
   copy link.
+- **Quick basket:** the header's basket opens a dropdown to adjust or remove items on the go,
+  with a button to the full comparison. On a card, "Add" turns into a quantity control once the
+  product is in the basket and the card is marked.
 - **Basket (`/basket`):** the shopper's list, kept in the browser, priced at every seller
   through `GET /v1/public/basket?products=`: sellers that carry the whole list first, then by
-  total, with what each one is missing; quantities per item; share the result.
+  total, with what each one is missing; quantities per item; share the result. Sellers whose
+  newest price is older than 30 days are left out of the totals.
+- **Stale prices:** a price older than its source's cadence allows (a week for a daily source,
+  three weeks for a weekly one; `age_days` and `stale` on every seller row from the API) is
+  shown struck through with an "outdated · 9 months ago" badge and never counts as the cheapest.
+- **History card:** the range (30 days, 90 days, a year) and the seller groups drawn are in the
+  URL (`?days=90&groups=supermarket,wholesale`), so a view can be shared; changing them refreshes
+  only the card, without scrolling. Hover or tap a day for every seller's exact price on it; tap
+  again to unpin.
+- **Feedback:** "Feedback" in the header and the footer opens a dialog: feedback or a bug
+  report, a message, an optional email, with the page URL and browser attached. It posts to
+  `POST /v1/public/feedback` (five per hour per address, a honeypot field for bots). The owner
+  reads and works through them in the admin's **Feedback** page (new, seen, done) through
+  `GET /v1/admin/feedback` and `PATCH /v1/admin/feedback/:id`.
 - **About (`/about`):** how prices are collected, the sources with their marks, attribution and
   cadence, and what is coming.
 
@@ -57,6 +81,7 @@ cacheable (`Cache-Control: public, max-age=300, s-maxage=900`) and readable from
 | `GET /v1/public/products/:id?days=30\|90\|180\|365&varieties=` | The explorer detail (latest by seller, summary, markup, series), published sources only |
 | `GET /v1/public/search?q=` | Products matching a label, variety, or a source's own wording (two characters or more) |
 | `GET /v1/public/basket?products=a,b,c` | The latest price of each product at every published seller (up to 60 products) |
+| `POST /v1/public/feedback` | `{ kind: "feedback" \| "bug", message, email?, page?, website? }`; 201, 400 on a bad message, 429 past five an hour |
 
 All three answer 503 when the warehouse is unavailable.
 

@@ -1,9 +1,10 @@
-import { RiAddLine, RiDeleteBinLine, RiSubtractLine } from "@remixicon/react";
+import { RiAddLine, RiDeleteBinLine } from "@remixicon/react";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 
 import { ProductImage } from "@/components/product-image";
+import { QuantityControl } from "@/components/quantity";
 import { SearchBox } from "@/components/search-box";
 import { SellerMark } from "@/components/seller-mark";
 import { ShareButtons } from "@/components/share";
@@ -13,7 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { fetchBasket, type BasketProduct, type Group } from "@/lib/api";
-import { useBasket } from "@/lib/basket";
+import { basketStore, useBasket } from "@/store/basket";
 import { groupLabel, relativeDay, rupees, unitLabel } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -54,7 +55,7 @@ export function BasketPage() {
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <ShareButtons title="My basket on PriceLens" text={shareText} />
-          <Button onClick={basket.clear} size="sm" variant="ghost"><RiDeleteBinLine className="size-4" />Clear</Button>
+          <Button onClick={basketStore.clear} size="sm" variant="ghost"><RiDeleteBinLine className="size-4" />Clear</Button>
         </div>
       </header>
 
@@ -115,11 +116,7 @@ export function BasketPage() {
                       <Link to={`/p/${line.id}`} className="block truncate text-sm font-medium no-underline hover:text-primary">{product?.label ?? line.label}</Link>
                       <p className="text-[11px] text-muted-foreground">{product ? `${product.sellers.length} sellers${unit ? ` · ${unitLabel(unit)}` : ""}` : priced.isPending ? "pricing…" : "no published price yet"}</p>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Button aria-label="Less" onClick={() => basket.setQuantity(line.id, line.quantity - 1)} size="icon-sm" variant="outline"><RiSubtractLine className="size-3.5" /></Button>
-                      <span className="w-6 text-center text-sm tabular">{line.quantity}</span>
-                      <Button aria-label="More" onClick={() => basket.setQuantity(line.id, line.quantity + 1)} size="icon-sm" variant="outline"><RiAddLine className="size-3.5" /></Button>
-                    </div>
+                    <QuantityControl id={line.id} label={product?.label ?? line.label} />
                   </li>
                 );
               })}
