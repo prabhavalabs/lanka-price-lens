@@ -1,0 +1,30 @@
+{
+  "name": "@lanka-pricelens/web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Public price site: today's food prices across Sri Lankan markets and supermarkets",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.ts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-router-dom": "7.18.2",
+    "@tanstack/react-query": "5.101.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
+    "tailwindcss": "4.3.3",
+    "vite": "8.2.1",
+    "typescript": "7.0.2",
+    "@types/node": "24.13.3"
+  }
+}

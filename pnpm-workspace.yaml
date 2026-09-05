@@ -4,6 +4,7 @@ packages:
   - foundry
   - api
   - admin
+  - web
 
 allowBuilds:
   better-sqlite3: true
