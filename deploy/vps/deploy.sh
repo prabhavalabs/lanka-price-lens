@@ -51,10 +51,19 @@ if [[ $mode == --configure-admin ]]; then
     echo "ADMIN_EMAIL must be an email address and ADMIN_PASSWORD_HASH a scrypt hash from 'foundry hash-password'" >&2
     exit 2
   fi
+  # Keep the working environment so a credential the API rejects can be undone instead of leaving the service down.
+  previous_env=$(mktemp "$config/app.env.previous.XXXXXX")
+  cp "$config/app.env" "$previous_env"
   update_env ADMIN_EMAIL "$admin_email"
   # Compose interpolates `$name` inside its env files, so every dollar in the hash must be written as `$$` to survive intact.
   update_env ADMIN_PASSWORD_HASH "${admin_password_hash//\$/\$\$}"
-  docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" up -d --no-build --force-recreate --wait --wait-timeout 90 api
+  if ! docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" up -d --no-build --force-recreate --wait --wait-timeout 90 api; then
+    echo "The API did not come up with the new administrator credentials; restoring the previous environment" >&2
+    mv "$previous_env" "$config/app.env"
+    docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" up -d --no-build --force-recreate --wait --wait-timeout 90 api
+    exit 1
+  fi
+  rm -f "$previous_env"
   exit
 fi
 
