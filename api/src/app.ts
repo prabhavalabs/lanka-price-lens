@@ -1,5 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { serveStatic } from "@hono/node-server/serve-static";
 import { openOperationalDatabase, type OperationalDatabase } from "@lanka-pricelens/foundry/db";
@@ -32,6 +33,7 @@ import {
   type AnyRetailAdapter,
 } from "@lanka-pricelens/foundry/retail";
 import { runWithRetry } from "@lanka-pricelens/foundry/retry";
+import { publicOverview } from "./public.ts";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 import {
   enqueueWorkflow,
@@ -135,6 +137,39 @@ export function createApp(
   };
   app.use("*", requestId(), secureHeaders());
   app.get("/v1/health", (context) => context.json(envelope(context.get("requestId"), { status: "ok" })));
+
+  // The public read API behind the consumer site: no sign-in, only sources whose rights allow publication,
+  // cacheable at the edge, and readable by other origins (it carries nothing personal).
+  const published = () => catalog.entries.filter((entry) => canPublishSource(entry.manifest)).map((entry) => entry.manifest);
+  app.use("/v1/public/*", async (context, next) => {
+    await next();
+    context.header("Access-Control-Allow-Origin", "*");
+    if (context.res.ok) context.header("Cache-Control", "public, max-age=300, s-maxage=900, stale-while-revalidate=1800");
+  });
+  app.get("/v1/public/overview", async (context) => {
+    const client = await warehouse();
+    if (!client) return context.json(envelope(context.get("requestId"), null, false, "Prices are not available right now"), 503);
+    return context.json(envelope(context.get("requestId"), await publicOverview(client, published())));
+  });
+  app.get("/v1/public/search", async (context) => {
+    const client = await warehouse();
+    if (!client) return context.json(envelope(context.get("requestId"), null, false, "Prices are not available right now"), 503);
+    const query = (context.req.query("q") ?? "").trim().slice(0, 100);
+    if (query.length < 2) return context.json(envelope(context.get("requestId"), []));
+    return context.json(envelope(context.get("requestId"), await searchProducts(client, query, 12)));
+  });
+  app.get("/v1/public/products/:id", async (context) => {
+    const client = await warehouse();
+    if (!client) return context.json(envelope(context.get("requestId"), null, false, "Prices are not available right now"), 503);
+    const range = parseRangeRequest({ days: context.req.query("days") ?? "30", from: context.req.query("from"), to: context.req.query("to") });
+    if ("error" in range) return context.json(envelope(context.get("requestId"), null, false, range.error), 400);
+    const varietiesParam = context.req.query("varieties");
+    const varieties = varietiesParam === "all" ? ("all" as const) : varietiesParam ? varietiesParam.split(",").map((id) => id.trim()).filter(Boolean).slice(0, 20) : undefined;
+    const sources = published().map((manifest) => manifest.id);
+    const detail = await productDetail(client, context.req.param("id").slice(0, 100), range, { varieties, sources });
+    if (!detail) return context.json(envelope(context.get("requestId"), null, false, "Product not found"), 404);
+    return context.json(envelope(context.get("requestId"), detail));
+  });
 
   app.post("/v1/auth/login", bodyLimit({ maxSize: 16 * 1024 }), async (context) => {
     if (!sameOrigin(context)) return context.json(envelope(context.get("requestId"), null, false, "Cross-origin request rejected"), 403);
@@ -1079,10 +1114,51 @@ export function createProductionApp(): Hono<AppBindings> {
   const recipes = existsSync(resolve(recipesDirectory, "catalogue.json")) ? readRecipeStore(recipesDirectory) : undefined;
   const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}), ...(recipes ? { recipes } : {}) });
   const adminRoot = resolve(process.env.LPL_ADMIN_ROOT ?? "../admin/dist");
+  // The site's build lives next to the API in the repository and the image alike, so the default is relative to this file, not the working directory.
+  const webRoot = resolve(process.env.LPL_WEB_ROOT ?? fileURLToPath(new URL("../../web/dist/", import.meta.url)));
+  // One container serves two sites by host name: the public price site (price.…) and the owner's admin (admin.price.…).
+  // Without configured hosts the public site answers at the root wherever it is built, and the admin stays at /admin/.
+  const adminHosts = hostList(process.env.LPL_ADMIN_HOSTS);
+  const webHosts = hostList(process.env.LPL_WEB_HOSTS);
+  const webBuilt = existsSync(resolve(webRoot, "index.html"));
+  const forPublicSite = (context: Context): boolean => {
+    if (!webBuilt) return false;
+    const host = requestHost(context);
+    if (webHosts.length) return webHosts.includes(host);
+    return !adminHosts.includes(host);
+  };
+  app.use("/admin/*", async (context, next) => {
+    if (adminHosts[0] && webHosts.includes(requestHost(context))) return context.redirect(`https://${adminHosts[0]}${context.req.path}`);
+    return next();
+  });
   app.use("/admin/*", serveStatic({ root: adminRoot, rewriteRequestPath: (path) => path.replace(/^\/admin/u, "") || "/index.html" }));
   app.get("/admin/*", serveStatic({ root: adminRoot, rewriteRequestPath: () => "/index.html" }));
   app.get("/admin", (context) => context.redirect("/admin/"));
+  const webFiles = serveStatic({ root: webRoot });
+  const webIndex = serveStatic({ root: webRoot, rewriteRequestPath: () => "/index.html" });
+  app.use("*", async (context, next) => {
+    if (context.req.path.startsWith("/v1") || context.req.path.startsWith("/admin")) return next();
+    if (forPublicSite(context)) {
+      // A built asset when the path names one; otherwise the app shell, which routes the path itself.
+      const asset = await webFiles(context, async () => undefined);
+      if (asset) return asset;
+      if (context.req.path.startsWith("/assets/")) return context.notFound();
+      return webIndex(context, next);
+    }
+    if (context.req.path === "/") return context.redirect("/admin/");
+    return next();
+  });
   return app;
+}
+
+function hostList(value: string | undefined): string[] {
+  return (value ?? "").split(",").map((host) => host.trim().toLowerCase()).filter(Boolean);
+}
+
+/** The host the visitor asked for, as the proxy saw it, without a port. */
+function requestHost(context: Context): string {
+  const raw = context.req.header("x-forwarded-host")?.split(",")[0]?.trim() || context.req.header("host") || new URL(context.req.url).host;
+  return raw.toLowerCase().replace(/:\d+$/u, "");
 }
 
 /** Connects on first use and retries on the next request after a failure, so a database outage never takes the API down with it. */

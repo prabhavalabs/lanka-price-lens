@@ -14,6 +14,7 @@
     "deploy:archive": "pnpm --filter @lanka-pricelens/archive run deploy",
     "dev:api": "pnpm --filter @lanka-pricelens/api dev",
     "dev:admin": "pnpm --filter @lanka-pricelens/admin dev",
+    "dev:web": "pnpm --filter @lanka-pricelens/web dev",
     "dev:scheduler": "pnpm --filter @lanka-pricelens/foundry cli scheduler",
     "foundry": "pnpm --filter @lanka-pricelens/foundry cli",
     "build": "pnpm -r build",

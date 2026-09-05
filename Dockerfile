@@ -10,12 +10,14 @@ COPY archive/package.json archive/package.json
 COPY foundry/package.json foundry/package.json
 COPY api/package.json api/package.json
 COPY admin/package.json admin/package.json
+COPY web/package.json web/package.json
 RUN pnpm install --frozen-lockfile
 COPY shared shared
 COPY archive archive
 COPY foundry foundry
 COPY api api
 COPY admin admin
+COPY web web
 RUN pnpm build
 
 FROM node:${NODE_VERSION}-bookworm-slim
@@ -32,6 +34,7 @@ COPY archive/package.json archive/package.json
 COPY foundry/package.json foundry/package.json
 COPY api/package.json api/package.json
 COPY admin/package.json admin/package.json
+COPY web/package.json web/package.json
 RUN apt-get update && apt-get install -y --no-install-recommends python3 make g++ \
   && pnpm install --prod --frozen-lockfile \
   && apt-get purge -y python3 make g++ \
@@ -46,6 +49,7 @@ COPY data/manifests data/manifests
 COPY data/mappings data/mappings
 COPY data/recipes data/recipes
 COPY --from=build /app/admin/dist admin/dist
+COPY --from=build /app/web/dist web/dist
 RUN mkdir /data && chown node:node /data
 USER node
 CMD ["node", "api/src/index.ts"]

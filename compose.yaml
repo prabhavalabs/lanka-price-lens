@@ -33,6 +33,9 @@ services:
       PORT: ${APP_PORT:?set APP_PORT}
       LPL_DATABASE_PATH: /data/operations.sqlite
       LPL_ADMIN_ROOT: /app/admin/dist
+      LPL_WEB_ROOT: /app/web/dist
+      LPL_ADMIN_HOSTS: ${LPL_ADMIN_HOSTS:-admin.price.prabhavalabs.com,lanka-price-lens.prabhavalabs.com}
+      LPL_WEB_HOSTS: ${LPL_WEB_HOSTS:-price.prabhavalabs.com}
       LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
       LPL_MANIFESTS_DIR: /app/data/manifests

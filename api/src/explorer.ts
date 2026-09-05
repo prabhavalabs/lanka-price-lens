@@ -140,10 +140,12 @@ export async function productDetail(
   client: WarehouseClient,
   productId: string,
   request: RangeRequest,
-  /** Which varieties to pool: item ids, "all", or nothing for the product's default view. */
-  options: { varieties?: string[] | "all" | undefined } = {},
+  /** Which varieties to pool: item ids, "all", or nothing for the product's default view; `sources` limits the view to those sources (the public site passes the published ones). */
+  options: { varieties?: string[] | "all" | undefined; sources?: string[] | undefined } = {},
   today = new Date(),
 ): Promise<ExplorerDetail | null> {
+  const sourceFilter = options.sources ? " AND source_id = ANY($2::text[])" : "";
+  const sourceParams = options.sources ? [options.sources] : [];
   const [row] = await client.query<ProductRow>(`${productSelect} WHERE product.id = $1 ${productGroup}`, [productId]);
   if (!row) return null;
   const product = toProduct(row);
@@ -153,8 +155,8 @@ export async function productDetail(
   const qualifierOf = new Map(product.varieties.map((variety) => [variety.id, variety.qualifier]));
 
   const [bounds] = await client.query<{ first: string | null; last: string | null }>(
-    "SELECT MIN(observed_on)::TEXT AS first, MAX(observed_on)::TEXT AS last FROM daily_item_price WHERE item_id = ANY($1::text[])",
-    [selected],
+    `SELECT MIN(observed_on)::TEXT AS first, MAX(observed_on)::TEXT AS last FROM daily_item_price WHERE item_id = ANY($1::text[])${sourceFilter}`,
+    [selected, ...sourceParams],
   );
   const range = resolveRange(request, bounds?.last ?? today.toISOString().slice(0, 10));
 
@@ -165,10 +167,10 @@ export async function productDetail(
             MIN(latest.low_minor)::TEXT AS low_minor, MAX(latest.high_minor)::TEXT AS high_minor, ROUND(AVG(latest.mid_minor))::TEXT AS mid_minor,
             SUM(latest.observations)::TEXT AS observations, array_agg(DISTINCT latest.item_id) AS items
      FROM latest_item_price latest JOIN market ON market.id = latest.market_id
-     WHERE latest.item_id = ANY($1::text[])
+     WHERE latest.item_id = ANY($1::text[])${sourceFilter.replace("source_id", "latest.source_id")}
      GROUP BY latest.market_id, market.label_en, market.type, latest.price_type, latest.normalized_unit
      ORDER BY latest.price_type, market.type, market.label_en`,
-    [selected],
+    [selected, ...sourceParams],
   );
   const latest: ExplorerLatest[] = latestRows.map((entry) => ({
     market_id: entry.market_id,
@@ -190,10 +192,10 @@ export async function productDetail(
     `SELECT daily.market_id, market.label_en AS market_label, market.type AS market_type, daily.price_type, daily.normalized_unit AS unit,
             daily.observed_on::TEXT AS date, MIN(daily.low_minor)::TEXT AS low, MAX(daily.high_minor)::TEXT AS high, ROUND(AVG(daily.mid_minor))::TEXT AS mid
      FROM daily_item_price daily JOIN market ON market.id = daily.market_id
-     WHERE daily.item_id = ANY($1::text[]) AND daily.observed_on BETWEEN $2 AND $3
+     WHERE daily.item_id = ANY($1::text[]) AND daily.observed_on BETWEEN $2 AND $3${options.sources ? " AND daily.source_id = ANY($4::text[])" : ""}
      GROUP BY daily.market_id, market.label_en, market.type, daily.price_type, daily.normalized_unit, daily.observed_on
      ORDER BY daily.observed_on`,
-    [selected, range.from, range.to],
+    [selected, range.from, range.to, ...sourceParams],
   );
   const bySeries = new Map<string, ExplorerSeries>();
   for (const entry of seriesRows) {
