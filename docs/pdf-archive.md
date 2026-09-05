@@ -29,7 +29,10 @@ newest known object plus any hole inside the last 45 days (a day whose download
 failed, or one a store that started mid-series never had). Older gaps are left
 to an explicit backfill (`ingest --backfill --from … --to …`), so the historical
 archive is never pulled by accident. Existing R2 objects missing SQLite metadata
-are reconciled without downloading them again.
+are reconciled without downloading them again. A publication the publisher no
+longer serves (404 or 410 on download) is recorded as `unavailable` and the run
+carries on with the rest; routine syncs do not ask for it again, an explicit
+backfill tries it once more.
 
 Each new PDF is uploaded to the private bucket under its deterministic key. Its
 source URL, R2 URI, byte size, checksum, upload time, status, and source-sync
