@@ -1041,6 +1041,20 @@ test("pending processing sweeps archived documents that were never processed or 
     assert.equal(pendingArchives(database, approved, { since: "2026-08-16" }).length, 2, "since narrows the sweep");
     assert.equal(pendingArchives(database, approved, { uriPrefix: "r2://elsewhere/" }).length, 0, "documents another driver holds are left alone");
 
+    // Three failures that never reached the document (the archive refused the fetch) do not count against it;
+    // three failures that examined it do.
+    const fetchFailed = (archiveId: string, stage: string) => {
+      const run = startRun(database, { sourceId: approved.id, trigger: "manual", workflow: "pdf_processing", archiveId });
+      startStage(database, run.id, stage as never, 1, {});
+      finishStage(database, run.id, stage as never, "failed", { errorCode: "PDF_PROCESSING_FAILED", errorMessage: "R2_HTTP_429" });
+      finishRun(database, run.id, "failed", { code: "PDF_PROCESSING_FAILED", message: "R2_HTTP_429" });
+    };
+    const [newest, middle] = pending;
+    for (let index = 0; index < 3; index += 1) fetchFailed(newest!.archiveId, "retrieve_pdf");
+    for (let index = 0; index < 3; index += 1) fetchFailed(middle!.archiveId, "parse_pdf");
+    assert.deepEqual(pendingArchives(database, approved).map((candidate) => candidate.archiveId), [newest!.archiveId, pending[2]!.archiveId], "storage refusals keep a document pending; document failures retire it");
+    database.prepare("UPDATE ingest_run SET status = 'skipped' WHERE status = 'failed' AND archive_id IN (?, ?)").run(newest!.archiveId, middle!.archiveId);
+
     const bundle = mappingBundle("item_beans", "Beans", "fixture-v1");
     const swept = await processPendingArchives(database, approved, { trigger: "manual", archive, inspector, mappingBundle: bundle, limit: 2 });
     assert.deepEqual([swept.candidates, swept.succeeded, swept.failed, swept.runs.length], [2, 2, 0, 2], "the limit bounds one sweep");
@@ -1104,7 +1118,7 @@ test("pending processing retries failed documents in rounds after the cooldown",
       trigger: "manual", archive, inspector, mappingBundle: mappingBundle("item_beans", "Beans", "fixture-v1"),
       retry: { attempts: 3, cooldown_minutes: 10 }, wait: async (ms) => { waits.push(ms); },
     });
-    assert.deepEqual([swept.candidates, swept.succeeded, swept.failed, waits], [3, 3, 0, [600_000]], "one cooldown covers every document that failed in the round");
+    assert.deepEqual([swept.candidates, swept.succeeded, swept.failed, waits], [3, 3, 0, [30_000, 60_000, 600_000]], "a rate-limited archive gets a doubling pause, then one cooldown covers every document that failed in the round");
     const retried = database.prepare("SELECT status, attempt, retry_of FROM ingest_run WHERE workflow = 'pdf_processing' AND attempt > 1 ORDER BY started_at").all() as Array<{ status: string; attempt: number; retry_of: string | null }>;
     assert.deepEqual(retried.map((run) => [run.status, run.attempt, Boolean(run.retry_of)]), [["succeeded", 2, true], ["succeeded", 2, true]]);
   } finally {
