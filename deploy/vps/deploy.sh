@@ -36,6 +36,24 @@ update_env() {
   mv "$temporary" "$config/app.env"
 }
 
+if [[ $mode == --configure-admin ]]; then
+  # The owner's sign-in: email and scrypt hash arrive on stdin from repository secrets; the API reseeds the user on start.
+  IFS= read -r admin_email
+  IFS= read -r admin_password_hash
+  if [[ -z $admin_email && -z $admin_password_hash ]]; then
+    echo "No admin sign-in secrets configured; keeping the existing ADMIN_EMAIL and ADMIN_PASSWORD_HASH"
+    exit
+  fi
+  if [[ ! $admin_email =~ ^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$ || ! $admin_password_hash =~ ^scrypt\$[a-f0-9]{32}\$[a-f0-9]{128}$ ]]; then
+    echo "ADMIN_EMAIL must be an email address and ADMIN_PASSWORD_HASH a scrypt hash from 'foundry hash-password'" >&2
+    exit 2
+  fi
+  update_env ADMIN_EMAIL "$admin_email"
+  update_env ADMIN_PASSWORD_HASH "$admin_password_hash"
+  docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" up -d --no-build --force-recreate --wait --wait-timeout 90 api
+  exit
+fi
+
 if [[ $mode == --configure-r2 ]]; then
   IFS= read -r cloudflare_account_id
   IFS= read -r cloudflare_api_token
