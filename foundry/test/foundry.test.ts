@@ -1125,3 +1125,38 @@ test("pending processing retries failed documents in rounds after the cooldown",
     database.close();
   }
 });
+
+test("a publication the publisher no longer serves is recorded as unavailable and the rest of the sync goes on", async () => {
+  const database = openOperationalDatabase(":memory:");
+  const archive = memoryArchive();
+  const approved = sourceManifestSchema.parse({ ...manifest, rights_status: "approved_permission", rights_evidence_ref: "test", attribution_text: "Test", reviewed_by: "tests", review_due_at: "2999-12-31", enabled: true });
+  const quick = { ...approved, request_interval_ms: 1 };
+  const requested: string[] = [];
+  const request = async (url: string | URL | Request) => {
+    const href = String(url);
+    requested.push(href);
+    if (href === approved.landing_url) return new Response(archiveHtml(["17-08-2026", "16-08-2026", "15-08-2026"]), { status: 200, headers: { "content-type": "text/html" } });
+    if (href.includes("16-08-2026")) return new Response("gone", { status: 404 });
+    return new Response(`%PDF-${href}`, { status: 200, headers: { "content-type": "application/pdf" } });
+  };
+  const inspector = async () => ({ inspection: pdfInspection(), items: hartiItems() });
+  try {
+    const backfill = await runIngestion(database, quick, { trigger: "backfill", request, inspector, archive });
+    assert.equal(backfill.status, "succeeded");
+    assert.equal((database.prepare("SELECT COUNT(*) AS count FROM archived_pdf").get() as { count: number }).count, 2, "the two that exist are archived");
+    const gone = database.prepare("SELECT status FROM source_publication WHERE source_publication_key LIKE '%16-08-2026%' OR download_url LIKE '%16-08-2026%'").get() as { status: string } | undefined;
+    assert.equal(gone?.status, "unavailable");
+    const stage = database.prepare("SELECT status, output_json FROM run_stage WHERE run_id = ? AND stage = 'download_new_pdfs'").get(backfill.runId) as { status: string; output_json: string };
+    assert.deepEqual([stage.status, JSON.parse(stage.output_json)], ["succeeded", { downloaded: 2, unavailable: 1 }]);
+
+    // A routine sync does not ask for it again; a backfill does.
+    requested.length = 0;
+    await runIngestion(database, quick, { trigger: "scheduled", request, inspector, archive, now: new Date("2026-08-20T00:00:00Z") });
+    assert.ok(!requested.some((href) => href.includes("16-08-2026")), "routine syncs leave an unavailable publication alone");
+    requested.length = 0;
+    await runIngestion(database, quick, { trigger: "backfill", request, inspector, archive });
+    assert.ok(requested.some((href) => href.includes("16-08-2026")), "a backfill tries once more");
+  } finally {
+    database.close();
+  }
+});

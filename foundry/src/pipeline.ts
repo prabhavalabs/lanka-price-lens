@@ -101,6 +101,8 @@ type SourceSyncContext = {
   downloaded: Map<string, DownloadedPdf>;
   uploaded: Set<string>;
   newArchiveIds: string[];
+  /** Publications the publisher no longer serves (404 or 410 on download) in this run. */
+  unavailable: Publication[];
 };
 
 type ProcessingContext = {
@@ -164,6 +166,7 @@ export async function runSourceSync(
     downloaded: new Map(),
     uploaded: new Set(),
     newArchiveIds: [],
+    unavailable: [],
   };
 
   try {
@@ -725,17 +728,22 @@ async function compareInventory(
   }
   const knownKeys = new Set([...recorded, ...context.inventory.keys()]);
   const newestKnownIndex = context.publications.findIndex((publication) => knownKeys.has(archiveKey(manifest, publication)));
+  // Publications the publisher stopped serving are not asked for again by a routine sync; an explicit backfill tries them once more.
+  const routine = options.trigger !== "backfill" && !options.from && !options.to;
+  const unavailable = routine
+    ? new Set((database.prepare("SELECT source_publication_key FROM source_publication WHERE source_id = ? AND status = 'unavailable'").all(manifest.id) as Array<{ source_publication_key: string }>).map((row) => row.source_publication_key))
+    : new Set<string>();
   // A routine sync (no range, not a backfill) takes what is newer than the newest archived publication, plus any
   // hole inside the lookback window: a day whose download failed, or one skipped by a store that started mid-series.
   // Anything older than the window is left to an explicit backfill so the historical archive is never pulled by accident.
   const newer = new Set(context.publications.slice(0, Math.max(newestKnownIndex, 0)).map((publication) => publication.key));
   const lookbackDays = options.lookbackDays ?? 45;
   const cutoff = new Date((options.now ?? new Date()).getTime() - lookbackDays * 86_400_000).toISOString().slice(0, 10);
-  context.pending = options.trigger !== "backfill" && !options.from && !options.to
+  context.pending = (routine
     ? newestKnownIndex < 0
       ? missing.slice(0, 1)
       : missing.filter((publication) => newer.has(publication.key) || publication.date >= cutoff)
-    : missing;
+    : missing).filter((publication) => !unavailable.has(publication.key));
   if (options.limit !== undefined) context.pending = context.pending.slice(0, Math.max(0, options.limit));
   recordRunPublications(database, runId, context.pending);
   return {
@@ -760,7 +768,18 @@ async function downloadNewPdfs(
   const request = options.request ?? fetch;
   for (const [index, publication] of context.pending.entries()) {
     if (index > 0) await delay(manifest.request_interval_ms);
-    const response = await requestWithRetry(request, publication.downloadUrl, manifest.max_attempts, manifest.request_interval_ms);
+    let response: Response;
+    try {
+      response = await requestWithRetry(request, publication.downloadUrl, manifest.max_attempts, manifest.request_interval_ms);
+    } catch (error) {
+      // A file the publisher no longer serves is recorded as unavailable and the run carries on; anything else still fails the stage.
+      if (!(error instanceof Error && /^SOURCE_HTTP_(404|410)$/u.test(error.message))) throw error;
+      context.unavailable.push(publication);
+      database.prepare("UPDATE source_publication SET status = 'unavailable' WHERE source_id = ? AND source_publication_key = ?").run(manifest.id, publication.key);
+      logStage(database, runId, "download_new_pdfs", "warning", "Publication is no longer served", { publication_key: publication.key, source_url: publication.downloadUrl, status: error.message });
+      heartbeatRun(database, runId);
+      continue;
+    }
     const contentType = response.headers.get("content-type")?.split(";", 1)[0]?.trim() ?? "application/octet-stream";
     if (!["application/pdf", "application/octet-stream"].includes(contentType)) throw new Error("SOURCE_MEDIA_TYPE_INVALID");
     const bytes = await limitedBody(response, 20 * 1024 * 1024);
@@ -784,7 +803,7 @@ async function downloadNewPdfs(
     heartbeatRun(database, runId);
   }
   database.prepare("UPDATE ingest_run SET fetched_count = ? WHERE id = ?").run(context.downloaded.size, runId);
-  return { outputCount: context.downloaded.size, output: { downloaded: context.downloaded.size } };
+  return { outputCount: context.downloaded.size, warningCount: context.unavailable.length, output: { downloaded: context.downloaded.size, unavailable: context.unavailable.length } };
 }
 
 async function uploadToR2(
@@ -819,7 +838,8 @@ function recordPdfMetadata(
   storage: ArchiveStorage,
   context: SourceSyncContext,
 ): StageResult {
-  const publications = [...context.reconcile, ...context.pending];
+  // Only what this run actually obtained: reconciled objects already in storage, and pending publications that downloaded.
+  const publications = [...context.reconcile, ...context.pending.filter((publication) => context.downloaded.has(publication.key))];
   const now = new Date().toISOString();
   const inserted = database.transaction(() => {
     const archiveIds: string[] = [];
