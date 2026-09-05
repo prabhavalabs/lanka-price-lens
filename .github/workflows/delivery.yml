@@ -86,6 +86,13 @@ jobs:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
         run: printf '%s\n%s\n' "$CLOUDFLARE_ACCOUNT_ID" "$CLOUDFLARE_API_TOKEN" | ssh -i ~/.ssh/lanka-price-lens "$VPS_USER@$VPS_HOST" "sudo /usr/local/sbin/lanka-price-lens-deploy '${{ github.sha }}' '${{ github.actor }}' --configure-r2"
+      - name: Configure VPS admin sign-in
+        env:
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+          ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: printf '%s\n%s\n' "$ADMIN_EMAIL" "$ADMIN_PASSWORD_HASH" | ssh -i ~/.ssh/lanka-price-lens "$VPS_USER@$VPS_HOST" "sudo /usr/local/sbin/lanka-price-lens-deploy '${{ github.sha }}' '${{ github.actor }}' --configure-admin"
       - name: Verify ingestion workflow
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}

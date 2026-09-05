@@ -25,6 +25,15 @@ creates a hashed, revocable server session and sends only an HttpOnly,
 SameSite=Strict cookie to the browser. Changing the configured password hash
 rotates the password and revokes existing sessions at the next start.
 
+On the VPS the deploy manages these two values the way it manages the R2 keys:
+the Delivery workflow passes the repository secrets `ADMIN_EMAIL` and
+`ADMIN_PASSWORD_HASH` to `lanka-price-lens-deploy --configure-admin`, which
+validates them, writes them into `/etc/lanka-price-lens/app.env`, and recreates
+the API so the user is seeded on start. Set the secrets with `gh secret set` (the
+hash from `foundry hash-password`); when they are absent the step keeps whatever
+the environment file already holds. An earlier administrator stays active until
+disabled.
+
 ## Scheduler
 
 Copy the units in `deploy/systemd/` to `/etc/systemd/system/`, adjust their
