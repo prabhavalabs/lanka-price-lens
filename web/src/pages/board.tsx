@@ -55,8 +55,8 @@ export function BoardPage() {
     <div className="space-y-8">
       <section className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">Food prices today</h1>
-          <p className="mt-1 max-w-xl text-sm text-muted-foreground sm:text-base">
+          <h1 className="text-balance font-heading text-3xl font-semibold tracking-tight sm:text-4xl">Food prices today</h1>
+          <p className="mt-1 max-w-xl text-pretty text-sm text-muted-foreground sm:text-base">
             Open markets and supermarkets side by side, from official bulletins and store shelves.
             {data.as_of ? ` Latest observations ${relativeDay(data.as_of)}.` : ""}
           </p>
@@ -120,7 +120,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
       <dt className="text-[11px] uppercase tracking-wide text-muted-foreground">{label}</dt>
-      <dd className="m-0 font-heading text-xl font-semibold tabular">{value}</dd>
+      <dd className="m-0 font-heading text-xl font-semibold tabular-nums">{value}</dd>
     </div>
   );
 }
@@ -166,7 +166,7 @@ function MoverCard({ title, tone, entries }: { title: string; tone: "rise" | "fa
                   <span className="block truncate text-sm font-medium">{product.label}</span>
                   <span className="block text-[11px] text-muted-foreground">{groupLabel(price.group)} · {rupees(price.mid)} {unitLabel(price.unit)}</span>
                 </span>
-                <span className={cn("text-sm font-semibold tabular", tone === "rise" ? "text-status-critical" : "text-status-good")}>{changeLabel(price.change_30d_pct)?.text}</span>
+                <span className={cn("text-sm font-semibold tabular-nums", tone === "rise" ? "text-status-critical" : "text-status-good")}>{changeLabel(price.change_30d_pct)?.text}</span>
               </Link>
             </li>
           ))}
@@ -201,14 +201,13 @@ function ProductTile({ product }: { product: ProductCard }) {
             <div className="mt-1 flex flex-wrap items-center gap-1.5">
               <Badge variant="secondary" className="text-[10px]">{categoryLabel(product.category)}</Badge>
               {change ? <Badge className={cn("text-[10px]", change.direction === "rise" ? "bg-status-critical/10 text-status-critical" : change.direction === "fall" ? "bg-status-good/10 text-status-good" : "")} variant="outline" title="Change over 30 days">{change.text}</Badge> : null}
-              {line ? <Badge className="text-[10px]" variant="default">in basket</Badge> : null}
             </div>
           </div>
+          <div className="shrink-0"><QuantityControl id={product.id} label={product.label} /></div>
         </div>
         <dl className="mt-3 space-y-1.5">
           {product.prices.map((price) => <PriceLine key={price.group} price={price} />)}
         </dl>
-        <div className="mt-3 flex justify-end"><QuantityControl id={product.id} label={product.label} /></div>
       </CardContent>
     </Card>
   );
@@ -219,7 +218,7 @@ function PriceLine({ price }: { price: GroupPrice }) {
     <div className="flex items-baseline justify-between gap-3 text-sm">
       <dt className="text-muted-foreground">{groupLabel(price.group)}</dt>
       <dd className="m-0 text-right">
-        <span className="font-medium tabular">{rupeeRange(price.low, price.high)}</span>
+        <span className="font-medium tabular-nums">{rupeeRange(price.low, price.high)}</span>
         <span className="text-muted-foreground"> {unitLabel(price.unit)}</span>
         <span className="block text-[11px] text-muted-foreground">{price.sellers} {price.sellers === 1 ? "seller" : "sellers"} · {relativeDay(price.observed_on)}</span>
       </dd>

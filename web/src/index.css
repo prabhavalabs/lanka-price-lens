@@ -163,10 +163,17 @@
   code, kbd, pre, samp {
     @apply font-mono;
   }
-  .tabular {
-    font-variant-numeric: tabular-nums;
-  }
   ::selection {
     @apply bg-emerald-500/30;
+  }
+}
+
+/* A chart line drawing itself in: the path sets its own length, the keyframe runs the dash offset to zero. */
+@keyframes chart-draw {
+  from {
+    stroke-dashoffset: var(--chart-draw-length);
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }

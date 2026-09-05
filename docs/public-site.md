@@ -33,8 +33,9 @@ taken to zero removes the line.
   in the seller's colour and toggles per group. Share via the device share sheet, WhatsApp, or
   copy link.
 - **Quick basket:** the header's basket opens a dropdown to adjust or remove items on the go,
-  with a button to the full comparison. On a card, "Add" turns into a quantity control once the
-  product is in the basket and the card is marked.
+  with a button to the full comparison. On a card, the "Add" button in the top-right corner turns
+  into a −/count/+ control once the product is in the basket (a short zoom-in on the swap and on
+  each count change) and the card is marked.
 - **Basket (`/basket`):** the shopper's list, kept in the browser, priced at every seller
   through `GET /v1/public/basket?products=`: sellers that carry the whole list first, then by
   total, with what each one is missing; quantities per item; share the result. Sellers whose
@@ -45,7 +46,9 @@ taken to zero removes the line.
 - **History card:** the range (30 days, 90 days, a year) and the seller groups drawn are in the
   URL (`?days=90&groups=supermarket,wholesale`), so a view can be shared; changing them refreshes
   only the card, without scrolling. Hover or tap a day for every seller's exact price on it; tap
-  again to unpin.
+  again to unpin. Lines draw themselves in from left to right when they appear and again when the
+  scale changes (staggered per seller), the grid fades in, markers pop in on hover while the other
+  lines dim, and all of it is skipped for readers whose device asks for reduced motion.
 - **Feedback:** "Feedback" in the header and the footer opens a dialog: feedback or a bug
   report, a message, an optional email, with the page URL and browser attached. It posts to
   `POST /v1/public/feedback` (five per hour per address, a honeypot field for bots). The owner

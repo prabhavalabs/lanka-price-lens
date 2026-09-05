@@ -19,7 +19,7 @@ export function QuickBasket() {
         <Button aria-label={`Basket, ${basket.count} items`} className="gap-1.5" size="sm" variant="ghost">
           <RiShoppingBasket2Line className="size-4" />
           <span className="hidden sm:inline">Basket</span>
-          {basket.count ? <Badge className="h-5 min-w-5 justify-center px-1.5 tabular" variant="default">{basket.count}</Badge> : null}
+          {basket.count ? <Badge className="h-5 min-w-5 justify-center px-1.5 tabular-nums" variant="default">{basket.count}</Badge> : null}
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-80 p-0">

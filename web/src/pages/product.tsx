@@ -78,7 +78,7 @@ export function ProductPage() {
       <header className="flex flex-col gap-4 sm:flex-row sm:items-start">
         <ProductImage id={data.product.id} label={data.product.label} size="xl" className="shadow-sm" />
         <div className="min-w-0 flex-1">
-          <h1 className="font-heading text-3xl font-semibold tracking-tight">{data.product.label}</h1>
+          <h1 className="text-balance font-heading text-3xl font-semibold tracking-tight">{data.product.label}</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {data.product.sellers} {data.product.sellers === 1 ? "seller" : "sellers"}
             {data.bounds.last ? ` · latest ${relativeDay(data.bounds.last)}` : ""}
@@ -136,7 +136,7 @@ export function ProductPage() {
               <li key={series.key} className="inline-flex items-center gap-1.5">
                 <SellerMark marketId={series.market_id} label={series.market_label} type={series.market_type} size="xs" />
                 {seriesName(series.market_label, series.group)}
-                {series.change_pct !== null ? <span className={cn("tabular", series.change_pct > 0 ? "text-status-critical" : series.change_pct < 0 ? "text-status-good" : "")}>{series.change_pct > 0 ? "+" : ""}{series.change_pct}%</span> : null}
+                {series.change_pct !== null ? <span className={cn("tabular-nums", series.change_pct > 0 ? "text-status-critical" : series.change_pct < 0 ? "text-status-good" : "")}>{series.change_pct > 0 ? "+" : ""}{series.change_pct}%</span> : null}
               </li>
             ))}
           </ul>
@@ -156,7 +156,7 @@ function SummaryCard({ title, summary, note }: { title: string; summary: { selle
         <p className="text-[11px] uppercase tracking-wide text-muted-foreground">{title}</p>
         {summary?.lowest ? (
           <>
-            <p className="mt-1 font-heading text-2xl font-semibold tabular">{rupees(summary.lowest.low)} <span className="text-sm font-normal text-muted-foreground">{unitLabel(summary.lowest.unit)}</span></p>
+            <p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{rupees(summary.lowest.low)} <span className="text-sm font-normal text-muted-foreground">{unitLabel(summary.lowest.unit)}</span></p>
             <p className="text-xs text-muted-foreground">cheapest at {sellerName(summary.lowest)}{summary.average !== null ? ` · average ${rupees(summary.average)}` : ""} · {summary.sellers} {summary.sellers === 1 ? "seller" : "sellers"}</p>
             {summary.lowest.stale ? <p className="mt-1 inline-flex items-center gap-1 text-xs text-status-warning"><RiTimeLine className="size-3.5" />last seen {ageLabel(summary.lowest.observed_on)}</p> : null}
             {note ? <p className="mt-1 text-xs text-muted-foreground">{note}</p> : null}
@@ -213,7 +213,7 @@ function SellerTable({ group, rows }: { group: Group; rows: Latest[] }) {
                   {row.varieties.length > 1 ? ` · ${row.varieties.join(", ")}` : ""}
                 </TableCell>
                 <TableCell className="text-right">
-                  <p className={cn("font-medium tabular", row.stale && "line-through decoration-muted-foreground/50")}>{rupeeRange(row.low, row.high)}</p>
+                  <p className={cn("font-medium tabular-nums", row.stale && "line-through decoration-muted-foreground/50")}>{rupeeRange(row.low, row.high)}</p>
                   <p className="text-[11px] text-muted-foreground">{unitLabel(row.unit)}{row.low !== row.high ? ` · avg ${rupees(row.mid)}` : ""}</p>
                 </TableCell>
               </TableRow>

@@ -87,11 +87,11 @@ export function BasketPage() {
                         </div>
                       </TableCell>
                       <TableCell className="hidden sm:table-cell">
-                        <span className="tabular">{store.covered}/{basket.lines.length}</span>
+                        <span className="tabular-nums">{store.covered}/{basket.lines.length}</span>
                         {store.missing.length ? <span className="block max-w-56 truncate text-[11px] text-muted-foreground" title={store.missing.join(", ")}>missing {store.missing.join(", ")}</span> : null}
                       </TableCell>
                       <TableCell className="text-right">
-                        <p className="font-semibold tabular">{rupees(store.total)}</p>
+                        <p className="font-semibold tabular-nums">{rupees(store.total)}</p>
                         {store.covered < basket.lines.length ? <p className="text-[11px] text-muted-foreground">{store.covered} of {basket.lines.length} items</p> : null}
                       </TableCell>
                     </TableRow>

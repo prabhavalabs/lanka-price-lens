@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import type { Point } from "@/lib/api";
 import { rupees, shortDate } from "@/lib/format";
@@ -12,8 +12,9 @@ const margin = { top: 12, right: 12, bottom: 28, left: 56 };
 
 /**
  * A plain SVG line chart in the site's tokens: one line per seller, dates on x, rupees on y.
- * Hover or tap a day to see every seller's exact price on it; tap again to unpin. Light enough for
- * a phone on a slow connection.
+ * Lines draw themselves in when they appear (and again when the range changes), the grid and
+ * labels fade in, and hovering or tapping a day shows every seller's exact price with animated
+ * markers; tap again to unpin. Motion is skipped for readers who asked their device to reduce it.
  */
 export function PriceChart({ series, className }: { series: ChartSeries[]; className?: string | undefined }) {
   const dates = useMemo(() => [...new Set(series.flatMap((entry) => entry.points.map((point) => point.date)))].sort(), [series]);
@@ -21,7 +22,7 @@ export function PriceChart({ series, className }: { series: ChartSeries[]; class
   const [hover, setHover] = useState<number | null>(null);
   const [pinned, setPinned] = useState<number | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
-  if (!dates.length || !values.length) return <p className="py-8 text-center text-sm text-muted-foreground">No history in this range yet.</p>;
+  if (!dates.length || !values.length) return <p className="py-8 text-center text-sm text-muted-foreground animate-in fade-in duration-300">No history in this range yet.</p>;
   const low = Math.min(...values);
   const high = Math.max(...values);
   const pad = (high - low) * 0.1 || high * 0.1 || 1;
@@ -50,6 +51,8 @@ export function PriceChart({ series, className }: { series: ChartSeries[]; class
     return Math.round(ratio * (dates.length - 1));
   };
   const tooltipLeft = active === null ? 0 : (xAt(active) / width) * 100;
+  // The scale is part of the drawing: when it changes (a new range, a group toggled), the grid and lines re-enter together.
+  const scaleKey = `${yMin.toFixed(2)}|${yMax.toFixed(2)}|${dates[0]}|${dates.at(-1)}`;
 
   return (
     <figure className={cn("relative m-0", className)}>
@@ -64,34 +67,39 @@ export function PriceChart({ series, className }: { series: ChartSeries[]; class
         role="img"
         viewBox={`0 0 ${width} ${height}`}
       >
-        {ticks.map((tick) => (
-          <g key={tick}>
-            <line className="text-border" stroke="currentColor" x1={margin.left} x2={width - margin.right} y1={y(tick)} y2={y(tick)} />
-            <text className="text-muted-foreground" fill="currentColor" fontSize="11" textAnchor="end" x={margin.left - 8} y={y(tick) + 4}>{rupees(tick)}</text>
-          </g>
-        ))}
-        {xTicks.map((date) => (
-          <text className="text-muted-foreground" fill="currentColor" fontSize="11" key={date} textAnchor="middle" x={x(date)} y={height - 8}>{shortDate(date)}</text>
-        ))}
-        {series.map((entry) => {
-          const path = entry.points.map((point, index) => `${index ? "L" : "M"}${x(point.date).toFixed(1)} ${y(point.mid).toFixed(1)}`).join(" ");
+        <g className="animate-in fade-in duration-300 ease-out motion-reduce:animate-none" key={scaleKey}>
+          {ticks.map((tick) => (
+            <g key={tick}>
+              <line className="text-border" stroke="currentColor" x1={margin.left} x2={width - margin.right} y1={y(tick)} y2={y(tick)} />
+              <text className="text-muted-foreground" fill="currentColor" fontSize="11" textAnchor="end" x={margin.left - 8} y={y(tick) + 4}>{rupees(tick)}</text>
+            </g>
+          ))}
+          {xTicks.map((date) => (
+            <text className="text-muted-foreground" fill="currentColor" fontSize="11" key={date} textAnchor="middle" x={x(date)} y={height - 8}>{shortDate(date)}</text>
+          ))}
+        </g>
+        {series.map((entry, index) => {
+          const path = entry.points.map((point, pointIndex) => `${pointIndex ? "L" : "M"}${x(point.date).toFixed(1)} ${y(point.mid).toFixed(1)}`).join(" ");
           return (
-            <g className="animate-in fade-in duration-500" key={entry.key}>
-              <path d={path} fill="none" stroke={entry.color} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-              {entry.points.length === 1 ? <circle cx={x(entry.points[0]!.date)} cy={y(entry.points[0]!.mid)} fill={entry.color} r="4" /> : null}
+            <g key={`${entry.key}|${scaleKey}`}>
+              {entry.points.length === 1
+                ? <circle className="animate-in zoom-in-50 fade-in duration-300 ease-out motion-reduce:animate-none" cx={x(entry.points[0]!.date)} cy={y(entry.points[0]!.mid)} fill={entry.color} r="4" style={{ transformBox: "fill-box", transformOrigin: "center" }} />
+                : <DrawnPath color={entry.color} d={path} delay={Math.min(index, 8) * 60} dimmed={activeDate !== null && !readings.some((reading) => reading.entry.key === entry.key)} />}
             </g>
           );
         })}
         {activeDate !== null ? (
-          <g>
+          <g className="animate-in fade-in duration-150 motion-reduce:animate-none">
             <line className="text-muted-foreground/60" stroke="currentColor" strokeDasharray="3 3" x1={x(activeDate)} x2={x(activeDate)} y1={margin.top} y2={height - margin.bottom} />
-            {readings.map(({ entry, point }) => <circle cx={x(point.date)} cy={y(point.mid)} fill={entry.color} key={entry.key} r="4.5" stroke="var(--background)" strokeWidth="2" />)}
+            {readings.map(({ entry, point }) => (
+              <circle className="animate-in zoom-in-50 fade-in duration-150 ease-out motion-reduce:animate-none" cx={x(point.date)} cy={y(point.mid)} fill={entry.color} key={`${entry.key}|${point.date}`} r="4.5" stroke="var(--background)" strokeWidth="2" style={{ transformBox: "fill-box", transformOrigin: "center" }} />
+            ))}
           </g>
         ) : null}
       </svg>
       {activeDate !== null && readings.length ? (
         <div
-          className={cn("pointer-events-none absolute top-2 z-10 w-56 rounded-lg border bg-popover p-2.5 text-xs text-popover-foreground shadow-md animate-in fade-in duration-150", tooltipLeft > 60 ? "-translate-x-full" : "")}
+          className={cn("pointer-events-none absolute top-2 z-10 w-56 rounded-lg border bg-popover p-2.5 text-xs text-popover-foreground shadow-md animate-in fade-in slide-in-from-bottom-1 duration-150 motion-reduce:animate-none", tooltipLeft > 60 ? "-translate-x-full" : "")}
           style={{ left: `${tooltipLeft}%`, marginLeft: tooltipLeft > 60 ? -12 : 12 }}
         >
           <p className="mb-1.5 flex items-center justify-between font-medium">
@@ -103,7 +111,7 @@ export function PriceChart({ series, className }: { series: ChartSeries[]; class
               <li className="flex items-center gap-1.5" key={entry.key}>
                 <span className="inline-block size-2 rounded-full" style={{ background: entry.color }} />
                 <span className="min-w-0 flex-1 truncate">{entry.label}</span>
-                <span className="tabular font-medium">{point.low !== point.high ? `${rupees(point.low)}–${rupees(point.high).replace(/^Rs /u, "")}` : rupees(point.mid)}</span>
+                <span className="tabular-nums font-medium">{point.low !== point.high ? `${rupees(point.low)}–${rupees(point.high).replace(/^Rs /u, "")}` : rupees(point.mid)}</span>
               </li>
             ))}
           </ul>
@@ -111,4 +119,25 @@ export function PriceChart({ series, className }: { series: ChartSeries[]; class
       ) : null}
     </figure>
   );
+}
+
+/** A line that draws itself from left to right when it appears: dash the whole length once measured, then a CSS keyframe runs the offset to zero. */
+function DrawnPath({ d, color, delay, dimmed }: { d: string; color: string; delay: number; dimmed: boolean }) {
+  const ref = useRef<SVGPathElement>(null);
+  const [length, setLength] = useState<number | null>(null);
+  useLayoutEffect(() => {
+    const element = ref.current;
+    if (!element || typeof element.getTotalLength !== "function") return;
+    setLength(element.getTotalLength());
+  }, [d]);
+  const style: CSSProperties & { "--chart-draw-length"?: string } = length === null
+    ? { opacity: 0 }
+    : {
+        strokeDasharray: length,
+        "--chart-draw-length": String(length),
+        animation: `chart-draw 600ms ease-out ${delay}ms both`,
+        opacity: dimmed ? 0.35 : 1,
+        transition: "opacity 150ms ease-out",
+      };
+  return <path className="motion-reduce:animate-none" d={d} fill="none" ref={ref} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" style={style} />;
 }
