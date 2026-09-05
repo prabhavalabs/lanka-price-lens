@@ -891,7 +891,12 @@ export function createProductionApp(): Hono<AppBindings> {
   const email = process.env.ADMIN_EMAIL;
   const passwordHash = process.env.ADMIN_PASSWORD_HASH;
   if (!email || !passwordHash) throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD_HASH are required");
-  seedAdminUser(database, email, passwordHash);
+  // A malformed administrator credential must not take the public API and the data pipeline down with it: log it, keep serving, and let the next deploy correct it.
+  try {
+    seedAdminUser(database, email, passwordHash);
+  } catch (error) {
+    console.error(JSON.stringify({ level: "error", message: "Administrator seed skipped; check ADMIN_EMAIL and ADMIN_PASSWORD_HASH", detail: error instanceof Error ? error.message : String(error) }));
+  }
   const manifestPath = resolve(process.env.LPL_SOURCE_MANIFEST_PATH ?? "../data/manifests/harti_daily_food_prices.json");
   const manifest = sourceManifestSchema.parse(JSON.parse(readFileSync(manifestPath, "utf8")));
   const mappingPath = resolve(process.env.LPL_MAPPING_BUNDLE_PATH ?? "../data/mappings/harti_daily_food_prices.json");
