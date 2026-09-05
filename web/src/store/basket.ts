@@ -2,27 +2,43 @@ import { useSyncExternalStore } from "react";
 
 /**
  * The shopper's basket: one store for the whole site, so the card on the board, the quick
- * basket in the header, the product page, and the basket page all show the same list and
- * change it the same way. Persisted in this browser and kept in step across tabs.
+ * basket in the header, the product page, the basket page, and the recipe pages all show the
+ * same list and change it the same way. Persisted in this browser and kept in step across tabs.
+ *
+ * A line's quantity is a decimal in the unit the product is priced in: 0.5 for half a kilo of
+ * potatoes, 6 for six eggs, 0.75 for 750 ml of oil.
  */
 
-export type BasketLine = { id: string; label: string; quantity: number };
+export type BasketLine = { id: string; label: string; quantity: number; unit: string };
 export type BasketState = { lines: BasketLine[] };
 
-const storageKey = "pricelens.basket.v1";
-const maxQuantity = 99;
+const storageKey = "pricelens.basket.v2";
+const legacyKey = "pricelens.basket.v1";
+const maxQuantity = 999;
+
+/** The smallest sensible step for a unit: a quarter kilo or litre, one piece. */
+export function stepFor(unit: string): number {
+  return unit === "kg" || unit === "l" ? 0.25 : 1;
+}
+
+/** The least a line can hold before it is removed: 50 g, 50 ml, one piece. */
+export function minimumFor(unit: string): number {
+  return unit === "kg" || unit === "l" ? 0.05 : 1;
+}
 
 // Pure transitions, so the behaviour is testable without a browser.
-export function addLine(state: BasketState, id: string, label: string, quantity = 1): BasketState {
+export function addLine(state: BasketState, id: string, label: string, unit: string, quantity = 1): BasketState {
   const existing = state.lines.find((line) => line.id === id);
-  if (!existing) return { lines: [...state.lines, { id, label, quantity: clamp(quantity) }] };
+  if (!existing) return { lines: [...state.lines, { id, label, unit, quantity: clamp(quantity, unit) }] };
   return setQuantity(state, id, existing.quantity + quantity);
 }
 
 export function setQuantity(state: BasketState, id: string, quantity: number): BasketState {
-  // Reaching zero removes the line: an empty quantity is not something to keep.
-  if (quantity <= 0) return removeLine(state, id);
-  return { lines: state.lines.map((line) => (line.id === id ? { ...line, quantity: clamp(quantity) } : line)) };
+  const existing = state.lines.find((line) => line.id === id);
+  if (!existing) return state;
+  // Below the minimum removes the line: an empty quantity is not something to keep.
+  if (!Number.isFinite(quantity) || quantity < minimumFor(existing.unit) - 1e-9) return removeLine(state, id);
+  return { lines: state.lines.map((line) => (line.id === id ? { ...line, quantity: clamp(quantity, line.unit) } : line)) };
 }
 
 export function removeLine(state: BasketState, id: string): BasketState {
@@ -33,23 +49,48 @@ export function clearLines(): BasketState {
   return { lines: [] };
 }
 
+/** Number of distinct products in the basket (the badge in the header). */
 export function countOf(state: BasketState): number {
-  return state.lines.reduce((sum, line) => sum + line.quantity, 0);
+  return state.lines.length;
 }
 
-function clamp(quantity: number): number {
-  return Math.min(maxQuantity, Math.max(1, Math.round(quantity)));
+function clamp(quantity: number, unit: string): number {
+  const rounded = unit === "kg" || unit === "l" ? Math.round(quantity * 1000) / 1000 : Math.round(quantity);
+  return Math.min(maxQuantity, Math.max(minimumFor(unit), rounded));
+}
+
+/** "500 g", "1.5 kg", "750 ml", "2 l", "6 pcs", "3 ×" for units the site does not know. */
+export function formatQuantity(quantity: number, unit: string): string {
+  if (unit === "kg") return quantity < 1 ? `${Math.round(quantity * 1000)} g` : `${trim(quantity)} kg`;
+  if (unit === "l") return quantity < 1 ? `${Math.round(quantity * 1000)} ml` : `${trim(quantity)} l`;
+  if (unit === "piece") return `${trim(quantity)} ${quantity === 1 ? "pc" : "pcs"}`;
+  return `${trim(quantity)} ×`;
+}
+
+function trim(value: number): string {
+  return Number.isInteger(value) ? String(value) : String(Math.round(value * 100) / 100);
+}
+
+function readLines(raw: string | null): BasketLine[] {
+  try {
+    const parsed: unknown = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .filter((line): line is Partial<BasketLine> & { id: string } => typeof line === "object" && line !== null && typeof (line as BasketLine).id === "string")
+      .map((line) => ({ id: line.id, label: typeof line.label === "string" ? line.label : line.id, unit: typeof line.unit === "string" ? line.unit : "unit", quantity: typeof line.quantity === "number" && Number.isFinite(line.quantity) ? line.quantity : 1 }));
+  } catch {
+    return [];
+  }
 }
 
 function read(): BasketState {
   if (typeof window === "undefined") return { lines: [] };
   try {
-    const raw = window.localStorage.getItem(storageKey);
-    const parsed: unknown = raw ? JSON.parse(raw) : [];
-    const lines = Array.isArray(parsed)
-      ? parsed.filter((line): line is BasketLine => typeof line === "object" && line !== null && typeof (line as BasketLine).id === "string" && typeof (line as BasketLine).label === "string" && typeof (line as BasketLine).quantity === "number")
-      : [];
-    return { lines };
+    const current = window.localStorage.getItem(storageKey);
+    if (current !== null) return { lines: readLines(current) };
+    // A list saved before quantities had units carries over once.
+    const legacy = window.localStorage.getItem(legacyKey);
+    return { lines: readLines(legacy) };
   } catch {
     return { lines: [] };
   }
@@ -86,12 +127,15 @@ function subscribe(listener: () => void): () => void {
 export const basketStore = {
   get: () => state,
   subscribe,
-  add: (id: string, label: string, quantity = 1) => commit(addLine(state, id, label, quantity)),
+  add: (id: string, label: string, unit: string, quantity = 1) => commit(addLine(state, id, label, unit, quantity)),
   setQuantity: (id: string, quantity: number) => commit(setQuantity(state, id, quantity)),
-  increment: (id: string, label: string) => commit(addLine(state, id, label, 1)),
+  increment: (id: string) => {
+    const line = state.lines.find((entry) => entry.id === id);
+    if (line) commit(setQuantity(state, id, line.quantity + stepFor(line.unit)));
+  },
   decrement: (id: string) => {
     const line = state.lines.find((entry) => entry.id === id);
-    if (line) commit(setQuantity(state, id, line.quantity - 1));
+    if (line) commit(setQuantity(state, id, line.quantity - stepFor(line.unit)));
   },
   remove: (id: string) => commit(removeLine(state, id)),
   clear: () => commit(clearLines()),

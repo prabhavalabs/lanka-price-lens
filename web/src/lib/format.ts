@@ -83,3 +83,21 @@ export function shortDate(date: string): string {
   const [year, month, day] = date.split("-").map(Number);
   return new Date(Date.UTC(year!, month! - 1, day!)).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
 }
+
+const dishCategoryLabels: Record<string, string> = { rice_and_grains: "Rice and grains", vegetable: "Vegetables", pulses_and_eggs: "Pulses and eggs", sambol_and_condiment: "Sambols and condiments", fish_and_seafood: "Fish and seafood", meat_and_poultry: "Meat and poultry", snack: "Snacks", sweet: "Sweets", drink: "Drinks" };
+
+export function dishCategoryLabel(category: string): string {
+  return dishCategoryLabels[category] ?? categoryLabel(category);
+}
+
+/** "45 min" or "1 h 15 min" for prep plus cooking time. */
+export function minutesLabel(minutes: number): string {
+  if (minutes < 60) return `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const rest = minutes % 60;
+  return rest ? `${hours} h ${rest} min` : `${hours} h`;
+}
+
+export function titleCase(value: string): string {
+  return value.split("_").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+}

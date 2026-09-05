@@ -92,3 +92,18 @@ Decisions recorded from the audit, to revisit as the corpus grows:
 - Hot butter cuttlefish, devilled squid, and fried rice are restaurant dishes that
   have moved into home kitchens and are kept; papadam stays with the condiments;
   popularity means island-wide frequency, so a northern staple can sit at 2.
+
+## On the public site
+
+The catalogue is public through `GET /v1/public/recipes` (browse), `GET /v1/public/recipes/:id`
+(one dish with today's cheapest price per key ingredient), and
+`GET /v1/public/recipes/recommend?products=…` (dishes ranked by fit to a shopper's basket). The
+recommendation (`recommendDishes` in `api/src/recipes.ts`) scores a dish by the share of its key
+ingredients the basket covers (weight 0.4), the share of the basket it uses (0.3), how many
+basket items it brings together (up to three, weight 0.3, so a curry using four items beats a
+drink whose one ingredient is in the basket), a small nudge for everyday dishes (0.08, 0.04), and
+a cost of 0.03 per ingredient still to buy (capped at 0.15);
+a dish appears with one shared ingredient, full matches first, ties broken by fewer missing
+ingredients, then popularity, then name. The site's basket page shows the top nine; a dish page
+splits ingredients into "from your basket" and "still to buy" with an add-to-basket control in
+real amounts, and lists `other_ingredients` as pantry items.

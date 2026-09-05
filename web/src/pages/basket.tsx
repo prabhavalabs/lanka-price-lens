@@ -13,8 +13,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { fetchBasket, type BasketProduct, type Group } from "@/lib/api";
-import { basketStore, useBasket } from "@/store/basket";
+import { fetchBasket, fetchRecommendations, type BasketProduct, type Group } from "@/lib/api";
+import { basketStore, formatQuantity, useBasket } from "@/store/basket";
+import { RecipeCard } from "@/components/recipe-card";
 import { groupLabel, relativeDay, rupees, unitLabel } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +29,7 @@ export function BasketPage() {
   const basket = useBasket();
   const ids = basket.lines.map((line) => line.id);
   const priced = useQuery({ queryKey: ["basket", ids.join(",")], queryFn: () => fetchBasket(ids), enabled: ids.length > 0 });
+  const recipes = useQuery({ queryKey: ["recommend", ids.join(",")], queryFn: () => fetchRecommendations(ids, 9), enabled: ids.length > 0 });
   const products = useMemo(() => new Map((priced.data ?? []).map((product) => [product.id, product])), [priced.data]);
   const totals = useMemo(() => totalsFor(basket.lines, products), [basket.lines, products]);
   const best = totals.find((store) => store.covered === basket.lines.length) ?? totals[0];
@@ -51,7 +53,7 @@ export function BasketPage() {
       <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="font-heading text-3xl font-semibold tracking-tight">Your basket</h1>
-          <p className="mt-1 text-sm text-muted-foreground">{basket.lines.length} {basket.lines.length === 1 ? "item" : "items"} · priced at every seller with today's observations. Quantities are in the unit each price is quoted in.</p>
+          <p className="mt-1 text-sm text-muted-foreground">{basket.lines.length} {basket.lines.length === 1 ? "item" : "items"} · priced at every seller with today's observations, in the amounts you set.</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <ShareButtons title="My basket on PriceLens" text={shareText} />
@@ -114,9 +116,9 @@ export function BasketPage() {
                     <ProductImage id={line.id} label={line.label} size="sm" />
                     <div className="min-w-0 flex-1">
                       <Link to={`/p/${line.id}`} className="block truncate text-sm font-medium no-underline hover:text-primary">{product?.label ?? line.label}</Link>
-                      <p className="text-[11px] text-muted-foreground">{product ? `${product.sellers.length} sellers${unit ? ` · ${unitLabel(unit)}` : ""}` : priced.isPending ? "pricing…" : "no published price yet"}</p>
+                      <p className="text-[11px] text-muted-foreground">{formatQuantity(line.quantity, line.unit)}{product ? ` · ${product.sellers.length} sellers${unit ? ` · priced ${unitLabel(unit)}` : ""}` : priced.isPending ? " · pricing…" : " · no published price yet"}</p>
                     </div>
-                    <QuantityControl id={line.id} label={product?.label ?? line.label} />
+                    <QuantityControl id={line.id} label={product?.label ?? line.label} unit={line.unit} />
                   </li>
                 );
               })}
@@ -125,6 +127,24 @@ export function BasketPage() {
           </CardContent>
         </Card>
       </div>
+      <section className="space-y-3">
+        <div className="flex items-end justify-between gap-2">
+          <div>
+            <h2 className="font-heading text-lg font-semibold">Cook with your basket</h2>
+            <p className="text-xs text-muted-foreground">Dishes that use what you have, best fit first; each says what is still to buy.</p>
+          </div>
+          <Link to="/recipes" className="text-xs text-muted-foreground hover:text-primary">All recipes</Link>
+        </div>
+        {recipes.isPending ? <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"><Skeleton className="h-40 rounded-xl" /><Skeleton className="h-40 rounded-xl" /><Skeleton className="h-40 rounded-xl" /></div> : null}
+        {recipes.isError ? <p className="text-sm text-muted-foreground">Recipes are not available right now.</p> : null}
+        {recipes.data ? (
+          recipes.data.recommendations.length ? (
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {recipes.data.recommendations.map((entry) => <RecipeCard key={entry.dish.id} dish={entry.dish} labels={recipes.data.labels} matched={entry.matched} missing={entry.missing} />)}
+            </div>
+          ) : <p className="text-sm text-muted-foreground">No dish in the catalogue uses these items yet. Add a staple such as rice, dhal, onions, or coconut and suggestions appear.</p>
+        ) : null}
+      </section>
       <p className="text-xs text-muted-foreground">A seller's total uses its average price for each item; supermarket items pool the store's product labels. Sellers are shown when they carry at least one item on the list with a price from the last {staleAfterDays} days.</p>
     </div>
   );
@@ -133,14 +153,14 @@ export function BasketPage() {
 /** Sellers whose newest price is older than this many days are not totalled: a December price says nothing about today's shop. */
 const staleAfterDays = 30;
 
-function totalsFor(lines: Array<{ id: string; label: string; quantity: number }>, products: Map<string, BasketProduct>): StoreTotal[] {
+function totalsFor(lines: Array<{ id: string; label: string; quantity: number; unit: string }>, products: Map<string, BasketProduct>): StoreTotal[] {
   const stores = new Map<string, StoreTotal>();
   const newest = [...products.values()].flatMap((product) => product.sellers.map((seller) => seller.observed_on)).sort().at(-1);
   const cutoff = newest ? new Date(Date.parse(newest) - staleAfterDays * 86_400_000).toISOString().slice(0, 10) : "";
   const fresh = (observedOn: string) => observedOn >= cutoff;
   for (const line of lines) {
     const product = products.get(line.id);
-    for (const seller of (product?.sellers ?? []).filter((candidate) => fresh(candidate.observed_on))) {
+    for (const seller of (product?.sellers ?? []).filter((candidate) => fresh(candidate.observed_on) && (line.unit === "unit" || candidate.unit === line.unit))) {
       const key = `${seller.market_id}|${seller.group}`;
       const store = stores.get(key) ?? { market_id: seller.market_id, market_label: seller.market_label, group: seller.group, total: 0, covered: 0, missing: [], observed_on: seller.observed_on };
       store.total += seller.mid * line.quantity;
@@ -150,7 +170,7 @@ function totalsFor(lines: Array<{ id: string; label: string; quantity: number }>
     }
   }
   for (const store of stores.values()) {
-    store.missing = lines.filter((line) => !(products.get(line.id)?.sellers ?? []).some((seller) => fresh(seller.observed_on) && `${seller.market_id}|${seller.group}` === `${store.market_id}|${store.group}`)).map((line) => products.get(line.id)?.label ?? line.label);
+    store.missing = lines.filter((line) => !(products.get(line.id)?.sellers ?? []).some((seller) => fresh(seller.observed_on) && (line.unit === "unit" || seller.unit === line.unit) && `${seller.market_id}|${seller.group}` === `${store.market_id}|${store.group}`)).map((line) => products.get(line.id)?.label ?? line.label);
     store.total = Math.round(store.total * 100) / 100;
   }
   return [...stores.values()].sort((left, right) => right.covered - left.covered || left.total - right.total);

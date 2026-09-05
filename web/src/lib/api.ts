@@ -61,3 +61,53 @@ export async function postFeedback(input: { kind: FeedbackKind; message: string;
   const body = (await response.json().catch(() => null)) as Envelope<unknown> | null;
   if (!response.ok || !body || body.success === false) throw new Error(body?.message ?? `Could not send (${response.status})`);
 }
+
+export type DishNames = { en: string; si: string | null; si_latn: string | null; ta: string | null; ta_latn: string | null };
+
+export type Dish = {
+  id: string;
+  names: DishNames;
+  category: string;
+  roles: string[];
+  meal_slots: string[];
+  region: string;
+  popularity: 1 | 2 | 3;
+  prep_minutes: number;
+  cook_minutes: number;
+  difficulty: "easy" | "moderate" | "involved";
+  diet: string[];
+  protein_source: string[];
+  spice: "none" | "mild" | "medium" | "hot";
+  key_ingredients: string[];
+  other_ingredients: string[];
+  summary: string;
+  occasions: string[];
+  variants: string[];
+  pairs_with: string[];
+  coverage: { priced: number; total: number } | null;
+};
+
+export type IngredientPrice = { product_id: string; label: string; sellers: number; cheapest: number; unit: string };
+
+export type DishDetail = Dish & { ingredients: Array<{ product_id: string; label: string | null; price: IngredientPrice | null }>; pairs: Array<{ id: string; label: string }> };
+
+export type Recommendation = { dish: Dish; matched: string[]; missing: string[]; coverage: number; usage: number; score: number };
+
+export type Recommendations = { recommendations: Recommendation[]; labels: Record<string, string>; prices: Record<string, IngredientPrice> };
+
+export const fetchRecommendations = (ids: string[], limit = 12): Promise<Recommendations> =>
+  ids.length ? get<Recommendations>(`/v1/public/recipes/recommend?products=${encodeURIComponent(ids.join(","))}&limit=${limit}`) : Promise.resolve({ recommendations: [], labels: {}, prices: {} });
+
+export const fetchRecipe = (id: string): Promise<DishDetail> => get<DishDetail>(`/v1/public/recipes/${encodeURIComponent(id)}`);
+
+export type DishList = { items: Dish[]; page: number; pageSize: number; total: number; pages: number };
+
+export const fetchRecipes = (params: { q?: string | undefined; category?: string | undefined; meal?: string | undefined; page?: number | undefined }): Promise<DishList> => {
+  const search = new URLSearchParams();
+  if (params.q) search.set("q", params.q);
+  if (params.category) search.set("category", params.category);
+  if (params.meal) search.set("meal", params.meal);
+  if (params.page) search.set("page", String(params.page));
+  search.set("pageSize", "24");
+  return get<DishList>(`/v1/public/recipes?${search}`);
+};
