@@ -94,12 +94,34 @@ Product photos (`data/images/products/<slug>.jpg`, one per product) and store lo
 (`data/images/sellers/`) are shared by the admin and the site; the API serves them at
 `/images/…` with a day of browser cache and a week at the edge. The image copies `data/images`.
 
+## The guide
+
+`/guide` is a how-to-use page for visitors: nine sections, each with steps and screenshots of
+the live site, and an "on this page" list that follows the reader. The text lives in
+`web/src/content/guide.ts`, the page in `web/src/pages/guide.tsx`, and the screenshots in
+`web/public/guide/`. The same guide is in the repository as [user-guide.md](user-guide.md).
+
+To refresh the screenshots after a visible change, run `web/scripts/guide-screenshots.js` from
+the repository root with playwright-cli (it seeds a basket and shoots the public site at 1280
+wide, in dark, and on a phone), then compress them:
+
+```bash
+playwright-cli open
+playwright-cli run-code --filename=web/scripts/guide-screenshots.js
+playwright-cli close
+pngquant --quality=65-85 --speed 1 --force --ext .png web/public/guide/*.png
+```
+
+`web/test/guide.test.ts` checks that every screenshot the guide refers to exists at the size
+declared in the content file, so a re-shoot that changes a size fails the build until the
+content is updated.
+
 ## Search engines and previews
 
 `web/scripts/prerender.mjs` runs after `vite build` and writes one page per product
 (`dist/p/<id>/index.html`) with its title, description, canonical URL, and Open Graph tags
 (the product photo as the image), plus `sitemap.xml` and `robots.txt`. The API serves the
-prerendered page for `/p/<id>` and the app shell for everything else, so a crawler or a chat
+prerendered page for `/p/<id>`, `/r/<id>`, `/recipes`, and `/guide`, and the app shell for everything else, so a crawler or a chat
 preview sees the product before the app loads.
 
 ## Public API

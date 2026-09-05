@@ -34,7 +34,7 @@ export function FeedbackDialog({ trigger }: { trigger?: ReactNode }) {
   return (
     <Dialog onOpenChange={(next) => { setOpen(next); if (!next) reset(); }} open={open}>
       <DialogTrigger asChild>
-        {trigger ?? <Button className="gap-1.5" size="sm" variant="ghost"><RiFeedbackLine className="size-4" /><span className="hidden sm:inline">Feedback</span></Button>}
+        {trigger ?? <Button className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost"><RiFeedbackLine className="size-4" /><span className="hidden sm:inline">Feedback</span></Button>}
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         {send.isSuccess ? (
