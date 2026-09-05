@@ -80,7 +80,7 @@ export function SearchBox({ className, autoFocus = false }: { className?: string
                           {product.label_ta ? ` · ${product.label_ta}` : ""}
                         </span>
                       </span>
-                      {headline ? <span className="shrink-0 text-right text-xs tabular"><span className="block font-medium">{rupeeRange(headline.low, headline.high)}</span><span className="block text-[10px] text-muted-foreground">{unitLabel(headline.unit)}</span></span> : null}
+                      {headline ? <span className="shrink-0 text-right text-xs tabular-nums"><span className="block font-medium">{rupeeRange(headline.low, headline.high)}</span><span className="block text-[10px] text-muted-foreground">{unitLabel(headline.unit)}</span></span> : null}
                     </CommandItem>
                   );
                 })}
