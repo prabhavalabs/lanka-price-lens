@@ -44,16 +44,32 @@ export function categoryLabel(category: string): string {
   return category === "vegetable" || category === "fruit" || category === "pulse" ? `${label}s` : label;
 }
 
-/** "today", "yesterday", "3 days ago", or the date once it is more than a week old. */
-export function relativeDay(date: string, today: Date = new Date()): string {
+/** Whole days between an observation day and today. */
+export function daysAgo(date: string, today: Date = new Date()): number {
   const [year, month, day] = date.split("-").map(Number);
   const then = Date.UTC(year!, month! - 1, day!);
   const now = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
-  const days = Math.round((now - then) / 86_400_000);
+  return Math.max(0, Math.round((now - then) / 86_400_000));
+}
+
+/** "today", "yesterday", "3 days ago", or the date once it is more than a week old. */
+export function relativeDay(date: string, today: Date = new Date()): string {
+  const days = daysAgo(date, today);
   if (days <= 0) return "today";
   if (days === 1) return "yesterday";
   if (days < 7) return `${days} days ago`;
-  return new Date(then).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+  return shortDate(date);
+}
+
+/** How long ago in words, for a price that has not moved in a while: "35 days ago", "3 months ago", "1 year ago". */
+export function ageLabel(date: string, today: Date = new Date()): string {
+  const days = daysAgo(date, today);
+  if (days <= 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 60) return `${days} days ago`;
+  if (days < 365) return `${Math.round(days / 30)} months ago`;
+  const years = Math.floor(days / 365);
+  return years === 1 ? "1 year ago" : `${years} years ago`;
 }
 
 /** "▲ 12%" for a rise, "▼ 4%" for a fall, "steady" within a percent. */

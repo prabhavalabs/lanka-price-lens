@@ -33,6 +33,7 @@ import {
   type AnyRetailAdapter,
 } from "@lanka-pricelens/foundry/retail";
 import { runWithRetry } from "@lanka-pricelens/foundry/retry";
+import { listFeedback, parseFeedback, RateLimiter, submitFeedback, updateFeedbackStatus } from "./feedback.ts";
 import { publicBasket, publicOverview } from "./public.ts";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 import {
@@ -141,6 +142,8 @@ export function createApp(
   // The public read API behind the consumer site: no sign-in, only sources whose rights allow publication,
   // cacheable at the edge, and readable by other origins (it carries nothing personal).
   const published = () => catalog.entries.filter((entry) => canPublishSource(entry.manifest)).map((entry) => entry.manifest);
+  /** Each source's expected cadence, which decides how old a price may be before the explorer marks it stale. */
+  const sourceCadence = () => Object.fromEntries(catalog.entries.map((entry) => [entry.manifest.id, entry.manifest.expected_cadence]));
   app.use("/v1/public/*", async (context, next) => {
     await next();
     context.header("Access-Control-Allow-Origin", "*");
@@ -158,6 +161,23 @@ export function createApp(
     if (query.length < 2) return context.json(envelope(context.get("requestId"), []));
     return context.json(envelope(context.get("requestId"), await searchProducts(client, query, 12)));
   });
+  // Feedback and bug reports: anyone may send one, five an hour per address, and a filled honeypot is accepted and dropped.
+  const feedbackBudget = new RateLimiter(5, 3_600_000);
+  app.post("/v1/public/feedback", bodyLimit({ maxSize: 16 * 1024 }), async (context) => {
+    let body: unknown;
+    try {
+      body = await context.req.json();
+    } catch {
+      return context.json(envelope(context.get("requestId"), null, false, "Body must be JSON"), 400);
+    }
+    const parsed = parseFeedback(body, context.req.header("user-agent") ?? null);
+    if (!parsed.ok) return context.json(envelope(context.get("requestId"), null, false, parsed.error), 400);
+    const address = context.req.header("x-forwarded-for")?.split(",")[0]?.trim() || context.req.header("x-real-ip") || "unknown";
+    if (!feedbackBudget.allow(address)) return context.json(envelope(context.get("requestId"), null, false, "Too many messages from this connection; please try again in an hour"), 429);
+    if (parsed.honeypot) return context.json(envelope(context.get("requestId"), { received: true }, true, "Thank you"), 201);
+    const item = submitFeedback(database, parsed.input);
+    return context.json(envelope(context.get("requestId"), { received: true, id: item.id }, true, "Thank you"), 201);
+  });
   app.get("/v1/public/basket", async (context) => {
     const client = await warehouse();
     if (!client) return context.json(envelope(context.get("requestId"), null, false, "Prices are not available right now"), 503);
@@ -173,7 +193,7 @@ export function createApp(
     const varietiesParam = context.req.query("varieties");
     const varieties = varietiesParam === "all" ? ("all" as const) : varietiesParam ? varietiesParam.split(",").map((id) => id.trim()).filter(Boolean).slice(0, 20) : undefined;
     const sources = published().map((manifest) => manifest.id);
-    const detail = await productDetail(client, context.req.param("id").slice(0, 100), range, { varieties, sources });
+    const detail = await productDetail(client, context.req.param("id").slice(0, 100), range, { varieties, sources, cadence: sourceCadence() });
     if (!detail) return context.json(envelope(context.get("requestId"), null, false, "Product not found"), 404);
     return context.json(envelope(context.get("requestId"), detail));
   });
@@ -576,6 +596,20 @@ export function createApp(
     const client = await warehouse();
     return client ? pricedProducts(client).catch(() => null) : null;
   };
+  // Feedback from the public site, worked through by the owner.
+  app.get("/v1/admin/feedback", (context) => {
+    const page = Number(context.req.query("page") ?? "1");
+    const pageSize = Number(context.req.query("pageSize") ?? "25");
+    return context.json(envelope(context.get("requestId"), listFeedback(database, { status: context.req.query("status"), page: Number.isFinite(page) ? page : 1, pageSize: Number.isFinite(pageSize) ? pageSize : 25 })));
+  });
+  app.patch("/v1/admin/feedback/:id", bodyLimit({ maxSize: 4 * 1024 }), async (context) => {
+    const body = await jsonObject(context);
+    const status = typeof body?.status === "string" ? body.status : "";
+    if (!["new", "seen", "done"].includes(status)) return context.json(envelope(context.get("requestId"), null, false, "status must be new, seen, or done"), 400);
+    const item = updateFeedbackStatus(database, context.req.param("id"), status);
+    if (!item) return context.json(envelope(context.get("requestId"), null, false, "Feedback not found"), 404);
+    return context.json(envelope(context.get("requestId"), item, true, "Updated"));
+  });
   app.get("/v1/admin/recipes/overview", async (context) => {
     if (!options.recipes) return noRecipes(context);
     return context.json(envelope(context.get("requestId"), recipeOverview(options.recipes, await pricedNow())));

@@ -6,6 +6,7 @@ import { createSourceCatalog } from "@lanka-pricelens/foundry/manifest";
 import { sourceManifestSchema } from "@lanka-pricelens/shared";
 
 import { createApp } from "../src/app.ts";
+import { productDetail } from "../src/explorer.ts";
 import { publicOverview, publicSources } from "../src/public.ts";
 import { seed, warehouseFor } from "./helpers/warehouse.ts";
 
@@ -102,6 +103,34 @@ test("the basket route prices a shopper's list at every published seller", async
     const basket = ((await response.json()) as { payload: Array<{ id: string; sellers: Array<{ market_label: string; group: string; mid: number }> }> }).payload;
     assert.deepEqual(basket.map((product) => product.id), ["product_big_onion"], "unknown, unpriced, and malformed ids are dropped");
     assert.deepEqual(basket[0]!.sellers.map((seller) => [seller.market_label, seller.group, seller.mid]).sort(), [["Dambulla", "wholesale", 265], ["Keells Online", "supermarket", 380], ["Pettah", "wholesale", 268]], "Cargills stays unpublished; Keells' two labels average");
+  } finally {
+    await client.close();
+    database.close();
+  }
+});
+
+test("prices older than the source's cadence allows are marked stale and never the cheapest", async () => {
+  const database = openOperationalDatabase(":memory:");
+  seed(database);
+  const client = await warehouseFor(database);
+  try {
+    // Seen from a month later: every price is stale, so each group's summary falls back to what it has.
+    const later = await productDetail(client, "product_big_onion", { kind: "preset", days: 30 }, { cadence: { harti: "daily", keells: "daily" } }, new Date("2026-10-05T00:00:00Z"));
+    assert.ok(later);
+    assert.ok(later.latest.every((row) => row.stale && row.age_days >= 31));
+    // Seen five days after the bulletin, with the Keells shelf price a day old: the daily sources are fresh.
+    const soon = await productDetail(client, "product_big_onion", { kind: "preset", days: 30 }, { cadence: { harti: "daily", keells: "daily" } }, new Date("2026-09-08T00:00:00Z"));
+    assert.ok(soon);
+    assert.deepEqual(soon.latest.map((row) => [row.market_label, row.age_days, row.stale]).sort(), [["Cargills Online", 4, false], ["Dambulla", 5, false], ["Keells Online", 4, false], ["Pettah", 5, false]]);
+    // A weekly source is allowed three weeks; a daily one a week.
+    const mixed = await productDetail(client, "product_big_onion", { kind: "preset", days: 30 }, { cadence: { harti: "weekly", keells: "daily" } }, new Date("2026-09-15T00:00:00Z"));
+    assert.ok(mixed);
+    const byMarket = new Map(mixed.latest.map((row) => [row.market_label, row.stale]));
+    assert.deepEqual([byMarket.get("Dambulla"), byMarket.get("Keells Online")], [false, true]);
+    const supermarket = mixed.summary.find((entry) => entry.group === "supermarket")!;
+    assert.equal(supermarket.lowest?.market_label, "Keells Online", "with nothing fresh, the summary still names what it has");
+    const wholesale = mixed.summary.find((entry) => entry.group === "wholesale")!;
+    assert.equal(wholesale.lowest?.stale, false);
   } finally {
     await client.close();
     database.close();

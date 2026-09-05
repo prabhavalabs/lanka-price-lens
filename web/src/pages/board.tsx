@@ -1,15 +1,16 @@
-import { RiAddLine, RiArrowDownLine, RiArrowUpLine, RiCheckLine } from "@remixicon/react";
+import { RiArrowDownLine, RiArrowUpLine } from "@remixicon/react";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
 import { ProductImage } from "@/components/product-image";
+import { QuantityControl } from "@/components/quantity";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchOverview, type GroupPrice, type ProductCard } from "@/lib/api";
-import { useBasket } from "@/lib/basket";
+import { useBasketLine } from "@/store/basket";
 import { categoryLabel, changeLabel, groupLabel, relativeDay, rupeeRange, rupees, unitLabel } from "@/lib/format";
 import { fuzzySearch } from "@/lib/fuzzy";
 import { cn } from "@/lib/utils";
@@ -184,12 +185,11 @@ function ProductGrid({ products }: { products: ProductCard[] }) {
 }
 
 function ProductTile({ product }: { product: ProductCard }) {
-  const basket = useBasket();
+  const line = useBasketLine(product.id);
   const headline = headlineOf(product);
   const change = changeLabel(headline?.change_30d_pct ?? null);
-  const inBasket = basket.has(product.id);
   return (
-    <Card className="group relative overflow-hidden transition-colors hover:border-primary/50">
+    <Card className={cn("group relative overflow-hidden transition-all hover:border-primary/50", line && "border-primary/60 ring-2 ring-primary/30")}>
       <CardContent className="p-4">
         <div className="flex items-start gap-3">
           <Link to={`/p/${product.id}`} className="shrink-0"><ProductImage id={product.id} label={product.label} size="lg" /></Link>
@@ -201,15 +201,14 @@ function ProductTile({ product }: { product: ProductCard }) {
             <div className="mt-1 flex flex-wrap items-center gap-1.5">
               <Badge variant="secondary" className="text-[10px]">{categoryLabel(product.category)}</Badge>
               {change ? <Badge className={cn("text-[10px]", change.direction === "rise" ? "bg-status-critical/10 text-status-critical" : change.direction === "fall" ? "bg-status-good/10 text-status-good" : "")} variant="outline" title="Change over 30 days">{change.text}</Badge> : null}
+              {line ? <Badge className="text-[10px]" variant="default">in basket</Badge> : null}
             </div>
           </div>
-          <Button aria-label={inBasket ? "In your basket" : "Add to basket"} className="shrink-0" onClick={() => basket.add(product.id, product.label)} size="icon-sm" variant={inBasket ? "secondary" : "ghost"}>
-            {inBasket ? <RiCheckLine className="size-4 text-primary" /> : <RiAddLine className="size-4" />}
-          </Button>
         </div>
         <dl className="mt-3 space-y-1.5">
           {product.prices.map((price) => <PriceLine key={price.group} price={price} />)}
         </dl>
+        <div className="mt-3 flex justify-end"><QuantityControl id={product.id} label={product.label} /></div>
       </CardContent>
     </Card>
   );
