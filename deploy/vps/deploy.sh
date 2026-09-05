@@ -11,8 +11,8 @@ volume=lanka-price-lens-operations
 # Set when this script re-executes itself from the commit being deployed (see below).
 docker_config=${LPL_DEPLOY_DOCKER_CONFIG:-}
 
-if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ || ( -n $mode && $mode != --verify-only && $mode != --configure-r2 && $mode != --configure-admin ) ]]; then
-  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME] [--verify-only|--configure-r2|--configure-admin]" >&2
+if [[ $EUID -ne 0 || ! $sha =~ ^[0-9a-f]{40}$ || ( -n $mode && $mode != --verify-only && $mode != --configure-r2 ) ]]; then
+  echo "Usage: sudo lanka-price-lens-deploy COMMIT_SHA [GHCR_USERNAME] [--verify-only|--configure-r2]" >&2
   exit 2
 fi
 
@@ -35,37 +35,6 @@ update_env() {
   chmod 600 "$temporary"
   mv "$temporary" "$config/app.env"
 }
-
-if [[ $mode == --configure-admin ]]; then
-  # The owner's sign-in: email and scrypt hash arrive on stdin from repository secrets; the API reseeds the user on start.
-  IFS= read -r admin_email
-  IFS= read -r admin_password_hash
-  if [[ -z $admin_email && -z $admin_password_hash ]]; then
-    echo "No admin sign-in secrets configured; keeping the existing ADMIN_EMAIL and ADMIN_PASSWORD_HASH"
-    exit
-  fi
-  # Patterns live in variables: an unquoted `\$` inside [[ =~ ]] reaches the regex as an end anchor, not a literal dollar.
-  email_pattern='^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$'
-  hash_pattern='^scrypt\$[a-f0-9]{32}\$[a-f0-9]{128}$'
-  if [[ ! $admin_email =~ $email_pattern || ! $admin_password_hash =~ $hash_pattern ]]; then
-    echo "ADMIN_EMAIL must be an email address and ADMIN_PASSWORD_HASH a scrypt hash from 'foundry hash-password'" >&2
-    exit 2
-  fi
-  # Keep the working environment so a credential the API rejects can be undone instead of leaving the service down.
-  previous_env=$(mktemp "$config/app.env.previous.XXXXXX")
-  cp "$config/app.env" "$previous_env"
-  update_env ADMIN_EMAIL "$admin_email"
-  # Compose interpolates `$name` inside its env files, so every dollar in the hash must be written as `$$` to survive intact.
-  update_env ADMIN_PASSWORD_HASH "${admin_password_hash//\$/\$\$}"
-  if ! docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" up -d --no-build --force-recreate --wait --wait-timeout 90 api; then
-    echo "The API did not come up with the new administrator credentials; restoring the previous environment" >&2
-    mv "$previous_env" "$config/app.env"
-    docker compose --env-file "$config/app.env" --env-file "$config/release.env" -f "$repo/compose.yaml" up -d --no-build --force-recreate --wait --wait-timeout 90 api
-    exit 1
-  fi
-  rm -f "$previous_env"
-  exit
-fi
 
 if [[ $mode == --configure-r2 ]]; then
   IFS= read -r cloudflare_account_id
