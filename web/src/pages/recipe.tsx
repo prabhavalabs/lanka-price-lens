@@ -11,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { fetchRecipe } from "@/lib/api";
 import { dishCategoryLabel, minutesLabel, rupees, titleCase, unitLabel } from "@/lib/format";
 import { useBasket } from "@/store/basket";
+import { usePageTitle } from "@/lib/page-title";
 
 /**
  * One dish: what it is, what it needs, and what is still to buy. Ingredients the shopper already has
@@ -21,6 +22,7 @@ export function RecipePage() {
   const { id = "" } = useParams();
   const basket = useBasket();
   const recipe = useQuery({ queryKey: ["recipe", id], queryFn: () => fetchRecipe(id), enabled: Boolean(id) });
+  usePageTitle(recipe.data ? `${recipe.data.names.en} recipe: ingredients and today's cost · PriceLens` : undefined);
   if (recipe.isError) return <p className="py-16 text-center text-destructive">{recipe.error.message}</p>;
   if (recipe.isPending) return <div className="space-y-4"><Skeleton className="h-28 rounded-xl" /><Skeleton className="h-64 rounded-xl" /></div>;
   const dish = recipe.data;

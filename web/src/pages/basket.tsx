@@ -18,6 +18,7 @@ import { basketStore, formatQuantity, useBasket } from "@/store/basket";
 import { RecipeCard } from "@/components/recipe-card";
 import { groupLabel, relativeDay, rupees, unitLabel } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { usePageTitle } from "@/lib/page-title";
 
 type StoreTotal = { market_id: string; market_label: string; group: Group; total: number; covered: number; missing: string[]; observed_on: string };
 
@@ -26,6 +27,7 @@ type StoreTotal = { market_id: string; market_label: string; group: Group; total
  * whole basket, how much of the list each one carries, and what it would cost there today.
  */
 export function BasketPage() {
+  usePageTitle("Your basket priced at every store · PriceLens");
   const basket = useBasket();
   const ids = basket.lines.map((line) => line.id);
   const priced = useQuery({ queryKey: ["basket", ids.join(",")], queryFn: () => fetchBasket(ids), enabled: ids.length > 0 });

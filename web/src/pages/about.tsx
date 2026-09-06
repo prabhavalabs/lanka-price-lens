@@ -3,8 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import { SellerMark } from "@/components/seller-mark";
 import { Card, CardContent } from "@/components/ui/card";
 import { fetchOverview } from "@/lib/api";
+import { usePageTitle } from "@/lib/page-title";
 
 export function AboutPage() {
+  usePageTitle("About PriceLens · sources and method");
   const overview = useQuery({ queryKey: ["overview"], queryFn: fetchOverview });
   return (
     <article className="mx-auto max-w-3xl space-y-6">

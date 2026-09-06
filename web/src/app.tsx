@@ -21,8 +21,25 @@ function useAnalytics(): void {
   const id = config.data?.analytics.ga_measurement_id ?? null;
   useEffect(() => {
     if (!id) return;
-    void startAnalytics(id).then((active) => { if (active) trackPageView(`${location.pathname}${location.search}`, document.title); });
-    // Only re-run when the id or the route changes; the title is read at send time.
+    const path = `${location.pathname}${location.search}`;
+    let sent = false;
+    let stop: (() => void) | undefined;
+    const send = () => {
+      if (sent) return;
+      sent = true;
+      stop?.();
+      trackPageView(path, document.title);
+    };
+    void startAnalytics(id).then((active) => {
+      if (!active || sent) return;
+      // Pages set their title after they render (a product or a dish, after it loads). Report the view when
+      // the title changes, or after a moment if it does not; leaving the route early reports it at once.
+      const observer = new MutationObserver(send);
+      observer.observe(document.head, { childList: true, characterData: true, subtree: true });
+      const timer = window.setTimeout(send, 1500);
+      stop = () => { observer.disconnect(); window.clearTimeout(timer); };
+    });
+    return () => { if (stop) send(); else sent = true; };
   }, [id, location.pathname, location.search]);
 }
 

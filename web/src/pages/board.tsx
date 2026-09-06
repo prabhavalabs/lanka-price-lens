@@ -15,6 +15,7 @@ import { useBasketLine } from "@/store/basket";
 import { categoryLabel, changeLabel, groupLabel, relativeDay, rupeeRange, rupees, unitLabel } from "@/lib/format";
 import { fuzzySearch } from "@/lib/fuzzy";
 import { cn } from "@/lib/utils";
+import { usePageTitle } from "@/lib/page-title";
 
 const categoryOrder = ["vegetable", "fruit", "grain", "pulse", "fish", "meat", "dairy", "other"];
 
@@ -24,6 +25,7 @@ export function headlineOf(product: ProductCard): GroupPrice | undefined {
 }
 
 export function BoardPage() {
+  usePageTitle("PriceLens · Sri Lanka food prices today");
   const [params, setParams] = useSearchParams();
   const query = (params.get("q") ?? "").trim();
   const category = params.get("category") ?? "";
