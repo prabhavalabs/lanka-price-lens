@@ -33,10 +33,38 @@ export type Detail = {
 
 type Envelope<T> = { success: boolean; message: string; payload: T };
 
+/** A failed request, with a message written for the person reading it and whether trying again can help. */
+export class ApiError extends Error {
+  /** HTTP status, or 0 when the request never got an answer. */
+  readonly status: number;
+  readonly retryable: boolean;
+  constructor(status: number, message: string, retryable: boolean) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+    this.retryable = retryable;
+  }
+}
+
+/** Turns a failed response into what to tell the visitor. The API's own message wins for a plain "not found". */
+export function describeFailure(status: number, message: string | null | undefined): ApiError {
+  if (status === 0) return new ApiError(0, "Could not reach PriceLens. Check your connection and try again.", true);
+  if (status === 404) return new ApiError(404, message ?? "Nothing here.", false);
+  if (status === 429) return new ApiError(429, "Too many requests at once. Wait a moment and try again.", true);
+  if (status === 502 || status === 503 || status === 504) return new ApiError(status, "PriceLens is restarting or briefly unavailable. It is usually back within a minute.", true);
+  if (status >= 500) return new ApiError(status, "Something went wrong on our side. Try again in a moment.", true);
+  return new ApiError(status, message ?? `Request failed (${status})`, false);
+}
+
 async function get<T>(path: string): Promise<T> {
-  const response = await fetch(path, { headers: { accept: "application/json" } });
+  let response: Response;
+  try {
+    response = await fetch(path, { headers: { accept: "application/json" } });
+  } catch {
+    throw describeFailure(0, null);
+  }
   const body = (await response.json().catch(() => null)) as Envelope<T> | null;
-  if (!response.ok || !body || body.success === false) throw new Error(body?.message ?? `Request failed (${response.status})`);
+  if (!response.ok || !body || body.success === false) throw describeFailure(response.status, body?.message);
   return body.payload;
 }
 

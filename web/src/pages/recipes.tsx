@@ -12,6 +12,7 @@ import { fetchRecipes } from "@/lib/api";
 import { dishCategoryLabel } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { usePageTitle } from "@/lib/page-title";
+import { ErrorState } from "@/components/error-state";
 
 const categories = ["rice_and_grains", "vegetable", "pulses_and_eggs", "sambol_and_condiment", "fish_and_seafood", "meat_and_poultry", "snack", "sweet", "drink"];
 
@@ -48,7 +49,7 @@ export function RecipesPage() {
         </ScrollArea>
       </div>
       {list.isPending ? <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{Array.from({ length: 6 }, (_, index) => <Skeleton key={index} className="h-36 rounded-xl" />)}</div> : null}
-      {list.isError ? <p className="py-12 text-center text-destructive">{list.error.message}</p> : null}
+      {list.isError ? <ErrorState error={list.error} onRetry={() => void list.refetch()} retrying={list.isFetching} /> : null}
       {list.data ? (
         <>
           <p className="text-sm text-muted-foreground">{list.data.total} {list.data.total === 1 ? "dish" : "dishes"}{debounced ? ` for “${debounced}”` : ""}</p>

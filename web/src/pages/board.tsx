@@ -16,6 +16,7 @@ import { categoryLabel, changeLabel, groupLabel, relativeDay, rupeeRange, rupees
 import { fuzzySearch } from "@/lib/fuzzy";
 import { cn } from "@/lib/utils";
 import { usePageTitle } from "@/lib/page-title";
+import { ErrorState } from "@/components/error-state";
 
 const categoryOrder = ["vegetable", "fruit", "grain", "pulse", "fish", "meat", "dairy", "other"];
 
@@ -48,7 +49,7 @@ export function BoardPage() {
     return { up, down };
   }, [products]);
 
-  if (overview.isError) return <p className="py-16 text-center text-destructive">Prices are not available right now. Please try again in a few minutes.</p>;
+  if (overview.isError) return <ErrorState error={overview.error} onRetry={() => void overview.refetch()} retrying={overview.isFetching} />;
   if (overview.isPending) return <BoardSkeleton />;
 
   const data = overview.data;
