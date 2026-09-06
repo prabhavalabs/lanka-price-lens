@@ -27,8 +27,10 @@ export async function startAnalytics(id: string | null): Promise<boolean> {
   measurementId = id;
   loading ??= new Promise<void>((resolve) => {
     window.dataLayer = window.dataLayer ?? [];
-    window.gtag = function gtag(...args: unknown[]) {
-      window.dataLayer!.push(args);
+    // gtag.js only treats an `arguments` object on the data layer as a command; a plain array is
+    // ignored, so `config` never runs and nothing is sent. Hence a classic function, not rest args.
+    window.gtag = function gtag() {
+      window.dataLayer!.push(arguments);
     };
     window.gtag("js", new Date());
     window.gtag("config", id, { send_page_view: false, anonymize_ip: true });
