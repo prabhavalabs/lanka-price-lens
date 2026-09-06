@@ -11,11 +11,13 @@ import { useDebouncedValue } from "@/hooks/use-debounced-value";
 import { fetchRecipes } from "@/lib/api";
 import { dishCategoryLabel } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { usePageTitle } from "@/lib/page-title";
 
 const categories = ["rice_and_grains", "vegetable", "pulses_and_eggs", "sambol_and_condiment", "fish_and_seafood", "meat_and_poultry", "snack", "sweet", "drink"];
 
 /** Browse the dish catalogue by name (English, Sinhala, Tamil, or an ingredient) and category. */
 export function RecipesPage() {
+  usePageTitle("Sri Lankan recipes priced today · PriceLens");
   const [params, setParams] = useSearchParams();
   const category = params.get("category") ?? "";
   const [query, setQuery] = useState(params.get("q") ?? "");

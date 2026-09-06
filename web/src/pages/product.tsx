@@ -17,6 +17,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchProduct, type Group, type Latest } from "@/lib/api";
 import { ageLabel, categoryLabel, groupLabel, groupNotes, relativeDay, rupeeRange, rupees, shortDate, unitLabel } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { usePageTitle } from "@/lib/page-title";
 
 const ranges = ["30", "90", "365"] as const;
 type Range = (typeof ranges)[number];
@@ -50,6 +51,7 @@ export function ProductPage() {
     setParams(search, { replace: true, preventScrollReset: true });
   };
   const detail = useQuery({ queryKey: ["product", id, days], queryFn: () => fetchProduct(id, Number(days)), enabled: Boolean(id), placeholderData: keepPreviousData });
+  usePageTitle(detail.data ? `${detail.data.product.label} price today in Sri Lanka · PriceLens` : undefined);
 
   if (detail.isError) return <p className="py-16 text-center text-destructive">{detail.error.message}</p>;
   if (detail.isPending) return <div className="space-y-4"><Skeleton className="h-24 w-full rounded-xl" /><Skeleton className="h-64 w-full rounded-xl" /></div>;

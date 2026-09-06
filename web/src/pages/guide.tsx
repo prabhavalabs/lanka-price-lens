@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { guideSections, type GuideFigure, type GuideSection } from "@/content/guide";
 import { cn } from "@/lib/utils";
+import { usePageTitle } from "@/lib/page-title";
 
 const sectionIds = guideSections.map((section) => section.id);
 
@@ -31,6 +32,7 @@ function useActiveSection(): string {
 }
 
 export function GuidePage() {
+  usePageTitle("How to use PriceLens · a five-minute guide");
   const location = useLocation();
   const active = useActiveSection();
   // The app renders after the page loads, so a link to a section has to scroll once the sections exist.
