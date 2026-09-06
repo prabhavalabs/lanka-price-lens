@@ -19,6 +19,7 @@ import { RecipeCard } from "@/components/recipe-card";
 import { groupLabel, relativeDay, rupees, unitLabel } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { usePageTitle } from "@/lib/page-title";
+import { ErrorState } from "@/components/error-state";
 
 type StoreTotal = { market_id: string; market_label: string; group: Group; total: number; covered: number; missing: string[]; observed_on: string };
 
@@ -68,7 +69,7 @@ export function BasketPage() {
           <CardContent className="p-0">
             <div className="border-b px-4 py-3"><h2 className="font-heading text-lg font-semibold">Where it costs least</h2><p className="text-xs text-muted-foreground">Stores that carry the whole list first, then by total.</p></div>
             {priced.isPending ? <div className="space-y-2 p-4"><Skeleton className="h-8" /><Skeleton className="h-8" /><Skeleton className="h-8" /></div> : null}
-            {priced.isError ? <p className="p-4 text-sm text-destructive">{priced.error.message}</p> : null}
+            {priced.isError ? <ErrorState className="py-8" error={priced.error} onRetry={() => void priced.refetch()} retrying={priced.isFetching} /> : null}
             {priced.data ? (
               <Table>
                 <TableHeader>
