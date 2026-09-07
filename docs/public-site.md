@@ -57,7 +57,9 @@ taken to zero removes the line.
   `GET /v1/admin/feedback` and `PATCH /v1/admin/feedback/:id`, and receives each one by mail
   through Resend when `LPL_FEEDBACK_EMAIL_TO` and `LPL_RESEND_API_KEY` are set (`LPL_MAIL_FROM`
   names the sender: a verified domain, or Resend's shared `onboarding@resend.dev` while testing).
-  Mail never blocks or fails the request; without the settings the messages simply stay in the
+  With `LPL_FEEDBACK_DISCORD_WEBHOOK` set (an incoming webhook of the community Discord's staff
+  inbox channel) each message is also posted there as an embed, mentions disabled.
+  Mail and the Discord post never block or fail the request; without the settings the messages simply stay in the
   admin.
 - **Who is here:** the footer shows how many people are on the site. Each tab keeps a random id
   in session storage and posts a beat to `POST /v1/public/presence` once a minute while visible;
