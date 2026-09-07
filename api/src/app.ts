@@ -35,6 +35,7 @@ import {
 import { runWithRetry } from "@lanka-pricelens/foundry/retry";
 import { listFeedback, parseFeedback, RateLimiter, submitFeedback, updateFeedbackStatus } from "./feedback.ts";
 import { createMailer, feedbackMessage, type Mailer } from "./mail.ts";
+import { createNotifier, feedbackNote, type Notifier } from "./notify.ts";
 import { Presence, presenceIdPattern } from "./presence.ts";
 import { publicBasket, publicOverview } from "./public.ts";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
@@ -87,10 +88,11 @@ export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
-  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; mailer?: Mailer; presence?: Presence } = {},
+  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; mailer?: Mailer; notifier?: Notifier; presence?: Presence } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
   const mailer = options.mailer ?? createMailer();
+  const notifier = options.notifier ?? createNotifier();
   const presence = options.presence ?? new Presence();
   /** The PostgreSQL warehouse behind the price explorer; null when not configured or unreachable (the routes answer 503). */
   const warehouse = async (): Promise<WarehouseClient | null> => {
@@ -180,8 +182,9 @@ export function createApp(
     if (!feedbackBudget.allow(address)) return context.json(envelope(context.get("requestId"), null, false, "Too many messages from this connection; please try again in an hour"), 429);
     if (parsed.honeypot) return context.json(envelope(context.get("requestId"), { received: true }, true, "Thank you"), 201);
     const item = submitFeedback(database, parsed.input);
-    // The owner hears about it by mail when mail is configured; the message is stored either way.
+    // The owner hears about it by mail and in the community Discord when those are configured; the message is stored either way.
     void mailer.send(feedbackMessage(item)).catch((error: unknown) => console.error(JSON.stringify({ level: "error", message: "Feedback mail failed", detail: error instanceof Error ? error.message : String(error) })));
+    void notifier.post(feedbackNote(item)).catch((error: unknown) => console.error(JSON.stringify({ level: "error", message: "Feedback Discord post failed", detail: error instanceof Error ? error.message : String(error) })));
     return context.json(envelope(context.get("requestId"), { received: true, id: item.id }, true, "Thank you"), 201);
   });
   // What the site needs to know about this deployment: analytics id when one is set.
