@@ -68,6 +68,10 @@ taken to zero removes the line.
   hands it to the site, which loads gtag with IP anonymisation, sends a page view on every route
   change, `add_to_basket` and `feedback_sent` events, and stays silent for visitors whose browser
   says "do not track". Without the id nothing is loaded.
+- **Community:** with `LPL_DISCORD_INVITE_URL` set (a `https://discord.gg/…` invite), the config
+  names it, the footer and the About page link to it, and `CommunityInvite` shows one small card
+  after the visitor has looked around (three pages, or 45 s, never in the first 10 s). "Not now"
+  keeps it away for 30 days; clicking through, for good. The rule is `web/src/lib/community.ts`.
 - **Quantities:** a basket line holds a decimal amount in the unit the product is priced in (0.5
   for half a kilo, 6 for six eggs, 0.75 for 750 ml). "Add" starts at half a kilo or litre, or one
   piece; the −/+ steps are a quarter kilo or litre, or one piece; tapping the amount opens presets

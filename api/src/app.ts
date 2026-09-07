@@ -187,10 +187,14 @@ export function createApp(
     void notifier.post(feedbackNote(item)).catch((error: unknown) => console.error(JSON.stringify({ level: "error", message: "Feedback Discord post failed", detail: error instanceof Error ? error.message : String(error) })));
     return context.json(envelope(context.get("requestId"), { received: true, id: item.id }, true, "Thank you"), 201);
   });
-  // What the site needs to know about this deployment: analytics id when one is set.
+  // What the site needs to know about this deployment: the analytics id and the community invite, when set.
   app.get("/v1/public/config", (context) => {
     const measurementId = process.env.LPL_GA_MEASUREMENT_ID?.trim();
-    return context.json(envelope(context.get("requestId"), { analytics: { ga_measurement_id: measurementId && /^G-[A-Z0-9]{4,16}$/u.test(measurementId) ? measurementId : null } }));
+    const invite = process.env.LPL_DISCORD_INVITE_URL?.trim();
+    return context.json(envelope(context.get("requestId"), {
+      analytics: { ga_measurement_id: measurementId && /^G-[A-Z0-9]{4,16}$/u.test(measurementId) ? measurementId : null },
+      community: { discord_invite_url: invite && /^https:\/\/(?:discord\.gg|discord\.com\/invite)\/[\w-]+$/u.test(invite) ? invite : null },
+    }));
   });
   // Who is here now: a beat per open tab per minute, counted for three minutes. No cookies, no account.
   app.post("/v1/public/presence", bodyLimit({ maxSize: 1024 }), async (context) => {

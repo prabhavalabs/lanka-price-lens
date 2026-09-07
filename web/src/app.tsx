@@ -1,9 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
+import { CommunityInvite } from "@/components/community-invite";
 import { Layout } from "@/components/layout";
 import { startAnalytics, trackPageView } from "@/lib/analytics";
+import { useSiteConfig } from "@/lib/site-config";
 import { AboutPage } from "@/pages/about";
 import { BasketPage } from "@/pages/basket";
 import { BoardPage } from "@/pages/board";
@@ -12,13 +13,9 @@ import { ProductPage } from "@/pages/product";
 import { RecipePage } from "@/pages/recipe";
 import { RecipesPage } from "@/pages/recipes";
 
-type SiteConfig = { analytics: { ga_measurement_id: string | null } };
-
 /** Loads analytics when the deployment has an id, and reports a page view on every route change. */
-function useAnalytics(): void {
+function useAnalytics(id: string | null): void {
   const location = useLocation();
-  const config = useQuery({ queryKey: ["config"], queryFn: async () => ((await (await fetch("/v1/public/config")).json()) as { payload: SiteConfig }).payload, staleTime: Number.POSITIVE_INFINITY, retry: false });
-  const id = config.data?.analytics.ga_measurement_id ?? null;
   useEffect(() => {
     if (!id) return;
     const path = `${location.pathname}${location.search}`;
@@ -44,9 +41,11 @@ function useAnalytics(): void {
 }
 
 export function App() {
-  useAnalytics();
+  const config = useSiteConfig();
+  useAnalytics(config.analytics.ga_measurement_id);
   return (
     <Layout>
+      <CommunityInvite url={config.community.discord_invite_url} />
       <Routes>
         <Route path="/" element={<BoardPage />} />
         <Route path="/p/:id" element={<ProductPage />} />

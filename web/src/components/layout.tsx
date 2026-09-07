@@ -9,8 +9,10 @@ import { SearchBox } from "@/components/search-box";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useSiteConfig } from "@/lib/site-config";
 
 export function Layout({ children }: { children: ReactNode }) {
+  const invite = useSiteConfig().community.discord_invite_url;
   return (
     <div className="flex min-h-dvh flex-col">
       <header className="sticky top-0 z-30 border-b border-border/70 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
@@ -53,6 +55,7 @@ export function Layout({ children }: { children: ReactNode }) {
             <Link to="/about" className="underline">Sources and method</Link>
             {" · "}
             <FeedbackDialog trigger={<Button className="h-auto p-0 text-xs underline" size="sm" variant="link">Send feedback or report a bug</Button>} />
+            {invite ? <>{" · "}<a className="underline" href={invite} rel="noopener noreferrer" target="_blank">Join the community on Discord</a></> : null}
           </p>
         </div>
       </footer>

@@ -4,8 +4,10 @@ import { SellerMark } from "@/components/seller-mark";
 import { Card, CardContent } from "@/components/ui/card";
 import { fetchOverview } from "@/lib/api";
 import { usePageTitle } from "@/lib/page-title";
+import { useSiteConfig } from "@/lib/site-config";
 
 export function AboutPage() {
+  const invite = useSiteConfig().community.discord_invite_url;
   usePageTitle("About PriceLens · sources and method");
   const overview = useQuery({ queryKey: ["overview"], queryFn: fetchOverview });
   return (
@@ -44,6 +46,17 @@ export function AboutPage() {
           <p>Your basket and theme stay in your browser. The count of people online uses a random id kept only for the open tab, no cookies. Where the site runs Google Analytics it does so with IP anonymisation and respects your browser's "do not track" setting. Feedback is stored with the page you sent it from and, if you gave one, your email, and forwarded to the site's owner.</p>
         </CardContent>
       </Card>
+      {invite ? (
+        <Card>
+          <CardContent className="space-y-2 p-5 text-sm">
+            <h2 className="font-heading text-lg font-semibold">Community</h2>
+            <p>
+              PriceLens is built in the open, with the other Prabhava Labs projects. The community Discord is where updates land first and where bugs, ideas, and data problems get discussed.{" "}
+              <a className="underline" href={invite} rel="noopener noreferrer" target="_blank">Join the Discord</a>. No email, no account, leave whenever.
+            </p>
+          </CardContent>
+        </Card>
+      ) : null}
       <Card>
         <CardContent className="space-y-2 p-5 text-sm">
           <h2 className="font-heading text-lg font-semibold">What is coming</h2>
