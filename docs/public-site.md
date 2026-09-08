@@ -68,6 +68,16 @@ taken to zero removes the line.
   hands it to the site, which loads gtag with IP anonymisation, sends a page view on every route
   change, `add_to_basket` and `feedback_sent` events, and stays silent for visitors whose browser
   says "do not track". Without the id nothing is loaded.
+- **Link previews:** every page carries the full Open Graph and Twitter card set (site name,
+  locale, type, title, description, canonical url, a 1200×630 image with type, size and alt,
+  `summary_large_image`, `@PrabhavaLabs`). The shell holds the site's own block between
+  `<!-- social -->` markers; the prerender swaps it per page. The images are drawn by the API
+  (`api/src/og.ts`, resvg with the bundled IBM Plex TTFs in `api/assets/fonts`) from today's
+  data: `/og/site.png`, `/og/page/{guide,recipes,basket,about}.png`, `/og/p/<id>.png` (label,
+  the three group prices, 30-day change, the product photo), `/og/r/<id>.png` (dish, summary,
+  ingredients, time, difficulty). Unknown ids get the site card. Cached an hour in memory and
+  a day at the edge. Preview any card by opening its url; the Facebook Sharing Debugger and
+  X's card validator re-fetch it.
 - **Community:** with `LPL_DISCORD_INVITE_URL` set (a `https://discord.gg/…` invite), the config
   names it, the footer, the About page, and the top of the guide link to it, and `CommunityInvite`
   shows one small closable card five seconds after arriving. "Not now" keeps it away for 30 days;
