@@ -1,24 +1,20 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { inviteAfterMs, inviteAfterPageViews, inviteCooldownMs, inviteQuietMs, readInviteMemory, shouldInvite, writeInviteMemory } from "../src/lib/community.ts";
+import { inviteAfterMs, inviteCooldownMs, readInviteMemory, shouldInvite, writeInviteMemory } from "../src/lib/community.ts";
 
 const start = 1_000_000;
 
-test("the invite waits for a look around and stays quiet at first", () => {
-  assert.equal(shouldInvite({}, { pageViews: 1, startedAt: start }, start + 1000), false, "first moments");
-  assert.equal(shouldInvite({}, { pageViews: inviteAfterPageViews, startedAt: start }, start + 1000), false, "even with pages, not in the quiet period");
-  assert.equal(shouldInvite({}, { pageViews: inviteAfterPageViews, startedAt: start }, start + inviteQuietMs + 1), true, "a few pages after the quiet period");
-  assert.equal(shouldInvite({}, { pageViews: 1, startedAt: start }, start + inviteAfterMs), true, "or a while on the site");
-  assert.equal(shouldInvite({}, { pageViews: 1, startedAt: start }, start + inviteAfterMs - 1), false, "not before");
+test("the invite appears a few seconds after arriving, not before", () => {
+  assert.equal(shouldInvite({}, { startedAt: start }, start + inviteAfterMs - 1), false);
+  assert.equal(shouldInvite({}, { startedAt: start }, start + inviteAfterMs), true);
 });
 
 test("not now means a month of quiet, and joining means never again", () => {
-  const ready = { pageViews: 5, startedAt: start };
   const later = start + inviteAfterMs;
-  assert.equal(shouldInvite({ dismissedAt: start }, ready, later), false);
-  assert.equal(shouldInvite({ dismissedAt: start }, ready, start + inviteCooldownMs + later), true);
-  assert.equal(shouldInvite({ joinedAt: start }, ready, start + inviteCooldownMs * 12), false);
+  assert.equal(shouldInvite({ dismissedAt: start }, { startedAt: start }, later), false);
+  assert.equal(shouldInvite({ dismissedAt: start }, { startedAt: start }, start + inviteCooldownMs + later), true);
+  assert.equal(shouldInvite({ joinedAt: start }, { startedAt: start }, start + inviteCooldownMs * 12), false);
 });
 
 test("memory survives a broken or missing store", () => {
