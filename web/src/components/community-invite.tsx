@@ -1,43 +1,32 @@
 import { RiCloseLine, RiDiscordFill } from "@remixicon/react";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
-import { inviteAfterMs, inviteQuietMs, readInviteMemory, shouldInvite, writeInviteMemory, type Visit } from "@/lib/community";
+import { inviteAfterMs, readInviteMemory, shouldInvite, writeInviteMemory, type Visit } from "@/lib/community";
 
 /**
- * A small card, bottom corner, inviting the visitor to the community Discord once they have looked
- * around. Shown at most once a month, never again after they click through. Needs the invite url
- * from the deployment config; without one it renders nothing.
+ * A small card, bottom corner, inviting the visitor to the community Discord a few seconds after
+ * they arrive. Closable; at most once a month; never again after they click through. Needs the
+ * invite url from the deployment config; without one it renders nothing.
  */
 export function CommunityInvite({ url }: { url: string | null }) {
-  const location = useLocation();
-  const visit = useRef<Visit>({ pageViews: 0, startedAt: Date.now() });
+  const visit = useRef<Visit>({ startedAt: Date.now() });
   const [open, setOpen] = useState(false);
   const [gone, setGone] = useState(false);
-
-  useEffect(() => {
-    visit.current.pageViews += 1;
-  }, [location.pathname]);
 
   useEffect(() => {
     if (!url || gone || open) return;
     const storage = typeof window === "undefined" ? undefined : window.localStorage;
     const check = () => {
-      if (shouldInvite(readInviteMemory(storage), visit.current, Date.now())) {
-        setOpen(true);
-        trackEvent("community_invite", { action: "shown", page_path: location.pathname });
-        return true;
-      }
-      return false;
+      if (!shouldInvite(readInviteMemory(storage), visit.current, Date.now())) return;
+      setOpen(true);
+      trackEvent("community_invite", { action: "shown", page_path: window.location.pathname });
     };
-    if (check()) return;
-    // Look again when the quiet period ends and when the time threshold passes; page views re-run this effect.
     const elapsed = Date.now() - visit.current.startedAt;
-    const timers = [inviteQuietMs, inviteAfterMs].filter((at) => at > elapsed).map((at) => window.setTimeout(check, at - elapsed + 50));
-    return () => timers.forEach((timer) => window.clearTimeout(timer));
-  }, [url, gone, open, location.pathname]);
+    const timer = window.setTimeout(check, Math.max(0, inviteAfterMs - elapsed) + 50);
+    return () => window.clearTimeout(timer);
+  }, [url, gone, open]);
 
   if (!url || !open) return null;
   const storage = window.localStorage;

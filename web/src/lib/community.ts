@@ -1,23 +1,19 @@
 /**
- * When to invite a visitor to the community. The invite is one small card, shown once the visitor
- * has looked around (a few pages, or a little while on the site), never in the first moments, and
- * not again for a month after "not now". Someone who clicked through never sees it again.
+ * When to invite a visitor to the community. The invite is one small card, shown a few seconds
+ * after arriving, closable, and not again for a month after "not now". Someone who clicked through
+ * never sees it again.
  */
 
 export type InviteMemory = { dismissedAt?: number; joinedAt?: number };
-export type Visit = { pageViews: number; startedAt: number };
+export type Visit = { startedAt: number };
 
-export const inviteAfterPageViews = 3;
-export const inviteAfterMs = 45_000;
-export const inviteQuietMs = 10_000;
+export const inviteAfterMs = 5_000;
 export const inviteCooldownMs = 30 * 24 * 60 * 60 * 1000;
 
 export function shouldInvite(memory: InviteMemory, visit: Visit, now: number): boolean {
   if (memory.joinedAt) return false;
   if (memory.dismissedAt && now - memory.dismissedAt < inviteCooldownMs) return false;
-  const elapsed = now - visit.startedAt;
-  if (elapsed < inviteQuietMs) return false;
-  return visit.pageViews >= inviteAfterPageViews || elapsed >= inviteAfterMs;
+  return now - visit.startedAt >= inviteAfterMs;
 }
 
 export const inviteMemoryKey = "pricelens.community.v1";

@@ -1,4 +1,4 @@
-import { RiInformationLine, RiLightbulbLine } from "@remixicon/react";
+import { RiDiscordFill, RiInformationLine, RiLightbulbLine } from "@remixicon/react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -6,6 +6,7 @@ import { FeedbackDialog } from "@/components/feedback-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { guideSections, type GuideFigure, type GuideSection } from "@/content/guide";
+import { useSiteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { usePageTitle } from "@/lib/page-title";
 
@@ -35,6 +36,7 @@ export function GuidePage() {
   usePageTitle("How to use PriceLens · a five-minute guide");
   const location = useLocation();
   const active = useActiveSection();
+  const invite = useSiteConfig().community.discord_invite_url;
   // The app renders after the page loads, so a link to a section has to scroll once the sections exist.
   useEffect(() => {
     const id = location.hash.replace(/^#/u, "");
@@ -76,6 +78,21 @@ export function GuidePage() {
             ))}
           </ol>
         </header>
+
+        {invite ? (
+          <Card className="border-[#5865F2]/30 bg-[#5865F2]/5">
+            <CardContent className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-start gap-3">
+                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#5865F2]/15 text-[#5865F2]"><RiDiscordFill className="size-5" /></span>
+                <div>
+                  <h2 className="font-heading text-lg font-semibold">Join the community</h2>
+                  <p className="mt-1 text-sm text-muted-foreground">Updates land first in the Prabhava Labs Discord, and it is the quickest way to report a wrong price, ask a question, or say what to build next. No email, no account.</p>
+                </div>
+              </div>
+              <Button asChild className="shrink-0" size="sm"><a href={invite} rel="noopener noreferrer" target="_blank"><RiDiscordFill className="size-4" />Join the Discord</a></Button>
+            </CardContent>
+          </Card>
+        ) : null}
 
         {guideSections.map((section, index) => <Section index={index + 1} key={section.id} section={section} />)}
 
