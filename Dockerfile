@@ -48,6 +48,7 @@ COPY shared/src shared/src
 COPY archive/src archive/src
 COPY foundry/src foundry/src
 COPY api/src api/src
+COPY api/assets api/assets
 COPY data/manifests data/manifests
 COPY data/mappings data/mappings
 COPY data/recipes data/recipes

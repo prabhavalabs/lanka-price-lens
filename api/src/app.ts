@@ -36,6 +36,7 @@ import { runWithRetry } from "@lanka-pricelens/foundry/retry";
 import { listFeedback, parseFeedback, RateLimiter, submitFeedback, updateFeedbackStatus } from "./feedback.ts";
 import { createMailer, feedbackMessage, type Mailer } from "./mail.ts";
 import { createNotifier, feedbackNote, type Notifier } from "./notify.ts";
+import { CardCache, pageCard, productCard, productPhoto, recipeCard, renderCard, siteCard } from "./og.ts";
 import { Presence, presenceIdPattern } from "./presence.ts";
 import { publicBasket, publicOverview } from "./public.ts";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
@@ -194,6 +195,43 @@ export function createApp(
     return context.json(envelope(context.get("requestId"), {
       analytics: { ga_measurement_id: measurementId && /^G-[A-Z0-9]{4,16}$/u.test(measurementId) ? measurementId : null },
       community: { discord_invite_url: invite && /^https:\/\/(?:discord\.gg|discord\.com\/invite)\/[\w-]+$/u.test(invite) ? invite : null },
+    }));
+  });
+  // Social preview cards, drawn from today's data and kept for an hour. An unknown id gets the site's card
+  // rather than nothing, so a stale link still previews.
+  const cards = new CardCache();
+  const overviewForCards = async () => {
+    const client = await warehouse();
+    return client ? publicOverview(client, published()).catch(() => null) : null;
+  };
+  const cardResponse = (context: Context, png: Buffer) => {
+    context.header("Content-Type", "image/png");
+    context.header("Cache-Control", "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400");
+    return context.body(new Uint8Array(png));
+  };
+  const cardId = (file: string) => file.replace(/\.png$/u, "").slice(0, 100);
+  app.get("/og/site.png", async (context) => cardResponse(context, await cards.get("site", async () => renderCard(siteCard(await overviewForCards())))));
+  app.get("/og/page/:file", async (context) => {
+    const name = cardId(context.req.param("file"));
+    return cardResponse(context, await cards.get(`page:${name}`, async () => {
+      const overview = await overviewForCards();
+      return renderCard(pageCard(name, overview, options.recipes?.catalogue.dishes.length) ?? siteCard(overview));
+    }));
+  });
+  app.get("/og/p/:file", async (context) => {
+    const id = cardId(context.req.param("file"));
+    return cardResponse(context, await cards.get(`product:${id}`, async () => {
+      const overview = await overviewForCards();
+      const product = overview?.products.find((candidate) => candidate.id === id);
+      return renderCard(product ? productCard(product, overview, productPhoto(defaultImagesRoot(), id)) : siteCard(overview));
+    }));
+  });
+  app.get("/og/r/:file", async (context) => {
+    const id = cardId(context.req.param("file"));
+    return cardResponse(context, await cards.get(`recipe:${id}`, async () => {
+      const overview = await overviewForCards();
+      const dish = options.recipes?.catalogue.dishes.find((candidate) => candidate.id === id);
+      return renderCard(dish ? recipeCard(dish, overview) : siteCard(overview));
     }));
   });
   // Who is here now: a beat per open tab per minute, counted for three minutes. No cookies, no account.
@@ -1248,7 +1286,7 @@ export function createProductionApp(): Hono<AppBindings> {
   const recipes = existsSync(resolve(recipesDirectory, "catalogue.json")) ? readRecipeStore(recipesDirectory) : undefined;
   const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}), ...(recipes ? { recipes } : {}) });
   // Product photos and store logos, shared by the admin and the public site.
-  const imagesRoot = resolve(process.env.LPL_IMAGES_ROOT ?? fileURLToPath(new URL("../../data/images/", import.meta.url)));
+  const imagesRoot = defaultImagesRoot();
   app.use("/images/*", async (context, next) => {
     await next();
     if (context.res.ok) context.header("Cache-Control", "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800");
@@ -1293,6 +1331,11 @@ export function createProductionApp(): Hono<AppBindings> {
     return next();
   });
   return app;
+}
+
+/** Product photos and store logos: an env override, else the repository's data/images beside the api. */
+function defaultImagesRoot(): string {
+  return resolve(process.env.LPL_IMAGES_ROOT ?? fileURLToPath(new URL("../../data/images/", import.meta.url)));
 }
 
 function hostList(value: string | undefined): string[] {
