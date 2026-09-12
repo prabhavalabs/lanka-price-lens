@@ -50,6 +50,7 @@ refreshed from the live site with `web/scripts/guide-screenshots.js`.
 | Canonical taxonomy and release process | [docs/canonical-taxonomy.md](docs/canonical-taxonomy.md), [docs/release-process.md](docs/release-process.md) |
 | Source rights and policy | [docs/source-permission.md](docs/source-permission.md), [docs/source-policy.md](docs/source-policy.md) |
 | Running it yourself | [docs/self-hosting.md](docs/self-hosting.md) |
+| Notifications | [docs/notifications.md](docs/notifications.md) |
 
 ## Repository layout
 
@@ -57,6 +58,7 @@ refreshed from the live site with `web/scripts/guide-screenshots.js`.
 | --- | --- |
 | `shared/` | Schemas and vocabulary shared by everything (manifests, mapping bundles, dishes) |
 | `foundry/` | The data pipeline: discovery, archive, parsing, mapping, retail capture, warehouse sync, the CLI |
+| `notify/` | Channel-neutral notifications: one message shape delivered through Telegram, Discord, Slack, email, and Web Push, with a retrying outbox |
 | `api/` | The Hono API: public read routes, the owner's admin routes, both sites' static files |
 | `admin/` | The operator's console (React) |
 | `web/` | The public site (React) |

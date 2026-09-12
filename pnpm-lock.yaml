@@ -114,6 +114,9 @@ importers:
       '@lanka-pricelens/foundry':
         specifier: workspace:*
         version: link:../foundry
+      '@lanka-pricelens/notify':
+        specifier: workspace:*
+        version: link:../notify
       '@lanka-pricelens/shared':
         specifier: workspace:*
         version: link:../shared
@@ -186,6 +189,25 @@ importers:
       '@types/pg':
         specifier: 8.23.1
         version: 8.23.1
+      typescript:
+        specifier: 7.0.2
+        version: 7.0.2
+
+  notify:
+    dependencies:
+      zod:
+        specifier: 4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@types/better-sqlite3':
+        specifier: 7.6.13
+        version: 7.6.13
+      '@types/node':
+        specifier: 24.13.3
+        version: 24.13.3
+      better-sqlite3:
+        specifier: 13.0.3
+        version: 13.0.3
       typescript:
         specifier: 7.0.2
         version: 7.0.2
