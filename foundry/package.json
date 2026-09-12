@@ -15,7 +15,7 @@
     "./retry": "./src/retry.ts"
   },
   "scripts": {
-    "cli": "node src/cli.ts",
+    "cli": "node --env-file-if-exists=../.env src/cli.ts",
     "build": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
     "test": "node --test test/*.test.ts"

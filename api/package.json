@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --watch src/index.ts",
+    "dev": "node --env-file-if-exists=../.env --watch src/index.ts",
     "start": "node src/index.ts",
     "build": "tsc --noEmit",
     "typecheck": "tsc --noEmit",

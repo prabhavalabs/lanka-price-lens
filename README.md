@@ -78,7 +78,8 @@ pnpm check        # typecheck, tests, build for every package
 
 Node 24 and pnpm 11. The API needs a PostgreSQL warehouse for the price views (`LPL_POSTGRES_URL`);
 see `.env.example` for every setting and [docs/self-hosting.md](docs/self-hosting.md) for a full
-install.
+install. `pnpm dev:api` and `pnpm foundry` read a `.env` in the repository root when one exists;
+variables already set in the shell win over it.
 
 ## Data and rights
 
