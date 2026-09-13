@@ -1,6 +1,7 @@
 import type { Channel, ChannelKind, FetchLike } from "./channel.ts";
 import { createDiscordChannel, type DiscordConfig } from "./channels/discord.ts";
 import { createEmailChannel, type EmailConfig } from "./channels/email.ts";
+import { createSendGridChannel } from "./channels/sendgrid.ts";
 import { createSlackChannel, type SlackConfig } from "./channels/slack.ts";
 import { createTelegramChannel, type TelegramConfig } from "./channels/telegram.ts";
 import { createWebPushChannel, type WebPushConfig } from "./channels/webpush.ts";
@@ -10,7 +11,8 @@ import type { ChannelRegistry } from "./outbox.ts";
  * Builds the channels an application has credentials for. Discord and Slack need none (the
  * webhook URL is the address) and are always present; Telegram, email, and Web Push appear
  * only when configured, so a message for an unconfigured channel dies in the outbox with a
- * clear error instead of failing silently.
+ * clear error instead of failing silently. Email goes through Resend, or SendGrid when the
+ * config names it as the provider.
  */
 export type ChannelsConfig = {
   telegram?: Omit<TelegramConfig, "fetch"> | null | undefined;
@@ -27,7 +29,10 @@ export function createChannels(config: ChannelsConfig = {}): ChannelRegistry {
   channels.set("discord", createDiscordChannel({ ...config.discord, fetch: request }));
   channels.set("slack", createSlackChannel({ ...config.slack, fetch: request }));
   if (config.telegram?.token) channels.set("telegram", createTelegramChannel({ ...config.telegram, fetch: request }));
-  if (config.email?.apiKey && config.email.from) channels.set("email", createEmailChannel({ ...config.email, fetch: request }));
+  if (config.email?.apiKey && config.email.from) {
+    const { provider, ...email } = config.email;
+    channels.set("email", provider === "sendgrid" ? createSendGridChannel({ ...email, fetch: request }) : createEmailChannel({ ...email, fetch: request }));
+  }
   if (config.webpush?.vapid.publicKey && config.webpush.vapid.privateKey && config.webpush.subject) channels.set("webpush", createWebPushChannel({ ...config.webpush, fetch: request }));
   return channels;
 }
