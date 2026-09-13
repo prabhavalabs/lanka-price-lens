@@ -3536,6 +3536,59 @@
    "reviewed": false
   },
   {
+   "id": "pantry_murunga_leaves",
+   "names": {
+    "en": "Moringa leaves",
+    "si": "මුරුංගා කොළ",
+    "si_latn": "murunga kola",
+    "ta": "முருங்கைக் கீரை",
+    "ta_latn": "murungai keerai"
+   },
+   "group": "leafy",
+   "state": "raw",
+   "as_purchased_note": "leaves stripped from the stalks, sold in a small bunch or picked from the garden",
+   "edible_portion": 0.75,
+   "density_g_per_ml": null,
+   "measures": {
+    "tsp_g": null,
+    "tbsp_g": null,
+    "cup_g": 30,
+    "piece_g": null,
+    "bunch_g": 100
+   },
+   "nutrition": {
+    "kcal": 64,
+    "protein_g": 9.4,
+    "fat_g": 1.4,
+    "carb_g": 8.3,
+    "fibre_g": 2,
+    "sugar_g": null,
+    "sodium_mg": 9
+   },
+   "sources": [
+    {
+     "name": "USDA FoodData Central",
+     "entry": "Drumstick leaves, raw",
+     "kcal": 64,
+     "protein_g": 9.4,
+     "fat_g": 1.4,
+     "carb_g": 8.3
+    },
+    {
+     "name": "Indian Food Composition Tables 2017",
+     "entry": "Drumstick leaves",
+     "kcal": 67,
+     "protein_g": 6.4,
+     "fat_g": 1.6,
+     "carb_g": 8.5
+    }
+   ],
+   "basis": "USDA drumstick (moringa) leaves raw; the drafts mapped moringa leaves to the drumstick pod and to kathurumurunga, both other things.",
+   "confidence": "high",
+   "notes": "Added as a correction; the draft normaliser points leaf lines under product_drumstick or product_kathurumurunga here.",
+   "reviewed": false
+  },
+  {
    "id": "pantry_mussels",
    "names": {
     "en": "Mussels",

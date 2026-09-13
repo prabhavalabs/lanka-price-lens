@@ -150,7 +150,56 @@ much of your basket it uses, and what is still to buy.
 
 *The whole catalogue, searchable by name in any language or by ingredient.*
 
-## 8. Phone and theme
+## 8. Cook for any number
+
+Every dish carries a full recipe: quantities as you buy them, the method step by
+step, and the numbers that follow from them. Set how many you are cooking for
+and every amount scales; calories per serving and the cost per serving at
+today's cheapest sellers come with it. The time does not change: a pot for
+twenty simmers as long as a pot for four.
+
+1. Use the "Cooking for" control or the 4, 6, 10, and 20 buttons. Salt, oil for
+   tempering, and whole spices grow a little slower than the headcount, as they
+   do in a real kitchen.
+2. "Per serving" gives energy, protein, fat, carbohydrate, fibre, and sodium for
+   one person's portion, computed from each ingredient's edible weight against a
+   nutrition table built for Sri Lankan foods and checked against published
+   composition tables.
+3. "Cost per serving" prices the ingredients at today's cheapest published
+   seller. A "≈" means something is not priced yet or a price is older than a
+   week; the card says which.
+4. "Read in" switches the method between English, Sinhala, and Tamil. Sinhala
+   and Tamil text is machine drafted until a person has reviewed it, and the
+   page says so.
+5. On the recipes page the chips and the calorie cap ask a question of the whole
+   catalogue: weight loss, high protein, low calorie, quick, budget, and so on,
+   sorted by fewest calories, most protein, quickest, or cheapest.
+
+![A recipe scaled to ten](../web/public/guide/servings.png)
+
+![The recipes page filtered for weight loss](../web/public/guide/recipes-filters.png)
+
+## 9. Plan a menu
+
+A menu is a meal for an occasion: a Sunday lunch, a poya dana, a birthday tea.
+Name it, say how many are coming, add recipes from their pages, and the whole
+meal is worked out: calories per person, cost per person at today's prices, and
+one shopping list summed across every recipe.
+
+1. On any recipe, "Add to a menu" adds it to a menu you have or starts a new
+   one. "Menus" in the header lists them.
+2. Each recipe follows the headcount unless you set its own servings: a sambol
+   made for the table, a sweet for half the guests. "Follow headcount" puts it
+   back.
+3. Change the number of people and everything recomputes. "Add priced items to
+   basket" moves the shopping list into your basket in real amounts, so the
+   store comparison prices the whole meal.
+4. Menus live in this browser, like the basket; nothing is sent anywhere until
+   you share it.
+
+![A menu for eight](../web/public/guide/menu.png)
+
+## 10. Phone and theme
 
 Everything works on a phone: the header keeps the search box, the basket, and the menu; cards
 stack in one column; the chart answers to a tap instead of a hover.
@@ -167,7 +216,7 @@ stack in one column; the chart answers to a tap instead of a hover.
 | --- | --- |
 | ![The board on a phone](../web/public/guide/phone-board.png) | ![The basket on a phone](../web/public/guide/phone-basket.png) |
 
-## 9. Feedback and privacy
+## 11. Feedback and privacy
 
 "Feedback" in the header, or the link in the footer, opens a short form: choose Feedback or
 Report a bug, write at least ten characters, and leave an email only if you want a reply. The

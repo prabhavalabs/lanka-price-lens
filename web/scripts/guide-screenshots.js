@@ -28,12 +28,17 @@ async (page) => {
     lines.push({ id, label: payload.product.label, quantity: unit === "kg" || unit === "l" ? quantity : Math.max(1, Math.round(quantity)), unit });
   }
 
+  // One menu in every shot: a Sunday lunch for eight, three recipes, the sambol made for the table.
+  const stamp = "2026-09-13T06:00:00.000Z";
+  const menus = [{ id: "menu_guide", name: "Sunday lunch", occasion: "Family", people: 8, items: [{ recipe_id: "dish_plain_red_rice", label: "Plain red rice", servings: null }, { recipe_id: "dish_chicken_kottu", label: "Chicken kottu roti", servings: null }, { recipe_id: "dish_onion_sambol", label: "Onion sambol", servings: 4 }], created_at: stamp, updated_at: stamp }];
+
   const contextFor = async (options, theme) => {
     const context = await browser.newContext({ colorScheme: theme, deviceScaleFactor: 1.5, locale: "en-LK", timezoneId: "Asia/Colombo", ...options });
-    await context.addInitScript(({ basket, choice }) => {
+    await context.addInitScript(({ basket, choice, menus }) => {
       window.localStorage.setItem("pricelens.basket.v2", JSON.stringify(basket));
       window.localStorage.setItem("pricelens.theme", choice);
-    }, { basket: lines, choice: theme });
+      window.localStorage.setItem("pricelens.menus.v1", JSON.stringify(menus));
+    }, { basket: lines, choice: theme, menus });
     return context;
   };
 
@@ -137,6 +142,23 @@ async (page) => {
   await tab.goto(`${origin}/recipes?q=curry`);
   await settle(tab, "a[href^='/r/']");
   await shot(tab, "recipes");
+
+  // A full recipe scaled to ten, with calories and cost per serving.
+  await tab.goto(`${origin}/r/dish_hoppers?people=10`);
+  await settle(tab, "h2:has-text('Ingredients for 10')");
+  await tab.getByRole("group", { name: "Number of people" }).scrollIntoViewIfNeeded();
+  await clearHeader(tab);
+  await shot(tab, "servings");
+
+  // The recipes page asked a question: weight loss, fewest calories first.
+  await tab.goto(`${origin}/recipes?tags=weight_loss_friendly&sort=kcal`);
+  await settle(tab, "a[href^='/r/']");
+  await shot(tab, "recipes-filters");
+
+  // A menu for eight: per-person totals, each recipe's servings, the shopping list.
+  await tab.goto(`${origin}/menus/menu_guide`);
+  await settle(tab, "h2:has-text('Shopping list')");
+  await shot(tab, "menu");
 
   await tab.goto(`${origin}/`);
   await settle(tab, "h1");

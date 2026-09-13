@@ -65,6 +65,10 @@ export function normaliseRecipe(raw) {
     const wording = `${line.label.en} ${line.preparation?.en ?? ""} ${line.household ?? ""}`;
     if (/\bthin\b|second|third|light|diluted/iu.test(wording) && !/\bthick\b|first/iu.test(wording.replace(/second|third/giu, ""))) line.ref = "pantry_coconut_milk_thin";
   }
+  // Moringa leaves are neither the drumstick pod nor kathurumurunga; the wording map sent them to both.
+  for (const line of recipe.ingredients) {
+    if ((line.ref === "product_drumstick" || line.ref === "product_kathurumurunga") && /moringa|murunga (?:leaf|leaves)|drumstick leaves/iu.test(line.label.en)) line.ref = "pantry_murunga_leaves";
+  }
   // Oil listed for deep frying is bought whole but mostly comes back out of the pan; mark it so the calculator counts the absorbed share.
   const fryingWords = /deep[- ]?fr(?:y|ied|ying)|for (?:deep )?frying|to (?:deep )?fry|frying oil|shallow[- ]?fry/iu;
   for (const line of recipe.ingredients) {
