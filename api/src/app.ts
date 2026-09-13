@@ -36,6 +36,7 @@ import { runWithRetry } from "@lanka-pricelens/foundry/retry";
 import { listFeedback, parseFeedback, RateLimiter, submitFeedback, updateFeedbackStatus } from "./feedback.ts";
 import { createOwnerNotifier, feedbackMessage, type OwnerNotifier } from "./notify.ts";
 import { CardCache, pageCard, productCard, productPhoto, recipeCard, renderCard, siteCard } from "./og.ts";
+import { envelope, jsonObject, sameOrigin } from "./http.ts";
 import { Presence, presenceIdPattern } from "./presence.ts";
 import { publicBasket, publicOverview } from "./public.ts";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
@@ -1431,20 +1432,6 @@ function readCatalogSync(manifestsDirectory: string, mappingsDirectory: string, 
  * from X-Forwarded-Proto when the proxy sends it. A browser cannot forge either
  * header on a cross-site request, so the protection against forged posts stands.
  */
-function sameOrigin(context: Context): boolean {
-  const origin = context.req.header("origin");
-  if (!origin) return true;
-  let requested: URL;
-  try {
-    requested = new URL(origin);
-  } catch {
-    return false;
-  }
-  const host = context.req.header("x-forwarded-host")?.split(",")[0]?.trim() || context.req.header("host") || new URL(context.req.url).host;
-  if (requested.host !== host) return false;
-  const protocol = context.req.header("x-forwarded-proto")?.split(",")[0]?.trim();
-  return protocol ? requested.protocol === `${protocol}:` : true;
-}
 
 type ListRequest = { requestedPage: number; pageSize: number; search: string; status: string };
 
@@ -1480,21 +1467,7 @@ function pageRequest(request: ListRequest, total: number): { page: number; pageS
   return { page, pageSize: request.pageSize, offset: (page - 1) * request.pageSize, total, pages };
 }
 
-function envelope<T>(requestId: string, payload: T, success = true, message = "OK"): ApiEnvelope<T> {
-  return { success, message, payload, meta: { request_id: requestId, generated_at: new Date().toISOString() } };
-}
 
-/** The request body as a plain object, or null when it is missing, not JSON, or not an object. An empty body counts as `{}`. */
-async function jsonObject(context: Context): Promise<Record<string, unknown> | null> {
-  const text = await context.req.text();
-  if (!text.trim()) return {};
-  try {
-    const parsed: unknown = JSON.parse(text);
-    return typeof parsed === "object" && parsed && !Array.isArray(parsed) ? (parsed as Record<string, unknown>) : null;
-  } catch {
-    return null;
-  }
-}
 
 /** A `yyyy-mm-dd` string, undefined when absent, false when malformed. */
 function optionalDate(value: unknown): string | undefined | false {

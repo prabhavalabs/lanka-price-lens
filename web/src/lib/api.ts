@@ -31,7 +31,7 @@ export type Detail = {
   series: Series[];
 };
 
-type Envelope<T> = { success: boolean; message: string; payload: T };
+export type Envelope<T> = { success: boolean; message: string; payload: T };
 
 /** A failed request, with a message written for the person reading it and whether trying again can help. */
 export class ApiError extends Error {
