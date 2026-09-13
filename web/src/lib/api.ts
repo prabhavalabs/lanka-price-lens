@@ -182,7 +182,7 @@ export type RecipeQueryList = { items: RecipeQueryItem[]; page: number; pageSize
 export type RecipeQueryParams = { q?: string | undefined; category?: string | undefined; tags?: string[] | undefined; max_kcal?: number | undefined; min_protein?: number | undefined; max_minutes?: number | undefined; max_cost?: number | undefined; sort?: string | undefined; page?: number | undefined; cost?: boolean | undefined };
 
 /** Recipes that fit a question: by calories, protein, time, tags, or cost per serving. */
-export const fetchRecipeQuery = (params: RecipeQueryParams): Promise<RecipeQueryList> => {
+export const fetchRecipeQuery = (params: RecipeQueryParams, signal?: AbortSignal): Promise<RecipeQueryList> => {
   const search = new URLSearchParams();
   if (params.q) search.set("q", params.q);
   if (params.category) search.set("category", params.category);
@@ -195,7 +195,7 @@ export const fetchRecipeQuery = (params: RecipeQueryParams): Promise<RecipeQuery
   if (params.page) search.set("page", String(params.page));
   if (params.cost) search.set("cost", "1");
   search.set("pageSize", "24");
-  return get<RecipeQueryList>(`/v1/public/recipes/query?${search}`);
+  return get<RecipeQueryList>(`/v1/public/recipes/query?${search}`, signal);
 };
 
 export type MenuInput = { id: string; name: string; occasion: string | null; people: number; items: Array<{ recipe_id: string; servings: number | null }>; created_at: string };
