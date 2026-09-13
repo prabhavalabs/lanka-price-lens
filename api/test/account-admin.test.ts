@@ -58,7 +58,8 @@ function fakeAccountStore(accounts: Account[]) {
     consumeToken: unused,
     linkIdentity: unused,
     findIdentity: unused,
-    listIdentities: unused,
+    // Bob signs in with Google only; the others with a password.
+    listIdentities: (accountId) => (accountId === "account_bob" ? [{ provider: "google", subject: "bob-google", account_id: accountId, email: "bob@example.com", created_at: "2026-09-01T00:00:00.000Z" }] : []),
     unlinkIdentity: unused,
   };
   return { store, revoked };
@@ -96,7 +97,7 @@ test("the admin list shows every account without secrets, with what each keeps, 
     const all = await call<Listing>("GET", "/v1/admin/accounts");
     assert.equal(all.status, 200);
     assert.deepEqual([all.payload.page, all.payload.pageSize, all.payload.total, all.payload.pages], [1, 10, 3, 1]);
-    assert.deepEqual(all.payload.items.map((row) => [row.id, row.menus, row.recipes, row.has_password]), [["account_alice", 2, 1, true], ["account_bob", 1, 0, false], ["account_carol", 0, 0, true]]);
+    assert.deepEqual(all.payload.items.map((row) => [row.id, row.menus, row.recipes, row.has_password, row.identities]), [["account_alice", 2, 1, true, []], ["account_bob", 1, 0, false, ["google"]], ["account_carol", 0, 0, true, []]]);
     for (const row of all.payload.items) {
       assert.equal("password_hash" in row, false, "the hash never leaves the server");
       assert.ok(row.email && row.display_name && row.status && row.created_at);

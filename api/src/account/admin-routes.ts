@@ -2,7 +2,7 @@ import { Hono, type Context } from "hono";
 
 import { envelope, jsonObject } from "../http.ts";
 import type { ContentStore } from "./content.ts";
-import type { Account, AccountErrorCode, AccountStatus, AccountStore } from "./types.ts";
+import type { Account, AccountErrorCode, AccountIdentity, AccountStatus, AccountStore } from "./types.ts";
 
 /**
  * The owner's view of accounts, mounted by app.ts at /v1/admin/accounts behind requireOwner:
@@ -13,7 +13,7 @@ import type { Account, AccountErrorCode, AccountStatus, AccountStore } from "./t
 export type AdminAccountBindings = { Variables: { requestId: string } };
 
 /** An account as the admin sees it: everything but the password hash, plus what it keeps. */
-export type AdminAccountRow = Omit<Account, "password_hash"> & { has_password: boolean; menus: number; recipes: number };
+export type AdminAccountRow = Omit<Account, "password_hash"> & { has_password: boolean; identities: AccountIdentity["provider"][]; menus: number; recipes: number };
 
 export type AdminAccountDeps = { store: AccountStore; content: ContentStore };
 
@@ -21,9 +21,9 @@ function fail(context: Context<AdminAccountBindings>, status: 400 | 404, message
   return context.json({ ...envelope(context.get("requestId"), null, false, message), ...(code ? { code } : {}) }, status);
 }
 
-function adminRow(account: Account, counts: { menus: number; recipes: number } | undefined): AdminAccountRow {
+function adminRow(account: Account, identities: AccountIdentity[], counts: { menus: number; recipes: number } | undefined): AdminAccountRow {
   const { password_hash, ...rest } = account;
-  return { ...rest, has_password: password_hash !== null, menus: counts?.menus ?? 0, recipes: counts?.recipes ?? 0 };
+  return { ...rest, has_password: password_hash !== null, identities: identities.map((identity) => identity.provider), menus: counts?.menus ?? 0, recipes: counts?.recipes ?? 0 };
 }
 
 function isStatus(value: unknown): value is AccountStatus {
@@ -47,7 +47,7 @@ export function adminAccountRoutes(deps: AdminAccountDeps): Hono<AdminAccountBin
       pageSize: Number.isInteger(requestedSize) ? Math.min(Math.max(requestedSize, 1), 100) : 10,
     });
     const counts = deps.content.countContent(result.items.map((account) => account.id));
-    return context.json(envelope(context.get("requestId"), { items: result.items.map((account) => adminRow(account, counts.get(account.id))), page: result.page, pageSize: result.pageSize, total: result.total, pages: result.pages }));
+    return context.json(envelope(context.get("requestId"), { items: result.items.map((account) => adminRow(account, deps.store.listIdentities(account.id), counts.get(account.id))), page: result.page, pageSize: result.pageSize, total: result.total, pages: result.pages }));
   });
 
   app.patch("/:id", async (context) => {
@@ -61,7 +61,7 @@ export function adminAccountRoutes(deps: AdminAccountDeps): Hono<AdminAccountBin
     const account = deps.store.updateAccount(id, { status }, now);
     const revoked = status === "disabled" ? deps.store.revokeSessions(id, now) : 0;
     const counts = deps.content.countContent([id]);
-    return context.json(envelope(context.get("requestId"), { ...adminRow(account, counts.get(id)), sessions_revoked: revoked }, true, status === "disabled" ? "Account disabled" : "Account enabled"));
+    return context.json(envelope(context.get("requestId"), { ...adminRow(account, deps.store.listIdentities(account.id), counts.get(id)), sessions_revoked: revoked }, true, status === "disabled" ? "Account disabled" : "Account enabled"));
   });
 
   return app;

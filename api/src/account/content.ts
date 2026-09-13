@@ -27,7 +27,7 @@ export class ContentLimitError extends Error {
 }
 
 /** What the recipes list shows: the denormalised columns, without parsing every recipe's JSON. */
-export type UserRecipeSummary = Pick<UserRecipe, "id" | "account_id" | "name" | "category" | "visibility" | "created_at" | "updated_at">;
+export type UserRecipeSummary = Pick<UserRecipe, "id" | "account_id" | "name" | "category" | "visibility" | "created_at" | "updated_at" | "base_servings" | "summary"> & { ingredient_count: number; minutes: number };
 
 export type ContentCounts = { menus: number; recipes: number };
 
@@ -110,7 +110,11 @@ export function createContentStore(database: OperationalDatabase): ContentStore 
     deleteMenu: (accountId, id) => database.prepare("DELETE FROM account_menu WHERE id = ? AND account_id = ?").run(id, accountId).changes > 0,
 
     listRecipes: (accountId) =>
-      (database.prepare("SELECT id, account_id, name, category, visibility, created_at, updated_at FROM account_recipe WHERE account_id = ? ORDER BY updated_at DESC, rowid DESC").all(accountId) as UserRecipeSummary[]),
+      (database
+        .prepare(
+          "SELECT id, account_id, name, category, visibility, created_at, updated_at, json_extract(recipe_json, '$.base_servings') AS base_servings, json_extract(recipe_json, '$.summary') AS summary, json_array_length(recipe_json, '$.ingredients') AS ingredient_count, COALESCE(json_extract(recipe_json, '$.times.prep_minutes'), 0) + COALESCE(json_extract(recipe_json, '$.times.cook_minutes'), 0) AS minutes FROM account_recipe WHERE account_id = ? ORDER BY updated_at DESC, rowid DESC",
+        )
+        .all(accountId) as UserRecipeSummary[]),
     getRecipe,
     createRecipe: (accountId, input, now) =>
       database.transaction(() => {
