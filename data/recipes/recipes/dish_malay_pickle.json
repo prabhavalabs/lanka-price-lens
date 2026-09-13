@@ -1,0 +1,485 @@
+{
+ "id": "dish_malay_pickle",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 45,
+  "description": {
+   "en": "A small heap of crisp pickled vegetables in a thick mustard dressing",
+   "si": "ගැටිති අබ සෝස් එකේ තෙමුණු කරකර ගතියේ එළවළු අච්චාරු ගොඩක්",
+   "ta": "கெட்டியான கடுகு விழுதில் ஊறிய மொறுமொறுப்பான காய்கறி ஊறுகாய் ஒரு சிறு குவியல்"
+  }
+ },
+ "yield_g": 200,
+ "ingredients": [
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கேரட்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small carrot",
+   "preparation": {
+    "en": "cut into short thick sticks",
+    "si": "කෙටි ගොරෝසු කූරු ලෙස කපාගත්",
+    "ta": "குட்டையான தடிமனான துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_beans",
+   "label": {
+    "en": "green beans",
+    "si": "බෝංචි",
+    "ta": "பீன்ஸ்"
+   },
+   "quantity": 45,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "topped and cut into finger lengths",
+    "si": "කෙළවර ඉවත් කර ඇඟිලි දිගට කපාගත්",
+    "ta": "நுனி நீக்கி விரல் நீளத்தில் நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1 small onion",
+   "preparation": {
+    "en": "peeled and cut into thick wedges",
+    "si": "ලෙලි ගලවා ගොරෝසු කැබලිවලට කපාගත්",
+    "ta": "தோல் உரித்து பெரிய துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 green chillies",
+   "preparation": {
+    "en": "slit down one side and the seeds shaken out",
+    "si": "එක් පැත්තකින් පලා ඇට ඉවතට ගසාගත්",
+    "ta": "ஒரு பக்கம் கீறி விதைகளை உதறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "for frying the vegetables",
+    "si": "එළවළු බැදීම සඳහා",
+    "ta": "காய்கறிகளை வதக்குவதற்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seed",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": {
+    "en": "ground with the vinegar",
+    "si": "විනාකිරි සමඟ ගාගත්",
+    "ta": "வினிகருடன் அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_mustard_paste",
+   "label": {
+    "en": "ready mustard paste",
+    "si": "සූදානම් අබ පේස්ට්",
+    "ta": "தயார் கடுகு விழுது"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "half ground into the dressing, half sliced",
+    "si": "අඩක් සෝස් එකට ගාගත්, අඩක් කපාගත්",
+    "ta": "பாதி விழுதில் அரைத்தது, பாதி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "scraped and ground",
+    "si": "සූරා ගාගත්",
+    "ta": "சுரண்டி அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 80,
+   "unit": "ml",
+   "household": "one third cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_dates",
+   "label": {
+    "en": "dates",
+    "si": "රට ඉඳි",
+    "ta": "பேரீச்சம்பழம்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "4 dates",
+   "preparation": {
+    "en": "stones out, cut into slivers",
+    "si": "ඇට ඉවත් කර තුනී පටිවලට කපාගත්",
+    "ta": "கொட்டை நீக்கி மெல்லிய துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_raisins",
+   "label": {
+    "en": "raisins",
+    "si": "මුද්දරප්පලම්",
+    "ta": "உலர் திராட்சை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew nuts",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "10 cashew nuts",
+   "preparation": {
+    "en": "whole, raw",
+    "si": "අමු, කැඩීම් නැති",
+    "ta": "முழுதாக, பச்சையாக"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the carrot into short sticks, the beans into finger lengths and the onion into thick wedges, and slit the green chillies.",
+    "minutes": 15
+   },
+   {
+    "text": "Sprinkle the cut vegetables with half the salt and leave them in a colander so the water drains off.",
+    "minutes": 30
+   },
+   {
+    "text": "Grind the mustard seed, ginger, half the garlic and the turmeric with most of the vinegar into a smooth dressing.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and fry the cashew until it is just pale gold, then lift it out.",
+    "minutes": 3
+   },
+   {
+    "text": "Fry the vegetables a handful at a time on a high flame so they catch colour but stay crisp, lifting each batch out.",
+    "minutes": 12
+   },
+   {
+    "text": "In the same oil fry the sliced garlic and the chilli powder for a few seconds only, so nothing burns.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the ground dressing with the rest of the vinegar and cook until the raw mustard smell has gone.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir in the sugar and the rest of the salt and let the dressing thicken until it coats the spoon.",
+    "minutes": 4
+   },
+   {
+    "text": "Turn in the fried vegetables, the dates, raisins and cashew and put out the fire at once so nothing goes soft.",
+    "minutes": null
+   },
+   {
+    "text": "Cool it completely, then pack it into a dry glass jar with the dressing covering everything.",
+    "minutes": null
+   },
+   {
+    "text": "Leave it a night before serving so the vinegar works into the vegetables; it keeps for weeks in the cupboard and longer in the fridge.",
+    "minutes": 720
+   }
+  ],
+  "si": [
+   {
+    "text": "කැරට් කෙටි කූරු ලෙස, බෝංචි ඇඟිලි දිගට, ලොකු ලූනු ගොරෝසු කැබලිවලට කපා, අමු මිරිස් පලා ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "කපාගත් එළවළුවලට ලුණු අඩක් ඉස, වතුර බේරෙන්න පෙරන ලාච්චුවක තබන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "අබ, ඉඟුරු, සුදුලූනු අඩක් සහ කහ කුඩු විනාකිරි වැඩි කොටසක් සමඟ ගාගෙන සිනිඳු සෝස් එකක් හදා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පළල් පෑන් එකක පොල් තෙල් රත් කර, කජු ලා රන්වන් වන තුරු පමණක් බැද ඉවතට ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "එළවළු අත්ලක් අත්ලක් ලෙස තද ගින්නේ බැද ගන්න; පාට වැටුණත් කරකර ගතිය නැති නොවෙන්න එක් වරක් පාසා ඉවතට ගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "එම තෙලේම කපාගත් සුදුලූනු සහ මිරිස් කුඩු තත්පර කිහිපයක් පමණක් බැද ගන්න; පිළිස්සෙන්නට ඉඩ නොදෙන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ගාගත් සෝස් එක ඉතිරි විනාකිරි සමඟ දමා, අබවල අමු ගඳ නැති වන තුරු පිසගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "සීනි සහ ඉතිරි ලුණු එකතු කර, සෝස් එක හැන්දේ ගැවෙන තරමට ගැටිති වන තුරු තබන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "බැදගත් එළවළු, රට ඉඳි, මුද්දරප්පලම් සහ කජු දමා පෙරළා, එළවළු මෘදු නොවෙන්න වහාම ගිනි නිවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සම්පූර්ණයෙන් සිසිල් කර, සෝස් එක සියල්ල ආවරණය වන ලෙස වියලි වීදුරු බෝතලයකට පුරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "විනාකිරි එළවළුවලට වදින්න රැයක් තියා පසුව ඉදිරිපත් කරන්න; අල්මාරියේ සති ගණනක්, ශීතකරණයේ තවත් කල් තියෙනවා.",
+    "minutes": 720
+   }
+  ],
+  "ta": [
+   {
+    "text": "கேரட்டை குட்டையான துண்டுகளாக, பீன்ஸை விரல் நீளத்தில், பெரிய வெங்காயத்தை பெரிய துண்டுகளாக நறுக்கி, பச்சை மிளகாயை கீறுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "நறுக்கிய காய்கறிகளில் பாதி உப்பைத் தூவி, நீர் வடியும்படி சல்லடையில் வையுங்கள்.",
+    "minutes": 30
+   },
+   {
+    "text": "கடுகு, இஞ்சி, பாதி பூண்டு, மஞ்சள் தூள் ஆகியவற்றை பெரும்பாலான வினிகருடன் அரைத்து மென்மையான விழுதாக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அகலமான வாணலியில் தேங்காய் எண்ணெயை காய்ச்சி, முந்திரியை லேசாக பொன்னிறமாகும் வரை மட்டும் வறுத்து எடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "காய்கறிகளை ஒரு கை அளவாக, பெரிய தீயில் நிறம் மாறும் அளவுக்கு மட்டும் வதக்கி, மொறுமொறுப்பு போகாமல் ஒவ்வொரு தவணையையும் எடுத்து வையுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "அதே எண்ணெயில் நறுக்கிய பூண்டையும் மிளகாய்த் தூளையும் சில நொடிகள் மட்டும் வதக்குங்கள்; கருகாமல் பாருங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "அரைத்த விழுதை மீதி வினிகருடன் ஊற்றி, கடுகின் பச்சை வாசம் போகும் வரை வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "சீனியும் மீதி உப்பும் சேர்த்து, விழுது கரண்டியில் ஒட்டும் அளவுக்கு கெட்டியாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "வதக்கிய காய்கறிகள், பேரீச்சம்பழம், உலர் திராட்சை, முந்திரி ஆகியவற்றைப் போட்டுப் புரட்டி, காய்கறி மென்மையாகாமல் உடனே அடுப்பை அணையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "முழுவதும் குளிர்ந்த பிறகு, விழுது அனைத்தையும் மூடும்படி உலர்ந்த கண்ணாடி ஜாடியில் அடைத்து வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "வினிகர் காய்கறிகளில் இறங்க ஒரு இரவு வைத்துவிட்டு பரிமாறுங்கள்; அலுமாரியில் வாரங்கள், குளிர்சாதனப் பெட்டியில் இன்னும் நீண்ட நாள் கெடாது.",
+    "minutes": 720
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 30,
+  "passive_minutes": 720
+ },
+ "equipment": [
+  "wide frying pan",
+  "colander",
+  "grinding stone or blender",
+  "dry glass jar with a tight lid"
+ ],
+ "tips": {
+  "en": "Drain the salted vegetables properly; water left on them thins the dressing and the jar turns cloudy in a week. This is a pickle made to give away, so it is worth making four or five times the amount while the pan is hot.",
+  "si": "ලුණු දැමූ එළවළු හොඳින් බේරෙන්න දෙන්න; ඉතිරි වන වතුර සෝස් එක තුනී කර සතියකින් බෝතලය අවලස්සන කරනවා. මෙය බෝතල්වලට දමා අනුන්ට දෙන අච්චාරුවක් නිසා, පෑන් රත් වෙලා තියෙන අතරේම හතර පස් ගුණයක් හදා ගැනීම වටිනවා.",
+  "ta": "உப்பு போட்ட காய்கறிகளிலிருந்து நீரை நன்கு வடியவிடுங்கள்; மீதமிருக்கும் நீர் விழுதை இளக்கி, ஒரு வாரத்தில் ஜாடியைக் கலங்கலாக்கிவிடும். இது ஜாடியில் அடைத்துப் பிறருக்குக் கொடுக்கும் ஊறுகாய் என்பதால், வாணலி சூடாக இருக்கும்போதே நான்கு ஐந்து மடங்கு செய்வது நல்லது."
+ },
+ "health_note": {
+  "en": "The vegetables keep some of their fibre and the mustard and vinegar need no preservative, but the frying oil and the sugar make this richer than a fresh sambol, so treat it as a spoonful beside the rice. Anyone on a salt restriction should note that both salt and sugar are doing preserving work here.",
+  "si": "එළවළුවල කෙඳි ටිකක් ඉතිරි වෙනවා, අබ සහ විනාකිරි නිසා වෙනම කල් තබන ද්‍රව්‍ය අවශ්‍ය නැහැ. එහෙත් බැදපු තෙල සහ සීනි නිසා මෙය අමු සම්බෝලයකට වඩා බරයි; බත් සමඟ හැන්දක් ලෙස ගන්න. ලුණු සීමා කරන අය මෙහි ලුණු සහ සීනි දෙකම කල් තබා ගැනීමට යොදන බව මතක තබා ගන්න.",
+  "ta": "காய்கறிகளில் சிறிது நார்ச்சத்து தங்குகிறது, கடுகும் வினிகரும் இருப்பதால் தனியாகப் பதப்படுத்தும் பொருள் தேவையில்லை. ஆனால் வதக்கிய எண்ணெயும் சீனியும் இதை பச்சை சம்பலை விட கனமாக்குகின்றன; சாதத்துடன் ஒரு கரண்டி அளவே எடுங்கள். உப்புக் கட்டுப்பாடு உள்ளவர்கள், இங்கு உப்பும் சீனியும் பதப்படுத்தும் வேலையைச் செய்கின்றன என்பதை நினைவில் கொள்ளுங்கள்."
+ },
+ "tags": [
+  "festive",
+  "high_fibre",
+  "high_sugar"
+ ],
+ "review_needed": [
+  "quantities"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

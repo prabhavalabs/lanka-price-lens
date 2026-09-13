@@ -1,0 +1,277 @@
+{
+ "id": "dish_gotukola_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 70,
+  "description": {
+   "en": "A small spoonful of finely cut pennywort with coconut on the side of the plate",
+   "si": "පිඟානේ පැත්තකට තබන සිහින්ව කපාගත් ගොටුකොළ මැල්ලුම් හැන්දක්",
+   "ta": "தட்டின் ஓரத்தில் வைக்கும் மெல்லியதாக நறுக்கிய வல்லாரை வதக்கல் ஒரு ஸ்பூன்"
+  }
+ },
+ "yield_g": 300,
+ "ingredients": [
+  {
+   "ref": "product_gotukola",
+   "label": {
+    "en": "gotukola leaves",
+    "si": "ගොටුකොළ",
+    "ta": "வல்லாரை இலை"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 large bunches",
+   "preparation": {
+    "en": "washed in several changes of water, stalks picked off, shredded very fine",
+    "si": "කිහිප වතාවක් වතුරෙන් සෝදා, කරල් ඉවත් කර, ඉතා සිහින්ව කපාගත්",
+    "ta": "பல முறை தண்ணீரில் அலசி, தண்டு நீக்கி, மிக மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගා ගත්",
+    "ta": "புதிதாக துருவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "chopped small",
+    "si": "කුඩාවට කපාගත්",
+    "ta": "பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a big pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp, crushed",
+   "preparation": {
+    "en": "crushed coarse",
+    "si": "රළුවට කුඩු කරගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick the gotukola over, throwing away yellow leaves and thick stalks, and wash it in three changes of water until no sand settles at the bottom.",
+    "minutes": 8
+   },
+   {
+    "text": "Gather the leaves into a tight bundle on the board and shred them as fine as thread; a blunt knife bruises them, so use a sharp one.",
+    "minutes": 7
+   },
+   {
+    "text": "Mix the grated coconut with the onion, green chilli, turmeric, pepper and salt, working it with your fingers so the coconut colours evenly.",
+    "minutes": 2
+   },
+   {
+    "text": "Heat a dry pan, put in the shredded leaves, and turn them over a high flame only until they darken and shrink.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the coconut mixture, toss twice, and take the pan off the fire almost at once; long cooking turns gotukola bitter and grey.",
+    "minutes": 2
+   },
+   {
+    "text": "Squeeze in the lime juice, mix once more, and serve while it is still fresh and green.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ගොටුකොළ පිරික්සා කහ පාට කොළ හා තද කරල් ඉවත් කර, පල්ලෙහා වැලි නොතිබෙන තුරු තුන් වතාවක් වතුරෙන් සෝදන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කොළ ලෑල්ලේ තදින් එකට රැස් කර, නූලක් තරම් සිහින්ව කපන්න; මොට පිහියකින් කොළ තැළෙන නිසා තියුණු පිහියක් ගන්න.",
+    "minutes": 7
+   },
+   {
+    "text": "ගා ගත් පොල් සමඟ ලූනු, අමු මිරිස්, කහ, ගම්මිරිස් සහ ලුණු දමා, පොල් එක සමානව පාට වන තුරු ඇඟිලිවලින් මිශ්‍ර කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පෑන් එකක් තෙල් නැතිව රත් කර, කපාගත් කොළ දමා, තද ගින්නේ, කොළ පාට තදවී හැකිළෙන තුරු පමණක් පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පොල් මිශ්‍රණය එකතු කර දෙවරක් පෙරළා, වහාම ගින්නෙන් ඉවත් කරන්න; වැඩි වෙලාවක් තැම්බුවොත් ගොටුකොළ තිත්ත වී අළු පාට වේ.",
+    "minutes": 2
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා තව වරක් කලවම් කර, නැවුම් කොළ පාටින් තිබෙන අතරේ ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வல்லாரையைப் பரிசோதித்து மஞ்சள் இலைகளையும் கெட்டியான தண்டுகளையும் நீக்கி, அடியில் மணல் இல்லாத வரை மூன்று முறை தண்ணீரில் அலசுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "இலைகளை பலகையில் இறுக்கமாக சேர்த்துப் பிடித்து, நூல் போல மெல்லியதாக நறுக்குங்கள்; மொட்டையான கத்தி இலையை நசுக்கும், கூரிய கத்தியே சரி.",
+    "minutes": 7
+   },
+   {
+    "text": "துருவிய தேங்காயுடன் வெங்காயம், பச்சை மிளகாய், மஞ்சள், மிளகு, உப்பு சேர்த்து, தேங்காய் சமமாக நிறம் மாறும் வரை கையால் பிசையுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "சட்டியை எண்ணெய் இல்லாமல் காய்ச்சி, நறுக்கிய இலைகளைப் போட்டு, பெரிய தீயில் நிறம் அடர்ந்து சுருங்கும் வரை மட்டும் புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "தேங்காய்க் கலவையைச் சேர்த்து இரு முறை புரட்டி, உடனே இறக்குங்கள்; அதிக நேரம் வேகவைத்தால் வல்லாரை கசந்து நிறம் மங்கும்.",
+    "minutes": 2
+   },
+   {
+    "text": "எலுமிச்சைச் சாறு பிழிந்து ஒரு முறை கலக்கி, பச்சை நிறத்தில் இருக்கும்போதே பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 6,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "dry pan",
+  "sharp knife",
+  "coconut scraper"
+ ],
+ "tips": {
+  "en": "Wash before you cut, never after, or half the goodness runs out with the water. If someone in the house will eat it raw, keep a handful aside with coconut, lime and salt and skip the pan for that portion.",
+  "si": "කැපීමට පෙර සෝදන්න, පසුව නොවේ; නැතිනම් හොඳ ගුණ අඩක් වතුරත් සමඟ පිටවී යයි. ගෙදර කිසිවකු අමුවෙන් කනවා නම්, පොල්, දෙහි හා ලුණු සමඟ අත්පිරුවක් වෙන් කර ඒ කොටස ගින්නට නොදමන්න.",
+  "ta": "நறுக்கும் முன் அலசுங்கள், பின்பு அல்ல; இல்லையேல் நல்ல சத்துகள் பாதி தண்ணீருடன் போய்விடும். வீட்டில் யாராவது பச்சையாகச் சாப்பிட்டால், ஒரு கை அளவை தேங்காய், எலுமிச்சை, உப்புடன் தனியே எடுத்து அந்தப் பங்கை அடுப்பில் வைக்க வேண்டாம்."
+ },
+ "health_note": {
+  "en": "Gotukola is one of the best green leaves a Sri Lankan kitchen has: iron, folate and fibre for almost no calories, and households have long eaten it for a cool head and clear skin. It suits anyone watching weight or blood sugar, and a pregnant mother is better off eating it cooked like this than raw.",
+  "si": "ගොටුකොළ ලංකාවේ මුළුතැන්ගෙයේ ඇති හොඳම කොළ එළවළු වලින් එකකි: කැලරි නොමැති තරමින් යකඩ, ෆෝලේට් හා තන්තු ලැබේ, ගෙවල්වල දිගු කලක් සිට හිස සිසිල් කිරීමට හා සමට හොඳ නිසා කනු ලැබේ. බර හෝ රුධිර සීනි බලාගන්නා අයට ගැළපෙන අතර, ගැබිනි මවකට අමුවෙන් නොව මෙසේ තම්බා ගැනීම වඩා හොඳයි.",
+  "ta": "வல்லாரை இலங்கை சமையலறையில் உள்ள சிறந்த கீரைகளில் ஒன்று: கலோரி இல்லாமல் இரும்பு, ஃபோலேட், நார்ச்சத்து; தலைக்கு குளிர்ச்சிக்கும் தோலுக்கும் நல்லது என்று வீடுகளில் நெடுங்காலமாகச் சாப்பிடுகிறார்கள். எடையையோ சர்க்கரையையோ கவனிப்பவர்களுக்கு ஏற்றது; கர்ப்பிணித் தாய்க்கு பச்சையாக அல்ல, இப்படி வதக்கியே கொடுப்பது நல்லது."
+ },
+ "tags": [
+  "low_calorie",
+  "low_carb",
+  "high_fibre",
+  "iron_rich",
+  "weight_loss_friendly",
+  "diabetic_friendly",
+  "quick",
+  "light",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

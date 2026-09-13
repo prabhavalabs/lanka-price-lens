@@ -1,0 +1,461 @@
+{
+ "id": "dish_black_cuttlefish_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "A ladle of near-black gravy with tender rings of cuttlefish",
+   "si": "මෙලෙක් දැල්ලෝ වළලු සමඟ දෙන කළු පැහැති හොදි හැන්දක්",
+   "ta": "மென்மையான கணவாய் வளையங்களுடன் கிட்டத்தட்ட கருப்பான குழம்பு ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "pantry_cuttlefish",
+   "label": {
+    "en": "cuttlefish",
+    "si": "දැල්ලෝ",
+    "ta": "கணவாய்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "2 medium cuttlefish, cleaned",
+   "preparation": {
+    "en": "cleaned, ink sac kept aside, cut into rings and strips",
+    "si": "පිරිසිදු කර, තවර මල්ල වෙනම තියාගෙන, වළලු සහ තීරු වලට කපා ගත්ත",
+    "ta": "சுத்தம் செய்து, மைப் பையை தனியாக வைத்து, வளையங்களாகவும் நீள் துண்டுகளாகவும் வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "கொத்தமல்லி விதை"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": {
+    "en": "dry roasted dark and ground",
+    "si": "හොඳට කළු වෙනකම් බැදලා අඹරා ගත්ත",
+    "ta": "கருக்கும் வரை வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "බැදලා අඹරා ගත්ත",
+    "ta": "வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "බැදලා අඹරා ගත්ත",
+    "ta": "வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொரக்கா"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 small pieces",
+   "preparation": {
+    "en": "soaked and mashed",
+    "si": "පොඟවා තලා ගත්ත",
+    "ta": "ஊறவைத்து நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්ත",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb joint",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්ත",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ දියර කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ගාටි කිරි",
+    "ta": "முதல் பால், கட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Clean the cuttlefish, keep the ink sac whole in a cup if you want the darkest gravy, and cut the body into rings and the arms into short lengths.",
+    "minutes": 20
+   },
+   {
+    "text": "Dry roast the coriander, cumin and fennel in a pan on a low flame until they are the colour of dark tea, then grind them.",
+    "minutes": 8
+   },
+   {
+    "text": "Soak the goraka in a little warm water and mash it to a pulp.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the onion, garlic, ginger, curry leaves and pandan until the onion browns.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the ground roasted spices, roasted curry powder, chilli powder and turmeric and fry them in the oil until the pot smells toasted.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in the thin coconut milk and the goraka pulp, add the salt, and bring it to a boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Put in the cuttlefish, cover, and cook on a low flame; it goes rubbery first and then softens again, so give it time.",
+    "minutes": 25
+   },
+   {
+    "text": "Stir in the ink if you are using it, then the thick coconut milk, and simmer uncovered until the gravy is glossy and very dark.",
+    "minutes": 8
+   },
+   {
+    "text": "Leave the pot to stand off the fire before serving.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "දැල්ලෝ පිරිසිදු කරලා, හොදිය හොඳට කළු කරගන්න ඕන නම් තවර මල්ල කැඩෙන්නේ නැතිව කෝප්පයකට වෙන් කරලා, ඇඟ වළලුවලට සහ අත් කෙටි කැබලිවලට කපා ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කොත්තමල්ලි, සූදුරු සහ මාදුරු මද ගින්නේ තද තේ පාටට බැදලා අඹරා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගොරකා උණු වතුර ටිකකින් පොඟවලා පල්පයක් වෙනකම් තලා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුට්ටියක පොල් තෙල් රත් කරලා ලූනු, සුදුළූනු, ඉඟුරු, කරපිංචා සහ රම්පෙ ලූනු දුඹුරු වෙන තුරු තෙල් දාගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "බැදලා අඹරපු කුළුබඩු, බැදපු තුනපහ, මිරිස් කුඩු සහ කහ කුඩු දමා, බැදුණු සුවඳ මුට්ටියෙන් එන තුරු තෙලේ අනගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "දෙවන මිරිකීමේ දියර පොල් කිරි සහ ගොරකා පල්ප් වත් කරලා, ලුණු දමා උතුරන්න තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "දැල්ලෝ දමලා, වහලා, මද ගින්නේ තම්බන්න; මුලින් තද වෙලා පස්සේ නැවත මෙලෙක් වෙනවා, ඒ නිසා ඉවසන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "තවර දාන්නේ නම් දැන් දමලා, ඊට පස්සේ ගාටි පොල් කිරි එකතු කරලා, වහන්නේ නැතිව හොදි දිලිසෙන කළු පැහැයට එන තුරු උතුරවන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බෙදන්න කලින් මුට්ටිය ලිපෙන් අයින් කරලා තියන්න.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "கணவாயை சுத்தம் செய்து, குழம்பு நன்கு கருமையாக வேண்டுமெனில் மைப் பையை உடையாமல் ஒரு கிண்ணத்தில் எடுத்து, உடலை வளையங்களாகவும் கைகளை சிறு துண்டுகளாகவும் வெட்டுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "கொத்தமல்லி, சீரகம், பெருஞ்சீரகத்தை சிறு தீயில் கடுந்தேநீர் நிறம் வரும் வரை வறுத்து அரையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "கொரக்காவை சிறிது வெந்நீரில் ஊறவைத்து கூழாக நசுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, ரம்பை சேர்த்து வெங்காயம் பொன்னிறமாகும் வரை தாளியுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "வறுத்து அரைத்த மசாலா, வறுத்த கறி மசாலா, மிளகாய்த் தூள், மஞ்சள் சேர்த்து வறுத்த மணம் வரும் வரை எண்ணெயில் கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பாலையும் கொரக்கா கூழையும் ஊற்றி, உப்பு போட்டு கொதிக்க விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கணவாயைப் போட்டு, மூடி, சிறு தீயில் வேகவிடுங்கள்; முதலில் இறுகி பின்பு மீண்டும் மென்மையாகும், அதனால் அவகாசம் கொடுங்கள்.",
+    "minutes": 25
+   },
+   {
+    "text": "மை பயன்படுத்தினால் இப்போது சேர்த்து, பின்பு கட்டித் தேங்காய்ப் பாலை ஊற்றி, மூடாமல் குழம்பு பளபளப்பாகக் கருமையாகும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "பரிமாறும் முன் சட்டியை அடுப்பிலிருந்து இறக்கி வையுங்கள்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 40,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot",
+  "small pan for roasting spices",
+  "grinding stone or mill"
+ ],
+ "tips": {
+  "en": "Cuttlefish is either cooked quickly or cooked long; the middle is where it turns to rubber, so once it tightens keep the flame low and wait it out. Roast the spices until they are dark but stop before they smell burnt, because that bitterness cannot be taken back out.",
+  "si": "දැල්ලෝ හරි නම් ඉක්මනට උයන්න ඕන, නැත්නම් හොඳ වෙලාවක් උයන්න ඕන; අතරමැද තමයි රබර් වගේ වෙන්නේ, ඒ නිසා තද වුණාට පස්සේ ගිනි අඩුවෙන් තියලා ඉවසන්න. කුළුබඩු කළු වෙනකම් බැදගන්න, ඒත් පිළිස්සුණු ගඳ එන්න කලින් නවත්වන්න; ඒ තිත්ත රස පස්සේ ඉවත් කරන්න බැහැ.",
+  "ta": "கணவாயை வேகமாகச் சமைக்க வேண்டும், அல்லது நீண்ட நேரம் சமைக்க வேண்டும்; இடைப்பட்ட நேரத்தில்தான் அது ரப்பர் போல ஆகும், அதனால் இறுகியதும் தீயைக் குறைத்துப் பொறுமையாகக் காத்திருங்கள். மசாலாவை கருமையாக வறுக்கவும், ஆனால் கருகிய வாசனை வருமுன் நிறுத்துங்கள்; அந்தக் கசப்பை பின்பு நீக்க முடியாது."
+ },
+ "health_note": {
+  "en": "Cuttlefish is lean, high in protein and low in fat, so most of the richness here comes from the thick coconut milk. It is a hot, heavily spiced pot, so serve it with plenty of rice and a mild vegetable.",
+  "si": "දැල්ලෝ මේදය අඩු, ප්‍රෝටීන් වැඩි ආහාරයක් නිසා, මේ කරියේ තර බව එන්නේ ගාටි පොල් කිරියෙන්. සැර සහ කුළුබඩු වැඩි නිසා බත් ප්‍රමාණයක් සහ මෘදු එළවළුවක් සමඟ බෙදන්න.",
+  "ta": "கணவாயில் கொழுப்பு குறைவு, புரதம் அதிகம்; இந்தக் கறியின் நிறைவு பெரும்பாலும் கட்டித் தேங்காய்ப் பாலில் வருகிறது. காரமும் மசாலாவும் கூடிய கறி, எனவே நல்ல அளவு சாதத்துடனும் காரம் குறைந்த காய்கறியுடனும் பரிமாறுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_fat",
+  "festive",
+  "one_pot",
+  "filling",
+  "iron_rich"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

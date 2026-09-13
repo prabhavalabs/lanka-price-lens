@@ -1,0 +1,471 @@
+{
+ "id": "dish_paya_trotter_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 210,
+  "description": {
+   "en": "A bowl of trotters in sticky gravy, eaten with bread or roti",
+   "si": "පාන් හෝ රොටි සමඟ, ඇලෙන හොද්දේ කකුල් බඳුනක්",
+   "ta": "ரொட்டியுடன் சாப்பிடும், ஒட்டும் குழம்பில் ஒரு கிண்ணம் கால் கறி"
+  }
+ },
+ "yield_g": 1050,
+ "ingredients": [
+  {
+   "ref": "pantry_trotters",
+   "label": {
+    "en": "goat or beef trotters",
+    "si": "එළු හෝ හරක් කකුල්",
+    "ta": "ஆட்டு அல்லது மாட்டுக் கால்கள்"
+   },
+   "quantity": 1200,
+   "unit": "g",
+   "household": "4 trotters, chopped at the joints",
+   "preparation": {
+    "en": "singed, scraped and chopped by the butcher, scrubbed with salt and lime",
+    "si": "ගිනි ගා, සීරා, මස් කඩයේ කපාගත්, ලුණු හා දෙහි වලින් හොඳින් සීරූ",
+    "ta": "நெருப்பில் வாட்டி, சுரண்டி, கடையில் வெட்டியது, உப்பும் தேசிக்காயும் கொண்டு தேய்த்துக் கழுவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "தேசிக்காய்ச் சாறு"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "juice of 1 lime",
+   "preparation": {
+    "en": "for scrubbing and for the table",
+    "si": "සීරීමට සහ මේසයට",
+    "ta": "தேய்த்துக் கழுவவும் மேசைக்கும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "2 onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "8 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a large thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp, crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලාගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp, ground",
+   "preparation": {
+    "en": "lightly roasted and ground",
+    "si": "සැහැල්ලුවෙන් බැදගෙන අඹරාගත්",
+    "ta": "லேசாக வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "5 pods",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டி, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrub the chopped trotters with coarse salt, half the lime juice and a little turmeric, rubbing between the split hooves, then rinse them under running water three times.",
+    "minutes": 25
+   },
+   {
+    "text": "Boil them in plenty of fresh water for ten minutes, throw that first water away and rinse the pot; this takes the last of the smell.",
+    "minutes": 12
+   },
+   {
+    "text": "Return the trotters to the pot with about two litres of fresh water, the onion, garlic, ginger, turmeric, cinnamon, cardamom, cloves and salt and bring it to the boil.",
+    "minutes": 10
+   },
+   {
+    "text": "Skim off the scum, lower the flame and let it cook slowly, adding hot water whenever the level drops below the bones.",
+    "minutes": 100
+   },
+   {
+    "text": "Test a piece: the skin should be soft enough to pinch through and the gravy should feel slightly sticky on the lips.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a small pan, fry the crushed pepper, fennel, cumin, ground coriander and curry leaves for a moment and pour the whole tempering into the pot.",
+    "minutes": 5
+   },
+   {
+    "text": "Let the curry cook on uncovered so the gravy reduces and thickens around the trotters.",
+    "minutes": 15
+   },
+   {
+    "text": "Stir in the thick coconut milk on a low flame and bring it to one slow bubble, no more.",
+    "minutes": 5
+   },
+   {
+    "text": "Scatter the coriander leaves, take the pot off the fire and serve it very hot, with the rest of the lime to squeeze at the table.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කපාගත් කකුල් රළු ලුණු, දෙහි යුෂ භාගයක් සහ කහ ස්වල්පයක් දමා, කුර අතර පවා අතුල්ලා සීරා, ගලන වතුරේ තුන් වරක් සෝදන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "නැවුම් වතුර බහුලව දමා මිනිත්තු දහයක් තම්බා, එම පළමු වතුර ඉවත දමා භාජනයත් සෝදන්න; ඉතිරි ගඳ යන්නේ මෙයින්.",
+    "minutes": 12
+   },
+   {
+    "text": "කකුල් නැවත භාජනයට දමා, ලීටර් දෙකක් පමණ අලුත් වතුර, ළූණු, සුදුළූණු, ඉඟුරු, කහ, කුරුඳු, එනසාල්, කරාබුනැටි සහ ලුණු දමා උතුරන්නට තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෙණ ඉවත් කර, ගින්න අඩු කර සෙමින් උයන්න; වතුර ඇට මට්ටමට වඩා අඩු වන සෑම විටම උණු වතුර එකතු කරන්න.",
+    "minutes": 100
+   },
+   {
+    "text": "කැබැල්ලක් පරීක්ෂා කරන්න; හම ඇඟිලිවලින් තුවා ගත හැකි තරමට මෘදු විය යුතු අතර හොද්ද තොල්වල ඇලෙන ගතියක් දැක්විය යුතුය.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා පෑන් එකක පොල් තෙල් රස්නේ කර, තලාගත් ගම්මිරිස්, මාදුරු, සූදුරු, අඹරාගත් කොත්තමල්ලි සහ කරපිංචා මොහොතක් බැදගෙන, තෙම්පරාදුව මුළුමනින් භාජනයට වත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වැසුමක් නැතිව උයා, හොද්ද සිඳී කකුල් වටා තද වන්නට දෙන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "අඩු ගින්නේ ඝන පොල් කිරි දමා, එක් වරක් පමණක් සෙමින් උතුරන්නට දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කොත්තමල්ලි කොළ ඉසී, භාජනය ගින්නෙන් ඉවත් කර, ඉතිරි දෙහි මේසයේ මිරිකා ගැනීමට තබා ඉතා උණුසුම්ව පිළිගන්වන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெட்டிய கால்களைக் கல் உப்பு, பாதி தேசிக்காய்ச் சாறு, கொஞ்சம் மஞ்சள் சேர்த்து, குளம்புகளுக்கு இடையிலும் தேய்த்துக் கழுவி, ஓடும் நீரில் மூன்று முறை அலசுங்கள்.",
+    "minutes": 25
+   },
+   {
+    "text": "நிறைய புதிய நீரில் பத்து நிமிடம் வேகவைத்து, அந்த முதல் நீரைக் கொட்டி, பாத்திரத்தையும் கழுவுங்கள்; மீதி நாற்றம் இதனால் போகும்.",
+    "minutes": 12
+   },
+   {
+    "text": "கால்களை மீண்டும் பாத்திரத்தில் இட்டு, இரண்டு லிட்டர் புதிய நீர், வெங்காயம், பூண்டு, இஞ்சி, மஞ்சள், பட்டை, ஏலக்காய், கிராம்பு, உப்பு சேர்த்துக் கொதிக்க வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "நுரையை அகற்றி, தீயைக் குறைத்து மெதுவாகச் சமையுங்கள்; நீர் எலும்பு மட்டத்திற்குக் கீழே போகும் போதெல்லாம் சுடுநீர் சேர்க்குங்கள்.",
+    "minutes": 100
+   },
+   {
+    "text": "ஒரு துண்டைப் பரிசோதியுங்கள்; தோல் விரலால் கிள்ளும் அளவு மென்மையாகவும், குழம்பு உதட்டில் ஒட்டும் தன்மையுடனும் இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறு சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, இடித்த மிளகு, பெருஞ்சீரகம், சீரகம், அரைத்த மல்லி, கறிவேப்பிலையை ஒரு நிமிடம் வதக்கி, தாளிப்பு முழுவதையும் பாத்திரத்தில் ஊற்றுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மூடாமல் சமைத்து, குழம்பு வற்றி கால்களைச் சுற்றிக் கெட்டியாக விடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "சிறு தீயில் கெட்டித் தேங்காய்ப் பாலைச் சேர்த்து, ஒரு முறை மட்டும் மெதுவாகக் கொதிக்க விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கொத்தமல்லி இலையைத் தூவி, பாத்திரத்தை இறக்கி, மீதி தேசிக்காயை மேசையில் பிழிந்து கொள்ள வைத்து, நன்கு சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 150,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "large deep pot with a lid",
+  "small pan for the tempering",
+  "ladle for skimming"
+ ],
+ "tips": {
+  "en": "Throwing away the first boiling water is what separates a good paya from one nobody finishes. If the gravy does not turn sticky by the end, the trotters simply need another half hour on a low flame, not more spice.",
+  "si": "පළමු තැම්බූ වතුර ඉවත දැමීමයි හොඳ පායා එකක් සහ කිසිවෙක් අවසන් නොකරන එකක් අතර වෙනස. අවසානයේ හොද්ද ඇලෙන ගතියක් නොගනී නම්, කකුල්වලට අවශ්‍ය වන්නේ තව කුළුබඩු නොව අඩු ගින්නේ තවත් පැය භාගයකි.",
+  "ta": "முதல் முறை வேகவைத்த நீரைக் கொட்டுவதே நல்ல பாயாவுக்கும் யாரும் முடிக்காத ஒன்றுக்கும் இடையிலான வேறுபாடு. இறுதியில் குழம்பு ஒட்டும் தன்மை அடையவில்லை என்றால், கால்களுக்குத் தேவை மேலும் மசாலா அல்ல, சிறு தீயில் இன்னும் அரை மணி நேரம்தான்."
+ },
+ "health_note": {
+  "en": "Long boiling draws collagen out of the bones, which is what thickens the gravy and why paya is eaten by people recovering from illness or childbirth. It is also fatty, so let it cool a little, lift the set fat off the top, and eat it with bread rather than more meat.",
+  "si": "දිගු වේලා තැම්බීමෙන් ඇටවලින් කොලජන් නිදහස් වන අතර හොද්ද තද වන්නේත්, රෝගාබාධවලින් හෝ දරු ප්‍රසූතියෙන් සුවවන අයට පායා දෙන්නේත් එබැවිනි. එය තෙල් සහිත ද වන බැවින් ටිකක් නිවෙන්නට දී, උඩ තැන්පත් වන තෙල් ඉවත් කර, තව මසක් නොව පාන් සමඟ අනුභව කරන්න.",
+  "ta": "நெடுநேரம் கொதிக்க வைப்பதால் எலும்புகளிலிருந்து கொலாஜன் வெளியேறுகிறது; குழம்பு கெட்டியாவதற்கும், நோயிலிருந்தோ பிரசவத்திலிருந்தோ தேறுபவர்களுக்குப் பாயா கொடுப்பதற்கும் காரணம் அதுவே. இதில் கொழுப்பும் அதிகம், எனவே சிறிது ஆற விட்டு, மேலே இறுகும் கொழுப்பை நீக்கி, மேலும் இறைச்சி இல்லாமல் ரொட்டியுடன் சாப்பிடுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "comfort",
+  "filling",
+  "elderly_friendly",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

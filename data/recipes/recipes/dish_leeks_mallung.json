@@ -1,0 +1,306 @@
+{
+ "id": "dish_leeks_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 90,
+  "description": {
+   "en": "A soft green mound of leeks and coconut",
+   "si": "ලීක්ස් හා පොල් මිශ්‍ර මෘදු කොළ පැහැ ගොඩක්",
+   "ta": "லீக்ஸும் தேங்காயும் சேர்ந்த மென்மையான பசுமைக் குவியல்"
+  }
+ },
+ "yield_g": 370,
+ "ingredients": [
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 stalks",
+   "preparation": {
+    "en": "split lengthwise, washed between the layers, sliced into fine rings",
+    "si": "දිගට පලා, පත්‍ර අතර සෝදා, සිහින් වළලු ලෙස කපා",
+    "ta": "நீளமாகப் பிளந்து, அடுக்குகளுக்கு இடையே கழுவி, மெல்லிய வட்டங்களாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 and 1/4 cups",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගාගත්",
+    "ta": "புதிதாகத் துருவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 small onions",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "பொடியாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "பொடியாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "leaves torn off",
+    "si": "කොළ ගලවාගෙන",
+    "ta": "இலைகளை உரித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගෙන",
+    "ta": "இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி (உம்பலகடா)"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp, pounded",
+   "preparation": {
+    "en": "pounded fine",
+    "si": "සිහින්ව කොටාගෙන",
+    "ta": "நன்றாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Split the leeks lengthwise and run water between the layers; garden soil hides deep inside the stalk.",
+    "minutes": 5
+   },
+   {
+    "text": "Slice the leeks into fine rings, using the pale part and as much of the green as is still tender.",
+    "minutes": 6
+   },
+   {
+    "text": "Rub the scraped coconut together with the onion, green chillies, turmeric, curry leaves, pepper, salt and the maldive fish if you are using it.",
+    "minutes": 3
+   },
+   {
+    "text": "Put the leeks into a pan with two spoons of water, cover, and cook on a medium flame until they soften.",
+    "minutes": 5
+   },
+   {
+    "text": "Uncover and let any water left in the pan dry off, so the mallung does not end up wet.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the coconut mixture, turn the flame low and keep turning until the coconut is heated through without browning.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt and serve warm with rice and a curry.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ලීක්ස් දිගට පලා, පත්‍ර අතරට වතුර ගලා යන්නට හරින්න; වත්තේ පස් කඳ ඇතුළේ ගැඹුරට සැඟවී තිබේ.",
+    "minutes": 5
+   },
+   {
+    "text": "ලීක්ස් සිහින් වළලු ලෙස කපන්න; සුදු කොටස මෙන්ම තවම ලා ඇති කොළ කොටසෙන් හැකි තරමක් යොදාගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ගාගත් පොල් සමඟ ලූනු, අමු මිරිස්, කහ, කරපිංචා, ගම්මිරිස්, ලුණු හා (භාවිත කරන්නේ නම්) උම්බලකඩ අතුල්ලා මිශ්‍ර කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලීක්ස් පෑනකට දමා වතුර හැන්ද දෙකක් එකතු කර, වහන්නක් දමා මධ්‍යම ගින්නේ මෘදු වන තුරු උයන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වහන්න ඉවත් කර පෑනේ ඉතිරි වතුර වියළෙන්නට හරින්න; එවිට මැල්ලුම තෙත් වන්නේ නැත.",
+    "minutes": 2
+   },
+   {
+    "text": "පොල් මිශ්‍රණය දමා, ගින්න අඩු කර, පොල් දුඹුරු නොවී රස්නය වන තුරු පෙරළන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලුණු රස බලා, බත් හා ව්‍යංජනයක් සමඟ උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "லீக்ஸை நீளமாகப் பிளந்து, அடுக்குகளுக்கு இடையே நீர் ஓடவிடுங்கள்; தோட்ட மண் தண்டின் உள்ளே ஆழமாக ஒளிந்திருக்கும்.",
+    "minutes": 5
+   },
+   {
+    "text": "லீக்ஸை மெல்லிய வட்டங்களாக நறுக்குங்கள்; வெள்ளைப் பகுதியுடன், இன்னும் இளசாக உள்ள பசுமைப் பகுதியையும் சேர்த்துப் பயன்படுத்துங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "துருவிய தேங்காயுடன் வெங்காயம், பச்சை மிளகாய், மஞ்சள், கறிவேப்பிலை, மிளகு, உப்பு, (சேர்ப்பதாக இருந்தால்) மாசி சேர்த்துப் பிசையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "லீக்ஸை வாணலியில் இட்டு இரண்டு ஸ்பூன் நீர் விட்டு, மூடி, நடுத்தர தீயில் மென்மையாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மூடியை எடுத்து, வாணலியில் மீதமுள்ள நீரை ஆறவிடுங்கள்; அப்போது வதக்கல் ஈரமாகாது.",
+    "minutes": 2
+   },
+   {
+    "text": "தேங்காய்க் கலவையைச் சேர்த்து, தீயைக் குறைத்து, தேங்காய் கருகாமல் சூடாகும் வரை புரட்டுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பைச் சரிபார்த்து, சாதத்துடனும் கறியுடனும் சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 10,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan with lid",
+  "knife and board",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "Slice the rings thin and the mallung cooks in the time it takes to grate the coconut. Save the tough dark green tops for a stock pot or the compost rather than forcing them into the pan.",
+  "si": "වළලු තුනී ලෙස කැපුවහොත් පොල් ගානා වෙලාවෙන්ම මැල්ලුම සකස් වේ. තද තද කොළ පැහැ උඩ කොටස් බලෙන් පෑනට නොදමා, ඉස්ම වළඳකට හෝ කොම්පෝස්ට් ගොඩට තබන්න.",
+  "ta": "வட்டங்களை மெல்லியதாக நறுக்கினால், தேங்காய் துருவும் நேரத்திலேயே வதக்கல் தயாராகும். கெட்டியான அடர் பசுமை நுனிப் பகுதிகளை வலுக்கட்டாயமாக வாணலியில் போடாமல், சூப் சட்டிக்கோ உரக் குவியலுக்கோ வையுங்கள்."
+ },
+ "health_note": {
+  "en": "Leeks give fibre and the same family of compounds as onion and garlic, and this dry mallung needs no oil at all, only the fat naturally in the coconut. It is a light dish that suits an evening plate.",
+  "si": "ලීක්ස්වලින් කෙඳි මෙන්ම ලූනු හා සුදුලූනු කුලයේ සංයෝග ද ලැබේ; මෙම වියළි මැල්ලුමට තෙල් කිසිසේත් අවශ්‍ය නැත, ඇත්තේ පොල්වල ස්වභාවික මේදය පමණයි. රාත්‍රී පිඟානට ගැළපෙන සැහැල්ලු ව්‍යංජනයකි.",
+  "ta": "லீக்ஸில் நார்ச்சத்தும், வெங்காயம் பூண்டு குடும்பத்தின் அதே சேர்மங்களும் உள்ளன; இந்த காய்ந்த வதக்கலுக்கு எண்ணெய் தேவையில்லை, தேங்காயில் இயற்கையாக உள்ள கொழுப்பே போதும். இரவு உணவுக்கு ஏற்ற இலகுவான உணவு."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "light",
+  "quick",
+  "budget"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

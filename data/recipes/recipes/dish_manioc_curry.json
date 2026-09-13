@@ -1,0 +1,324 @@
+{
+ "id": "dish_manioc_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 280,
+  "description": {
+   "en": "A plateful of soft manioc pieces in pale gravy, eaten as the meal itself or beside rice",
+   "si": "මෘදු මඤ්ඤොක්කා කැබලි ලා පැහැති හොදියක් සමඟ පිඟානකට; බතක් නැතුව ආහාරයක් ලෙසත් ගන්න පුළුවන්",
+   "ta": "மென்மையான மரவள்ளித் துண்டுகள் வெளிர் கறிக்குழம்புடன் ஒரு தட்டு; சாதத்துடனோ தனியாகவோ சாப்பிடலாம்"
+  }
+ },
+ "yield_g": 1120,
+ "ingredients": [
+  {
+   "ref": "product_manioc",
+   "label": {
+    "en": "manioc (cassava)",
+    "si": "මඤ්ඤොක්කා",
+    "ta": "மரவள்ளிக்கிழங்கு"
+   },
+   "quantity": 800,
+   "unit": "g",
+   "household": "2 medium roots, peeled",
+   "preparation": {
+    "en": "peeled thickly, cut into finger-length pieces, hard centre fibre removed",
+    "si": "ලොකුවට හෑරලා, ඇඟිලි ප්‍රමාණයට කපලා, මැද නාරටිය ගලවා",
+    "ta": "தடிமனாகச் சீவி, விரல் நீளமாக வெட்டி, நடு நாரை நீக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup and a little more",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "5 or 6 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට පෙති කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit down the middle",
+    "si": "දිගට පලා",
+    "ta": "நீளமாகக் கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp, some for the boiling water",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the manioc thickly with a knife, cut it into finger-length pieces and prise out the hard fibre that runs down the middle of each piece.",
+    "minutes": 10
+   },
+   {
+    "text": "Boil the pieces in plenty of water with a pinch of salt, pot left uncovered, until a fork slides in with no resistance.",
+    "minutes": 20
+   },
+   {
+    "text": "Pour that water away completely and never use it in the gravy; rinse the pieces once in the pot.",
+    "minutes": null
+   },
+   {
+    "text": "Put the drained manioc back with the sliced onion, slit chillies, turmeric, curry powder, curry leaves, pandan and all of the thin coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Simmer uncovered on a medium flame until the thin milk has almost gone and the pieces have taken the spice.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour in the thick milk with the salt and bring it up to a single bubble, rocking the pot by its rim instead of stirring hard, so the pieces stay whole.",
+    "minutes": 3
+   },
+   {
+    "text": "Heat the coconut oil in a small pan, brown a few onion slices and a sprig of curry leaves, pour it over the curry and leave the pot to stand before serving.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "මඤ්ඤොක්කා පිහියකින් ලොකුවට හෑරලා, ඇඟිලි ප්‍රමාණයේ කැබලිවලට කපලා, එක් එක් කැබැල්ලේ මැද තියෙන දෘඩ නාරටිය ගලවා ඉවත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුට්ටිය නොවසා, ලුණු ස්වල්පයක් දමා වතුර ගොඩක් එක්ක, ගෑරුප්පුවක් පහසුවෙන් ඇදෙන තුරු තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "එම වතුර සම්පූර්ණයෙන් බේරා ඉවත් කරන්න; කිසි විටෙක එය හොදිට දාන්න එපා. කැබලි එක් වරක් සෝදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බේරාගත් මඤ්ඤොක්කා නැවත මුට්ටියට දමා, පෙති කපාගත් රතු ළූණු, පලාගත් අමු මිරිස්, කහ, තුනපහ, කරපිංචා, රම්පෙ සහ තුනී පොල් කිරි සියල්ල එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මද ගින්නේ, වහන්නේ නැතුව, තුනී කිරි හිඳී යන තුරු සහ කැබලිවලට රස වදින තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ලුණු සමඟ ඝන පොල් කිරි වත් කර, කැබලි කැඩෙන්නේ නැති වෙන්න තද කලවම් නොකර මුට්ටිය සෙමින් සොලවමින්, එක් උතුරක් පමණක් එන්න දෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කුඩා පෑන් එකක පොල් තෙල් රත් කර, ළූණු පෙති ටිකක් සහ කරපිංචා අතු එකක් බැදගෙන හොදි මතට වත් කර, බෙදන්න කලින් මුට්ටිය මිනිත්තු කීපයක් නිශ්චලව තියන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மரவள்ளிக்கிழங்கைக் கத்தியால் தடிமனாகச் சீவி, விரல் நீளத் துண்டுகளாக வெட்டி, ஒவ்வொரு துண்டின் நடுவில் இருக்கும் கடினமான நாரை எடுத்து விடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சட்டியை மூடாமல், நிறையத் தண்ணீரும் கொஞ்சம் உப்பும் சேர்த்து, முள்கரண்டி எளிதாக உள்ளே இறங்கும் வரை வேகவிடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "அந்தத் தண்ணீரை முழுவதுமாக ஊற்றி விடவும்; அதைக் கறிக்குழம்பில் சேர்க்கவே கூடாது. துண்டுகளை ஒரு முறை அலசவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வடித்த கிழங்கை மீண்டும் சட்டியில் இட்டு, நறுக்கிய சின்ன வெங்காயம், கீறிய பச்சை மிளகாய், மஞ்சள், கறி மசாலா, கறிவேப்பிலை, ரம்பை, இரண்டாம் தேங்காய்ப்பால் அனைத்தையும் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடாமல் மிதமான தீயில், இரண்டாம் பால் வற்றி துண்டுகளுக்கு மசாலா ஏறும் வரை கொதிக்க விடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "உப்புடன் முதல் பாலை ஊற்றி, துண்டுகள் உடையாமல் இருக்க கிளறாமல் சட்டியை மெதுவாக அசைத்து, ஒரே ஒரு கொதி வரும் வரை வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சிறு சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, சில வெங்காயத் துண்டுகளையும் ஒரு கொத்து கறிவேப்பிலையையும் வதக்கி, கறியின் மேல் ஊற்றி, பரிமாறும் முன் சில நிமிடம் அப்படியே வைக்கவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 35,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Boil manioc in an open pot and throw the water away; that first water carries the bitterness out. If a root smells sharp or tastes bitter after boiling, do not eat it. Buy roots that snap white and clean, not grey or stringy at the cut.",
+  "si": "මඤ්ඤොක්කා වහන්නේ නැතුව තම්බා, එම වතුර ඉවත් කරන්න; තිත්ත ගතිය යන්නේ එම මුල් වතුරෙන්. තම්බාගත් පසුත් තිත්ත රසක් හෝ දුර්ගන්ධයක් තිබේ නම් කන්න එපා. කපන විට සුදුවට, පිරිසිදුව කැඩෙන අල තෝරා ගන්න.",
+  "ta": "மரவள்ளியை மூடாமல் வேகவைத்து அந்தத் தண்ணீரை ஊற்றி விடவும்; கசப்பு அந்த முதல் தண்ணீரிலேயே வெளியேறும். வேகவைத்த பிறகும் கசப்பாக இருந்தால் அல்லது வாசனை மாறியிருந்தால் சாப்பிட வேண்டாம். வெட்டும் போது வெள்ளையாக, நாரில்லாமல் இருக்கும் கிழங்கையே வாங்கவும்."
+ },
+ "health_note": {
+  "en": "Manioc is mostly starch, so a plate of it carries more carbohydrate than the same weight of rice and the coconut milk adds saturated fat on top. It fills a household cheaply, but anyone watching blood sugar should keep the portion small and eat a green or a dhal beside it.",
+  "si": "මඤ්ඤොක්කා බොහෝ දුරට පිෂ්ටයයි; එබැවින් එම බර ප්‍රමාණයේ බතට වඩා වැඩි කාබෝහයිඩ්‍රේට් ප්‍රමාණයක් ලැබෙනවා, පොල් කිරිත් එක්ක තෙල් ගතියත් එකතු වෙනවා. අඩු මුදලකට පවුලක් පුරවන කෑමක් වුවත්, රුධිර සීනි බලා ගන්න කෙනෙක් ප්‍රමාණය අඩුවෙන් ගෙන පලාවක් හෝ පරිප්පුවක් සමඟ කන්න.",
+  "ta": "மரவள்ளி பெரும்பாலும் மாவுச்சத்தே; அதே எடையுள்ள சாதத்தை விட அதிக கார்போஹைட்ரேட் கிடைக்கும், தேங்காய்ப்பாலுடன் கொழுப்பும் சேரும். குடும்பத்தை மலிவாக நிரப்பும் உணவு என்றாலும், இரத்தச் சர்க்கரையைக் கவனிப்பவர்கள் அளவைக் குறைத்து, ஒரு கீரையையோ பருப்பையோ சேர்த்துச் சாப்பிடுவது நல்லது."
+ },
+ "tags": [
+  "budget",
+  "filling",
+  "comfort",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

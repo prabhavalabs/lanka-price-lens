@@ -1,0 +1,154 @@
+{
+ "id": "dish_king_coconut",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 250,
+  "description": {
+   "en": "The water of one nut per person, drunk from the shell",
+   "si": "එක් කෙනෙකුට එක ගෙඩියක වතුර, ගෙඩියෙන්ම බොන්නට",
+   "ta": "ஒருவருக்கு ஒரு காயின் நீர், காயிலிருந்தே குடிக்க"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "pantry_king_coconut_water",
+   "label": {
+    "en": "king coconut water",
+    "si": "තැඹිලි වතුර",
+    "ta": "இளநீர்"
+   },
+   "quantity": 1000,
+   "unit": "ml",
+   "household": "the water of 4 nuts",
+   "preparation": {
+    "en": "nuts opened just before drinking",
+    "si": "බොන්නට මොහොතකට පෙර කපාගත්",
+    "ta": "குடிப்பதற்கு சற்று முன்பே வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick four nuts with a deep orange skin that feel heavy for their size.",
+    "minutes": null
+   },
+   {
+    "text": "Leave a nut that sloshes loudly when you shake it; that one has lost water and gained air.",
+    "minutes": null
+   },
+   {
+    "text": "Keep the nuts in the coolest corner of the kitchen, or standing in a bucket of water, until it is time to serve.",
+    "minutes": null
+   },
+   {
+    "text": "Hold a nut on its side and take three or four firm strokes with a heavy knife across the stalk end until a small lid lifts away.",
+    "minutes": null
+   },
+   {
+    "text": "Drink it straight from the shell, or pour it through a strainer into a jug to catch shell chips; add no sugar and no ice.",
+    "minutes": null
+   },
+   {
+    "text": "Split the empty shell in two, cut a strip of shell to use as a spoon and scoop out the soft jelly to eat.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "හොඳට තඹ පාට වී, ප්‍රමාණයට බර ගැසෙන තැඹිලි ගෙඩි හතරක් තෝරා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සොලවන විට ඇතුළේ වතුර ගසන ශබ්දයක් එන ගෙඩියක් තෝරන්න එපා; එවැනි ගෙඩියක වතුර අඩු වී වාතය වැඩියි.",
+    "minutes": null
+   },
+   {
+    "text": "බෙදන වෙලාව එනතුරු ගෙඩි කුස්සියේ සිසිල්ම තැනක, නැතිනම් වතුර බාල්දියක් තුළ තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගෙඩිය ඇල කර අල්ලාගෙන, කෙටේරියෙන් තුන් හතර පහරක් ගසා පිටිකඳ පැත්තෙන් කුඩා කටක් අරින්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගෙඩියෙන්ම බොන්න, නැතිනම් ලෙලි කැබලි ඉතිරෙන්නට පෙරහනකින් ජෝගුවකට වක් කරන්න; සීනි හෝ අයිස් දමන්න එපා.",
+    "minutes": null
+   },
+   {
+    "text": "හිස් ගෙඩිය දෙකට පලා, ලෙල්ලෙන් හැන්දක් කපාගෙන, ඇතුළේ ඇති මෘදු ඉටි කොටස හෑරගෙන කන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "நல்ல செம்மஞ்சள் நிறமான, அளவுக்குக் கனமாக இருக்கும் நான்கு இளநீர்க் காய்களைத் தேர்ந்தெடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆட்டும்போது உள்ளே தண்ணீர் சளசளக்கும் காயை விட்டுவிடுங்கள்; அதில் நீர் குறைந்து காற்று நிறைந்திருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "பரிமாறும் நேரம் வரை காய்களை சமையலறையின் குளிர்ந்த மூலையில், அல்லது தண்ணீர் வாளியில், வைத்திருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "காயை ஒருபுறமாகப் பிடித்து, கனமான கத்தியால் மூன்று நான்கு வெட்டு வெட்டி, தண்டுப் பக்கத்தில் சிறிய வாய் திறக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "காயிலிருந்தே நேரடியாகக் குடிக்கவும், அல்லது ஓட்டுத் துகள் போகாமல் வடிகட்டி ஜாக்கில் ஊற்றவும்; சீனியும் பனிக்கட்டியும் சேர்க்க வேண்டாம்.",
+    "minutes": null
+   },
+   {
+    "text": "காலியான காயை இரண்டாகப் பிளந்து, ஓட்டில் ஒரு துண்டைக் கரண்டியாக வெட்டி, உள்ளே இருக்கும் மெல்லிய சுளையைச் சுரண்டி சாப்பிடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy knife or machete",
+  "strainer",
+  "jug"
+ ],
+ "tips": {
+  "en": "Open the nut only when the glass is ready; the water loses its fresh edge within the hour and turns pink in the sun. If you must carry it, pour it into a bottle and keep it in the coldest part of the fridge, not on the kitchen table.",
+  "si": "බොන්නට කෝප්පය සූදානම් වූ විට පමණක් ගෙඩිය කපන්න; පැයක් ඇතුළත වතුරේ නැවුම් රස නැති වී, අව්වේ තියුණු පාටක් ගනී. අරගෙන යන්නට නම් බෝතලයකට දමා ශීතකරණයේ සිසිල්ම තැනක තබන්න, මේසය මත නොවේ.",
+  "ta": "கோப்பை தயாரான பிறகே காயை வெட்டுங்கள்; ஒரு மணி நேரத்தில் இளநீரின் புத்துணர்வு போய், வெயிலில் நிறம் மாறிவிடும். எடுத்துச் செல்ல வேண்டுமானால் பாட்டிலில் ஊற்றி, மேசையில் அல்லாமல் குளிர்சாதனப் பெட்டியின் குளிர்ந்த பகுதியில் வைக்கவும்."
+ },
+ "health_note": {
+  "en": "The lightest drink in the house: almost no fat, plenty of water and the potassium that helps after a hot morning outside or a bout of loose motions. It still carries its own natural sugar, so a diabetic household should take one nut and not three.",
+  "si": "ගෙදර ඇති සැහැල්ලුම බීම: තෙල් නැති තරම්, වතුර වැඩි, අව්වේ වැඩ කළ උදෑසනකට හෝ බඩේ අමාරුවකට පසු ඕන පොටෑසියම් ඇත. එහෙත් එහි ස්වභාවික සීනි තිබෙන නිසා දියවැඩියා රෝගියෙක් ඇති ගෙදරක එක ගෙඩියකින් නවතින්න, තුනක් නොවේ.",
+  "ta": "வீட்டில் கிடைக்கும் மிக இலகுவான பானம்: கொழுப்பே இல்லை, நீர் நிறைய, வெயிலில் அலைந்த காலைக்கும் வயிற்றுப்போக்குக்குப் பின்னும் தேவையான பொட்டாசியம் உண்டு. இயற்கையான சர்க்கரை இருப்பதால், நீரிழிவு உள்ள வீட்டில் ஒரு காயோடு நிற்பது நல்லது, மூன்று அல்ல."
+ },
+ "tags": [
+  "quick",
+  "hydrating",
+  "low_calorie",
+  "low_fat",
+  "light",
+  "weight_loss_friendly",
+  "elderly_friendly",
+  "kid_friendly",
+  "pregnancy_friendly"
+ ],
+ "review_needed": [
+  "quantities"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

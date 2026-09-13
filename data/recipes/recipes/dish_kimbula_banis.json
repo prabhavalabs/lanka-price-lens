@@ -1,0 +1,301 @@
+{
+ "id": "dish_kimbula_banis",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 125,
+  "description": {
+   "en": "One long ridged bun each, with tea",
+   "si": "තේ සමඟ එක් අයෙකුට දිගටි, පිට කැපූ බනිසක්",
+   "ta": "தேநீருடன் ஒருவருக்கு ஒரு நீளமான, மேலே கீறிய பன்"
+  }
+ },
+ "yield_g": 500,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2⅓ cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar for the dough",
+    "si": "පිටි ගුලියට සීනි",
+    "ta": "மாவுக்குச் சீனி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "coarse sugar for the crust",
+    "si": "මුදුනට රළු සීනි",
+    "ta": "மேற்பூச்சுக்குப் பெரிய சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1½ tbsp",
+   "preparation": {
+    "en": "sprinkled on top before baking",
+    "si": "පිළිස්සීමට පෙර මුදුනේ ඉහින",
+    "ta": "சுடுமுன் மேலே தூவுவது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "soft",
+    "si": "මෘදු",
+    "ta": "மிருதுவானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "instant yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1¼ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "¾ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "⅔ cup, some kept for brushing",
+   "preparation": {
+    "en": "warmed to blood heat",
+    "si": "ලා උණුසුම් කරගත්",
+    "ta": "வெதுவெதுப்பாகச் சூடாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Warm most of the milk to blood heat, dissolve a spoon of the dough sugar in it, sprinkle the yeast over and wait for a foam to rise.",
+    "minutes": 10
+   },
+   {
+    "text": "Mix the flour with the rest of the dough sugar and the salt, then rub in the soft butter with your fingertips.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the yeast milk and knead steadily until the dough is smooth, shiny and stops sticking to your hand.",
+    "minutes": 12
+   },
+   {
+    "text": "Cover with a damp cloth and leave in a warm corner until it doubles in size.",
+    "minutes": 60
+   },
+   {
+    "text": "Knock the dough down, divide it into four and roll each piece into a log about a span long, thicker in the middle and tapered at the ends.",
+    "minutes": null
+   },
+   {
+    "text": "Lay them well apart on a greased tray, cover, and prove until they look light and puffed.",
+    "minutes": 30
+   },
+   {
+    "text": "Brush the tops with the reserved milk and scatter the coarse sugar along each one.",
+    "minutes": null
+   },
+   {
+    "text": "Slash the top of every bun diagonally five or six times with a sharp blade; this is the crocodile back that gives the bun its name.",
+    "minutes": null
+   },
+   {
+    "text": "Bake at 190 C until the ridges are brown and the base sounds hollow when tapped.",
+    "minutes": 20
+   },
+   {
+    "text": "Cool on a rack. They are at their best the same day, split and eaten with plain tea.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "කිරි වැඩි කොටස ලා උණුසුම් කර, පිටි ගුලියට ගන්නා සීනිවලින් හැන්දක් එහි දිය කර, යීස්ට් ඉහළින් ඉස, පෙණ නඟින තෙක් තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිටිවලට ඉතිරි සීනි සහ ලුණු දමා මිශ්‍ර කර, මෘදු බටර් ඇඟිලි තුඩුවලින් අතුල්ලා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "යීස්ට් කිරි වත් කර, පිටි ගුලිය සිනිඳු වී, දිලිසී, අතට නොඇලෙන තෙක් නොනවත්වා අනන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "තෙත් රෙද්දකින් වසා, උණුසුම් තැනක තබා දෙගුණ වන තෙක් තිබෙන්න දෙන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "පිටි ගුලිය තට්ටු කර වායුව ඉවත් කර, හතරට බෙදා, එක් එක් කොටස වියතක් පමණ දිග, මැද ඝන, කෙළවර සිහින් වන සේ රෝල් කර ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තෙල් ගෑ තැටියක හොඳින් ඈත් කර තබා, වසා, පිම්බී සැහැල්ලු වන තෙක් තිබෙන්න දෙන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "මුදුනේ ඉතිරි කිරි ගල්වා, එක් එක් බනිස මතට රළු සීනි ඉහින්න.",
+    "minutes": null
+   },
+   {
+    "text": "තියුණු තලයකින් සෑම බනිසක මුදුනේ ඇදට පස් හයක් කපන්න; නම ලැබෙන කිඹුලාගේ පිට මෙයයි.",
+    "minutes": null
+   },
+   {
+    "text": "සෙල්සියස් 190ක උඳුනක, කැපූ තැන් දුඹුරු වී යටි පැත්තට තට්ටු කළ විට හිස් හඬක් එන තෙක් පිළිස්සෙන්න දෙන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "රාක්කයක සිසිල් කරන්න. එදිනම, දෙබෑ කර සරල තේ සමඟ කෑම හොඳම ය.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாலின் பெரும்பகுதியை வெதுவெதுப்பாக்கி, மாவுக்குரிய சீனியில் ஒரு ஸ்பூனைக் கரைத்து, மேலே ஈஸ்டைத் தூவி, நுரை வரும் வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மாவுடன் மீதி சீனியும் உப்பும் கலந்து, மிருதுவான வெண்ணெயை விரல் நுனியால் தேய்த்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஈஸ்ட் பாலை ஊற்றி, மாவு பசபசப்பில்லாமல் மினுமினுத்து கையில் ஒட்டாத வரை தொடர்ந்து பிசையவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "ஈரத் துணியால் மூடி, வெதுவெதுப்பான இடத்தில் வைத்து இரட்டிப்பாகும் வரை விடவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "மாவைத் தட்டி காற்றை வெளியேற்றி, நான்கு பங்காகப் பிரித்து, ஒவ்வொன்றையும் ஒரு சாண் நீளத்தில், நடுவில் தடிமனாக, முனைகளில் மெல்லியதாக உருட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "எண்ணெய் தடவிய தட்டில் இடைவெளி விட்டு வைத்து, மூடி, பூரித்து இலகுவாகும் வரை விடவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "மேலே மீதி பாலைத் தடவி, ஒவ்வொரு பன்னின் மேலும் பெரிய சீனியைத் தூவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கூர்மையான கத்தியால் ஒவ்வொரு பன்னின் மேற்பரப்பிலும் சாய்வாக ஐந்து ஆறு கீறல் இடவும்; இதுவே பெயருக்குக் காரணமான முதலையின் முதுகு.",
+    "minutes": null
+   },
+   {
+    "text": "190 செல்சியஸில், கீறிய இடங்கள் பொன்னிறமாகி, அடியில் தட்டினால் வெற்று ஒலி வரும் வரை சுடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "வலையில் ஆறவிடவும். அன்றே, பிளந்து சாதாரண தேநீருடன் சாப்பிடுவதே சிறந்தது.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 20,
+  "passive_minutes": 90
+ },
+ "equipment": [
+  "mixing bowl",
+  "baking tray",
+  "oven",
+  "sharp blade"
+ ],
+ "tips": {
+  "en": "Cut the ridges only after the second proving and go no deeper than a few millimetres, or the bun tears open and loses its shape in the heat. Too much yeast makes it smell sour by evening.",
+  "si": "කැපුම් දෙවන වර පිම්බීමෙන් පසුව පමණක් කරන්න, මිලිමීටර කීපයකට වඩා ගැඹුරු නොකරන්න; නැතිනම් උණුසුමේ බනිස ඉරී හැඩය නැති වේ. යීස්ට් වැඩි වුවහොත් සවස වන විට ඇඹුල් සුවඳක් එයි.",
+  "ta": "கீறல்களை இரண்டாவது புளிப்புக்குப் பிறகே இடவும், சில மில்லிமீட்டருக்கு மேல் ஆழமாக வேண்டாம்; இல்லையேல் சூட்டில் பன் கிழிந்து வடிவம் கெடும். ஈஸ்ட் அதிகமானால் மாலையில் புளித்த வாசனை வரும்."
+ },
+ "health_note": {
+  "en": "This is white flour, sugar and butter, so it gives quick energy but almost no fibre or protein. Give a child half a bun with a piece of fruit rather than a whole one with a sweetened tea, and treat it as an occasional bakery bite.",
+  "si": "මෙහි ඇත්තේ සුදු පිටි, සීනි සහ බටර්; එබැවින් ඉක්මන් ශක්තිය දෙන නමුත් තන්තු හෝ ප්‍රෝටීන් පාහේ නැත. දරුවෙකුට සීනි සහිත තේ සමඟ මුළු බනිසක් වෙනුවට, බනිසක් අඩක් සහ පලතුරු කැබැල්ලක් දෙන්න; මෙය ඉඳහිට ගන්නා බේකරි කෑමක් ලෙස සලකන්න.",
+  "ta": "இதில் வெள்ளை மாவு, சீனி, வெண்ணெய் மட்டுமே; எனவே உடனடி சக்தி தரும், ஆனால் நார்ச்சத்தும் புரதமும் கிட்டத்தட்ட இல்லை. குழந்தைக்கு இனிப்புத் தேநீருடன் முழு பன் தருவதற்குப் பதிலாக, அரை பன்னும் ஒரு பழத் துண்டும் கொடுக்கவும்; இதை எப்போதாவது சாப்பிடும் பேக்கரி உணவாகவே கருதவும்."
+ },
+ "tags": [
+  "kid_friendly",
+  "comfort",
+  "high_sugar",
+  "budget",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

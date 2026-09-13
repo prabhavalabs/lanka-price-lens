@@ -1,8 +1,8 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import type { WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
-import { dishCatalogueSchema, recipeReferencesSchema, type Dish, type DishCatalogue, type RecipeReferences } from "@lanka-pricelens/shared";
+import { dishCatalogueSchema, ingredientRegistrySchema, recipeReferencesSchema, recipeSchema, type Dish, type DishCatalogue, type Ingredient, type Recipe, type RecipeReferences } from "@lanka-pricelens/shared";
 
 /**
  * The recipe corpus as the API serves it: the reviewed dish catalogue and the
@@ -11,7 +11,16 @@ import { dishCatalogueSchema, recipeReferencesSchema, type Dish, type DishCatalo
  * method text arrive in a later layer; the catalogue is the vocabulary they share.
  */
 
-export type RecipeStore = { catalogue: DishCatalogue; references: RecipeReferences; directory: string; loadedAt: string };
+export type RecipeStore = {
+  catalogue: DishCatalogue;
+  references: RecipeReferences;
+  /** The ingredient registry (`ingredients.json`): names and nutrition for every ingredient a recipe may name. */
+  registry: Map<string, Ingredient>;
+  /** Full recipes (`recipes/<dish id>.json`), keyed by dish id; dishes without one show the catalogue entry only. */
+  recipes: Map<string, Recipe>;
+  directory: string;
+  loadedAt: string;
+};
 
 export function readRecipeStore(directory: string): RecipeStore {
   const catalogue = dishCatalogueSchema.parse(JSON.parse(readFileSync(resolve(directory, "catalogue.json"), "utf8")));
@@ -19,7 +28,23 @@ export function readRecipeStore(directory: string): RecipeStore {
   const references = existsSync(referencesPath)
     ? recipeReferencesSchema.parse(JSON.parse(readFileSync(referencesPath, "utf8")))
     : recipeReferencesSchema.parse({ schema_version: "1.0.0", reviewed_at: catalogue.reviewed_at });
-  return { catalogue, references, directory, loadedAt: new Date().toISOString() };
+  const registryPath = resolve(directory, "ingredients.json");
+  const registry = new Map<string, Ingredient>();
+  if (existsSync(registryPath)) {
+    for (const ingredient of ingredientRegistrySchema.parse(JSON.parse(readFileSync(registryPath, "utf8"))).ingredients) registry.set(ingredient.id, ingredient);
+  }
+  const recipes = new Map<string, Recipe>();
+  const recipesPath = resolve(directory, "recipes");
+  if (existsSync(recipesPath)) {
+    const dishes = new Set(catalogue.dishes.map((dish) => dish.id));
+    for (const file of readdirSync(recipesPath).filter((name) => name.endsWith(".json")).sort()) {
+      const recipe = recipeSchema.parse(JSON.parse(readFileSync(resolve(recipesPath, file), "utf8")));
+      if (!dishes.has(recipe.id)) throw new Error(`RECIPE_WITHOUT_DISH: ${file} names ${recipe.id}`);
+      for (const line of recipe.ingredients) if (line.ref && !registry.has(line.ref)) throw new Error(`RECIPE_INGREDIENT_UNKNOWN: ${recipe.id} names ${line.ref}`);
+      recipes.set(recipe.id, recipe);
+    }
+  }
+  return { catalogue, references, registry, recipes, directory, loadedAt: new Date().toISOString() };
 }
 
 export type DishListRequest = {
@@ -52,6 +77,8 @@ export type RecipeOverview = {
   /** Ingredients the catalogue names that the price vocabulary does not carry, most used first: the pantry mapping backlog. */
   unpriced_ingredients: Array<{ ingredient: string; dishes: number }>;
   references: { channels: number; blogs: number; institutional: number };
+  /** Full recipes over the catalogue: how many exist, in which languages, and how many a person has signed off. */
+  recipes: { total: number; with_si: number; with_ta: number; reviewed: { en: number; si: number; ta: number }; review_needed: number; ingredients: number };
   reviewed_at: string;
 };
 
@@ -72,9 +99,17 @@ export function listDishes(store: RecipeStore, request: DishListRequest, priced:
       .toLowerCase();
     return tokens.every((token) => haystack.includes(token));
   });
-  // An exact name match floats to the top; then everyday dishes before occasional ones; then by name.
+  // Dishes whose name carries every search word come before dishes matched only through an ingredient or a variant
+  // ("potato cur" is potato curry before beef curry with potatoes); an exact name first; then everyday dishes; then by name.
+  const nameOf = (dish: Dish) => [dish.names.en, dish.names.si, dish.names.si_latn, dish.names.ta, dish.names.ta_latn].filter((value): value is string => Boolean(value)).join(" ").toLowerCase();
+  const nameRank = (dish: Dish) => {
+    if (!tokens.length) return 0;
+    const name = nameOf(dish);
+    const hits = tokens.filter((token) => name.includes(token)).length;
+    return hits === tokens.length ? 0 : hits ? 1 : 2;
+  };
   const exact = (dish: Dish) => (needle && dish.names.en.toLowerCase() === needle ? 0 : 1);
-  matches.sort((left, right) => exact(left) - exact(right) || left.popularity - right.popularity || left.names.en.localeCompare(right.names.en));
+  matches.sort((left, right) => nameRank(left) - nameRank(right) || exact(left) - exact(right) || left.popularity - right.popularity || left.names.en.localeCompare(right.names.en));
   const total = matches.length;
   const pages = Math.max(1, Math.ceil(total / request.pageSize));
   const page = Math.min(Math.max(1, request.page), pages);
@@ -111,6 +146,14 @@ export function recipeOverview(store: RecipeStore, priced: Set<string> | null): 
       : null,
     unpriced_ingredients: tally(dishes.flatMap((dish) => [...new Set(dish.other_ingredients.map((ingredient) => ingredient.trim().toLowerCase()))])).slice(0, 40).map(({ key, dishes: total }) => ({ ingredient: key, dishes: total })),
     references: { channels: store.references.channels.length, blogs: store.references.blogs.length, institutional: store.references.institutional.length },
+    recipes: {
+      total: store.recipes.size,
+      with_si: [...store.recipes.values()].filter((recipe) => recipe.steps.si).length,
+      with_ta: [...store.recipes.values()].filter((recipe) => recipe.steps.ta).length,
+      reviewed: { en: [...store.recipes.values()].filter((recipe) => recipe.review.en).length, si: [...store.recipes.values()].filter((recipe) => recipe.review.si).length, ta: [...store.recipes.values()].filter((recipe) => recipe.review.ta).length },
+      review_needed: [...store.recipes.values()].filter((recipe) => recipe.review_needed.length > 0).length,
+      ingredients: store.registry.size,
+    },
     reviewed_at: store.catalogue.reviewed_at,
   };
 }

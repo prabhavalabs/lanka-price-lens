@@ -1,0 +1,346 @@
+{
+ "id": "dish_butter_beans_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 190,
+  "description": {
+   "en": "A thick ladle of beans in coconut gravy, standing in for a meat curry",
+   "si": "මස් ව්‍යංජනයක් වෙනුවට ගන්නා ගන පොල් කිරි බෝංචි හැන්දක්",
+   "ta": "இறைச்சிக் கறிக்குப் பதிலாக அமையும் கெட்டியான தேங்காய்க் குழம்பு அவரை"
+  }
+ },
+ "yield_g": 920,
+ "ingredients": [
+  {
+   "ref": "product_butter_beans",
+   "label": {
+    "en": "dried butter beans",
+    "si": "වේළූ බටර් බෝංචි",
+    "ta": "உலர்ந்த வெண்ணெய் அவரை"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 cup, dry",
+   "preparation": {
+    "en": "soaked overnight in plenty of water and drained",
+    "si": "රාත්‍රිය පුරා වතුරේ පොඟවා, වතුර බේරාගෙන",
+    "ta": "இரவு முழுவதும் நீரில் ஊறவைத்து, நீர் வடித்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගෙන",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගෙන",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and 1/2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Soak the butter beans in three times their volume of water overnight; they swell to more than double.",
+    "minutes": 480
+   },
+   {
+    "text": "Drain the beans, rinse them once, and slip off any loose skins that float up.",
+    "minutes": 5
+   },
+   {
+    "text": "Boil the beans in fresh water with the turmeric and a little salt until a bean crushes floury between two fingers, skimming the froth.",
+    "minutes": 25
+   },
+   {
+    "text": "Drain most of the cooking water and add the onion, green chillies, garlic, curry powder, pandan, curry leaves and the rest of the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer uncovered so the beans take up the spice.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the thick coconut milk, stir once from the bottom and let it thicken on a low flame without boiling hard.",
+    "minutes": 5
+   },
+   {
+    "text": "Press a few beans against the side of the pot with the back of the spoon so the gravy turns creamy, then take it off.",
+    "minutes": null
+   },
+   {
+    "text": "Rest the pot for five minutes before serving with rice or string hoppers.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "බටර් බෝංචි වතුර තුන් ගුණයක දමා රාත්‍රිය පුරා පොඟවන්න; ඒවා දෙගුණයකට වඩා ඉදිමේ.",
+    "minutes": 480
+   },
+   {
+    "text": "වතුර බේරා එක් වරක් සෝදා, ගැලවී පාවෙන ලෙලි ඉවත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "නැවුම් වතුර, කහ හා ලුණු ටිකක් සමඟ බෝංචි ඇඟිලි දෙකෙන් තැලෙන පිටි බවට එන තුරු තම්බන්න; පෙණ ඇත්නම් ඉවතට ගන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "තැම්බූ වතුරෙන් වැඩි කොටස බේරා, ලූනු, අමු මිරිස්, සුදුලූනු, තුනපහ, රම්පෙ, කරපිංචා හා ඉතිරි ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි වත් කර, බෝංචිවලට කුළුබඩු රස ඇදෙන තුරු වහන්නක් නොදමා තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මිටි කිරි දමා පතුලේ සිට එක් වරක් කලතා, දැඩි ලෙස උතුරන්නට නොදී අඩු ගින්නේ ගනට වන තුරු තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "හැන්දේ පිටෙන් බෝංචි කිහිපයක් වළඳේ පැත්තට තලා හොදිය ක්‍රීම් වගේ කර ලිපෙන් ඉවතට ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බත් හෝ ඉඳිආප්ප සමඟ බෙදන්නට පෙර විනාඩි පහක් තබන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெண்ணெய் அவரையை மூன்று மடங்கு நீரில் இரவு முழுவதும் ஊறவையுங்கள்; இரு மடங்குக்கு மேல் பெருகும்.",
+    "minutes": 480
+   },
+   {
+    "text": "நீரை வடித்து ஒருமுறை கழுவி, மேலே மிதக்கும் தோல்களை நீக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "புதிய நீர், மஞ்சள், கொஞ்சம் உப்பு சேர்த்து, அவரை இரு விரல்களுக்கு இடையில் மாவாக நசுங்கும் வரை வேகவிடுங்கள்; நுரையை அகற்றுங்கள்.",
+    "minutes": 25
+   },
+   {
+    "text": "வேகவைத்த நீரில் பெரும்பகுதியை வடித்து, வெங்காயம், பச்சை மிளகாய், பூண்டு, கறி மசாலா, ரம்பை, கறிவேப்பிலை, மீதி உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி, அவரை மசாலாவை உள்வாங்கும் வரை மூடாமல் கொதிக்க விடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "தடிமன் பாலைச் சேர்த்து அடியிலிருந்து ஒருமுறை கிளறி, பொங்காமல் மெல்லிய தீயில் கெட்டியாகும் வரை வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஸ்பூன் முதுகால் சில அவரைகளை சட்டி ஓரத்தில் நசுக்கி குழம்பை கிரீம் போல மாற்றி, அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சாதம் அல்லது இடியப்பத்துடன் பரிமாறும் முன் ஐந்து நிமிடம் வையுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 40,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "deep pot or pressure cooker",
+  "bowl for soaking",
+  "skimmer"
+ ],
+ "tips": {
+  "en": "If you forget the overnight soak, a pressure cooker brings the beans to the floury stage in about twelve minutes. Salt early only lightly; beans cooked in heavily salted water stay hard at the centre.",
+  "si": "රාත්‍රියේ පොඟවන්නට අමතක වුවහොත් ප්‍රෙෂර් කුකරයේ විනාඩි දොළහක් පමණින් බෝංචි පිටි බවට එයි. මුලින් ලුණු දමන්නේ ඉතා ටිකක්; ලුණු වැඩි වතුරේ තැම්බූ බෝංචිවල මැද තදට තිබේ.",
+  "ta": "இரவு ஊறவைக்க மறந்துவிட்டால், குக்கரில் சுமார் பன்னிரண்டு நிமிடத்தில் அவரை மாவுப் பதத்திற்கு வரும். ஆரம்பத்தில் உப்பு கொஞ்சமே போடுங்கள்; அதிக உப்பு நீரில் வேகும் அவரை நடுவில் கெட்டியாகவே இருக்கும்."
+ },
+ "health_note": {
+  "en": "A pot of butter beans gives the plate real plant protein, fibre and iron for far less money than meat, and the fibre keeps you full for longer. The coconut milk adds saturated fat, so households watching cholesterol can cut the thick milk to half a cup.",
+  "si": "බටර් බෝංචි වළඳකින් මසට වඩා අඩු මුදලකට හොඳ පැළෑටි ප්‍රෝටීන්, කෙඳි හා යකඩ ලැබෙන අතර කෙඳි නිසා බඩ බොහෝ වෙලාවක් පිරී තිබේ. පොල් කිරි නිසා සංතෘප්ත මේදය එකතු වන බැවින් කොලෙස්ටරෝල් ගැන සැලකිලිමත් නම් මිටි කිරි කෝප්ප භාගයකට අඩු කරන්න.",
+  "ta": "ஒரு சட்டி வெண்ணெய் அவரை, இறைச்சியை விட மிகக் குறைந்த செலவில் தாவரப் புரதம், நார்ச்சத்து, இரும்புச்சத்து தருகிறது; நார்ச்சத்து நீண்ட நேரம் வயிறு நிறைந்த உணர்வைத் தரும். தேங்காய்ப் பால் நிரம்பிய கொழுப்பைச் சேர்க்கிறது, எனவே கொலஸ்ட்ரால் கவனம் உள்ள வீடுகளில் தடிமன் பாலை அரை கப்பாகக் குறைக்கலாம்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "filling",
+  "budget",
+  "one_pot",
+  "diabetic_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

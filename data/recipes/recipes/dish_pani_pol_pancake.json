@@ -1,0 +1,355 @@
+{
+ "id": "dish_pani_pol_pancake",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 160,
+  "description": {
+   "en": "Two rolled pancakes on a plate, warm from the pan",
+   "si": "පෑන් එකෙන් උණුසුම්ව ගත්, පිඟානක තිබෙන රෝල් කළ පෑන්කේක් දෙකක්",
+   "ta": "சட்டியிலிருந்து சூடாக எடுத்த, தட்டில் இரண்டு சுருட்டிய பான்கேக்"
+  }
+ },
+ "yield_g": 640,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "sieved",
+    "si": "හලාගත්",
+    "ta": "சலித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": {
+    "en": "beaten",
+    "si": "ගසාගත්",
+    "ta": "அடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, grated",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "half a coconut, scraped",
+   "preparation": {
+    "en": "freshly scraped, not the dried kind",
+    "si": "අලුතෙන් ගා ගත්, වියළි පොල් නොවේ",
+    "ta": "அப்போது துருவியது, உலர்ந்தது அல்ல"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 block, scraped",
+   "preparation": {
+    "en": "scraped or broken small",
+    "si": "ගා ගත් හෝ කුඩාවට කඩාගත්",
+    "ta": "துருவிய அல்லது சிறிதாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm piece of bark",
+   "preparation": {
+    "en": "left whole, taken out at the end",
+    "si": "කැබැල්ල ලෙසම, අවසානයේ ඉවත් කරන්න",
+    "ta": "துண்டாகவே, இறுதியில் எடுத்து விடவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, crushed",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "4 tsp, for the pan",
+   "preparation": {
+    "en": "for greasing the pan between pancakes",
+    "si": "පෑන්කේක් අතරේ පෑන් එකට තෙල් ගෑමට",
+    "ta": "ஒவ்வொரு பான்கேக்கிற்கும் இடையே சட்டியில் தடவ"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Put the scraped coconut, jaggery, treacle, cinnamon and cardamom in a pan with three tablespoons of water and set it on a low flame.",
+    "minutes": null
+   },
+   {
+    "text": "Cook the filling, stirring often, until the jaggery melts, the coconut darkens to the colour of wet earth and the mixture leaves the sides of the pan.",
+    "minutes": 18
+   },
+   {
+    "text": "Take out the cinnamon stick and let the pani pol cool; it thickens further as it cools, which is how it stays inside the pancake.",
+    "minutes": 15
+   },
+   {
+    "text": "Beat the egg with the milk and salt, then whisk in the sieved flour a little at a time so no lumps form, into a batter thinner than dosa batter.",
+    "minutes": null
+   },
+   {
+    "text": "Rest the batter for ten minutes, then check that it still coats the spoon thinly and add a spoon of water if it has thickened.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat a flat pan on medium, wipe it with an oiled cloth, pour in a small ladle of batter and swirl the pan at once so the crepe spreads thin.",
+    "minutes": null
+   },
+   {
+    "text": "Cook until the top is dry and the edges lift, about a minute, and turn it only if you want both sides lightly coloured.",
+    "minutes": null
+   },
+   {
+    "text": "Lay the pancake on a plate, spoon a line of pani pol along one side and roll it up firmly, tucking in the ends.",
+    "minutes": null
+   },
+   {
+    "text": "Carry on with the rest of the batter, oiling the pan lightly each time, and stack the rolls seam down.",
+    "minutes": 25
+   },
+   {
+    "text": "Serve warm, two to a plate, with plain tea.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ගා ගත් පොල්, හකුරු, කිතුල් පැණි, කුරුඳු සහ එනසාල් පෑන් එකකට දමා, මේස හැඳි තුනක වතුර දමා අඩු ගින්නේ තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නිතර කලතමින්, හකුරු දියවී පොල් තෙත් පොළොවේ පාටට හැරී මිශ්‍රණය පෑන් එකේ පැතිවලින් ගැලවෙන තුරු පිසින්න.",
+    "minutes": 18
+   },
+   {
+    "text": "කුරුඳු කැබැල්ල ඉවතට ගෙන පැණි පොල් සිසිල් වෙන්න දෙන්න, සිසිල් වන විට තව ඝන වෙනවා, පෑන්කේක් ඇතුළේ රැඳෙන්නේ ඒ නිසයි.",
+    "minutes": 15
+   },
+   {
+    "text": "බිත්තර, කිරි සහ ලුණු එකට ගසා, හලාගත් පිටි ටික ටික දමා ගුලි නොවන ලෙස ගසන්න, දෝසි මිශ්‍රණයටත් වඩා තුනී විය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "මිශ්‍රණය මිනිත්තු දහයක් නිදහන්න, පසුව හැන්දට තුනීට තැවරෙනවාද බලා, ඝන වී ඇත්නම් වතුර හැන්දක් දමන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පැතලි පෑන් එකක් මධ්‍යම ගින්නේ රත් කර, තෙල් ගෑ රෙදි කැබැල්ලකින් පිස, කුඩා හැන්දක මිශ්‍රණය දමා වහාම පෑන් එක කරකවා තුනීට පතුරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුදුන වියළී දාර ඉහළට එන තුරු, මිනිත්තුවක් පමණ පිසින්න, දෙපැත්තම ලා පාට කරගන්නට ඕනෑ නම් පමණක් හරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑන්කේක් එක පිඟානකට ගෙන, එක පැත්තක් දිගේ පැණි පොල් ඉරක් තබා, කෙළවර ඇතුළට හරවා තදින් රෝල් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "හැම වරකම පෑන් එකට සුළු තෙල් ගාමින් ඉතිරි මිශ්‍රණයත් එසේ කර, රෝල් කළ පැත්ත යටට තබා එකට තබන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "උණුසුම්ව, පිඟානකට දෙකක් බැගින්, සාමාන්‍ය තේ සමඟ ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "துருவிய தேங்காய், வெல்லம், பாணி, பட்டை, ஏலக்காய் ஆகியவற்றை ஒரு சட்டியில் மூன்று மேசைக்கரண்டி நீருடன் போட்டு சிறு தீயில் வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அடிக்கடி கிளறி, வெல்லம் உருகி தேங்காய் ஈர மண் நிறமாகி கலவை சட்டியின் ஓரங்களை விட்டு விலகும்வரை வேக விடுங்கள்.",
+    "minutes": 18
+   },
+   {
+    "text": "பட்டைத் துண்டை எடுத்துவிட்டு பாணிபொல்லை ஆற விடுங்கள்; ஆறும்போது இன்னும் கெட்டியாகும் - அதனால்தான் பான்கேக்கிற்குள் நிற்கிறது.",
+    "minutes": 15
+   },
+   {
+    "text": "முட்டையை பாலும் உப்பும் சேர்த்து அடித்து, சலித்த மாவை கொஞ்சம் கொஞ்சமாகச் சேர்த்து கட்டியில்லாமல் கலக்குங்கள் - தோசை மாவை விட நீர்மையாக இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "கலவையை பத்து நிமிடம் ஊற வைத்து, கரண்டியில் மெல்லியதாக ஒட்டுகிறதா என்று பாருங்கள்; இறுகியிருந்தால் ஒரு கரண்டி நீர் சேர்க்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "தட்டையான சட்டியை நடுத்தர தீயில் காயவிட்டு, எண்ணெய் தடவிய துணியால் துடைத்து, ஒரு சிறு கரண்டி கலவை ஊற்றி உடனே சட்டியைச் சுழற்றி மெல்லியதாகப் பரப்புங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மேற்பரப்பு காய்ந்து ஓரங்கள் விலகும்வரை, ஒரு நிமிடம் வேக விடுங்கள்; இரு பக்கமும் லேசாக நிறம் வேண்டுமானால் மட்டும் திருப்புங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பான்கேக்கை தட்டில் வைத்து, ஒரு ஓரமாக பாணிபொல்லை ஒரு கோடாக வைத்து, நுனிகளை உள்ளே மடித்து இறுக்கமாகச் சுருட்டுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மீதி கலவையையும் இப்படியே செய்யுங்கள், ஒவ்வொரு முறையும் சட்டியில் லேசாக எண்ணெய் தடவி, சுருட்டிய பக்கம் கீழே இருக்கும்படி அடுக்குங்கள்.",
+    "minutes": 25
+   },
+   {
+    "text": "சூடாக, தட்டுக்கு இரண்டாக, சாதாரண தேநீருடன் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 25,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "flat pan or non-stick pan",
+  "ladle",
+  "whisk",
+  "small pan for the filling"
+ ],
+ "tips": {
+  "en": "Cook the filling dry, because wet pani pol soaks through the crepe and the roll opens on the plate. Swirl the pan the moment the batter hits it; a second late and the crepe comes out thick and stiff. The filling keeps a week in a covered jar, so many households cook it one evening and make the pancakes the next day.",
+  "si": "පිරවුම වියළිව පිසින්න, තෙත් පැණි පොල් පෑන්කේක් එක හරහා කාන්දු වී පිඟානේ රෝල් එක ලිහෙනවා. මිශ්‍රණය පෑන් එකට වැටෙන විගසම කරකවන්න, තත්පරයක් පරක්කු වුණොත් පෑන්කේක් ඝන වී තද වෙනවා. පිරවුම වසා තැබූ බෝතලයක සතියක් තිබෙනවා, ඒ නිසා බොහෝ ගෙවල් වල එක සවසක් එය පිසගෙන පසුදා පෑන්කේක් හදනවා.",
+  "ta": "நிரப்பை வறட்டாக வேக விடுங்கள் - ஈரமான பாணிபொல் பான்கேக்கை ஊறச் செய்து தட்டிலேயே சுருள் விரிந்துவிடும். கலவை சட்டியில் விழுந்த நொடியே சுழற்றுங்கள்; ஒரு நொடி தாமதித்தால் பான்கேக் தடிமனாகவும் இறுக்கமாகவும் வரும். நிரப்பு மூடிய பாட்டிலில் ஒரு வாரம் இருக்கும், அதனால் பல வீடுகளில் ஒரு மாலையில் அதைச் செய்து அடுத்த நாள் பான்கேக் சுடுவார்கள்."
+ },
+ "health_note": {
+  "en": "Two rolls carry a good deal of coconut and jaggery, so this is a filling tea-time plate rather than a light one, and it goes down well with children after school. The coconut brings fibre and the milk and egg some protein, but keep the jaggery measured rather than tasting as you cook, which is how the filling ends up twice as sweet as intended.",
+  "si": "රෝල් දෙකක ගණනාවක් පොල් සහ හකුරු තිබෙන නිසා මෙය සැහැල්ලු තේ කෑමක් නොව පිරවුම් සහිත එකක්, ඉස්කෝලෙන් ආපු ළමයින්ට හොඳින් ගැළපෙනවා. පොල්වලින් තන්තු, කිරි සහ බිත්තරවලින් සුළු ප්‍රෝටීන් ලැබෙනවා, එහෙත් හකුරු මැනගෙන දමන්න, පිසන අතරතුර රස බලමින් දමන විටයි පිරවුම හිතුවාට දෙගුණයක් පැණි රස වන්නේ.",
+  "ta": "இரண்டு சுருள்களில் நல்ல அளவு தேங்காயும் வெல்லமும் இருப்பதால், இது இலகுவான தேநீர்க் கடி அல்ல - நிறைவான ஒன்று; பாடசாலையிலிருந்து வரும் குழந்தைகளுக்கு நன்றாகப் பொருந்தும். தேங்காய் நார்ச்சத்தையும், பாலும் முட்டையும் கொஞ்சம் புரதத்தையும் தரும்; வெல்லத்தை அளந்து சேருங்கள் - சுவைத்துச் சுவைத்துச் சேர்ப்பதே நிரப்பை இரு மடங்கு இனிப்பாக்கிவிடும்."
+ },
+ "tags": [
+  "high_sugar",
+  "kid_friendly",
+  "comfort",
+  "filling",
+  "festive",
+  "high_fibre"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

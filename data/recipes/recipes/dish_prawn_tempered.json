@@ -1,0 +1,343 @@
+{
+ "id": "dish_prawn_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 145,
+  "description": {
+   "en": "A dry, hot spoonful of prawns beside rice",
+   "si": "බත් සමඟ කන්න තෙල් දාපු ඉස්සන් හැන්දක්",
+   "ta": "சாதத்துடன் பரிமாற ஒரு கரண்டி காரமான இறால்"
+  }
+ },
+ "yield_g": 580,
+ "ingredients": [
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "prawns",
+    "si": "ඉස්සන්",
+    "ta": "இறால்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "about 20 medium prawns",
+   "preparation": {
+    "en": "peeled and deveined",
+    "si": "ලෙලි ගලවා නහර ඉවත් කළ",
+    "ta": "ஓடு உரித்து நரம்பு நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "தட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "whole dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "5 whole chillies",
+   "preparation": {
+    "en": "torn in two",
+    "si": "දෙකට කැඩූ",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "நொறுக்கிய மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලාගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "one 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice squeezed in at the end",
+    "si": "අවසානයේ යුෂ මිරිකා ගන්න",
+    "ta": "இறுதியில் சாறு பிழிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the prawns, slit the backs and pull out the dark vein, then wash them with a pinch of salt and turmeric and drain well.",
+    "minutes": 10
+   },
+   {
+    "text": "Slice the red onion thin, crush the garlic, tear the dried chillies in two and pick the curry leaves off their stems.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan until it shimmers, then drop in the pandan, curry leaves and dried chillies and let them crackle.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the onion and garlic and fry on a medium flame until the onion is soft and the edges begin to brown.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the turmeric, chilli flakes, crushed pepper and salt and let the spices warm in the oil for half a minute.",
+    "minutes": 1
+   },
+   {
+    "text": "Raise the flame, tip in the prawns and keep tossing them uncovered until they curl up and turn orange.",
+    "minutes": 4
+   },
+   {
+    "text": "Cook off any water left so the pan is almost dry, squeeze in the lime juice, toss once more and lift the pan off the fire.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "ඉස්සන්ගේ ලෙලි ගලවා පිටකොන්ද පලා කළු නහර ඉවත් කරන්න. ලුණු හා කහ ටිකක් දමා හොඳින් සෝදා වතුර බේරෙන්න තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "රතු ළූණු තුනීට කපා, සුදුළූණු තලා, වියළි මිරිස් දෙකට කඩා, කරපිංචා කොළ ගසෙන් වෙන් කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් පෑන් එකක පොල් තෙල් හොඳින් රත් කර රම්පෙ, කරපිංචා සහ වියළි මිරිස් දමා තෙලේ නටන්න දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ළූණු සහ සුදුළූණු දමා මධ්‍යම ගින්නේ ළූණු මෘදු වී දාර රන්වන් වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කහ, මිරිස් කැබලි, තලාගත් ගම්මිරිස් සහ ලුණු දමා තෙලේ තත්පර තිහක් පමණ කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ගින්න වැඩි කර ඉස්සන් දමා, වහන්නේ නැතිව, ඒවා ඇඹරී තැඹිලි පාට වන තුරු පෙරළන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පෑන් සිඳී වියළෙන තුරු පිසගෙන දෙහි යුෂ එකතු කර, අවසන් වරට කලවම් කර ලිපෙන් ඉවත් කරන්න.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "இறாலின் ஓட்டை உரித்து, முதுகைக் கீறி கருப்பு நரம்பை நீக்கி, சிறிது உப்பும் மஞ்சளும் சேர்த்துக் கழுவி நீரை வடியவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "சின்ன வெங்காயத்தை மெல்லியதாக நறுக்கி, பூண்டைத் தட்டி, வத்தல் மிளகாயை இரண்டாக உடைத்து, கறிவேப்பிலையைப் பிரித்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அகன்ற சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, ரம்பை இலை, கறிவேப்பிலை, வத்தல் மிளகாய் போட்டுப் பொரியவிடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "வெங்காயமும் பூண்டும் சேர்த்து, நடுத்தர தீயில் வெங்காயம் மென்மையாகி ஓரம் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மஞ்சள், நொறுக்கிய மிளகாய், இடித்த மிளகு, உப்பு சேர்த்து அரை நிமிடம் எண்ணெயில் கிளறுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "தீயை உயர்த்தி இறாலைப் போட்டு, மூடாமல், அவை சுருண்டு ஆரஞ்சு நிறமாகும் வரை கிளறிக்கொண்டே இருங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "சட்டி வற்றும் வரை சமைத்து, எலுமிச்சைச் சாறு பிழிந்து, ஒரு முறை கிளறி அடுப்பில் இருந்து இறக்குங்கள்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide heavy pan or wok",
+  "sharp knife"
+ ],
+ "tips": {
+  "en": "Cook prawns fast and in one layer. If the pan is crowded they let out water, stew in it and turn rubbery. Prawns with tight shells and heads still firmly attached are the fresh ones.",
+  "si": "ඉස්සන් ඉක්මනින්, එක තලයක් ලෙස පිසින්න. පෑන් පිරුණොත් වතුර පිට වී තම්බී ඉස්සන් රබර් වගේ තද වෙනවා. ලෙලි තදින් තියෙන, හිස හොඳින් සවි වී ඇති ඉස්සන් තමයි නැවුම්.",
+  "ta": "இறாலை வேகமாக, ஒரே அடுக்காகச் சமையுங்கள். சட்டி நிரம்பினால் நீர் வெளியேறி வேகுவதால் இறால் ரப்பர் போல இறுகிவிடும். ஓடு இறுக்கமாகவும் தலை உறுதியாகவும் உள்ள இறாலே புதிது."
+ },
+ "health_note": {
+  "en": "Prawns give plenty of protein with very little fat, and this dry tempering uses only two spoons of oil. Prawns are naturally salty, so keep the added salt light if someone at the table is watching blood pressure.",
+  "si": "ඉස්සන්ගෙන් අඩු මේදයක් සමඟ ප්‍රෝටීන් ගොඩක් ලැබෙනවා, මේ වියළි තෙල් දාන ක්‍රමයට තෙල් හැඳි දෙකක් පමණයි යන්නේ. ඉස්සන් ස්වභාවයෙන්ම ලුණු රසයි, ඒ නිසා රුධිර පීඩනය බලාගන්න කෙනෙක් ගෙදර ඉන්නවා නම් ලුණු අඩුවෙන් දමන්න.",
+  "ta": "இறால் மிகக் குறைந்த கொழுப்புடன் அதிக புரதம் தருகிறது, இந்த வறுவல் முறைக்கு இரண்டு கரண்டி எண்ணெய் மட்டுமே போதும். இறாலில் இயற்கையாகவே உப்புச் சுவை உள்ளதால், வீட்டில் இரத்த அழுத்தம் பார்ப்பவர் இருந்தால் உப்பைக் குறைவாகச் சேருங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "festive"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

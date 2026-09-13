@@ -1,0 +1,325 @@
+{
+ "id": "dish_faluda",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 320,
+  "description": {
+   "en": "One tall glass, layered, eaten with a long spoon as much as drunk",
+   "si": "තට්ටු කර සකසාගත් උස් වීදුරුවක්, බොන තරමටම දිග හැන්දකින් කන්නටත්",
+   "ta": "அடுக்கடுக்காக நிரப்பிய ஒரு உயரமான கிளாஸ், குடிப்பதுபோலவே நீள கரண்டியால் சாப்பிடவும்"
+  }
+ },
+ "yield_g": 1300,
+ "ingredients": [
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பச்சைப் பால்"
+   },
+   "quantity": 500,
+   "unit": "ml",
+   "household": "2 cups",
+   "preparation": {
+    "en": "boiled once and cooled",
+    "si": "වරක් නටවා සිසිල් කරගත්",
+    "ta": "ஒருமுறை கொதிக்கவைத்து ஆற வைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_milk_powder",
+   "label": {
+    "en": "full cream milk powder",
+    "si": "කිරි පිටි",
+    "ta": "பால் பவுடர்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 tbsp, to thicken the milk",
+   "preparation": {
+    "en": "dissolved in a little warm water",
+    "si": "උණුසුම් වතුර ටිකකින් දිය කරගත්",
+    "ta": "சிறிது வெதுவெதுப்பான நீரில் கரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "5 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_rose_water",
+   "label": {
+    "en": "rose water",
+    "si": "රෝස වතුර",
+    "ta": "ரோஜா நீர்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_food_colouring",
+   "label": {
+    "en": "rose pink food colouring",
+    "si": "රෝස පාට ආහාර වර්ණය",
+    "ta": "ரோஜா நிற உணவு வர்ணம்"
+   },
+   "quantity": 1,
+   "unit": "ml",
+   "household": "2 drops",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_basil_seeds",
+   "label": {
+    "en": "basil seeds",
+    "si": "කස්කස් ඇට",
+    "ta": "துளசி விதை"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "soaked in cold water until swollen and jellied",
+    "si": "ඉදිමී ජෙලි ගතියක් එනතුරු සිසිල් වතුරේ පොඟවාගත්",
+    "ta": "வீங்கி ஜெல்லியாகும் வரை குளிர்ந்த நீரில் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_china_grass",
+   "label": {
+    "en": "china grass jelly",
+    "si": "චයිනා ග්‍රාස්",
+    "ta": "சைனா கிராஸ்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "half a packet",
+   "preparation": {
+    "en": "set and cut into small cubes",
+    "si": "තැම්බා සිටවා කුඩා කැට වලට කපාගත්",
+    "ta": "இறுகவைத்து சிறு கட்டிகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vermicelli",
+   "label": {
+    "en": "vermicelli",
+    "si": "සෙමියා",
+    "ta": "சேமியா"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "boiled soft and rinsed in cold water",
+    "si": "මෘදු වන තුරු තම්බා සිසිල් වතුරෙන් සෝදාගත්",
+    "ta": "மென்மையாக வேகவைத்து குளிர்ந்த நீரில் அலசியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_ice_cream",
+   "label": {
+    "en": "vanilla ice cream",
+    "si": "වැනිලා අයිස්ක්‍රීම්",
+    "ta": "வெனிலா ஐஸ்கிரீம்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 small scoop a glass",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Soak the basil seeds in a cup of cold water until every seed has a clear jelly coat around it.",
+    "minutes": 20
+   },
+   {
+    "text": "Cook the china grass in 300 ml of water over a low fire, stirring, until no strands are left, then pour it into a flat dish to set.",
+    "minutes": 10
+   },
+   {
+    "text": "Leave the jelly in the coolest part of the fridge until firm, then cut it into small cubes.",
+    "minutes": 60
+   },
+   {
+    "text": "Boil the vermicelli in plenty of water until just soft, drain it and run cold water over it so it does not clump.",
+    "minutes": 5
+   },
+   {
+    "text": "Mix the milk powder smooth in a little warm water, stir it into the fresh milk with the sugar, and keep stirring until no grains remain.",
+    "minutes": null
+   },
+   {
+    "text": "Flavour the milk with the rose water and, if you want the pink glass everyone expects, two drops of colouring; chill it well.",
+    "minutes": 30
+   },
+   {
+    "text": "Build each tall glass: a spoon of basil seeds first, then vermicelli, then a layer of jelly cubes.",
+    "minutes": null
+   },
+   {
+    "text": "Pour the cold pink milk in slowly down the side of the glass so the layers stay where they are.",
+    "minutes": null
+   },
+   {
+    "text": "Top with a scoop of ice cream, push in a long spoon and a straw, and carry it out before the ice cream slides.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කස්කස් ඇට කෝප්පයක සිසිල් වතුරේ, සෑම ඇටයක් වටා පැහැදිලි ජෙලි ආවරණයක් එනතුරු පොඟවා ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "චයිනා ග්‍රාස් මිලිලීටර් 300ක වතුරේ අඩු ගින්නේ, කලතමින්, නූල් නැති වන තුරු තම්බා, පැතලි භාජනයකට වත් කර සිටවන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ජෙලිය තද වන තුරු ශීතකරණයේ සිසිල්ම තැනක තබා, පසුව කුඩා කැට වලට කපාගන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "සෙමියා ඕනෑ තරම් වතුරේ මෘදු වන තුරු තම්බා, වතුර බේරා, එකට ඇලෙන්නේ නැති වන්නට සිසිල් වතුර වත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කිරි පිටි උණුසුම් වතුර ටිකකින් ගැටි නැති ලෙස දිය කර, සීනි සමඟ නැවුම් කිරිවලට දමා, කැට නැති වන තුරු කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කිරි මිශ්‍රණයට රෝස වතුර දමා, හැමෝම බලාපොරොත්තු වන රෝස පාට ඕන නම් වර්ණය බින්දු දෙකක් දමා, හොඳින් සිසිල් කරන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "උස් වීදුරු එකින් එක සකසන්න: මුලින්ම කස්කස් හැන්දක්, ඊළඟට සෙමියා, ඊට පසු ජෙලි කැට තට්ටුවක්.",
+    "minutes": null
+   },
+   {
+    "text": "තට්ටු එහෙමම තිබෙන්නට, සිසිල් රෝස පාට කිරි වීදුරුවේ දාරය දිගේ හෙමින් වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උඩින් අයිස්ක්‍රීම් හැන්දක් තබා, දිග හැන්දක් සහ පිදුරු නලයක් ගසා, අයිස්ක්‍රීම් දිය වන්නට පෙර බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "துளசி விதைகளை ஒரு கோப்பை குளிர்ந்த நீரில், ஒவ்வொரு விதையையும் சுற்றி தெளிவான ஜெல்லி உறை வரும் வரை ஊறவைக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "சைனா கிராசை 300 மில்லி நீரில் குறைந்த தீயில் கலக்கிக் கொண்டே இழைகள் இல்லாமல் போகும் வரை வேகவைத்து, தட்டையான பாத்திரத்தில் ஊற்றி இறுக விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஜெல்லி இறுகும் வரை குளிர்சாதனப் பெட்டியின் குளிர்ந்த பகுதியில் வைத்து, பிறகு சிறு கட்டிகளாக வெட்டுங்கள்.",
+    "minutes": 60
+   },
+   {
+    "text": "சேமியாவை நிறைய நீரில் மென்மையாகும் வரை வேகவைத்து, வடித்து, ஒட்டாமல் இருக்க குளிர்ந்த நீரை ஊற்றுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "பால் பவுடரை சிறிது வெதுவெதுப்பான நீரில் கட்டியில்லாமல் கரைத்து, சீனியுடன் பச்சைப் பாலில் சேர்த்து, கட்டி இல்லாமல் போகும் வரை கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாலில் ரோஜா நீர் சேர்த்து, எல்லோரும் எதிர்பார்க்கும் இளஞ்சிவப்பு நிறம் வேண்டுமானால் இரண்டு துளி வர்ணம் விட்டு, நன்றாகக் குளிர்விக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "ஒவ்வொரு உயரமான கிளாஸையும் அடுக்குங்கள்: முதலில் ஒரு கரண்டி துளசி விதை, பிறகு சேமியா, அதன்மேல் ஜெல்லிக் கட்டிகள்.",
+    "minutes": null
+   },
+   {
+    "text": "அடுக்குகள் கலையாமல் இருக்க, குளிர்ந்த இளஞ்சிவப்புப் பாலை கிளாஸின் ஓரமாக மெதுவாக ஊற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மேலே ஒரு கரண்டி ஐஸ்கிரீம் வைத்து, நீள கரண்டியும் ஸ்ட்ராவும் சொருகி, ஐஸ்கிரீம் உருகுவதற்கு முன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 10,
+  "passive_minutes": 90
+ },
+ "equipment": [
+  "small pan",
+  "flat dish for the jelly",
+  "tall glasses",
+  "long spoons"
+ ],
+ "tips": {
+  "en": "Make the jelly and soak the seeds in the morning and the glasses take five minutes in the evening, which is how the Ramadan kitchen manages a crowd. Keep the milk and the glasses cold, because a warm glass melts the ice cream into the milk before it reaches the table.",
+  "si": "ජෙලිය හදාගෙන ඇට පොඟවා ගන්නේ උදෑසන නම්, සවසට වීදුරු සකසන්නට යන්නේ මිනිත්තු පහයි; රාමසාන් කුස්සියේ විශාල පිරිසක් සමාලන්නේ එහෙමයි. කිරි සහ වීදුරු සිසිල්ව තබන්න, උණුසුම් වීදුරුවක මේසයට යන්නටත් පෙර අයිස්ක්‍රීම් කිරි වලට දිය වේ.",
+  "ta": "ஜெல்லியைச் செய்து விதைகளை காலையிலேயே ஊறவைத்தால், மாலையில் கிளாஸ்கள் தயாராக ஐந்து நிமிடமே போதும்; ரமலான் சமையலறை கூட்டத்தைச் சமாளிப்பது அப்படியே. பாலையும் கிளாஸ்களையும் குளிராக வையுங்கள், வெதுவெதுப்பான கிளாஸில் மேசைக்கு வருவதற்கு முன்பே ஐஸ்கிரீம் பாலில் உருகிவிடும்."
+ },
+ "health_note": {
+  "en": "This is a sweet in a glass: milk brings calcium and protein, but the sugar, the jelly and the ice cream together make it one of the heaviest drinks on the table. Treat it as the dessert of the evening rather than something to wash a meal down with, and give children a short glass.",
+  "si": "මේක වීදුරුවක දමා ඇති කැවිලි වර්ගයක්: කිරිවලින් කැල්සියම් සහ ප්‍රෝටීන් ලැබෙනවා, එහෙත් සීනි, ජෙලි සහ අයිස්ක්‍රීම් එකට මේසයේ ඇති බරම බීම එකක් කරනවා. කෑම ගිලාදැමීමට ගන්නා බීමක් නොව සවසේ අතුරුපසක් ලෙස සලකන්න, ළමයින්ට කුඩා වීදුරුවක් දෙන්න.",
+  "ta": "இது கிளாஸில் வைத்த ஒரு இனிப்பு: பால் கால்சியமும் புரதமும் தருகிறது, ஆனால் சீனி, ஜெல்லி, ஐஸ்கிரீம் எல்லாம் சேர்ந்து இதை மேசையில் உள்ள மிகக் கனமான பானமாக்குகிறது. சாப்பாட்டை இறக்கிக் கொள்ளும் பானமாக அல்ல, மாலை இனிப்பாகவே எடுத்துக் கொள்ளுங்கள்; குழந்தைகளுக்குச் சிறிய கிளாஸ் கொடுங்கள்."
+ },
+ "tags": [
+  "high_sugar",
+  "calcium_rich",
+  "kid_friendly",
+  "festive",
+  "comfort",
+  "filling",
+  "street_food"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

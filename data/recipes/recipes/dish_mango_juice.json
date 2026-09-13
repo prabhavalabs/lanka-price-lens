@@ -1,0 +1,212 @@
+{
+ "id": "dish_mango_juice",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 275,
+  "description": {
+   "en": "A thick cold glass, thick enough to hold a straw upright",
+   "si": "පිදුරු නලයක් කෙළින් තබා ගන්නා තරම් ඝන සිසිල් වීදුරුවක්",
+   "ta": "ஸ்ட்ராவை நிமிர்ந்து நிற்க வைக்கும் அளவு கெட்டியான குளிர்ந்த கிளாஸ்"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "product_mango",
+   "label": {
+    "en": "ripe mango",
+    "si": "ඉදුණු අඹ",
+    "ta": "பழுத்த மாம்பழம்"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "3 medium mangoes",
+   "preparation": {
+    "en": "peeled, flesh cut off the seed",
+    "si": "ලෙලි ගසා ඇටයෙන් මදය කපාගත්",
+    "ta": "தோல் நீக்கி, கொட்டையிலிருந்து சுளை வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "3 tbsp, less if the fruit is sweet",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, to lift the taste",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick mangoes that give a little under the thumb and smell sweet at the stalk; a hard one will make a sour, watery drink.",
+    "minutes": null
+   },
+   {
+    "text": "Peel the fruit over a bowl so you catch the juice, and cut all the flesh off the seed.",
+    "minutes": 10
+   },
+   {
+    "text": "Scrape the seed and the inside of the skins with a spoon; that is a good quarter of the flesh people throw away.",
+    "minutes": null
+   },
+   {
+    "text": "Put the flesh, the sugar, the lime juice and the pinch of salt into the blender with 300 ml of cold water.",
+    "minutes": null
+   },
+   {
+    "text": "Blend until you can see no fibres, stopping once to push the fruit down with a spoon.",
+    "minutes": 3
+   },
+   {
+    "text": "Thin it with cold water to the thickness the house likes and taste it; more lime if it is too sweet, more sugar if the fruit was flat.",
+    "minutes": null
+   },
+   {
+    "text": "Strain it through a wide strainer if the mangoes were stringy, then pour over ice in the glasses and serve straight away.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මාපටින් තද කරන විට ටිකක් හිතන, පිටිකඳ පැත්තෙන් පැණි සුවඳ එන අඹ තෝරන්න; තද අඹයකින් ලැබෙන්නේ ඇඹුල්, වතුර වගේ බීමක්.",
+    "minutes": null
+   },
+   {
+    "text": "යුෂ ඉතිරෙන්නට බඳුනක් මතින් අඹ ලෙලි ගසා, ඇටයෙන් සියලු මදය කපාගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඇටයත් ලෙලිවල ඇතුළත පැත්තත් හැන්දකින් හෑරගන්න; මිනිස්සු විසි කරන්නේ මදයෙන් හතරෙන් එකක් පමණයි.",
+    "minutes": null
+   },
+   {
+    "text": "මදය, සීනි, දෙහි යුෂ සහ ලුණු ටිකක් සිසිල් වතුර මිලිලීටර් 300ක් සමඟ බ්ලෙන්ඩරයට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නාරටි නොපෙනෙන තුරු අඹරන්න, අතරමැදදී වරක් නවතා හැන්දෙන් පලතුරු පහළට තල්ලු කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ගෙදර අය කැමති ඝනකමට සිසිල් වතුරෙන් තුනී කර රස බලන්න; ඉතා පැණි නම් තව දෙහි, පලතුරේ රස මඳ නම් තව සීනි.",
+    "minutes": null
+   },
+   {
+    "text": "අඹවල නාරටි වැඩි නම් පළල් පෙරහනකින් පෙරාගෙන, වීදුරුවල අයිස් මතට වත් කර වහාම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கட்டைவிரலால் அழுத்தினால் சற்று இடம்கொடுக்கும், தண்டுப் பக்கம் இனிப்பு வாசம் வரும் மாம்பழங்களைத் தேர்ந்தெடுங்கள்; கெட்டியான பழம் புளிப்பான, நீர்த்த பானமே தரும்.",
+    "minutes": null
+   },
+   {
+    "text": "சாறு சிந்தாமல் ஒரு கிண்ணத்தின் மேல் தோல் நீக்கி, கொட்டையிலிருந்து சுளை முழுவதையும் வெட்டி எடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கொட்டையையும் தோலின் உட்புறத்தையும் கரண்டியால் சுரண்டுங்கள்; மக்கள் வீசி எறிவது அதில் கால் பங்கு சுளை.",
+    "minutes": null
+   },
+   {
+    "text": "சுளை, சீனி, எலுமிச்சைச் சாறு, ஒரு சிட்டிகை உப்பு எல்லாவற்றையும் 300 மில்லி குளிர்ந்த நீரோடு மிக்ஸியில் இடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நார் தெரியாத வரை அரைக்கவும், இடையில் ஒருமுறை நிறுத்தி கரண்டியால் பழத்தை அடியில் அழுத்தவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "வீட்டில் விரும்பும் கெட்டித்தன்மைக்கு குளிர்ந்த நீர் விட்டு, சுவைத்துப் பாருங்கள்; மிக இனிப்பானால் இன்னும் எலுமிச்சை, பழம் சுவையற்றால் இன்னும் சீனி.",
+    "minutes": null
+   },
+   {
+    "text": "மாம்பழத்தில் நார் அதிகமானால் அகலமான வடிகட்டியில் வடிகட்டி, கிளாஸ்களில் பனிக்கட்டி மேல் ஊற்றி உடனே பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "blender",
+  "bowl",
+  "wide strainer",
+  "tall glasses"
+ ],
+ "tips": {
+  "en": "In the season, when the tree drops more than the house can eat, blend the flesh without sugar and freeze it in bags; a bag makes a jug of juice out of season. If the mangoes are the sweet Karutha Colomban kind, cut the sugar to a spoon and let the lime do the work.",
+  "si": "ගස ගෙදර අයට කන්නට බැරි තරම් ගෙඩි දමන කාලේ, මදය සීනි නොදමා අඹරා බෑග්වල දමා අයිස් කරන්න; ඒ එක බෑග් එකකින් කාලය පිටින් ජෝගුවක් යුෂ හදා ගත හැකියි. අඹ පැණි රස කරුතාකොලොම්බන් වර්ගය නම් සීනි හැන්දකට අඩු කර, ඉතිරිය දෙහිට භාර දෙන්න.",
+  "ta": "சீசனில், மரம் வீட்டில் சாப்பிட முடியாத அளவு பழம் தரும்போது, சுளையை சீனி இல்லாமல் அரைத்து பைகளில் உறைய வைக்கவும்; ஒரு பை சீசன் இல்லாத நேரத்தில் ஒரு ஜாக் சாறு தரும். கருத்த கொலம்பான் போன்ற இனிப்பு மாம்பழமானால் சீனியை ஒரு கரண்டிக்குக் குறைத்து, மற்றதை எலுமிச்சையே பார்த்துக்கொள்ளும்."
+ },
+ "health_note": {
+  "en": "Blended whole, the fruit keeps its fibre and its vitamin A and C, which a bottled juice does not. Mango carries plenty of its own sugar, so add as little as the fruit allows and give children a half glass rather than a tall one.",
+  "si": "මුළු පලතුරම අඹරා ගත් විට තන්තු සහ විටමින් A, C එහෙමම රැඳේ; බෝතල් කළ යුෂවල එය නැත. අඹවල ස්වභාවික සීනි ගොඩක් ඇති නිසා, පලතුර ඉඩ දෙන තරමට අඩුවෙන් සීනි දමා, ළමයින්ට උස් වීදුරුවකට වඩා භාග වීදුරුවක් දෙන්න.",
+  "ta": "பழத்தை முழுவதுமாக அரைத்தால் நார்ச்சத்தும் வைட்டமின் A, C யும் அப்படியே இருக்கும்; பாட்டில் சாற்றில் அது இல்லை. மாம்பழத்தில் இயற்கையான சர்க்கரை நிறைய இருப்பதால், பழம் அனுமதிக்கும் அளவே சீனி சேர்த்து, குழந்தைகளுக்கு உயரமான கிளாஸுக்குப் பதிலாக அரை கிளாஸ் கொடுங்கள்."
+ },
+ "tags": [
+  "quick",
+  "hydrating",
+  "kid_friendly",
+  "immune_support",
+  "high_fibre",
+  "light",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

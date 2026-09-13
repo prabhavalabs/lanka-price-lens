@@ -1,0 +1,216 @@
+{
+ "id": "dish_odiyal_pittu",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 165,
+  "description": {
+   "en": "A dark crumbly pittu with a thin fish curry or kiri hodi",
+   "si": "තුනී මාළු හොද්දක් හෝ කිරි හොද්දක් සමඟ අඳුරු, කැඩෙන පිට්ටු",
+   "ta": "நீர்க் கறியுடன் அல்லது கிரி ஹொடியுடன் கருமையான உதிரும் புட்டு"
+  }
+ },
+ "yield_g": 660,
+ "ingredients": [
+  {
+   "ref": "pantry_odiyal_flour",
+   "label": {
+    "en": "odiyal palmyrah flour",
+    "si": "ඔඩියල් පිටි",
+    "ta": "ஒடியல் மா"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "sieved to take out the coarse bits",
+    "si": "රළු කොටස් ඉවත් කරන්නට හලා ගත්",
+    "ta": "கொரகொரப்பை நீக்க சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மா"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "mixed in to soften the texture",
+    "si": "වයනය මුදු කරන්නට මිශ්‍ර කරන",
+    "ta": "பக்குவத்தை மென்மையாக்க சேர்ப்பது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "flesh of half a coconut",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "අලුතින් ගා ගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": {
+    "en": "dissolved in the sprinkling water",
+    "si": "ඉස්නා වතුරේ දිය කරගත්",
+    "ta": "தெளிக்கும் தண்ணீரில் கரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Sieve the odiyal flour and the rice flour together twice so the palmyrah flour is evenly spread, and roast the mixture lightly in a dry pan if it smells raw.",
+    "minutes": 6
+   },
+   {
+    "text": "Dissolve the salt in about 200 ml of water in a cup.",
+    "minutes": null
+   },
+   {
+    "text": "Sprinkle the water over the flour a spoon at a time, working it through your fingers until the flour just clumps in the fist and crumbles when dropped.",
+    "minutes": 8
+   },
+   {
+    "text": "Rub two thirds of the grated coconut through the damp flour and keep the rest for layering.",
+    "minutes": null
+   },
+   {
+    "text": "Fill the pittu bamboo or steamer loosely in layers of flour and coconut, and set it over a pot of boiling water.",
+    "minutes": null
+   },
+   {
+    "text": "Steam until steam rises through the top and the flour no longer tastes raw; palmyrah flour needs a little longer than rice flour.",
+    "minutes": 18
+   },
+   {
+    "text": "Push the pittu out onto a plate, break it up, and serve it hot with a thin curry, because it stiffens as it cools.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ඔඩියල් පිටි සහ සහල් පිටි එකට දෙවතාවක් හලා ඔඩියල් සමානව මිශ්‍ර වන ලෙස සකසා, අමු ගඳක් ඇත්නම් වියළි පෑන් එකක සැහැල්ලුවෙන් රටවා ගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "කෝප්පයක වතුර මිලි ලීටර් 200ක් පමණ ගෙන ලුණු දිය කර ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර හැන්දෙන් හැන්ද පිටි මතට ඉස, ඇඟිලි අතරින් අතුල්ලමින්, මිට තුළ මදක් බැඳෙන නමුත් දැමූ විට කැඩෙන තරමට තෙත් කර ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගා ගත් පොල් වලින් තුනෙන් දෙකක් තෙත් පිටි සමඟ අතුල්ලා මිශ්‍ර කර, ඉතිරිය තට්ටු අතර දැමීමට තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිට්ටු බම්බුව හෝ භාජනය පිටි සහ පොල් තට්ටු වශයෙන් ලිහිල්ව පුරවා, නටන වතුර හැළියක් මතට තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉහළින් වාෂ්ප නගින තුරු සහ පිටිවල අමු රසය නැති වන තුරු තැම්බෙන්න දෙන්න; ඔඩියල් පිටිවලට සහල් පිටිවලට වඩා ටිකක් වැඩි කාලයක් අවශ්‍යයි.",
+    "minutes": 18
+   },
+   {
+    "text": "පිට්ටු පිඟානකට තල්ලු කර, කැබලි කර, සිසිල් වන විට තද වන බැවින් තුනී හොද්දක් සමඟ උණුසුම්ව ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஒடியல் மாவையும் அரிசி மாவையும் இரண்டு முறை ஒன்றாகச் சலித்து ஒடியல் சமமாகக் கலக்கச் செய்யுங்கள்; பச்சை வாசனை இருந்தால் வெறும் சட்டியில் லேசாக வாட்டுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "ஒரு கோப்பையில் சுமார் 200 மில்லி தண்ணீரில் உப்பைக் கரையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "தண்ணீரை ஒரு கரண்டியாகத் தெளித்து விரலால் பிசைந்து, கையில் பிடித்தால் பிடிபடும் ஆனால் போட்டால் உதிரும் பக்குவத்துக்குக் கொண்டு வாருங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "துருவிய தேங்காயில் மூன்றில் இரண்டு பங்கை ஈரமான மாவுடன் கலந்து, மீதியை அடுக்குவதற்கு வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "புட்டுக் குழலில் மாவும் தேங்காயும் அடுக்குகளாக தளர்வாக நிரப்பி, கொதிக்கும் தண்ணீர்ப் பாத்திரத்தின் மேல் வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மேலே ஆவி வரும் வரை, மாவின் பச்சைச் சுவை போகும் வரை அவியுங்கள்; ஒடியல் மாவுக்கு அரிசி மாவை விட சற்று அதிக நேரம் தேவை.",
+    "minutes": 18
+   },
+   {
+    "text": "புட்டை தட்டில் தள்ளி இறக்கி உதிர்த்து, குளிர்ந்தால் இறுகிவிடும் என்பதால் நீர்க் கறியுடன் சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pittu bamboo or steamer",
+  "pot for boiling water",
+  "sieve"
+ ],
+ "tips": {
+  "en": "Odiyal flour on its own gives a heavy, slightly bitter pittu, so most Jaffna kitchens cut it with a third rice flour; more rice flour makes it softer and milder. Sieving matters here, because unsieved palmyrah flour leaves hard grains that never cook through.",
+  "si": "ඔඩියල් පිටි තනිව බර, මදක් තිත්ත පිට්ටු ලබා දෙන බැවින් යාපනයේ බොහෝ කුස්සි වල තුනෙන් එකක් සහල් පිටි මිශ්‍ර කරයි; සහල් පිටි වැඩි වූ විට වඩා මුදු සහ මෘදු වේ. හලා ගැනීම වැදගත්, මන්ද නොහලා ගත් ඔඩියල් වල කිසි විටෙකත් නොපිසෙන තද කැට රැඳෙයි.",
+  "ta": "ஒடியல் மா மட்டும் கனமான, சற்று கசப்பான புட்டைத் தரும்; எனவே பல யாழ்ப்பாண சமையலறைகளில் மூன்றில் ஒரு பங்கு அரிசி மா கலப்பார்கள்; அரிசி மா அதிகமானால் மென்மையாகும். சலிப்பது முக்கியம், சலிக்காத ஒடியல் மாவில் வேகவே வேகாத கெட்டிக் கட்டிகள் இருக்கும்."
+ },
+ "health_note": {
+  "en": "Palmyrah flour is high in fibre and takes a long time to digest, which is why it carries a family through a morning of work, and it has a low effect on blood sugar. It can feel heavy on a weak stomach, so young children and elders do better with more rice flour in the mix.",
+  "si": "ඔඩියල් පිටි තන්තු බහුල හා දිරවීමට කල් ගත වන බැවින් උදෑසන වැඩ මුළුල්ලේ පවුලක් රඳවා ගනී, රුධිර සීනියට ඇති බලපෑම අඩුයි. දුර්වල බඩකට බර දැනිය හැකි බැවින් කුඩා ළමයින්ට සහ වැඩිහිටියන්ට මිශ්‍රණයේ සහල් පිටි වැඩිපුර දැමීම හොඳයි.",
+  "ta": "ஒடியல் மாவில் நார்ச்சத்து அதிகம், ஜீரணமாக நேரம் எடுக்கும்; அதனால்தான் காலை வேலை முழுவதும் குடும்பத்தை தாங்குகிறது, இரத்தச் சர்க்கரையில் தாக்கமும் குறைவு. பலவீனமான வயிற்றுக்குக் கனமாகத் தோன்றலாம், எனவே சிறு குழந்தைகளுக்கும் முதியவர்களுக்கும் கலவையில் அரிசி மா அதிகமாகச் சேர்ப்பது நல்லது."
+ },
+ "tags": [
+  "high_fibre",
+  "diabetic_friendly",
+  "filling",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

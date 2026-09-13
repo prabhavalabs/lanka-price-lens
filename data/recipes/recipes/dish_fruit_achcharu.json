@@ -1,0 +1,284 @@
+{
+ "id": "dish_fruit_achcharu",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 105,
+  "description": {
+   "en": "A cupful of sour pickled fruit as a snack",
+   "si": "කෙටි කෑමට ඇඹුල් අච්චාරු කෝප්පයක්",
+   "ta": "சிற்றுண்டியாக ஒரு கோப்பை புளிப்பு ஊறுகாய்"
+  }
+ },
+ "yield_g": 420,
+ "ingredients": [
+  {
+   "ref": "product_ambarella",
+   "label": {
+    "en": "ambarella",
+    "si": "ඇඹරැල්ලා",
+    "ta": "அம்பரெல்லா"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "3 or 4 fruits",
+   "preparation": {
+    "en": "washed, flesh sliced off the stone in thick wedges",
+    "si": "සෝදා, ඇටයෙන් ඝන පෙති ලෙස මාංශය කපාගත්",
+    "ta": "கழுவி, கொட்டையிலிருந்து தடிமனான துண்டுகளாகச் சீவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mango",
+   "label": {
+    "en": "raw mango",
+    "si": "අමු අඹ",
+    "ta": "பச்சை மாங்காய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 small mango",
+   "preparation": {
+    "en": "peeled and cut into thick slices",
+    "si": "ලෙලි ගසා ඝන පෙති ලෙස කපාගත්",
+    "ta": "தோல் சீவி தடிமனாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_nelli",
+   "label": {
+    "en": "nelli (indian gooseberry)",
+    "si": "නෙල්ලි",
+    "ta": "நெல்லிக்காய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "bruised with the flat of a knife",
+    "si": "පිහියේ පැතලි පැත්තෙන් තලාගත්",
+    "ta": "கத்தியின் பரப்பால் நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chilli",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "chopped, seeds left in",
+    "si": "බීජ සමඟම කපාගත්",
+    "ta": "விதையுடன் நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த்தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "only if it must keep more than a day",
+    "si": "දිනකට වැඩිය තබා ගන්නේ නම් පමණි",
+    "ta": "ஒரு நாளுக்கு மேல் வைக்க வேண்டுமானால் மட்டும்"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Choose fruit that is firm and barely ripe; soft ambarella turns to pulp once the salt is on it.",
+    "minutes": null
+   },
+   {
+    "text": "Wash the fruit, slice the flesh off the ambarella stones in thick wedges and cut the raw mango into pieces of the same size.",
+    "minutes": 10
+   },
+   {
+    "text": "Toss the fruit with the salt in a glass or steel bowl and leave it until the juice runs.",
+    "minutes": 30
+   },
+   {
+    "text": "Pour off most of that first salty juice, which takes the raw bitterness away with it.",
+    "minutes": null
+   },
+   {
+    "text": "Mix the chilli powder, sugar and chopped green chilli into the fruit and turn it over until every piece is coated.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the vinegar if it has to keep more than a day, and pack everything into a clean jar or a glass bowl.",
+    "minutes": null
+   },
+   {
+    "text": "Leave it for an hour before eating so the fruit softens a little and takes the chilli; finish it within two days.",
+    "minutes": 60
+   }
+  ],
+  "si": [
+   {
+    "text": "තදින්, මුහුකුරා නොගිය පලතුරු තෝරා ගන්න; මෘදු ඇඹරැල්ලා ලුණු දැමූ විට පල්ප් වේ.",
+    "minutes": null
+   },
+   {
+    "text": "පලතුරු සෝදා, ඇඹරැල්ලාවේ ඇටයෙන් ඝන පෙති ලෙස මාංශය කපා ගෙන, අමු අඹද එම ප්‍රමාණයට කපා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පලතුරු වීදුරු හෝ වානේ බඳුනකට දමා ලුණු සමඟ කලවම් කර, යුෂ මිදෙන තුරු තබන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "පළමුවෙන් මිදුණු ලුණු යුෂ බොහෝමයක් ඉවතට දමන්න; අමු තිත්ත රසය එය සමඟ යයි.",
+    "minutes": null
+   },
+   {
+    "text": "මිරිස් කුඩු, සීනි සහ කැපූ අමු මිරිස් පලතුරට දමා, සෑම කැබැල්ලක්ම ගෑවෙන තුරු පෙරළන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "දිනකට වැඩිය තබා ගැනීමට අවශ්‍ය නම් විනාකිරි එකතු කර, සියල්ල පිරිසිදු බෝතලයකට හෝ වීදුරු බඳුනකට පුරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පලතුරු තරමක් මුදු වී මිරිස් උරා ගැනීමට පැයක් තබා පසුව කන්න; දින දෙකක් ඇතුළත අවසන් කරන්න.",
+    "minutes": 60
+   }
+  ],
+  "ta": [
+   {
+    "text": "கெட்டியான, முழுதும் பழுக்காத பழங்களைத் தேர்ந்தெடுக்கவும்; மென்மையான அம்பரெல்லா உப்பு போட்டதும் கூழாகிவிடும்.",
+    "minutes": null
+   },
+   {
+    "text": "பழங்களைக் கழுவி, அம்பரெல்லாவின் கொட்டையிலிருந்து தடிமனான துண்டுகளாகச் சீவி, பச்சை மாங்காயையும் அதே அளவில் நறுக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பழத்துண்டுகளை கண்ணாடி அல்லது எஃகு கிண்ணத்தில் உப்புடன் கலந்து, சாறு வரும் வரை வைக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "முதலில் வந்த உப்புச் சாற்றை பெரும்பாலும் ஊற்றிவிடவும்; பச்சைக் கசப்பு அதனுடன் போய்விடும்.",
+    "minutes": null
+   },
+   {
+    "text": "மிளகாய்த்தூள், சீனி, நறுக்கிய பச்சை மிளகாயைச் சேர்த்து, ஒவ்வொரு துண்டிலும் படும் வரை புரட்டவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு நாளுக்கு மேல் வைக்க வேண்டுமானால் வினிகர் சேர்த்து, எல்லாவற்றையும் சுத்தமான ஜாடியில் அல்லது கண்ணாடிக் கிண்ணத்தில் அடுக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பழம் சற்று மென்மையாகி காரத்தை உறிஞ்ச ஒரு மணி நேரம் வைத்துப் பிறகு சாப்பிடவும்; இரண்டு நாட்களுக்குள் முடிக்கவும்.",
+    "minutes": 60
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 0,
+  "passive_minutes": 90
+ },
+ "equipment": [
+  "knife and board",
+  "glass or steel bowl (not aluminium)",
+  "clean jar"
+ ],
+ "tips": {
+  "en": "Throwing away that first salty juice is what keeps the pickle sharp instead of bitter. Use glass or steel, since salt and sour fruit standing in aluminium pick up a metallic taste.",
+  "si": "පළමුවෙන් මිදෙන ලුණු යුෂ ඉවත දැමීමයි අච්චාරුව තිත්ත නොවී තියුණු රසයක් ලබා දෙන්නේ. වීදුරු හෝ වානේ භාවිත කරන්න; ලුණු සහ ඇඹුල් පලතුරු ඇලුමිනියම් බඳුනක තැබුවහොත් ලෝහ රසයක් ගනී.",
+  "ta": "முதலில் வரும் உப்புச் சாற்றை ஊற்றிவிடுவதே ஊறுகாயைக் கசக்காமல் கூர்மையாக வைக்கிறது. கண்ணாடி அல்லது எஃகைப் பயன்படுத்தவும்; உப்பும் புளிப்புப் பழமும் அலுமினியத்தில் இருந்தால் உலோகச் சுவை ஏறும்."
+ },
+ "health_note": {
+  "en": "Sour fresh fruit brings vitamin C and fibre, but this is a salty, sugary way of eating it, so treat it as a treat rather than a daily habit. Anyone with a delicate stomach or an ulcer should go easy, since it is sour and hot at the same time.",
+  "si": "ඇඹුල් නැවුම් පලතුරුවලින් විටමින් සී සහ තන්තු ලැබේ, නමුත් මෙය ලුණු සහ සීනි සහිත ආකාරයකි; එබැවින් දෛනික පුරුද්දක් නොව විනෝදයක් ලෙස සලකන්න. බඩ සංවේදී අයෙකුට හෝ ආමාශ තුවාලයක් ඇති අයෙකුට මෙය ඇඹුල් සහ සැර දෙකම එකවර වන බැවින් ප්‍රවේශම් විය යුතුය.",
+  "ta": "புளிப்புப் பழங்கள் வைட்டமின் சி மற்றும் நார்ச்சத்து தருகின்றன, ஆனால் இது உப்பும் சீனியும் சேர்ந்த வழி; எனவே தினசரி பழக்கமாக அல்ல, ஒரு விருந்தாகவே கொள்ளவும். வயிறு நொந்தவர்கள், அல்சர் உள்ளவர்கள் கவனமாக இருக்கவும், ஏனெனில் இது புளிப்பும் காரமும் ஒன்றாக."
+ },
+ "tags": [
+  "street_food",
+  "quick",
+  "budget",
+  "high_sodium",
+  "immune_support"
+ ],
+ "review_needed": [
+  "si",
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

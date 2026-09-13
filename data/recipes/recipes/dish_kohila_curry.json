@@ -1,0 +1,361 @@
+{
+ "id": "dish_kohila_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 150,
+  "description": {
+   "en": "A ladle of firm kohila slices in a dark gravy with rice",
+   "si": "බත් සමඟ කළු ඉස්මේ දැඩි කොහිල පෙති හැන්දක්",
+   "ta": "சாதத்துடன் கறுப்புக் குழம்பில் இறுக்கமான கொஹில துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_kohila",
+   "label": {
+    "en": "kohila rhizome",
+    "si": "කොහිල අල",
+    "ta": "கொஹில கிழங்கு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 good rhizomes",
+   "preparation": {
+    "en": "scraped and sliced thin across",
+    "si": "සසාගෙන හරහට සිහින්ව කපාගත්",
+    "ta": "சுரண்டி குறுக்காக மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 small pieces",
+   "preparation": {
+    "en": "a dry piece, rinsed",
+    "si": "වියළි කැබැල්ලක්, සෝදාගත්",
+    "ta": "காய்ந்த துண்டு, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the kohila rhizome well, scrape the rough skin and the root hairs off, and slice it thin across.",
+    "minutes": 15
+   },
+   {
+    "text": "Drop the slices into water with a pinch of turmeric so they do not darken while you work.",
+    "minutes": null
+   },
+   {
+    "text": "Boil the slices with the goraka and a little salt until the raw smell has gone and they have softened a shade; kohila needs a long boil.",
+    "minutes": 15
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the sliced onion, broken dried chillies, curry leaves and pandan leaf.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the drained kohila with the turmeric, roasted curry powder and salt and turn it over on the fire for a minute.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer until the slices are tender and the gravy has darkened.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the thick coconut milk, let it bubble once and lift the pot off the fire.",
+    "minutes": 3
+   },
+   {
+    "text": "Let it rest a while before serving; kohila takes the spice in as it cools.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කොහිල අල හොඳින් සෝදා, රළු ලෙලි සහ මුල් ලොම් සසා ඉවත් කර, හරහට සිහින්ව කපන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වැඩ කරන අතරතුර කළු නොවන ලෙස පෙති ස්වල්ප කහ සහිත වතුරට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගොරකා සහ ස්වල්ප ලුණු සමඟ, අමු ගඳ යන තුරු සහ පෙති මදක් මෘදු වන තුරු තම්බන්න; කොහිලට දිගු තැම්බීමක් අවශ්‍යයි.",
+    "minutes": 15
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, කපාගත් ලූනු, කැඩූ වියළි මිරිස්, කරපිංචා සහ රම්පෙ තෙල්දාලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වතුර බේරාගත් කොහිල, කහ, බැදපු තුනපහ සහ ලුණු එක් කර විනාඩියක් ගින්නේ පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, පෙති මෘදු වී ඉස්ම කළු පැහැ ගන්නා තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඝන පොල් කිරි එකතු කර, එක් වරක් උතුරුවා මුට්ටිය ළිපෙන් ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පිළිගැන්වීමට පෙර ටික වේලාවක් තබන්න; සිසිල් වන විට කොහිල කුළුබඩු රසය උරා ගනී.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கொஹில கிழங்கை நன்கு கழுவி, சொரசொரப்பான தோலையும் வேர் மயிரையும் சுரண்டி, குறுக்காக மெல்லியதாக நறுக்குங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "வேலை செய்யும் போது கறுக்காமல் இருக்க, சிறிது மஞ்சள் கலந்த நீரில் துண்டுகளைப் போடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கோரக்காவும் சிறிது உப்பும் சேர்த்து, பச்சை வாசனை போய், துண்டுகள் சற்று மிருதுவாகும் வரை வேகவையுங்கள்; கொஹிலவுக்கு நீண்ட கொதி தேவை.",
+    "minutes": 15
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, நறுக்கிய வெங்காயம், உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலை, ரம்பையைத் தாளியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "நீர் வடித்த கொஹிலவை மஞ்சள், வறுத்த கறி மசாலா, உப்புடன் சேர்த்து ஒரு நிமிடம் தீயில் புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலை ஊற்றி, துண்டுகள் மிருதுவாகி குழம்பு கறுக்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, ஒரு கொதி வந்தவுடன் சட்டியை இறக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "பரிமாறும் முன் சிறிது நேரம் வையுங்கள்; குளிரும் போது கொஹில மசாலாவை உள்வாங்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 35,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Slice it as thin as you can; thick pieces of kohila stay rubbery even after a long boil. A piece of goraka in the first water settles both the smell and the colour.",
+  "si": "හැකි තරම් සිහින්ව කපන්න; ගනකමට කපාගත් කොහිල දිගු තැම්බීමකින් පසුවත් රබර් වගේ තිබේ. පළමු වතුරට ගොරකා කැබැල්ලක් දැමීමෙන් ගඳ සහ පැහැය දෙකම හරි යයි.",
+  "ta": "முடிந்தவரை மெல்லியதாக நறுக்குங்கள்; தடிமனான கொஹில நீண்ட கொதிக்குப் பிறகும் ரப்பர் போல இருக்கும். முதல் நீரில் ஒரு கோரக்கா துண்டு வாசனையையும் நிறத்தையும் சரிசெய்யும்."
+ },
+ "health_note": {
+  "en": "Kohila is one of the most fibrous vegetables in a village kitchen and villagers cook it for a sluggish stomach. It is filling rather than rich, provided you do not drown it in thick milk.",
+  "si": "කොහිල ගම් මුළුතැන්ගෙයේ ඇති තන්තු වැඩිම එළවළු අතරින් එකක් වන අතර, බඩේ අපහසුතාවකට ගම්වාසීන් එය උයති. ඝන කිරිවල ගිල්වන්නේ නැත්නම් එය තෙල් සහිත නොව පිරෙන කෑමකි.",
+  "ta": "கொஹில கிராமத்து சமையலில் மிக அதிக நார்ச்சத்துள்ள காய்கறிகளில் ஒன்று; வயிற்று மந்தத்திற்கு கிராமத்தார் இதைச் சமைப்பார்கள். தடித்த பாலில் மூழ்கவிடாவிட்டால் இது கொழுப்பான உணவல்ல, வயிறு நிறைக்கும் உணவு."
+ },
+ "tags": [
+  "high_fibre",
+  "iron_rich",
+  "budget",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

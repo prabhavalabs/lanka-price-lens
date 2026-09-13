@@ -1,0 +1,317 @@
+{
+ "id": "dish_luffa_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 180,
+  "description": {
+   "en": "A ladle of soft ridge gourd in light gravy",
+   "si": "තුනී හොදියේ මෘදු වැටකොළු හැන්දක්",
+   "ta": "இலகுவான குழம்பில் மென்மையான பீர்க்கங்காய் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 760,
+ "ingredients": [
+  {
+   "ref": "product_luffa",
+   "label": {
+    "en": "ridge gourd (wetakolu)",
+    "si": "වැටකොළු",
+    "ta": "பீர்க்கங்காய்"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "2 medium gourds",
+   "preparation": {
+    "en": "ridges pared off, cut into thick slices",
+    "si": "දාර ගසා ඉවත් කර, ගන පෙති ලෙස කපා",
+    "ta": "விளிம்புகளைச் சீவி, தடிமனான துண்டுகளாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගෙන",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගෙන",
+    "ta": "இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pare off the hard ridges of the gourd with a knife but leave most of the green skin on, since it holds the slices together.",
+    "minutes": 6
+   },
+   {
+    "text": "Cut the gourd into slices as thick as a thumb; thin slices disappear into the gravy.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the slices in a pot with the onion, green chillies, turmeric, curry powder, curry leaves and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk, cover, and cook on a medium flame; the gourd releases a lot of its own water.",
+    "minutes": 8
+   },
+   {
+    "text": "When the slices turn translucent, add the thick coconut milk and the crushed pepper.",
+    "minutes": null
+   },
+   {
+    "text": "Heat gently until the first bubbles rise at the rim, then take the pot off; long boiling turns the gourd to pulp.",
+    "minutes": 4
+   },
+   {
+    "text": "Serve with rice, or with string hoppers, which soak up this thin gravy well.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වැටකොළු තද දාර පිහියකින් ගසා ඉවත් කර, කොළ ලෙලි බොහෝමය තබාගන්න; එය පෙති එකට රඳවා ගනී.",
+    "minutes": 6
+   },
+   {
+    "text": "වැටකොළු මාපටැඟිල්ලක ගනට පෙති ලෙස කපන්න; තුනී පෙති හොදියේ දිය වී යයි.",
+    "minutes": 5
+   },
+   {
+    "text": "පෙති වළඳකට දමා ලූනු, අමු මිරිස්, කහ, තුනපහ, කරපිංචා හා ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි වත් කර වහන්නක් දමා මධ්‍යම ගින්නේ උයන්න; වැටකොළු තමන්ගේ වතුර බොහෝ ප්‍රමාණයක් පිට කරයි.",
+    "minutes": 8
+   },
+   {
+    "text": "පෙති පාරාන්ධ බවට හැරුණු විට මිටි කිරි හා තලාගත් ගම්මිරිස් එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දාරයේ පළමු බුබුළු එන තුරු සෙමින් රස්නය කර ලිපෙන් ඉවතට ගන්න; බොහෝ වේලා තැම්බුවොත් වැටකොළු පොඩි වේ.",
+    "minutes": 4
+   },
+   {
+    "text": "බත් සමඟ, නැතහොත් මේ තුනී හොදිය හොඳින් උරාගන්නා ඉඳිආප්ප සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பீர்க்கங்காயின் கெட்டியான விளிம்புகளை கத்தியால் சீவி, பச்சைத் தோலில் பெரும்பகுதியை விட்டு வையுங்கள்; அது துண்டுகளைப் பிடித்து வைக்கும்.",
+    "minutes": 6
+   },
+   {
+    "text": "காயை பெருவிரல் தடிமனில் துண்டுகளாக நறுக்குங்கள்; மெல்லிய துண்டுகள் குழம்பில் கரைந்துவிடும்.",
+    "minutes": 5
+   },
+   {
+    "text": "துண்டுகளை சட்டியில் இட்டு, வெங்காயம், பச்சை மிளகாய், மஞ்சள், கறி மசாலா, கறிவேப்பிலை, உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி மூடி நடுத்தர தீயில் வேகவிடுங்கள்; பீர்க்கங்காய் தன் நீரை நிறைய விடும்.",
+    "minutes": 8
+   },
+   {
+    "text": "துண்டுகள் கண்ணாடி போல மாறியதும், தடிமன் பாலையும் இடித்த மிளகையும் சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "விளிம்பில் முதல் குமிழி வரும் வரை மெல்லச் சூடாக்கி இறக்குங்கள்; நீண்ட நேரம் கொதித்தால் காய் கூழாகும்.",
+    "minutes": 4
+   },
+   {
+    "text": "சாதத்துடன், அல்லது இந்த நீர்க் குழம்பை நன்கு உறிஞ்சும் இடியப்பத்துடன் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 18,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot with lid",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Choose gourds that feel heavy for their size and give slightly when pressed; a light, dry one is already turning fibrous inside. Add very little extra water, because the gourd makes its own.",
+  "si": "ප්‍රමාණයට සාපේක්ෂව බරින් වැඩි, තද කළ විට ටිකක් ඇදෙන වැටකොළු තෝරන්න; සැහැල්ලු, වියළි එකක ඇතුළත දැනටමත් නාරටි වෙමින් තිබේ. අමතර වතුර ඉතා ටිකක් දමන්න; වැටකොළු තමන්ගේ වතුර සාදා ගනී.",
+  "ta": "அளவுக்கு அதிக எடையுள்ள, அழுத்தினால் சற்று இளகும் காய்களைத் தேர்ந்தெடுங்கள்; இலகுவான, காய்ந்த காய்க்கு உள்ளே ஏற்கனவே நார் பிடித்திருக்கும். கூடுதல் நீரை மிகக் குறைவாகவே சேர்க்குங்கள்; காயே தன் நீரை விடும்."
+ },
+ "health_note": {
+  "en": "Ridge gourd is mostly water with very few calories, which makes this one of the lightest curries on the table and easy for elders and small children. Keep the thick milk to half a cup and it stays a light evening dish.",
+  "si": "වැටකොළු බොහෝ දුරට ජලයෙන් සමන්විත, කැලරි ඉතා අඩු එළවළුවක් නිසා මෙය මේසයේ සැහැල්ලුම ව්‍යංජනවලින් එකක් වන අතර වැඩිහිටියන්ට හා කුඩා දරුවන්ට ලෙහෙසියි. මිටි කිරි කෝප්ප භාගයකට සීමා කළොත් රාත්‍රියට සැහැල්ලු ව්‍යංජනයක් ලෙස රැඳේ.",
+  "ta": "பீர்க்கங்காயில் பெரும்பாலும் நீரே உள்ளது, கலோரி மிகக் குறைவு; எனவே இது மேசையின் மிக இலகுவான கறிகளில் ஒன்று, முதியவர்களுக்கும் சிறு குழந்தைகளுக்கும் எளிதானது. தடிமன் பாலை அரை கப்பாக வைத்தால் இரவுக்கு இலகுவான உணவாகவே இருக்கும்."
+ },
+ "tags": [
+  "low_calorie",
+  "light",
+  "hydrating",
+  "elderly_friendly",
+  "kid_friendly",
+  "quick",
+  "one_pot",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

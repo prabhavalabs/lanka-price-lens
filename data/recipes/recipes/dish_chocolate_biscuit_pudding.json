@@ -1,0 +1,310 @@
+{
+ "id": "dish_chocolate_biscuit_pudding",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 140,
+  "description": {
+   "en": "A cold square cut down through the biscuit layers",
+   "si": "බිස්කට් තට්ටු හරහා කපාගත් සිසිල් කැබැල්ලක්",
+   "ta": "பிஸ்கட் அடுக்குகளைக் குறுக்கே வெட்டிய குளிர்ந்த துண்டு"
+  }
+ },
+ "yield_g": 560,
+ "ingredients": [
+  {
+   "ref": "pantry_marie_biscuits",
+   "label": {
+    "en": "Marie biscuits",
+    "si": "මාරි බිස්කට්",
+    "ta": "மேரி பிஸ்கட்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "about 24 biscuits",
+   "preparation": {
+    "en": "kept whole, dipped one by one",
+    "si": "කැඩෙන්නට නොදී, එකින් එක තෙමා ගන්නා",
+    "ta": "உடைக்காமல், ஒன்றொன்றாக நனைத்து எடுக்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "quarter cup",
+   "preparation": {
+    "en": "softened",
+    "si": "මුදු කරගත්",
+    "ta": "மிருதுவாக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "generous quarter cup",
+   "preparation": {
+    "en": "ground fine",
+    "si": "සිහින්ව අඹරාගත්",
+    "ta": "நன்றாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_cocoa_powder",
+   "label": {
+    "en": "cocoa powder",
+    "si": "කොකෝවා කුඩු",
+    "ta": "கொக்கோ பவுடர்"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "sieved with the sugar",
+    "si": "සීනි සමඟ හලාගත්",
+    "ta": "சீனியுடன் சலித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg, well beaten",
+   "preparation": {
+    "en": "beaten; leave out and use a spoon of cornflour if cooking for small children",
+    "si": "ගසාගත්, කුඩා දරුවන්ට නම් අත්හැර ඉරිඟු පිටි හැන්දක් යොදන්න",
+    "ta": "அடித்த; சிறு குழந்தைகளுக்கு என்றால் விட்டுவிட்டு ஒரு கரண்டி சோள மாவு சேர்க்கவும்"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_black_tea",
+   "label": {
+    "en": "black tea leaves",
+    "si": "තේ කොළ",
+    "ta": "தேயிலை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp, brewed in a cup of water for dipping",
+   "preparation": {
+    "en": "brewed weak and left to cool, unsweetened",
+    "si": "තුනීට හදා සිසිල් කරගත්, සීනි නැති",
+    "ta": "இளமாகப் போட்டு ஆற வைத்த, சீனி இல்லாத"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vanilla",
+   "label": {
+    "en": "vanilla essence",
+    "si": "වැනිලා එසන්ස්",
+    "ta": "வெனிலா எசன்ஸ்"
+   },
+   "quantity": 2,
+   "unit": "ml",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Brew a cup of weak tea without sugar and leave it to cool completely; this is only for dipping, so it should taste of tea and nothing else.",
+    "minutes": 10
+   },
+   {
+    "text": "Cream the butter with the sugar and sieved cocoa in a bowl until it looks like dark wet sand.",
+    "minutes": null
+   },
+   {
+    "text": "Warm the milk in a pan, stir in the cocoa mixture and cook on low, stirring without stopping, until it thickens enough to coat the spoon.",
+    "minutes": 8
+   },
+   {
+    "text": "Take the pan off the fire, let the heat drop for a minute, then beat in the egg fast so it cooks into the custard without setting in threads.",
+    "minutes": null
+   },
+   {
+    "text": "Return to the lowest flame for a minute more to cook the egg through, stir in the vanilla, and let the custard cool until it is only warm.",
+    "minutes": 2
+   },
+   {
+    "text": "Dip each biscuit in the cold tea for a count of two, no longer, and lay them in a single layer in a flat dish.",
+    "minutes": null
+   },
+   {
+    "text": "Spread a layer of chocolate custard over the biscuits, then another layer of dipped biscuits, and carry on, finishing with custard on top.",
+    "minutes": null
+   },
+   {
+    "text": "Smooth the top with the back of a wet spoon and grate a little extra cocoa or chocolate over it if you have any.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and chill overnight, or at least four hours, so the biscuits soften into cake and the pudding can be cut cleanly.",
+    "minutes": 240
+   }
+  ],
+  "si": [
+   {
+    "text": "සීනි නැති තුනී තේ කෝප්පයක් හදා හොඳින් සිසිල් වෙන්න දෙන්න, මේක බිස්කට් තෙමන්නට පමණක් නිසා තේ රසය පමණක් තිබිය යුතුයි.",
+    "minutes": 10
+   },
+   {
+    "text": "බටර්, සීනි සහ හලාගත් කොකෝවා බඳුනක දමා, තෙත් අඳුරු වැලි වගේ පෙනෙන තුරු කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කිරි පෑන් එකක රත් කර, කොකෝවා මිශ්‍රණය දමා, අඩු ගින්නේ නොනවතින්ම කලතමින්, හැන්දේ තැවරෙන තරමට ඝන වන තුරු තියන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පෑන් ලිපෙන් ඉවත් කර මිනිත්තුවක් උණුසුම බැස යන්න දී, බිත්තර ඉක්මනින් ගසා මිශ්‍ර කරන්න, එවිට එය නූල් නොවී පුඩිං එකට එකතු වේ.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර හොඳින් පැසෙන්නට තව මිනිත්තුවක් අඩුම ගින්නේ තබා, වැනිලා දමා, උණුසුම් තරමට සිසිල් වෙන්න දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "එක බිස්කට් එකක් සිසිල් තේ වල දෙකක් ගණන් කරන තරම් වෙලාවක් පමණක් තෙමා, පැතලි භාජනයක එක තට්ටුවකට තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිස්කට් මතට චොකලට් මිශ්‍රණයෙන් තට්ටුවක් තවරා, ඊළඟට තෙමූ බිස්කට් තට්ටුවක්, එසේ දිගටම, අවසානයේ මිශ්‍රණය උඩ තිබෙන ලෙස තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තෙත් හැන්දක පිටුපසින් මුදුන සමතලා කර, ඇත්නම් තව කොකෝවා හෝ චොකලට් ටිකක් ගා ඉසින්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා දමා රෑ පුරාම, නැත්නම් අඩුම තරමින් පැය හතරක් ශීතකරණයේ තබන්න, බිස්කට් කේක් වගේ මුදු වී පුඩිං ලස්සනට කැපෙනවා.",
+    "minutes": 240
+   }
+  ],
+  "ta": [
+   {
+    "text": "சீனி இல்லாத இளம் தேநீர் ஒரு கோப்பை போட்டு நன்றாக ஆற விடுங்கள்; இது பிஸ்கட் நனைக்க மட்டுமே, தேநீர் சுவை மட்டும் இருக்க வேண்டும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வெண்ணெய், சீனி, சலித்த கொக்கோ சேர்த்து ஒரு கிண்ணத்தில் ஈரமான கரும் மணல் போல தோன்றும்வரை கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பாலை சட்டியில் காயவிட்டு, கொக்கோ கலவையைச் சேர்த்து, சிறு தீயில் இடைவிடாமல் கிளறி, கரண்டியில் ஒட்டும் பதம்வரை கெட்டியாக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி ஒரு நிமிடம் சூடு தணிய விட்டு, முட்டையை வேகமாக அடித்துக் கலக்குங்கள் - நூலாகக் கட்டாமல் கலவையில் சேரும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டை நன்றாக வேக மிக்க சிறு தீயில் இன்னும் ஒரு நிமிடம் வைத்து, வெனிலா சேர்த்து, வெதுவெதுப்பாகும்வரை ஆற விடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "ஒவ்வொரு பிஸ்கட்டையும் குளிர்ந்த தேநீரில் இரண்டு எண்ணும் நேரம் மட்டுமே நனைத்து, தட்டையான பாத்திரத்தில் ஒரே அடுக்காக வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பிஸ்கட் மேல் சாக்லேட் கலவையை ஒரு அடுக்காகப் பரப்பி, மேலே நனைத்த பிஸ்கட், இப்படியே அடுக்கி, இறுதியில் கலவை மேலே இருக்கும்படி முடியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஈரமான கரண்டியின் பின்பக்கத்தால் மேற்பரப்பை சமன் செய்து, இருந்தால் கொஞ்சம் கொக்கோவோ சாக்லேட்டோ துருவித் தூவுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி இரவு முழுவதும், அல்லது குறைந்தது நான்கு மணி நேரம், குளிரில் வையுங்கள் - பிஸ்கட் கேக் போல மென்மையாகி புட்டிங் நேர்த்தியாக வெட்டப்படும்.",
+    "minutes": 240
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 10,
+  "passive_minutes": 240
+ },
+ "equipment": [
+  "flat dish or tray",
+  "heavy pan",
+  "whisk",
+  "small cup for the tea"
+ ],
+ "tips": {
+  "en": "The one mistake everybody makes is soaking the biscuits: two seconds in the tea is enough, and a biscuit that bends in your fingers will collapse into mush overnight. Cocoa clumps in hot milk, so always cream it into the butter and sugar first. Cut with a knife dipped in hot water for clean layers.",
+  "si": "හැමෝම කරන එකම වැරැද්ද බිස්කට් වැඩිපුර තෙමීමයි, තේ වල තත්පර දෙකක් ඇති, ඇඟිලිවලට නැවෙන බිස්කට් එකක් රෑ පුරාවට කලවමක් වේ. උණු කිරිවලට කොකෝවා දැමූ විට කැට ගැසෙන නිසා, පළමුව බටර් සහ සීනි සමඟ එය කලතන්න. තට්ටු පැහැදිලිව පෙනෙන්නට උණු වතුරේ තෙමූ පිහියකින් කපන්න.",
+  "ta": "எல்லோரும் செய்யும் ஒரே தவறு பிஸ்கட்டை அதிகமாக நனைப்பது - தேநீரில் இரண்டு நொடி போதும்; விரலில் வளையும் பிஸ்கட் இரவோடு கூழாகிவிடும். சூடான பாலில் கொக்கோ கட்டியாகும், அதனால் முதலில் வெண்ணெய்-சீனியுடன் கலக்குங்கள். அடுக்குகள் அழகாகத் தெரிய, வெந்நீரில் நனைத்த கத்தியால் வெட்டுங்கள்."
+ },
+ "health_note": {
+  "en": "Biscuits, butter and sugar make this a rich pudding, and being cold and easy to eat it disappears faster than most, so serve it cut into squares rather than letting people help themselves from the dish. The milk and egg add some protein and calcium; skip the egg and thicken with cornflour if you are serving very small children or expecting mothers.",
+  "si": "බිස්කට්, බටර් සහ සීනි නිසා මෙය පොහොසත් පුඩිං එකක්, සිසිල්ව කන්න ලේසි නිසා ඉක්මනින් අවසන් වන නිසා, භාජනයෙන් කැමති ලෙස ගන්නට දෙනවා වෙනුවට කැට කපා බෙදන්න. කිරි සහ බිත්තර නිසා සුළු ප්‍රෝටීන් සහ කැල්සියම් ලැබේ, ඉතා කුඩා දරුවන්ට හෝ ගර්භනී මවකට නම් බිත්තර අත්හැර ඉරිඟු පිටිවලින් ඝන කරන්න.",
+  "ta": "பிஸ்கட், வெண்ணெய், சீனி என்பதால் இது செல்வச் செழிப்பான புட்டிங்; குளிர்ச்சியாகவும் எளிதாகவும் இருப்பதால் வேகமாகக் காலியாகிவிடும் - அதனால் பாத்திரத்தை வைத்துவிடாமல் துண்டுகளாக வெட்டிப் பரிமாறுங்கள். பாலும் முட்டையும் கொஞ்சம் புரதமும் கால்சியமும் தரும்; மிகச் சிறு குழந்தைகளுக்கோ கர்ப்பிணிகளுக்கோ என்றால் முட்டையை விட்டு சோள மாவால் கெட்டியாக்குங்கள்."
+ },
+ "tags": [
+  "high_sugar",
+  "kid_friendly",
+  "festive",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

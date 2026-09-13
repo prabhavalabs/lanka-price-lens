@@ -1,0 +1,443 @@
+{
+ "id": "dish_samosa",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 165,
+  "description": {
+   "en": "Three hot triangles with a hot sauce on the side",
+   "si": "පැත්තෙන් සැර සෝස් සමඟ උණුසුම් තුන්කොන් තුනක්",
+   "ta": "பக்கத்தில் காரச் சோஸுடன் மூன்று சூடான முக்கோணங்கள்"
+  }
+ },
+ "yield_g": 660,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "for the pastry",
+    "si": "පිටි ගුලියට",
+    "ta": "மாவுக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අර්තාපල්",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "4 medium potatoes",
+   "preparation": {
+    "en": "boiled and roughly crushed, not mashed smooth",
+    "si": "තෙම්බා රළුවට තලාගත්, සිනිඳුව පොඩි නොකළ",
+    "ta": "வேகவைத்து கொரகொரப்பாக நசுக்கியது, மிருதுவாக மசிக்காதது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a thumb-sized piece",
+   "preparation": {
+    "en": "grated",
+    "si": "ගාගත්",
+    "ta": "துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_garam_masala",
+   "label": {
+    "en": "garam masala",
+    "si": "ගරම් මසාලා",
+    "ta": "கரம் மசாலா"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "stirred in at the end",
+    "si": "අවසානයේ දමාගත්",
+    "ta": "கடைசியில் சேர்ப்பது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කැපූ",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "juice of half a lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1½ tsp in all",
+   "preparation": {
+    "en": "for pastry and filling",
+    "si": "පිටි ගුලියට සහ මාලුවට",
+    "ta": "மாவுக்கும் உள்ளடக்கத்திற்கும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for the pastry and filling",
+    "si": "පිටි ගුලියට සහ මාලුවට පොල් තෙල්",
+    "ta": "மாவுக்கும் உள்ளடக்கத்திற்கும் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 50,
+   "unit": "ml",
+   "household": "3½ tbsp",
+   "preparation": {
+    "en": "half rubbed into the flour, half for the tempering",
+    "si": "අඩක් පිටිවලට අතුල්ලා, අඩක් තෙම්පරාදුවට",
+    "ta": "பாதி மாவில் தேய்க்க, பாதி தாளிக்க"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 350,
+   "unit": "ml",
+   "household": "1½ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub half the pastry oil into the flour with a teaspoon of salt until the mixture holds a shape when pressed in the fist.",
+    "minutes": null
+   },
+   {
+    "text": "Add about 100 ml water a little at a time and knead into a firm dough, then cover it and let it rest.",
+    "minutes": 20
+   },
+   {
+    "text": "Temper the cumin, onion, green chilli, ginger and curry leaf in the remaining oil until the onion turns glassy.",
+    "minutes": 7
+   },
+   {
+    "text": "Add the crushed potato, turmeric and salt and fry, pressing it against the pan, until it is dry and a little toasted.",
+    "minutes": 8
+   },
+   {
+    "text": "Take it off the fire and stir in the garam masala, coriander leaves and lime juice, then cool the filling.",
+    "minutes": null
+   },
+   {
+    "text": "Divide the dough into six balls, roll each into a thin oval and cut it across into two half moons.",
+    "minutes": null
+   },
+   {
+    "text": "Wet the straight edge, fold each half moon into a cone and fill it two-thirds with potato.",
+    "minutes": null
+   },
+   {
+    "text": "Press the open top shut into a straight seam and pinch it well; a weak seam opens in the oil.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the frying oil on a medium fire, hot enough that a scrap of dough rises slowly.",
+    "minutes": 6
+   },
+   {
+    "text": "Fry four or five samosas at a time, turning them, until the pastry is blistered and evenly golden.",
+    "minutes": 14
+   },
+   {
+    "text": "Drain on a rack and serve hot with a chilli sauce or a spoon of seeni sambol.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිටිවලට තේ හැන්දක ලුණු දමා, පිටි ගුලියට ගන්නා තෙලෙන් අඩක් අතුල්ලා, අතට ගෙන මිරිකූ විට හැඩය රඳවන තෙක් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර මිලි ලීටර් 100ක් පමණ ටිකෙන් ටික දමමින් තද ගුලියක් අනා, වසා නිදාගන්න තබන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ඉතිරි තෙලේ සූදුරු, ලූනු, අමු මිරිස්, ඉඟුරු සහ කරපිංචා දමා, ලූනු විනිවිද පෙනෙන ගතියක් එන තෙක් තෙම්පරාදු කරන්න.",
+    "minutes": 7
+   },
+   {
+    "text": "තලාගත් අර්තාපල්, කහ සහ ලුණු දමා, පෑනට තද කරමින්, වියළී ලා පිළිස්සුණු සුවඳක් එන තෙක් බැදගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ලිපෙන් බාගෙන ගරම් මසාලා, කොත්තමල්ලි කොළ සහ දෙහි යුෂ දමා කලතා, මාලුව සිසිල් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිටි ගුලිය ගුලි හයකට බෙදා, එක එක තුනී ඉලිප්සාකාරව පෙරළා, හරහට කපා අඩ සඳ දෙකක් සාදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කෙළින් දාරය තෙමා, එක් එක් අඩ සඳ කේතුවක් සේ නවා, තුනෙන් දෙකක් පමණ අර්තාපල් මාලුවෙන් පුරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "විවෘත මුදුන කෙළින් මැහුමක් සේ තද කර, හොඳින් තද කරන්න; දුර්වල මැහුමක් තෙලේ ඇරෙයි.",
+    "minutes": 10
+   },
+   {
+    "text": "බැදගැනීමේ තෙල් මධ්‍යම ලිපේ, පිටි කැබැල්ලක් සෙමින් නැඟෙන තරමට රත් කරන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "වරකට හතරක් පහක් දමා, පෙරළමින්, පිටත බුබුළු නැඟී සමව රන්වන් වන තෙක් බැදගන්න.",
+    "minutes": 14
+   },
+   {
+    "text": "රාක්කයක තෙල් බේරා, මිරිස් සෝස් හෝ සීනි සම්බෝල හැන්දක් සමඟ උණුසුම්ව දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாவில் ஒரு தேக்கரண்டி உப்புடன், மாவுக்குரிய எண்ணெயில் பாதியைத் தேய்த்து, கையில் பிடித்தால் வடிவம் பிடிக்கும் வரை கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சுமார் 100 மில்லி தண்ணீரைக் கொஞ்சம் கொஞ்சமாகச் சேர்த்து இறுக்கமான மாவாகப் பிசைந்து, மூடி ஓய்வு கொடுக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "மீதி எண்ணெயில் சீரகம், வெங்காயம், பச்சை மிளகாய், இஞ்சி, கறிவேப்பிலை போட்டு, வெங்காயம் கண்ணாடி போல் ஆகும் வரை தாளிக்கவும்.",
+    "minutes": 7
+   },
+   {
+    "text": "நசுக்கிய உருளைக்கிழங்கு, மஞ்சள், உப்பு சேர்த்து, வாணலியில் அழுத்தியபடி, வறண்டு லேசாக வறுபட்ட வாசனை வரும் வரை வதக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, கரம் மசாலா, கொத்தமல்லி இலை, எலுமிச்சைச் சாறு கலந்து, கலவையை ஆறவிடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மாவை ஆறு உருண்டைகளாகப் பிரித்து, ஒவ்வொன்றையும் மெல்லிய நீள்வட்டமாக இட்டு, நடுவில் வெட்டி இரண்டு அரைநிலாக்களாக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நேரான விளிம்பை நனைத்து, ஒவ்வொரு அரைநிலாவையும் கூம்பாக மடித்து, மூன்றில் இரண்டு பங்கு கலவையால் நிரப்பவும்.",
+    "minutes": null
+   },
+   {
+    "text": "திறந்த மேற்பகுதியை நேரான மூட்டாக அழுத்தி நன்கு ஒட்டவும்; பலவீனமான மூட்டு எண்ணெயில் திறந்துவிடும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பொரிக்கும் எண்ணெயை நடுத்தர தீயில், ஒரு மாவுத் துண்டு மெதுவாக மேலெழும் அளவு காயவைக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "ஒரு முறைக்கு நான்கு ஐந்து சமோசாக்களைப் போட்டு, திருப்பி, மேற்பரப்பில் கொப்புளம் வந்து சமமான பொன்னிறமாகும் வரை பொரிக்கவும்.",
+    "minutes": 14
+   },
+   {
+    "text": "வலையில் எண்ணெய் வடித்து, மிளகாய்ச் சோஸ் அல்லது ஒரு ஸ்பூன் சீனி சம்பலுடன் சூடாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 20,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "rolling pin",
+  "deep pan",
+  "wire rack"
+ ],
+ "tips": {
+  "en": "Fry on a medium fire and give them time; fierce heat blisters the pastry brown while the inside stays raw and doughy. Made samosas freeze well uncooked, and go straight from the freezer into the oil.",
+  "si": "මධ්‍යම ලිපේ, කාලය දී බැදගන්න; තද ගින්නෙන් පිටත දුඹුරු වුවත් ඇතුළත පිටි ගතියෙන් අමුව ම තිබේ. සාදාගත් සමෝසා නොබැද ශීතකරණයේ තැබිය හැක; ශීතකරණයෙන් ගෙන කෙළින්ම තෙලට දැමිය හැක.",
+  "ta": "நடுத்தர தீயில், நேரம் கொடுத்துப் பொரிக்கவும்; கடுமையான சூட்டில் வெளிப்புறம் பொன்னிறமானாலும் உள்ளே பச்சை மாவாகவே இருக்கும். செய்த சமோசாக்களைப் பொரிக்காமல் உறைய வைக்கலாம்; உறைவிப்பானிலிருந்து நேரடியாக எண்ணெயில் போடலாம்."
+ },
+ "health_note": {
+  "en": "The filling is potato and spices, so the food value is modest and the pastry and oil carry the weight; three small samosas are an evening snack, not a dinner. A bought samosa is often fried in reused oil, which is one good reason to make them at home.",
+  "si": "ඇතුළත ඇත්තේ අර්තාපල් සහ කුළුබඩු පමණක් බැවින් පෝෂණ අගය මධ්‍යස්ථයි; බර එන්නේ පිටි ගුලියෙන් සහ තෙලෙන් ය. කුඩා සමෝසා තුනක් සවස් කෙටි කෑමකි, රාත්‍රී ආහාරයක් නොවේ. පිටතින් ගන්නා සමෝසා බොහෝ විට නැවත නැවත භාවිත කළ තෙලේ බදින බැවින්, ගෙදර සෑදීම වඩා හොඳය.",
+  "ta": "உள்ளடக்கம் உருளைக்கிழங்கும் மசாலாவும்தான், எனவே ஊட்டச்சத்து மிதமானது; கனம் வருவது மாவிலும் எண்ணெயிலும்தான். மூன்று சிறிய சமோசா ஒரு மாலைச் சிற்றுண்டி, இரவு உணவு அல்ல. வெளியில் வாங்கும் சமோசா பெரும்பாலும் மீண்டும் மீண்டும் பயன்படுத்திய எண்ணெயில் பொரிக்கப்படுவதால், வீட்டில் செய்வதே சிறந்தது."
+ },
+ "tags": [
+  "deep_fried",
+  "street_food",
+  "comfort",
+  "budget",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

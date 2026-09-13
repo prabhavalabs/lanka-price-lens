@@ -1,0 +1,370 @@
+{
+ "id": "dish_kaha_bath",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 310,
+  "description": {
+   "en": "A plate of golden rice as the centre of the meal",
+   "si": "කෑම මේසයේ මධ්‍යයට වන රන්වන් බත් පිඟානක්",
+   "ta": "உணவின் மத்தியில் வைக்கும் ஒரு தட்டு பொன்னிற சோறு"
+  }
+ },
+ "yield_g": 1250,
+ "ingredients": [
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed and drained",
+    "si": "හෝදා වතුර බේරාගත්",
+    "ta": "அலசி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල්කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்தது, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කැපූ",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "2 short sticks",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "4 pods",
+   "preparation": {
+    "en": "lightly crushed",
+    "si": "සැහැල්ලුවෙන් තලා ගත්",
+    "ta": "லேசாக நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_lemongrass",
+   "label": {
+    "en": "lemongrass",
+    "si": "සේර",
+    "ta": "சேரை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 piece, bruised",
+   "preparation": {
+    "en": "bruised with the back of the knife",
+    "si": "පිහියේ පිටුපසින් තලා ගත්",
+    "ta": "கத்தியின் பின்புறத்தால் நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1/4 cup",
+   "preparation": {
+    "en": "fried golden",
+    "si": "රන්වන් වන තුරු බැදගත්",
+    "ta": "பொன்னிறமாக வறுத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the rice until the water runs clear and leave it in the strainer to drain.",
+    "minutes": null
+   },
+   {
+    "text": "Melt the butter in a heavy pot and fry the sliced onion with the cinnamon, cardamom, cloves, curry leaves, pandan and lemongrass until the onion is soft and smells sweet.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the drained rice and turmeric and stir gently for a minute or two so every grain is coated yellow and glossy.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk and 450 ml water, add the salt, and taste the liquid; it should be a little saltier than you want the rice.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to a boil uncovered, then lower the flame to the smallest, cover tightly and leave it alone until the liquid is gone and small holes show on the surface.",
+    "minutes": 18
+   },
+   {
+    "text": "Take the pot off the fire and let it stand with the lid on so the grains firm up.",
+    "minutes": 10
+   },
+   {
+    "text": "Fluff the rice with a fork or the handle of a wooden spoon, lifting from the bottom so the spices come through, and pick out the pandan and lemongrass.",
+    "minutes": null
+   },
+   {
+    "text": "Scatter the fried cashew over the top just before the rice goes to the table.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වතුර පැහැදිලි වන තුරු සහල් සෝදා පෙනේරයේ තබා වතුර බේරා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බර හැළියක බටර් දිය කර, කැපූ ලූනු සමඟ කුරුඳු, එනසාල්, කරාබුනැටි, කරපිංචා, රම්පෙ සහ සේර දමා ලූනු මුදු වී සුවඳ නගින තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වතුර බේරූ සහල් සහ කහ දමා, සෑම ඇටයක් කහ පැහැයෙන් තැවරෙන තුරු මිනිත්තුවක් දෙකක් සෙමින් කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තුනී පොල්කිරි සහ වතුර මිලි ලීටර් 450ක් දමා ලුණු එකතු කර රස බලන්න; බතට අවශ්‍ය තරමට වඩා ටිකක් ලුණු රස විය යුතුය.",
+    "minutes": null
+   },
+   {
+    "text": "වහන්නේ නැතිව නටන තුරු තබා, පසුව ගිනි අවම කර තදින් වහා, දිය හිඳී මතුපිටින් කුඩා සිදුරු පෙනෙන තුරු අතහරින්න.",
+    "minutes": 18
+   },
+   {
+    "text": "හැළිය ගින්නෙන් ඉවතට ගෙන, පියන දමා තිබෙන්න දී බත් ඇට තද වන්නට ඉඩ දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගෑරුප්පුවකින් හෝ ලී හැන්දේ මිටෙන් පහළින් ඔසවා බත සැහැල්ලු කර කුළුබඩු මුළු බතට යන්නට හරින්න; රම්පෙ සහ සේර ඉවතට ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මේසයට ගෙන යන මොහොතේ බැදගත් කජු මතුපිටින් විසුරුවන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தண்ணீர் தெளிவாக வரும் வரை அரிசியை அலசி வடிகட்டியில் வைத்து வடியவிடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கனமான பாத்திரத்தில் வெண்ணெயை உருக்கி, நறுக்கிய வெங்காயத்தை பட்டை, ஏலக்காய், கிராம்பு, கறிவேப்பிலை, ரம்பை, சேரையுடன் வெங்காயம் மென்மையாகி வாசனை வரும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வடித்த அரிசியையும் மஞ்சளையும் சேர்த்து ஒவ்வொரு பருக்கையும் மஞ்சள் பூசப்படும் வரை ஒரு இரண்டு நிமிடம் மெதுவாகக் கிளறுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலையும் 450 மில்லி தண்ணீரையும் ஊற்றி உப்பு சேர்த்து சுவை பாருங்கள்; சோற்றுக்கு வேண்டியதை விட சற்று உப்பாக இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடாமல் கொதிக்க வைத்து, பின் தீயை மிகக் குறைத்து இறுக்கமாக மூடி, தண்ணீர் வற்றி மேற்பரப்பில் சிறு துளைகள் தெரியும் வரை தொடாமல் விடுங்கள்.",
+    "minutes": 18
+   },
+   {
+    "text": "பாத்திரத்தை தீயிலிருந்து இறக்கி, மூடியோடு சிறிது நேரம் வைத்திருந்து பருக்கைகள் இறுகட்டும்.",
+    "minutes": 10
+   },
+   {
+    "text": "முள்கரண்டியால் அடியிலிருந்து தூக்கி சோற்றை உதிர்த்து மசாலா முழுவதும் பரவட்டும்; ரம்பையையும் சேரையையும் எடுத்து விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மேசைக்கு எடுத்துச் செல்லும் நேரத்தில் வறுத்த முந்திரியை மேலே தூவுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "heavy pot with a tight lid",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Total liquid should be about one and three quarter times the volume of rice; more than that and the grains clump. Do not stir once the pot is covered, and if the rice looks pale add the turmeric to the frying stage rather than to the water.",
+  "si": "දියර ප්‍රමාණය සහල් ප්‍රමාණයෙන් එකහමාරකට ඩිංගක් වැඩි විය යුතුය; වැඩි වුවහොත් බත් ඇට එකට ඇලෙයි. වහපු පසු කලවම් නොකරන්න, බත සුදුමැලි නම් කහ වතුරට නොදා බදින අවස්ථාවේ එකතු කරන්න.",
+  "ta": "மொத்த நீர் அரிசியின் அளவை விட ஒன்றரை மடங்கு சற்று அதிகமாக இருக்க வேண்டும்; அதிகமானால் பருக்கைகள் ஒட்டிக்கொள்ளும். மூடிய பிறகு கிளறாதீர்கள்; சோறு வெளிறியிருந்தால் மஞ்சளை தண்ணீரில் அல்ல, வதக்கும்போதே சேர்க்கவும்."
+ },
+ "health_note": {
+  "en": "A festive rice carries more fat than plain boiled rice because of the butter and coconut milk, so serve it with plenty of vegetable curries and keep the portion to one plate. Using thin second-squeeze milk instead of thick keeps it lighter.",
+  "si": "බටර් සහ පොල්කිරි නිසා මෙය සරල බතට වඩා මේදය වැඩියි, එබැවින් එළවළු ව්‍යංජන ගොඩක් සමඟ පිඟානකට සීමා කරන්න. ඝන කිරි වෙනුවට තුනී දෙවන කිරි යොදා ගැනීමෙන් සැහැල්ලු වේ.",
+  "ta": "வெண்ணெயும் தேங்காய்ப் பாலும் இருப்பதால் இது வெறும் சோற்றை விட கொழுப்பு அதிகம்; எனவே நிறைய காய்கறிக் கறிகளுடன் ஒரு தட்டுக்கு வைத்துக் கொள்ளுங்கள். கெட்டிப் பாலுக்குப் பதிலாக இரண்டாம் பால் பயன்படுத்தினால் இலகுவாக இருக்கும்."
+ },
+ "tags": [
+  "festive",
+  "filling",
+  "kid_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

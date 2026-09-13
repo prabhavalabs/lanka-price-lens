@@ -1,0 +1,338 @@
+{
+ "id": "dish_breadfruit_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 230,
+  "description": {
+   "en": "A full plate portion that stands in for part of the rice",
+   "si": "බතේ කොටසක් වෙනුවට ගන්නා පිරුණු කොටසක්",
+   "ta": "சாதத்தின் ஒரு பகுதிக்குப் பதிலாக அமையும் நிறைவான பங்கு"
+  }
+ },
+ "yield_g": 1050,
+ "ingredients": [
+  {
+   "ref": "product_bread_fruit",
+   "label": {
+    "en": "breadfruit",
+    "si": "දෙල්",
+    "ta": "ஈரப்பலா"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "about a quarter of a large breadfruit",
+   "preparation": {
+    "en": "peeled, core removed, cut into thick chunks and kept in water",
+    "si": "ලෙලි ගසා, මැද කොටස ඉවත් කර, ලොකු කැබලි ලෙස කපා වතුරේ තබා",
+    "ta": "தோல் சீவி, நடுப்பகுதியை நீக்கி, பெரிய துண்டுகளாக நறுக்கி நீரில் போட்டு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "7 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගෙන",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub a little coconut oil on your hands and the knife, then peel the breadfruit, cut it in half, take out the hard core and cut the flesh into chunks the size of a matchbox.",
+    "minutes": 10
+   },
+   {
+    "text": "Drop the chunks into a bowl of water as you go so the cut faces do not darken.",
+    "minutes": null
+   },
+   {
+    "text": "Drain the chunks into a clay pot and add the onion, green chillies, turmeric, curry powder, fenugreek, pandan, curry leaves and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk so the pieces are just covered and bring it to a boil uncovered.",
+    "minutes": 5
+   },
+   {
+    "text": "Cover and cook on a medium flame until a piece crushes easily against the side of the pot, topping up with a little hot water if the pot runs dry.",
+    "minutes": 20
+   },
+   {
+    "text": "Pour in the thick coconut milk, shake the pot gently and let the gravy heat through without a hard boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Mash two or three pieces against the side of the pot to thicken the gravy, then take it off the fire.",
+    "minutes": null
+   },
+   {
+    "text": "Serve hot with a hot pol sambol; leftovers taste better the next morning.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අත් හා පිහියට පොල් තෙල් ටිකක් ගල්වා, දෙල් ලෙලි ගසා දෙකට කපා, මැද තද කොටස ඉවත් කර ගිනිකූරු පෙට්ටියක ප්‍රමාණයේ කැබලි ලෙස කපන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කපන කැබලි එකින් එක වතුර බඳුනකට දමන්න; එවිට කැපූ තැන් කළු වන්නේ නැත.",
+    "minutes": null
+   },
+   {
+    "text": "කැබලි වතුරෙන් වෙන් කර මැටි වළඳකට දමා, ලූනු, අමු මිරිස්, කහ, තුනපහ, උළුහාල්, රම්පෙ, කරපිංචා හා ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැබලි ආවරණය වන පමණට දිය කිරි වත් කර, වහන්නක් නොදමා උතුරන්නට තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වහන්න වසා මධ්‍යම ගින්නේ, කැබැල්ලක් වළඳේ පැත්තට තැලෙන තුරු උයන්න; වතුර හිඳී නම් උණු වතුර ටිකක් එකතු කරන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "මිටි කිරි වත් කර වළඳ සෙමින් සොලවා, දැඩි ලෙස උතුරන්නට නොදී හොදි රස්නය ගන්නට තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කැබලි දෙක තුනක් වළඳේ පැත්තට තලා හොදි ගනට කර ලිපෙන් ඉවතට ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සැර පොල් සම්බෝලයක් සමඟ උණුසුම්ව බෙදන්න; ඉතිරි වූ දෙල් පසුදා උදෑසන තවත් රසයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கைகளிலும் கத்தியிலும் கொஞ்சம் தேங்காய் எண்ணெயைத் தடவி, ஈரப்பலாவின் தோலைச் சீவி, இரண்டாக வெட்டி, நடுவிலுள்ள கெட்டிப் பகுதியை நீக்கி, தீப்பெட்டி அளவு துண்டுகளாக நறுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "நறுக்கும் துண்டுகளை உடனுக்குடன் நீர் நிரம்பிய பாத்திரத்தில் போடுங்கள்; வெட்டிய பக்கம் கறுக்காது.",
+    "minutes": null
+   },
+   {
+    "text": "துண்டுகளை வடித்து மண் சட்டியில் இட்டு, வெங்காயம், பச்சை மிளகாய், மஞ்சள், கறி மசாலா, வெந்தயம், ரம்பை, கறிவேப்பிலை, உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "துண்டுகள் மூழ்கும் அளவு நீர்ப் பாலை ஊற்றி, மூடாமல் கொதிக்க விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மூடி வைத்து நடுத்தர தீயில், ஒரு துண்டு சட்டி ஓரத்தில் எளிதாக நசுங்கும் வரை வேகவிடுங்கள்; நீர் வற்றினால் கொஞ்சம் சுடுநீர் சேர்க்குங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "தடிமன் பாலை ஊற்றி, சட்டியை மெல்ல ஆட்டி, பொங்காமல் குழம்பு சூடாகும் வரை வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "இரண்டு மூன்று துண்டுகளை சட்டி ஓரத்தில் நசுக்கி குழம்பை கெட்டியாக்கி, அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "காரமான தேங்காய்ச் சம்பலுடன் சூடாகப் பரிமாறுங்கள்; மீதமானது அடுத்த நாள் காலையில் இன்னும் சுவையாக இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "bowl of water",
+  "sharp knife"
+ ],
+ "tips": {
+  "en": "Pick a breadfruit that gives slightly under the thumb but is not soft; a fully ripe one falls apart into sweetness. The sticky white latex comes off hands with a rub of coconut oil, not soap.",
+  "si": "මාපටැඟිල්ලෙන් තද කළ විට ටිකක් ඇදෙන, එහෙත් මෘදු නොවූ දෙල් ගෙඩියක් තෝරන්න; හොඳට ඉදුණු එකක් කැඩී පැණි රසයට හැරේ. අතේ ඇලෙන කිරි සබන්වලින් නොව පොල් තෙල් ගල්වා අතුල්ලා ඉවත් කරන්න.",
+  "ta": "பெருவிரலால் அழுத்தும்போது சற்று இறங்கும், ஆனால் மென்மையாக இல்லாத ஈரப்பலாவைத் தேர்ந்தெடுங்கள்; முற்றிலும் பழுத்தது உடைந்து இனிப்பாகிவிடும். கையில் ஒட்டும் பால் சோப்பால் போகாது, தேங்காய் எண்ணெய் தடவித் தேய்த்தால் போகும்."
+ },
+ "health_note": {
+  "en": "Breadfruit is a starchy food, so treat this pot as part of the rice on the plate rather than an extra vegetable, and serve less rice beside it. It carries good fibre and potassium, and the richness comes from the coconut milk.",
+  "si": "දෙල් පිෂ්ඨය සහිත ආහාරයක් නිසා මෙය අමතර එළවළුවක් නොව බතේ කොටසක් ලෙස සලකා, බත් ප්‍රමාණය අඩු කරන්න. හොඳ කෙඳි හා පොටෑසියම් ලැබෙන අතර සාරය පොල් කිරිවලින් එකතු වේ.",
+  "ta": "ஈரப்பலா மாவுச்சத்து நிறைந்த உணவு; எனவே இதை கூடுதல் காய்கறியாக அல்லாமல் சாதத்தின் ஒரு பகுதியாகக் கருதி, பக்கத்தில் சாதத்தைக் குறைத்துப் பரிமாறுங்கள். நல்ல நார்ச்சத்தும் பொட்டாசியமும் உண்டு; கொழுப்பு தேங்காய்ப் பாலில் இருந்து வருகிறது."
+ },
+ "tags": [
+  "filling",
+  "high_fibre",
+  "budget",
+  "comfort",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

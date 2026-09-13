@@ -1,0 +1,376 @@
+{
+ "id": "dish_chicken_gizzard_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 150,
+  "description": {
+   "en": "A ladle of dark peppery gizzards with rice",
+   "si": "බත් සමඟ අඳුරු ගම්මිරිස් රසැති ගිසර්ඩ් ලාඩුවක්",
+   "ta": "சாதத்துடன் ஒரு கரண்டி கரும் மிளகுச் சுவை இரைப்பைக் கறி"
+  }
+ },
+ "yield_g": 680,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken gizzards",
+    "si": "කුකුල් ගිසර්ඩ්",
+    "ta": "கோழி இரைப்பை"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "half a kilo",
+   "preparation": {
+    "en": "split, inner lining peeled off, washed in salted water",
+    "si": "දෙකට පලා, ඇතුළත පටලය ඉවත් කර, ලුණු වතුරේ සෝදාගත්",
+    "ta": "இரண்டாகப் பிளந்து, உள் படலத்தை நீக்கி, உப்பு நீரில் கழுவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "7 chillies, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලාගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "3 small pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டி, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Split each gizzard, peel away the yellow inner lining and any gravel, and wash them twice in salted water until they smell clean.",
+    "minutes": 15
+   },
+   {
+    "text": "Put the gizzards in a pot with water to cover, the turmeric, one piece of gorakka and half the salt, and boil until a fork goes in without force.",
+    "minutes": 25
+   },
+   {
+    "text": "Drain them, keeping half a cup of the cooking water aside.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the onion, garlic, ginger and curry leaves until the onion browns lightly at the edges.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir in the ground chilli, pepper and roasted curry powder and fry on a low flame just long enough to lose the raw smell.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the boiled gizzards, the rest of the gorakka, the reserved water and the remaining salt, and cook covered so the spice works into the meat.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour in the thick coconut milk and cook uncovered on a low flame until the gravy is dark and thick and the gizzards are glossy.",
+    "minutes": 8
+   },
+   {
+    "text": "Taste for salt and sourness and leave the pan covered off the fire for a few minutes before serving.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "සෑම ගිසර්ඩ් එකක් ම දෙකට පලා, ඇතුළත කහ පටලය සහ වැලි ඉවත් කර, ගඳ නැති වන තුරු ලුණු වතුරේ දෙවරක් සෝදන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ආවරණය වන පමණට වතුර, කහ, ගොරකා කැබැල්ලක් සහ ලුණු භාගයක් සමඟ භාජනයක දමා, ගෑරුප්පුව බලයක් නැතිව ඇතුළු වන තුරු තම්බන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "වතුර බේරා ගන්න, තම්බාගත් වතුර කෝප්ප භාගයක් පසෙක තබාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑන් එකක පොල් තෙල් රස්නේ කර, ළූණු, සුදුළූණු, ඉඟුරු සහ කරපිංචා ළූණු දාරවලින් ලා දුඹුරු වන තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "අඹරාගත් මිරිස්, ගම්මිරිස් සහ බැදපු තුනපහ දමා, අමු ගඳ යන තෙක් පමණක් අඩු ගින්නේ බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තම්බාගත් ගිසර්ඩ්, ඉතිරි ගොරකා, තබාගත් වතුර සහ ඉතිරි ලුණු දමා, කුළුබඩු මසට කිඳා බසින්නට වසා තබා උයන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඝන පොල් කිරි වත් කර, හොද්ද අඳුරු වී තද වන තුරු සහ ගිසර්ඩ් දිලිසෙන තුරු අඩු ගින්නේ වැසුමක් නැතිව උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ලුණු හා ඇඹුල රස බලා, පිළිගැන්වීමට පෙර මිනිත්තු කිහිපයක් ගින්නෙන් ඉවතට ගෙන වසා තබන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஒவ்வொரு இரைப்பையையும் இரண்டாகப் பிளந்து, உள்ளே உள்ள மஞ்சள் படலத்தையும் மணலையும் நீக்கி, நாற்றம் போகும் வரை உப்பு நீரில் இரு முறை கழுவுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "மூழ்கும் அளவு நீர், மஞ்சள், ஒரு கோரக்கா துண்டு, பாதி உப்பு சேர்த்துப் பாத்திரத்தில் இட்டு, முள்கரண்டி இலகுவாக உள்நுழையும் வரை வேக வையுங்கள்.",
+    "minutes": 25
+   },
+   {
+    "text": "நீரை வடித்து விடுங்கள், வேகவைத்த நீரில் அரை கப் தனியே வைத்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலையை வெங்காயம் ஓரங்களில் லேசாகப் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அரைத்த மிளகாய், மிளகு, வறுத்த கறித் தூள் சேர்த்து, பச்சை வாசம் போகும் வரை மட்டும் சிறு தீயில் வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "வேகவைத்த இரைப்பை, மீதி கோரக்கா, வைத்திருந்த நீர், மீதி உப்பு சேர்த்து, மசாலா இறைச்சிக்குள் இறங்க மூடி வைத்துச் சமையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலை விட்டு, குழம்பு கறுத்துக் கெட்டியாகி இரைப்பை மினுமினுக்கும் வரை மூடாமல் சிறு தீயில் சமையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "உப்பையும் புளிப்பையும் பார்த்து, பரிமாறும் முன் சில நிமிடம் அடுப்பை விட்டு இறக்கி மூடி வையுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 45,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "pot for boiling",
+  "heavy pan",
+  "sharp small knife"
+ ],
+ "tips": {
+  "en": "Boil the gizzards first and never skip it, because no amount of frying will soften them later. Buy them the same morning and clean them straight away, since they turn quickly in the heat.",
+  "si": "ගිසර්ඩ් මුලින් තම්බා ගැනීම කිසිසේත් මඟ නොහරින්න; පසුව කොපමණ බැදුවත් ඒවා මෘදු නොවේ. උදේම මිලදී ගෙන වහාම පිරිසිදු කරන්න, රස්නෙහි ඒවා ඉක්මනින් නරක් වේ.",
+  "ta": "இரைப்பையை முதலில் வேகவைப்பதை ஒருபோதும் தவிர்க்க வேண்டாம்; பின்னர் எவ்வளவு வதக்கினாலும் அது மென்மையாகாது. அதே காலையில் வாங்கி உடனே சுத்தம் செய்யுங்கள், வெப்பத்தில் அவை விரைவில் கெட்டுவிடும்."
+ },
+ "health_note": {
+  "en": "Gizzards are one of the cheapest ways to put protein, iron and zinc on the table and they carry very little fat compared with the rest of the bird. The pepper and gorakka make them easier to digest, but the long chewing suits grown-ups better than small children.",
+  "si": "ප්‍රෝටීන්, යකඩ සහ සින්ක් මේසයට ගෙන ඒමට ඇති ලාභදායී ක්‍රමයක් වන ගිසර්ඩ්වල, කුකුළාගේ අනෙක් කොටස්වලට වඩා තෙල් ඉතා අල්පයි. ගම්මිරිස් සහ ගොරකා දිරවීමට උපකාරී වේ, එහෙත් හපන්නට වන අමාරුව නිසා කුඩා දරුවන්ට වඩා වැඩිහිටියන්ට සුදුසුය.",
+  "ta": "புரதம், இரும்பு, துத்தநாகம் ஆகியவற்றை மலிவாகப் பெறும் வழிகளில் ஒன்று இரைப்பை; கோழியின் மற்ற பகுதிகளை விடக் கொழுப்பு மிகக் குறைவு. மிளகும் கோரக்காவும் செரிமானத்திற்கு உதவும், ஆனால் நெடுநேரம் மெல்ல வேண்டியிருப்பதால் சிறு குழந்தைகளை விடப் பெரியவர்களுக்கே பொருத்தம்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_carb",
+  "budget",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

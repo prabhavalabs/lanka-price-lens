@@ -1,0 +1,310 @@
+{
+ "id": "dish_ash_plantain_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "A ladle of starchy plantain rounds in pale coconut gravy beside rice",
+   "si": "බතට එක්ක පොල් කිරි හොදියේ තැම්බූ අලු කෙසෙල් වට කිහිපයක්",
+   "ta": "சாதத்துடன் பரிமாற ஒரு கரண்டி தேங்காய்ப்பால் வாழைக்காய் கறி"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_ash_plantain",
+   "label": {
+    "en": "ash plantain",
+    "si": "අලු කෙසෙල්",
+    "ta": "வாழைக்காய்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 medium plantains",
+   "preparation": {
+    "en": "peeled and cut into rounds a finger thick, held in turmeric water",
+    "si": "ලෙලි ගසා ඇඟිල්ලක් ගණකමට වට කපා කහ වතුරේ තබා ගත්",
+    "ta": "தோல் சீவி விரல் தடிமனுக்கு வட்டமாக நறுக்கி மஞ்சள் தண்ணீரில் வைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small handful, sliced",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub a drop of coconut oil on your palms and the knife, peel the plantains, and cut them into rounds a finger thick. Drop the rounds into a bowl of water with a pinch of turmeric so they do not darken.",
+    "minutes": 10
+   },
+   {
+    "text": "Drain the rounds and put them in a clay pot with the sliced onion, green chillies, curry leaves, fenugreek, turmeric, curry powder and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk, just enough to cover the plantain, and bring it to a simmer over a medium flame.",
+    "minutes": 5
+   },
+   {
+    "text": "Cook uncovered until a piece gives when pressed with the back of a spoon, but still holds its shape.",
+    "minutes": 12
+   },
+   {
+    "text": "Lower the flame, pour in the thick coconut milk and swirl the pot instead of stirring, so the rounds stay whole.",
+    "minutes": 3
+   },
+   {
+    "text": "Let it rise to the edge of a boil, taste for salt, and lift it off the fire.",
+    "minutes": 2
+   },
+   {
+    "text": "Keep it covered for a few minutes before serving; the starch settles and the gravy thickens on its own.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "අත්වලට හා පිහියට පොල් තෙල් බින්දුවක් ගා, අලු කෙසෙල් ලෙලි ගසා ඇඟිල්ලක් ගණකමට වට කපන්න. කළු නොවෙන්න කහ ටිකක් දැමූ වතුර භාජනයකට කෑලි දමන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වතුරෙන් ඉවත් කර ගත් කෑලි මුට්ටියකට දමා, කපාගත් ලූනු, අමු මිරිස්, කරපිංචා, උළුහාල්, කහ, තුනපහ සහ ලුණු එකට එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කෙසෙල් කෑලි යටවෙන්න පමණක් තුනී පොල් කිරි වත් කර, මධ්‍යම ගින්නේ උතුරන්න තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "හැන්දේ පිටතින් තද කළ විට කෑල්ලක් මුදු වන නමුත් හැඩය රැකෙන තුරු, වහන් නොදමා තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගින්න අඩු කර මුල් කිරි වත් කරන්න; හැන්දෙන් කලවම් කරන්නට වඩා මුට්ටිය සෙමින් සොලවන්න, එවිට කෑලි නොකැඩෙයි.",
+    "minutes": 3
+   },
+   {
+    "text": "උතුරන්න ආසන්න වූ විට රස බලා ලුණු හදාගෙන ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පිළිගැන්වීමට පෙර විනාඩි කිහිපයක් වහලා තබන්න; පිටි බැස හොදි තනිවම ගනවෙයි.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "கையிலும் கத்தியிலும் கொஞ்சம் தேங்காய் எண்ணெய் தடவி, வாழைக்காயைத் தோல் சீவி, விரல் தடிமனுக்கு வட்டமாக நறுக்குங்கள். கறுக்காமல் இருக்க சிறிது மஞ்சள் கலந்த தண்ணீரில் போடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "தண்ணீரை வடித்து, துண்டுகளை மண் பாத்திரத்தில் போட்டு, நறுக்கிய வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, வெந்தயம், மஞ்சள், கறி மசாலா, உப்பு சேர்த்துக் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "காய் மூழ்கும் அளவுக்கு மட்டும் இரண்டாம் தேங்காய்ப் பால் விட்டு, நடுத்தர தீயில் கொதிக்க வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கரண்டியால் அழுத்தினால் மென்மையாகும் வரை, ஆனால் வடிவம் கெடாமல் இருக்கும் வரை, மூடாமல் வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "தீயைக் குறைத்து முதல் பாலை விடுங்கள்; கரண்டியால் கிளறாமல் பாத்திரத்தை மெதுவாக ஆட்டுங்கள், துண்டுகள் உடையாது.",
+    "minutes": 3
+   },
+   {
+    "text": "கொதி வரும் நேரத்தில் உப்பு பார்த்து, அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "பரிமாறும் முன் சில நிமிடம் மூடி வையுங்கள்; மாவுச்சத்து இறங்கி குழம்பு தானே கெட்டியாகும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 20,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Pick plantains that are hard and fully green; the first hint of yellow makes the curry sweet and sticky. If the gravy is thinner than you like, mash two or three rounds against the side of the pot and stir them back in.",
+  "si": "තදින් ඇති, සම්පූර්ණයෙන් කොළ පාට කෙසෙල් ගෙඩි තෝරන්න; කහ පාට එන්න පටන් ගත් ගෙඩියක් නිසා කරිය මිහිරි වී ඇලෙනසුලු වේ. හොදි තුනී නම් කෑලි දෙක තුනක් මුට්ටියේ පැත්තට තද කර පොඩි කර නැවත කලවම් කරන්න.",
+  "ta": "நன்றாக பிஞ்சாக, முழுக்க பச்சையாக இருக்கும் வாழைக்காயைத் தேர்ந்தெடுங்கள்; மஞ்சள் நிறம் வரத் தொடங்கிய காய் கறியை இனிப்பாகவும் ஒட்டும்படியாகவும் மாற்றும். குழம்பு இளகியாக இருந்தால் இரண்டு மூன்று துண்டுகளை பாத்திரத்தின் ஓரத்தில் மசித்துக் கலக்குங்கள்."
+ },
+ "health_note": {
+  "en": "Ash plantain is starchy and filling, so it does the work of a second helping of rice rather than that of a leafy vegetable; its firm starch digests slowly and keeps hunger away till evening. Keep the thick coconut milk to the amount given if there is coconut in the other curries too.",
+  "si": "අලු කෙසෙල් පිටිසහිත හා පිරෙන ආහාරයක් නිසා, කොළ එළවළුවකට වඩා තවත් බත් හැන්දක වැඩක් කරයි; එහි පිටි සෙමින් දිරන නිසා හවස් වන තුරු බඩගිනි නොදැනේ. අනෙක් කරිවලත් පොල් තිබේ නම් මුල් කිරි දී ඇති ප්‍රමාණයටම සීමා කරන්න.",
+  "ta": "வாழைக்காயில் மாவுச்சத்து அதிகம், வயிறு நிறைவாக இருக்கும்; கீரைக் கறி போல் அல்ல, இன்னொரு கரண்டி சாதத்தின் வேலையைச் செய்யும், மெதுவாக ஜீரணமாகி மாலை வரை பசி தெரியாது. மற்ற கறிகளிலும் தேங்காய் இருந்தால் முதல் பாலை கொடுத்த அளவுக்கு மட்டும் வையுங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "budget",
+  "filling",
+  "comfort",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

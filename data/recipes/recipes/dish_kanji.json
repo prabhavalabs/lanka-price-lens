@@ -1,0 +1,263 @@
+{
+ "id": "dish_kanji",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 340,
+  "description": {
+   "en": "A hot bowl of thin rice porridge",
+   "si": "උණුසුම් තුනී කැඳ බඳුනක්",
+   "ta": "ஒரு கிண்ணம் சூடான நீர்த்த கஞ்சி"
+  }
+ },
+ "yield_g": 1360,
+ "ingredients": [
+  {
+   "ref": "product_rice_kekulu_red",
+   "label": {
+    "en": "red kekulu rice",
+    "si": "රතු කැකුළු සහල්",
+    "ta": "சிவப்பு கெகுளு அரிசி"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "washed and drained",
+    "si": "සෝදා වතුර බේරාගත්",
+    "ta": "கழுவி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකාගත් ගන කිරි",
+    "ta": "முதல் பால், தடிப்பானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed to a paste",
+    "si": "තලා පේස්ට් කරගත්",
+    "ta": "நசுக்கி விழுதாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 small onions",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the rice twice and put it in a clay pot with about six cups of water.",
+    "minutes": null
+   },
+   {
+    "text": "Add the crushed garlic and the curry leaves and bring it to a boil on a high flame.",
+    "minutes": 8
+   },
+   {
+    "text": "Lower the flame and let it cook, stirring now and then, until the grains burst open and the water has gone thick and cloudy.",
+    "minutes": 30
+   },
+   {
+    "text": "Mash a few spoonfuls of the rice against the side of the pot to make the porridge smoother.",
+    "minutes": null
+   },
+   {
+    "text": "Stir in the coconut milk and the sliced onion if you are using it, and let it come just to the edge of a boil.",
+    "minutes": 3
+   },
+   {
+    "text": "Season with the salt and pepper, take it off the fire and do not let it boil hard after the milk goes in.",
+    "minutes": 1
+   },
+   {
+    "text": "Serve it hot in bowls, thin enough to drink from the edge, with a little lunu miris for those who want it.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් දෙවරක් සෝදා, කෝප්ප හයක් පමණ වතුර සමඟ මුට්ටියකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තලාගත් සුදුළූනු සහ කරපිංචා දමා, ලොකු ගින්දරේ නටන්නට හරින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගින්දර අඩු කර, විටින් විට කලවම් කරමින්, ඇට පිපිරී වතුර ඝන වී පාට වන තුරු උයන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "කැඳ තවත් සිනිඳු කරගැනීමට හැඳි කිහිපයක බත් භාජනයේ පැත්තට තලා මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පොල් කිරි සහ අවශ්‍ය නම් කපාගත් ලූනු දමා, උතුරන්නට ආසන්න වන තුරු පමණක් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලුණු සහ ගම්මිරිස් දමා ගින්නෙන් ඉවතට ගන්න; කිරි දැමූ පසු තදින් උතුරන්නට ඉඩ නොදෙන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "බඳුන්වලට උණුසුම්ව, දාරයෙන් බොන්නට හැකි තුනී පදමට බෙදා, කැමති අයට ලුණු මිරිස් ස්වල්පයක් සමඟ දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசியை இரு முறை கழுவி, சுமார் ஆறு கப் தண்ணீருடன் ஒரு மண்பாத்திரத்தில் இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நசுக்கிய பூண்டையும் கறிவேப்பிலையையும் சேர்த்து, பெரிய தீயில் கொதிக்கவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "தீயைக் குறைத்து, அடிக்கடி கிளறி, அரிசி வெடித்து தண்ணீர் தடித்து கலங்கும்வரை சமைக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "கஞ்சியை மேலும் மிருதுவாக்க சில கரண்டி சாதத்தை பாத்திரத்தின் ஓரத்தில் மசித்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தேங்காய்ப் பாலையும், விரும்பினால் நறுக்கிய வெங்காயத்தையும் சேர்த்து, கொதிக்கும் நிலைக்கு மட்டும் கொண்டுவரவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பும் மிளகும் சேர்த்து தீயிலிருந்து இறக்கவும்; பால் சேர்த்த பிறகு அதிகமாகக் கொதிக்க விடவேண்டாம்.",
+    "minutes": 1
+   },
+   {
+    "text": "கிண்ணங்களில் சூடாக, ஓரத்திலிருந்து குடிக்கக்கூடிய நீர்த்த பதத்தில் பரிமாறி, விரும்புவோருக்கு சிறிது லுணு மிரிஸ் கொடுக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 45,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot",
+  "ladle"
+ ],
+ "tips": {
+  "en": "Kanji is meant to be loose, so add hot water rather than letting it set; it thickens a lot as it stands, especially the next morning.",
+  "si": "කැඳ තුනීව තිබිය යුතුයි, ඒ නිසා තදවන්නට දෙනවා වෙනුවට උණු වතුර එකතු කරන්න; තිබෙන විට, විශේෂයෙන් පසු දින උදෑසන, එය බොහෝ සෙයින් ඝන වේ.",
+  "ta": "கஞ்சி நீர்த்ததாக இருக்க வேண்டும், எனவே இறுகவிடாமல் சூடான தண்ணீர் சேர்க்கவும்; வைத்திருக்கும்போது, குறிப்பாக மறுநாள் காலையில், அது மிகவும் தடிக்கும்."
+ },
+ "health_note": {
+  "en": "Easy to swallow and gentle on an upset stomach, and the red rice adds fibre; the garlic and pepper are the warming part, and it needs very little salt.",
+  "si": "ගිලීමට පහසු, අජීරණ ආමාශයකට මෘදු අහරක් වන අතර රතු සහල් වලින් තන්තු ලැබේ; සුදුළූනු හා ගම්මිරිස් සිරුර උණුසුම් කරන කොටසයි, ලුණු ඉතා අඩුවෙන් ප්‍රමාණවත්.",
+  "ta": "விழுங்க எளிதானது, வயிற்றுக்கு மென்மையானது, சிவப்பு அரிசி நார்ச்சத்து தருகிறது; பூண்டும் மிளகும் உடலை சூடாக்குபவை, உப்பு மிகக் குறைவாகவே தேவை."
+ },
+ "tags": [
+  "light",
+  "elderly_friendly",
+  "comfort",
+  "one_pot",
+  "traditional_remedy",
+  "hydrating",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

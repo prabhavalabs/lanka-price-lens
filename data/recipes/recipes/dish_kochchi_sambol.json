@@ -1,0 +1,217 @@
+{
+ "id": "dish_kochchi_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 15,
+  "description": {
+   "en": "A teaspoon of fierce green chilli relish at the edge of the plate",
+   "si": "පිඟානේ කෙළවරට දමන ඉතා සැර කොච්චි සම්බෝල තේ හැන්දක්",
+   "ta": "தட்டின் ஓரத்தில் வைக்கும் மிகக் காரமான கொச்சி சம்பல் ஒரு தேக்கரண்டி"
+  }
+ },
+ "yield_g": 60,
+ "ingredients": [
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "kochchi bird chillies",
+    "si": "කොච්චි මිරිස්",
+    "ta": "கொச்சி மிளகாய்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "about 12 bird chillies",
+   "preparation": {
+    "en": "stalks pulled off, washed",
+    "si": "කරල් ගලවා සෝදාගත්",
+    "ta": "தாள் நீக்கி கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 small red onions",
+   "preparation": {
+    "en": "peeled and roughly cut",
+    "si": "ලෙලි ගලවා ගොරෝසුවට කපාගත්",
+    "ta": "தோல் உரித்து பெரிதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி (உம்பலகடா)"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp flakes",
+   "preparation": {
+    "en": "pounded into flakes",
+    "si": "තලා කැබලි කරගත්",
+    "ta": "இடித்து பொடியாக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "juice of 1 lime",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකාගත්",
+    "ta": "சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pull the stalks off the kochchi and rinse them; wash your hands after and keep them away from your eyes.",
+    "minutes": 3
+   },
+   {
+    "text": "Put the chillies, the cut onion and the salt into a stone mortar.",
+    "minutes": null
+   },
+   {
+    "text": "Pound with the pestle to a rough green paste, not smooth, so you can still see flecks of chilli skin.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the pounded maldive fish and give it two or three more knocks to bring it together.",
+    "minutes": 1
+   },
+   {
+    "text": "Squeeze the lime in and stir it through with the pestle.",
+    "minutes": null
+   },
+   {
+    "text": "Serve it in a tiny dish; a teaspoon is plenty for one plate of rice.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කොච්චි මිරිස්වල කරල් ගලවා සෝදා ගන්න; පසුව අත් හොඳින් සෝදා, ඇස්වලට ගෑවෙන්නට ඉඩ නොදෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මිරිස්, කපාගත් ලූනු සහ ලුණු වංගෙඩියට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මොල්ගසින් තලා ගොරෝසු කොළ පැහැ මිශ්‍රණයක් හදා ගන්න; සිනිඳු නොකර මිරිස් පොත්තේ කැබලි පෙනෙන්නට තබන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "තලාගත් උම්බලකඩ එකතු කර, එකට බැඳෙන්න තව දෙතුන් වරක් තලන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා, මොල්ගසින්ම කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉතා කුඩා පිඟානකට දමා ඉදිරිපත් කරන්න; බත් පිඟානකට තේ හැන්දක් ඇති.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கொச்சி மிளகாயின் தாள்களை நீக்கி கழுவுங்கள்; பிறகு கைகளை நன்கு கழுவி, கண்களில் படாமல் பாருங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மிளகாய், நறுக்கிய வெங்காயம், உப்பு ஆகியவற்றை கல் உரலில் போடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "உலக்கையால் இடித்து கொரகொரப்பான பச்சை விழுதாக்குங்கள்; மிளகாய்த் தோலின் துண்டுகள் தெரியும் அளவில் விடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "இடித்த மாசியைச் சேர்த்து, ஒன்றாகச் சேரும்படி இரண்டு மூன்று முறை இடியுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "எலுமிச்சை சாறு பிழிந்து, உலக்கையாலே கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மிகச் சிறிய கிண்ணத்தில் பரிமாறுங்கள்; ஒரு தட்டு சாதத்திற்கு ஒரு தேக்கரண்டி போதும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "stone mortar and pestle"
+ ],
+ "tips": {
+  "en": "Pound in a mortar rather than a blender; the blade cuts the chilli and turns the sambol bitter and watery. Leave out the maldive fish and it becomes a plain vegetarian relish.",
+  "si": "බ්ලෙන්ඩරයට වඩා වංගෙඩිය හොඳයි; තලය මිරිස් කපා දමන නිසා සම්බෝල තිත්ත සහ වතුර ගතියට හැරෙනවා. උම්බලකඩ අත් හැරියොත් එය නිර්මාංශ සම්බෝලයක් වෙනවා.",
+  "ta": "மிக்சியை விட உரல் நல்லது; கத்தி மிளகாயை வெட்டுவதால் சம்பல் கசப்பாகவும் நீராகவும் மாறும். மாசியை விட்டுவிட்டால் இது முழுக்க சைவ சம்பல் ஆகிவிடும்."
+ },
+ "health_note": {
+  "en": "It is almost nothing in calories and the chilli and lime both carry vitamin C, but the heat is real; those with gastritis or ulcers should leave it alone. The maldive fish adds salt, so go easy elsewhere in the meal.",
+  "si": "කැලරි වශයෙන් මෙය කිසිවක් නැති තරම්; මිරිස් සහ දෙහි දෙකෙන්ම විටමින් C ලැබෙනවා. නමුත් සැර ඇත්තටම වැඩියි; ගැස්ට්‍රයිටිස් හෝ තුවාල තියෙන අය මෙය වළක්වා ගන්න. උම්බලකඩෙන් ලුණු එකතු වන නිසා කෑමේ අනෙක් තැන්වල ලුණු අඩු කරන්න.",
+  "ta": "கலோரி கிட்டத்தட்ட இல்லை; மிளகாயும் எலுமிச்சையும் வைட்டமின் சி தருகின்றன. ஆனால் காரம் உண்மையிலேயே அதிகம்; வயிற்றுப் புண் அல்லது அமிலத்தன்மை உள்ளவர்கள் தவிர்ப்பது நல்லது. மாசி உப்பைக் கூட்டுவதால் மற்ற உணவில் உப்பைக் குறையுங்கள்."
+ },
+ "tags": [
+  "low_calorie",
+  "quick",
+  "budget",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

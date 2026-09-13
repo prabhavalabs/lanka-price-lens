@@ -1,0 +1,325 @@
+{
+ "id": "dish_fish_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 100,
+  "description": {
+   "en": "A dry, peppery pile of flaked fish at the side of the rice",
+   "si": "බත පැත්තට දාගන්නා වියළි, සැර මාළු ටිකක්",
+   "ta": "சாதத்தின் ஓரத்தில் வைக்கும் உலர்ந்த, காரமான மீன் துருவல்"
+  }
+ },
+ "yield_g": 420,
+ "ingredients": [
+  {
+   "ref": "product_balaya",
+   "label": {
+    "en": "balaya, skipjack tuna",
+    "si": "බලයා මාළු",
+    "ta": "பலயா, சூரை மீன்"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "3 steaks, or the fish left from yesterday's curry",
+   "preparation": {
+    "en": "boiled or fried, then flaked off the bone",
+    "si": "තම්බා හෝ බැදගෙන, කටුවෙන් ගලවා කැබලි කර ගත්ත",
+    "ta": "வேகவைத்தோ வறுத்தோ, முள்ளிலிருந்து பிரித்து உதிர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්ත",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩා ගත්ත",
+    "ta": "உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a small piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a quarter tsp, coarsely crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට කුඩු කර ගත්ත",
+    "ta": "பருமனாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice squeezed over at the end",
+    "si": "අන්තිමට මතුවට මිරිකා ගන්නා යුෂ",
+    "ta": "இறுதியில் மேலே பிழியும் சாறு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "If the fish is raw, boil it with a pinch of salt and turmeric in a little water until just done, then let it cool.",
+    "minutes": 10
+   },
+   {
+    "text": "Flake the fish off the bone with your fingers, feeling for bones as you go.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a pan and temper the onion, dried chilli, curry leaves and pandan until the onion is soft and golden.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the turmeric, chilli flakes and crushed pepper and stir them through the oil.",
+    "minutes": null
+   },
+   {
+    "text": "Put in the flaked fish and salt, and turn it over on a medium flame so every flake meets the oil.",
+    "minutes": 5
+   },
+   {
+    "text": "Keep cooking without a lid until the mixture is dry and the edges of the fish start to catch.",
+    "minutes": 4
+   },
+   {
+    "text": "Squeeze the lime over, stir once, and serve it hot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු අමු නම්, ලුණු සහ කහ ස්වල්පයක් දමා වතුර ටිකකින් හරියට තැම්බෙන තුරු තම්බලා, සිසිල් වෙන්න තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඇඟිලිවලින් මාළු කටුවෙන් ගලවලා, කටු තියෙනවද බලාගෙනම කැබලි කර ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් එකේ පොල් තෙල් රත් කරලා ලූනු, වියළි මිරිස්, කරපිංචා සහ රම්පෙ ලූනු මෙලෙක් වෙලා රන්වන් වෙන තුරු තෙල් දාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කහ කුඩු, මිරිස් කැබලි සහ තලපු ගම්මිරිස් දමා තෙලේ හොඳට කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගලවපු මාළු සහ ලුණු දමා, මද ගින්නේ හැම කැබැල්ලකටම තෙල් ලැබෙන්න පෙරළා අනගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වහන්නේ නැතිව, මිශ්‍රණය වියළී මාළු දාරවල් ටිකක් හැපෙන තුරු පිසගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකලා එක වරක් කලවම් කර, උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் பச்சையாக இருந்தால், சிறிது உப்பும் மஞ்சளும் போட்டு கொஞ்சம் தண்ணீரில் வெந்ததும் இறக்கி, ஆறவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "விரலால் மீனை முள்ளிலிருந்து பிரித்து, முள் இருக்கிறதா என்று பார்த்துக்கொண்டே உதிருங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை போட்டு வெங்காயம் மென்மையாகி பொன்னிறமாகும் வரை தாளியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மஞ்சள் தூள், மிளகாய்த் துகள், இடித்த மிளகு சேர்த்து எண்ணெயில் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "உதிர்த்த மீனையும் உப்பையும் போட்டு, நடுத்தர தீயில் ஒவ்வொரு துகளுக்கும் எண்ணெய் படும்படி புரட்டுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மூடாமல், கலவை உலர்ந்து மீனின் ஓரங்கள் சற்று பொரியும் வரை வேகவிடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "தேசிக்காய் சாறு பிழிந்து ஒரு முறை கிளறி, சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan",
+  "small pot if boiling the fish"
+ ],
+ "tips": {
+  "en": "This is the household answer to fish curry left in the pot: lift the steaks out, flake them, and temper them the next morning. A tin of mackerel, drained well, behaves the same way.",
+  "si": "මුට්ටියේ ඉතුරු වෙච්ච මාළු කරියට ගෙදර දෙන උත්තරය මේකයි: පෙති අයින් කරලා ගලවලා, පහුවදා උදේ තෙල් දාගන්න. ටින් මාළු වතුර හොඳට බේරලා දැම්මත් එහෙමයි.",
+  "ta": "சட்டியில் மிஞ்சிய மீன் குழம்புக்கு வீட்டில் சொல்லும் பதில் இதுவே: துண்டுகளை எடுத்து உதிர்த்து, மறுநாள் காலை வருவல் செய்யுங்கள். நீரை நன்கு வடித்த ஒரு டின் மீனும் இதேபோல் வரும்."
+ },
+ "health_note": {
+  "en": "Mostly protein with very little starch, which suits anyone keeping carbohydrates low. Two tablespoons of oil for the whole pan is enough, and the lime at the end means less salt is needed.",
+  "si": "පිටි ද්‍රව්‍ය නැති, බොහෝ දුරට ප්‍රෝටීන් කෑමක් නිසා කාබෝහයිඩ්‍රේට් අඩු කරන අයට හොඳයි. මුළු පෑන් එකට තෙල් මේස හැඳි දෙකක් ඇති, අන්තිමට දෙහි දැම්මොත් ලුණු අඩුවෙන් ඇති.",
+  "ta": "மாவுப்பொருள் மிகக் குறைவு, பெரும்பாலும் புரதம், எனவே கார்போஹைட்ரேட் குறைக்க நினைப்பவர்களுக்குப் பொருத்தம். வாணலிக்கு இரண்டு மேசைக்கரண்டி எண்ணெய் போதும்; இறுதியில் தேசிக்காய் சேர்த்தால் உப்பு குறைவாகவே போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "comfort",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

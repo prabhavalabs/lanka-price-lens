@@ -1,0 +1,255 @@
+{
+ "id": "dish_ginger_beer",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 250,
+  "description": {
+   "en": "A cold glass of fizzy ginger beer with the short eats",
+   "si": "කෙටි කෑම සමඟ බොන සිසිල් ඉඟුරු බියර් වීදුරුවක්",
+   "ta": "பலகாரத்துடன் குடிக்கும் குளிர்ந்த நுரைக்கும் இஞ்சி பியர் ஒரு கிளாஸ்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "a large piece, two thumbs",
+   "preparation": {
+    "en": "scraped and pounded to a rough paste",
+    "si": "ලෙලි ගසා රළු ලෙස තලාගත්",
+    "ta": "தோல் சீவி கரகரப்பாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 limes",
+   "preparation": {
+    "en": "juice squeezed, seeds removed",
+    "si": "යුෂ මිරිකා ඇට ඉවත් කරගත්",
+    "ta": "சாறு பிழிந்து விதை நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "baker's yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, a quarter tsp",
+   "preparation": {
+    "en": "woken in two tablespoons of warm sugar water",
+    "si": "උණුසුම් සීනි වතුර මේස හැඳි දෙකක දමා පිබිදෙන්නට තැබූ",
+    "ta": "இரண்டு மேசைக்கரண்டி வெதுவெதுப்பான சீனி நீரில் எழுப்பியது"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the ginger and pound it, skin and all, to a rough wet paste on the grinding stone.",
+    "minutes": 10
+   },
+   {
+    "text": "Boil the ginger paste and the cloves in 500 ml of water so the heat comes out of the ginger into the water.",
+    "minutes": 15
+   },
+   {
+    "text": "Stir the sugar into the hot liquid until it dissolves completely, then take the pan off the fire.",
+    "minutes": 5
+   },
+   {
+    "text": "Strain the liquid through a cloth into a clean jug, pressing the ginger to get every drop, and add cold water to bring it to one litre.",
+    "minutes": null
+   },
+   {
+    "text": "Let it cool to no warmer than your own hand; hot liquid kills the yeast and you get syrup, not ginger beer.",
+    "minutes": 30
+   },
+   {
+    "text": "Wake the pinch of yeast in two tablespoons of warm sugar water until it froths, and stir it into the cooled ginger liquid with the lime juice.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour into strong bottles, leaving four fingers of empty space at the neck, and cap them loosely.",
+    "minutes": null
+   },
+   {
+    "text": "Stand the bottles in a dark corner of the kitchen until the liquid hisses when you crack the cap and small bubbles run up the glass.",
+    "minutes": 1440
+   },
+   {
+    "text": "Move the bottles to the fridge to stop the working, and open them carefully over the sink; serve very cold, without ice.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ඉඟුරු ලෙලි ගසා, ලෙල්ල සමඟම, මිරිස් ගලේ රළු තෙත් පේස්ට් එකක් වන තුරු තලා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "තලාගත් ඉඟුරු සහ කරාබුනැටි මිලිලීටර් 500ක වතුරේ, ඉඟුරු රසය වතුරට බසින ලෙස තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "උණු දියරයට සීනි දමා සම්පූර්ණයෙන් දිය වන තුරු කලතා, බඳුන ලිපෙන් බාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "රෙද්දකින් පිරිසිදු ජෝගුවකට පෙරාගෙන, ඉඟුරු තද කර හැම බින්දුවක්ම ගෙන, සිසිල් වතුරෙන් ලීටරයක් වන තුරු පුරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඔබේ අතට දැනෙන උණුසුමට වඩා අඩු වන තුරු සිසිල් වෙන්නට තබන්න; උණු දියරයෙන් යීස්ට් මැරී ලැබෙන්නේ පැණියක් මිස ඉඟුරු බියර් නොවේ.",
+    "minutes": 30
+   },
+   {
+    "text": "යීස්ට් ටික උණුසුම් සීනි වතුර මේස හැඳි දෙකක පෙණ නගින තුරු තබා, දෙහි යුෂ සමඟ සිසිල් වූ ඉඟුරු දියරයට කලතන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ශක්තිමත් බෝතල්වලට වක් කර, බෙල්ලේ ඇඟිලි හතරක තරම් හිස් ඉඩක් තබා, ලිහිල්ව වසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බෝතල් කුස්සියේ අඳුරු කොනක තබා, වැස්ම ලිහන විට හිස් ශබ්දයක් එන තුරු සහ වීදුරුව දිගේ කුඩා බුබුලු නගින තුරු තබන්න.",
+    "minutes": 1440
+   },
+   {
+    "text": "වැඩ කිරීම නවත්වන්නට බෝතල් ශීතකරණයට දමා, සින්ක් එක මතින් පරෙස්සමින් අරින්න; අයිස් නොදමා ඉතා සිසිල්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இஞ்சியைத் தோல் சீவி, தோலோடு சேர்த்து, அம்மியில் கரகரப்பான ஈரப் பேஸ்ட்டாக இடித்துக் கொள்ளுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "இடித்த இஞ்சியையும் கிராம்பையும் 500 மில்லி நீரில், இஞ்சியின் காரம் நீரில் இறங்கும்படி கொதிக்க வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "சூடான திரவத்தில் சீனியைச் சேர்த்து முழுமையாகக் கரையும் வரை கலக்கி, பாத்திரத்தை இறக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு துணியால் சுத்தமான ஜாக்கில் வடிகட்டி, இஞ்சியை அழுத்தி ஒவ்வொரு துளியையும் எடுத்து, குளிர்ந்த நீர் விட்டு ஒரு லிட்டராக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உங்கள் கைக்கு வெதுவெதுப்பாகத் தெரியும் அளவுக்குக் குறையும் வரை ஆற விடுங்கள்; சூடான திரவம் ஈஸ்ட்டைக் கொன்றுவிடும், கிடைப்பது பாகுதான், இஞ்சி பியர் அல்ல.",
+    "minutes": 30
+   },
+   {
+    "text": "ஒரு சிட்டிகை ஈஸ்ட்டை இரண்டு மேசைக்கரண்டி வெதுவெதுப்பான சீனி நீரில் நுரைக்கும் வரை வைத்து, எலுமிச்சைச் சாறுடன் ஆறிய இஞ்சித் திரவத்தில் கலக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "உறுதியான பாட்டில்களில் ஊற்றி, கழுத்துப் பகுதியில் நான்கு விரல் இடம் விட்டு, தளர்வாக மூடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பாட்டில்களை சமையலறையின் இருண்ட மூலையில், மூடியைத் திறக்கும்போது 'ஸ்' சத்தம் வரும் வரை, கண்ணாடியில் சிறு குமிழிகள் ஏறும் வரை வையுங்கள்.",
+    "minutes": 1440
+   },
+   {
+    "text": "புளிப்பு வேலை நிற்க பாட்டில்களை குளிர்சாதனப் பெட்டியில் வைத்து, சிங்க்கின் மேல் கவனமாகத் திறக்கவும்; பனிக்கட்டி இல்லாமல் நன்கு குளிர்ந்ததாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 20,
+  "passive_minutes": 1470
+ },
+ "equipment": [
+  "heavy pan",
+  "grinding stone",
+  "straining cloth",
+  "strong bottles with caps"
+ ],
+ "tips": {
+  "en": "One day in a warm kitchen is usually enough; two days and the bottles can burst, so open one each evening to check and never fill a bottle to the neck. Old fibrous ginger gives far more bite than the young pink kind, and that bite is the whole point of the drink.",
+  "si": "උණුසුම් කුස්සියක දිනක් සාමාන්‍යයෙන් සෑහේ; දින දෙකක් ගියොත් බෝතල් පිපිරෙන්නට පුළුවන්, එබැවින් හැම සවසක එකක් අරින්න, කිසි විටෙකත් බෝතලය බෙල්ල දක්වා පුරවන්න එපා. පරණ නාරටි ඉඟුරුවලින් ලා රෝස පාට ලපටි ඉඟුරුවලට වඩා ගොඩක් රසය එයි, මේ බීමේ මුළු අර්ථයම එම රසයයි.",
+  "ta": "வெதுவெதுப்பான சமையலறையில் ஒரு நாள் போதும்; இரண்டு நாள் ஆனால் பாட்டில் வெடிக்கலாம், எனவே ஒவ்வொரு மாலையும் ஒன்றைத் திறந்து பாருங்கள், பாட்டிலை கழுத்து வரை நிரப்ப வேண்டாம். பழைய நார் இஞ்சி, இளம் இஞ்சியை விட அதிக காரம் தரும், அந்தக் காரமே இந்தப் பானத்தின் உயிர்."
+ },
+ "health_note": {
+  "en": "A cup of sugar goes into a litre, so this is a treat drink and not a thirst quencher; keep the glass small and follow it with water. The trace of alcohol from a day's working is very small, but a long ferment raises it, so keep the bottles for adults if you let them stand.",
+  "si": "ලීටරයකට සීනි කෝප්පයක් යන නිසා මේක පිපාසය නිවන බීමක් නොව විනෝදයට ගන්නා එකක්; වීදුරුව කුඩාවට තබා පස්සේ වතුර බොන්න. දිනක වැඩ කිරීමෙන් එන මත්පැන් ප්‍රමාණය ඉතා සුළුයි, එහෙත් දිගු කාලයක් තැබුවොත් එය වැඩි වන නිසා, දිගටම තබනවා නම් බෝතල් වැඩිහිටියන්ට තබන්න.",
+  "ta": "ஒரு லிட்டருக்கு ஒரு கோப்பை சீனி போகிறது, எனவே இது தாகம் தணிக்கும் பானம் அல்ல, சிறப்புப் பானம்; கிளாஸைச் சிறியதாக வைத்து, பிறகு தண்ணீர் குடியுங்கள். ஒரு நாள் புளித்ததில் வரும் ஆல்கஹால் மிகக் குறைவு, ஆனால் நீண்ட நாள் வைத்தால் அது கூடும், அப்படி வைப்பதாயின் பாட்டில்களைப் பெரியவர்களுக்கே வையுங்கள்."
+ },
+ "tags": [
+  "high_sugar",
+  "festive",
+  "hydrating",
+  "comfort"
+ ],
+ "review_needed": [
+  "ta",
+  "quantities"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

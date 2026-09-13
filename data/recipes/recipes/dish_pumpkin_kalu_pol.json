@@ -1,0 +1,420 @@
+{
+ "id": "dish_pumpkin_kalu_pol",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 200,
+  "description": {
+   "en": "A spoonful of soft pumpkin in dark, smoky roasted-coconut gravy",
+   "si": "බැදපු පොල් සුවඳ සහිත කළු හොදියේ මෘදු වට්ටක්කා හැන්දක්",
+   "ta": "வறுத்த தேங்காயின் புகை வாசனையுள்ள கரும் குழம்பில் மென்மையான பரங்கிக்காய் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 820,
+ "ingredients": [
+  {
+   "ref": "product_pumpkin",
+   "label": {
+    "en": "pumpkin",
+    "si": "වට්ටක්කා",
+    "ta": "பரங்கிக்காய்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "a thick wedge",
+   "preparation": {
+    "en": "washed, seeds scooped out, cut into 3 cm pieces with the skin left on",
+    "si": "සෝදා, ඇට ඉවත් කර, ලෙලි සමඟම සෙන්ටිමීටර තුනක කැබලිවලට කපා",
+    "ta": "அலசி, விதைகளை நீக்கி, தோலுடனே 3 செ.மீ. துண்டுகளாக வெட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut, for the black paste",
+    "si": "කළු පොල් සඳහා ගාගත් පොල්",
+    "ta": "கரும் விழுதுக்குத் துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "dry-roasted almost black, then ground",
+    "si": "තෙල් නැතුව කළු පාට වන තුරු බැදගෙන අඹරා",
+    "ta": "எண்ணெய் இல்லாமல் கருப்பாகும் வரை வறுத்து அரைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "මිරිස් කරල්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "roasted with the coconut",
+    "si": "පොල් සමඟ බැදගෙන",
+    "ta": "தேங்காயுடன் வறுத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "கொத்தமல்லி விதை"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "roasted with the coconut",
+    "si": "පොල් සමඟ බැදගෙන",
+    "ta": "தேங்காயுடன் வறுத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "roasted with the coconut",
+    "si": "පොල් සමඟ බැදගෙන",
+    "ta": "தேங்காயுடன் வறுத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_rice_raw_white",
+   "label": {
+    "en": "raw rice, for thickening",
+    "si": "හොදිය තදකරන්නට අමු සහල්",
+    "ta": "குழம்பு தடிக்கப் பச்சை அரிசி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "roasted with the coconut",
+    "si": "පොල් සමඟ බැදගෙන",
+    "ta": "தேங்காயுடன் வறுத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "5 or 6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 or 3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the pumpkin, scrape out the seeds and cut it into 3 cm pieces, leaving the skin on so the pieces hold together in the pot.",
+    "minutes": 10
+   },
+   {
+    "text": "Dry-roast the scraped coconut in a heavy pan on a low flame with the dried chillies, coriander, cumin and raw rice, stirring without stopping, until the coconut is almost black and the kitchen smells of it.",
+    "minutes": 12
+   },
+   {
+    "text": "Let the roasted mixture cool a little, then grind it with a splash of water into a smooth dark paste.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the pumpkin in the pot with turmeric, onion, garlic, curry leaves, pandan, thin coconut milk and salt, cover and cook until the pieces just give to a spoon.",
+    "minutes": 12
+   },
+   {
+    "text": "Stir the black paste through, being careful not to break the pumpkin.",
+    "minutes": null
+   },
+   {
+    "text": "Simmer uncovered until the gravy is thick and dark and coats the pieces.",
+    "minutes": 8
+   },
+   {
+    "text": "Pour in the thick milk and bring it up to one bubble only.",
+    "minutes": 2
+   },
+   {
+    "text": "Press two or three pieces against the side of the pot to thicken the gravy further, spoon the hot tempering of coconut oil over, and let it stand.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "වට්ටක්කා සෝදා, ඇට ඉවත් කර, ලෙලි ඉවත් නොකර සෙන්ටිමීටර තුනක කැබලිවලට කපන්න; එවිට උයන විට කැබලි කැඩෙන්නේ නැහැ.",
+    "minutes": 10
+   },
+   {
+    "text": "බර පෑන් එකක මද ගින්නේ ගාගත් පොල්, මිරිස් කරල්, කොත්තමල්ලි, සූදුරු සහ අමු සහල් නොනවත්වා කලවම් කරමින්, පොල් කළු පාට වන තුරු, සුවඳ නැගෙන තුරු බැදගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "බැදගත් මිශ්‍රණය ටිකක් සිසිල් වුණාට පසු වතුර ස්වල්පයක් සමඟ සිනිඳු කළු පේස්ට් එකක් වන තුරු අඹරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වට්ටක්කා මුට්ටියට දමා, කහ, ළූණු, සුදු ළූණු, කරපිංචා, රම්පෙ, තුනී පොල් කිරි සහ ලුණු එකතු කර, වසා, කැබලි හැන්දට හසු වන තරමට මෘදු වන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "වට්ටක්කා කැඩෙන්නේ නැති ලෙස පරෙස්සමින් කළු පේස්ට් එක කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වහන්නේ නැතුව, හොදිය තදවී කළු පැහැ ගෙන කැබලිවලට ඇලෙන තුරු තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඝන කිරි වත් කර එක් උතුරක් පමණක් එන්න දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කැබලි දෙක තුනක් මුට්ටියේ පැත්තට තලා හොදිය තව තදකර, රත් කළ පොල් තෙල් තෙම්පරාදුව මතට වත් කර, ටික වෙලාවක් තියන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "பரங்கிக்காயை அலசி, விதைகளை நீக்கி, தோலை நீக்காமல் 3 செ.மீ. துண்டுகளாக வெட்டவும்; அப்போது சமைக்கும்போது துண்டுகள் உடையாது.",
+    "minutes": 10
+   },
+   {
+    "text": "கனமான சட்டியில் சிறு தீயில் துருவிய தேங்காய், காய்ந்த மிளகாய், கொத்தமல்லி, சீரகம், பச்சை அரிசி ஆகியவற்றை நிற்காமல் கிளறி, தேங்காய் கிட்டத்தட்ட கருப்பாகி வாசனை வரும் வரை வறுக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "வறுத்த கலவை சற்று ஆறியதும் கொஞ்சம் நீர் சேர்த்து மெது விழுதாக அரைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "பரங்கிக்காயை சட்டியில் இட்டு மஞ்சள், வெங்காயம், பூண்டு, கறிவேப்பிலை, ரம்பை, இரண்டாம் தேங்காய்ப்பால், உப்பு சேர்த்து மூடி, துண்டுகள் கரண்டிக்கு இணங்கும் வரை வேகவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "துண்டுகள் உடையாமல் பார்த்து, கரும் விழுதை மெதுவாகக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடாமல், குழம்பு தடித்து கறுத்து துண்டுகளில் ஒட்டும் வரை கொதிக்க விடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "முதல் பாலை ஊற்றி ஒரே ஒரு கொதி வரும் வரை மட்டும் வைக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "இரண்டு மூன்று துண்டுகளை சட்டியின் பக்கத்தில் மசித்து குழம்பை மேலும் தடிக்கவைத்து, காய்ச்சிய தேங்காய் எண்ணெய்த் தாளிப்பை மேலே ஊற்றி சற்று வைக்கவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or heavy pan with a lid",
+  "heavy pan for roasting",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "The whole dish depends on how far you take the coconut in the roasting pan; stop at brown and it tastes like an ordinary curry, let it go black and bitter and nothing will save it. Keep the flame low and your hand moving.",
+  "si": "මේ හොදියේ මුළු රසම තියෙන්නේ පොල් කොපමණ දුරට බදිනවද කියන එකේ; දුඹුරු පාටින් නැවතුණොත් සාමාන්‍ය හොදියක් වගේ, කළු වී තිත්ත වුණොත් බේරගන්න බැහැ. ගිනි අඩුවෙන් තියලා අත නවත්තන්නේ නැතුව කලවම් කරන්න.",
+  "ta": "இந்தக் கறியின் சுவை முழுவதும் தேங்காயை எந்த அளவு வறுக்கிறீர்கள் என்பதில்தான்; பழுப்பிலேயே நின்றால் சாதாரண கறியாகும், கருகி கசந்தால் காப்பாற்ற முடியாது. தீயைச் சிறியதாக வைத்து கையை நிற்காமல் கிளறவும்."
+ },
+ "health_note": {
+  "en": "Pumpkin brings fibre and plenty of the orange pigment the body turns into vitamin A, and the skin left on adds more fibre still. The roasted coconut and the two squeezes of milk make it rich, so keep the helping to a spoonful or two beside lighter curries.",
+  "si": "වට්ටක්කාවෙන් තන්තු සහ ශරීරය විටමින් A බවට හරවන තැඹිලි වර්ණකය හොඳින් ලැබෙනවා; ලෙලි තියාගෙන උයන විට තන්තු තව වැඩියි. බැදපු පොල් සහ කිරි මිරිකීම් දෙක නිසා හොදිය තෙල් සහිත වන නිසා, සැහැල්ලු හොදි සමඟ හැන්දක් දෙකක් පමණ ගන්න.",
+  "ta": "பரங்கிக்காயில் நார்ச்சத்தும், உடல் வைட்டமின் ஏ ஆக மாற்றும் ஆரஞ்சு நிறச் சத்தும் நிறைய உள்ளது; தோலுடன் சமைத்தால் நார்ச்சத்து மேலும் கூடும். வறுத்த தேங்காயும் இரு பாலும் சேர்வதால் கொழுப்பு அதிகம், எனவே இலகுவான கறிகளுடன் ஒன்றிரண்டு கரண்டி மட்டும் எடுத்துக் கொள்ளவும்."
+ },
+ "tags": [
+  "high_fibre",
+  "comfort",
+  "budget",
+  "festive",
+  "elderly_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

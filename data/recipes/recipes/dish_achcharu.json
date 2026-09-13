@@ -1,0 +1,396 @@
+{
+ "id": "dish_achcharu",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 85,
+  "description": {
+   "en": "A small dish of drained pickle beside the rice",
+   "si": "බත් සමඟ පෙරාගත් අච්චාරු කුඩා පිඟානක්",
+   "ta": "சோற்றுடன் வடிகட்டிய ஊறுகாய் ஒரு சிறு தட்டு"
+  }
+ },
+ "yield_g": 340,
+ "ingredients": [
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கேரட்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 large carrot",
+   "preparation": {
+    "en": "peeled, cut into finger-length batons",
+    "si": "ලෙලි ගසා ඇඟිල්ලක් දිග කූරු ලෙස කපාගත්",
+    "ta": "சீவி விரல் நீள துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_beans",
+   "label": {
+    "en": "green beans",
+    "si": "බෝංචි",
+    "ta": "பீன்ஸ்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "topped and cut into 4 cm lengths",
+    "si": "කෙළවර කපා සෙන්ටිමීටර හතරක් දිගට කපාගත්",
+    "ta": "நுனி நீக்கி 4 செ.மீ. நீளமாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "small red onions",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "8 to 10 small onions",
+   "preparation": {
+    "en": "peeled, left whole",
+    "si": "ලෙලි ගසා මුළුමනින්ම තබාගත්",
+    "ta": "உரித்து முழுதாக வைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chilli",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "piece",
+   "household": "6 chillies",
+   "preparation": {
+    "en": "slit down one side, left whole",
+    "si": "එක් පැත්තකින් පලා මුළුමනින්ම තබාගත්",
+    "ta": "ஒரு பக்கம் கீறி முழுதாக வைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "peeled and sliced",
+    "si": "ලෙලි ගසා පෙති කපාගත්",
+    "ta": "உரித்து நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb joint",
+   "preparation": {
+    "en": "scraped and cut into thin strips",
+    "si": "සීරා සිහින් කූරු ලෙස කපාගත්",
+    "ta": "சீவி மெல்லிய துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seed",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "ground with a splash of vinegar into a paste",
+    "si": "විනාකිරි ස්වල්පයක් සමඟ තලා පේස්ට් කරගත්",
+    "ta": "சிறிது வினிகர் விட்டு அரைத்து விழுதாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_mustard_paste",
+   "label": {
+    "en": "ready-made mustard paste",
+    "si": "සූදානම් අබ පේස්ට්",
+    "ta": "தயார் கடுகு விழுது"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "instead of grinding your own",
+    "si": "ගෙදර තලා ගැනීම වෙනුවට",
+    "ta": "வீட்டில் அரைப்பதற்குப் பதிலாக"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "two thirds of a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1½ tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த்தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp, ground",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "sauce"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the carrot and beans into pieces of the same size so they pickle at the same rate, and leave the small onions whole.",
+    "minutes": 15
+   },
+   {
+    "text": "Slit the green chillies down one side without cutting them in two, so they take the brine but keep their shape.",
+    "minutes": null
+   },
+   {
+    "text": "Bring a pot of water to the boil with a spoon of salt, drop in the carrot and beans for one minute only, then lift them into a colander.",
+    "minutes": 5
+   },
+   {
+    "text": "Spread the scalded vegetables and the onions on a cloth and let them dry completely; any water left behind will spoil the jar.",
+    "minutes": 20
+   },
+   {
+    "text": "Grind the mustard seed with a splash of the vinegar into a smooth paste on the stone.",
+    "minutes": 5
+   },
+   {
+    "text": "Warm the rest of the vinegar with the sugar, salt, garlic and ginger until the sugar dissolves, then take it off before it boils hard.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir the mustard paste and the chilli powder into the warm vinegar and leave it to come down to room temperature.",
+    "minutes": 15
+   },
+   {
+    "text": "Pack the dry vegetables and the chillies into a clean glass jar and pour the cooled brine over until everything is covered.",
+    "minutes": null
+   },
+   {
+    "text": "Close the jar and stand it in a cool corner for at least four hours, better overnight, before serving; it keeps two weeks in the refrigerator.",
+    "minutes": 240
+   }
+  ],
+  "si": [
+   {
+    "text": "කැරට් සහ බෝංචි එකම ප්‍රමාණයට කපා ගන්න, එවිට සියල්ල එකසේ අච්චාරු වේ; රතු ළූණු නොකපා තබන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "අමු මිරිස් දෙකට නොකපා එක් පැත්තකින් පලා ගන්න; එවිට ඒවා ලුණු දිය උරාගෙන හැඩය රැක ගනී.",
+    "minutes": null
+   },
+   {
+    "text": "හැන්දක් ලුණු දමා වතුර උතුරවා, කැරට් සහ බෝංචි විනාඩියක් පමණක් දමා, වහාම පෙරනයකට ගෙන ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "උතුරන වතුරේ මොහොතක් තිබූ එළවළු සහ ළූණු රෙද්දක් මත විහිදුවා හොඳින් වියළෙන්නට දෙන්න; වතුර ඉතිරි වුවහොත් බෝතලයම නරක් වේ.",
+    "minutes": 20
+   },
+   {
+    "text": "අබ ස්වල්ප විනාකිරි සමඟ ගලේ තලා සිනිඳු පේස්ට් එකක් සාදා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඉතිරි විනාකිරි, සීනි, ලුණු, සුදුළූණු සහ ඉඟුරු සමඟ රත් කර සීනි දිය වූ විට, තදින් උතුරන්නට පෙර ලිපෙන් බාන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අබ පේස්ට් සහ මිරිස් කුඩු උණුසුම් විනාකිරියට කලවම් කර කාමර උෂ්ණත්වයට සිසිල් වන්නට දෙන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වියළි එළවළු සහ මිරිස් පිරිසිදු වීදුරු බෝතලයකට පුරවා, සියල්ල යටවන තුරු සිසිල් වූ විනාකිරි මිශ්‍රණය වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බෝතලය වසා සිසිල් තැනක පැය හතරක්වත්, වඩාත් හොඳින් රැයක්, තබා පසුව ඉදිරිපත් කරන්න; ශීතකරණයේ සති දෙකක් තබා ගත හැකිය.",
+    "minutes": 240
+   }
+  ],
+  "ta": [
+   {
+    "text": "கேரட்டையும் பீன்ஸையும் ஒரே அளவில் நறுக்கவும், அப்போது எல்லாம் சமமாக ஊறும்; சின்ன வெங்காயத்தை நறுக்காமல் வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "பச்சை மிளகாயை இரண்டாக வெட்டாமல் ஒரு பக்கம் மட்டும் கீறவும்; அப்படியானால் உப்புநீர் உள்ளே செல்லும், வடிவமும் கெடாது.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு பாத்திரத்தில் உப்பு சேர்த்த தண்ணீரைக் கொதிக்கவைத்து, கேரட்டையும் பீன்ஸையும் ஒரு நிமிடம் மட்டும் போட்டு, உடனே வடிகட்டி எடுக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "கொதிநீரில் இட்டெடுத்த காய்களையும் வெங்காயத்தையும் துணியில் பரப்பி முழுவதுமாக உலர விடவும்; தண்ணீர் இருந்தால் ஜாடியே கெட்டுவிடும்.",
+    "minutes": 20
+   },
+   {
+    "text": "கடுகை சிறிது வினிகர் விட்டு அம்மியில் அரைத்து மென்மையான விழுதாக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மீதி வினிகரை சீனி, உப்பு, பூண்டு, இஞ்சி சேர்த்துச் சூடாக்கி, சீனி கரைந்ததும், பொங்கும் முன் அடுப்பை அணைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "கடுகு விழுதையும் மிளகாய்த்தூளையும் சூடான வினிகரில் கலந்து, அறை வெப்பநிலைக்கு ஆற விடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "உலர்ந்த காய்களையும் மிளகாயையும் சுத்தமான கண்ணாடி ஜாடியில் அடுக்கி, ஆறிய வினிகர்க் கலவையை மூழ்கும் வரை ஊற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஜாடியை மூடி, குளிர்ந்த இடத்தில் குறைந்தது நான்கு மணி நேரம், முடிந்தால் ஒரு இரவு, வைத்துப் பிறகு பரிமாறவும்; குளிர்சாதனப் பெட்டியில் இரண்டு வாரம் இருக்கும்.",
+    "minutes": 240
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 15,
+  "passive_minutes": 240
+ },
+ "equipment": [
+  "pot for scalding",
+  "colander",
+  "grinding stone or small blender",
+  "clean glass jar with a tight lid"
+ ],
+ "tips": {
+  "en": "Everything that goes into the jar must be dry, and the spoon you serve with must be dry too; one wet spoon turns the whole jar cloudy. One minute in the boiling water is enough, otherwise the carrot softens and the pickle loses its snap.",
+  "si": "බෝතලයට යන සියල්ල වියළිව තිබිය යුතු අතර බෙදන හැන්දද වියළිව තිබිය යුතුය; තෙත් හැන්දක් නිසා මුළු බෝතලයම බොර වේ. උතුරන වතුරේ විනාඩියක් ප්‍රමාණවත්, නැතිනම් කැරට් මුදු වී අච්චාරුවේ හැපෙනසුලු බව නැති වේ.",
+  "ta": "ஜாடிக்குள் போகும் அனைத்தும் உலர்ந்திருக்க வேண்டும், பரிமாறும் கரண்டியும் உலர்ந்திருக்க வேண்டும்; ஒரு ஈரக் கரண்டி முழு ஜாடியையும் கலங்கச் செய்யும். கொதிநீரில் ஒரு நிமிடம் போதும், இல்லாவிட்டால் கேரட் மென்மையாகி ஊறுகாயின் சொறுக்கு போய்விடும்."
+ },
+ "health_note": {
+  "en": "A pickle of crisp vegetables in vinegar is light and full of fibre, but the brine carries a good deal of salt, so serve it as a side rather than by the spoonful. Anyone on a low-salt diet can shake the pieces dry before they go on the plate.",
+  "si": "විනාකිරියේ තැබූ එළවළු අච්චාරුව සැහැල්ලු අතර තන්තුවලින් පොහොසත්ය, නමුත් ලුණු දියෙහි ලුණු ප්‍රමාණය ඉහළය; එබැවින් හැඳි ගණන් නොව ව්‍යංජනයක් ලෙස බෙදන්න. ලුණු අඩු ආහාර ගන්නා අයෙකුට පිඟානට දැමීමට පෙර කැබලි සොලවා දිය බේරිය හැකිය.",
+  "ta": "வினிகரில் ஊறவைத்த காய்கறி ஊறுகாய் இலகுவானது, நார்ச்சத்து நிறைந்தது, ஆனால் உப்புநீரில் உப்பு அதிகம்; எனவே கரண்டி கரண்டியாக அல்ல, ஒரு பக்கச் சுவையாகவே பரிமாறவும். உப்பு குறைவாக உண்பவர்கள் தட்டில் போடும் முன் துண்டுகளை உதறி நீரை வடிக்கலாம்."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "budget",
+  "festive",
+  "high_sodium"
+ ],
+ "review_needed": [
+  "si",
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

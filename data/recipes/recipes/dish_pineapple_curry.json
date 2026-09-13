@@ -1,0 +1,348 @@
+{
+ "id": "dish_pineapple_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 160,
+  "description": {
+   "en": "A ladle of sweet-hot pineapple wedges, served when there are guests",
+   "si": "අමුත්තන් සිටින විට පිළිගන්වන, පැණි-සැර අන්නාසි කැබලි හැන්දක්",
+   "ta": "விருந்தாளிகள் வரும்போது பரிமாறும், இனிப்பு-கார அன்னாசித் துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 650,
+ "ingredients": [
+  {
+   "ref": "product_pineapple",
+   "label": {
+    "en": "pineapple",
+    "si": "අන්නාසි",
+    "ta": "அன்னாசி"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "1 small pineapple",
+   "preparation": {
+    "en": "peeled, cored and cut into bite-size wedges",
+    "si": "ලෙලි ගලවා මැද ඉවත් කර කැබලිවලට කපාගත්",
+    "ta": "தோல் சீவி, நடுப்பகுதி நீக்கி துண்டுகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthways",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "ground to a paste with a little water",
+    "si": "ස්වල්ප වතුරක් සමඟ අඹරාගත්",
+    "ta": "சிறிது நீர் விட்டு அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon stick",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 short stick",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the pineapple, cut the hard core out and cut the flesh into bite-size wedges.",
+    "minutes": 10
+   },
+   {
+    "text": "Grind the mustard seeds with a spoon of water into a rough paste.",
+    "minutes": null
+   },
+   {
+    "text": "Put the wedges in a pan with the sliced onion, slit chillies, curry leaves, turmeric, cinnamon, cloves and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and cook on a medium fire until the pineapple softens at the edges but still holds its shape.",
+    "minutes": 10
+   },
+   {
+    "text": "Stir in the mustard paste and the sugar and taste; it should be sweet, sour and hot all at once.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the thick coconut milk and let it come just to the boil, then take the pan off.",
+    "minutes": 3
+   },
+   {
+    "text": "Let it stand before serving; this curry tastes better warm than straight off the fire.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "අන්නාසි ලෙලි ගලවා, මැද දැඩි කොටස ඉවත් කර, මදය කන පහසු කැබලිවලට කපන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "අබ, වතුර හැන්දක් සමඟ රළුවට අඹරා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැබලි පෑන් එකකට දමා, කපාගත් ලූනු, පලාගත් මිරිස්, කරපිංචා, කහ, කුරුඳු, කරාබුනැටි සහ ලුණු එක් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, අන්නාසි දාරවලින් මෘදු වී හැඩය රැකෙන තුරු මධ්‍යම ගින්නේ උයන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "අඹරාගත් අබ සහ සීනි එකතු කර රස බලන්න; පැණි, ඇඹුල් සහ සැර තුනම එකවර දැනිය යුතුයි.",
+    "minutes": 2
+   },
+   {
+    "text": "ඝන පොල් කිරි එක් කර, උතුරන්නට ආසන්න වන විට පෑන් ළිපෙන් ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පිළිගැන්වීමට පෙර ටික වේලාවක් තබන්න; ළිපෙන් ගත්ත ගමන්ට වඩා මදක් නිවුණු විට රස වැඩියි.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "அன்னாசியைத் தோல் சீவி, நடுவில் உள்ள கெட்டியான பகுதியை நீக்கி, சதையை வாய்க்கு அடங்கும் துண்டுகளாக நறுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கடுகை ஒரு கரண்டி நீர் விட்டு சற்று கரடாக அரையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "துண்டுகளை ஒரு சட்டியில் இட்டு, நறுக்கிய வெங்காயம், கீறிய மிளகாய், கறிவேப்பிலை, மஞ்சள், பட்டை, கிராம்பு, உப்பு சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலை ஊற்றி, அன்னாசி விளிம்புகளில் மிருதுவாகி வடிவம் இழக்காமல் இருக்கும் வரை நடுத்தீயில் வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அரைத்த கடுகையும் சீனியையும் சேர்த்துச் சுவைத்துப் பாருங்கள்; இனிப்பும் புளிப்பும் காரமும் ஒருசேர இருக்க வேண்டும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, கொதிக்கும் பதம் வந்தவுடன் சட்டியை இறக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "பரிமாறும் முன் சிறிது நேரம் வையுங்கள்; அடுப்பிலிருந்து இறக்கியவுடன் சாப்பிடுவதைவிட சற்று ஆறியபின் சுவை அதிகம்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan",
+  "grinding stone or small blender"
+ ],
+ "tips": {
+  "en": "Use a pineapple that is ripe but still firm; a fully ripe one collapses into the gravy. Do not stir it hard after the fruit softens, and add the sugar only after tasting, because a sweet pineapple needs almost none.",
+  "si": "ඉදුණු නමුත් තවම දැඩි අන්නාසි ගෙඩියක් යොදන්න; සම්පූර්ණයෙන් ඉදුණු එකක් ඉස්මේ දිය වී යයි. පලතුර මෘදු වූ පසු තදින් කලතන්න එපා, තවද රස බලා පසුව සීනි දමන්න; පැණි රස අන්නාසියකට සීනි බොහෝ දුරට අවශ්‍ය නැත.",
+  "ta": "பழுத்தாலும் இறுக்கமாக இருக்கும் அன்னாசியைப் பயன்படுத்துங்கள்; முற்றிலும் பழுத்தது குழம்பில் கரைந்துவிடும். பழம் மிருதுவானபின் பலமாகக் கிளற வேண்டாம்; சுவைத்தபின்தான் சீனி சேர்க்கவும், இனிப்பான அன்னாசிக்கு சீனி கிட்டத்தட்ட தேவையில்லை."
+ },
+ "health_note": {
+  "en": "Pineapple brings vitamin C and helps a heavy meal go down, which is why it appears next to meat curries at weddings. It is sweet fruit cooked with sugar and coconut milk, so someone watching sugar should take a small spoonful.",
+  "si": "අන්නාසිවලින් විටමින් සී ලැබෙන අතර බර කෑමක් දිරවීමට උපකාරී වේ; මංගල මේසවල මස් කරි අසල එය තිබෙන්නේ එබැවිනි. සීනි සහ පොල් කිරි සමඟ උයන පැණි රස පලතුරක් බැවින්, සීනි පිළිබඳ සැලකිලිමත් අයෙක් කුඩා හැන්දකින් නවතින්න.",
+  "ta": "அன்னாசி வைட்டமின் சி தரும், கனமான உணவு செரிக்க உதவும்; திருமண விருந்தில் இறைச்சிக் கறிகளுக்கு அருகில் இது இருப்பது அதனால்தான். சீனியும் தேங்காய்ப் பாலும் சேர்த்துச் சமைத்த இனிப்புப் பழம், எனவே சர்க்கரையைக் கவனிப்பவர்கள் ஒரு சிறு கரண்டியுடன் நிறுத்துங்கள்."
+ },
+ "tags": [
+  "festive",
+  "kid_friendly",
+  "immune_support",
+  "comfort",
+  "quick"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

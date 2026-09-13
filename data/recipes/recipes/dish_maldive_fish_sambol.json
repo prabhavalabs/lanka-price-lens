@@ -1,0 +1,237 @@
+{
+ "id": "dish_maldive_fish_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 25,
+  "description": {
+   "en": "A teaspoon or two of pungent relish at the edge of the plate",
+   "si": "පිඟානේ කෙළවරට දාගන්නා සැර සම්බෝල තේ හැඳි එකක් දෙකක්",
+   "ta": "தட்டின் ஓரத்தில் வைக்கும் ஒன்றிரண்டு தேக்கரண்டி காரமான சம்பல்"
+  }
+ },
+ "yield_g": 110,
+ "ingredients": [
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "Maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசிக் கருவாடு"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "a small handful of flakes",
+   "preparation": {
+    "en": "broken into small flakes",
+    "si": "කුඩා පොඩි කැබලිවලට කඩා ගත්ත",
+    "ta": "சிறு துகள்களாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 8,
+   "unit": "piece",
+   "household": "8 chillies",
+   "preparation": {
+    "en": "stalks removed, most seeds shaken out",
+    "si": "පොටු ඉවත් කර, ඇට වැඩිපුර ගසා දමා ගත්ත",
+    "ta": "தண்டு நீக்கி, விதைகளை உதிர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 small onions",
+   "preparation": {
+    "en": "roughly chopped",
+    "si": "රළුවට කපා ගත්ත",
+    "ta": "பருமனாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණයි",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a quarter tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "කුඩු කර ගත්ත",
+    "ta": "இடித்தது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp, taste first",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Break the Maldive fish into small flakes with the back of a knife or a pestle.",
+    "minutes": 5
+   },
+   {
+    "text": "Pound the dried chillies in a mortar with a pinch of salt until they are coarse, not powdered.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the onion and pound it in; the mixture should still show pieces of onion.",
+    "minutes": 3
+   },
+   {
+    "text": "Put in the Maldive fish flakes and pound just enough for everything to come together.",
+    "minutes": 3
+   },
+   {
+    "text": "Work in the pepper and the lime juice with a spoon, then taste before adding any salt.",
+    "minutes": null
+   },
+   {
+    "text": "Leave it in the mortar for a few minutes so the lime softens the fish, then scrape it into a small dish.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "උම්බලකඩ පිහියේ පිටිපස්සෙන් හෝ මෝල් ගසෙන් කුඩා කැබලිවලට කඩා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වියළි මිරිස් වංගෙඩියේ ලුණු ස්වල්පයක් සමඟ රළුවට තලා ගන්න, කුඩු කරන්න එපා.",
+    "minutes": 4
+   },
+   {
+    "text": "ලූනු එකතු කරලා එක්ක තලන්න; මිශ්‍රණයේ ලූනු කැබලි තවම පේන්න ඕන.",
+    "minutes": 3
+   },
+   {
+    "text": "උම්බලකඩ කැබලි දමා, හැම දෙයක් එකට හිටින තරමට පමණක් තලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ගම්මිරිස් සහ දෙහි යුෂ හැන්දෙන් කලවම් කර, ලුණු දාන්න කලින් රස බලන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙහි යුෂ උම්බලකඩ මෙලෙක් කරන්න විනාඩි කීපයක් වංගෙඩියේම තියලා, කුඩා පිඟානකට අරගන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாசிக் கருவாட்டை கத்தியின் பின்பகுதியாலோ உலக்கையாலோ சிறு துகள்களாக உடையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வத்தல் மிளகாயை ஒரு சிட்டிகை உப்புடன் உரலில் கரகரப்பாக இடியுங்கள், பொடியாக்க வேண்டாம்.",
+    "minutes": 4
+   },
+   {
+    "text": "வெங்காயத்தைச் சேர்த்து இடியுங்கள்; கலவையில் வெங்காயத் துண்டுகள் இன்னும் தெரிய வேண்டும்.",
+    "minutes": 3
+   },
+   {
+    "text": "மாசிக் கருவாட்டுத் துகள்களைப் போட்டு, எல்லாம் ஒன்று சேரும் அளவுக்கு மட்டும் இடியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மிளகையும் தேசிக்காய் சாறையும் கரண்டியால் கலந்து, உப்பு போடும் முன் சுவைத்துப் பாருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "தேசிக்காய் சாறு கருவாட்டை மென்மையாக்க சில நிமிடம் உரலிலேயே வைத்து, பின்பு ஒரு சிறு கிண்ணத்தில் எடுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 0,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "mortar and pestle or grinding stone"
+ ],
+ "tips": {
+  "en": "Pound, do not grind in a machine; a blender turns it to dust and the sambol loses the bite that makes it worth eating. Two tablespoons of grated coconut pounded in at the end make it milder and stretch it for a bigger table.",
+  "si": "යන්තරයෙන් අඹරන්නේ නැතිව තලන්න; බ්ලෙන්ඩරයේ දැම්මොත් දූවිලි වගේ වෙලා, සම්බෝලේ තියෙන හපන් රස නැති වෙනවා. අන්තිමට ගාපු පොල් මේස හැඳි දෙකක් තලා දැම්මොත් සැර අඩු වෙනවා, ප්‍රමාණයත් වැඩි වෙනවා.",
+  "ta": "இயந்திரத்தில் அரைக்காமல் இடியுங்கள்; மிக்ஸியில் போட்டால் தூளாகி, சம்பலின் தனித்த பதம் போய்விடும். இறுதியில் இரண்டு மேசைக்கரண்டி துருவிய தேங்காயை இடித்துச் சேர்த்தால் காரம் குறைந்து அளவும் கூடும்."
+ },
+ "health_note": {
+  "en": "Maldive fish is nearly all protein but also nearly all salt, so this belongs on the plate by the teaspoon. Anyone watching blood pressure or kidneys should take very little and skip the extra salt entirely.",
+  "si": "උම්බලකඩ බොහෝ දුරට ප්‍රෝටීන් වුණත් ලුණුත් ඒ තරම්ම වැඩි නිසා, මේක පිඟානට දාගන්නේ තේ හැන්දෙන්. රුධිර පීඩනය හෝ වකුගඩු ගැන බලාගෙන ඉන්න අය ඉතා ටිකක් ගෙන, වැඩිපුර ලුණු එකතු කරන්නේම එපා.",
+  "ta": "மாசிக் கருவாடு கிட்டத்தட்ட முழுக்க புரதம், அதேபோல் உப்பும் அதிகம்; எனவே இதை தேக்கரண்டி அளவில்தான் தட்டில் வைக்க வேண்டும். இரத்த அழுத்தமோ சிறுநீரகப் பிரச்சினையோ உள்ளவர்கள் மிகக் குறைவாக எடுத்து, கூடுதல் உப்பைத் தவிர்க்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "high_sodium",
+  "low_carb",
+  "quick",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

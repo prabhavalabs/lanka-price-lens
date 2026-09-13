@@ -1,0 +1,326 @@
+{
+ "id": "dish_potato_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 190,
+  "description": {
+   "en": "A ladle of soft potato in thin yellow gravy, with rice or string hoppers",
+   "si": "බත් හෝ ඉඳිආප්ප සමඟ ගන්නා තුනී කහ හොදියේ මුදු අල හැන්දක්",
+   "ta": "சாதம் அல்லது இடியப்பத்துடன் மஞ்சள் குழம்பில் மென்மையான உருளைக்கிழங்கு ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 840,
+ "ingredients": [
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අල",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "4 medium potatoes",
+   "preparation": {
+    "en": "peeled and cut into thumb-sized cubes",
+    "si": "ලෙලි ගසා මහපට ඇඟිල්ලක ප්‍රමාණයට කපාගත්",
+    "ta": "தோல் சீவி கட்டைவிரல் அளவுக்கு சதுரமாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small handful, sliced",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 1/2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup and a little more",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the potatoes and cut them into cubes the size of your thumb; keep them in water until you are ready so they do not darken.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the potato in a pot with the onion, green chillies, curry leaves, pandan, fenugreek, turmeric, curry powder and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk, bring it to a boil, then lower the flame and cook until a cube gives way easily to a spoon.",
+    "minutes": 12
+   },
+   {
+    "text": "Press three or four cubes against the side of the pot and stir them in; this thickens the gravy without any flour.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the thick coconut milk on a low flame, stirring in one direction so the milk does not split.",
+    "minutes": 4
+   },
+   {
+    "text": "Taste for salt and take the pot off as soon as it steams; boiling after the thick milk goes in spoils the smoothness.",
+    "minutes": 2
+   },
+   {
+    "text": "Rest it a few minutes before serving. It will thicken, so keep it slightly thinner than you want it on the plate.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "අල ලෙලි ගසා මහපට ඇඟිල්ලක ප්‍රමාණයට කපන්න; කළු නොවෙන්න පිසීම දක්වා වතුරේ තබා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කපාගත් අල මුට්ටියකට දමා, ලූනු, අමු මිරිස්, කරපිංචා, රම්පෙ, උළුහාල්, කහ, තුනපහ සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර උතුරන්න තබා, ගින්න අඩු කර, අල කැල්ලක් හැන්දට පහසුවෙන් යටවෙන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "අල කැලි තුන හතරක් මුට්ටියේ පැත්තට තද කර පොඩි කර කලවම් කරන්න; පිටි නොදමා හොදි ගනවන්නේ මෙසේයි.",
+    "minutes": 1
+   },
+   {
+    "text": "ගින්න අඩුවෙන් තබා මුල් කිරි වත් කර, කිරි නොකැඩෙන්න එක දිශාවට කලවම් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "රස බලා, හුමාලය එන්නත් සමඟ මුට්ටිය ගින්නෙන් අයින් කරන්න; මුල් කිරි දැමූ පසු උතුරවුවොත් සිනිඳු බව නැති වේ.",
+    "minutes": 2
+   },
+   {
+    "text": "පිළිගැන්වීමට පෙර විනාඩි කිහිපයක් තබන්න. ගනවන නිසා පිඟානේ ඕන ගණකමට වඩා ටිකක් තුනීව තබා ගන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "உருளைக்கிழங்கைத் தோல் சீவி, கட்டைவிரல் அளவு சதுரங்களாக நறுக்குங்கள்; கறுக்காமல் இருக்க சமைக்கும் வரை தண்ணீரில் வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "நறுக்கியதை பாத்திரத்தில் போட்டு, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை, வெந்தயம், மஞ்சள், கறி மசாலா, உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பால் ஊற்றி கொதிக்க வைத்து, தீயைக் குறைத்து, கரண்டியில் எளிதாக மசியும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "மூன்று நான்கு துண்டுகளை பாத்திரத்தின் ஓரத்தில் மசித்துக் கலக்குங்கள்; மாவு சேர்க்காமல் குழம்பு கெட்டியாவது இப்படித்தான்.",
+    "minutes": 1
+   },
+   {
+    "text": "தீயைக் குறைத்து முதல் பாலை ஊற்றி, பால் திரியாமல் ஒரே திசையில் கிளறுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "உப்பு பார்த்து, ஆவி வரும்போதே இறக்குங்கள்; கெட்டிப் பால் சேர்த்த பிறகு கொதித்தால் மிருதுத்தன்மை போய்விடும்.",
+    "minutes": 2
+   },
+   {
+    "text": "பரிமாறும் முன் சில நிமிடம் வையுங்கள். கெட்டியாகும் என்பதால், தட்டில் வேண்டிய அளவை விட சற்று இளகியாக வைத்திருங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 20,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "pot with a lid",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Mashing a few cubes into the gravy is the old trick for body without cornflour. For string hoppers or hoppers keep it thin and soupy; for a rice plate let it cook down until the spoon leaves a track.",
+  "si": "කැලි කිහිපයක් පොඩි කර හොදියට දැමීම තමයි ඉරිඟු පිටි නැතිව හොදි ගනවා ගන්නා පැරණි උපක්‍රමය. ඉඳිආප්ප හෝ ආප්ප සමඟ නම් තුනීව, සුප් වගේ තබන්න; බත් පිඟානකට නම් හැන්ද ගිය පාර පෙනෙන තරමට තම්බා ගන්න.",
+  "ta": "சில துண்டுகளை மசித்து குழம்பில் கலப்பதே சோள மாவு இல்லாமல் கெட்டியாக்கும் பழைய தந்திரம். இடியப்பம் அல்லது ஆப்பத்துக்கு இளகியாக, சூப் போல வையுங்கள்; சாதத்தட்டுக்கு கரண்டி தடம் தெரியும் வரை சுருங்க விடுங்கள்."
+ },
+ "health_note": {
+  "en": "Potato is starch, so on a rice plate it is really a second helping of carbohydrate rather than a vegetable; a household with diabetes should take a small spoon and put a leafy mallung beside it. Leaving a little skin on and not overcooking keeps more of the potassium and fibre.",
+  "si": "අල පිටි ආහාරයක් නිසා බත් පිඟානක එය එළවළුවකට වඩා තවත් කාබෝහයිඩ්‍රේට් හැන්දක් වගේයි; දියවැඩියාව ඇති ගෙදරක කුඩා හැන්දක් ගෙන පැත්තට කොළ මැල්ලුමක් තබා ගන්න. ලෙලි ටිකක් තබා ගැනීමෙන් හා අධික ලෙස නොතැම්බීමෙන් පොටෑසියම් හා තන්තු වැඩිපුර රැකේ.",
+  "ta": "உருளைக்கிழங்கு மாவுச்சத்து என்பதால் சாதத்தட்டில் அது காய்கறி அல்ல, இன்னொரு கரண்டி கார்போஹைட்ரேட் போலத்தான்; சர்க்கரை நோய் உள்ள வீட்டில் சிறிய ஸ்பூன் எடுத்து பக்கத்தில் கீரை வதக்கல் வையுங்கள். சிறிது தோலை விட்டு, அதிகம் வேகவைக்காமல் இருந்தால் பொட்டாசியமும் நார்ச்சத்தும் அதிகம் தங்கும்."
+ },
+ "tags": [
+  "filling",
+  "comfort",
+  "kid_friendly",
+  "budget",
+  "one_pot",
+  "elderly_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

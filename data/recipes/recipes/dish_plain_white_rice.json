@@ -1,0 +1,187 @@
+{
+ "id": "dish_plain_white_rice",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 290,
+  "description": {
+   "en": "A plate of hot white rice for the curries",
+   "si": "කරි සමඟ කන්නට උණුසුම් සුදු බත් පිඟානක්",
+   "ta": "கறிகளுடன் சாப்பிட ஒரு தட்டு சூடான வெள்ளை சாதம்"
+  }
+ },
+ "yield_g": 1160,
+ "ingredients": [
+  {
+   "ref": "product_rice_nadu",
+   "label": {
+    "en": "nadu rice",
+    "si": "නාඩු සහල්",
+    "ta": "நாடு அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed and drained",
+    "si": "සෝදා වතුර බේරාගත්",
+    "ta": "கழுவி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Measure the rice, wash it twice and drain the cloudy water away.",
+    "minutes": null
+   },
+   {
+    "text": "Put it in a pot with two and a half cups of water, the pandan leaf and the salt if you use it.",
+    "minutes": null
+   },
+   {
+    "text": "Boil it hard without the lid until the surface is covered in holes like a sieve.",
+    "minutes": 6
+   },
+   {
+    "text": "Cover the pot, turn the flame to the lowest and leave it to steam without stirring.",
+    "minutes": 12
+   },
+   {
+    "text": "Turn the fire off and let the pot stand with the lid on so the last of the steam finishes the grains.",
+    "minutes": 8
+   },
+   {
+    "text": "Open it, run a flat spoon down the side and lift the rice gently so it does not mash.",
+    "minutes": null
+   },
+   {
+    "text": "Serve it hot in the middle of the plate with the curries spooned around it.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් මැන ගෙන දෙවරක් සෝදා, පාට වූ වතුර ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කෝප්ප දෙකහමාරක් වතුර, රම්පෙ සහ අවශ්‍ය නම් ලුණු සමඟ භාජනයකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වැස්මක් නොමැතිව තදින් නටවා, මතුපිට පෙනේරයක් සේ සිදුරු වැටෙන තුරු තබන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "භාජනය වසා ගින්දර අවම කර, කලවම් නොකර වාෂ්පයෙන් තැම්බෙන්නට තබන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගින්දර නිවා, ඉතිරි වාෂ්පයෙන් ඇට හරියට තැම්බෙන ලෙස වසා තබන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "වැස්ම ඉවත් කර, පැතලි හැන්දක් පැත්තෙන් හරවා, ගුලි නොවන ලෙස බත සැහැල්ලුවෙන් ලිහන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිඟාන මැදට උණුසුම්ව බෙදා, වටේට කරි බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசியை அளந்து இரு முறை கழுவி, கலங்கிய தண்ணீரை ஊற்றி விடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டரை கப் தண்ணீர், ரம்பை இலை, விரும்பினால் உப்புடன் பாத்திரத்தில் இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி இல்லாமல் நன்கு கொதிக்கவைத்து, மேற்பரப்பில் சல்லடை போல துவாரங்கள் வரும்வரை வைக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "பாத்திரத்தை மூடி தீயை மிகக் குறைத்து, கிளறாமல் ஆவியில் வேகவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "தீயை அணைத்து, மீதி ஆவியில் அரிசி முழுமையாக வேகும்படி மூடி வைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "மூடியைத் திறந்து, தட்டையான கரண்டியை ஓரமாக இறக்கி, சாதம் மசியாமல் மெதுவாக உதிர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தட்டின் நடுவில் சூடாகப் பரிமாறி, சுற்றிலும் கறிகளை வைக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 25,
+  "passive_minutes": 8
+ },
+ "equipment": [
+  "heavy pot with lid or rice cooker"
+ ],
+ "tips": {
+  "en": "Two and a half cups of water to two cups of nadu is the safe ratio; washing away the loose starch is what keeps the grains from sticking together.",
+  "si": "නාඩු කෝප්ප දෙකකට වතුර කෝප්ප දෙකහමාරක් සුරක්ෂිත ප්‍රමාණයයි; ලිහිල් පිෂ්ඨය සෝදා හැරීම තමයි ඇට එකට ඇලීම වළක්වන්නේ.",
+  "ta": "இரண்டு கப் நாடு அரிசிக்கு இரண்டரை கப் தண்ணீர் பாதுகாப்பான அளவு; தளர்வான மாச்சத்தைக் கழுவி விடுவதுதான் அரிசி ஒன்றோடொன்று ஒட்டாமல் இருக்க உதவுகிறது."
+ },
+ "health_note": {
+  "en": "White rice is quick energy and easy to digest but has little fibre; keep the serving to one ladle and fill the rest of the plate with vegetables, dhal and greens.",
+  "si": "සුදු බත ඉක්මන් ශක්තියක් දෙන, ජීරණයට පහසු නමුත් තන්තු අඩු ආහාරයකි; බත් හැන්දක් පමණට සීමා කර, ඉතිරි පිඟාන එළවළු, පරිප්පු සහ කොළ වර්ග වලින් පුරවන්න.",
+  "ta": "வெள்ளை சாதம் விரைவான சக்தி தரும், செரிக்க எளிதானது, ஆனால் நார்ச்சத்து குறைவு; சாதத்தை ஒரு கரண்டி அளவில் வைத்து, மீதி தட்டை காய்கறி, பருப்பு, கீரையால் நிரப்பவும்."
+ },
+ "tags": [
+  "filling",
+  "budget",
+  "kid_friendly",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,310 @@
+{
+ "id": "dish_brinjal_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 80,
+  "description": {
+   "en": "A couple of spoonfuls of dry tempered brinjal",
+   "si": "වියළි වම්බටු තෙල් දාලා හැන්ද දෙකක්",
+   "ta": "இரண்டு ஸ்பூன் காய்ந்த கத்தரிக்காய் வறுவல்"
+  }
+ },
+ "yield_g": 330,
+ "ingredients": [
+  {
+   "ref": "product_brinjals",
+   "label": {
+    "en": "brinjals",
+    "si": "වම්බටු",
+    "ta": "கத்தரிக்காய்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 medium brinjals",
+   "preparation": {
+    "en": "cut into finger-length strips, rubbed with salt and turmeric",
+    "si": "ඇඟිලි දිගට තීරු ලෙස කපා, ලුණු හා කහ ගල්වා",
+    "ta": "விரல் நீளத் துண்டுகளாக நறுக்கி, உப்பும் மஞ்சளும் தடவி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනී ලෙස කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium tomato",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "පෙති ලෙස කපා",
+    "ta": "துண்டுகளாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වේළූ මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩාගෙන",
+    "ta": "உடைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "රළු මිරිස් කුඩු",
+    "ta": "கரடு மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the brinjals, cut them into finger-length strips and rub them with the turmeric and half the salt.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a pan until a strip dropped in sizzles at once.",
+    "minutes": 3
+   },
+   {
+    "text": "Fry the strips in two batches until they are golden and no longer spongy, then lift them onto a plate so the oil drains back.",
+    "minutes": 10
+   },
+   {
+    "text": "Leave about two spoons of oil in the pan and temper the big onion, dried chillies and curry leaves until the onion is soft.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the tomato wedges and the chilli flakes and cook until the tomato just begins to collapse.",
+    "minutes": 3
+   },
+   {
+    "text": "Return the fried brinjal, add the rest of the salt and turn everything over gently a few times so the strips do not break up.",
+    "minutes": 2
+   },
+   {
+    "text": "Squeeze the lime over off the fire and serve warm.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වම්බටු සෝදා ඇඟිලි දිගට තීරු ලෙස කපා, කහ කුඩු හා ලුණු භාගයක් ගල්වන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑනට පොල් තෙල් දමා, තීරුවක් දැමූ විගස හිස් හඬක් නැගෙන තුරු රස්නය කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "තීරු කොටස් දෙකකට බෙදා රන්වන් වී මෘදු බව නැති වන තුරු බැදගෙන, තෙල් බේරී යන සේ තැටියකට ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෑනේ තෙල් හැන්ද දෙකක් පමණ තබාගෙන, ලොකු ලූනු, වේළූ මිරිස් හා කරපිංචා ලූනු මෘදු වන තුරු තෙල් දාන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "තක්කාලි පෙති හා රළු මිරිස් කුඩු දමා, තක්කාලි ඇලෙන්නට පටන් ගන්නා තුරු උයන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බැදගත් වම්බටු නැවත දමා ඉතිරි ලුණු එකතු කර, තීරු නොකැඩෙන සේ සෙමින් වාර කිහිපයක් පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන දෙහි යුෂ මිරිකා උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கத்தரிக்காயைக் கழுவி, விரல் நீளத் துண்டுகளாக நறுக்கி, மஞ்சள் தூளும் பாதி உப்பும் தடவுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயை, ஒரு துண்டு போட்டால் உடனே சிவுசிவுக்கும் அளவு காயவைக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "துண்டுகளை இரு தவணையாக பொன்னிறமாகி பஞ்சுத்தன்மை போகும் வரை வதக்கி, எண்ணெய் வடியும்படி தட்டில் எடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வாணலியில் இரண்டு ஸ்பூன் எண்ணெய் மட்டும் விட்டு, பெரிய வெங்காயம், வத்தல் மிளகாய், கறிவேப்பிலை போட்டு வெங்காயம் மென்மையாகும் வரை தாளியுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "தக்காளித் துண்டுகளையும் மிளகாய்த் தூளையும் சேர்த்து, தக்காளி கரையத் தொடங்கும் வரை வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "வதக்கிய கத்தரிக்காயை மீண்டும் சேர்த்து, மீதி உப்பு போட்டு, துண்டுகள் உடையாமல் மெல்லச் சில முறை புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "அடுப்பை அணைத்து தேசிக்காய்ச் சாற்றைப் பிழிந்து சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan",
+  "slotted spoon",
+  "plate for draining"
+ ],
+ "tips": {
+  "en": "Brinjal drinks oil, so get the pan properly hot before the strips go in and they will brown instead of soaking. Draining them on a plate and pouring the extra oil back saves a good two spoons.",
+  "si": "වම්බටු තෙල් උරාගන්නා නිසා තීරු දමන්නට පෙර පෑන හොඳින් රස්නය කරන්න; එවිට තෙල් උරාගැනීම වෙනුවට හොඳින් දුඹුරු වේ. තැටියක බේරාගෙන ඉතිරි තෙල් ආපසු ගත්තොත් හැන්ද දෙකක් ඉතිරි වේ.",
+  "ta": "கத்தரிக்காய் எண்ணெயை உறிஞ்சும்; எனவே துண்டுகளைப் போடும் முன் வாணலி நன்கு சூடாக இருக்க வேண்டும், அப்போது உறிஞ்சாமல் பொன்னிறமாகும். தட்டில் வடித்து மீதி எண்ணெயை மீண்டும் எடுத்தால் இரண்டு ஸ்பூன் மிச்சமாகும்."
+ },
+ "health_note": {
+  "en": "Brinjal itself is low in carbohydrate and gives useful fibre, but it holds whatever oil you give it, so this is a small-portion side rather than something to fill the plate with. The lime at the end lets you use less salt.",
+  "si": "වම්බටුවල පිටිසර ප්‍රමාණය අඩු අතර හොඳ කෙඳි ලැබේ; නමුත් දෙන තෙල් හැම දෙයක්ම උරාගන්නා නිසා මෙය පිඟාන පුරවන දෙයක් නොව සුළු ප්‍රමාණයේ ව්‍යංජනයකි. අවසානයේ දමන දෙහි නිසා ලුණු අඩුවෙන් යොදාගත හැක.",
+  "ta": "கத்தரிக்காயில் மாவுச்சத்து குறைவு, நார்ச்சத்து நல்லது; ஆனால் கொடுக்கும் எண்ணெய் அனைத்தையும் உறிஞ்சிக்கொள்ளும், எனவே இது தட்டை நிரப்பும் உணவல்ல, சிறிய அளவுப் பங்காளி. இறுதியில் சேர்க்கும் தேசிக்காய் உப்பைக் குறைக்க உதவும்."
+ },
+ "tags": [
+  "high_fibre",
+  "low_carb",
+  "budget",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

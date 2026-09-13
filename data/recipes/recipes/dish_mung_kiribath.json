@@ -1,0 +1,214 @@
+{
+ "id": "dish_mung_kiribath",
+ "base_servings": 4,
+ "serving": {
+  "role": "breakfast",
+  "portion_g": 275,
+  "description": {
+   "en": "A wedge of set milk rice speckled with green gram, with lunu miris",
+   "si": "ලුණු මිරිස් සමඟ, මුං ඇට විසිරුණු කිරිබත් කැබැල්ලක්",
+   "ta": "லுனு மிரிசுடன், பயறு கலந்த பால் சோற்றின் ஒரு துண்டு"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "1 1/2 cups",
+   "preparation": {
+    "en": "washed",
+    "si": "හෝදාගත්",
+    "ta": "அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_gram",
+   "label": {
+    "en": "green gram",
+    "si": "මුං ඇට",
+    "ta": "பாசிப்பயறு"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "2/3 cup",
+   "preparation": {
+    "en": "soaked overnight",
+    "si": "රැයක් පොඟවාගත්",
+    "ta": "இரவு முழுவதும் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල්කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Soak the green gram in plenty of water overnight, or in hot water for two hours if the morning has caught you out.",
+    "minutes": 480
+   },
+   {
+    "text": "Boil the soaked gram in fresh water until the grains are soft but still whole and not split, then drain them.",
+    "minutes": 20
+   },
+   {
+    "text": "Wash the rice, put it in a heavy pot with 600 ml water and cook on a medium flame until the water is almost gone.",
+    "minutes": 15
+   },
+   {
+    "text": "Fold the cooked green gram and the salt through the rice, keeping the grains whole.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thick coconut milk and cook on a low flame, stirring from the bottom with a wooden spoon so it does not catch, until the mixture is thick and glossy.",
+    "minutes": 12
+   },
+   {
+    "text": "Turn the hot kiribath onto a flat tray or a banana leaf and press it down with the back of a wet spoon or a plantain leaf pad into a slab about two fingers thick.",
+    "minutes": null
+   },
+   {
+    "text": "Let it stand until it is set and just warm, then cut it into diamonds or squares with a wet knife.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "මුං ඇට ඕනෑ තරම් වතුරේ රැයක් පොඟවන්න; උදේ ප්‍රමාද වුවහොත් උණු වතුරේ පැය දෙකක් පොඟවා ගන්න.",
+    "minutes": 480
+   },
+   {
+    "text": "පොඟවාගත් මුං අලුත් වතුරේ, ඇට මුදු වන නමුත් පලුදු නොවන තුරු තම්බා වතුර බේරා ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "සහල් සෝදා බර හැළියකට දමා, වතුර මිලි ලීටර් 600ක් සමඟ මධ්‍යම ගින්නේ වතුර බොහෝ දුරට හිඳෙන තුරු තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "තැම්බූ මුං ඇට සහ ලුණු, ඇට කැඩෙන්නේ නැති ලෙස බත සමඟ මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඝන පොල්කිරි දමා අඩු ගින්නේ, පහළින් ලී හැන්දකින් හොඳවමින් නොඇලෙන ලෙස, මිශ්‍රණය ඝන වී දිලිසෙන තුරු පිහන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "උණුසුම් කිරිබත පැතලි තැටියකට හෝ කෙසෙල් කොළයකට දමා, තෙත් හැන්දක පිටුපසින් හෝ කෙසෙල් කොළ ගුලියකින් ඇඟිලි දෙකක් ඝනකමට තට්ටු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තද වී මද උණුසුම් වන තුරු තිබෙන්න දී, තෙත් පිහියකින් කැට හෝ හතරැස් ලෙස කපා ගන්න.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாசிப்பயறை நிறைய தண்ணீரில் இரவு முழுவதும் ஊறவையுங்கள்; காலை அவசரமானால் வெந்நீரில் இரண்டு மணி நேரம் ஊறவைத்தால் போதும்.",
+    "minutes": 480
+   },
+   {
+    "text": "ஊறிய பயறை புதிய தண்ணீரில், பருக்கைகள் மென்மையாகி ஆனால் உடையாமல் இருக்கும் வரை வேகவைத்து வடியுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "அரிசியை அலசி கனமான பாத்திரத்தில் 600 மில்லி தண்ணீருடன் இட்டு, நடுத்தர தீயில் தண்ணீர் கிட்டத்தட்ட வற்றும் வரை வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "வெந்த பயறையும் உப்பையும் பருக்கைகள் உடையாமல் சோற்றுடன் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலை ஊற்றி, சிறு தீயில் மரக்கரண்டியால் அடியிலிருந்து கிளறி பிடிக்காமல், கலவை கெட்டியாகி பிசுபிசுப்பாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "சூடான பால் சோற்றை தட்டையான தட்டில் அல்லது வாழை இலையில் கொட்டி, நனைத்த கரண்டியின் பின்புறத்தால் இரண்டு விரல் தடிமனுக்குத் தட்டிப் பரத்துங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "இறுகி வெதுவெதுப்பாகும் வரை வைத்து, நனைத்த கத்தியால் சதுரமாக அல்லது சாய்சதுரமாக வெட்டுங்கள்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 45,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "heavy pot",
+  "flat tray or banana leaf",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Cook the gram separately and only fold it in at the end, because gram boiled with the rice turns to mush and colours the whole pot grey. Press the slab while it is hot or the pieces will crumble when you cut them.",
+  "si": "මුං වෙනම තම්බා අවසානයේ පමණක් මිශ්‍ර කරන්න; බත සමඟ තැම්බූ මුං මැරී මුළු හැළියම අළු පාට කරයි. උණුසුම්ව තිබෙන විටම තට්ටු කරන්න, නැතිනම් කපන විට කැබලි කැඩී යයි.",
+  "ta": "பயறை தனியாக வேகவைத்து இறுதியிலேயே கலக்குங்கள்; சோற்றுடன் சேர்த்து வேகவைத்தால் பயறு மசிந்து பாத்திரம் முழுவதும் சாம்பல் நிறமாகும். சூடாக இருக்கும்போதே அழுத்திப் பரத்துங்கள், இல்லையேல் வெட்டும்போது துண்டுகள் உதிரும்."
+ },
+ "health_note": {
+  "en": "The green gram adds protein, fibre and iron to what is otherwise plain rice, which makes this a steadier breakfast than kiribath alone. The coconut milk is still rich, so two pieces with a chilli sambol is a fair serving.",
+  "si": "සරල බත් වලට මුං ඇට වලින් ප්‍රෝටීන්, තන්තු සහ යකඩ එකතු වන බැවින් මෙය සාමාන්‍ය කිරිබත් වලට වඩා ස්ථාවර උදෑසන ආහාරයකි. පොල්කිරි තවමත් ඝනකම් බැවින් ලුණු මිරිස් සමඟ කැබලි දෙකක් සාධාරණ ප්‍රමාණයකි.",
+  "ta": "வெறும் சோற்றுடன் பயறு புரதம், நார்ச்சத்து, இரும்புச்சத்து சேர்க்கிறது; எனவே இது சாதாரண கிரிபத்தை விட நிலையான காலை உணவு. தேங்காய்ப் பால் இன்னும் கொழுப்பானது, எனவே மிளகாய் சம்பலுடன் இரண்டு துண்டுகள் சரியான அளவு."
+ },
+ "tags": [
+  "high_fibre",
+  "filling",
+  "festive",
+  "budget",
+  "kid_friendly",
+  "iron_rich"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

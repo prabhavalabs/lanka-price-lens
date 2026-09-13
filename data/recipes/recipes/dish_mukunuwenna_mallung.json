@@ -1,0 +1,296 @@
+{
+ "id": "dish_mukunuwenna_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 85,
+  "description": {
+   "en": "A small spoonful of dark green leaf with coconut at the edge of the rice",
+   "si": "බත් පිඟානේ කෙළවරට තබන තද කොළ පාට මුකුණුවැන්න මැල්ලුම් හැන්දක්",
+   "ta": "சாதத்தின் ஓரத்தில் வைக்கும் அடர் பச்சை பொன்னாங்கண்ணி வதக்கல் ஒரு ஸ்பூன்"
+  }
+ },
+ "yield_g": 350,
+ "ingredients": [
+  {
+   "ref": "product_mukunuwenna",
+   "label": {
+    "en": "mukunuwenna leaves",
+    "si": "මුකුණුවැන්න",
+    "ta": "பொன்னாங்கண்ணி கீரை"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2 bunches",
+   "preparation": {
+    "en": "thick stems removed, washed well and chopped fine",
+    "si": "තද කඳන් ඉවත් කර, හොඳින් සෝදා සිහින්ව කපාගත්",
+    "ta": "கெட்டியான தண்டு நீக்கி, நன்கு அலசி பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගා ගත්",
+    "ta": "புதிதாக துருவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "chopped small",
+    "si": "කුඩාවට කපාගත්",
+    "ta": "பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a big pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பலகடா மீன்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp, pounded",
+   "preparation": {
+    "en": "pounded fine",
+    "si": "සිහින්ව කොටාගත්",
+    "ta": "நன்கு இடித்த"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp, crushed",
+   "preparation": {
+    "en": "crushed coarse",
+    "si": "රළුවට කුඩු කරගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Strip the leaves and tender tips off the thick stems and wash them in two or three changes of water; mukunuwenna grows low and holds sand.",
+    "minutes": 8
+   },
+   {
+    "text": "Chop the leaves fine on a board. They wilt to a third of their bulk, so do not be frightened by the heap.",
+    "minutes": 7
+   },
+   {
+    "text": "Mix the coconut with the onion, green chilli, turmeric, pounded maldive fish, pepper and salt, rubbing it between your fingers.",
+    "minutes": 2
+   },
+   {
+    "text": "Heat a pan with no oil, put in the chopped leaves and turn them on a high flame until they darken and the water they let go has dried off.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the coconut mixture and toss for a minute, no longer, or the leaves lose their colour.",
+    "minutes": 2
+   },
+   {
+    "text": "Squeeze in the lime juice, mix once and serve warm with rice.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තද කඳන් වලින් කොළ හා මුදු අග්‍ර ගලවා ගෙන, දෙතුන් වතාවක් වතුරෙන් සෝදන්න; මුකුණුවැන්න බිම නිසා වැලි රැඳේ.",
+    "minutes": 8
+   },
+   {
+    "text": "කොළ ලෑල්ලේ තබා සිහින්ව කපන්න. තැම්බෙන විට තුනෙන් එකකට හැකිළෙන නිසා ගොඩ ලොකු වීමට බය වෙන්න එපා.",
+    "minutes": 7
+   },
+   {
+    "text": "පොල් සමඟ ලූනු, අමු මිරිස්, කහ, කොටාගත් උම්බලකඩ, ගම්මිරිස් සහ ලුණු දමා ඇඟිලි අතර ඇතිල්ලමින් මිශ්‍ර කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තෙල් නොදමා පෑන් එකක් රත් කර, කපාගත් කොළ දමා, තද ගින්නේ, පාට තදවී පිටවූ වතුර වියළෙන තුරු පෙරළන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පොල් මිශ්‍රණය එකතු කර විනාඩියක් පමණක් පෙරළන්න; වැඩි වුණොත් කොළවල පාට නැති වේ.",
+    "minutes": 2
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා වරක් කලවම් කර, උණුසුම්ව බත් සමඟ ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கெட்டியான தண்டுகளிலிருந்து இலைகளையும் மென்மையான நுனிகளையும் பிரித்து, இரண்டு மூன்று முறை தண்ணீரில் அலசுங்கள்; பொன்னாங்கண்ணி தரையோடு படர்வதால் மணல் ஒட்டியிருக்கும்.",
+    "minutes": 8
+   },
+   {
+    "text": "இலைகளை பலகையில் வைத்து பொடியாக நறுக்குங்கள். வதங்கும்போது மூன்றில் ஒரு பங்காகச் சுருங்கும், எனவே குவியலைப் பார்த்து பயப்பட வேண்டாம்.",
+    "minutes": 7
+   },
+   {
+    "text": "தேங்காயுடன் வெங்காயம், பச்சை மிளகாய், மஞ்சள், இடித்த உம்பலகடா, மிளகு, உப்பு சேர்த்து விரல்களால் தேய்த்துக் கலக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "எண்ணெய் இல்லாமல் சட்டியைக் காய்ச்சி, நறுக்கிய இலைகளைப் போட்டு, பெரிய தீயில் நிறம் அடர்ந்து வெளியேறிய நீர் வற்றும் வரை புரட்டுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "தேங்காய்க் கலவையைச் சேர்த்து ஒரு நிமிடம் மட்டும் புரட்டுங்கள்; அதற்கு மேல் இலையின் நிறம் போய்விடும்.",
+    "minutes": 2
+   },
+   {
+    "text": "எலுமிச்சைச் சாறு பிழிந்து, ஒரு முறை கலக்கி, சாதத்துடன் சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 8,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "dry pan",
+  "sharp knife",
+  "coconut scraper"
+ ],
+ "tips": {
+  "en": "Buy the bunch with small leaves and thin stems; the big coarse kind stays chewy however long you cook it. Leave out the maldive fish and the same mallung serves a poya-day or vegetarian table.",
+  "si": "කුඩා කොළ හා තුනී කඳන් ඇති මිටිය මිලදී ගන්න; ලොකු රළු වර්ගය කොතරම් තැම්බුවත් හපන ගතිය යයි. උම්බලකඩ නොදැමුවොත් එම මැල්ලුම පොහොය දිනකට හෝ නිර්මාංශ මේසයකට සුදුසුයි.",
+  "ta": "சிறிய இலைகளும் மெல்லிய தண்டுகளும் உள்ள கட்டை வாங்குங்கள்; பெரிய கரடுமுரடான வகை எவ்வளவு வேகவைத்தாலும் மென்மையாகாது. உம்பலகடாவை விட்டுவிட்டால் அதே வதக்கல் பூஜை நாளுக்கும் சைவ உணவுக்கும் ஏற்றது."
+ },
+ "health_note": {
+  "en": "Mukunuwenna is one of the best sources of iron and calcium a poor kitchen can afford, and it costs next to nothing when it grows by the well. Eat it with a squeeze of lime, because the vitamin C in the juice helps the body take up the iron from the leaves.",
+  "si": "දුප්පත් මුළුතැන්ගෙයකට දැරිය හැකි හොඳම යකඩ හා කැල්සියම් ප්‍රභවයන්ගෙන් එකක් මුකුණුවැන්නයි; ලිඳ ගාවම වැවෙන කාලයේ මිලක් නොමැති තරම්. දෙහි යුෂ ටිකක් සමඟ කන්න; යුෂෙහි ඇති විටමින් සී නිසා කොළවල යකඩ ශරීරයට උරාගැනීම වැඩි වේ.",
+  "ta": "ஏழைச் சமையலறைக்கு கிடைக்கும் சிறந்த இரும்பு மற்றும் கால்சியம் ஆதாரங்களில் ஒன்று பொன்னாங்கண்ணி; கிணற்றடியில் விளையும் காலத்தில் விலையே இல்லை. எலுமிச்சைச் சாறுடன் சாப்பிடுங்கள்; சாற்றில் உள்ள வைட்டமின் சி இலையின் இரும்பை உடல் எடுத்துக்கொள்ள உதவும்."
+ },
+ "tags": [
+  "low_calorie",
+  "low_carb",
+  "high_fibre",
+  "iron_rich",
+  "calcium_rich",
+  "budget",
+  "weight_loss_friendly",
+  "quick",
+  "pregnancy_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

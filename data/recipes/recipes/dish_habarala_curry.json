@@ -1,0 +1,365 @@
+{
+ "id": "dish_habarala_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 155,
+  "description": {
+   "en": "A ladle of soft habarala pieces in a sour coconut gravy with rice",
+   "si": "බත් සමඟ ඇඹුල් පොල් කිරි ඉස්මේ තෙම්බුණු හබරල කැබලි හැන්දක්",
+   "ta": "சாதத்துடன் புளிப்புத் தேங்காய்க் குழம்பில் வேகவைத்த ஹபரல துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 620,
+ "ingredients": [
+  {
+   "ref": "pantry_habarala",
+   "label": {
+    "en": "habarala stems",
+    "si": "හබරල දඬු",
+    "ta": "ஹபரல தண்டு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 good stems",
+   "preparation": {
+    "en": "peeled well and cut into finger-length pieces",
+    "si": "හොඳින් ලෙලි ගලවා ඇඟිලි දිගට කපාගත්",
+    "ta": "நன்கு தோல் சீவி விரல் நீளத் துண்டுகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா புளி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": {
+    "en": "a dry piece, rinsed",
+    "si": "වියළි කැබැල්ලක්, සෝදාගත්",
+    "ta": "காய்ந்த துண்டு, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a lime-size ball",
+   "preparation": {
+    "en": "soaked in warm water and the pulp squeezed out",
+    "si": "උණු වතුරේ පොඟවා යුෂ මිරිකාගත්",
+    "ta": "வெந்நீரில் ஊறவைத்து சாறு பிழிந்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the habarala stems right down to the pale flesh, cut them into finger-length pieces and drop them into water so they do not darken.",
+    "minutes": 10
+   },
+   {
+    "text": "Boil the pieces in plenty of water with the goraka, the tamarind water and a little turmeric, keeping the pot open so the itch leaves with the steam.",
+    "minutes": 15
+   },
+   {
+    "text": "Pour that water away completely and rinse the pieces once in cold water.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the sliced onion, broken dried chillies and curry leaves until the onion softens.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the boiled stems with the turmeric, roasted curry powder and salt, and turn them over until every piece is coated.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer until a piece breaks easily against the spoon.",
+    "minutes": 8
+   },
+   {
+    "text": "Finish with the thick coconut milk, let it bubble once and take the pot off the fire.",
+    "minutes": 2
+   },
+   {
+    "text": "Taste for sourness; habarala wants a clear sour edge, so add a little more tamarind water if it tastes flat.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "හබරල දඬු සුදු මදය දක්වා හොඳින් ලෙලි ගලවා, ඇඟිලි දිගට කපා, කළු නොවන ලෙස වතුරට දමන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගොරකා, සියඹලා යුෂ සහ ස්වල්ප කහ සමඟ වතුර බොහෝ ප්‍රමාණයක් දමා, වැසුමක් නැතිව උතුරවන්න; එවිට කැසීම වාෂ්පය සමඟ යයි.",
+    "minutes": 15
+   },
+   {
+    "text": "එම වතුර සම්පූර්ණයෙන් බැහැර කර, කැබලි එක් වරක් සීතල වතුරෙන් සෝදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, කපාගත් ලූනු, කැඩූ වියළි මිරිස් සහ කරපිංචා ලූනු මෘදු වන තුරු තෙල්දාලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "තම්බාගත් දඬු, කහ, බැදපු තුනපහ සහ ලුණු එකතු කර, සෑම කැබැල්ලකට මිශ්‍රණය තැවරෙන තුරු පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, කැබැල්ලක් හැන්දෙන් පහසුවෙන් කැඩෙන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඝන පොල් කිරි එක් කර, එක් වරක් උතුරුවා මුට්ටිය ළිපෙන් ඉවත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඇඹුල රස බලන්න; හබරලට පැහැදිලි ඇඹුල් රසයක් අවශ්‍යයි, එබැවින් රස මදි නම් සියඹලා යුෂ තවත් ස්වල්පයක් දමන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஹபரல தண்டுகளை வெள்ளைச் சதை தெரியும் வரை நன்கு சீவி, விரல் நீளத் துண்டுகளாக நறுக்கி, கறுக்காமல் இருக்க நீரில் போடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கோரக்கா, புளித் தண்ணீர், சிறிது மஞ்சள் சேர்த்து நிறைய நீரில், மூடாமல் கொதிக்க வையுங்கள்; அரிப்பு நீராவியுடன் போய்விடும்.",
+    "minutes": 15
+   },
+   {
+    "text": "அந்த நீரை முழுவதுமாக ஊற்றிவிட்டு, துண்டுகளை ஒருமுறை குளிர்ந்த நீரில் கழுவுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, நறுக்கிய வெங்காயம், உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலையை வெங்காயம் மிருதுவாகும் வரை தாளியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "வேகவைத்த தண்டுகளை மஞ்சள், வறுத்த கறி மசாலா, உப்புடன் சேர்த்து, ஒவ்வொரு துண்டிலும் மசாலா பிடிக்கும் வரை புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலை ஊற்றி, ஒரு துண்டு கரண்டியில் எளிதாக உடையும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, ஒரு கொதி வந்தவுடன் சட்டியை இறக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "புளிப்பைச் சுவைத்துப் பாருங்கள்; ஹபரலவுக்கு தெளிவான புளிப்பு வேண்டும், சுவை குறைவாக இருந்தால் இன்னும் சிறிது புளித் தண்ணீர் விடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 30,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "large pot for the first boil"
+ ],
+ "tips": {
+  "en": "Never skip the first boil with goraka or tamarind, and never cover that pot; that is what takes the itch out. Peel a little deeper than looks necessary.",
+  "si": "ගොරකා හෝ සියඹලා සමඟ පළමු තැම්බීම කිසිවිටෙක මඟ නොහරින්න, එම මුට්ටිය වසන්නත් එපා; කැසීම යන්නේ එයිනි. අවශ්‍ය යයි පෙනෙන ප්‍රමාණයටත් වඩා මදක් ගැඹුරට ලෙලි ගලවන්න.",
+  "ta": "கோரக்கா அல்லது புளியுடன் செய்யும் முதல் கொதியை விடவே வேண்டாம், அந்தச் சட்டியை மூடவும் வேண்டாம்; அரிப்பு போவது அதனால்தான். தேவை என்று தோன்றுவதைவிட சற்று ஆழமாகத் தோல் சீவுங்கள்."
+ },
+ "health_note": {
+  "en": "Habarala stems are mostly water and fibre, so this is a filling curry for very little money. The sour goraka helps the digestion of a heavy rice meal.",
+  "si": "හබරල දඬු බොහෝ දුරට ජලය සහ තන්තු බැවින්, මෙය සුළු මුදලකට පිරෙන කරියකි. ඇඹුල් ගොරකා බර බත් වේලක් දිරවීමට උපකාරී වේ.",
+  "ta": "ஹபரல தண்டில் பெரும்பாலும் நீரும் நார்ச்சத்தும் இருப்பதால், குறைந்த செலவில் வயிறு நிறைக்கும் கறி. புளிப்பான கோரக்கா கனமான சாத உணவை செரிக்க உதவும்."
+ },
+ "tags": [
+  "high_fibre",
+  "budget",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

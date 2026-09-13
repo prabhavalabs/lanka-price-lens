@@ -1,0 +1,235 @@
+{
+ "id": "dish_puhul_dosi",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 85,
+  "description": {
+   "en": "A few translucent candied cubes with tea",
+   "si": "තේ සමඟ පාරදෘශ්‍ය පුහුල් දෝසි කැබලි කිහිපයක්",
+   "ta": "தேநீருடன் ஒளிபுகும் சில இனிப்புப் பூசணித் துண்டுகள்"
+  }
+ },
+ "yield_g": 340,
+ "ingredients": [
+  {
+   "ref": "product_ash_pumpkin",
+   "label": {
+    "en": "ash pumpkin",
+    "si": "පුහුල්",
+    "ta": "சாம்பல் பூசணி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "a thick wedge, about a quarter of a small pumpkin",
+   "preparation": {
+    "en": "peeled, seeds and soft middle removed, cut into even cubes",
+    "si": "ලෙලි ගසා, ඇට සහ මෘදු මැද ඉවත් කර, එක සමාන කැට වලට කපාගත්",
+    "ta": "தோல் சீவி, விதைகளும் மென்மையான நடுப்பகுதியும் நீக்கி, சம அளவு துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 limes",
+   "preparation": {
+    "en": "one for the soaking water, one squeezed into the syrup",
+    "si": "එකක් තෙමීමේ වතුරට, එකක් පැණි වලට මිරිකා",
+    "ta": "ஒன்று ஊறவைக்கும் நீருக்கு, ஒன்று பாகில் பிழிய"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "4 pods",
+   "preparation": {
+    "en": "lightly crushed, left whole in the syrup",
+    "si": "ටිකක් තලා, පැණි වල මුළුමනින්ම දමන්න",
+    "ta": "லேசாக நசுக்கி, பாகில் அப்படியே போடவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "syrup"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the ash pumpkin, scrape out the seeds and soft middle, and cut the firm flesh into even cubes.",
+    "minutes": 20
+   },
+   {
+    "text": "Prick every cube a few times with a fork so the syrup can find its way in.",
+    "minutes": 10
+   },
+   {
+    "text": "Soak the cubes overnight in water with the juice of one lime so they firm up instead of collapsing.",
+    "minutes": 480
+   },
+   {
+    "text": "Drain and rinse the cubes well, then boil them in fresh water until the edges turn from chalky white to glassy.",
+    "minutes": 6
+   },
+   {
+    "text": "Drain them on a clean cloth and leave them to dry off.",
+    "minutes": 20
+   },
+   {
+    "text": "Boil the sugar with 200 ml of water and the cardamom to a syrup that falls in heavy drops, then slide the cubes in.",
+    "minutes": 15
+   },
+   {
+    "text": "Simmer on a low fire without stirring much, spooning syrup over the top, until the cubes turn translucent and the syrup is thick.",
+    "minutes": 60
+   },
+   {
+    "text": "Squeeze in the juice of the second lime so the syrup does not go grainy, and take the pan off the fire.",
+    "minutes": null
+   },
+   {
+    "text": "Leave the cubes in the syrup overnight, then lift them out, let them dry a little, and store them in a clean dry jar.",
+    "minutes": 720
+   }
+  ],
+  "si": [
+   {
+    "text": "පුහුල් ලෙලි ගසා, ඇට සහ මෘදු මැද කොටස ඉවත් කර, තද මදය එක සමාන කැට වලට කපන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පැණි ඇතුළට යන සේ සෑම කැටයක්ම දෙතුන් තැනකින් ගෑරුප්පුවකින් අනින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "දෙහි ගෙඩියක යුෂ දැමූ වතුරේ කැට රෑ පුරා තෙමෙන්න තියන්න; එවිට කැට තැළී නොයා තද වේ.",
+    "minutes": 480
+   },
+   {
+    "text": "වතුර බේරා කැට හොඳින් සෝදා, දාර සුදු පාටින් වීදුරු වගේ පෙනෙන තුරු අලුත් වතුරේ තම්බන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පිරිසිදු රෙද්දක් මතට ගෙන වතුර බේරී යන්න තියන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "සීනි, වතුර මිලි ලීටර් 200ක් සහ එනසාල් සමඟ තම්බා ගන පැණි හලක් සාදා, කැට සෙමින් ඇතුළට දමන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වැඩිපුර කලවම් නොකර, උඩින් පැණි ඉහමින්, කැට පාරදෘශ්‍ය වී පැණිය ගනකම් වන තුරු අඩු ගින්නේ තම්බන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "පැණි පිටිකැටි නොවන සේ දෙවන දෙහි ගෙඩියේ යුෂ මිරිකා දමා, පෑන ගින්නෙන් ඉවතට ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැට පැණියේම රෑ පුරා තියා, පසුව ඉවතට ගෙන ටිකක් වියළා, පිරිසිදු වියළි බෝතලයක ගබඩා කරන්න.",
+    "minutes": 720
+   }
+  ],
+  "ta": [
+   {
+    "text": "சாம்பல் பூசணியின் தோலைச் சீவி, விதைகளையும் மென்மையான நடுப்பகுதியையும் நீக்கி, இறுகிய சதையைச் சம அளவு துண்டுகளாக வெட்டவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "பாகு உள்ளே இறங்க, ஒவ்வொரு துண்டையும் முள்கரண்டியால் சில இடங்களில் குத்தவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒரு எலுமிச்சைச் சாறு கலந்த தண்ணீரில் துண்டுகளை இரவு முழுவதும் ஊறவைக்கவும்; அப்போது அவை நொறுங்காமல் இறுகும்.",
+    "minutes": 480
+   },
+   {
+    "text": "நீரை வடித்து, துண்டுகளை நன்கு அலசி, புதிய தண்ணீரில் ஓரங்கள் வெண்மையிலிருந்து கண்ணாடி போல் ஆகும் வரை கொதிக்கவிடவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "சுத்தமான துணியில் எடுத்து நீர் வடியவிடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "சீனியை 200 மில்லி தண்ணீரும் ஏலக்காயும் சேர்த்துக் கொதிக்கவைத்துக் கெட்டிப் பாகாக்கி, துண்டுகளை மெதுவாகச் சேர்க்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "அதிகம் கிளறாமல், மேலே பாகை ஊற்றி ஊற்றி, துண்டுகள் ஒளிபுகுந்து பாகு கெட்டியாகும் வரை குறைந்த தீயில் வேகவிடவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "பாகு படிகமாகாமல் இருக்க இரண்டாம் எலுமிச்சையின் சாற்றைப் பிழிந்து, சட்டியை இறக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "துண்டுகளைப் பாகிலேயே இரவு முழுவதும் வைத்து, பின் எடுத்துச் சிறிது உலர்த்தி, சுத்தமான உலர்ந்த ஜாடியில் சேமிக்கவும்.",
+    "minutes": 720
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 60,
+  "cook_minutes": 90,
+  "passive_minutes": 720
+ },
+ "equipment": [
+  "wide heavy pan",
+  "fork",
+  "cloth",
+  "clean glass jar"
+ ],
+ "tips": {
+  "en": "Choose a mature pumpkin with firm flesh; a young watery one falls apart in the syrup. Do not stir once the cubes are in, just move the pan and spoon syrup over them, or they break.",
+  "si": "මදය තද, මුහුකුරා ගිය පුහුලක් තෝරන්න; ලපටි ජලය බහුල එකක් පැණි වල තැළී යයි. කැට දැමූ පසු කලවම් නොකර, පෑන සෙලවා උඩින් පැණි ඉහන්න, නැත්නම් කැට කැඩේ.",
+  "ta": "சதை இறுகிய, முதிர்ந்த பூசணியைத் தேர்ந்தெடுக்கவும்; இளம் நீர்ச்சத்தான பூசணி பாகில் நொறுங்கிவிடும். துண்டுகளைச் சேர்த்த பின் கிளறாமல், சட்டியை அசைத்து மேலே பாகை ஊற்றவும், இல்லாவிட்டால் உடையும்."
+ },
+ "health_note": {
+  "en": "Candying replaces the pumpkin's water with sugar, so a cube is almost pure sweetness even though it started as a vegetable. It is best used a spoon at a time in cake or with tea, not eaten by the handful.",
+  "si": "දෝසි කිරීමේදී පුහුල් වල ජලය සීනි වලින් ප්‍රතිස්ථාපනය වන නිසා, එළවළුවකින් පටන් ගත්තත් කැබැල්ලක් පාහේ සීනියි. අතමිට පුරා නොකා, කේක් වලට හෝ තේ සමඟ හැන්දෙන් ගැනීම හොඳයි.",
+  "ta": "இனிப்பாக்கும்போது பூசணியின் நீர் சீனியால் மாற்றப்படுகிறது; காய்கறியாகத் தொடங்கினாலும் ஒரு துண்டு கிட்டத்தட்ட சீனியே. கை நிறைய உண்ணாமல், கேக்கிலோ தேநீருடனோ சிறிது சிறிதாகப் பயன்படுத்துவது நல்லது."
+ },
+ "tags": [
+  "festive",
+  "high_sugar"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

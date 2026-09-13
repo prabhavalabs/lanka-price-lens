@@ -1,0 +1,360 @@
+{
+ "id": "dish_prawn_white_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 225,
+  "description": {
+   "en": "A bowl of pale coconut gravy with prawns, for string hoppers or hoppers",
+   "si": "ඉඳිආප්ප හෝ ආප්ප සමඟ කන්න ඉස්සන් සහිත කිරි හොදි බඳුනක්",
+   "ta": "இடியப்பம் அல்லது ஆப்பத்துடன் பரிமாற இறால் சேர்த்த சொதி ஒரு கிண்ணம்"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "prawns",
+    "si": "ඉස්සන්",
+    "ta": "இறால்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "about 20 medium prawns",
+   "preparation": {
+    "en": "peeled, deveined, tails left on",
+    "si": "ලෙලි ගලවා නහර ඉවත් කර වලිගය තබාගත්",
+    "ta": "ஓடு உரித்து நரம்பு நீக்கி வால் விட்டது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "தட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "one 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்த்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "a squeeze at the end",
+    "si": "අවසානයේ මිරිකා ගන්න",
+    "ta": "இறுதியில் சிறிது பிழிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel and clean the prawns, rub them with the turmeric and a pinch of salt and set them aside.",
+    "minutes": 10
+   },
+   {
+    "text": "Slice the onion, slit the green chillies, crush the garlic and wash the curry leaf and pandan.",
+    "minutes": null
+   },
+   {
+    "text": "Put the thin coconut milk into a clay pot with the onion, garlic, green chilli, fenugreek, turmeric, curry leaf, pandan and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to a gentle boil on a medium flame, stirring now and then so the milk does not catch.",
+    "minutes": 8
+   },
+   {
+    "text": "Let it simmer until the onion is quite soft and the gravy smells of the spices rather than of raw fenugreek.",
+    "minutes": 5
+   },
+   {
+    "text": "Slide the prawns in and cook them uncovered on a low flame, just until they turn pink and firm.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the thick coconut milk, stir in one direction and let the pot come only to the edge of a boil.",
+    "minutes": 3
+   },
+   {
+    "text": "Check the salt, squeeze in a little lime, take the pot off the fire and let it stand before serving.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "ඉස්සන් ලෙලි ගලවා පිරිසිදු කර, කහ සහ ලුණු ටිකක් ගල්වා වෙනම තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ළූණු කපා, අමු මිරිස් දිගට පලා, සුදුළූණු තලා, කරපිංචා සහ රම්පෙ සෝදාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මැටි වළඳකට දිය පොල් කිරි දමා ළූණු, සුදුළූණු, අමු මිරිස්, උළුහාල්, කහ, කරපිංචා, රම්පෙ සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මධ්‍යම ගින්නේ සෙමින් නටන තුරු තබන්න; කිරි පල්ලෙහාට අල්ලන්නේ නැති වෙන්න අතරින් පතර කලවම් කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ළූණු හොඳින් මෘදු වී, උළුහාල්වල අමු ගඳ නැති වී කුළුබඩු සුවඳ එන තුරු තව ටිකක් තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඉස්සන් හොදියට දමා, වහන්නේ නැතිව අඩු ගින්නේ, ඒවා රෝස පැහැ වී තද වන තුරු පමණක් පිසින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මිටි පොල් කිරි එකතු කර එක අතකට කලවම් කර, නටන්න ආසන්න වන තුරු පමණක් රත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලුණු රස බලා දෙහි ටිකක් මිරිකා, වළඳ ලිපෙන් ඉවත් කර මඳක් තියා පිළිගන්වන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "இறாலை உரித்துக் கழுவி, மஞ்சளும் சிறிது உப்பும் தடவி ஒதுக்கி வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வெங்காயத்தை நறுக்கி, பச்சை மிளகாயைக் கீறி, பூண்டைத் தட்டி, கறிவேப்பிலையும் ரம்பை இலையும் கழுவிக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் நீர்த்த தேங்காய்ப் பாலை விட்டு, வெங்காயம், பூண்டு, பச்சை மிளகாய், வெந்தயம், மஞ்சள், கறிவேப்பிலை, ரம்பை, உப்பு சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நடுத்தர தீயில் மெதுவாகக் கொதிக்க வையுங்கள்; பால் அடியில் பிடிக்காமல் இடையிடையே கிளறுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "வெங்காயம் நன்கு மென்மையாகி, வெந்தயத்தின் பச்சை வாசம் போய் மணம் வரும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "இறாலைச் சேர்த்து, மூடாமல் சிறு தீயில், அவை சிவந்து இறுகும் வரை மட்டும் வேகவிடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலை விட்டு ஒரே திசையில் கிளறி, கொதிக்கும் நிலைக்கு வந்தவுடன் நிறுத்துங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பைச் சரிபார்த்து, சிறிது எலுமிச்சை பிழிந்து, சட்டியை இறக்கி சில நிமிடம் ஆறவிட்டுப் பரிமாறுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or wide pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Thick coconut milk splits if it boils hard, so add it last and only warm it through. If the prawns are large, cut them in half along the back so they cook in the same time.",
+  "si": "මිටි පොල් කිරි තදින් නටවනවා නම් කැඩෙනවා, ඒ නිසා අවසානයේ දමා රත් වන තුරු පමණක් තියන්න. ඉස්සන් ලොකු නම් පිටකොන්ද දිගේ දෙකට කපන්න, එතකොට එක වේලාවට පැහෙනවා.",
+  "ta": "கெட்டியான தேங்காய்ப் பால் அதிகம் கொதித்தால் பிரிந்துவிடும், எனவே இறுதியில் சேர்த்து வெதுவெதுப்பாக்கினால் போதும். இறால் பெரியதாக இருந்தால் முதுகோடு இரண்டாக வெட்டினால் சமமாக வேகும்."
+ },
+ "health_note": {
+  "en": "A gentle curry that suits children and older people, with good protein from the prawns. The thick coconut milk carries most of the fat, so serve it with plenty of string hoppers and a vegetable rather than adding more milk.",
+  "si": "දරුවන්ට හා වැඩිහිටියන්ට ගැළපෙන මෘදු හොදියක්; ඉස්සන්ගෙන් හොඳ ප්‍රෝටීන් ලැබෙනවා. මේදය වැඩිපුර එන්නේ මිටි පොල් කිරිවලින්, ඒ නිසා කිරි තව දමන්නට වඩා ඉඳිආප්පත් එළවළුවකුත් සමඟ පිළිගන්වන්න.",
+  "ta": "குழந்தைகளுக்கும் முதியவர்களுக்கும் ஏற்ற மிதமான கறி; இறாலில் நல்ல புரதம் உண்டு. கொழுப்பு பெரும்பாலும் கெட்டிப் பாலில் இருந்தே வருகிறது, எனவே பால் அதிகம் சேர்ப்பதற்குப் பதிலாக இடியப்பத்துடனும் ஒரு காய்கறியுடனும் பரிமாறுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "kid_friendly",
+  "elderly_friendly",
+  "comfort",
+  "festive"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,521 @@
+{
+ "id": "dish_mutton_kurma",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "A ladle of pale rich gravy with meat, for biryani or rice",
+   "si": "බුරියානි හෝ බත් සමඟ මසුත් සහිත සුදු පොහොසත් හොද්ද ලාඩුවක්",
+   "ta": "பிரியாணிக்கோ சாதத்திற்கோ இறைச்சியுடன் ஒரு கரண்டி வெள்ளைச் செழுமையான குழம்பு"
+  }
+ },
+ "yield_g": 1080,
+ "ingredients": [
+  {
+   "ref": "product_mutton",
+   "label": {
+    "en": "mutton, curry cut with bone",
+    "si": "එළු මස්, ඇට සහිත කරි කැපුම",
+    "ta": "ஆட்டிறைச்சி, எலும்புடன் கறி வெட்டு"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "about 700 g on the bone",
+   "preparation": {
+    "en": "cut into medium pieces, washed",
+    "si": "මධ්‍යම කැබලිවලට කපා සෝදාගත්",
+    "ta": "நடுத்தர துண்டுகளாக வெட்டி, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curd",
+   "label": {
+    "en": "curd",
+    "si": "දී",
+    "ta": "தயிர்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "beaten smooth, for the marinade",
+    "si": "සුමට වන තුරු ගසාගත්, මැරිනේඩ් එකට",
+    "ta": "மென்மையாக அடித்த, ஊறவைப்புக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "2 onions",
+   "preparation": {
+    "en": "sliced fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "ground to a paste",
+    "si": "පේස්ට් එකක් වන තුරු අඹරාගත්",
+    "ta": "விழுதாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "ground to a paste",
+    "si": "පේස්ට් එකක් වන තුරු අඹරාගත්",
+    "ta": "விழுதாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "a third of a cup",
+   "preparation": {
+    "en": "soaked in warm water and ground to a smooth paste",
+    "si": "උණු වතුරේ පොඟවා සුමට පේස්ට් එකක් වන තුරු අඹරාගත්",
+    "ta": "சூடான நீரில் ஊறவைத்து மென்மையான விழுதாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டி, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்க்க, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp, ground",
+   "preparation": {
+    "en": "lightly roasted and ground",
+    "si": "සැහැල්ලුවෙන් බැදගෙන අඹරාගත්",
+    "ta": "லேசாக வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "5 pods, bruised",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mint_leaves",
+   "label": {
+    "en": "mint leaves",
+    "si": "මින්චි කොළ",
+    "ta": "புதினா இலை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_ghee",
+   "label": {
+    "en": "ghee",
+    "si": "ගිතෙල්",
+    "ta": "நெய்"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Mix the washed mutton with the beaten curd, half the garlic and ginger paste, the turmeric and half the salt and leave it to soften.",
+    "minutes": 45
+   },
+   {
+    "text": "Soak the cashew in warm water and grind it into a paste as smooth as cream.",
+    "minutes": 10
+   },
+   {
+    "text": "Melt the ghee in a heavy pot and fry the cinnamon, cardamom and cloves for a moment, then add the sliced onion and cook it until soft and just turning gold, not brown.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the rest of the garlic and ginger with the slit green chillies, ground fennel, cumin and coriander and stir on a low flame until the raw smell goes.",
+    "minutes": 3
+   },
+   {
+    "text": "Put in the marinated mutton and turn it in the spices until the pieces are sealed and the curd has dried onto them.",
+    "minutes": 8
+   },
+   {
+    "text": "Pour in the thin coconut milk with the mint leaves, cover the pot and simmer on a low flame until the meat comes away from the bone easily.",
+    "minutes": 45
+   },
+   {
+    "text": "Stir in the cashew paste and cook a few minutes so the gravy thickens and loses any grainy edge.",
+    "minutes": 6
+   },
+   {
+    "text": "Lower the flame right down, add the thick coconut milk and the rest of the salt and stir gently in one direction without letting it boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Scatter the coriander leaves over the top and leave the pot covered for a while, since kurma tastes better once it has settled.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "සෝදාගත් එළු මස්, ගසාගත් දී, සුදුළූණු හා ඉඟුරු පේස්ට් භාගයක්, කහ සහ ලුණු භාගයක් සමඟ මිශ්‍ර කර මුදු වන්නට තබන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "කජු උණු වතුරේ පොඟවා, ක්‍රීම් තරම් සුමට වන තුරු අඹරා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බර භාජනයක ගිතෙල් දිය කර, කුරුඳු, එනසාල් සහ කරාබුනැටි මොහොතක් බැදගෙන, කපාගත් ළූණු දමා දුඹුරු නොවී මෘදු වී රන්වන් වන තුරු උයන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඉතිරි සුදුළූණු, ඉඟුරු, පලාගත් අමු මිරිස්, අඹරාගත් මාදුරු, සූදුරු සහ කොත්තමල්ලි දමා, අමු ගඳ යන තුරු අඩු ගින්නේ කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කුළුබඩු ගෑ එළු මස් දමා, කැබලි තද වී දී ඒවාට වියළී ඇලෙන තුරු පෙරළන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "තුනී පොල් කිරි සහ මින්චි කොළ දමා, භාජනය වසා, මස ඇටෙන් පහසුවෙන් ගැලවෙන තුරු අඩු ගින්නේ උයන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "කජු පේස්ට් දමා, හොද්ද තද වී රළු ගතිය නැති වන තුරු මිනිත්තු කිහිපයක් උයන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ගින්න හොඳටම අඩු කර, ඝන පොල් කිරි සහ ඉතිරි ලුණු දමා, උතුරන්නට නොදී එක් දිශාවකට සෙමින් කලවම් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කොත්තමල්ලි කොළ ඉසී, ටික වෙලාවක් වසා තබන්න; කුර්මා තිබී කෑමට වඩාත් රසවත් වේ.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "கழுவிய ஆட்டிறைச்சியுடன் அடித்த தயிர், பாதி பூண்டு இஞ்சி விழுது, மஞ்சள், பாதி உப்பு சேர்த்துக் கலந்து மென்மையாக ஊற வையுங்கள்.",
+    "minutes": 45
+   },
+   {
+    "text": "முந்திரியைச் சூடான நீரில் ஊறவைத்து, கிரீம் போல மென்மையாக அரையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கனமான பாத்திரத்தில் நெய்யை உருக்கி, பட்டை, ஏலக்காய், கிராம்பை ஒரு நிமிடம் வதக்கி, நறுக்கிய வெங்காயத்தைச் சேர்த்து, கருகாமல் மென்மையாகிப் பொன்னிறம் வரும் வரை வதக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மீதி பூண்டு, இஞ்சி, கீறிய பச்சை மிளகாய், அரைத்த பெருஞ்சீரகம், சீரகம், மல்லி சேர்த்து, பச்சை வாசம் போகும் வரை சிறு தீயில் கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "ஊறிய ஆட்டிறைச்சியைச் சேர்த்து, துண்டுகள் இறுகி தயிர் அவற்றில் ஒட்டும் வரை புரட்டுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பாலையும் புதினா இலையையும் சேர்த்து, பாத்திரத்தை மூடி, இறைச்சி எலும்பிலிருந்து இலகுவாகப் பிரியும் வரை சிறு தீயில் சமையுங்கள்.",
+    "minutes": 45
+   },
+   {
+    "text": "முந்திரி விழுதைச் சேர்த்து, குழம்பு கெட்டியாகி கரகரப்பு போகும் வரை சில நிமிடம் சமையுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "தீயை மிகவும் குறைத்து, கெட்டித் தேங்காய்ப் பாலையும் மீதி உப்பையும் சேர்த்து, கொதிக்க விடாமல் ஒரே திசையில் மெதுவாகக் கிளறுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கொத்தமல்லி இலையைத் தூவி, சிறிது நேரம் மூடி வையுங்கள்; குருமா ஆறி நின்றபின் இன்னும் சுவையாக இருக்கும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 75,
+  "passive_minutes": 45
+ },
+ "equipment": [
+  "heavy pot with a lid",
+  "grinding stone or blender",
+  "bowl for the marinade"
+ ],
+ "tips": {
+  "en": "Keep the onion pale; a browned onion turns kurma into an ordinary curry and loses the white colour that gives the dish its name. The curd is there to tenderise, so do not skip the marinating time even when you are in a hurry.",
+  "si": "ළූණු ලා පාටින් තබන්න; දුඹුරු වූ ළූණු කුර්මාව සාමාන්‍ය කරියක් බවට පත් කර, නමට හේතු වූ සුදු පාට නැති කරයි. දී ඇත්තේ මස මුදු කිරීමට බැවින් ඉක්මනක් ඇති විටත් පොඟවා ගැනීමේ කාලය මඟ නොහරින්න.",
+  "ta": "வெங்காயத்தை வெளிர் நிறத்திலேயே வையுங்கள்; பொன்னிறம் தாண்டிக் கருகிய வெங்காயம் குருமாவை சாதாரண கறியாக மாற்றி, பெயருக்குக் காரணமான வெண்ணிறத்தையும் இழக்க வைக்கும். தயிர் இறைச்சியை மென்மையாக்கவே சேர்க்கப்படுகிறது, எனவே அவசரமாக இருந்தாலும் ஊறவைக்கும் நேரத்தைத் தவிர்க்க வேண்டாம்."
+ },
+ "health_note": {
+  "en": "Goat meat, curd and cashew together give strong protein, iron and calcium, which is why kurma is cooked for guests and for anyone who needs building up. The cashew paste, thick coconut milk and ghee make it rich, so one ladle with rice or biryani is enough for most people.",
+  "si": "එළු මස්, දී සහ කජු එකට හොඳ ප්‍රෝටීන්, යකඩ සහ කැල්සියම් ලබා දෙන බැවින් අමුත්තන්ට සහ ශක්තිය අවශ්‍ය අයට කුර්මා උයනු ලැබේ. කජු පේස්ට්, ඝන පොල් කිරි සහ ගිතෙල් එය පොහොසත් කරන බැවින් බත් හෝ බුරියානි සමඟ ලාඩුවක් බොහෝ දෙනාට ප්‍රමාණවත්.",
+  "ta": "ஆட்டிறைச்சி, தயிர், முந்திரி சேர்ந்து நல்ல புரதம், இரும்பு, கால்சியம் தருகின்றன; விருந்தாளிகளுக்கும் தேற வேண்டியவர்களுக்கும் குருமா சமைப்பது அதனால்தான். முந்திரி விழுது, கெட்டித் தேங்காய்ப் பால், நெய் இதைச் செழுமையாக்குவதால், சாதத்துடனோ பிரியாணியுடனோ ஒரு கரண்டி பலருக்குப் போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "festive",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

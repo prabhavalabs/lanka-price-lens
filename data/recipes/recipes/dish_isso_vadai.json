@@ -1,0 +1,351 @@
+{
+ "id": "dish_isso_vadai",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 130,
+  "description": {
+   "en": "Three vadai, each with a prawn pressed on top",
+   "si": "මුදුනේ ඉස්සෙකු තද කළ වඩේ තුනක්",
+   "ta": "மேலே ஒரு இறால் அழுத்திய மூன்று வடைகள்"
+  }
+ },
+ "yield_g": 520,
+ "ingredients": [
+  {
+   "ref": "product_red_dhal",
+   "label": {
+    "en": "red dhal",
+    "si": "පරිප්පු",
+    "ta": "பருப்பு"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "1¼ cups, dry",
+   "preparation": {
+    "en": "soaked two to three hours, drained, ground coarsely with no water",
+    "si": "පැය දෙක තුනක් තෙමා, වතුර බේරා, වතුර නොදමා රළුවට අඹරාගත්",
+    "ta": "இரண்டு மூன்று மணி நேரம் ஊறவைத்து, வடித்து, தண்ணீர் சேர்க்காமல் கொரகொரப்பாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "small prawns",
+    "si": "කුඩා ඉස්සන්",
+    "ta": "சிறிய இறால்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "about 24 small prawns",
+   "preparation": {
+    "en": "heads and shells removed, tails left on, washed and patted dry",
+    "si": "හිස් සහ කටු ඉවත් කර, වලිගය තබා, සෝදා වියළා ගත්",
+    "ta": "தலையும் ஓடும் நீக்கி, வால் வைத்து, கழுவி உலர்த்தியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs, torn",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "to bind",
+    "si": "බැඳීමට",
+    "ta": "பிடிக்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "¼ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "¾ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 350,
+   "unit": "ml",
+   "household": "1½ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the dhal well and soak it in plenty of water until a grain crushes easily between the fingers.",
+    "minutes": 150
+   },
+   {
+    "text": "Drain it thoroughly and spread it out for a few minutes; any water left will make the oil spit.",
+    "minutes": null
+   },
+   {
+    "text": "Grind the dhal coarsely without adding water, keeping a handful whole so the vadai has texture.",
+    "minutes": 10
+   },
+   {
+    "text": "Mix in the red onion, green chilli, torn curry leaf, rice flour, turmeric, pepper and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Clean the prawns, leaving the tails on, and pat them properly dry on a cloth.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the oil in a deep pan on a medium-high fire.",
+    "minutes": 6
+   },
+   {
+    "text": "Wet your palm, flatten a lump of the mixture into a thick disc and press one or two prawns firmly onto the top.",
+    "minutes": null
+   },
+   {
+    "text": "Slide the vadai in prawn side up, four at a time, and fry until the bubbling calms.",
+    "minutes": 8
+   },
+   {
+    "text": "Turn once so the prawn browns against the pan, then fry to a deep even colour.",
+    "minutes": 6
+   },
+   {
+    "text": "Drain on a rack and eat hot with a wedge of lime, the way they sell them on the green at sunset.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පරිප්පු හොඳින් සෝදා, ඇටයක් ඇඟිලි දෙක අතර පහසුවෙන් තලෙන තෙක් වතුර බහුලව දමා තෙමා ගන්න.",
+    "minutes": 150
+   },
+   {
+    "text": "හොඳින් වතුර බේරා, මිනිත්තු කීපයක් තුනී කර තබන්න; ඉතිරි වන වතුර නිසා තෙල් ඉහිරෙයි.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර නොදමා පරිප්පු රළුවට අඹරන්න; වඩේට හපන ගතියක් එන්නට අතක් පරිප්පු මුළුවට ම තබා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "රතු ලූනු, අමු මිරිස්, කඩාගත් කරපිංචා, සහල් පිටි, කහ, ගම්මිරිස් සහ ලුණු මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉස්සන් පිරිසිදු කර, වලිග තබාගෙන, රෙද්දක් මත හොඳින් වියළා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගැඹුරු පෑනක තෙල් මධ්‍යම-තද ලිපේ රත් කරන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "අත්ල තෙමා, මිශ්‍රණයෙන් ගුලියක් ඝන පෙත්තක් සේ තට්ටු කර, මුදුනට ඉස්සන් එකක් දෙකක් තදින් තද කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉස්සා ඇති පැත්ත උඩට හරවා, වරකට හතරක් තෙලට දමා, බුබුළු අඩු වන තෙක් බැදගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඉස්සා පෑනට ගෑවී දුඹුරු වන ලෙස එක් වරක් පෙරළා, සම පාටක් එන තෙක් බැදගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "රාක්කයක තෙල් බේරා, ගාලුමුවදොර සවසට විකුණන අයුරින්, දෙහි කැබැල්ලක් සමඟ උණුසුම්ව කන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பருப்பை நன்கு அலசி, ஒரு பருக்கை விரல்களுக்கு இடையில் எளிதாக நசுங்கும் வரை நிறைய தண்ணீரில் ஊறவைக்கவும்.",
+    "minutes": 150
+   },
+   {
+    "text": "நன்கு வடித்து, சில நிமிடம் பரத்தி வைக்கவும்; மீதமிருக்கும் நீர் எண்ணெயில் தெறிக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "தண்ணீர் சேர்க்காமல் பருப்பைக் கொரகொரப்பாக அரைக்கவும்; வடைக்குக் கடிக்கும் தன்மை வர ஒரு கைப்பிடி பருப்பை முழுதாக வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சின்ன வெங்காயம், பச்சை மிளகாய், கிழித்த கறிவேப்பிலை, அரிசி மாவு, மஞ்சள், மிளகு, உப்பு சேர்த்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறாலைச் சுத்தம் செய்து, வாலை வைத்துக்கொண்டு, துணியில் நன்கு உலர்த்தவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஆழமான வாணலியில் எண்ணெயை நடுத்தர-உயர் தீயில் காயவைக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "உள்ளங்கையை நனைத்து, ஒரு பிடி கலவையைத் தடிமனான வட்டமாகத் தட்டி, மேலே ஒன்று இரண்டு இறால்களை நன்கு அழுத்தவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறால் பக்கம் மேலே இருக்குமாறு, ஒரு முறைக்கு நான்காக எண்ணெயில் இட்டு, குமிழிகள் அடங்கும் வரை பொரிக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "இறால் வாணலியில் பட்டுப் பொன்னிறமாக ஒரு முறை திருப்பி, சமமான நிறம் வரும் வரை பொரிக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "வலையில் எண்ணெய் வடித்து, காலி முகத்திடலில் மாலையில் விற்பது போல, ஒரு எலுமிச்சைத் துண்டுடன் சூடாகச் சாப்பிடவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 20,
+  "passive_minutes": 150
+ },
+ "equipment": [
+  "grinding stone or mixer",
+  "deep pan",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "Buy the smallest prawns in the market for this; big ones look grand but stay raw in the middle while the vadai browns. Press the prawn in hard, because a loose one floats away in the oil.",
+  "si": "මේ සඳහා වෙළඳපොලේ ඇති කුඩාම ඉස්සන් ගන්න; විශාල ඒවා පෙනුමට හොඳ වුවත් වඩේ දුඹුරු වන විට ඒවායේ මැද අමුවෙන්ම තිබේ. ඉස්සා තදින් තද කරන්න; ලිහිල් නම් තෙලේ ගැලවී යයි.",
+  "ta": "இதற்குச் சந்தையில் கிடைக்கும் மிகச் சிறிய இறாலையே வாங்கவும்; பெரியவை பார்க்க நன்றாக இருந்தாலும், வடை பொன்னிறமாகும்போது அவற்றின் நடு பச்சையாகவே இருக்கும். இறாலை நன்கு அழுத்தவும்; தளர்வாக இருந்தால் எண்ணெயில் விலகிவிடும்."
+ },
+ "health_note": {
+  "en": "Dhal and prawn together make a fritter with real protein, iron and some iodine, better fare than most things fried at a roadside. The oil and the salt are the cost, so two or three with tea, and always buy prawns that smell of the sea and nothing else.",
+  "si": "පරිප්පු සහ ඉස්සන් එකට සැබෑ ප්‍රෝටීන්, යකඩ සහ අයඩීන් ස්වල්පයක් සහිත වඩේ එකක් සාදයි; පාර දෙපස බැදූ බොහෝ දේට වඩා එය හොඳයි. වියදම නම් තෙල් සහ ලුණු ය; එබැවින් තේ සමඟ දෙකක් තුනක්, සහ සැමවිටම මුහුදු සුවඳ පමණක් ඇති ඉස්සන් ගන්න.",
+  "ta": "பருப்பும் இறாலும் சேர்ந்து உண்மையான புரதம், இரும்புச்சத்து, சிறிது அயோடின் கொண்ட வடையாக்குகின்றன; சாலையோரப் பொரித்த உணவுகளில் இது சிறந்தது. செலவு எண்ணெயும் உப்பும்தான்; எனவே தேநீருடன் இரண்டு மூன்று, மேலும் கடல் வாசனை மட்டுமே உள்ள இறாலையே வாங்கவும்."
+ },
+ "tags": [
+  "deep_fried",
+  "street_food",
+  "high_protein",
+  "iron_rich",
+  "high_fibre"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

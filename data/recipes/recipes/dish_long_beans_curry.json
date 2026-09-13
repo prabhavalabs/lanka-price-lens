@@ -1,0 +1,300 @@
+{
+ "id": "dish_long_beans_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 150,
+  "description": {
+   "en": "A spoonful of short lengths of long bean in light coconut gravy with rice",
+   "si": "බතට එක්ක තුනී පොල් කිරි හොදියේ තැම්බූ මෑ කරල් කැලි හැන්දක්",
+   "ta": "சாதத்துடன் இளகிய தேங்காய்ப்பால் குழம்பில் பயத்தங்காய் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_long_beans",
+   "label": {
+    "en": "long beans",
+    "si": "මෑ කරල්",
+    "ta": "பயத்தங்காய்"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 bundles from the garden",
+   "preparation": {
+    "en": "snapped into pieces the length of a finger joint",
+    "si": "ඇඟිලි පුරුකක් දිගට කඩාගත්",
+    "ta": "விரல் கணு நீளத்துக்கு ஒடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "5 or 6 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Snap the long beans into pieces about the length of a finger joint, throwing away any that feel spongy or have swollen seeds.",
+    "minutes": 8
+   },
+   {
+    "text": "Put them in a pan with the onion, green chillies, curry leaves, pandan, turmeric, curry powder and salt, and rub the powders in with your hand.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk, cover, and cook on a medium flame.",
+    "minutes": 7
+   },
+   {
+    "text": "Lift the lid and press a piece; it should be tender but not collapsing, and the colour should still be green.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the thick coconut milk and shake the pan so it mixes without breaking the beans.",
+    "minutes": 3
+   },
+   {
+    "text": "Let it come to a gentle bubble, taste for salt, and take it off the fire.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "මෑ කරල් ඇඟිලි පුරුකක් දිගට කඩා ගන්න; මුදු ගතියක් හෝ ඉදිමුණු ඇට ඇති කරල් ඉවත් කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පෑන් එකකට දමා, ලූනු, අමු මිරිස්, කරපිංචා, රම්පෙ, කහ, තුනපහ සහ ලුණු එකතු කර, කුඩු අතින් ඇතිල්ලන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, වහන් දමා මධ්‍යම ගින්නේ තම්බන්න.",
+    "minutes": 7
+   },
+   {
+    "text": "වහන අයින් කර කැල්ලක් තද කර බලන්න; මුදු විය යුතු නමුත් පොඩි වී යා යුතු නැත, කොළ පාටත් තිබිය යුතුයි.",
+    "minutes": 1
+   },
+   {
+    "text": "මුල් කිරි වත් කර, කරල් නොකැඩෙන්න පෑන් එක සොලවා මිශ්‍ර කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "සෙමින් උතුරන්න දී, රස බලා ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "பயத்தங்காயை விரல் கணு நீளத்துக்கு ஒடித்துக் கொள்ளுங்கள்; மென்மையாகவோ விதை பூரித்தோ இருக்கும் காய்களை நீக்கிவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சட்டியில் போட்டு, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை, மஞ்சள், கறி மசாலா, உப்பு சேர்த்து, தூள்களை கையால் தேய்த்துக் கலக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பால் ஊற்றி, மூடி நடுத்தர தீயில் வேகவிடுங்கள்.",
+    "minutes": 7
+   },
+   {
+    "text": "மூடியைத் திறந்து ஒரு துண்டை அழுத்திப் பாருங்கள்; மென்மையாக இருக்க வேண்டும், ஆனால் கூழாகக் கூடாது, பச்சை நிறமும் இருக்க வேண்டும்.",
+    "minutes": 1
+   },
+   {
+    "text": "முதல் பாலை ஊற்றி, காய் உடையாமல் சட்டியை ஆட்டிக் கலக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மெதுவாகக் கொதிக்க விட்டு, உப்பு பார்த்து இறக்குங்கள்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan with a lid"
+ ],
+ "tips": {
+  "en": "Snapping the beans by hand instead of cutting them tells you at once which pods are too old: a young bean breaks with a clean crack. Pick them young from the fence and this curry needs nothing more than coconut milk and salt.",
+  "si": "කපනවාට වඩා අතින් කඩා ගැනීමෙන් වයසට ගිය කරල් වහාම හඳුනාගත හැකිය: තරුණ කරලක් හඬක් නාද කර පැහැදිලිව කැඩේ. වැටෙන් තරුණ කරල් කඩාගත්තොත් මේ කරියට පොල් කිරි හා ලුණු හැර වෙන කිසිවක් අවශ්‍ය නැත.",
+  "ta": "நறுக்குவதற்குப் பதிலாக கையால் ஒடிப்பதால் எந்தக் காய் முதிர்ந்தது என்று உடனே தெரியும்: இளம் காய் சரேலென முறியும். வேலியிலிருந்து இளம் காயைப் பறித்தால் இந்தக் கறிக்கு தேங்காய்ப் பாலும் உப்பும் தவிர வேறு எதுவும் தேவையில்லை."
+ },
+ "health_note": {
+  "en": "Long beans give fibre, folate and a small amount of plant protein, and the short cooking keeps most of it intact. This is one of the cheapest vegetables to put on the table when it is growing on the fence, and light enough for a late dinner.",
+  "si": "මෑ කරල් වලින් තන්තු, ෆෝලේට් හා කුඩා ප්‍රමාණයක් ශාක ප්‍රෝටීන් ලැබෙන අතර, කෙටි වෙලාවක් තැම්බීම නිසා ඒවා බොහෝ දුරට රැකේ. වැටේ වැවෙන කාලයේ මේසයට දැමිය හැකි ලාභම එළවළුවකි, රෑ ආහාරයටත් සැහැල්ලුයි.",
+  "ta": "பயத்தங்காயில் நார்ச்சத்து, ஃபோலேட், சிறிதளவு தாவரப் புரதம் உண்டு; குறைந்த நேரம் வேகுவதால் அவை பெருமளவு தங்கும். வேலியில் விளையும் காலத்தில் மேசைக்கு வைக்கக்கூடிய மிக மலிவான காய்கறி, இரவு உணவுக்கும் இலகுவானது."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "quick",
+  "budget",
+  "light",
+  "kid_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

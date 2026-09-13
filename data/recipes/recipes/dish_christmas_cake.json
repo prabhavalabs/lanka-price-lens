@@ -1,0 +1,458 @@
+{
+ "id": "dish_christmas_cake",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 85,
+  "description": {
+   "en": "Two small squares of dark rich cake",
+   "si": "කළු පැහැති රිච් කේක් කුඩා කැබලි දෙකක්",
+   "ta": "கருமையான ரிச் கேக்கின் இரண்டு சிறு சதுரங்கள்"
+  }
+ },
+ "yield_g": 340,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 eggs",
+   "preparation": {
+    "en": "yolks and whites separated",
+    "si": "කහ මදය හා සුදු මදය වෙන් කරගත්",
+    "ta": "மஞ்சள் கருவும் வெள்ளைக் கருவும் பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 55,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": {
+    "en": "softened",
+    "si": "මෘදු කරගත්",
+    "ta": "மிருதுவாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "one third of a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_semolina",
+   "label": {
+    "en": "semolina",
+    "si": "රුලං",
+    "ta": "ரவை"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "5 tbsp",
+   "preparation": {
+    "en": "lightly roasted",
+    "si": "ටිකක් බැදගත්",
+    "ta": "லேசாக வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "chopped, not powdered",
+    "si": "කුඩු නොකර කපාගත්",
+    "ta": "பொடியாக்காமல் நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_candied_peel",
+   "label": {
+    "en": "candied peel",
+    "si": "පැණි දැමූ ලෙලි",
+    "ta": "சர்க்கரை இட்ட தோல்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "chopped small",
+    "si": "කුඩාවට කපාගත්",
+    "ta": "நைசாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chow_chow_preserve",
+   "label": {
+    "en": "chow chow preserve",
+    "si": "චව්චව් දෝසි",
+    "ta": "சௌ சௌ இனிப்பு"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "chopped small",
+    "si": "කුඩාවට කපාගත්",
+    "ta": "நைசாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_candied_pumpkin",
+   "label": {
+    "en": "puhul dosi, candied pumpkin preserve",
+    "si": "පුහුල් දෝසි",
+    "ta": "பூசணி இனிப்பு"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "chopped small",
+    "si": "කුඩාවට කපාගත්",
+    "ta": "நைசாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_raisins",
+   "label": {
+    "en": "raisins",
+    "si": "කිස්මිස්",
+    "ta": "உலர் திராட்சை"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_brandy",
+   "label": {
+    "en": "brandy",
+    "si": "බ්‍රැන්ඩි",
+    "ta": "பிராந்தி"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": {
+    "en": "some for soaking, a spoon for brushing",
+    "si": "ටිකක් තෙමීමට, හැන්දක් උඩින් ගැල්වීමට",
+    "ta": "சிறிது ஊறவைக்க, ஒரு கரண்டி மேலே தடவ"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_rose_water",
+   "label": {
+    "en": "rose water",
+    "si": "රෝස වතුර",
+    "ta": "ரோஸ் வாட்டர்"
+   },
+   "quantity": 5,
+   "unit": "ml",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch of powder",
+   "preparation": {
+    "en": "powdered",
+    "si": "කුඩු කරගත්",
+    "ta": "பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "2 pods, powdered",
+   "preparation": {
+    "en": "seeds powdered",
+    "si": "ඇට කුඩු කරගත්",
+    "ta": "விதைகளைப் பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_nutmeg",
+   "label": {
+    "en": "nutmeg",
+    "si": "සාදික්කා",
+    "ta": "சாதிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a light grating",
+   "preparation": {
+    "en": "grated",
+    "si": "ගාගත්",
+    "ta": "துருவியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vanilla",
+   "label": {
+    "en": "vanilla",
+    "si": "වැනිලා",
+    "ta": "வெனிலா"
+   },
+   "quantity": 2,
+   "unit": "ml",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Chop the cashew, candied peel, chow chow, puhul dosi and raisins small, mix them with most of the brandy, the rose water and the vanilla, and leave them covered overnight.",
+    "minutes": 720
+   },
+   {
+    "text": "Beat the butter and sugar until creamy, then beat in the egg yolks one at a time.",
+    "minutes": 10
+   },
+   {
+    "text": "Fold the roasted semolina and sifted flour into the butter with the cinnamon, cardamom and nutmeg.",
+    "minutes": null
+   },
+   {
+    "text": "Stir in the soaked fruit and cashew with every drop of liquid from the bowl.",
+    "minutes": null
+   },
+   {
+    "text": "Whisk the egg whites to soft peaks and fold them in gently so the heavy batter loosens.",
+    "minutes": 5
+   },
+   {
+    "text": "Line a small square tin with three layers of paper and spoon the batter in, levelling the top with a wet spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Bake in a slow oven until the top is dark and firm and a stick pushed in comes out with moist crumbs only.",
+    "minutes": 90
+   },
+   {
+    "text": "Brush the hot cake with the last spoon of brandy and leave it to cool in the tin.",
+    "minutes": 60
+   },
+   {
+    "text": "Wrap the cake in clean paper and keep it two or three days to mature before cutting it into small squares.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කජු, පැණි දැමූ ලෙලි, චව්චව් දෝසි, පුහුල් දෝසි සහ කිස්මිස් කුඩාවට කපා, බ්‍රැන්ඩි වැඩි කොටස, රෝස වතුර සහ වැනිලා සමඟ මිශ්‍ර කර, වසා රෑ පුරා තෙමෙන්න තියන්න.",
+    "minutes": 720
+   },
+   {
+    "text": "බටර් සහ සීනි ක්‍රීම් වගේ වන තුරු ගසා, බිත්තර කහ මදය එකින් එක දමා තවත් ගසන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බැදගත් රුලං සහ පෙරාගත් තිරිඟු පිටි, කුරුඳු, එනසාල් හා සාදික්කා සමඟ බටර් මිශ්‍රණයට එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තෙමූ පලතුරු හා කජු, බඳුනේ ඇති හැම බිංදුවක් සමඟම දමා කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර සුදු මදය මෘදු පෙණ එන තුරු ගසා, බර මිශ්‍රණය සැහැල්ලු වන සේ සෙමින් එකතු කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කුඩා හතරැස් තැටියක කඩදාසි තුන් තට්ටුවක් එලා මිශ්‍රණය දමා, තෙත් හැන්දකින් උඩ පිට සමතලා කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අඩු ගින්නේ උදුනේ, උඩ පිට කළු පැහැ ගෙන තද වී, ඇනූ ඉරටුවේ තෙත් කුඩු පමණක් රැඳෙන තුරු බේක් කරන්න.",
+    "minutes": 90
+   },
+   {
+    "text": "උණුසුම් කේක් මතට ඉතිරි බ්‍රැන්ඩි හැන්ද ගල්වා, තැටියේම සිසිල් වෙන්න තියන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "කේක් පිරිසිදු කඩදාසියේ ඔතා දින දෙක තුනක් තියා, පසුව කුඩා හතරැස් කැබලිවලට කපන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "முந்திரி, சர்க்கரை இட்ட தோல், சௌ சௌ இனிப்பு, பூசணி இனிப்பு, உலர் திராட்சை ஆகியவற்றை நைசாக நறுக்கி, பெரும்பாலான பிராந்தி, ரோஸ் வாட்டர், வெனிலாவுடன் கலந்து, மூடி இரவு முழுவதும் ஊறவைக்கவும்.",
+    "minutes": 720
+   },
+   {
+    "text": "வெண்ணெயையும் சீனியையும் கிரீம் போல் ஆகும் வரை அடித்து, முட்டையின் மஞ்சள் கருவை ஒன்றன் பின் ஒன்றாகச் சேர்த்து அடிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வறுத்த ரவையையும் சலித்த மாவையும், இலவங்கப்பட்டை, ஏலக்காய், சாதிக்காய் சேர்த்து வெண்ணெய்க் கலவையில் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஊறிய பழங்களையும் முந்திரியையும், பாத்திரத்தில் உள்ள ஒவ்வொரு துளி சாற்றுடனும் சேர்த்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டையின் வெள்ளைக் கருவை மெல்லிய நுரை வரும் வரை அடித்து, கனமான கலவை லேசாகும்படி மெதுவாகச் சேர்க்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சிறிய சதுரத் தட்டில் மூன்று அடுக்கு காகிதம் விரித்து, கலவையை ஊற்றி, ஈரக் கரண்டியால் மேற்பரப்பைச் சமன் செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குறைந்த வெப்பத்தில், மேற்பரப்பு கருமையாகி இறுகி, சொருகிய குச்சியில் ஈரமான தூள் மட்டும் ஒட்டும் வரை பேக் செய்யவும்.",
+    "minutes": 90
+   },
+   {
+    "text": "சூடான கேக்கின் மேல் மீதி ஒரு கரண்டி பிராந்தியைத் தடவி, தட்டிலேயே குளிரவிடவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "கேக்கைச் சுத்தமான காகிதத்தில் சுற்றி இரண்டு மூன்று நாள் வைத்துப் பின் சிறு சதுரங்களாக வெட்டவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 60,
+  "cook_minutes": 90,
+  "passive_minutes": 720
+ },
+ "equipment": [
+  "oven",
+  "small square tin",
+  "greaseproof paper",
+  "mixing bowls"
+ ],
+ "tips": {
+  "en": "Chop the fruit by hand so the cake keeps its bite, and bake it slow; a hot oven browns the top while the middle is still wet. The cake improves for a week wrapped in paper.",
+  "si": "පලතුරු යන්ත්‍රයෙන් නොව අතින් කපන්න, එවිට කේක් එකේ හපන ගතිය රැඳේ; අඩු ගින්නේ බේක් කරන්න, ගිනි වැඩි උදුනක උඩ පිට පිච්චී මැද අමු වේ. කඩදාසියේ ඔතා තියන විට සතියක් යන තුරු රස වැඩි වේ.",
+  "ta": "பழங்களை இயந்திரத்தில் அல்லாமல் கையால் நறுக்கவும், அப்போதே கேக்கில் கடி தங்கும்; குறைந்த வெப்பத்தில் பேக் செய்யவும், அதிக சூட்டில் மேல் கருகி நடு பச்சையாக இருக்கும். காகிதத்தில் சுற்றி வைத்தால் ஒரு வாரம் வரை சுவை கூடும்."
+ },
+ "health_note": {
+  "en": "Rich cake is dense with sugar, preserved fruit, butter and cashew, so even a small square carries a lot of energy. The cashew brings good fat and some iron, but two squares at a sitting is plenty, especially for anyone managing diabetes.",
+  "si": "රිච් කේක් වල සීනි, දෝසි, බටර් සහ කජු ඉතා ඉහළයි; කුඩා කැබැල්ලක වුවද ශක්තිය ගොඩක් තිබේ. කජු වලින් හොඳ මේදය හා ටිකක් යකඩ ලැබේ; එහෙත් විශේෂයෙන් දියවැඩියාව ඇති අයට එක වර කැබලි දෙකක් සෑහේ.",
+  "ta": "ரிச் கேக்கில் சீனி, இனிப்புப் பழங்கள், வெண்ணெய், முந்திரி நிறைந்திருப்பதால் சிறு சதுரத்திலும் அதிக சக்தி உண்டு. முந்திரி நல்ல கொழுப்பையும் சிறிது இரும்புச்சத்தையும் தருகிறது; ஆனால் நீரிழிவு உள்ளவர்களுக்கு ஒரு வேளையில் இரண்டு துண்டுகளே போதும்."
+ },
+ "tags": [
+  "festive",
+  "high_sugar",
+  "comfort",
+  "filling",
+  "iron_rich"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

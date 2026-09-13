@@ -1,0 +1,515 @@
+{
+ "id": "dish_vegetable_kurma",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 240,
+  "description": {
+   "en": "A generous ladle of pale, cashew-thickened gravy with soft vegetables",
+   "si": "කජු අඹරා තදකරගත් ලා හොදියක් සහ මෘදු එළවළු සහිත සෑහෙන හැන්දක්",
+   "ta": "முந்திரி அரைத்துத் தடித்த வெளிர் குழம்புடன் மென்மையான காய்கறிகள் ஒரு நல்ல கரண்டி"
+  }
+ },
+ "yield_g": 1060,
+ "ingredients": [
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අර්තාපල්",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 medium potatoes",
+   "preparation": {
+    "en": "peeled, cut into 2 cm cubes",
+    "si": "ලෙලි ඉවත් කර සෙන්ටිමීටර දෙකක කැට කපා",
+    "ta": "தோல் நீக்கி 2 செ.மீ. கட்டிகளாக வெட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கரட்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 carrots",
+   "preparation": {
+    "en": "cut into 2 cm pieces",
+    "si": "සෙන්ටිමීටර දෙකක කැබලිවලට කපා",
+    "ta": "2 செ.மீ. துண்டுகளாக வெட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_beans",
+   "label": {
+    "en": "beans",
+    "si": "බෝංචි",
+    "ta": "பீன்ஸ்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "a good handful",
+   "preparation": {
+    "en": "cut into 3 cm lengths",
+    "si": "සෙන්ටිමීටර තුනක කැබලිවලට කපා",
+    "ta": "3 செ.மீ. நீளமாக வெட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට පෙති කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew nuts, for the paste",
+    "si": "පේස්ට් සඳහා කජු",
+    "ta": "விழுதுக்கு முந்திரி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "soaked in hot water and ground smooth",
+    "si": "රස්නෙ වතුරේ පොඟවා සිනිඳුවට අඹරා",
+    "ta": "சூடான நீரில் ஊறவைத்து மெது விழுதாக அரைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup and a little more",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit; this kurma takes no chilli powder",
+    "si": "පලා; මේ කුර්මාවට මිරිස් කුඩු දමන්නේ නැහැ",
+    "ta": "கீறி; இந்தக் குருமாவில் மிளகாய்த் தூள் சேர்ப்பதில்லை"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "lightly crushed",
+    "si": "සැහැල්ලුවට තලා",
+    "ta": "லேசாக இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 3 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, bruised",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබු නැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 0.5,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "ground with the ginger",
+    "si": "ඉඟුරු සමඟ අඹරා",
+    "ta": "இஞ்சியுடன் அரைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a thumb-tip piece",
+   "preparation": {
+    "en": "ground with the garlic",
+    "si": "සුදු ළූණු සමඟ අඹරා",
+    "ta": "பூண்டுடன் அரைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp, coarsely ground",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed at the end",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Soak the cashews in hot water while you cut the vegetables, then grind them to a smooth white paste with a little of the soaking water.",
+    "minutes": 15
+   },
+   {
+    "text": "Heat the coconut oil in a wide pot and fry the sliced onion with the cinnamon, cardamom, cloves and crushed fennel until the onion is soft and glassy but not brown, because a kurma must stay pale.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the ground ginger and garlic, the slit chillies, curry leaves, pandan and turmeric and stir until the raw smell goes.",
+    "minutes": 2
+   },
+   {
+    "text": "Put in the potato and carrot with the thin coconut milk, cover and simmer until they are half tender.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the beans and the salt and cook until every vegetable is done but still whole.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir the cashew paste into the pot and let the gravy thicken, keeping the flame low and stirring so the paste does not catch at the bottom.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the thick coconut milk, grind in the pepper and bring it up to one bubble only.",
+    "minutes": 3
+   },
+   {
+    "text": "Take the pot off the fire, squeeze in the lime if you like, and let it stand before serving with ghee rice or paratha.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "එළවළු කපන අතරතුර කජු රස්නෙ වතුරේ පොඟවා, පසුව එම වතුරෙන් ටිකක් සමඟ සිනිඳු සුදු පේස්ට් එකක් වන තුරු අඹරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පළල් මුට්ටියක පොල් තෙල් රත් කර, කුරුඳු, එනසාල්, කරාබු නැටි සහ තලාගත් මාදුරු සමඟ ළූණු පෙති, දුඹුරු නොවී මෘදු වී පාරදෘශ්‍ය වන තුරු බැදගන්න; කුර්මාව ලා පාටින්ම තිබිය යුතුයි.",
+    "minutes": 6
+   },
+   {
+    "text": "අඹරාගත් ඉඟුරු සහ සුදු ළූණු, පලාගත් මිරිස්, කරපිංචා, රම්පෙ සහ කහ දමා අමු ගතිය යන තුරු කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "අර්තාපල් සහ කැරට් තුනී පොල් කිරි සමඟ දමා, වසා, අඩක් මෘදු වන තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බෝංචි සහ ලුණු දමා, සියලු එළවළු පැහෙන නමුත් හැඩය රැකෙන තුරු තම්බන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "කජු පේස්ට් එක මුට්ටියට කලවම් කර, ගිනි අඩුවෙන් තියා, පතුලට ඇලෙන්නට ඉඩ නොදී කලවම් කරමින් හොදිය තදවෙන්න දෙන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ඝන පොල් කිරි වත් කර, ගම්මිරිස් අඹරා දමා, එක් උතුරක් පමණක් එන්න දෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන, කැමති නම් දෙහි යුෂ මිරිකා, ගිතෙල් බත් හෝ පරාටා සමඟ බෙදන්නට පෙර ටික වෙලාවක් තියන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "காய்கறிகளை நறுக்கும் நேரத்தில் முந்திரியைச் சூடான நீரில் ஊறவைத்து, பின்னர் அந்த நீரில் கொஞ்சம் சேர்த்து மெது வெள்ளை விழுதாக அரைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, பட்டை, ஏலக்காய், கிராம்பு, இடித்த பெருஞ்சீரகத்துடன் வெங்காயத்தை, பழுப்பாகாமல் மென்மையாகும் வரை வதக்கவும்; குருமா வெளிர் நிறமாகவே இருக்க வேண்டும்.",
+    "minutes": 6
+   },
+   {
+    "text": "அரைத்த இஞ்சி பூண்டு, கீறிய மிளகாய், கறிவேப்பிலை, ரம்பை, மஞ்சள் சேர்த்து பச்சை வாசனை போகும் வரை கிளறவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "உருளைக்கிழங்கும் கரட்டும் இரண்டாம் தேங்காய்ப்பாலுடன் சேர்த்து மூடி, பாதி வேகும் வரை கொதிக்க விடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பீன்ஸும் உப்பும் சேர்த்து, எல்லா காய்கறிகளும் வெந்து ஆனால் உடையாமல் இருக்கும் வரை வேகவிடவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "முந்திரி விழுதைச் சட்டியில் கலந்து, தீயைக் குறைத்து, அடியில் பிடிக்காமல் கிளறி குழம்பு தடிக்கும் வரை வைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலை ஊற்றி, மிளகைப் பொடித்துச் சேர்த்து, ஒரே ஒரு கொதி வர விடவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி, விரும்பினால் தேசிக்காய்ச் சாறு பிழிந்து, நெய் சாதம் அல்லது பரோட்டாவுடன் பரிமாறும் முன் சற்று வைக்கவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "wide pot with a lid",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "The mark of a good kurma is that it stays pale, so keep the onion off a high flame and never let the whole spices darken. If cashew is too dear that week, a handful of soaked white rice ground with a little coconut thickens the gravy almost as well.",
+  "si": "හොඳ කුර්මාවක ලක්ෂණය එහි ලා පාට නිසා, ළූණු තද ගින්නට තියන්න එපා, මුළු කුළුබඩු කළු වෙන්නත් දෙන්න එපා. එම සතියේ කජු මිල වැඩි නම්, පොඟවාගත් සුදු සහල් අතලොස්සක් පොල් ටිකක් සමඟ අඹරා දැමීමෙනුත් හොදිය හොඳට තදවෙනවා.",
+  "ta": "நல்ல குருமாவின் அடையாளம் அது வெளிர் நிறமாக இருப்பதே; எனவே வெங்காயத்தைப் பெரிய தீயில் வைக்க வேண்டாம், முழு மசாலாக்களையும் கருக்க வேண்டாம். அந்த வாரம் முந்திரி விலை அதிகமாக இருந்தால், ஊறவைத்த பச்சை அரிசி ஒரு கைப்பிடியை கொஞ்சம் தேங்காயுடன் அரைத்துச் சேர்த்தாலும் குழம்பு நன்றாகத் தடிக்கும்."
+ },
+ "health_note": {
+  "en": "With no chilli powder at all this is a gentle curry that children and older people manage easily, and the vegetables bring good fibre. The cashew and the two squeezes of coconut milk make it the richest of the meatless curries, so one ladle is enough beside rice.",
+  "si": "මිරිස් කුඩු කිසිසේත් නොදමන නිසා ළමයින්ට සහ වැඩිහිටියන්ට පහසු මෘදු හොදියක්, එළවළුවලින් හොඳ තන්තු ප්‍රමාණයකුත් ලැබෙනවා. කජු සහ පොල් කිරි මිරිකීම් දෙක නිසා මස් නැති හොදිවලින් තෙල් ගතිය වැඩිම එක මේක, ඒ නිසා බත් සමඟ හැන්දක් ඇති.",
+  "ta": "மிளகாய்த் தூள் இல்லாததால் குழந்தைகளும் முதியவர்களும் எளிதாகச் சாப்பிடக்கூடிய மிருதுவான கறி; காய்கறிகளிலிருந்து நல்ல நார்ச்சத்தும் கிடைக்கும். முந்திரியும் இரு தேங்காய்ப்பாலும் சேர்வதால் இறைச்சி இல்லாத கறிகளில் இதுவே கொழுப்பு அதிகம், எனவே சாதத்துடன் ஒரு கரண்டி போதும்."
+ },
+ "tags": [
+  "filling",
+  "festive",
+  "kid_friendly",
+  "comfort",
+  "high_fibre"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

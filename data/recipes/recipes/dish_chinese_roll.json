@@ -1,0 +1,435 @@
+{
+ "id": "dish_chinese_roll",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 180,
+  "description": {
+   "en": "Two crumbed rolls, hot from the pan",
+   "si": "පෑනෙන් උණුසුම්ව ගත් පාන් කුඩු ගෑ රෝල් දෙකක්",
+   "ta": "வாணலியிலிருந்து சூடாக எடுத்த இரண்டு ரொட்டித்தூள் ரோல்கள்"
+  }
+ },
+ "yield_g": 760,
+ "ingredients": [
+  {
+   "ref": "product_cabbage",
+   "label": {
+    "en": "cabbage",
+    "si": "ගෝවා",
+    "ta": "முட்டைக்கோஸ்"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "a quarter of a head",
+   "preparation": {
+    "en": "shredded very fine",
+    "si": "ඉතා සිහින්ව කපාගත්",
+    "ta": "மிக மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கரட்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large carrot",
+   "preparation": {
+    "en": "coarsely grated",
+    "si": "රළු ලෙස ගාගත්",
+    "ta": "பெரிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 stalk",
+   "preparation": {
+    "en": "sliced thin and washed well",
+    "si": "සිහින්ව කපා හොඳින් සෝදාගත්",
+    "ta": "மெல்லியதாக நறுக்கி நன்கு அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit and chopped",
+    "si": "ඉරා කපාගත්",
+    "ta": "கீறி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "coarsely ground",
+    "si": "රළුවට කුඩු කරගත්",
+    "ta": "பெரிதாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for the filling",
+    "si": "මාලුවට පොල් තෙල්",
+    "ta": "உள்ளடக்கத்திற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1½ tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 160,
+   "unit": "g",
+   "household": "1¼ cups",
+   "preparation": {
+    "en": "for the thin pancakes",
+    "si": "සිහින් පෑන්කේක් සඳහා",
+    "ta": "மெல்லிய தோசைக்காக"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg for the batter",
+    "si": "පිටි මිශ්‍රණයට බිත්තර",
+    "ta": "மாவுக் கலவைக்கு முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": {
+    "en": "beaten into the pancake batter",
+    "si": "පෑන්කේක් පිටි මිශ්‍රණයට ගසාගත්",
+    "ta": "தோசை மாவில் அடித்துக் கலந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg for coating",
+    "si": "පිටත ගැල්වීමට බිත්තර",
+    "ta": "மேற்பூச்சுக்கு முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": {
+    "en": "beaten with a spoon of water",
+    "si": "වතුර මේස හැන්දක් සමඟ ගසාගත්",
+    "ta": "ஒரு ஸ்பூன் தண்ணீருடன் அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_breadcrumbs",
+   "label": {
+    "en": "breadcrumbs",
+    "si": "පාන් කුඩු",
+    "ta": "ரொட்டித் தூள்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1½ cups",
+   "preparation": {
+    "en": "dry, sieved",
+    "si": "වියළි, පෙරාගත්",
+    "ta": "உலர்ந்தது, சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup, and most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Heat the coconut oil in a pan and fry the big onion, green chilli and leeks until they lose their rawness.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the carrot and cabbage, raise the fire and toss fast so the vegetables wilt but keep a little bite.",
+    "minutes": 6
+   },
+   {
+    "text": "Season with soy sauce, pepper and salt and cook until the pan is dry, then spread the filling on a plate to cool.",
+    "minutes": 15
+   },
+   {
+    "text": "Whisk the flour with one egg, a pinch of salt and about 350 ml water into a batter no thicker than milk.",
+    "minutes": null
+   },
+   {
+    "text": "Wipe a flat pan with oil, pour in a small ladle of batter and swirl it into a thin pancake; lift it off as soon as the surface sets, without browning it.",
+    "minutes": 15
+   },
+   {
+    "text": "Put two spoons of filling along one edge of each pancake, fold the sides in and roll up tightly, sealing the end with a dab of batter.",
+    "minutes": null
+   },
+   {
+    "text": "Dip each roll in the beaten egg and press it all over in breadcrumbs, then rest them so the coating sets.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the frying oil in a deep pan until a crumb dropped in rises and sizzles at once.",
+    "minutes": 5
+   },
+   {
+    "text": "Fry three or four rolls at a time, turning them, until evenly golden.",
+    "minutes": 10
+   },
+   {
+    "text": "Drain on a wire rack, not on a plate, and serve hot with chilli sauce.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පෑනකට පොල් තෙල් දමා රත් කර, බී ලූනු, අමු මිරිස් සහ ලීක්ස් අමු ගතිය යන තෙක් බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කැරට් සහ ගෝවා දමා, ලිප තරමක් වැඩි කර, එළවළු තරමක් හපන ගතිය තිබෙන සේ ඉක්මනින් හොළවන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "සෝයා සෝස්, ගම්මිරිස් සහ ලුණු දමා, පෑන වියළෙන තෙක් උයා, මාලුව පිඟානක තුනී කර සිසිල් වන්න තබන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "තිරිඟු පිටි, බිත්තරයක්, ලුණු ස්වල්පයක් සහ වතුර මිලි ලීටර් 350ක් පමණ එකට ගසා, කිරි තරම් තුනී පිටි මිශ්‍රණයක් සාදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පැතලි පෑනක් තෙල් රෙද්දකින් පිස, පිටි මිශ්‍රණයෙන් කුඩා හැන්දක් වත් කර කරකවා තුනී පෑන්කේක් එකක් සාදා, මතුපිට තදවූ විගස දුඹුරු නොවන ලෙසම ගලවා ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "එක් එක් පෑන්කේක් එකේ එක් කෙළවරක මාලුවෙන් හැඳි දෙකක් තබා, පැති ඇතුළට හකුළා, තදින් රෝල් කර, කෙළවර පිටි මිශ්‍රණයෙන් අලවා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෑම රෝල් එකක්ම ගසාගත් බිත්තරයේ තවරා, පාන් කුඩුවල හොඳින් තද කර ගල්වා, ආලේපනය තද වන්න ටික වෙලාවක් තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගැඹුරු පෑනක තෙල් රත් කර, පාන් කුඩු ස්වල්පයක් දැමූ විට වහාම නැඟී සද්දයක් ඇති වන තෙක් බලා සිටින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වරකට රෝල් තුනක් හතරක් දමා, පෙරළමින් සමව රන්වන් වන තෙක් බැදගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිඟානක නොව කම්බි රාක්කයක තෙල් බේරෙන්න තබා, උණුසුම්ව මිරිස් සෝස් සමඟ දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து, பெரிய வெங்காயம், பச்சை மிளகாய், லீக்ஸ் ஆகியவற்றைப் பச்சை வாசனை போகும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "கரட்டையும் முட்டைக்கோசையும் சேர்த்து, தீயை உயர்த்தி, காய்கள் சற்று கடிக்கும் தன்மையுடன் இருக்கும்படி வேகமாகக் கிளறவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "சோயா சோஸ், மிளகு, உப்பு சேர்த்து வாணலி வறண்டு போகும் வரை வதக்கி, கலவையைத் தட்டில் பரத்தி ஆறவிடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "மாவுடன் ஒரு முட்டை, சிறிது உப்பு, சுமார் 350 மில்லி தண்ணீர் சேர்த்து, பாலைப் போல மெல்லிய கலவையாக அடிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தட்டையான வாணலியை எண்ணெய்த் துணியால் துடைத்து, ஒரு சிறிய கரண்டி மாவை ஊற்றிச் சுழற்றி மெல்லிய தோசையாக்கி, மேற்பரப்பு இறுகியதும் நிறம் மாறாமலே எடுக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "ஒவ்வொரு தோசையின் ஒரு விளிம்பில் இரண்டு ஸ்பூன் கலவையை வைத்து, பக்கங்களை மடித்து, இறுக்கமாகச் சுருட்டி, முனையை மாவுக் கலவையால் ஒட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு ரோலையும் அடித்த முட்டையில் தோய்த்து, ரொட்டித் தூளில் நன்கு அழுத்திப் புரட்டி, பூச்சு இறுகும் வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஆழமான வாணலியில் எண்ணெயைக் காயவைத்து, ஒரு சிறிது ரொட்டித் தூள் போட்டால் உடனே மேலெழுந்து சத்தமிடும் நிலைக்கு வரவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு முறைக்கு மூன்று நான்கு ரோல்களாகப் போட்டு, திருப்பித் திருப்பி சமமாகப் பொன்னிறமாகும் வரை பொரிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "தட்டில் அல்ல, கம்பி வலையில் வைத்து எண்ணெய் வடியவிட்டு, சூடாக மிளகாய்ச் சோஸுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 20,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "flat pan for pancakes",
+  "deep pan or wok",
+  "slotted spoon",
+  "wire rack"
+ ],
+ "tips": {
+  "en": "The filling must be dry and cold before it goes in, or the pancake tears and the roll bursts in the oil. Crumb all the rolls first and fry them at the end, so the coating has time to grip.",
+  "si": "මාලුව හොඳින් වියළි සහ සිසිල් විය යුතුය; නැතිනම් පෑන්කේක් ඉරී රෝල් එක තෙලේ පිපිරෙයි. සියලු රෝල් පළමුව පාන් කුඩුවල ගල්වා, අවසානයේ බැදගන්න; එවිට ආලේපනය හොඳින් අල්ලා ගනී.",
+  "ta": "உள்ளடக்கம் நன்கு வறண்டு, குளிர்ந்திருக்க வேண்டும்; இல்லையேல் தோசை கிழிந்து ரோல் எண்ணெயில் வெடிக்கும். எல்லா ரோல்களையும் முதலில் ரொட்டித் தூளில் புரட்டி, கடைசியாகப் பொரிக்கவும்; அப்போது பூச்சு நன்கு பிடிக்கும்."
+ },
+ "health_note": {
+  "en": "There is a good plateful of cabbage, carrot and leeks inside, but the crumb coating drinks oil and the soy sauce brings salt, so drain the rolls well and stop at two. Plain tea suits them better than a fizzy drink.",
+  "si": "ඇතුළත ගෝවා, කැරට් සහ ලීක්ස් හොඳ ප්‍රමාණයක් ඇත; නමුත් පාන් කුඩු ආලේපනය තෙල් උරාගන්නා අතර සෝයා සෝස් ලුණු එකතු කරයි, එබැවින් තෙල් හොඳින් බේරා, දෙකකින් නවතන්න. ගෑස් සහිත බීම වෙනුවට සරල තේ වඩා හොඳයි.",
+  "ta": "உள்ளே முட்டைக்கோஸ், கரட், லீக்ஸ் நல்ல அளவில் இருக்கிறது; ஆனால் ரொட்டித்தூள் பூச்சு எண்ணெயை உறிஞ்சும், சோயா சோஸ் உப்பைச் சேர்க்கும், எனவே எண்ணெயை நன்கு வடித்து, இரண்டுடன் நிறுத்தவும். குளிர்பானத்தை விடச் சாதாரண தேநீர் இதற்குப் பொருத்தம்."
+ },
+ "tags": [
+  "deep_fried",
+  "street_food",
+  "filling",
+  "kid_friendly",
+  "comfort",
+  "high_sodium"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

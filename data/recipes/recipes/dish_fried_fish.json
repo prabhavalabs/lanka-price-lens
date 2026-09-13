@@ -1,0 +1,299 @@
+{
+ "id": "dish_fried_fish",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 130,
+  "description": {
+   "en": "One crisp-edged steak of fish per person",
+   "si": "කෙනෙකුට දාර කුරුකුරු බැදපු මාළු පෙත්තක්",
+   "ta": "ஒருவருக்கு ஒரு மொறுமொறுப்பான வறுத்த மீன் துண்டு"
+  }
+ },
+ "yield_g": 520,
+ "ingredients": [
+  {
+   "ref": "product_balaya",
+   "label": {
+    "en": "balaya, skipjack tuna",
+    "si": "බලයා මාළු",
+    "ta": "பலயா, சூரை மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 steaks, about 2 fingers thick",
+   "preparation": {
+    "en": "cut into steaks, washed and patted dry",
+    "si": "පෙති කපා, හෝදා තෙතමනය පිස දමා ගත්ත",
+    "ta": "துண்டுகளாக வெட்டி, கழுவி ஈரம் துடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp, crushed",
+   "preparation": {
+    "en": "crushed",
+    "si": "කුඩු කර ගත්ත",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice for the rub, plus wedges to serve",
+    "si": "අතුල්ලන්න යුෂ, බෙදන්න කැබලි කීපයක්",
+    "ta": "தேய்க்க சாறு, பரிமாற சில துண்டுகள்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மா"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "4 tbsp, enough to come halfway up the fish",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig, fried at the end",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the steaks, press them between your palms to get the water out, and wipe them with a cloth.",
+    "minutes": 5
+   },
+   {
+    "text": "Rub the fish with turmeric, chilli powder, pepper, salt and the lime juice, working it into the cuts.",
+    "minutes": 5
+   },
+   {
+    "text": "Leave the fish to sit so the rub goes in and the surface dries a little.",
+    "minutes": 20
+   },
+   {
+    "text": "Dust the steaks very lightly with rice flour if you want a crisper skin; shake off what does not stick.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a heavy pan until a drop of the rub sizzles at once.",
+    "minutes": 3
+   },
+   {
+    "text": "Lay the steaks in and fry them on one side without moving them, so a crust forms.",
+    "minutes": 5
+   },
+   {
+    "text": "Turn them once, fry the other side, and throw in the curry leaves for the last half minute.",
+    "minutes": 5
+   },
+   {
+    "text": "Lift the fish onto a plate lined with paper or a clean cloth and serve with lime wedges.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු පෙති හෝදලා, අත් දෙකේ අතරේ තියලා වතුර මිරිකා, රෙද්දකින් පිස ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කහ කුඩු, මිරිස් කුඩු, ගම්මිරිස්, ලුණු සහ දෙහි යුෂ මාළුවට හොඳට අතුල්ලන්න, කැපුම් ඇතුළටත් යන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "රසකාරක ඇතුළට යන්නත්, මතුපිට ටිකක් වියළෙන්නත් මාළු ටික වෙලාවක් තියන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පිටත ටිකක් කුරුකුරු ඕන නම් සහල් පිටි සිහින්ව ඉහලා, නොඇලෙන පිටි ගසා දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බර පෑන් එකක පොල් තෙල් රත් කරන්න; රසකාරක බිංදුවක් දැම්මම එකපාරම හුවනවා නම් ඇති.",
+    "minutes": 3
+   },
+   {
+    "text": "මාළු පෙති අතුරලා, නොසොලවා එක පැත්තක් බැදගන්න; එතකොට කබොලක් හැදෙනවා.",
+    "minutes": 5
+   },
+   {
+    "text": "එක වරක් පෙරළලා අනෙක් පැත්තත් බැදගන්න, අන්තිම තත්පර තිහට කරපිංචා දමන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කඩදාසි හෝ පිරිසිදු රෙදි කෑල්ලක් අතුරපු පිඟානකට මාළු අරගෙන, දෙහි කැබලි සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் துண்டுகளை அலசி, கைகளுக்குள் அழுத்தி நீரை வெளியேற்றி, துணியால் துடையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மஞ்சள், மிளகாய்த் தூள், மிளகு, உப்பு, தேசிக்காய் சாறு சேர்த்து மீனில் நன்கு தேயுங்கள்; வெட்டுக்களுக்குள்ளும் செல்லட்டும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மசாலா உள்ளே இறங்கவும், மேற்பரப்பு சற்று உலரவும் மீனை சிறிது நேரம் வைத்திருங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "வெளிப்புறம் மொறுமொறுப்பாக வேண்டுமானால் அரிசி மாவை மெல்லியதாகத் தூவி, ஒட்டாத மாவை உதிர்த்து விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கனமான வாணலியில் தேங்காய் எண்ணெயைக் காயவிடுங்கள்; மசாலா ஒரு துளி போட்டதும் சட்டென்று சத்தமிட்டால் பதம்.",
+    "minutes": 3
+   },
+   {
+    "text": "மீன் துண்டுகளை வைத்து, அசைக்காமல் ஒரு பக்கம் வறுக்கவும்; அப்போது மேலே ஒரு ஓடு உருவாகும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு முறை திருப்பி மறுபக்கமும் வறுத்து, கடைசி அரை நிமிடத்தில் கறிவேப்பிலையைப் போடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "காகிதமோ சுத்தமான துணியோ விரித்த தட்டில் மீனை எடுத்து, தேசிக்காய் துண்டுகளுடன் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 15,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "heavy frying pan",
+  "plate with paper or cloth"
+ ],
+ "tips": {
+  "en": "Dry fish and hot oil are the whole trick; a wet steak steams instead of browning and tears when you turn it. Paraw and other firm fish fry just as well, and a spoon of lunu miris on top turns this into a meal on its own.",
+  "si": "වියළි මාළුවයි රත් තෙලයි තමයි මුළු රහස; තෙත් පෙත්තක් බැදෙන්නේ නැතිව තැම්බෙනවා, පෙරළද්දී කැඩෙනවා. පරව් වගේ තර මාළුත් හොඳට බැදෙනවා, ලුණු මිරිස් හැන්දක් මතට දැම්මම මේකම කෑමක් වෙනවා.",
+  "ta": "உலர்ந்த மீனும் காய்ந்த எண்ணெயும்தான் முழு ரகசியம்; ஈரமான துண்டு வறுபடாமல் வெந்து, திருப்பும்போது கிழியும். பாறை போன்ற இறுகிய மீன்களும் நன்றாக வறுபடும்; மேலே ஒரு கரண்டி லுணு மிரிஸ் வைத்தால் இதுவே ஒரு சாப்பாடு."
+ },
+ "health_note": {
+  "en": "Frying adds the oil the fish itself does not have, so drain the steaks well and keep it to one piece each. The fish still gives good protein and the omega fats that tuna is known for.",
+  "si": "මාළුවේ නැති තෙල් බැදීමෙන් එකතු වෙනවා, ඒ නිසා තෙල් හොඳට බේරලා කෙනෙකුට පෙත්තක් කියලා තියාගන්න. ඒත් මාළුවෙන් හොඳ ප්‍රෝටීන් සහ බලයාට ආවේණික ඔමේගා මේද අම්ල ලැබෙනවා.",
+  "ta": "மீனில் இல்லாத எண்ணெய் வறுக்கும்போது சேர்கிறது, எனவே எண்ணெயை நன்கு வடித்து ஒருவருக்கு ஒரு துண்டு என்று வைத்துக்கொள்ளுங்கள். இருந்தும் மீனில் நல்ல புரதமும் சூரை மீனுக்குப் பேர்போன ஒமேகா கொழுப்பும் கிடைக்கும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "kid_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

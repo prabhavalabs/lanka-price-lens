@@ -1,0 +1,300 @@
+{
+ "id": "dish_carrot_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 165,
+  "description": {
+   "en": "A bright orange spoonful of carrot in mild coconut gravy with rice",
+   "si": "බතට එක්ක මෘදු පොල් කිරි හොදියේ තැම්බූ තද තැඹිලි පාට කැරට් හැන්දක්",
+   "ta": "சாதத்துடன் மிதமான தேங்காய்ப்பால் குழம்பில் ஒரு கரண்டி கேரட் கறி"
+  }
+ },
+ "yield_g": 660,
+ "ingredients": [
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கேரட்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "4 medium carrots",
+   "preparation": {
+    "en": "scraped and sliced into rounds or short sticks",
+    "si": "සුරා ගෙන වට හෝ කෙටි කූරු ආකාරයට කපාගත්",
+    "ta": "தோல் சீவி வட்டமாக அல்லது சிறு குச்சிகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "5 or 6 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the carrots with the back of a knife rather than peeling them, and slice them into rounds the thickness of a coin.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the carrot in a pan with the onion, green chillies, curry leaves, pandan, turmeric, curry powder and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk, cover the pan and cook on a medium flame.",
+    "minutes": 8
+   },
+   {
+    "text": "Check a round with a fork; it should be cooked through but not falling apart.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the thick coconut milk, stir once, and let it come up to a gentle bubble.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt and take it off the fire. The gravy should just coat the carrot, not drown it.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කැරට් ලෙලි ගසනවාට වඩා පිහියේ පිටතින් සුරා, කාසියක ගණකමට වට කපා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කපාගත් කැරට් පෑන් එකකට දමා, ලූනු, අමු මිරිස්, කරපිංචා, රම්පෙ, කහ, තුනපහ සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, වහන් දමා මධ්‍යම ගින්නේ තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගෑරුප්පුවකින් වට කැල්ලක් බලන්න; හොඳින් තැම්බී තිබිය යුතු නමුත් පොඩි වී යා යුතු නැත.",
+    "minutes": 1
+   },
+   {
+    "text": "මුල් කිරි වත් කර වරක් කලවම් කර, සෙමින් උතුරන්න දෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රස බලා ගින්නෙන් ඉවත් කරන්න. හොදි කැරට් වල ඇතිල්ලෙන තරම් විය යුතුයි, ඒවා යටවෙන තරම් නොවේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கேரட்டைத் தோல் சீவுவதற்குப் பதிலாக கத்தியின் முனையால் சுரண்டி, நாணய தடிமனுக்கு வட்டமாக நறுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "நறுக்கிய கேரட்டை சட்டியில் போட்டு, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை, மஞ்சள், கறி மசாலா, உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பால் விட்டு, மூடி நடுத்தர தீயில் வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "முள்கரண்டியால் ஒரு துண்டைப் பாருங்கள்; நன்கு வேக வேண்டும், ஆனால் கூழாகக் கூடாது.",
+    "minutes": 1
+   },
+   {
+    "text": "முதல் பாலை விட்டு ஒரு முறை கிளறி, மெதுவாகக் கொதிக்க விடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பு பார்த்து இறக்குங்கள். குழம்பு கேரட்டை மூடும் அளவுக்கு இல்லாமல், ஒட்டும் அளவுக்கு இருக்க வேண்டும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan with a lid",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Carrot is already sweet, so keep the chilli honest or the curry tastes like pudding. Up-country carrots cook faster than the big imported ones, so look at them after five minutes.",
+  "si": "කැරට් තනිවම මිහිරි නිසා මිරිස් ප්‍රමාණය අඩු නොකරන්න; නැතිනම් කරිය ඇල්ලෙන රසයක් ගනී. නුවර එළිය කැරට් විදේශ ලොකු කැරට් වලට වඩා ඉක්මනින් තැම්බෙන නිසා විනාඩි පහකින් බලන්න.",
+  "ta": "கேரட் தானாகவே இனிப்பு, எனவே மிளகாயைக் குறைக்காதீர்கள்; இல்லையேல் கறி இனிப்புப் பாயசம் போல் ஆகும். மலைநாட்டு கேரட் வெளிநாட்டு பெரிய கேரட்டை விட வேகமாக வேகும், அதனால் ஐந்து நிமிடத்திலேயே பாருங்கள்."
+ },
+ "health_note": {
+  "en": "Carrot carries plenty of vitamin A, and the little coconut fat in the gravy is what lets the body use it, so the two belong together. It is gently sweet and easy on old people and small children who find chilli hard.",
+  "si": "කැරට් වල විටමින් ඒ බහුල අතර, හොදියේ ඇති කුඩා පොල් මේද ප්‍රමාණය තමයි එය ශරීරයට ගැනීමට උදව් කරන්නේ; ඒ දෙක එකට යා යුතුයි. මෙය මෘදු මිහිරි නිසා මිරිස් අපහසු වැඩිහිටියන්ට හා කුඩා දරුවන්ට හොඳින් ගැළපේ.",
+  "ta": "கேரட்டில் வைட்டமின் ஏ நிறைய உள்ளது, குழம்பில் உள்ள சிறிதளவு தேங்காய்க் கொழுப்புதான் அதை உடல் பயன்படுத்த உதவுகிறது, எனவே இரண்டும் சேர்ந்தே இருக்க வேண்டும். மிதமான இனிப்பு என்பதால் மிளகாய் ஒத்துக்கொள்ளாத முதியவர்களுக்கும் சிறு குழந்தைகளுக்கும் ஏற்றது."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "quick",
+  "kid_friendly",
+  "elderly_friendly",
+  "light",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

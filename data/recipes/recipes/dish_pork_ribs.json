@@ -1,0 +1,432 @@
+{
+ "id": "dish_pork_ribs",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 190,
+  "description": {
+   "en": "Three or four ribs each in thick clinging gravy",
+   "si": "එක් අයෙකුට ඉරටු තුන හතරක්, තද ඇලෙන හොද්දක් සමඟ",
+   "ta": "ஒருவருக்கு மூன்று நான்கு விலா எலும்புகள், கெட்டியாக ஒட்டும் குழம்புடன்"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_pork",
+   "label": {
+    "en": "pork ribs",
+    "si": "ඌරු මස් ඉරටු",
+    "ta": "பன்றி விலா எலும்பு"
+   },
+   "quantity": 900,
+   "unit": "g",
+   "household": "1 rack, cut into single ribs",
+   "preparation": {
+    "en": "cut between the bones, washed and drained",
+    "si": "ඇට අතරින් කපා සෝදා වතුර බේරාගත්",
+    "ta": "எலும்புகளுக்கு இடையே வெட்டி, கழுவி நீர் வடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 small pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "8 chillies, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, crushed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp, roasted and ground",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut between the bones into single ribs, wash them and drain them well in a colander.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the ribs straight into a heavy pot with the turmeric, ground chilli, roasted curry powder, ground coriander, fennel, pepper, crushed garlic and ginger, sliced onion and salt and mix it all with your hand.",
+    "minutes": 8
+   },
+   {
+    "text": "Tuck in the gorakka, cinnamon, curry leaves and pandan leaf, add half a cup of water and cover the pot.",
+    "minutes": null
+   },
+   {
+    "text": "Cook on a medium flame; the ribs will let out their own fat and juice, so stir every ten minutes so the bottom does not catch.",
+    "minutes": 35
+   },
+   {
+    "text": "When the meat starts loosening from the bone, add the soy sauce if you are using it and taste for salt and sourness.",
+    "minutes": 5
+   },
+   {
+    "text": "Uncover the pot and cook on a higher flame so the gravy reduces and starts to coat the ribs.",
+    "minutes": 15
+   },
+   {
+    "text": "Spoon in the coconut oil, turn the ribs in the thickening gravy and let them fry in their own fat until the edges catch and darken.",
+    "minutes": 10
+   },
+   {
+    "text": "Take the pot off the fire and let it sit for a few minutes; the gravy tightens further as it cools and clings to each rib.",
+    "minutes": 8
+   }
+  ],
+  "si": [
+   {
+    "text": "ඇට අතරින් කපා තනි ඉරටු කර, සෝදා, පෙරහනක වතුර හොඳින් බේරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඉරටු කෙළින්ම බර භාජනයකට දමා, කහ, අඹරාගත් මිරිස්, බැදපු තුනපහ, අඹරාගත් කොත්තමල්ලි, මාදුරු, ගම්මිරිස්, තලාගත් සුදුළූණු හා ඉඟුරු, කපාගත් ළූණු සහ ලුණු දමා අතින් හොඳින් මිශ්‍ර කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගොරකා, කුරුඳු, කරපිංචා සහ රම්පෙ දමා, කෝප්ප භාගයක් වතුර එකතු කර භාජනය වසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මධ්‍යම ගින්නේ උයන්න; ඉරටුවලින් ම තෙල් හා යුෂ නිකුත් වන බැවින්, පතුල අල්ලා නොගන්නා ලෙස මිනිත්තු දහයකට වරක් කලවම් කරන්න.",
+    "minutes": 35
+   },
+   {
+    "text": "මස ඇටෙන් ගැලවෙන්නට පටන් ගත් විට, භාවිත කරන්නේ නම් සෝයා සෝස් දමා, ලුණු හා ඇඹුල රස බලන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වැසුම ඉවත් කර, හොද්ද සිඳී ඉරටුවල ඇලෙන්නට පටන් ගන්නා ලෙස ගින්න වැඩි කර උයන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පොල් තෙල් හැන්දෙන් දමා, තද වන හොද්ද තුළ ඉරටු පෙරළමින්, දාර පිළිස්සී අඳුරු වන තුරු ඒවායේම තෙලේ බැදෙන්නට දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "භාජනය ගින්නෙන් ඉවත් කර මිනිත්තු කිහිපයක් තබන්න; නිවෙන විට හොද්ද තවත් තද වී සෑම ඉරටුවකට ම ඇලේ.",
+    "minutes": 8
+   }
+  ],
+  "ta": [
+   {
+    "text": "எலும்புகளுக்கு இடையே வெட்டித் தனித் தனி விலாவாக்கி, கழுவி, வடிகட்டியில் நீரை நன்கு வடியுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "விலா எலும்புகளை நேரடியாகக் கனமான பாத்திரத்தில் இட்டு, மஞ்சள், அரைத்த மிளகாய், வறுத்த கறித் தூள், அரைத்த மல்லி, பெருஞ்சீரகம், மிளகு, இடித்த பூண்டு இஞ்சி, நறுக்கிய வெங்காயம், உப்பு சேர்த்துக் கையால் நன்கு கலக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "கோரக்கா, பட்டை, கறிவேப்பிலை, ரம்பை சேர்த்து, அரை கப் நீர் விட்டுப் பாத்திரத்தை மூடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நடுத்தர தீயில் சமையுங்கள்; விலா எலும்புகளே கொழுப்பையும் சாற்றையும் விடும், எனவே அடி பிடிக்காமல் இருக்கப் பத்து நிமிடத்திற்கு ஒரு முறை கிளறுங்கள்.",
+    "minutes": 35
+   },
+   {
+    "text": "இறைச்சி எலும்பிலிருந்து விலகத் தொடங்கியதும், சேர்ப்பதாக இருந்தால் சோயா சோஸ் சேர்த்து, உப்பையும் புளிப்பையும் பார்த்துக் கொள்ளுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மூடியை நீக்கி, குழம்பு வற்றி விலா எலும்புகளில் ஒட்டத் தொடங்கும்படி தீயைக் கூட்டிச் சமையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "தேங்காய் எண்ணெயை ஊற்றி, கெட்டியாகும் குழம்பில் விலா எலும்புகளைப் புரட்டி, ஓரங்கள் கருகி நிறம் மாறும் வரை அவற்றின் சொந்தக் கொழுப்பிலேயே வறுக்க விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "பாத்திரத்தை இறக்கி சில நிமிடம் வையுங்கள்; ஆறும்போது குழம்பு மேலும் இறுகி ஒவ்வொரு விலாவிலும் ஒட்டிக் கொள்ளும்.",
+    "minutes": 8
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 70,
+  "passive_minutes": 8
+ },
+ "equipment": [
+  "heavy pot with a lid",
+  "colander",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Start with almost no water, because the ribs release plenty of their own; adding a cup at the start gives you a watery gravy you then have to boil away. If you have an oven, finish the drained ribs under a hot grill for five minutes and the edges turn sticky and black.",
+  "si": "වතුර පාහේ නොදමා පටන් ගන්න; ඉරටුවලින් ම දියර හොඳට එයි, මුලින් කෝප්පයක් දැමුවොත් පසුව සිඳවන්නට සිදු වන තුනී හොද්දක් ලැබේ. උඳුනක් ඇත්නම් හොද්දෙන් ගත් ඉරටු මිනිත්තු පහක් රත් වූ ග්‍රිල් එකේ තබන්න; දාර ඇලෙන සුලුව කළු වේ.",
+  "ta": "கிட்டத்தட்ட நீரே இல்லாமல் தொடங்குங்கள்; விலா எலும்புகளே நிறைய சாறு விடும், ஆரம்பத்திலேயே ஒரு கப் சேர்த்தால் பின்னர் வற்ற வைக்க வேண்டிய நீர்க்க குழம்பே கிடைக்கும். அடுப்பு இருந்தால், குழம்பிலிருந்து எடுத்த விலா எலும்புகளை ஐந்து நிமிடம் சூடான கிரில்லில் வையுங்கள்; ஓரங்கள் ஒட்டும் தன்மையுடன் கறுக்கும்."
+ },
+ "health_note": {
+  "en": "Ribs are the fattiest cut on the pig, so much of the weight here is bone and fat rather than meat; let the pot stand and spoon off the clear fat before serving. Balance the plate with rice, a green mallung and a sour sambol rather than a second meat curry.",
+  "si": "ඌරාගේ තෙල් වැඩිම කොටස ඉරටු බැවින්, මෙහි බර බොහෝමයක් මසට වඩා ඇට හා තෙල්ය; භාජනය ටිකක් තබා, පිළිගැන්වීමට පෙර පැහැදිලි තෙල ඉවත් කරන්න. දෙවන මස් කරියක් වෙනුවට බත්, කොළ මැල්ලුමක් සහ ඇඹුල් සම්බෝලයක් සමඟ පිඟාන සමතුලිත කරන්න.",
+  "ta": "பன்றியின் மிக அதிக கொழுப்புள்ள பகுதி விலா எலும்புதான்; இங்குள்ள எடையில் பெரும்பகுதி இறைச்சியை விட எலும்பும் கொழுப்புமே. பாத்திரத்தைச் சிறிது நேரம் வைத்து, பரிமாறும் முன் தெளிந்த கொழுப்பை எடுத்து விடுங்கள். இரண்டாவது இறைச்சிக் கறிக்குப் பதிலாக சாதம், ஒரு பச்சிலை மல்லுங், புளிப்புச் சம்பல் சேர்த்துத் தட்டைச் சமன்படுத்துங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "festive",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

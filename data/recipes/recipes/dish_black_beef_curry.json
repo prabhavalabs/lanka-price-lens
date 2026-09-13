@@ -1,0 +1,502 @@
+{
+ "id": "dish_black_beef_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 190,
+  "description": {
+   "en": "A spoon of near-black beef and thick gravy with rice",
+   "si": "බත් සමග කළු පැහැති හරක් මස් සහ ගන හොදි හැන්දක්",
+   "ta": "சாதத்துடன் கருமையான இறைச்சியும் கெட்டியான கிரேவியும் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 880,
+ "ingredients": [
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef, stewing cut",
+    "si": "හරක් මස්",
+    "ta": "மாட்டிறைச்சி"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "about 600 g",
+   "preparation": {
+    "en": "cut into 3 cm cubes, washed",
+    "si": "සෙන්ටිමීටර තුනක කැබලිවලට කපා සෝදා ගත්",
+    "ta": "மூன்று சென்டிமீட்டர் துண்டுகளாக நறுக்கி அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "half a coconut, grated",
+   "preparation": {
+    "en": "dry-roasted until almost black, then ground to a paste",
+    "si": "බොහෝ දුරට කළු වන තුරු බැදගෙන තලපයක් කර ගත්",
+    "ta": "கிட்டத்தட்ட கருகும் வரை வறுத்து விழுதாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 18,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "piece",
+   "household": "6 pods",
+   "preparation": {
+    "en": "roasted with the spices and ground",
+    "si": "කුළුබඩු සමග බැදගෙන අඹරා ගත්",
+    "ta": "மசாலாவுடன் வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "கொத்தமல்லி விதை"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "dry-roasted and ground",
+    "si": "බැදගෙන අඹරා ගත්",
+    "ta": "வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "dry-roasted and ground",
+    "si": "බැදගෙන අඹරා ගත්",
+    "ta": "வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "dry-roasted and ground",
+    "si": "බැදගෙන අඹරා ගත්",
+    "ta": "வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලා ගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "2 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm quill",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ කොළය",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 10 cm length",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dry-roast the grated coconut in a heavy pan over a low fire, stirring without stopping, until it is the colour of dark coffee and smells nutty.",
+    "minutes": 15
+   },
+   {
+    "text": "Roast the coriander, cumin, fennel and dried chillies in the same pan for a minute, then grind everything with the coconut into a thick dark paste, using a splash of water.",
+    "minutes": 10
+   },
+   {
+    "text": "Wash the beef and rub it with the turmeric, pepper, salt, crushed garlic and ginger.",
+    "minutes": null
+   },
+   {
+    "text": "Put the meat into a clay pot with the gorakka, cinnamon, cloves, curry leaves, pandan, roasted curry powder and two cups of water.",
+    "minutes": null
+   },
+   {
+    "text": "Bring to a boil, cover and cook on a low fire until the beef is almost tender.",
+    "minutes": 45
+   },
+   {
+    "text": "Heat the coconut oil in a pan and brown the sliced red onion.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the dark coconut paste to the onion and fry until it smells roasted and the oil begins to separate at the edges.",
+    "minutes": 4
+   },
+   {
+    "text": "Stir the paste into the pot and simmer uncovered so the gravy turns black and thick enough to coat the meat.",
+    "minutes": 12
+   },
+   {
+    "text": "Taste for salt and sourness, and put in the second piece of gorakka now if it needs sharpening.",
+    "minutes": null
+   },
+   {
+    "text": "Rest the pot off the fire before serving; the colour and the smell both deepen as it stands.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "බර පෑන් එකක ගා ගත් පොල් ගිනි අඩුවෙන්, නොනවත්වා කලවම් කරමින්, තද කෝපි පාටට සහ බැදුණු සුවඳක් එන තුරු බදින්න.",
+    "minutes": 15
+   },
+   {
+    "text": "එම පෑන් එකේම කොත්තමල්ලි, සූදුරු, මාදුරු සහ වියළි මිරිස් මිනිත්තුවක් බැදගෙන, පොල් සමග වතුර ටිකක් දමා ගන කළු තලපයක් වන තුරු අඹරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "හරක් මස් සෝදා කහ, ගම්මිරිස්, ලුණු, තලා ගත් සුදුළූණු සහ ඉඟුරු අතුල්ලන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මස් වළඳකට දමා ගොරකා, කුරුඳු, කරාබුනැටි, කරපිංචා, රම්පෙ, බැදපු තුනපහ සහ වතුර කෝප්ප දෙකක් එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උතුරවා වසා, ගිනි අඩුවෙන් මස් බොහෝ දුරට මෘදු වන තුරු උයන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "පෑන් එකක පොල් තෙල් රත් කර රතු ළූණු දුඹුරු වන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ළූණු වලට කළු පොල් තලපය දමා, බැදුණු සුවඳ එන තෙක් සහ දාරවලින් තෙල් වෙන් වන තුරු බදින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "තලපය වළඳට දමා කලවම් කර, හොදි කළු පැහැ ගෙන මස් වට තැවරෙන ගානට තද වන තුරු වැහුමක් නොදා උයන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලා, තව ඇඹුල් අවශ්‍ය නම් දෙවන ගොරකා කැබැල්ල දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලිපෙන් ඉවත් කර ටික වේලාවක් තියන්න; තිබෙන විට පාටත් සුවඳත් තව ගැඹුරු වෙනවා.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "கனமான வாணலியில் துருவிய தேங்காயை குறைந்த தீயில், நிற்காமல் கிளறி, கரும் காபி நிறமாகி வாசனை வரும் வரை வறுக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "அதே வாணலியில் கொத்தமல்லி, சீரகம், பெருஞ்சீரகம், வத்தல் மிளகாயை ஒரு நிமிடம் வறுத்து, தேங்காயுடன் சிறிது நீர் விட்டு கெட்டியான கருப்பு விழுதாக அரைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "இறைச்சியை அலசி மஞ்சள், மிளகு, உப்பு, இடித்த பூண்டு இஞ்சி சேர்த்துத் தேய்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறைச்சியை மண் சட்டியில் இட்டு கொடுக்காய்ப்புளி, பட்டை, கிராம்பு, கறிவேப்பிலை, ரம்பை, வறுத்த கறித்தூள், இரண்டு கப் நீர் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்கவிட்டு மூடி, குறைந்த தீயில் இறைச்சி கிட்டத்தட்ட மெதுவாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 45
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவிட்டு சின்ன வெங்காயத்தைப் பழுப்பாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வெங்காயத்தில் கருப்பு தேங்காய் விழுதைச் சேர்த்து, வறுத்த வாசனை வந்து ஓரங்களில் எண்ணெய் பிரியும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "விழுதை சட்டியில் சேர்த்துக் கலக்கி, கிரேவி கருமையாகி இறைச்சியில் ஒட்டும் அளவு இறுகும் வரை மூடாமல் வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "உப்பையும் புளிப்பையும் சரிபார்த்து, தேவைப்பட்டால் இரண்டாவது கொடுக்காய்ப்புளித் துண்டை இப்போது சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தீயை அணைத்து சிறிது நேரம் வைக்கவும்; நிறமும் வாசனையும் மேலும் ஆழமாகும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 75,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "heavy pan for roasting",
+  "grinding stone or blender",
+  "clay pot"
+ ],
+ "tips": {
+  "en": "The coconut must go past golden to almost black, but the moment it smokes bitterly it is gone and the whole pot tastes burnt, so keep the fire low and your hand moving. Roast a double batch and freeze half for the next time.",
+  "si": "පොල් රන්වන් තලය පසු කර බොහෝ දුරට කළු වෙන්න ඕන, නමුත් තිත්ත දුමක් ආ ගමන් එය නරක් වෙලා, මුළු වළඳම පිළිස්සුණු රසයි. ඒ නිසා ගිනි අඩුවෙන් තියා අත නවත්තන්නේ නැතුව කලවම් කරන්න. දෙගුණයක් බැදගෙන බාගයක් ශීත කර ඊළඟ වතාවට තියා ගන්න.",
+  "ta": "தேங்காய் பொன்னிறத்தைத் தாண்டி கிட்டத்தட்ட கருப்பாக வேண்டும், ஆனால் கசப்பான புகை வந்ததும் அது கெட்டுவிட்டது, சட்டி முழுவதும் கருகிய சுவையாகும். எனவே தீயைக் குறைத்து கையை நிற்காமல் கிளறுங்கள். இரட்டிப்பு வறுத்து பாதியை உறையவைத்து அடுத்த முறைக்கு வைக்கவும்."
+ },
+ "health_note": {
+  "en": "The roasted coconut makes this one of the heaviest curries on the table, with the fat of the coconut on top of the fat of the beef. It is a weekend dish rather than a daily one, and a small spoon goes a long way with rice.",
+  "si": "බැදපු පොල් නිසා මේක මේසයේ බරම කරි එකක්; හරක් මස්වල මේදයට අමතරව පොල්වල මේදයත් තියෙනවා. හැමදාම නොව සති අන්තයට ගැළපෙන කෑමක්; බත් සමග කුඩා හැන්දක් ඇති.",
+  "ta": "வறுத்த தேங்காய் இதை மேசையில் மிகக் கனமான கறியாக்குகிறது; இறைச்சியின் கொழுப்புடன் தேங்காயின் கொழுப்பும் சேர்கிறது. தினமும் அல்ல, வார இறுதிக்கு ஏற்ற உணவு; சாதத்துடன் ஒரு சிறு கரண்டி போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_carb",
+  "festive",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

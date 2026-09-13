@@ -1,0 +1,511 @@
+{
+ "id": "dish_chicken_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "Two pieces of chicken with a generous ladle of gravy over rice",
+   "si": "බත් මතට හොදි හැන්දක් සමග කුකුල් මස් කැබලි දෙකක්",
+   "ta": "சாதத்தின் மேல் ஒரு கரண்டி கிரேவியுடன் இரண்டு கோழித் துண்டுகள்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken, curry cut with bone",
+    "si": "කුකුල් මස්, ඇට සමග කරි කපා ගත්",
+    "ta": "கோழி இறைச்சி, எலும்புடன் கறித் துண்டுகள்"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "about half a bird",
+   "preparation": {
+    "en": "cut into medium pieces, washed and drained",
+    "si": "මධ්‍යම කැබලිවලට කපා සෝදා වතුර බේරූ",
+    "ta": "நடுத்தர துண்டுகளாக நறுக்கி அலசி நீர் வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "8 to 10 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "pounded",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "pounded",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium tomato",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලා ගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறித்தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "2 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed, ground",
+    "si": "කොත්තමල්ලි කුඩු",
+    "ta": "கொத்தமல்லித் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin, ground",
+    "si": "සූදුරු කුඩු",
+    "ta": "சீரகத் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel, ground",
+    "si": "මාදුරු කුඩු",
+    "ta": "பெருஞ்சீரகத் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm quill",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 pods, bruised",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 cloves",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ කොළය",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 10 cm length",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "one and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන වර මිරිකා ගත් තුනී කිරි",
+    "ta": "இரண்டாம் பால், தளர்ந்த பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකා ගත් ගන කිරි",
+    "ta": "முதல் பால், கெட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the chicken pieces, drain them and put them into a bowl.",
+    "minutes": null
+   },
+   {
+    "text": "Mix in the curry powder, chilli powder, turmeric, pounded garlic and ginger and the salt, working it under the skin with your fingers, and leave it to take the spice.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the sliced onion, green chillies, curry leaves, pandan, cinnamon, cardamom and cloves until the onion goes soft and sweet.",
+    "minutes": 5
+   },
+   {
+    "text": "Put in the marinated chicken and turn it over a high flame until the outside of every piece has changed colour.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the chopped tomato with the ground coriander, cumin and fennel and stir until the tomato collapses into the spices.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in the thin coconut milk, cover and simmer on a low fire until the chicken is cooked to the bone.",
+    "minutes": 15
+   },
+   {
+    "text": "Add the thick coconut milk and shake the pot by its rim instead of stirring hard, so the pieces stay whole, and heat without boiling.",
+    "minutes": 5
+   },
+   {
+    "text": "Taste for salt and heat, and if the gravy is loose let it reduce uncovered to a mid-thick pouring consistency.",
+    "minutes": 5
+   },
+   {
+    "text": "Rest off the fire before serving, so the gravy thickens a little and soaks into the meat.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "කුකුල් මස් කැබලි සෝදා වතුර බේරා බඳුනකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තුනපහ, මිරිස් කුඩු, කහ, තලා ගත් සුදුළූණු සහ ඉඟුරු, ලුණු එකතු කර ඇඟිලිවලින් හම යටටත් යන සේ අතුල්ලා කුළුබඩු වදින්න තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වළඳක පොල් තෙල් රත් කර ළූණු, අමු මිරිස්, කරපිංචා, රම්පෙ, කුරුඳු, එනසාල් සහ කරාබුනැටි ළූණු මෘදු වන තුරු තෙම්පරාදු කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පදම් වූ මස් දමා ලොකු ගින්නේ පිටත පාට වෙනස් වන තුරු පෙරළන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කපා ගත් තක්කාලි සමග කොත්තමල්ලි, සූදුරු සහ මාදුරු කුඩු දමා තක්කාලි කුළුබඩු අතර දිය වන තුරු කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර වසා, ගිනි අඩුවෙන් මස් ඇට දක්වා තැම්බෙන තුරු උයන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ගන පොල් කිරි එකතු කර, කැබලි කැඩෙන්නට නොදී වළඳ තොලෙන් අල්ලා සෙලවීමෙන් කලවම් කර, උතුරන්නට නොදී රස්නය දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලුණු සහ සැර බලා, හොදි තුනී නම් වැහුමක් නොදා මධ්‍යම ගනකමට හිඳෙන්න දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලිපෙන් ඉවත් කර ටිකක් තියන්න. හොදි තව ටිකක් තද වී මසට වදිනවා.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "கோழித் துண்டுகளை அலசி நீர் வடித்து ஒரு பாத்திரத்தில் இடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கறித்தூள், மிளகாய்த் தூள், மஞ்சள், இடித்த பூண்டு இஞ்சி, உப்பு சேர்த்து தோலுக்கு அடியிலும் செல்லும்படி விரல்களால் தேய்த்து ஊறவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவிட்டு வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை, பட்டை, ஏலக்காய், கிராம்பு சேர்த்து வெங்காயம் மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஊறிய கோழியைச் சேர்த்து பெருந்தீயில் துண்டுகளின் நிறம் மாறும் வரை புரட்டுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "நறுக்கிய தக்காளியுடன் கொத்தமல்லி, சீரகம், பெருஞ்சீரகத் தூள் சேர்த்து தக்காளி கரையும் வரை கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பாலை ஊற்றி மூடி, குறைந்த தீயில் கோழி எலும்பு வரை வேகும் வரை வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "கெட்டிப் பாலைச் சேர்த்து, துண்டுகள் உடையாமல் சட்டியை விளிம்பில் பிடித்து அசைத்துக் கலந்து, பொங்காமல் சூடாக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "உப்பும் காரமும் சரிபார்த்து, கிரேவி தளர்வாக இருந்தால் மூடாமல் நடுத்தர கெட்டி பதம் வரும் வரை சுருக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "தீயை அணைத்து சிறிது நேரம் வைக்கவும். கிரேவி இறுகி இறைச்சிக்குள் இறங்கும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 35,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "mortar and pestle"
+ ],
+ "tips": {
+  "en": "Drumsticks and thigh pieces hold the gravy better than breast, which dries out in twenty minutes. If you want the thin gravy that suits string hoppers, use all thin milk and only a spoon of the thick at the end.",
+  "si": "පියයුරු මසට වඩා කකුල් සහ කලවා කැබලි හොදිය හොඳින් අල්ලා ගන්නවා; පියයුරු මස විනාඩි විස්සකින් වියළෙනවා. ඉඳිආප්ප සමග ගැළපෙන තුනී හොදියක් ඕන නම් තුනී කිරි පමණක් යොදා අන්තිමට ගන කිරි හැන්දක් පමණක් දමන්න.",
+  "ta": "மார்புத் துண்டுகளை விட கால், தொடைத் துண்டுகள் கிரேவியை நன்கு பிடிக்கும்; மார்புத் துண்டு இருபது நிமிடத்தில் காய்ந்துவிடும். இடியப்பத்திற்கு ஏற்ற தளர்ந்த கிரேவி வேண்டுமானால் இரண்டாம் பாலை மட்டும் பயன்படுத்தி இறுதியில் ஒரு கரண்டி கெட்டிப் பால் சேர்க்கவும்."
+ },
+ "health_note": {
+  "en": "Chicken with the skin taken off is one of the lighter meats on the rice plate and gives good protein for the price. The coconut milk carries most of the fat, so ladle the gravy sparingly if the household is watching weight or cholesterol.",
+  "si": "හම ඉවත් කළ කුකුල් මස් බත් පිඟානේ සැහැල්ලු මස් වර්ගයක් වන අතර මිලට සරිලන ප්‍රෝටීන් සපයයි. මේදය බොහොමයක් ඇත්තේ පොල් කිරිවල නිසා බර හෝ කොලෙස්ටරෝල් ගැන බලන ගෙදරක් නම් හොදි අඩුවෙන් ගන්න.",
+  "ta": "தோலை நீக்கிய கோழி இறைச்சி சாதத் தட்டில் இலகுவான இறைச்சி வகை, விலைக்கு ஏற்ற புரதம் தரும். கொழுப்பு பெரும்பாலும் தேங்காய்ப் பாலில் இருப்பதால் எடை அல்லது கொலஸ்ட்ரோல் பார்க்கும் வீட்டில் கிரேவியைக் குறைவாகவே எடுக்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "kid_friendly",
+  "comfort",
+  "filling",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

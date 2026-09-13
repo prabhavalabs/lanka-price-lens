@@ -1,0 +1,288 @@
+{
+ "id": "dish_pani_walalu",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 90,
+  "description": {
+   "en": "Three sticky syrup soaked spirals",
+   "si": "පැණි වැදුණු වළලු තුනක්",
+   "ta": "பாகில் ஊறிய மூன்று சுருள் இனிப்புகள்"
+  }
+ },
+ "yield_g": 360,
+ "ingredients": [
+  {
+   "ref": "pantry_urad_dhal_flour",
+   "label": {
+    "en": "urad dhal flour",
+    "si": "උඳු පිටි",
+    "ta": "உளுந்து மாவு"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "enough for the rings to float",
+   "preparation": {
+    "en": "for deep frying, most of it is left over",
+    "si": "ගැඹුරු තෙලේ බැදීමට; වැඩි කොටස ඉතිරි වේ",
+    "ta": "பொரிப்பதற்கு; பெரும்பகுதி எஞ்சும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாகு"
+   },
+   "quantity": 220,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "5 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "syrup"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Mix the urad dhal flour and rice flour with the salt and enough water to make a thick smooth batter that drops slowly from the spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Beat the batter with your hand in one direction for several minutes to lighten it, then cover it and leave it to stand.",
+    "minutes": 120
+   },
+   {
+    "text": "Boil the treacle and sugar with a splash of water and the crushed cardamom to a syrup that coats a spoon, and keep it warm on the side of the fire.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat coconut oil in a deep pan on a medium fire; too hot and the rings brown before they cook.",
+    "minutes": 8
+   },
+   {
+    "text": "Fill a piping cloth, or a coconut shell with a small hole in it, and pipe the batter into the oil in a spiral of three or four turns.",
+    "minutes": null
+   },
+   {
+    "text": "Fry until the spiral is firm and pale gold, turning it once with a stick.",
+    "minutes": 4
+   },
+   {
+    "text": "Lift each ring out, shake off the oil, and drop it straight into the warm syrup.",
+    "minutes": null
+   },
+   {
+    "text": "Turn the rings in the syrup so they drink it right through, then lift them onto a tray to drain.",
+    "minutes": 10
+   },
+   {
+    "text": "Leave them to cool so the syrup sets sticky on the outside before packing them away.",
+    "minutes": 20
+   }
+  ],
+  "si": [
+   {
+    "text": "උඳු පිටි සහ සහල් පිටි ලුණු සමඟ මිශ්‍ර කර, හැන්දෙන් සෙමින් වැටෙන ගන සිනිඳු මිශ්‍රණයක් වන තරමට වතුර දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මිශ්‍රණය අතින්, එක් දිශාවකට විනාඩි කිහිපයක් හොඳින් ගසා සැහැල්ලු කර, වසා තියන්න.",
+    "minutes": 120
+   },
+   {
+    "text": "කිතුල් පැණි, සීනි, වතුර ටිකක් සහ තලාගත් එනසාල් සමඟ තම්බා, හැන්දේ රැඳෙන පැණි හලක් සාදා ගින්නේ පැත්තකින් උණුසුම්ව තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගැඹුරු පෑනකට පොල් තෙල් දමා මධ්‍යම ගින්නේ රත් කරන්න; ගිනි වැඩි නම් වළලු ඇතුළෙන් පිස නොවී පිටතින් දුඹුරු වේ.",
+    "minutes": 8
+   },
+   {
+    "text": "පිටි මිශ්‍රණය රෙදි කැබැල්ලකට හෝ කුඩා සිදුරක් ඇති පොල් කටුවකට දමා, තෙල් මතට වට තුන හතරක් වන සේ වළල්ලක් ලෙස පිට කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළල්ල තද වී ලා රන් වන් පාට වන තුරු, ඉරටුවකින් එක් වරක් හරවා බදින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "එක එක වළල්ල ඔසවා තෙල් බේර ගෙන, කෙලින්ම උණුසුම් පැණි වලට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පැණි හොඳින් ඇතුළට යන සේ වළලු පැණියේ පෙරළා, පසුව තැටියක් මතට ගෙන බේරෙන්න තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිටතින් පැණි තද වන සේ සිසිල් වෙන්න තියා පසුව බහාලුම්වල ඇතුළත් කරන්න.",
+    "minutes": 20
+   }
+  ],
+  "ta": [
+   {
+    "text": "உளுந்து மாவையும் அரிசி மாவையும் உப்புடன் கலந்து, கரண்டியில் மெதுவாக வடியும் கெட்டியான மிருதுவான மாவுக் கலவையாகத் தண்ணீர் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கலவையைக் கையால் ஒரே திசையில் சில நிமிடம் நன்கு அடித்து லேசாக்கி, மூடி வைக்கவும்.",
+    "minutes": 120
+   },
+   {
+    "text": "கிதுல் பாகு, சீனி, சிறிது தண்ணீர், நசுக்கிய ஏலக்காய் சேர்த்துக் கொதிக்கவைத்து, கரண்டியில் ஒட்டும் பாகாக்கி, அடுப்பின் ஓரத்தில் சூடாக வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஆழமான சட்டியில் தேங்காய் எண்ணெயை நடுத்தர தீயில் காய்ச்சவும்; அதிக சூடானால் உள்ளே வேகாமல் வெளியே கருகும்.",
+    "minutes": 8
+   },
+   {
+    "text": "மாவைத் துணியிலோ, சிறு துளை போட்ட தேங்காய்ச் சிரட்டையிலோ நிரப்பி, எண்ணெய்க்கு மேல் மூன்று நான்கு சுற்றுகளாகச் சுருள் போல் பிழியவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சுருள் இறுகி லேசான பொன்னிறம் வரும் வரை, ஒரு குச்சியால் ஒரு முறை திருப்பிப் பொரிக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "ஒவ்வொரு சுருளையும் எடுத்து எண்ணெயை உதறி, நேராகச் சூடான பாகில் போடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாகு உள்ளே நன்கு இறங்கும்படி சுருள்களைத் திருப்பி, பின் தட்டில் எடுத்து வடியவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வெளியே பாகு இறுகும் வரை குளிரவிட்டுப் பின் டப்பாவில் அடுக்கவும்.",
+    "minutes": 20
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 30,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "deep pan",
+  "piping cloth or pierced coconut shell",
+  "tray",
+  "small pan for syrup"
+ ],
+ "tips": {
+  "en": "Practise the spiral over a plate before you pipe into hot oil, and keep the oil at a steady medium heat so the rings cook through while staying pale enough to drink the syrup.",
+  "si": "උණු තෙලට පිට කිරීමට පෙර පිඟානක් මතට වළල්ල ඇදීම පුරුදු කරන්න; තෙල් මධ්‍යම උෂ්ණත්වයේ ස්ථිරව තබා ගන්න, එවිට වළලු ඇතුළෙන් පිසී, පැණි උරාගන්න තරමට ලා පාටින් රැඳේ.",
+  "ta": "சூடான எண்ணெயில் பிழிவதற்கு முன் ஒரு தட்டில் சுருள் பிழியப் பழகவும்; எண்ணெயை நடுத்தர சூட்டில் நிலையாக வைத்தால் சுருள் உள்ளே வெந்து, பாகை உறிஞ்சும் அளவுக்கு லேசான நிறத்தில் இருக்கும்."
+ },
+ "health_note": {
+  "en": "Fried in oil and then soaked in syrup, so these are among the heaviest of the New Year sweets; the urad dhal does bring a little protein. Two or three rings with tea, and not on the same plate as kavum.",
+  "si": "තෙලේ බැද පැණියේ තෙමන නිසා මේවා අලුත් අවුරුදු මේසයේ බරම රසකැවිලි අතරයි; උඳු වලින් ප්‍රෝටීන් ටිකක් ලැබේ. තේ සමඟ දෙකක් තුනක්, කැවුම් සමඟ එකම පිඟානේ නොවේ.",
+  "ta": "எண்ணெயில் பொரித்துப் பாகில் ஊறுவதால் இவை புத்தாண்டு இனிப்புகளில் மிகக் கனமானவை; உளுந்து சிறிது புரதம் தருகிறது. தேநீருடன் இரண்டு மூன்று சுருள்கள் போதும், கவும்முடன் ஒரே தட்டில் வேண்டாம்."
+ },
+ "tags": [
+  "festive",
+  "deep_fried",
+  "high_sugar",
+  "street_food"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

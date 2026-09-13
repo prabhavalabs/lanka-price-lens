@@ -1,0 +1,271 @@
+{
+ "id": "dish_koththamalli",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 200,
+  "description": {
+   "en": "A small cup taken hot, usually at night",
+   "si": "රෑට බොන්නට උණුසුම් කුඩා කෝප්පයක්",
+   "ta": "பொதுவாக இரவில் சூடாகக் குடிக்கும் ஒரு சிறிய கோப்பை"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි ඇට",
+    "ta": "கொத்தமல்லி விதை"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "dry roasted until it smells, then crushed",
+    "si": "සුවඳ එනතුරු බැදගෙන තලාගත්",
+    "ta": "வாசம் வரும் வரை வறுத்து இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "crushed with the skin on",
+    "si": "ලෙල්ල සමඟ තලාගත්",
+    "ta": "தோலோடு இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "about 10 corns",
+   "preparation": {
+    "en": "cracked",
+    "si": "පොඩි කරගත්",
+    "ta": "பொடியாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1 small lump per cup",
+   "preparation": {
+    "en": "broken up",
+    "si": "කැඩූ",
+    "ta": "உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, for a squeeze",
+   "preparation": {
+    "en": "cut in half",
+    "si": "දෙකට කැපූ",
+    "ta": "இரண்டாக வெட்டியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dry roast the coriander seed in a pan over a low fire, shaking it, until it darkens a shade and gives off a warm smell.",
+    "minutes": 4
+   },
+   {
+    "text": "Tip the seed onto a plate to cool, then crush it coarsely; do not make it a fine powder or the drink will be cloudy.",
+    "minutes": null
+   },
+   {
+    "text": "Crush the ginger and crack the peppercorns.",
+    "minutes": null
+   },
+   {
+    "text": "Put the coriander, ginger, pepper, cumin and the piece of cinnamon into a pan with one litre of water and bring it to the boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Keep it on a low fire, uncovered, until the water goes the colour of strong tea and has boiled down by about a fifth.",
+    "minutes": 10
+   },
+   {
+    "text": "Take it off the fire and let it stand so the seed settles at the bottom.",
+    "minutes": 3
+   },
+   {
+    "text": "Strain into cups, put a lump of jaggery in each one, and squeeze in a little lime if the drink is for a blocked nose.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කොත්තමල්ලි ඇට අඩු ගින්නේ, සොලවමින්, පාට ටිකක් තද වී උණුසුම් සුවඳක් එනතුරු වියලි ලෙස බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පිඟානකට දමා සිසිල් වූ පසු රළු ලෙස තලා ගන්න; සිහින් කුඩු කළොත් බීම කිලිටි වේ.",
+    "minutes": null
+   },
+   {
+    "text": "ඉඟුරු තලාගෙන ගම්මිරිස් ඇට පොඩි කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කොත්තමල්ලි, ඉඟුරු, ගම්මිරිස්, සූදුරු සහ කුරුඳු කැබැල්ල වතුර ලීටරයක් සමඟ බඳුනකට දමා උතුරන්න තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වැස්මක් නැතිව අඩු ගින්නේ, වතුර තද තේ පාටට හැරී පහෙන් එකක් පමණ හිඳෙන තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ලිපෙන් බාගෙන, ඇට පහළට බැස යන්නට ටික වෙලාවක් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කෝප්පවලට පෙරාගෙන, එකකට හකුරු කැබැල්ලක් දමා, නාසය හිර වී ඇත්නම් දෙහි ටිකක් මිරිකා ගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கொத்தமல்லி விதையை குறைந்த தீயில், அலசி அலசி, நிறம் சற்று கருத்து வாசம் வரும் வரை வறுக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தட்டில் கொட்டி ஆறிய பின் கரகரப்பாக இடிக்கவும்; நைசாகப் பொடி செய்தால் பானம் கலங்கலாக இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "இஞ்சியை இடித்து, மிளகையும் உடைத்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கொத்தமல்லி, இஞ்சி, மிளகு, சீரகம், பட்டைத் துண்டு எல்லாவற்றையும் ஒரு லிட்டர் தண்ணீரோடு பாத்திரத்தில் இட்டுக் கொதிக்க வைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மூடாமல் குறைந்த தீயில், தண்ணீர் கடுமையான தேநீர் நிறமாகி ஐந்தில் ஒரு பங்கு வற்றும் வரை கொதிக்கவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, விதைகள் அடியில் அமரும் வரை சிறிது நேரம் வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "கோப்பைகளில் வடிகட்டி, ஒவ்வொன்றிலும் ஒரு வெல்லத் துண்டு போட்டு, மூக்கு அடைத்திருந்தால் சிறிது எலுமிச்சை பிழியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "small pan",
+  "grinding stone or mortar",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Roast a large batch of coriander on a free evening and keep it in a tight bottle; then a cup of koththamalli takes only the boiling. Keep the fire low, because a hard boil pulls out more bitterness than good.",
+  "si": "නිදහස් සවසක කොත්තමල්ලි ටිකක් වැඩිපුර බැදගෙන තදින් වැසෙන බෝතලයක තබා ගන්න; එවිට කොත්තමල්ලි කෝප්පයකට ඇත්තේ තම්බා ගැනීම පමණයි. ගිනි අඩුවෙන් තබන්න, තදින් උතුරුවූ විට හොඳ රසයට වඩා තිත්ත ගතිය පිට වේ.",
+  "ta": "ஓய்வான ஒரு மாலையில் கொத்தமல்லியை அதிகமாக வறுத்து, இறுக்கமான பாட்டிலில் வைத்துக் கொள்ளுங்கள்; பிறகு ஒரு கோப்பைக்குக் கொதிக்க வைப்பது மட்டுமே வேலை. தீயைக் குறைவாக வைக்கவும், கடுமையாகக் கொதித்தால் நல்ல சுவையை விட கசப்பே அதிகம் இறங்கும்."
+ },
+ "health_note": {
+  "en": "A warm cup with no fat and hardly any calories once you leave out the jaggery, and the fluid itself is half the help when someone has a fever. It is a comfort drink, not a medicine; if the fever holds past two days, see a doctor.",
+  "si": "හකුරු අයින් කළ විට තෙල් නැති, කැලරි පාහේ නැති උණුසුම් කෝප්පයක්; උණ ඇති කෙනෙකුට ලැබෙන පිහිටෙන් අඩක් එහි වතුරයි. මෙය සැහැල්ලුවක් දෙන බීමක් පමණයි, බෙහෙතක් නොවේ; උණ දෙදිනකට වඩා තිබේ නම් වෛද්‍යවරයෙකු හමුවන්න.",
+  "ta": "வெல்லத்தை விட்டுவிட்டால் கொழுப்பும் இல்லாத, கலோரியும் மிகக் குறைந்த ஒரு சூடான கோப்பை; காய்ச்சல் உள்ளவருக்கு உதவுவதில் பாதி அதன் நீரே. இது ஆறுதல் தரும் பானம், மருந்து அல்ல; காய்ச்சல் இரண்டு நாளுக்கு மேல் நீடித்தால் மருத்துவரைப் பாருங்கள்."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "low_calorie",
+  "low_fat",
+  "light",
+  "hydrating",
+  "comfort",
+  "immune_support",
+  "traditional_remedy",
+  "elderly_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

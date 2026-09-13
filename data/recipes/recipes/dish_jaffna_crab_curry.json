@@ -1,0 +1,470 @@
+{
+ "id": "dish_jaffna_crab_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 350,
+  "description": {
+   "en": "Half a crab each with thick gravy, eaten with rice using the fingers",
+   "si": "එක් කෙනෙකුට කකුළුවෙකුගෙන් බාගයක් සහ ඝන හොදි; බත් සමඟ අතින්ම කන්න",
+   "ta": "ஒருவருக்கு அரை நண்டும் கெட்டியான குழம்பும், சாதத்துடன் கையால் சாப்பிட"
+  }
+ },
+ "yield_g": 1400,
+ "ingredients": [
+  {
+   "ref": "pantry_crab",
+   "label": {
+    "en": "crab",
+    "si": "කකුළුවෝ",
+    "ta": "நண்டு"
+   },
+   "quantity": 1000,
+   "unit": "g",
+   "household": "2 medium lagoon crabs",
+   "preparation": {
+    "en": "cleaned, top shell lifted, gills removed, claws cracked",
+    "si": "පිරිසිදු කර, උඩු කටුව ගලවා, කරමල් ඉවත් කර, දඬු තලා",
+    "ta": "சுத்தம் செய்து, மேல் ஓட்டை நீக்கி, செதுள் அகற்றி, கொடுக்குகளை நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "12 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "7 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a lime-sized ball",
+   "preparation": {
+    "en": "soaked in a cup of warm water and strained",
+    "si": "කෝප්පයක් උණු වතුරේ පොඟවා පෙරා",
+    "ta": "ஒரு கோப்பை வெதுவெதுப்பான நீரில் ஊறவைத்து வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaffna_curry_powder",
+   "label": {
+    "en": "Jaffna curry powder",
+    "si": "යාපනය තුනපහ",
+    "ta": "யாழ்ப்பாண கறித்தூள்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "கொத்தமல்லி விதை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp, lightly roasted and ground",
+   "preparation": {
+    "en": "roasted and coarsely ground",
+    "si": "බැද රළුවට අඹරා",
+    "ta": "வறுத்து கரகரப்பாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_rice_raw_white",
+   "label": {
+    "en": "raw rice, for roasting and grinding",
+    "si": "සුදු හාල්, බැද අඹරන්නට",
+    "ta": "பச்சை அரிசி, வறுத்து அரைப்பதற்கு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": {
+    "en": "dry roasted dark and ground coarse",
+    "si": "වේළුම් ලිපේ තද දුඹුරු වන තෙක් බැද රළුවට අඹරා",
+    "ta": "வாணலியில் அடர் நிறமாக வறுத்து கரகரப்பாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "தளர்ந்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_murunga_leaves",
+   "label": {
+    "en": "murunga leaves",
+    "si": "මුරුංගා කොළ",
+    "ta": "முருங்கை இலை"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "2 handfuls, picked off the stalks",
+   "preparation": {
+    "en": "picked and washed",
+    "si": "කොළ ගලවා සෝදා",
+    "ta": "இலை பிரித்து அலசியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Clean the crabs: lift the top shell, throw away the gills and the stomach sac, snap off the claws and crack them lightly with the back of a knife so the gravy can get inside.",
+    "minutes": null
+   },
+   {
+    "text": "Soak the tamarind in a cup of warm water, squeeze it well and strain the water into a bowl.",
+    "minutes": 10
+   },
+   {
+    "text": "Dry roast the raw rice in a pan until it is deep brown, then grind it coarse; roast and grind the coriander seed the same way.",
+    "minutes": 6
+   },
+   {
+    "text": "Heat the oil in a wide pot, add the fenugreek, curry leaves and onion and fry until the onion is soft.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the garlic, Jaffna curry powder, chilli powder, ground coriander, turmeric and pepper and fry until the spices darken and smell roasted.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in the thin coconut milk and the tamarind water and bring the pot to a hard boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Put in the crab pieces, cover the pot and cook, turning them once, until the shells are bright red all over.",
+    "minutes": 12
+   },
+   {
+    "text": "Mix the roasted rice powder with half a cup of water and pour it in, stirring, so the gravy thickens and clings.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the thick coconut milk and the murunga leaves and let it bubble gently, uncovered, without a hard boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Check the salt and the sourness, take the pot off the fire and leave it covered so the gravy soaks into the shells before serving.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "කකුළුවන් පිරිසිදු කරන්න: උඩු කටුව ගලවා, කරමල් සහ බඩවැල් කොටස ඉවතට දමා, දඬු ගලවා පිහියේ පිටුපසින් තලා හොදිය ඇතුළට යන්න ඉඩ හදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සියඹලා කෝප්පයක් උණු වතුරේ පොඟවා, හොඳින් මිරිකා, වතුර බඳුනකට පෙරා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සුදු හාල් වේළුම් ලිපේ තද දුඹුරු වන තෙක් බැද රළුවට අඹරන්න; කොත්තමල්ලිත් එලෙසම බැද අඹරා ගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පළල් භාජනයක තෙල් රත් කර, උළුහාල්, කරපිංචා සහ ලූනු දමා ලූනු මෘදු වන තෙක් බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සුදුළූණු, යාපනය තුනපහ, මිරිස් කුඩු, අඹරාගත් කොත්තමල්ලි, කහ සහ ගම්මිරිස් දමා කුළුබඩු පාට තද වී බැදපු සුවඳ එන තෙක් බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "දිය කිරි සහ සියඹලා වතුර දමා භාජනය හොඳින් නටවන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කකුළු කෑලි දමා, වැසුම දමා, වරක් හරවමින්, කටු හැම තැනම රතු පාට වන තෙක් පිසින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "බැදපු හාල් කුඩු කෝප්පයක් බාගයක් වතුරේ දිය කර දමා, කලතමින් හොදිය ඝන වී ඇලෙන තෙක් පිසින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මිටි කිරි සහ මුරුංගා කොළ දමා, වැසුමක් නැතුව, දැඩි නැටීමකින් තොරව හෙමින් නටවන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලා, ලිපෙන් ඉවත් කර, හොදිය කටු ඇතුළට වදින්න වහා තියා බෙදන්න.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "நண்டை சுத்தம் செய்யவும்: மேல் ஓட்டை தூக்கி, செதுள்களையும் வயிற்றுப் பகுதியையும் நீக்கி, கொடுக்குகளை பிரித்து கத்தியின் பின்பக்கத்தால் லேசாக நசுக்கி குழம்பு உள்ளே செல்ல வழி செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "புளியை ஒரு கோப்பை வெதுவெதுப்பான நீரில் ஊறவைத்து, நன்கு பிழிந்து, நீரை ஒரு கிண்ணத்தில் வடிகட்டவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பச்சை அரிசியை வாணலியில் அடர் நிறமாகும் வரை வறுத்து கரகரப்பாக அரைக்கவும்; கொத்தமல்லி விதையையும் அதேபோல் வறுத்து அரைக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "அகலமான பாத்திரத்தில் எண்ணெயை காய்ச்சி, வெந்தயம், கறிவேப்பிலை, வெங்காயம் போட்டு வெங்காயம் மென்மையாகும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "பூண்டு, யாழ்ப்பாண கறித்தூள், மிளகாய்த் தூள், அரைத்த கொத்தமல்லி, மஞ்சள், மிளகு சேர்த்து மசாலா நிறம் அடர்ந்து வறுத்த வாசனை வரும் வரை வதக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "தளர்ந்த தேங்காய்ப் பாலையும் புளி நீரையும் விட்டு நன்கு கொதிக்க வைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "நண்டு துண்டுகளை போட்டு, மூடி வைத்து, ஒருமுறை திருப்பி, ஓடு முழுவதும் சிவப்பாகும் வரை வேகவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "வறுத்த அரிசி மாவை அரை கோப்பை தண்ணீரில் கலந்து விட்டு, கிளறி குழம்பு இறுகி ஒட்டும் வரை வேகவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "கெட்டியான பாலையும் முருங்கை இலையையும் சேர்த்து, மூடாமல், பெருங்கொதி இல்லாமல் மெதுவாக கொதிக்க விடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "உப்பும் புளிப்பும் பார்த்து, அடுப்பில் இருந்து இறக்கி, குழம்பு ஓட்டுக்குள் இறங்க மூடி வைத்து பின் பரிமாறவும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 45,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "wide pot with lid",
+  "grinding stone or blender",
+  "heavy knife",
+  "kitchen scissors"
+ ],
+ "tips": {
+  "en": "Buy the crabs alive and heavy for their size, and cook them the day you buy them. The roasted rice powder is what makes the northern gravy cling to the shells; if you skip it the curry stays thin no matter how long you boil it.",
+  "si": "කකුළුවන් ජීවත්ව සිටින, ප්‍රමාණයට බර ඒවා ගන්න; ගත්ත දවසේම පිසින්න. උතුරේ හොදිය කටුවලට ඇලෙන්නේ බැදපු හාල් කුඩු නිසා; ඒක නැත්නම් කොච්චර නැටෙව්වත් හොදිය දියාරුවම තියෙනවා.",
+  "ta": "நண்டுகளை உயிருடன், அளவுக்கு எடையுள்ளவற்றை வாங்கி, வாங்கிய அதே நாளில் சமைக்கவும். வடபுலத்து குழம்பு ஓட்டில் ஒட்டுவது வறுத்த அரிசி மாவால்தான்; அதை விட்டுவிட்டால் எவ்வளவு கொதிக்க வைத்தாலும் குழம்பு நீர்த்தே இருக்கும்."
+ },
+ "health_note": {
+  "en": "Crab is rich in protein, iron and zinc, and the murunga leaves add iron and calcium of their own. The coconut milk makes it heavy, so one crab between two people with plenty of rice is a fair share rather than a feast for one.",
+  "si": "කකුළු මසේ ප්‍රෝටීන්, යකඩ සහ සින්ක් බහුලයි; මුරුංගා කොළවලින් තවත් යකඩ සහ කැල්සියම් එකතු වෙනවා. පොල් කිරි නිසා බරයි, ඒ නිසා බත් හොඳට එක්ක දෙදෙනෙකුට කකුළුවෙක් කියන එක සාධාරණ බෙදීමක්; එක් අයෙකුට සම්පූර්ණ කකුළුවෙක් වුවමනා නැහැ.",
+  "ta": "நண்டில் புரதம், இரும்பு, துத்தநாகம் நிறைந்துள்ளது; முருங்கை இலை மேலும் இரும்பையும் கால்சியத்தையும் சேர்க்கிறது. தேங்காய்ப் பால் இதை கனமாக்குகிறது, எனவே நிறைய சாதத்துடன் இரண்டு பேருக்கு ஒரு நண்டு என்பது நியாயமான பங்கு."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "calcium_rich",
+  "festive",
+  "filling",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

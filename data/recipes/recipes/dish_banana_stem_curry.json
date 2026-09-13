@@ -1,0 +1,362 @@
+{
+ "id": "dish_banana_stem_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 175,
+  "description": {
+   "en": "Pale rounds of plantain stem in a light coconut gravy",
+   "si": "සැහැල්ලු පොල් කිරි හොදියේ, ලා පැහැති කෙසෙල් කඳ රවුම්",
+   "ta": "இலகுவான தேங்காய்க் குழம்பில் வெளிர் நிற வாழைத்தண்டு வட்டுகள்"
+  }
+ },
+ "yield_g": 720,
+ "ingredients": [
+  {
+   "ref": "pantry_banana_stem",
+   "label": {
+    "en": "banana stem, tender inner core",
+    "si": "කෙසෙල් කඳේ මෘදු ඇතුළු කොටස",
+    "ta": "வாழைத்தண்டின் மென்மையான உள்பாகம்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "a 30 cm length of stem, cleaned",
+   "preparation": {
+    "en": "outer sheaths peeled away, sliced into thin rounds, fibres pulled out, soaked in water with buttermilk or lime",
+    "si": "පිටත කොපු ගලවා, තුනීට රවුම් කපා, නාරටි ඉවත් කර, මෝරු හෝ දෙහි දැමූ වතුරේ පොඟවා",
+    "ta": "வெளி உறைகளை நீக்கி, மெல்லிய வட்டுகளாக நறுக்கி, நார்களை உருவி, மோர் அல்லது தேசிக்காய் நீரில் ஊறவைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime, for the soaking water",
+    "si": "පොඟවන වතුරට දෙහි",
+    "ta": "ஊறவைக்கும் நீருக்குத் தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, squeezed into the water",
+   "preparation": {
+    "en": "juice squeezed into a bowl of water",
+    "si": "වතුර බඳුනකට යුෂ මිරිකා",
+    "ta": "ஒரு பாத்திரம் நீரில் சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curd",
+   "label": {
+    "en": "curd, thinned to buttermilk",
+    "si": "මෝරු බවට තුනී කරගත් මෝරු දී",
+    "ta": "மோராகத் தண்ணீர் சேர்த்த தயிர்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "half a cup, beaten with water",
+   "preparation": {
+    "en": "beaten smooth, stirred in off the fire",
+    "si": "හොඳින් ගසා, ලිපෙන් ඉවතට ගත් පසු කලවම් කර",
+    "ta": "நன்றாகக் கடைந்து, அடுப்பை விட்டு இறக்கிய பின் கலந்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup and a little more",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලා",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_mustard_seeds",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the outer sheaths off the stem until the pale, soft core is left, and set a bowl of water with lime juice beside you.",
+    "minutes": 8
+   },
+   {
+    "text": "Slice the core into thin rounds, wind the long fibres off each round on your finger, chop the rounds small and drop them into the lime water so they stay white.",
+    "minutes": 15
+   },
+   {
+    "text": "Drain the pieces and put them in the pot with the thin coconut milk, onion, slit chillies, turmeric and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and simmer on a medium flame until the pieces are tender to the bite but not mushy.",
+    "minutes": 12
+   },
+   {
+    "text": "Uncover and let the gravy reduce a little; banana stem gives out water of its own.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the thick milk and take the pot off the fire at the first bubble.",
+    "minutes": 2
+   },
+   {
+    "text": "Crackle the mustard seeds and curry leaves in hot coconut oil and stir the tempering through.",
+    "minutes": 3
+   },
+   {
+    "text": "If you want the buttermilk version, beat the curd smooth with a little water and stir it in only after the pot is off the fire, or it will split.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "කෙසෙල් කඳේ පිටත කොපු ගලවා මෘදු ලා පාට ඇතුළු කොටස ඉතිරි වන තුරු ඉවත් කර, දෙහි යුෂ දැමූ වතුර බඳුනක් අත ළඟ තබන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඇතුළු කඳ තුනීට රවුම් කපා, එක එක රවුමේ දිග නාරටි ඇඟිල්ලට ඔතා ගලවා, රවුම් සිහින්ව කපා, සුදු පාට රැකෙන්න දෙහි වතුරට දමන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "කැබලි වතුරෙන් ඉවත් කර මුට්ටියට දමා, තුනී පොල් කිරි, ළූණු, පලාගත් මිරිස්, කහ සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා මද ගින්නේ, කැබලි කටට දැනෙන ලෙස මෘදු වන නමුත් මැෂ් නොවන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "වැස්ම ඉවතට ගෙන හොදිය ටිකක් හිඳෙන්න දෙන්න; කෙසෙල් කඳෙනුත් වතුර නිකුත් වෙනවා.",
+    "minutes": 4
+   },
+   {
+    "text": "ඝන කිරි වත් කර පළමු උතුරේදීම මුට්ටිය ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "රත් කළ පොල් තෙල්වල අබ සහ කරපිංචා තෙම්පරාදු කර හොදියට කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මෝරු අනුවාදය ඕන නම්, මෝරු දී වතුර ටිකක් සමඟ හොඳින් ගසා, මුට්ටිය ලිපෙන් ඉවතට ගත් පසුම කලවම් කරන්න; නැත්නම් කැඩෙනවා.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "வாழைத்தண்டின் வெளி உறைகளை உரித்து, வெளிர் நிற மென்மையான உள்பாகம் மட்டும் இருக்கும் வரை நீக்கி, தேசிக்காய்ச் சாறு கலந்த நீர்ப் பாத்திரத்தைப் பக்கத்தில் வைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "உள்தண்டை மெல்லிய வட்டுகளாக நறுக்கி, ஒவ்வொரு வட்டிலிருந்தும் நீண்ட நார்களை விரலில் சுற்றி எடுத்து, வட்டுகளை நறுக்கி, வெண்மை மாறாமல் இருக்க தேசிக்காய் நீரில் போடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "துண்டுகளை வடித்து சட்டியில் இட்டு, இரண்டாம் தேங்காய்ப்பால், வெங்காயம், கீறிய மிளகாய், மஞ்சள், உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி மிதமான தீயில், துண்டுகள் கடிக்கும் அளவு மென்மையாகி ஆனால் மசியாமல் இருக்கும் வரை கொதிக்க விடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "மூடியை எடுத்து குழம்பைச் சற்று வற்ற விடவும்; வாழைத்தண்டிலிருந்தும் நீர் வெளியேறும்.",
+    "minutes": 4
+   },
+   {
+    "text": "முதல் பாலை ஊற்றி, முதல் கொதியிலேயே சட்டியை இறக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "காய்ந்த தேங்காய் எண்ணெயில் கடுகும் கறிவேப்பிலையும் தாளித்துக் குழம்பில் கலக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "மோர் வகை வேண்டுமானால், தயிரைக் கொஞ்சம் நீருடன் நன்றாகக் கடைந்து, சட்டியை அடுப்பை விட்டு இறக்கிய பின்பே கலக்கவும்; இல்லையேல் திரிந்துவிடும்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan or clay pot with a lid",
+  "bowl for the lime water",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Take the fibres out as you slice, not afterwards; a round left with its threads will not soften and is unpleasant to chew. Cook it the day the stem is cut, because a standing stem dries and turns woody at the cut face.",
+  "si": "නාරටි කපන අතරේම ගලවන්න, පස්සේ නෙවෙයි; නාරටි සහිත රවුමක් මෘදු වන්නේ නැහැ, කන්නත් අපහසුයි. කඳ කැපූ දවසේම උයන්න, තියාගත් කඳේ කැපූ මුහුණත වේලී දැව ගතියක් එනවා.",
+  "ta": "நறுக்கும் போதே நார்களை எடுக்கவும், பின்னர் அல்ல; நார் இருக்கும் வட்டு மென்மையாகாது, கடிக்கவும் சிரமம். தண்டை வெட்டிய அன்றே சமைக்கவும், வைத்திருந்தால் வெட்டிய பகுதி காய்ந்து நாராகிவிடும்."
+ },
+ "health_note": {
+  "en": "Banana stem is mostly water and insoluble fibre, which is why Tamil households eat it for a sluggish stomach, and it carries very few calories. Drink water with it, and keep the coconut milk light so the dish stays as gentle as its reputation.",
+  "si": "කෙසෙල් කඳේ වැඩිපුරම තියෙන්නේ ජලය සහ දිය නොවන තන්තු; ඒ නිසාම දෙමළ ගෙවල්වල බඩ අමාරුවට මේක කනවා, කැලරි ප්‍රමාණයත් ඉතා අඩු. එක්ක වතුර බොන්න, කීර්තියට ගැළපෙන්න පොල් කිරි අඩුවෙන් යොදන්න.",
+  "ta": "வாழைத்தண்டில் பெரும்பாலும் நீரும் கரையாத நார்ச்சத்தும் உள்ளது; அதனால்தான் தமிழ் வீடுகளில் வயிற்று அசௌகரியத்திற்கு இதைச் சாப்பிடுகிறார்கள், கலோரியும் மிகக் குறைவு. இதனுடன் நீர் அருந்தவும், அதன் பெயருக்கேற்ப தேங்காய்ப்பாலைக் குறைவாகவே சேர்க்கவும்."
+ },
+ "tags": [
+  "high_fibre",
+  "low_calorie",
+  "light",
+  "diabetic_friendly",
+  "weight_loss_friendly",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

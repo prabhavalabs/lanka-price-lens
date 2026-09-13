@@ -1,0 +1,403 @@
+{
+ "id": "dish_egg_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "One and a half eggs in a ladle of spiced coconut gravy",
+   "si": "කුළුබඩු පොල් කිරි හොදි හැන්දක් සමඟ බිත්තර එකහමාරක්",
+   "ta": "மசாலா தேங்காய்ப்பால் கறியுடன் ஒன்றரை முட்டை"
+  }
+ },
+ "yield_g": 810,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 6,
+   "unit": "piece",
+   "household": "6 eggs",
+   "preparation": {
+    "en": "hard boiled, peeled and slit twice",
+    "si": "හොඳින් තම්බා පොත්ත ඉවත් කර කැපුම් දෙකක් දැමූ",
+    "ta": "நன்கு வேகவைத்து ஓடு நீக்கி இரண்டு கீறல் போட்டது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb joint",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට හෙළාගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப்பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "two thirds of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Put the eggs in a pot with water to cover, boil until hard, then cool them under the tap and peel.",
+    "minutes": 12
+   },
+   {
+    "text": "Slit each egg twice down the side, not all the way through, so the gravy can get inside.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and fry the onion, garlic, ginger, green chilli, curry leaves and pandan until the onion is soft and golden.",
+    "minutes": 5
+   },
+   {
+    "text": "Turn the flame low, add the turmeric, chilli powder and roasted curry powder and stir until the raw smell of the spices is gone.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the thin coconut milk, add the salt and simmer until the gravy thickens a little.",
+    "minutes": 8
+   },
+   {
+    "text": "Slide in the eggs and spoon gravy over them, turning them once so both sides colour.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the thick coconut milk and shake the pot instead of stirring, so the eggs stay whole.",
+    "minutes": null
+   },
+   {
+    "text": "Let it bubble very gently until the surface shines with oil, then take it off the fire.",
+    "minutes": 3
+   },
+   {
+    "text": "Keep it covered for a few minutes before serving with rice, string hoppers or pittu.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "බිත්තර වැසෙන්නට වතුර දමා හොඳින් තැම්බෙන තුරු උතුරන්න තබා, පසුව සීතල වතුරෙන් සිසිල් කර පොත්ත ඉවත් කරන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "හොදි ඇතුළට යන්නට එක් බිත්තරයක පැත්තට කැපුම් දෙකක් දමන්න; මුළුමනින්ම කපන්න එපා.",
+    "minutes": null
+   },
+   {
+    "text": "වළඳක පොල් තෙල් රත් කර ලූනු, සුදුළූනු, ඉඟුරු, අමු මිරිස්, කරපිංචා සහ රම්පෙ ලූනු මෘදු වී රන්වන් වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගිනි අඩු කර කහ කුඩු, මිරිස් කුඩු සහ බැදපු තුනපහ දමා කුළුබඩුවල අමු සුවඳ යන තුරු කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "දෙවන පොල් කිරි වත් කර ලුණු දමා හොදි ටිකක් තද වන තුරු තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බිත්තර ලිහිල්ව හොදියට දමා, එක් වරක් පෙරළා හොදි උඩින් හැන්දෙන් වත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මුල් පොල් කිරි එකතු කර, බිත්තර නොකැඩෙන්නට කලවම් නොකර වළඳ සෙලවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මතුපිට තෙල් මතුවන තුරු ඉතා සෙමින් උතුරන්න තබා ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බත්, ඉඳිආප්ප හෝ පිට්ටු සමඟ බෙදන්නට පෙර මිනිත්තු කිහිපයක් වසා තබන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "முட்டைகளை மூழ்கும் அளவு தண்ணீரில் இட்டு நன்கு வேகும் வரை கொதிக்கவிட்டு, குளிர்ந்த நீரில் ஆற்றி ஓடு உரிக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "கறி உள்ளே இறங்க ஒவ்வொரு முட்டையிலும் பக்கவாட்டில் இரண்டு கீறல் போடவும்; முழுவதும் வெட்ட வேண்டாம்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, இஞ்சி, பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை இலை சேர்த்து பொன்னிறமாக வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தணலைக் குறைத்து மஞ்சள் தூள், மிளகாய்த் தூள், வறுத்த கறித்தூள் சேர்த்து பச்சை வாசம் போகும் வரை கிளறவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப்பாலை ஊற்றி உப்பு சேர்த்து கறி சற்று இறுகும் வரை கொதிக்கவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "முட்டைகளை மெதுவாக விட்டு, ஒரு முறை புரட்டி, கறியை மேலே ஊற்றவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலைச் சேர்த்து, முட்டை உடையாமல் இருக்க கலக்காமல் சட்டியை ஆட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மேற்பரப்பில் எண்ணெய் தெரியும் வரை மிக மெதுவாகக் கொதிக்கவிட்டு அடுப்பிலிருந்து இறக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சாதம், இடியப்பம் அல்லது பிட்டுடன் பரிமாறும் முன் சில நிமிடம் மூடி வைக்கவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "small pot for boiling eggs"
+ ],
+ "tips": {
+  "en": "Slitting the eggs matters more than frying them; the cuts are what let the gravy in. Never boil hard after the thick milk goes in or the gravy will split and look curdled.",
+  "si": "බිත්තර බැදීමට වඩා වැදගත් වන්නේ කැපුම් දැමීමයි; හොදිය ඇතුළට යන්නේ එම කැපුම් හරහායි. මුල් කිරි දැමූ පසු දැඩිව උතුරන්නට දුන්නොත් හොදිය කැඩී යයි.",
+  "ta": "முட்டையைப் பொரிப்பதைவிட கீறல் போடுவது முக்கியம்; கறி உள்ளே இறங்குவது அந்தக் கீறல் வழியாகவே. தடித்த பால் சேர்த்த பிறகு பொங்கக் கொதிக்கவிட்டால் கறி திரிந்துவிடும்."
+ },
+ "health_note": {
+  "en": "This is the protein a household reaches for when there is no fish or meat, and the eggs also bring vitamin B12 and choline. The coconut milk carries the fat, so one or two eggs a head with plenty of vegetables keeps the plate balanced.",
+  "si": "මාළු හෝ මස් නැති දිනට ගෙදරක ලබා ගන්නා ප්‍රෝටීන් මෙයයි; බිත්තරයෙන් විටමින් බී12 සහ කොලීන්ද ලැබේ. තෙල ඇත්තේ පොල් කිරියේ බැවින් එක් අයෙකුට බිත්තර එකක් දෙකක් සමඟ එළවළු ගොඩක් එකතු කර ගන්න.",
+  "ta": "மீனோ மாமிசமோ இல்லாத நாளில் வீட்டில் நம்பும் புரதம் இதுவே; முட்டையில் பி12 வைட்டமினும் கோலினும் உள்ளன. கொழுப்பு தேங்காய்ப்பாலில் இருப்பதால் ஒருவருக்கு ஒன்றிரண்டு முட்டையுடன் நிறைய காய்கறிகளும் சேர்த்துக்கொள்ளுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "kid_friendly",
+  "budget",
+  "comfort",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

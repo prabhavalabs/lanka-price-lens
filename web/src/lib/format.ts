@@ -93,6 +93,11 @@ export function dishCategoryLabel(category: string): string {
 /** "45 min" or "1 h 15 min" for prep plus cooking time. */
 export function minutesLabel(minutes: number): string {
   if (minutes < 60) return `${minutes} min`;
+  // A pickle cures for weeks: past two days, count days rather than hours.
+  if (minutes >= 2880) {
+    const days = Math.round(minutes / 1440);
+    return days >= 14 ? `${Math.round(days / 7)} weeks` : `${days} days`;
+  }
   const hours = Math.floor(minutes / 60);
   const rest = minutes % 60;
   return rest ? `${hours} h ${rest} min` : `${hours} h`;

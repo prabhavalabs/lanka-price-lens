@@ -1,0 +1,391 @@
+{
+ "id": "dish_fish_moju",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 130,
+  "description": {
+   "en": "A few pieces of pickled fish with onion, beside rice",
+   "si": "බත් සමඟ ගන්න ළූණු සහිත මොජු මාළු කෑලි කිහිපයක්",
+   "ta": "சாதத்துடன் வெங்காயத்துடன் ஊறுகாய் மீன் சில துண்டுகள்"
+  }
+ },
+ "yield_g": 520,
+ "ingredients": [
+  {
+   "ref": "product_balaya",
+   "label": {
+    "en": "skipjack tuna",
+    "si": "බලයා",
+    "ta": "பலயா சூரை"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 thick steaks",
+   "preparation": {
+    "en": "cut into thumb sized cubes",
+    "si": "මිටි ඇඟිල්ලක ප්‍රමාණයේ කැට වලට කපාගත්",
+    "ta": "கட்டைவிரல் அளவு கனசதுரங்களாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "4 tbsp",
+   "preparation": {
+    "en": "for frying",
+    "si": "බැදගැනීමට",
+    "ta": "பொரிப்பதற்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "frying"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "small red onions",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "2 handfuls, kept whole",
+   "preparation": {
+    "en": "peeled and left whole",
+    "si": "ලෙලි ගලවා මුළුමනින්ම තබාගත්",
+    "ta": "தோல் உரித்து முழுமையாக"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "piece",
+   "household": "6 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb sized piece",
+   "preparation": {
+    "en": "cut into fine strips",
+    "si": "තුනී පටිවලට කපාගත්",
+    "ta": "மெல்லிய துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seed",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "ground with a little vinegar",
+    "si": "විනාකිරි ටිකක් සමඟ අඹරාගත්",
+    "ta": "சிறிது வினிகருடன் அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the tuna into thumb sized cubes, rub them with the turmeric and half the salt and leave them on a plate.",
+    "minutes": 10
+   },
+   {
+    "text": "Fry the cubes in hot coconut oil, a few at a time, until they are brown and firm all round, then lift them out to drain.",
+    "minutes": 12
+   },
+   {
+    "text": "Peel the small onions but keep them whole, slit the green chillies and slice the garlic and ginger.",
+    "minutes": 10
+   },
+   {
+    "text": "Fry the whole onions and the chillies in the same oil for a minute or two so they blister but stay crisp, then lift them out.",
+    "minutes": 4
+   },
+   {
+    "text": "Grind the mustard seed with a spoon of the vinegar into a rough paste.",
+    "minutes": 5
+   },
+   {
+    "text": "In a pan warm the rest of the vinegar with the sugar, mustard paste, chilli powder, garlic, ginger, curry leaves and the rest of the salt until it thickens into a dressing.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the fried fish, onions and chillies into the dressing and fold everything over so each piece is coated.",
+    "minutes": 2
+   },
+   {
+    "text": "Cook two or three minutes more, then take it off the fire and let it cool completely before you cover it.",
+    "minutes": 10
+   },
+   {
+    "text": "Keep it in a clean dry jar; it tastes better the next day and keeps three or four days without ice.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බලයා මිටි ඇඟිල්ලක ප්‍රමාණයේ කැට වලට කපා, කහ සහ ලුණු භාගයක් ගල්වා පිඟානක තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "රත් වූ පොල් තෙලේ කැට ටික ටික දමා හාත්පසින් රන්වන් වී තද වන තුරු බැදගෙන, තෙල් බේරෙන්න අරගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "රතු ළූණු ලෙලි ගලවා මුළුමනින්ම තබාගන්න, අමු මිරිස් දිගට පලා, සුදුළූණු සහ ඉඟුරු තුනීට කපාගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එම තෙලේම ළූණු සහ මිරිස් විනාඩියක් දෙකක් බැදගන්න; පිටත රැළි වුණත් ඇතුළත තද ගතිය තියෙන්න ඕනේ. පසුව අරගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "අබ ඇට විනාකිරි හැන්දක් සමඟ අඹරා රළු තලපයක් හදාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් එකක ඉතිරි විනාකිරි, සීනි, අබ තලපය, මිරිස් කුඩු, සුදුළූණු, ඉඟුරු, කරපිංචා සහ ඉතිරි ලුණු දමා තද සෝස් එකක් වන තුරු රත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බැදපු මාළු, ළූණු සහ මිරිස් ඒ සෝස් එකට දමා හැම කෑල්ලකටම සෝස් වැදෙන්න පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තව විනාඩි දෙක තුනක් පිසගෙන ලිපෙන් ඉවත් කර, වහන්න කලින් සම්පූර්ණයෙන් සිසිල් වන්න තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිරිසිදු වියළි බෝතලයක බහාලන්න; පසුදා තව රසයි, අයිස් නැතුවත් දින තුනක් හතරක් තියෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பலயா மீனை கட்டைவிரல் அளவு கனசதுரங்களாக வெட்டி, மஞ்சளும் பாதி உப்பும் தடவி ஒரு தட்டில் வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "காய்ந்த தேங்காய் எண்ணெயில் கொஞ்சம் கொஞ்சமாகப் போட்டு, எல்லாப் பக்கமும் பொன்னிறமாகி இறுகும் வரை பொரித்து, எண்ணெய் வடிய எடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "சின்ன வெங்காயத்தை உரித்து முழுமையாக வையுங்கள், பச்சை மிளகாயைக் கீறி, பூண்டையும் இஞ்சியையும் மெல்லியதாக நறுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே எண்ணெயில் முழு வெங்காயத்தையும் மிளகாயையும் ஒரு இரண்டு நிமிடம் பொரித்து, மேல் சுருங்கினாலும் உள்ளே இறுக்கமாக இருக்க எடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கடுகை ஒரு கரண்டி வினிகருடன் அரைத்து கரகரப்பான விழுதாக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வாணலியில் மீதி வினிகர், சீனி, கடுகு விழுது, மிளகாய்த் தூள், பூண்டு, இஞ்சி, கறிவேப்பிலை, மீதி உப்பு சேர்த்து கெட்டியான சாசாகும் வரை சூடாக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "பொரித்த மீன், வெங்காயம், மிளகாயை அந்தச் சாசில் போட்டு, ஒவ்வொரு துண்டிலும் படும்படி கிளறுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "மேலும் இரண்டு மூன்று நிமிடம் வேகவிட்டு, இறக்கி, மூடுவதற்கு முன் முழுமையாக ஆறவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "சுத்தமான உலர்ந்த பாட்டிலில் வையுங்கள்; மறுநாள் இன்னும் சுவையாக இருக்கும், பனிக்கட்டி இல்லாமல் மூன்று நான்கு நாள் நிற்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 30,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "frying pan",
+  "grinding stone or blender",
+  "clean glass jar"
+ ],
+ "tips": {
+  "en": "Fry the fish until it is really firm, or the cubes break up in the vinegar. Everything must be bone dry, jar and spoon included, or the moju will not keep.",
+  "si": "මාළු හොඳින් තද වන තුරු බදින්න, නැත්නම් විනාකිරි ඇතුළේ කැට කැඩෙනවා. බෝතලය, හැන්ද ඇතුළු හැම දෙයක්ම මුළුමනින් වියළිව තියෙන්න ඕනේ, නැත්නම් මොජු තියෙන්නේ නැහැ.",
+  "ta": "மீனை நன்கு இறுகும் வரை பொரியுங்கள், இல்லையேல் வினிகரில் துண்டுகள் உடையும். பாட்டில், கரண்டி உட்பட எல்லாம் முழுமையாக உலர்ந்திருக்க வேண்டும், இல்லையேல் மோஜு கெட்டுவிடும்."
+ },
+ "health_note": {
+  "en": "Good protein from the tuna, but this is a fried and sugared pickle, so it is salty, oily and sweet at once. Take it as a spoonful on the side, not as the main curry, and skip it if you are cutting down on sugar.",
+  "si": "බලයාගෙන් හොඳ ප්‍රෝටීන් ලැබෙනවා, නමුත් මේක බැදපු, සීනි දමපු අච්චාරුවක්, ලුණු තෙල් සීනි තුනම එකට තියෙනවා. ප්‍රධාන කරිය විදිහට නොව පැත්තකින් හැන්දක් විදිහට ගන්න; සීනි අඩු කරනවා නම් මේක වළක්වන්න.",
+  "ta": "சூரை மீனில் நல்ல புரதம் உண்டு, ஆனால் இது பொரித்த, சீனி சேர்த்த ஊறுகாய்; உப்பு, எண்ணெய், சீனி மூன்றும் ஒன்றாக உள்ளன. முக்கிய கறியாக அல்லாமல் ஒரு கரண்டியாகப் பரிமாறுங்கள்; சீனியைக் குறைப்பவர்கள் தவிர்க்கலாம்."
+ },
+ "tags": [
+  "high_protein",
+  "deep_fried",
+  "high_sugar",
+  "high_sodium",
+  "festive",
+  "budget"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,285 @@
+{
+ "id": "dish_pol_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 55,
+  "description": {
+   "en": "A heaped spoonful of brick-red coconut sambol",
+   "si": "රතු පොල් සම්බෝල පිරුණු හැන්දක්",
+   "ta": "நிறைந்த ஒரு கரண்டி செங்கல் நிறத் தேங்காய்ச் சம்பல்"
+  }
+ },
+ "yield_g": 220,
+ "ingredients": [
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, freshly scraped",
+    "si": "සීරූ පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 140,
+   "unit": "g",
+   "household": "half a large coconut, scraped",
+   "preparation": {
+    "en": "scraped on a hiramanaya, kept loose",
+    "si": "හිරමනයෙන් සීරා ලිහිල්ව තබාගත්",
+    "ta": "துருவியில் துருவி தளர்வாக வைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "5 or 6 chillies",
+   "preparation": {
+    "en": "stalks off, torn, some seeds shaken out",
+    "si": "පොහොර ගලවා ඉරා, බීජ ස්වල්පයක් ඉවත් කර",
+    "ta": "தாள் நீக்கி கிழித்து, சில விதைகளை உதிர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த்தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "for colour",
+    "si": "පාට සඳහා",
+    "ta": "நிறத்துக்காக"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 small onions",
+   "preparation": {
+    "en": "peeled and chopped",
+    "si": "ලෙලි ගසා කපාගත්",
+    "ta": "உரித்து நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பளகடா"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1½ tbsp",
+   "preparation": {
+    "en": "broken small",
+    "si": "කුඩාවට කඩාගත්",
+    "ta": "சிறியதாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණි",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, ground",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Break the coconut, scrape the flesh out with a hiramanaya and keep the scrapings loose in a bowl.",
+    "minutes": 5
+   },
+   {
+    "text": "Snap the stalks off the dried chillies, tear them open and shake out some seeds if the children will eat it too.",
+    "minutes": null
+   },
+   {
+    "text": "Crush the chillies with the salt on the grinding stone until you have a coarse red powder.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the maldive fish and the chopped red onion and pound until the onion turns to a wet paste.",
+    "minutes": 4
+   },
+   {
+    "text": "Work the scraped coconut in a handful at a time, pressing rather than stirring, until every shred turns brick red.",
+    "minutes": null
+   },
+   {
+    "text": "Stir in the chilli powder for colour, then squeeze the lime over and mix once more.",
+    "minutes": null
+   },
+   {
+    "text": "Taste for salt and sour and serve it fresh; left in the heat, coconut sambol sours by the next day.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පොල් ගෙඩිය බිඳ හිරමනයකින් සීරා, සීරූ පොල් බඳුනකට ලිහිල්ව දමා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වියළි මිරිස්වල පොහොර ගලවා ඉරා, දරුවන්ටත් කන්නට නම් බීජ ස්වල්පයක් ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මිරිස් ලුණු සමඟ මිරිස් ගලේ තලා රළු රතු කුඩක් සාදා ගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "උම්බලකඩ සහ කැපූ රතු ළූණු එකතු කර ළූණු තෙත් පේස්ට් එකක් වන තුරු තලන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "සීරූ පොල් අතට අතට එකතු කරමින්, කලතන්නේ නොව තද කරමින්, සෑම පොල් ඉරක්ම ගඩොල් පාට වන තුරු මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පාට සඳහා මිරිස් කුඩු දමා, පසුව දෙහි මිරිකා නැවත වරක් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලා නැවුම්ව ඉදිරිපත් කරන්න; උෂ්ණයේ තැබුවහොත් පොල් සම්බෝල ලබන දිනට ඇඹුල් වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தேங்காயை உடைத்து துருவியில் துருவி, துருவலைக் கிண்ணத்தில் தளர்வாகப் போடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "வத்தல் மிளகாயின் தாள்களை நீக்கிக் கிழிக்கவும்; குழந்தைகளும் சாப்பிடுவார்கள் என்றால் சில விதைகளை உதிர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மிளகாயை உப்புடன் அம்மியில் அரைத்து கரகரப்பான சிவப்புத் தூளாக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "உம்பளகடாவையும் நறுக்கிய சின்ன வெங்காயத்தையும் சேர்த்து, வெங்காயம் ஈர விழுதாகும் வரை அரைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "துருவிய தேங்காயை கை அளவாகச் சேர்த்து, கிளறாமல் அழுத்தி, ஒவ்வொரு துருவலும் செங்கல் நிறமாகும் வரை பிசையவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நிறத்துக்காக மிளகாய்த்தூள் சேர்த்து, பிறகு எலுமிச்சையைப் பிழிந்து மீண்டும் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உப்பும் புளிப்பும் பார்த்து உடனே பரிமாறவும்; வெயிலில் வைத்தால் தேங்காய்ச் சம்பல் மறுநாளே புளித்துவிடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "coconut scraper (hiramanaya)",
+  "grinding stone or mortar and pestle",
+  "bowl"
+ ],
+ "tips": {
+  "en": "Pound the chilli, fish and onion first and let the coconut in last; coconut added early only soaks up the onion juice and stays pale. For kalu pol sambol, dry-roast the scrapings in a pan until they smell nutty before they go on the stone.",
+  "si": "මිරිස්, උම්බලකඩ සහ ළූණු පළමුව තලා, පොල් අන්තිමට දමන්න; පොල් කලින් දැමුවහොත් ළූණු යුෂ උරාගෙන පාට නොවී රැඳේ. කළු පොල් සම්බෝලයට නම් පොල් ගලට දැමීමට පෙර පෑනක බැද සුවඳ ගන්වන්න.",
+  "ta": "மிளகாய், உம்பளகடா, வெங்காயத்தை முதலில் அரைத்து, தேங்காயைக் கடைசியில் சேர்க்கவும்; முன்பே சேர்த்தால் தேங்காய் வெங்காயச் சாற்றை உறிஞ்சி நிறம் ஏறாமல் இருக்கும். கறுப்புத் தேங்காய்ச் சம்பலுக்கு, துருவலை வாணலியில் வாசம் வரும் வரை வாட்டிய பிறகு அரைக்கவும்."
+ },
+ "health_note": {
+  "en": "Scraped coconut brings fibre along with a good deal of coconut fat, so a sambol this size is a side and not a meal in itself. The maldive fish and salt together add sodium; go lighter on both when the rest of the plate is already salty.",
+  "si": "සීරූ පොල්වලින් තන්තු ලැබෙන නමුත් පොල් මේදයද සැලකිය යුතු ලෙස ඇති බැවින් මෙම ප්‍රමාණය ආහාරයක් නොව ව්‍යංජනයකට පමණි. උම්බලකඩ සහ ලුණු එකට සෝඩියම් වැඩි කරයි; පිඟානේ අනෙක් කෑම ලුණු සහිත නම් දෙකම අඩු කරන්න.",
+  "ta": "துருவிய தேங்காய் நார்ச்சத்துடன் கணிசமான தேங்காய்க் கொழுப்பையும் தருகிறது, எனவே இந்த அளவு ஒரு பக்கச் சுவையே, முழு உணவு அல்ல. உம்பளகடாவும் உப்பும் சேர்ந்து சோடியத்தைக் கூட்டும்; தட்டில் மற்ற உணவு உப்பாக இருந்தால் இரண்டையும் குறைக்கவும்."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "low_carb",
+  "high_fibre",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

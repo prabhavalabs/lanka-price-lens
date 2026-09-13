@@ -1,0 +1,465 @@
+{
+ "id": "dish_kola_urundai",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "Three meatballs in gravy with rice or string hoppers",
+   "si": "බත් හෝ ඉඳිආප්ප සමඟ හොද්දේ මස් ගුලි තුනක්",
+   "ta": "சாதத்துடனோ இடியப்பத்துடனோ குழம்பில் மூன்று உருண்டைகள்"
+  }
+ },
+ "yield_g": 820,
+ "ingredients": [
+  {
+   "ref": "product_mutton",
+   "label": {
+    "en": "mutton, minced",
+    "si": "අඹරාගත් එළු මස්",
+    "ta": "கீமா ஆட்டிறைச்சி"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "half a kilo",
+   "preparation": {
+    "en": "minced fine",
+    "si": "සිහින්ව අඹරාගත්",
+    "ta": "நன்றாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 130,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "half chopped fine for the balls, half sliced for the gravy",
+    "si": "භාගයක් ගුලිවලට සිහින්ව කපාගත්, භාගයක් හොද්දට කපාගත්",
+    "ta": "பாதி உருண்டைக்கு மெல்லியதாக, பாதி குழம்புக்கு நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "chopped very fine",
+    "si": "ඉතා සිහින්ව කපාගත්",
+    "ta": "மிக மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs, one chopped into the mince",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, crushed",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaffna_curry_powder",
+   "label": {
+    "en": "Jaffna curry powder",
+    "si": "යාපනේ තුනපහ",
+    "ta": "யாழ்ப்பாணக் கறித் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_breadcrumbs",
+   "label": {
+    "en": "breadcrumbs",
+    "si": "පාන් කුඩු",
+    "ta": "ரொட்டித் தூள்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "to bind the mince",
+    "si": "මස් බැඳ ගැනීමට",
+    "ta": "இறைச்சியைப் பிணைக்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": {
+    "en": "beaten",
+    "si": "ගසාගත්",
+    "ta": "அடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டி, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்க்க, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Mix the mince in a bowl with half the chopped onion, half the garlic and ginger, the green chilli, coriander leaves, one chopped sprig of curry leaves, crushed fennel, pepper, half the turmeric and half the salt.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the breadcrumbs and the beaten egg and knead the mixture well with your hand until it is smooth and sticky.",
+    "minutes": 8
+   },
+   {
+    "text": "Roll it into balls about the size of a small lime, twelve or so, and rest them on a plate in a cool place.",
+    "minutes": 15
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and brown the balls a few at a time, rolling them gently so they hold their shape, then lift them out.",
+    "minutes": 10
+   },
+   {
+    "text": "In the same oil fry the rest of the onion, garlic, ginger and the second sprig of curry leaves until the onion is soft.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the Jaffna curry powder and the rest of the turmeric, fry for a moment, then pour in the thin coconut milk and bring it to a simmer.",
+    "minutes": 4
+   },
+   {
+    "text": "Slip the browned balls into the gravy, cover the pan and cook on a low flame so they finish cooking through and the gravy takes their flavour.",
+    "minutes": 12
+   },
+   {
+    "text": "Pour in the thick coconut milk, swirl the pan rather than stirring hard, and let it come to one slow bubble.",
+    "minutes": 4
+   },
+   {
+    "text": "Check the salt and take the pan off the fire; the gravy should be thick enough to sit on a string hopper.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අඹරාගත් මස් බඳුනකට දමා, කපාගත් ළූණු භාගයක්, සුදුළූණු හා ඉඟුරු භාගයක්, අමු මිරිස්, කොත්තමල්ලි කොළ, කපාගත් කරපිංචා කොළයක්, තලාගත් මාදුරු, ගම්මිරිස්, කහ භාගයක් සහ ලුණු භාගයක් සමඟ මිශ්‍ර කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පාන් කුඩු සහ ගසාගත් බිත්තරය දමා, මිශ්‍රණය සුමට හා ඇලෙන සුලු වන තුරු අතින් හොඳින් මදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කුඩා දෙහි ගෙඩියක් තරමට ගුලි දොළහක් පමණ රවුම් කර, පිඟානක තබා සිසිල් තැනක තබන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පළල් පෑන් එකක පොල් තෙල් රස්නේ කර, වර වර ගුලි කිහිපයක් දමා, හැඩය රැඳෙන ලෙස සෙමින් පෙරළමින් දුඹුරු කර ගෙන ඉවතට ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එම තෙලේ ම ඉතිරි ළූණු, සුදුළූණු, ඉඟුරු සහ දෙවන කරපිංචා කොළය ළූණු මෘදු වන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "යාපනේ තුනපහ සහ ඉතිරි කහ දමා මොහොතක් බැදගෙන, තුනී පොල් කිරි වත් කර උණු වන්නට තබන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "බැදගත් ගුලි හොද්දට දමා, පෑන් වසා, ඒවා මුළුමනින් උයා හොද්දට ඒවායේ රස එකතු වන ලෙස අඩු ගින්නේ උයන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඝන පොල් කිරි වත් කර, තදින් කලවම් නොකර පෑන් සෙමින් සොලවා, එක් වරක් සෙමින් උතුරන්නට දෙන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලුණු රස බලා පෑන් ගින්නෙන් ඉවත් කරන්න; හොද්ද ඉඳිආප්පයක් මත රැඳෙන තරමට තද විය යුතුය.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரைத்த இறைச்சியை ஒரு கிண்ணத்தில் இட்டு, பாதி நறுக்கிய வெங்காயம், பாதி பூண்டு இஞ்சி, பச்சை மிளகாய், கொத்தமல்லி இலை, நறுக்கிய ஒரு கறிவேப்பிலைக் கொத்து, இடித்த பெருஞ்சீரகம், மிளகு, பாதி மஞ்சள், பாதி உப்பு சேர்த்துக் கலக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "ரொட்டித் தூளையும் அடித்த முட்டையையும் சேர்த்து, கலவை மென்மையாகி ஒட்டும் தன்மை வரும் வரை கையால் நன்கு பிசையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சிறிய தேசிக்காய் அளவில் பன்னிரண்டு உருண்டைகளாகப் பிடித்து, தட்டில் வைத்துக் குளிர்ந்த இடத்தில் வையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, ஒரு தவணைக்குச் சில உருண்டைகளாக இட்டு, வடிவம் கெடாமல் மெதுவாகப் புரட்டி பொன்னிறமாக்கி எடுத்து வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே எண்ணெயில் மீதி வெங்காயம், பூண்டு, இஞ்சி, இரண்டாவது கறிவேப்பிலைக் கொத்தை வெங்காயம் மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "யாழ்ப்பாணக் கறித் தூளையும் மீதி மஞ்சளையும் சேர்த்து ஒரு நிமிடம் வதக்கி, இரண்டாம் தேங்காய்ப் பாலை ஊற்றிக் கொதிக்க வையுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "பொன்னிறமாக்கிய உருண்டைகளைக் குழம்பில் இட்டு, சட்டியை மூடி, அவை உள்ளே வெந்து குழம்பில் அவற்றின் சுவை இறங்கும் வரை சிறு தீயில் சமையுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலை ஊற்றி, வலுவாகக் கிளறாமல் சட்டியை மெதுவாகச் சுழற்றி, ஒரு முறை மட்டும் மெதுவாகக் கொதிக்க விடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "உப்பைப் பார்த்து அடுப்பை விட்டு இறக்குங்கள்; குழம்பு இடியப்பத்தின் மேல் நிற்கும் அளவு கெட்டியாக இருக்க வேண்டும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 35,
+  "cook_minutes": 35,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "mixing bowl",
+  "wide pan with a lid",
+  "plate for resting the balls"
+ ],
+ "tips": {
+  "en": "Knead the mince until it feels sticky, since that is what holds the balls together in the gravy. Brown them first and add them to a gravy that is already simmering, and never stir the pan with a spoon after that; swirl it instead.",
+  "si": "අඹරාගත් මස් ඇලෙන සුලු බවක් දැනෙන තුරු මදින්න; හොද්ද අතර ගුලි එකට රැඳෙන්නේ එයින්. මුලින් බැදගෙන, උතුරන හොද්දට දමන්න; ඉන්පසු හැන්දෙන් කලවම් නොකර පෑන් සොලවන්න.",
+  "ta": "அரைத்த இறைச்சியை ஒட்டும் தன்மை வரும் வரை பிசையுங்கள்; குழம்பில் உருண்டைகள் உடையாமல் நிற்பது அதனால்தான். முதலில் பொன்னிறமாக்கி, கொதிக்கும் குழம்பில் இடுங்கள்; அதன் பிறகு ஸ்பூனால் கிளறாமல் சட்டியைச் சுழற்றுங்கள்."
+ },
+ "health_note": {
+  "en": "Mince, egg and breadcrumb together make a soft dish that children and elders can chew easily, and the goat meat brings iron and protein. The balls are browned in oil and the gravy is thick coconut milk, so serve three each with plenty of rice and a vegetable.",
+  "si": "අඹරාගත් මස්, බිත්තර සහ පාන් කුඩු එකට දරුවන්ට හා වැඩිහිටියන්ට පහසුවෙන් හපන මෘදු කෑමක් සාදන අතර එළු මස්වලින් යකඩ හා ප්‍රෝටීන් ලැබේ. ගුලි තෙලේ බැදෙන අතර හොද්ද ඝන පොල් කිරි බැවින්, බත් හා එළවළුවක් සමඟ එක් අයෙකුට තුනක් පිළිගන්වන්න.",
+  "ta": "அரைத்த இறைச்சி, முட்டை, ரொட்டித் தூள் சேர்ந்து குழந்தைகளும் முதியவர்களும் இலகுவாக மெல்லக்கூடிய மென்மையான உணவாகிறது; ஆட்டிறைச்சி இரும்பையும் புரதத்தையும் தருகிறது. உருண்டைகள் எண்ணெயில் பொன்னிறமாக்கப்படுகின்றன, குழம்பு கெட்டித் தேங்காய்ப் பால்; எனவே சாதத்துடனும் ஒரு காய்கறியுடனும் ஒருவருக்கு மூன்று பரிமாறுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "kid_friendly",
+  "festive",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

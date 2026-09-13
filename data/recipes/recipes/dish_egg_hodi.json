@@ -1,0 +1,353 @@
+{
+ "id": "dish_egg_hodi",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 220,
+  "description": {
+   "en": "A poached egg in a bowl of thin turmeric gravy",
+   "si": "ලා කහ පැහැති සිහින් හොදි බඳුනක බිත්තරයක්",
+   "ta": "மஞ்சள் நிற நீர்க் கறியில் ஒரு முட்டை"
+  }
+ },
+ "yield_g": 880,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "1 egg a head",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "1 and three quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப்பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව පෙති කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට හෙළාගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm quill",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, juiced",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Put the thin coconut milk in a wide pan with the onion, green chilli, curry leaves, pandan, cinnamon, fenugreek, turmeric and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to a slow boil, stirring now and then, and cook until the onion is soft and the gravy smells of the spices.",
+    "minutes": 8
+   },
+   {
+    "text": "Turn the flame right down so the surface of the hodi only trembles.",
+    "minutes": null
+   },
+   {
+    "text": "Break the eggs one at a time into a cup and slide each into the gravy, keeping them well apart.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and poach without stirring until the whites are set and the yolks are still soft.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour the thick coconut milk in around the edge of the pan and shake it gently to mix.",
+    "minutes": 2
+   },
+   {
+    "text": "Warm it through without letting it boil, take it off the fire and squeeze in the lime.",
+    "minutes": 1
+   },
+   {
+    "text": "Ladle over string hoppers or hoppers so the yolk breaks into the gravy, with lunu miris on the side.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පළල් පෑනකට දෙවන පොල් කිරි දමා, ලූනු, අමු මිරිස්, කරපිංචා, රම්පෙ, කුරුඳු, උළුහාල්, කහ කුඩු සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නිතර කලවම් කරමින් සෙමින් උතුරවා, ලූනු මෘදු වී කුළුබඩුවල සුවඳ එන තුරු තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "හොදියේ මතුපිට සෙලවෙන තරමට පමණක් ගින්න හොඳින් අඩු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර එකින් එක කෝප්පයකට කඩා, එකිනෙකින් වෙන්ව හොදියට ලිහිල්ව දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නොකලවම් කර වසා, සුදු මදය තැම්බී කහ මදය තවම මෘදුව ඇති තුරු තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මුල් පොල් කිරි පෑනේ දාර වටා වත් කර සෙමින් සොලවා මිශ්‍ර කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "උතුරන්නට ඉඩ නොදී රත් කර, ගින්නෙන් ඉවත් කර දෙහි යුෂ මිරිකා දමන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "කහ මදය හොදියට කැඩෙන සේ ඉඳිආප්ප හෝ ආප්ප මතට වත් කර, ලුණු මිරිස් සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "அகலமான பாத்திரத்தில் இரண்டாம் தேங்காய்ப்பாலை விட்டு, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை இலை, பட்டை, வெந்தயம், மஞ்சள் தூள், உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அவ்வப்போது கிளறி மெதுவாகக் கொதிக்கவைத்து, வெங்காயம் மென்மையாகி மசாலா வாசம் வரும் வரை வேகவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "ஹொதியின் மேற்பரப்பு மட்டும் அசையும் அளவுக்கு தணலை நன்கு குறைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டைகளை ஒன்றன்பின் ஒன்றாக ஒரு கோப்பையில் உடைத்து, ஒன்றோடொன்று தொடாமல் கறியில் மெதுவாக விடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கலக்காமல் மூடி, வெள்ளைக்கரு இறுகி மஞ்சள் கரு மென்மையாக இருக்கும் வரை வேகவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலை பாத்திரத்தின் ஓரங்களில் ஊற்றி மெதுவாக ஆட்டிக் கலக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கொதிக்கவிடாமல் சூடாக்கி, அடுப்பிலிருந்து இறக்கி எலுமிச்சைச் சாறைப் பிழியவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "மஞ்சள் கரு கறியில் உடையும்படி இடியப்பம் அல்லது ஆப்பத்தின் மேல் ஊற்றி, லுணு மிரிசுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide shallow pan",
+  "ladle"
+ ],
+ "tips": {
+  "en": "The gravy must be barely trembling when the eggs go in; a hard boil breaks the white into threads and clouds the hodi. Add the lime only after the pan is off the fire, or the coconut milk will curdle.",
+  "si": "බිත්තර දමන විට හොදිය උතුරන්නේ නැතිව සෙමින් සෙලවෙන්නට ඕනෑ; තදින් උතුරන්නට දුන්නොත් සුදු මදය නූල් ලෙස කැඩී හොදිය අපැහැදිලි වේ. දෙහි දමන්නේ පෑන ගින්නෙන් ඉවත් කළ පසුවයි, නොඑසේ නම් පොල් කිරි කැඩේ.",
+  "ta": "முட்டைகளை விடும்போது கறி பொங்காமல் மெதுவாக அசைய வேண்டும்; பொங்கக் கொதித்தால் வெள்ளைக்கரு இழையாக உடைந்து கறி கலங்கிவிடும். எலுமிச்சையை அடுப்பை அணைத்த பிறகே சேர்க்கவும், இல்லையேல் தேங்காய்ப்பால் திரியும்."
+ },
+ "health_note": {
+  "en": "A poached egg in hodi is gentle food, easy for children and older people and quick to make when someone comes home late. The coconut milk brings the fat, so a thinner second extract keeps the meal lighter.",
+  "si": "හොදියේ තැම්බූ බිත්තරයක් බඩට පහසු ආහාරයක් වන අතර දරුවන්ට සහ වැඩිහිටියන්ට සුදුසුයි; කවුරුන් හෝ රැයට ගෙදර එන විටත් ඉක්මනින් සාදා ගත හැකිය. තෙල ඇත්තේ පොල් කිරියේ බැවින් දෙවන කිරි වැඩිපුර යෙදුවහොත් ආහාරය සැහැල්ලු වේ.",
+  "ta": "ஹொதியில் வேகவைத்த முட்டை வயிற்றுக்கு இலகுவான உணவு; குழந்தைகளுக்கும் முதியவர்களுக்கும் ஏற்றது, யாராவது இரவில் தாமதமாக வரும்போது விரைவாகச் செய்யலாம். கொழுப்பு தேங்காய்ப்பாலில் இருப்பதால் இரண்டாம் பாலை அதிகமாகப் பயன்படுத்தினால் உணவு இலகுவாக இருக்கும்."
+ },
+ "tags": [
+  "high_protein",
+  "quick",
+  "comfort",
+  "one_pot",
+  "kid_friendly",
+  "elderly_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

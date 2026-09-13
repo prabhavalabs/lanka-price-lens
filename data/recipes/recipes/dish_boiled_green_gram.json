@@ -1,0 +1,229 @@
+{
+ "id": "dish_boiled_green_gram",
+ "base_servings": 4,
+ "serving": {
+  "role": "breakfast",
+  "portion_g": 175,
+  "description": {
+   "en": "A bowl of steamed green gram with coconut and jaggery",
+   "si": "පොල් සහ හකුරු සමඟ තම්බපු මුං ඇට බඳුනක්",
+   "ta": "தேங்காயும் வெல்லமும் சேர்ந்த ஆவியில் வேகவைத்த பச்சைப் பயறு"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_green_gram",
+   "label": {
+    "en": "green gram",
+    "si": "මුං ඇට",
+    "ta": "பச்சைப் பயறு"
+   },
+   "quantity": 240,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "washed and soaked for four hours",
+    "si": "සෝදා පැය හතරක් පොඟවාගත්",
+    "ta": "கழுவி நான்கு மணி நேரம் ஊறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "අලුතින් ගාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாணி"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 small pieces",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කඩාගත්",
+    "ta": "துண்டுகளாக உடைத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the green gram in two waters and soak it for four hours, or overnight if the grain is old.",
+    "minutes": 240
+   },
+   {
+    "text": "Drain and put the gram in a pot with water just level with the grain, and add the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and cook on a low flame so it steams rather than boils hard, until the skins split.",
+    "minutes": 30
+   },
+   {
+    "text": "Check whether the water has been taken up; if the pot is still wet, cook uncovered for a minute or two more.",
+    "minutes": 2
+   },
+   {
+    "text": "Turn the fire off and leave the pot closed so the grain finishes in its own steam.",
+    "minutes": 5
+   },
+   {
+    "text": "Fluff the gram with a fork so it does not sit in clumps and spoon it into bowls.",
+    "minutes": null
+   },
+   {
+    "text": "Top each bowl with scraped coconut and serve with a trickle of treacle or a piece of jaggery.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මුං ඇට වතුර දෙකකින් සෝදා පැය හතරක් පොඟවන්න; ඇට පැරණි නම් රාත්‍රිය පුරා පොඟවන්න.",
+    "minutes": 240
+   },
+   {
+    "text": "වතුර බේරා, ඇට මට්ටමට පමණක් වතුර සහ ලුණු දමා වළඳකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා, තදින් උතුරන්නේ නැතිව හුමාලයෙන් තැම්බෙන ලෙස මද ගින්නේ පොත්ත පැළෙන තුරු තම්බන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "වතුර උරාගෙන ඇත්දැයි බලන්න; තවම තෙත් නම් වසන්නේ නැතිව මිනිත්තුවක් දෙකක් තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ගින්න නිවා, වළඳ වසා තබා ඇට තමන්ගේ හුමාලයෙන් ඉදෙන්නට දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගුලි නොවන සේ ගෑරුප්පුවකින් ලිහිල් කර බඳුන්වලට බෙදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එක් එක් බඳුනට ගාගත් පොල් දමා, කිතුල් පැණි ටිකක් හෝ හකුරු කැබැල්ලක් සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பச்சைப் பயறை இரண்டு தண்ணீரில் கழுவி நான்கு மணி நேரம் ஊற வைக்கவும்; பயறு பழையதாக இருந்தால் இரவு முழுவதும் ஊறவைக்கவும்.",
+    "minutes": 240
+   },
+   {
+    "text": "வடித்து, பயறு மட்டத்திற்கு மட்டும் தண்ணீரும் உப்பும் சேர்த்து பாத்திரத்தில் இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி, பொங்கக் கொதிக்காமல் ஆவியில் வேகும்படி குறைந்த தணலில் தோல் வெடிக்கும் வரை வேகவிடவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "தண்ணீர் உறிஞ்சப்பட்டதா எனப் பார்க்கவும்; இன்னும் ஈரமாக இருந்தால் மூடாமல் ஒன்றிரண்டு நிமிடம் வைக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "அடுப்பை அணைத்து, பாத்திரத்தை மூடியே வைத்து பயறு தன் ஆவியில் முழுமையாக வேகவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "கட்டியாகாமல் இருக்க முள்கரண்டியால் இலகுவாக்கி கிண்ணங்களில் பரிமாறவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு கிண்ணத்திலும் துருவிய தேங்காயைச் சேர்த்து, கிதுல் பாணி அல்லது ஒரு துண்டு வெல்லத்துடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 35,
+  "passive_minutes": 240
+ },
+ "equipment": [
+  "pot with a tight lid",
+  "fork"
+ ],
+ "tips": {
+  "en": "Use only as much water as the grain, not a potful; green gram cooked in a lot of water goes watery and loses its sweetness. For almsgiving, cook it a little firmer so it holds shape in the bowl.",
+  "si": "වළඳක් පිරෙන්නට වතුර නොදමා ඇට මට්ටමට පමණක් වතුර යොදන්න; වතුර වැඩිපුර දමා තැම්බූ මුං ඇට දියාරු වී මිහිර නැති වේ. දානයට නම් බඳුනේ හැඩය රැකෙන්නට තව ටිකක් තදින් තම්බා ගන්න.",
+  "ta": "பாத்திரம் நிறைய தண்ணீர் வேண்டாம், பயறு மட்டத்திற்கு மட்டும் ஊற்றவும்; அதிக நீரில் வேகவைத்த பயறு நீர்த்துப்போய் இனிப்பை இழக்கும். தானத்திற்கு என்றால் கிண்ணத்தில் வடிவம் நிற்கும்படி சற்று இறுகவே வேகவிடவும்."
+ },
+ "health_note": {
+  "en": "Green gram is easy on the stomach, which is why it is given to the sick and the elderly, and it brings protein, folate and iron with very little fat. The sweetener is the only thing to watch; treacle and jaggery are still sugar.",
+  "si": "මුං ඇට බඩට පහසු බැවින් රෝගීන්ට සහ වැඩිහිටියන්ට දෙන ආහාරයක් වන අතර තෙල් ඉතා අඩුවෙන් ප්‍රෝටීන්, ෆෝලේට් සහ යකඩ ලබා දෙයි. සැලකිලිමත් විය යුත්තේ පැණි රස ගැන පමණයි; කිතුල් පැණි සහ හකුරුද සීනියි.",
+  "ta": "பச்சைப் பயறு வயிற்றுக்கு இலகுவானது, அதனால்தான் நோயாளிகளுக்கும் முதியவர்களுக்கும் தருகிறார்கள்; மிகக் குறைந்த கொழுப்புடன் புரதம், ஃபோலேட், இரும்புச்சத்து தருகிறது. கவனிக்க வேண்டியது இனிப்பு மட்டுமே; பாணியும் வெல்லமும் சர்க்கரையே."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "light",
+  "budget",
+  "elderly_friendly",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

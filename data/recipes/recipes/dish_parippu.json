@@ -1,0 +1,391 @@
+{
+ "id": "dish_parippu",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 210,
+  "description": {
+   "en": "A ladle of creamy yellow dhal poured over rice",
+   "si": "බත් මතට වත් කරන ලා කහ පැහැති මෘදු පරිප්පු හැන්දක්",
+   "ta": "சாதத்தின் மேல் ஊற்றும் மென்மையான மஞ்சள் பருப்பு ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 860,
+ "ingredients": [
+  {
+   "ref": "product_red_dhal",
+   "label": {
+    "en": "red dhal",
+    "si": "පරිප්පු",
+    "ta": "மைசூர் பருப்பு"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "washed until the water runs clear",
+    "si": "වතුර පැහැදිලි වන තුරු සෝදාගත්",
+    "ta": "தண்ணீர் தெளிவாகும் வரை கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට හෙළාගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறித்தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப்பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "for the finishing drizzle",
+    "si": "අවසානයේ වත් කිරීමට",
+    "ta": "இறுதியில் ஊற்றுவதற்கு"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the dhal until the water is no longer cloudy and pick out any dark grains.",
+    "minutes": null
+   },
+   {
+    "text": "Put it in a pot with three cups of water, the turmeric, fenugreek and pandan, and bring to a boil with the lid off.",
+    "minutes": 5
+   },
+   {
+    "text": "Skim the froth that rises, then simmer until the dhal is completely soft and beginning to melt.",
+    "minutes": 15
+   },
+   {
+    "text": "Add the sliced onion, slit green chillies, crushed garlic and curry leaves and cook two minutes more.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk with the salt and the curry powder and stir well.",
+    "minutes": null
+   },
+   {
+    "text": "Simmer until the dhal and the milk come together into a loose, creamy curry.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the thick coconut milk and bring it just to the point of bubbling, stirring in one direction so it does not split.",
+    "minutes": 2
+   },
+   {
+    "text": "If you like, heat the spoon of coconut oil, crisp a few curry leaves in it and pour it over the top.",
+    "minutes": 2
+   },
+   {
+    "text": "Take the pot off the fire and serve with rice, bread or string hoppers.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පරිප්පු වතුර පැහැදිලි වන තුරු සෝදා, කළු ඇට ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළඳකට පරිප්පු, කහ කුඩු, උළුහාල් සහ රම්පෙ සමඟ කෝප්ප තුනක් වතුර දමා, වසන්නේ නැතිව උතුරන්න තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මතුවන පෙණ ඉවත් කර, පරිප්පු මුළුමනින්ම මෘදු වී දිය වන තුරු මද ගින්නේ තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පෙති කපාගත් ලූනු, හෙළාගත් අමු මිරිස්, තලාගත් සුදුළූනු සහ කරපිංචා දමා තව මිනිත්තු දෙකක් තම්බන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "දෙවන පොල් කිරි, ලුණු සහ අමු තුනපහ දමා හොඳින් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පරිප්පු සහ කිරි එකට මිශ්‍ර වී ලිහිල් මෘදු හොදියක් වන තුරු තම්බන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මුල් පොල් කිරි දමා, කැඩෙන්නේ නැතිව එක් දිශාවකට කලවම් කරමින් උතුරන්නට ආසන්න වන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කැමති නම් පොල් තෙල් හැන්ද රත් කර කරපිංචා කොළ ටිකක් බැදගෙන පරිප්පු මතට වත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "වළඳ ගින්නෙන් ඉවත් කර බත්, පාන් හෝ ඉඳිආප්ප සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பருப்பை தண்ணீர் தெளிவாகும் வரை கழுவி, கருத்த பருப்புகளை நீக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்தில் பருப்பு, மஞ்சள் தூள், வெந்தயம், ரம்பை இலையுடன் மூன்று கப் தண்ணீர் சேர்த்து மூடாமல் கொதிக்கவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மேலே வரும் நுரையை நீக்கி, பருப்பு முழுவதும் கரையும் வரை குறைந்த தணலில் வேகவிடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "நறுக்கிய வெங்காயம், கீறிய பச்சை மிளகாய், நசுக்கிய பூண்டு, கறிவேப்பிலை சேர்த்து இன்னும் இரண்டு நிமிடம் வேகவிடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப்பால், உப்பு, வறுக்காத கறித்தூள் சேர்த்து நன்றாகக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பருப்பும் பாலும் ஒன்றாகச் சேர்ந்து மென்மையான கறியாகும் வரை கொதிக்கவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலைச் சேர்த்து, திரியாமல் ஒரே திசையில் கிளறி கொதி வரும் தறுவாயில் நிற்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "விருப்பமானால் ஒரு கரண்டி தேங்காய் எண்ணெயைக் காயவைத்து கறிவேப்பிலை வதக்கி மேலே ஊற்றவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "பாத்திரத்தை இறக்கி சாதம், பாண் அல்லது இடியப்பத்துடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy pot with a lid",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Cook the dhal in plain water first and add the coconut milk only at the end; milk added early stops the grains from softening. A handful of chopped spinach or a drumstick cut into fingers goes in with the onion.",
+  "si": "පරිප්පු පළමුව සාමාන්‍ය වතුරේ තම්බා පොල් කිරි දමන්නේ අවසානයේයි; කිරි කලින් දැමුවහොත් ඇට මෘදු වන්නේ නැත. කපාගත් නිවිති අතුමුලක් හෝ කැබලිවලට කැපූ මුරුංගා ලූනු සමඟ දමා ගත හැකිය.",
+  "ta": "பருப்பை முதலில் வெறும் தண்ணீரில் வேகவைத்து, தேங்காய்ப்பாலை இறுதியில் மட்டுமே சேர்க்கவும்; முன்பே பால் சேர்த்தால் பருப்பு வேகாது. ஒரு கைப்பிடி நறுக்கிய பசலை அல்லது துண்டுகளாக்கிய முருங்கைக்காயை வெங்காயத்துடன் சேர்க்கலாம்."
+ },
+ "health_note": {
+  "en": "Parippu is the quiet workhorse of the Sri Lankan plate: protein, fibre, folate and iron from the lentils, and it helps the body use the iron better when eaten with a sour sambol. The coconut milk is where the fat sits, so a thinner dhal suits anyone told to cut down.",
+  "si": "පරිප්පු ශ්‍රී ලාංකික බත් පිඟානේ නිහඬ ශක්තියයි: ප්‍රෝටීන්, තන්තු, ෆෝලේට් සහ යකඩ ලැබෙන අතර ඇඹුල් සම්බෝලයක් සමඟ ගත් විට යකඩ උරා ගැනීමද වැඩි වේ. තෙල ඇත්තේ පොල් කිරියේ බැවින් තෙල් අඩු කරන්නට කියූ අයට ලිහිල් පරිප්පු සුදුසුයි.",
+  "ta": "பருப்புக் கறி இலங்கைச் சாதத் தட்டின் அமைதியான பலம்: புரதம், நார்ச்சத்து, ஃபோலேட், இரும்புச்சத்து; புளிப்புச் சம்பலுடன் சாப்பிட்டால் இரும்புச்சத்து உடலில் நன்கு சேரும். கொழுப்பு தேங்காய்ப்பாலில் இருப்பதால் கொழுப்பைக் குறைக்க வேண்டியவர்களுக்கு நீர்ப்பருப்பே பொருத்தம்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "budget",
+  "comfort",
+  "kid_friendly",
+  "elderly_friendly",
+  "one_pot",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

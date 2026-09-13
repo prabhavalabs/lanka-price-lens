@@ -1,0 +1,246 @@
+{
+ "id": "dish_hoppers",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 270,
+  "description": {
+   "en": "Three hoppers, crisp at the rim and soft in the middle",
+   "si": "දාරය මාළු, මැද මෘදු ආප්ප තුනක්",
+   "ta": "விளிம்பு மொறுமொறுப்பாகவும் நடு மென்மையாகவும் உள்ள மூன்று ஆப்பம்"
+  }
+ },
+ "yield_g": 1080,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "about 3 and a half cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකාගත් ගන කිරි",
+    "ta": "முதல் பால், தடிப்பானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "instant yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp, for wiping the pan",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dissolve the yeast and sugar in half a cup of warm water and leave it in a warm place until it is frothy.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the rice flour in a large pot and beat in the coconut milk with about two and a half cups of water until there are no lumps.",
+    "minutes": 8
+   },
+   {
+    "text": "Stir in the yeast water, cover the pot and leave it overnight in a warm corner of the kitchen to ferment.",
+    "minutes": 480
+   },
+   {
+    "text": "In the morning the batter should smell faintly sour and be full of bubbles; stir it down and add the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Thin the batter with water until one ladle poured into the pan will run up the sides without sliding straight down.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the hopper pan until a drop of water dances on it, wipe it with an oiled cloth, pour a ladle of batter and swirl it round twice.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and cook on a medium flame until the thin rim browns and lifts away from the pan by itself.",
+    "minutes": 4
+   },
+   {
+    "text": "Turn the hoppers out one by one into a covered basket and keep pouring until the batter is finished, about a dozen in all.",
+    "minutes": 26
+   }
+  ],
+  "si": [
+   {
+    "text": "යීස්ට් සහ සීනි කෝප්ප භාගයක උණුසුම් වතුරේ දියකර, උණුසුම් තැනක පෙණ නගින තුරු තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සහල් පිටි ලොකු භාජනයකට දමා, පොල් කිරි සහ කෝප්ප දෙකහමාරක් පමණ වතුර එකතු කර ගුලි නැති වන තුරු ගසන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "යීස්ට් වතුර එකතු කර භාජනය වසා, කුස්සියේ උණුසුම් තැනක රාත්‍රිය පුරා පැසවීමට තබන්න.",
+    "minutes": 480
+   },
+   {
+    "text": "උදෑසන ගුලියේ මඳක් ඇඹුල් සුවඳක් හා බුබුළු පිරී තිබිය යුතුයි; හොඳින් කලවම් කර ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "හැන්දක් ගුලිය තැටියට දැමූ විට කෙළින් පහළට නොගොස් පැති දිගේ නගින පදමට, වතුර දමා පදම කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර බිංදුවක් නටන තරමට ආප්ප තැටිය රත් කර, තෙල් තැවරූ රෙද්දකින් පිස, හැන්දක් ගුලිය දමා දෙවරක් කරකවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා මධ්‍යම ගින්දරේ, තුනී දාරය දුඹුරු වී තැටියෙන් තනිවම ගැලවෙන තුරු උයන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ආප්ප එකින් එක වසන ලද කූඩයකට හරවා, ගුලිය අවසන් වන තුරු දොළහක් පමණ තවරන්න.",
+    "minutes": 26
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஈஸ்ட்டையும் சீனியையும் அரை கப் வெதுவெதுப்பான தண்ணீரில் கரைத்து, வெதுவெதுப்பான இடத்தில் நுரை வரும்வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அரிசி மாவை ஒரு பெரிய பாத்திரத்தில் இட்டு, தேங்காய்ப் பாலும் சுமார் இரண்டரை கப் தண்ணீரும் சேர்த்து கட்டி இல்லாமல் அடிக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "ஈஸ்ட் தண்ணீரைச் சேர்த்து பாத்திரத்தை மூடி, சமையலறையின் வெதுவெதுப்பான இடத்தில் இரவு முழுவதும் புளிக்க வைக்கவும்.",
+    "minutes": 480
+   },
+   {
+    "text": "காலையில் மாவில் லேசான புளிப்பு வாசனையும் நிறைய குமிழிகளும் இருக்க வேண்டும்; நன்கு கலக்கி உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு கரண்டி மாவை சட்டியில் ஊற்றினால் நேராக கீழே வழியாமல் ஓரங்களில் ஏறும் பதத்திற்கு தண்ணீர் விட்டு சரிசெய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு துளி தண்ணீர் துள்ளும் அளவுக்கு ஆப்பச் சட்டியைக் காய்ச்சி, எண்ணெய் துணியால் துடைத்து, ஒரு கரண்டி மாவை ஊற்றி இரு முறை சுழற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி நடுத்தர தீயில், மெல்லிய விளிம்பு பழுப்பாகி சட்டியிலிருந்து தானாகவே விலகும்வரை வேகவிடவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "ஆப்பங்களை ஒன்றன்பின் ஒன்றாக மூடிய கூடையில் கவிழ்த்து, மாவு முடியும்வரை மொத்தம் பன்னிரண்டு அளவில் ஊற்றவும்.",
+    "minutes": 26
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "hopper pan with lid",
+  "large fermenting pot",
+  "covered basket"
+ ],
+ "tips": {
+  "en": "If the kitchen is cold the batter will not rise, so stand the pot near the stove; a spoon of toddy in place of the yeast gives the old sour taste.",
+  "si": "කුස්සිය සීතල නම් ගුලිය පිම්බෙන්නේ නැහැ, ඒ නිසා භාජනය ලිප ආසන්නයේ තබන්න; යීස්ට් වෙනුවට හැන්දක් රා දැමීමෙන් පැරණි ඇඹුල් රසය ලැබෙනවා.",
+  "ta": "சமையலறை குளிராக இருந்தால் மாவு புளிக்காது, எனவே பாத்திரத்தை அடுப்புக்கு அருகில் வைக்கவும்; ஈஸ்ட்டுக்கு பதிலாக ஒரு கரண்டி கள் சேர்த்தால் பழைய புளிப்புச் சுவை கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "Hoppers are light on the stomach and low in fat once the coconut milk is shared out over a dozen of them, which makes them kinder than fried breakfasts; what goes with them decides the meal.",
+  "si": "ආප්ප දොළහක් අතර පොල් කිරි බෙදී යන නිසා ආප්ප බඩට සැහැල්ලුයි, තෙල් ප්‍රමාණයද අඩුයි, එබැවින් බැදපු උදෑසන ආහාරවලට වඩා හොඳයි; කෑමේ ගුණය තීරණය වන්නේ එය සමඟ ගන්නා දෙයෙන්.",
+  "ta": "பன்னிரண்டு ஆப்பங்களுக்கு தேங்காய்ப் பால் பிரிந்து போவதால் ஆப்பம் வயிற்றுக்கு இலகுவானது, கொழுப்பும் குறைவு, எனவே பொரித்த காலை உணவுகளைவிட நல்லது; உணவின் தன்மையை அதனுடன் சேர்ப்பவை தீர்மானிக்கும்."
+ },
+ "tags": [
+  "light",
+  "budget",
+  "kid_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

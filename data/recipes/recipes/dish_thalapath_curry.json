@@ -1,0 +1,384 @@
+{
+ "id": "dish_thalapath_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 210,
+  "description": {
+   "en": "A steak of sailfish in dark goraka gravy with rice",
+   "si": "බත් සමඟ ගොරකා හොදියේ තලපත් කෑල්ලක්",
+   "ta": "சாதத்துடன் கோரக்காக் குழம்பில் ஒரு தலபத் மீன் துண்டு"
+  }
+ },
+ "yield_g": 840,
+ "ingredients": [
+  {
+   "ref": "product_thalapath",
+   "label": {
+    "en": "sailfish",
+    "si": "තලපත්",
+    "ta": "தலபத் மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "cut into steaks, washed",
+    "si": "කෑලිවලට කපා සෝදාගත්",
+    "ta": "துண்டுகளாக வெட்டிக் கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 dried pieces",
+   "preparation": {
+    "en": "soaked in hot water and mashed",
+    "si": "උණු වතුරේ දමා තලාගත්",
+    "ta": "வெந்நீரில் ஊறவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "one 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ කුඩු",
+    "ta": "கறித் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்த்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarter cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the sailfish steaks, rub them with turmeric, salt and a spoon of the chilli powder and leave them to take the seasoning.",
+    "minutes": 10
+   },
+   {
+    "text": "Soak the goraka pieces in a little hot water until they soften, then mash them with the back of a spoon and keep the water.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the onion, garlic, curry leaves and pandan until the onion looks glassy.",
+    "minutes": 5
+   },
+   {
+    "text": "Lower the flame, add the curry powder, the rest of the chilli powder, the turmeric and the fenugreek and fry them just until they smell warm.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the goraka with its soaking water and the thin coconut milk, add the salt and let it boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Slip the steaks in, cover and cook on a low flame, spooning gravy over the top now and then.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the thick coconut milk, tilt the pot from side to side to mix it and bring it to a lazy bubble only.",
+    "minutes": 3
+   },
+   {
+    "text": "Take it off the fire and let it stand before serving so the goraka sourness rounds off.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "තලපත් කෑලි සෝදා කහ, ලුණු සහ මිරිස් කුඩු හැන්දක් ගල්වා රසය ඇදෙන්න තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගොරකා කෑලි උණු වතුර ටිකක දමා මෘදු වූ පසු හැන්දේ පිටතින් තලා, ඒ වතුරත් තියාගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මැටි වළඳක පොල් තෙල් රත් කර ළූණු, සුදුළූණු, කරපිංචා සහ රම්පෙ දමා ළූණු විනිවිද පෙනෙන තුරු තෙල් දාන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගින්න අඩු කර තුනපහ කුඩු, ඉතිරි මිරිස් කුඩු, කහ සහ උළුහාල් දමා සුවඳ එන තුරු පමණක් බැදගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ගොරකා සහ ඒ වතුර සමඟ දිය පොල් කිරි වත් කර, ලුණු දමා නටවන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මාළු කෑලි ලිස්සවා දමා, වහලා අඩු ගින්නේ, අතරින් පතර හොදි මතට හැන්දෙන් වත් කරමින් පිසින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "මිටි පොල් කිරි එකතු කර වළඳ දෙපැත්තට සෙලවා මිශ්‍ර කර, සෙමින් නටන තුරු පමණක් රත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලිපෙන් ඉවත් කර, ගොරකා ඇඹුල රසය සමතුලිත වන තුරු මඳක් තියා පිළිගන්වන්න.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "தலபத் மீன் துண்டுகளைக் கழுவி, மஞ்சள், உப்பு, ஒரு கரண்டி மிளகாய்த் தூள் தடவி ஊறவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கொடுக்காய்ப்புளியை சிறிது வெந்நீரில் ஊறவைத்து, மென்மையானதும் கரண்டியால் மசித்து, அந்த நீரையும் வைத்துக் கொள்ளுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, கறிவேப்பிலை, ரம்பை போட்டு வெங்காயம் பளபளக்கும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "தீயைக் குறைத்து, கறித் தூள், மீதி மிளகாய்த் தூள், மஞ்சள், வெந்தயம் சேர்த்து வாசம் வரும் வரை மட்டும் வறுக்குங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "ஊறிய புளியையும் அதன் நீரையும், நீர்த்த தேங்காய்ப் பாலையும் விட்டு, உப்புச் சேர்த்துக் கொதிக்க வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மீன் துண்டுகளை உள்ளே இறக்கி, மூடி, சிறு தீயில், இடையிடையே குழம்பை மேலே ஊற்றி வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலைச் சேர்த்து, சட்டியை இரு பக்கமும் ஆட்டிக் கலந்து, மெதுவாகக் கொதிக்கும் வரை மட்டும் சூடாக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "அடுப்பில் இருந்து இறக்கி, புளிப்புச் சுவை ஒத்துப்போக சிறிது நேரம் வைத்துப் பரிமாறுங்கள்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot or heavy pan"
+ ],
+ "tips": {
+  "en": "Sailfish is lean and dries out easily, so pull the pot off the fire while the centre of the steak is only just set. Two small pieces of goraka are enough for this much gravy.",
+  "si": "තලපත් අඩු මේද මාළුවක්, ඉක්මනින් වියළෙනවා, ඒ නිසා කෑල්ලේ මැද ඉදෙන්න පටන් ගත් ගමන් වළඳ ලිපෙන් අයින් කරන්න. මේ තරම් හොදියට ගොරකා පොඩි කෑලි දෙකක් ඇති.",
+  "ta": "தலபத் கொழுப்பு குறைந்த மீன், விரைவில் காய்ந்துவிடும், எனவே துண்டின் நடுப்பகுதி வெந்ததும் சட்டியை இறக்குங்கள். இந்த அளவு குழம்புக்கு இரண்டு சிறு கொடுக்காய்ப்புளித் துண்டுகள் போதும்."
+ },
+ "health_note": {
+  "en": "A lean fish curry that gives good protein for the money and the sour goraka helps the gravy keep a day without ice. Watch the salt if the household already eats dried fish often.",
+  "si": "මුදලට සරිලන ප්‍රෝටීන් දෙන අඩු මේද මාළු කරියක්; ගොරකාවේ ඇඹුල නිසා අයිස් නැතුවත් දවසක් තියෙනවා. ගෙදර කරවල නිතර කනවා නම් ලුණු ගැන පරිස්සම් වෙන්න.",
+  "ta": "செலவுக்கு ஏற்ற நல்ல புரதம் தரும் குறைந்த கொழுப்பு மீன் குழம்பு; புளிப்பு இருப்பதால் பனிக்கட்டி இல்லாமலும் ஒரு நாள் நிற்கும். வீட்டில் கருவாடு அடிக்கடி சாப்பிட்டால் உப்பைக் கவனியுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "heart_healthy",
+  "comfort",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

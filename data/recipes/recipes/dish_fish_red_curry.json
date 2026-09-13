@@ -1,0 +1,387 @@
+{
+ "id": "dish_fish_red_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "One thick steak of fish with a spoon of red gravy over the rice",
+   "si": "බත මතට රතු හොදි හැන්දක් සමඟ මාළු පෙත්තක්",
+   "ta": "சாதத்தின் மேல் ஒரு கரண்டி சிவப்புக் குழம்புடன் ஒரு மீன் துண்டு"
+  }
+ },
+ "yield_g": 950,
+ "ingredients": [
+  {
+   "ref": "product_balaya",
+   "label": {
+    "en": "balaya, skipjack tuna",
+    "si": "බලයා මාළු",
+    "ta": "பலயா, சூரை மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "cut into steaks, rubbed with a little salt and rinsed",
+    "si": "පෙති කපා, ලුණු ටිකක් අතුල්ලා හෝදා ගත්ත",
+    "ta": "துண்டுகளாக வெட்டி, சிறிது உப்பு தேய்த்துக் கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්ත",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொரக்கா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 pieces, soaked and mashed",
+   "preparation": {
+    "en": "soaked in a little warm water and mashed",
+    "si": "උණු වතුර ටිකක් දමා පොඟවා තලා ගත්ත",
+    "ta": "சிறிது வெந்நீரில் ஊறவைத்து நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறி மசாலா"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split",
+    "si": "පලා ගත්ත",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ගාටි කිරි",
+    "ta": "முதல் பால், கட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub the fish steaks with a little salt, rinse them and leave them in the colander to drain.",
+    "minutes": 5
+   },
+   {
+    "text": "Soak the goraka in a few spoons of warm water and mash it with your fingers.",
+    "minutes": 10
+   },
+   {
+    "text": "Mix the chilli powder, curry powder, turmeric and salt in a bowl with half a cup of water into a loose paste.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the onion, garlic, fenugreek, green chilli, curry leaves and pandan.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour in the spice paste and the goraka water and let it cook until the raw chilli smell goes and the oil shows at the edge.",
+    "minutes": 6
+   },
+   {
+    "text": "Lay the fish steaks in one layer, add enough water to almost cover them, and simmer without stirring; spoon the gravy over the fish instead.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the thick coconut milk, shake the pot gently, and cook until the gravy coats a spoon.",
+    "minutes": 5
+   },
+   {
+    "text": "Take it off the fire and leave it to stand; this curry always tastes better after half an hour, and better still the next day.",
+    "minutes": 30
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු පෙති ලුණු ටිකක් අතුල්ලා හෝදලා, වතුර බේරෙන්න පෙරන එකේ තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගොරකා උණු වතුර හැඳි කීපයක් දමා පොඟවලා, ඇඟිලිවලින් හොඳට තලා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බඳුනක මිරිස් කුඩු, තුනපහ, කහ කුඩු සහ ලුණු දමා, වතුර කෝප්පයක් භාගයක් එකතු කර දියර පේස්ට් එකක් හදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුට්ටියක පොල් තෙල් රත් කරලා ලූනු, සුදුළූනු, උළුහාල්, අමු මිරිස්, කරපිංචා සහ රම්පෙ තෙල් දාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කුළුබඩු පේස්ට් එකයි ගොරකා වතුරයි වත් කරලා, අමු මිරිස් ගඳ නැති වෙලා දාරයෙන් තෙල් මතු වෙන තුරු පිසගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "මාළු පෙති එක තැටියකට මෙන් තට්ටුවක් විදියට අතුරලා, මාළු වැහෙන්න ආසන්න තරම් වතුර දමා, කලවම් නොකර උතුරවන්න; හොදි හැන්දෙන් මාළු මතට වත් කරන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගාටි පොල් කිරි එකතු කරලා මුට්ටිය සෙමින් සොලවා, හොදි හැන්දට ඇලෙන තරමට තදවෙන තුරු තම්බන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලිපෙන් අයින් කරලා පැය භාගයක් විතර තියන්න; මේ කරිය හිඳුනාම රස වැඩි, පහුවදාට තවත් රසයි.",
+    "minutes": 30
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் துண்டுகளில் சிறிது உப்பு தேய்த்து கழுவி, நீர் வடிய சல்லடையில் வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கொரக்காவை சில கரண்டி வெந்நீரில் ஊறவைத்து, விரலால் நன்கு நசுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒரு பாத்திரத்தில் மிளகாய்த் தூள், கறி மசாலா, மஞ்சள் தூள், உப்பு போட்டு அரை கப் தண்ணீர் விட்டு தளர்வான விழுதாகக் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, வெந்தயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை தாளியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மசாலா விழுதையும் கொரக்கா தண்ணீரையும் ஊற்றி, பச்சை மிளகாய் வாசனை போய் ஓரத்தில் எண்ணெய் தெரியும் வரை வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மீன் துண்டுகளை ஒரே அடுக்காக வைத்து, மூழ்கும் அளவுக்கு கிட்டத்தட்ட தண்ணீர் விட்டு, கிளறாமல் கொதிக்கவிடுங்கள்; குழம்பை கரண்டியால் மீன்மேல் ஊற்றுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "கட்டித் தேங்காய்ப் பாலை சேர்த்து சட்டியை மெதுவாக அசைத்து, குழம்பு கரண்டியில் ஒட்டும் பதம் வரை வேகவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி அரை மணி நேரம் வையுங்கள்; இந்தக் குழம்பு ஆறிய பின் சுவை கூடும், மறுநாள் இன்னும் நல்லது.",
+    "minutes": 30
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "bowl for the spice paste"
+ ],
+ "tips": {
+  "en": "Never stir a fish curry with a spoon once the steaks are in; hold the pot handles and swirl, or the fish breaks into threads. Kelawalla steaks work the same way and hold their shape even better.",
+  "si": "මාළු පෙති දැම්මට පස්සේ හැන්දෙන් කලවම් කරන්න එපා; මුට්ටිය අතින් අල්ලා සෙමින් සොලවන්න, නැත්නම් මාළු කැඩෙනවා. කෙලවල්ලා පෙති දැම්මත් හරි, ඒවා හැඩය තව හොඳට තියාගන්නවා.",
+  "ta": "மீன் துண்டுகளைப் போட்ட பிறகு கரண்டியால் கிளறாதீர்கள்; சட்டியைப் பிடித்து மெதுவாக அசைக்கவும், இல்லையேல் மீன் உதிர்ந்துவிடும். கெலவல்லா சூரை துண்டுகளும் இதே முறையில் நன்றாக வரும், வடிவமும் நிற்கும்."
+ },
+ "health_note": {
+  "en": "Tuna is lean, strong in protein and good for the heart, and the goraka does the souring without any oil. The heat comes from two tablespoons of chilli powder, so cook it milder for children and elders at the same table.",
+  "si": "බලයා මාළුවේ මේදය අඩු, ප්‍රෝටීන් වැඩි, හදවතටත් හොඳයි; ඇඹුල් රස ගොරකාවෙන් එන නිසා තෙල් වැඩි කරන්නේ නැහැ. සැර එන්නේ මිරිස් කුඩු මේස හැඳි දෙකෙන් නිසා, ළමයි සහ වැඩිහිටියන් එකම මේසයේ නම් සැර අඩු කරන්න.",
+  "ta": "சூரை மீனில் கொழுப்பு குறைவு, புரதம் அதிகம், இதயத்துக்கும் நல்லது; புளிப்பு கொரக்காவில் வருவதால் எண்ணெய் கூட்ட வேண்டாம். காரம் இரண்டு மேசைக்கரண்டி மிளகாய்த் தூளில் வருகிறது, எனவே குழந்தைகளும் முதியவர்களும் சேர்ந்து சாப்பிட்டால் காரத்தைக் குறைக்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "heart_healthy",
+  "one_pot",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

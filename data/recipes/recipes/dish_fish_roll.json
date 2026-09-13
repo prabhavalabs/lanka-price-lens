@@ -1,0 +1,451 @@
+{
+ "id": "dish_fish_roll",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 170,
+  "description": {
+   "en": "Two crumbed rolls split open, steam and all",
+   "si": "දෙබෑ කළ, වාෂ්ප නඟින පාන් කුඩු ගෑ රෝල් දෙකක්",
+   "ta": "பிளந்து வைத்த, ஆவி பறக்கும் இரண்டு ரொட்டித்தூள் ரோல்கள்"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1¼ cups",
+   "preparation": {
+    "en": "for the thin pancakes",
+    "si": "සිහින් පෑන්කේක් සඳහා",
+    "ta": "மெல்லிய தோசைக்காக"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg for the batter",
+    "si": "පිටි මිශ්‍රණයට බිත්තර",
+    "ta": "மாவுக் கலவைக்கு முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": {
+    "en": "beaten into the batter",
+    "si": "පිටි මිශ්‍රණයට ගසාගත්",
+    "ta": "மாவில் அடித்துக் கலந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_tin_fish",
+   "label": {
+    "en": "tinned fish",
+    "si": "ටින් මාළු",
+    "ta": "டின் மீன்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 small tin, drained",
+   "preparation": {
+    "en": "drained and flaked",
+    "si": "තෙල් බේරා පොඩි කරගත්",
+    "ta": "எண்ணெய் வடித்து நார்நாராகப் பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අර්තාපල්",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 medium potatoes",
+   "preparation": {
+    "en": "boiled and mashed",
+    "si": "තෙම්බා පොඩි කරගත්",
+    "ta": "வேகவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "කුඩු කරගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "¼ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1¼ tsp in all",
+   "preparation": {
+    "en": "for batter and filling",
+    "si": "පිටි මිශ්‍රණයට සහ මාලුවට",
+    "ta": "மாவுக்கும் உள்ளடக்கத்திற்கும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for the filling",
+    "si": "මාලුවට පොල් තෙල්",
+    "ta": "உள்ளடக்கத்திற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1½ tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg for coating",
+    "si": "පිටත ගැල්වීමට බිත්තර",
+    "ta": "மேற்பூச்சுக்கு முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": {
+    "en": "beaten with a spoon of water",
+    "si": "වතුර හැන්දක් සමඟ ගසාගත්",
+    "ta": "ஒரு ஸ்பூன் தண்ணீருடன் அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_breadcrumbs",
+   "label": {
+    "en": "breadcrumbs",
+    "si": "පාන් කුඩු",
+    "ta": "ரொட்டித் தூள்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1½ cups",
+   "preparation": {
+    "en": "dry",
+    "si": "වියළි",
+    "ta": "உலர்ந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1¼ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Whisk the flour, one egg, a pinch of salt and about 320 ml water into a thin batter and let it stand while you make the filling.",
+    "minutes": null
+   },
+   {
+    "text": "Temper the onion, green chilli and curry leaf in coconut oil until soft.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the flaked fish, mashed potato, turmeric, pepper, salt and lime juice and cook until the mixture is dry and comes away from the pan; cool it.",
+    "minutes": 10
+   },
+   {
+    "text": "Wipe a flat pan with oil and pour a small ladle of batter, swirling into a thin pancake; lift it off as soon as it sets, without letting it colour.",
+    "minutes": 15
+   },
+   {
+    "text": "Make eight pancakes and stack them under a cloth.",
+    "minutes": null
+   },
+   {
+    "text": "Put a finger of filling along one edge of a pancake, fold the two sides in and roll it up tight, sealing the last edge with a smear of batter.",
+    "minutes": 10
+   },
+   {
+    "text": "Dip each roll in beaten egg, press it in breadcrumbs on all sides and leave the rolls to set.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the frying oil until a crumb rises and browns quickly.",
+    "minutes": 5
+   },
+   {
+    "text": "Fry three or four rolls at a time, rolling them over so they brown evenly.",
+    "minutes": 10
+   },
+   {
+    "text": "Drain on a rack and serve hot; a fish roll waits for no one.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිටි, බිත්තරයක්, ලුණු ස්වල්පයක් සහ වතුර මිලි ලීටර් 320ක් පමණ එකට ගසා තුනී පිටි මිශ්‍රණයක් සාදා, මාලුව සාදන තුරු තිබෙන්න දෙන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පොල් තෙලේ ලූනු, අමු මිරිස් සහ කරපිංචා මෘදු වන තෙක් තෙම්පරාදු කරන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පොඩි කරගත් මාළු, අර්තාපල්, කහ, ගම්මිරිස්, ලුණු සහ දෙහි යුෂ දමා, පෑනෙන් ගැලවී එන තරම් වියළෙන තෙක් උයා සිසිල් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පැතලි පෑනක් තෙල් රෙද්දකින් පිස, පිටි මිශ්‍රණයෙන් කුඩා හැන්දක් වත් කර කරකවා තුනී පෑන්කේක් එකක් සාදා, තද වූ විගසම පාට නොවෙනස්ව ගලවා ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පෑන්කේක් අටක් සාදා, රෙද්දක් යටින් එකට තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑන්කේක් එකක එක් දාරයක ඇඟිල්ලක් තරම් මාලුව තබා, පැති දෙක ඇතුළට හකුළා තදින් රෝල් කර, අවසන් දාරය පිටි මිශ්‍රණයෙන් අලවා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එක් එක් රෝල් ගසාගත් බිත්තරයේ තවරා, හැම පැත්තෙන්ම පාන් කුඩුවල තද කර, තිබෙන්න දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පාන් කුඩු ස්වල්පයක් වහාම නැඟී දුඹුරු වන තෙක් බැදගැනීමේ තෙල් රත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වරකට රෝල් තුනක් හතරක් දමා, සමව දුඹුරු වන ලෙස පෙරළමින් බැදගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "රාක්කයක තෙල් බේරා උණුසුම්ව දෙන්න; මාළු රෝල් කිසිවෙකුට රැඳී නොසිටී.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாவு, ஒரு முட்டை, சிறிது உப்பு, சுமார் 320 மில்லி தண்ணீர் சேர்த்து மெல்லிய கலவையாக அடித்து, உள்ளடக்கம் செய்யும்வரை வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தேங்காய் எண்ணெயில் வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை மென்மையாகும் வரை தாளிக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "பிரித்த மீன், மசித்த உருளைக்கிழங்கு, மஞ்சள், மிளகு, உப்பு, எலுமிச்சைச் சாறு சேர்த்து, வாணலியில் ஒட்டாமல் வரும் அளவு வறளும் வரை வதக்கி ஆறவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "தட்டையான வாணலியை எண்ணெய்த் துணியால் துடைத்து, ஒரு சிறிய கரண்டி மாவை ஊற்றிச் சுழற்றி மெல்லிய தோசையாக்கி, இறுகியதும் நிறம் மாறாமல் எடுக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "எட்டு தோசைகள் செய்து, ஒரு துணியின் கீழ் அடுக்கி வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு தோசையின் விளிம்பில் ஒரு விரல் அளவு கலவையை வைத்து, இரு பக்கங்களையும் மடித்து இறுக்கமாகச் சுருட்டி, கடைசி விளிம்பை மாவுக் கலவையால் ஒட்டவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒவ்வொரு ரோலையும் அடித்த முட்டையில் தோய்த்து, எல்லாப் பக்கமும் ரொட்டித் தூளில் அழுத்தி, சிறிது நேரம் வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒரு சிறிது தூள் உடனே மேலெழுந்து பொன்னிறமாகும் வரை பொரிக்கும் எண்ணெயைக் காயவைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு முறைக்கு மூன்று நான்கு ரோல்களாகப் போட்டு, சமமாக நிறம் வர உருட்டிப் பொரிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வலையில் எண்ணெய் வடித்து சூடாகப் பரிமாறவும்; மீன் ரோல் யாருக்காகவும் காத்திருக்காது.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 20,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "flat pan",
+  "deep pan",
+  "wire rack"
+ ],
+ "tips": {
+  "en": "The pancake must be thin and pale, cooked on one side only, or the roll turns leathery once it is fried. Roll them tight: a loose roll opens in the oil and drinks it.",
+  "si": "පෑන්කේක් තුනී හා ලා පැහැති විය යුතුය, එක් පැත්තක් පමණක් පිසිය යුතුය; නැතිනම් බැදූ පසු රෝල් හම් වැනි ගතියක් ගනී. තදින් රෝල් කරන්න; ලිහිල් රෝල් තෙලේ ඇරී තෙල් උරා ගනී.",
+  "ta": "தோசை மெல்லியதாகவும் வெளிறியதாகவும், ஒரு பக்கம் மட்டும் வேகவைத்ததாகவும் இருக்க வேண்டும்; இல்லையேல் பொரித்தபின் ரோல் தோல் போல் ஆகிவிடும். இறுக்கமாகச் சுருட்டவும்; தளர்வான ரோல் எண்ணெயில் விரிந்து எண்ணெயை உறிஞ்சும்."
+ },
+ "health_note": {
+  "en": "Fish and potato inside give some protein and potassium, but the pancake, crumbs and frying oil make it the heaviest item on the short-eats tray. Two rolls with plain tea is enough, and blot them before eating.",
+  "si": "ඇතුළත මාළු සහ අර්තාපල් ප්‍රෝටීන් සහ පොටෑසියම් ස්වල්පයක් දෙයි; එහෙත් පෑන්කේක්, පාන් කුඩු සහ තෙල් නිසා කෙටි කෑම තැටියේ බරම කෑම මෙයයි. සරල තේ සමඟ රෝල් දෙකක් ප්‍රමාණවත්; කෑමට පෙර තෙල් තුවායකින් තෙල් උරාගන්න.",
+  "ta": "உள்ளே உள்ள மீனும் உருளைக்கிழங்கும் சிறிது புரதமும் பொட்டாசியமும் தரும்; ஆனால் தோசை, ரொட்டித்தூள், எண்ணெய் ஆகியவை இதை சிற்றுண்டித் தட்டில் மிகக் கனமான உணவாக்கும். சாதாரண தேநீருடன் இரண்டு ரோல் போதும்; சாப்பிடுமுன் எண்ணெயை ஒற்றி எடுக்கவும்."
+ },
+ "tags": [
+  "deep_fried",
+  "street_food",
+  "filling",
+  "comfort",
+  "kid_friendly",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

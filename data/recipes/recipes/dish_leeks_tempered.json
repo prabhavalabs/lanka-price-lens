@@ -1,0 +1,287 @@
+{
+ "id": "dish_leeks_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 105,
+  "description": {
+   "en": "A dry, glossy heap of sliced leeks beside rice or in a lunch packet",
+   "si": "බතට හෝ බත් පැකට් එකකට දමන වියළි, දිලිසෙන ලීක්ස් ගොඩක්",
+   "ta": "சாதத்துடன் அல்லது மதிய உணவுப் பொட்டலத்தில் வைக்கும் உலர்ந்த லீக்ஸ் வறுவல்"
+  }
+ },
+ "yield_g": 430,
+ "ingredients": [
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 stalks, sliced",
+   "preparation": {
+    "en": "split, washed between the layers and sliced thin",
+    "si": "දිගට පලා, පොතු අතර සෝදා, තුනීට කපාගත්",
+    "ta": "நீளமாகப் பிளந்து, இடுக்குகளை அலசி, மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වේළුණු මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැලිවලට කඩාගත්",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Split the leeks down the middle and hold them under running water, opening the layers with your thumb; up-country leeks carry a lot of soil.",
+    "minutes": 6
+   },
+   {
+    "text": "Shake them dry and slice them thin across, using the green part as well as the white.",
+    "minutes": 6
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and put in the dried chillies, curry leaves and pandan until they crackle.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the sliced big onion and fry until it turns glassy at the edges.",
+    "minutes": 3
+   },
+   {
+    "text": "Put in the leeks with the turmeric, chilli flakes and salt, and stir-fry on a high flame, keeping everything moving.",
+    "minutes": 5
+   },
+   {
+    "text": "Cook until the leeks are glossy and just softened but still show their green; do not cover the pan at any point.",
+    "minutes": 2
+   },
+   {
+    "text": "Taste for salt and take it off while it is still dry in the pan.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ලීක්ස් මැදින් දිගට පලා, ඇඟිලි ගසා පොතු ඇර ගලන වතුරේ සෝදන්න; උඩරට ලීක්ස් වල පස් ගොඩක් තිබේ.",
+    "minutes": 6
+   },
+   {
+    "text": "වතුර බැස යන්න සොලවා, සුදු කොටස සේම කොළ කොටසත් යොදා, හරහට තුනීට කපන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පුළුල් පෑන් එකක පොල් තෙල් රත් කර, වේළුණු මිරිස්, කරපිංචා සහ රම්පෙ දමා පිපිරෙන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කපාගත් බී ළූණු දමා, දාර විනිවිද පෙනෙන ගතියට එන තුරු බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලීක්ස්, කහ, මිරිස් කැබලි සහ ලුණු දමා, තද ගින්නේ නොනවත්වා පෙරළමින් බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලීක්ස් දිලිසෙන, තරමක් මුදු නමුත් තවම කොළ පාට තිබෙන තුරු බදින්න; කිසිම වෙලාවක වහන් දමන්න එපා.",
+    "minutes": 2
+   },
+   {
+    "text": "රස බලා, පෑන් එකේ තවම වියළිව තිබෙන අතරේ ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "லீக்ஸை நடுவே நீளமாகப் பிளந்து, கட்டைவிரலால் இடுக்குகளைத் திறந்து ஓடும் தண்ணீரில் அலசுங்கள்; மலைநாட்டு லீக்ஸில் மண் அதிகம்.",
+    "minutes": 6
+   },
+   {
+    "text": "தண்ணீரை உதறி, வெள்ளைப் பகுதியுடன் பச்சைப் பகுதியையும் சேர்த்து குறுக்கே மெல்லியதாக நறுக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை போட்டு வெடிக்க விடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நறுக்கிய பெரிய வெங்காயத்தைப் போட்டு, ஓரம் கண்ணாடி போல் மாறும் வரை வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "லீக்ஸ், மஞ்சள், மிளகாய்த் துகள், உப்பு சேர்த்து, பெரிய தீயில் நிற்காமல் புரட்டி வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "லீக்ஸ் பளபளத்து, சற்றே மென்மையாகி, இன்னும் பச்சை நிறம் தெரியும் வரை வதக்குங்கள்; எந்த நேரத்திலும் மூடி வைக்க வேண்டாம்.",
+    "minutes": 2
+   },
+   {
+    "text": "உப்பு பார்த்து, சட்டியில் உலர்ந்த நிலையில் இருக்கும்போதே இறக்குங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 12,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Never put a lid on leeks: the trapped steam makes them wet and grey, and a wet tempering will not keep till lunchtime. Slice them the same thickness throughout so nothing burns while the rest is still raw.",
+  "si": "ලීක්ස් වලට කිසිදා වහන් දමන්න එපා: තුළ රැඳෙන හුමාලය නිසා තෙත් වී අළු පාට වන අතර, තෙත් තෙල්දාලයක් දවල් වන තුරු තියෙන්නේ නැත. සියල්ල එක ගණකමට කපන්න; නැතිනම් කොටසක් පිලිස්සෙන විට අනිත් කොටස තවම අමුවෙන් තිබේ.",
+  "ta": "லீக்ஸுக்கு ஒருபோதும் மூடி வேண்டாம்: உள்ளே தங்கும் ஆவி அதை நனைத்து நிறம் மங்கச் செய்யும், நனைந்த வறுவல் மதியம் வரை இருக்காது. எல்லாவற்றையும் ஒரே தடிமனில் நறுக்குங்கள்; இல்லையேல் ஒரு பகுதி கருகும்போது மற்றது பச்சையாக இருக்கும்."
+ },
+ "health_note": {
+  "en": "Leeks belong to the onion family and bring fibre that feeds the gut, with very few calories of their own; the two tablespoons of oil are the only real fat here. Because nothing is boiled away, the flavour comes from the chilli and the oil rather than salt, which suits anyone told to cut down on sodium.",
+  "si": "ලීක්ස් ළූණු පවුලට අයත් වන අතර බඩවැලට හිතකර තන්තු ලබා දෙයි; තමන්ගේ කැලරි ඉතා අඩුයි. මෙහි ඇති සැබෑ මේදය ඒ තෙල් හැඳි දෙක පමණයි. කිසිවක් තම්බා ඉවත් නොකරන නිසා රසය එන්නේ ලුණුවලට වඩා මිරිස් හා තෙල් වලින්; ලුණු අඩු කරන්න කියා ඇති අයට එය හොඳයි.",
+  "ta": "லீக்ஸ் வெங்காயக் குடும்பத்தைச் சேர்ந்தது, குடலுக்கு நல்ல நார்ச்சத்து தரும், சொந்த கலோரி மிகக் குறைவு; இங்கு உள்ள ஒரே கொழுப்பு அந்த இரு ஸ்பூன் எண்ணெய்தான். எதையும் கொதிக்க வைத்து ஊற்றி விடுவதில்லை என்பதால் சுவை உப்பிலிருந்து அல்ல, மிளகாயிலும் எண்ணெயிலும் வருகிறது; உப்பைக் குறைக்கச் சொன்னவர்களுக்கு ஏற்றது."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "quick",
+  "light",
+  "weight_loss_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

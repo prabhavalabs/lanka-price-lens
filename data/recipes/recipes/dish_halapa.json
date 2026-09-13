@@ -1,0 +1,280 @@
+{
+ "id": "dish_halapa",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 120,
+  "description": {
+   "en": "Two leaf parcels eaten warm off the leaf",
+   "si": "කොළයෙන්ම උණුසුමට කන හලාප දෙකක්",
+   "ta": "இலையிலேயே சூடாக உண்ணும் இரண்டு இலைப் பொதிகள்"
+  }
+ },
+ "yield_g": 480,
+ "ingredients": [
+  {
+   "ref": "pantry_kurakkan_flour",
+   "label": {
+    "en": "kurakkan flour, finger millet",
+    "si": "කුරක්කන් පිටි",
+    "ta": "கேழ்வரகு மாவு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut",
+    "si": "පොල්",
+    "ta": "தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 cup, scraped",
+   "preparation": {
+    "en": "scraped",
+    "si": "ගාගත්",
+    "ta": "துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 block",
+   "preparation": {
+    "en": "grated",
+    "si": "ගාගත්",
+    "ta": "துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாகு"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "2 pods",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_kenda_leaf",
+   "label": {
+    "en": "kenda leaves",
+    "si": "කෙන්ද කොළ",
+    "ta": "கெந்த இலைகள்"
+   },
+   "quantity": 8,
+   "unit": "piece",
+   "household": "8 leaves, one per parcel",
+   "preparation": {
+    "en": "wiped clean, stalk trimmed",
+    "si": "පිස දමා, කඳ කපා ඉවත් කරගත්",
+    "ta": "துடைத்து, தண்டு நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wipe the kenda leaves, trim off the stalk, and pass each one briefly over the fire so it folds without cracking.",
+    "minutes": 5
+   },
+   {
+    "text": "Melt the jaggery with the treacle and three spoons of water into a syrup, then strain out the grit.",
+    "minutes": 8
+   },
+   {
+    "text": "Mix the kurakkan flour with the scraped coconut, salt and crushed cardamom in a wide bowl.",
+    "minutes": null
+   },
+   {
+    "text": "Pour the warm syrup into the flour a little at a time and knead to a soft dough that holds together when pressed.",
+    "minutes": 10
+   },
+   {
+    "text": "Take a lump the size of a lime, flatten it on one half of a leaf, and fold the leaf over to close the parcel.",
+    "minutes": null
+   },
+   {
+    "text": "Fill and fold the rest of the leaves the same way, pressing the edges so they do not open in the steam.",
+    "minutes": 10
+   },
+   {
+    "text": "Stack the parcels in a steamer over boiling water and steam until the leaves darken and the kitchen smells nutty.",
+    "minutes": 30
+   },
+   {
+    "text": "Lift them out and rest a few minutes, then open a leaf at the table and eat the halapa straight off it.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "කෙන්ද කොළ පිස දමා, කඳ කපා ඉවත් කර, නොකැඩී නැවෙන පරිදි එකින් එක ගින්න මතින් මොහොතක් ගෙන යන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "හකුරු, කිතුල් පැණි සහ වතුර හැඳි තුනක් සමඟ උණු කර පැණි හලක් සාදා, කුණු ඉවත් වන සේ පෙරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පළල් බඳුනකට කුරක්කන් පිටි, ගාගත් පොල්, ලුණු සහ තලාගත් එනසාල් දමා මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උණුසුම් පැණිය පිටි මතට ටිකෙන් ටික දමා, තද කළ විට රැඳෙන මෘදු පිඬක් වන තුරු අනන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "දෙහි ගෙඩියක් පමණ පිඬක් ගෙන කොළයේ එක් අතකට තට්ටු කර, කොළය නවා පාර්සලය වසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉතිරි කොළත් එලෙසම පුරවා නවා, හුමාලයේ ඇරෙන්නේ නැති සේ දාර තද කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පාර්සල් උණු වතුර මත භාජනයේ ගොඩගසා, කොළ අඳුරු වී කුස්සිය පුරා සුවඳ එන තුරු තැම්බෙන්න තියන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "ඉවතට ගෙන විනාඩි කිහිපයක් තියා, මේසයේ කොළය ඇර හලාප කොළයෙන්ම කන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "கெந்த இலைகளைத் துடைத்து, தண்டை நீக்கி, மடிக்கும்போது கிழியாமல் இருக்க ஒவ்வொன்றையும் தீக்கு மேல் ஒரு நொடி காட்டவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "வெல்லத்தையும் கிதுல் பாகையும் மூன்று கரண்டி தண்ணீருடன் உருக்கிப் பாகாக்கி, கசடு நீங்க வடிகட்டவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "அகலமான பாத்திரத்தில் கேழ்வரகு மாவு, துருவிய தேங்காய், உப்பு, நசுக்கிய ஏலக்காய் சேர்த்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சூடான பாகை மாவில் சிறிது சிறிதாக ஊற்றி, அழுத்தினால் ஒட்டும் மிருதுவான மாவாகப் பிசையவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "எலுமிச்சை அளவு மாவை எடுத்து இலையின் ஒரு பாதியில் தட்டி, இலையை மடித்துப் பொதியை மூடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மீதி இலைகளையும் அதே போல் நிரப்பி மடித்து, ஆவியில் திறக்காமல் இருக்க விளிம்புகளை அழுத்தவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பொதிகளைக் கொதிக்கும் தண்ணீருக்கு மேல் ஆவியில் அடுக்கி, இலை கருமையாகி நல்ல வாசனை வரும் வரை வேகவிடவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "எடுத்துச் சில நிமிடம் வைத்து, மேசையில் இலையைத் திறந்து இலையிலேயே ஹலாபாவை உண்ணவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 40,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "steamer or covered pot with a rack",
+  "wide bowl"
+ ],
+ "tips": {
+  "en": "The leaf is half the taste, so pick young unblemished kenda leaves and warm them before folding; a banana leaf square will do at a pinch but the smoky note is lost.",
+  "si": "රසෙන් අඩක් කොළයෙන් එන නිසා ලපටි, පැල්ලම් නැති කෙන්ද කොළ තෝරා ගෙන නවන්න පෙර ගින්න මතින් රත් කරන්න; නැත්නම් කෙසෙල් කොළ කැබැල්ලක් ගත හැකි නමුත් එම විශේෂ සුවඳ නැති වේ.",
+  "ta": "சுவையில் பாதி இலையிலிருந்தே வருகிறது; எனவே இளம், கறையற்ற கெந்த இலைகளைத் தேர்ந்து, மடிப்பதற்கு முன் தீயில் காட்டவும்; வேறு வழி இல்லாவிட்டால் வாழை இலை பயன்படும், ஆனால் அந்தத் தனி வாசனை கிடைக்காது."
+ },
+ "health_note": {
+  "en": "Kurakkan brings fibre, calcium and iron that wheat and white rice do not, and steaming keeps the parcel free of oil. The jaggery and treacle are still sugar, so keep it to two parcels with tea.",
+  "si": "කුරක්කන් වලින් තිරිඟු හා සුදු සහල් වලින් නොලැබෙන තන්තු, කැල්සියම් සහ යකඩ ලැබෙන අතර තැම්බීම නිසා තෙල් නැත. හකුරු සහ පැණි කෙසේ වෙතත් සීනි නිසා තේ සමඟ දෙකකට සීමා කරන්න.",
+  "ta": "கேழ்வரகு, கோதுமையிலும் வெள்ளை அரிசியிலும் கிடைக்காத நார்ச்சத்து, கால்சியம், இரும்புச்சத்தைத் தருகிறது; ஆவியில் வேகுவதால் எண்ணெயும் இல்லை. வெல்லமும் பாகும் சீனியே என்பதால் தேநீருடன் இரண்டு பொதிகளுக்கு நிற்பது நல்லது."
+ },
+ "tags": [
+  "high_fibre",
+  "calcium_rich",
+  "iron_rich",
+  "budget",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

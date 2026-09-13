@@ -1,0 +1,261 @@
+{
+ "id": "dish_thosai",
+ "base_servings": 4,
+ "serving": {
+  "role": "breakfast",
+  "portion_g": 220,
+  "description": {
+   "en": "Three thin crisp thosai with chutney or a curry",
+   "si": "චට්නි හෝ ව්‍යංජනයක් සමඟ තුනී තෝසේ තුනක්",
+   "ta": "சட்னி அல்லது கறியுடன் மெல்லிய மொறுமொறுப்பான மூன்று தோசை"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_rice_raw_white",
+   "label": {
+    "en": "raw white rice",
+    "si": "අමු සුදු සහල්",
+    "ta": "பச்சை வெள்ளை அரிசி"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "1 1/2 cups",
+   "preparation": {
+    "en": "washed and soaked",
+    "si": "හෝදා පොඟවාගත්",
+    "ta": "அலசி ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_urad_dhal",
+   "label": {
+    "en": "urad dhal",
+    "si": "උඳු",
+    "ta": "உளுந்து"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "skinless, washed and soaked separately",
+    "si": "පොත්ත නැති, වෙනම හෝදා පොඟවාගත්",
+    "ta": "தோல் நீக்கியது, தனியாக அலசி ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "soaked together with the dhal",
+    "si": "උඳු සමඟ පොඟවාගත්",
+    "ta": "உளுந்துடன் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "added after the batter has risen",
+    "si": "මිශ්‍රණය පිම්බුණු පසු දමන",
+    "ta": "மாவு புளித்த பின் சேர்ப்பது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for the griddle",
+    "si": "තාච්චියට",
+    "ta": "தோசைக்கல்லுக்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the rice and soak it in plenty of water; soak the urad dhal and fenugreek in a separate bowl.",
+    "minutes": 240
+   },
+   {
+    "text": "Grind the dhal and fenugreek first with a little of their soaking water into a light, fluffy paste that holds air.",
+    "minutes": 10
+   },
+   {
+    "text": "Grind the rice next to a slightly grainy batter, then fold the two together with your hand, which is said to help the fermenting.",
+    "minutes": 10
+   },
+   {
+    "text": "Cover the pot loosely and leave it in a warm corner overnight until the batter has risen, smells pleasantly sour and is full of small bubbles.",
+    "minutes": 480
+   },
+   {
+    "text": "Stir in the salt and thin the batter with water until it pours easily off the ladle.",
+    "minutes": null
+   },
+   {
+    "text": "Heat a flat griddle until a drop of water dances on it, wipe it with an oiled cloth, and rub it with half an onion if the first thosai tends to stick.",
+    "minutes": null
+   },
+   {
+    "text": "Pour a ladle of batter in the middle and spread it outwards in a spiral with the back of the ladle, as thin as you can manage.",
+    "minutes": null
+   },
+   {
+    "text": "Drizzle a few drops of oil round the edge and cook until the underside is golden brown and the edges lift.",
+    "minutes": 2
+   },
+   {
+    "text": "Fold or roll the thosai and serve it straight from the griddle, wiping the pan before each new one.",
+    "minutes": 18
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් හෝදා ඕනෑ තරම් වතුරේ පොඟවන්න; උඳු සහ උළුහාල් වෙනම බඳුනක පොඟවන්න.",
+    "minutes": 240
+   },
+   {
+    "text": "පළමුව උඳු සහ උළුහාල්, පොඟවාගත් වතුරෙන් ටිකක් දමා, වාතය රඳවා ගන්නා සැහැල්ලු පේස්ට් එකක් ලෙස අඹරා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඊළඟට සහල් මදක් රළු ගතියක් සහිතව අඹරා, දෙක අතින් එකට මිශ්‍ර කරන්න; අතින් මිශ්‍ර කිරීම පැසවීමට උදව් වන බව කියති.",
+    "minutes": 10
+   },
+   {
+    "text": "බඳුන ලිහිල්ව වසා උණුසුම් තැනක රැයක් තබන්න; මිශ්‍රණය පිම්බී මිහිරි ඇඹුල් සුවඳක් සහ කුඩා බුබුලු වලින් පිරී තිබිය යුතුය.",
+    "minutes": 480
+   },
+   {
+    "text": "ලුණු දමා කලවම් කර, හැන්දෙන් පහසුවෙන් ගලා යන තරමට වතුරෙන් තුනී කර ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර බිංදුවක් නටන තරමට තාච්චිය රත් කර, තෙල් ගැල්වූ රෙද්දකින් පිස ගන්න; පළමු තෝසේ ඇලෙනවා නම් ලූනු ගෙඩියක් අඩකින් අතුල්ලන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මැදට හැන්දක් මිශ්‍රණය දමා, හැන්දේ පිටුපසින් රවුමට පිටතට, ඔබට හැකි තරම් තුනීට පතුරුවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දාරය දිගේ තෙල් බිංදු කිහිපයක් වත් කර, යටි පැත්ත රන්වන් දුඹුරු වී දාර ගැලවෙන තුරු පිහන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තෝසේ නවා හෝ රෝල් කර තාච්චියේ සිටම ඉදිරිපත් කරන්න; අලුත් එකක් දැමීමට පෙර සෑම වරකම තාච්චිය පිස ගන්න.",
+    "minutes": 18
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசியை அலசி நிறைய தண்ணீரில் ஊறவையுங்கள்; உளுந்தையும் வெந்தயத்தையும் தனி பாத்திரத்தில் ஊறவையுங்கள்.",
+    "minutes": 240
+   },
+   {
+    "text": "முதலில் உளுந்தையும் வெந்தயத்தையும் ஊறிய நீர் சிறிது சேர்த்து, காற்று தங்கும் லேசான பொங்கிய விழுதாக அரையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அடுத்து அரிசியை சிறிது கொரகொரப்புடன் அரைத்து, இரண்டையும் கையால் சேர்த்துக் கலக்குங்கள்; கையால் கலப்பது புளிக்க உதவும் என்பார்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "பாத்திரத்தை தளர்வாக மூடி சூடான இடத்தில் இரவு முழுவதும் வையுங்கள்; மாவு பொங்கி இனிமையான புளிப்பு வாசனையுடன் சிறு குமிழிகள் நிறைந்திருக்க வேண்டும்.",
+    "minutes": 480
+   },
+   {
+    "text": "உப்பு சேர்த்துக் கலக்கி, கரண்டியில் எளிதாக வழியும் பக்குவத்துக்குத் தண்ணீர் விட்டுக் கரையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு துளி தண்ணீர் தெறிக்கும் அளவு தோசைக்கல்லைக் காயவைத்து, எண்ணெய்த் துணியால் துடையுங்கள்; முதல் தோசை ஒட்டினால் அரை வெங்காயத்தால் தேயுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நடுவில் ஒரு கரண்டி மாவை ஊற்றி, கரண்டியின் பின்புறத்தால் வெளிப்புறமாகச் சுழற்றி முடிந்தவரை மெல்லியதாகப் பரத்துங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஓரங்களில் சில துளி எண்ணெய் விட்டு, அடிப்பக்கம் பொன்னிறமாகி ஓரங்கள் விலகும் வரை சுடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "தோசையை மடித்து அல்லது சுருட்டி கல்லிலிருந்தே பரிமாறுங்கள்; அடுத்த தோசைக்கு முன் ஒவ்வொரு முறையும் கல்லைத் துடையுங்கள்.",
+    "minutes": 18
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 20,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "grinder or wet grinder",
+  "large bowl for fermenting",
+  "flat griddle",
+  "ladle"
+ ],
+ "tips": {
+  "en": "Add the salt only after fermenting, because salt slows the wild yeasts down, and keep the batter in a warm dark corner rather than in the fridge. A batter that has gone very sour still makes good thosai if you thin it and cook it hotter.",
+  "si": "ලුණු දමන්නේ පැසවීමෙන් පසුවයි, මන්ද ලුණු ස්වභාවික යීස්ට් ක්‍රියාව මන්දගාමී කරයි; මිශ්‍රණය ශීතකරණයේ නොව උණුසුම් අඳුරු තැනක තබන්න. ඉතා ඇඹුල් වූ මිශ්‍රණය වුවද තුනී කර වැඩි ගින්නේ පිසීමෙන් හොඳ තෝසේ ලැබෙයි.",
+  "ta": "உப்பை புளித்த பின்னரே சேர்க்குங்கள், உப்பு இயற்கை நுண்ணுயிர்களின் வேலையை மெதுவாக்கும்; மாவை குளிர்சாதனப் பெட்டியில் அல்ல, சூடான இருண்ட இடத்தில் வையுங்கள். மிகவும் புளித்த மாவையும் நீர் விட்டுக் கரைத்து அதிக சூட்டில் சுட்டால் நல்ல தோசையே கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "Fermenting makes the rice and dhal easier on the stomach and the urad dhal adds protein that plain rice breakfasts lack. Thosai itself needs very little oil, so what makes the meal heavy is usually the chutney or the coconut sambol beside it.",
+  "si": "පැසවීම නිසා සහල් සහ උඳු බඩට වඩා පහසු වන අතර, සරල සහල් උදෑසන ආහාරවල නැති ප්‍රෝටීන් උඳු වලින් ලැබෙයි. තෝසේට තෙල් ඉතා අඩුවෙන් යන බැවින් කෑම බර වන්නේ බොහෝ විට පසෙක ඇති චට්නි හෝ පොල් සම්බෝල නිසයි.",
+  "ta": "புளிக்க வைப்பதால் அரிசியும் உளுந்தும் வயிற்றுக்கு இலகுவாகும்; வெறும் அரிசி காலை உணவில் இல்லாத புரதம் உளுந்தில் கிடைக்கிறது. தோசைக்கு எண்ணெய் மிகக் குறைவே தேவை, எனவே உணவைக் கனமாக்குவது பெரும்பாலும் பக்கத்தில் உள்ள சட்னி அல்லது தேங்காய் சம்பலே."
+ },
+ "tags": [
+  "budget",
+  "light",
+  "kid_friendly",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

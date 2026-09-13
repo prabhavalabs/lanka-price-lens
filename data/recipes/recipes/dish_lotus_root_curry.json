@@ -1,0 +1,359 @@
+{
+ "id": "dish_lotus_root_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 170,
+  "description": {
+   "en": "A ladle of lotus root rings in a dark spiced gravy with red rice",
+   "si": "රතු බත් සමඟ කළු ඉස්මේ නෙළුම් අල රවුම් හැන්දක්",
+   "ta": "சிவப்பு சாதத்துடன் கறுப்புக் குழம்பில் தாமரைக் கிழங்கு வட்டங்கள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 680,
+ "ingredients": [
+  {
+   "ref": "pantry_lotus_root",
+   "label": {
+    "en": "lotus root",
+    "si": "නෙළුම් අල",
+    "ta": "தாமரைக் கிழங்கு"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "2 long roots",
+   "preparation": {
+    "en": "scraped and cut into thin rings",
+    "si": "සසාගෙන සිහින් රවුම්වලට කපාගත්",
+    "ta": "சுரண்டி மெல்லிய வட்டங்களாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 small pieces",
+   "preparation": {
+    "en": "a dry piece, rinsed",
+    "si": "වියළි කැබැල්ලක්, සෝදාගත්",
+    "ta": "காய்ந்த துண்டு, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 1/2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrub the mud off the lotus root, scrape the skin away and cut it into thin rings, dropping them into water as you go.",
+    "minutes": 20
+   },
+   {
+    "text": "Boil the rings in plenty of water with the goraka until a knife goes through the thickest one; this needs patience, not a higher fire.",
+    "minutes": 20
+   },
+   {
+    "text": "Drain them, keeping a cup of the cooking water aside.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the onion, dried chillies, curry leaves and pandan leaf.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the rings with the turmeric, roasted curry powder and salt, turn them over and pour in the thin coconut milk with the reserved water.",
+    "minutes": 2
+   },
+   {
+    "text": "Simmer uncovered until the gravy is dark and thick and the rings have taken the spice into their holes.",
+    "minutes": 12
+   },
+   {
+    "text": "Finish with the thick coconut milk, bring it to the edge of a boil and take the pot off.",
+    "minutes": 3
+   },
+   {
+    "text": "Serve it with red rice; the rings keep a slight crispness however long they cook.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "නෙළුම් අලයේ මඩ සෝදා, ලෙලි සසා ඉවත් කර, සිහින් රවුම්වලට කපමින් වතුරට දමන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ගොරකා සමඟ වතුර බොහෝ ප්‍රමාණයක් දමා, ගනම රවුමට පිහියක් ඇදෙන තුරු තම්බන්න; මෙයට ඉවසීම මිස වැඩි ගින්නක් අවශ්‍ය නැත.",
+    "minutes": 20
+   },
+   {
+    "text": "වතුර බේරා ගන්න, තැම්බූ වතුරෙන් කෝප්පයක් වෙන් කර තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, ලූනු, වියළි මිරිස්, කරපිංචා සහ රම්පෙ තෙල්දාලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රවුම්, කහ, බැදපු තුනපහ සහ ලුණු එක් කර පෙරළා, තුනී පොල් කිරි සහ වෙන් කරගත් වතුර වත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "වැසුමක් නැතිව, ඉස්ම කළු පැහැ ගෙන ඝන වී රවුම්වල සිදුරුවලට රසය ඇදෙන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඝන පොල් කිරි එක් කර, උතුරන්නට ආසන්න වන විට මුට්ටිය ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රතු බත් සමඟ පිළිගන්වන්න; කොපමණ උයුවත් රවුම්වල ස්වල්ප දැඩි ගතියක් රැඳේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தாமரைக் கிழங்கின் சேற்றைக் கழுவி, தோலைச் சுரண்டி, மெல்லிய வட்டங்களாக நறுக்கி, நறுக்கியவுடன் நீரில் போடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "கோரக்கா சேர்த்து நிறைய நீரில், தடிமனான வட்டத்திலும் கத்தி இறங்கும் வரை வேகவையுங்கள்; இதற்குப் பொறுமை வேண்டும், பெருந்தீ வேண்டாம்.",
+    "minutes": 20
+   },
+   {
+    "text": "நீரை வடித்து, வேகவைத்த நீரில் ஒரு கப் தனியாக எடுத்து வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், காய்ந்த மிளகாய், கறிவேப்பிலை, ரம்பையைத் தாளியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "வட்டங்களை மஞ்சள், வறுத்த கறி மசாலா, உப்புடன் சேர்த்துப் புரட்டி, நீர்த்த தேங்காய்ப் பாலையும் எடுத்து வைத்த நீரையும் ஊற்றுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "மூடாமல், குழம்பு கறுத்துக் கெட்டியாகி, வட்டங்களின் துளைகளுக்குள் மசாலா இறங்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, கொதிக்கும் பதம் வந்தவுடன் சட்டியை இறக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "சிவப்பு சாதத்துடன் பரிமாறுங்கள்; எவ்வளவு வேகவைத்தாலும் வட்டங்களில் சிறிது கடினத் தன்மை இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 40,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "large pot for the first boil"
+ ],
+ "tips": {
+  "en": "Cut the rings after you boil them if you want them to hold their shape, and never add salt to the first water; salted lotus root stays hard. Older roots need twice the boiling of young ones.",
+  "si": "රවුම් හැඩය රැකගන්නට නම් තැම්බීමෙන් පසු කපන්න, පළමු වතුරට ලුණු දමන්නම එපා; ලුණු දැමූ නෙළුම් අල තද වේ. පැරණි අල, තුරුණු ඒවාට වඩා දෙගුණයක් තැම්බිය යුතුයි.",
+  "ta": "வட்டங்கள் வடிவம் இழக்காமல் இருக்க வேண்டுமானால் வேகவைத்தபின் நறுக்குங்கள்; முதல் நீரில் உப்பு போடவே வேண்டாம், உப்புச் சேர்ந்த தாமரைக் கிழங்கு கெட்டியாகவே இருக்கும். முதிர்ந்த கிழங்குக்கு இளமையானதைவிட இரு மடங்கு நேரம் தேவை."
+ },
+ "health_note": {
+  "en": "Lotus root brings fibre and a good amount of vitamin C, and it is filling without much starch. Cook it well; underdone lotus root is hard on the stomach and it is grown in pond mud, so wash it thoroughly.",
+  "si": "නෙළුම් අලයෙන් තන්තු සහ හොඳ විටමින් සී ප්‍රමාණයක් ලැබෙන අතර, පිෂ්ඨය වැඩි නොවී බඩ පුරවයි. හොඳින් උයන්න; අඩක් ඉදුණු නෙළුම් අල බඩට අපහසුයි, තවද එය කුඹුරු මඩේ වැඩෙන බැවින් හොඳින් සෝදන්න.",
+  "ta": "தாமரைக் கிழங்கு நார்ச்சத்தும் நல்ல அளவு வைட்டமின் சி-யும் தரும், அதிக மாவுச்சத்து இல்லாமல் வயிறு நிறைக்கும். நன்கு வேகவையுங்கள்; பாதி வேகியது வயிற்றுக்குக் கஷ்டம், குளச் சேற்றில் வளர்வதால் நன்றாகக் கழுவுங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "filling",
+  "festive",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

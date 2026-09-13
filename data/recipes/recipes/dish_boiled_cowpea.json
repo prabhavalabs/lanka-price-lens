@@ -1,0 +1,210 @@
+{
+ "id": "dish_boiled_cowpea",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 180,
+  "description": {
+   "en": "A bowl of warm cowpea with coconut and a trickle of treacle",
+   "si": "පොල් සහ පැණි ටිකක් සමඟ උණුසුම් කව්පි බඳුනක්",
+   "ta": "தேங்காயும் சிறிது பாணியும் சேர்த்த சூடான காராமணி ஒரு கிண்ணம்"
+  }
+ },
+ "yield_g": 720,
+ "ingredients": [
+  {
+   "ref": "product_cowpea",
+   "label": {
+    "en": "dried cowpea",
+    "si": "කව්පි",
+    "ta": "காராமணி"
+   },
+   "quantity": 240,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "washed and soaked overnight",
+    "si": "සෝදා රාත්‍රිය පුරා පොඟවාගත්",
+    "ta": "கழுவி இரவு முழுவதும் ஊறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "අලුතින් ගාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாணி"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the cowpea, throw away any beans that float, and soak overnight in three times their depth of water.",
+    "minutes": 480
+   },
+   {
+    "text": "Drain and put the cowpea in a pot with fresh water two fingers above the beans and the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Boil with the lid ajar until the skins begin to split and a bean mashes easily on the tongue.",
+    "minutes": 40
+   },
+   {
+    "text": "Taste one before you stop: it should be soft but still hold its shape, not broken to pulp.",
+    "minutes": null
+   },
+   {
+    "text": "Drain well and leave the cowpea in the covered pot so the surface water dries off.",
+    "minutes": 5
+   },
+   {
+    "text": "Spoon the warm cowpea into bowls and heap the scraped coconut on top.",
+    "minutes": null
+   },
+   {
+    "text": "Trickle treacle over the coconut, or set a lump of jaggery beside each bowl instead.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කව්පි සෝදා, පාවෙන ඇට ඉවත් කර, තුන් ගුණයක් වතුර දමා රාත්‍රිය පුරා පොඟවන්න.",
+    "minutes": 480
+   },
+   {
+    "text": "වතුර බේරා වළඳකට දමා, ඇඟිලි දෙකක් උසට වතුර සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළඳ අඩක් වසා, පොත්ත පැළෙන්නට පටන් ගෙන ඇටය දිවෙන් පහසුවෙන් තැලෙන තුරු තම්බන්න.",
+    "minutes": 40
+   },
+   {
+    "text": "ගින්නෙන් ඉවත් කරන්නට පෙර එකක් රස බලන්න; මෘදු වුවත් හැඩය රැකිය යුතුයි, පල්ප් නොවිය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර හොඳින් බේරා, වළඳ වසා තබා මතුපිට තෙතමනය වේලෙන්නට දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "උණුසුම් කව්පි බඳුන්වලට බෙදා, ගාගත් පොල් උඩින් ගොඩගසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පොල් මතට කිතුල් පැණි වත් කරන්න, නැතහොත් හකුරු කැබැල්ලක් බඳුන අසල තබන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "காராமணியைக் கழுவி, மேலே மிதப்பவற்றை நீக்கி, மூன்று மடங்கு தண்ணீரில் இரவு முழுவதும் ஊற வைக்கவும்.",
+    "minutes": 480
+   },
+   {
+    "text": "வடித்து பாத்திரத்தில் இட்டு, இரண்டு விரல் அளவு மேலே தண்ணீரும் உப்பும் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடியைச் சற்று சாத்தி, தோல் வெடிக்கத் தொடங்கி பயறு நாவில் எளிதில் நசுங்கும் வரை வேகவிடவும்.",
+    "minutes": 40
+   },
+   {
+    "text": "இறக்கும் முன் ஒன்றைச் சுவைக்கவும்; மென்மையாக இருக்க வேண்டும், ஆனால் வடிவம் உடையக் கூடாது.",
+    "minutes": null
+   },
+   {
+    "text": "தண்ணீரை நன்றாக வடித்து, பாத்திரத்தை மூடி மேற்பரப்பு ஈரம் உலரவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சூடான காராமணியைக் கிண்ணங்களில் பரிமாறி, மேலே துருவிய தேங்காயைக் குவிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தேங்காயின் மேல் கிதுல் பாணியை ஊற்றவும், அல்லது ஒரு துண்டு வெல்லத்தை கிண்ணத்தின் அருகே வைக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 45,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "heavy pot with a lid",
+  "colander"
+ ],
+ "tips": {
+  "en": "Old cowpea from the back of the cupboard can take twice as long to soften, so buy the season's crop if you can. Leftovers make a good tempered side the next day with onion and dried chilli.",
+  "si": "අල්මාරියේ බොහෝ කල් තිබූ පැරණි කව්පි මෘදු වීමට දෙගුණයක් කාලයක් ගත විය හැකි බැවින් හැකි නම් අලුත් අස්වැන්නෙන් මිල දී ගන්න. ඉතිරි වූ කව්පි පසුදා ලූනු සහ වියළි මිරිස් සමඟ තෙම්පරාදු කර හොඳ ව්‍යංජනයක් සාදා ගත හැකිය.",
+  "ta": "அலமாரியில் நெடுநாள் இருந்த பழைய காராமணி மென்மையாக இரட்டிப்பு நேரம் எடுக்கும், எனவே முடிந்தால் புதிய அறுவடையை வாங்கவும். மீதமானதை மறுநாள் வெங்காயம், வத்தல் மிளகாயுடன் தாளித்து நல்ல சைடாகச் செய்யலாம்."
+ },
+ "health_note": {
+  "en": "Cowpea is slow-burning starch with good protein and plenty of fibre, which is why a plate of it at dawn keeps a field worker going until noon. The treacle is sugar, so a teaspoon for taste is plenty, especially for anyone with diabetes.",
+  "si": "කව්පි සෙමින් ශක්තිය නිකුත් කරන පිෂ්ටයක් සමඟ හොඳ ප්‍රෝටීන් සහ තන්තු ලබා දෙන බැවින් උදෑසන පිඟානකින් කුඹුරු වැඩ කරන කෙනෙකුට දවල් වන තුරු ඇති වේ. පැණි යනු සීනි බැවින් රස සඳහා තේ හැන්දක් ප්‍රමාණවත්; විශේෂයෙන් දියවැඩියාව ඇති අයට.",
+  "ta": "காராமணி மெதுவாக ஆற்றல் தரும் மாவுச்சத்துடன் நல்ல புரதமும் நார்ச்சத்தும் தருகிறது; அதனால்தான் காலையில் ஒரு கிண்ணம் வயல் வேலை செய்பவரை மதியம் வரை தாங்கும். பாணி சர்க்கரையே, எனவே சுவைக்கு ஒரு தேக்கரண்டி போதும், குறிப்பாக நீரிழிவு உள்ளவர்களுக்கு."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "diabetic_friendly",
+  "budget",
+  "filling",
+  "traditional_remedy"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

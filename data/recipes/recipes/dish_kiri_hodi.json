@@ -1,0 +1,327 @@
+{
+ "id": "dish_kiri_hodi",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 180,
+  "description": {
+   "en": "A cupful of pale coconut gravy ladled over rice, string hoppers or milk rice",
+   "si": "බත්, ඉඳිආප්ප හෝ කිරිබත් මතට වත් කරන සුදු පොල් කිරි හොදි කෝප්පයක්",
+   "ta": "சாதம், இடியப்பம் அல்லது பால் சாதத்தின் மேல் ஊற்றும் ஒரு கோப்பை தேங்காய்ப்பால் குழம்பு"
+  }
+ },
+ "yield_g": 740,
+ "ingredients": [
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 350,
+   "unit": "ml",
+   "household": "1 3/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small handful, sliced",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon stick",
+    "si": "කුරුඳු කෑල්ලක්",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 3 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed",
+   "preparation": {
+    "en": "juice only, added off the fire",
+    "si": "යුෂ පමණක්, ගින්නෙන් අයින් කර දමන්න",
+    "ta": "சாறு மட்டும், அடுப்பிலிருந்து இறக்கிய பிறகு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Put the thin coconut milk in a pot with the onion, green chillies, curry leaves, pandan, fenugreek, cinnamon, turmeric and salt.",
+    "minutes": 3
+   },
+   {
+    "text": "Bring it to a boil on a medium flame and let it cook until the onion is quite soft and the fenugreek has swelled.",
+    "minutes": 7
+   },
+   {
+    "text": "Turn the flame down as low as it will go and pour in the thick coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Stir in one direction without stopping until the gravy steams at the edges; do not let it boil, or the milk will curdle into grains.",
+    "minutes": 3
+   },
+   {
+    "text": "Take the pot off the fire straight away and taste for salt.",
+    "minutes": null
+   },
+   {
+    "text": "Squeeze in the lime juice and stir once. The gravy should taste of coconut first, then salt, then a little sharpness at the end.",
+    "minutes": null
+   },
+   {
+    "text": "Serve hot, ladled over milk rice, string hoppers or plain rice.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තුනී පොල් කිරි මුට්ටියකට දමා, ලූනු, අමු මිරිස්, කරපිංචා, රම්පෙ, උළුහාල්, කුරුඳු, කහ සහ ලුණු එකතු කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මධ්‍යම ගින්නේ උතුරන්න තබා, ලූනු හොඳින් මුදු වී උළුහාල් ඉදිමෙන තුරු තම්බන්න.",
+    "minutes": 7
+   },
+   {
+    "text": "ගින්න හැකි තරම් අඩු කර මුල් කිරි වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දාරවලින් හුමාලය එන තුරු එක දිශාවට නොනවත්වා කලවම් කරන්න; උතුරන්න ඉඩ දෙන්න එපා, එවිට කිරි කැඩී කැට වේ.",
+    "minutes": 3
+   },
+   {
+    "text": "වහාම මුට්ටිය ගින්නෙන් ඉවත් කර රස බලන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා වරක් කලවම් කරන්න. හොදියේ මුලින්ම පොල් රස, පසුව ලුණු, අවසානයේ කුඩා ඇඹුල් ගතියක් දැනිය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "කිරිබත්, ඉඳිආප්ප හෝ සාමාන්‍ය බත් මතට උණුසුම්ව වත් කර ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பாலை பாத்திரத்தில் விட்டு, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை, வெந்தயம், பட்டை, மஞ்சள், உப்பு சேர்க்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "நடுத்தர தீயில் கொதிக்க வைத்து, வெங்காயம் நன்கு மென்மையாகி வெந்தயம் பூரிக்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 7
+   },
+   {
+    "text": "தீயை முடிந்தவரை குறைத்து, முதல் பாலை ஊற்றுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஓரங்களில் ஆவி வரும் வரை ஒரே திசையில் நிற்காமல் கிளறுங்கள்; கொதிக்க விடாதீர்கள், பால் திரிந்து துகளாகிவிடும்.",
+    "minutes": 3
+   },
+   {
+    "text": "உடனே அடுப்பிலிருந்து இறக்கி உப்பு பாருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "எலுமிச்சைச் சாறு பிழிந்து ஒரு முறை கலக்குங்கள். குழம்பில் முதலில் தேங்காய், பிறகு உப்பு, கடைசியில் சிறு புளிப்பு தெரிய வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "பால் சாதம், இடியப்பம் அல்லது சாதத்தின் மேல் சூடாக ஊற்றிப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 12,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "small pot",
+  "ladle"
+ ],
+ "tips": {
+  "en": "The whole skill is in the last three minutes: low flame, constant stirring, and off the fire before it boils. Add the lime only after the pot leaves the stove, because acid on the heat splits the milk at once.",
+  "si": "මුළු දැනුම තියෙන්නේ අවසාන විනාඩි තුනේ: ගින්න අඩුවෙන්, නොනවත්වා කලවම් කරමින්, උතුරන්නට කලින් ගින්නෙන් අයින් කරන්න. දෙහි එකතු කරන්නේ මුට්ටිය ලිපෙන් අයින් කළාට පසුවයි; ගින්නේ තිබියදී ඇඹුල දැමුවොත් කිරි එකෙණෙහිම කැඩේ.",
+  "ta": "முழு நுணுக்கமும் கடைசி மூன்று நிமிடங்களில்: சிறு தீ, தொடர்ந்து கிளறுதல், கொதிக்கும் முன்பே இறக்குதல். எலுமிச்சையை பாத்திரம் அடுப்பிலிருந்து இறங்கிய பிறகே சேர்க்கவும்; சூட்டில் புளிப்பு சேர்ந்தால் பால் உடனே திரியும்."
+ },
+ "health_note": {
+  "en": "Kiri hodi is gentle food, easy on an upset stomach and the first thing offered to someone recovering, but it is coconut fat and salt with almost no protein or fibre, so it belongs beside a dhal or a vegetable rather than on its own. Cut down the thick milk if you are watching cholesterol.",
+  "si": "කිරි හොදි මෘදු ආහාරයක්; අජීර්ණයට හිතකර, සුවවෙන කෙනෙකුට මුලින්ම දෙන දෙයකි. එහෙත් එහි ඇත්තේ පොල් මේදය හා ලුණු පමණක් වන අතර ප්‍රෝටීන් හෝ තන්තු නොමැති තරම් නිසා, තනිවම නොව පරිප්පු හෝ එළවළුවක් සමඟ ගන්න. කොලෙස්ටරෝල් බලාගන්නවා නම් මුල් කිරි අඩු කරන්න.",
+  "ta": "கிரி ஹொடி மென்மையான உணவு; வயிற்றுக்கு இதமானது, குணமாகும் ஒருவருக்கு முதலில் கொடுக்கப்படுவது. ஆனால் இதில் தேங்காய்க் கொழுப்பும் உப்பும்தான் உள்ளது, புரதமும் நார்ச்சத்தும் கிட்டத்தட்ட இல்லை, எனவே தனியாக அல்ல, பருப்பு அல்லது காய்கறியுடன் சேர்த்துச் சாப்பிடுங்கள். கொலஸ்ட்ரால் கவனிப்பவர்கள் முதல் பாலைக் குறைக்கவும்."
+ },
+ "tags": [
+  "quick",
+  "light",
+  "comfort",
+  "elderly_friendly",
+  "kid_friendly",
+  "budget",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

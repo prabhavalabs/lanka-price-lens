@@ -1,0 +1,427 @@
+{
+ "id": "dish_rasam",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 250,
+  "description": {
+   "en": "A cup of thin peppery broth, drunk or poured over rice",
+   "si": "බොන්නට හෝ බත් මතට වත් කරන්නට සිහින් ගම්මිරිස් හොදි කෝප්පයක්",
+   "ta": "குடிக்கவோ சாதத்தில் ஊற்றவோ ஒரு கோப்பை மிளகு ரசம்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "pantry_toor_dhal",
+   "label": {
+    "en": "toor dhal",
+    "si": "තෝර පරිප්පු",
+    "ta": "துவரம் பருப்பு"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "a quarter cup",
+   "preparation": {
+    "en": "washed",
+    "si": "සෝදාගත්",
+    "ta": "கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියම්බලා",
+    "ta": "புளி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a lime-sized ball",
+   "preparation": {
+    "en": "soaked in warm water, juice squeezed out",
+    "si": "උණු වතුරේ පොඟවා යුෂ මිරිකාගත්",
+    "ta": "வெந்நீரில் ஊறவைத்து சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 ripe tomatoes",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed with the skin on",
+    "si": "පොත්ත සමඟම තලාගත්",
+    "ta": "தோலுடன் நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp, whole",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලාගත්",
+    "ta": "பரும்பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seeds",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලාගත්",
+    "ta": "பரும்பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_rasam_powder",
+   "label": {
+    "en": "rasam powder",
+    "si": "රසම් කුඩු",
+    "ta": "ரசப் பொடி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "broken in half",
+    "si": "දෙකට කඩාගත්",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_asafoetida",
+   "label": {
+    "en": "asafoetida",
+    "si": "පෙරුංකායම්",
+    "ta": "பெருங்காயம்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small bunch",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Boil the toor dhal in three cups of water until it is completely soft, and keep both the dhal and its yellow water.",
+    "minutes": 20
+   },
+   {
+    "text": "Soak the tamarind in a cup of warm water, squeeze the pulp out with your fingers and throw away the fibres.",
+    "minutes": 10
+   },
+   {
+    "text": "Crush the garlic, pepper and cumin together on the grinding stone into a coarse, fragrant paste.",
+    "minutes": null
+   },
+   {
+    "text": "Put the tamarind water, chopped tomato, crushed paste, turmeric, rasam powder, curry leaves and salt in a pot with two cups of water.",
+    "minutes": null
+   },
+   {
+    "text": "Boil until the raw smell of the tamarind is gone and the tomato has fallen apart.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the yellow dhal water with a spoon or two of the cooked dhal, and enough water to make a thin broth.",
+    "minutes": null
+   },
+   {
+    "text": "Heat it until it froths at the edges but do not let it boil hard, then take it off the fire.",
+    "minutes": 3
+   },
+   {
+    "text": "Heat the coconut oil in a small pan, pop the mustard seeds, add the broken dried chilli and asafoetida and pour it over the rasam.",
+    "minutes": 2
+   },
+   {
+    "text": "Scatter the chopped coriander leaves over and serve hot in cups, or poured over rice at the end of the meal.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තෝර පරිප්පු කෝප්ප තුනක වතුරේ මුළුමනින්ම මෘදු වන තුරු තම්බා, පරිප්පු සහ එහි කහ පැහැති වතුර දෙකම තබා ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "සියම්බලා උණු වතුර කෝප්පයක පොඟවා, ඇඟිලිවලින් මිරිකා යුෂ ගෙන කෙඳි ඉවත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සුදුළූනු, ගම්මිරිස් සහ සූදුරු මිරිස් ගලේ එකට රළුවට තලාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළඳකට සියම්බලා යුෂ, කපාගත් තක්කාලි, තලාගත් මිශ්‍රණය, කහ කුඩු, රසම් කුඩු, කරපිංචා සහ ලුණු සමඟ කෝප්ප දෙකක් වතුර දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සියම්බලාවේ අමු ගතිය නැති වී තක්කාලි තැලී යන තුරු උතුරවන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පරිප්පු වතුර, තැම්බූ පරිප්පු හැඳි එකක් දෙකක් සහ සිහින් හොදියක් වන තරමට වතුර එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දාර වටා පෙණ නගින තුරු පමණක් රත් කරන්න; තදින් උතුරන්නට දෙන්න එපා, පසුව ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කුඩා පෑනක පොල් තෙල් රත් කර අබ පිපිරවා, කැඩූ වියළි මිරිස් සහ පෙරුංකායම් දමා රසම් මතට වත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කපාගත් කොත්තමල්ලි කොළ ඉස, කෝප්පවලින් හෝ කෑම අවසානයේ බත් මතට වත් කර උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "துவரம் பருப்பை மூன்று கப் தண்ணீரில் நன்கு கரையும் வரை வேகவைத்து, பருப்பையும் அதன் மஞ்சள் நீரையும் தனியே வைக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "புளியை ஒரு கப் வெந்நீரில் ஊறவைத்து, விரல்களால் பிசைந்து சாறு எடுத்து நாரை நீக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பூண்டு, மிளகு, சீரகத்தை அம்மியில் ஒன்றாகப் பரும்பொடியாக இடிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்தில் புளிச் சாறு, நறுக்கிய தக்காளி, இடித்த விழுது, மஞ்சள் தூள், ரசப் பொடி, கறிவேப்பிலை, உப்புடன் இரண்டு கப் தண்ணீர் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "புளியின் பச்சை வாசம் போய் தக்காளி கரையும் வரை கொதிக்கவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "மஞ்சள் பருப்பு நீரையும் ஒன்றிரண்டு கரண்டி வேகவைத்த பருப்பையும், ரசம் நீர்க்கும் அளவு தண்ணீரையும் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஓரங்களில் நுரை வரும் வரை மட்டும் சூடாக்கவும்; பொங்கக் கொதிக்கவிடாமல் இறக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சிறிய வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து கடுகு தாளித்து, உடைத்த வத்தல் மிளகாயும் பெருங்காயமும் சேர்த்து ரசத்தில் ஊற்றவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "நறுக்கிய கொத்தமல்லி இலையைத் தூவி, கோப்பைகளில் அல்லது உணவின் இறுதியில் சாதத்தின் மேல் ஊற்றி சூடாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 25,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "pot",
+  "grinding stone or mortar",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Never let rasam boil hard once the dhal water is in; hard boiling flattens the pepper and the aroma that makes it worth drinking. Crush the pepper and cumin fresh rather than using ready ground powder, the difference is easy to taste.",
+  "si": "පරිප්පු වතුර දැමූ පසු රසම් තදින් උතුරන්නට කිසිසේත් ඉඩ නොදෙන්න; තදින් උතුරන විට ගම්මිරිස් රසය සහ සුවඳ නැති වේ. ගම්මිරිස් සහ සූදුරු කලින් කුඩු කළ ඒවා වෙනුවට එවේලේ තලා ගන්න; වෙනස පැහැදිලිව දැනේ.",
+  "ta": "பருப்பு நீர் சேர்த்த பிறகு ரசத்தைப் பொங்கக் கொதிக்கவிடவே கூடாது; பொங்கினால் மிளகின் சுவையும் வாசமும் போய்விடும். மிளகையும் சீரகத்தையும் ஆயத்தப் பொடிக்குப் பதிலாக அப்போதே இடித்துப் பயன்படுத்தவும், வித்தியாசம் நன்கு தெரியும்."
+ },
+ "health_note": {
+  "en": "Rasam is mostly water, so it is light, warming and easy to take when appetite is low or someone has a blocked nose. The pepper, cumin, garlic and tamarind are why households reach for it during a cold, though it is food and not medicine.",
+  "si": "රසම් බොහෝ දුරට වතුර බැවින් සැහැල්ලු වන අතර රුචිය අඩු විටෙක හෝ නාසය අවහිර වූ විටෙක ගැනීමට පහසුයි. සෙම්ප්‍රතිශ්‍යාවකදී ගෙදර මෙය සාදන්නේ ගම්මිරිස්, සූදුරු, සුදුළූනු සහ සියම්බලා නිසයි; එහෙත් මෙය ආහාරයක් මිස බෙහෙතක් නොවේ.",
+  "ta": "ரசம் பெரும்பாலும் நீரே, எனவே இலகுவானது; பசி குறைவாக இருக்கும்போதும் மூக்கடைப்பு இருக்கும்போதும் எளிதில் உட்கொள்ளலாம். சளிக் காலத்தில் வீடுகளில் இதைச் செய்வதற்குக் காரணம் மிளகு, சீரகம், பூண்டு, புளியே; இருந்தாலும் இது உணவே, மருந்து அல்ல."
+ },
+ "tags": [
+  "low_calorie",
+  "low_fat",
+  "light",
+  "hydrating",
+  "immune_support",
+  "traditional_remedy",
+  "weight_loss_friendly",
+  "quick"
+ ],
+ "review_needed": [
+  "si"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

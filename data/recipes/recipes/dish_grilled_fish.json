@@ -1,0 +1,314 @@
+{
+ "id": "dish_grilled_fish",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 150,
+  "description": {
+   "en": "A piece of grilled fish cut from the whole, with lime",
+   "si": "මුළු මාළුවෙන් කපාගත් උඳුනේ පිසූ මාළු කෑල්ලක් සහ දෙහි",
+   "ta": "முழு மீனில் இருந்து வெட்டிய சுட்ட மீன் துண்டும் எலுமிச்சையும்"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_paraw",
+   "label": {
+    "en": "whole trevally",
+    "si": "මුළු පරාව් මාළුවක්",
+    "ta": "முழு பாறை மீன்"
+   },
+   "quantity": 800,
+   "unit": "g",
+   "household": "1 fish for the family",
+   "preparation": {
+    "en": "scaled, gutted, slashed to the bone on both sides",
+    "si": "කොරපොතු ගලවා බඩ පිරිසිදු කර දෙපැත්තේ ඇට දක්වා කපාගත්",
+    "ta": "செதில் நீக்கி, குடல் எடுத்து, இரு பக்கமும் எலும்பு வரை கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 limes",
+   "preparation": {
+    "en": "one for the rub, one to squeeze at the table",
+    "si": "එකක් ගල්වන්න, එකක් මේසයේ මිරිකන්න",
+    "ta": "ஒன்று தடவ, ஒன்று மேசையில் பிழிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "pounded",
+    "si": "තලාගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලාගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් තලපය",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for brushing",
+    "si": "ගල්වා ගැනීමට",
+    "ta": "தடவுவதற்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_banana_leaf",
+   "label": {
+    "en": "banana leaf",
+    "si": "කෙසෙල් කොළ",
+    "ta": "வாழை இலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 large pieces",
+   "preparation": {
+    "en": "wilted over the flame",
+    "si": "ගින්නට තබා මැලවූ",
+    "ta": "தீயில் வாட்டியது"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scale and gut the fish, wash it well and make deep slashes across both sides right down to the bone.",
+    "minutes": 15
+   },
+   {
+    "text": "Pound the garlic, pepper, turmeric and salt together, then mix in the chilli paste and the juice of one lime to make a thick rub.",
+    "minutes": 8
+   },
+   {
+    "text": "Push the rub into every slash and into the belly cavity and leave the fish to take the flavour.",
+    "minutes": 30
+   },
+   {
+    "text": "Hold the banana leaf over the flame until it turns glossy and soft, and get the coconut shell embers or the charcoal going.",
+    "minutes": 5
+   },
+   {
+    "text": "Brush the fish with coconut oil, lay it on the leaf and fold the leaf over, or put it straight on a grid over the embers.",
+    "minutes": 3
+   },
+   {
+    "text": "Cook the first side over a low steady heat until the leaf chars and the flesh near the bone turns white.",
+    "minutes": 10
+   },
+   {
+    "text": "Turn the parcel once and cook the other side the same way, pressing gently to see that the flesh is set.",
+    "minutes": 10
+   },
+   {
+    "text": "Rest the fish off the fire, open the leaf at the table and squeeze the second lime over it.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළුවේ කොරපොතු ගලවා බඩ පිරිසිදු කර හොඳින් සෝදා, දෙපැත්තේ ඇට දක්වා ගැඹුරු කැපුම් දමන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "සුදුළූණු, ගම්මිරිස්, කහ සහ ලුණු එකට තලාගෙන, මිරිස් තලපය සහ දෙහි ගෙඩියක යුෂ එකතු කර තද මිශ්‍රණයක් හදාගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඒ මිශ්‍රණය හැම කැපුමකටත් බඩ ඇතුළටත් තදින් තවරා, රසය ඇදෙන්න මාළුව තියන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "කෙසෙල් කොළය ගින්න මතට තබා දිලිසෙන තුරු මැලවා ගන්න; පොල් කටු ගිනි අඟුරු හෝ ලී අඟුරු සූදානම් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මාළුවට පොල් තෙල් ගල්වා කෙසෙල් කොළයේ තබා ඔතන්න, නැත්නම් අඟුරු මතට තැබූ දැලක් මත සෘජුව තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පළමු පැත්ත අඩු ස්ථාවර ගින්නේ, කොළය පිළිස්සෙන තුරු සහ ඇට ආසන්න මස් සුදු පැහැ වන තුරු පිසින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පොදිය එක වරක් හරවා අනෙක් පැත්තත් එලෙසම පිසින්න; මස් තද වී ඇත්දැයි සෙමින් තදකර බලන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මාළුව ලිපෙන් ඉවත් කර මඳක් තියා, මේසයේ කොළය ඇර දෙවන දෙහි ගෙඩිය මිරිකන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீனின் செதிலை நீக்கி, குடலை எடுத்து, நன்கு கழுவி, இரு பக்கமும் எலும்பு வரை ஆழமாகக் கீறுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "பூண்டு, மிளகு, மஞ்சள், உப்பை ஒன்றாக இடித்து, மிளகாய் விழுதும் ஒரு எலுமிச்சைச் சாறும் சேர்த்து கெட்டியான கலவையாக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அந்தக் கலவையை ஒவ்வொரு கீற்றிலும் வயிற்றுக்கு உள்ளேயும் அழுத்தித் தடவி, சுவை ஏற ஊறவிடுங்கள்.",
+    "minutes": 30
+   },
+   {
+    "text": "வாழை இலையைத் தீயில் காட்டி மினுமினுக்கும் வரை வாட்டுங்கள்; தேங்காய் ஓட்டுக் கரியையோ கரியையோ தயார் செய்யுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மீனில் தேங்காய் எண்ணெய் தடவி, வாழை இலையில் வைத்து மூடிச் சுற்றுங்கள், அல்லது கரியின் மேல் வைத்த கிரில்லில் நேரடியாக வையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "முதல் பக்கத்தை சிறு நிலையான தீயில், இலை கருகி எலும்பருகே இறைச்சி வெண்மையாகும் வரை சுடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "பொட்டலத்தை ஒரு முறை திருப்பி மறுபக்கமும் அதே போலச் சுடுங்கள்; இறைச்சி வெந்ததா என மெதுவாக அழுத்திப் பாருங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மீனை இறக்கி சிறிது நேரம் வைத்து, மேசையில் இலையைத் திறந்து இரண்டாவது எலுமிச்சையைப் பிழியுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 25,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "charcoal fire or coconut shell embers",
+  "wire grid",
+  "mortar or grinding stone"
+ ],
+ "tips": {
+  "en": "Deep slashes matter more than long cooking: they let the rub reach the bone and let the heat through, so the middle is done before the skin burns. Keep the embers low and never over a leaping flame.",
+  "si": "දිගු වෙලාවක් පිසීමට වඩා ගැඹුරු කැපුම් වැදගත්: ඒවායින් රසය ඇට දක්වා යනවා, තාපයත් ඇතුළට යනවා, එතකොට හම පිළිස්සෙන්න කලින් මැද ඉදෙනවා. අඟුරු ගින්න අඩුවෙන් තියන්න, ගිනිදැල් මතට කිසිසේත් නොතබන්න.",
+  "ta": "நீண்ட நேரம் சுடுவதைவிட ஆழமான கீறல்கள் முக்கியம்: அவற்றால் கலவை எலும்பு வரை செல்லும், வெப்பமும் உள்ளே இறங்கும், தோல் கருகுவதற்கு முன் நடுப்பகுதி வெந்துவிடும். கரியின் தீயைக் குறைவாக வையுங்கள், பொங்கும் தீயின் மேல் ஒருபோதும் வேண்டாம்."
+ },
+ "health_note": {
+  "en": "Grilling is the lightest way to cook fish: nothing is fried and the fat that is there drips away, leaving good protein and the oils that help the heart. It is a sensible choice for anyone told to cut down on oil.",
+  "si": "මාළු පිසීමේ සැහැල්ලුම ක්‍රමය උඳුනේ පිසීමයි: බැදීමක් නැහැ, තියෙන මේදයත් බිංදු ලෙස වැටෙනවා, ඉතිරි වෙන්නේ හොඳ ප්‍රෝටීන් සහ හදවතට හිතකර තෙල්. තෙල් අඩු කරන්න කියපු අයට හොඳ තේරීමක්.",
+  "ta": "மீனைச் சமைக்கும் மிக இலகுவான முறை சுடுவதே: பொரிப்பு இல்லை, உள்ள கொழுப்பும் சொட்டி விழும், மிஞ்சுவது நல்ல புரதமும் இதயத்துக்கு உதவும் எண்ணெய்ச் சத்தும். எண்ணெயைக் குறைக்கச் சொன்னவர்களுக்கு நல்ல தேர்வு."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "heart_healthy",
+  "weight_loss_friendly",
+  "festive"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

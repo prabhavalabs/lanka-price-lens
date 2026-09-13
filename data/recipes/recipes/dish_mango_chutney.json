@@ -1,0 +1,333 @@
+{
+ "id": "dish_mango_chutney",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 40,
+  "description": {
+   "en": "A glossy spoonful of sweet hot chutney beside the rice",
+   "si": "බත සමඟ තබා ගන්නා දිලිසෙන මිහිරි-සැර චට්නි හැන්දක්",
+   "ta": "சாதத்துடன் வைக்கும் பளபளக்கும் இனிப்பு காரச் சட்னி ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 160,
+ "ingredients": [
+  {
+   "ref": "product_mango",
+   "label": {
+    "en": "half ripe mango",
+    "si": "අඩ මුහුකුරා ගිය අඹ",
+    "ta": "பாதி பழுத்த மாங்காய்"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "1 large mango",
+   "preparation": {
+    "en": "peeled and cut into small cubes",
+    "si": "ලෙලි ගලවා කුඩා කැට ලෙස කපාගත්",
+    "ta": "தோல் சீவி சிறு துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 45,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_dates",
+   "label": {
+    "en": "dates",
+    "si": "රට ඉඳි",
+    "ta": "பேரீச்சம்பழம்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "4 dates",
+   "preparation": {
+    "en": "stones taken out, chopped",
+    "si": "ඇට ඉවත් කර කපාගත්",
+    "ta": "கொட்டை நீக்கி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_raisins",
+   "label": {
+    "en": "raisins",
+    "si": "මුද්දරප්පලම්",
+    "ta": "உலர் திராட்சை"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "scraped and chopped fine",
+    "si": "සූරා සිහින්ව කපාගත්",
+    "ta": "சுரண்டி பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියලි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3 dried chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the mango, cut the flesh off the seed in small cubes and scrape the seed clean into the bowl.",
+    "minutes": null
+   },
+   {
+    "text": "Warm the vinegar and sugar together in a heavy pan until the sugar has melted.",
+    "minutes": 5
+   },
+   {
+    "text": "Drop in the ginger, garlic, broken dried chillies and chilli powder.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the mango cubes and salt and turn them over so every piece is coated.",
+    "minutes": 2
+   },
+   {
+    "text": "Simmer on a low flame, stirring often so nothing catches, until the mango turns soft and see through.",
+    "minutes": 20
+   },
+   {
+    "text": "Stir in the chopped dates and the raisins.",
+    "minutes": 1
+   },
+   {
+    "text": "Keep cooking until a spoon drawn across the bottom leaves a track that closes slowly.",
+    "minutes": 10
+   },
+   {
+    "text": "Taste and set the balance: a little more sugar for a very sour mango, a pinch more salt for a sweet one.",
+    "minutes": null
+   },
+   {
+    "text": "Cool it completely and fill a dry jar; the flavour rounds out over the next few days.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අඹ ලෙලි ගලවා, ඇටයෙන් වෙන් කරගත් ගෙඩිය කුඩා කැට ලෙස කපා, ඇටයේ ඉතිරි මදයත් සූරා බඳුනට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බර පෑන් එකක විනාකිරි සහ සීනි එකට දමා, සීනි දිය වන තුරු රත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඉඟුරු, සුදුලූනු, කැඩූ වියලි මිරිස් සහ මිරිස් කුඩු එකතු කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "අඹ කැට සහ ලුණු දමා, සෑම කැබැල්ලක්ම මිශ්‍රණයේ ගෑවෙන්න පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "අඩු ගින්නේ, නිතර කලවම් කරමින්, අඹ මෘදු වී පාරදෘශ්‍ය වන තුරු තබන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කපාගත් රට ඉඳි සහ මුද්දරප්පලම් එකතු කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "හැන්දෙන් පෑන් පතුල දිගේ ඇද්දොත් සෙමින් වැසෙන ඉරක් ඉතිරි වන තරමට ගැටිති වන තුරු පිසගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "රස බලා සමතුලිත කරන්න: ඉතා ඇඹුල් අඹ නම් තව සීනි ටිකක්, මිහිරි අඹ නම් තව ලුණු මදක්.",
+    "minutes": null
+   },
+   {
+    "text": "සම්පූර්ණයෙන් සිසිල් කර වියලි බෝතලයකට දමන්න; දින කිහිපයකින් රස තව හොඳින් හැදෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாங்காயின் தோலை சீவி, கொட்டையிலிருந்து சதையை சிறு துண்டுகளாக நறுக்கி, கொட்டையில் ஒட்டியிருக்கும் சதையையும் சுரண்டி பாத்திரத்தில் போடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கனமான வாணலியில் வினிகரும் சீனியும் சேர்த்து, சீனி கரையும் வரை சூடாக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "இஞ்சி, பூண்டு, உடைத்த வத்தல் மிளகாய், மிளகாய்த் தூள் ஆகியவற்றைச் சேருங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "மாங்காய்த் துண்டுகளையும் உப்பையும் போட்டு, ஒவ்வொரு துண்டிலும் படும்படி புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "சிறு தீயில், அடிக்கடி கிளறி, மாங்காய் மென்மையாகி ஒளி ஊடுருவும் நிலைக்கு வரும் வரை வேகவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "நறுக்கிய பேரீச்சம்பழத்தையும் உலர் திராட்சையையும் சேர்த்துக் கிளறுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "கரண்டியை அடியில் இழுத்தால் மெதுவாக மூடும் தடம் தெரியும் அளவுக்கு கெட்டியாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "சுவை பார்த்து சரிசெய்யுங்கள்: மாங்காய் மிக புளிப்பாக இருந்தால் கொஞ்சம் சீனி, இனிப்பாக இருந்தால் சிறிது உப்பு.",
+    "minutes": null
+   },
+   {
+    "text": "முழுவதும் குளிர்ந்த பிறகு உலர்ந்த ஜாடியில் நிரப்புங்கள்; சில நாட்களில் சுவை இன்னும் நன்றாக அமரும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 40,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy pan or clay pot",
+  "wooden spoon",
+  "dry glass jar"
+ ],
+ "tips": {
+  "en": "Use mango that is still firm at the shoulder; a fully ripe one turns to jam and loses its bite. If the chutney looks thin in the pan remember it thickens a lot as it cools.",
+  "si": "තවමත් තද ගතියක් ඇති අඹ ගන්න; හොඳට ඉදුණු අඹ ජෑම් වගේ වී තමන්ගේ ගතිය නැති කරනවා. පෑන් එකේ තුනී වගේ පෙනුනත් සිසිල් වන විට හොඳට ගැටිති වෙන බව මතක තබා ගන්න.",
+  "ta": "இன்னும் கொஞ்சம் இறுக்கமாக இருக்கும் மாங்காயைப் பயன்படுத்துங்கள்; நன்கு பழுத்தது ஜாம் போல ஆகி தன் தன்மையை இழந்துவிடும். வாணலியில் இளக்கமாகத் தெரிந்தாலும், குளிர்ந்தபோது நன்றாகக் கெட்டியாகும் என்பதை நினைவில் வையுங்கள்."
+ },
+ "health_note": {
+  "en": "This is mostly fruit but the sugar is what keeps it, so a spoon is a spoon of sweetness; anyone managing blood sugar should treat it as a taste rather than a helping. The mango still carries some vitamin C and the ginger and garlic sit easy on the stomach.",
+  "si": "මෙය බොහෝ දුරට පලතුරු වුවත්, කල් තබා ගැනීමට සීනි අවශ්‍යයි; එක් හැන්දක් යනු මිහිරි රසය හැන්දක්. රුධිර සීනි පාලනය කරන අය මෙය කෑමක් නොව රස බැලීමක් ලෙස ගන්න. අඹ තුළ තවමත් විටමින් C ටිකක් ඇති අතර ඉඟුරු සහ සුදුලූනු බඩට සැහැල්ලුයි.",
+  "ta": "இது பெரும்பாலும் பழம் என்றாலும், கெடாமல் இருக்க சீனி தேவை; ஒரு கரண்டி என்பது ஒரு கரண்டி இனிப்பு. இரத்த சர்க்கரையை கவனிப்பவர்கள் இதை உணவாக அல்ல, சுவைக்கு மட்டும் எடுத்துக் கொள்ளுங்கள். மாங்காயில் சிறிது வைட்டமின் சி உள்ளது, இஞ்சியும் பூண்டும் வயிற்றுக்கு இதமானவை."
+ },
+ "tags": [
+  "high_sugar",
+  "festive",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

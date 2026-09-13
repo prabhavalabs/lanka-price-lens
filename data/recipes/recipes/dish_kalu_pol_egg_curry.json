@@ -1,0 +1,427 @@
+{
+ "id": "dish_kalu_pol_egg_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 220,
+  "description": {
+   "en": "An egg and a half in almost black roasted coconut gravy",
+   "si": "කළු පැහැති බැදපු පොල් හොදියේ බිත්තර එකහමාරක්",
+   "ta": "கருத்த வறுத்த தேங்காய்க் கறியில் ஒன்றரை முட்டை"
+  }
+ },
+ "yield_g": 880,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 6,
+   "unit": "piece",
+   "household": "6 eggs",
+   "preparation": {
+    "en": "hard boiled, peeled and slit twice",
+    "si": "හොඳින් තම්බා පොත්ත ඉවත් කර කැපුම් දෙකක් දැමූ",
+    "ta": "நன்கு வேகவைத்து ஓடு உரித்து இரண்டு கீறல் போட்டது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "dry roasted almost black, then ground",
+    "si": "කළු පැහැයට ආසන්න වන තුරු බැද අඹරාගත්",
+    "ta": "கிட்டத்தட்ட கருப்பாக வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "piece",
+   "household": "6 chillies",
+   "preparation": {
+    "en": "dry roasted",
+    "si": "බැදගත්",
+    "ta": "வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seeds",
+    "si": "කොත්තමල්ලි",
+    "ta": "கொத்தமல்லி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "dry roasted",
+    "si": "බැදගත්",
+    "ta": "வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seeds",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "dry roasted",
+    "si": "බැදගත්",
+    "ta": "வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seeds",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "dry roasted",
+    "si": "බැදගත්",
+    "ta": "வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 pods, bruised",
+   "preparation": {
+    "en": "lightly crushed",
+    "si": "සැහැල්ලුවෙන් තලාගත්",
+    "ta": "லேசாக நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப்பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "two thirds of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Hard boil the eggs, cool them under the tap, peel and slit each one twice down the side.",
+    "minutes": 12
+   },
+   {
+    "text": "Dry roast the scraped coconut in a heavy pan on a low flame, stirring without stopping, until it goes from gold to almost black.",
+    "minutes": 12
+   },
+   {
+    "text": "In the same pan roast the coriander, cumin, fennel and dried chillies until they darken and smell strong.",
+    "minutes": 4
+   },
+   {
+    "text": "Grind the roasted coconut and spices together into a dark, oily paste, adding a spoon of water if the stone needs it.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and fry the onion, curry leaves, pandan and cardamom until the onion is brown.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the dark paste and fry gently so it gives up its smell without catching and burning.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in the thin coconut milk with the salt and simmer until the gravy is dark and thick.",
+    "minutes": 10
+   },
+   {
+    "text": "Slide in the eggs and spoon the gravy over them, turning them once.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the thick coconut milk, shake the pot and let it barely bubble.",
+    "minutes": 2
+   },
+   {
+    "text": "Take it off the fire, rest it covered and serve with string hoppers, or rice and pol sambol.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "බිත්තර හොඳින් තම්බා, සීතල වතුරෙන් සිසිල් කර, පොත්ත ඉවත් කර එකකට කැපුම් දෙක බැගින් දමන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගාගත් පොල් ඝන පෑනක මද ගින්නේ, නොනවත්වා කලවම් කරමින්, රන්වන් තලයද පසු කර කළු පැහැයට ආසන්න වන තුරු බදින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "එම පෑනේම කොත්තමල්ලි, සූදුරු, මාදුරු සහ වියළි මිරිස් අඳුරු වී තද සුවඳ එන තුරු බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "බැදගත් පොල් සහ කුළුබඩු එකට ගලේ අඹරා අඳුරු, තෙල් සහිත පේස්ට් එකක් සාදා ගන්න; අවශ්‍ය නම් වතුර හැන්දක් දමන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වළඳක පොල් තෙල් රත් කර ලූනු, කරපිංචා, රම්පෙ සහ එනසාල් ලූනු දුඹුරු වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අඳුරු පේස්ට් එක දමා, පතුලට අල්ලා නොදැවෙන සේ සෙමින් බැද සුවඳ නගින්නට දෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "දෙවන පොල් කිරි සහ ලුණු දමා හොදිය අඳුරු වී තද වන තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බිත්තර හොදියට දමා, එක් වරක් පෙරළා උඩින් හොදි වත් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මුල් පොල් කිරි දමා වළඳ සෙලවා, ඉතා සෙමින් උතුරන්නට තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ගින්නෙන් ඉවත් කර වසා තබා, ඉඳිආප්ප හෝ බත් සහ පොල් සම්බෝල සමඟ බෙදන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "முட்டைகளை நன்கு வேகவைத்து, ஆற்றி, ஓடு உரித்து ஒவ்வொன்றிலும் பக்கவாட்டில் இரண்டு கீறல் போடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "துருவிய தேங்காயைக் கனமான வாணலியில் குறைந்த தணலில், இடைவிடாமல் கிளறி, பொன்னிறம் தாண்டி கிட்டத்தட்ட கருப்பாகும் வரை வறுக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "அதே வாணலியில் கொத்தமல்லி, சீரகம், பெருஞ்சீரகம், வத்தல் மிளகாயை கருமையாகி வாசம் வரும் வரை வறுக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "வறுத்த தேங்காயையும் மசாலாவையும் ஒன்றாக அரைத்து கருத்த, எண்ணெய்ப் பசையான விழுதாக்கவும்; தேவைப்பட்டால் ஒரு கரண்டி தண்ணீர் சேர்க்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், கறிவேப்பிலை, ரம்பை இலை, ஏலக்காய் சேர்த்து வெங்காயம் பொன்னிறமாகும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "கருத்த விழுதைச் சேர்த்து, அடியில் பிடித்துக் கருகாமல் மெதுவாக வதக்கி வாசம் வரவிடவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப்பாலையும் உப்பையும் சேர்த்து கறி கருத்துக் கெட்டியாகும் வரை கொதிக்கவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "முட்டைகளை கறியில் விட்டு, ஒரு முறை புரட்டி, மேலே கறியை ஊற்றவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலைச் சேர்த்து சட்டியை ஆட்டி, மெல்லக் கொதிக்கவிடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "இறக்கி மூடி வைத்து, இடியப்பம் அல்லது சாதம், பொல் சம்பலுடன் பரிமாறவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 35,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "heavy pan for roasting",
+  "grinding stone or blender",
+  "clay pot"
+ ],
+ "tips": {
+  "en": "Roast the coconut on the lowest flame you can manage and never walk away from the pan; the last minute between dark brown and burnt decides the whole curry. If it does burn, start the coconut again rather than trying to hide the bitterness.",
+  "si": "පොල් හැකි තරම් අඩු ගින්නේ බැදගන්න, පෑන අසලින් ඉවත් නොවන්න; තද දුඹුරු සහ පිච්චීම අතර අන්තිම මිනිත්තුවෙන් මුළු ව්‍යංජනයේම රස තීරණය වේ. පිච්චුණොත් තිත්ත රස සඟවන්නට උත්සාහ නොකර පොල් නැවත බැදගන්න.",
+  "ta": "தேங்காயை முடிந்தவரை குறைந்த தணலில் வறுக்கவும், வாணலியை விட்டு நகரவே வேண்டாம்; அடர் பழுப்புக்கும் கருகலுக்கும் இடையிலான கடைசி நிமிடமே கறியின் சுவையைத் தீர்மானிக்கிறது. கருகிவிட்டால் கசப்பை மறைக்க முயலாமல் தேங்காயை மீண்டும் வறுக்கவும்."
+ },
+ "health_note": {
+  "en": "The eggs give this curry its protein while the roasted coconut and coconut milk give it both its flavour and most of its calories. It is a rich curry for a Sunday or a visitor, best balanced with a green mallung and plain rice.",
+  "si": "ප්‍රෝටීන් ලැබෙන්නේ බිත්තර වලින් වන අතර බැදපු පොල් සහ පොල් කිරි වලින් රසත් කැලරි බොහොමයකුත් එකතු වේ. මෙය ඉරිදාවකට හෝ අමුත්තෙකුට සාදන පොහොසත් ව්‍යංජනයක් බැවින් කොළ මැල්ලුමක් සහ සරල බතක් සමඟ ගැනීම හොඳයි.",
+  "ta": "புரதம் முட்டையிலிருந்தே வருகிறது; வறுத்த தேங்காயும் தேங்காய்ப்பாலும் சுவையையும் பெரும்பாலான கலோரியையும் சேர்க்கின்றன. ஞாயிறுக்கோ விருந்தினருக்கோ செய்யும் செறிவான கறி இது, ஒரு பச்சைக் கீரை மல்லுமும் சாதாரண சாதமும் சேர்த்தால் சமநிலை கிடைக்கும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "festive",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

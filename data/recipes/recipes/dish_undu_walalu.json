@@ -1,0 +1,254 @@
+{
+ "id": "dish_undu_walalu",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 90,
+  "description": {
+   "en": "Three treacle soaked coils of black gram batter",
+   "si": "පැණි වැදුණු උඳු වළලු තුනක්",
+   "ta": "பாகில் ஊறிய உளுந்து மாவுச் சுருள்கள் மூன்று"
+  }
+ },
+ "yield_g": 360,
+ "ingredients": [
+  {
+   "ref": "pantry_urad_dhal_flour",
+   "label": {
+    "en": "urad dhal flour",
+    "si": "උඳු පිටි",
+    "ta": "உளுந்து மாவு"
+   },
+   "quantity": 140,
+   "unit": "g",
+   "household": "1 cup and a spoon",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "6 tbsp",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "enough for the coils to float",
+   "preparation": {
+    "en": "for deep frying, most of it is left over",
+    "si": "ගැඹුරු තෙලේ බැදීමට; වැඩි කොටස ඉතිරි වේ",
+    "ta": "பொரிப்பதற்கு; பெரும்பகுதி எஞ்சும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாகு"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup and a little more",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Sieve the urad dhal flour with the rice flour and salt into a wide bowl.",
+    "minutes": null
+   },
+   {
+    "text": "Add water a little at a time and work it into a batter thick enough to stand up in the spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Beat the batter with the flat of your hand so air goes into it and it lightens in colour, then cover it and let it rest.",
+    "minutes": 90
+   },
+   {
+    "text": "Warm the treacle in a wide pan with two spoons of water until it is thin and runny and keep it on the lowest fire.",
+    "minutes": 8
+   },
+   {
+    "text": "Heat coconut oil in a deep pan until a drop of batter rises and sizzles straight away.",
+    "minutes": 8
+   },
+   {
+    "text": "Squeeze the batter through a cloth with a small hole into the oil, drawing a coil of about three turns.",
+    "minutes": null
+   },
+   {
+    "text": "Fry both sides until the coil is firm and the colour of light toast, no darker.",
+    "minutes": 5
+   },
+   {
+    "text": "Drain each coil for a moment and slide it into the warm treacle to soak.",
+    "minutes": 10
+   },
+   {
+    "text": "Turn the coils once in the treacle, lift them onto a plate, and let them cool until the outside is sticky.",
+    "minutes": 20
+   }
+  ],
+  "si": [
+   {
+    "text": "උඳු පිටි, සහල් පිටි සහ ලුණු පළල් බඳුනකට පෙරාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර ටිකෙන් ටික දමා, හැන්දේ නැගී සිටින තරමට ගන මිශ්‍රණයක් සාදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අත්ලෙන් මිශ්‍රණය ගසා වාතය ඇතුළු කර පාට ලා වන තුරු ගසා, වසා තියන්න.",
+    "minutes": 90
+   },
+   {
+    "text": "පළල් පෑනකට කිතුල් පැණි සහ වතුර හැඳි දෙකක් දමා, තුනී වන තුරු රත් කර, අඩුම ගින්නේ තබා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගැඹුරු පෑනකට පොල් තෙල් දමා, පිටි බිංදුවක් වහාම මතුවී හිස් හඬ දෙන තරමට රත් කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කුඩා සිදුරක් ඇති රෙදි කැබැල්ලකින් මිශ්‍රණය තෙල් මතට මිරිකා, වට තුනක් පමණ වළල්ලක් අඳින්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළල්ල තද වී ලා දුඹුරු පාට වන තුරු දෙපැත්තම බදින්න; වැඩිපුර පාට කරන්න එපා.",
+    "minutes": 5
+   },
+   {
+    "text": "එක එක වළල්ල මොහොතක් තෙල් බේරා, උණුසුම් කිතුල් පැණි වලට තෙමෙන්න දමන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පැණි වල එක් වරක් හරවා, පිඟානකට ගෙන, පිටත ඇලෙන ගතිය එන තුරු සිසිල් වෙන්න තියන්න.",
+    "minutes": 20
+   }
+  ],
+  "ta": [
+   {
+    "text": "உளுந்து மாவு, அரிசி மாவு, உப்பு ஆகியவற்றை அகலமான பாத்திரத்தில் சலிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிது சிறிதாகத் தண்ணீர் சேர்த்து, கரண்டியில் நிற்கும் அளவுக்குக் கெட்டியான மாவுக் கலவையாகப் பிசையவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உள்ளங்கையால் கலவையை அடித்துக் காற்று ஏற்றி, நிறம் லேசாகும் வரை அடித்து, மூடி வைக்கவும்.",
+    "minutes": 90
+   },
+   {
+    "text": "அகலமான சட்டியில் கிதுல் பாகையும் இரண்டு கரண்டி தண்ணீரையும் சேர்த்து நீர்க்கும் வரை சூடாக்கி, மிகக் குறைந்த தீயில் வைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "ஆழமான சட்டியில் தேங்காய் எண்ணெயை, ஒரு துளி மாவு உடனே மேலெழுந்து சத்தமிடும் அளவுக்குக் காய்ச்சவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "சிறு துளை போட்ட துணி வழியாக மாவை எண்ணெயில் பிழிந்து, மூன்று சுற்று கொண்ட சுருளாக வரையவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சுருள் இறுகி லேசான பொன்னிறம் வரும் வரை இரு பக்கமும் பொரிக்கவும்; அதற்கு மேல் கருக்க வேண்டாம்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒவ்வொரு சுருளையும் ஒரு நொடி வடித்து, சூடான கிதுல் பாகில் ஊற எடுத்துப் போடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பாகில் ஒரு முறை திருப்பி, தட்டில் எடுத்து, வெளிப்புறம் ஒட்டும் பதம் வரும் வரை குளிரவிடவும்.",
+    "minutes": 20
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 30,
+  "passive_minutes": 90
+ },
+ "equipment": [
+  "deep pan",
+  "cloth with a hole or piping bag",
+  "wide pan for treacle",
+  "plate"
+ ],
+ "tips": {
+  "en": "Plain treacle, not a sugar syrup, is what makes undu walalu different from pani walalu, so warm it gently and never let it boil hard or it turns to toffee on the rings.",
+  "si": "උඳු වළලු පැණි වළලු වලින් වෙනස් වන්නේ සීනි හලක් නොව පිරිසිදු කිතුල් පැණි භාවිත කිරීමෙන් නිසා, එය සෙමින් රත් කරන්න; තදින් නටන්න දුන්නොත් වළලු මතම ටොෆි වේ.",
+  "ta": "உந்து வளலு, பனி வளலுவிலிருந்து வேறுபடுவது சீனிப் பாகுக்குப் பதிலாக சுத்தமான கிதுல் பாகைப் பயன்படுத்துவதால்; எனவே அதை மெதுவாகச் சூடாக்கவும், கடுமையாகக் கொதித்தால் சுருள்களின் மேல் டோஃபி போல் ஆகிவிடும்."
+ },
+ "health_note": {
+  "en": "Black gram gives these a little protein, but they are still fried and then soaked in treacle, so they are heavy. A couple with tea is enough, and they are better fresh than kept for days.",
+  "si": "උඳු වලින් ප්‍රෝටීන් ටිකක් ලැබේ; එහෙත් තෙලේ බැද පැණි වල තෙමන නිසා මේවා බරයි. තේ සමඟ දෙකක් සෑහේ, දින ගණන් තබා ගැනීමට වඩා නැවුම්ව කෑම හොඳයි.",
+  "ta": "உளுந்து சிறிது புரதம் தருகிறது; இருந்தும் பொரித்துப் பாகில் ஊறுவதால் இவை கனமானவை. தேநீருடன் இரண்டு போதும்; பல நாள் வைப்பதை விடப் புதிதாக உண்பது நல்லது."
+ },
+ "tags": [
+  "festive",
+  "deep_fried",
+  "high_sugar",
+  "street_food"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

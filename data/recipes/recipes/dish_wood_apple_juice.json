@@ -1,0 +1,242 @@
+{
+ "id": "dish_wood_apple_juice",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 275,
+  "description": {
+   "en": "A thick brown glass eaten as much with a spoon as drunk",
+   "si": "බොන තරමටම හැන්දෙන් කන ඝන දුඹුරු වීදුරුවක්",
+   "ta": "குடிப்பதுபோலவே கரண்டியால் சாப்பிடும் கெட்டியான பழுப்பு கிளாஸ்"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "product_wood_apple",
+   "label": {
+    "en": "ripe wood apple",
+    "si": "ඉදුණු දිවුල්",
+    "ta": "பழுத்த விளாம்பழம்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "1 large fruit",
+   "preparation": {
+    "en": "shell cracked, pulp scraped out",
+    "si": "කබල පලා මදය හෑරගත්",
+    "ta": "ஓடு உடைத்து சுளை சுரண்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1 lump, in place of some sugar",
+   "preparation": {
+    "en": "scraped",
+    "si": "හෑරූ",
+    "ta": "சுரண்டியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Choose a fruit that sounds hollow when tapped and smells strongly through the shell; an unripe one has hard, sour pulp.",
+    "minutes": null
+   },
+   {
+    "text": "Crack the shell with the back of a heavy knife or by knocking it on a stone, and scrape all the pulp into a bowl.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour 500 ml of warm water over the pulp and leave it to soften.",
+    "minutes": 20
+   },
+   {
+    "text": "Work the pulp with your fingers until it breaks up and the water goes brown and thick.",
+    "minutes": 5
+   },
+   {
+    "text": "Push the whole lot through a strainer, pressing hard, and throw away the seeds and fibre left behind.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir the sugar into the strained pulp until it has dissolved, then the coconut milk and the pinch of salt.",
+    "minutes": null
+   },
+   {
+    "text": "Taste it; wood apple varies, so add the jaggery or a little more water until it is sweet and just pourable.",
+    "minutes": null
+   },
+   {
+    "text": "Chill it well and serve it in glasses with a spoon, because the last of it is always thick.",
+    "minutes": 30
+   }
+  ],
+  "si": [
+   {
+    "text": "තට්ටු කරන විට හිස් ශබ්දයක් එන, කබලෙන් පිටතට තද සුවඳක් එන ගෙඩියක් තෝරන්න; නොඉදුණු ගෙඩියක මදය තද සහ ඇඹුල්.",
+    "minutes": null
+   },
+   {
+    "text": "බර පිහියේ පිටිපතින් හෝ ගලක ගසා කබල පලා, සියලු මදය බඳුනකට හෑරගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මදය මත උණුසුම් වතුර මිලිලීටර් 500ක් වත් කර මෘදු වන්නට තබන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "මදය ඇඟිලිවලින් පොඩි කර, එය කැඩී වතුර දුඹුරු වී ඝන වන තුරු අනන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මුළු මිශ්‍රණය පෙරහනක් හරහා තදින් තද කර පෙරාගෙන, ඉතිරි වන ඇට සහ නාරටි විසි කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෙරාගත් මදයට සීනි දමා දිය වන තුරු කලතා, ඉන්පසු පොල් කිරි සහ ලුණු ටිකක් දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "රස බලන්න; දිවුල් එකකට එකක් වෙනස් නිසා, පැණි රස වී වත් කරන්නට පුළුවන් තරම් වන තුරු හකුරු හෝ වතුර ටිකක් එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "හොඳින් සිසිල් කර, හැන්දක් සමඟ වීදුරුවලින් බෙදන්න; අන්තිමට ඉතිරි වන කොටස හැම විටම ඝනයි.",
+    "minutes": 30
+   }
+  ],
+  "ta": [
+   {
+    "text": "தட்டினால் வெற்று ஒலி வரும், ஓட்டுக்கு வெளியேயே கடுமையான வாசம் வரும் பழத்தைத் தேர்ந்தெடுங்கள்; பழுக்காத பழத்தின் சுளை கெட்டியாகவும் புளிப்பாகவும் இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "கனமான கத்தியின் பின்பக்கத்தால் அல்லது கல்லில் தட்டி ஓட்டை உடைத்து, சுளை முழுவதையும் ஒரு கிண்ணத்தில் சுரண்டி எடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "சுளையின் மேல் 500 மில்லி வெதுவெதுப்பான நீரை ஊற்றி மென்மையாக ஊற விடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "சுளையை விரல்களால் பிசைந்து, அது உடைந்து நீர் பழுப்பாகி கெட்டியாகும் வரை கலக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "முழுக் கலவையையும் வடிகட்டி வழியே நன்றாக அழுத்தி வடிகட்டி, மிஞ்சும் விதையையும் நாரையும் எறியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வடிகட்டிய சுளையில் சீனியைச் சேர்த்துக் கரையும் வரை கலக்கி, பிறகு தேங்காய்ப் பாலும் ஒரு சிட்டிகை உப்பும் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சுவைத்துப் பாருங்கள்; விளாம்பழம் ஒன்றுக்கொன்று மாறுபடும், எனவே இனிப்பாகி ஊற்றக்கூடிய பிசுபிசுப்பு வரும் வரை வெல்லமோ சிறிது நீரோ சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நன்கு குளிர்வித்து, கரண்டியுடன் கிளாஸ்களில் பரிமாறவும்; கடைசியில் மிஞ்சுவது எப்போதும் கெட்டியாகவே இருக்கும்.",
+    "minutes": 30
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 0,
+  "passive_minutes": 50
+ },
+ "equipment": [
+  "heavy knife or stone",
+  "bowl",
+  "strainer",
+  "jug"
+ ],
+ "tips": {
+  "en": "Soaking in warm water first saves a great deal of pressing; cold water leaves the pulp gritty and half of it stays in the strainer. If the glass turns out too sour for the children, stir in a spoon of treacle rather than more sugar and the sourness rounds off.",
+  "si": "මුලින්ම උණුසුම් වතුරේ පොඟවා ගැනීමෙන් තද කරන වැඩ ගොඩක් ඉතිරි වේ; සිසිල් වතුරේ මදය රළු වී, ඉන් අඩක් පෙරහනේ ඉතිරි වේ. ළමයින්ට වීදුරුව ඉතා ඇඹුල් නම්, තව සීනි දමන්නට වඩා පැණි හැන්දක් කලතන්න, එවිට ඇඹුල් ගතිය හැඩ වේ.",
+  "ta": "முதலில் வெதுவெதுப்பான நீரில் ஊறவைப்பது அழுத்தும் வேலையை நிறையக் குறைக்கும்; குளிர்ந்த நீரில் சுளை கரகரப்பாக இருந்து, பாதி வடிகட்டியிலேயே தங்கிவிடும். குழந்தைகளுக்குக் கிளாஸ் மிகப் புளிப்பானால், இன்னும் சீனி சேர்ப்பதற்குப் பதிலாக ஒரு கரண்டி பாணி கலக்குங்கள், புளிப்பு அடங்கும்."
+ },
+ "health_note": {
+  "en": "Wood apple pulp is full of fibre, and a glass is the standard household answer to a stomach that has been unsettled for a day or two. Half a cup of sugar and thick coconut milk make it a heavy glass, so keep it to one and treat it as a seasonal treat, not a daily drink.",
+  "si": "දිවුල් මදයේ තන්තු පිරී ඇති නිසා, දිනක් දෙකක් බඩ අවුල් වූ විට ගෙදර දෙන සාමාන්‍ය පිළිතුර වීදුරුවක්. සීනි කෝප්ප භාගයක් සහ ඝන පොල් කිරි නිසා මේක බර වීදුරුවක්, එබැවින් එකකින් නවතා, දිනපතා බීමක් නොව කාලයට ගන්නා විනෝදයක් ලෙස සලකන්න.",
+  "ta": "விளாம்பழச் சுளையில் நார்ச்சத்து நிறைந்திருக்கிறது; ஒரு நாள் இரண்டு நாள் வயிறு சரியில்லாதபோது வீட்டில் தரும் வழக்கமான பதில் ஒரு கிளாஸ் இதுவே. அரை கோப்பை சீனியும் கெட்டியான தேங்காய்ப் பாலும் இதைக் கனமான கிளாஸாக்குகிறது, எனவே ஒன்றோடு நிறுத்தி, தினசரிப் பானமாக அல்லாமல் பருவகாலச் சிறப்பாகவே எடுத்துக் கொள்ளுங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "high_sugar",
+  "filling",
+  "comfort",
+  "traditional_remedy",
+  "hydrating"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,164 @@
+{
+ "id": "dish_boiled_peanuts",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 140,
+  "description": {
+   "en": "A warm handful in the shell, split open one by one",
+   "si": "කටු සමඟ උණුසුම් අතමිටක්, එකින් එක පැළා ගනිමින්",
+   "ta": "ஓட்டுடன் ஒரு கைப்பிடி, ஒவ்வொன்றாக உடைத்துச் சாப்பிட"
+  }
+ },
+ "yield_g": 560,
+ "ingredients": [
+  {
+   "ref": "pantry_peanuts",
+   "label": {
+    "en": "raw peanuts in the shell",
+    "si": "කටුව සහිත අමු රටකජු",
+    "ta": "ஓட்டுடன் உள்ள பச்சை வேர்க்கடலை"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "a full measure, about 4 cups",
+   "preparation": {
+    "en": "washed, sand rubbed off the shells",
+    "si": "සෝදා කටුවේ පස් අතුල්ලා ඉවත් කරගත්",
+    "ta": "கழுவி ஓட்டில் உள்ள மண்ணை நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 heaped tbsp for the water",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the peanuts in two or three waters, rubbing them together so the field sand comes out of the shells.",
+    "minutes": null
+   },
+   {
+    "text": "Put them in a deep pot, cover with water a hand's width above the nuts and add the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Bring to a rolling boil, then lower the flame, cover, and keep the nuts under the water as they cook.",
+    "minutes": 45
+   },
+   {
+    "text": "Pull one out after forty minutes and taste it; a boiled peanut should be soft like a cooked bean, with no crunch left.",
+    "minutes": 2
+   },
+   {
+    "text": "Take the pot off the fire and leave the peanuts sitting in the hot salted water so the salt works in.",
+    "minutes": 15
+   },
+   {
+    "text": "Drain and serve warm in a bowl or a paper cone, shells and all, with a plate for the empty shells.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "රටකජු වතුර දෙතුනකින් සෝදා, කටු අතර ඇති පස් ඉවත් වන සේ අතින් අතුල්ලන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගැඹුරු වළඳකට දමා, කජු මතට අත් වියතක් උසට වතුර සහ ලුණු දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "හොඳින් උතුරවා, පසුව ගිනි අඩු කර වසා, කජු වතුරට යටින් තබාගෙන තම්බන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "මිනිත්තු හතළිහකින් එකක් ගෙන රස බලන්න; තැම්බූ රටකජු තැම්බූ ඇටයක් සේ මෘදු විය යුතුයි, කරකර ගතියක් නොතිබිය යුතුයි.",
+    "minutes": 2
+   },
+   {
+    "text": "වළඳ ගින්නෙන් ඉවත් කර, ලුණු රස කිඳා බැසෙන්නට කජු උණු ලුණු වතුරේම තබන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වතුර බේරා, කටු සමඟම බඳුනකට හෝ කඩදාසි කුමරයකට දමා උණුසුම්ව බෙදන්න; හිස් කටු දමන්නට පිඟානක්ද තබන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வேர்க்கடலையை இரண்டு மூன்று தண்ணீரில் கழுவி, ஓட்டில் உள்ள மண் போகும்படி கைகளால் தேய்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆழமான பாத்திரத்தில் இட்டு, கடலைக்கு மேல் ஒரு சாண் அளவு தண்ணீரும் உப்பும் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நன்கு கொதிக்கவைத்து, பிறகு தணலைக் குறைத்து மூடி, கடலை நீருக்குள் மூழ்கியிருக்கும்படி வேகவிடவும்.",
+    "minutes": 45
+   },
+   {
+    "text": "நாற்பது நிமிடத்தில் ஒன்றை எடுத்து சுவைக்கவும்; வேகவைத்த வேர்க்கடலை வேகவைத்த பயறு போல மென்மையாக இருக்க வேண்டும்.",
+    "minutes": 2
+   },
+   {
+    "text": "பாத்திரத்தை இறக்கி, உப்புச் சுவை இறங்க கடலையை அதே சூடான உப்புநீரிலேயே வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "வடித்து, ஓட்டுடனேயே கிண்ணத்திலோ காகிதக் கூம்பிலோ சூடாகப் பரிமாறவும்; ஓடுகளைப் போட ஒரு தட்டையும் வைக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 45,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "deep pot with a lid",
+  "plate or saucer for the shells"
+ ],
+ "tips": {
+  "en": "Only freshly harvested peanuts boil properly; dry stored nuts stay hard no matter how long you give them, so keep those for roasting. A saucer placed on top of the nuts keeps them under the water.",
+  "si": "හොඳින් තැම්බෙන්නේ අලුතින් නෙළාගත් රටකජු පමණයි; වියළා ගබඩා කළ කජු කොපමණ තැම්බුවත් තදව පවතින බැවින් ඒවා බැදීමට තබා ගන්න. කජු මතට පිඟානක් තැබීමෙන් ඒවා වතුරට යටින් තබා ගත හැකිය.",
+  "ta": "புதிதாக அறுவடை செய்த வேர்க்கடலையே நன்கு வேகும்; உலர்ந்து சேமித்த கடலை எவ்வளவு நேரம் வேகவைத்தாலும் இறுகவே இருக்கும், அதை வறுப்பதற்கு வைத்துக்கொள்ளவும். கடலையின் மேல் ஒரு சாஸர் வைத்தால் அவை நீருக்குள் மூழ்கியிருக்கும்."
+ },
+ "health_note": {
+  "en": "Peanuts give protein, fibre and the kind of fat that suits the heart, but they are energy dense, so a small bowl is a snack and a big one is a meal. They are boiled in salt water, so anyone watching blood pressure should rinse them before eating.",
+  "si": "රටකජු වලින් ප්‍රෝටීන්, තන්තු සහ හදවතට හිතකර තෙල් ලැබෙන නමුත් කැලරි ඉතා ඉහළ බැවින් කුඩා බඳුනක් කෙටි කෑමක් වන අතර විශාල බඳුනක් කෑම වේලක් වේ. ලුණු වතුරේ තම්බන බැවින් ලේ පීඩනය ගැන සැලකිලිමත් අය කෑමට පෙර වතුරෙන් සෝදා ගන්න.",
+  "ta": "வேர்க்கடலை புரதம், நார்ச்சத்து, இதயத்துக்கு ஏற்ற கொழுப்பு தருகிறது; ஆனால் கலோரி அதிகம், எனவே சிறு கிண்ணம் ஒரு தின்பண்டம், பெரிய கிண்ணம் ஒரு சாப்பாடு. உப்புநீரில் வேகவைப்பதால் இரத்த அழுத்தம் உள்ளவர்கள் சாப்பிடும் முன் கழுவிக்கொள்ளவும்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "heart_healthy",
+  "street_food",
+  "budget",
+  "filling",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,299 @@
+{
+ "id": "dish_beans_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 150,
+  "description": {
+   "en": "A spoonful of crisp beans in light coconut gravy on a rice plate",
+   "si": "බත් පිඟානක තුනී පොල් කිරි හොදියේ තැම්බූ බෝංචි හැන්දක්",
+   "ta": "சாதத்தட்டில் இளகிய தேங்காய்ப்பால் குழம்புடன் ஒரு கரண்டி பீன்ஸ்"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_beans",
+   "label": {
+    "en": "green beans",
+    "si": "බෝංචි",
+    "ta": "பீன்ஸ்"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 heaped cups, sliced",
+   "preparation": {
+    "en": "topped and sliced diagonally into finger lengths",
+    "si": "දෙකෙළවර ඉවත් කර ඇඟිල්ලක් දිගට හරහට කපාගත්",
+    "ta": "நுனி நீக்கி விரல் நீளத்துக்கு சாய்வாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "5 or 6 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Snap off the two ends of each bean, pull away any string, and slice them on the slant into finger lengths.",
+    "minutes": 8
+   },
+   {
+    "text": "Put the beans in a pan with the onion, green chillies, curry leaves, pandan, turmeric, curry powder and salt, and toss everything with your hand so the powders coat the beans.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk, cover, and cook on a medium flame without stirring much.",
+    "minutes": 6
+   },
+   {
+    "text": "Open the pan and check a bean; it should bend but still snap. Do not cook it to softness or the colour goes.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the thick coconut milk, shake the pan, and let it bubble once so the gravy comes together.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt and take the pan off the fire while the beans are still bright green.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බෝංචි වල දෙකෙළවර කඩා, නූල් ඇත්නම් ඉවත් කර, ඇඟිල්ලක් දිගට හරහට කපා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කපාගත් බෝංචි පෑන් එකකට දමා, ලූනු, අමු මිරිස්, කරපිංචා, රම්පෙ, කහ, තුනපහ සහ ලුණු දමා, කුඩු බෝංචි වල ඇතිල්ලෙන්න අතින් හොඳට කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, වහලා මධ්‍යම ගින්නේ තම්බන්න; නිතර කලවම් කරන්න එපා.",
+    "minutes": 6
+   },
+   {
+    "text": "වහන අයින් කර බෝංචි කැල්ලක් බලන්න; නැමෙන නමුත් කැඩෙන ගතියක් තිබිය යුතුය. මුදු වන තුරු තැම්බුවොත් කොළ පාට නැති වේ.",
+    "minutes": 1
+   },
+   {
+    "text": "මුල් කිරි එකතු කර පෑන් එක සොලවා, හොදි එකට බැඳෙන්න එක වරක් උතුරන්න දෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රස බලා, බෝංචි තවම දීප්තිමත් කොළ පාටින් තිබෙන අතරේ ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பீன்ஸின் இரு நுனிகளையும் நீக்கி, நார் இருந்தால் உரித்து, விரல் நீளத்துக்கு சாய்வாக நறுக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "நறுக்கிய பீன்ஸை ஒரு சட்டியில் போட்டு, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை, மஞ்சள், கறி மசாலா, உப்பு சேர்த்து, தூள் எல்லாம் பீன்ஸில் ஒட்டும்படி கையால் கலக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பால் விட்டு, மூடி நடுத்தர தீயில் வேகவிடுங்கள்; அடிக்கடி கிளற வேண்டாம்.",
+    "minutes": 6
+   },
+   {
+    "text": "மூடியைத் திறந்து ஒரு துண்டைப் பாருங்கள்; வளையும், ஆனால் இன்னும் முறியும் பக்குவத்தில் இருக்க வேண்டும். அதிகம் வேகவிட்டால் பச்சை நிறம் போய்விடும்.",
+    "minutes": 1
+   },
+   {
+    "text": "முதல் பாலைச் சேர்த்து சட்டியை ஆட்டி, குழம்பு ஒன்றாகச் சேர ஒரு கொதி விடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பு பார்த்து, பீன்ஸ் பச்சை நிறத்தில் இருக்கும்போதே அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan with a lid",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Cut the beans on the slant rather than straight across; more surface takes up the gravy and they cook faster. If the beans are older and tougher, add a splash of water with the thin milk and give them three minutes more.",
+  "si": "බෝංචි කෙළින් නොව හරහට කපන්න; වැඩි මතුපිටක් හොදි උරාගන්නා නිසා ඉක්මනින් තැම්බේ. බෝංචි මහත් හා තද නම් තුනී කිරි සමඟ වතුර ටිකක් දමා තව විනාඩි තුනක් තම්බන්න.",
+  "ta": "பீன்ஸை நேராக அல்ல, சாய்வாக நறுக்குங்கள்; பரப்பு அதிகமானால் குழம்பு நன்றாக ஏறும், வேகவும் வேகம். காய் முதிர்ந்து கெட்டியாக இருந்தால் இரண்டாம் பாலுடன் கொஞ்சம் தண்ணீர் விட்டு மூன்று நிமிடம் கூட வேகவிடுங்கள்."
+ },
+ "health_note": {
+  "en": "Beans cooked this briefly keep most of their fibre and vitamin C, and there is very little oil in the pot, so this is one of the lighter curries on a rice plate. The coconut milk is what carries the calories; use only the first squeeze given here.",
+  "si": "මෙතරම් කෙටි වෙලාවක් තැම්බූ බෝංචිවල තන්තු හා විටමින් සී බොහෝමයක් රැකෙයි, මුට්ටියේ තෙල් ඉතා අඩු නිසා මෙය බත් පිඟානේ සැහැල්ලු කරි වලින් එකකි. කැලරි එන්නේ පොල් කිරියෙන් නිසා දී ඇති මුල් කිරි ප්‍රමාණයට සීමා වන්න.",
+  "ta": "இவ்வளவு குறைந்த நேரம் வேகும் பீன்ஸில் நார்ச்சத்தும் வைட்டமின் சி-யும் பெருமளவு தங்கும், சட்டியில் எண்ணெயும் மிகக் குறைவு, எனவே சாதத்தட்டில் இது இலகுவான கறி. கலோரி வருவது தேங்காய்ப் பாலில்தான், கொடுத்த அளவு முதல் பாலுடன் நிறுத்துங்கள்."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "quick",
+  "budget",
+  "light",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

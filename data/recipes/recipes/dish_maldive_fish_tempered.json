@@ -1,0 +1,297 @@
+{
+ "id": "dish_maldive_fish_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 30,
+  "description": {
+   "en": "A teaspoon or two at the side of the plate, taken in small pinches",
+   "si": "පිඟානේ කොනට තේ හැන්දක් දෙකක්, පොඩි පොඩ්ඩෙන් ගන්න",
+   "ta": "தட்டின் ஓரத்தில் ஒன்றிரண்டு தேக்கரண்டி, கொஞ்சம் கொஞ்சமாக எடுக்க"
+  }
+ },
+ "yield_g": 130,
+ "ingredients": [
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "Maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி (உம்பலகடா)"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "three quarter cup of chips",
+   "preparation": {
+    "en": "broken into small chips",
+    "si": "කුඩා කැබලිවලට කඩා",
+    "ta": "சிறு துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව පෙති කපා",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියලි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "5 chillies, broken",
+   "preparation": {
+    "en": "broken into short pieces",
+    "si": "කොට කැබලිවලට කඩා",
+    "ta": "சிறிய துண்டுகளாக ஒடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "If the Maldive fish comes as a hard block, break it into small chips with a pestle, or use ready-broken chips from the shop.",
+    "minutes": null
+   },
+   {
+    "text": "Slice the red onion thin, break the dried chillies and have the curry leaves and pandan leaf ready at hand.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a small pan and fry the Maldive fish chips over a low fire until they darken a shade and smell nutty.",
+    "minutes": 4
+   },
+   {
+    "text": "Push the chips to one side, add the onion, garlic, dried chilli, curry leaves and pandan leaf and cook until the onion softens.",
+    "minutes": 4
+   },
+   {
+    "text": "Sprinkle in the chilli powder if you are using it and toss everything together for half a minute.",
+    "minutes": 1
+   },
+   {
+    "text": "Take the pan off the fire and squeeze in the lime juice while the pan is still hot, so the smell lifts.",
+    "minutes": null
+   },
+   {
+    "text": "Let it cool completely before putting it into a jar; on the shelf it keeps about a week.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "උම්බලකඩ තද කැටයක් ලෙස තිබේ නම් මෝල් ගසකින් තලා කුඩා කැබලිවලට කඩා ගන්න, නැත්නම් කඩෙන් කඩාගත් ඒවා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "රතු ලූනු සිහින්ව පෙති කපා, වියලි මිරිස් කඩා, කරපිංචා සහ රම්පෙ ළඟ තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා පෑන් එකක පොල් තෙල් රත් කර, අඩු ගින්නේ උම්බලකඩ කැබලි පාට තදවී සුවඳ එන තෙක් බදින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "කැබලි එක පැත්තකට තල්ලු කර, ලූනු, සුදුළූණු, වියලි මිරිස්, කරපිංචා සහ රම්පෙ දමා ලූනු මෘදු වන තෙක් පිසින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මිරිස් කුඩු දමනවා නම් දමා, සියල්ල තත්පර තිහක් එකට කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "පෑන් එක ලිපෙන් ඉවත් කර, තවම උණුසුම් අතරේම දෙහි යුෂ මිරිකා, සුවඳ නැගෙන්න දෙන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සම්පූර්ණයෙන් සිසිල් වූ පසු බෝතලයකට දමන්න; රාක්කයේ සතියක් පමණ තියෙනවා.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாசி கட்டியாக இருந்தால் உலக்கையால் இடித்து சிறு துண்டுகளாக உடைக்கவும், அல்லது கடையில் உடைத்த துண்டுகளை வாங்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சின்ன வெங்காயத்தை மெல்லியதாக நறுக்கி, வத்தல் மிளகாயை ஒடித்து, கறிவேப்பிலையும் ரம்பை இலையும் கையோடு வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய வாணலியில் தேங்காய் எண்ணெயை காய்ச்சி, குறைந்த தீயில் மாசி துண்டுகளை நிறம் அடர்ந்து வாசனை வரும் வரை வறுக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "துண்டுகளை ஒரு பக்கம் தள்ளி, வெங்காயம், பூண்டு, வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை இலை போட்டு வெங்காயம் மென்மையாகும் வரை சமைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "மிளகாய்த் தூள் சேர்ப்பதாக இருந்தால் தூவி, அனைத்தையும் அரை நிமிடம் சேர்த்து புரட்டவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "வாணலியை இறக்கி, சூடாக இருக்கும்போதே எலுமிச்சை சாறு பிழிந்து வாசனை எழவிடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முழுவதும் குளிர்ந்த பிறகு பாட்டிலில் போடவும்; அலமாரியில் ஒரு வாரம் இருக்கும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 10,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "small pan",
+  "mortar and pestle",
+  "dry jar for storing"
+ ],
+ "tips": {
+  "en": "No salt goes into this at all; Maldive fish is already cured and adding salt makes it impossible to eat. Keep the fire low, because the chips turn bitter the moment they go past dark brown.",
+  "si": "මෙයට ලුණු කිසිසේත් දමන්න එපා; උම්බලකඩ දැනටමත් ලුණු දමා සකසපු එකක්, ලුණු දැම්මොත් කන්න බැරි වෙනවා. ගින්න අඩුවෙන් තියන්න; කැබලි තද දුඹුරු පාට පහු වුණ ගමන් තිත්ත වෙනවා.",
+  "ta": "இதில் உப்பு சேர்க்கவே வேண்டாம்; மாசி ஏற்கனவே உப்பிட்டு பதப்படுத்தியது, உப்பு சேர்த்தால் சாப்பிட முடியாது. தீயை குறைவாக வைக்கவும்; துண்டுகள் அடர் பழுப்பை தாண்டியதும் கசக்கத் தொடங்கும்."
+ },
+ "health_note": {
+  "en": "Maldive fish is dried tuna, so spoon for spoon it is concentrated protein, but it is also concentrated salt. Two teaspoons on the plate is plenty, and anyone told to cut down on salt should leave it out and take pol sambol instead.",
+  "si": "උම්බලකඩ කියන්නේ වේළපු කෙළවල්ලා; ඒ නිසා හැන්දකට ප්‍රෝටීන් ඉතා ඝනයි, එහෙත් ලුණුත් ඒ තරමටම ඝනයි. පිඟානට තේ හැඳි දෙකක් ඇති; ලුණු අඩු කරන්න කියා තිබෙන කෙනෙක් නම් මේක අත් හැර වෙනුවට පොල් සම්බෝල ගන්න.",
+  "ta": "மாசி என்பது உலர்த்திய சூரை மீன்; எனவே கரண்டிக்கு கரண்டி புரதம் அடர்த்தியானது, ஆனால் உப்பும் அதே அளவு அடர்த்தி. தட்டில் இரண்டு தேக்கரண்டி போதும்; உப்பை குறைக்கச் சொல்லப்பட்டவர்கள் இதை விட்டு, பொல் சம்பலை எடுத்துக் கொள்ளலாம்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "budget",
+  "quick",
+  "low_carb",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

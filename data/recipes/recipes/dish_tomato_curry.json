@@ -1,0 +1,359 @@
+{
+ "id": "dish_tomato_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 180,
+  "description": {
+   "en": "A tangy red gravy to spoon over rice, roti or string hoppers",
+   "si": "බත්, රොටි හෝ ඉඳිආප්ප මතට හලාගන්න පුළුවන් ඇඹුල් රස රතු හොදියක්",
+   "ta": "சாதம், ரொட்டி அல்லது இடியப்பத்தின் மேல் ஊற்றும் புளிப்புச் சுவையுள்ள சிவப்புக் குழம்பு"
+  }
+ },
+ "yield_g": 750,
+ "ingredients": [
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "ripe tomatoes",
+    "si": "ඉදුණු තක්කාලි",
+    "ta": "பழுத்த தக்காளி"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "6 medium tomatoes",
+   "preparation": {
+    "en": "cut into quarters",
+    "si": "කාල් හතරට කපා",
+    "ta": "நான்காகப் பிளந்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට පෙති කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලා",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_mustard_seeds",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "to round off the sourness",
+    "si": "ඇඹුල් ගතිය සමතුලිත කරන්නට",
+    "ta": "புளிப்பைச் சமன்படுத்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Quarter the tomatoes and keep any juice that runs out on the board; it goes into the pot too.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a pan, crackle the mustard seeds, then add the curry leaves, sliced onion, slit chillies and garlic and fry until the onion softens and takes a little colour.",
+    "minutes": 5
+   },
+   {
+    "text": "Lower the flame and stir in the turmeric, curry powder and chilli powder for a few seconds.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the tomatoes with their juice and the salt, cover and let them break down into a pulp, pressing them once or twice with the back of the spoon.",
+    "minutes": 7
+   },
+   {
+    "text": "Uncover and cook off the watery part until the gravy is glossy and no longer thin.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir in the thick coconut milk and the pinch of sugar, which takes the sharp edge off the tomatoes, and bring it to one bubble.",
+    "minutes": 2
+   },
+   {
+    "text": "Taste and serve hot; it is at its best straight off the fire with string hoppers or pol roti.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තක්කාලි කාල් හතරට කපා, ලෑල්ල මත ගලන යුෂත් රැස් කරගන්න; එයත් මුට්ටියට යනවා.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් එකක පොල් තෙල් රත් කර අබ තෙම්පරාදු කර, කරපිංචා, පෙති කපාගත් ළූණු, පලාගත් මිරිස් සහ සුදු ළූණු දමා, ළූණු මෘදු වී ටිකක් පාට වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගිනි අඩු කර, කහ, තුනපහ සහ මිරිස් කුඩු තත්පර කීපයක් කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "තක්කාලි එහි යුෂ සමඟ සහ ලුණු දමා, වසා, හැන්දේ පිටුපසින් වර දෙකක් තලමින් මදය බවට හැරෙන තුරු උයන්න.",
+    "minutes": 7
+   },
+   {
+    "text": "වැස්ම ඉවතට ගෙන, දියාරු කොටස හිඳී හොදිය දිලිසෙන ගතියට එන තුරු උයන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ඝන පොල් කිරි සහ තක්කාලිවල තියුණු ඇඹුල් ගතිය මකන සීනි ස්වල්පය දමා, එක් උතුරක් එන්න දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "රස බලා උණුසුම්ව බෙදන්න; ඉඳිආප්ප හෝ පොල් රොටි සමඟ ලිපෙන් බැස්සපු ගමන්ම හොඳම රසයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தக்காளியை நான்காகப் பிளந்து, பலகையில் வழியும் சாற்றையும் சேர்த்து வைக்கவும்; அதுவும் சட்டியில் சேரும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி கடுகு தாளித்து, கறிவேப்பிலை, நறுக்கிய வெங்காயம், கீறிய மிளகாய், பூண்டு சேர்த்து வெங்காயம் மென்மையாகி நிறம் மாறும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தீயைக் குறைத்து மஞ்சள், கறி மசாலா, மிளகாய்த் தூள் சேர்த்து சில நொடிகள் கிளறவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "தக்காளியை அதன் சாற்றுடனும் உப்புடனும் சேர்த்து மூடி, கரண்டியின் பின்புறத்தால் ஒன்றிரண்டு முறை மசித்து, கூழாகும் வரை வேகவிடவும்.",
+    "minutes": 7
+   },
+   {
+    "text": "மூடியை எடுத்து, நீர்ப்பகுதி வற்றி குழம்பு பளபளப்பாகும் வரை சமைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலையும், தக்காளியின் கூர்மையான புளிப்பை அடக்கும் சிறிதளவு சீனியையும் சேர்த்து ஒரு கொதி வர விடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "சுவைத்துப் பார்த்து சூடாகப் பரிமாறவும்; இடியப்பம் அல்லது தேங்காய் ரொட்டியுடன் அடுப்பை விட்டு இறக்கிய உடனேயே சிறந்த சுவை.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 8,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan or clay pot with a lid"
+ ],
+ "tips": {
+  "en": "Use tomatoes that are fully ripe, even slightly soft ones the vendor will sell cheap, since they break down faster and taste sweeter. If the curry turns too sour, another spoon of thick milk settles it better than more sugar.",
+  "si": "හොඳට ඉදුණු තක්කාලි, වෙළෙන්දා ලාබෙට දෙන ටිකක් මෘදු වූ ඒවා පවා යොදන්න; ඒවා ඉක්මනින් කැඩෙනවා, රසත් පැණි රසයි. හොදිය වැඩිය ඇඹුල් නම් තව සීනි දාන්නට වඩා ඝන කිරි හැන්දක් දැමීම හොඳයි.",
+  "ta": "நன்கு பழுத்த தக்காளியை, வியாபாரி மலிவாகத் தரும் சற்று மென்மையானவற்றைக் கூட, பயன்படுத்தலாம்; அவை விரைவில் கூழாகும், சுவையும் இனிக்கும். குழம்பு மிக புளிப்பானால் சீனி கூட்டுவதை விட ஒரு கரண்டி தடித்த பால் சேர்ப்பது சிறந்தது."
+ },
+ "health_note": {
+  "en": "Cooked tomatoes give more of their lycopene than raw ones, and the small amount of oil in the pan helps the body absorb it. This is a light, low-calorie curry, so the only things to keep an eye on are the salt and how much thick milk goes in.",
+  "si": "තක්කාලි උයාගත් විට එහි ලයිකොපීන් වැඩිපුර ලැබෙනවා, පෑන් එකේ තියෙන තෙල් ස්වල්පය නිසා ශරීරයට එය උරාගැනීම පහසුයි. මේක සැහැල්ලු, කැලරි අඩු හොදියක් නිසා බලාගන්න ඕන ලුණු ප්‍රමාණය සහ දමන ඝන කිරි ප්‍රමාණය පමණයි.",
+  "ta": "சமைத்த தக்காளியில் இருந்து லைக்கோபீன் அதிகம் கிடைக்கும், சட்டியில் உள்ள சிறிதளவு எண்ணெய் அதை உடல் உறிஞ்ச உதவும். இது இலகுவான, குறைந்த கலோரி கறி; கவனிக்க வேண்டியது உப்பின் அளவும் சேர்க்கும் தடித்த பாலின் அளவும் மட்டுமே."
+ },
+ "tags": [
+  "quick",
+  "low_calorie",
+  "budget",
+  "light",
+  "kid_friendly",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

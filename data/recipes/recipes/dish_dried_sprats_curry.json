@@ -1,0 +1,363 @@
+{
+ "id": "dish_dried_sprats_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "A ladle of thin sprat gravy poured over rice",
+   "si": "බත මතට වත් කරගන්නා දියර හාල්මැස්සෝ හොදි",
+   "ta": "சாதத்தின் மேல் ஊற்றிக்கொள்ளும் நீர்க் குழம்பு"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_sprats",
+   "label": {
+    "en": "dried sprats",
+    "si": "හාල්මැස්සන්",
+    "ta": "நெத்தலி கருவாடு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "about 2 cups",
+   "preparation": {
+    "en": "heads pinched off, rinsed twice",
+    "si": "හිස් ගලවා, දෙපාරක් හෝදා ගත්ත",
+    "ta": "தலைகளை நீக்கி, இரு முறை கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්ත",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொரக்கா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 or 2 small pieces",
+   "preparation": {
+    "en": "rinsed",
+    "si": "හෝදා ගත්ත",
+    "ta": "கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split",
+    "si": "පලා ගත්ත",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 350,
+   "unit": "ml",
+   "household": "1 and three quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ දියර කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup and a little more",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ගාටි කිරි",
+    "ta": "முதல் பால், கட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp, taste first",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pinch the heads off the sprats, rinse them twice in cold water and drain them well.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the onion, garlic, green chilli and curry leaves.",
+    "minutes": 4
+   },
+   {
+    "text": "Add turmeric, chilli powder and curry powder and stir them into the oil for half a minute.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk with the goraka and let it come to a slow boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Tip in the sprats and simmer uncovered so the gravy takes their flavour and reduces a little.",
+    "minutes": 10
+   },
+   {
+    "text": "Stir in the thick coconut milk, check the salt, and cook only until the surface shivers.",
+    "minutes": 4
+   },
+   {
+    "text": "Rest the pot off the fire before serving so the gravy settles and stops tasting raw.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "හාල්මැස්සන්ගේ හිස් ගලවලා, සීතල වතුරෙන් දෙපාරක් හෝදා, වතුර බේරෙන්න තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මුට්ටියක පොල් තෙල් රත් කරලා ලූනු, සුදුළූනු, අමු මිරිස් සහ කරපිංචා තෙල් දාගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "කහ කුඩු, මිරිස් කුඩු සහ තුනපහ දමලා තත්පර තිහක් පමණ තෙලේ අනගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙවන මිරිකීමේ දියර පොල් කිරි සහ ගොරකා දමා සෙමින් උතුරන්න තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "හාල්මැස්සන් හොදියට දමලා, වහන්නේ නැතිව, රසය එකතු වෙලා හොදි ටිකක් අඩු වෙන තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගාටි පොල් කිරි එකතු කරලා ලුණු රස බලා, මතුපිට සෙලවෙන තරමට පමණක් රත් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලිපෙන් අයින් කරලා ටික වෙලාවක් තියන්න; හොදියේ අමු රස නැති වෙලා හොඳට හිඳෙනවා.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "நெத்தலி கருவாட்டின் தலைகளை நீக்கி, குளிர்ந்த நீரில் இரு முறை அலசி, நீரை வடியவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, பச்சை மிளகாய், கறிவேப்பிலை தாளியுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "மஞ்சள் தூள், மிளகாய்த் தூள், கறி மசாலா போட்டு எண்ணெயில் அரை நிமிடம் கிளறுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பாலையும் கொரக்காவையும் சேர்த்து மெதுவாகக் கொதிக்க விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கருவாட்டைப் போட்டு, மூடாமல், குழம்பு அதன் சுவையை எடுத்து சிறிது சுருங்கும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கட்டித் தேங்காய்ப் பாலை சேர்த்து உப்பு பார்த்து, மேற்பரப்பு அசையும் அளவுக்கு மட்டும் சூடாக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி சிறிது நேரம் வையுங்கள்; பச்சை வாசனை போய் குழம்பு தெளியும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 20,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or heavy pan"
+ ],
+ "tips": {
+  "en": "Pinching the heads off is worth the five minutes; they carry most of the bitterness. A few potato or brinjal pieces put in with the thin milk soak up the gravy and feed one more mouth.",
+  "si": "හිස් ගලවන්න විනාඩි පහක් වැය කරන එක වටිනවා; තිත්ත රස වැඩිපුර තියෙන්නේ ඒවායේ. දියර කිරි දාන වෙලාවේ අල හෝ වම්බටු කැබලි කීපයක් දැම්මොත් හොදිය අදිනවා, තව කෙනෙකුටත් ඇති.",
+  "ta": "தலைகளை நீக்க செலவாகும் ஐந்து நிமிடம் வீண் அல்ல; கசப்பு பெரும்பாலும் அதில்தான். நீர்ப் பால் ஊற்றும்போது சில உருளைக்கிழங்கு அல்லது கத்தரிக்காய் துண்டுகளைப் போட்டால் அவை குழம்பை உறிஞ்சி, இன்னொருவருக்கும் போதும்."
+ },
+ "health_note": {
+  "en": "Sprats are eaten whole, so they bring calcium along with protein, and they cost less than any fresh fish. The salt in the dried fish plus the coconut milk means a modest ladle is plenty.",
+  "si": "හාල්මැස්සන් කටු ඇතුළුව කන නිසා ප්‍රෝටීන් එක්කම කැල්සියම් ලැබෙනවා, ඒත් අමු මාළුවට වඩා ගොඩක් ලාභයි. කරවලේ ලුණු සහ පොල් කිරි නිසා හොදි හැන්දක් දෙකක් ඇති.",
+  "ta": "நெத்தலி கருவாட்டை முள்ளுடன் சாப்பிடுவதால் புரதத்துடன் கால்சியமும் கிடைக்கும், விலையும் எந்த பச்சை மீனையும்விட குறைவு. கருவாட்டின் உப்பும் தேங்காய்ப் பாலும் இருப்பதால் ஒரு கரண்டி குழம்பே போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "calcium_rich",
+  "budget",
+  "high_sodium",
+  "one_pot",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

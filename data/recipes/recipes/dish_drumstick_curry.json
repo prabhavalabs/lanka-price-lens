@@ -1,0 +1,327 @@
+{
+ "id": "dish_drumstick_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 180,
+  "description": {
+   "en": "Two or three lengths of pod with plenty of gravy",
+   "si": "හොදි සමඟ මුරුංගා කරල් කෑලි දෙක තුනක්",
+   "ta": "குழம்புடன் இரண்டு மூன்று முருங்கைக்காய் துண்டுகள்"
+  }
+ },
+ "yield_g": 830,
+ "ingredients": [
+  {
+   "ref": "product_drumstick",
+   "label": {
+    "en": "drumstick pods",
+    "si": "මුරුංගා",
+    "ta": "முருங்கைக்காய்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "6 to 8 pods",
+   "preparation": {
+    "en": "scraped lightly and cut into finger lengths",
+    "si": "සැහැල්ලුවෙන් සීරා, ඇඟිලි දිගට කපා",
+    "ta": "மேல் தோலை மெல்லச் சுரண்டி, விரல் நீளமாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගෙන",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 and 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියම්බලා",
+    "ta": "புளி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a marble-sized lump",
+   "preparation": {
+    "en": "soaked in a little warm water, pulp squeezed out",
+    "si": "උණු වතුර ටිකක දමා, යුෂ මිරිකාගෙන",
+    "ta": "கொஞ்சம் சுடுநீரில் ஊறவைத்து, சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the outer skin of the pods lightly with a knife, wash them and cut them into pieces as long as a finger.",
+    "minutes": 10
+   },
+   {
+    "text": "Soak the tamarind in a few spoons of warm water and rub it with your fingers, then strain out the seeds and fibre.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the pod pieces into a pot with the onion, green chillies, turmeric, curry powder, curry leaves and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Add the thin coconut milk and cook covered on a medium flame until a pod yields when pressed with the spoon.",
+    "minutes": 15
+   },
+   {
+    "text": "Pour in the tamarind water and let the sourness cook into the gravy.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the thick coconut milk, shake the pot instead of stirring and heat until the gravy thickens slightly.",
+    "minutes": 5
+   },
+   {
+    "text": "Take it off the fire and let it sit so the pods soak up the gravy.",
+    "minutes": 5
+   },
+   {
+    "text": "Serve with rice, and remind anyone new to it to scrape the soft inside out with the teeth and leave the skin on the plate.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මුරුංගා කරල්වල පිට ලෙලි පිහියකින් සැහැල්ලුවෙන් සීරා, සෝදා, ඇඟිල්ලක දිගට කැබලි ලෙස කපන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සියම්බලා උණු වතුර හැන්ද කිහිපයක දමා ඇඟිලිවලින් මිරිකා, ඇට හා නාරටි වෙන් කර යුෂ පෙරාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කැපූ කරල් වළඳකට දමා ලූනු, අමු මිරිස්, කහ, තුනපහ, කරපිංචා හා ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි දමා වහන්නක් සමඟ මධ්‍යම ගින්නේ, හැන්දෙන් තද කළ විට කරල මෘදු වන තුරු උයන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "සියම්බලා යුෂ වත් කර, ඇඹුල් රස හොදියට එකතු වන තුරු තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මිටි කිරි දමා, කලතන්නට වඩා වළඳ සොලවා, හොදිය තරමක් ගනට වන තුරු රස්නය කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන, කරල්වලට හොදි ඇදෙන්නට ටික වේලාවක් තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බත් සමඟ බෙදන්න; අලුත් කෙනෙකුට නම් මදය දතෙන් සීරාගෙන ලෙලි පිඟානේ තබන බව කියා දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "முருங்கைக்காயின் மேல் தோலை கத்தியால் மெல்லச் சுரண்டி, கழுவி, விரல் நீள துண்டுகளாக நறுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "புளியை சில ஸ்பூன் சுடுநீரில் ஊறவைத்து விரல்களால் கரைத்து, விதையும் நாரும் நீக்கி சாறு வடிகட்டுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "நறுக்கிய துண்டுகளை சட்டியில் இட்டு, வெங்காயம், பச்சை மிளகாய், மஞ்சள், கறி மசாலா, கறிவேப்பிலை, உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி மூடி, ஸ்பூனால் அழுத்தினால் காய் இளகும் வரை நடுத்தர தீயில் வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "புளிச் சாற்றை ஊற்றி, புளிப்பு குழம்பில் இறங்கும் வரை கொதிக்க விடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "தடிமன் பாலைச் சேர்த்து, கிளறாமல் சட்டியை ஆட்டி, குழம்பு சற்று கெட்டியாகும் வரை சூடாக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, காய்கள் குழம்பை உள்வாங்க சிறிது நேரம் வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "சாதத்துடன் பரிமாறுங்கள்; புதிதாகச் சாப்பிடுபவருக்கு உள்ளே உள்ள சதையை பல்லால் உறிஞ்சி, தோலை தட்டில் விடச் சொல்லுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "pot with lid",
+  "small bowl for tamarind",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Choose pods that snap cleanly and are no thicker than a thumb; a thick old pod is all wood and string. Cutting them finger-length keeps them easy to hold and scrape at the table.",
+  "si": "පිරිසිදුව කැඩෙන, මාපටැඟිල්ලට වඩා ගන නොවූ කරල් තෝරන්න; ගන මහලු කරලක් සියල්ලම ලීයයි, නාරටියි. ඇඟිලි දිගට කැපීමෙන් මේසයේ අල්ලාගෙන සීරා ගැනීම පහසුයි.",
+  "ta": "சுத்தமாக ஒடியும், பெருவிரலை விட தடிமனாக இல்லாத காய்களைத் தேர்ந்தெடுங்கள்; தடிமனான முதிர்ந்த காய் முழுவதும் நாரும் மரமும்தான். விரல் நீளமாக நறுக்கினால் மேசையில் பிடித்து உறிஞ்ச எளிது."
+ },
+ "health_note": {
+  "en": "Drumstick pods are a good source of fibre and vitamin C and households have long treated murunga as a strengthening food, especially the gravy soaked into rice. The tamarind sharpens the taste so you can go easy on the salt.",
+  "si": "මුරුංගා කරල්වලින් කෙඳි හා විටමින් සී හොඳින් ලැබෙන අතර, විශේෂයෙන් බතට ඇදෙන හොදිය නිසා ගෙවල්වල මුරුංගා ශක්තිය දෙන ආහාරයක් ලෙස බොහෝ කලක සිට සලකයි. සියම්බලා නිසා රස තියුණු වන බැවින් ලුණු අඩුවෙන් යොදාගත හැක.",
+  "ta": "முருங்கைக்காயில் நார்ச்சத்தும் வைட்டமின் சி யும் நல்ல அளவில் உள்ளன; சாதத்தில் ஊறும் குழம்பு காரணமாக முருங்கையை பலம் தரும் உணவாக வீடுகளில் நெடுங்காலமாகக் கருதுகிறார்கள். புளி சுவையைக் கூர்மையாக்குவதால் உப்பைக் குறைக்கலாம்."
+ },
+ "tags": [
+  "high_fibre",
+  "budget",
+  "one_pot",
+  "immune_support",
+  "traditional_remedy"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,251 @@
+{
+ "id": "dish_pol_toffee",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 85,
+  "description": {
+   "en": "Four small pink and white squares",
+   "si": "රෝස පාට සහ සුදු කුඩා කැට හතරක්",
+   "ta": "இளஞ்சிவப்பு, வெள்ளை நிற நான்கு சிறு துண்டுகள்"
+  }
+ },
+ "yield_g": 340,
+ "ingredients": [
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, grated",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "half a coconut, scraped",
+   "preparation": {
+    "en": "freshly scraped, the brown skin left out",
+    "si": "අලුතෙන් ගා ගත්, දුඹුරු පොත්ත නොදමා",
+    "ta": "அப்போது துருவியது, பழுப்புத் தோல் நீக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 220,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_food_colouring",
+   "label": {
+    "en": "food colouring",
+    "si": "ආහාර වර්ණය",
+    "ta": "உணவு நிறம்"
+   },
+   "quantity": 1,
+   "unit": "ml",
+   "household": "2 drops of pink",
+   "preparation": {
+    "en": "stirred into half the mixture only",
+    "si": "මිශ්‍රණයෙන් බාගයකට පමණක් දමන්න",
+    "ta": "கலவையின் பாதிக்கு மட்டும் சேர்க்கவும்"
+   },
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vanilla",
+   "label": {
+    "en": "vanilla essence",
+    "si": "වැනිලා එසන්ස්",
+    "ta": "வெனிலா எசன்ஸ்"
+   },
+   "quantity": 2,
+   "unit": "ml",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Grease a small flat tray and keep it ready beside the stove.",
+    "minutes": null
+   },
+   {
+    "text": "Put the sugar in a thick pan with 120 ml of water and stir on low only until the sugar dissolves, then stop stirring.",
+    "minutes": 5
+   },
+   {
+    "text": "Boil the syrup until a drop in cold water gathers into a soft ball you can roll between two fingers.",
+    "minutes": 8
+   },
+   {
+    "text": "Stir in the scraped coconut and the salt; the mixture will loosen for a minute as the coconut gives up its water.",
+    "minutes": null
+   },
+   {
+    "text": "Cook on a low flame, stirring all the time, until the mixture is thick, comes away from the sides and the spoon leaves a clean track.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the vanilla, then if you are colouring it, scoop half into another pan and stir two drops of pink into it.",
+    "minutes": null
+   },
+   {
+    "text": "Press the white half into the tray first, flatten it, then spread the pink half on top and press both down firmly.",
+    "minutes": null
+   },
+   {
+    "text": "Mark squares with a greased knife while the toffee is still warm.",
+    "minutes": 10
+   },
+   {
+    "text": "Leave to set and dry in a cool airy place, then cut through and lift out the squares.",
+    "minutes": 45
+   }
+  ],
+  "si": [
+   {
+    "text": "කුඩා පැතලි තැටියක තෙල් ගා ලිප ළඟ සූදානම්ව තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සීනි, මිලි ලීටර් 120ක වතුර සමඟ ඝන මුට්ටියකට දමා, සීනි දියවන තුරු පමණක් අඩු ගින්නේ කලතා, පසුව කැලතීම නවත්වන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සිසිල් වතුරට දැමූ බින්දුවක් ඇඟිලි දෙකෙන් රෝල් කළ හැකි මුදු බෝලයක් වන තුරු පැණිය තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගා ගත් පොල් සහ ලුණු දමා කලතන්න, පොල් වතුර දෙන නිසා මිශ්‍රණය මිනිත්තුවක් ලිහිල් වේ.",
+    "minutes": null
+   },
+   {
+    "text": "අඩු ගින්නේ නොනවතින්ම කලතමින්, මිශ්‍රණය ඝන වී පැතිවලින් ගැලවී හැන්දේ පැහැදිලි ලකුණක් ඉතිරි වන තුරු පිසින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "වැනිලා දමන්න, පාට කරනවා නම් බාගයක් තව පෑන් එකකට ගෙන රෝස පාට බින්දු දෙකක් කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළමුව සුදු බාගය තැටියට තදින් තට්ටු කර සමතලා කර, මතට රෝස බාගය තවරා දෙකම හොඳින් තද කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ටොෆි තවම උණුසුම්ව තිබෙන අතරම, තෙල් ගෑ පිහියකින් කැට සලකුණු කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සිසිල් වාතාශ්‍රය ඇති තැනක මිදී වියළෙන්නට තබා, පසුව සලකුණු දිගේ කපා කැට ගලවා ගන්න.",
+    "minutes": 45
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிறு தட்டையான தட்டில் நெய் தடவி அடுப்பருகே தயாராக வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சீனியை 120 மில்லி நீருடன் தடிமனான பாத்திரத்தில் போட்டு, சீனி கரையும்வரை மட்டும் சிறு தீயில் கிளறி, பிறகு கிளறுவதை நிறுத்துங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "குளிர்ந்த நீரில் ஒரு துளி விட்டால் இரு விரல்களுக்கு இடையில் உருட்டக்கூடிய மென் உருண்டையாகும்வரை பாகைக் கொதிக்க விடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "துருவிய தேங்காயையும் உப்பையும் சேர்த்துக் கிளறுங்கள்; தேங்காய் நீர் விடுவதால் கலவை ஒரு நிமிடம் நீர்மையாகும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறு தீயில் இடைவிடாமல் கிளறி, கலவை கெட்டியாகி ஓரங்களை விட்டு விலகி, கரண்டி தெளிவான தடம் விடும்வரை வேக விடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "வெனிலா சேர்த்து, நிறம் சேர்க்கப் போகிறீர்கள் என்றால் பாதியை வேறு சட்டியில் எடுத்து இரண்டு துளி இளஞ்சிவப்பு நிறம் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "முதலில் வெள்ளைப் பாதியை தட்டில் அழுத்தி சமன் செய்து, மேலே இளஞ்சிவப்புப் பாதியைப் பரப்பி இரண்டையும் நன்றாக அழுத்துங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "டோஃபி சூடாக இருக்கும்போதே நெய் தடவிய கத்தியால் துண்டுக் கோடுகளைப் போடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "காற்றோட்டமான குளிர்ந்த இடத்தில் இறுகி உலர விட்டு, பிறகு கோடுகளின் வழியே வெட்டி துண்டுகளை எடுங்கள்.",
+    "minutes": 45
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 45
+ },
+ "equipment": [
+  "coconut scraper",
+  "thick pan",
+  "wooden spoon",
+  "small flat tray",
+  "greased knife"
+ ],
+ "tips": {
+  "en": "Use only the white part of the coconut, because scrapings with brown skin in them make the toffee look dirty and turn rancid sooner. Take the syrup to soft ball before the coconut goes in, since coconut added to thin syrup means another twenty minutes of stirring and a dull grey colour. This one is worth making with children, as the pressing and cutting are easy and the cooking is the only part that needs a steady hand.",
+  "si": "පොල්වල සුදු කොටස පමණක් යොදන්න, දුඹුරු පොත්ත මිශ්‍ර වූ ගාපු පොල්වලින් ටොෆි අපිරිසිදුව පෙනී ඉක්මනින් කුණු වෙනවා. පොල් දමන්නට පෙර පැණිය මුදු බෝල තත්වයට ගන්න, තුනී පැණියට පොල් දැමුවොත් තව මිනිත්තු විස්සක් කලතන්නට වෙනවා, පාටත් අළු පාටයි. ළමයි සමඟ හදන්නට මේක හොඳයි, තට්ටු කිරීම සහ කැපීම පහසුයි, ස්ථාවර අතක් ඕනෑ වන්නේ පිසීමට පමණයි.",
+  "ta": "தேங்காயின் வெள்ளைப் பகுதியை மட்டும் பயன்படுத்துங்கள்; பழுப்புத் தோல் கலந்த துருவல் டோஃபியை அழுக்காகக் காட்டும், விரைவில் கெட்டுவிடும். தேங்காய் சேர்ப்பதற்கு முன் பாகை மென்-உருண்டைப் பதத்திற்குக் கொண்டு வாருங்கள்; நீர்மையான பாகில் தேங்காய் சேர்த்தால் இன்னும் இருபது நிமிடம் கிளற வேண்டியிருக்கும், நிறமும் சாம்பலாகும். இதை குழந்தைகளுடன் செய்யலாம் - அழுத்துவதும் வெட்டுவதும் எளிது, நிலையான கை தேவைப்படுவது வேக வைக்கும் பகுதிக்கு மட்டுமே."
+ },
+ "health_note": {
+  "en": "Sugar makes up more than half the weight here, so pol toffee is a sweet for a school fair plate and not an everyday snack, however cheap it is to make. The coconut does bring fibre and a little fat that slows the sugar slightly, but children will eat six in a row given the chance, so hand them out counted.",
+  "si": "බරෙන් බාගයකට වඩා සීනි නිසා, හදන්නට ලාබ වුණත් පොල් ටොෆි යනු ඉස්කෝලෙ උත්සවයේ පිඟානට තියෙන දෙයක්, දෙවේලේ කන කෑමක් නොවේ. පොල්වලින් තන්තු සහ සුළු මේදයක් ලැබී සීනි ටිකක් හෙමින් ශරීරයට යනවා, එහෙත් ඉඩ දුනහොත් ළමයි එක දිගට හයක් කනවා, ඒ නිසා ගණන් කර දෙන්න.",
+  "ta": "எடையில் பாதிக்கு மேல் சீனி என்பதால், செய்வதற்கு மலிவாக இருந்தாலும் பொல் டோஃபி பாடசாலை விழாத் தட்டுக்கானது - தினசரி சிற்றுண்டி அல்ல. தேங்காய் நார்ச்சத்தையும் கொஞ்சம் கொழுப்பையும் தந்து சீனி உறிஞ்சப்படுவதை சற்றே மெதுவாக்கும்; ஆனால் இடம் கொடுத்தால் குழந்தைகள் தொடர்ந்து ஆறு சாப்பிடுவார்கள் - எண்ணிக் கொடுங்கள்."
+ },
+ "tags": [
+  "high_sugar",
+  "budget",
+  "kid_friendly",
+  "festive",
+  "high_fibre",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

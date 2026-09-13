@@ -1,0 +1,409 @@
+{
+ "id": "dish_chicken_liver_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 150,
+  "description": {
+   "en": "A small serving of soft dark liver in short gravy beside rice",
+   "si": "බත් සමග තියෙන මෘදු කළු අක්මාව සහ ගන හොදි කුඩා කොටසක්",
+   "ta": "சாதத்துடன் மென்மையான கருத்த ஈரலும் சுருங்கிய கிரேவியும் ஒரு சிறு பங்கு"
+  }
+ },
+ "yield_g": 620,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken liver",
+    "si": "කුකුල් අක්මාව",
+    "ta": "கோழி ஈரல்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "1 packet from the stall",
+   "preparation": {
+    "en": "trimmed, washed with lime, cut into two or three pieces each",
+    "si": "දෙහි දමා සෝදා, කොටස් දෙකට තුනට කපා ගත්",
+    "ta": "எலுமிச்சை போட்டு அலசி, இரண்டு மூன்று துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලා ගත්",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ කොළය",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 10 cm length",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලා ගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறித்தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "எலுமிச்சைச் சாறு"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "juice of 1 large lime, for washing and finishing",
+   "preparation": {
+    "en": "half for washing the liver, half squeezed in at the end",
+    "si": "බාගයක් අක්මාව සේදීමට, බාගයක් අන්තිමට මිරිකා දමන්න",
+    "ta": "பாதி ஈரலை அலசுவதற்கு, பாதி இறுதியில் பிழிவதற்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකා ගත් ගන කිරි",
+    "ta": "முதல் பால், கெட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Trim the livers of any green or stringy bits, rub them with half the lime juice and a pinch of salt, wash twice in cold water and drain well.",
+    "minutes": 5
+   },
+   {
+    "text": "Cut each liver into two or three pieces so they cook evenly.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and temper the red onion, green chillies, curry leaves and pandan until the onion is soft.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the garlic, ginger, turmeric, pepper, curry powder and chilli powder and fry briefly so the powders cook in the oil rather than tasting raw.",
+    "minutes": 2
+   },
+   {
+    "text": "Put in the liver and turn it on a high flame until the outsides are sealed and no longer pink.",
+    "minutes": 4
+   },
+   {
+    "text": "Add half a cup of water and the salt, cover and simmer gently; hard boiling turns liver rubbery.",
+    "minutes": 8
+   },
+   {
+    "text": "Pour in the thick coconut milk and cook uncovered until the gravy is short and clings to the pieces.",
+    "minutes": 5
+   },
+   {
+    "text": "Squeeze in the rest of the lime, rest it a few minutes and serve a small helping each with rice.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "අක්මාවේ කොළ පැහැති හෝ නූල් වැනි කොටස් ඉවත් කර, දෙහි යුෂෙන් බාගයක් සහ ලුණු සුළඟක් අතුල්ලා, සිසිල් වතුරෙන් දෙවරක් සෝදා වතුර හොඳින් බේරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "එක සමානව තැම්බෙන ලෙස එක් අක්මාවක් කොටස් දෙකට තුනට කපන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑන් එකක පොල් තෙල් රත් කර රතු ළූණු, අමු මිරිස්, කරපිංචා සහ රම්පෙ ළූණු මෘදු වන තුරු තෙම්පරාදු කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "සුදුළූණු, ඉඟුරු, කහ, ගම්මිරිස්, තුනපහ සහ මිරිස් කුඩු දමා, කුඩු අමු රසයක් නොදී තෙලේ පිසෙන ලෙස ටික වෙලාවක් බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "අක්මාව දමා ලොකු ගින්නේ පිටත මතුපිට තද වී රෝස පාට නැති වන තුරු පෙරළන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "වතුර කෝප්ප බාගයක් සහ ලුණු දමා වසා සෙමින් උයන්න; තදින් උතුරුවුවහොත් අක්මාව රබර් වගේ තද වෙනවා.",
+    "minutes": 8
+   },
+   {
+    "text": "ගන පොල් කිරි වත් කර, හොදි හිඳී කැබලිවලට තැවරෙන තුරු වැහුමක් නොදා උයන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඉතිරි දෙහි යුෂ මිරිකා දමා, මිනිත්තු කිහිපයක් තියා, බත් සමග එක්කෙනාට කුඩා කොටසක් බැගින් පිළිගන්වන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஈரலில் பச்சை நிற அல்லது நார் போன்ற பகுதிகளை நீக்கி, பாதி எலுமிச்சைச் சாறும் ஒரு சிட்டிகை உப்பும் தேய்த்து, குளிர்ந்த நீரில் இருமுறை அலசி நன்கு வடிக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சமமாக வேகும்படி ஒவ்வொரு ஈரலையும் இரண்டு மூன்று துண்டுகளாக நறுக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவிட்டு சின்ன வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை சேர்த்து வெங்காயம் மென்மையாகும் வரை தாளிக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "பூண்டு, இஞ்சி, மஞ்சள், மிளகு, கறித்தூள், மிளகாய்த் தூள் சேர்த்து, தூள்கள் பச்சை சுவை இல்லாமல் எண்ணெயில் வேகும்படி சிறிது வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "ஈரலைச் சேர்த்து பெருந்தீயில் வெளிப்புறம் இறுகி இளஞ்சிவப்பு நிறம் மாறும் வரை புரட்டுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "அரை கப் நீரும் உப்பும் சேர்த்து மூடி மெதுவாக வேகவிடுங்கள்; கடுமையாகக் கொதித்தால் ஈரல் ரப்பர் போல இறுகும்.",
+    "minutes": 8
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலை ஊற்றி, கிரேவி சுருங்கி துண்டுகளில் ஒட்டும் வரை மூடாமல் சமைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மீதி எலுமிச்சைச் சாற்றைப் பிழிந்து, சில நிமிடம் வைத்து, சாதத்துடன் ஒருவருக்கு ஒரு சிறு பங்காகப் பரிமாறுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan with lid",
+  "colander"
+ ],
+ "tips": {
+  "en": "Buy liver the same morning and cook it the same day, because it goes off faster than any other part of the bird. Two minutes too long on the fire is what makes liver grainy, so take it off while the pieces still give under the spoon.",
+  "si": "අක්මාව උදේම මිලදී ගෙන එදිනම උයන්න; කුකුළාගේ අනෙක් කොටස්වලට වඩා එය ඉක්මනින් නරක් වෙනවා. ලිපේ මිනිත්තු දෙකක් වැඩියෙන් තිබීමයි අක්මාව රළු කරන්නේ; හැන්දට තවමත් නැමෙන අතරේ ලිපෙන් ඉවත් කරන්න.",
+  "ta": "ஈரலை அன்று காலையே வாங்கி அன்றே சமையுங்கள்; கோழியின் மற்ற பகுதிகளை விட இது விரைவில் கெட்டுவிடும். அடுப்பில் இரண்டு நிமிடம் அதிகமாக இருப்பதே ஈரலைக் கரகரப்பாக்குகிறது; கரண்டிக்கு இன்னும் பதமாக இருக்கும்போதே இறக்குங்கள்."
+ },
+ "health_note": {
+  "en": "Liver is one of the cheapest sources of iron and vitamin A on the market, which is why it is often cooked for someone looking pale or tired. It is also very concentrated, so a small helping once or twice a week is plenty, and expectant mothers are usually advised to keep liver portions small.",
+  "si": "අක්මාව වෙළඳපොළේ ලාබම යකඩ සහ විටමින් A මූලාශ්‍රයක්; ඒ නිසයි සුදුමැලි හෝ වෙහෙසුණු කෙනෙකුට එය උයන්නේ. නමුත් එය ඉතා ගාඩ නිසා සතියකට වරක් දෙවරක් කුඩා කොටසක් ඇති; ගැබිනි මවුවරුන්ට සාමාන්‍යයෙන් අක්මාව කොටස කුඩාවට තබා ගන්න කියනවා.",
+  "ta": "ஈரல் சந்தையில் கிடைக்கும் மிக மலிவான இரும்பு மற்றும் வைட்டமின் ஏ மூலங்களில் ஒன்று; அதனால்தான் வெளிரிய அல்லது சோர்வான ஒருவருக்கு இது சமைக்கப்படுகிறது. ஆனால் இது மிகச் செறிவானது, எனவே வாரத்தில் ஒன்றிரண்டு முறை சிறு பங்கு போதும்; கர்ப்பிணிப் பெண்களுக்கு ஈரல் பங்கைச் சிறியதாக வைக்கச் சொல்வது வழக்கம்."
+ },
+ "tags": [
+  "iron_rich",
+  "high_protein",
+  "budget",
+  "quick",
+  "low_carb"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

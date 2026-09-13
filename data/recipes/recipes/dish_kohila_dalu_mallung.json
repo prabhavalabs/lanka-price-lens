@@ -1,0 +1,305 @@
+{
+ "id": "dish_kohila_dalu_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 65,
+  "description": {
+   "en": "A small mound of chopped kohila shoots with coconut beside the rice",
+   "si": "බත් සමඟ පොල් සමඟ කැපූ කොහිල දලු කුඩා ගොඩක්",
+   "ta": "சாதத்தின் ஓரத்தில் தேங்காயுடன் நறுக்கிய கொஹில தளிர் ஒரு சிறு அளவு"
+  }
+ },
+ "yield_g": 270,
+ "ingredients": [
+  {
+   "ref": "pantry_kohila_shoots",
+   "label": {
+    "en": "kohila young shoots",
+    "si": "කොහිල දලු",
+    "ta": "கொஹில இளம் தளிர்"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 bunches of young shoots",
+   "preparation": {
+    "en": "washed and chopped fine",
+    "si": "සෝදා සිහින්ව කැපූ",
+    "ta": "கழுவி பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, grated",
+    "si": "ගාපු පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 90,
+   "unit": "g",
+   "household": "1 cup grated",
+   "preparation": {
+    "en": "freshly grated",
+    "si": "අළුතින් ගාගත්",
+    "ta": "புதிதாகத் துருவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1 small handful",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி கருவாடு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half the juice of 1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick the young shoots and tender leaves and throw away anything hard, old or spotted.",
+    "minutes": 10
+   },
+   {
+    "text": "Wash them twice and chop them fine on the board; the finer you chop, the less itch is left in them.",
+    "minutes": 10
+   },
+   {
+    "text": "Chop the onion and chillies, grate the coconut and pound the maldive fish if you have it.",
+    "minutes": null
+   },
+   {
+    "text": "Put the chopped shoots into a pan with the onion, chillies, turmeric, pepper, maldive fish and salt, add a splash of water and cook covered.",
+    "minutes": 6
+   },
+   {
+    "text": "Uncover and let every drop of water dry off; kohila leaf that is not cooked through scratches the throat.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the grated coconut and toss until it is hot right through and smells sweet.",
+    "minutes": 3
+   },
+   {
+    "text": "Take the pan off the fire and squeeze the lime over it just before it goes to the table.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තුරුණු දලු සහ මෘදු කොළ තෝරා ගන්න; දැඩි, වයසක හෝ පැල්ලම් සහිත ඒවා ඉවත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "දෙවරක් සෝදා, ලෑල්ලේ තබා සිහින්ව කපන්න; සිහින්ව කපන තරමට කැසීම අඩුයි.",
+    "minutes": 10
+   },
+   {
+    "text": "ලූනු සහ මිරිස් කපා, පොල් ගාගෙන, උම්බලකඩ තිබේ නම් කුටා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැපූ දලු පෑන් එකකට දමා ලූනු, මිරිස්, කහ, ගම්මිරිස්, උම්බලකඩ සහ ලුණු එක් කර, ස්වල්ප වතුරක් දමා වසා උයන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "වැසුම ඉවත් කර වතුර සම්පූර්ණයෙන් වේළෙන්න දෙන්න; හොඳින් නොඉදුණු කොහිල කොළ ගෙල කසයි.",
+    "minutes": 3
+   },
+   {
+    "text": "ගාපු පොල් එකතු කර, මිශ්‍රණය රත් වී පොල් සුවඳ එන තුරු පෙරළන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ළිපෙන් ඉවත් කර, මේසයට ගෙන යන්නට පෙර දෙහි මිරිකන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இளம் தளிர்களையும் மிருதுவான இலைகளையும் தேர்ந்தெடுத்து, கெட்டியானது, முதிர்ந்தது, புள்ளி விழுந்தது எல்லாம் நீக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "இருமுறை கழுவி, பலகையில் வைத்துப் பொடியாக நறுக்குங்கள்; பொடியாக நறுக்கினால் அரிப்பு குறையும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வெங்காயமும் மிளகாயும் நறுக்கி, தேங்காயைத் துருவி, மாசி இருந்தால் இடித்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கிய தளிரை ஒரு சட்டியில் இட்டு, வெங்காயம், மிளகாய், மஞ்சள், மிளகு, மாசி, உப்பு சேர்த்து, சிறிது நீர் விட்டு மூடி வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மூடியைத் திறந்து நீர் முழுவதும் வறண்டு போகட்டும்; நன்கு வேகாத கொஹில இலை தொண்டையை அரிக்கும்.",
+    "minutes": 3
+   },
+   {
+    "text": "துருவிய தேங்காயைச் சேர்த்து, முழுவதும் சூடாகி நல்ல வாசனை வரும் வரை புரட்டுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "சட்டியை இறக்கி, மேசைக்குக் கொண்டு செல்லும் முன் தேசிக்காயைப் பிழியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 12,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan with a lid",
+  "coconut scraper"
+ ],
+ "tips": {
+  "en": "Take the shoots before the leaf opens fully; older leaves itch badly however long you cook them. A spoon of pounded maldive fish covers any last trace of that itch.",
+  "si": "කොළය සම්පූර්ණයෙන් විවෘත වීමට පෙර දලු ගන්න; වැඩුණු කොළ කොපමණ උයුවත් දැඩිව කසයි. කුටාගත් උම්බලකඩ හැන්දක් ඉතිරි කැසීමේ ගතිය වසා දමයි.",
+  "ta": "இலை முழுவதும் விரியும் முன் தளிரைப் பறியுங்கள்; முதிர்ந்த இலை எவ்வளவு வேகவைத்தாலும் கடுமையாக அரிக்கும். ஒரு கரண்டி இடித்த மாசி எஞ்சிய அரிப்புச் சுவையை மறைத்துவிடும்."
+ },
+ "health_note": {
+  "en": "The shoots are a cheap green full of fibre, and with the coconut they give a little calcium too. Cook them fully; half-cooked kohila leaf irritates the mouth and throat.",
+  "si": "දලු යනු තන්තුවෙන් පිරි ලාභ කොළ ආහාරයක් වන අතර, පොල් සමඟ ස්වල්ප කැල්සියම් ද ලැබේ. හොඳින් උයන්න; අඩක් ඉදුණු කොහිල කොළ මුව සහ ගෙල කසයි.",
+  "ta": "தளிர் மலிவான, நார்ச்சத்து நிறைந்த கீரை; தேங்காயுடன் சேர்ந்து சிறிது கால்சியமும் தரும். நன்கு வேகவையுங்கள்; பாதி வேகிய கொஹில இலை வாயையும் தொண்டையையும் அரிக்கும்."
+ },
+ "tags": [
+  "high_fibre",
+  "iron_rich",
+  "low_calorie",
+  "light",
+  "budget"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

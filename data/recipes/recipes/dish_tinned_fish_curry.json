@@ -1,0 +1,341 @@
+{
+ "id": "dish_tinned_fish_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 190,
+  "description": {
+   "en": "A ladle of soft tinned fish in onion and tomato gravy",
+   "si": "ලූනු සහ තක්කාලි හොදියේ මෙලෙක් ටින් මාළු හැන්දක්",
+   "ta": "வெங்காயம் தக்காளி குழம்பில் மென்மையான டின் மீன் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 850,
+ "ingredients": [
+  {
+   "ref": "product_tin_fish",
+   "label": {
+    "en": "tinned fish, mackerel or sardine",
+    "si": "ටින් මාළු",
+    "ta": "டின் மீன்"
+   },
+   "quantity": 425,
+   "unit": "g",
+   "household": "1 large tin",
+   "preparation": {
+    "en": "drained, broken into large pieces",
+    "si": "වතුර බේරලා, ලොකු කැබලිවලට කඩා ගත්ත",
+    "ta": "நீர் வடித்து, பெரிய துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large tomato",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a small piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "three quarters of a tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ගාටි කිරි",
+    "ta": "முதல் பால், கட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp, the tin is already salted",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Open the tin, drain the liquid away, and lift the fish out in whole pieces.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a pan and temper the onion, green chilli, curry leaves and pandan until the onion is glassy.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the tomato and cook it down until it collapses into the onion.",
+    "minutes": 4
+   },
+   {
+    "text": "Stir in the turmeric, curry powder and chilli powder with a splash of water so they do not scorch.",
+    "minutes": null
+   },
+   {
+    "text": "Lay the fish pieces on top, pour the thick coconut milk around them, and simmer on a low flame.",
+    "minutes": 6
+   },
+   {
+    "text": "Shake the pan rather than stirring, so the fish stays in pieces, and taste before adding any salt.",
+    "minutes": 3
+   },
+   {
+    "text": "Take it off the fire and serve it hot; this curry does not improve with waiting.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ටින් එක ඇරලා, ඇතුළේ දියර බේරලා, මාළු කැබලි කැඩෙන්නේ නැතිව අරගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් එකේ පොල් තෙල් රත් කරලා ලූනු, අමු මිරිස්, කරපිංචා සහ රම්පෙ ලූනු විනිවිද පේන තුරු තෙල් දාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "තක්කාලි දමලා, ලූනු එක්ක එකට හිඳෙන තුරු පිසගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "කහ කුඩු, තුනපහ සහ මිරිස් කුඩු වතුර ටිකක් සමඟ දමා, පිළිස්සෙන්නේ නැතිව අනගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මාළු කැබලි මතට අතුරලා, වටේට ගාටි පොල් කිරි වත් කරලා, මද ගින්නේ උතුරවන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "කලවම් කරන්නේ නැතිව පෑන් එක සොලවන්න, එතකොට මාළු කැබලි කැඩෙන්නේ නැහැ; ලුණු දාන්න කලින් රස බලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලිපෙන් අයින් කරලා උණුසුම්ව බෙදන්න; මේ කරිය තියලා කෑවම රස වැඩි වෙන්නේ නැහැ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "டின்னைத் திறந்து, உள்ளே உள்ள நீரை வடித்து, மீனை துண்டுகள் உடையாமல் எடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை சேர்த்து வெங்காயம் ஒளிர்வாகும் வரை தாளியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "தக்காளியைப் போட்டு, வெங்காயத்துடன் ஒன்றாகக் கரையும் வரை வேகவிடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "மஞ்சள், கறி மசாலா, மிளகாய்த் தூள் சேர்த்து, கருகாமல் இருக்க சிறிது தண்ணீர் தெளித்துக் கிளறுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மீன் துண்டுகளை மேலே வைத்து, சுற்றி கட்டித் தேங்காய்ப் பாலை ஊற்றி, சிறு தீயில் கொதிக்கவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "கிளறாமல் வாணலியை அசையுங்கள், மீன் உடையாது; உப்பு போடும் முன் சுவைத்துப் பாருங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி சூடாகப் பரிமாறுங்கள்; இந்தக் குழம்பு வைத்திருந்தால் சுவை கூடாது.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan or shallow pot"
+ ],
+ "tips": {
+  "en": "Drain the tin liquid; it carries a tinny taste that spoils the gravy. Two boiled potatoes cut in half and added with the coconut milk turn one tin into a curry for six.",
+  "si": "ටින් එකේ දියර බේරලා දමන්න; ඒකෙන් එන ටින් ගඳ හොදිය නරක් කරනවා. තම්බපු අල දෙකක් දෙකට කපලා පොල් කිරි සමඟ දැම්මොත්, එක ටින් එකෙන් හය දෙනෙකුට කරියක් හැදෙනවා.",
+  "ta": "டின்னில் உள்ள நீரை ஊற்றிவிடுங்கள்; அதில் உள்ள டின் வாசனை குழம்பைக் கெடுக்கும். வேகவைத்த இரண்டு உருளைக்கிழங்கை இரண்டாக வெட்டி தேங்காய்ப் பாலுடன் சேர்த்தால், ஒரு டின்னில் ஆறு பேருக்குக் கறி வரும்."
+ },
+ "health_note": {
+  "en": "Tinned mackerel keeps its protein and its omega fats, which makes it a sound choice when fresh fish is dear. The tin is salted and the coconut milk adds fat, so skip extra salt and keep the portion to one ladle.",
+  "si": "ටින් මාළුවේ ප්‍රෝටීන් සහ ඔමේගා මේද ඒ විදියටම තියෙනවා, ඒ නිසා අමු මාළු මිල වැඩි වෙලාවට හොඳ තේරීමක්. ටින් එකේ ලුණු තියෙනවා, පොල් කිරියෙන් මේදයත් එකතු වෙනවා, ඒ නිසා ලුණු වැඩිපුර නොදා හැන්දක් ගන්න.",
+  "ta": "டின் மீனில் புரதமும் ஒமேகா கொழுப்பும் அப்படியே இருக்கும், எனவே பச்சை மீன் விலை கூடும்போது இது நல்ல தேர்வு. டின்னில் உப்பு உள்ளது, தேங்காய்ப் பால் கொழுப்பு சேர்க்கிறது, எனவே கூடுதல் உப்பு வேண்டாம், ஒரு கரண்டி போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "quick",
+  "budget",
+  "high_sodium",
+  "comfort",
+  "filling",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

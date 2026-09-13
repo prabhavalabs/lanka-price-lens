@@ -1,0 +1,302 @@
+{
+ "id": "dish_butter_cake",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 100,
+  "description": {
+   "en": "A generous square of cake with tea",
+   "si": "තේ සමඟ කේක් ලොකු කැබැල්ලක්",
+   "ta": "தேநீருடன் ஒரு நல்ல கேக் துண்டு"
+  }
+ },
+ "yield_g": 400,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "sieved twice with the baking powder",
+    "si": "බේකින් පවුඩර් සමඟ දෙවරක් හලාගත්",
+    "ta": "பேக்கிங் பவுடருடன் இருமுறை சலித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 110,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "softened at room temperature",
+    "si": "කාමර උෂ්ණත්වයේ මුදු වුණ",
+    "ta": "அறை வெப்பத்தில் மிருதுவாக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 110,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "ground fine if coarse",
+    "si": "රළු නම් සිහින්ව අඹරාගත්",
+    "ta": "பரட்டையாக இருந்தால் அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 large eggs",
+   "preparation": {
+    "en": "at room temperature",
+    "si": "කාමර උෂ්ණත්වයේ",
+    "ta": "அறை வெப்பத்தில்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_baking_powder",
+   "label": {
+    "en": "baking powder",
+    "si": "බේකින් පවුඩර්",
+    "ta": "பேக்கிங் பவுடர்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_vanilla",
+   "label": {
+    "en": "vanilla essence",
+    "si": "වැනිලා එසන්ස්",
+    "ta": "வெனிலா எசன்ஸ்"
+   },
+   "quantity": 3,
+   "unit": "ml",
+   "household": "half a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Take the butter and eggs out early so they come to room temperature, grease a 15 cm tin and line the base with paper.",
+    "minutes": 20
+   },
+   {
+    "text": "Sieve the flour with the baking powder and salt twice, so the crumb comes out light.",
+    "minutes": null
+   },
+   {
+    "text": "Beat the butter and sugar in one direction with a wooden spoon until pale and fluffy and you can no longer feel the sugar grains.",
+    "minutes": 10
+   },
+   {
+    "text": "Break in the eggs one at a time, beating well after each, so the mixture does not curdle.",
+    "minutes": null
+   },
+   {
+    "text": "Fold in the flour in three lots, alternating with the milk and vanilla, and stop the moment no dry flour shows.",
+    "minutes": null
+   },
+   {
+    "text": "Pour into the tin, level the top with the back of the spoon and tap the tin once on the table to let big bubbles out.",
+    "minutes": null
+   },
+   {
+    "text": "Bake in a moderate oven around 175 C until the top is golden and a coconut-leaf rib pushed into the middle comes out clean.",
+    "minutes": 40
+   },
+   {
+    "text": "Leave the cake in the tin for ten minutes, then turn it out onto a rack and peel off the paper.",
+    "minutes": 10
+   },
+   {
+    "text": "Cut into squares only when the cake is completely cold, or it will crumble under the knife.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බටර් සහ බිත්තර කලින් එළියට ගෙන කාමර උෂ්ණත්වයට එන්න දෙන්න, සෙන්ටිමීටර 15ක් තැටියක තෙල් ගා පතුලට කඩදාසි දමන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පිටි, බේකින් පවුඩර් සහ ලුණු එකට දෙවරක් හලා ගන්න, එවිට කේක් සැහැල්ලු වේ.",
+    "minutes": null
+   },
+   {
+    "text": "බටර් සහ සීනි ලී හැන්දකින් එක පැත්තට කලතන්න, සුදුමැලි වී පුම්බන තුරු සහ සීනි කැට අතට නොදැනෙන තුරු.",
+    "minutes": 10
+   },
+   {
+    "text": "බිත්තර එකින් එක එකතු කර, එකක් දැමූ පසු හොඳින් කලතන්න, එවිට මිශ්‍රණය කැඩෙන්නේ නැත.",
+    "minutes": null
+   },
+   {
+    "text": "පිටි තුන් වරකට, කිරි සහ වැනිලා මාරුවෙන් මාරුවට දමා සෙමෙන් මිශ්‍ර කර, වියළි පිටි නොපෙනෙන විගස නවතින්න.",
+    "minutes": null
+   },
+   {
+    "text": "තැටියට වත් කර හැන්දේ පිටුපසින් මතුපිට සමතලා කර, ලොකු බුබුළු යන්නට තැටිය මේසයට එක වරක් තට්ටු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෙල්සියස් 175ක් පමණ මධ්‍යම උණුසුමේ, උඩ රන් පාට වී මැදට ඇනූ පොල් අතු ඉරටුව පිරිසිදුව එන තුරු පුළුස්සන්න.",
+    "minutes": 40
+   },
+   {
+    "text": "කේක් තැටියේම මිනිත්තු දහයක් තබා, පසුව රාක්කයකට හරවා කඩදාසිය ගලවන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කේක් හොඳින් සිසිල් වූ පසු පමණක් කැට කපන්න, නැත්නම් පිහියට කැබලි වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெண்ணெயையும் முட்டையையும் முன்னதாகவே எடுத்து அறை வெப்பத்திற்கு வர விடுங்கள்; 15 செ.மீ தட்டில் நெய் தடவி, அடியில் காகிதம் வையுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "மாவு, பேக்கிங் பவுடர், உப்பு சேர்த்து இருமுறை சலியுங்கள் - கேக் பஞ்சு போல வரும்.",
+    "minutes": null
+   },
+   {
+    "text": "வெண்ணெயையும் சீனியையும் மரக்கரண்டியால் ஒரே திசையில், வெளிறி பொங்கும்வரை, சீனி துகள் கையில் தெரியாதவரை அடியுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "முட்டைகளை ஒன்றன்பின் ஒன்றாக உடைத்து, ஒவ்வொன்றுக்குப் பிறகும் நன்றாக அடியுங்கள் - கலவை பிரியாது.",
+    "minutes": null
+   },
+   {
+    "text": "மாவை மூன்று தவணையாக, பாலும் வெனிலாவும் மாறி மாறிச் சேர்த்து மெதுவாகக் கலந்து, வறண்ட மாவு தெரியாத உடனே நிறுத்துங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "தட்டில் ஊற்றி கரண்டியின் பின்பக்கத்தால் மேற்பரப்பை சமன் செய்து, பெரிய காற்றுக்குமிழிகள் போக மேசையில் ஒருமுறை தட்டுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "175 C அளவு நடுத்தர சூட்டில், மேல் பொன்னிறமாகி நடுவில் குத்திய குச்சி சுத்தமாக வரும்வரை பேக் செய்யுங்கள்.",
+    "minutes": 40
+   },
+   {
+    "text": "கேக்கை தட்டிலேயே பத்து நிமிடம் வைத்து, பிறகு கம்பித்தட்டில் திருப்பி காகிதத்தை உரியுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "முழுவதும் ஆறியபின்தான் துண்டுகளாக வெட்டுங்கள், இல்லையேல் உடைந்து போகும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 40,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "15 cm cake tin",
+  "oven, or a heavy pan half filled with clean sand",
+  "wooden spoon or hand beater",
+  "sieve"
+ ],
+ "tips": {
+  "en": "Everything must be at room temperature; eggs straight from the fridge split the creamed butter and the cake comes out heavy. With no oven, this bakes well in a thick pan half filled with clean sand over a low flame, the tin standing on the sand, lid on, with a few coals on the lid. Open the door or lid only after two thirds of the time, since the draught sinks the middle.",
+  "si": "සියල්ල කාමර උෂ්ණත්වයේ තිබිය යුතුයි, ශීතකරණයෙන් ගත් බිත්තර කලතාගත් බටර් කඩනවා, එවිට කේක් බර වෙනවා. උඳුනක් නැත්නම්, පිරිසිදු වැලි බාගයක් දැමූ ඝන මුට්ටියක් අඩු ගින්නේ තබා, තැටිය වැලි මතට තබා, පියන දමා, පියන මතට ගිනි අඟුරු ටිකක් තබා පුළුස්සන්න. පියන හෝ උඳුන් දොර අරින්නේ කාලයෙන් තුනෙන් දෙකක් ගිය පසුවයි, සුළඟ වැදුණොත් මැද යටට බසිනවා.",
+  "ta": "எல்லாமும் அறை வெப்பத்தில் இருக்க வேண்டும்; குளிர்சாதனப் பெட்டியிலிருந்து நேராக எடுத்த முட்டை கலவையைப் பிரித்து கேக்கை கனமாக்கும். அடுப்பு இல்லாவிட்டால், சுத்தமான மணல் பாதி நிரப்பிய கனமான சட்டியை சிறு தீயில் வைத்து, அதன் மேல் தட்டை வைத்து, மூடி போட்டு, மூடியின் மேல் கொஞ்சம் கரி வைத்து பேக் செய்யலாம். மூடியை மூன்றில் இரண்டு நேரம் கழிந்த பிறகே திறங்கள் - காற்று அடித்தால் நடுப்பகுதி உள்ளே அமிழும்."
+ },
+ "health_note": {
+  "en": "Flour, butter and sugar in almost equal weight means one square is a treat and not a snack, though the eggs and milk give it a little protein and calcium. It is soft enough for older people who cannot chew hard sweets; anyone watching sugar or blood fats is better off with a thin slice and plain tea.",
+  "si": "පිටි, බටර් සහ සීනි පාහේ එකම බරින් නිසා එක කැබැල්ලක් සුළු සැපක් පමණයි, කෑමක් නොවේ, එහෙත් බිත්තර සහ කිරි නිසා සුළු ප්‍රෝටීන් සහ කැල්සියම් ලැබේ. තද කැවිලි කන්නට බැරි වැඩිහිටියන්ට එය මුදුයි, සීනි හෝ ලේ මේදය බලා සිටින කෙනෙක් තුනී පෙත්තක් සහ සීනි නැති තේ ගන්න.",
+  "ta": "மாவு, வெண்ணெய், சீனி கிட்டத்தட்ட சம எடையில் இருப்பதால் ஒரு துண்டே போதும் - இது சிற்றுண்டி அல்ல, ஒரு சுவைப்பு; முட்டையும் பாலும் கொஞ்சம் புரதமும் கால்சியமும் தரும். கடினமான இனிப்புகளை மெல்ல முடியாத முதியவர்களுக்கு இது மென்மையாக இருக்கும்; சர்க்கரையையோ கொழுப்பையோ கவனிப்பவர்கள் மெல்லிய துண்டும் சீனி இல்லாத தேநீரும் எடுப்பது நல்லது."
+ },
+ "tags": [
+  "high_sugar",
+  "kid_friendly",
+  "elderly_friendly",
+  "comfort",
+  "festive"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

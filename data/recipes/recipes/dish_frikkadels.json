@@ -1,0 +1,413 @@
+{
+ "id": "dish_frikkadels",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 100,
+  "description": {
+   "en": "Three crumbed meatballs each, beside rice or with tea",
+   "si": "එක් අයෙකුට පාන් කුඩු ගැසූ මස් ගුලි තුනක්, බත් සමඟ හෝ තේ එකට",
+   "ta": "ஒருவருக்கு மூன்று ரொட்டித் தூள் பூசிய இறைச்சி உருண்டைகள், சாதத்துடனோ தேநீருடனோ"
+  }
+ },
+ "yield_g": 420,
+ "ingredients": [
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "minced beef",
+    "si": "අඹරාගත් හරක් මස්",
+    "ta": "கீமா மாட்டிறைச்சி"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "half a kilo",
+   "preparation": {
+    "en": "minced twice if you can",
+    "si": "හැකි නම් දෙවරක් අඹරාගත්",
+    "ta": "முடிந்தால் இரு முறை அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_bread",
+   "label": {
+    "en": "bread",
+    "si": "පාන්",
+    "ta": "ரொட்டி"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "2 slices, crusts off",
+   "preparation": {
+    "en": "soaked in the milk and squeezed out",
+    "si": "කිරිවල පොඟවා මිරිකාගත්",
+    "ta": "பாலில் ஊறவைத்துப் பிழிந்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "a quarter cup",
+   "preparation": {
+    "en": "for soaking the bread",
+    "si": "පාන් පොඟවා ගැනීමට",
+    "ta": "ரொட்டியை ஊறவைக்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 eggs, 1 in the mix and 1 for coating",
+   "preparation": {
+    "en": "beaten",
+    "si": "ගසාගත්",
+    "ta": "அடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "chopped very fine",
+    "si": "ඉතා සිහින්ව කපාගත්",
+    "ta": "மிக மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "crushed to a paste",
+    "si": "පේස්ට් එකක් වන තුරු තලාගත්",
+    "ta": "விழுதாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_dill",
+   "label": {
+    "en": "dill leaves",
+    "si": "දිල් කොළ",
+    "ta": "சதகுப்பை இலை"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": {
+    "en": "finely ground",
+    "si": "සිහින්ව අඹරාගත්",
+    "ta": "நன்றாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a third of a tsp, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_nutmeg",
+   "label": {
+    "en": "nutmeg",
+    "si": "සාදික්කා",
+    "ta": "சாதிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a good grating",
+   "preparation": {
+    "en": "freshly grated",
+    "si": "අලුතින් ගාගත්",
+    "ta": "அப்போது துருவிய"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "தேசிக்காய்ச் சாறு"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "juice of a quarter lime",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_breadcrumbs",
+   "label": {
+    "en": "breadcrumbs",
+    "si": "පාන් කුඩු",
+    "ta": "ரொட்டித் தூள்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "spread on a plate for rolling",
+    "si": "පෙරළීමට පිඟානක තුනී ලෙස තබාගත්",
+    "ta": "உருட்டுவதற்குத் தட்டில் பரப்பிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "enough to come halfway up the balls",
+   "preparation": {
+    "en": "for shallow frying",
+    "si": "අඩක් ගිලෙන පමණට බැදීමට",
+    "ta": "பாதி மூழ்கும் அளவு பொரிக்க"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Tear the bread into the milk and leave it to go soft, then squeeze out the extra milk between your palms.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the mince in a bowl with the soaked bread, chopped onion, garlic, dill, pepper, ground cinnamon, grated nutmeg, lime juice and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Break in one egg and knead the mixture with your hand until it is smooth and holds together when you press it.",
+    "minutes": 8
+   },
+   {
+    "text": "Wet your palms and roll the mixture into balls a little smaller than a lime, about twelve of them, and set them on a plate.",
+    "minutes": 12
+   },
+   {
+    "text": "Rest the balls in a cool place so they firm up and do not fall apart in the oil.",
+    "minutes": 20
+   },
+   {
+    "text": "Beat the second egg in a bowl, dip each ball in it and roll it in the breadcrumbs until it is covered all over.",
+    "minutes": 8
+   },
+   {
+    "text": "Heat the coconut oil in a pan on a medium flame, slide in a few balls at a time and fry them, turning gently, until they are golden brown all round.",
+    "minutes": 14
+   },
+   {
+    "text": "Lift them onto paper to drain and serve them warm, or keep them for the next day, when they are just as good cold.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පාන් කිරිවලට කඩා දමා මෘදු වන තුරු තබා, පසුව අත් දෙක අතර තබා අමතර කිරි මිරිකා ඉවත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අඹරාගත් මස් බඳුනකට දමා, පොඟවාගත් පාන්, කපාගත් ළූණු, සුදුළූණු, දිල් කොළ, ගම්මිරිස්, කුරුඳු කුඩු, ගාගත් සාදික්කා, දෙහි යුෂ සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තරයක් කඩා දමා, මිශ්‍රණය සුමට වී තැබූ විට එකට රැඳෙන තුරු අතින් මදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "අත් තෙමාගෙන, දෙහි ගෙඩියකට තරමක් කුඩා ගුලි දොළහක් පමණ රවුම් කර පිඟානක තබන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "තෙලේ කැඩී නොයන ලෙස තද වන්නට ගුලි සිසිල් තැනක තබන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "දෙවන බිත්තරය බඳුනක ගසාගෙන, එක් එක් ගුලිය එහි ගිල්වා, පිටත සම්පූර්ණයෙන් වැසෙන තුරු පාන් කුඩුවල පෙරළන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පෑන් එකක පොල් තෙල් මධ්‍යම ගින්නේ රස්නේ කර, වර වර ගුලි කිහිපයක් දමා, සෙමින් පෙරළමින්, හාත්පස රන් දුඹුරු වන තුරු බදින්න.",
+    "minutes": 14
+   },
+   {
+    "text": "තෙල් බේරෙන්නට කඩදාසියක් මත ගෙන උණුසුම්ව පිළිගන්වන්න, නැතහොත් පසුදාට තබා ගන්න; සිසිල්ව වුවත් එකසේ රසයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ரொட்டியைப் பாலில் கிழித்துப் போட்டு மென்மையாகும் வரை வைத்து, பின் இரு உள்ளங்கைகளுக்கு இடையில் வைத்து மீதிப் பாலைப் பிழிந்து விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அரைத்த இறைச்சியை ஒரு கிண்ணத்தில் இட்டு, ஊறிய ரொட்டி, நறுக்கிய வெங்காயம், பூண்டு, சதகுப்பை, மிளகு, பட்டைத் தூள், துருவிய சாதிக்காய், தேசிக்காய்ச் சாறு, உப்பு சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு முட்டையை உடைத்துச் சேர்த்து, கலவை மென்மையாகி அழுத்தும்போது ஒட்டி நிற்கும் வரை கையால் பிசையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "உள்ளங்கையை நனைத்துக் கொண்டு, தேசிக்காயை விடச் சிறிது சிறியதாகப் பன்னிரண்டு உருண்டைகளாகப் பிடித்துத் தட்டில் வையுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "எண்ணெயில் உடைந்து போகாமல் இறுகுவதற்கு உருண்டைகளைக் குளிர்ந்த இடத்தில் வையுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "இரண்டாவது முட்டையை ஒரு கிண்ணத்தில் அடித்து, ஒவ்வொரு உருண்டையையும் அதில் தோய்த்து, முழுவதும் மூடும் வரை ரொட்டித் தூளில் புரட்டுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயை நடுத்தர தீயில் காய்ச்சி, ஒரு தவணைக்குச் சில உருண்டைகளாக இட்டு, மெதுவாகத் திருப்பி, எல்லாப் பக்கமும் பொன்னிறமாகும் வரை பொரியுங்கள்.",
+    "minutes": 14
+   },
+   {
+    "text": "எண்ணெய் வடிய ஒரு காகிதத்தில் எடுத்து வைத்து, சூடாகப் பரிமாறுங்கள்; அல்லது மறுநாளுக்கு வையுங்கள், குளிர்ந்தாலும் அதே சுவை.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 20,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "mixing bowl",
+  "frying pan",
+  "plate for the breadcrumbs",
+  "paper for draining"
+ ],
+ "tips": {
+  "en": "Knead the mince properly, because a mixture that is only stirred will crack open in the oil. Fry on a steady medium flame: too hot and the crumb burns before the middle is cooked, too low and the balls drink oil.",
+  "si": "අඹරාගත් මස් හොඳින් මදින්න; හැන්දකින් පමණක් කලවම් කළ මිශ්‍රණය තෙලේ පිපිරී කැඩේ. ගින්න මධ්‍යමව ස්ථාවරව තබන්න; වැඩි නම් මැද උයන්නට පෙර පිටත පිළිස්සෙන අතර අඩු නම් ගුලි තෙල් උරා ගනී.",
+  "ta": "அரைத்த இறைச்சியை நன்றாகப் பிசையுங்கள்; வெறுமனே கிளறிய கலவை எண்ணெயில் வெடித்து உடைந்துவிடும். தீயை நடுத்தரமாக நிலையாக வையுங்கள்; அதிகமானால் உள்ளே வேகும் முன் மேற்பூச்சு கருகும், குறைந்தால் உருண்டைகள் எண்ணெயைக் குடிக்கும்."
+ },
+ "health_note": {
+  "en": "Each ball carries good protein and iron from the beef, but they are crumbed and fried, so the oil counts: fry in a shallow pan rather than deep oil and drain them well. Three balls with rice and a vegetable makes a fair plate for a child.",
+  "si": "එක් ගුලියකින් හරක් මස්වල ප්‍රෝටීන් හා යකඩ ලැබෙන නමුත් ඒවා පාන් කුඩු ගසා බදින බැවින් තෙල ගැන සැලකිලිමත් වන්න; ගැඹුරු තෙලේ නොව අඩු තෙලේ බැදගෙන හොඳින් තෙල් බේරන්න. දරුවෙකුට බත් සහ එළවළුවක් සමඟ ගුලි තුනක් සාධාරණ පිඟානකි.",
+  "ta": "ஒவ்வொரு உருண்டையிலும் மாட்டிறைச்சியின் புரதமும் இரும்பும் உண்டு; ஆனால் ரொட்டித் தூள் பூசிப் பொரிப்பதால் எண்ணெய் கணக்கில் வரும் — ஆழ்ந்த எண்ணெயில் அல்லாமல் குறைந்த எண்ணெயில் பொரித்து நன்கு வடியுங்கள். ஒரு குழந்தைக்குச் சாதத்துடனும் ஒரு காய்கறியுடனும் மூன்று உருண்டைகள் போதுமான தட்டு."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "kid_friendly",
+  "festive",
+  "deep_fried",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

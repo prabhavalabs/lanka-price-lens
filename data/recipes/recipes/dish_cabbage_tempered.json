@@ -1,0 +1,293 @@
+{
+ "id": "dish_cabbage_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 100,
+  "description": {
+   "en": "A dry, browned heap beside the rice",
+   "si": "බතට පසෙකින් තබන වියළි, තරමක් දුඹුරු ගොඩක්",
+   "ta": "சாதத்தின் ஓரத்தில் காய்ந்த, சற்று பொன்னிற குவியல்"
+  }
+ },
+ "yield_g": 400,
+ "ingredients": [
+  {
+   "ref": "product_cabbage",
+   "label": {
+    "en": "cabbage",
+    "si": "ගෝවා",
+    "ta": "முட்டைகோஸ்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "half a small cabbage",
+   "preparation": {
+    "en": "shredded fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනී ලෙස කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වේළූ මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලි ලෙස කඩාගෙන",
+    "ta": "துண்டுகளாக உடைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "රළු මිරිස් කුඩු",
+    "ta": "கரடு மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp, coarsely ground",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලාගෙන",
+    "ta": "கரடாக இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Shred the cabbage finely and spread it on a tray or cloth for a few minutes so the surface water dries off.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and temper the dried chillies and curry leaves until they crackle.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the sliced big onion and fry on a high flame until the edges turn brown.",
+    "minutes": 4
+   },
+   {
+    "text": "Tip in the cabbage with the turmeric, chilli flakes and salt and keep turning it over a strong flame; do not cover the pan.",
+    "minutes": 5
+   },
+   {
+    "text": "Cook only until the shreds wilt and a few edges catch colour, so it stays dry rather than watery.",
+    "minutes": 3
+   },
+   {
+    "text": "Grind the pepper over, toss once and take the pan off the fire straight away.",
+    "minutes": null
+   },
+   {
+    "text": "Serve at once; it loses its crispness if it sits covered.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ගෝවා සිහින්ව කපා, ට්‍රේ එකක හෝ රෙදිකඩක් මතට විනාඩි කිහිපයක් විසුරුවා පිටතේ ඇති වතුර වියළන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පළල් පෑනකට පොල් තෙල් දමා, වේළූ මිරිස් හා කරපිංචා පිපිරෙන තුරු තෙල් දාන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කපාගත් ලොකු ලූනු දමා අධික ගින්නේ දාර දුඹුරු වන තුරු බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ගෝවා සමඟ කහ, රළු මිරිස් කුඩු හා ලුණු දමා, වහන්නක් නොදමා අධික ගින්නේ දිගටම පෙරළන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "තීරු මැලවී දාර කිහිපයක් පාට ගන්නා තුරු පමණක් උයන්න; එවිට වතුරෙන් නොව වියළිව තිබේ.",
+    "minutes": 3
+   },
+   {
+    "text": "ගම්මිරිස් උඩින් තලා දමා එක් වරක් කලවම් කර වහාම ලිපෙන් ඉවතට ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වහාම බෙදන්න; වසා තැබුවහොත් දැඩි බව නැති වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "முட்டைகோஸை மெல்லியதாக நறுக்கி, தட்டிலோ துணியிலோ சில நிமிடம் பரப்பி மேல் ஈரம் காயவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அகலமான வாணலியில் தேங்காய் எண்ணெயை காயவைத்து, வத்தல் மிளகாயையும் கறிவேப்பிலையையும் வெடிக்கும் வரை தாளியுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நறுக்கிய பெரிய வெங்காயத்தைச் சேர்த்து, அதிக தீயில் ஓரங்கள் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "முட்டைகோஸை மஞ்சள், மிளகாய்த் தூள், உப்புடன் போட்டு, மூடாமல் அதிக தீயில் தொடர்ந்து புரட்டுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "இலைகள் வாடி சில ஓரங்கள் நிறம் பிடிக்கும் வரை மட்டும் வதக்குங்கள்; அப்போது நீர் விடாமல் காய்ந்ததாக இருக்கும்.",
+    "minutes": 3
+   },
+   {
+    "text": "மிளகை மேலே இடித்துப் போட்டு ஒருமுறை கலக்கி, உடனே அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "உடனே பரிமாறுங்கள்; மூடி வைத்தால் அதன் சுவைத்திண்மை போய்விடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 12,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan or wok",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "The pan must be wide and the flame high; a crowded pan steams the cabbage and you end up with a pale, wet heap. A handful of grated carrot thrown in at the end makes it look better on the plate.",
+  "si": "පෑන පළල් විය යුතු අතර ගින්න වැඩි විය යුතුයි; පෑන පිරී තිබුණහොත් ගෝවා තැම්බී, සුදුමැලි තෙත් ගොඩක් ඉතිරි වේ. අවසානයේ ගාගත් කැරට් අතලොස්සක් දැමුවොත් පිඟානේ පෙනුම වැඩි වේ.",
+  "ta": "வாணலி அகலமாகவும் தீ அதிகமாகவும் இருக்க வேண்டும்; வாணலி நிரம்பியிருந்தால் முட்டைகோஸ் வேகி, வெளிறிய ஈரக் குவியலாகிவிடும். இறுதியில் ஒரு பிடி துருவிய கரட் சேர்த்தால் தட்டில் அழகாக இருக்கும்."
+ },
+ "health_note": {
+  "en": "This is a very low calorie, low carbohydrate side with plenty of fibre, and the two spoons of oil are all the fat in it. If someone at home has gas trouble, the tempered version sits easier than raw cabbage salad.",
+  "si": "මෙය කැලරි හා පිටිසර ඉතා අඩු, කෙඳි බහුල ව්‍යංජනයක් වන අතර මේදය ලෙස ඇත්තේ තෙල් හැන්ද දෙක පමණයි. ගෙදර කෙනෙකුට වායුව කරදරයක් නම්, අමු ගෝවා සලාදයට වඩා තෙල් දාලා බඩට ලෙහෙසියි.",
+  "ta": "இது கலோரியும் மாவுச்சத்தும் மிகக் குறைந்த, நார்ச்சத்து நிறைந்த பங்காளி; இரண்டு ஸ்பூன் எண்ணெய் மட்டுமே இதன் கொழுப்பு. வீட்டில் யாருக்காவது வாயுத் தொந்தரவு இருந்தால், பச்சை முட்டைகோஸ் சாலட்டை விட இந்த வறுவல் எளிதாகச் செரிக்கும்."
+ },
+ "tags": [
+  "low_calorie",
+  "low_carb",
+  "high_fibre",
+  "quick",
+  "budget",
+  "weight_loss_friendly",
+  "diabetic_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

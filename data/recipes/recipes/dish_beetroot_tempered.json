@@ -1,0 +1,301 @@
+{
+ "id": "dish_beetroot_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 105,
+  "description": {
+   "en": "A dry heap of dark red beetroot sticks with browned onion",
+   "si": "බැදගත් ළූණු සමඟ තද රතු පාට වියළි බීට්රූට් කූරු ගොඩක්",
+   "ta": "வதக்கிய வெங்காயத்துடன் அடர் சிவப்பு உலர்ந்த பீட்ரூட் குச்சிகள்"
+  }
+ },
+ "yield_g": 420,
+ "ingredients": [
+  {
+   "ref": "product_beetroot",
+   "label": {
+    "en": "beetroot",
+    "si": "බීට්රූට්",
+    "ta": "பீட்ரூட்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 medium beetroots",
+   "preparation": {
+    "en": "peeled and cut into thin matchsticks",
+    "si": "ලෙලි ගසා තුනී ගිනිකූරු ආකාරයට කපාගත්",
+    "ta": "தோல் சீவி மெல்லிய குச்சிகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වේළුණු මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැලිවලට කඩාගත්",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp, crushed",
+   "preparation": {
+    "en": "crushed coarse",
+    "si": "රළුවට කුඩු කරගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed",
+   "preparation": {
+    "en": "juice only, added at the end",
+    "si": "යුෂ පමණක්, අවසානයේ දමන්න",
+    "ta": "சாறு மட்டும், கடைசியில் சேர்க்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the beetroot and cut it into matchsticks as thin as you can; thick pieces will not cook through without water.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and put in the dried chillies and curry leaves until they crackle.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the onion and fry until soft and beginning to brown at the edges.",
+    "minutes": 3
+   },
+   {
+    "text": "Put in the beetroot with the turmeric, chilli flakes, pepper and salt, and turn everything over well.",
+    "minutes": 2
+   },
+   {
+    "text": "Cook on a medium flame, stirring every minute or so, until the beetroot loses its raw crunch and the pan is dry. Sprinkle a spoon of water only if it starts to catch.",
+    "minutes": 12
+   },
+   {
+    "text": "Squeeze in the lime juice off the fire, taste for salt, and serve. It should be dry enough to hold its shape in a spoon.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බීට්රූට් ලෙලි ගසා, හැකි තරම් තුනීට ගිනිකූරු ආකාරයට කපන්න; ගණකම් කෑලි වතුර නැතිව ඇතුළත තැම්බෙන්නේ නැත.",
+    "minutes": 10
+   },
+   {
+    "text": "පුළුල් පෑන් එකක පොල් තෙල් රත් කර, වේළුණු මිරිස් සහ කරපිංචා දමා පිපිරෙන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ළූණු දමා මුදු වී දාර දුඹුරු වන්නට පටන් ගන්නා තුරු බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බීට්රූට්, කහ, මිරිස් කැබලි, ගම්මිරිස් සහ ලුණු දමා සියල්ල හොඳින් පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "මධ්‍යම ගින්නේ, විනාඩියකට වරක් පමණ කලවම් කරමින්, බීට්රූට් වල අමු කරකර ගතිය නැති වී පෑන් එක වියළෙන තුරු බදින්න. අල්ලන්න පටන් ගත්තොත් පමණක් වතුර හැන්දක් ඉස්න්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගින්නෙන් අයින් කර දෙහි යුෂ මිරිකා, රස බලා ඉදිරිපත් කරන්න. හැන්දක හැඩය රැකෙන තරමට වියළි විය යුතුයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பீட்ரூட்டைத் தோல் சீவி, முடிந்தவரை மெல்லிய குச்சிகளாக நறுக்குங்கள்; தடிமனான துண்டுகள் தண்ணீர் இல்லாமல் உள்ளே வேகாது.",
+    "minutes": 10
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வத்தல் மிளகாயும் கறிவேப்பிலையும் போட்டு வெடிக்க விடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "வெங்காயத்தைச் சேர்த்து, மென்மையாகி ஓரம் பொன்னிறமாகத் தொடங்கும் வரை வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "பீட்ரூட், மஞ்சள், மிளகாய்த் துகள், மிளகு, உப்பு சேர்த்து எல்லாவற்றையும் நன்கு புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நடுத்தர தீயில், ஒவ்வொரு நிமிடமும் கிளறி, பீட்ரூட்டின் பச்சை கறுகறுப்பு போய் சட்டி உலரும் வரை வதக்குங்கள். அடிபிடிக்கத் தொடங்கினால் மட்டும் ஒரு ஸ்பூன் தண்ணீர் தெளியுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி எலுமிச்சைச் சாறு பிழிந்து, உப்பு பார்த்துப் பரிமாறுங்கள். கரண்டியில் வடிவம் கெடாத அளவுக்கு உலர்ந்திருக்க வேண்டும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide heavy pan",
+  "sharp knife"
+ ],
+ "tips": {
+  "en": "Keep the pan uncovered throughout: the moment you put a lid on, the beetroot steams and you are back to a wet curry. The lime at the end stops it tasting flatly sweet and keeps the colour bright.",
+  "si": "පටන් අගට ම වහන් නොදමා තබන්න: වහන දැමූ මොහොතේම බීට්රූට් තැම්බී නැවතත් තෙත් කරියක් වේ. අවසානයේ දෙහි දැමීම නිසා හුදෙක් මිහිරි රසය නවතින අතර පාටත් දීප්තිමත්ව රැකේ.",
+  "ta": "முழுவதும் மூடாமல் வையுங்கள்: மூடி வைத்த நொடியிலேயே பீட்ரூட் வெந்து மீண்டும் ஈரமான கறியாகிவிடும். கடைசியில் சேர்க்கும் எலுமிச்சை வெறும் இனிப்புச் சுவையைத் தடுத்து, நிறத்தையும் பளிச்சென வைக்கும்."
+ },
+ "health_note": {
+  "en": "Without coconut milk this is a lighter way to eat beetroot, and the fibre and folate stay put; the lime helps the body take up the iron in the root. It is still a sweet vegetable, so a diabetic plate wants a small spoon rather than a heap.",
+  "si": "පොල් කිරි නැති නිසා බීට්රූට් කන්න මෙය සැහැල්ලු ක්‍රමයකි; තන්තු හා ෆෝලේට් රැකේ. දෙහි නිසා අල තුළ ඇති යකඩ ශරීරයට උරාගැනීමට උදව් වේ. එහෙත් එය තවමත් මිහිරි එළවළුවක් නිසා දියවැඩියා පිඟානකට ගොඩක් නොව කුඩා හැන්දක් සුදුසුයි.",
+  "ta": "தேங்காய்ப் பால் இல்லாததால் பீட்ரூட்டைச் சாப்பிட இது இலகுவான வழி; நார்ச்சத்தும் ஃபோலேட்டும் தங்கும். எலுமிச்சை கிழங்கில் உள்ள இரும்பை உடல் எடுத்துக்கொள்ள உதவும். இருந்தாலும் இது இனிப்பான காய்கறி, சர்க்கரை நோய் உள்ள தட்டுக்கு குவியல் அல்ல, சிறிய ஸ்பூனே போதும்."
+ },
+ "tags": [
+  "high_fibre",
+  "iron_rich",
+  "heart_healthy",
+  "budget",
+  "light",
+  "quick"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

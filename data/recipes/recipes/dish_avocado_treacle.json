@@ -1,0 +1,211 @@
+{
+ "id": "dish_avocado_treacle",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 100,
+  "description": {
+   "en": "A small bowl of mashed avocado with treacle folded through",
+   "si": "කිතුල් පැණි මිශ්‍ර කළ, පොඩි කළ අලිගැට පේර කුඩා බඳුනක්",
+   "ta": "பாணி கலந்த பிசைந்த வெண்ணெய்ப் பழம் ஒரு சிறு கிண்ணம்"
+  }
+ },
+ "yield_g": 400,
+ "ingredients": [
+  {
+   "ref": "product_avocado",
+   "label": {
+    "en": "ripe avocado",
+    "si": "ඉදුණු අලිගැට පේර",
+    "ta": "பழுத்த வெண்ணெய்ப் பழம்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 medium hill-country avocados",
+   "preparation": {
+    "en": "soft to the thumb, flesh scooped out and stone removed",
+    "si": "ඇඟිල්ලට මුදු, ඇට ඉවත් කර මදය හෙළුවා",
+    "ta": "தொட்டால் மென்மையாக, கொட்டை நீக்கி சுளை எடுத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 and a half tbsp, if the fruit is bland",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Choose fruit that gives a little under the thumb near the stalk; a hard avocado will taste of nothing however much treacle you add.",
+    "minutes": null
+   },
+   {
+    "text": "Cut each one around the stone, twist the halves apart and lift the stone out with the point of a spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Scoop the flesh into a bowl, scraping the dark green layer closest to the skin as well, since that part carries the most flavour.",
+    "minutes": null
+   },
+   {
+    "text": "Mash with the back of a fork until creamy but still a little lumpy; a blender makes it too thin.",
+    "minutes": null
+   },
+   {
+    "text": "Fold in the treacle a spoon at a time, tasting as you go, and add the sugar only if the fruit is bland.",
+    "minutes": null
+   },
+   {
+    "text": "Squeeze in a little lime, which keeps the green bright and cuts the fat.",
+    "minutes": null
+   },
+   {
+    "text": "Spoon into four small bowls and eat straight away, before the surface darkens.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "නටුව ළඟින් ඇඟිල්ලට ටිකක් හසුවන ගෙඩි තෝරන්න, තද ගෙඩියකට කොපමණ පැණි දැමුවත් රසක් නැත.",
+    "minutes": null
+   },
+   {
+    "text": "එක ගෙඩියක් ඇට වටේට කපා, කොටස් දෙක කරකවා ගලවා, හැන්දක් අගින් ඇට ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මදය බඳුනකට හෑරගන්න, ලෙල්ලට ආසන්න තද කොළ පාට තුනී තලයත් හෑරගන්න, රසය වැඩිපුර තියෙන්නේ එතනයි.",
+    "minutes": null
+   },
+   {
+    "text": "ගෑරුප්පුවක පිටුපසින්, ක්‍රීම් වගේ වුණත් තැනින් තැන ගුලි ඉතිරි වන ලෙස පොඩි කරන්න, බ්ලෙන්ඩරයෙන් ඉතා තුනී වේ.",
+    "minutes": null
+   },
+   {
+    "text": "කිතුල් පැණි හැන්දක් බැගින් දමා රස බලමින් මිශ්‍ර කරන්න, ගෙඩියේ රසය අඩු නම් පමණක් සීනි එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙහි යුෂ ටිකක් මිරිකන්න, එයින් කොළ පාට රැකෙන අතර මේද ගතිය කැපේ.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා බඳුන් හතරකට බෙදා, මුදුන අඳුරු වීමට පෙර වහාම කන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "காம்புக்கு அருகில் கட்டைவிரலுக்கு சிறிது இடம் கொடுக்கும் பழத்தைத் தேர்ந்தெடுங்கள்; இறுகிய பழத்தில் எவ்வளவு பாணி சேர்த்தாலும் சுவை வராது.",
+    "minutes": null
+   },
+   {
+    "text": "கொட்டையைச் சுற்றி வெட்டி, இரு பாதிகளையும் திருப்பிப் பிரித்து, கரண்டி நுனியால் கொட்டையை எடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சுளையை கிண்ணத்தில் சுரண்டி எடுங்கள்; தோலுக்கு அடுத்த அடர் பச்சைப் பகுதியையும் சுரண்டுங்கள், சுவை அங்கேதான் அதிகம்.",
+    "minutes": null
+   },
+   {
+    "text": "முள்கரண்டியின் பின்பக்கத்தால் கிரீம் போல ஆனாலும் சிறு கட்டிகள் இருக்கும் பதத்தில் பிசையுங்கள்; மிக்ஸியில் அரைத்தால் மிக நீர்மையாகும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாணியை ஒரு கரண்டியாகச் சேர்த்து சுவைத்துப் பார்த்துக் கலக்குங்கள்; பழத்தில் சுவை குறைவாக இருந்தால் மட்டும் சீனி சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கொஞ்சம் தேசிக்காய் சாறு பிழியுங்கள் - பச்சை நிறம் மாறாமலும் கொழுப்பு உறுத்தாமலும் இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "நான்கு சிறு கிண்ணங்களில் பரிமாறி, மேற்பரப்பு கருக்கும் முன் உடனே சாப்பிடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 8,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "knife",
+  "fork",
+  "small bowls"
+ ],
+ "tips": {
+  "en": "Buy avocados a few days hard and ripen them in a paper bag with a ripe banana on top of the cupboard, because fruit picked ripe from the tree bruises on the bus. Never sweeten with treacle while the fruit is fridge cold, as the cold flesh will not take it evenly. The same bowl blended with milk and a little more treacle makes the up-country avocado shake.",
+  "si": "අලිගැට පේර තදව තිබියදී ගෙන, ඉදුණු කෙසෙල් ගෙඩියක් සමඟ කඩදාසි බෑගයක දමා අල්මාරිය මතට තබා ඉදෙන්න දෙන්න, ගසෙන් ඉදිලාම කැඩූ ගෙඩි බස් එකේ තලනවා. ශීතකරණයේ සිසිල්ව තිබෙන ගෙඩියට පැණි දමන්න එපා, සිසිල් මදයට පැණි එකසේ නොයයි. මේම මිශ්‍රණය කිරි සහ තව පැණි ටිකක් සමඟ බ්ලෙන්ඩ් කළොත් උඩරට අලිගැට පේර ෂේක් එක හැදෙනවා.",
+  "ta": "பழங்களை இறுக்கமாக வாங்கி, பழுத்த வாழைப்பழத்துடன் காகிதப் பையில் வைத்து அலமாரி மேல் பழுக்க விடுங்கள் - மரத்திலேயே பழுத்துக் கொய்த பழம் பயணத்தில் நசுங்கிவிடும். குளிர்சாதனப் பெட்டியிலிருந்து எடுத்த குளிர்ந்த பழத்தில் பாணி சேர்க்க வேண்டாம், சமமாகக் கலக்காது. இதே கலவையை பாலும் கொஞ்சம் பாணியும் சேர்த்து அரைத்தால் மலையகப் பழச்சாறு தயார்."
+ },
+ "health_note": {
+  "en": "Avocado is one of the few sweets in this list that brings something solid: unsaturated fat, potassium and fibre that keep you full for a long stretch. The treacle is where the sugar comes in, so pour it by the spoon rather than the bottle, and remember the bowl is filling enough to replace an evening snack rather than follow one.",
+  "si": "මේ ලැයිස්තුවේ ඇති, ඇත්තෙන්ම යමක් දෙන රසකැවිලිවලින් එකක් අලිගැට පේරයි, අසංතෘප්ත මේදය, පොටෑසියම් සහ තන්තු නිසා බොහෝ වෙලාවක් බඩ පිරී තිබේ. සීනි එන්නේ පැණියෙන් නිසා බෝතලයෙන් නොව හැන්දෙන් දමන්න, මෙය සවස කෑමකට පසු නොව, ඒ වෙනුවට කන්නට තරම් පිරවුම් සහිතයි.",
+  "ta": "இந்தப் பட்டியலில் உண்மையில் ஊட்டம் தரும் ஒரு சில இனிப்புகளில் வெண்ணெய்ப் பழம் ஒன்று - நல்ல கொழுப்பு, பொட்டாசியம், நார்ச்சத்து நீண்ட நேரம் வயிறு நிறைந்திருக்க உதவும். சீனி வருவது பாணியிலிருந்து மட்டுமே; அதனால் பாட்டிலால் அல்லாமல் கரண்டியால் ஊற்றுங்கள். இது மாலைச் சிற்றுண்டிக்குப் பிறகு அல்ல, அதற்குப் பதிலாகச் சாப்பிடத் தகுந்த அளவு நிறைவானது."
+ },
+ "tags": [
+  "heart_healthy",
+  "high_fibre",
+  "quick",
+  "kid_friendly",
+  "high_sugar",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

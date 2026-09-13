@@ -1,0 +1,407 @@
+{
+ "id": "dish_black_roasted_coconut_fish_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "A steak of fish under thick dark gravy, rich enough that a little goes far",
+   "si": "තද කළු හොදි යට මාළු පෙත්තක්; තර නිසා ටිකක් ගත්තත් ඇති",
+   "ta": "கெட்டியான கரும் குழம்புக்குள் ஒரு மீன் துண்டு; நிறைவானது, கொஞ்சமே போதும்"
+  }
+ },
+ "yield_g": 950,
+ "ingredients": [
+  {
+   "ref": "product_kelawalla",
+   "label": {
+    "en": "kelawalla, yellowfin tuna",
+    "si": "කෙලවල්ලා මාළු",
+    "ta": "சூரை மீன், கெலவல்லா"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "cut into thick steaks, rubbed with turmeric and rinsed",
+    "si": "තර පෙති කපා, කහ අතුල්ලා හෝදා ගත්ත",
+    "ta": "தடிமனான துண்டுகளாக வெட்டி, மஞ்சள் தேய்த்துக் கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගාපු පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "half a scraped coconut",
+   "preparation": {
+    "en": "dry roasted almost black and ground to a paste",
+    "si": "කළු පාට වෙනකම් බැදලා අඹරා පේස්ට් කර ගත්ත",
+    "ta": "கிட்டத்தட்ட கருப்பாக வறுத்து விழுதாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "கொத்தமல்லி விதை"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": {
+    "en": "roasted with the coconut",
+    "si": "පොල් සමඟ බැදගත්ත",
+    "ta": "தேங்காயுடன் வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "roasted with the coconut",
+    "si": "පොල් සමඟ බැදගත්ත",
+    "ta": "தேங்காயுடன் வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "roasted with the coconut",
+    "si": "පොල් සමඟ බැදගත්ත",
+    "ta": "தேங்காயுடன் வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொரக்கா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": {
+    "en": "soaked in warm water and mashed",
+    "si": "උණු වතුරේ පොඟවා තලා ගත්ත",
+    "ta": "வெந்நீரில் ஊறவைத்து நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්ත",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub the fish steaks with turmeric and a little salt, rinse them and set them aside to drain.",
+    "minutes": 10
+   },
+   {
+    "text": "Dry roast the grated coconut in a heavy pan over a low flame, stirring without stopping, until it is dark brown and smells nutty.",
+    "minutes": 12
+   },
+   {
+    "text": "Throw the coriander, cumin and fennel into the same pan for the last two minutes of roasting.",
+    "minutes": 2
+   },
+   {
+    "text": "Grind the roasted coconut and spices with a little water into a thick dark paste.",
+    "minutes": 8
+   },
+   {
+    "text": "Soak the goraka in warm water and mash it, keeping the water.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the onion, garlic, curry leaves and pandan, then add the chilli powder for a moment.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir in the coconut paste with the goraka water and about two cups of plain water, add the salt, and simmer so the paste loses its raw edge.",
+    "minutes": 10
+   },
+   {
+    "text": "Lay the fish in the gravy, cover, and cook on a low flame, spooning gravy over the pieces instead of stirring.",
+    "minutes": 15
+   },
+   {
+    "text": "Cook uncovered for the last few minutes until the gravy is thick and the oil shows at the rim, then leave it to rest.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු පෙතිවලට කහ සහ ලුණු ටිකක් අතුල්ලලා හෝදලා, වතුර බේරෙන්න පැත්තකින් තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගාපු පොල් බර පෑන් එකක මද ගින්නේ, නවත්වන්නේ නැතිව අනමින්, තද දුඹුරු පාට වෙලා සුවඳ එන තුරු බැදගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "බැදීමේ අන්තිම විනාඩි දෙකට කොත්තමල්ලි, සූදුරු සහ මාදුරු එම පෑන් එකටම දමන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "බැදපු පොල් සහ කුළුබඩු වතුර ටිකක් දමා තද කළු පේස්ට් එකක් වෙනකම් අඹරා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගොරකා උණු වතුරේ පොඟවලා තලා ගන්න, වතුරත් තියාගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුට්ටියක පොල් තෙල් රත් කරලා ලූනු, සුදුළූනු, කරපිංචා සහ රම්පෙ තෙල් දාලා, මිරිස් කුඩුත් මොහොතකට දමන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පොල් පේස්ට් එක ගොරකා වතුර සහ වතුර කෝප්ප දෙකක් පමණ සමඟ දමලා, ලුණු එකතු කර, අමු රස නැති වෙන තුරු උතුරවන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මාළු හොදියට බහාලා, වහලා, මද ගින්නේ පිසගන්න; කලවම් නොකර හොදි මාළු මතට වත් කරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "අන්තිම විනාඩි කීපයට වැහුම අයින් කරලා හොදි තද වෙලා දාරයෙන් තෙල් මතු වෙන තුරු පිසලා, පස්සේ හිඳෙන්න තියන්න.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் துண்டுகளில் மஞ்சளும் சிறிது உப்பும் தேய்த்து அலசி, நீர் வடிய ஒதுக்கி வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "துருவிய தேங்காயை கனமான வாணலியில் சிறு தீயில், நிற்காமல் கிளறி, கரும் பழுப்பாகி நல்ல மணம் வரும் வரை வறுக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "வறுக்கும் கடைசி இரண்டு நிமிடத்தில் கொத்தமல்லி, சீரகம், பெருஞ்சீரகத்தை அதே வாணலியில் போடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "வறுத்த தேங்காயையும் மசாலாவையும் சிறிது தண்ணீர் விட்டு கெட்டியான கரும் விழுதாக அரையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "கொரக்காவை வெந்நீரில் ஊறவைத்து நசுக்குங்கள்; தண்ணீரையும் வைத்துக்கொள்ளுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, கறிவேப்பிலை, ரம்பை தாளித்து, மிளகாய்த் தூளையும் ஒரு கணம் சேர்க்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "தேங்காய் விழுதை கொரக்கா தண்ணீருடனும் இரண்டு கப் சாதாரண தண்ணீருடனும் சேர்த்து, உப்பு போட்டு, பச்சை வாசனை போகும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மீனை குழம்பில் வைத்து, மூடி, சிறு தீயில் வேகவிடுங்கள்; கிளறாமல் குழம்பை மேலே ஊற்றுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "கடைசி சில நிமிடம் மூடியைத் திறந்து குழம்பு இறுகி ஓரத்தில் எண்ணெய் தெரியும் வரை வேகவிட்டு, பின்பு ஆற வையுங்கள்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 40,
+  "passive_minutes": 25
+ },
+ "equipment": [
+  "heavy pan for roasting",
+  "grinding stone or mill",
+  "clay pot"
+ ],
+ "tips": {
+  "en": "Roast the coconut on the lowest flame you have and never walk away from the pan; the last two minutes decide whether the curry is deep and sweet or bitter. Grind it while still warm and it turns to paste much more easily.",
+  "si": "පොල් බැදගන්න තියෙන අඩුම ගින්නේ බැදගන්න, පෑන් එක ළඟින් අයින් වෙන්න එපා; කරිය ගැඹුරු මිහිරි වෙනවද තිත්ත වෙනවද තීරණය වෙන්නේ අන්තිම විනාඩි දෙකෙන්. උණුසුමෙන් තියෙද්දීම අඹරන්න, එතකොට පේස්ට් වෙන්නේ ලේසියෙන්.",
+  "ta": "தேங்காயை உங்களிடம் உள்ள மிகச் சிறிய தீயில் வறுங்கள், வாணலியை விட்டு அகலாதீர்கள்; கறி ஆழமான இனிப்பாக இருக்குமா கசக்குமா என்பதை கடைசி இரண்டு நிமிடம் தீர்மானிக்கும். சூடாக இருக்கும்போதே அரைத்தால் எளிதாக விழுதாகும்."
+ },
+ "health_note": {
+  "en": "The roasted coconut makes this the richest fish curry in the book, so serve a smaller ladle than you would of a thin red curry and pair it with a green leaf dish. The fish itself still gives lean protein and good fats.",
+  "si": "බැදපු පොල් නිසා මේක මාළු කරි අතරින් තරම වර්ගය, ඒ නිසා දියර රතු කරියට වඩා හැන්ද කුඩාවට ගෙන, කොළ ව්‍යංජනයක් සමඟ බෙදන්න. මාළුවෙන් හොඳ ප්‍රෝටීන් සහ හිතකර මේද තවමත් ලැබෙනවා.",
+  "ta": "வறுத்த தேங்காயால் இது மீன் கறிகளில் மிக நிறைவானது, எனவே நீர்க் குழம்பைவிட சிறிய கரண்டி அளவே பரிமாறி, ஒரு கீரைக் கறியுடன் சேர்த்துக்கொள்ளுங்கள். மீனில் இருந்து மெலிந்த புரதமும் நல்ல கொழுப்பும் கிடைக்கும்."
+ },
+ "tags": [
+  "high_protein",
+  "festive",
+  "filling",
+  "comfort",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

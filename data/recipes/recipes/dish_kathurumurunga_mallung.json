@@ -1,0 +1,306 @@
+{
+ "id": "dish_kathurumurunga_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 80,
+  "description": {
+   "en": "A small dry heap of leaves and coconut",
+   "si": "කොළ හා පොල් මිශ්‍ර වියළි කුඩා ගොඩක්",
+   "ta": "இலையும் தேங்காயும் சேர்ந்த சிறிய காய்ந்த குவியல்"
+  }
+ },
+ "yield_g": 330,
+ "ingredients": [
+  {
+   "ref": "product_kathurumurunga",
+   "label": {
+    "en": "sesbania leaves (kathurumurunga)",
+    "si": "කතුරුමුරුංගා කොළ",
+    "ta": "அகத்திக்கீரை"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 bunches, leaves only",
+   "preparation": {
+    "en": "leaves stripped from the stalks, washed and drained",
+    "si": "කඳන්වලින් කොළ ගලවා, සෝදා වතුර බේරාගෙන",
+    "ta": "தண்டுகளிலிருந்து இலைகளை உரித்து, கழுவி நீர் வடித்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 and 1/4 cups",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගාගත්",
+    "ta": "புதிதாகத் துருவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 small onions",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "பொடியாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "பொடியாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගෙන",
+    "ta": "இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி (உம்பலகடா)"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp, pounded",
+   "preparation": {
+    "en": "pounded fine",
+    "si": "සිහින්ව කොටාගෙන",
+    "ta": "நன்றாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Strip the small leaves off the stalks with your fingers, keeping out the woody bits, then wash and drain them well.",
+    "minutes": 12
+   },
+   {
+    "text": "Chop the leaves once or twice through so they are not in long strands.",
+    "minutes": 2
+   },
+   {
+    "text": "Rub the scraped coconut with the onion, green chillies, turmeric, pepper, salt and the pounded maldive fish if you are using it.",
+    "minutes": 3
+   },
+   {
+    "text": "Put the leaves into a dry pan with two spoons of water and cook on a medium flame until they collapse.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the coconut mixture, lower the flame and keep turning until the coconut is warm and the pan is dry.",
+    "minutes": 3
+   },
+   {
+    "text": "Take it off the fire and squeeze in the lime juice, which softens the natural bitterness.",
+    "minutes": null
+   },
+   {
+    "text": "Serve a small heap with rice and a hot curry; this is a dish eaten for its own slightly bitter taste.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ඇඟිලිවලින් කඳන්වලින් කුඩා කොළ ගලවා, ලී ගතියේ කොටස් වෙන් කර, හොඳින් සෝදා වතුර බේරාගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "කොළ දිගට තන්තු ලෙස නොතිබෙන සේ එක් දෙවරක් කපන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ගාගත් පොල් සමඟ ලූනු, අමු මිරිස්, කහ, ගම්මිරිස්, ලුණු හා (භාවිත කරන්නේ නම්) කොටාගත් උම්බලකඩ අතුල්ලා මිශ්‍ර කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කොළ වියළි පෑනකට දමා වතුර හැන්ද දෙකක් එකතු කර, මධ්‍යම ගින්නේ මැලවෙන තුරු උයන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පොල් මිශ්‍රණය දමා, ගින්න අඩු කර, පොල් රස්නය වී පෑන වියළෙන තුරු පෙරළන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන දෙහි යුෂ මිරිකා දමන්න; එයින් ස්වභාවික තිත්ත රස මෘදු වේ.",
+    "minutes": null
+   },
+   {
+    "text": "බත් හා සැර ව්‍යංජනයක් සමඟ කුඩා ගොඩක් බෙදන්න; මෙය ගන්නේ එහි සුළු තිත්ත රස නිසාමයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "விரல்களால் தண்டுகளிலிருந்து சிறிய இலைகளை உரித்து, கெட்டியான பகுதிகளை ஒதுக்கி, நன்கு கழுவி நீர் வடியுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "இலைகள் நீளமான இழைகளாக இருக்காதபடி ஒன்று இரண்டு முறை நறுக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "துருவிய தேங்காயுடன் வெங்காயம், பச்சை மிளகாய், மஞ்சள், மிளகு, உப்பு, (சேர்ப்பதாக இருந்தால்) இடித்த மாசி சேர்த்துப் பிசையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "இலைகளை காய்ந்த வாணலியில் இட்டு, இரண்டு ஸ்பூன் நீர் சேர்த்து, நடுத்தர தீயில் வாடும் வரை வேகவிடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "தேங்காய்க் கலவையைச் சேர்த்து, தீயைக் குறைத்து, தேங்காய் சூடாகி வாணலி காயும் வரை புரட்டுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி தேசிக்காய்ச் சாற்றைப் பிழியுங்கள்; இயற்கையான கசப்பு மென்மையாகும்.",
+    "minutes": null
+   },
+   {
+    "text": "சாதத்துடனும் காரமான கறியுடனும் சிறிய குவியலாகப் பரிமாறுங்கள்; இதன் சிறு கசப்புச் சுவைக்காகவே இது சாப்பிடப்படுகிறது.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 8,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "Strip the leaves the evening before if the morning is busy; stalks left in make the mallung stringy to chew. If the bitterness is too strong for the children, mix in a handful of gotukola.",
+  "si": "උදේ කාර්යබහුල නම් කොළ පෙර දින සවස ගලවා තබන්න; කඳන් ඉතිරි වුවහොත් මැල්ලුම හපන්නට නාරටි ගතියි. දරුවන්ට තිත්ත වැඩි නම් ගොටුකොළ අතලොස්සක් මිශ්‍ර කරන්න.",
+  "ta": "காலை நேரம் பிரமாதமாக இருந்தால் இலைகளை முந்தின மாலையே உரித்து வையுங்கள்; தண்டுகள் இருந்தால் வதக்கல் நாராகக் கடிக்க வேண்டியிருக்கும். குழந்தைகளுக்கு கசப்பு அதிகமெனில் ஒரு பிடி வல்லாரைக் கீரையைச் சேர்த்துக் கலக்குங்கள்."
+ },
+ "health_note": {
+  "en": "These leaves are among the better village sources of iron and calcium and carry plenty of fibre for very little money, which is why the older generation asks for them. The dish is dry and low in calories, and the small amount of coconut helps the body use the vitamins in the leaves.",
+  "si": "මේ කොළ ගමේ ලැබෙන යකඩ හා කැල්සියම් හොඳ මූලාශ්‍රවලින් එකක් වන අතර ඉතා අඩු මුදලකට කෙඳි බහුලව ලබා දේ; වැඩිහිටි පරම්පරාව මේවා ඉල්ලන්නේ ඒ නිසයි. ව්‍යංජනය වියළි හා කැලරි අඩු වන අතර, පොල් සුළු ප්‍රමාණය නිසා කොළවල විටමින් ශරීරයට ලැබීම වැඩි වේ.",
+  "ta": "இந்த இலைகள் கிராமத்தில் கிடைக்கும் இரும்பு மற்றும் கால்சியத்தின் சிறந்த ஆதாரங்களில் ஒன்று; மிகக் குறைந்த செலவில் நிறைய நார்ச்சத்தும் தருகின்றன, அதனால்தான் முதிய தலைமுறை இதைக் கேட்கிறது. இந்த உணவு காய்ந்ததும் குறைந்த கலோரி கொண்டதும்; சிறிதளவு தேங்காய் இலைகளின் வைட்டமின்களை உடல் பெறுவதற்கு உதவுகிறது."
+ },
+ "tags": [
+  "iron_rich",
+  "calcium_rich",
+  "high_fibre",
+  "low_calorie",
+  "light",
+  "budget",
+  "quick",
+  "traditional_remedy"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

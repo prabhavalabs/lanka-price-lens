@@ -1,0 +1,286 @@
+{
+ "id": "dish_pol_pani",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 70,
+  "description": {
+   "en": "A heaped spoonful to fill a pancake, roti or a roll of milk rice",
+   "si": "පෑන්කේක්, රොටී හෝ කිරිබත් රෝල් එකක් පුරවන්නට හැන්දක් පිරුණු ප්‍රමාණයක්",
+   "ta": "ஒரு பான்கேக், ரொட்டி அல்லது பால்சாத உருளையை நிரப்ப ஒரு நிறை கரண்டி"
+  }
+ },
+ "yield_g": 280,
+ "ingredients": [
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, grated",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "half a coconut, scraped",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "අලුතෙන් ගා ගත්",
+    "ta": "அப்போது துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 block, scraped",
+   "preparation": {
+    "en": "scraped small so it melts fast",
+    "si": "ඉක්මනින් දියවන ලෙස කුඩාවට ගා ගත්",
+    "ta": "விரைவில் உருக சிறிதாகத் துருவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 and a half tbsp, if the jaggery is weak",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm piece of bark",
+   "preparation": {
+    "en": "left whole and taken out at the end",
+    "si": "කැබැල්ල ලෙසම තබා අවසානයේ ඉවත් කරන්න",
+    "ta": "துண்டாகவே வைத்து இறுதியில் எடுக்கவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, crushed",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the coconut fresh if you can, since dried coconut drinks the syrup and stays hard.",
+    "minutes": null
+   },
+   {
+    "text": "Put the scraped jaggery in a pan with three tablespoons of water and the cinnamon and melt it on a low flame.",
+    "minutes": 5
+   },
+   {
+    "text": "Strain the melted jaggery if it is the muddy village kind, then return it to the pan with the cinnamon stick.",
+    "minutes": null
+   },
+   {
+    "text": "Stir in the coconut, salt, treacle and crushed cardamom, turning everything over until the coconut is evenly wet.",
+    "minutes": null
+   },
+   {
+    "text": "Cook on a low flame, stirring every minute so nothing catches, until the syrup has gone from loose to sticky and the coconut has darkened.",
+    "minutes": 15
+   },
+   {
+    "text": "Test by pushing the spoon through the middle: when the gap stays open for a moment instead of filling with syrup, it is done.",
+    "minutes": null
+   },
+   {
+    "text": "Taste and add the sugar only if the jaggery was weak, then cook one more minute.",
+    "minutes": 1
+   },
+   {
+    "text": "Fish out the cinnamon stick and let the pani pol cool in the pan, where it thickens further.",
+    "minutes": 15
+   },
+   {
+    "text": "Store in a clean dry jar with a tight lid; it keeps about a week in the kitchen and longer in the fridge.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පුළුවන් නම් පොල් අලුතෙන් ගා ගන්න, වියළි පොල් පැණිය උරාගෙන තදව තියෙනවා.",
+    "minutes": null
+   },
+   {
+    "text": "ගා ගත් හකුරු, මේස හැඳි තුනක වතුර සහ කුරුඳු සමඟ පෑන් එකකට දමා අඩු ගින්නේ දියකරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගමේ හකුරු වගේ කසට සහිත නම් දියකරගත් හකුරු පෙරා, කුරුඳු කැබැල්ල සමඟ නැවත පෑන් එකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පොල්, ලුණු, කිතුල් පැණි සහ කොටාගත් එනසාල් දමා, පොල් එකසේ තෙත් වන තුරු පෙරළමින් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අඩු ගින්නේ, කිසිවක් අල්ලන්නට නොදී මිනිත්තුවකට වරක් කලතමින්, පැණිය ලිහිල් සිට ඇලෙන ගතියට හැරී පොල් අඳුරු වන තුරු පිසින්න.",
+    "minutes": 15
+   },
+   {
+    "text": "හැන්ද මැදින් තල්ලු කර බලන්න, හිස් තැන පැණියෙන් නොපිරී මොහොතක් විවෘතව තිබේ නම් හරි.",
+    "minutes": null
+   },
+   {
+    "text": "රස බලා, හකුරු රස අඩු නම් පමණක් සීනි දමා තව මිනිත්තුවක් පිසින්න.",
+    "minutes": 1
+   },
+   {
+    "text": "කුරුඳු කැබැල්ල ඉවතට ගෙන, පැණි පොල් පෑන් එකේම සිසිල් වෙන්න දෙන්න, එවිට තව ඝන වෙනවා.",
+    "minutes": 15
+   },
+   {
+    "text": "පිරිසිදු වියළි, තද පියනක් ඇති බෝතලයක තබන්න, කුස්සියේ සතියක් පමණ, ශීතකරණයේ තවත් වැඩිපුර තිබෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "முடிந்தால் தேங்காயை அப்போதே துருவுங்கள்; உலர்ந்த தேங்காய் பாகை உறிஞ்சி இறுகியே இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "துருவிய வெல்லத்தை மூன்று மேசைக்கரண்டி நீரும் பட்டையும் சேர்த்து சட்டியில் போட்டு சிறு தீயில் உருக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கிராமத்து வெல்லம் போல கசடு இருந்தால் உருக்கிய வெல்லத்தை வடிகட்டி, பட்டையுடன் மீண்டும் சட்டியில் ஊற்றுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "தேங்காய், உப்பு, பாணி, இடித்த ஏலக்காய் சேர்த்து, தேங்காய் சமமாக ஈரமாகும்வரை புரட்டிக் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறு தீயில், அடியில் பிடிக்காமல் ஒரு நிமிடத்திற்கு ஒருமுறை கிளறி, பாகு நீர்மையிலிருந்து பிசுபிசுப்பாகி தேங்காய் கருமையாகும்வரை வேக விடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "கரண்டியை நடுவில் ஓட்டிப் பாருங்கள் - அந்த இடைவெளி பாகால் நிரம்பாமல் ஒரு நொடி திறந்திருந்தால் தயார்.",
+    "minutes": null
+   },
+   {
+    "text": "சுவைத்துப் பார்த்து, வெல்லத்தின் இனிப்பு குறைவாக இருந்தால் மட்டும் சீனி சேர்த்து இன்னும் ஒரு நிமிடம் வேக விடுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "பட்டைத் துண்டை எடுத்துவிட்டு, பாணிபொல்லை சட்டியிலேயே ஆற விடுங்கள் - இன்னும் கெட்டியாகும்.",
+    "minutes": 15
+   },
+   {
+    "text": "சுத்தமான, உலர்ந்த, இறுக்கமான மூடியுள்ள பாட்டிலில் வையுங்கள்; சமையலறையில் ஒரு வாரம், குளிர்சாதனப் பெட்டியில் இன்னும் அதிக நாள் இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 20,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "coconut scraper",
+  "heavy pan",
+  "wooden spoon",
+  "glass jar"
+ ],
+ "tips": {
+  "en": "How long you cook it decides what you can use it for: stop while it still glistens for pancakes and milk rice, and go five minutes further for a dry crumbly filling that will sit inside kavum or a roti without leaking. Village jaggery often carries sand and bark, so melt and strain it rather than dropping the block straight into the coconut. Any water left in the pan will sour the jar within two days, so cook it until the pan looks dry.",
+  "si": "කොපමණ වෙලාවක් පිසිනවාද කියා තීරණය වන්නේ ඒක මොකටද යොදාගන්නේ කියන එක, පෑන්කේක් සහ කිරිබත් සඳහා තවම දිලිසෙන විට නවත්වන්න, කැවුම් හෝ රොටී ඇතුළට කාන්දු නොවී යන වියළි පිරවුමකට තව මිනිත්තු පහක් පිසින්න. ගමේ හකුරුවල බොහෝ විට වැලි සහ පොතු ඇති නිසා, ගුලිය කෙළින්ම පොල්වලට දමනවා වෙනුවට දියකර පෙරන්න. පෑන් එකේ ඉතිරි වන වතුරෙන් බෝතලය දින දෙකකින් ඇඹුල් වන නිසා, පෑන් එක වියළි පෙනෙන තුරු පිසින්න.",
+  "ta": "எவ்வளவு நேரம் வேக வைக்கிறீர்கள் என்பதே இதை எதற்குப் பயன்படுத்தலாம் என்பதைத் தீர்மானிக்கும் - பான்கேக், பால்சாதத்திற்கு இன்னும் மினுமினுக்கும்போதே நிறுத்துங்கள்; கவும்மிலோ ரொட்டியிலோ கசியாமல் நிற்கும் வறட்டு நிரப்புக்கு இன்னும் ஐந்து நிமிடம் வேக விடுங்கள். கிராமத்து வெல்லத்தில் மணலும் பட்டையும் இருப்பதால், கட்டியை நேராகத் தேங்காயில் போடாமல் உருக்கி வடிகட்டுங்கள். சட்டியில் மீதமிருக்கும் நீர் இரண்டு நாளில் பாட்டிலைப் புளிக்கச் செய்யும் - சட்டி வறண்டு தெரியும்வரை வேக விடுங்கள்."
+ },
+ "health_note": {
+  "en": "Coconut gives this filling fibre and a fair amount of saturated fat, and the jaggery makes it a concentrated sweet, so a spoonful inside something is the way to eat it rather than by itself. Jaggery is still sugar even though it carries a little iron, so a household managing diabetes should treat pani pol the same way it treats sugar.",
+  "si": "පොල්වලින් මේ පිරවුමට තන්තු සහ සැලකිය යුතු සංතෘප්ත මේද ප්‍රමාණයක් ලැබෙනවා, හකුරු නිසා එය සාන්ද්‍ර පැණි රසක්, ඒ නිසා තනිවම නොව යමක් ඇතුළේ හැන්දක් ලෙසයි කන්නට ඕනෑ. සුළු යකඩ තිබුණත් හකුරු තවමත් සීනි නිසා, දියවැඩියාව පාලනය කරන ගෙදරක පැණි පොල් සලකන්නට ඕනෑ සීනි වගේම තමයි.",
+  "ta": "தேங்காய் இந்த நிரப்புக்கு நார்ச்சத்தையும் நல்ல அளவு நிறைவுற்ற கொழுப்பையும் தருகிறது; வெல்லம் இதை செறிவான இனிப்பாக்குகிறது - அதனால் தனியாக அல்ல, எதற்குள்ளாவது ஒரு கரண்டியாகச் சாப்பிடுவதே சரி. சிறிதளவு இரும்பு இருந்தாலும் வெல்லமும் சீனியே; சர்க்கரையைக் கவனிக்கும் வீட்டில் பாணிபொல்லையும் சீனியைப் போலவே கருத வேண்டும்."
+ },
+ "tags": [
+  "high_sugar",
+  "high_fibre",
+  "budget",
+  "quick",
+  "festive",
+  "comfort"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

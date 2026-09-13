@@ -1,0 +1,360 @@
+{
+ "id": "dish_shark_puttu",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 140,
+  "description": {
+   "en": "A fluffy heap of shredded fish and coconut beside rice",
+   "si": "බත් සමඟ ගන්න පුම්බපු මෝරු පුට්ටු ගොඩක්",
+   "ta": "சாதத்துடன் பொலபொலவென இருக்கும் சுறா புட்டு ஒரு பங்கு"
+  }
+ },
+ "yield_g": 560,
+ "ingredients": [
+  {
+   "ref": "product_mora",
+   "label": {
+    "en": "shark",
+    "si": "මෝරා",
+    "ta": "சுறா"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "2 thick steaks",
+   "preparation": {
+    "en": "washed with lime, boiled and shredded",
+    "si": "දෙහි දමා සෝදා, තම්බා ඉරාගත්",
+    "ta": "எலுமிச்சை சேர்த்துக் கழுவி, வேகவைத்து கிழித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "සූරාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "half a coconut, grated",
+   "preparation": {
+    "en": "freshly grated",
+    "si": "නැවුම්ව සූරාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලාගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 limes, one for washing the fish",
+   "preparation": {
+    "en": "one for washing, one squeezed at the end",
+    "si": "එකක් සෝදන්න, එකක් අවසානයේ මිරිකන්න",
+    "ta": "ஒன்று கழுவ, ஒன்று இறுதியில் பிழிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the shark steaks two or three times with the juice of one lime and a little turmeric to take away the sharp ammonia smell.",
+    "minutes": 10
+   },
+   {
+    "text": "Boil them in water with a little turmeric and half the salt until the flesh is cooked right through.",
+    "minutes": 15
+   },
+   {
+    "text": "Drain the fish, let it cool, then take off the skin, pull out the soft bone and shred the flesh fine with your fingers.",
+    "minutes": 12
+   },
+   {
+    "text": "Grate the coconut and chop the onion, green chilli and curry leaves small.",
+    "minutes": 8
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and fry the onion, green chilli and curry leaves until the onion is soft.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the turmeric, chilli powder and crushed pepper and stir them in the oil.",
+    "minutes": 1
+   },
+   {
+    "text": "Put in the shredded fish and toss it on a medium flame, breaking up any clumps, until it is dry and the strands separate.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the grated coconut and the rest of the salt and keep stirring until the coconut smells toasted and the whole thing looks fluffy.",
+    "minutes": 4
+   },
+   {
+    "text": "Squeeze the second lime over it, taste for salt and take it off the fire.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මෝරු කෑලි දෙහි ගෙඩියක යුෂ සහ කහ ටිකක් දමා දෙතුන් වරක් සෝදන්න; එතකොට තියුණු ඇමෝනියා ගඳ යනවා.",
+    "minutes": 10
+   },
+   {
+    "text": "කහ ටිකක් සහ ලුණු භාගයක් දමපු වතුරේ මස් හොඳින් ඉදෙන තුරු තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වතුර බේරා මාළුව සිසිල් වන්න තියා, හම ඉවත් කර, මෘදු ඇට ගලවා, ඇඟිලිවලින් මස් සිහින්ව ඉරාගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "පොල් සූරාගෙන ළූණු, අමු මිරිස් සහ කරපිංචා සිහින්ව කපාගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පළල් පෑන් එකක පොල් තෙල් රත් කර ළූණු, අමු මිරිස් සහ කරපිංචා ළූණු මෘදු වන තුරු බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "කහ, මිරිස් කුඩු සහ තලාගත් ගම්මිරිස් දමා තෙලේ කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ඉරාගත් මාළු දමා මධ්‍යම ගින්නේ, ගුලි කැඩෙන්න පෙරළමින්, වියළී නූල් වෙන් වන තුරු බැදගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "සූරාගත් පොල් සහ ඉතිරි ලුණු දමා, පොල් බැදුණු සුවඳ එන තුරු සහ මිශ්‍රණය පුම්බුණු ලෙස පෙනෙන තුරු කලවම් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "දෙවන දෙහි ගෙඩිය මතට මිරිකා, ලුණු රස බලා ලිපෙන් ඉවත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சுறா துண்டுகளை ஒரு எலுமிச்சைச் சாறும் சிறிது மஞ்சளும் சேர்த்து இரண்டு மூன்று முறை கழுவுங்கள்; அப்போது காரமான அம்மோனியா வாசம் போகும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சிறிது மஞ்சளும் பாதி உப்பும் சேர்த்த நீரில், இறைச்சி முழுமையாக வேகும் வரை வேகவையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "நீரை வடித்து மீனை ஆறவிட்டு, தோலை நீக்கி, மெல்லிய எலும்பை எடுத்து, விரல்களால் இறைச்சியை மெல்லியதாகக் கிழியுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "தேங்காயைத் துருவி, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலையைப் பொடியாக நறுக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அகன்ற வாணலியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலையை வெங்காயம் மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "மஞ்சள், மிளகாய்த் தூள், இடித்த மிளகு சேர்த்து எண்ணெயில் கிளறுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "கிழித்த மீனைச் சேர்த்து, நடுத்தர தீயில், கட்டிகளை உடைத்துக் கிளறி, உலர்ந்து நார் நாராகப் பிரியும் வரை வறுக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "துருவிய தேங்காயையும் மீதி உப்பையும் சேர்த்து, தேங்காய் வறுபட்ட மணம் வந்து கலவை பொலபொலவென ஆகும் வரை கிளறுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "இரண்டாவது எலுமிச்சையைப் பிழிந்து, உப்பைப் பார்த்து இறக்குங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot for boiling",
+  "wide pan",
+  "coconut scraper"
+ ],
+ "tips": {
+  "en": "The lime wash is not optional with shark; without it the whole dish smells of ammonia. Shred the flesh while it is just warm, not cold, and it comes apart in fine threads instead of lumps.",
+  "si": "මෝරු වලට දෙහි දමා සෝදන එක අත් හරින්න බැහැ; නැත්නම් මුළු කෑමෙන්ම ඇමෝනියා ගඳ එනවා. මස් සිසිල් වෙන්න කලින්, මඳක් උණුවෙන් තිබියදී ඉරාගන්න; එතකොට ගුලි නොවී සිහින් නූල් ලෙස වෙන් වෙනවා.",
+  "ta": "சுறாவுக்கு எலுமிச்சையில் கழுவுவதைத் தவிர்க்க முடியாது; இல்லையேல் முழு உணவும் அம்மோனியா வாசம் அடிக்கும். இறைச்சி ஆறுவதற்கு முன், சற்று சூடாக இருக்கும்போதே கிழியுங்கள்; அப்போது கட்டியாகாமல் மெல்லிய நாராகப் பிரியும்."
+ },
+ "health_note": {
+  "en": "A dry dish with a lot of protein and very little added oil, and the coconut adds fibre along with its fat. Shark is a large fish that carries more mercury than small ones, so it is not the best choice for pregnant mothers or small children.",
+  "si": "වියළි, ප්‍රෝටීන් වැඩි කෑමක්; අමතර තෙල් හරි අඩුයි, පොල්වලින් මේදය එක්කම තන්තු ලැබෙනවා. මෝරා ලොකු මාළුවක් නිසා කුඩා මාළුවලට වඩා රසදිය ප්‍රමාණය වැඩියි, ඒ නිසා ගර්භනී මවුවරුන්ට හා කුඩා දරුවන්ට හොඳම තේරීම නොවේ.",
+  "ta": "உலர்ந்த, புரதம் நிறைந்த உணவு; சேர்க்கும் எண்ணெய் மிகக் குறைவு, தேங்காய் கொழுப்புடன் நார்ச்சத்தும் தருகிறது. சுறா பெரிய மீன் என்பதால் சிறு மீன்களைவிட பாதரசம் அதிகம், எனவே கர்ப்பிணித் தாய்மார்களுக்கும் சிறு குழந்தைகளுக்கும் சிறந்த தேர்வு அல்ல."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "high_fibre",
+  "traditional_remedy",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,241 @@
+{
+ "id": "dish_fried_sprats",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 35,
+  "description": {
+   "en": "A small handful of crisp fried sprats at the edge of the rice",
+   "si": "බත් පිඟානේ කොනට කැඩෙන ගතියෙන් බැදපු හාල්මැස්සෝ අතලොස්සක්",
+   "ta": "சாதத் தட்டின் ஓரத்தில் மொறுமொறுப்பாக பொரித்த நெத்தலி ஒரு கைப்பிடி"
+  }
+ },
+ "yield_g": 140,
+ "ingredients": [
+  {
+   "ref": "product_sprats",
+   "label": {
+    "en": "dried sprats",
+    "si": "හාල්මැස්සෝ",
+    "ta": "நெத்தலி கருவாடு"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "picked over, rinsed and dried completely",
+    "si": "කුණු ඉවත් කර, සෝදා, හොඳින් වේළා",
+    "ta": "கல் நீக்கி, அலசி, நன்கு உலர்த்தியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "about 2 and a half tbsp taken up",
+   "preparation": {
+    "en": "fry in a deeper pool and pour the rest back into the bottle",
+    "si": "තෙල් වැඩිපුර දමා බැද, ඉතිරිය නැවත බෝතලයට දමන්න",
+    "ta": "அதிக எண்ணெயில் பொரித்து, மீதியை மீண்டும் பாட்டிலில் விடவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a good pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick through the sprats, throwing out any that have gone soft, and rub off the loose scales with your fingers.",
+    "minutes": null
+   },
+   {
+    "text": "Rinse them in one change of water and spread them on a cloth until they are properly dry, because wet sprats spit in hot oil.",
+    "minutes": 10
+   },
+   {
+    "text": "Toss the dry sprats with the turmeric, the salt and the chilli powder if you want them hot.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil in a small deep pan until one sprat dropped in sizzles immediately.",
+    "minutes": 3
+   },
+   {
+    "text": "Fry them a handful at a time, stirring with a slotted spoon, until they are stiff and bronze all over.",
+    "minutes": 7
+   },
+   {
+    "text": "Throw the curry leaf sprigs into the oil for the last ten seconds so they crisp along with the fish.",
+    "minutes": null
+   },
+   {
+    "text": "Drain everything on paper and let it cool a little; the crunch comes as they cool, not while they are in the pan.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "හාල්මැස්සන් අතරින් මැලවුණු ඒවා ඉවත් කර, ලිහිල් කොරපොතු ඇඟිලිවලින් ගලවා දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර වරක් මාරු කර සෝදා, රෙද්දක් මත විහිදා හොඳින් වේළෙන්න තියන්න; තෙත හාල්මැස්සන් රත් තෙලේ පනිනවා.",
+    "minutes": 10
+   },
+   {
+    "text": "වේළිච්ච හාල්මැස්සන්ට කහ, ලුණු සහ සැර ඕනෑ නම් මිරිස් කුඩු දමා කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා ගැඹුරු පෑන් එකක තෙල් රත් කරන්න; හාල්මැස්සෙක් දැමූ ගමන් හිස් හඬක් ඇතිවිය යුතුයි.",
+    "minutes": 3
+   },
+   {
+    "text": "අතලොස්සක් බැගින් දමා, සිදුරු හැන්දකින් කලතමින්, හොඳින් තද වී රන්තඹ පාට වන තෙක් බදින්න.",
+    "minutes": 7
+   },
+   {
+    "text": "අන්තිම තත්පර දහයේ කරපිංචා අත් තෙලට දමා මාළු සමඟම කැඩෙන ගතියට බැදෙන්න දෙන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සියල්ල කඩදාසියක් මත තෙල් බේරා මදක් සිසිල් වෙන්න තියන්න; කැඩෙන ගතිය එන්නේ පෑන් එකේ නොව සිසිල් වෙද්දී.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "நெத்தலி கருவாட்டை பார்த்து, மென்மையாகி போனவற்றை நீக்கி, தளர்ந்த செதுள்களை விரலால் உதிர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒருமுறை நீர் மாற்றி அலசி, துணியில் பரப்பி நன்கு உலர்த்தவும்; ஈரமான கருவாடு சூடான எண்ணெயில் தெறிக்கும்.",
+    "minutes": 10
+   },
+   {
+    "text": "உலர்ந்த கருவாட்டில் மஞ்சள், உப்பு, காரம் வேண்டுமானால் மிளகாய்த் தூள் சேர்த்து புரட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய ஆழமான வாணலியில் எண்ணெயை காய்ச்சவும்; ஒரு கருவாட்டை போட்டால் உடனே சத்தம் வர வேண்டும்.",
+    "minutes": 3
+   },
+   {
+    "text": "ஒரு கைப்பிடி அளவாக போட்டு, துளை கரண்டியால் கிளறி, நன்கு இறுகி பொன்னிறமாகும் வரை பொரிக்கவும்.",
+    "minutes": 7
+   },
+   {
+    "text": "கடைசி பத்து விநாடிகளில் கறிவேப்பிலையை எண்ணெயில் போட்டு, மீனுடன் சேர்ந்து மொறுமொறுப்பாக பொரியவிடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அனைத்தையும் காகிதத்தில் வடிகட்டி சிறிது குளிரவிடவும்; மொறுமொறுப்பு வாணலியில் அல்ல, குளிரும்போதே வரும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 10,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "small deep pan",
+  "slotted spoon",
+  "paper to drain"
+ ],
+ "tips": {
+  "en": "Buy sprats that are stiff and silver rather than yellowed, and keep them in a closed tin; the yellow ones are old oil in the fish and turn bitter in the pan. Never crowd the pan, or they steam instead of crisping.",
+  "si": "කහ පාට වූ ඒවා වෙනුවට තද, රිදී පාට හාල්මැස්සන් ගන්න; කහ පාට කියන්නේ මාළුවේ තෙල් පැරණි වීමයි, ඒවා පෑන් එකේ තිත්ත වෙනවා. ගත්ත හාල්මැස්සන් වැසුණු ටින් එකක තබා ගන්න. පෑන් එක පිරෙන්න දමන්න එපා; එවිට කැඩෙන්නේ නැතුව හුමාලයේ තැම්බෙනවා.",
+  "ta": "மஞ்சளாக மாறியவற்றை விட்டு, இறுகிய வெள்ளி நிற கருவாட்டை வாங்குங்கள்; மஞ்சள் நிறம் என்பது மீனின் எண்ணெய் பழுதானதற்கு அடையாளம், அது வாணலியில் கசக்கும். வாங்கியதை மூடிய தகரப் பெட்டியில் வைக்கவும். வாணலியில் நிறைய போட வேண்டாம்; இல்லையேல் மொறுமொறுப்பாகாமல் வேகும்."
+ },
+ "health_note": {
+  "en": "Sprats are eaten bones and all, which makes them one of the cheapest sources of calcium in the market, and they carry good fish oil. They are salty and fried, so a small heap on the plate is the sensible amount.",
+  "si": "හාල්මැස්සන් කටු එක්කම කන නිසා ඒවා කඩපොළේ ලාබම කැල්සියම් මූලාශ්‍රවලින් එකක්; හොඳ මාළු තෙලකුත් තිබෙනවා. ලුණු සහිත, බැදපු නිසා පිඟානේ කුඩා ගොඩක් තමයි නියම ප්‍රමාණය.",
+  "ta": "நெத்தலி கருவாட்டை முள்ளுடன் சாப்பிடுவதால், அது சந்தையில் கிடைக்கும் மிக மலிவான கால்சியம் மூலங்களில் ஒன்று; நல்ல மீன் எண்ணெயும் உள்ளது. உப்பும் பொரிப்பும் இருப்பதால், தட்டில் ஒரு சிறிய குவியல் அளவே சரி."
+ },
+ "tags": [
+  "high_protein",
+  "calcium_rich",
+  "deep_fried",
+  "quick",
+  "budget",
+  "low_carb",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

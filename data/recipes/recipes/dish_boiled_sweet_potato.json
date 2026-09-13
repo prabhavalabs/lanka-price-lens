@@ -1,0 +1,198 @@
+{
+ "id": "dish_boiled_sweet_potato",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 210,
+  "description": {
+   "en": "A hot root peeled back at the table, with coconut",
+   "si": "මේසයේම ලෙලි ගසා ගන්නා උණුසුම් බතලයක්, පොල් සමඟ",
+   "ta": "மேசையிலேயே தோலுரித்துச் சாப்பிடும் சூடான கிழங்கு, தேங்காயுடன்"
+  }
+ },
+ "yield_g": 850,
+ "ingredients": [
+  {
+   "ref": "product_sweet_potato",
+   "label": {
+    "en": "sweet potato",
+    "si": "බතල",
+    "ta": "சர்க்கரைவள்ளிக்கிழங்கு"
+   },
+   "quantity": 800,
+   "unit": "g",
+   "household": "4 medium roots",
+   "preparation": {
+    "en": "scrubbed, skin left on, large ones halved",
+    "si": "හොඳින් සෝදාගත්, පොත්ත සමඟම, විශාල ඒවා දෙබෑ කළ",
+    "ta": "நன்கு கழுவியது, தோலுடன், பெரியவை இரண்டாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": {
+    "en": "for the water and a pinch for the coconut",
+    "si": "වතුරට සහ පොල් සඳහා ස්වල්පයක්",
+    "ta": "தண்ணீருக்கும், தேங்காய்க்கு ஒரு சிறிதும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "half a coconut, scraped",
+   "preparation": {
+    "en": "freshly scraped, a pinch of salt mixed through",
+    "si": "අලුතින් ගාගත්, ලුණු ස්වල්පයක් මිශ්‍ර කළ",
+    "ta": "புதிதாகத் துருவியது, சிறிது உப்பு கலந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrub the sweet potatoes well under running water and leave the skin on so they do not go watery.",
+    "minutes": 5
+   },
+   {
+    "text": "Cut the large ones in half across and keep the small ones whole, so everything cooks in the same time.",
+    "minutes": null
+   },
+   {
+    "text": "Stand them in a pot with water halfway up, add the salt, cover and bring to a boil.",
+    "minutes": 6
+   },
+   {
+    "text": "Cook until a stick slides in with no resistance and the skin begins to loosen.",
+    "minutes": 28
+   },
+   {
+    "text": "Pour off the water and leave the pot on the dying fire for a minute to dry the roots.",
+    "minutes": 2
+   },
+   {
+    "text": "Scrape the coconut and mix a pinch of salt through it.",
+    "minutes": null
+   },
+   {
+    "text": "Peel the skin back with your fingers while the root is hot and eat it with the coconut.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බතල ගලා යන වතුරේ හොඳින් සෝදා ගන්න, වතුර ගතිය නොවන්නට පොත්ත ඉවත් නොකරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "විශාල ඒවා හරහට දෙබෑ කර, කුඩා ඒවා මුළුවට ම තබන්න; එවිට සියල්ල එකවර පිසේ.",
+    "minutes": null
+   },
+   {
+    "text": "හැළියකට දමා අඩක් වැසෙන තරම් වතුර වත් කර, ලුණු දමා, වසා උතුරන්න තබන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "කූරක් කිසි බාධාවකින් තොරව ඇදෙන තෙක්, පොත්ත ගැලවෙන්න පටන් ගන්නා තෙක් උයන්න.",
+    "minutes": 28
+   },
+   {
+    "text": "වතුර බේරා ඉවත් කර, බතල වියළෙන්නට හැළිය මිනිත්තුවක් ලිප මතම තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පොල් ගාගෙන, ලුණු ස්වල්පයක් එයට මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බතල උණුසුම්ව ම ඇඟිලිවලින් පොත්ත ගලවා, පොල් සමඟ කන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கிழங்குகளை ஓடும் தண்ணீரில் நன்கு கழுவவும், நீர்த்துப்போகாமல் இருக்கத் தோலை நீக்க வேண்டாம்.",
+    "minutes": 5
+   },
+   {
+    "text": "பெரியவற்றை நடுவில் இரண்டாக வெட்டி, சிறியவற்றை முழுதாக வைக்கவும்; அப்போது எல்லாம் ஒரே நேரத்தில் வேகும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்தில் நிறுத்தி, பாதி மூழ்கும் அளவு தண்ணீர் விட்டு, உப்பு சேர்த்து, மூடிக் கொதிக்கவிடவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "குச்சி எந்தத் தடையும் இல்லாமல் இறங்கும் வரை, தோல் தளரத் தொடங்கும் வரை வேகவிடவும்.",
+    "minutes": 28
+   },
+   {
+    "text": "தண்ணீரை வடித்துவிட்டு, கிழங்கு உலர, பாத்திரத்தை ஒரு நிமிடம் அடுப்பில் வைக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தேங்காயைத் துருவி, அதில் சிறிது உப்பைக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கிழங்கு சூடாக இருக்கும்போதே விரலால் தோலை உரித்து, தேங்காயுடன் சாப்பிடவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 30,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot with lid",
+  "coconut scraper"
+ ],
+ "tips": {
+  "en": "Boil them standing in shallow water rather than drowned, so they steam and stay dense instead of turning soggy. Deep orange roots taste sweeter and carry more goodness than the pale white-fleshed kind.",
+  "si": "වතුරේ ගිල්වා නොව, අඩක් වතුරේ සිටුවා තෙම්බන්න; එවිට වාෂ්පයෙන් පිසී, ජලයෙන් පිරී මෘදු නොවී තද ගතිය රැඳේ. තද තැඹිලි පාට බතල, ලා සුදු පාට ඒවාට වඩා පැණි රස හා ගුණදායකයි.",
+  "ta": "தண்ணீரில் முழுக்கமாக அல்ல, பாதி நீரில் நிறுத்தி வேகவைக்கவும்; அப்போது ஆவியில் வெந்து, நீர்த்துப்போகாமல் இறுக்கமாக இருக்கும். அடர் ஆரஞ்சு நிறக் கிழங்கு வெளிர் வெள்ளைக் கிழங்கை விட இனிப்பாகவும் சத்தானதாகவும் இருக்கும்."
+ },
+ "health_note": {
+  "en": "Orange-fleshed sweet potato carries vitamin A and fibre, and most of it sits just under the skin, so peel it at the table rather than before boiling. It is still a starch, so one medium root is a portion, and the coconut alongside adds fat.",
+  "si": "තැඹිලි පාට බතලවල විටමින් A සහ තන්තු ඇත; ඒවායින් වැඩි කොටසක් ඇත්තේ පොත්ත යටම ය, එබැවින් තෙම්බීමට පෙර නොව මේසයේ ම ලෙලි ගසන්න. එය තවමත් පිෂ්ටයක්, එබැවින් මධ්‍යම බතලයක් එක් කොටසකි; සමඟ ගන්නා පොල් මේදය එකතු කරයි.",
+  "ta": "ஆரஞ்சு நிற சர்க்கரைவள்ளியில் வைட்டமின் A மற்றும் நார்ச்சத்து உண்டு; அவற்றின் பெரும்பகுதி தோலுக்கு அடியிலேயே இருப்பதால், வேகவைப்பதற்கு முன் அல்ல, மேசையிலேயே உரிக்கவும். இது மாவுச்சத்து உணவு, எனவே ஒரு நடுத்தர கிழங்கு ஒரு பங்கு; உடன் சாப்பிடும் தேங்காய் கொழுப்பைச் சேர்க்கும்."
+ },
+ "tags": [
+  "high_fibre",
+  "kid_friendly",
+  "elderly_friendly",
+  "budget",
+  "one_pot",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

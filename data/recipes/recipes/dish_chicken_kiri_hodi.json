@@ -1,0 +1,397 @@
+{
+ "id": "dish_chicken_kiri_hodi",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 250,
+  "description": {
+   "en": "A deep ladle of pale gravy poured over string hoppers or hoppers",
+   "si": "ඉඳිආප්ප හෝ ආප්ප මතට වත් කරන සුදු පැහැති හොදි ගැඹුරු හැන්දක්",
+   "ta": "இடியப்பம் அல்லது ஆப்பத்தின் மேல் ஊற்றும் ஒரு கரண்டி வெளிர் குழம்பு"
+  }
+ },
+ "yield_g": 1050,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken, small bone-in pieces",
+    "si": "කුකුල් මස්, කුඩා ඇට සහිත කැබලි",
+    "ta": "கோழி இறைச்சி, எலும்புடன் சிறு துண்டுகள்"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 thighs cut small",
+   "preparation": {
+    "en": "cut into small pieces, washed",
+    "si": "කුඩා කැබලිවලට කපා සෝදා ගත්",
+    "ta": "சிறு துண்டுகளாக நறுக்கி அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලා ගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp, just for colour",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ කොළය",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 10 cm length",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm quill",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 500,
+   "unit": "ml",
+   "household": "two and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන වර මිරිකා ගත් තුනී කිරි",
+    "ta": "இரண்டாம் பால், தளர்ந்த பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකා ගත් ගන කිරි",
+    "ta": "முதல் பால், கெட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "எலுமிச்சைச் சாறு"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "juice of 1 lime",
+   "preparation": {
+    "en": "squeezed, added off the fire",
+    "si": "මිරිකා ගත්, ලිපෙන් බැහැර කර දමන",
+    "ta": "பிழிந்தது, அடுப்பை விட்டு இறக்கிய பின் சேர்ப்பது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the chicken into small pieces so that every bowl of gravy gets a piece, and wash them.",
+    "minutes": null
+   },
+   {
+    "text": "Put the chicken, sliced onion, garlic, ginger, slit green chillies, fenugreek, turmeric, curry leaves, pandan, cinnamon and salt into a pot with the thin coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it up gently and simmer uncovered until the chicken is cooked and the onion has gone soft and sweet.",
+    "minutes": 15
+   },
+   {
+    "text": "Turn the fire right down and pour in the thick coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Keep stirring in one direction and let it come only to the edge of a boil; if the milk boils hard it splits and the hodi turns grainy.",
+    "minutes": 4
+   },
+   {
+    "text": "Take the pot off the fire and squeeze in the lime juice, stirring once.",
+    "minutes": null
+   },
+   {
+    "text": "Taste it: kiri hodi should be pale, lightly salty, faintly sour and only just warm with chilli.",
+    "minutes": null
+   },
+   {
+    "text": "Ladle it hot over string hoppers, hoppers or pittu, with the chicken pieces shared out.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "හැම හොදි කෝප්පයකටම කැබැල්ලක් යන ලෙස කුකුල් මස් කුඩා කැබලිවලට කපා සෝදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මස්, කපා ගත් ළූණු, සුදුළූණු, ඉඟුරු, පලා ගත් අමු මිරිස්, උළුහාල්, කහ, කරපිංචා, රම්පෙ, කුරුඳු සහ ලුණු වළඳකට දමා තුනී පොල් කිරි වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෙමින් රස්නය දී, මස් තැම්බී ළූණු මෘදු වන තුරු වැහුමක් නොදා උයන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ගිනි හොඳටම අඩු කර ගන පොල් කිරි වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එකම දිශාවට කලවම් කරමින් උතුරන ලකුණ දක්වා පමණක් ගෙන එන්න; තදින් උතුරුවුවහොත් කිරි කැඩී හොදිය කැට ගැහෙනවා.",
+    "minutes": 4
+   },
+   {
+    "text": "වළඳ ලිපෙන් ඉවත් කර දෙහි යුෂ මිරිකා වරක් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "රස බලන්න: කිරි හොදි සුදු පැහැති, ලුණු රස මඳ, ඇඹුල් ගතිය සියුම් සහ මිරිස් සැර අඩු විය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "ඉඳිආප්ප, ආප්ප හෝ පිට්ටු මතට උණුසුමින් වත් කර, මස් කැබලි හැමෝටම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஒவ்வொரு கிண்ணக் குழம்பிலும் ஒரு துண்டு கிடைக்கும்படி கோழியைச் சிறு துண்டுகளாக நறுக்கி அலசுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கோழி, நறுக்கிய வெங்காயம், பூண்டு, இஞ்சி, கீறிய பச்சை மிளகாய், வெந்தயம், மஞ்சள், கறிவேப்பிலை, ரம்பை, பட்டை, உப்பை ஒரு பாத்திரத்தில் இட்டு இரண்டாம் தேங்காய்ப் பாலை ஊற்றுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மெதுவாகச் சூடாக்கி, கோழி வெந்து வெங்காயம் மென்மையாகும் வரை மூடாமல் வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "தீயை மிகக் குறைத்து கெட்டித் தேங்காய்ப் பாலை ஊற்றுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரே திசையில் கிளறி, கொதிக்கும் விளிம்பு வரை மட்டும் கொண்டு வாருங்கள்; கடுமையாகக் கொதித்தால் பால் திரிந்து குழம்பு உறைந்துவிடும்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி எலுமிச்சைச் சாறு பிழிந்து ஒரு முறை கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சுவை பாருங்கள்: பால் குழம்பு வெளிராக, லேசான உப்புடன், சிறிது புளிப்புடன், மிளகாய்க் காரம் குறைவாக இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "இடியப்பம், ஆப்பம் அல்லது பிட்டின் மேல் சூடாக ஊற்றி, கோழித் துண்டுகளை அனைவருக்கும் பகிர்ந்து கொடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot or deep pan",
+  "ladle"
+ ],
+ "tips": {
+  "en": "The fenugreek is small but important, because it gives the slippery body that makes the gravy cling to string hoppers. Never cover the pot after the thick milk goes in, and never reheat it on a high flame.",
+  "si": "උළුහාල් ප්‍රමාණය කුඩා වුණත් වැදගත්; ඉඳිආප්පවලට හොදිය ඇලෙන ඒ ලිස්සන ගතිය එන්නේ ඒකෙන්. ගන කිරි දැම්මට පස්සේ වළඳ වහන්න එපා, ලොකු ගින්නේ නැවත උණු කරන්නත් එපා.",
+  "ta": "வெந்தயம் சிறிதளவே என்றாலும் முக்கியம்; இடியப்பத்தில் குழம்பு ஒட்டும் அந்த வழுவழுப்பான தன்மையை அது தருகிறது. கெட்டிப் பால் சேர்த்த பின் மூடி வைக்க வேண்டாம், பெருந்தீயில் மீண்டும் சூடாக்கவும் வேண்டாம்."
+ },
+ "health_note": {
+  "en": "This is a light, soothing gravy with only a little meat, easy for small children and elders and for anyone recovering from a stomach upset. Most of the calories come from the coconut milk rather than the chicken.",
+  "si": "මේක මස් ස්වල්පයක් සමග තියෙන සැහැල්ලු, සනීප හොදියක්; කුඩා ළමයින්ට, වැඩිහිටියන්ට සහ බඩේ අමාරුවකින් සුවය ලබන අයට පහසුයි. කැලරි වැඩිපුරම එන්නේ කුකුල් මසෙන් නොව පොල් කිරිවලින්.",
+  "ta": "இது சிறிதளவு இறைச்சியுடன் கூடிய இலகுவான, ஆறுதலான குழம்பு; சிறு பிள்ளைகள், முதியவர்கள், வயிற்றுக் கோளாறில் இருந்து மீள்பவர்களுக்கு எளிது. கலோரி பெரும்பாலும் கோழியிலிருந்து அல்ல, தேங்காய்ப் பாலிலிருந்து வருகிறது."
+ },
+ "tags": [
+  "light",
+  "kid_friendly",
+  "elderly_friendly",
+  "comfort",
+  "quick",
+  "low_carb"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

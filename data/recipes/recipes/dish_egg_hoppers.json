@@ -1,0 +1,288 @@
+{
+ "id": "dish_egg_hoppers",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 250,
+  "description": {
+   "en": "Two or three hoppers, one of them with a soft egg in the middle",
+   "si": "ආප්ප දෙක තුනක්, ඉන් එකක් මැද මෘදු බිත්තරයක් සමඟ",
+   "ta": "இரண்டு மூன்று ஆப்பம், அதில் ஒன்று நடுவில் மென்மையான முட்டையுடன்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "about 3 cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකාගත් ගන කිරි",
+    "ta": "முதல் பால், தடிப்பானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "instant yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "1 egg per person",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp, for wiping the pan",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Stir the yeast and sugar into half a cup of warm water and leave it until it froths up.",
+    "minutes": 10
+   },
+   {
+    "text": "Whisk the rice flour with the coconut milk and about two cups of water until the batter is smooth and runs off the ladle like thin milk.",
+    "minutes": 8
+   },
+   {
+    "text": "Pour in the yeast water, cover the pot with a cloth and leave the batter to rise in a warm corner.",
+    "minutes": 480
+   },
+   {
+    "text": "Stir the risen batter down, add the salt and thin it with a little water if it has thickened overnight.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the hopper pan, wipe it with an oiled cloth, pour in one ladle of batter and swirl the pan so the batter climbs the sides.",
+    "minutes": null
+   },
+   {
+    "text": "Break an egg into the hollow in the middle and sprinkle it with a pinch of salt and pepper.",
+    "minutes": null
+   },
+   {
+    "text": "Cover the pan and cook on a low flame until the rim is lacy and crisp and the white has just set over a soft yolk.",
+    "minutes": 5
+   },
+   {
+    "text": "Slide the hopper out with a thin spoon, make the other three egg hoppers the same way, then pour plain hoppers with the batter that is left.",
+    "minutes": 20
+   },
+   {
+    "text": "Serve the hoppers straight from the pan with lunu miris or a coconut gravy, before the rims go soft.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "යීස්ට් සහ සීනි කෝප්ප භාගයක උණුසුම් වතුරේ දමා පෙණ නගින තුරු තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සහල් පිටිවලට පොල් කිරි සහ කෝප්ප දෙකක් පමණ වතුර දමා ගුලිය හොඳින් ගසා, හැන්දෙන් තුනී කිරි සේ වැටෙන පදමට සකසන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "යීස්ට් වතුර එකතු කර, භාජනය රෙද්දකින් වසා, උණුසුම් තැනක ගුලිය පිම්බෙන්නට තබන්න.",
+    "minutes": 480
+   },
+   {
+    "text": "පිම්බුණු ගුලිය හොඳින් කලවම් කර ලුණු දමා, ඝන වී තිබේ නම් වතුර ස්වල්පයක් දමා පදම කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ආප්ප තැටිය රත් කර තෙල් තැවරූ රෙද්දකින් පිස, හැන්දක් ගුලිය දමා තැටිය කරකවා ගුලිය පැති දිගේ නගින්නට හරින්න.",
+    "minutes": null
+   },
+   {
+    "text": "මැද ඇති කුඩා වළේට බිත්තරයක් කඩා දමා, ලුණු සහ ගම්මිරිස් ස්වල්පයක් ඉසින්න.",
+    "minutes": null
+   },
+   {
+    "text": "තැටිය වසා, අඩු ගින්දරේ, දාරය ලේස් සේ පිටි ගැසී මාලුයි, බිත්තර සුදු මදය තදවී කහ මදය මෘදුව තිබෙන තුරු උයන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "තුනී හැන්දකින් ආප්පය ගලවා ගෙන, අනෙක් බිත්තර ආප්ප තුනද එසේම සාදා, ඉතිරි ගුලියෙන් සාමාන්‍ය ආප්ප තවරන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "දාර මැලවීමට පෙර, ලුණු මිරිස් හෝ කිරි හොද්ද සමඟ ආප්ප තැටියෙන් ගත් ගමන් බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஈஸ்ட்டையும் சீனியையும் அரை கப் வெதுவெதுப்பான தண்ணீரில் கலந்து நுரை வரும்வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அரிசி மாவில் தேங்காய்ப் பாலும் சுமார் இரண்டு கப் தண்ணீரும் சேர்த்து நன்கு அடித்து, கரண்டியில் நீர்த்த பால் போல வழியும் பதத்திற்குக் கொண்டுவரவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "ஈஸ்ட் தண்ணீரைச் சேர்த்து, பாத்திரத்தை ஒரு துணியால் மூடி, வெதுவெதுப்பான இடத்தில் மாவு புளிக்க வைக்கவும்.",
+    "minutes": 480
+   },
+   {
+    "text": "புளித்த மாவைக் கலக்கி உப்பு சேர்த்து, இரவில் தடித்திருந்தால் சிறிது தண்ணீர் விட்டு பதம் சரிசெய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆப்பச் சட்டியைக் காய்ச்சி எண்ணெய் தடவிய துணியால் துடைத்து, ஒரு கரண்டி மாவை ஊற்றி, சட்டியைச் சுழற்றி மாவு விளிம்பு வரை ஏறும்படி பரப்பவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நடுவில் உள்ள குழிவில் ஒரு முட்டையை உடைத்து விட்டு, சிறிதளவு உப்பும் மிளகும் தூவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சட்டியை மூடி, குறைந்த தீயில், விளிம்பு மொறுமொறுப்பாகி, முட்டையின் வெள்ளைப் பகுதி இறுகி மஞ்சள் கரு மென்மையாக இருக்கும்வரை வேகவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மெல்லிய கரண்டியால் ஆப்பத்தை எடுத்து, மற்ற மூன்று முட்டை ஆப்பங்களையும் அதேபோல் செய்து, மீதி மாவில் சாதா ஆப்பம் ஊற்றவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "விளிம்பு மென்மையாகும் முன், லுணு மிரிஸ் அல்லது தேங்காய்க் குழம்புடன் ஆப்பத்தை சட்டியிலிருந்து எடுத்தவுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "hopper pan with lid",
+  "mixing pot",
+  "ladle"
+ ],
+ "tips": {
+  "en": "The first hopper always sticks, so treat it as the pan's test piece; keep the flame low once the egg is in or the base burns before the white sets.",
+  "si": "පළමු ආප්පය සැමවිටම තැටියට ඇලෙන නිසා එය පරීක්ෂණ ආප්පයක් ලෙස සලකන්න; බිත්තර දැමූ පසු ගින්දර අඩු කරන්න, නැත්නම් සුදු මදය තදවීමට පෙර පහළ දැවෙනවා.",
+  "ta": "முதல் ஆப்பம் எப்போதும் சட்டியில் ஒட்டும், அதை சோதனை ஆப்பமாகக் கருதவும்; முட்டை போட்ட பிறகு தீயைக் குறைக்கவும், இல்லையேல் வெள்ளைப் பகுதி இறுகும் முன் அடிப்பகுதி கருகிவிடும்."
+ },
+ "health_note": {
+  "en": "An egg in each hopper turns a plain rice-flour breakfast into a filling one with proper protein; the coconut milk brings some fat, so one or two hoppers are enough for most people.",
+  "si": "සෑම ආප්පයකටම බිත්තරයක් දැමීමෙන් සාමාන්‍ය සහල් පිටි උදෑසන ආහාරය ප්‍රෝටීන් සහිත පිරුණු ආහාරයක් වේ; පොල් කිරි නිසා තෙල් ප්‍රමාණයක් ඇති බැවින් බොහෝ දෙනෙකුට ආප්ප එකක් දෙකක් ප්‍රමාණවත්.",
+  "ta": "ஒவ்வொரு ஆப்பத்திலும் ஒரு முட்டை இருப்பதால் சாதாரண அரிசி மாவு காலை உணவு புரதம் நிறைந்த வயிறு நிறைக்கும் உணவாக மாறுகிறது; தேங்காய்ப் பாலில் கொழுப்பு உள்ளதால் பலருக்கு ஒன்றிரண்டு ஆப்பமே போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "kid_friendly",
+  "comfort",
+  "light"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,419 @@
+{
+ "id": "dish_nasi_goreng",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 350,
+  "description": {
+   "en": "A heaped plate of dark fried rice with a fried egg on top",
+   "si": "මතුපිට බැදපු බිත්තරයක් සමඟ තද පාට බැදපු බත් පිඟානක්",
+   "ta": "மேலே ஒரு பொரித்த முட்டையுடன் கறுத்த வறுத்த சோற்றின் ஒரு தட்டு"
+  }
+ },
+ "yield_g": 1400,
+ "ingredients": [
+  {
+   "ref": "product_rice_nadu",
+   "label": {
+    "en": "nadu rice",
+    "si": "නාඩු සහල්",
+    "ta": "நாடு அரிசி"
+   },
+   "quantity": 320,
+   "unit": "g",
+   "household": "1 1/2 cups raw",
+   "preparation": {
+    "en": "cooked dry the day before and kept in the fridge",
+    "si": "පෙර දින තදට උයා ශීතකරණයේ තබාගත්",
+    "ta": "முந்தின நாள் உதிராக வேகவைத்து குளிர்சாதனப் பெட்டியில் வைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken",
+    "si": "කුකුල් මස්",
+    "ta": "கோழி இறைச்சி"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 breast fillet",
+   "preparation": {
+    "en": "boneless, cut into small strips",
+    "si": "ඇට නැති, කුඩා පටි ලෙස කැපූ",
+    "ta": "எலும்பில்லாமல் சிறு துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "prawns",
+    "si": "ඉස්සන්",
+    "ta": "இறால்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "8 medium prawns",
+   "preparation": {
+    "en": "shelled and deveined",
+    "si": "පොත්ත ඉවත් කර නහර ගලවාගත්",
+    "ta": "தோல் உரித்து நரம்பு நீக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 eggs",
+   "preparation": {
+    "en": "one fried whole for each plate",
+    "si": "එක් පිඟානකට එකක් බැදගන්නා",
+    "ta": "ஒரு தட்டுக்கு ஒன்று பொரிப்பது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "කැපූ",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "6 chillies",
+   "preparation": {
+    "en": "soaked in hot water and ground to a paste",
+    "si": "උණු වතුරේ පොඟවා අඹරාගත්",
+    "ta": "வெந்நீரில் ஊறவைத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_shrimp_paste",
+   "label": {
+    "en": "shrimp paste",
+    "si": "ඉස්සන් පේස්ට්",
+    "ta": "இறால் பேஸ்ட்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "roasted for a moment in the dry pan",
+    "si": "වියළි පෑන් එකේ මොහොතක් රටවා ගත්",
+    "ta": "வெறும் சட்டியில் ஒரு நொடி வாட்டியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 stalk",
+   "preparation": {
+    "en": "washed and sliced thin",
+    "si": "හෝදා තුනීට කැපූ",
+    "ta": "அலசி மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_spring_onion",
+   "label": {
+    "en": "spring onion",
+    "si": "ලූනු කොළ",
+    "ta": "வெங்காயத் தாள்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 stalks",
+   "preparation": {
+    "en": "chopped",
+    "si": "කැපූ",
+    "ta": "நறுக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": {
+    "en": "freshly ground",
+    "si": "අලුතින් අඹරාගත්",
+    "ta": "புதிதாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Spread the cold cooked rice on a tray and break up every lump with your fingers so the grains are separate and dry.",
+    "minutes": null
+   },
+   {
+    "text": "Grind the soaked dried chillies with the garlic and the roasted shrimp paste into a rough sambal paste, using a stone or a small grinder.",
+    "minutes": 8
+   },
+   {
+    "text": "Heat two tablespoons of oil in a wok until it just smokes, fry the chicken strips hard until they colour, then lift them out.",
+    "minutes": 5
+   },
+   {
+    "text": "In the same oil fry the prawns for barely a minute until they curl and turn pink, and lift them out too.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the last of the oil, fry the sliced onion until the edges brown, then stir in the sambal paste and cook it until the raw chilli smell goes and the oil separates.",
+    "minutes": 6
+   },
+   {
+    "text": "Throw in the leeks and stir on a high flame so they stay crunchy.",
+    "minutes": 2
+   },
+   {
+    "text": "Tip in the rice, the chicken and the prawns, pour the soy sauce round the side of the wok and toss everything from the bottom up until the rice is evenly dark and steaming.",
+    "minutes": 5
+   },
+   {
+    "text": "Season with pepper and salt, taste, and keep the rice moving for another minute so it picks up the toasted flavour of the wok.",
+    "minutes": 1
+   },
+   {
+    "text": "Fry the four eggs in a separate pan so the yolks stay soft, serve the rice in mounds with an egg on each and the spring onion scattered over.",
+    "minutes": 4
+   }
+  ],
+  "si": [
+   {
+    "text": "සීතල උයපු බත් තැටියක් මත විසුරුවා, ඇඟිලි වලින් ගුලි කඩා බත් ඇට වෙන් වෙන් වී වියළිව තිබෙන ලෙස සකසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පොඟවාගත් වියළි මිරිස්, සුදුලූනු සහ රටවාගත් ඉස්සන් පේස්ට් එකට මිරිස් ගලේ හෝ කුඩා ග්‍රයින්ඩරයේ රළු සම්බල් පේස්ට් එකක් ලෙස අඹරා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "වොක් එකක තෙල් මේස හැඳි දෙකක් දුම් නගින තුරු රත් කර, කුකුල් මස් පටි වර්ණය මාරු වන තුරු තදින් බැද ඉවතට ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "එම තෙලේම ඉස්සන් මිනිත්තුවක් පමණ බැද, රෝස පැහැයට හැරී ඇඹරෙන විට ඒවාද ඉවතට ගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඉතිරි තෙල් දමා කැපූ ලූනු දාර දුඹුරු වන තුරු බැද, සම්බල් පේස්ට් දමා අමු මිරිස් ගඳ නැති වී තෙල් වෙන් වන තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ලීක්ස් දමා මහ ගින්නේ ඉක්මනින් කලවම් කර කරකර ගතිය රැඳෙන ලෙස තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "බත්, කුකුල් මස් සහ ඉස්සන් දමා, වොක් එකේ දාරය දිගේ සෝයා සෝස් වත් කර, පහළින් ඔසවා සියල්ල හොඳින් කලවම් කර බත සමානව තද පාට වී වාෂ්ප නගින තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගම්මිරිස් සහ ලුණු දමා රස බලා, තව මිනිත්තුවක් බත චලනය කරමින් වොක් එකේ රට ගතිය එකතු කර ගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "වෙනම පෑන් එකක බිත්තර හතර කහ මදය මුදුවට තිබෙන ලෙස බැද, බත් ගොඩක් බැගින් තබා එක් එක් පිඟානට බිත්තරයක් දමා ලූනු කොළ ඉස සිසිල් නොවී ඉදිරිපත් කරන්න.",
+    "minutes": 4
+   }
+  ],
+  "ta": [
+   {
+    "text": "குளிர்ந்த சோற்றை ஒரு தட்டில் பரப்பி, விரலால் கட்டிகளை உதிர்த்து பருக்கைகள் தனித்தனியாக உதிராக இருக்கச் செய்யுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஊறவைத்த வத்தல் மிளகாய், பூண்டு, வாட்டிய இறால் பேஸ்ட் ஆகியவற்றை அம்மியில் அல்லது சிறிய அரைப்பானில் கொரகொரப்பான சம்பல் விழுதாக அரையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "வாணலியில் இரண்டு மேசைக்கரண்டி எண்ணெயை புகை வரும் வரை காயவைத்து, கோழித் துண்டுகளை நிறம் மாறும் வரை பலமாக வறுத்து எடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அதே எண்ணெயில் இறாலை ஒரு நிமிடம் மட்டும் வறுத்து, சுருண்டு சிவப்பாகும்போது எடுத்து வையுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "மீதி எண்ணெயை விட்டு நறுக்கிய வெங்காயத்தை ஓரம் பொன்னிறமாகும் வரை வதக்கி, சம்பல் விழுதைச் சேர்த்து பச்சை வாசனை போய் எண்ணெய் பிரியும் வரை வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "லீக்ஸைப் போட்டு பெருந்தீயில் விரைவாகக் கிளறி மொறுமொறுப்பாகவே இருக்கட்டும்.",
+    "minutes": 2
+   },
+   {
+    "text": "சோறு, கோழி, இறால் அனைத்தையும் சேர்த்து, வாணலியின் ஓரமாக சோயா சோஸை ஊற்றி, அடியிலிருந்து தூக்கிக் கிளறி சோறு சமமாகக் கறுத்து ஆவி வரும் வரை வறுக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மிளகும் உப்பும் சேர்த்து சுவை பார்த்து, இன்னும் ஒரு நிமிடம் கிளறி வாணலியின் வாட்டிய சுவை சோற்றில் ஏறட்டும்.",
+    "minutes": 1
+   },
+   {
+    "text": "தனி சட்டியில் நான்கு முட்டைகளை மஞ்சள்கரு மென்மையாக இருக்கும்படி பொரித்து, சோற்றை குவியலாக வைத்து ஒவ்வொரு தட்டிலும் ஒரு முட்டை வைத்து வெங்காயத் தாள் தூவிப் பரிமாறுங்கள்.",
+    "minutes": 4
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wok or large frying pan",
+  "grinding stone or small grinder",
+  "small pan for the eggs"
+ ],
+ "tips": {
+  "en": "Day-old rice is not laziness, it is the recipe: warm fresh rice turns to porridge in the wok. Fry the sambal paste properly before the rice goes in, because raw chilli paste tastes sharp and dulls the whole plate.",
+  "si": "පෙර දින බත් යොදන්නේ අලසකමට නොවේ, එය වට්ටෝරුවේ කොටසක්; උණුසුම් අලුත් බත් වොක් එකේ කැඳ වේ. බත් දැමීමට පෙර සම්බල් පේස්ට් හොඳින් බැදගන්න, අමු මිරිස් පේස්ට් තියුණු රසයක් දී මුළු පිඟාන අඩපණ කරයි.",
+  "ta": "முந்தின நாள் சோறு பயன்படுத்துவது சோம்பல் அல்ல, அதுவே செய்முறை; சூடான புதிய சோறு வாணலியில் கஞ்சியாகிவிடும். சோறு சேர்க்கும் முன் சம்பல் விழுதை நன்றாக வதக்குங்கள், பச்சை விழுதின் கார்ப்பு முழு உணவின் சுவையைக் கெடுக்கும்."
+ },
+ "health_note": {
+  "en": "Chicken, prawns and egg make this a good plate of protein, but the soy sauce and shrimp paste push the salt up, so go easy on both and skip extra salt at the table. Plenty of leeks and a cucumber salad on the side balance the oil.",
+  "si": "කුකුල් මස්, ඉස්සන් සහ බිත්තර නිසා ප්‍රෝටීන් හොඳින් ලැබෙන නමුත් සෝයා සෝස් සහ ඉස්සන් පේස්ට් නිසා ලුණු ඉහළ යයි; දෙකම අඩුවෙන් යොදා මේසයේ තවත් ලුණු නොදමන්න. ලීක්ස් වැඩිපුර දමා පිපිඤ්ඤා සලාදයක් සමඟ ගැනීමෙන් තෙල් ගතිය සමතුලිත වේ.",
+  "ta": "கோழி, இறால், முட்டை சேர்வதால் நல்ல புரதம் கிடைக்கிறது; ஆனால் சோயா சோஸும் இறால் பேஸ்ட்டும் உப்பை உயர்த்துகின்றன, எனவே இரண்டையும் குறைவாகப் பயன்படுத்தி மேசையில் மேலும் உப்பு சேர்க்க வேண்டாம். அதிக லீக்ஸும் வெள்ளரி சாலட்டும் எண்ணெயைச் சமன் செய்யும்."
+ },
+ "tags": [
+  "high_protein",
+  "filling",
+  "street_food",
+  "high_sodium",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,338 @@
+{
+ "id": "dish_ulundu_vadai",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 120,
+  "description": {
+   "en": "Three ring vadai, crisp outside and soft within",
+   "si": "පිටත කරකර, ඇතුළත මෘදු, වළලු හැඩ වඩේ තුනක්",
+   "ta": "வெளியே மொறுமொறுப்பாகவும் உள்ளே மிருதுவாகவும் உள்ள மூன்று வடை"
+  }
+ },
+ "yield_g": 480,
+ "ingredients": [
+  {
+   "ref": "pantry_urad_dhal",
+   "label": {
+    "en": "urad dhal (black gram, skinned)",
+    "si": "උළුඳු",
+    "ta": "உளுந்து"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "1¼ cups, dry",
+   "preparation": {
+    "en": "rinsed until clear, soaked two hours, ground to a thick paste",
+    "si": "වතුර පිරිසිදු වන තෙක් සෝදා, පැය දෙකක් තෙමා, ඝන පේස්ට් එකක් සේ අඹරාගත්",
+    "ta": "தண்ணீர் தெளியும் வரை அலசி, இரண்டு மணி நேரம் ஊறவைத்து, கெட்டியாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "chopped very fine",
+    "si": "ඉතා සිහින්ව කැපූ",
+    "ta": "மிகப் பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs, torn small",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට කුඩු කරගත්",
+    "ta": "கொரகொரப்பாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "optional, for extra crispness",
+    "si": "අමතර කරකර ගතියට, අවශ්‍ය නම්",
+    "ta": "கூடுதல் மொறுமொறுப்புக்கு, விரும்பினால்"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 350,
+   "unit": "ml",
+   "household": "1½ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the urad dhal until the water runs clear and soak it for two hours, no longer, or the batter turns slack.",
+    "minutes": 120
+   },
+   {
+    "text": "Drain it very well and grind to a thick smooth paste, adding water only a spoon at a time; a tight batter is what makes the vadai fluffy.",
+    "minutes": 15
+   },
+   {
+    "text": "Beat the paste by hand in one direction until it lightens and a pinch dropped into water floats.",
+    "minutes": 5
+   },
+   {
+    "text": "Fold in the red onion, green chilli, curry leaf, crushed pepper, cumin, rice flour and salt just before frying, not earlier.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil in a deep pan on a medium fire.",
+    "minutes": 6
+   },
+   {
+    "text": "Wet your palm, take a lump of batter, pat it into a disc and make a hole in the middle with a wet finger.",
+    "minutes": null
+   },
+   {
+    "text": "Slip it off your palm into the oil and fry three or four at a time.",
+    "minutes": 8
+   },
+   {
+    "text": "Turn each when the underside is pale gold and fry until both sides are even and the hissing quietens.",
+    "minutes": 6
+   },
+   {
+    "text": "Drain them standing on a rack, and let the oil come back to heat before the next batch.",
+    "minutes": 6
+   },
+   {
+    "text": "Serve hot with coconut sambol, or soak them in lightly salted curd for thayir vadai.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "උළුඳු වතුර පිරිසිදු වන තෙක් සෝදා, පැය දෙකක් පමණක් තෙමා ගන්න; වැඩි වුවහොත් පිටි මිශ්‍රණය ලිහිල් වේ.",
+    "minutes": 120
+   },
+   {
+    "text": "හොඳින් වතුර බේරා, හැන්දෙන් හැන්දට වතුර දමමින් ඝන සිනිඳු පේස්ට් එකක් සේ අඹරන්න; තද මිශ්‍රණය මඟින් ම වඩේ පිම්බෙයි.",
+    "minutes": 15
+   },
+   {
+    "text": "එක් දිශාවකට අතින් ගසන්න; මිශ්‍රණය සැහැල්ලු වී, ස්වල්පයක් වතුරට දැමූ විට පාවිය යුතුය.",
+    "minutes": 5
+   },
+   {
+    "text": "බැදීමට මොහොතකට පෙර පමණක් රතු ලූනු, අමු මිරිස්, කරපිංචා, කුඩු කරගත් ගම්මිරිස්, සූදුරු, සහල් පිටි සහ ලුණු මුසු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගැඹුරු පෑනක තෙල් මධ්‍යම ලිපේ රත් කරන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "අත්ල තෙමා, මිශ්‍රණයෙන් ගුලියක් ගෙන පෙත්තක් සේ තට්ටු කර, තෙත් ඇඟිල්ලකින් මැදට සිදුරක් සාදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අත්ලෙන් ම තෙලට ලිස්සා දමා, වරකට තුනක් හතරක් බැදගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "යටි පැත්ත ලා රන්වන් වූ විට පෙරළා, දෙපැත්ත සමව වී ශබ්දය අඩු වන තෙක් බැදගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "රාක්කයක සිටුවා තෙල් බේරා, ඊළඟ වර දැමීමට පෙර තෙල් නැවත රත් වන්න දෙන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පොල් සම්බෝල සමඟ උණුසුම්ව දෙන්න, නැතිනම් ලුණු ස්වල්පයක් දැමූ දීකිරිවල පොඟවා තයිර් වඩේ ලෙස දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "உளுந்தைத் தண்ணீர் தெளியும் வரை அலசி, இரண்டு மணி நேரம் மட்டும் ஊறவைக்கவும்; அதிகமானால் மாவு தளர்ந்துவிடும்.",
+    "minutes": 120
+   },
+   {
+    "text": "நன்கு வடித்து, ஸ்பூன் ஸ்பூனாகத் தண்ணீர் விட்டு கெட்டியான மிருதுவான மாவாக அரைக்கவும்; இறுக்கமான மாவே வடையைப் பொலிவாக்கும்.",
+    "minutes": 15
+   },
+   {
+    "text": "ஒரே திசையில் கையால் அடிக்கவும்; மாவு இலகுவாகி, சிறிது தண்ணீரில் இட்டால் மிதக்க வேண்டும்.",
+    "minutes": 5
+   },
+   {
+    "text": "பொரிப்பதற்குச் சற்று முன்பே சின்ன வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, இடித்த மிளகு, சீரகம், அரிசி மாவு, உப்பு சேர்த்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆழமான வாணலியில் எண்ணெயை நடுத்தர தீயில் காயவைக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "உள்ளங்கையை நனைத்து, ஒரு பிடி மாவை எடுத்து வட்டமாகத் தட்டி, நனைத்த விரலால் நடுவில் ஒரு துளை இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உள்ளங்கையிலிருந்தே எண்ணெயில் நழுவவிட்டு, ஒரு முறைக்கு மூன்று நான்காகப் பொரிக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "அடிப்பக்கம் வெளிர் பொன்னிறமானதும் திருப்பி, இரு பக்கமும் சமமாகி, சத்தம் அடங்கும் வரை பொரிக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "வலையில் சாய்த்து எண்ணெய் வடியவிட்டு, அடுத்த முறைக்கு முன் எண்ணெயை மீண்டும் காயவிடவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "தேங்காய் சம்பலுடன் சூடாகப் பரிமாறவும், அல்லது சிறிது உப்பிட்ட தயிரில் ஊறவைத்து தயிர் வடையாகக் கொடுக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 20,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "grinder or grinding stone",
+  "deep pan",
+  "slotted spoon",
+  "wire rack"
+ ],
+ "tips": {
+  "en": "Every extra spoon of water is a vadai that soaks oil, so grind tight and beat air in instead. If the batter has gone loose, a spoon of rice flour rescues it, though the vadai will be less fluffy.",
+  "si": "අමතරව දමන හැම වතුර හැන්දක්ම තෙල් උරන වඩේ එකක් හදයි; එබැවින් තදින් අඹරා, ඒ වෙනුවට ගසා වාතය දමන්න. මිශ්‍රණය ලිහිල් වී ඇත්නම් සහල් පිටි හැන්දක් එය බේරා ගනී; එහෙත් වඩේ තරම් පිම්බෙන්නේ නැත.",
+  "ta": "சேர்க்கும் ஒவ்வொரு கூடுதல் ஸ்பூன் தண்ணீரும் எண்ணெய் உறிஞ்சும் ஒரு வடையை உருவாக்கும்; எனவே கெட்டியாக அரைத்து, பதிலாக அடித்துக் காற்று சேர்க்கவும். மாவு தளர்ந்துவிட்டால் ஒரு ஸ்பூன் அரிசி மாவு காப்பாற்றும்; ஆனால் வடை அத்தனை பொலிவாக இருக்காது."
+ },
+ "health_note": {
+  "en": "Urad dhal is one of the better plant proteins and brings fibre and iron with it, so these fritters carry real food value. The frying is the drawback: drain them properly, and soaking them in curd instead of eating them straight from the oil makes them gentler on the stomach.",
+  "si": "උළුඳු හොඳ ශාක ප්‍රෝටීනයක් වන අතර තන්තු හා යකඩ ද ගෙන එයි; එබැවින් මේ වඩේවල සැබෑ පෝෂණ වටිනාකමක් ඇත. අවාසිය බැදීමයි: තෙල් හොඳින් බේරන්න, තෙලෙන් ගත් විගස කෑම වෙනුවට දීකිරිවල පොඟවා ගැනීම බඩට වඩා මෘදුයි.",
+  "ta": "உளுந்து சிறந்த தாவரப் புரதங்களில் ஒன்று, நார்ச்சத்தும் இரும்புச்சத்தும் கொண்டு வரும்; எனவே இந்த வடைகளுக்கு உண்மையான ஊட்டச்சத்து மதிப்பு உண்டு. குறை பொரிப்பதுதான்: எண்ணெயை நன்கு வடிக்கவும், எண்ணெயில் இருந்து நேரே சாப்பிடுவதை விட தயிரில் ஊறவைத்துச் சாப்பிடுவது வயிற்றுக்கு இதமானது."
+ },
+ "tags": [
+  "deep_fried",
+  "high_protein",
+  "high_fibre",
+  "street_food",
+  "festive",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

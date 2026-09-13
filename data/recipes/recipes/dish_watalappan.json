@@ -1,0 +1,348 @@
+{
+ "id": "dish_watalappan",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 155,
+  "description": {
+   "en": "A dark spiced custard slice with a cashew on top",
+   "si": "උඩ කජු ඇට තිබෙන, සුවඳ කුළුබඩු සහිත අඳුරු වටලප්පන් පෙත්තක්",
+   "ta": "மேலே முந்திரியுடன் ஒரு கரும் வாசனைக் கஸ்டர்ட் துண்டு"
+  }
+ },
+ "yield_g": 620,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 large eggs",
+   "preparation": {
+    "en": "beaten lightly, without working up a froth",
+    "si": "පෙණ නොනගින ලෙස සැහැල්ලුවෙන් ගසාගත්",
+    "ta": "நுரை வராமல் லேசாக அடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "kithul jaggery",
+    "si": "කිතුල් හකුරු",
+    "ta": "கித்துல் வெல்லம்"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "2 blocks, scraped",
+   "preparation": {
+    "en": "scraped, melted in a little water and strained",
+    "si": "ගා ගත්, ටිකක් වතුරේ දියකර පෙරාගත්",
+    "ta": "துருவி, கொஞ்சம் நீரில் உருக்கி வடிகட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze from one coconut",
+    "si": "පොල් ගෙඩියකින් මිරිකාගත් මුල් ඝන කිරි",
+    "ta": "ஒரு தேங்காயின் முதல் அடர் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "5 pods, seeds pounded",
+   "preparation": {
+    "en": "seeds pounded fine",
+    "si": "ඇට සිහින්ව කොටාගත්",
+    "ta": "விதைகளை நன்றாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 cloves, pounded",
+   "preparation": {
+    "en": "pounded with the cardamom",
+    "si": "එනසාල් සමඟ කොටාගත්",
+    "ta": "ஏலக்காயுடன் இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a small piece, powdered",
+   "preparation": {
+    "en": "powdered",
+    "si": "කුඩු කරගත්",
+    "ta": "பொடி செய்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_nutmeg",
+   "label": {
+    "en": "nutmeg",
+    "si": "සාදික්කා",
+    "ta": "சாதிக்காய்"
+   },
+   "quantity": 0.3,
+   "unit": "g",
+   "household": "a light grating",
+   "preparation": {
+    "en": "freshly grated",
+    "si": "අලුතෙන් ගා ගත්",
+    "ta": "அப்போது துருவியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a small handful for the top",
+   "preparation": {
+    "en": "halved, scattered on before steaming",
+    "si": "දෙකට කඩා, තැම්බීමට පෙර ඉසින්න",
+    "ta": "இரண்டாக உடைத்து, வேக வைப்பதற்கு முன் தூவவும்"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the jaggery, melt it with four tablespoons of water over a low flame, then strain the syrup through a cloth and let it cool.",
+    "minutes": 10
+   },
+   {
+    "text": "Grate the coconut and squeeze out the first thick milk without adding water.",
+    "minutes": 15
+   },
+   {
+    "text": "Pound the cardamom seeds with the cloves and cinnamon into a fine powder and grate in the nutmeg.",
+    "minutes": null
+   },
+   {
+    "text": "Beat the eggs lightly with a fork, only until the yolks and whites are one, because froth turns into holes and a spongy top.",
+    "minutes": null
+   },
+   {
+    "text": "Stir the cooled jaggery syrup, coconut milk, spices and salt into the eggs and mix slowly and thoroughly without whipping.",
+    "minutes": null
+   },
+   {
+    "text": "Strain the whole mixture through a tea strainer into a steaming bowl, which is what gives watalappan its smooth body.",
+    "minutes": null
+   },
+   {
+    "text": "Scatter the cashew halves on top, cover the bowl with foil or a plate and stand it in a pan of simmering water.",
+    "minutes": null
+   },
+   {
+    "text": "Steam on a low, even heat until the custard is set at the edges and only just trembles in the middle, testing with a knife point.",
+    "minutes": 45
+   },
+   {
+    "text": "Take the bowl out and let it cool completely at room temperature, when it firms up further and the spice comes forward.",
+    "minutes": 60
+   },
+   {
+    "text": "Chill if you like it cold, and cut into wedges straight from the bowl.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "හකුරු ගා ගෙන, මේස හැඳි හතරක වතුර සමඟ අඩු ගින්නේ දියකර, පැණිය රෙද්දකින් පෙරා සිසිල් වෙන්න දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පොල් ගා ගෙන, වතුර නොදමා මුල් ඝන කිරි මිරිකා ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "එනසාල් ඇට, කරාබුනැටි සහ කුරුඳු එකට කොටා සිහින් කුඩු කර, සාදික්කා ගා දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර ගෑරුප්පුවකින් සැහැල්ලුවෙන්, කහ මදය සහ සුදු මදය එකට එකතු වන තුරු පමණක් ගසන්න, පෙණ නැඟුණොත් සිදුරු සහ පිම්බුණු මුදුනක් ලැබෙනවා.",
+    "minutes": null
+   },
+   {
+    "text": "සිසිල් වූ හකුරු පැණිය, පොල් කිරි, කුළුබඩු සහ ලුණු බිත්තරවලට දමා, ගසන්නේ නැතිව සෙමෙන් හොඳින් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුළු මිශ්‍රණය තේ පෙරහනකින් පෙරා තැම්බීමට ගන්නා බඳුනකට දමන්න, වටලප්පන් සිනිඳු වන්නේ මේ නිසයි.",
+    "minutes": null
+   },
+   {
+    "text": "කජු අඩ කැබලි උඩින් ඉසා, බඳුන ෆොයිල් හෝ පිඟානකින් වසා, උතුරන වතුර ඇති මුට්ටියක් තුළ තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අඩු, එකසේ ගින්නක තබා, දාර මිදී මැද සුළු වශයෙන් පමණක් සෙලවෙන තුරු තම්බන්න, පිහියක අගින් පරීක්ෂා කරන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "බඳුන ඉවතට ගෙන කාමර උෂ්ණත්වයේ හොඳින් සිසිල් වෙන්න දෙන්න, එවිට තව තදවී කුළුබඩු රසය මතු වේ.",
+    "minutes": 60
+   },
+   {
+    "text": "සිසිල්ව කන්නට කැමති නම් ශීතකරණයේ තබා, බඳුනෙන්ම කැබලි කපා බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெல்லத்தைத் துருவி, நான்கு மேசைக்கரண்டி நீருடன் சிறு தீயில் உருக்கி, பாகைத் துணியில் வடிகட்டி ஆற விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "தேங்காயைத் துருவி, நீர் சேர்க்காமல் முதல் அடர் பாலைப் பிழிந்து எடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "ஏலக்காய் விதை, கிராம்பு, பட்டை ஆகியவற்றை ஒன்றாக இடித்து நுண்பொடியாக்கி, சாதிக்காயைத் துருவிச் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டையை முள்கரண்டியால், மஞ்சள் கருவும் வெள்ளையும் ஒன்றாகும்வரை மட்டும் லேசாக அடியுங்கள் - நுரை வந்தால் துளைகளும் பஞ்சு போன்ற மேற்பரப்பும் வரும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆறிய வெல்லப் பாகு, தேங்காய்ப் பால், வாசனைப் பொடி, உப்பு ஆகியவற்றை முட்டையில் சேர்த்து, அடிக்காமல் மெதுவாக நன்றாகக் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "முழுக் கலவையையும் தேநீர் வடிகட்டியில் வடித்து, ஆவியில் வேக வைக்கும் கிண்ணத்தில் ஊற்றுங்கள் - வட்டலப்பம் மிருதுவாக வருவது இதனால்தான்.",
+    "minutes": null
+   },
+   {
+    "text": "முந்திரித் துண்டுகளை மேலே தூவி, கிண்ணத்தை படலத்தாலோ தட்டாலோ மூடி, கொதிக்கும் நீர் உள்ள பாத்திரத்தில் வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறு, சமமான தீயில், ஓரங்கள் இறுகி நடுப்பகுதி சற்றே அசையும் பதம்வரை ஆவியில் வேக வையுங்கள்; கத்தி நுனியால் சோதியுங்கள்.",
+    "minutes": 45
+   },
+   {
+    "text": "கிண்ணத்தை எடுத்து அறை வெப்பத்தில் முழுவதும் ஆற விடுங்கள் - இன்னும் இறுகும், வாசனையும் நன்றாக வெளிப்படும்.",
+    "minutes": 60
+   },
+   {
+    "text": "குளிர்ச்சியாக விரும்பினால் குளிரில் வைத்து, கிண்ணத்திலிருந்தே துண்டுகளாக வெட்டிப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 45,
+  "passive_minutes": 60
+ },
+ "equipment": [
+  "steaming bowl or aluminium dish",
+  "large pan with lid",
+  "coconut scraper",
+  "mortar and pestle",
+  "tea strainer",
+  "straining cloth"
+ ],
+ "tips": {
+  "en": "Kithul jaggery is what makes a watalappan taste like one, so buy the darkest block you can and strain the melted syrup, since unstrained village jaggery leaves grit in the custard. Keep the water at a bare simmer and the lid wrapped in a cloth so drips do not fall on the surface and pit it. If the middle is still liquid after forty five minutes, give it ten more rather than raising the heat, because a hard boil will make the custard weep water.",
+  "si": "වටලප්පන් එකකට වටලප්පන් රසය දෙන්නේ කිතුල් හකුරු නිසා, පුළුවන් තරම් අඳුරු ගුලියක් ගෙන දියකරගත් පැණිය පෙරන්න, නොපෙරූ ගමේ හකුරුවලින් කසට ඉතිරි වෙනවා. වතුර සුළු වශයෙන් උතුරන තරමට තබා පියන රෙද්දකින් ඔතන්න, එවිට බිංදු මතුපිටට වැටී සිදුරු වන්නේ නැහැ. මිනිත්තු හතළිස් පහකින් පසුත් මැද දියරව ඇත්නම්, ගින්න වැඩි කරනවා වෙනුවට තව දහයක් දෙන්න, තදින් උතුරුවුවහොත් වටලප්පන් වතුර දමනවා.",
+  "ta": "வட்டலப்பத்திற்கு அதன் சுவையைத் தருவது கித்துல் வெல்லமே - கிடைக்கும் மிக அடர்ந்த கட்டியை வாங்கி, உருக்கிய பாகை வடிகட்டுங்கள்; வடிகட்டாத கிராமத்து வெல்லம் கஸ்டர்ட்டில் மணலை விட்டுவிடும். நீர் மெதுவாகக் கொதிக்கட்டும், மூடியை ஒரு துணியால் சுற்றி வையுங்கள் - துளிகள் மேற்பரப்பில் விழுந்து குழி விழாது. நாற்பத்தைந்து நிமிடத்திலும் நடு நீர்மையாக இருந்தால், தீயை ஏற்றாமல் இன்னும் பத்து நிமிடம் கொடுங்கள்; பொங்கிக் கொதித்தால் கஸ்டர்ட் நீர் விடும்."
+ },
+ "health_note": {
+  "en": "Four eggs across four servings make this the most protein-rich sweet on the tray, and the jaggery brings more iron and minerals than white sugar would, which is part of why it has a place at Eid and at almsgivings. Against that sit the coconut fat and a good deal of sugar, so serve it in wedges after a meal rather than as something to pick at through the evening.",
+  "si": "බිත්තර හතරක් කොටස් හතරකට බෙදෙන නිසා මෙය තැටියේ තියෙන වැඩිම ප්‍රෝටීන් සහිත රසකැවිල්ල, සුදු සීනිවලට වඩා යකඩ සහ ලවණ හකුරුවලින් ලැබෙනවා, ඊද් උත්සවයේ සහ දානවල එයට තැනක් තියෙන්නේ ඒකත් නිසයි. අනෙක් පැත්තෙන් පොල් මේදය සහ සීනි සැලකිය යුතු ප්‍රමාණයක් ඇති නිසා, සවස පුරාවට ටිකෙන් ටික කනවා වෙනුවට කෑමෙන් පසු කැබලි ලෙස බෙදන්න.",
+  "ta": "நான்கு முட்டைகள் நான்கு பங்குகளில் பிரிவதால், தட்டில் உள்ள இனிப்புகளில் மிக அதிக புரதம் கொண்டது இதுவே; வெள்ளைச் சீனியை விட அதிக இரும்பும் தாதுக்களும் வெல்லத்தில் உள்ளன - நோன்புப் பெருநாளிலும் தானங்களிலும் இதற்கு இடம் இருப்பதற்கு இதுவும் ஒரு காரணம். மறுபுறம் தேங்காய்க் கொழுப்பும் நல்ல அளவு சீனியும் உள்ளன; அதனால் மாலை முழுவதும் கொஞ்சம் கொஞ்சமாகச் சாப்பிடுவதற்குப் பதிலாக, உணவுக்குப் பிறகு துண்டுகளாகப் பரிமாறுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "high_sugar",
+  "festive",
+  "comfort",
+  "kid_friendly",
+  "iron_rich"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

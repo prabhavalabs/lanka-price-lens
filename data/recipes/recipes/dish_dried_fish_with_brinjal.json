@@ -1,0 +1,393 @@
+{
+ "id": "dish_dried_fish_with_brinjal",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 150,
+  "description": {
+   "en": "A spoonful or two of dark brinjal strips studded with dried fish",
+   "si": "කරවල කැබලි මැදින් පෙනෙන කළු පාට වම්බටු පෙති හැඳි එකක් දෙකක්",
+   "ta": "கருவாட்டு துண்டுகள் கலந்த கறுத்த கத்தரிக்காய் துண்டுகள் ஒன்றிரண்டு கரண்டி"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_dried_fish_katta",
+   "label": {
+    "en": "dried fish (katta)",
+    "si": "කරවල (කට්ට)",
+    "ta": "கருவாடு (கட்டா)"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "3 small pieces",
+   "preparation": {
+    "en": "soaked, squeezed and torn small",
+    "si": "පොඟවා, මිරිකා, කුඩාවට ඉරා",
+    "ta": "ஊறவைத்து, பிழிந்து, சிறியதாக கிழித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_brinjals",
+   "label": {
+    "en": "brinjal",
+    "si": "වම්බටු",
+    "ta": "கத்தரிக்காய்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 medium brinjals",
+   "preparation": {
+    "en": "cut into finger-length strips with the skin on",
+    "si": "හම සමඟම ඇඟිල්ලක් දිගට පෙති කපා",
+    "ta": "தோலுடன் விரல் நீளத்தில் நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 80,
+   "unit": "ml",
+   "household": "for frying, about 5 tbsp taken up",
+   "preparation": {
+    "en": "for frying; pour the rest back into the bottle",
+    "si": "බදින්නට; ඉතිරි තෙල් නැවත බෝතලයට දමන්න",
+    "ta": "பொரிப்பதற்கு; மீதி எண்ணெயை மீண்டும் பாட்டிலில் விடவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියලි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "6 chillies, broken",
+   "preparation": {
+    "en": "broken into pieces, seeds shaken out",
+    "si": "කැබලිවලට කඩා, ඇට ගසා දමා",
+    "ta": "துண்டுகளாக ஒடித்து, விதை நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "for rubbing on the brinjal",
+    "si": "වම්බටුවල ගාන්න",
+    "ta": "கத்தரிக்காயில் தூவுவதற்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "half a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp, taste first",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Soak the dried fish in warm water, then squeeze it out and tear it into small flakes.",
+    "minutes": 15
+   },
+   {
+    "text": "Cut the brinjal into finger-length strips with the skin on and rub them with the turmeric and a pinch of salt.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil in a deep pan and fry the brinjal in two or three batches until the strips are brown and floppy, draining them on paper.",
+    "minutes": 12
+   },
+   {
+    "text": "In the same oil fry the dried fish until the flakes are crisp, then lift them out.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour off most of the oil, keeping about two tablespoons in the pan for the tempering.",
+    "minutes": null
+   },
+   {
+    "text": "Temper the red onion, garlic, broken dried chillies and curry leaves until the onion turns golden at the edges.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the chilli powder, stir once, then pour in the thick coconut milk and the vinegar and let it bubble into a short sauce.",
+    "minutes": 3
+   },
+   {
+    "text": "Return the brinjal and the dried fish, add the sugar and fold gently so the strips do not break up.",
+    "minutes": 2
+   },
+   {
+    "text": "Taste before you add any salt, since the fish already carries plenty, and serve it warm with rice.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කරවල උණු වතුරේ පොඟවා, මිරිකා ගෙන කුඩා පතුරුවලට ඉරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වම්බටු හම සමඟම ඇඟිල්ලක් දිගට පෙති කපා, කහ සහ ලුණු මදක් ගා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගැඹුරු පෑන් එකක තෙල් රත් කර, වම්බටු දෙපාරකට තුන්පාරකට බෙදා රන්වන් වී මෘදු වන තෙක් බැද, කඩදාසියක් මත තෙල් බේරන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඒ තෙලේම කරවල පතුරු කැඩෙන ගතියක් එන තෙක් බැද ඉවතට ගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "තෙල් වැඩිපුර ඉවතට දමා, තෙල් දාන්නට පෑන් එකේ මේස හැඳි දෙකක් පමණ තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "රතු ලූනු, සුදුළූණු, කඩාගත් වියලි මිරිස් සහ කරපිංචා දමා ලූනු කොන රන්වන් වන තෙක් තෙල් දාන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මිරිස් කුඩු දමා වරක් කලතා, මිටි පොල් කිරි සහ විනාකිරි දමා කෙටි සෝස් එකක් වන තෙක් නටවන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බැදපු වම්බටු සහ කරවල නැවත දමා, සීනි එකතු කර, පෙති නොකැඩෙන්න හෙමින් කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කරවලේම ලුණු තිබෙන නිසා ලුණු දමන්නට කලින් රස බලා, උණුවෙන් බත් සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கருவாட்டை வெதுவெதுப்பான நீரில் ஊறவைத்து, பிழிந்து சிறிய துண்டுகளாக கிழிக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "கத்தரிக்காயை தோலுடன் விரல் நீளத்தில் நறுக்கி, மஞ்சளும் சிறிது உப்பும் தூவி பிரட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆழமான வாணலியில் எண்ணெயை காய்ச்சி, கத்தரிக்காயை இரண்டு மூன்று தவணையாக பொன்னிறமாகி மென்மையாகும் வரை பொரித்து, காகிதத்தில் வடிகட்டவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "அதே எண்ணெயில் கருவாட்டை மொறுமொறுப்பாகும் வரை பொரித்து எடுக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "அதிகமான எண்ணெயை ஊற்றிவிட்டு, தாளிக்க வாணலியில் இரண்டு மேசைக்கரண்டி அளவு மட்டும் வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சின்ன வெங்காயம், பூண்டு, ஒடித்த வத்தல் மிளகாய், கறிவேப்பிலை போட்டு வெங்காயம் ஓரங்களில் பொன்னிறமாகும் வரை தாளிக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "மிளகாய்த் தூளை போட்டு ஒருமுறை கிளறி, கெட்டியான தேங்காய்ப் பாலும் வினிகரும் விட்டு சிறிது சாஸ் போல இறுகும் வரை கொதிக்க விடவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பொரித்த கத்தரிக்காயையும் கருவாட்டையும் மீண்டும் போட்டு, சீனி சேர்த்து, துண்டுகள் உடையாமல் மெதுவாக கலக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கருவாட்டில் ஏற்கனவே உப்பு இருப்பதால், உப்பு சேர்ப்பதற்கு முன் சுவைத்துப் பார்த்து, சூடாக சாதத்துடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "deep pan for frying",
+  "slotted spoon",
+  "wide pan"
+ ],
+ "tips": {
+  "en": "Brinjal drinks oil, so fry it in a small deep pan over a high heat rather than a wide one with a shallow film; it browns faster and takes up less. Strain the leftover oil and keep it for the next fish fry.",
+  "si": "වම්බටු තෙල් උරා ගන්නවා; ඒ නිසා පළල් පෑන් එකේ තුනී තෙල් තැටියක් වෙනුවට කුඩා ගැඹුරු භාජනයක ලොකු ගින්නේ බදින්න. එහෙම කළොත් ඉක්මනින් රන්වන් වෙලා තෙල් අඩුවෙන් අරගන්නවා. ඉතිරි තෙල් පෙරා ඊළඟ මාළු බැදුමට තබා ගන්න.",
+  "ta": "கத்தரிக்காய் எண்ணெயை உறிஞ்சும்; எனவே அகலமான வாணலியில் கொஞ்சம் எண்ணெய் விட்டு பொரிப்பதற்கு பதிலாக, சிறிய ஆழமான பாத்திரத்தில் பெரும் தீயில் பொரியுங்கள். விரைவில் பொன்னிறமாகி எண்ணெய் குறைவாக எடுக்கும். மீதி எண்ணெயை வடிகட்டி அடுத்த மீன் பொரிப்புக்கு வைக்கவும்."
+ },
+ "health_note": {
+  "en": "The brinjal brings fibre and the dried fish protein, but between the frying oil and the salt in the fish this is a small-portion dish. Serve it as one spoonful beside a vegetable curry and rice.",
+  "si": "වම්බටුවෙන් තන්තු, කරවලෙන් ප්‍රෝටීන් ලැබෙනවා; නමුත් බදින තෙල් සහ කරවලේ ලුණු නිසා මේක අඩුවෙන් ගන්න කෑමක්. එළවළු කරියක් සහ බත් සමඟ හැන්දක් පමණ බෙදන්න.",
+  "ta": "கத்தரிக்காயில் நார்ச்சத்து, கருவாட்டில் புரதம் உள்ளது; ஆனால் பொரிக்கும் எண்ணெயும் கருவாட்டு உப்பும் சேர்வதால் இது சிறிய அளவில் சாப்பிட வேண்டிய உணவு. காய்கறி கறியுடனும் சாதத்துடனும் ஒரு கரண்டி மட்டும் பரிமாறவும்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "budget",
+  "comfort",
+  "deep_fried",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

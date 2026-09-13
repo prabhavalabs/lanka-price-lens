@@ -1,0 +1,349 @@
+{
+ "id": "dish_thalana_batu_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 170,
+  "description": {
+   "en": "A spoonful of small halved brinjals in dark spiced gravy",
+   "si": "කුඩා බටු අඩකට කපා තදට උයාගත් කළු හොදියේ හැන්දක්",
+   "ta": "சிறிய கத்தரிகளை இரண்டாகப் பிளந்து செய்த கரும் மசாலாக் குழம்பு ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_thalana_batu",
+   "label": {
+    "en": "thalana batu (small wild brinjals)",
+    "si": "තලන බටු",
+    "ta": "சிறு காட்டுக் கத்தரி (தலன பட்டு)"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups of berries",
+   "preparation": {
+    "en": "stalks removed, halved, kept in salted water until needed",
+    "si": "පොහොට්ටු ඉවත් කර අඩකට කපා, අවශ්‍ය වන තුරු ලුණු වතුරේ තබා",
+    "ta": "காம்பை நீக்கி இரண்டாகப் பிளந்து, தேவைப்படும் வரை உப்பு நீரில் வைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "මිරිස් කරල්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "4 or 5 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කඩා",
+    "ta": "துண்டுகளாக உடைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "2 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பலகடா"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp, pounded",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කොටා",
+    "ta": "கரடுமுரடாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup and a little more",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 12,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pull the stalks off the thalana batu, halve each berry and drop them into salted water so the cut faces do not brown.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in the pot and brown the onion, garlic, broken dried chillies and curry leaves.",
+    "minutes": 5
+   },
+   {
+    "text": "Lower the flame, stir in the roasted curry powder and turmeric for a few seconds so they open up without burning.",
+    "minutes": 1
+   },
+   {
+    "text": "Drain the berries and turn them through the spices until every cut side is coated.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the pounded maldive fish, the thin coconut milk and the salt, cover and simmer until the berries are soft and the seeds have darkened.",
+    "minutes": 12
+   },
+   {
+    "text": "Uncover and let the gravy reduce until it just coats the berries.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the thick milk, bring it to one bubble and take the pot off the fire.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "තලන බටුවල පොහොට්ටු ගලවා, එක එක ගෙඩිය අඩකට කපා, කැපූ තැන් දුඹුරු නොවෙන්න ලුණු වතුරට දමන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, ළූණු, සුදු ළූණු, කඩාගත් මිරිස් කරල් සහ කරපිංචා බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගිනි අඩු කර, බැදපු තුනපහ සහ කහ තත්පර කීපයක් කලවම් කරන්න; පිළිස්සෙන්න දෙන්න එපා.",
+    "minutes": 1
+   },
+   {
+    "text": "බටු වතුරෙන් ඉවත් කර, කැපූ පැත්ත සියල්ලට කුළුබඩු වදින තුරු පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කොටාගත් උම්බලකඩ, තුනී පොල් කිරි සහ ලුණු දමා, වසා, බටු මෘදු වී ඇට තද පාට වන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "වැස්ම ඉවතට ගෙන, හොදිය බටුවලට ඇලෙන ගතියට හිඳෙන්න දෙන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ඝන කිරි වත් කර එක් උතුරක් පමණක් එන්න දී මුට්ටිය ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "தலன பட்டுக் காய்களின் காம்பை நீக்கி, ஒவ்வொன்றையும் இரண்டாகப் பிளந்து, வெட்டிய பகுதி கறுக்காமல் இருக்க உப்பு நீரில் போடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலை சேர்த்து வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தீயைக் குறைத்து, வறுத்த கறி மசாலாவும் மஞ்சளும் சேர்த்து சில நொடிகள் கிளறவும்; கருகவிடக் கூடாது.",
+    "minutes": 1
+   },
+   {
+    "text": "காய்களை நீரிலிருந்து எடுத்து, வெட்டிய பக்கம் முழுவதும் மசாலா படும் வரை புரட்டவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "இடித்த உம்பலகடா, இரண்டாம் தேங்காய்ப்பால், உப்பு சேர்த்து மூடி, காய்கள் மென்மையாகி விதைகள் நிறம் மாறும் வரை கொதிக்க விடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "மூடியை எடுத்து, குழம்பு காய்களில் ஒட்டும் அளவுக்கு வற்ற விடவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "முதல் பாலை ஊற்றி ஒரே கொதி வந்ததும் சட்டியை இறக்கவும்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or pan with a lid"
+ ],
+ "tips": {
+  "en": "Halving the berries lets the gravy in and lets some of the bitterness out; leave them whole and they burst in the mouth instead. A little extra roasted curry powder suits this curry better than more chilli.",
+  "si": "බටු අඩකට කැපීමෙන් හොදිය ඇතුළට යනවා, තිත්ත ගතියත් ටිකක් පිටවෙනවා; සම්පූර්ණයෙන් තැබුවොත් කන විට කටේ පිපිරෙනවා. මිරිස් වැඩි කරන්නට වඩා බැදපු තුනපහ ටිකක් වැඩිපුර දැමීම මේ හොදියට හොඳයි.",
+  "ta": "காய்களை இரண்டாகப் பிளப்பதால் குழம்பு உள்ளே இறங்கும், கசப்பும் கொஞ்சம் வெளியேறும்; முழுதாக வைத்தால் வாயில் வெடிக்கும். மிளகாயைக் கூட்டுவதை விட வறுத்த கறி மசாலாவைக் கொஞ்சம் கூட்டுவது இந்தக் கறிக்குப் பொருந்தும்."
+ },
+ "health_note": {
+  "en": "These small brinjals are low in calories and high in fibre, and their slight bitterness is one reason older people ask for them. If you add maldive fish, cut the salt back, and remember the seeds make the dish feel heavier than it is.",
+  "si": "මේ කුඩා බටුවල කැලරි අඩු, තන්තු වැඩි; ඒවායේ මඳ තිත්ත රස නිසාම වැඩිහිටියෝ මේක අහනවා. උම්බලකඩ දැමුවොත් ලුණු අඩු කරන්න, ඇට නිසා කෑම තියෙන ප්‍රමාණයට වඩා බරක් දැනෙනවා.",
+  "ta": "இந்தச் சிறு கத்தரிகளில் கலோரி குறைவு, நார்ச்சத்து அதிகம்; அவற்றின் லேசான கசப்பே முதியவர்கள் இதைக் கேட்பதற்குக் காரணம். உம்பலகடா சேர்த்தால் உப்பைக் குறைக்கவும்; விதைகள் இருப்பதால் உணவு உள்ளதை விட கனமாகத் தோன்றும்."
+ },
+ "tags": [
+  "high_fibre",
+  "low_calorie",
+  "budget",
+  "elderly_friendly",
+  "diabetic_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,349 @@
+{
+ "id": "dish_ladies_fingers_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 160,
+  "description": {
+   "en": "A spoonful of okra pieces in spiced coconut gravy with rice",
+   "si": "බතට එක්ක තුනපහ දැමූ පොල් කිරි හොදියේ බණ්ඩක්කා කැලි හැන්දක්",
+   "ta": "சாதத்துடன் மசாலா தேங்காய்ப்பால் குழம்பில் வெண்டைக்காய் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 640,
+ "ingredients": [
+  {
+   "ref": "product_ladies_fingers",
+   "label": {
+    "en": "okra",
+    "si": "බණ්ඩක්කා",
+    "ta": "வெண்டைக்காய்"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "about 20 pods",
+   "preparation": {
+    "en": "wiped dry, tops trimmed, cut into two or three pieces each",
+    "si": "පිසදා වියළා, කෙළවර කපා, එකක් කෑලි දෙක තුනකට කපාගත්",
+    "ta": "துடைத்து உலர்த்தி, நுனி நீக்கி, ஒன்றை இரண்டு மூன்று துண்டாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for frying the okra",
+    "si": "බණ්ඩක්කා බැදීමට",
+    "ta": "வெண்டைக்காய் வதக்குவதற்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small handful, sliced",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wipe the okra with a dry cloth instead of washing it wet, trim the tops, and cut each pod into two or three pieces.",
+    "minutes": 8
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the okra on a fairly high flame, turning it, until the slippery threads disappear and the cut edges brown.",
+    "minutes": 6
+   },
+   {
+    "text": "Push the okra to one side, add the onion, green chillies, curry leaves and pandan and fry until the onion softens.",
+    "minutes": 3
+   },
+   {
+    "text": "Sprinkle in the turmeric and curry powder, stir for half a minute, then pour in the thin coconut milk and add the salt.",
+    "minutes": 2
+   },
+   {
+    "text": "Simmer uncovered until the pods are tender and the gravy has reduced by about a third.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the thick coconut milk, let it bubble gently once, and squeeze in the lime juice off the fire.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt and serve; the okra should hold its shape on the spoon.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බණ්ඩක්කා වතුරෙන් සෝදනවාට වඩා වියළි රෙද්දකින් පිසදා, කෙළවර කපා, එක ගෙඩියක් කෑලි දෙක තුනකට කපා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පෑන් එකක පොල් තෙල් රත් කර, තරමක් තද ගින්නේ, බණ්ඩක්කා වල ඇලෙනසුලු නූල් ගතිය නැති වී කපාපු දාර දුඹුරු වන තුරු පෙරළමින් බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "බණ්ඩක්කා පැත්තකට කර, ලූනු, අමු මිරිස්, කරපිංචා සහ රම්පෙ දමා ලූනු මුදු වන තුරු බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කහ සහ තුනපහ ඉස, තත්පර තිහක් කලවම් කර, තුනී පොල් කිරි වත් කර ලුණු දමන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "බණ්ඩක්කා මුදු වී හොදි තුනෙන් එකකින් පමණ අඩු වන තුරු වහන් නොදමා තම්බන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "මුල් කිරි එකතු කර සෙමින් එක වරක් උතුරන්න දී, ගින්නෙන් අයින් කර දෙහි යුෂ මිරිකන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රස බලා ඉදිරිපත් කරන්න; බණ්ඩක්කා කෑලි හැන්දේ හැඩය රැකගෙන තිබිය යුතුයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெண்டைக்காயை தண்ணீரில் அலசுவதற்குப் பதிலாக உலர்ந்த துணியால் துடைத்து, நுனி நீக்கி, ஒவ்வொன்றையும் இரண்டு மூன்று துண்டாக நறுக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, சற்று பெரிய தீயில், வெண்டைக்காயின் வழுவழுப்பு போகும் வரை, நறுக்கிய ஓரம் பொன்னிறமாகும் வரை புரட்டி வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "வெண்டைக்காயை ஓரமாக ஒதுக்கி, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை போட்டு வெங்காயம் மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மஞ்சளும் கறி மசாலாவும் தூவி அரை நிமிடம் கிளறி, இரண்டாம் தேங்காய்ப் பால் ஊற்றி உப்பு சேர்க்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "காய் மென்மையாகி குழம்பு மூன்றில் ஒரு பங்கு சுருங்கும் வரை மூடாமல் வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "முதல் பாலைச் சேர்த்து மெதுவாக ஒரு கொதி விட்டு, அடுப்பிலிருந்து இறக்கி எலுமிச்சைச் சாறு பிழியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பு பார்த்துப் பரிமாறுங்கள்; வெண்டைக்காய் கரண்டியில் வடிவம் கெடாமல் இருக்க வேண்டும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan",
+  "dry cloth",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Water is the enemy of okra: a wet knife, a wet pod or a covered pan all bring out the slime. Fry it first in a dry hot pan and the curry will never be sticky.",
+  "si": "බණ්ඩක්කා වට වතුර සතුරෙකි: තෙත් පිහියක්, තෙත් ගෙඩියක් හෝ වහන් දැමූ පෑන් එකක් නිසා ඇලෙනසුලු බව එයි. මුලින්ම වියළි රත් වූ පෑන් එකක බැදගත්තොත් කරිය කිසිදා ඇලෙන්නේ නැත.",
+  "ta": "வெண்டைக்காய்க்கு தண்ணீர் எதிரி: நனைந்த கத்தி, நனைந்த காய், மூடிய சட்டி எல்லாம் வழுவழுப்பை வெளியே கொண்டுவரும். முதலில் உலர்ந்த சூடான சட்டியில் வதக்கினால் கறி ஒட்டவே ஒட்டாது."
+ },
+ "health_note": {
+  "en": "Okra is rich in soluble fibre, the kind that holds water and helps steady blood sugar after a rice meal, and it is very low in calories on its own. Most of the fat here comes from the frying oil and the thick milk, so keep both to the amounts given.",
+  "si": "බණ්ඩක්කා වල ජලය රඳවා ගන්නා දිය වන තන්තු බහුල අතර, බත් කෑමකින් පසු රුධිර සීනි ස්ථාවර කිරීමට උදව් වේ; තනිවම කැලරි ඉතා අඩුයි. මෙහි මේදය බොහෝ දුරට එන්නේ බැදීමේ තෙල් හා මුල් කිරි වලින් නිසා දෙකම දී ඇති ප්‍රමාණයට තබා ගන්න.",
+  "ta": "வெண்டைக்காயில் நீரைப் பிடித்து வைக்கும் கரையும் நார்ச்சத்து அதிகம், சாதம் சாப்பிட்ட பிறகு சர்க்கரை அளவை நிலையாக வைக்க உதவும்; தானாக மிகக் குறைந்த கலோரி. இங்கு கொழுப்பு பெரும்பாலும் வதக்கும் எண்ணெயிலும் கெட்டிப் பாலிலும்தான், இரண்டையும் கொடுத்த அளவில் வையுங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "diabetic_friendly",
+  "budget",
+  "light",
+  "heart_healthy"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

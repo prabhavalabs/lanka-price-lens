@@ -1,0 +1,319 @@
+{
+ "id": "dish_coconut_chutney",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 70,
+  "description": {
+   "en": "Two spoons of chutney beside thosai or idli",
+   "si": "තෝසේ හෝ ඉද්දලි සමඟ චට්නි හැඳි දෙකක්",
+   "ta": "தோசை அல்லது இட்லியுடன் இரண்டு கரண்டி சட்னி"
+  }
+ },
+ "yield_g": 280,
+ "ingredients": [
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, freshly scraped",
+    "si": "සීරූ පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 160,
+   "unit": "g",
+   "household": "half a coconut, scraped",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chilli",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "stalks removed",
+    "si": "පොහොර ඉවත් කර",
+    "ta": "தாள் நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a thumb joint",
+   "preparation": {
+    "en": "scraped and chopped",
+    "si": "සීරා කපාගත්",
+    "ta": "சீவி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a marble-sized knob",
+   "preparation": {
+    "en": "seeds and fibre pulled out, soaked in 2 tbsp warm water",
+    "si": "ඇට සහ නාරටි ඉවත් කර උණු වතුර හැඳි දෙකක පොඟවාගත්",
+    "ta": "கொட்டை நார் நீக்கி 2 ஸ்பூன் வெந்நீரில் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_chickpea",
+   "label": {
+    "en": "roasted split chickpea",
+    "si": "බැදපු කඩල",
+    "ta": "பொட்டுக்கடலை"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for body, so the chutney does not separate",
+    "si": "චට්නිය වෙන් නොවී ඝන වීමට",
+    "ta": "சட்னி பிரியாமல் கெட்டியாக இருக்க"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seed",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_asafoetida",
+   "label": {
+    "en": "asafoetida",
+    "si": "පෙරුම්කායම්",
+    "ta": "பெருங்காயம்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the coconut and set it aside; a mature coconut grinds smoother than a very young one.",
+    "minutes": 5
+   },
+   {
+    "text": "Pull the tamarind free of seeds and fibre and soak it in two spoons of warm water.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the coconut, green chilli, ginger, roasted gram and salt into the grinder.",
+    "minutes": null
+   },
+   {
+    "text": "Add the tamarind with its water and grind, splashing in cold water a little at a time, until you have a thick chutney that holds on a spoon.",
+    "minutes": 5
+   },
+   {
+    "text": "Scrape it into a serving bowl and check the salt; it should taste mild, with the chilli felt only at the end.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a small pan until one mustard seed dropped in cracks at once.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the mustard seed, let it pop, then the curry leaves and a pinch of asafoetida, standing back from the spitting.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour the tempering over the chutney, oil and all, and fold it in just before serving.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පොල් සීරා පසෙකින් තබන්න; ඉදුණු පොල් ළාපොල්වලට වඩා සිනිඳුව අඹරේ.",
+    "minutes": 5
+   },
+   {
+    "text": "සියඹලාවෙන් ඇට සහ නාරටි ඉවත් කර උණු වතුර හැඳි දෙකක දමා පොඟවන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පොල්, අමු මිරිස්, ඉඟුරු, බැදපු කඩල සහ ලුණු ග්‍රයින්ඩරයට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සියඹලා යුෂ සමඟ දමා, සිසිල් වතුර ස්වල්ප ස්වල්ප වශයෙන් එකතු කරමින්, හැන්දේ රැඳෙන ඝන චට්නියක් වන තුරු අඹරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "එය බඳුනකට ගෙන ලුණු රස බලන්න; රසය මෘදු විය යුතුය, මිරිස් සැරය දැනෙන්නේ අන්තිමට පමණි.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා පෑනක පොල් තෙල්, අබ ඇටයක් දැමූ විට වහාම පොපිනවන තරමට රත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "අබ දමා පොපිනවා, පසුව කරපිංචා සහ පෙරුම්කායම් ස්වල්පයක් දමා ටිකක් ඈත් වන්න, තෙල් විසිරෙයි.",
+    "minutes": 1
+   },
+   {
+    "text": "තෙල් සමඟම එම තෙම්පරාදුව චට්නිය මතට වත් කර, ඉදිරිපත් කරන්නට මොහොතකට පෙර මිශ්‍ර කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தேங்காயைத் துருவி ஒதுக்கி வைக்கவும்; முற்றிய தேங்காய் இளந்தேங்காயை விட மென்மையாக அரையும்.",
+    "minutes": 5
+   },
+   {
+    "text": "புளியிலிருந்து கொட்டையையும் நாரையும் நீக்கி, இரண்டு ஸ்பூன் வெந்நீரில் ஊறவைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தேங்காய், பச்சை மிளகாய், இஞ்சி, பொட்டுக்கடலை, உப்பை அரைக்கும் ஜாடியில் போடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "புளிச் சாற்றுடன் சேர்த்து, குளிர்ந்த தண்ணீரை சிறிது சிறிதாக விட்டு, கரண்டியில் தங்கும் கெட்டியான சட்னியாகும் வரை அரைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "கிண்ணத்தில் கொட்டி உப்பு பார்க்கவும்; சுவை மிதமாக இருக்க வேண்டும், காரம் கடைசியில் மட்டுமே தெரிய வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய வாணலியில் தேங்காய் எண்ணெயைக் காயவைக்கவும்; ஒரு கடுகு போட்டால் உடனே வெடிக்க வேண்டும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கடுகைப் போட்டு வெடித்ததும், கறிவேப்பிலையும் சிறிது பெருங்காயமும் சேர்த்து, தெறிக்கும் என்பதால் சற்று விலகி நிற்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "அந்தத் தாளிப்பை எண்ணெயுடன் சட்னியின் மேல் ஊற்றி, பரிமாறும் சற்று முன் கலக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 5,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "coconut scraper",
+  "grinding stone or small blender",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Grind with as little water as you can and add it in splashes; too much at once and the chutney will not thicken again. A spoon of roasted gram gives body without water and keeps the chutney from separating on the table.",
+  "si": "හැකි තරම් අඩු වතුරින් අඹරන්න, එයද ස්වල්ප ස්වල්ප වශයෙන් දමන්න; එකවර වැඩිපුර දැමුවහොත් චට්නිය නැවත ඝන නොවේ. බැදපු කඩල හැන්දක් වතුර නොදමා ඝනකම ලබා දෙන අතර මේසය මත චට්නිය වෙන් වීම නවත්වයි.",
+  "ta": "முடிந்தவரை குறைந்த தண்ணீரில் அரைக்கவும், அதையும் சிறிது சிறிதாகவே விடவும்; ஒரே நேரத்தில் அதிகமானால் சட்னி மீண்டும் கெட்டியாகாது. ஒரு கரண்டி பொட்டுக்கடலை தண்ணீர் இல்லாமல் கெட்டித்தன்மை தந்து, மேசையில் சட்னி பிரிவதைத் தடுக்கும்."
+ },
+ "health_note": {
+  "en": "This is mostly coconut, so it is rich in fibre and fat but light on carbohydrate, and two spoons beside thosai is the right amount. Ginger and green chilli sit easily on the stomach, which is why it belongs at breakfast.",
+  "si": "මෙහි වැඩි කොටස පොල් වන බැවින් තන්තු සහ මේදය බහුලය, කාබෝහයිඩ්‍රේට් අඩුය; තෝසේ සමඟ හැඳි දෙකක් නිසි ප්‍රමාණයයි. ඉඟුරු සහ අමු මිරිස් බඩට සැහැල්ලු බැවින් මෙය උදේ ආහාරයට ගැළපේ.",
+  "ta": "இதில் பெரும்பாலும் தேங்காயே, எனவே நார்ச்சத்தும் கொழுப்பும் அதிகம், மாவுச்சத்து குறைவு; தோசையுடன் இரண்டு கரண்டி சரியான அளவு. இஞ்சியும் பச்சை மிளகாயும் வயிற்றுக்கு இலகுவானவை, அதனால்தான் இது காலை உணவுக்குப் பொருந்துகிறது."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "low_carb",
+  "high_fibre",
+  "light"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

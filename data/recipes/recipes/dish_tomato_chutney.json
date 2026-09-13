@@ -1,0 +1,337 @@
+{
+ "id": "dish_tomato_chutney",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 45,
+  "description": {
+   "en": "A soft tangy spoonful for dipping thosai, pittu or bread",
+   "si": "තෝසේ, පිට්ටු හෝ පාන් සමඟ ගන්නා මෘදු ඇඹුල් රස චට්නි හැන්දක්",
+   "ta": "தோசை, பிட்டு அல்லது பாணுடன் தொட்டுக்கொள்ளும் மென்மையான புளிப்புச் சட்னி ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 180,
+ "ingredients": [
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "3 medium tomatoes",
+   "preparation": {
+    "en": "washed and roughly chopped",
+    "si": "සෝදා ගොරෝසුවට කපාගත්",
+    "ta": "கழுவி பெரிதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seed",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියලි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "5 dried chillies",
+   "preparation": {
+    "en": "stalks off, broken in two",
+    "si": "කරල් ඉවත් කර දෙකට කැඩූ",
+    "ta": "தாள் நீக்கி இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed with the flat of the knife",
+    "si": "පිහියේ පැත්තෙන් තලාගත්",
+    "ta": "கத்தியின் பரப்பால் நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_asafoetida",
+   "label": {
+    "en": "asafoetida",
+    "si": "පෙරුම්කායම්",
+    "ta": "பெருங்காயம்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a small ball",
+   "preparation": {
+    "en": "soaked and the pulp squeezed out",
+    "si": "පොඟවා යුෂ මිරිකාගත්",
+    "ta": "ஊறவைத்து சாறு பிழிந்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash and chop the tomatoes roughly and slice the onion thin.",
+    "minutes": 6
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot or pan and let the mustard seed pop before anything else goes in.",
+    "minutes": 2
+   },
+   {
+    "text": "Drop in the broken dried chillies, curry leaves, crushed garlic and the pinch of asafoetida.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the sliced onion and fry until it goes soft and just begins to brown at the edges.",
+    "minutes": 5
+   },
+   {
+    "text": "Put in the tomato and salt, cover the pot and let the tomato collapse in its own juice.",
+    "minutes": 8
+   },
+   {
+    "text": "Mash it down with the back of the spoon, add the chilli powder and the tamarind pulp and stir.",
+    "minutes": 2
+   },
+   {
+    "text": "Cook uncovered until the chutney is thick and the oil shows at the edge of the pot.",
+    "minutes": 6
+   },
+   {
+    "text": "Taste for salt and sourness and serve it warm; it keeps two days in the fridge.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තක්කාලි සෝදා ගොරෝසුවට කපා ගන්න, ලොකු ලූනු තුනීට කපා ගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "මැටි හැලියක හෝ පෑන් එකක පොල් තෙල් රත් කර, අනෙක් කිසිවක් දැමීමට පෙර අබ පිපිරෙන්න දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කැඩූ වියලි මිරිස්, කරපිංචා, තලාගත් සුදුලූනු සහ පෙරුම්කායම් මදක් දමන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "කපාගත් ලූනු දමා, මෘදු වී කෙළවර දුඹුරු වීමට පටන් ගන්නා තුරු බැද ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "තක්කාලි සහ ලුණු දමා, හැලිය වසා තක්කාලි තමන්ගේම යුෂවල දිය වන තුරු තබන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "හැන්ද පිටුපසින් තලා, මිරිස් කුඩු සහ සියඹලා යුෂ එකතු කර කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "වැස්ම ඉවත් කර, චට්නි ගැටිති වී හැලියේ කෙළවරින් තෙල් මතුවෙන තුරු පිසගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල් රස බලා උණුසුම්ව ඉදිරිපත් කරන්න; ශීතකරණයේ දින දෙකක් තියෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தக்காளியை கழுவி பெரிதாக நறுக்குங்கள், பெரிய வெங்காயத்தை மெல்லியதாக நறுக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மண் சட்டியில் அல்லது வாணலியில் தேங்காய் எண்ணெயை காய்ச்சி, வேறு எதையும் போடும் முன் கடுகு வெடிக்க விடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "உடைத்த வத்தல் மிளகாய், கறிவேப்பிலை, நசுக்கிய பூண்டு, ஒரு சிட்டிகை பெருங்காயம் ஆகியவற்றைப் போடுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "நறுக்கிய வெங்காயத்தைச் சேர்த்து, மென்மையாகி ஓரங்கள் பொன்னிறமாகத் தொடங்கும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "தக்காளியும் உப்பும் போட்டு, பாத்திரத்தை மூடி, தக்காளி தன் சாற்றிலேயே கரையும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "கரண்டியின் பின்பகுதியால் மசித்து, மிளகாய்த் தூளும் புளிச் சாறும் சேர்த்துக் கிளறுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "மூடியை நீக்கி, சட்னி கெட்டியாகி ஓரத்தில் எண்ணெய் தெரியும் வரை வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "உப்பும் புளிப்பும் பார்த்து, சுடச்சுட பரிமாறுங்கள்; குளிர்சாதனப் பெட்டியில் இரண்டு நாள் இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or small pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Let the mustard pop properly before the rest goes in; that first crackle is where the whole taste of the chutney comes from. If the tomatoes are sweet, leave the tamarind in, and if they are already sour leave it out.",
+  "si": "අනෙක් දේ දැමීමට පෙර අබ හොඳින් පිපිරෙන්න දෙන්න; චට්නියේ මුළු රසයම එන්නේ එම පළමු පිපිරීමෙන්. තක්කාලි මිහිරි නම් සියඹලා තියා ගන්න, ඒවා දැනටමත් ඇඹුල් නම් සියඹලා අත් හරින්න.",
+  "ta": "மற்றவற்றைப் போடும் முன் கடுகு நன்றாக வெடிக்கட்டும்; சட்னியின் முழுச் சுவையும் அந்த முதல் வெடிப்பிலிருந்தே வருகிறது. தக்காளி இனிப்பாக இருந்தால் புளியைச் சேருங்கள், ஏற்கனவே புளிப்பாக இருந்தால் விட்டுவிடுங்கள்."
+ },
+ "health_note": {
+  "en": "Cooked tomato gives lycopene that the body takes up better with a little oil, so this chutney does more good than a plain sauce from a bottle. It is low in calories, and the only thing to watch is how much oil goes into the tempering.",
+  "si": "පිසූ තක්කාලිවලින් ලැබෙන ලයිකොපීන්, තෙල් ටිකක් සමඟ ශරීරයට වඩා හොඳින් අවශෝෂණය වෙනවා; ඒ නිසා මේ චට්නිය බෝතලයේ සෝස් එකකට වඩා හොඳයි. කැලරි අඩුයි; බලන්න තියෙන එකම දේ තෙම්පරාදුවට දමන තෙල් ප්‍රමාණයයි.",
+  "ta": "வேகவைத்த தக்காளியில் உள்ள லைக்கோபீன், சிறிதளவு எண்ணெயுடன் உடலில் நன்றாக உறிஞ்சப்படுகிறது; எனவே இந்தச் சட்னி பாட்டில் சாஸை விட நல்லது. கலோரி குறைவு; கவனிக்க வேண்டியது தாளிப்பில் சேர்க்கும் எண்ணெய் அளவு மட்டுமே."
+ },
+ "tags": [
+  "low_calorie",
+  "budget",
+  "light",
+  "weight_loss_friendly",
+  "heart_healthy"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

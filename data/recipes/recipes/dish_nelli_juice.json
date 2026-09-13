@@ -1,0 +1,223 @@
+{
+ "id": "dish_nelli_juice",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 225,
+  "description": {
+   "en": "A small sharp glass, sweet and sour at once",
+   "si": "පැණි රසත් ඇඹුලත් එකවර දැනෙන කුඩා තියුණු වීදුරුවක්",
+   "ta": "இனிப்பும் புளிப்பும் ஒருசேர தெரியும் சிறிய கிளாஸ்"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "pantry_nelli",
+   "label": {
+    "en": "nelli, Indian gooseberry",
+    "si": "නෙල්ලි",
+    "ta": "நெல்லிக்காய்"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "about 20 fruits",
+   "preparation": {
+    "en": "washed, crushed, seeds picked out",
+    "si": "සෝදා තලාගෙන ඇට ඉවත් කරගත්",
+    "ta": "அலசி, இடித்து, விதை நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "half a cup and a bit",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the nelli well and crush each fruit under the flat of a knife so it splits away from the seed.",
+    "minutes": 10
+   },
+   {
+    "text": "Pick out and throw away the hard seeds; they give a bitter taste if they go into the pot.",
+    "minutes": null
+   },
+   {
+    "text": "Put the crushed flesh, the crushed ginger, the sugar and the pinch of salt into a pan with 400 ml of water.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to the boil and then keep it on a low fire, stirring now and then, until the flesh is soft and the liquid has gone slightly syrupy.",
+    "minutes": 10
+   },
+   {
+    "text": "Take it off the fire and let it cool; the sourness settles down as it cools.",
+    "minutes": 20
+   },
+   {
+    "text": "Mash the fruit in the pan with the back of a spoon and strain everything through a cloth or a fine strainer, pressing out all the liquid.",
+    "minutes": 5
+   },
+   {
+    "text": "Add cold water to make it about 900 ml, taste for the sweet and sour balance, and chill it.",
+    "minutes": 30
+   },
+   {
+    "text": "Serve in small glasses with ice; it keeps three or four days in a clean bottle in the fridge.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "නෙල්ලි හොඳින් සෝදා, එක ගෙඩියක් ගානේ පිහියේ පිටිපතින් තද කර, ඇටයෙන් වෙන් වන ලෙස පලා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "තද ඇට අහුරාගෙන විසි කරන්න; ඒවා බඳුනට ගියොත් තිත්ත රසයක් දේ.",
+    "minutes": null
+   },
+   {
+    "text": "තලාගත් මදය, තලාගත් ඉඟුරු, සීනි සහ ලුණු ටිකක් වතුර මිලිලීටර් 400ක් සමඟ බඳුනකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උතුරන්න තබා පසුව අඩු ගින්නේ, විටින් විට කලතමින්, මදය මෘදු වී දියර ටිකක් පැණි ගතියක් ගන්නා තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ලිපෙන් බාගෙන සිසිල් වෙන්නට තබන්න; සිසිල් වන විට ඇඹුල් ගතිය තැන්පත් වේ.",
+    "minutes": 20
+   },
+   {
+    "text": "බඳුනේම හැන්දේ පිටිපතින් පලතුරු පොඩි කර, රෙද්දකින් හෝ සිහින් පෙරහනකින්, සියලු දියර මිරිකා පෙරාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මිලිලීටර් 900ක් පමණ වන තුරු සිසිල් වතුර දමා, පැණි සහ ඇඹුල් තුලනය රස බලා, සිසිල් කරන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "අයිස් සමඟ කුඩා වීදුරුවලින් බෙදන්න; පිරිසිදු බෝතලයක ශීතකරණයේ දින තුන හතරක් තබා ගත හැකියි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "நெல்லிக்காயை நன்றாக அலசி, ஒவ்வொன்றையும் கத்தியின் பின்பக்கத்தால் அழுத்தி, விதையிலிருந்து பிரியும்படி உடைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "கெட்டியான விதைகளை எடுத்து எறியுங்கள்; அவை பாத்திரத்தில் போனால் கசப்பைத் தரும்.",
+    "minutes": null
+   },
+   {
+    "text": "இடித்த சுளை, இடித்த இஞ்சி, சீனி, ஒரு சிட்டிகை உப்பு எல்லாவற்றையும் 400 மில்லி நீரோடு பாத்திரத்தில் இடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்க வைத்து, பிறகு குறைந்த தீயில் அடிக்கடி கலக்கியபடி, சுளை மென்மையாகி திரவம் சற்று பாகு பிடிக்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி ஆற விடுங்கள்; ஆறும்போது புளிப்பு அடங்கும்.",
+    "minutes": 20
+   },
+   {
+    "text": "பாத்திரத்திலேயே கரண்டியின் பின்பக்கத்தால் பழத்தை மசித்து, துணியில் அல்லது மெல்லிய வடிகட்டியில், திரவம் முழுவதையும் பிழிந்து வடிகட்டவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சுமார் 900 மில்லி ஆகும் வரை குளிர்ந்த நீர் சேர்த்து, இனிப்பு புளிப்புச் சமநிலையைச் சுவைத்துப் பார்த்து, குளிர்விக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "பனிக்கட்டியுடன் சிறிய கிளாஸ்களில் பரிமாறவும்; சுத்தமான பாட்டிலில் குளிர்சாதனப் பெட்டியில் மூன்று நான்கு நாள் இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 10,
+  "passive_minutes": 50
+ },
+ "equipment": [
+  "heavy knife",
+  "pan",
+  "straining cloth",
+  "clean bottle"
+ ],
+ "tips": {
+  "en": "Do not boil nelli in an aluminium pan; the fruit is sharp enough to pick up a metal taste, so use clay or stainless steel. Long boiling costs you most of the vitamin C the fruit is drunk for, so ten minutes on a low fire is enough.",
+  "si": "නෙල්ලි ඇලුමිනියම් බඳුනක උතුරුවන්න එපා; පලතුර තියුණු නිසා ලෝහ රසයක් අල්ලා ගනී, එබැවින් මැටි හෝ මල නොබැඳෙන වානේ බඳුනක් ගන්න. දිගු වෙලාවක් තැම්බීමෙන් මේ පලතුර බොන්නේ කුමකටද කියන විටමින් C එකෙන් වැඩි කොටසක් නැති වේ, එබැවින් අඩු ගින්නේ මිනිත්තු දහයක් සෑහේ.",
+  "ta": "நெல்லியை அலுமினியப் பாத்திரத்தில் கொதிக்க வைக்க வேண்டாம்; பழம் கடுமையானது என்பதால் உலோகச் சுவையைப் பிடித்துக்கொள்ளும், எனவே மண் அல்லது துருப்பிடிக்காத எஃகுப் பாத்திரம் பயன்படுத்துங்கள். நெடுநேரம் கொதிக்கவிட்டால் இந்தப் பழத்தின் முக்கிய வைட்டமின் C பெரும்பாலும் போய்விடும், குறைந்த தீயில் பத்து நிமிடமே போதும்."
+ },
+ "health_note": {
+  "en": "Nelli is one of the richest vitamin C fruits in any market here, and the ginger makes the glass easier on the stomach. Half a cup of sugar for four glasses is a lot, so make it less sweet than the bottled cordials and dilute the glass well.",
+  "si": "මෙහි ඕනෑම වෙළඳපොළක ඇති විටමින් C වැඩිම පලතුරු අතර නෙල්ලි එකකි, ඉඟුරු නිසා වීදුරුව බඩට ලෙහෙසි වේ. වීදුරු හතරකට සීනි කෝප්ප භාගයක් ගොඩක් නිසා, බෝතල් කළ බීමවලට වඩා පැණි රස අඩුවෙන් හදා, වතුරෙන් හොඳින් තුනී කරන්න.",
+  "ta": "இங்குள்ள எந்தச் சந்தையிலும் கிடைக்கும் அதிக வைட்டமின் C கொண்ட பழங்களில் நெல்லி ஒன்று; இஞ்சி சேர்ப்பதால் கிளாஸ் வயிற்றுக்கு எளிதாகும். நான்கு கிளாஸுக்கு அரை கோப்பை சீனி அதிகம், எனவே பாட்டில் பானங்களை விட இனிப்பைக் குறைத்து, நீர் விட்டு நன்கு நீர்க்கவும்."
+ },
+ "tags": [
+  "high_sugar",
+  "immune_support",
+  "hydrating",
+  "traditional_remedy",
+  "budget",
+  "high_fibre"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

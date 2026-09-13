@@ -1,0 +1,321 @@
+{
+ "id": "dish_aasmi",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 90,
+  "description": {
+   "en": "Two lacy discs with treacle threads, eaten with tea",
+   "si": "පැණි නූල් ඇතුව ආස්මි කැබලි දෙකක්, තේ සමඟ",
+   "ta": "பாகு நூல்கள் இட்ட இரண்டு வலை இனிப்புத் துண்டுகள், தேநீருடன்"
+  }
+ },
+ "yield_g": 360,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 180,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg, white only",
+   "preparation": {
+    "en": "white separated and beaten to a froth",
+    "si": "සුදු මදය වෙන් කර පෙණ එන තුරු ගසාගත්",
+    "ta": "வெள்ளைக் கருவைப் பிரித்து நுரைக்க அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "enough to stand two fingers deep in the pan",
+   "preparation": {
+    "en": "for deep frying, most of it is left over",
+    "si": "ගැඹුරු තෙලේ බැදීමට; වැඩි කොටස ඉතිරි වේ",
+    "ta": "பொரிப்பதற்கு; பெரும்பகுதி எஞ்சும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாகு"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "half a cup and a little more",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "2 pods",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "syrup"
+  },
+  {
+   "ref": "pantry_food_colouring",
+   "label": {
+    "en": "food colouring",
+    "si": "කෑම වර්ණ",
+    "ta": "உணவு நிறம்"
+   },
+   "quantity": 1,
+   "unit": "ml",
+   "household": "a few drops of pink or green",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "syrup"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Sift the rice flour with the salt into a bowl and rub in the thick coconut milk a little at a time.",
+    "minutes": null
+   },
+   {
+    "text": "Beat the egg white to a froth and fold it into the batter with a splash of water until it runs off the spoon in a thin thread.",
+    "minutes": null
+   },
+   {
+    "text": "Cover the bowl and leave the batter to rest so the flour swells and the mixture loses its grittiness.",
+    "minutes": 60
+   },
+   {
+    "text": "Heat coconut oil in a deep pan until a drop of batter rises at once, then bring the fire down a little.",
+    "minutes": 8
+   },
+   {
+    "text": "Dip your fingers in the batter and swing them over the oil in criss cross lines so a lattice the size of your palm forms on the surface.",
+    "minutes": null
+   },
+   {
+    "text": "Fry until the lace is firm and barely coloured, turning once, then lift it onto a rack to drain.",
+    "minutes": 3
+   },
+   {
+    "text": "Boil the treacle with the sugar and crushed cardamom until a drop pulled between two fingers makes a thread.",
+    "minutes": 10
+   },
+   {
+    "text": "Divide the syrup, tint one half with a drop of colouring and let both cool until they trail slowly from a spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Trail the plain and coloured syrup over the cooled lattices in fine lines and leave them to set before stacking.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් පිටි ලුණු සමඟ පෙරාගෙන බඳුනකට දමා, මිටි පොල් කිරි ටිකෙන් ටික එකතු කර අනන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර සුදු මදය පෙණ එන තුරු ගසා, වතුර ටිකක් සමඟ පිටි මිශ්‍රණයට එකතු කර, හැන්දෙන් සිහින් නූලක් සේ වැටෙන තරමට තුනී කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බඳුන වසා, පිටි හොඳින් පිපී රළු බව යන තුරු මිශ්‍රණය තියන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "ගැඹුරු පෑනකට පොල් තෙල් දමා, පිටි බිංදුවක් වහාම මතුවන තරමට රත් කර, ගිනි ටිකක් අඩු කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඇඟිලි පිටි මිශ්‍රණයේ තෙමාගෙන තෙල් මතට හරහට හා දිගට වැල් අදිමින් අත්ලක් පමණ ජාලයක් සාදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ජාලය තද වන තුරු, වැඩිපුර පාට නොවන සේ එක් වරක් හරවා බැද, දැලක් මතට ගෙන තෙල් බේරෙන්න තියන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කිතුල් පැණි, සීනි සහ තලාගත් එනසාල් එකට තම්බා, ඇඟිලි දෙකට ගත් විට නූලක් එන තරමට පැණි හලක් සාදන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පැණිය දෙකට බෙදා, එක් කොටසකට කෑම වර්ණ බිංදුවක් දමා, දෙකම හැන්දෙන් සෙමින් වැටෙන තරමට සිසිල් වෙන්න තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සිසිල් වූ ආස්මි මතට සුදු සහ වර්ණ පැණි සිහින් රේඛා ලෙස ඉහින්න; තද වන තුරු තියා පසුව ගොඩගසන්න.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசி மாவை உப்புடன் சேர்த்துச் சலித்து, கெட்டியான தேங்காய்ப் பாலை சிறிது சிறிதாக ஊற்றிக் கரைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டையின் வெள்ளைக் கருவை நுரைக்க அடித்து, சிறிது தண்ணீருடன் மாவில் கலந்து, கரண்டியில் மெல்லிய நூலாக வடியும் பதத்திற்குக் கொண்டு வரவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்தை மூடி, மாவு ஊறி கரகரப்பு போகும் வரை வைக்கவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "ஆழமான சட்டியில் தேங்காய் எண்ணெயை ஊற்றி, ஒரு துளி மாவு உடனே மேலெழும் அளவுக்குக் காய்ச்சி, தீயைச் சிறிது குறைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "விரல்களை மாவில் நனைத்து எண்ணெய்க்கு மேல் குறுக்கும் நெடுக்குமாக ஆட்டி, கை அளவு வலை போல் பரப்பவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வலை இறுகும் வரை, அதிக நிறம் வராமல் ஒரு முறை திருப்பிப் பொரித்து, வடிகட்டியில் எடுத்து எண்ணெய் வடியவிடவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "கிதுல் பாகு, சீனி, நசுக்கிய ஏலக்காய் சேர்த்துக் கொதிக்கவைத்து, இரு விரல்களுக்கு இடையே நூல் வரும் பதத்திற்குக் காய்ச்சவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பாகை இரண்டாகப் பிரித்து, ஒரு பாதிக்கு உணவு நிறம் ஒரு துளி சேர்த்து, இரண்டும் கரண்டியில் மெதுவாக வடியும் வரை குளிரவிடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குளிர்ந்த வலைகளின் மேல் வெள்ளை மற்றும் நிறப் பாகை மெல்லிய கோடுகளாக ஊற்றி, இறுகிய பின் அடுக்கி வைக்கவும்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 40,
+  "passive_minutes": 60
+ },
+ "equipment": [
+  "deep pan or wok",
+  "wire rack",
+  "small pan for syrup"
+ ],
+ "tips": {
+  "en": "The batter must be thin enough to fall in threads; if the lattice sinks into a pancake, beat in a spoon of water and try again with a hotter pan.",
+  "si": "පිටි මිශ්‍රණය නූල් සේ වැටෙන තරමට තුනී විය යුතුය; ජාලය පෙති ගැසෙනවා නම් වතුර හැන්දක් දමා, තෙල් තව ටිකක් රත් කර නැවත උත්සාහ කරන්න.",
+  "ta": "மாவு நூலாக விழும் அளவுக்கு நீர்க்க வேண்டும்; வலை பரவாமல் தோசை போல் ஆனால், ஒரு கரண்டி தண்ணீர் சேர்த்து, எண்ணெயைச் சற்று சூடாக்கி மீண்டும் முயற்சிக்கவும்."
+ },
+ "health_note": {
+  "en": "Aasmi is fried and then soaked in syrup, so it carries both oil and a lot of sugar in a small piece. Keep it to one or two pieces at a festive tea rather than a daily sweet.",
+  "si": "ආස්මි තෙලේ බැද පැණි වත් කරන නිසා කුඩා කැබැල්ලක වුවද තෙල් සහ සීනි වැඩියෙන් තිබේ. දිනපතා නොව උත්සව අවස්ථාවක එකක් දෙකක් ගැනීම සෑහේ.",
+  "ta": "ஆஸ்மி பொரித்து பாகில் ஊறுவதால், சிறிய துண்டிலும் எண்ணெயும் சீனியும் அதிகம். தினசரி உண்பதற்குப் பதிலாக விசேட நாட்களில் ஒன்றிரண்டு துண்டுகளே போதும்."
+ },
+ "tags": [
+  "festive",
+  "deep_fried",
+  "high_sugar",
+  "kid_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

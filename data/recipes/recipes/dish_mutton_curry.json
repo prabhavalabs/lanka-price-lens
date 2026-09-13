@@ -1,0 +1,543 @@
+{
+ "id": "dish_mutton_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 230,
+  "description": {
+   "en": "A bone-in piece with thick gravy, the centre of a Sunday rice plate",
+   "si": "ඉරිදා බත් පිඟානේ මධ්‍යස්ථානය වන, ගන හොදි සමග ඇට සහිත මස් කැබැල්ලක්",
+   "ta": "ஞாயிறு சாதத் தட்டின் மையமான, கெட்டிக் கிரேவியுடன் எலும்புடன் கூடிய இறைச்சித் துண்டு"
+  }
+ },
+ "yield_g": 1150,
+ "ingredients": [
+  {
+   "ref": "product_mutton",
+   "label": {
+    "en": "goat meat, bone-in",
+    "si": "එළු මස්, ඇට සහිත",
+    "ta": "ஆட்டிறைச்சி, எலும்புடன்"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "about 700 g, curry cut",
+   "preparation": {
+    "en": "cut into pieces, washed and drained",
+    "si": "කැබලිවලට කපා සෝදා වතුර බේරූ",
+    "ta": "துண்டுகளாக நறுக்கி அலசி நீர் வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 18,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "pounded",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "pounded",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large tomato",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறித்தூள்"
+   },
+   "quantity": 18,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 pods, broken",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩා ගත්",
+    "ta": "உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed, ground",
+    "si": "කොත්තමල්ලි කුඩු",
+    "ta": "கொத்தமல்லித் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin, ground",
+    "si": "සූදුරු කුඩු",
+    "ta": "சீரகத் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel, ground",
+    "si": "මාදුරු කුඩු",
+    "ta": "பெருஞ்சீரகத் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "a 7 cm quill",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 pods, bruised",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ කොළය",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 10 cm length",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 350,
+   "unit": "ml",
+   "household": "one and three quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන වර මිරිකා ගත් තුනී කිරි",
+    "ta": "இரண்டாம் பால், தளர்ந்த பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකා ගත් ගන කිරි",
+    "ta": "முதல் பால், கெட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the bone-in goat meat and let it drain in a colander.",
+    "minutes": null
+   },
+   {
+    "text": "Rub in the turmeric, chilli powder, curry powder, coriander, cumin, fennel, pepper, pounded garlic and ginger and the salt, and leave it to sit.",
+    "minutes": 20
+   },
+   {
+    "text": "Heat the coconut oil in a heavy pot and temper the red onion, broken dried chillies, curry leaves, pandan, cinnamon, cardamom and cloves until the onion browns.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the marinated meat and turn it over a high flame until the pieces brown a little at the edges.",
+    "minutes": 8
+   },
+   {
+    "text": "Put in the chopped tomato and cook until it melts into the spices and the oil shows.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the thin coconut milk with two cups of water, bring to a boil, then cover and simmer on the lowest fire you can hold.",
+    "minutes": 45
+   },
+   {
+    "text": "Check now and then and add hot water if it dries; when a piece breaks apart under a spoon the meat is done.",
+    "minutes": null
+   },
+   {
+    "text": "Add the thick coconut milk and simmer uncovered to the thickness you like, shaking the pot rather than stirring hard.",
+    "minutes": 8
+   },
+   {
+    "text": "Taste for salt, and if the curry tastes flat squeeze in a little lime rather than adding more powder.",
+    "minutes": null
+   },
+   {
+    "text": "Rest it off the fire before it goes to the table with rice, yellow rice or roti.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "ඇට සහිත එළු මස් සෝදා පෙනේරයක තබා වතුර බේරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කහ, මිරිස් කුඩු, තුනපහ, කොත්තමල්ලි, සූදුරු, මාදුරු, ගම්මිරිස්, තලා ගත් සුදුළූණු, ඉඟුරු සහ ලුණු අතුල්ලා තියන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "බර වළඳක පොල් තෙල් රත් කර රතු ළූණු, කඩා ගත් වියළි මිරිස්, කරපිංචා, රම්පෙ, කුරුඳු, එනසාල් සහ කරාබුනැටි ළූණු දුඹුරු වන තුරු තෙම්පරාදු කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පදම් වූ මස් දමා ලොකු ගින්නේ දාර ටිකක් දුඹුරු වන තුරු පෙරළන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කපා ගත් තක්කාලි දමා, එය කුළුබඩු අතර දිය වී තෙල මතු වන තුරු උයන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "තුනී පොල් කිරි සහ වතුර කෝප්ප දෙකක් වත් කර උතුරවා, වසා හැකි තරම් අඩු ගින්නේ උයන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "විටින් විට බලා වළඳ හිඳුණොත් රත් වතුර දමන්න; හැන්දකින් තලන විට කැබැල්ලක් කැඩුණොත් මස් හරි.",
+    "minutes": null
+   },
+   {
+    "text": "ගන පොල් කිරි දමා, තදින් කලවම් නොකර වළඳ සෙලවෙමින්, ඔබට ඕන ගනකමට වැහුමක් නොදා උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ලුණු බලන්න; කරියේ රස මදි නම් තව කුඩු දමනවා වෙනුවට දෙහි ටිකක් මිරිකන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බත්, කහ බත් හෝ රොටී සමග මේසයට යන්නට පෙර ලිපෙන් ඉවත් කර ටිකක් තියන්න.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "எலும்புடன் கூடிய ஆட்டிறைச்சியை அலசி சல்லடையில் நீர் வடியவிடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மஞ்சள், மிளகாய்த் தூள், கறித்தூள், கொத்தமல்லி, சீரகம், பெருஞ்சீரகம், மிளகு, இடித்த பூண்டு இஞ்சி, உப்பு சேர்த்துத் தேய்த்து ஊறவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "கனமான பாத்திரத்தில் தேங்காய் எண்ணெயைக் காயவிட்டு சின்ன வெங்காயம், உடைத்த வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை, பட்டை, ஏலக்காய், கிராம்பு சேர்த்து வெங்காயம் பழுப்பாகும் வரை தாளிக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஊறிய இறைச்சியைச் சேர்த்து பெருந்தீயில் ஓரங்கள் சிறிது பழுப்பாகும் வரை புரட்டுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "நறுக்கிய தக்காளியைச் சேர்த்து, அது மசாலாவில் கரைந்து எண்ணெய் பிரியும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பாலுடன் இரண்டு கப் நீர் ஊற்றிக் கொதிக்கவிட்டு, மூடி மிகக் குறைந்த தீயில் வேகவிடுங்கள்.",
+    "minutes": 45
+   },
+   {
+    "text": "இடையிடையே பார்த்து நீர் வற்றினால் சுடுநீர் சேர்க்கவும்; கரண்டியால் அழுத்தினால் துண்டு உடைந்தால் இறைச்சி வெந்துவிட்டது.",
+    "minutes": null
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலைச் சேர்த்து, கடுமையாகக் கலக்காமல் சட்டியை அசைத்து, விரும்பிய கெட்டி பதம் வரை மூடாமல் வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "உப்பைச் சரிபாருங்கள்; சுவை குறைவாக இருந்தால் மேலும் தூள் சேர்ப்பதை விட சிறிது எலுமிச்சை பிழியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சாதம், மஞ்சள் சாதம் அல்லது ரொட்டியுடன் மேசைக்குச் செல்லும் முன் அடுப்பை விட்டு இறக்கி சிறிது நேரம் வைக்கவும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 70,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "heavy pot with lid",
+  "mortar and pestle",
+  "colander"
+ ],
+ "tips": {
+  "en": "Goat meat cannot be hurried on a high flame; it only turns tender on a low fire over a long hour, or in twenty minutes under pressure. Ask for a mix of leg and rib pieces so that the gravy gets both meat and bone.",
+  "si": "එළු මස ලොකු ගින්නේ ඉක්මන් කරන්න බෑ; එය මෘදු වන්නේ අඩු ගින්නේ දිගු පැයකින්, නැත්නම් ප්‍රෙෂර් එකේ විනාඩි විස්සකින්. කකුලේ සහ ඉළ ඇටවල මස් මිශ්‍රව ඉල්ලන්න; එවිට හොදියට මසත් ඇටත් දෙකම ලැබෙනවා.",
+  "ta": "ஆட்டிறைச்சியை பெருந்தீயில் அவசரப்படுத்த முடியாது; குறைந்த தீயில் ஒரு நீண்ட மணி நேரத்திலோ, குக்கரில் இருபது நிமிடத்திலோ மட்டுமே மென்மையாகும். கால் இறைச்சியும் விலா எலும்பும் கலந்து கேளுங்கள்; அப்போது குழம்புக்கு இறைச்சியும் எலும்பும் கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "Goat is leaner than beef or pork and gives good iron and protein, so it sits well with growing children and mothers after childbirth. The cost is the reason most households keep it for weekends, and the thick coconut milk is where the fat comes from.",
+  "si": "එළු මස හරක් හෝ ඌරු මසට වඩා මේද අඩුයි, යකඩ සහ ප්‍රෝටීන් හොඳින් දෙනවා; ඒ නිසා වැඩෙන ළමයින්ටත් දරු ප්‍රසූතියෙන් පසු මවුවරුන්ටත් හොඳයි. බොහෝ ගෙවල් මේක සති අන්තයට තියා ගන්නේ මිල නිසයි, මේදය එන්නේ ගන පොල් කිරිවලින්.",
+  "ta": "ஆட்டிறைச்சி மாடு அல்லது பன்றியை விட கொழுப்பு குறைந்தது, இரும்பும் புரதமும் நன்கு தரும்; எனவே வளரும் பிள்ளைகளுக்கும் பிரசவத்துக்குப் பின் தாய்மார்களுக்கும் ஏற்றது. விலையே பெரும்பாலான வீடுகள் இதை வார இறுதிக்கு வைத்திருக்கக் காரணம், கொழுப்பு கெட்டித் தேங்காய்ப் பாலிலிருந்தே வருகிறது."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "festive",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

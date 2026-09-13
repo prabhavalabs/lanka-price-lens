@@ -1,0 +1,344 @@
+{
+ "id": "dish_cauliflower_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 185,
+  "description": {
+   "en": "Florets in a light spiced gravy, just holding their shape",
+   "si": "හැඩය රැකගෙන, සැහැල්ලු කුළුබඩු හොදියක තියෙන මල් ගෝවා කැබලි",
+   "ta": "வடிவம் கெடாமல், இலகுவான மசாலாக் குழம்பில் காலிபிளவர் பூக்கள்"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_cauliflower",
+   "label": {
+    "en": "cauliflower",
+    "si": "මල් ගෝවා",
+    "ta": "காலிபிளவர்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "1 small head, florets only",
+   "preparation": {
+    "en": "broken into bite-sized florets, washed in salted water",
+    "si": "කටට හරි ප්‍රමාණයේ කැබලිවලට කඩා, ලුණු වතුරේ සෝදා",
+    "ta": "வாய்க்கு ஏற்ற அளவில் பிரித்து, உப்பு நீரில் அலசி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 small onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලා",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 or 3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp, coarsely ground",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Break the cauliflower into bite-sized florets and leave them in salted water for a few minutes, which brings out any small insects hiding inside.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and fry the onion, garlic, slit chillies and curry leaves until the onion turns soft.",
+    "minutes": 4
+   },
+   {
+    "text": "Lower the flame, add the turmeric and curry powder and stir for a few seconds only.",
+    "minutes": 1
+   },
+   {
+    "text": "Drain the florets, put them in and turn them over in the spices so each one is coated.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk with the salt, cover and cook until a floret gives when pressed but the stalk still has a little bite.",
+    "minutes": 8
+   },
+   {
+    "text": "Uncover, grind in the pepper and let the gravy reduce so it clings to the florets instead of pooling.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the thick milk, bring it to one bubble and take the pan off; cauliflower cooked any longer falls apart and smells strong.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "මල් ගෝවා කටට හරි ප්‍රමාණයේ කැබලිවලට කඩා, ලුණු වතුරේ මිනිත්තු කීපයක් තියන්න; ඇතුළේ සැඟවුණු කුඩා පණුවන් එළියට එනවා.",
+    "minutes": 10
+   },
+   {
+    "text": "පළල් පෑන් එකක පොල් තෙල් රත් කර, ළූණු, සුදු ළූණු, පලාගත් මිරිස් සහ කරපිංචා ළූණු මෘදු වන තුරු බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ගිනි අඩු කර කහ සහ තුනපහ දමා තත්පර කීපයක් පමණක් කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ගෝවා කැබලි වතුරෙන් ඉවත් කර දමා, එක එක කැබැල්ලට කුළුබඩු වදින තුරු පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලුණු සමඟ තුනී පොල් කිරි වත් කර, වසා, කැබැල්ලක් තද කළ විට හසු වන නමුත් කඳේ මඳක් තද ගතියක් තියෙන තුරු උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "වැස්ම ඉවතට ගෙන ගම්මිරිස් අඹරා දමා, හොදිය පතුලේ රැඳෙන්නේ නැතුව කැබලිවලට ඇලෙන තුරු හිඳෙන්න දෙන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ඝන කිරි දමා එක් උතුරක් එන්න දී පෑන් ලිපෙන් ඉවතට ගන්න; වැඩිපුර උයුවොත් ගෝවා කැඩී තියුණු ගඳක් එනවා.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "காலிபிளவரை வாய்க்கு ஏற்ற அளவில் பிரித்து, உப்பு நீரில் சில நிமிடம் வைக்கவும்; உள்ளே ஒளிந்திருக்கும் சிறு பூச்சிகள் வெளியே வரும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, கீறிய மிளகாய், கறிவேப்பிலை சேர்த்து வெங்காயம் மென்மையாகும் வரை வதக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தீயைக் குறைத்து மஞ்சளும் கறி மசாலாவும் சேர்த்து சில நொடிகள் மட்டும் கிளறவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "பூக்களை வடித்துச் சேர்த்து, ஒவ்வொன்றிலும் மசாலா படும் வரை புரட்டவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "உப்புடன் இரண்டாம் தேங்காய்ப்பாலை ஊற்றி மூடி, ஒரு பூவை அழுத்தினால் இணங்கும் ஆனால் தண்டில் சற்று கடினம் இருக்கும் வரை வேகவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "மூடியை எடுத்து மிளகைப் பொடித்துச் சேர்த்து, குழம்பு அடியில் தேங்காமல் பூக்களில் ஒட்டும் வரை வற்ற விடவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "முதல் பாலைச் சேர்த்து ஒரு கொதி வந்ததும் சட்டியை இறக்கவும்; அதிகம் வேகவைத்தால் காலிபிளவர் உடைந்து கடும் வாசனை வரும்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan with a lid"
+ ],
+ "tips": {
+  "en": "Cauliflower is the one vegetable here that punishes overcooking, so watch the pot from the moment the milk goes in. Chop the thick stalk finely and cook it with the florets rather than throwing it away; it tastes the same and costs you nothing.",
+  "si": "මෙහි වැඩිපුර උයුවොත් නරක් වන එකම එළවළුව මල් ගෝවා නිසා, කිරි දැමූ මොහොතේ සිට මුට්ටිය බලාගන්න. ගොබ කොටස ඉවත දමන්නේ නැතුව සිහින්ව කපා කැබලි සමඟම උයන්න; රසත් එකයි, මුදලකුත් නැති වෙන්නේ නැහැ.",
+  "ta": "இங்கே அதிகம் வேகவைத்தால் கெட்டுப்போகும் ஒரே காய் காலிபிளவர்; எனவே பால் சேர்த்த நிமிடம் முதல் சட்டியைக் கவனிக்கவும். தடித்த தண்டை வீசாமல் நறுக்கி பூக்களுடன் சேர்த்துச் சமைக்கவும்; சுவை ஒன்றே, பணமும் வீணாகாது."
+ },
+ "health_note": {
+  "en": "Cauliflower is low in starch and calories and gives a decent amount of fibre and vitamin C, so it suits anyone eating fewer carbohydrates. Most of the calories in this curry come from the coconut milk, so lean on the thin milk when you can.",
+  "si": "මල් ගෝවාවේ පිෂ්ටය සහ කැලරි අඩු, තන්තු සහ විටමින් C සෑහෙන ප්‍රමාණයක් තියෙනවා; ඒ නිසා කාබෝහයිඩ්‍රේට් අඩුවෙන් කන අයට ගැළපෙනවා. මේ හොදියේ කැලරි වැඩිපුර එන්නේ පොල් කිරියෙන් නිසා පුළුවන් විට තුනී කිරි වැඩිපුර යොදන්න.",
+  "ta": "காலிபிளவரில் மாவுச்சத்தும் கலோரியும் குறைவு, நார்ச்சத்தும் வைட்டமின் சி யும் நல்ல அளவில் உண்டு; எனவே கார்போஹைட்ரேட் குறைவாகச் சாப்பிடுபவர்களுக்கு ஏற்றது. இந்தக் கறியின் கலோரி பெரும்பாலும் தேங்காய்ப்பாலிலிருந்தே வருகிறது, எனவே முடிந்தவரை இரண்டாம் பாலையே அதிகம் பயன்படுத்தவும்."
+ },
+ "tags": [
+  "low_carb",
+  "low_calorie",
+  "high_fibre",
+  "quick",
+  "kid_friendly",
+  "light"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

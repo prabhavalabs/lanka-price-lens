@@ -1,0 +1,416 @@
+{
+ "id": "dish_babath_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "A chewy peppery tripe curry, a ladle with rice or roti",
+   "si": "බතට හෝ රොටියට ලාඩුවක්, හපන රසැති ගම්මිරිස් බබත් කරියක්",
+   "ta": "சாதத்துடனோ ரொட்டியுடனோ ஒரு கரண்டி, மெல்லும் தன்மையுள்ள மிளகுச் சுவைக் கறி"
+  }
+ },
+ "yield_g": 850,
+ "ingredients": [
+  {
+   "ref": "pantry_beef_tripe",
+   "label": {
+    "en": "beef tripe",
+    "si": "බබත් (හරක් බඩවැල් ඇතුළු පටලය)",
+    "ta": "மாட்டு பபத் (வயிற்றுப் படலம்)"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "1 large piece",
+   "preparation": {
+    "en": "scraped clean, cut into 3 cm squares",
+    "si": "හොඳින් සීරා පිරිසිදු කර සෙන්ටිමීටර තුනක කොටුවලට කපාගත්",
+    "ta": "நன்றாகச் சுரண்டிக் கழுவி, மூன்று சென்டிமீட்டர் சதுரங்களாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "தேசிக்காய்ச் சாறு"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "juice of 1 lime",
+   "preparation": {
+    "en": "for scrubbing the tripe",
+    "si": "බබත් සීරීම සඳහා",
+    "ta": "பபத்தைத் தேய்த்துக் கழுவுவதற்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp in all",
+   "preparation": {
+    "en": "half for scrubbing, half for the curry",
+    "si": "භාගයක් සීරීමට, භාගයක් කරියට",
+    "ta": "பாதி கழுவுவதற்கு, பாதி கறிக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "7 chillies, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp, crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලාගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 small pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டி, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrub the tripe hard with half the lime juice, half the turmeric and a fistful of coarse salt, then rinse it under running water until the water runs clear and there is no smell left.",
+    "minutes": 15
+   },
+   {
+    "text": "Cut the cleaned tripe into small squares, put them in a pot with water to cover, a pinch of turmeric and a piece of gorakka, and boil until a fingernail goes through the thickest piece.",
+    "minutes": 55
+   },
+   {
+    "text": "Drain the tripe but keep a cup of the cooking water; it carries a lot of the flavour.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a heavy pan and fry the onion, garlic, ginger and curry leaves until the onion turns golden at the edges.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir in the ground chilli, crushed pepper, roasted curry powder and the rest of the turmeric and fry on a low flame just until the raw smell goes.",
+    "minutes": 2
+   },
+   {
+    "text": "Tip in the boiled tripe with the remaining gorakka, the vinegar, the reserved cooking water and the salt, and simmer covered so the spice soaks in.",
+    "minutes": 15
+   },
+   {
+    "text": "Pour in the thick coconut milk, let it come to one lazy bubble and cook uncovered until the gravy is dark and thick enough to coat the pieces.",
+    "minutes": 8
+   },
+   {
+    "text": "Taste for pepper, which should be the loudest thing in the pot, and rest it off the fire before serving.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "දෙහි යුෂ භාගයක්, කහ භාගයක් සහ රළු ලුණු අතලොස්සක් දමා බබත් හොඳින් සීරා, ගඳ නැති වී වතුර පැහැදිලි වන තුරු ගලන වතුරේ සෝදන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පිරිසිදු කළ බබත් කුඩා කොටුවලට කපා, ආවරණය වන පමණට වතුර, කහ ස්වල්පයක් සහ ගොරකා කැබැල්ලක් සමඟ භාජනයක දමා, ඝනම කැබැල්ල නියෙන් විදෙන තුරු තම්බන්න.",
+    "minutes": 55
+   },
+   {
+    "text": "බබත් වතුරෙන් වෙන් කර ගන්න, නමුත් රස ඇති තම්බාගත් වතුර කෝප්පයක් තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බර පෑන් එකක පොල් තෙල් රස්නේ කර ළූණු, සුදුළූණු, ඉඟුරු සහ කරපිංචා ළූණු දාරවලින් රන්වන් වන තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "අඹරාගත් මිරිස්, තලාගත් ගම්මිරිස්, බැදපු තුනපහ සහ ඉතිරි කහ දමා, අමු ගඳ යන තෙක් පමණක් අඩු ගින්නේ බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තම්බාගත් බබත්, ඉතිරි ගොරකා, විනාකිරි, තබාගත් වතුර සහ ලුණු දමා, කුළුබඩු කිඳා බසින්නට වසා තබා උයන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ඝන පොල් කිරි වත් කර එක් වරක් උතුරන්නට දී, හොද්ද තද පාට වී කැබලිවල ඇලෙන තුරු වැසුමක් නැතිව උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගම්මිරිස් රස බලන්න, එය භාජනයේ ප්‍රධාන රස විය යුතුය; පිළිගැන්වීමට පෙර ගින්නෙන් ඉවත් කර තබන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாதி தேசிக்காய்ச் சாறு, பாதி மஞ்சள், ஒரு கைப்பிடி கல் உப்பு சேர்த்துப் பபத்தை நன்றாகத் தேய்த்து, நாற்றம் போய் நீர் தெளிவாக வரும் வரை ஓடும் நீரில் கழுவுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "கழுவிய பபத்தைச் சிறு சதுரங்களாக வெட்டி, மூழ்கும் அளவு நீர், கொஞ்சம் மஞ்சள், ஒரு கோரக்கா துண்டு சேர்த்து, தடிமனான துண்டு நகத்தால் இலகுவாக உள்நுழையும் வரை வேக வையுங்கள்.",
+    "minutes": 55
+   },
+   {
+    "text": "பபத்தை வடிகட்டி எடுங்கள், ஆனால் சுவை நிறைந்த வேகவைத்த நீரை ஒரு கப் தனியே வைத்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கனமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலையை வெங்காயம் ஓரங்களில் பொன்னிறம் ஆகும் வரை வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அரைத்த மிளகாய், இடித்த மிளகு, வறுத்த கறித் தூள், மீதி மஞ்சள் சேர்த்து, பச்சை வாசம் போகும் வரை மட்டும் சிறு தீயில் வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "வேகவைத்த பபத், மீதி கோரக்கா, வினிகர், வைத்திருந்த நீர், உப்பு சேர்த்து மூடி, மசாலா உள்ளே இறங்கும் வரை கொதிக்க வையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலை விட்டு ஒரு முறை கொதிக்க வைத்து, குழம்பு கறுத்துத் துண்டுகளில் ஒட்டும் வரை மூடாமல் சமையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "மிளகுச் சுவையைப் பார்த்துக் கொள்ளுங்கள், அதுவே கறியின் முதன்மைச் சுவையாக இருக்க வேண்டும்; இறக்கி சிறிது நேரம் வைத்துப் பரிமாறுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 35,
+  "cook_minutes": 90,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "large pot for boiling",
+  "heavy pan",
+  "colander"
+ ],
+ "tips": {
+  "en": "The cleaning decides the dish; if any smell survives the lime and salt scrub, boil the tripe with a pandan leaf and throw away that first water. Cook it a day ahead if you can, because babath is better the next morning.",
+  "si": "පිරිසිදු කිරීමයි කෑම තීරණය කරන්නේ; දෙහි හා ලුණු සීරීමෙන් පසුත් ගඳක් ඉතිරි නම් රම්පෙ කැබැල්ලක් සමඟ තම්බා ඒ පළමු වතුර ඉවත් කරන්න. හැකි නම් දිනකට කලින් උයන්න, බබත් පසුදා උදේට වඩාත් රසවත් වේ.",
+  "ta": "சுத்தம் செய்வதே இந்தக் கறியின் வெற்றி; தேசிக்காயும் உப்பும் தேய்த்தபின்பும் நாற்றம் இருந்தால் ரம்பையுடன் வேகவைத்து அந்த முதல் நீரைக் கொட்டி விடுங்கள். முடிந்தால் ஒரு நாள் முன்பே சமையுங்கள், பபத் மறுநாள் காலையில் இன்னும் சுவையாக இருக்கும்."
+ },
+ "health_note": {
+  "en": "Tripe is lean protein with iron and gives a full plate for little money, but it is slow to digest, so a modest ladle with rice suits most people better than a big helping. Watch the salt, since the boiling water, the curry powder and the coconut milk all add to it.",
+  "si": "බබත් යනු මේදය අඩු, යකඩ සහිත ප්‍රෝටීන් වර්ගයක් වන අතර අඩු මුදලකට බඩ පුරවන කෑමකි; එහෙත් දිරවීම මන්දගාමී බැවින් විශාල කොටසකට වඩා බතුත් සමඟ සාමාන්‍ය ලාඩුවක් වඩා සුදුසුය. තම්බන වතුර, තුනපහ සහ පොල් කිරි යන සියල්ල ලුණු එකතු කරන බැවින් ලුණු ගැන සැලකිලිමත් වන්න.",
+  "ta": "பபத் கொழுப்புக் குறைந்த, இரும்புச் சத்துள்ள புரதம்; குறைந்த செலவில் வயிறு நிறைக்கும். ஆனால் செரிமானம் மெதுவாக இருப்பதால் பெரிய அளவைக் காட்டிலும் சாதத்துடன் ஒரு சிறிய கரண்டியே பொருத்தம். வேகவைத்த நீர், கறித் தூள், தேங்காய்ப் பால் எல்லாம் உப்பைக் கூட்டுவதால் உப்பின் அளவைக் கவனியுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_carb",
+  "budget",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

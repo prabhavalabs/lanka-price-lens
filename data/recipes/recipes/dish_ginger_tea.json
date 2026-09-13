@@ -1,0 +1,200 @@
+{
+ "id": "dish_ginger_tea",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 200,
+  "description": {
+   "en": "One hot cup, poured strong and sweet",
+   "si": "රස්නෙට බෙදාගන්නා තේ කෝප්පයක්, තදින් හා පැණි රසට",
+   "ta": "சுடச்சுட ஒரு கோப்பை, கடுமையாகவும் இனிப்பாகவும்"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "a thumb-sized piece",
+   "preparation": {
+    "en": "skin scraped off, crushed",
+    "si": "ලෙලි ගසා තලාගත්",
+    "ta": "தோல் சீவி இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_black_tea",
+   "label": {
+    "en": "Ceylon black tea leaves",
+    "si": "තේ කොළ",
+    "ta": "தேயிலை"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "2 small lumps",
+   "preparation": {
+    "en": "broken into small pieces",
+    "si": "කුඩා කැබලිවලට කැඩූ",
+    "ta": "சிறு துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "4 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the skin off the ginger and crush it well on the grinding stone or under the flat of a knife.",
+    "minutes": null
+   },
+   {
+    "text": "Put the crushed ginger into a pan with one litre of water and bring it to a rolling boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Drop the flame, cover the pan and let it simmer until the water smells sharp and turns pale gold.",
+    "minutes": 5
+   },
+   {
+    "text": "Take the pan off the fire, throw in the tea leaves, cover it again and leave them to steep.",
+    "minutes": 3
+   },
+   {
+    "text": "Strain the tea through a fine strainer into a jug, or straight into the cups.",
+    "minutes": null
+   },
+   {
+    "text": "Stir in the broken jaggery until it melts, taste, and add the sugar only if it is not sweet enough for the house.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ඉඟුරු ලෙලි ගසා මිරිස් ගලේ හෝ පිහියේ පිටිපතින් හොඳින් තලා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තලාගත් ඉඟුරු වතුර ලීටරයක් සමඟ බඳුනකට දමා හොඳින් උතුරන්න තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගිනි අඩු කර බඳුන වසා, වතුරට ඉඟුරු රස හා පාට බසින තුරු තව ටිකක් තම්බන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලිපෙන් බාගෙන තේ කොළ දමා, නැවත වසා, තේ බැසීමට තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "සිහින් පෙරහනකින් පෙරාගෙන ජෝගුවකට හෝ කෙලින්ම කෝප්පවලට වක් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැඩූ හකුරු දමා දිය වන තුරු කලතන්න; රස බලා, ගෙදර අයට මදි නම් පමණක් සීනි ටිකක් එකතු කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இஞ்சியை தோல் சீவி, அம்மியில் அல்லது கத்தியின் பின்பக்கத்தால் நன்றாக இடித்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "இடித்த இஞ்சியை ஒரு லிட்டர் தண்ணீரோடு பாத்திரத்தில் இட்டு நன்கு கொதிக்க வைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "அடுப்பைக் குறைத்து, பாத்திரத்தை மூடி, தண்ணீரில் இஞ்சியின் காரமும் நிறமும் இறங்கும் வரை கொதிக்கவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, தேயிலையைப் போட்டு, மீண்டும் மூடி ஊற விடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மெல்லிய வடிகட்டியால் வடிகட்டி, ஜாக்கில் அல்லது நேரடியாகக் கோப்பைகளில் ஊற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உடைத்த வெல்லத்தைச் சேர்த்துக் கரையும் வரை கலக்கி, சுவைத்துப் பார்த்து, இனிப்பு குறைவாக இருந்தால் மட்டும் சீனி சேர்க்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 10,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "small pan",
+  "grinding stone or mortar",
+  "tea strainer"
+ ],
+ "tips": {
+  "en": "Boil the ginger before the tea leaves ever go in; leaves boiled hard turn the cup bitter. Old, fibrous ginger gives more heat than young ginger, so use a smaller piece of it.",
+  "si": "තේ කොළ දමන්නට පෙර ඉඟුරු තම්බා ගන්න; තේ කොළ වැඩිපුර උතුරුවූ විට කෝප්පය තිත්ත වේ. පරණ, නාරටි සහිත ඉඟුරුවලට රසය වැඩි නිසා එවිට ටිකක් අඩුවෙන් ගන්න.",
+  "ta": "தேயிலை போடுவதற்கு முன்பே இஞ்சியைக் கொதிக்க வைக்கவும்; தேயிலையை அதிகம் கொதிக்கவிட்டால் கோப்பை கசக்கும். பழைய, நார் உள்ள இஞ்சி அதிக காரம் தரும், அதனால் சிறிய துண்டே போதும்."
+ },
+ "health_note": {
+  "en": "A warm, fat-free drink that soothes a scratchy throat and a full stomach. The sweetening is what to watch: jaggery counts as sugar just like white sugar, so keep it to one lump a cup if anyone at home is watching their sugar.",
+  "si": "තෙල් රහිත උණුසුම් බීමක් වන මෙය රිදෙන උගුරටත්, බර ගතියටත් සැහැල්ලුවක් දෙයි. බලන්න ඕන පැණි රසයි: හකුරුත් සීනි වගේම ගණන් වන නිසා, ගෙදර කෙනෙකුට සීනි ප්‍රශ්නයක් ඇත්නම් කෝප්පයකට එක කැබැල්ලකට සීමා කරන්න.",
+  "ta": "கொழுப்பில்லாத இந்தச் சூடான பானம் வலிக்கும் தொண்டைக்கும், வயிற்று அசௌகரியத்திற்கும் ஆறுதல் தரும். கவனிக்க வேண்டியது இனிப்பு மட்டுமே: வெல்லமும் சீனியைப் போலவே கணக்கு, எனவே வீட்டில் சர்க்கரை பார்க்கிறவர் இருந்தால் ஒரு கோப்பைக்கு ஒரு துண்டோடு நிறுத்துங்கள்."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "comfort",
+  "hydrating",
+  "immune_support",
+  "traditional_remedy",
+  "low_fat",
+  "elderly_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,373 @@
+{
+ "id": "dish_bajji",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 150,
+  "description": {
+   "en": "A handful of hot bajji straight from the pan",
+   "si": "පෑනෙන් ම ගත් උණුසුම් බජ්ජි අතක්",
+   "ta": "வாணலியிலிருந்து நேரே எடுத்த ஒரு கைப்பிடி சூடான பஜ்ஜி"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_brinjals",
+   "label": {
+    "en": "brinjal",
+    "si": "වම්බටු",
+    "ta": "கத்தரிக்காய்"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "1 long brinjal",
+   "preparation": {
+    "en": "sliced into thin rounds",
+    "si": "තුනී රවුම් පෙති කැපූ",
+    "ta": "மெல்லிய வட்டங்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "cut into thick rings",
+    "si": "ඝන වළලු ලෙස කැපූ",
+    "ta": "தடிமனான வளையங்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 long chillies",
+   "preparation": {
+    "en": "slit lengthwise, stalk left on",
+    "si": "දිගට ඉරූ, කඳ සමඟම",
+    "ta": "நீளவாக்கில் கீறியது, தண்டுடன்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_gram_flour",
+   "label": {
+    "en": "gram flour",
+    "si": "කඩල පිටි",
+    "ta": "கடலை மாவு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1½ cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "5 tbsp",
+   "preparation": {
+    "en": "for crispness",
+    "si": "කරකර ගතියට",
+    "ta": "மொறுமொறுப்புக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_asafoetida",
+   "label": {
+    "en": "asafoetida",
+    "si": "පෙරුම්කායම්",
+    "ta": "பெருங்காயம்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_baking_powder",
+   "label": {
+    "en": "baking powder",
+    "si": "බේකින් පවුඩර්",
+    "ta": "பேக்கிங் பவுடர்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "batter"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig, torn into the batter",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1¼ tsp",
+   "preparation": {
+    "en": "some for the batter, a little to sprinkle after frying",
+    "si": "කොටසක් පිටි මිශ්‍රණයට, ස්වල්පයක් බැදූ පසු ඉහින්නට",
+    "ta": "ஒரு பகுதி மாவுக்கு, சிறிது பொரித்தபின் தூவ"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 350,
+   "unit": "ml",
+   "household": "1½ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Slice the brinjal into rounds no thicker than a coin, cut the onion into rings and slit the green chillies lengthwise, leaving the stalks on to hold them by.",
+    "minutes": 10
+   },
+   {
+    "text": "Salt the brinjal slices lightly and set them aside, then wipe them dry before dipping so the batter grips.",
+    "minutes": 10
+   },
+   {
+    "text": "Whisk the gram flour, rice flour, turmeric, chilli powder, asafoetida, baking powder and salt with water into a batter that coats a finger thickly without dripping off.",
+    "minutes": null
+   },
+   {
+    "text": "Tear the curry leaves into the batter and let it stand so the flour swells.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the oil in a deep pan until a drop of batter rises to the top at once.",
+    "minutes": 6
+   },
+   {
+    "text": "Dip the slices one at a time, let the extra batter run back, and lower them in without crowding the pan.",
+    "minutes": null
+   },
+   {
+    "text": "Fry until the coating is firm and pale gold, turning each piece once.",
+    "minutes": 5
+   },
+   {
+    "text": "Drain on a rack and fry the chillies and onion rings the same way, keeping the oil at a steady heat.",
+    "minutes": 10
+   },
+   {
+    "text": "Sprinkle a little salt while they are hot and serve at once; bajji wait for nobody.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වම්බටු කාසියකට වඩා ඝන නොවන රවුම් පෙතිවලට කපා, ලූනු වළලු ලෙස කපා, අමු මිරිස් අල්ලාගන්න කඳ තබාගෙන දිගට ඉරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වම්බටු පෙතිවලට ලුණු ස්වල්පයක් ගල්වා තබා, පිටි මිශ්‍රණය හොඳින් අල්ලන්නට පෙර ඒවා පිස වියළා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කඩල පිටි, සහල් පිටි, කහ, මිරිස් කුඩු, පෙරුම්කායම්, බේකින් පවුඩර් සහ ලුණු වතුර සමඟ ගසා, ඇඟිල්ලක් ගිල්වූ විට නොවෑස්සී ඝනව ඇලෙන මිශ්‍රණයක් සාදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කරපිංචා කඩා මිශ්‍රණයට දමා, පිටි ඉදෙන්න ටික වෙලාවක් තිබෙන්න දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගැඹුරු පෑනක තෙල් රත් කර, පිටි මිශ්‍රණයේ බිංදුවක් වහාම මතුපිටට නැඟෙන තෙක් බලා සිටින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "එකින් එක පෙති ගිල්වා, අතිරික්ත මිශ්‍රණය බේරෙන්න දී, පෑන පිරෙන්නට නොදී තෙලට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිටත ආලේපනය තද වී ලා රන්වන් වන තෙක්, එක් වරක් පෙරළමින් බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "රාක්කයක තෙල් බේරා, තෙලේ රස්නය ස්ථාවරව තබාගෙන මිරිස් සහ ලූනු වළලු ද එලෙසම බැදගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "උණුසුම්ව ම ලුණු ස්වල්පයක් ඉස, වහාම දෙන්න; බජ්ජි කිසිවෙකුට රැඳී නොසිටී.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கத்தரிக்காயை நாணயத்தை விடத் தடிமன் இல்லாத வட்டங்களாக நறுக்கி, வெங்காயத்தை வளையங்களாக்கி, பச்சை மிளகாயை பிடிப்பதற்கு தண்டுடன் நீளவாக்கில் கீறவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "கத்தரிக்காய்த் துண்டுகளுக்குச் சிறிது உப்பு தடவி வைத்து, மாவு நன்கு பிடிக்க, தோய்ப்பதற்கு முன் துடைத்து உலர்த்தவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "கடலை மாவு, அரிசி மாவு, மஞ்சள், மிளகாய்த் தூள், பெருங்காயம், பேக்கிங் பவுடர், உப்பு ஆகியவற்றைத் தண்ணீருடன் அடித்து, விரலில் வடியாமல் தடிமனாக ஒட்டும் கலவையாக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கறிவேப்பிலையைக் கிழித்துக் கலவையில் போட்டு, மாவு ஊறும் வரை சிறிது நேரம் வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஆழமான வாணலியில் எண்ணெயைக் காயவைத்து, ஒரு துளி மாவு உடனே மேலெழும் நிலைக்கு வரவிடவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "துண்டுகளை ஒவ்வொன்றாகத் தோய்த்து, கூடுதல் மாவை வடியவிட்டு, வாணலி நிரம்பாமல் எண்ணெயில் இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பூச்சு இறுகி வெளிர் பொன்னிறமாகும் வரை, ஒவ்வொன்றையும் ஒரு முறை திருப்பிப் பொரிக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "வலையில் எண்ணெய் வடித்து, எண்ணெய்ச் சூட்டை நிலையாக வைத்து மிளகாயையும் வெங்காய வளையங்களையும் அதே போல் பொரிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சூடாக இருக்கும்போதே சிறிது உப்புத் தூவி உடனே பரிமாறவும்; பஜ்ஜி யாருக்காகவும் காத்திருக்காது.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "deep pan",
+  "slotted spoon",
+  "wire rack"
+ ],
+ "tips": {
+  "en": "A batter that is too thin slides off and burns in the oil; too thick and you are eating fried dough. Dip one slice first and adjust with a spoon of water or a spoon of flour before committing the lot.",
+  "si": "පිටි මිශ්‍රණය ඉතා තුනී නම් ගැලවී ගොස් තෙලේ පිළිස්සෙයි; ඉතා ඝන නම් කන්නේ බැදූ පිටි ය. පළමුව එක් පෙත්තක් ගිල්වා බලා, වතුර හැන්දක් හෝ පිටි හැන්දක් දමා හදාගෙන පසුව ඉතිරිය කරන්න.",
+  "ta": "மாவுக் கலவை மிக மெல்லியதாக இருந்தால் நழுவி எண்ணெயில் கருகும்; மிகக் கெட்டியாக இருந்தால் சாப்பிடுவது பொரித்த மாவே. முதலில் ஒரு துண்டைத் தோய்த்துப் பார்த்து, ஒரு ஸ்பூன் தண்ணீர் அல்லது மாவு சேர்த்துச் சரிசெய்து பிறகு மீதியைச் செய்யவும்."
+ },
+ "health_note": {
+  "en": "Gram flour gives this snack more protein and fibre than a plain flour batter would, and the vegetables inside count for something. The frying does not: drain them well, eat them fresh, and treat bajji as an evening treat rather than a daily habit.",
+  "si": "සාමාන්‍ය පිටි මිශ්‍රණයකට වඩා කඩල පිටි මෙම කෙටි කෑමට ප්‍රෝටීන් සහ තන්තු ලබා දෙයි; ඇතුළත එළවළු ද වටිනවා. බැදීම එසේ නොවේ: තෙල් හොඳින් බේරා, නැවුම්ව ම කා, බජ්ජි දිනපතා පුරුද්දක් නොව සවස් වරුවේ සත්කාරයක් ලෙස තබා ගන්න.",
+  "ta": "சாதாரண மாவுக் கலவையை விடக் கடலை மாவு இந்தச் சிற்றுண்டிக்கு அதிக புரதமும் நார்ச்சத்தும் தரும்; உள்ளே உள்ள காய்களும் பயனுள்ளவை. பொரிப்பது அப்படியல்ல: எண்ணெயை நன்கு வடித்து, புதிதாகவே சாப்பிட்டு, பஜ்ஜியைத் தினசரிப் பழக்கமாக்காமல் மாலை நேர விருந்தாக வைத்துக்கொள்ளவும்."
+ },
+ "tags": [
+  "deep_fried",
+  "street_food",
+  "comfort",
+  "high_fibre",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

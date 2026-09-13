@@ -1,0 +1,409 @@
+{
+ "id": "dish_devilled_mutton",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 150,
+  "description": {
+   "en": "A hot sweet-sour mutton dish, a spoonful beside rice",
+   "si": "බත් සමඟ හැන්දක්, සැර ඇඹුල්-මිහිරි එළු මස් කෑමක්",
+   "ta": "சாதத்துடன் ஒரு ஸ்பூன், காரமான இனிப்புப் புளிப்பு ஆட்டிறைச்சி உணவு"
+  }
+ },
+ "yield_g": 640,
+ "ingredients": [
+  {
+   "ref": "product_mutton",
+   "label": {
+    "en": "mutton, boneless",
+    "si": "එළු මස්, ඇට නැති",
+    "ta": "ஆட்டிறைச்சி, எலும்பில்லாதது"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "about 600 g",
+   "preparation": {
+    "en": "cut into 2 cm cubes across the grain",
+    "si": "නාරටිවලට හරහට සෙන්ටිමීටර දෙකක කැටවලට කපාගත්",
+    "ta": "நரம்புக்கு எதிராக இரண்டு சென்டிமீட்டர் கட்டிகளாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "cut into wedges, layers separated",
+    "si": "කෑලිවලට කපා පත්‍ර වෙන් කරගත්",
+    "ta": "துண்டுகளாக வெட்டி அடுக்குகளைப் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "capsicum",
+    "si": "මාළු මිරිස්",
+    "ta": "குடைமிளகாய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large capsicum",
+   "preparation": {
+    "en": "cut into squares",
+    "si": "කොටුවලට කපාගත්",
+    "ta": "சதுரங்களாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 firm tomato",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "කෑලිවලට කපාගත්",
+    "ta": "துண்டுகளாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "cut on the slant",
+    "si": "ඇලයට කපාගත්",
+    "ta": "சாய்வாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "5 chillies, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කඩාගත්",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් පේස්ට්",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_tomato_sauce",
+   "label": {
+    "en": "tomato sauce",
+    "si": "තක්කාලි සෝස්",
+    "ta": "தக்காளி சோஸ்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Put the mutton cubes in a pot with half the crushed garlic and ginger, the salt, a spoon of vinegar and just enough water to cover, and boil until the meat is tender.",
+    "minutes": 35
+   },
+   {
+    "text": "Uncover the pot at the end and let the last of the liquid dry off so the pieces are moist but not wet.",
+    "minutes": 6
+   },
+   {
+    "text": "Mix the chilli paste, soy sauce, tomato sauce and the rest of the vinegar in a cup.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and fry the boiled mutton on a high flame until the edges catch and brown.",
+    "minutes": 6
+   },
+   {
+    "text": "Push the meat to one side, add the broken dried chilli, curry leaves, remaining garlic, ginger and green chilli and let them sizzle.",
+    "minutes": 2
+   },
+   {
+    "text": "Throw in the onion wedges and capsicum and toss on a high flame so they soften at the edges but stay crisp inside.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in the sauce mixture, add the tomato wedges and toss everything until the sauce coats the meat and there is no thin liquid left in the pan.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt and sourness, remembering the soy sauce is already salty, and serve it hot from the pan.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "එළු මස් කැට, තලාගත් සුදුළූණු හා ඉඟුරු භාගයක්, ලුණු, විනාකිරි හැන්දක් සහ ආවරණය වන පමණට වතුර සමඟ භාජනයක දමා මස මෘදු වන තුරු තම්බන්න.",
+    "minutes": 35
+   },
+   {
+    "text": "අවසානයේ වැසුම ඉවත් කර, ඉතිරි දියර සිඳී කැබලි තෙත් නමුත් වතුරෙන් නොවන තරමට තබා ගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "මිරිස් පේස්ට්, සෝයා සෝස්, තක්කාලි සෝස් සහ ඉතිරි විනාකිරි කෝප්පයක මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් පෑන් එකක පොල් තෙල් රස්නේ කර, තම්බාගත් එළු මස් දාර දුඹුරු වන තුරු විශාල ගින්නේ බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "මස පසෙකට කර, කඩාගත් වියළි මිරිස්, කරපිංචා, ඉතිරි සුදුළූණු, ඉඟුරු සහ අමු මිරිස් දමා ශබ්දයක් සමඟ බැදෙන්නට දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලොකු ළූණු කෑලි සහ මාළු මිරිස් දමා, දාරවලින් මෘදු වී ඇතුළතින් කරකර ගතියෙන් තිබෙන ලෙස විශාල ගින්නේ කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "සෝස් මිශ්‍රණය වත් කර, තක්කාලි කෑලි දමා, සෝස් මසට ඇලී පෑන් එකේ තුනී දියරයක් ඉතිරි නොවන තුරු කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "සෝයා සෝස්වල ලුණු ඇති බව සිතා, ලුණු හා ඇඹුල රස බලා, පෑන් එකෙන් උණුසුම්ව පිළිගන්වන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஆட்டிறைச்சிக் கட்டிகளை, பாதி இடித்த பூண்டு இஞ்சி, உப்பு, ஒரு ஸ்பூன் வினிகர், மூழ்கும் அளவு நீருடன் பாத்திரத்தில் இட்டு, இறைச்சி மென்மையாகும் வரை வேக வையுங்கள்.",
+    "minutes": 35
+   },
+   {
+    "text": "இறுதியில் மூடியை நீக்கி, மீதி நீர் வற்றி துண்டுகள் ஈரமாக ஆனால் நீர்க்காமல் இருக்கும்படி வையுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மிளகாய் விழுது, சோயா சோஸ், தக்காளி சோஸ், மீதி வினிகர் ஆகியவற்றை ஒரு கோப்பையில் கலந்து வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வேகவைத்த ஆட்டிறைச்சியை ஓரங்கள் பொன்னிறமாகும் வரை பெரிய தீயில் வறுக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "இறைச்சியை ஓரமாக ஒதுக்கி, உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலை, மீதி பூண்டு, இஞ்சி, பச்சை மிளகாய் சேர்த்துச் சடசடக்க விடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "வெங்காயத் துண்டுகளையும் குடைமிளகாயையும் சேர்த்து, ஓரங்கள் மட்டும் மென்மையாகி உள்ளே மொறுமொறுப்பாக இருக்கப் பெரிய தீயில் புரட்டுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "கலந்த சோஸை ஊற்றி, தக்காளித் துண்டுகளைச் சேர்த்து, சோஸ் இறைச்சியில் ஒட்டி சட்டியில் நீர்க்கச் சாறு இல்லாமல் போகும் வரை புரட்டுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "சோயா சோஸில் ஏற்கெனவே உப்பு இருப்பதை நினைவில் வைத்து, உப்பையும் புளிப்பையும் பார்த்து, சட்டியிலிருந்தே சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 55,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot for boiling the mutton",
+  "wide heavy pan or wok"
+ ],
+ "tips": {
+  "en": "Boil the mutton first, because goat meat will not soften in a fry pan and the devilling should take only minutes. Keep the boiling water as stock for a soup instead of throwing it out.",
+  "si": "එළු මස් මුලින් තම්බන්න; බැදුම් පෑන් එකේ එළු මස් මෘදු නොවන අතර දෙවිල් කිරීම විය යුත්තේ මිනිත්තු කිහිපයකින්. තම්බාගත් වතුර ඉවත නොදමා සුප් එකකට තබා ගන්න.",
+  "ta": "ஆட்டிறைச்சியை முதலில் வேகவையுங்கள்; வறுக்கும் சட்டியில் ஆட்டிறைச்சி மென்மையாகாது, தேவில் செய்வது சில நிமிடங்களில் முடிய வேண்டும். வேகவைத்த நீரைக் கொட்டாமல் சூப்புக்குச் சாறாக வைத்துக் கொள்ளுங்கள்."
+ },
+ "health_note": {
+  "en": "Goat meat is leaner than beef or pork and gives good protein, iron and B vitamins. The salt is the thing to watch here, since chilli paste, soy sauce and tomato sauce all carry it, so add none until you have tasted the pan.",
+  "si": "එළු මස් හරක් හෝ ඌරු මස්වලට වඩා තෙල් අඩු අතර හොඳ ප්‍රෝටීන්, යකඩ සහ B විටමින් ලබා දේ. මෙහි සැලකිලිමත් විය යුත්තේ ලුණු ගැන; මිරිස් පේස්ට්, සෝයා සෝස් සහ තක්කාලි සෝස් සියල්ලේ ලුණු ඇති බැවින් රස බලන තුරු ලුණු එකතු නොකරන්න.",
+  "ta": "ஆட்டிறைச்சி மாட்டு அல்லது பன்றி இறைச்சியை விடக் கொழுப்புக் குறைவானது, நல்ல புரதம், இரும்பு, பி வைட்டமின்களைத் தரும். இங்கு கவனிக்க வேண்டியது உப்புத்தான்; மிளகாய் விழுது, சோயா சோஸ், தக்காளி சோஸ் எல்லாவற்றிலும் உப்பு இருப்பதால் சுவைக்கும் வரை உப்பு சேர்க்க வேண்டாம்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "festive",
+  "filling",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

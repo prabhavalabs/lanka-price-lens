@@ -5,7 +5,9 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./harti-archive": "./src/harti-archive.ts"
+    "./harti-archive": "./src/harti-archive.ts",
+    "./recipes": "./src/recipes.ts",
+    "./recipe-math": "./src/recipe-math.ts"
   },
   "scripts": {
     "build": "tsc --noEmit",

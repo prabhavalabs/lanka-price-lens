@@ -1,0 +1,376 @@
+{
+ "id": "dish_chicken_pepper_fry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 140,
+  "description": {
+   "en": "A dry peppery fry, a heaped spoon beside rice or thosai",
+   "si": "බතට හෝ දෝසයට ගොඩගැසුණු හැන්දක්, වියළි ගම්මිරිස් බැදුමක්",
+   "ta": "சாதத்துடனோ தோசையுடனோ ஒரு குவிந்த ஸ்பூன், காய்ந்த மிளகு வறுவல்"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken, curry cut with bone",
+    "si": "කුකුල් මස්, කරි කැපුම",
+    "ta": "கோழி இறைச்சி, எலும்புடன் கறி வெட்டு"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "about half a bird",
+   "preparation": {
+    "en": "cut small, washed and drained well",
+    "si": "කුඩාවට කපා සෝදා වතුර හොඳින් බේරාගත්",
+    "ta": "சிறியதாக வெட்டி, கழுவி நீரை நன்கு வடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 heaped tsp, coarsely crushed",
+   "preparation": {
+    "en": "coarsely crushed, half for the marinade and half at the end",
+    "si": "රළු ලෙස තලාගත්, භාගයක් මැරිනේඩ් එකට භාගයක් අවසානයට",
+    "ta": "கரகரப்பாக இடித்த, பாதி ஊறவைப்புக்கு, பாதி இறுதியில்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_jaffna_curry_powder",
+   "label": {
+    "en": "Jaffna curry powder",
+    "si": "යාපනේ තුනපහ",
+    "ta": "யாழ்ப்பாணக் கறித் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "5 chillies, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කඩාගත්",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 generous sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_sesame_oil",
+   "label": {
+    "en": "sesame oil",
+    "si": "තල තෙල්",
+    "ta": "நல்லெண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "added at the end for scent",
+    "si": "අවසානයේ සුවඳට එකතු කරන",
+    "ta": "இறுதியில் வாசத்திற்குச் சேர்க்க"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Mix the chicken with turmeric, the Jaffna curry powder, half the crushed pepper, half the crushed garlic and ginger and the salt, and leave it to take the spice.",
+    "minutes": 15
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and throw in the broken dried chillies, fennel and two sprigs of curry leaves until they crackle.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the sliced onion and the remaining garlic and ginger and fry until the onion is soft and the edges go brown.",
+    "minutes": 7
+   },
+   {
+    "text": "Put in the marinated chicken and sear it on a high flame, turning the pieces, until the outside has taken colour.",
+    "minutes": 6
+   },
+   {
+    "text": "Splash in half a cup of water, cover the pan and cook on a medium flame until the chicken is done and the water has almost gone.",
+    "minutes": 14
+   },
+   {
+    "text": "Take off the lid and keep frying so the last of the liquid dries and the spice sticks to the meat as a dark coat.",
+    "minutes": 6
+   },
+   {
+    "text": "Scatter over the rest of the crushed pepper and the last sprig of curry leaves and toss everything together.",
+    "minutes": 2
+   },
+   {
+    "text": "Drizzle in the sesame oil if you are using it, give one last turn and take the pan off the fire.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුකුල් මස්වලට කහ, යාපනේ තුනපහ, තලාගත් ගම්මිරිස් භාගයක්, තලාගත් සුදුළූණු හා ඉඟුරු භාගයක් සහ ලුණු දමා මිශ්‍ර කර කුළුබඩු අඳින්නට තබන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පළල් පෑන් එකක පොල් තෙල් රස්නේ කර, කඩාගත් වියළි මිරිස්, මාදුරු සහ කරපිංචා දෙකොළයක් දමා පිපිරෙන තුරු බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කපාගත් ළූණු සහ ඉතිරි සුදුළූණු, ඉඟුරු දමා, ළූණු මෘදු වී දාර දුඹුරු වන තුරු බදින්න.",
+    "minutes": 7
+   },
+   {
+    "text": "කුළුබඩු ගෑ කුකුල් මස් දමා, විශාල ගින්නේ පෙරළමින්, පිටත පාට වන තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "කෝප්ප භාගයක් වතුර දමා, පෑන් වසා, මස හරියට උයා වතුර පාහේ සිඳෙන තුරු මධ්‍යම ගින්නේ උයන්න.",
+    "minutes": 14
+   },
+   {
+    "text": "වැසුම ඉවත් කර, ඉතිරි දියර වියළී කුළුබඩු මසට අඳුරු තට්ටුවක් ලෙස ඇලෙන තුරු දිගට ම බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ඉතිරි තලාගත් ගම්මිරිස් සහ අවසන් කරපිංචා කොළය දමා සියල්ල එකට කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තල තෙල් භාවිත කරන්නේ නම් එය වත් කර, අවසන් වරට කලවම් කර පෑන් ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கோழியுடன் மஞ்சள், யாழ்ப்பாணக் கறித் தூள், பாதி இடித்த மிளகு, பாதி இடித்த பூண்டு இஞ்சி, உப்பு சேர்த்துக் கலந்து, மசாலா இறங்க வைத்திருங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, உடைத்த காய்ந்த மிளகாய், பெருஞ்சீரகம், இரண்டு கறிவேப்பிலைக் கொத்து சேர்த்துப் பொரிய விடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நறுக்கிய வெங்காயம், மீதி பூண்டு, இஞ்சி சேர்த்து, வெங்காயம் மென்மையாகி ஓரங்கள் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 7
+   },
+   {
+    "text": "ஊறிய கோழியைச் சேர்த்து, பெரிய தீயில் புரட்டிப் புரட்டி, வெளிப்புறம் நிறம் பிடிக்கும் வரை வறுக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அரை கப் நீர் தெளித்து, சட்டியை மூடி, கோழி வெந்து நீர் கிட்டத்தட்ட வற்றும் வரை நடுத்தர தீயில் சமையுங்கள்.",
+    "minutes": 14
+   },
+   {
+    "text": "மூடியை எடுத்து, மீதி நீர் வற்றி மசாலா இறைச்சியில் கரும் பூச்சாக ஒட்டும் வரை தொடர்ந்து வறுக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மீதி இடித்த மிளகையும் கடைசி கறிவேப்பிலைக் கொத்தையும் தூவி, எல்லாவற்றையும் ஒன்றாகப் புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நல்லெண்ணெய் சேர்ப்பதாக இருந்தால் ஊற்றி, ஒரு முறை புரட்டி, சட்டியை அடுப்பை விட்டு இறக்குங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 35,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "wide heavy pan or wok",
+  "mortar and pestle for the pepper"
+ ],
+ "tips": {
+  "en": "Crush the pepper yourself just before cooking and add half of it at the very end, because the scent goes off in long heat. Drain the chicken well, since wet pieces steam instead of frying and the coat never turns dark.",
+  "si": "ගම්මිරිස් උයන්නට ටික වෙලාවකට කලින් ම තලාගෙන, භාගයක් අවසානයේ ම දමන්න; දිගු රස්නයේ එහි සුවඳ නැති වේ. කුකුල් මස්වල වතුර හොඳින් බේරන්න; තෙත් කැබලි බැදෙනවා වෙනුවට තැම්බෙන අතර තට්ටුව අඳුරු නොවේ.",
+  "ta": "மிளகை சமைப்பதற்குச் சற்று முன்பே நீங்களே இடித்து, பாதியை இறுதியிலேயே சேருங்கள்; நெடுநேர வெப்பத்தில் அதன் வாசம் போய்விடும். கோழியின் நீரை நன்கு வடியுங்கள்; ஈரமான துண்டுகள் வறுபடாமல் வேகும், பூச்சு கறுக்காது."
+ },
+ "health_note": {
+  "en": "A dry fry uses less coconut milk than a gravy curry, so this is one of the lighter ways to eat chicken, and the pepper, garlic and curry leaf are what households reach for when someone has a cold. The salt in the curry powder adds up, so taste before you add more.",
+  "si": "හොද්ද කරියකට වඩා වියළි බැදුමකට පොල් කිරි අවශ්‍ය වන්නේ අඩුවෙන් නිසා, කුකුල් මස් කෑමට මෙය සැහැල්ලු ක්‍රමයකි; ගෙදර කවුරුන් හෝ සෙම්ප්‍රතිශ්‍යාවෙන් පෙළෙන විට ගම්මිරිස්, සුදුළූණු සහ කරපිංචා තෝරා ගන්නේ එබැවිනි. තුනපහෙහි ලුණුත් එකතු වන බැවින් තව ලුණු දැමීමට පෙර රස බලන්න.",
+  "ta": "குழம்புக் கறியை விட வறுவலுக்குத் தேங்காய்ப் பால் குறைவே தேவை என்பதால் கோழியை உண்ணும் இலகுவான வழிகளில் இது ஒன்று; வீட்டில் யாருக்கும் சளி பிடித்தால் மிளகு, பூண்டு, கறிவேப்பிலை ஆகியவற்றை நாடுவது இதனால்தான். கறித் தூளிலும் உப்பு இருப்பதால், மேலும் சேர்க்கும் முன் சுவைத்துப் பாருங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "immune_support",
+  "traditional_remedy",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,440 @@
+{
+ "id": "dish_vegetable_kottu",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 320,
+  "description": {
+   "en": "A plate of vegetable kottu, hot from the griddle",
+   "si": "තැටියෙන් ගත් උණුසුම් එළවළු කොත්තු පිඟානක්",
+   "ta": "கல்லில் இருந்து எடுத்த சூடான ஒரு தட்டு காய்கறி கொத்து"
+  }
+ },
+ "yield_g": 1280,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "about 2 and a half cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 65,
+   "unit": "ml",
+   "household": "about 4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 9,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 thick stalk",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கேரட்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium carrot",
+   "preparation": {
+    "en": "cut into thin strips",
+    "si": "සිහින් කූරු ලෙස කපාගත්",
+    "ta": "மெல்லிய நீளத் துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cabbage",
+   "label": {
+    "en": "cabbage",
+    "si": "ගෝවා",
+    "ta": "முட்டைக்கோஸ்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "a quarter of a small cabbage",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாக கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_soya_chunks",
+   "label": {
+    "en": "soya meat chunks",
+    "si": "සෝයා මීට්",
+    "ta": "சோயா மீட் துண்டுகள்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "half a cup, dry",
+   "preparation": {
+    "en": "soaked and drained",
+    "si": "පොඟවා වතුර බේරාගත්",
+    "ta": "ஊறவைத்து வடித்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ කුඩු",
+    "ta": "கறி மசாலாத் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சாஸ்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_stock",
+   "label": {
+    "en": "meat stock or leftover curry gravy",
+    "si": "මස් හොද්ද හෝ ඉතිරි වූ කරි හොද්ද",
+    "ta": "இறைச்சிக் குழம்பு அல்லது மீதமான கறிக் குழம்பு"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup of vegetable gravy",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Make a soft dough with the flour, a third of the salt and water, oil it well and leave it covered.",
+    "minutes": 30
+   },
+   {
+    "text": "If you are using soya, soak the chunks in hot water, squeeze them dry and shred them.",
+    "minutes": 10
+   },
+   {
+    "text": "Stretch the dough into six thin roti on an oiled table and griddle them until they are spotted brown.",
+    "minutes": 15
+   },
+   {
+    "text": "Chop the roti into shreds with two blades and set them aside.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil on a wide griddle and temper the onion, green chilli and curry leaves until they smell good.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the carrot first, then the leeks and cabbage, and fry them on a high flame so they keep their crunch.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the soya, the curry powder, chilli powder, turmeric and pepper and fry for a minute.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the gravy and the soy sauce and let it bubble so the vegetables take up the flavour.",
+    "minutes": 2
+   },
+   {
+    "text": "Tip in the chopped roti and the rest of the salt, then chop and turn with two turners until everything is one colour.",
+    "minutes": 4
+   },
+   {
+    "text": "Taste, and serve it hot with dhal curry or a chilli sambol.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිටි, ලුණු වලින් තෙන් කොටසක් හා වතුර දමා මෘදු ගුලියක් සාදා, තෙල් හොඳින් තවරා වසා තබන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "සෝයා මීට් යොදන්නේ නම්, උණු වතුරේ පොඟවා, මිරිකා වතුර ඉවත් කර ඉරාගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "තෙල් තැවරූ මේසයේ ගුලිය තුනී රොටී හයක් ලෙස ඇද, දුඹුරු ලප එන තුරු තැටියේ පුළුස්සන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "රොටී කටු දෙකකින් සිහින් පටිවලට කපා වෙනම තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් තැටියක තෙල් රත් කර ලූනු, අමු මිරිස් සහ කරපිංචා සුවඳ නගින තුරු බැදගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පළමුව කැරට්, පසුව ලීක්ස් සහ ගෝවා දමා, කරමුරු ගතිය රැඳෙන ලෙස ලොකු ගින්දරේ බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සෝයා, තුනපහ, මිරිස් කුඩු, කහ සහ ගම්මිරිස් දමා විනාඩියක් බැදගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "හොද්ද සහ සෝයා සෝස් වත් කර, එළවළුවලට රසය ගැනීමට උතුරන්නට හරින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කපාගත් රොටී සහ ඉතිරි ලුණු දමා, කටු දෙකකින් කොටමින් පෙරළමින් සියල්ල එක පාට වන තුරු මිශ්‍ර කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "රස බලා, පරිප්පු කරියක් හෝ මිරිස් සම්බෝලයක් සමඟ උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாவு, மூன்றில் ஒரு பங்கு உப்பு, தண்ணீர் சேர்த்து மென்மையான மாவாகப் பிசைந்து, எண்ணெய் நன்கு தடவி மூடி வைக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "சோயா மீட் பயன்படுத்தினால், சூடான நீரில் ஊறவைத்து, பிழிந்து நீரை நீக்கி, இழைகளாகக் கிழிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "எண்ணெய் தடவிய மேசையில் மாவை ஆறு மெல்லிய ரொட்டிகளாக விரித்து, பழுப்பு புள்ளிகள் வரும்வரை கல்லில் சுடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "ரொட்டியை இரு கத்திகளால் மெல்லிய துண்டுகளாக நறுக்கி தனியாக வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான கல்லில் எண்ணெயைக் காய்ச்சி, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலையை வாசனை வரும்வரை தாளிக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "முதலில் கேரட், பின்னர் லீக்ஸ், முட்டைக்கோஸ் சேர்த்து, கறுமுறுப்பு தங்கும்படி பெரிய தீயில் வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சோயா, கறி மசாலா, மிளகாய்த் தூள், மஞ்சள், மிளகு சேர்த்து ஒரு நிமிடம் வதக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "குழம்பையும் சோயா சாஸையும் ஊற்றி, காய்கறிகள் சுவை பெற கொதிக்கவிடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "நறுக்கிய ரொட்டியும் மீதி உப்பும் சேர்த்து, இரு கரண்டிகளால் வெட்டி புரட்டி எல்லாம் ஒரே நிறமாகும்வரை கலக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "சுவை பார்த்து, பருப்புக் கறி அல்லது மிளகாய் சம்பலுடன் சூடாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "flat griddle or wide pan",
+  "two kottu blades or turners"
+ ],
+ "tips": {
+  "en": "Cut the vegetables about the same size as the roti shreds so no single piece stands out, and add the cabbage last so it does not go limp.",
+  "si": "රොටී පටිවලට සමාන ලෙස එළවළු කපන්න, එවිට කැබැල්ලක් වෙන්ව නොපෙනේ; ගෝවා අවසානයේ දමන්න, එවිට මැලවෙන්නේ නැහැ.",
+  "ta": "ரொட்டி துண்டுகளின் அளவுக்கே காய்கறிகளை நறுக்கவும், அப்போது எந்தத் துண்டும் தனித்துத் தெரியாது; முட்டைக்கோஸை கடைசியாகச் சேர்க்கவும், அப்போது அது வதங்கிப் போகாது."
+ },
+ "health_note": {
+  "en": "A cheap way to get a plateful of vegetables into the family, and the soya adds protein without meat; the flour and the soy sauce still make it a heavy, salty dinner.",
+  "si": "පවුලට එළවළු පිඟානක් ලබා දීමට ලාභ ක්‍රමයක්, තවද සෝයා වලින් මස් නොමැතිව ප්‍රෝටීන් ලැබෙනවා; එහෙත් පිටි සහ සෝයා සෝස් නිසා එය බර, ලුණු සහිත රාත්‍රී භෝජනයක්.",
+  "ta": "குடும்பத்திற்கு ஒரு தட்டு காய்கறி கிடைக்கும் மலிவான வழி, சோயா இறைச்சி இல்லாமல் புரதம் தருகிறது; ஆனாலும் மாவும் சோயா சாஸும் இதை கனமான, உப்பு நிறைந்த இரவு உணவாக்குகின்றன."
+ },
+ "tags": [
+  "budget",
+  "filling",
+  "high_fibre",
+  "street_food",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

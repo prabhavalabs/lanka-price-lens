@@ -1,0 +1,240 @@
+{
+ "id": "dish_thala_guli",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 60,
+  "description": {
+   "en": "Two dense cones, unwrapped from their paper twist",
+   "si": "කඩදාසි ඔතන ලද, තද තල ගුලි දෙකක්",
+   "ta": "காகிதச் சுருளிலிருந்து அவிழ்த்த இரண்டு இறுக்கமான உருண்டைகள்"
+  }
+ },
+ "yield_g": 240,
+ "ingredients": [
+  {
+   "ref": "pantry_sesame_seeds",
+   "label": {
+    "en": "sesame seeds",
+    "si": "තල",
+    "ta": "எள்ளு"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "washed, dried and roasted until they pop",
+    "si": "සෝදා වියළා, පිපිරෙන තුරු බැදගත්",
+    "ta": "கழுவி உலர்த்தி, வெடிக்கும்வரை வறுத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "kithul jaggery",
+    "si": "කිතුල් හකුරු",
+    "ta": "கித்துல் வெல்லம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 small block, scraped",
+   "preparation": {
+    "en": "scraped fine",
+    "si": "සිහින්ව ගා ගත්",
+    "ta": "நன்றாகத் துருவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, grated",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "quarter cup, scraped",
+   "preparation": {
+    "en": "freshly scraped, lightly roasted",
+    "si": "අලුතෙන් ගා ගත්, සැහැල්ලුවෙන් බැදූ",
+    "ta": "அப்போது துருவியது, லேசாக வறுத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a good pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the sesame in water, rub it between your palms to loosen any grit, drain it well and spread it out to dry.",
+    "minutes": 10
+   },
+   {
+    "text": "Roast the sesame in a dry pan on a low flame, shaking the pan, until the seeds swell and pop and turn a shade darker.",
+    "minutes": 10
+   },
+   {
+    "text": "Roast the scraped coconut in the same pan for a few minutes until it smells toasted but is still pale.",
+    "minutes": 5
+   },
+   {
+    "text": "Let both cool, because warm sesame turns oily in the mortar and the mixture will not hold.",
+    "minutes": 15
+   },
+   {
+    "text": "Pound the sesame in a mortar in small batches until most of the seeds are broken and the mass begins to look damp with its own oil.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the scraped jaggery, coconut and salt and pound on until the mixture holds together in a lump when squeezed.",
+    "minutes": 8
+   },
+   {
+    "text": "Taste and pound in a little more jaggery if it is not sweet enough; adding it later means starting the pounding again.",
+    "minutes": null
+   },
+   {
+    "text": "Take a small handful and press it hard in your fist into a cone or a ball, squeezing out every air pocket.",
+    "minutes": null
+   },
+   {
+    "text": "Twist each one in a square of clean paper and store in a tin; they keep for a couple of weeks.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තල වතුරෙන් සෝදා, අත් අතරේ අතුල්ලා කසට ඉවත් කර, හොඳින් බේරා වියළෙන්නට අතුරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වියළි පෑන් එකක අඩු ගින්නේ, පෑන් එක සොලවමින්, ඇට ඉදිමී පිපිරී ටිකක් අඳුරු වන තුරු තල බදින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එම පෑන් එකේම ගා ගත් පොල් මිනිත්තු කිහිපයක්, බැදුණු සුවඳ එන නමුත් තවම ලා පාටින් තිබෙන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "දෙකම සිසිල් වෙන්න දෙන්න, උණුසුම් තල වංගෙඩියේ තෙල් ගතියට හැරෙන නිසා මිශ්‍රණය රැඳෙන්නේ නැහැ.",
+    "minutes": 15
+   },
+   {
+    "text": "තල වංගෙඩියේ ටික ටික දමා, බොහෝ ඇට කැඩී, ගොඩ තමන්ගේම තෙලෙන් තෙත් ලෙස පෙනෙන්නට පටන් ගන්නා තුරු කොටන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගා ගත් හකුරු, පොල් සහ ලුණු දමා, තද කළ විට එක ගුලියක් ලෙස රැඳෙන තුරු දිගටම කොටන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "රස බලා, පැණි රස අඩු නම් තව හකුරු ටිකක් දමා කොටන්න, පසුව දැමීම කියන්නේ නැවත මුල සිට කොටන එකයි.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා අල්ලක් ගෙන මිටෙන් තදින් තද කර, වායු කුහර නැති වන ලෙස කොනයක් හෝ බෝලයක් සාදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එකක් එකක් පිරිසිදු කඩදාසි කැබැල්ලක ඔතා ටින් එකක තබන්න, සති දෙකක් පමණ තිබෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "எள்ளை நீரில் கழுவி, கைகளுக்கு இடையில் தேய்த்து கசடு நீக்கி, நன்றாக வடித்து பரப்பி உலர்த்துங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வறண்ட வாணலியில் சிறு தீயில், வாணலியை உலுக்கிக்கொண்டே, விதைகள் பொங்கி வெடித்து சற்றே கருமையாகும்வரை எள்ளை வறுக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே வாணலியில் துருவிய தேங்காயை சில நிமிடம், வறுத்த மணம் வரும், ஆனால் நிறம் மாறாத பதம்வரை வறுக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "இரண்டையும் ஆற விடுங்கள் - சூடான எள் உரலில் எண்ணெய் பிரிந்து கலவை ஒட்டாது.",
+    "minutes": 15
+   },
+   {
+    "text": "எள்ளை உரலில் கொஞ்சம் கொஞ்சமாகப் போட்டு, பெரும்பாலான விதைகள் உடைந்து, கலவை தன் எண்ணெயால் ஈரமாகத் தோன்றும்வரை இடியுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "துருவிய வெல்லம், தேங்காய், உப்பு சேர்த்து, அழுத்தினால் ஒரே உருண்டையாக ஒட்டும்வரை தொடர்ந்து இடியுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சுவைத்துப் பார்த்து, இனிப்பு குறைவாக இருந்தால் இன்னும் கொஞ்சம் வெல்லம் சேர்த்து இடியுங்கள்; பின்னால் சேர்ப்பது என்றால் மீண்டும் முதலிலிருந்து இடிக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு சிறு கைப்பிடி எடுத்து முஷ்டியில் இறுக்கமாக அழுத்தி, காற்று இல்லாமல் கூம்பாகவோ உருண்டையாகவோ பிடியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொன்றையும் சுத்தமான காகிதத் துண்டில் சுற்றி டப்பாவில் வையுங்கள்; இரண்டு வாரம் இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 15,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "mortar and pestle",
+  "heavy pan",
+  "clean paper squares",
+  "tin"
+ ],
+ "tips": {
+  "en": "A mortar beats a grinder here, because a machine heats the sesame and drives the oil out as a paste, while pounding breaks the seeds just enough to bind. Never pound while the sesame is warm, and never add water, since the only thing holding a thala guli together is sesame oil and jaggery pressed hard. If the mixture will not hold, pound another five minutes rather than adding more jaggery.",
+  "si": "මෙතන ග්‍රයින්ඩරයට වඩා වංගෙඩිය හොඳයි, යන්ත්‍රය තල රත් කර තෙල් පිට කර පේස්ට් එකක් කරනවා, කොටන විට ඇට බැඳෙන තරමට පමණක් කැඩෙනවා. තල උණුසුම්ව තිබියදී කොටන්න එපා, වතුර කිසිසේත් දමන්න එපා, තල ගුලියක් එකට තියෙන්නේ තදින් තද කරගත් තල තෙල් සහ හකුරු නිසා පමණයි. මිශ්‍රණය රැඳෙන්නේ නැත්නම්, තව හකුරු දමනවා වෙනුවට තව මිනිත්තු පහක් කොටන්න.",
+  "ta": "இங்கே மிக்ஸியை விட உரலே சிறந்தது - இயந்திரம் எள்ளை சூடாக்கி எண்ணெயை வெளியேற்றி விழுதாக்கும், இடிக்கும்போது விதைகள் ஒட்டுவதற்குத் தேவையான அளவே உடையும். எள் சூடாக இருக்கும்போது இடிக்க வேண்டாம், நீரும் சேர்க்க வேண்டாம் - எள்ளுருண்டையை ஒன்றாகப் பிடித்து வைப்பது எள் எண்ணெயும் வெல்லமும் இறுக்க அழுத்தப்படுவதும் மட்டுமே. கலவை ஒட்டாவிட்டால், வெல்லம் சேர்ப்பதற்குப் பதிலாக இன்னும் ஐந்து நிமிடம் இடியுங்கள்."
+ },
+ "health_note": {
+  "en": "Sesame makes this one of the more nourishing sweets on the list: it carries calcium, iron and good fat, and the jaggery adds a little iron of its own, which is why it used to be given to growing children and nursing mothers. It is still dense in calories for its size, so one or two cones is a portion, and the little cones are a choking risk for very small children unless broken up.",
+  "si": "තල නිසා මෙය ලැයිස්තුවේ වඩාත් පෝෂ්‍යදායී රසකැවිලි අතරින් එකක්, කැල්සියම්, යකඩ සහ හොඳ මේදය තිබෙනවා, හකුරුවලින් තව යකඩ ටිකක් ලැබෙනවා, වැඩෙන ළමයින්ට සහ කිරි දෙන මවුවරුන්ට එය දුන්නේ ඒ නිසයි. ප්‍රමාණයට සාපේක්ෂව කැලරි වැඩි නිසා එකක් දෙකක් එක කොටසක්, ඉතා කුඩා දරුවන්ට කුඩා ගුලි කඩා නොදුන්නොත් හිරවීමේ අවදානමක් තිබෙනවා.",
+  "ta": "எள் இதை இந்தப் பட்டியலின் ஊட்டமான இனிப்புகளில் ஒன்றாக்குகிறது - கால்சியம், இரும்பு, நல்ல கொழுப்பு உள்ளது; வெல்லமும் கொஞ்சம் இரும்பைச் சேர்க்கிறது - அதனால்தான் வளரும் குழந்தைகளுக்கும் பாலூட்டும் தாய்மார்களுக்கும் இதைக் கொடுத்தார்கள். அளவுக்கு ஏற்ப கலோரி அதிகம் என்பதால் ஒன்றிரண்டு உருண்டைகளே ஒரு பங்கு; மிகச் சிறு குழந்தைகளுக்கு உடைத்துக் கொடுக்காவிட்டால் தொண்டையில் அடைக்கும் ஆபத்து உண்டு."
+ },
+ "tags": [
+  "iron_rich",
+  "calcium_rich",
+  "high_fibre",
+  "high_sugar",
+  "budget",
+  "festive",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

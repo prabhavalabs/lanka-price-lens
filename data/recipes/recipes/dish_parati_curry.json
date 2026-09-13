@@ -1,0 +1,356 @@
+{
+ "id": "dish_parati_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "A piece of parati with goraka gravy and rice",
+   "si": "බත් සමඟ ගොරකා හොදියේ පරටි මාළු කෑල්ලක්",
+   "ta": "சாதத்துடன் புளிக் குழம்பில் ஒரு பராட்டி மீன் துண்டு"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_parati",
+   "label": {
+    "en": "parati fish",
+    "si": "පරටි මාළු",
+    "ta": "பராட்டி மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 pieces",
+   "preparation": {
+    "en": "cleaned and cut into pieces",
+    "si": "පිරිසිදු කර කෑලිවලට කපාගත්",
+    "ta": "சுத்தம் செய்து துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 110,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": {
+    "en": "soaked and mashed",
+    "si": "වතුරේ දමා තලාගත්",
+    "ta": "ஊறவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ කුඩු",
+    "ta": "கறித் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 9,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்த்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarter cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Clean the fish, cut it into pieces the size of your palm and wash them with a little salt to take off the surface slime.",
+    "minutes": 12
+   },
+   {
+    "text": "Rub the pieces with the turmeric and half the salt and keep them aside.",
+    "minutes": null
+   },
+   {
+    "text": "Soak the goraka in half a cup of hot water and mash it with the back of a spoon.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the onion, garlic, curry leaves, curry powder, chilli powder, goraka water, thin coconut milk and the rest of the salt into a clay pot and boil it until the gravy no longer smells raw.",
+    "minutes": 8
+   },
+   {
+    "text": "Lay the fish pieces in a single layer and spoon the gravy over them without stirring.",
+    "minutes": 1
+   },
+   {
+    "text": "Cover and cook on a low flame until the flesh comes away from the bone when you press it.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the thick coconut milk and the spoon of coconut oil and bring it to a gentle bubble.",
+    "minutes": 3
+   },
+   {
+    "text": "Take the pot off the fire and let it stand before serving.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු පිරිසිදු කර අත්ලක ප්‍රමාණයේ කෑලිවලට කපා, පිටත ලිස්සන ගතිය යන්න ලුණු ටිකක් දමා සෝදාගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "කෑලිවලට කහ සහ ලුණු භාගයක් ගල්වා වෙනම තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගොරකා උණු වතුර කෝප්ප භාගයක දමා හැන්දේ පිටතින් තලාගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මැටි වළඳකට ළූණු, සුදුළූණු, කරපිංචා, තුනපහ කුඩු, මිරිස් කුඩු, ගොරකා වතුර, දිය පොල් කිරි සහ ඉතිරි ලුණු දමා අමු ගඳ යන තුරු නටවන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මාළු කෑලි එක තලයකට අතුරා, කලවම් නොකර හොදි ඒ මතට වත් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "වහලා අඩු ගින්නේ, තද කර බැලූ විට මස් ඇටයෙන් ගැලවෙන තුරු පිසින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මිටි පොල් කිරි සහ පොල් තෙල් හැන්ද දමා සෙමින් නටන තුරු රත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වළඳ ලිපෙන් ඉවත් කර මඳක් තියා පිළිගන්වන්න.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீனைச் சுத்தம் செய்து உள்ளங்கை அளவு துண்டுகளாக வெட்டி, மேல் வழுவழுப்பு போக சிறிது உப்பு சேர்த்துக் கழுவுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "துண்டுகளில் மஞ்சளும் பாதி உப்பும் தடவி ஒதுக்கி வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கொடுக்காய்ப்புளியை அரை கப் வெந்நீரில் ஊறவைத்து, கரண்டியால் மசியுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் வெங்காயம், பூண்டு, கறிவேப்பிலை, கறித் தூள், மிளகாய்த் தூள், புளி நீர், நீர்த்த தேங்காய்ப் பால், மீதி உப்பு சேர்த்து பச்சை வாசம் போகும் வரை கொதிக்க வையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "மீன் துண்டுகளை ஒரே அடுக்காக அடுக்கி, கிளறாமல் குழம்பை மேலே ஊற்றுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "மூடி, சிறு தீயில், அழுத்தினால் இறைச்சி எலும்பில் இருந்து பிரியும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலையும் ஒரு கரண்டி தேங்காய் எண்ணெயையும் சேர்த்து மெதுவாகக் கொதிக்க வையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "சட்டியை இறக்கி சிறிது நேரம் வைத்துப் பரிமாறுங்கள்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot or heavy pan"
+ ],
+ "tips": {
+  "en": "This is the everyday market fish, so keep the curry simple and let the goraka do the work. If the pieces are thin, cut the cooking time to seven or eight minutes or they will fall apart.",
+  "si": "මේක එදිනෙදා වෙළඳපොලෙන් ගන්න මාළුවක්, ඒ නිසා කරිය සරලව තියාගෙන වැඩේ ගොරකාට බාර දෙන්න. කෑලි තුනී නම් පිසෙන කාලය විනාඩි හතට අටට අඩු කරන්න, නැත්නම් කැඩෙනවා.",
+  "ta": "இது அன்றாட சந்தை மீன், எனவே குழம்பை எளிமையாக வைத்து வேலையைப் புளிக்கு விடுங்கள். துண்டுகள் மெல்லியதாக இருந்தால் சமையல் நேரத்தை ஏழு எட்டு நிமிடமாகக் குறையுங்கள், இல்லையேல் உடைந்துவிடும்."
+ },
+ "health_note": {
+  "en": "An affordable way to get fish onto the table twice a week, with lean protein and iodine. The coconut milk is the only heavy part, so the same fish white-curried or fried dry is even lighter.",
+  "si": "සතියට දෙවරක් මාළු මේසයට ගන්න ලාබ ක්‍රමයක්; අඩු මේද ප්‍රෝටීන් සහ අයඩීන් ලැබෙනවා. බර වෙන එකම කොටස පොල් කිරි, ඒ නිසා මේම මාළුව කිරි හොදියක් හෝ වියළිව බැදගත්තොත් තව සැහැල්ලුයි.",
+  "ta": "வாரத்தில் இரு முறை மீனை மேசைக்குக் கொண்டுவர மலிவான வழி; குறைந்த கொழுப்புப் புரதமும் அயோடினும் கிடைக்கும். கனமான பகுதி தேங்காய்ப் பால் மட்டுமே, எனவே இதே மீனைச் சொதியாகவோ வறுவலாகவோ செய்தால் இன்னும் இலகுவாகும்."
+ },
+ "tags": [
+  "high_protein",
+  "budget",
+  "comfort",
+  "heart_healthy"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

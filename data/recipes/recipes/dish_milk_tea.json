@@ -1,0 +1,180 @@
+{
+ "id": "dish_milk_tea",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 200,
+  "description": {
+   "en": "A cup of sweet milk tea, the boutique measure",
+   "si": "කඩේ මිනුමට බෙදාගත් පැණි රස කිරි තේ කෝප්පයක්",
+   "ta": "கடை அளவில் ஊற்றிய இனிப்பான பால் தேநீர் ஒரு கோப்பை"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "pantry_black_tea",
+   "label": {
+    "en": "Ceylon black tea leaves",
+    "si": "තේ කොළ",
+    "ta": "தேயிலை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 tsp, a dust grade brews strongest",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_milk_powder",
+   "label": {
+    "en": "full cream milk powder",
+    "si": "කිරි පිටි",
+    "ta": "பால் பவுடர்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 tbsp",
+   "preparation": {
+    "en": "mixed to a smooth paste with a little warm water",
+    "si": "උණුසුම් වතුර ටිකකින් ගැටි නැති ලෙස මිශ්‍ර කරගත්",
+    "ta": "சிறிது வெதுவெதுப்பான நீரில் கட்டியில்லாமல் கரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 48,
+   "unit": "g",
+   "household": "4 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Boil 600 ml of water hard in a kettle or a small pan.",
+    "minutes": 4
+   },
+   {
+    "text": "Put the tea leaves into a warmed pot, pour the boiling water over them, cover and leave them alone.",
+    "minutes": 3
+   },
+   {
+    "text": "While the tea draws, put the milk powder in a jug and work it into a smooth paste with four tablespoons of warm water so it does not lump.",
+    "minutes": null
+   },
+   {
+    "text": "Loosen the paste with another 200 ml of hot water and stir in the sugar.",
+    "minutes": null
+   },
+   {
+    "text": "Strain the brewed tea into the milk and not the other way round; that keeps the leaf grit out of the cup.",
+    "minutes": null
+   },
+   {
+    "text": "Pour the tea from jug to jug a few times from a height until a light froth rises, then serve it at once while it is still too hot to gulp.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කේතලයක හෝ කුඩා බඳුනක මිලිලීටර් 600ක් වතුර හොඳින් උතුරන්න තබන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "උණුසුම් කළ තේ පෝච්චියකට තේ කොළ දමා, උතුරන වතුර වත් කර, වසා තව ටිකක් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "තේ බසින අතරේ, කිරි පිටි ජෝගුවකට දමා උණුසුම් වතුර මේස හැඳි හතරකින් ගැටි නැති පේස්ට් එකක් වන තුරු මිශ්‍ර කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තව මිලිලීටර් 200ක උණු වතුරෙන් එය තුනී කර, සීනි දමා කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බැසගත් තේ කිරි මිශ්‍රණයට පෙරන්න, අනිත් පැත්තට නොවේ; එවිට තේ කොළ කැබලි කෝප්පයට යන්නේ නැහැ.",
+    "minutes": null
+   },
+   {
+    "text": "ජෝගුවෙන් ජෝගුවට උසින් කිහිප වරක් වත් කර සිහින් පෙණ නගින තුරු අදින්න; උණුසුම් අතරේම වහාම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கெட்டிலிலோ சிறிய பாத்திரத்திலோ 600 மில்லி தண்ணீரை நன்றாகக் கொதிக்க வைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "சூடுபடுத்திய தேநீர்ப் பாத்திரத்தில் தேயிலையை இட்டு, கொதிக்கும் நீரை ஊற்றி, மூடி வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "தேநீர் ஊறும் நேரத்தில், பால் பவுடரை ஜாக்கில் இட்டு, நான்கு மேசைக்கரண்டி வெதுவெதுப்பான நீரில் கட்டியில்லாமல் கரைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இன்னும் 200 மில்லி சூடான நீர் விட்டு நீர்க்கச் செய்து, சீனியைச் சேர்த்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஊறிய தேநீரை பால் கலவையில் வடிகட்டி ஊற்றவும், மாற்றி அல்ல; அப்போது தேயிலைத் துகள் கோப்பைக்கு வராது.",
+    "minutes": null
+   },
+   {
+    "text": "ஜாக்கிலிருந்து ஜாக்கிற்கு உயரத்திலிருந்து சில முறை ஊற்றி நுரை வரும் வரை இழுத்து, சூடாக இருக்கும்போதே பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 2,
+  "cook_minutes": 5,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "kettle or small pan",
+  "tea pot",
+  "two jugs",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Never boil the milk and the tea together; that is what gives boutique tea its stewed, papery taste. Three minutes is the whole steeping time, and a fourth minute only makes it harsh.",
+  "si": "කිරි සහ තේ එකට කිසි විටෙකත් උතුරුවන්න එපා; කඩේ තේ වලට එන පිළිස්සුණු, කොළ ගතිය එන්නේ එහෙමයි. තේ බැසීමට ඕන මුළු කාලය මිනිත්තු තුනයි, හතරවෙනි මිනිත්තුවෙන් වෙන්නේ රළු වීම පමණයි.",
+  "ta": "பாலையும் தேயிலையையும் ஒன்றாகக் கொதிக்க வைக்க வேண்டாம்; கடைத் தேநீருக்கு வரும் வேகவைத்த, காகிதம் போன்ற சுவை அதனால்தான். ஊறுவதற்கு மூன்று நிமிடமே போதும், நான்காவது நிமிடம் அதைக் கடுமையாக்கும்."
+ },
+ "health_note": {
+  "en": "The milk powder brings calcium and a little protein, which is why a cup with a bun carries a worker through the morning. The sugar is the catch: four cups a day at this sweetness is most of a day's added sugar, so it is worth taking at least some cups with half the sugar.",
+  "si": "කිරි පිටියෙන් කැල්සියම් සහ ප්‍රෝටීන් ටිකක් ලැබෙන නිසා, තේ කෝප්පයක් සහ බනිසක් කම්කරුවෙකුට උදෑසන ගෙවා දමන්නට සෑහේ. ප්‍රශ්නය සීනියි: මේ පැණි රසට දිනකට කෝප්ප හතරක් යනවා නම් එය දිනකට එකතු කරන සීනියෙන් වැඩි කොටසකි, එබැවින් අඩු වශයෙන් කෝප්ප කිහිපයක් සීනි අඩුවෙන් ගැනීම වටී.",
+  "ta": "பால் பவுடர் கால்சியமும் சிறிது புரதமும் தருகிறது, அதனால்தான் ஒரு கோப்பையும் பன்னும் ஒரு தொழிலாளியை காலை முழுவதும் தாங்கும். சிக்கல் சீனி: இந்த இனிப்பில் நாளுக்கு நான்கு கோப்பை என்றால் அது ஒரு நாளின் சேர்க்கப்பட்ட சர்க்கரையில் பெரும்பகுதி, எனவே சில கோப்பைகளையாவது பாதி சீனியில் குடிப்பது நல்லது."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "comfort",
+  "calcium_rich",
+  "kid_friendly",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

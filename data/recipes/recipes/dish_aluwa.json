@@ -1,0 +1,292 @@
+{
+ "id": "dish_aluwa",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 85,
+  "description": {
+   "en": "Two or three diamonds off the New Year tray",
+   "si": "අවුරුදු මේසයෙන් අළුවා කැට දෙක තුනක්",
+   "ta": "புத்தாண்டு தட்டிலிருந்து இரண்டு மூன்று அல்வா துண்டுகள்"
+  }
+ },
+ "yield_g": 340,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 160,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "හලා ගත්",
+    "ta": "சலித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 130,
+   "unit": "g",
+   "household": "generous half cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for colour and flavour",
+    "si": "පාට සහ රස සඳහා",
+    "ta": "நிறத்திற்கும் மணத்திற்கும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "broken into rough pieces",
+    "si": "රළු කැබලිවලට කඩාගත්",
+    "ta": "பெரிதாக உடைத்த"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, seeds crushed",
+   "preparation": {
+    "en": "seeds pounded fine",
+    "si": "ඇට හොඳින් කොටාගත්",
+    "ta": "விதைகளை நன்றாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp, for the board",
+   "preparation": {
+    "en": "to grease the board and knife",
+    "si": "පෑන් සහ පිහිය තෙල් ගෑමට",
+    "ta": "பலகையிலும் கத்தியிலும் தடவ"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "dough"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Roast the rice flour in a dry heavy pan on a low flame, stirring all the time, until it feels warm and smells nutty but has not taken colour.",
+    "minutes": 12
+   },
+   {
+    "text": "Sieve the roasted flour onto a wide plate and let it cool a little; the sieving is what keeps aluwa smooth on the tongue.",
+    "minutes": null
+   },
+   {
+    "text": "Crush the cardamom seeds and break the cashew into rough bits.",
+    "minutes": null
+   },
+   {
+    "text": "Put the sugar, treacle and 60 ml of water in the pan and boil without stirring until the syrup threads from the spoon and a drop dropped into cold water holds its shape.",
+    "minutes": 8
+   },
+   {
+    "text": "Take the pan off the fire and stir in the cardamom, salt and cashew.",
+    "minutes": null
+   },
+   {
+    "text": "Add the flour a handful at a time, mixing hard with a wooden spoon, until you have a warm crumbly dough that holds when you press it.",
+    "minutes": null
+   },
+   {
+    "text": "Tip it onto an oiled board or a banana leaf and press flat to about one centimetre with an oiled rolling pin or the bottom of a cup.",
+    "minutes": null
+   },
+   {
+    "text": "While still warm, mark and cut diamonds with an oiled knife, then leave them on the board to firm up.",
+    "minutes": 30
+   },
+   {
+    "text": "Lift the diamonds off once cold and store in a tin; they keep a week.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බර මුට්ටියක හෝ පෑන් එකක සහල් පිටි අඩු ගින්නේ, නොනවතින්ම කලතමින්, උණුසුම් වී සුවඳ එන තුරු බදින්න, පාට වෙන්න දෙන්න එපා.",
+    "minutes": 12
+   },
+   {
+    "text": "බැදගත් පිටි පිඟානකට හලා ටිකක් සිසිල් වෙන්න දෙන්න, අළුවා දිවට සිනිඳු වන්නේ මේ හැලීම නිසයි.",
+    "minutes": null
+   },
+   {
+    "text": "එනසාල් ඇට කොටා ගන්න, කජු රළුවට කඩා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සීනි, කිතුල් පැණි සහ මිලි ලීටර් 60ක වතුර පෑන් එකට දමා, නොකලතා, හැන්දෙන් නූල් බැඳෙන තුරු සහ බින්දුවක් සිසිල් වතුරට දැමූ විට එකට තිබෙන තුරු තියන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පෑන් ලිපෙන් ඉවත් කර එනසාල්, ලුණු සහ කජු දමා කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිටි අතට අල්ලක් බැගින් දමා ලී හැන්දකින් හොඳින් මිශ්‍ර කරන්න, තද කළ විට එකට තිබෙන උණුසුම් පිටි ගුලියක් වන තුරු.",
+    "minutes": null
+   },
+   {
+    "text": "තෙල් ගෑ ලෑල්ලකට හෝ කෙසෙල් කොළයකට දමා, තෙල් ගෑ රෝලරයකින් හෝ කෝප්පයක පතුලෙන් සෙන්ටිමීටරයක් පමණ ඝනට තට්ටු කර තුනී කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උණුසුම්ව තිබෙන අතරම තෙල් ගෑ පිහියකින් කැට කපා, ලෑල්ලේම තදවෙන්න තියන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "සිසිල් වූ පසු කැට ගලවා ගෙන ටින් එකක තබා ගන්න, සතියක් පමණ තිබේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கனமான வாணலியில் அரிசி மாவை சிறு தீயில், தொடர்ந்து கிளறிக்கொண்டே, சூடாகி நல்ல மணம் வரும்வரை வறுக்கவும் - நிறம் மாறக்கூடாது.",
+    "minutes": 12
+   },
+   {
+    "text": "வறுத்த மாவை அகலமான தட்டில் சலித்து சிறிது ஆற விடுங்கள்; இந்த சலிப்புதான் அல்வாவை மிருதுவாக்குகிறது.",
+    "minutes": null
+   },
+   {
+    "text": "ஏலக்காய் விதைகளை இடித்து, முந்திரியை பெரிதாக உடைத்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சீனி, பாணி, 60 மில்லி தண்ணீர் சேர்த்து கிளறாமல் கொதிக்க விடுங்கள் - கரண்டியில் நூல் பிடிக்கும், ஒரு துளி குளிர்ந்த நீரில் விட்டால் உருண்டையாக நிற்கும் பதம்.",
+    "minutes": 8
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி ஏலக்காய், உப்பு, முந்திரி சேர்த்துக் கிளறுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மாவை கைப்பிடியாகச் சேர்த்து மரக்கரண்டியால் நன்றாகக் கலக்குங்கள்; அழுத்தினால் ஒட்டும் பதத்தில் சூடான மாவுக் கலவை கிடைக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "எண்ணெய் தடவிய பலகையிலோ வாழை இலையிலோ கொட்டி, எண்ணெய் தடவிய உருளையால் ஒரு சென்டிமீட்டர் தடிமனுக்கு தட்டிப் பரப்புங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சூடு இருக்கும்போதே எண்ணெய் தடவிய கத்தியால் சாய்சதுரங்களாக வெட்டி, பலகையிலேயே இறுக விடுங்கள்.",
+    "minutes": 30
+   },
+   {
+    "text": "முழுவதும் ஆறியபின் துண்டுகளை எடுத்து டப்பாவில் வையுங்கள்; ஒரு வாரம் கெடாமல் இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 20,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "heavy pan",
+  "fine sieve",
+  "wooden spoon",
+  "flat board or banana leaf",
+  "rolling pin"
+ ],
+ "tips": {
+  "en": "The syrup stage decides everything: boiled too little the diamonds stay sticky, boiled too long they turn hard as stone, so keep a cup of cold water by the fire and test a drop every minute. Work fast once the flour goes in, because the dough stops pressing well as it cools. A spoon of roasted semolina mixed into the flour gives the rulang aluwa texture some households prefer.",
+  "si": "පැණි තැම්බෙන තැන තමයි ප්‍රධාන දේ, අඩුවෙන් තැම්බුණොත් කැට ඇලෙනවා, වැඩියෙන් තැම්බුණොත් ගලක් වගේ තද වෙනවා, ඒ නිසා ලිප ළඟ සිසිල් වතුර කෝප්පයක් තබා මිනිත්තුවකට වරක් බින්දුවක් දමා බලන්න. පිටි දැමූ පසු ඉක්මනින් වැඩ කරන්න, සිසිල් වන විට ගුලිය තට්ටු කරන්න අමාරුයි. බැදගත් රුලං හැන්දක් පිටිවලට එකතු කළොත් සමහර ගෙවල් වලට කැමති රුලං අළුවා හැඩය ලැබේ.",
+  "ta": "பாகுப் பதம்தான் முக்கியம் - குறைவாக கொதித்தால் துண்டுகள் ஒட்டும், அதிகமாக கொதித்தால் கல்லாக இறுகும்; அதனால் அடுப்பருகே ஒரு கிண்ணம் குளிர்ந்த நீர் வைத்து ஒரு நிமிடத்திற்கு ஒருமுறை சோதியுங்கள். மாவு சேர்த்தபின் வேகமாக வேலை செய்யுங்கள், ஆறினால் தட்டுவது கடினம். வறுத்த ரவை ஒரு கரண்டி சேர்த்தால் சில வீடுகள் விரும்பும் ரவை அல்வா பதம் கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "Aluwa is rice flour and sugar with little else, so it is quick energy and not much more; the cashew adds a little good fat and protein. It is one of the cheapest sweets on the table, but two diamonds carry as much sugar as a sweetened tea, so keep the tray out of reach between meals if there is a diabetic in the house.",
+  "si": "අළුවා යනු සහල් පිටි සහ සීනි පමණක් නිසා, එයින් ලැබෙන්නේ ඉක්මන් ශක්තියක්, කජු ටිකෙන් සුළු හොඳ මේදයක් සහ ප්‍රෝටීන් ලැබේ. මේසයේ ලාබම රසකැවිල්ලක් වුවත්, කැට දෙකක සීනි ප්‍රමාණය සීනි දැමූ තේ කෝප්පයකට සමාන නිසා, ගෙදර දියවැඩියා රෝගියෙක් ඇත්නම් තැටිය ඈතින් තබන්න.",
+  "ta": "அல்வா என்பது அரிசி மாவும் சீனியும்தான் - உடனடி சக்தி தவிர வேறு அதிகம் இல்லை; முந்திரி கொஞ்சம் நல்ல கொழுப்பையும் புரதத்தையும் தரும். தட்டில் இருக்கும் மிக மலிவான இனிப்பு இதுதான், ஆனால் இரண்டு துண்டுகளில் ஒரு டீயளவு சீனி இருக்கும்; வீட்டில் சர்க்கரை நோயாளி இருந்தால் தட்டை தூரமாக வையுங்கள்."
+ },
+ "tags": [
+  "high_sugar",
+  "festive",
+  "budget",
+  "kid_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

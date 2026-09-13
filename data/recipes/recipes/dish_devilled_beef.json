@@ -1,0 +1,469 @@
+{
+ "id": "dish_devilled_beef",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 175,
+  "description": {
+   "en": "Hot beef strips with onion and capsicum, to share with rice or kottu",
+   "si": "බත් හෝ කොත්තු සමග බෙදා ගන්නා, ළූණු සහ මාළු මිරිස් සහිත සැර හරක් මස් පටි",
+   "ta": "சாதம் அல்லது கொத்துடன் பகிரும், வெங்காயமும் குடை மிளகாயும் கொண்ட காரமான இறைச்சிக் கீற்றுகள்"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef, boneless",
+    "si": "හරක් මස්, ඇට නැති",
+    "ta": "மாட்டிறைச்சி, எலும்பு நீக்கியது"
+   },
+   "quantity": 550,
+   "unit": "g",
+   "household": "about 550 g",
+   "preparation": {
+    "en": "cut into thin strips across the grain",
+    "si": "නූල් හරහට තුනී පටිවලට කපා ගත්",
+    "ta": "நார்களுக்கு எதிராக மெல்லிய கீற்றுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "cut into wedges, layers separated",
+    "si": "පෙතිවලට කපා ස්තර වෙන් කර ගත්",
+    "ta": "இதழ்களாக நறுக்கி பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "capsicum",
+    "si": "මාළු මිරිස්",
+    "ta": "குடை மிளகாய்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large capsicum",
+   "preparation": {
+    "en": "cut into thick squares",
+    "si": "ගොරෝසු හතරැස් කැබලිවලට කපා ගත්",
+    "ta": "தடிமனான சதுரங்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 firm tomato",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "පෙතිවලට කපා ගත්",
+    "ta": "இதழ்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece, part for the boiling",
+   "preparation": {
+    "en": "half for boiling, half chopped",
+    "si": "බාගයක් තැම්බීමට, බාගයක් කපා ගත්",
+    "ta": "பாதி வேகவைப்பதற்கு, பாதி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "cut on the slant",
+    "si": "ඇලයට කපා ගත්",
+    "ta": "சாய்வாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 pods, broken",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩා ගත්",
+    "ta": "உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් තලපය",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_tomato_sauce",
+   "label": {
+    "en": "tomato sauce",
+    "si": "තක්කාලි සෝස්",
+    "ta": "தக்காளி சோஸ்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "cracked",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters tsp, the sauces add more",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the beef into thin strips across the grain, which is what keeps them from turning into rope.",
+    "minutes": null
+   },
+   {
+    "text": "Boil the strips with the salt, pepper, a piece of ginger and half a cup of water until tender, then let the liquid dry off.",
+    "minutes": 30
+   },
+   {
+    "text": "Heat the coconut oil in a wok and fry the boiled strips over a high flame until they brown and dry at the edges, then lift them out.",
+    "minutes": 8
+   },
+   {
+    "text": "Drop the broken dried chillies, chopped garlic, ginger and curry leaves into the same oil.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the onion wedges, capsicum and green chillies and toss them over a high flame so they take colour but stay crisp.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir in the chilli paste and cook until the raw smell goes and the oil turns red.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the tomato wedges, tomato sauce, soy sauce, vinegar and sugar and let the sauce turn thick and sticky.",
+    "minutes": 3
+   },
+   {
+    "text": "Return the beef and toss hard so the sauce grips every strip.",
+    "minutes": 2
+   },
+   {
+    "text": "Taste it: devilled beef should be hot and sour first, with the sweetness only just showing behind.",
+    "minutes": null
+   },
+   {
+    "text": "Serve at once with rice, fried rice or kottu.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "හරක් මස් නූල් හරහට තුනී පටිවලට කපන්න; කඹ වගේ තද නොවීමට හේතුව ඒකයි.",
+    "minutes": null
+   },
+   {
+    "text": "පටි ලුණු, ගම්මිරිස්, ඉඟුරු කැබැල්ලක් සහ වතුර කෝප්ප බාගයක් සමග මෘදු වන තුරු තම්බා, දියර සිඳී යන්න දෙන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "වොක් එකක පොල් තෙල් රත් කර, තැම්බූ පටි ලොකු ගින්නේ දුඹුරු වී දාර වියළෙන තුරු බැදගෙන ඉවතට ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "එම තෙලට කඩා ගත් වියළි මිරිස්, කපා ගත් සුදුළූණු, ඉඟුරු සහ කරපිංචා දමන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ළූණු පෙති, මාළු මිරිස් සහ අමු මිරිස් දමා ලොකු ගින්නේ පෙරළන්න; ඒවා පාට ගත්තත් කරකර ගතිය තියෙන්න ඕන.",
+    "minutes": 3
+   },
+   {
+    "text": "මිරිස් තලපය දමා අමු ගඳ නැති වී තෙල රතු වන තුරු බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තක්කාලි පෙති, තක්කාලි සෝස්, සෝයා සෝස්, විනාකිරි සහ සීනි දමා සෝස් තද වී ඇලෙන ගානට උයන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මස් නැවත දමා, සෝස් හැම පටියකටම ඇලෙන ලෙස වේගයෙන් පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "රස බලන්න: දෙවල් හරක් මස් මුලින්ම සැර සහ ඇඹුල් විය යුතුයි, මිහිරි ගතිය පසුපසින් සියුම්ව පමණක් පෙනෙන්න ඕන.",
+    "minutes": null
+   },
+   {
+    "text": "බත්, ෆ්‍රයිඩ් රයිස් හෝ කොත්තු සමග වහාම පිළිගන්වන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாட்டிறைச்சியை நார்களுக்கு எதிராக மெல்லிய கீற்றுகளாக நறுக்குங்கள்; கயிறு போல இறுகாமல் இருப்பதற்கு அதுவே காரணம்.",
+    "minutes": null
+   },
+   {
+    "text": "கீற்றுகளை உப்பு, மிளகு, ஒரு இஞ்சித் துண்டு, அரை கப் நீருடன் மெதுவாகும் வரை வேகவைத்து, நீரை வற்றவிடுங்கள்.",
+    "minutes": 30
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவிட்டு, வேகவைத்த கீற்றுகளைப் பெருந்தீயில் பழுப்பாகி ஓரம் காய்யும் வரை வறுத்து எடுக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "அதே எண்ணெயில் உடைத்த வத்தல் மிளகாய், நறுக்கிய பூண்டு, இஞ்சி, கறிவேப்பிலை இடுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "வெங்காய இதழ்கள், குடை மிளகாய், பச்சை மிளகாய் சேர்த்து பெருந்தீயில் புரட்டுங்கள்; நிறம் ஏறினாலும் மொறுமொறுப்பாக இருக்க வேண்டும்.",
+    "minutes": 3
+   },
+   {
+    "text": "மிளகாய் விழுதைச் சேர்த்து பச்சை வாசனை போய் எண்ணெய் சிவக்கும் வரை வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "தக்காளி இதழ்கள், தக்காளி சோஸ், சோயா சோஸ், வினிகர், சீனி சேர்த்து சோஸ் இறுகி ஒட்டும் வரை சமைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "இறைச்சியை மீண்டும் சேர்த்து, சோஸ் ஒவ்வொரு கீற்றிலும் ஒட்டும்படி வேகமாகப் புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "சுவை பாருங்கள்: தேவில் இறைச்சி முதலில் காரமும் புளிப்பும் ஆக இருக்க வேண்டும், இனிப்பு பின்னணியில் மட்டுமே தெரிய வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "சாதம், பொரியல் சாதம் அல்லது கொத்துடன் உடனே பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 40,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot for boiling",
+  "wok or wide frying pan",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "Keep the water from boiling the beef and use a spoonful of it to loosen the sauce, which gives more taste than plain water. Frying the strips dry before the sauce goes in is what keeps them chewy rather than soggy.",
+  "si": "මස් තැම්බූ වතුර ඉවත් නොකර, සෝස් තුනී කරන්න ඉන් හැන්දක් යොදන්න; සාමාන්‍ය වතුරට වඩා රසයි. සෝස් දමන්නට පෙර පටි වියළෙන්න බැදීමයි ඒවා තෙත් නොවී හපන ගතියක් තියා ගන්නේ.",
+  "ta": "இறைச்சி வேகவைத்த நீரைக் கொட்டாமல், சோஸைத் தளர்த்த ஒரு கரண்டி பயன்படுத்துங்கள்; வெறும் நீரை விட சுவையாக இருக்கும். சோஸ் சேர்க்கும் முன் கீற்றுகளைக் காய வறுப்பதே அவை ஈரமாகாமல் மென்று சாப்பிடும் பதத்தில் இருக்கக் காரணம்."
+ },
+ "health_note": {
+  "en": "Iron and protein from the beef with hardly any starch, but between the soy sauce, tomato sauce and chilli paste this is a salty dish. Serve it as one item among several rather than the main thing on the plate.",
+  "si": "හරක් මසෙන් යකඩ සහ ප්‍රෝටීන් ලැබෙනවා, පිෂ්ටය නොමැති තරම්; නමුත් සෝයා සෝස්, තක්කාලි සෝස් සහ මිරිස් තලපය අතරේ මේක ලුණු වැඩි කෑමක්. පිඟානේ ප්‍රධාන කෑම ලෙස නොව කරි කිහිපයක් අතර එකක් ලෙස පිළිගන්වන්න.",
+  "ta": "இறைச்சியிலிருந்து இரும்பும் புரதமும் கிடைக்கும், மாவுப்பொருள் இல்லை என்றே சொல்லலாம்; ஆனால் சோயா சோஸ், தக்காளி சோஸ், மிளகாய் விழுது சேர்ந்து இது உப்பு அதிகமான உணவு. தட்டில் பிரதான உணவாக அல்ல, பல உணவுகளில் ஒன்றாகப் பரிமாறுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_carb",
+  "high_sodium",
+  "street_food",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

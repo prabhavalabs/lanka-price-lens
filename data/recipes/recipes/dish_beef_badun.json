@@ -1,0 +1,416 @@
+{
+ "id": "dish_beef_badun",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 130,
+  "description": {
+   "en": "A small heap of dark dry beef on the edge of the rice plate",
+   "si": "බත් පිඟානේ දාරයේ තියෙන කළු වියළි හරක් මස් ගොඩක්",
+   "ta": "சாதத் தட்டின் ஓரத்தில் ஒரு சிறு குவியல் கருத்த வறுத்த மாட்டிறைச்சி"
+  }
+ },
+ "yield_g": 520,
+ "ingredients": [
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef, stewing cut",
+    "si": "හරක් මස්",
+    "ta": "மாட்டிறைச்சி"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "about 600 g",
+   "preparation": {
+    "en": "cut into small 2 cm cubes, washed",
+    "si": "සෙන්ටිමීටර දෙකක කුඩා කැබලිවලට කපා සෝදා ගත්",
+    "ta": "இரண்டு சென்டிமீட்டர் சிறு துண்டுகளாக நறுக்கி அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 large piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "piece",
+   "household": "5 pods, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කඩා ගත්",
+    "ta": "துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "நொறுக்கிய மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp, coarsely cracked",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලා ගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm quill",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ කොළය",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 10 cm length",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the beef into small cubes so that every piece can take colour, and wash and drain it.",
+    "minutes": null
+   },
+   {
+    "text": "Put the meat into a pot with the garlic, ginger, gorakka, roasted curry powder, chilli flakes, pepper, turmeric, cinnamon, one sprig of curry leaves, the pandan, the salt and a cup of water.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and cook on a low fire, stirring now and then, until the beef is tender and the liquid has cooked down to a thick paste at the bottom.",
+    "minutes": 40
+   },
+   {
+    "text": "Lift the meat out with a slotted spoon and keep the spice paste in the pot.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and fry the sliced red onion, the broken dried chillies and the second sprig of curry leaves until the onion is brown.",
+    "minutes": 5
+   },
+   {
+    "text": "Slide in the beef and fry over a high flame, turning it, until the cut faces darken and shrink.",
+    "minutes": 8
+   },
+   {
+    "text": "Return the reserved spice paste and keep tossing so it dries onto the meat instead of sitting as gravy.",
+    "minutes": 4
+   },
+   {
+    "text": "Taste, crack a little more pepper over, and fry one more minute for a dry glossy finish.",
+    "minutes": 2
+   },
+   {
+    "text": "Let it cool uncovered before it goes into a jar; badun kept dry like this lasts two or three days without a fridge.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "හරක් මස් කුඩා කැබලිවලට කපා ගන්න, එවිට හැම කැබැල්ලකටම පාට වදිනවා. හොඳින් සෝදා වතුර බේරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මස් වළඳකට දමා සුදුළූණු, ඉඟුරු, ගොරකා, බැදපු තුනපහ, මිරිස් කැබලි, ගම්මිරිස්, කහ, කුරුඳු, කරපිංචා අත්තක්, රම්පෙ, ලුණු සහ වතුර කෝප්පයක් එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා ගිනි අඩුවෙන්, විටින් විට කලවම් කරමින්, මස් මෘදු වී යටින් තියෙන දියර ගන තලපයක් වන තුරු උයන්න.",
+    "minutes": 40
+   },
+   {
+    "text": "සිදුරු හැන්දකින් මස් පමණක් ඉවතට ගෙන කුළුබඩු තලපය වළඳේම තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් පෑන් එකක පොල් තෙල් රත් කර ළූණු, කඩා ගත් වියළි මිරිස් සහ දෙවන කරපිංචා අත්ත ළූණු දුඹුරු වන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මස් එකතු කර ලොකු ගින්නේ පෙරළමින්, කැපුම් තල කළු පැහැ ගෙන හැකිලෙන තුරු බදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "තියා ගත් කුළුබඩු තලපය නැවත දමා, එය හොදියක් ලෙස නොනැවතී මසට තැවරී වියළෙන තුරු දිගටම පෙරළන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "රස බලා ගම්මිරිස් තව ටිකක් තලා දමා, තවත් මිනිත්තුවක් බැදගෙන දිලිසෙන වියළි ගතියක් ගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "බෝතලයකට දමන්න පෙර වැහුමක් නොදා නිවෙන්න තියන්න. මෙසේ වියළිව තියා ගත් බැදුම ශීතකරණයක් නැතුව දින දෙක තුනක් තියෙනවා.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாட்டிறைச்சியை சிறு துண்டுகளாக நறுக்குங்கள், அப்போது ஒவ்வொரு துண்டும் நிறம் பிடிக்கும். அலசி நீர் வடிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறைச்சியை ஒரு பாத்திரத்தில் இட்டு பூண்டு, இஞ்சி, கொடுக்காய்ப்புளி, வறுத்த கறித்தூள், நொறுக்கிய மிளகாய், மிளகு, மஞ்சள், பட்டை, ஒரு கறிவேப்பிலைக் கொத்து, ரம்பை, உப்பு, ஒரு கப் நீர் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி குறைந்த தீயில், இடையிடையே கிளறி, இறைச்சி மெதுவாகி அடியில் இருக்கும் நீர் கெட்டி விழுதாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 40
+   },
+   {
+    "text": "துளையுள்ள கரண்டியால் இறைச்சியை மட்டும் எடுத்து, மசாலா விழுதை பாத்திரத்திலேயே விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அகன்ற வாணலியில் தேங்காய் எண்ணெயைக் காயவிட்டு வெங்காயம், உடைத்த வத்தல் மிளகாய், இரண்டாம் கறிவேப்பிலைக் கொத்தை வெங்காயம் பழுப்பாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "இறைச்சியைச் சேர்த்து பெருந்தீயில் புரட்டி, வெட்டுப் பரப்புகள் கருமையாகி சுருங்கும் வரை வறுக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "வைத்திருந்த மசாலா விழுதைச் சேர்த்து, அது கிரேவியாக நிற்காமல் இறைச்சியில் ஒட்டிக் காய்யும் வரை புரட்டிக்கொண்டே இருங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "சுவை பார்த்து மிளகைச் சிறிது இடித்துச் சேர்த்து, மேலும் ஒரு நிமிடம் வறுத்து மின்னும் காய்ந்த பதம் கொண்டுவரவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "பாட்டிலில் இடும் முன் மூடாமல் ஆறவிடுங்கள். இப்படி காய்ந்து வைத்த வறுவல் குளிர்சாதனப் பெட்டி இல்லாமல் இரண்டு மூன்று நாள் இருக்கும்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 55,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "heavy pot with lid",
+  "wide frying pan",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "The whole point is dryness, so resist adding water in the frying stage even when the pan looks tight; lower the fire instead. A piece of gorakka left in gives it the sour edge that lets it keep without a fridge.",
+  "si": "මේකේ අරමුණ වියළි ගතියයි, ඒ නිසා පෑන් ඇලෙනවා වගේ පෙනුණත් බදින අවස්ථාවේ වතුර දමන්න එපා; ඒ වෙනුවට ගිනි අඩු කරන්න. ඇතුළේ තියෙන ගොරකා කැබැල්ල දෙන ඇඹුල් ගතිය නිසා ශීතකරණයක් නැතුව මේක තියෙනවා.",
+  "ta": "இதன் நோக்கம் காய்ந்த பதமே; வாணலி ஒட்டுவது போலத் தெரிந்தாலும் வறுக்கும் நேரத்தில் நீர் சேர்க்க வேண்டாம், தீயைக் குறையுங்கள். உள்ளே இருக்கும் கொடுக்காய்ப்புளித் துண்டு தரும் புளிப்பே குளிர்சாதனம் இல்லாமல் இதைப் பாதுகாக்கிறது."
+ },
+ "health_note": {
+  "en": "Because the water is cooked away, the salt and spice in a small spoonful are concentrated, and this dish also drinks up the frying oil. It is rich in iron, so a spoon or two with a big plate of rice and greens is the sensible way to eat it.",
+  "si": "වතුර සිඳී යන නිසා කුඩා හැන්දක තියෙන ලුණු සහ කුළුබඩු ගාඩ වෙනවා, තවද මේකට බදින තෙලුත් අවශෝෂණය වෙනවා. යකඩ බහුලයි, ඒ නිසා ලොකු බත් පිඟානක් සහ කොළ එළවළු සමග හැන්ද එකක් දෙකක් ගැනීම නුවණයි.",
+  "ta": "நீர் வற்றிப் போவதால் ஒரு சிறு கரண்டியில் உப்பும் மசாலாவும் செறிவாக இருக்கும், வறுக்கும் எண்ணெயையும் இது உறிஞ்சும். இரும்பு நிறைந்தது, எனவே நிறைய சாதம் மற்றும் கீரையுடன் ஒன்றிரண்டு கரண்டி எடுப்பதே சரி."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_carb",
+  "comfort",
+  "high_sodium"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

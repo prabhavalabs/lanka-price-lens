@@ -1,0 +1,367 @@
+{
+ "id": "dish_kelawalla_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "A firm steak of tuna in dark gravy with rice",
+   "si": "බත සමඟ දෙන කළු හොදියේ තර කෙලවල්ලා පෙත්තක්",
+   "ta": "சாதத்துடன் கரும் குழம்பில் ஒரு இறுகிய சூரை மீன் துண்டு"
+  }
+ },
+ "yield_g": 950,
+ "ingredients": [
+  {
+   "ref": "product_kelawalla",
+   "label": {
+    "en": "kelawalla, yellowfin tuna",
+    "si": "කෙලවල්ලා මාළු",
+    "ta": "சூரை மீன், கெலவல்லா"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "cut into thick steaks, rinsed and drained",
+    "si": "තර පෙති කපා, හෝදා වතුර බේරා ගත්ත",
+    "ta": "தடிமனான துண்டுகளாக வெட்டி, கழுவி நீர் வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொரக்கா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 pieces, soaked and mashed",
+   "preparation": {
+    "en": "soaked in warm water and mashed",
+    "si": "උණු වතුරේ පොඟවා තලා ගත්ත",
+    "ta": "வெந்நீரில் ஊறவைத்து நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්ත",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ගාටි කිරි",
+    "ta": "முதல் பால், கட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the steaks in lightly salted water and let them drain while you prepare the rest.",
+    "minutes": 5
+   },
+   {
+    "text": "Soak the goraka in half a cup of warm water and mash it to a rough pulp.",
+    "minutes": 10
+   },
+   {
+    "text": "Mix the roasted curry powder, chilli powder, turmeric and salt with a cup of water into a thin paste.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the fenugreek, onion, garlic, curry leaves and pandan until the onion is soft.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the spice paste and the goraka pulp with its water and cook until the mixture darkens and the oil separates at the edge.",
+    "minutes": 8
+   },
+   {
+    "text": "Lay the steaks in, add just enough water to come up to their shoulders, and simmer covered without stirring.",
+    "minutes": 12
+   },
+   {
+    "text": "Pour in the thick coconut milk, swirl the pot, and cook uncovered until the gravy is dark and clinging.",
+    "minutes": 6
+   },
+   {
+    "text": "Leave the pot off the fire to rest; kelawalla tightens and takes in the gravy as it stands.",
+    "minutes": 20
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු පෙති ලුණු වතුරෙන් හෝදලා, ඉතිරි දේවල් සූදානම් කරන අතරේ වතුර බේරෙන්න තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගොරකා උණු වතුර කෝප්ප භාගයක පොඟවලා රළු පල්පයක් වෙනකම් තලා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බැදපු තුනපහ, මිරිස් කුඩු, කහ කුඩු සහ ලුණු වතුර කෝප්පයක් සමඟ දියර පේස්ට් එකක් කර ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුට්ටියක පොල් තෙල් රත් කරලා උළුහාල්, ලූනු, සුදුළූනු, කරපිංචා සහ රම්පෙ ලූනු මෙලෙක් වෙන තුරු තෙල් දාගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "කුළුබඩු පේස්ට් එකයි ගොරකා පල්පයයි වතුර සමඟ දමා, මිශ්‍රණය කළු පැහැ වෙලා දාරයෙන් තෙල් වෙන් වෙන තුරු පිසගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මාළු පෙති අතුරලා, පෙති බාගයක් වැහෙන තරමට වතුර දමා, වහලා කලවම් නොකර තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගාටි පොල් කිරි වත් කරලා මුට්ටිය සොලවා, වහන්නේ නැතිව හොදි කළු පැහැයට තද වෙන තුරු පිසගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ලිපෙන් අයින් කරලා හිඳෙන්න තියන්න; කෙලවල්ලා තද වෙලා හොදි රස ඇතුළට අදිනවා.",
+    "minutes": 20
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் துண்டுகளை உப்புத் தண்ணீரில் அலசி, மற்றவற்றைத் தயாரிக்கும் வரை நீர் வடிய வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கொரக்காவை அரை கப் வெந்நீரில் ஊறவைத்து, கரகரப்பான கூழாக நசுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வறுத்த கறி மசாலா, மிளகாய்த் தூள், மஞ்சள், உப்பு ஆகியவற்றை ஒரு கப் தண்ணீரில் கலந்து நீர்த்த விழுதாக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து வெந்தயம், வெங்காயம், பூண்டு, கறிவேப்பிலை, ரம்பை சேர்த்து வெங்காயம் மென்மையாகும் வரை தாளியுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மசாலா விழுதையும் கொரக்கா கூழையும் தண்ணீருடன் சேர்த்து, கலவை கருத்து ஓரத்தில் எண்ணெய் பிரியும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "மீன் துண்டுகளை வைத்து, பாதி மூழ்கும் அளவு தண்ணீர் விட்டு, மூடி கிளறாமல் கொதிக்கவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "கட்டித் தேங்காய்ப் பாலை ஊற்றி சட்டியை அசைத்து, மூடாமல் குழம்பு கருமையாக இறுகும் வரை வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி ஆற வையுங்கள்; சூரை மீன் இறுகி குழம்பின் சுவையை உள்வாங்கும்.",
+    "minutes": 20
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "clay pot or heavy pan"
+ ],
+ "tips": {
+  "en": "Roasted curry powder is what makes this darker and rounder than the everyday red curry, so do not swap in the unroasted kind. Cut the steaks thick; thin slices dry out and lose the meaty bite that people buy kelawalla for.",
+  "si": "සාමාන්‍ය රතු කරියට වඩා මේක කළු සහ ගැඹුරු කරන්නේ බැදපු තුනපහ නිසා, ඒක වෙනුවට නොබැදපු තුනපහ දාන්න එපා. පෙති තරට කපන්න; සිහින් පෙති වියළිලා, කෙලවල්ලා ගන්නෙම ඒ මස් වගේ රසයට නිසා ඒක නැති වෙනවා.",
+  "ta": "தினசரி சிவப்புக் குழம்பைவிட இது கருமையாகவும் ஆழமாகவும் இருப்பது வறுத்த கறி மசாலாவால்தான், அதனால் வறுக்காத மசாலாவை மாற்றிப் போடாதீர்கள். துண்டுகளைத் தடிமனாக வெட்டுங்கள்; மெல்லிய துண்டு உலர்ந்து, சூரை மீனுக்குப் பேர்போன இறைச்சி போன்ற பதம் போய்விடும்."
+ },
+ "health_note": {
+  "en": "Yellowfin is lean, high in protein and rich in the fats that help the heart, and this version uses only a little thick milk. It is a hot curry, so keep the chilli lower if elders or children share the plate.",
+  "si": "කෙලවල්ලාවේ මේදය අඩු, ප්‍රෝටීන් වැඩි, හදවතට හොඳ මේද අම්ලත් තියෙනවා; මේ විදියට හදද්දී ගාටි කිරිත් ටිකක් පමණයි. සැර කරියක් නිසා වැඩිහිටියන් හෝ ළමයි එකට කනවා නම් මිරිස් අඩු කරන්න.",
+  "ta": "கெலவல்லா சூரையில் கொழுப்பு குறைவு, புரதம் அதிகம், இதயத்துக்கு உதவும் கொழுப்பும் உண்டு; இந்த முறையில் கட்டிப் பாலும் கொஞ்சமே. காரமான கறி, எனவே முதியவர்களோ குழந்தைகளோ சேர்ந்து சாப்பிட்டால் மிளகாயைக் குறைக்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "heart_healthy",
+  "filling",
+  "one_pot",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

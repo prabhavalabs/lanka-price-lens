@@ -1,0 +1,384 @@
+{
+ "id": "dish_prawn_mango_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 220,
+  "description": {
+   "en": "Prawns and mango wedges in a sharp gravy, with rice",
+   "si": "බත් සමඟ ඇඹුල් හොදියේ ඉස්සන් සහ අඹ කෑලි",
+   "ta": "சாதத்துடன் காரமான குழம்பில் இறாலும் மாங்காய்த் துண்டுகளும்"
+  }
+ },
+ "yield_g": 880,
+ "ingredients": [
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "prawns",
+    "si": "ඉස්සන්",
+    "ta": "இறால்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "about 16 prawns",
+   "preparation": {
+    "en": "peeled and deveined",
+    "si": "ලෙලි ගලවා නහර ඉවත් කළ",
+    "ta": "ஓடு உரித்து நரம்பு நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mango",
+   "label": {
+    "en": "raw mango",
+    "si": "අමු අඹ",
+    "ta": "பச்சை மாங்காய்"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "1 large green mango",
+   "preparation": {
+    "en": "peeled and cut into thick wedges",
+    "si": "ලෙලි ගලවා ලොකු පෙති වලට කපාගත්",
+    "ta": "தோல் சீவி தடிமனான துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 110,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "தட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_jaffna_curry_powder",
+   "label": {
+    "en": "Jaffna curry powder",
+    "si": "යාපනේ තුනපහ කුඩු",
+    "ta": "யாழ்ப்பாண கறித் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்த்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, only if the mango is very sour",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel and devein the prawns, wash them and rub them with a little turmeric and salt.",
+    "minutes": 12
+   },
+   {
+    "text": "Peel the mango and cut it into thick wedges, leaving a little flesh on the stone and putting that in too.",
+    "minutes": 8
+   },
+   {
+    "text": "Heat the coconut oil in a pan and temper the onion, garlic, fenugreek and curry leaves until the onion is soft.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the Jaffna curry powder, chilli powder and the rest of the turmeric and stir them into the oil off the direct heat so they do not burn.",
+    "minutes": 1
+   },
+   {
+    "text": "Put in the mango wedges with the thin coconut milk and the salt and cook until the mango is tender but still holds its shape.",
+    "minutes": 10
+   },
+   {
+    "text": "Slide in the prawns and cook them just until they turn pink and firm.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the thick coconut milk and bring the pan only to the edge of a boil.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste it: if the mango is very sour stir in the spoon of sugar to round the gravy off, then take it off the fire.",
+    "minutes": 1
+   }
+  ],
+  "si": [
+   {
+    "text": "ඉස්සන් ලෙලි ගලවා නහර ඉවත් කර සෝදා, කහ සහ ලුණු ටිකක් ගල්වන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "අඹ ලෙලි ගලවා ලොකු පෙති වලට කපන්න; ඇටයේ මස් ටිකක් තබාගෙන ඒකත් හොදියට දමන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පෑන් එකක පොල් තෙල් රත් කර ළූණු, සුදුළූණු, උළුහාල් සහ කරපිංචා ළූණු මෘදු වන තුරු තෙල් දාන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "යාපනේ තුනපහ, මිරිස් කුඩු සහ ඉතිරි කහ දමා, පිළිස්සෙන්නේ නැති වෙන්න ලිපෙන් මඳක් අයින් කර තෙලේ කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "අඹ පෙති දිය පොල් කිරි සහ ලුණු සමඟ දමා, අඹ මෘදු වී හැඩය නොනැති වන තුරු පිසින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඉස්සන් දමා රෝස පැහැ වී තද වන තුරු පමණක් පිසින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මිටි පොල් කිරි වත් කර නටන්න ආසන්න වන තුරු පමණක් රත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රස බලන්න: අඹ හරිම ඇඹුල් නම් හොදිය සමතුලිත කරන්න සීනි හැන්ද දමා ලිපෙන් ඉවත් කරන්න.",
+    "minutes": 1
+   }
+  ],
+  "ta": [
+   {
+    "text": "இறாலை உரித்து நரம்பு நீக்கிக் கழுவி, சிறிது மஞ்சளும் உப்பும் தடவுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "மாங்காயைத் தோல் சீவி தடிமனான துண்டுகளாக வெட்டுங்கள்; கொட்டையில் சிறிது சுளை விட்டு அதையும் சேருங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, வெந்தயம், கறிவேப்பிலை மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "யாழ்ப்பாண கறித் தூள், மிளகாய்த் தூள், மீதி மஞ்சள் சேர்த்து, கருகாமல் இருக்க அடுப்பை விட்டு சற்று விலக்கி எண்ணெயில் கிளறுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "மாங்காய்த் துண்டுகளை நீர்த்த தேங்காய்ப் பாலுடனும் உப்புடனும் சேர்த்து, மாங்காய் மென்மையாகி வடிவம் கெடாமல் இருக்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "இறாலைச் சேர்த்து, சிவந்து இறுகும் வரை மட்டும் வேகவிடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலை விட்டு, கொதிக்கும் நிலைக்கு வந்ததும் நிறுத்துங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "சுவை பாருங்கள்: மாங்காய் மிகவும் புளிப்பாக இருந்தால் ஒரு கரண்டி சீனி சேர்த்துச் சமன்படுத்தி இறக்குங்கள்.",
+    "minutes": 1
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan or clay pot"
+ ],
+ "tips": {
+  "en": "Use a mango that is hard and pale inside; a half ripe one turns to pulp and makes the gravy sweet. Cook the mango first and the prawns last, because they need very different times.",
+  "si": "ඇතුළත තද, සුදු පාට අඹයක් ගන්න; අඩක් ඉදුණු අඹ තලපයක් වී හොදිය මිහිරි කරනවා. අඹ මුලින්, ඉස්සන් අන්තිමට පිසින්න; ඒ දෙකට ඕන වෙලාව හරිම වෙනස්.",
+  "ta": "உள்ளே இறுகிய, வெளிர் நிற மாங்காயைப் பயன்படுத்துங்கள்; பாதி கனிந்தது கூழாகி குழம்பை இனிப்பாக்கும். மாங்காயை முதலில், இறாலை இறுதியில் சமையுங்கள்; இரண்டுக்கும் தேவையான நேரம் வேறு."
+ },
+ "health_note": {
+  "en": "The mango brings vitamin C and a natural sourness that lets you use less salt, and the prawns give lean protein. A good curry for the season when mangoes are cheap and fish prices are high.",
+  "si": "අඹවලින් විටමින් සී සහ ස්වභාවික ඇඹුල රසය ලැබෙනවා, ඒ නිසා ලුණු අඩුවෙන් දැම්මත් රස හොඳයි; ඉස්සන්ගෙන් අඩු මේද ප්‍රෝටීන් ලැබෙනවා. අඹ ලාබ, මාළු මිල ඉහළ කාලයට හොඳ කරියක්.",
+  "ta": "மாங்காய் வைட்டமின் சியையும் இயற்கையான புளிப்பையும் தருவதால் உப்பைக் குறைவாகச் சேர்க்கலாம்; இறால் குறைந்த கொழுப்புப் புரதம் தருகிறது. மாங்காய் மலிவாகவும் மீன் விலை அதிகமாகவும் இருக்கும் பருவத்துக்கு ஏற்ற கறி."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "immune_support",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

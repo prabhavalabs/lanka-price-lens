@@ -1,0 +1,403 @@
+{
+ "id": "dish_fish_head_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 240,
+  "description": {
+   "en": "A share of the head with vegetables and plenty of sour gravy",
+   "si": "එළවළු සහ ඇඹුල් හොදි ඇතිවම මාළු ඉසෙන් කොටසක්",
+   "ta": "காய்கறிகளுடனும் புளிப்பு குழம்புடனும் மீன் தலையின் ஒரு பங்கு"
+  }
+ },
+ "yield_g": 960,
+ "ingredients": [
+  {
+   "ref": "product_paraw",
+   "label": {
+    "en": "fish head, from a large trevally or seer",
+    "si": "ලොකු පරාව හෝ තලපත් මාළුවෙකුගේ ඉස",
+    "ta": "பெரிய பாரை அல்லது வஞ்சிரம் மீனின் தலை"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "1 large head, split in two",
+   "preparation": {
+    "en": "split, gills removed, washed with turmeric",
+    "si": "පලා, කරමල් ඉවත් කර, කහ දමා සෝදා",
+    "ta": "பிளந்து, செதுள் நீக்கி, மஞ்சள் சேர்த்து அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a small lime-sized ball",
+   "preparation": {
+    "en": "soaked in a cup of warm water and strained",
+    "si": "කෝප්පයක් උණු වතුරේ පොඟවා පෙරා",
+    "ta": "ஒரு கோப்பை வெதுவெதுப்பான நீரில் ஊறவைத்து வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_drumstick",
+   "label": {
+    "en": "drumstick pods",
+    "si": "මුරුංගා",
+    "ta": "முருங்கைக்காய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 pods",
+   "preparation": {
+    "en": "cut into finger lengths",
+    "si": "ඇඟිල්ලක් දිගට කපා",
+    "ta": "விரல் நீளத்தில் வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_brinjals",
+   "label": {
+    "en": "brinjal",
+    "si": "වම්බටු",
+    "ta": "கத்தரிக்காய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 medium brinjal",
+   "preparation": {
+    "en": "cut into thick fingers",
+    "si": "ඝන පෙතිවලට කපා",
+    "ta": "தடிமனான துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaffna_curry_powder",
+   "label": {
+    "en": "Jaffna curry powder",
+    "si": "යාපනය තුනපහ",
+    "ta": "யாழ்ப்பாண கறித்தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp, some for washing the head",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Ask the fish seller to split the head in two and take out the gills, then wash it under running water with a little turmeric to clear away any sliminess.",
+    "minutes": null
+   },
+   {
+    "text": "Soak the tamarind in a cup of warm water and squeeze out the pulp, keeping the water.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the oil in a wide clay pot, add the fenugreek and the Jaffna curry powder for half a minute, then the onion, garlic and curry leaves.",
+    "minutes": 3
+   },
+   {
+    "text": "Fry until the onion is soft and the whole pot smells of roasted spice.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the chilli powder, turmeric and tomato with a splash of water and cook down to a thick paste.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the tamarind water and about a cup of plain water and bring it to a rolling boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Put in the drumstick and brinjal and cook until the drumstick is soft enough to press with a spoon.",
+    "minutes": 8
+   },
+   {
+    "text": "Lower in the fish head, spoon gravy over it, cover the pot and simmer without stirring until the cheek meat comes away easily.",
+    "minutes": 15
+   },
+   {
+    "text": "Taste for salt and sourness, then let the pot rest so the gravy settles into the head before serving.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු කඩේ මහත්මයාගෙන් ඉස දෙකට පලවා කරමල් ඉවත් කරවා ගන්න; පසුව කහ ටිකක් දමා ගලායන වතුරේ සෝදා ලෙන්ගු ගතිය ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සියඹලා කෝප්පයක් උණු වතුරේ පොඟවා මිරිකා, පල්ප් එක ඉවත් කර වතුර තබා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පළල් වළං භාජනයක තෙල් රත් කර, උළුහාල් සහ යාපනය තුනපහ තත්පර තිහක් දමා, ඉන්පසු ලූනු, සුදුළූණු සහ කරපිංචා දමන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලූනු මෘදු වී, භාජනය පුරා බැදපු කුළුබඩු සුවඳ පැතිරෙන තෙක් බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මිරිස් කුඩු, කහ සහ තක්කාලි ටිකක් වතුර සමඟ දමා ඝන පේස්ට් එකක් වන තෙක් පිසින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "සියඹලා වතුර සහ තව කෝප්පයක් පමණ වතුර දමා හොඳින් නටවන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මුරුංගා සහ වම්බටු දමා, මුරුංගා හැන්දකින් තැලෙන තෙක් පිසින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මාළු ඉස හෙමින් බහා, මතට හොදි හැන්දෙන් වත් කර, වැසුම දමා කලතන්නේ නැතිව කම්මුල් මස් ලිහිල් වන තෙක් පිසින්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලා, හොදිය ඉසට වදින්න භාජනය මදක් තියා බෙදන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் கடையில் தலையை இரண்டாக பிளந்து செதுள்களை நீக்கி வாங்கவும்; பின் சிறிது மஞ்சள் சேர்த்து ஓடும் நீரில் அலசி வழுவழுப்பை நீக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "புளியை ஒரு கோப்பை வெதுவெதுப்பான நீரில் ஊறவைத்து பிழிந்து, சக்கையை நீக்கி நீரை வைத்துக் கொள்ளவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அகலமான மண் சட்டியில் எண்ணெயை காய்ச்சி, வெந்தயமும் யாழ்ப்பாண கறித்தூளும் அரை நிமிடம் போட்டு, பின் வெங்காயம், பூண்டு, கறிவேப்பிலை சேர்க்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "வெங்காயம் மென்மையாகி, சட்டி முழுக்க வறுத்த மசாலா வாசனை வரும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மிளகாய்த் தூள், மஞ்சள், தக்காளி மற்றும் சிறிது தண்ணீர் விட்டு கெட்டியான விழுதாகும் வரை சமைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "புளி நீரையும் இன்னும் ஒரு கோப்பை தண்ணீரையும் விட்டு நன்கு கொதிக்க வைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "முருங்கைக்காயையும் கத்தரிக்காயையும் போட்டு, முருங்கை கரண்டியில் நசியும் வரை வேகவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "மீன் தலையை மெதுவாக இறக்கி, மேலே குழம்பை ஊற்றி, மூடி போட்டு கிளறாமல் கன்ன இறைச்சி தளரும் வரை வேகவிடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "உப்பும் புளிப்பும் பார்த்து, குழம்பு தலைக்குள் இறங்க சட்டியை சிறிது நேரம் வைத்து பரிமாறவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 40,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "wide clay pot with lid",
+  "ladle"
+ ],
+ "tips": {
+  "en": "The head is the cheapest part of an expensive fish and the sweetest, so buy it the same morning it was cut and cook it the same day. Do not stir once the head is in; ladle gravy over it instead.",
+  "si": "ඉස තමයි මිල අධික මාළුවෙකුගේ ලාබම, ඒ වුණත් රසම කොටස; ඒ නිසා කැපූ දවසේම ගෙනැවිත් ඒ දවසේම පිසින්න. ඉස දැම්මාට පස්සේ කලතන්න එපා; වෙනුවට හොදි හැන්දෙන් මතට වත් කරන්න.",
+  "ta": "விலை அதிகமான மீனின் மிக மலிவான, ஆனால் மிக இனிப்பான பகுதி தலையே; எனவே வெட்டிய அதே காலையில் வாங்கி அதே நாளில் சமைக்கவும். தலையை போட்ட பிறகு கிளறக் கூடாது; அதற்கு பதிலாக குழம்பை மேலே ஊற்றவும்."
+ },
+ "health_note": {
+  "en": "A fish head feeds four cheaply and gives protein, iodine and the soft collagen around the bones, while the drumstick and brinjal add fibre. There is very little coconut milk here, so the gravy is light on fat but tangy and salty, which suits it to rice rather than eating on its own.",
+  "si": "මාළු ඉසකින් සිව්දෙනෙකුට ලාබෙට කෑම හදාගන්න පුළුවන්; ප්‍රෝටීන්, අයඩීන් සහ කටු වටේ ඇති මෘදු කොලජන් ලැබෙනවා. මුරුංගා සහ වම්බටුවෙන් තන්තු එකතු වෙනවා. පොල් කිරි ඉතා අඩු නිසා හොදිය තෙල් අඩු, නමුත් ඇඹුල් සහ ලුණු සහිතයි; ඒ නිසා තනියම නොව බත් සමඟ ගන්න සුදුසුයි.",
+  "ta": "ஒரு மீன் தலை நான்கு பேருக்கு மலிவாக உணவாகும்; புரதம், அயோடின், முள்ளைச் சுற்றிய மென்மையான கொலாஜன் கிடைக்கும். முருங்கையும் கத்தரிக்காயும் நார்ச்சத்தை சேர்க்கின்றன. தேங்காய்ப் பால் மிகக் குறைவு என்பதால் குழம்பு கொழுப்பு குறைந்தது, ஆனால் புளிப்பும் உப்பும் அதிகம்; எனவே தனியாக அல்ல, சாதத்துடன் சாப்பிடுவது சரி."
+ },
+ "tags": [
+  "high_protein",
+  "calcium_rich",
+  "budget",
+  "one_pot",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

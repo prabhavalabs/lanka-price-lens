@@ -1,0 +1,260 @@
+{
+ "id": "dish_honey_hoppers",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 190,
+  "description": {
+   "en": "Two hoppers with treacle pooled in the middle",
+   "si": "මැදට පැණි වත් කරගත් ආප්ප දෙකක්",
+   "ta": "நடுவில் பாணி ஊற்றிய இரண்டு ஆப்பம்"
+  }
+ },
+ "yield_g": 760,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2 and a quarter cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකාගත් ගන කිරි",
+    "ta": "முதல் பால், தடிப்பானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "instant yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp, for wiping the pan",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dissolve the yeast and sugar in a third of a cup of warm water and leave it to froth.",
+    "minutes": 10
+   },
+   {
+    "text": "Beat the rice flour with the coconut milk and about a cup and a half of water into a thin batter.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir in the yeast water, cover the pot and leave it in a warm place overnight.",
+    "minutes": 480
+   },
+   {
+    "text": "In the morning stir the risen batter down, add the salt and thin it to a pouring consistency.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the hopper pan, wipe it with oil, pour a ladle of batter and swirl it up the sides.",
+    "minutes": null
+   },
+   {
+    "text": "Spoon a tablespoon of kithul treacle into the hollow in the middle before the batter sets.",
+    "minutes": null
+   },
+   {
+    "text": "Cover the pan and cook on a low flame until the rim is crisp and the treacle is bubbling in the centre.",
+    "minutes": 4
+   },
+   {
+    "text": "Lift it out carefully so the treacle stays in the bowl, make the rest the same way and eat them warm with plain tea.",
+    "minutes": 20
+   }
+  ],
+  "si": [
+   {
+    "text": "යීස්ට් සහ සීනි කෝප්පයෙන් තෙන් කොටසක උණුසුම් වතුරේ දියකර, පෙණ නගින තුරු තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සහල් පිටිවලට පොල් කිරි සහ කෝප්ප එකහමාරක් පමණ වතුර දමා තුනී ගුලියක් ගසාගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "යීස්ට් වතුර එකතු කර භාජනය වසා, උණුසුම් තැනක රාත්‍රිය පුරා තබන්න.",
+    "minutes": 480
+   },
+   {
+    "text": "උදෑසන පිම්බුණු ගුලිය කලවම් කර, ලුණු දමා, වත් කරන පදමට තුනී කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ආප්ප තැටිය රත් කර තෙල් තවරා, හැන්දක් ගුලිය දමා පැති දිගේ කරකවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගුලිය තදවීමට පෙර මැද වළේට කිතුල් පැණි මේස හැන්දක් දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තැටිය වසා අඩු ගින්දරේ, දාරය මාළු වී මැද පැණි බුබුළු දමන තුරු උයන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පැණි ආප්පය තුළම රැඳෙන ලෙස ප්‍රවේශමෙන් ගොඩට ගෙන, ඉතිරියද එසේම සාදා, උණුසුම්ව පිරිසිදු තේ සමඟ අනුභව කරන්න.",
+    "minutes": 20
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஈஸ்ட்டையும் சீனியையும் மூன்றில் ஒரு கப் வெதுவெதுப்பான தண்ணீரில் கரைத்து, நுரை வரும்வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அரிசி மாவில் தேங்காய்ப் பாலும் சுமார் ஒன்றரை கப் தண்ணீரும் சேர்த்து நீர்த்த மாவாக அடிக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "ஈஸ்ட் தண்ணீரைச் சேர்த்து பாத்திரத்தை மூடி, வெதுவெதுப்பான இடத்தில் இரவு முழுவதும் வைக்கவும்.",
+    "minutes": 480
+   },
+   {
+    "text": "காலையில் புளித்த மாவைக் கலக்கி, உப்பு சேர்த்து, ஊற்றும் பதத்திற்கு நீர்க்கச் செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆப்பச் சட்டியைக் காய்ச்சி எண்ணெய் தடவி, ஒரு கரண்டி மாவை ஊற்றி ஓரங்களில் சுழற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மாவு இறுகும் முன் நடுக் குழிவில் ஒரு மேசைக்கரண்டி கித்துல் பாணி இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சட்டியை மூடி குறைந்த தீயில், விளிம்பு மொறுமொறுப்பாகி நடுவில் பாணி குமிழியிடும்வரை வேகவிடவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "பாணி ஆப்பத்திலேயே தங்கும்படி கவனமாக எடுத்து, மீதியையும் அதேபோல் செய்து, சூடாக பிளேன் டீயுடன் சாப்பிடவும்.",
+    "minutes": 20
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "hopper pan with lid",
+  "fermenting pot"
+ ],
+ "tips": {
+  "en": "Real kithul treacle is thin enough to pool and thick enough to stay put; if only jaggery is at hand, melt a piece with a spoon of water first.",
+  "si": "සැබෑ කිතුල් පැණි වළක් සේ රැඳෙන තරමට තුනීයි, තැනින් නොගලා යන තරමට ඝනයි; හකුරු පමණක් ඇත්නම්, කැබැල්ලක් හැන්දක් වතුර සමඟ දියකරගන්න.",
+  "ta": "உண்மையான கித்துல் பாணி குழிவில் தங்கும் அளவுக்கு நீர்த்ததும், வழிந்து போகாத அளவுக்கு தடிப்பானதும் ஆகும்; சர்க்கரை மட்டுமே இருந்தால், ஒரு துண்டை ஒரு கரண்டி தண்ணீருடன் உருக்கவும்."
+ },
+ "health_note": {
+  "en": "This is a sweet, so the treacle is the main thing to count; kithul treacle is still sugar even though it is unrefined, and one hopper is enough for a child or anyone managing diabetes.",
+  "si": "මෙය පැණි රස කෑමක් නිසා ගණන් බැලිය යුත්තේ පැණි ප්‍රමාණයයි; කිතුල් පැණි පිරිපහදු නොකළ වුවත් සීනියක්ම වන බැවින් දරුවෙකුට හෝ දියවැඩියාව පාලනය කරන අයට එක් ආප්පයක් ප්‍රමාණවත්.",
+  "ta": "இது இனிப்பு உணவு, எனவே கணக்கிட வேண்டியது பாணியின் அளவே; கித்துல் பாணி சுத்திகரிக்கப்படாதது என்றாலும் சர்க்கரையே, எனவே குழந்தைக்கோ நீரிழிவைக் கட்டுப்படுத்துபவருக்கோ ஒரு ஆப்பமே போதும்."
+ },
+ "tags": [
+  "high_sugar",
+  "kid_friendly",
+  "comfort",
+  "festive"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,349 @@
+{
+ "id": "dish_spinach_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 175,
+  "description": {
+   "en": "A soupy green curry spooned over the rice rather than heaped beside it",
+   "si": "බත් පැත්තකට ගොඩ ගසන්නේ නැතුව, බත් මතට හලන දියර කොළ පැහැති හොදියක්",
+   "ta": "சாதத்தின் ஓரத்தில் குவிக்காமல், சாதத்தின் மேல் ஊற்றும் நீர்மையான பச்சைக் கறி"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_spinach",
+   "label": {
+    "en": "spinach (nivithi)",
+    "si": "නිවිති",
+    "ta": "பசளிக்கீரை"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 large bunches",
+   "preparation": {
+    "en": "leaves and tender stalks chopped, washed twice",
+    "si": "කොළ සහ මෘදු දඬු කපා, දෙවරක් සෝදා",
+    "ta": "இலையும் மெல்லிய தண்டும் நறுக்கி, இரு முறை அலசி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලා",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 or 3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලා",
+    "ta": "பொடியாக இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 8,
+   "unit": "ml",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the nivithi leaves and their tender stalks roughly, wash in two changes of water and lift them out so the grit stays behind.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the thin coconut milk in the pot with the onion, chillies, garlic, turmeric, fenugreek, curry leaves and salt and let it come to the boil.",
+    "minutes": 4
+   },
+   {
+    "text": "Drop in the stalks first and cook a couple of minutes, since they take longer than the leaves.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the leaves, press them down into the milk and cook uncovered so the green does not turn dull.",
+    "minutes": 5
+   },
+   {
+    "text": "Crush the pepper in and taste for salt; the gravy should stay loose enough to pour.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thick milk, bring it just to a bubble and take the pot off the fire.",
+    "minutes": 2
+   },
+   {
+    "text": "Heat the coconut oil with a few onion slices and curry leaves and stir the tempering through before serving.",
+    "minutes": 3
+   }
+  ],
+  "si": [
+   {
+    "text": "නිවිති කොළ සහ මෘදු දඬු රළුවට කපා, දෙවරක් වතුර මාරු කර සෝදා, වැලි පහළ තියෙන්න කොළ ඉහළට අදින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුට්ටියට තුනී පොල් කිරි දමා, ළූණු, මිරිස්, සුදු ළූණු, කහ, උළුහාල්, කරපිංචා සහ ලුණු එකතු කර උණු වෙන්න දෙන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "දඬු කොටස් පළමුව දමා මිනිත්තු කීපයක් තම්බන්න; කොළවලට වඩා ඒවා පැහෙන්නට කල් ගන්නවා.",
+    "minutes": 3
+   },
+   {
+    "text": "කොළ දමා කිරි තුළට තද කර, කොළ පාට නැති නොවෙන්න වහන්නේ නැතුව උයන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගම්මිරිස් තලා දමා ලුණු රස බලන්න; හොදිය හලාගන්න පුළුවන් තරම් තුනීව තිබිය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "ඝන කිරි වත් කර, එක් උතුරක් ආ විගස මුට්ටිය ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පොල් තෙල් ළූණු පෙති සහ කරපිංචා සමඟ රත් කර, බෙදන්නට පෙර තෙම්පරාදුව හොදියට කලවම් කරන්න.",
+    "minutes": 3
+   }
+  ],
+  "ta": [
+   {
+    "text": "பசளிக்கீரையையும் அதன் மெல்லிய தண்டையும் சற்று பெரிதாக நறுக்கி, இரு முறை நீர் மாற்றி அலசி, மண் அடியில் தங்கும்படி கீரையை மேலே எடுக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சட்டியில் இரண்டாம் தேங்காய்ப்பால் விட்டு, வெங்காயம், மிளகாய், பூண்டு, மஞ்சள், வெந்தயம், கறிவேப்பிலை, உப்பு சேர்த்துக் கொதிக்க விடவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "முதலில் தண்டுப் பகுதியைப் போட்டு சில நிமிடம் வேகவிடவும்; இலையை விட அவை நேரம் எடுக்கும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பின்பு இலைகளைச் சேர்த்து பாலில் அழுத்தி, பச்சை நிறம் மங்காமல் இருக்க மூடாமல் சமைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மிளகை இடித்துச் சேர்த்து உப்பைப் பார்க்கவும்; குழம்பு ஊற்றும் பக்குவத்தில் நீர்மையாக இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "முதல் பாலை ஊற்றி, ஒரு கொதி வந்ததும் சட்டியை இறக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தேங்காய் எண்ணெயில் வெங்காயத் துண்டுகளையும் கறிவேப்பிலையையும் தாளித்து, பரிமாறும் முன் குழம்பில் கலக்கவும்.",
+    "minutes": 3
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan or clay pot"
+ ],
+ "tips": {
+  "en": "Cook it uncovered from start to finish; a lid traps the steam and the leaves go a sad brown. Nivithi shrinks to almost nothing, so buy two big bunches even for a small family.",
+  "si": "මුල සිට අග දක්වා වහන්නේ නැතුව උයන්න; වැස්ම දැමුවොත් වාෂ්ප හිරවී කොළ දුඹුරු පාට වෙනවා. නිවිති උයනවිට හරිම අඩු වන නිසා පොඩි පවුලකට වුණත් ලොකු මිටි දෙකක් ගන්න.",
+  "ta": "தொடக்கம் முதல் முடிவு வரை மூடாமல் சமைக்கவும்; மூடினால் நீராவி தங்கி இலை பழுப்பாகிவிடும். பசளிக்கீரை மிகவும் சுருங்குவதால் சிறிய குடும்பத்திற்கும் இரண்டு பெரிய கட்டு வாங்கவும்."
+ },
+ "health_note": {
+  "en": "Nivithi carries iron, folate and fibre for very little money, and the gravy makes it easy for children and older people to eat greens with rice. The coconut milk is the only heavy part, so thin milk can do most of the work.",
+  "si": "නිවිතිවලින් අඩු මුදලකට යකඩ, ෆෝලේට් සහ තන්තු ලැබෙනවා; හොදි ගතිය නිසා ළමයින්ට සහ වැඩිහිටියන්ට බත් සමඟ පලා කන්න ලේසියි. බර කොටස පොල් කිරි පමණයි, ඒ නිසා වැඩි කොටස තුනී කිරියෙන් කරගන්න පුළුවන්.",
+  "ta": "பசளிக்கீரையில் குறைந்த செலவில் இரும்புச்சத்து, ஃபோலேட், நார்ச்சத்து கிடைக்கும்; குழம்பாக இருப்பதால் குழந்தைகளும் முதியவர்களும் சாதத்துடன் கீரையைச் சாப்பிட எளிது. கனமான பகுதி தேங்காய்ப்பால் மட்டுமே, எனவே பெரும்பாலும் இரண்டாம் பாலையே பயன்படுத்தலாம்."
+ },
+ "tags": [
+  "iron_rich",
+  "high_fibre",
+  "low_calorie",
+  "light",
+  "quick",
+  "budget",
+  "pregnancy_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

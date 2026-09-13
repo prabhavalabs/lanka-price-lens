@@ -1,0 +1,419 @@
+{
+ "id": "dish_bibikkan",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 85,
+  "description": {
+   "en": "A dark moist square of coconut cake with tea",
+   "si": "තෙතමනය සහිත කළු පැහැති බිබික්කන් කැබැල්ලක්, තේ සමඟ",
+   "ta": "தேநீருடன் ஒரு கருமையான, ஈரப்பதமான தேங்காய்க் கேக் துண்டு"
+  }
+ },
+ "yield_g": 340,
+ "ingredients": [
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut",
+    "si": "පොල්",
+    "ta": "தேங்காய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "half a coconut, scraped",
+   "preparation": {
+    "en": "scraped, white part only",
+    "si": "සුදු මදය පමණක් ගාගත්",
+    "ta": "வெள்ளைப் பகுதி மட்டும் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "kithul jaggery",
+    "si": "කිතුල් හකුරු",
+    "ta": "கிதுல் வெல்லம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 block",
+   "preparation": {
+    "en": "grated or broken small",
+    "si": "ගාගත් හෝ කුඩා කැබලි කරගත්",
+    "ta": "துருவியது அல்லது சிறு துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாகு"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "5 tbsp",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_semolina",
+   "label": {
+    "en": "semolina",
+    "si": "රුලං",
+    "ta": "ரவை"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": {
+    "en": "beaten",
+    "si": "ගසාගත්",
+    "ta": "அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "softened",
+    "si": "මෘදු කරගත්",
+    "ta": "மிருதுவாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_candied_peel",
+   "label": {
+    "en": "candied peel",
+    "si": "පැණි දැමූ ලෙලි",
+    "ta": "சர்க்கரை இட்ட தோல்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp, chopped",
+   "preparation": {
+    "en": "chopped small",
+    "si": "කුඩාවට කපාගත්",
+    "ta": "நைசாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_dates",
+   "label": {
+    "en": "dates",
+    "si": "රට ඉඳි",
+    "ta": "பேரீச்சம்பழம்"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "3 dates",
+   "preparation": {
+    "en": "stoned and chopped",
+    "si": "ඇට ඉවත් කර කපාගත්",
+    "ta": "கொட்டை நீக்கி நறுக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a small piece, powdered",
+   "preparation": {
+    "en": "powdered",
+    "si": "කුඩු කරගත්",
+    "ta": "பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "2 pods, powdered",
+   "preparation": {
+    "en": "seeds powdered",
+    "si": "ඇට කුඩු කරගත්",
+    "ta": "விதைகளைப் பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_nutmeg",
+   "label": {
+    "en": "nutmeg",
+    "si": "සාදික්කා",
+    "ta": "சாதிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a light grating",
+   "preparation": {
+    "en": "grated",
+    "si": "ගාගත්",
+    "ta": "துருவியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_baking_powder",
+   "label": {
+    "en": "baking powder",
+    "si": "බේකින් පවුඩර්",
+    "ta": "பேக்கிங் பவுடர்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the coconut and chop the cashew, candied peel and dates small.",
+    "minutes": 15
+   },
+   {
+    "text": "Melt the jaggery with three spoons of water into a dark syrup and stir the treacle in.",
+    "minutes": 8
+   },
+   {
+    "text": "Cook the scraped coconut in the syrup over a low fire, stirring, until the mixture thickens and comes away from the side of the pan.",
+    "minutes": 15
+   },
+   {
+    "text": "Stir in the cinnamon, cardamom and nutmeg and set the pan aside to cool.",
+    "minutes": 20
+   },
+   {
+    "text": "Beat the egg with the softened butter and fold it into the cooled coconut.",
+    "minutes": null
+   },
+   {
+    "text": "Sift in the flour, semolina and baking powder, mix lightly, then fold in the cashew, peel and dates.",
+    "minutes": null
+   },
+   {
+    "text": "Line a small loaf tin with paper and press the mixture in evenly.",
+    "minutes": null
+   },
+   {
+    "text": "Bake in a moderate oven until the top is dry and a stick pushed into the middle comes out clean.",
+    "minutes": 45
+   },
+   {
+    "text": "Let it cool in the tin before cutting into squares; the flavour is better the next day.",
+    "minutes": 30
+   }
+  ],
+  "si": [
+   {
+    "text": "පොල් ගා ගෙන, කජු, පැණි දැමූ ලෙලි සහ රට ඉඳි කුඩාවට කපාගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "හකුරු වතුර හැඳි තුනක් සමඟ උණු කර කළු පැණි හලක් සාදා, කිතුල් පැණි එකතු කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගාගත් පොල් එම පැණියට දමා අඩු ගින්නේ, ගනකම් වී පෑනේ පැත්තෙන් වෙන් වන තුරු කලවම් කරමින් තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "කුරුඳු, එනසාල් සහ සාදික්කා කුඩු දමා කලවම් කර, පෑන ඉවතට ගෙන සිසිල් වෙන්න තියන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "බිත්තරය මෘදු බටර් සමඟ ගසා, සිසිල් වූ පොල් මිශ්‍රණයට එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තිරිඟු පිටි, රුලං සහ බේකින් පවුඩර් පෙරා දමා සැහැල්ලුවෙන් මිශ්‍ර කර, කජු, ලෙලි සහ රට ඉඳි එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා පාන් තැටියක කඩදාසි එලා මිශ්‍රණය සමව තද කර දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මධ්‍යම උෂ්ණත්වයේ උදුනේ, උඩ පිට වියළී ඉරටුවක් ඇනූ විට පිරිසිදුව එන තුරු බේක් කරන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "තැටියේම සිසිල් වූ පසු හතරැස් කැබලිවලට කපන්න; පසු දින රස වඩාත් හොඳයි.",
+    "minutes": 30
+   }
+  ],
+  "ta": [
+   {
+    "text": "தேங்காயைத் துருவி, முந்திரி, சர்க்கரை இட்ட தோல், பேரீச்சம்பழம் ஆகியவற்றை நைசாக நறுக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "வெல்லத்தை மூன்று கரண்டி தண்ணீருடன் உருக்கிக் கருமையான பாகாக்கி, கிதுல் பாகையும் கலக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "துருவிய தேங்காயை அந்தப் பாகில் சேர்த்து, குறைந்த தீயில் கிளறி, கெட்டியாகிச் சட்டியை விட்டு விலகும் வரை வேகவிடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "இலவங்கப்பட்டை, ஏலக்காய், சாதிக்காய்ப் பொடி சேர்த்துக் கலக்கி, சட்டியை இறக்கிக் குளிரவிடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "முட்டையை மிருதுவான வெண்ணெயுடன் அடித்து, குளிர்ந்த தேங்காய்க் கலவையில் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கோதுமை மாவு, ரவை, பேக்கிங் பவுடர் ஆகியவற்றைச் சலித்துச் சேர்த்து லேசாகக் கலக்கி, முந்திரி, தோல், பேரீச்சம்பழம் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய கேக் தட்டில் காகிதம் விரித்து, கலவையைச் சமமாக அழுத்தி நிரப்பவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மிதமான வெப்பத்தில் அவனில், மேற்பரப்பு உலர்ந்து, நடுவில் குச்சி சொருகினால் சுத்தமாக வரும் வரை பேக் செய்யவும்.",
+    "minutes": 45
+   },
+   {
+    "text": "தட்டிலேயே குளிர்ந்த பின் சதுரங்களாக வெட்டவும்; அடுத்த நாள் சுவை மேலும் நன்றாக இருக்கும்.",
+    "minutes": 30
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 60,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "heavy pan",
+  "small loaf tin",
+  "oven"
+ ],
+ "tips": {
+  "en": "Cook the coconut and jaggery until the mixture holds a line drawn with the spoon; if it goes into the tin wet the cake stays sticky in the middle.",
+  "si": "හැන්දෙන් ඇද ගත් රේඛාව රැඳෙන තරමට පොල් හා හකුරු මිශ්‍රණය තම්බන්න; තෙතව තැටියට දැම්මොත් කේක් මැද ඇලෙන ගතියෙන් තිබේ.",
+  "ta": "கரண்டியால் இழுத்த கோடு தங்கும் அளவுக்குத் தேங்காய் வெல்லக் கலவையை வேகவிடவும்; ஈரமாகத் தட்டில் ஊற்றினால் கேக்கின் நடு பிசுபிசுப்பாக இருக்கும்."
+ },
+ "health_note": {
+  "en": "Coconut and cashew bring fat and a little fibre while the jaggery and treacle bring iron along with plenty of sugar. One small square with tea is enough, especially for anyone watching blood sugar.",
+  "si": "පොල් සහ කජු වලින් මේදය සහ තන්තු ටිකක්, හකුරු හා පැණි වලින් යකඩ සමඟ සීනි ගොඩක් ලැබේ. විශේෂයෙන් රුධිර සීනි බලාගන්නා අයට තේ සමඟ කුඩා කැබැල්ලක් සෑහේ.",
+  "ta": "தேங்காயும் முந்திரியும் கொழுப்பையும் சிறிது நார்ச்சத்தையும், வெல்லமும் பாகும் இரும்புச்சத்துடன் அதிக சீனியையும் தருகின்றன. இரத்தச் சர்க்கரையைக் கவனிப்பவர்களுக்குத் தேநீருடன் ஒரு சிறு துண்டே போதும்."
+ },
+ "tags": [
+  "festive",
+  "high_sugar",
+  "comfort",
+  "filling",
+  "iron_rich"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

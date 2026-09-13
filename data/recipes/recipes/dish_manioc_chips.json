@@ -1,0 +1,291 @@
+{
+ "id": "dish_manioc_chips",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 75,
+  "description": {
+   "en": "A small bowl of thin chips, hot with chilli and salt",
+   "si": "මිරිස් හා ලුණු සහිත තුනී චිප්ස් කුඩා බඳුනක්",
+   "ta": "மிளகாயும் உப்பும் தூவிய மெல்லிய சிப்ஸ் ஒரு சிறிய கிண்ணம்"
+  }
+ },
+ "yield_g": 300,
+ "ingredients": [
+  {
+   "ref": "product_manioc",
+   "label": {
+    "en": "manioc (cassava) root",
+    "si": "මඤ්ඤොක්කා",
+    "ta": "மரவள்ளிக்கிழங்கு"
+   },
+   "quantity": 800,
+   "unit": "g",
+   "household": "2 medium roots",
+   "preparation": {
+    "en": "peeled, woody core cut out, sliced wafer thin",
+    "si": "ලෙලි ගසා, දැව නාරටිය ඉවත් කර, ඉතා තුනීව පෙති කැපූ",
+    "ta": "உரித்து, நடு நாரை நீக்கி, மிக மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "½ tsp, for the soaking water",
+   "preparation": {
+    "en": "stirred into the soaking water",
+    "si": "පොඟවන වතුරට කලතාගත්",
+    "ta": "ஊறவைக்கும் நீரில் கலந்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "1¾ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; chips take up more oil than most fried things",
+    "si": "ගැඹුරු තෙලේ බැදීමට; චිප්ස් අනෙක් බැදූ දේවලට වඩා තෙල් උරා ගනී",
+    "ta": "பொரிப்பதற்கு; சிப்ஸ் மற்ற பொரித்த உணவுகளை விட அதிக எண்ணெயை உறிஞ்சும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": {
+    "en": "crushed with the fried chilli",
+    "si": "බැදගත් මිරිස් සමඟ කොටාගත්",
+    "ta": "பொரித்த மிளகாயுடன் இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "fried in the same oil and crushed",
+    "si": "එම තෙලේම බැදගෙන කොටාගත්",
+    "ta": "அதே எண்ணெயில் பொரித்து இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "¾ tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "garnish"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the manioc thickly, cut out the woody core and drop the pieces straight into a basin of water stirred with the turmeric so they do not darken.",
+    "minutes": 10
+   },
+   {
+    "text": "Slice them as thin as you can manage, on a slicer if you have one, letting the slices fall back into the turmeric water.",
+    "minutes": 10
+   },
+   {
+    "text": "Leave the slices to soak, which washes off loose starch and keeps the chips from sticking together.",
+    "minutes": 15
+   },
+   {
+    "text": "Drain them, spread them on a cloth and pat them properly dry; wet slices spit in the oil and turn limp.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil in a deep pan until a slice dropped in rises at once with a steady hiss.",
+    "minutes": 6
+   },
+   {
+    "text": "Fry a handful at a time, stirring so they do not stick to one another.",
+    "minutes": 4
+   },
+   {
+    "text": "When the bubbling almost stops and the slices are stiff and pale gold, lift them out; they darken a little more as they cool.",
+    "minutes": 2
+   },
+   {
+    "text": "Fry the rest in batches, letting the oil come back to heat, and fry the dried chillies for a few seconds at the end.",
+    "minutes": 10
+   },
+   {
+    "text": "Crush the fried chilli with the salt, chilli powder and pepper, toss it through the hot chips, cool them fully and store in a tin.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මඤ්ඤොක්කා ඝන ලෙස ලෙලි ගසා, දැව නාරටිය කපා ඉවත් කර, කහ කලතාගත් වතුර බේසමකට කැබලි කෙළින්ම දමන්න; එවිට කළු නොවේ.",
+    "minutes": 10
+   },
+   {
+    "text": "හැකි තරම් තුනීව, තිබේ නම් පෙති කපනයකින්, පෙති කපා, ඒවා නැවත කහ වතුරටම වැටෙන්න දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෙති පොඟවා තබන්න; එයින් ලිහිල් පිෂ්ටය සෝදා ගොස් චිප්ස් එකට ඇලීම වළකී.",
+    "minutes": 15
+   },
+   {
+    "text": "වතුර බේරා, රෙද්දක් මත තුනී කර, හොඳින් පිස වියළා ගන්න; තෙත් පෙති තෙලේ ඉහිරී මැලවී යයි.",
+    "minutes": null
+   },
+   {
+    "text": "ගැඹුරු පෑනක තෙල් රත් කර, පෙත්තක් දැමූ විට ස්ථාවර ශබ්දයක් සමඟ වහාම නැඟෙන තෙක් බලා සිටින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "වරකට අතක් පමණ දමා, එකට නොඇලෙන ලෙස හොළවමින් බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "බුබුළු නැවතෙන්නට ආසන්න වී පෙති තද වී ලා රන්වන් වූ විට ඉවතට ගන්න; සිසිල් වන විට පාට තව ටිකක් තද වේ.",
+    "minutes": 2
+   },
+   {
+    "text": "ඉතිරිය වර වශයෙන් බැදගන්න, අතර තෙල් නැවත රත් වන්න දී, අවසානයේ වියළි මිරිස් තත්පර කීපයක් බැදගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බැදගත් මිරිස්, ලුණු, මිරිස් කුඩු සහ ගම්මිරිස් සමඟ කොටා, උණුසුම් චිප්ස්වලට මිශ්‍ර කර, හොඳින් සිසිල් කර ටින් එකක තබන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மரவள்ளியைத் தடிமனாக உரித்து, நடு நாரை வெட்டி நீக்கி, மஞ்சள் கலந்த தண்ணீர்த் தொட்டியில் துண்டுகளை நேரடியாகப் போடவும்; அப்போது கருக்காது.",
+    "minutes": 10
+   },
+   {
+    "text": "முடிந்த அளவு மெல்லியதாக, இருந்தால் நறுக்கியால், வெட்டி, துண்டுகள் மீண்டும் மஞ்சள் நீரிலேயே விழட்டும்.",
+    "minutes": 10
+   },
+   {
+    "text": "துண்டுகளை ஊறவிடவும்; இதனால் தளர்வான மாவுச்சத்து கழுவப்பட்டு சிப்ஸ் ஒன்றோடொன்று ஒட்டாது.",
+    "minutes": 15
+   },
+   {
+    "text": "வடித்து, துணியில் பரத்தி நன்கு துடைத்து உலர்த்தவும்; ஈரமான துண்டுகள் எண்ணெயில் தெறித்து சோர்ந்துவிடும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆழமான வாணலியில் எண்ணெயைக் காயவைத்து, ஒரு துண்டு போட்டால் நிலையான சத்தத்துடன் உடனே மேலெழும் நிலைக்கு வரவிடவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "ஒரு முறைக்கு ஒரு கைப்பிடியாகப் போட்டு, ஒன்றோடொன்று ஒட்டாமல் கிளறிப் பொரிக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "குமிழிகள் கிட்டத்தட்ட நின்று, துண்டுகள் இறுகி வெளிர் பொன்னிறமானதும் எடுக்கவும்; ஆறும்போது நிறம் இன்னும் சற்று அடர்க்கும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மீதியையும் முறை முறையாகப் பொரிக்கவும், இடையில் எண்ணெயைக் காயவிட்டு, கடைசியில் காய்ந்த மிளகாயைச் சில நொடிகள் பொரிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பொரித்த மிளகாயை உப்பு, மிளகாய்த் தூள், மிளகுடன் இடித்து, சூடான சிப்ஸில் கலந்து, நன்கு ஆறவிட்டு டப்பியில் வைக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 15,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "slicer or sharp knife",
+  "deep pan",
+  "slotted spoon",
+  "airtight tin"
+ ],
+ "tips": {
+  "en": "Thin and dry are the whole secret: a thick slice stays leathery in the middle and a wet one never crisps. Season the chips while they are hot so the salt and chilli stick, then let them cool right down before the lid goes on.",
+  "si": "රහස තිබෙන්නේ තුනී බව සහ වියළි බව තුළය: ඝන පෙත්තක මැද හම් වැනි ගතියක් රැඳෙන අතර තෙත් පෙත්තක් කිසිදා කරකර නොවේ. ලුණු හා මිරිස් ඇලෙන්නට උණුසුම්ව ම රස කර, පසුව හොඳින් සිසිල් වූ පසුව ම මුඩිය දමන්න.",
+  "ta": "ரகசியம் மெல்லியதாகவும் உலர்ந்ததாகவும் இருப்பதுதான்: தடிமனான துண்டின் நடு தோல் போலவே இருக்கும், ஈரமான துண்டு ஒருபோதும் மொறுமொறுப்பாகாது. உப்பும் மிளகாயும் ஒட்ட சூடாக இருக்கும்போதே தூவி, பிறகு முழுமையாக ஆறியபின்பே மூடி போடவும்."
+ },
+ "health_note": {
+  "en": "Thin chips soak up more oil than almost anything else fried at home, and cassava is pure starch to begin with, so a small bowl is the sensible share. Fry in fresh oil, keep the salt light, and think of this as a treat rather than an everyday tin.",
+  "si": "තුනී චිප්ස් ගෙදර බදින අනෙක් සෑම දෙයකටම වඩා තෙල් උරා ගනී; මඤ්ඤොක්කා ද මුලින්ම පිරිසිදු පිෂ්ටයකි. එබැවින් කුඩා බඳුනක් සාධාරණ කොටසකි. නැවුම් තෙලේ බැද, ලුණු අඩුවෙන් යොදා, මෙය දිනපතා ටිනයක් නොව සත්කාරයක් ලෙස සලකන්න.",
+  "ta": "மெல்லிய சிப்ஸ் வீட்டில் பொரிக்கும் எதையும் விட அதிக எண்ணெயை உறிஞ்சும்; மரவள்ளியும் முழுக்க மாவுச்சத்தே. எனவே ஒரு சிறிய கிண்ணமே நியாயமான அளவு. புதிய எண்ணெயில் பொரித்து, உப்பைக் குறைவாக வைத்து, இதைத் தினசரி டப்பியாக அல்ல, விருந்தாகக் கருதவும்."
+ },
+ "tags": [
+  "deep_fried",
+  "street_food",
+  "budget",
+  "comfort",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

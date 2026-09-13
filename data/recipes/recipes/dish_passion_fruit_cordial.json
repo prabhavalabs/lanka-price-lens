@@ -1,0 +1,206 @@
+{
+ "id": "dish_passion_fruit_cordial",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 250,
+  "description": {
+   "en": "A cold glass poured from the bottled syrup",
+   "si": "බෝතලයේ තිබූ පැණියෙන් සකසාගත් සිසිල් වීදුරුවක්",
+   "ta": "பாட்டிலில் இருந்த பாகிலிருந்து தயாரித்த குளிர்ந்த கிளாஸ்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "product_passion_fruit",
+   "label": {
+    "en": "passion fruit",
+    "si": "පැෂන් ෆෲට්",
+    "ta": "பேஷன் பழம்"
+   },
+   "quantity": 5,
+   "unit": "piece",
+   "household": "5 wrinkled fruits",
+   "preparation": {
+    "en": "cut in half, pulp scooped out",
+    "si": "දෙකට කපා මදය හෑරගත්",
+    "ta": "இரண்டாக வெட்டி சுளை சுரண்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "three quarters of a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, to keep the syrup",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "syrup"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Choose fruits whose skins have started to wrinkle; a smooth, heavy passion fruit is not ripe enough and the syrup will be harsh.",
+    "minutes": null
+   },
+   {
+    "text": "Cut each fruit in half and scoop the pulp and seeds into a bowl.",
+    "minutes": 10
+   },
+   {
+    "text": "Work the pulp through a strainer with the back of a spoon, and keep pressing until only dry seeds are left behind.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the strained juice, the sugar and 150 ml of water in a pan and stir over a low fire until the sugar has completely dissolved.",
+    "minutes": 5
+   },
+   {
+    "text": "Let it simmer gently, without stirring much, until it is a light syrup that coats the spoon; do not let it go dark or it will taste of caramel.",
+    "minutes": 10
+   },
+   {
+    "text": "Take it off the fire, squeeze in the lime juice, and let the syrup cool right down.",
+    "minutes": 30
+   },
+   {
+    "text": "Pour the cool syrup into a clean dry bottle and keep it in the fridge; it lasts two or three weeks.",
+    "minutes": null
+   },
+   {
+    "text": "To serve, put two tablespoons of syrup in each glass, fill up with cold water, stir and drop in the ice.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ලෙලි රැලි වැටෙන්නට පටන් ගත් ගෙඩි තෝරන්න; සිනිඳු, බර පැෂන් ෆෲට් තවම ඉදී නැති නිසා පැණිය රළු වේ.",
+    "minutes": null
+   },
+   {
+    "text": "එක ගෙඩියක් ගානේ දෙකට කපා, මදය සහ ඇට බඳුනකට හෑරගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "හැන්දේ පිටිපතින් මදය පෙරහනක් හරහා තද කර, ඉතිරෙන්නේ වියලි ඇට පමණක් වන තුරු තදින් මිරිකන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෙරාගත් යුෂ, සීනි සහ වතුර මිලිලීටර් 150ක් බඳුනකට දමා, සීනි සම්පූර්ණයෙන් දිය වන තුරු අඩු ගින්නේ කලතන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වැඩිය නොකලතා, හැන්දේ තැවරෙන තුනී පැණියක් වන තුරු හෙමින් තම්බන්න; පාට තද වන්නට ඉඩ දෙන්න එපා, එවිට කැරමල් රසයක් එයි.",
+    "minutes": 10
+   },
+   {
+    "text": "ලිපෙන් බාගෙන දෙහි යුෂ මිරිකා දමා, පැණිය හොඳින් සිසිල් වෙන්නට තබන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "සිසිල් වූ පැණිය පිරිසිදු වියලි බෝතලයකට දමා ශීතකරණයේ තබන්න; සති දෙක තුනක් තිබේ.",
+    "minutes": null
+   },
+   {
+    "text": "බෙදන විට එක වීදුරුවකට පැණි මේස හැඳි දෙකක් දමා, සිසිල් වතුරෙන් පුරවා, කලතා අයිස් දමන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தோல் சுருங்கத் தொடங்கிய பழங்களைத் தேர்ந்தெடுங்கள்; மினுமினுப்பான, கனமான பேஷன் பழம் இன்னும் பழுக்கவில்லை, பாகு கடுமையாக இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு பழத்தையும் இரண்டாக வெட்டி, சுளையையும் விதையையும் ஒரு கிண்ணத்தில் சுரண்டி எடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கரண்டியின் பின்பக்கத்தால் சுளையை வடிகட்டி வழியே அழுத்தி, உலர்ந்த விதைகள் மட்டும் மிஞ்சும் வரை பிழியுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வடிகட்டிய சாறு, சீனி, 150 மில்லி நீர் ஆகியவற்றை பாத்திரத்தில் இட்டு, சீனி முழுமையாகக் கரையும் வரை குறைந்த தீயில் கலக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "அதிகம் கலக்காமல், கரண்டியில் ஒட்டும் நீர்த்த பாகாகும் வரை மெதுவாகக் கொதிக்கவிடுங்கள்; நிறம் கருக்கவிட வேண்டாம், இல்லையேல் கேரமல் சுவை வரும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, எலுமிச்சைச் சாறு பிழிந்து, பாகு நன்றாக ஆற விடுங்கள்.",
+    "minutes": 30
+   },
+   {
+    "text": "ஆறிய பாகை சுத்தமான உலர்ந்த பாட்டிலில் ஊற்றி குளிர்சாதனப் பெட்டியில் வைக்கவும்; இரண்டு மூன்று வாரம் இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "பரிமாறும்போது ஒரு கிளாஸுக்கு இரண்டு மேசைக்கரண்டி பாகு இட்டு, குளிர்ந்த நீர் நிரப்பி, கலக்கி பனிக்கட்டி போடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 15,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "pan",
+  "fine strainer",
+  "clean glass bottle"
+ ],
+ "tips": {
+  "en": "Bottle the syrup while the bottle is dry and the syrup is cold, and use a dry spoon each time; one drop of water in the bottle starts the mould. Keep a spoon of the seeds aside and drop a few into the jug at a party, because the seeds are what tell a guest it was not made from a packet.",
+  "si": "බෝතලය වියලි ව සහ පැණිය සිසිල් ව තිබෙන විටම බෝතල් කරන්න, හැම වතාවේම වියලි හැන්දක් ගන්න; බෝතලයට වතුර බින්දුවක් ගියොත් මුස්පේන්තු වේ. ඇට හැන්දක් වෙන් කර තබා, සාදයකදී ජෝගුවට ඒවායින් ටිකක් දමන්න; මේක පැකට් එකකින් හදපු එකක් නොවේ කියා අමුත්තාට කියන්නේ ඇටයි.",
+  "ta": "பாட்டில் உலர்ந்திருக்கும்போதும் பாகு குளிர்ந்திருக்கும்போதும் பாட்டிலில் அடைக்கவும், ஒவ்வொரு முறையும் உலர்ந்த கரண்டியே பயன்படுத்தவும்; பாட்டிலில் ஒரு துளி நீர் போனால் பூசணம் தொடங்கும். ஒரு கரண்டி விதைகளைத் தனியாக வைத்து, விருந்தில் ஜாக்கில் சிலவற்றைப் போடுங்கள்; இது பாக்கெட்டில் செய்ததல்ல என்று விருந்தாளிக்குச் சொல்வது அந்த விதைகளே."
+ },
+ "health_note": {
+  "en": "The fruit brings vitamin C and a good smell, but three quarters of a cup of sugar makes this a sweet drink by any measure. Dilute it well, count it as a treat at a party rather than a daily thirst quencher, and keep it away from anyone managing diabetes.",
+  "si": "පලතුරෙන් විටමින් C සහ හොඳ සුවඳ ලැබෙනවා, එහෙත් සීනි කෝප්පයෙන් තුන් හතරක් යන නිසා කොහොම බැලුවත් මේක පැණි බීමක්. හොඳින් තුනී කර, දිනපතා පිපාසය නිවන එකක් නොව සාදයේ විනෝදයක් ලෙස ගණන් ගන්න, දියවැඩියාව පාලනය කරන අයට දෙන්න එපා.",
+  "ta": "பழம் வைட்டமின் C யும் நல்ல வாசமும் தருகிறது, ஆனால் முக்கால் கோப்பை சீனி சேர்வதால் எப்படிப் பார்த்தாலும் இது இனிப்புப் பானம். நன்கு நீர்த்து, தினசரி தாகம் தணிப்பானாக அல்ல விருந்துச் சிறப்பாகக் கருதுங்கள்; நீரிழிவைக் கட்டுப்படுத்துபவர்களுக்குக் கொடுக்க வேண்டாம்."
+ },
+ "tags": [
+  "high_sugar",
+  "hydrating",
+  "festive",
+  "immune_support",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

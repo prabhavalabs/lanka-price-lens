@@ -1,0 +1,416 @@
+{
+ "id": "dish_vegetable_roti",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 220,
+  "description": {
+   "en": "Two square griddled parcels with a spiced potato filling, for evening tea",
+   "si": "සවස තේ එකට කුළුබඩු අල පිරවූ හතරැස් රොටි දෙකක්",
+   "ta": "மாலை தேநீருக்கு மசாலா உருளைக்கிழங்கு நிரப்பிய இரண்டு சதுர ரொட்டி"
+  }
+ },
+ "yield_g": 880,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மா"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2 1/4 cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "හලා ගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "for the dough, the filling and the griddle",
+    "si": "පිටි ගුලියට, පිරවුමට සහ තාච්චියට",
+    "ta": "மாவுக்கும், பூரணத்துக்கும், தோசைக்கல்லுக்கும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අල",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "3 medium potatoes",
+   "preparation": {
+    "en": "boiled, peeled and broken up roughly",
+    "si": "තම්බා, පොතු ඇර, රළුවට තලාගත්",
+    "ta": "வேகவைத்து தோல் நீக்கி கொரகொரப்பாக உதைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கரட்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 carrot",
+   "preparation": {
+    "en": "grated",
+    "si": "ගා ගත්",
+    "ta": "துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 small stalk",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කැපූ",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 90,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "shredded",
+    "si": "සිහින්ව කැපූ",
+    "ta": "கிழித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறி மசாலா"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/4 tsp, dough and filling together",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_margarine",
+   "label": {
+    "en": "margarine",
+    "si": "මාගරින්",
+    "ta": "மார்கரின்"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for griddling the parcels",
+    "si": "රොටි පිහීමට",
+    "ta": "ரொட்டியைச் சுடுவதற்கு"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "dough"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Mix the flour with a teaspoon of the salt, a tablespoon of the oil and about 180 ml of water, and knead to a soft dough that does not stick to the basin.",
+    "minutes": 8
+   },
+   {
+    "text": "Rub the dough ball with oil, cover it and let it rest while you make the filling.",
+    "minutes": 30
+   },
+   {
+    "text": "Heat a tablespoon of oil in a pan and fry the onion, green chillies and curry leaves until soft.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the carrot and leeks and stir until the leeks lose their raw edge.",
+    "minutes": 4
+   },
+   {
+    "text": "Stir in the curry powder, chilli powder, turmeric, pepper and the rest of the salt, then fold in the broken potato and mash it lightly against the pan so the filling holds together.",
+    "minutes": 5
+   },
+   {
+    "text": "Let the filling cool completely, then divide it into eight portions; warm filling tears the dough.",
+    "minutes": 15
+   },
+   {
+    "text": "Roll each ball of dough into a thin round on an oiled surface, put a portion of filling in the middle, and fold the four sides over into a square parcel, pressing the seams down.",
+    "minutes": null
+   },
+   {
+    "text": "Cook the parcels seam side down on a hot griddle with a little margarine or oil until brown spots appear, then turn and cook the other side.",
+    "minutes": 5
+   },
+   {
+    "text": "Drain them on paper and cut each in half if serving with tea.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිටි, ලුණු තේ හැන්දක්, තෙල් මේස හැන්දක් සහ වතුර මිලි ලීටර් 180ක් පමණ දමා, බේසමට නොඇලෙන මුදු පිටි ගුලියක් සාදා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පිටි ගුලියට තෙල් ගල්වා, වසා තබා, පිරවුම සාදන අතරේ තිබෙන්න දෙන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "පෑන් එකක තෙල් මේස හැන්දක් රත් කර ලූනු, අමු මිරිස් සහ කරපිංචා මුදු වන තුරු බදින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "කැරට් සහ ලීක්ස් දමා, ලීක්ස් වල අමු ගතිය යන තුරු කලවම් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "තුනපහ, මිරිස් කුඩු, කහ, ගම්මිරිස් සහ ඉතිරි ලුණු දමා කලවම් කර, තලාගත් අල දමා පිරවුම එකට බැඳෙන ලෙස පෑන් එකට තද කර මිශ්‍ර කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පිරවුම සම්පූර්ණයෙන් සිසිල් වන්නට තබා කොටස් අටකට බෙදන්න; උණුසුම් පිරවුම පිටි තලය ඉරයි.",
+    "minutes": 15
+   },
+   {
+    "text": "තෙල් ගැල්වූ මතුපිටක එක් එක් පිටි ගුලිය තුනී රවුමක් ලෙස තුනී කර, මැදට පිරවුම් කොටසක් තබා, පැති හතර නවා හතරැස් පාර්සලයක් සාදා මැහුම් තද කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "රත් තාච්චියේ මාගරින් හෝ තෙල් ටිකක් දමා, මැහුම් පැත්ත යටින් තබා දුඹුරු පැල්ලම් එන තුරු පිහා, පෙරළා අනෙක් පැත්තද පිහන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කඩදාසියක් මත තෙල් බේරෙන්නට තබා, තේ සමඟ දෙන්නේ නම් එකක් දෙකට කපා ගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாவுடன் ஒரு தேக்கரண்டி உப்பு, ஒரு மேசைக்கரண்டி எண்ணெய், சுமார் 180 மில்லி தண்ணீர் சேர்த்து, பாத்திரத்தில் ஒட்டாத மென்மையான மாவாகப் பிசையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "மாவு உருண்டைக்கு எண்ணெய் தடவி மூடி வைத்து, பூரணம் செய்யும் வரை ஓய்வெடுக்கவிடுங்கள்.",
+    "minutes": 30
+   },
+   {
+    "text": "சட்டியில் ஒரு மேசைக்கரண்டி எண்ணெயைக் காயவைத்து வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலையை மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கரட்டும் லீக்ஸும் சேர்த்து, லீக்ஸின் பச்சை வாசனை போகும் வரை கிளறுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கறி மசாலா, மிளகாய்த் தூள், மஞ்சள், மிளகு, மீதி உப்பு சேர்த்துக் கிளறி, உதைத்த உருளைக்கிழங்கைச் சேர்த்து சட்டியில் அழுத்தி பூரணம் ஒட்டும்படி கலக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "பூரணம் முழுவதுமாகக் குளிர்ந்த பின் எட்டு பங்குகளாகப் பிரியுங்கள்; சூடான பூரணம் மாவைக் கிழிக்கும்.",
+    "minutes": 15
+   },
+   {
+    "text": "எண்ணெய் தடவிய மேற்பரப்பில் ஒவ்வொரு உருண்டையையும் மெல்லிய வட்டமாக இட்டு, நடுவில் ஒரு பங்கு பூரணம் வைத்து, நான்கு பக்கங்களையும் மடித்து சதுரமாக்கி இணைப்புகளை அழுத்துங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "காய்ந்த தோசைக்கல்லில் சிறிது மார்கரின் அல்லது எண்ணெய் விட்டு, இணைப்புப் பக்கம் கீழாக வைத்து பொன்னிற புள்ளிகள் வரும் வரை சுட்டு, திருப்பி மறுபக்கமும் சுடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "காகிதத்தில் வைத்து எண்ணெய் வடியவிட்டு, தேநீருடன் பரிமாறினால் ஒவ்வொன்றையும் இரண்டாக வெட்டுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 25,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "mixing basin",
+  "pan for the filling",
+  "flat griddle",
+  "rolling pin"
+ ],
+ "tips": {
+  "en": "Boil the potatoes the day before if you can; cold potato mashes into a filling that stays in the parcel instead of leaking. Griddling in a little fat rather than deep frying keeps the roti lighter and is how it is done at home.",
+  "si": "හැකි නම් අල පෙර දින තම්බා ගන්න; සිසිල් අල වලින් හදන පිරවුම කාන්දු නොවී පාර්සලය තුළ රැඳෙයි. ගැඹුරු තෙලේ බැදීම වෙනුවට තෙල් ටිකකින් තාච්චියේ පිහීම රොටිය සැහැල්ලු කරයි, ගෙදර කරන්නේත් එයයි.",
+  "ta": "முடிந்தால் உருளைக்கிழங்கை முந்தின நாளே வேகவைக்குங்கள்; குளிர்ந்த கிழங்கு உதைத்தால் பூரணம் வெளியே வழியாமல் உள்ளே நிற்கும். ஆழமாகப் பொரிப்பதற்குப் பதிலாக சிறிது கொழுப்பில் கல்லில் சுடுவது ரொட்டியை இலகுவாக்கும், வீட்டில் செய்வதும் அப்படியே."
+ },
+ "health_note": {
+  "en": "Flour and potato together make this a heavy snack, so one parcel with tea is usually enough for an adult who has eaten lunch. Packing in more carrot and leeks and less margarine gives the same filling feeling with more fibre.",
+  "si": "පිටි සහ අල එකට වන බැවින් මෙය බර කෙටි කෑමක්; දිවා ආහාරය ගත් වැඩිහිටියෙකුට තේ සමඟ එකක් සාමාන්‍යයෙන් ඇති. කැරට් සහ ලීක්ස් වැඩිපුර, මාගරින් අඩුවෙන් දැමීමෙන් එම පිරවුම් හැඟීමම වැඩි තන්තු සමඟ ලැබෙයි.",
+  "ta": "மாவும் உருளைக்கிழங்கும் சேர்வதால் இது கனமான சிற்றுண்டி; மதிய உணவு சாப்பிட்ட பெரியவருக்கு தேநீருடன் ஒன்று போதும். கரட்டும் லீக்ஸும் அதிகமாக, மார்கரின் குறைவாகச் சேர்த்தால் அதே வயிறு நிறைவு அதிக நார்ச்சத்துடன் கிடைக்கும்."
+ },
+ "tags": [
+  "budget",
+  "street_food",
+  "filling",
+  "comfort",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

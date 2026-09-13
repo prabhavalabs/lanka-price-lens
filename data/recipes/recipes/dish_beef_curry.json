@@ -1,0 +1,493 @@
+{
+ "id": "dish_beef_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 180,
+  "description": {
+   "en": "A ladle of dark beef curry with rice and two other curries",
+   "si": "බත් සහ තවත් කරි දෙකක් සමග හරක් මස් කරියෙන් හැන්දක්",
+   "ta": "சாதத்துடனும் வேறு இரு கறிகளுடனும் ஒரு கரண்டி மாட்டிறைச்சிக் கறி"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef, stewing cut",
+    "si": "හරක් මස්",
+    "ta": "மாட்டிறைச்சி"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "about 600 g from the meat stall",
+   "preparation": {
+    "en": "cut into 3 cm cubes, washed and drained",
+    "si": "සෙන්ටිමීටර තුනක කැබලිවලට කපා සෝදා වතුර බේරූ",
+    "ta": "மூன்று சென்டிமீட்டர் துண்டுகளாக நறுக்கி அலசி நீர் வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "8 to 10 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed, ground",
+    "si": "කොත්තමල්ලි කුඩු",
+    "ta": "கொத்தமல்லித் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin, ground",
+    "si": "සූදුරු කුඩු",
+    "ta": "சீரகத் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel, ground",
+    "si": "මාදුරු කුඩු",
+    "ta": "பெருஞ்சீரகத் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp, coarsely cracked",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලා ගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 small piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm quill",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ කොළය",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 10 cm length",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "one and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන වර මිරිකා ගත් තුනී කිරි",
+    "ta": "இரண்டாம் பால், தளர்ந்த பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකා ගත් ගන කිරි",
+    "ta": "முதல் பால், கெட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the beef cubes well and leave them in a colander so the water drains off.",
+    "minutes": null
+   },
+   {
+    "text": "Rub the garlic, ginger, roasted curry powder, chilli powder, coriander, cumin, fennel, turmeric, pepper, salt and half the sliced onion into the meat with your hand and let it sit.",
+    "minutes": 15
+   },
+   {
+    "text": "Tip the meat into a clay pot with the gorakka, cinnamon, cloves, pandan and curry leaves, and pour in the thin coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Bring to a boil, cover, drop the fire low and cook until the beef breaks with the back of a spoon, adding a little hot water if the pot runs dry.",
+    "minutes": 45
+   },
+   {
+    "text": "Heat the coconut oil in a small pan and fry the rest of the onion until it is brown at the edges.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour the tempered onion and its oil into the pot and stir it through the meat.",
+    "minutes": null
+   },
+   {
+    "text": "Add the thick coconut milk, taste for salt and let the pot come to the edge of a bubble without a hard boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Simmer uncovered until the gravy is glossy and clings to the meat.",
+    "minutes": 10
+   },
+   {
+    "text": "Take the pot off the fire and rest it before serving, which lets the gorakka sourness settle into the meat.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "හරක් මස් කැබලි හොඳින් සෝදා පෙනේරයක තබා වතුර බේරෙන්න තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සුදුළූණු, ඉඟුරු, බැදපු තුනපහ, මිරිස් කුඩු, කොත්තමල්ලි, සූදුරු, මාදුරු, කහ, ගම්මිරිස්, ලුණු සහ කපා ගත් ළූණු බාගයක් මසට අතින් හොඳින් අතුල්ලා තියන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "මස් වළඳකට දමා ගොරකා, කුරුඳු, කරාබුනැටි, රම්පෙ සහ කරපිංචා එකතු කර තුනී පොල් කිරි වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලිප තබා උතුරවා, වසා ගිනි අඩු කර, හැන්දකින් තලන විට මස් කැඩෙන තුරු උයන්න. වළඳ හිඳී ගියොත් රත් වතුර ස්වල්පයක් දමන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "කුඩා පෑන් එකක පොල් තෙල් රත් කර ඉතිරි ළූණු දාර රන්වන් වන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "එම තෙම්පරාදු කළ ළූණු තෙල් සමගම කරියට වත් කර හොඳින් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගන පොල් කිරි එකතු කර ලුණු රස බලා, තදින් උතුරන්නට නොදී සෙමින් රස්නය දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "හොදි මස් වට තැවරෙන ගානට තද වන තුරු වැහුමක් නොදා උයන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන ටික වේලාවක් තියන්න. එවිට ගොරකා ඇඹුල මසට හොඳින් වදිනවා.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாட்டிறைச்சித் துண்டுகளை நன்கு அலசி சல்லடையில் இட்டு நீர் வடியவிடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பூண்டு, இஞ்சி, வறுத்த கறித்தூள், மிளகாய்த் தூள், கொத்தமல்லி, சீரகம், பெருஞ்சீரகம், மஞ்சள், மிளகு, உப்பு மற்றும் பாதி வெங்காயத்தை இறைச்சியில் கையால் தேய்த்து வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "இறைச்சியை மண் சட்டியில் இட்டு கொடுக்காய்ப்புளி, பட்டை, கிராம்பு, ரம்பை, கறிவேப்பிலை சேர்த்து இரண்டாம் தேங்காய்ப் பாலை ஊற்றுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்கவிட்டு மூடி, தீயைக் குறைத்து, கரண்டியால் அழுத்தினால் இறைச்சி உதிரும் அளவு வேகவிடுங்கள். நீர் வற்றினால் சுடுநீர் சிறிது சேர்க்கவும்.",
+    "minutes": 45
+   },
+   {
+    "text": "சிறு வாணலியில் தேங்காய் எண்ணெயைக் காயவிட்டு மீதி வெங்காயத்தை ஓரம் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வதக்கிய வெங்காயத்தை எண்ணெயுடன் சேர்த்து கறியில் ஊற்றி நன்கு கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலைச் சேர்த்து உப்பைச் சரிபார்த்து, பொங்கவிடாமல் மெல்லிய தீயில் சூடாக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கிரேவி இறைச்சியில் ஒட்டும் அளவு இறுகும் வரை மூடாமல் வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "தீயை அணைத்து சிறிது நேரம் மூடி வைத்திருங்கள். புளிப்பு இறைச்சிக்குள் இறங்கும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 60,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "small tempering pan",
+  "mortar and pestle"
+ ],
+ "tips": {
+  "en": "Beef from the neck or shank has more sinew and gives a better gravy than lean steak cuts, but it needs the full slow hour. Do not add the thick milk before the meat is soft, because it splits over long boiling.",
+  "si": "බෙල්ලේ හෝ කකුලේ මස් තුනී ස්ටීක් මසට වඩා හොදිට රසයි, නමුත් ඊට සම්පූර්ණ පැයක් සෙමින් උයන්න වෙනවා. මස් මෘදු වීමට පෙර ගන කිරි එකතු කරන්න එපා, බොහෝ වෙලා උතුරන විට එය කැඩෙනවා.",
+  "ta": "கழுத்து அல்லது கால் பகுதி இறைச்சி மெலிந்த துண்டுகளை விட சுவையான கிரேவி தரும், ஆனால் ஒரு மணி நேரம் மெதுவாக வேக வேண்டும். இறைச்சி மெதுவாகும் முன் கெட்டிப் பால் சேர்த்தால் அது திரிந்துவிடும்."
+ },
+ "health_note": {
+  "en": "Beef is a strong source of iron and protein, useful for growing children and anyone who tires easily, but it is also fatty and the coconut milk adds more. Two ladles with plenty of rice and a vegetable curry is enough for one meal.",
+  "si": "හරක් මස් යකඩ සහ ප්‍රෝටීන් හොඳින් සපයයි, එය වැඩෙන ළමයින්ට සහ ඉක්මනින් වෙහෙසෙන අයට වටිනවා. නමුත් එහි මේදය වැඩි වන අතර පොල් කිරි ඊටත් එකතු කරයි. බත් සහ එළවළු කරියක් සමග හැන්ද දෙකක් එක වේලකට ප්‍රමාණවත්.",
+  "ta": "மாட்டிறைச்சி இரும்பும் புரதமும் நிறைந்தது, வளரும் பிள்ளைகளுக்கும் சோர்வடைபவர்களுக்கும் உதவும். ஆனால் கொழுப்பு அதிகம், தேங்காய்ப் பாலும் சேர்கிறது. சாதத்துடன் ஒரு காய்கறிக் கறியுடன் இரு கரண்டி ஒரு வேளைக்குப் போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_carb",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

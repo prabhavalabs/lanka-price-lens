@@ -1,0 +1,494 @@
+{
+ "id": "dish_wild_boar_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "A ladle of heavily spiced dry curry with rice or pittu",
+   "si": "බත් හෝ පිට්ටු සමඟ කුළුබඩු බහුල වියළි කරි ලාඩුවක්",
+   "ta": "சாதத்துடனோ பிட்டுடனோ ஒரு கரண்டி மசாலா நிறைந்த காய்ந்த கறி"
+  }
+ },
+ "yield_g": 820,
+ "ingredients": [
+  {
+   "ref": "pantry_wild_boar",
+   "label": {
+    "en": "wild boar meat",
+    "si": "වල් ඌරු මස්",
+    "ta": "காட்டுப் பன்றி இறைச்சி"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "700 g, some on the bone",
+   "preparation": {
+    "en": "cut into 3 cm pieces, washed twice",
+    "si": "සෙන්ටිමීටර තුනක කැබලිවලට කපා දෙවරක් සෝදාගත්",
+    "ta": "மூன்று சென்டிமீட்டர் துண்டுகளாக வெட்டி, இரு முறை கழுவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for the marinade",
+    "si": "මැරිනේඩ් එකට",
+    "ta": "ஊறவைப்புக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "8 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 small pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 14,
+   "unit": "g",
+   "household": "10 chillies, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 18,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp, crushed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp, roasted and ground",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "roasted scraped coconut",
+    "si": "බැදගත් ගාගත් පොල්",
+    "ta": "வறுத்த துருவிய தேங்காய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "half a cup, scraped",
+   "preparation": {
+    "en": "dry roasted dark and ground",
+    "si": "අඳුරු වන තුරු වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "கறுக்க வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the boar meat twice, drain it, and rub it with the vinegar, turmeric, crushed garlic and ginger, half the ground chilli and half the salt.",
+    "minutes": 20
+   },
+   {
+    "text": "Leave it to stand; wild meat is tough and dark, and the vinegar and gorakka are what make it eatable.",
+    "minutes": 60
+   },
+   {
+    "text": "Dry roast the scraped coconut in a pan until it is very dark, then grind it with the roasted coriander into a paste.",
+    "minutes": 12
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and fry the onion, garlic, ginger, curry leaves, pandan leaf and cinnamon until the onion browns well.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the roasted curry powder, the rest of the chilli, cumin, fennel and pepper and fry on a low flame so they toast without burning.",
+    "minutes": 3
+   },
+   {
+    "text": "Tip in the meat with all its marinade and turn it on a high flame until the pieces are sealed and coated.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the gorakka and water to just cover, put the lid on and cook slowly; boar takes longer than domestic pork, so give it time.",
+    "minutes": 60
+   },
+   {
+    "text": "Stir in the roasted coconut paste and the rest of the salt and cook uncovered until the gravy is thick, dark and almost dry.",
+    "minutes": 18
+   },
+   {
+    "text": "Fry the curry in its own oil for the last few minutes so the spice sticks to the meat, then take it off the fire.",
+    "minutes": 6
+   },
+   {
+    "text": "Let it stand covered before serving; this curry keeps for two days and tastes better on the second.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "වල් ඌරු මස් දෙවරක් සෝදා වතුර බේරා, විනාකිරි, කහ, තලාගත් සුදුළූණු හා ඉඟුරු, අඹරාගත් මිරිස් භාගයක් සහ ලුණු භාගයක් අතුල්ලන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ටික වෙලාවක් තබන්න; වන මස් තද හා අඳුරු බැවින් එය කෑමට සුදුසු කරන්නේ විනාකිරි සහ ගොරකායි.",
+    "minutes": 60
+   },
+   {
+    "text": "ගාගත් පොල් පෑන් එකක ඉතා අඳුරු වන තුරු වියළි ලෙස බැදගෙන, බැදගත් කොත්තමල්ලි සමඟ අඹරා පේස්ට් එකක් කර ගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "මැටි වළඳක පොල් තෙල් රස්නේ කර, ළූණු, සුදුළූණු, ඉඟුරු, කරපිංචා, රම්පෙ සහ කුරුඳු ළූණු හොඳින් දුඹුරු වන තුරු බදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බැදපු තුනපහ, ඉතිරි මිරිස්, සූදුරු, මාදුරු සහ ගම්මිරිස් දමා, නොදැවී බැදෙන ලෙස අඩු ගින්නේ බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මස එහි මැරිනේඩ් එක සමඟම දමා, විශාල ගින්නේ කැබලි තද වී කුළුබඩු ගෑවෙන තුරු පෙරළන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගොරකා සහ ආවරණය වන පමණට වතුර දමා, වැසුම තබා සෙමින් උයන්න; වල් ඌරු මස් ගෙදර ඌරු මස්වලට වඩා වැඩි කාලයක් ගනී.",
+    "minutes": 60
+   },
+   {
+    "text": "බැදගත් පොල් පේස්ට් සහ ඉතිරි ලුණු දමා, හොද්ද තද, අඳුරු හා පාහේ වියළි වන තුරු වැසුමක් නැතිව උයන්න.",
+    "minutes": 18
+   },
+   {
+    "text": "අවසන් මිනිත්තු කිහිපයේ කරිය එහිම තෙලේ බැදෙන්නට දී කුළුබඩු මසට ඇලෙන්නට දී, ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පිළිගැන්වීමට පෙර වසා තබන්න; මෙම කරිය දින දෙකක් තිබෙන අතර දෙවන දිනයේ වඩාත් රසවත්ය.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "காட்டுப் பன்றி இறைச்சியை இரு முறை கழுவி வடித்து, வினிகர், மஞ்சள், இடித்த பூண்டு இஞ்சி, பாதி அரைத்த மிளகாய், பாதி உப்பு சேர்த்துத் தேய்த்து வையுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "சிறிது நேரம் ஊற விடுங்கள்; காட்டு இறைச்சி இறுக்கமானது, கருமையானது; அதை உண்ணத்தக்கதாக்குவது வினிகரும் கோரக்காவுமே.",
+    "minutes": 60
+   },
+   {
+    "text": "துருவிய தேங்காயை சட்டியில் மிகக் கறுக்கும் வரை வறுத்து, வறுத்த மல்லியுடன் அரைத்து விழுதாக்குங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, ரம்பை, பட்டையை வெங்காயம் நன்கு பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "வறுத்த கறித் தூள், மீதி மிளகாய், சீரகம், பெருஞ்சீரகம், மிளகு சேர்த்து, கருகாமல் வறுபடும்படி சிறு தீயில் வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "இறைச்சியை அதன் ஊறவைப்புக் கலவையுடன் சேர்த்து, பெரிய தீயில், துண்டுகள் இறுகி மசாலா படியும் வரை புரட்டுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "கோரக்காவும் மூழ்கும் அளவு நீரும் சேர்த்து, மூடி வைத்து மெதுவாகச் சமையுங்கள்; காட்டுப் பன்றி வீட்டுப் பன்றியை விட அதிக நேரம் எடுக்கும்.",
+    "minutes": 60
+   },
+   {
+    "text": "வறுத்த தேங்காய் விழுதையும் மீதி உப்பையும் சேர்த்து, குழம்பு கெட்டியாகி, கறுத்து, கிட்டத்தட்ட காயும் வரை மூடாமல் சமையுங்கள்.",
+    "minutes": 18
+   },
+   {
+    "text": "கடைசி சில நிமிடங்களில் கறியை அதன் சொந்த எண்ணெயிலேயே வதக்கி மசாலா இறைச்சியில் ஒட்ட விட்டு, அடுப்பை விட்டு இறக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "பரிமாறும் முன் மூடி வையுங்கள்; இந்தக் கறி இரண்டு நாட்கள் நிற்கும், இரண்டாம் நாள் இன்னும் சுவையாக இருக்கும்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 100,
+  "passive_minutes": 60
+ },
+ "equipment": [
+  "clay pot with a lid",
+  "pan for roasting the coconut",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "Give it the full hour of marinating and the full hour on the fire; wild boar worked hard for its living and will not soften on a quick flame. If the meat came from an older animal, a couple of extra pieces of gorakka help more than extra chilli.",
+  "si": "පැයක් මැරිනේඩ් කිරීමත් පැයක් ගින්නේ තැබීමත් සම්පූර්ණයෙන් ලබා දෙන්න; වල් ඌරා වෙහෙස මහන්සි වී ජීවත් වූ සතෙකි, ඉක්මන් ගින්නක මුදු නොවේ. මස ලැබුණේ වයස්ගත සතෙකුගෙන් නම්, තව මිරිස්වලට වඩා තව ගොරකා කැබලි දෙකක් උපකාරී වේ.",
+  "ta": "ஒரு மணி நேர ஊறவைப்பையும் ஒரு மணி நேரச் சமையலையும் முழுமையாகக் கொடுங்கள்; காட்டுப் பன்றி உழைத்து வாழ்ந்த விலங்கு, விரைவான தீயில் மென்மையாகாது. இறைச்சி வயதான விலங்கிலிருந்து வந்ததாயின், கூடுதல் மிளகாயை விடக் கூடுதலாக இரண்டு கோரக்கா துண்டுகளே உதவும்."
+ },
+ "health_note": {
+  "en": "Wild boar is leaner and darker than farmed pork, with more iron and less fat, so the richness in this pot comes from the roasted coconut and the oil. Wild meat must be cooked right through, never left pink in the middle.",
+  "si": "වල් ඌරු මස් ගොවිපළ ඌරු මස්වලට වඩා තෙල් අඩු, අඳුරු අතර යකඩ වැඩියි; එබැවින් මේ භාජනයේ පොහොසත් බව එන්නේ බැදගත් පොල් සහ තෙලෙන්. වන මස් මුළුමනින් ම උයා ගත යුතු අතර මැද රෝස පාටින් තැබිය යුතු නැත.",
+  "ta": "காட்டுப் பன்றி இறைச்சி பண்ணைப் பன்றியை விடக் கொழுப்புக் குறைந்தது, கருமையானது, இரும்புச் சத்து அதிகம்; எனவே இந்தக் கறியின் செழுமை வறுத்த தேங்காயிலிருந்தும் எண்ணெயிலிருந்துமே வருகிறது. காட்டு இறைச்சியை முழுமையாக வேக வைக்க வேண்டும், நடுவில் சிவப்பாக விட்டுவிடக் கூடாது."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "iron_rich",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

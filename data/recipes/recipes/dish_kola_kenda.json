@@ -1,0 +1,286 @@
+{
+ "id": "dish_kola_kenda",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 275,
+  "description": {
+   "en": "A cup drunk at dawn with a lump of jaggery",
+   "si": "උදෑසනම හකුරු කැබැල්ලක් සමඟ බොන කෝප්පයක්",
+   "ta": "விடியற்காலையில் ஒரு வெல்லத் துண்டுடன் குடிக்கும் கோப்பை"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "product_gotukola",
+   "label": {
+    "en": "gotukola",
+    "si": "ගොටුකොළ",
+    "ta": "வல்லாரை"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "2 bunches",
+   "preparation": {
+    "en": "roots cut off, washed in three waters",
+    "si": "මුල් කපා දමා තුන් වතාවක් සෝදාගත්",
+    "ta": "வேர் நீக்கி மூன்று தண்ணீரில் அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_rice_kekulu_red",
+   "label": {
+    "en": "red kekulu rice",
+    "si": "රතු කැකුළු සහල්",
+    "ta": "சிவப்பு கெக்குளு அரிசி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "washed",
+    "si": "සෝදාගත්",
+    "ta": "அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 600,
+   "unit": "ml",
+   "household": "3 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்தது, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup and a little",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 small lumps, one each",
+   "preparation": {
+    "en": "cut into bite-sized pieces",
+    "si": "කටට ගන්නා ප්‍රමාණයට කපාගත්",
+    "ta": "வாய்க்கு அடங்கும் அளவில் வெட்டியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the roots and the yellowed leaves off the gotukola and wash the bunch in three changes of water; village leaves carry sand.",
+    "minutes": null
+   },
+   {
+    "text": "Chop the leaves roughly and grind them with the garlic and a cup of water to a fine green paste.",
+    "minutes": 10
+   },
+   {
+    "text": "Squeeze the paste through a cloth, keep the juice, wet the pulp with half a cup more water and squeeze again.",
+    "minutes": 5
+   },
+   {
+    "text": "Cook the washed rice in the thin coconut milk in a clay pot on a middling fire until the grains break open.",
+    "minutes": 20
+   },
+   {
+    "text": "Mash the cooked rice against the pot with the ladle until the kenda pours smoothly off the spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Stir in the thick coconut milk and the salt and heat it until it is steaming but not boiling.",
+    "minutes": 4
+   },
+   {
+    "text": "Take the pot off the fire, wait a moment, then stir in the green juice; boiling it now would kill both the colour and the fresh smell.",
+    "minutes": null
+   },
+   {
+    "text": "Serve at once in cups with a lump of jaggery on the side, and drink it before the sun is properly up.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ගොටුකොළ මුල් සහ කහ පාට වූ කොළ කපා ඉවත් කර, වතුර තුන් වතාවක් මාරු කර සෝදන්න; ගමේ කොළවල වැලි තිබේ.",
+    "minutes": null
+   },
+   {
+    "text": "කොළ රළු ලෙස කපාගෙන, සුදුළූණු සහ වතුර කෝප්පයක් සමඟ සිහින් කොළ පාට පේස්ට් එකක් වන තුරු අඹරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "රෙද්දකින් මිරිකා යුෂ වෙන් කර, මදය තව වතුර කෝප්ප භාගයකින් තෙත් කර නැවත මිරිකන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සෝදාගත් සහල් මැටි වළඳක තුනී පොල් කිරිවල මධ්‍යම ගින්නේ, ඇට පිපිරෙන තුරු තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කැඳ හැන්දෙන් සිනිඳුව වැටෙන තුරු, තැම්බූ බත් වළඳේ පැත්තට කෙන්දෙන් පොඩි කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඝන පොල් කිරි සහ ලුණු දමා, උතුරන්නේ නැතිව හුමාලය නගින තුරු රත් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "වළඳ ලිපෙන් බාගෙන, මොහොතක් ඉන්න, පසුව කොළ යුෂ කලතන්න; දැන් උතුරුවුවොත් පාටත් නැවුම් සුවඳත් දෙකම නැති වේ.",
+    "minutes": null
+   },
+   {
+    "text": "වහාම කෝප්පවලට බෙදා, පසෙකින් හකුරු කැබැල්ලක් තබා, හොඳට අව්ව එන්නට පෙර බොන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வல்லாரையின் வேரையும் மஞ்சளான இலைகளையும் நீக்கி, மூன்று முறை நீர் மாற்றி அலசுங்கள்; கிராமத்து இலைகளில் மணல் இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "இலைகளை கரகரப்பாக நறுக்கி, பூண்டோடும் ஒரு கோப்பை நீரோடும் நைசான பச்சைப் பேஸ்ட்டாக அரைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "துணியில் பிழிந்து சாற்றை எடுத்து, சக்கையில் அரை கோப்பை நீர் விட்டு மீண்டும் பிழியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அலசிய அரிசியை மண் சட்டியில் நீர்த்த தேங்காய்ப் பாலில் நடுத்தர தீயில், அரிசி வெடிக்கும் வரை வேகவைக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "கஞ்சி கரண்டியிலிருந்து மெதுவாக வழியும் வரை, வேகவைத்த சாதத்தை சட்டியின் ஓரத்தில் மசிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலையும் உப்பையும் சேர்த்து, கொதிக்காமல் ஆவி வரும் வரை சூடாக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "சட்டியை இறக்கி, ஒரு நிமிடம் கழித்து, பச்சைச் சாற்றைக் கலக்கவும்; இப்போது கொதித்தால் நிறமும் வாசமும் இரண்டுமே போய்விடும்.",
+    "minutes": null
+   },
+   {
+    "text": "உடனே கோப்பைகளில் பரிமாறி, பக்கத்தில் ஒரு வெல்லத் துண்டு வைத்து, வெயில் ஏறுவதற்கு முன் குடியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot",
+  "grinding stone or blender",
+  "straining cloth"
+ ],
+ "tips": {
+  "en": "Any soft green from the garden will do in place of gotukola: mukunuwenna, hathawariya or welpenela, each with its own bitterness. Never put the green juice into a boiling pot, and never reheat leftover kenda; make only what the house will drink that morning.",
+  "si": "ගොටුකොළ වෙනුවට ගෙවත්තේ ඕනෑම මෘදු කොළයක් ගත හැකියි: මුකුණුවැන්න, හාතාවාරිය හෝ වැල්පෙනෙල, එකකට එකක් වෙනස් තිත්ත ගතියක් සමඟ. කොළ යුෂ කිසි විටෙකත් උතුරන වළඳකට දමන්න එපා, ඉතිරි වූ කැඳ නැවත රත් කරන්න එපා; එදා උදේ ගෙදර අය බොන ප්‍රමාණයට පමණක් හදන්න.",
+  "ta": "வல்லாரைக்குப் பதிலாக தோட்டத்தில் உள்ள எந்த மெல்லிய கீரையும் பயன்படும்: முகுணுவென்ன, தண்ணீர்விட்டான், வெல்பெனல, ஒவ்வொன்றுக்கும் தனி கசப்பு உண்டு. பச்சைச் சாற்றை கொதிக்கும் சட்டியில் ஒருபோதும் ஊற்ற வேண்டாம், மீதமான கஞ்சியை மீண்டும் சூடாக்க வேண்டாம்; அந்தக் காலை வீட்டில் குடிக்கும் அளவே செய்யுங்கள்."
+ },
+ "health_note": {
+  "en": "One of the few things a household drinks that carries real leaf iron, folate and fibre in one cup, which is why it is pressed on growing children and on mothers. The fat comes only from the coconut milk, and the jaggery is easy to overdo; one small lump each is plenty.",
+  "si": "එක කෝප්පයකින් සැබෑ කොළ යකඩ, ෆෝලේට් සහ තන්තු ලැබෙන, ගෙදර බොන අතලොස්ස බීමකින් එකක්; වැඩෙන ළමයින්ටත් මව්වරුන්ටත් මේක බලෙන් දෙන්නේ ඒ නිසයි. තෙල් එන්නේ පොල් කිරිවලින් පමණයි, හකුරු ප්‍රමාණය පහසුවෙන් වැඩි වන නිසා එක් අයෙකුට කුඩා කැබැල්ලක් සෑහේ.",
+  "ta": "ஒரு கோப்பையில் உண்மையான கீரை இரும்பு, ஃபோலேட், நார்ச்சத்து எல்லாம் தரும் வீட்டுப் பானங்களில் ஒன்று; அதனால்தான் வளரும் குழந்தைகளுக்கும் தாய்மார்களுக்கும் இதை வலியப் புகட்டுகிறார்கள். கொழுப்பு தேங்காய்ப் பாலில் மட்டுமே; வெல்லம் எளிதில் அதிகமாகிவிடும், ஒருவருக்கு ஒரு சிறு துண்டே போதும்."
+ },
+ "tags": [
+  "budget",
+  "one_pot",
+  "light",
+  "high_fibre",
+  "iron_rich",
+  "traditional_remedy",
+  "elderly_friendly",
+  "pregnancy_friendly",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

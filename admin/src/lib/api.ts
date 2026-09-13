@@ -180,6 +180,7 @@ export type RecipeOverview = {
   coverage: { products: number; priced: number; dishes_fully_priced: number } | null;
   unpriced_ingredients: Array<{ ingredient: string; dishes: number }>;
   references: { channels: number; blogs: number; institutional: number };
+  recipes: { total: number; with_si: number; with_ta: number; reviewed: { en: number; si: number; ta: number }; review_needed: number; ingredients: number };
   reviewed_at: string;
 };
 export type RecipeReferences = {

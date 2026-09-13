@@ -1,0 +1,376 @@
+{
+ "id": "dish_fish_roe_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 160,
+  "description": {
+   "en": "A thick slice of roe with its gravy, shared out with rice",
+   "si": "බත් සමඟ බෙදාගෙන කන මාළු බිත්තර පෙත්තක් සහ හොදි",
+   "ta": "சாதத்துடன் பங்கிட்டுச் சாப்பிட மீன் முட்டை ஒரு துண்டும் குழம்பும்"
+  }
+ },
+ "yield_g": 640,
+ "ingredients": [
+  {
+   "ref": "pantry_fish_roe",
+   "label": {
+    "en": "fish roe",
+    "si": "මාළු බිත්තර",
+    "ta": "மீன் முட்டை"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 whole roe sacs",
+   "preparation": {
+    "en": "rinsed gently, membrane left whole",
+    "si": "සෙමින් සෝදාගත්, පටලය නොකඩා",
+    "ta": "மெதுவாகக் கழுவியது, மேல் படலம் உடையாமல்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "தட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 small piece",
+   "preparation": {
+    "en": "soaked and mashed",
+    "si": "වතුරේ දමා තලාගත්",
+    "ta": "ஊறவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ කුඩු",
+    "ta": "கறித் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்த்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the roe sacs in lightly salted water, handling them like eggs so the thin skin does not tear.",
+    "minutes": 5
+   },
+   {
+    "text": "Rub them with turmeric, a little salt and half the crushed pepper and set them aside on a plate.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a shallow pan and temper the onion, garlic and curry leaves until the onion is soft.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the curry powder, chilli powder, the rest of the pepper and the mashed goraka and stir them in the oil.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the thin coconut milk with the salt and let it simmer into a loose gravy.",
+    "minutes": 6
+   },
+   {
+    "text": "Lay the roe in the gravy, cover and cook very gently, turning the sacs once with a flat spoon.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the thick coconut milk and let the pan bubble once, no more.",
+    "minutes": 3
+   },
+   {
+    "text": "Take it off the fire and let it stand before cutting each sac into thick slices to serve.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු බිත්තර ලුණු ටිකක් දමපු වතුරෙන් සෝදන්න; තුනී පටලය නොකැඩෙන්න බිත්තර වගේ ප්‍රවේශමෙන් අල්ලන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කහ, ලුණු ටිකක් සහ තලාගත් ගම්මිරිස් භාගයක් ගල්වා පිඟානක තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මට්ටම් පෑන් එකක පොල් තෙල් රත් කර ළූණු, සුදුළූණු සහ කරපිංචා ළූණු මෘදු වන තුරු තෙල් දාන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "තුනපහ කුඩු, මිරිස් කුඩු, ඉතිරි ගම්මිරිස් සහ තලාගත් ගොරකා දමා තෙලේ කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "දිය පොල් කිරි සහ ලුණු දමා තුනී හොදියක් වන තුරු තබන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "බිත්තර හොදියේ අතුරා වහලා ඉතා සෙමින් පිසින්න; මැද එක වරක් පැතලි හැන්දකින් හරවන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මිටි පොල් කිරි දමා එක වරක් නටන්න දෙන්න, ඊට වැඩිය නොවේ.",
+    "minutes": 3
+   },
+   {
+    "text": "ලිපෙන් ඉවත් කර මඳක් තියා, එක බිත්තර කැටයක් ලොකු පෙති වලට කපා පිළිගන්වන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் முட்டைப் பொதிகளை சிறிது உப்பு நீரில் கழுவுங்கள்; மெல்லிய படலம் கிழியாமல் முட்டை போலக் கவனமாகக் கையாளுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மஞ்சள், சிறிது உப்பு, பாதி இடித்த மிளகு தடவி ஒரு தட்டில் வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "தட்டையான வாணலியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, கறிவேப்பிலை மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கறித் தூள், மிளகாய்த் தூள், மீதி மிளகு, மசித்த கொடுக்காய்ப்புளி சேர்த்து எண்ணெயில் கிளறுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலையும் உப்பையும் விட்டு, நீர்க்கக் குழம்பாகும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "முட்டைப் பொதிகளைக் குழம்பில் அடுக்கி, மூடி, மிக மெதுவாக வேகவிட்டு, நடுவில் ஒரு முறை தட்டையான கரண்டியால் திருப்புங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலைச் சேர்த்து ஒரு முறை கொதித்ததும் நிறுத்துங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "இறக்கி சிறிது நேரம் வைத்து, ஒவ்வொரு பொதியையும் தடிமனான துண்டுகளாக வெட்டிப் பரிமாறுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "shallow pan with a lid",
+  "flat spoon"
+ ],
+ "tips": {
+  "en": "Roe firms up like an omelette and will burst if the pan is hot, so keep the flame low and turn it only once. Roe sacs vary a lot in size, so buy by weight and adjust the gravy.",
+  "si": "මාළු බිත්තර ඔම්ලට් වගේ තද වෙනවා, පෑන් වැඩිය රත් නම් පිපිරෙනවා, ඒ නිසා ගින්න අඩුවෙන් තියා එක වරක් පමණක් හරවන්න. බිත්තර කැට ප්‍රමාණය හරි වෙනස්, ඒ නිසා බරෙන් මිලට ගෙන හොදිය ඒ අනුව හදාගන්න.",
+  "ta": "மீன் முட்டை ஆம்லெட் போல இறுகும், சட்டி மிகச் சூடாக இருந்தால் வெடிக்கும், எனவே தீயைக் குறைத்து ஒரு முறை மட்டும் திருப்புங்கள். முட்டைப் பொதிகளின் அளவு மிகவும் மாறுபடும், எனவே எடையால் வாங்கி குழம்பை அதற்கேற்ப சரிசெய்யுங்கள்."
+ },
+ "health_note": {
+  "en": "Roe is very rich, high in protein and in fats, and a little goes a long way; it is usually shared out in small slices rather than eaten as a whole portion. People told to watch cholesterol should keep to one slice.",
+  "si": "මාළු බිත්තර හරි පෝෂ්‍යදායකයි; ප්‍රෝටීන් සහ මේදය වැඩියි, ටිකකින් ගොඩක් වැඩ වෙනවා. සාමාන්‍යයෙන් මුළු කොටසක් විදිහට නොව පොඩි පෙති වලට බෙදාගෙන කනවා. කොලෙස්ටරෝල් බලාගන්න කියපු අය එක පෙත්තකින් නවතින්න.",
+  "ta": "மீன் முட்டை மிகச் சத்தானது; புரதமும் கொழுப்பும் அதிகம், சிறிதளவே போதும். வழக்கமாக முழுப் பங்காக அல்லாமல் சிறு துண்டுகளாகப் பங்கிட்டுச் சாப்பிடுவார்கள். கொலஸ்ட்ரால் கவனிக்கச் சொன்னவர்கள் ஒரு துண்டுடன் நிறுத்துங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "comfort"
+ ],
+ "review_needed": [
+  "ta",
+  "quantities"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

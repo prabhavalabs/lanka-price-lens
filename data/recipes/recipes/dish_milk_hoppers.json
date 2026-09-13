@@ -1,0 +1,277 @@
+{
+ "id": "dish_milk_hoppers",
+ "base_servings": 4,
+ "serving": {
+  "role": "breakfast",
+  "portion_g": 220,
+  "description": {
+   "en": "Two hoppers with creamy sweetened centres",
+   "si": "මැද කිරි ගොඩක් සහිත කිරි ආප්ප දෙකක්",
+   "ta": "நடுவில் இனிப்புப் பால் நிரம்பிய இரண்டு ஆப்பம்"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மா"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2 1/2 cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "හලා ගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල්කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thick, first squeeze, for the batter",
+    "si": "ඝන, පළමු මිරිකීම, පිටි මිශ්‍රණයට",
+    "ta": "கெட்டியானது, முதல் பால், மாவுக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": {
+    "en": "woken in warm water with a pinch of sugar",
+    "si": "සීනි මිටක් සමඟ උණු වතුරේ අවදි කර ගත්",
+    "ta": "சிட்டிகை சீனியுடன் வெதுவெதுப்பான நீரில் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "batter"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 tbsp, batter and centres together",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_milk_powder",
+   "label": {
+    "en": "full cream milk powder",
+    "si": "කිරිපිටි",
+    "ta": "முழுக்கொழுப்பு பால் மா"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "5 tbsp",
+   "preparation": {
+    "en": "stirred into 120 ml warm water for the centres",
+    "si": "මැදට යොදන්නට උණු වතුර මිලි ලීටර් 120ක දිය කර ගත්",
+    "ta": "நடுவில் ஊற்ற 120 மில்லி வெந்நீரில் கலந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut",
+    "si": "පොල්",
+    "ta": "தேங்காய்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 coconut, for squeezing the milk",
+   "preparation": {
+    "en": "grated, for squeezing the thick milk above",
+    "si": "ගා ගත්, ඉහත ඝන කිරි මිරිකා ගැනීමට",
+    "ta": "துருவியது, மேற்படி கெட்டிப் பால் பிழிவதற்கு"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "batter"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wake the yeast in 60 ml of warm water with a pinch of the sugar until it froths.",
+    "minutes": 10
+   },
+   {
+    "text": "Whisk the rice flour with the thick coconut milk, the yeast water, half the sugar, the salt and enough warm water to make a batter the thickness of thin cream, about 350 ml in all.",
+    "minutes": 8
+   },
+   {
+    "text": "Cover the bowl with a cloth and leave it in a warm corner of the kitchen until the batter rises, smells slightly sour and shows bubbles on top.",
+    "minutes": 180
+   },
+   {
+    "text": "Stir the risen batter down gently and check the consistency; it should coat the back of a spoon and run off slowly.",
+    "minutes": null
+   },
+   {
+    "text": "Mix the milk powder with 120 ml warm water and the rest of the sugar to a thick sweet milk and keep it by the stove with a spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the hopper pan, pour in a small ladle of batter and swirl the pan at once so the batter climbs the sides and leaves a thin lacy edge.",
+    "minutes": null
+   },
+   {
+    "text": "Spoon a tablespoon of the sweet milk into the middle of the hopper, cover the pan and cook on a medium flame until the edge is crisp and lifts away on its own.",
+    "minutes": 4
+   },
+   {
+    "text": "Slide the hopper out without folding it so the soft centre stays whole, and go on with the rest of the batter, giving each person two.",
+    "minutes": 20
+   }
+  ],
+  "si": [
+   {
+    "text": "උණු වතුර මිලි ලීටර් 60ක සීනි මිටක් සමඟ යීස්ට් දමා පෙණ නගින තුරු තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සහල් පිටි, ඝන පොල්කිරි, යීස්ට් වතුර, සීනි වලින් හරියක්, ලුණු සහ තුනී ක්‍රීම් ඝනකමේ මිශ්‍රණයක් සෑදෙන තරමට උණු වතුර (මුළුමනින් මිලි ලීටර් 350ක් පමණ) දමා හොඳින් ගසා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බඳුන රෙද්දකින් වසා කුස්සියේ උණුසුම් තැනක තබා, මිශ්‍රණය පිම්බී මදක් ඇඹුල් සුවඳ ගෙන මතුපිට බුබුලු එන තුරු තබන්න.",
+    "minutes": 180
+   },
+   {
+    "text": "පිම්බුණු මිශ්‍රණය සෙමින් කලවම් කර ඝනකම බලන්න; හැන්දේ පිටුපසට තැවරී සෙමින් ගලා යා යුතුය.",
+    "minutes": null
+   },
+   {
+    "text": "කිරිපිටි උණු වතුර මිලි ලීටර් 120ක් සහ ඉතිරි සීනි සමඟ මිශ්‍ර කර ඝන පැණි කිරි සාදා, හැන්දක් සමඟ ලිප ළඟ තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ආප්ප තාච්චිය රත් කර කුඩා හැන්දකින් මිශ්‍රණය දමා, වහාම තාච්චිය කරකවා මිශ්‍රණය පැති දිගේ නගා තුනී දාරයක් සාදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ආප්පේ මැදට පැණි කිරි මේස හැන්දක් දමා, තාච්චිය වසා මධ්‍යම ගින්නේ දාරය කරකර ගතියට පැමිණ තනිවම ගැලවෙන තුරු පිහන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මුදු මැද කැඩෙන්නේ නැති ලෙස නොනවා ආප්ප ලිස්සවා ගෙන, ඉතිරි මිශ්‍රණයෙන් එක් අයෙකුට දෙකක් බැගින් සාදා ගන්න.",
+    "minutes": 20
+   }
+  ],
+  "ta": [
+   {
+    "text": "60 மில்லி வெதுவெதுப்பான நீரில் ஒரு சிட்டிகை சீனியுடன் ஈஸ்ட்டைக் கலந்து நுரை வரும் வரை வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அரிசி மாவுடன் கெட்டித் தேங்காய்ப் பால், ஈஸ்ட் நீர், பாதி சீனி, உப்பு, மொத்தம் 350 மில்லி அளவுக்கு வெதுவெதுப்பான நீர் சேர்த்து மெல்லிய கிரீம் பக்குவத்துக்கு அடித்துக் கலக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "பாத்திரத்தை துணியால் மூடி சமையலறையின் சூடான இடத்தில் வைத்து, மாவு பொங்கி லேசாகப் புளித்த வாசனை வந்து மேலே குமிழிகள் தோன்றும் வரை விடுங்கள்.",
+    "minutes": 180
+   },
+   {
+    "text": "பொங்கிய மாவை மெதுவாகக் கிளறி பக்குவம் பாருங்கள்; கரண்டியின் பின்புறத்தில் ஒட்டி மெதுவாக வழிய வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "பால் மாவை 120 மில்லி வெந்நீரிலும் மீதி சீனியிலும் கலந்து கெட்டியான இனிப்புப் பாலாக்கி, ஒரு கரண்டியுடன் அடுப்புக்கு அருகில் வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆப்பச்சட்டியைக் காயவைத்து ஒரு சிறு கரண்டி மாவை ஊற்றி, உடனே சட்டியைச் சுழற்றி மாவு பக்கவாட்டில் ஏறி மெல்லிய விளிம்பாக அமரட்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆப்பத்தின் நடுவில் ஒரு மேசைக்கரண்டி இனிப்புப் பாலை ஊற்றி, சட்டியை மூடி நடுத்தர தீயில் விளிம்பு மொறுமொறுப்பாகி தானே விலகும் வரை வேகவிடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "மென்மையான நடுப்பகுதி உடையாமல் மடிக்காமல் ஆப்பத்தை சரித்து எடுத்து, மீதி மாவில் ஒருவருக்கு இரண்டு என்ற கணக்கில் சுடுங்கள்.",
+    "minutes": 20
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 180
+ },
+ "equipment": [
+  "hopper pan with lid",
+  "mixing bowl",
+  "small ladle"
+ ],
+ "tips": {
+  "en": "Batter that has risen too long turns sour and the hoppers will not hold their shape, so if the kitchen is hot check it after two hours. Pour the milk into the centre while the hopper is still wet, or it sits on top instead of setting into it.",
+  "si": "වැඩි වේලාවක් පිම්බුණු මිශ්‍රණය ඇඹුල් වී ආප්ප හැඩය රඳවා නොගනී; කුස්සිය උණුසුම් නම් පැය දෙකකින් පරීක්ෂා කරන්න. ආප්පේ මැද තෙත්ව තිබෙන විටම කිරි දමන්න, නැතිනම් එය ඇතුළට නොයා මතුපිට රැඳෙයි.",
+  "ta": "அதிக நேரம் புளித்த மாவு ஆப்பத்தை வடிவம் இழக்கச் செய்யும்; சமையலறை சூடாக இருந்தால் இரண்டு மணி நேரத்திலேயே பாருங்கள். ஆப்பத்தின் நடுப்பகுதி ஈரமாக இருக்கும்போதே பாலை ஊற்றுங்கள், இல்லையேல் அது உள்ளே இறங்காமல் மேலே நிற்கும்."
+ },
+ "health_note": {
+  "en": "The sweetened milk centre turns a plain hopper into something closer to a sweet, so two is plenty for a child and one is enough alongside a savoury sambol. Milk powder adds useful calcium and a little protein to a breakfast that is otherwise mostly starch.",
+  "si": "පැණි කිරි මැද නිසා සරල ආප්පය රසකැවිලියකට ආසන්න වේ; ළමයෙකුට දෙකක් ඇති, ලුණු මිරිස් සමඟ නම් එකක් ප්‍රමාණවත්. බොහෝ දුරට පිෂ්ටය පමණක් වූ උදෑසන ආහාරයට කිරිපිටි වලින් කැල්සියම් සහ ප්‍රෝටීන් ටිකක් එකතු වේ.",
+  "ta": "இனிப்புப் பால் நடுப்பகுதி சாதாரண ஆப்பத்தை ஏறக்குறைய ஒரு இனிப்பாக மாற்றுகிறது; குழந்தைக்கு இரண்டு போதும், சம்பலுடன் ஒன்று போதுமானது. பெரும்பாலும் மாவுச்சத்தே உள்ள காலை உணவுக்கு பால் மா கால்சியமும் சிறிது புரதமும் சேர்க்கிறது."
+ },
+ "tags": [
+  "kid_friendly",
+  "comfort",
+  "filling",
+  "calcium_rich"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

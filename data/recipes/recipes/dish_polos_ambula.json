@@ -1,0 +1,357 @@
+{
+ "id": "dish_polos_ambula",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 140,
+  "description": {
+   "en": "A few dark, almost dry pieces of jackfruit with rice, eaten as the main curry",
+   "si": "බත් සමඟ ප්‍රධාන කරිය ලෙස ගන්නා, කළු පැහැ තරමක් වියළි පොලොස් කැබලි කිහිපයක්",
+   "ta": "சாதத்துடன் பிரதான கறியாக எடுக்கும், கறுத்த, கிட்டத்தட்ட வறண்ட பலாத் துண்டுகள் சில"
+  }
+ },
+ "yield_g": 550,
+ "ingredients": [
+  {
+   "ref": "product_polos",
+   "label": {
+    "en": "young jackfruit flesh",
+    "si": "පොලොස් මදය",
+    "ta": "இளம் பலாக்காய்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "half a small young jackfruit",
+   "preparation": {
+    "en": "peeled and cut into thick cubes",
+    "si": "ලෙලි ගලවා විශාල කැබලිවලට කපාගත්",
+    "ta": "தோல் சீவி பெரிய துண்டுகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா புளி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "5 or 6 pieces",
+   "preparation": {
+    "en": "soaked in warm water and the pulp squeezed out",
+    "si": "උණු වතුරේ පොඟවා යුෂ මිරිකාගත්",
+    "ta": "வெந்நீரில் ஊறவைத்து சாறு பிழிந்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "piece",
+   "household": "5 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Oil your knife and your hands, quarter the young jackfruit and pare off the green skin and the spines.",
+    "minutes": 15
+   },
+   {
+    "text": "Cut the flesh into thick cubes and wash them twice so the sticky sap comes off.",
+    "minutes": 15
+   },
+   {
+    "text": "Boil the cubes in water with a little turmeric and salt until a knife goes in easily, then drain them.",
+    "minutes": 20
+   },
+   {
+    "text": "Soak the goraka in warm water and grind it with the dried chillies and pepper into a dark, rough paste.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the sliced onion, curry leaves, pandan leaf and cloves.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the boiled polos with the goraka paste, turmeric, roasted curry powder and salt and a cup of water, and cook on a low fire until the gravy has almost gone and every cube is black-brown.",
+    "minutes": 20
+   },
+   {
+    "text": "Turn the pieces now and then with a coconut-shell spoon so they colour evenly without breaking.",
+    "minutes": 5
+   },
+   {
+    "text": "Leave it overnight if you can; polos ambula is always better on the second day.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිහියට සහ අත්වලට තෙල් තවරාගෙන, පොලොස් ගෙඩිය කොටස් හතරකට කපා, කොළ ලෙලි සහ කටු සසා ඉවත් කරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "මදය ගනකමට කපා, ඇලෙන කිරි ඉවත් වන ලෙස දෙවරක් සෝදන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ස්වල්ප කහ සහ ලුණු දැමූ වතුරේ, පිහියක් පහසුවෙන් ඇදෙන තුරු තම්බා වතුර බේරා ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ගොරකා උණු වතුරේ පොඟවා, වියළි මිරිස් සහ ගම්මිරිස් සමඟ කළු රළු ගුලියක් සේ අඹරා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, කපාගත් ලූනු, කරපිංචා, රම්පෙ සහ කරාබුනැටි තෙල්දාලන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "තම්බාගත් පොලොස්, ගොරකා ගුලිය, කහ, බැදපු තුනපහ, ලුණු සහ වතුර කෝප්පයක් දමා, ඉස්ම සිඳී සෑම කැබැල්ලක්ම කළු දුඹුරු වන තුරු අඩු ගින්නේ උයන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පොල් කටු හැන්දකින් වරින් වර පෙරළන්න, එවිට කැබලි නොකැඩී එකසේ පාට වේ.",
+    "minutes": 5
+   },
+   {
+    "text": "හැකි නම් රාත්‍රිය පුරා තබන්න; පොලොස් ඇඹුල දෙවන දවසේ සැමවිටම රසයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கத்திக்கும் கைகளுக்கும் எண்ணெய் தடவி, இளம் பலாக்காயை நான்காகப் பிளந்து, பச்சைத் தோலையும் முட்களையும் சீவி நீக்குங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "சதையை பெரிய துண்டுகளாக நறுக்கி, ஒட்டும் பால் போக இருமுறை கழுவுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "சிறிது மஞ்சளும் உப்பும் சேர்த்த நீரில், கத்தி எளிதாக இறங்கும் வரை வேகவைத்து நீரை வடியுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "கோரக்காவை வெந்நீரில் ஊறவைத்து, காய்ந்த மிளகாய், மிளகுடன் சேர்த்துக் கறுப்பான கரடான விழுதாக அரையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, நறுக்கிய வெங்காயம், கறிவேப்பிலை, ரம்பை, கிராம்பைத் தாளியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வேகவைத்த பலாத் துண்டுகளை கோரக்கா விழுது, மஞ்சள், வறுத்த கறி மசாலா, உப்பு, ஒரு கப் நீருடன் சேர்த்து, குழம்பு வற்றி ஒவ்வொரு துண்டும் கறுப்பு-பழுப்பாகும் வரை குறைந்த தீயில் வேகவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "தேங்காய் ஓட்டுக் கரண்டியால் இடையிடையே புரட்டுங்கள்; துண்டுகள் உடையாமல் சமமாக நிறம் ஏறும்.",
+    "minutes": 5
+   },
+   {
+    "text": "முடிந்தால் இரவு முழுவதும் வையுங்கள்; பலாப் புளிக் கறி இரண்டாம் நாளில் எப்போதும் சுவை அதிகம்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 50,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "large pot for boiling",
+  "grinding stone"
+ ],
+ "tips": {
+  "en": "Do not be shy with the goraka and the pepper; a pale polos ambula has not been cooked long enough. Cook it in a clay pot on a low fire, and leave the lid off so the gravy dries down properly.",
+  "si": "ගොරකා සහ ගම්මිරිස් යෙදීමේදී මසුරු නොවන්න; සුදුමැලි පොලොස් ඇඹුලක් යනු ප්‍රමාණවත් ලෙස නොඋයූ එකකි. මුට්ටියක අඩු ගින්නේ උයන්න, වැසුම නොදමා තබන්න, එවිට ඉස්ම නිසි ලෙස සිඳී යයි.",
+  "ta": "கோரக்காவையும் மிளகையும் சிக்கனமாகப் போட வேண்டாம்; வெளிறிய பலாப் புளிக் கறி என்பது போதுமான நேரம் வேகாதது. மண் சட்டியில் குறைந்த தீயில், மூடி போடாமல் சமையுங்கள்; குழம்பு சரியாக வற்றும்."
+ },
+ "health_note": {
+  "en": "Young jackfruit is heavy in fibre and fills the plate the way meat would, for a fraction of the cost. Very little oil goes in, but the goraka and salt make it a salty-sour dish, so go easy if you watch your blood pressure.",
+  "si": "පොලොස් තන්තුවෙන් බර වන අතර, මසකට වඩා බෙහෙවින් අඩු වියදමකින් පිඟාන පුරවයි. තෙල් ඉතා අඩුවෙන් යෙදුනත්, ගොරකා සහ ලුණු නිසා ලුණු-ඇඹුල් රසැති බැවින්, රුධිර පීඩනය ගැන සැලකිලිමත් නම් සීමා කර ගන්න.",
+  "ta": "இளம் பலாக்காயில் நார்ச்சத்து அதிகம், இறைச்சி போலவே தட்டை நிறைக்கும், செலவோ மிகக் குறைவு. எண்ணெய் மிகக் குறைவே, ஆனால் கோரக்காவும் உப்பும் சேர்வதால் உப்பு-புளிப்பான உணவு; இரத்த அழுத்தம் உள்ளவர்கள் அளவாக எடுங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "filling",
+  "budget",
+  "comfort",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

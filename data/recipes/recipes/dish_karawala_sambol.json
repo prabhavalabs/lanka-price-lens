@@ -1,0 +1,288 @@
+{
+ "id": "dish_karawala_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 50,
+  "description": {
+   "en": "A spoonful of pungent dried fish sambol with plain rice",
+   "si": "සුදු බත් සමඟ කරවල සම්බෝල හැන්දක්",
+   "ta": "வெறும் சோற்றுடன் ஒரு கரண்டி கருவாட்டுச் சம்பல்"
+  }
+ },
+ "yield_g": 200,
+ "ingredients": [
+  {
+   "ref": "product_dried_fish_katta",
+   "label": {
+    "en": "dried fish (katta)",
+    "si": "කරවල (කට්ට)",
+    "ta": "கருவாடு (கட்டா)"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "a piece the size of a palm",
+   "preparation": {
+    "en": "rinsed, big bones pulled out, torn into small pieces",
+    "si": "සෝදා, විශාල ඇට ඉවත් කර, කුඩා කැබලිවලට ඉරාගත්",
+    "ta": "கழுவி, பெரிய முள் நீக்கி, சிறு துண்டுகளாகக் கிழித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "5 chillies",
+   "preparation": {
+    "en": "stalks off, torn",
+    "si": "පොහොර ගලවා ඉරාගත්",
+    "ta": "தாள் நீக்கிக் கிழித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැට",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණි",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, ground",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the dried fish quickly under the tap to wash off the salt sitting on the surface, and pat it dry.",
+    "minutes": 3
+   },
+   {
+    "text": "Pull out the big bones and the tail, and tear or cut the fish into pieces the size of a thumbnail.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the fish on a medium flame until it is hard and golden at the edges.",
+    "minutes": 6
+   },
+   {
+    "text": "Lift the fish out and, in the same oil, fry the torn dried chillies and the curry leaves for half a minute.",
+    "minutes": 1
+   },
+   {
+    "text": "Turn off the fire and let everything cool enough to handle.",
+    "minutes": 5
+   },
+   {
+    "text": "Pound the chilli with the fried fish on the stone, or crush it in a mortar, until it is rough and flaky but not powder.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the sliced red onion and crush lightly, just enough for the onion to soften and take up the oil.",
+    "minutes": null
+   },
+   {
+    "text": "Squeeze in the lime, taste before you add any salt at all, and serve a spoonful beside plain rice.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කරවල ඉක්මනින් පිපිසෙන් සෝදා මතුපිට ලුණු ඉවත් කර, රෙද්දකින් තෙතමනය ගසා ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "විශාල ඇට සහ වලිගය ඉවත් කර, මාළු නියපොත්තක් තරම් කැබලිවලට ඉරා හෝ කපා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑනක පොල් තෙල් රත් කර මධ්‍යම ගින්නේ කරවල තදින්, කෙළවර රන්වන් වන තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "කරවල ඉවතට ගෙන, එම තෙලේම ඉරාගත් වියළි මිරිස් සහ කරපිංචා තත්පර තිහක් පමණ බදින්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ගින්න නිවා, අතට ගත හැකි තරමට සිසිල් වන්නට දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බැදගත් මිරිස් සහ කරවල ගලේ හෝ වංගෙඩියේ තලා ගන්න; කුඩු නොවී රළුව තිබිය යුතුය.",
+    "minutes": 5
+   },
+   {
+    "text": "සිහින්ව කැපූ රතු ළූණු එකතු කර සැහැල්ලුවෙන් තලන්න; ළූණු මුදු වී තෙල උරා ගැනීමට තරම් පමණි.",
+    "minutes": null
+   },
+   {
+    "text": "දෙහි මිරිකා, ලුණු දැමීමට පෙර රස බලා, සුදු බත් සමඟ හැන්දක් ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கருவாட்டை குழாய் நீரில் விரைவாகக் கழுவி மேலுள்ள உப்பை நீக்கி, துணியில் ஒற்றி எடுக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பெரிய முள்ளையும் வாலையும் நீக்கி, மீனை நகத்தின் அளவு துண்டுகளாகக் கிழிக்கவும் அல்லது நறுக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து, நடுத்தர தீயில் கருவாட்டை கெட்டியாகி ஓரங்கள் பொன்னிறமாகும் வரை பொரிக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "மீனை எடுத்துவிட்டு, அதே எண்ணெயில் கிழித்த வத்தல் மிளகாயையும் கறிவேப்பிலையையும் அரை நிமிடம் பொரிக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "அடுப்பை அணைத்து, கையால் தொடும் அளவு ஆற விடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "பொரித்த மிளகாயையும் கருவாட்டையும் அம்மியில் அல்லது உரலில் இடிக்கவும்; தூளாகாமல் கரகரப்பாக இருக்க வேண்டும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மெல்லியதாக நறுக்கிய சின்ன வெங்காயத்தைச் சேர்த்து லேசாக இடிக்கவும்; வெங்காயம் மென்மையாகி எண்ணெயை உறிஞ்சும் அளவு போதும்.",
+    "minutes": null
+   },
+   {
+    "text": "எலுமிச்சையைப் பிழிந்து, உப்பு சேர்ப்பதற்கு முன் சுவைத்துப் பார்த்து, வெறும் சோற்றுடன் ஒரு கரண்டி பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 8,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "frying pan",
+  "grinding stone or mortar and pestle"
+ ],
+ "tips": {
+  "en": "Taste before you salt: most karawala is salty enough on its own, and a rinse under the tap takes off only what sits on the surface. If the fish smells of ammonia rather than of the sea, leave it at the shop.",
+  "si": "ලුණු දැමීමට පෙර රස බලන්න; බොහෝ කරවලවල ලුණු ප්‍රමාණවත් අතර පිපිසෙන් සේදීමෙන් ඉවත් වන්නේ මතුපිට ලුණු පමණි. මාළුවෙන් මුහුදු සුවඳ වෙනුවට ඇමෝනියා ගඳක් එනවා නම් එය කඩයේම තබා එන්න.",
+  "ta": "உப்பு சேர்ப்பதற்கு முன் சுவைக்கவும்; பெரும்பாலான கருவாட்டில் உப்பு போதுமானது, குழாய் நீரில் கழுவினால் மேலுள்ள உப்பு மட்டுமே போகும். மீனில் கடல் வாசனைக்குப் பதிலாக அம்மோனியா நெடி வந்தால், அதைக் கடையிலேயே விட்டுவிடவும்."
+ },
+ "health_note": {
+  "en": "Dried fish is concentrated protein with calcium from the small bones, and concentrated salt along with it, so a spoonful is a serving. It is not the best choice for anyone who has been told to watch blood pressure or the kidneys.",
+  "si": "කරවලවල ප්‍රෝටීන් සාන්ද්‍ර වශයෙන් ඇති අතර කුඩා ඇටවලින් කැල්සියම්ද ලැබේ; ඒ සමඟම ලුණුද සාන්ද්‍රය, එබැවින් හැන්දක් එක් වාරයකි. රුධිර පීඩනය හෝ වකුගඩු ගැන අවවාද ලැබූ අයෙකුට මෙය හොඳම තේරීම නොවේ.",
+  "ta": "கருவாட்டில் புரதம் செறிவாக உள்ளது, சிறு முள்ளிலிருந்து கால்சியமும் கிடைக்கும், அத்துடன் உப்பும் செறிவானது; எனவே ஒரு கரண்டியே ஒரு பங்கு. இரத்த அழுத்தம் அல்லது சிறுநீரகம் குறித்து எச்சரிக்கப்பட்டவர்களுக்கு இது சிறந்த தேர்வு அல்ல."
+ },
+ "tags": [
+  "high_protein",
+  "calcium_rich",
+  "low_carb",
+  "high_sodium",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

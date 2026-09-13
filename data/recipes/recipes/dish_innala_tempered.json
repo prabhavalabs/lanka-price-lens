@@ -1,0 +1,297 @@
+{
+ "id": "dish_innala_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 110,
+  "description": {
+   "en": "A couple of spoonfuls of crisp tempered tubers with rice, or a saucer of them with tea",
+   "si": "බත් සමඟ කරකර ගෑ තෙල්දාලයෙන් හැඳි දෙකක්, නැතහොත් තේ සමඟ පිඟානක්",
+   "ta": "சாதத்துடன் ஒன்றிரண்டு கரண்டி மொறுமொறுப்பான வறுவல், அல்லது தேநீருடன் ஒரு சிறு தட்டு"
+  }
+ },
+ "yield_g": 450,
+ "ingredients": [
+  {
+   "ref": "pantry_innala",
+   "label": {
+    "en": "innala tubers",
+    "si": "ඉන්නල අල",
+    "ta": "இன்னல கிழங்கு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 cups of small tubers",
+   "preparation": {
+    "en": "scrubbed clean, skin left on",
+    "si": "හොඳින් සෝදා පිරිසිදු කළ, ලෙලි සමඟ",
+    "ta": "நன்கு கழுவிச் சுத்தம் செய்த, தோலுடன்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කෑලි",
+    "ta": "மிளகாய்த் துண்டுகள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrub the innala well under running water with your fingers; the skin is thin and does not need peeling.",
+    "minutes": 10
+   },
+   {
+    "text": "Boil them in salted water until a fingernail goes through easily, then drain and let the steam dry off them.",
+    "minutes": 15
+   },
+   {
+    "text": "Cut the bigger tubers in half and leave the small ones whole.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the sliced big onion, broken dried chillies and curry leaves until the onion turns golden.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the turmeric, chilli flakes, pepper and salt so the spices meet the oil without burning.",
+    "minutes": null
+   },
+   {
+    "text": "Tip in the innala, raise the fire and fry, turning now and then, until the outsides are crisp and patched brown.",
+    "minutes": 5
+   },
+   {
+    "text": "Take the pan off, check the salt and serve it hot; it loses its crispness as it cools.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ඉන්නල අල ඇඟිලිවලින් ගසා ගලා යන වතුරේ හොඳින් සෝදන්න; ලෙලි තුනී බැවින් ගලවන්න අවශ්‍ය නැත.",
+    "minutes": 10
+   },
+   {
+    "text": "ලුණු දැමූ වතුරේ නියපොත්ත පහසුවෙන් ඇදෙන තුරු තම්බා, වතුර බේරා, වාෂ්පය මැකෙන්න තබන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ලොකු අල දෙකට කපා, කුඩා ඒවා සම්පූර්ණයෙන් තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑන් එකේ පොල් තෙල් රත් කර, කපාගත් ලොකු ලූනු, කැඩූ වියළි මිරිස් සහ කරපිංචා ලූනු රන්වන් වන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කහ, මිරිස් කෑලි, ගම්මිරිස් සහ ලුණු එක් කර, නොදැවෙන ලෙස ඉක්මනින් කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉන්නල දමා, ගිනි වැඩි කර, වරින් වර පෙරළමින්, පිටත කරකර ගතියක් හා දුඹුරු පැල්ලම් එන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් ඉවත් කර, ලුණු රස බලා උණුසුම්ව පිළිගන්වන්න; සිසිල් වන විට කරකර ගතිය නැති වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இன்னல கிழங்குகளை ஓடும் நீரில் விரலால் தேய்த்து நன்கு கழுவுங்கள்; தோல் மெல்லியது, சீவ வேண்டாம்.",
+    "minutes": 10
+   },
+   {
+    "text": "உப்பு நீரில், நகம் எளிதாக உள்ளே போகும் வரை வேகவைத்து, நீரை வடித்து, ஆவி போகும் வரை வையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "பெரிய கிழங்குகளை இரண்டாக வெட்டி, சிறியவற்றை முழுதாக விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, நறுக்கிய பெரிய வெங்காயம், உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலையை வெங்காயம் பொன்னிறமாகும் வரை வறுக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மஞ்சள், மிளகாய்த் துண்டுகள், மிளகு, உப்பு சேர்த்து, கருகாமல் ஒருமுறை கிளறுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "இன்னலவைப் போட்டு, தீயை உயர்த்தி, இடையிடையே புரட்டி, வெளிப்புறம் மொறுமொறுப்பாகி பொன்னிறப் புள்ளிகள் வரும் வரை வறுக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "சட்டியை இறக்கி, உப்பைப் பார்த்து, சூடாகப் பரிமாறுங்கள்; குளிர்ந்தால் மொறுமொறுப்பு போய்விடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot for boiling",
+  "frying pan"
+ ],
+ "tips": {
+  "en": "Boil them the night before if you are cooking for a crowd; cold boiled innala fry crisper than warm ones. Do not over-boil, or they break up in the pan.",
+  "si": "බොහෝ දෙනෙකුට උයන්නේ නම් රාත්‍රියේම තම්බා ගන්න; සිසිල් වූ තම්බාගත් ඉන්නල උණුසුම් ඒවාට වඩා කරකර බැදෙයි. වැඩිපුර නොතම්බන්න, එසේ නොමැති නම් පෑන් එකේ කැඩී යයි.",
+  "ta": "நிறைய பேருக்குச் சமைத்தால் இரவே வேகவைத்து வைத்துக் கொள்ளுங்கள்; குளிர்ந்த கிழங்கு சூடானதைவிட மொறுமொறுப்பாக வறுபடும். அதிகமாக வேகவைத்தால் சட்டியில் உடைந்துவிடும்."
+ },
+ "health_note": {
+  "en": "Innala is a starchy tuber, so this dish fills like a second helping of rice; the oil it is fried in is what adds up. Keep two spoonfuls and eat it with a vegetable curry rather than on its own.",
+  "si": "ඉන්නල පිෂ්ඨය සහිත අලයක් බැවින්, මෙය දෙවන බත් හැන්දක් සේ පිරෙයි; බැදීමට යොදන තෙල් වැඩි වේ. හැඳි දෙකකින් නවතා, තනිවම නොව එළවළු කරියක් සමඟ කන්න.",
+  "ta": "இன்னல மாவுச்சத்து நிறைந்த கிழங்கு, எனவே இது இன்னொரு கரண்டி சாதம் போல வயிறு நிறைக்கும்; வறுக்கும் எண்ணெயே கூடுதல் சுமை. ஒன்றிரண்டு கரண்டியுடன் நிறுத்தி, தனியாக அல்லாமல் காய்கறிக் கறியுடன் சாப்பிடுங்கள்."
+ },
+ "tags": [
+  "budget",
+  "high_fibre",
+  "kid_friendly",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

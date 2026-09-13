@@ -1,0 +1,436 @@
+{
+ "id": "dish_hare_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "A ladle of dark gamey curry with rice or pittu",
+   "si": "බත් හෝ පිට්ටු සමඟ අඳුරු වන මස් රසැති කරි ලාඩුවක්",
+   "ta": "சாதத்துடனோ பிட்டுடனோ ஒரு கரண்டி கரும் காட்டிறைச்சிக் கறி"
+  }
+ },
+ "yield_g": 840,
+ "ingredients": [
+  {
+   "ref": "pantry_hare_meat",
+   "label": {
+    "en": "hare or rabbit meat",
+    "si": "හා මස්",
+    "ta": "முயல் இறைச்சி"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "one dressed hare, jointed",
+   "preparation": {
+    "en": "jointed into small pieces, washed twice",
+    "si": "කුඩා කැබලිවලට කපා දෙවරක් සෝදාගත්",
+    "ta": "சிறு துண்டுகளாக வெட்டி இரு முறை கழுவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 small pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "8 chillies, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, crushed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp, roasted and ground",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "roasted scraped coconut",
+    "si": "බැදගත් ගාගත් පොල්",
+    "ta": "வறுத்த துருவிய தேங்காய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "half a cup, scraped",
+   "preparation": {
+    "en": "dry roasted brown and ground",
+    "si": "දුඹුරු වන තුරු වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "பொன்னிறமாக வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the jointed hare twice in salted water, drain it well and rub the pieces with turmeric, half the ground chilli and half the salt.",
+    "minutes": 15
+   },
+   {
+    "text": "Dry roast the scraped coconut in a pan until it is brown and smells nutty, then grind it with the roasted coriander to a paste.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and fry the onion, garlic, ginger, curry leaves, pandan leaf and cinnamon until the onion is well browned.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the roasted curry powder, the rest of the chilli, the fennel and the pepper and fry briefly on a low flame.",
+    "minutes": 2
+   },
+   {
+    "text": "Put in the hare and turn the pieces over the high flame until the outsides seal and take the colour of the spice.",
+    "minutes": 6
+   },
+   {
+    "text": "Drop in the gorakka with two cups of water, cover the pot and simmer gently; hare is lean and needs slow heat or it goes stringy.",
+    "minutes": 45
+   },
+   {
+    "text": "Stir in the ground coconut paste and the rest of the salt and cook uncovered until the gravy is thick, dark and glossy.",
+    "minutes": 12
+   },
+   {
+    "text": "Taste for salt and sourness and let the pot stand covered before serving, so the meat drinks the gravy back in.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "කැබලි කළ හා මස් ලුණු වතුරේ දෙවරක් සෝදා, වතුර හොඳින් බේරා, කහ, අඹරාගත් මිරිස් භාගයක් සහ ලුණු භාගයක් අතුල්ලන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ගාගත් පොල් පෑන් එකක දුඹුරු වී සුවඳ එන තුරු වියළි ලෙස බැදගෙන, බැදගත් කොත්තමල්ලි සමඟ අඹරා පේස්ට් එකක් කර ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මැටි වළඳක පොල් තෙල් රස්නේ කර, ළූණු, සුදුළූණු, ඉඟුරු, කරපිංචා, රම්පෙ සහ කුරුඳු ළූණු හොඳින් දුඹුරු වන තුරු බදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බැදපු තුනපහ, ඉතිරි මිරිස්, මාදුරු සහ ගම්මිරිස් දමා අඩු ගින්නේ මොහොතක් බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "හා මස් දමා, විශාල ගින්නේ පිටත තද වී කුළුබඩු පාට අඳින තුරු පෙරළන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ගොරකා සහ කෝප්ප දෙකක වතුර දමා, වළඳ වසා සෙමින් උයන්න; හා මස් තෙල් අඩු බැවින් අඩු ගින්නක් නැත්නම් නාරටි ගතියට යයි.",
+    "minutes": 45
+   },
+   {
+    "text": "අඹරාගත් පොල් පේස්ට් සහ ඉතිරි ලුණු දමා, හොද්ද තද, අඳුරු හා දිලිසෙන තුරු වැසුමක් නැතිව උයන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ලුණු හා ඇඹුල රස බලා, පිළිගැන්වීමට පෙර වසා තබන්න; එවිට මස හොද්ද නැවත උරා ගනී.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "துண்டாக்கிய முயல் இறைச்சியை உப்பு நீரில் இரு முறை கழுவி, நீரை நன்கு வடித்து, மஞ்சள், பாதி அரைத்த மிளகாய், பாதி உப்பு சேர்த்துத் தேய்த்து வையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "துருவிய தேங்காயை சட்டியில் பொன்னிறமாகி வாசம் வரும் வரை வறுத்து, வறுத்த மல்லியுடன் அரைத்து விழுதாக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, ரம்பை, பட்டையை வெங்காயம் நன்கு பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "வறுத்த கறித் தூள், மீதி மிளகாய், பெருஞ்சீரகம், மிளகு சேர்த்து சிறு தீயில் ஒரு நிமிடம் வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "முயல் இறைச்சியைச் சேர்த்து, பெரிய தீயில், வெளிப்புறம் இறுகி மசாலா நிறம் பிடிக்கும் வரை புரட்டுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "கோரக்காவும் இரண்டு கப் நீரும் சேர்த்து, மூடி மெதுவாகச் சமையுங்கள்; முயல் இறைச்சி கொழுப்புக் குறைவானது, சிறு தீ இல்லாவிட்டால் நாராகிவிடும்.",
+    "minutes": 45
+   },
+   {
+    "text": "அரைத்த தேங்காய் விழுதையும் மீதி உப்பையும் சேர்த்து, குழம்பு கெட்டியாகி, கறுத்து, மினுமினுக்கும் வரை மூடாமல் சமையுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "உப்பையும் புளிப்பையும் பார்த்து, பரிமாறும் முன் மூடி வையுங்கள்; அப்போது இறைச்சி குழம்பைத் திரும்ப உறிஞ்சும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 70,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot with a lid",
+  "pan for roasting the coconut",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "Hare has almost no fat, so never rush it on a high flame; a low steady fire and a covered pot are what keep the meat from drying into threads. A piece of gorakka more than usual also helps soften it.",
+  "si": "හා මස්වල තෙල් පාහේ නැති බැවින් විශාල ගින්නේ ඉක්මන් නොකරන්න; අඩු ස්ථාවර ගින්නක් සහ වසා ගත් වළඳක් ම මස නාරටි ලෙස වියළීමෙන් බේරයි. සාමාන්‍යයට වඩා ගොරකා කැබැල්ලක් වැඩිපුර දැමීමත් මුදු කිරීමට උපකාරී වේ.",
+  "ta": "முயல் இறைச்சியில் கொழுப்பே இல்லை என்பதால் பெரிய தீயில் அவசரப்பட வேண்டாம்; சிறு நிலையான தீயும் மூடிய பாத்திரமுமே இறைச்சி நாராகக் காய்வதைத் தடுக்கும். வழக்கத்தை விட ஒரு கோரக்கா துண்டு கூடச் சேர்ப்பதும் மென்மையாக்க உதவும்."
+ },
+ "health_note": {
+  "en": "Hare is one of the leanest meats a village kitchen sees, high in protein and iron with very little fat, so the coconut in the gravy is where most of the richness comes from. Cook it thoroughly, as with any wild-caught meat.",
+  "si": "ගමේ මුළුතැන්ගෙයට ලැබෙන තෙල් අඩුම මස් වර්ගයක් වන හා මස්වල ප්‍රෝටීන් හා යකඩ ඉහළ අතර තෙල් ඉතා අල්පයි; එබැවින් පොහොසත් බව එන්නේ හොද්දේ පොල්වලින්. වනයෙන් ලැබෙන ඕනෑම මසක් මෙන් ම මෙයත් හොඳින් උයන්න.",
+  "ta": "கிராமத்து சமையலறைக்கு வரும் மிகக் குறைந்த கொழுப்புள்ள இறைச்சிகளில் ஒன்று முயல்; புரதமும் இரும்பும் அதிகம், கொழுப்பு மிகக் குறைவு. எனவே செழுமை பெரும்பாலும் குழம்பில் உள்ள தேங்காயிலிருந்தே வருகிறது. காட்டில் பிடிக்கப்படும் எந்த இறைச்சியையும் போல இதையும் நன்கு வேக வையுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_fat",
+  "iron_rich",
+  "low_carb",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

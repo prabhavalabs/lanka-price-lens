@@ -1,0 +1,348 @@
+{
+ "id": "dish_brinjal_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "A dark, soft spoonful of brinjal that breaks under the spoon, with rice",
+   "si": "බතට එක්ක හැන්දෙන් පොඩි වන තරම් මුදු, කලු පාට වම්බටු හැන්දක්",
+   "ta": "சாதத்துடன் கரண்டியில் மசியும் அளவுக்கு மென்மையான கருமையான கத்தரிக்காய் கறி"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_brinjals",
+   "label": {
+    "en": "brinjals",
+    "si": "වම්බටු",
+    "ta": "கத்தரிக்காய்"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "2 long brinjals",
+   "preparation": {
+    "en": "cut into fingers, rubbed with salt and turmeric",
+    "si": "දිගට ඇඟිලි ආකාරයට කපා ලුණු හා කහ ගාගත්",
+    "ta": "நீளமாக நறுக்கி உப்பும் மஞ்சளும் தடவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "for shallow frying the brinjal",
+    "si": "වම්බටු බැදීම සඳහා",
+    "ta": "கத்தரிக்காய் வதக்குவதற்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "1 handful, sliced",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වේළුණු මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies, broken",
+   "preparation": {
+    "en": "broken in half, seeds shaken out",
+    "si": "දෙකට කඩා, ඇට ඉවත් කරගත්",
+    "ta": "இரண்டாக உடைத்து, விதை நீக்கிய"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a lime-sized ball, soaked",
+   "preparation": {
+    "en": "soaked in a little warm water and strained",
+    "si": "උණු වතුර ටිකක් දමා පොඟවා යුෂ පෙරාගත්",
+    "ta": "சிறிது வெந்நீரில் ஊறவைத்து கரைத்து வடிகட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp in all",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the brinjals into fingers, rub them with half the salt and half the turmeric, and leave them in a colander so the bitter water drains away.",
+    "minutes": 15
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and fry the brinjal in two batches until the cut faces are brown and the pieces have gone limp. Lift them onto a plate.",
+    "minutes": 10
+   },
+   {
+    "text": "In the same oil, fry the onion, dried chillies, curry leaves and pandan until the onion is soft and smells sweet.",
+    "minutes": 4
+   },
+   {
+    "text": "Stir in the remaining turmeric and the roasted curry powder off the flame for a moment so the powder does not burn.",
+    "minutes": 1
+   },
+   {
+    "text": "Return the brinjal to the pan, pour in the thin coconut milk and the strained tamarind water, and simmer uncovered so the gravy darkens and reduces.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the thick coconut milk and the rest of the salt, and cook on a low flame, stirring now and then, until the oil rises to the surface.",
+    "minutes": 5
+   },
+   {
+    "text": "Taste for the balance of sour and salt, and take the pan off the fire when a piece breaks easily under the spoon.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වම්බටු දිගට ඇඟිලි ආකාරයට කපා, ලුණු හා කහ අඩක් ගා, තිත්ත වතුර බැස යන්න පෙරන පිඟානක තබන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පුළුල් පෑන් එකක පොල් තෙල් රත් කර, වම්බටු කොටස් දෙකකට බෙදා කපාපු පැති දුඹුරු වන තුරු සහ කෑලි මැලවෙන තුරු බදින්න. පසුව පිඟානකට අරගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එම තෙලෙහිම ලූනු, වේළුණු මිරිස්, කරපිංචා සහ රම්පෙ දමා, ලූනු මුදු වී මිහිරි සුවඳ එන තුරු බදින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ගින්නෙන් මොහොතකට අයින් කර ඉතිරි කහ සහ බැදපු තුනපහ එකතු කර කලවම් කරන්න; කුඩු පිළිස්සෙන්නට ඉඩ නොදෙන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "බැදගත් වම්බටු නැවත පෑන් එකට දමා, තුනී පොල් කිරි සහ පෙරාගත් සියඹලා යුෂ වත් කර, හොදි කලු පැහැ ගෙන අඩු වන තුරු වහන් නොදමා තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මුල් කිරි සහ ඉතිරි ලුණු එකතු කර, මද ගින්නේ, වේලාවකට වරක් කලවම් කරමින්, තෙල් මතුපිටට එන තුරු තම්බන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඇඹුල හා ලුණු සමතුලිතතාවය රස බලා, කෑල්ලක් හැන්දෙන් පහසුවෙන් කැඩෙන විට ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கத்தரிக்காயை நீளமாக நறுக்கி, பாதி உப்பும் பாதி மஞ்சளும் தடவி, கசப்பு நீர் வடிய வடிகட்டியில் வையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, கத்தரிக்காயை இரு தவணைகளாக நறுக்கிய பக்கம் பொன்னிறமாகும் வரை, துண்டுகள் தளரும் வரை வதக்கி, தட்டில் எடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே எண்ணெயில் வெங்காயம், வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை போட்டு, வெங்காயம் மென்மையாகி இனிப்பு வாசம் வரும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பை ஒரு நிமிடம் அணைத்து, மீதி மஞ்சளும் வறுத்த கறி மசாலாவும் சேர்த்துக் கிளறுங்கள்; தூள் கருகக்கூடாது.",
+    "minutes": 1
+   },
+   {
+    "text": "வதக்கிய கத்தரிக்காயை மீண்டும் சேர்த்து, இரண்டாம் தேங்காய்ப் பாலும் வடிகட்டிய புளிக் கரைசலும் விட்டு, குழம்பு கருமையாகி சுருங்கும் வரை மூடாமல் வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "முதல் பாலையும் மீதி உப்பையும் சேர்த்து, சிறு தீயில் இடையிடையே கிளறி, எண்ணெய் மேலே தெரியும் வரை வேகவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "புளிப்பும் உப்பும் சரியாக இருக்கிறதா பாருங்கள்; கரண்டியில் துண்டு எளிதாக மசியும்போது அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan",
+  "colander",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Salting the cut brinjal first is the whole trick: it draws out the water, so the pieces soak up far less oil in the pan. This curry is better on the second day, when the tamarind and the roasted powder have settled into the brinjal.",
+  "si": "කපාගත් වම්බටු වලට මුලින්ම ලුණු ගෑම තමයි ප්‍රධාන උපක්‍රමය: වතුර පිට වන නිසා පෑන් එකේ තෙල් අඩුවෙන් උරාගනී. සියඹලා හා බැදපු තුනපහ වම්බටු වලට හොඳින් කා වැදුණු දෙවෙනි දවසේ මේ කරිය තවත් රසයි.",
+  "ta": "நறுக்கிய கத்தரிக்காய்க்கு முதலில் உப்பு தடவுவதே முக்கிய தந்திரம்: நீர் வெளியேறுவதால் சட்டியில் எண்ணெயை மிகக் குறைவாகவே இழுக்கும். புளியும் வறுத்த மசாலாவும் நன்றாக ஊறிய இரண்டாம் நாளில் இந்தக் கறி இன்னும் சுவையாக இருக்கும்."
+ },
+ "health_note": {
+  "en": "Brinjal itself is light and full of fibre, but it drinks oil, so the frying and the thick coconut milk are what make this a rich curry; one modest ladle is plenty next to a leafy mallung. Drain the fried pieces on paper if anyone in the house is watching fat.",
+  "si": "වම්බටු තනිවම සැහැල්ලු, තන්තුවෙන් පොහොසත් එළවළුවක් වුවත් තෙල් උරාගන්නා නිසා, බැදීම හා මුල් කිරි නිසා මේ කරිය සාරවත් වේ; කොළ මැල්ලුමක් සමඟ නම් හැන්දක් ප්‍රමාණවත්. ගෙදර කිසිවකු තෙල් සීමා කරයි නම් බැදගත් කෑලි කඩදාසියක් මත තබා තෙල් බැස යන්න දෙන්න.",
+  "ta": "கத்தரிக்காய் தானாக இலகுவானது, நார்ச்சத்து நிறைந்தது; ஆனால் எண்ணெயை இழுக்கும், எனவே வதக்குவதும் கெட்டிப் பாலும் சேர்ந்து இந்தக் கறியை கொழுப்பு நிறைந்ததாக ஆக்குகிறது; கீரை வதக்கலுடன் ஒரு கரண்டி போதும். வீட்டில் யாராவது கொழுப்பைக் கவனிக்கிறார்கள் என்றால் வதக்கிய துண்டுகளை காகிதத்தில் வைத்து எண்ணெயை வடியுங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "comfort",
+  "traditional_remedy",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

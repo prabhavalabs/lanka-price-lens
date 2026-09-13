@@ -1,0 +1,301 @@
+{
+ "id": "dish_egg_roti",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 225,
+  "description": {
+   "en": "One folded egg roti, hot and set",
+   "si": "නවා සාදාගත් උණුසුම් බිත්තර රොටියක්",
+   "ta": "மடித்துச் செய்த சூடான ஒரு முட்டை ரொட்டி"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "about 2 and a half cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 70,
+   "unit": "ml",
+   "household": "about 5 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "1 egg per roti",
+   "preparation": {
+    "en": "lightly beaten",
+    "si": "සැහැල්ලුවෙන් ගසාගත්",
+    "ta": "லேசாக அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Knead the flour with the salt and warm water into a very soft dough and work it for ten minutes.",
+    "minutes": 12
+   },
+   {
+    "text": "Divide it into four balls, sit them in oil and leave them covered to rest.",
+    "minutes": 30
+   },
+   {
+    "text": "Beat the eggs in a bowl with the chopped onion, green chilli, curry leaf, pepper and a pinch of salt.",
+    "minutes": null
+   },
+   {
+    "text": "Oil the table, take one ball and stretch it out until it is almost see-through.",
+    "minutes": null
+   },
+   {
+    "text": "Spoon a quarter of the egg mixture into the middle and spread it out a little.",
+    "minutes": null
+   },
+   {
+    "text": "Fold the four sides over the filling to make a square and press the edges down so nothing leaks.",
+    "minutes": null
+   },
+   {
+    "text": "Slide it onto a medium hot griddle with a spoon of oil and cook until the underside is golden.",
+    "minutes": 4
+   },
+   {
+    "text": "Turn it once and press the middle with a turner until the egg inside is cooked through.",
+    "minutes": 4
+   },
+   {
+    "text": "Cut it across into four and serve hot with dhal curry or lunu miris.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිටිවලට ලුණු සහ උණුසුම් වතුර දමා ඉතා මෘදු ගුලියක් සාදා විනාඩි දහයක් අනන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "බෝල හතරකට බෙදා, තෙලේ තබා වසා විවේකයට තබන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "බඳුනක බිත්තර ගසා, කපාගත් ලූනු, අමු මිරිස්, කරපිංචා, ගම්මිරිස් සහ ලුණු ස්වල්පයක් එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මේසය තෙල් තවරා, බෝලයක් ගෙන පාහේ පෙනෙන තරමට තුනීවට ඇදගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර මිශ්‍රණයෙන් හතරෙන් පංගුවක් මැදට හැන්දෙන් දමා, ටිකක් පතුරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දාර හතර පිරවුම මතට නවා හතරැස් කර, කිසිවක් පිටතට නොවැගිරෙන ලෙස දාර තෙරපන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තෙල් හැන්දක් සමඟ මධ්‍යම රස්නයේ තැටියට එය හරවා, යට පැත්ත රන්වන් වන තුරු පිළිස්සන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "එක් වරක් හරවා, ඇතුළත බිත්තර හරියටම තැම්බෙන තුරු කටුවකින් මැද තෙරපන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "හතරට කපා, පරිප්පු කරියක් හෝ ලුණු මිරිස් සමඟ උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாவுடன் உப்பும் வெதுவெதுப்பான தண்ணீரும் சேர்த்து மிக மென்மையான மாவாகப் பத்து நிமிடம் பிசையவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "நான்கு உருண்டைகளாகப் பிரித்து, எண்ணெயில் வைத்து மூடி ஓய்வெடுக்க வைக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "ஒரு கிண்ணத்தில் முட்டையை அடித்து, நறுக்கிய வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, மிளகு, சிறிதளவு உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மேசையில் எண்ணெய் தடவி, ஒரு உருண்டையை எடுத்து கிட்டத்தட்ட ஊடுருவித் தெரியும் அளவுக்கு விரிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டைக் கலவையில் கால் பங்கை நடுவில் கரண்டியால் இட்டு, சிறிது பரப்பவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நான்கு பக்கங்களையும் நிரப்பியின் மேல் மடித்து சதுரமாக்கி, எதுவும் வெளியே வழியாமல் விளிம்புகளை அழுத்தவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு கரண்டி எண்ணெயுடன் நடுத்தர சூட்டில் உள்ள கல்லில் இறக்கி, அடிப்பகுதி பொன்னிறமாகும்வரை சுடவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "ஒரு முறை திருப்பி, உள்ளே முட்டை முழுமையாக வேகும்வரை கரண்டியால் நடுவை அழுத்தவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "நான்காக வெட்டி, பருப்புக் கறி அல்லது லுணு மிரிசுடன் சூடாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 15,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "flat griddle",
+  "smooth table for stretching",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "Do not overfill the roti or the egg runs out at the fold; a thin sheet with a modest spoonful cooks evenly and stays crisp at the edges.",
+  "si": "රොටිය වැඩිපුර පුරවන්න එපා, එවිට නවන තැනින් බිත්තර පිටතට වැගිරෙනවා; තුනී පත්‍රයකට මධ්‍යස්ථ හැන්දක් දැමූ විට සමානව පිළිස්සී දාර මාළුව රැඳෙනවා.",
+  "ta": "ரொட்டியை அதிகமாக நிரப்ப வேண்டாம், மடிப்பில் முட்டை வெளியே வழியும்; மெல்லிய விரிப்பில் அளவான ஒரு கரண்டி இட்டால் சமமாக வெந்து விளிம்பு மொறுமொறுப்பாக இருக்கும்."
+ },
+ "health_note": {
+  "en": "One egg roti gives a decent amount of protein for a tea-time meal, but the dough drinks up oil; griddle it rather than shallow frying, and eat one rather than two.",
+  "si": "එක් බිත්තර රොටියකින් තේ වේලාවේ කෑමකට ප්‍රමාණවත් ප්‍රෝටීන් ලැබෙනවා, නමුත් ගුලිය තෙල් උරා ගන්නවා; ගැඹුරු තෙලේ නොව තැටියේ පිළිස්සන්න, දෙකක් වෙනුවට එකක් කන්න.",
+  "ta": "ஒரு முட்டை ரொட்டி தேநீர் நேர உணவுக்குப் போதுமான புரதம் தருகிறது, ஆனால் மாவு எண்ணெயை உறிஞ்சும்; எண்ணெயில் பொரிக்காமல் கல்லில் சுடவும், இரண்டுக்குப் பதிலாக ஒன்று சாப்பிடவும்."
+ },
+ "tags": [
+  "high_protein",
+  "filling",
+  "street_food",
+  "kid_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,214 @@
+{
+ "id": "dish_iced_coffee",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 250,
+  "description": {
+   "en": "A frothy cold glass over crushed ice",
+   "si": "පොඩි කළ අයිස් මතට වත් කළ පෙණ සහිත සිසිල් වීදුරුවක්",
+   "ta": "நொறுக்கிய பனிக்கட்டி மேல் ஊற்றிய நுரைக்கும் குளிர்ந்த கிளாஸ்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "pantry_coffee",
+   "label": {
+    "en": "instant coffee",
+    "si": "ක්ෂණික කෝපි",
+    "ta": "இன்ஸ்டன்ட் கோப்பி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_milk_powder",
+   "label": {
+    "en": "full cream milk powder",
+    "si": "කිරි පිටි",
+    "ta": "பால் பவுடர்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_ice_cream",
+   "label": {
+    "en": "vanilla ice cream",
+    "si": "වැනිලා අයිස්ක්‍රීම්",
+    "ta": "வெனிலா ஐஸ்கிரீம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 small scoop a glass",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Put the coffee, the sugar and four tablespoons of hot water in a bowl or a jug.",
+    "minutes": null
+   },
+   {
+    "text": "Beat that little mixture hard with a spoon or a hand whisk until it turns pale and thick like caramel; this is what gives the glass its froth.",
+    "minutes": 5
+   },
+   {
+    "text": "In a separate jug, mix the milk powder to a smooth cream with 200 ml of warm water, working out every lump.",
+    "minutes": null
+   },
+   {
+    "text": "Add 600 ml of cold water to the milk and stir well.",
+    "minutes": null
+   },
+   {
+    "text": "Spoon the beaten coffee into the milk and stir until the whole jug is an even light brown.",
+    "minutes": null
+   },
+   {
+    "text": "Put the jug in the fridge until it is properly cold, or stand it in a basin of water with ice around it.",
+    "minutes": 30
+   },
+   {
+    "text": "Fill the glasses two-thirds with crushed ice and pour the coffee over it.",
+    "minutes": null
+   },
+   {
+    "text": "Float a scoop of ice cream on top if you are making it for children or for a party, and serve with a straw.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කෝපි, සීනි සහ උණු වතුර මේස හැඳි හතරක් බඳුනකට හෝ ජෝගුවකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එම කුඩා මිශ්‍රණය හැන්දකින් හෝ අත් බීටරයකින්, පාට ලා වී කැරමල් වගේ ඝන වන තුරු හොඳින් ගසන්න; වීදුරුවට පෙණ එන්නේ මෙයිනුයි.",
+    "minutes": 5
+   },
+   {
+    "text": "වෙනම ජෝගුවක, කිරි පිටි මිලිලීටර් 200ක උණුසුම් වතුරෙන් ගැටියක් නැති ක්‍රීම් එකක් වන තුරු මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කිරි මිශ්‍රණයට සිසිල් වතුර මිලිලීටර් 600ක් දමා හොඳින් කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගසාගත් කෝපි ටික කිරි වලට හැන්දෙන් දමා, මුළු ජෝගුවම එකම ලා දුඹුරු පාටක් වන තුරු කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "හොඳින් සිසිල් වන තුරු ජෝගුව ශීතකරණයේ තබන්න, නැතිනම් අයිස් සහිත වතුර බේසමක් තුළ තබන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "වීදුරු තුනෙන් දෙකක් පොඩි කළ අයිස්වලින් පුරවා, ඒ මතට කෝපි වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ළමයින්ට හෝ සාදයකට නම් උඩින් අයිස්ක්‍රීම් හැන්දක් පාවෙන්නට තබා, පිදුරු නලයක් සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கோப்பி, சீனி, நான்கு மேசைக்கரண்டி சூடான நீரை ஒரு கிண்ணத்திலோ ஜாக்கிலோ போடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அந்தச் சிறிய கலவையை கரண்டியால் அல்லது கை பீட்டரால், நிறம் வெளிறி கேரமல் போல கெட்டியாகும் வரை நன்றாக அடிக்கவும்; கிளாஸுக்கு நுரை வருவது இதனால்தான்.",
+    "minutes": 5
+   },
+   {
+    "text": "தனி ஜாக்கில், பால் பவுடரை 200 மில்லி வெதுவெதுப்பான நீரில் கட்டி இல்லாத கிரீம் போல கரைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அந்தப் பாலில் 600 மில்லி குளிர்ந்த நீர் சேர்த்து நன்றாகக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அடித்த கோப்பியை பாலில் கரண்டியால் சேர்த்து, ஜாக் முழுவதும் ஒரே வெளிர் பழுப்பு நிறமாகும் வரை கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நன்கு குளிரும் வரை ஜாக்கை குளிர்சாதனப் பெட்டியில் வைக்கவும், அல்லது பனிக்கட்டி இட்ட நீர் பேசினில் நிற்க வைக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "கிளாஸ்களில் மூன்றில் இரண்டு பங்கு நொறுக்கிய பனிக்கட்டி நிரப்பி, அதன் மேல் கோப்பியை ஊற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குழந்தைகளுக்கோ விருந்துக்கோ என்றால் மேலே ஒரு கரண்டி ஐஸ்கிரீம் மிதக்க வைத்து, ஸ்ட்ராவுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 0,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "two jugs",
+  "hand whisk or spoon",
+  "tall glasses"
+ ],
+ "tips": {
+  "en": "Beating the coffee and sugar with just a splash of hot water is the whole trick; put the coffee straight into cold milk and you get a flat brown drink with no head on it. Crush the ice in a cloth with the base of a bottle so the pieces are small enough to chill the glass fast without watering it down.",
+  "si": "උණු වතුර ටිකක් සමඟ කෝපි සහ සීනි ගසා ගැනීම තමයි මුළු උපායම; කෝපි කෙලින්ම සිසිල් කිරි වලට දැමුවොත් පෙණ නැති, රසය මැරුණු දුඹුරු බීමක් ලැබේ. අයිස් රෙද්දක් තුළ බෝතලයක පත්ලෙන් තලා පොඩි කරන්න, එවිට කැබලි කුඩා නිසා බීම තුනී නොවී ඉක්මනින් සිසිල් වේ.",
+  "ta": "கொஞ்சம் சூடான நீரோடு கோப்பியையும் சீனியையும் அடிப்பதே முழு ரகசியம்; கோப்பியை நேரடியாகக் குளிர்ந்த பாலில் போட்டால் நுரையில்லாத, சுவையற்ற பழுப்புப் பானமே கிடைக்கும். பனிக்கட்டியை ஒரு துணியில் போட்டு பாட்டிலின் அடியால் நொறுக்குங்கள்; துகள்கள் சிறியதாக இருந்தால் பானம் நீர்க்காமல் விரைவில் குளிரும்."
+ },
+ "health_note": {
+  "en": "Milk powder gives calcium, but four tablespoons of sugar plus ice cream make this closer to a milkshake than a coffee. Make it with half the sugar and skip the ice cream on ordinary days, and do not give it to small children in the evening because of the caffeine.",
+  "si": "කිරි පිටියෙන් කැල්සියම් ලැබෙනවා, එහෙත් සීනි මේස හැඳි හතරක් සහ අයිස්ක්‍රීම් එකතු වූ විට මේක කෝපි එකකට වඩා මිල්ක්ෂේක් එකකට සමානයි. සාමාන්‍ය දිනවල සීනි අඩක් දමා අයිස්ක්‍රීම් අත් හරින්න; කැෆේන් නිසා පොඩි ළමයින්ට රෑට දෙන්න එපා.",
+  "ta": "பால் பவுடர் கால்சியம் தருகிறது, ஆனால் நான்கு மேசைக்கரண்டி சீனியும் ஐஸ்கிரீமும் சேர்ந்தால் இது கோப்பியை விட மில்க்ஷேக்கே. சாதாரண நாட்களில் பாதி சீனியில் செய்து ஐஸ்கிரீமை விட்டுவிடுங்கள்; காஃபீன் இருப்பதால் சிறு குழந்தைகளுக்கு இரவில் கொடுக்க வேண்டாம்."
+ },
+ "tags": [
+  "quick",
+  "high_sugar",
+  "calcium_rich",
+  "comfort",
+  "kid_friendly",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

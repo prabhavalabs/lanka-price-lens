@@ -1,0 +1,283 @@
+{
+ "id": "dish_egg_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 110,
+  "description": {
+   "en": "A spoonful of soft egg curds with browned onion",
+   "si": "දුඹුරු වූ ලූනු සමඟ මෘදු බිත්තර කැටි හැන්දක්",
+   "ta": "பொன்னிறமான வெங்காயத்துடன் மென்மையான முட்டைத் திரளை ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 440,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 5,
+   "unit": "piece",
+   "household": "5 eggs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව පෙති කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a small piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Slice the onion thin, slice the green chillies and strip the curry leaves off the stalk.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the onion with a pinch of the salt until it wilts and turns golden.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the green chilli, curry leaves and pandan and fry another minute until the smell rises.",
+    "minutes": 1
+   },
+   {
+    "text": "Lift the pan off the flame for a moment, stir in the turmeric and chilli powder so they do not burn, and put it back.",
+    "minutes": null
+   },
+   {
+    "text": "Break the eggs straight into the pan and leave them undisturbed until the bottom begins to set.",
+    "minutes": 1
+   },
+   {
+    "text": "Keeping the flame low, fold slowly with the back of the spoon until the eggs set into soft curds.",
+    "minutes": 2
+   },
+   {
+    "text": "Season with the rest of the salt, take the pan off while the egg is still glossy, and serve hot with bread or rice.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ලූනු සිහින්ව පෙති කපා, අමු මිරිස් කපා, කරපිංචා කොළ ගලවා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑනක පොල් තෙල් රත් කර ලුණු ස්වල්පයක් සමඟ ලූනු මැලවී රන්වන් වන තුරු බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "අමු මිරිස්, කරපිංචා සහ රම්පෙ දමා සුවඳ එන තුරු තව මිනිත්තුවක් බැදගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "පෑන මොහොතකට ගින්නෙන් ඉවතට ගෙන, නොදැවෙන්නට කහ කුඩු සහ මිරිස් කුඩු කලවම් කර නැවත ගින්නට තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර කෙලින්ම පෑනට කඩා දමා, පතුල තැම්බෙන්නට පටන් ගන්නා තුරු නොසෙලවා තබන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ගිනි අඩුවෙන් තබාගෙන හැන්දේ පිටුපසින් සෙමින් පෙරළමින් බිත්තර මෘදු කැටි වන තුරු කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඉතිරි ලුණු දමා, බිත්තර තවමත් තෙත්ව ඇති විටම පෑන ගින්නෙන් ඉවත් කර පාන් හෝ බත් සමඟ උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெங்காயத்தை மெல்லியதாக நறுக்கி, பச்சை மிளகாயை நறுக்கி, கறிவேப்பிலையைப் பிரித்துக்கொள்ளவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து சிறிது உப்புடன் வெங்காயத்தைப் பொன்னிறமாக வதக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை இலை சேர்த்து வாசம் வரும் வரை இன்னும் ஒரு நிமிடம் வதக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "வாணலியை ஒரு கணம் அடுப்பிலிருந்து விலக்கி, கருகாமல் இருக்க மஞ்சள் தூளும் மிளகாய்த் தூளும் கலந்து மீண்டும் அடுப்பில் வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டைகளை நேராக வாணலியில் உடைத்துவிட்டு, அடிப்பக்கம் இறுகத் தொடங்கும் வரை அசைக்காமல் விடவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "தணலைக் குறைத்து, கரண்டியின் பின்புறத்தால் மெதுவாகப் புரட்டி முட்டை மென்மையாகத் திரளும் வரை கலக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மீதி உப்பைச் சேர்த்து, முட்டை ஈரமாக இருக்கும்போதே இறக்கி, பாண் அல்லது சாதத்துடன் சூடாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 8,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Take the pan off while the egg still looks a shade underdone; it keeps cooking in its own heat. A chopped tomato added with the chilli turns this into a wetter side for bread.",
+  "si": "බිත්තර තව ටිකක් අමු ලෙස පෙනෙන විටම පෑන ගින්නෙන් ඉවත් කරන්න; එහි රස්නයෙන් ඉතිරි කොටස තැම්බෙයි. මිරිස් සමඟ කපාගත් තක්කාලි එකක් දැමුවහොත් පාන් සමඟ ගැනීමට තෙත් ව්‍යංජනයක් ලැබේ.",
+  "ta": "முட்டை சற்று வேகாதது போலத் தெரியும்போதே வாணலியை இறக்கவும்; அதன் சூட்டிலேயே மீதி வேகும். மிளகாயுடன் ஒரு தக்காளியை நறுக்கிச் சேர்த்தால் பாணுக்கு ஏற்ற ஈரமான சைடு கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "Two eggs between three people with plenty of onion makes a filling side without much fat, and the onion and chilli bring their own vitamin C. Go easy on the salt if anyone at the table watches their blood pressure.",
+  "si": "ලූනු ගොඩක් සමඟ බිත්තර දෙකක් තුන් දෙනෙකුට බෙදා ගැනීමෙන් තෙල් වැඩි නැති තෘප්තිමත් ව්‍යංජනයක් ලැබෙන අතර ලූනු සහ මිරිස් වලින් විටමින් සී ලැබේ. ලේ පීඩනය ගැන සැලකිලිමත් අයෙක් ඇත්නම් ලුණු අඩුවෙන් යොදන්න.",
+  "ta": "நிறைய வெங்காயத்துடன் இரண்டு முட்டையை மூவர் பங்கிட்டால் அதிக கொழுப்பில்லாத நிறைவான சைடு கிடைக்கும்; வெங்காயமும் மிளகாயும் சி வைட்டமின் தரும். இரத்த அழுத்தம் உள்ளவர்கள் இருந்தால் உப்பைக் குறைக்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "budget",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

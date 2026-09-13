@@ -1,0 +1,569 @@
+{
+ "id": "dish_mutton_biriyani",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 520,
+  "description": {
+   "en": "A heaped plate of spiced rice with two or three pieces of mutton",
+   "si": "එළු මස් කැබලි දෙක තුනක් සමඟ කුළුබඩු බත් පිඟානක්",
+   "ta": "இரண்டு மூன்று ஆட்டிறைச்சித் துண்டுகளுடன் மசாலா சோற்றின் நிறைந்த தட்டு"
+  }
+ },
+ "yield_g": 2100,
+ "ingredients": [
+  {
+   "ref": "product_mutton",
+   "label": {
+    "en": "mutton, bone in",
+    "si": "ඇට සහිත එළු මස්",
+    "ta": "எலும்புடன் ஆட்டிறைச்சி"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "about 6 pieces on the bone",
+   "preparation": {
+    "en": "cut into curry pieces and washed",
+    "si": "ව්‍යංජන කැබලි ලෙස කපා හෝදාගත්",
+    "ta": "கறித் துண்டுகளாக வெட்டி அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed and soaked for half an hour",
+    "si": "හෝදා අඩ පැයක් පොඟවාගත්",
+    "ta": "அலசி அரை மணி நேரம் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curd",
+   "label": {
+    "en": "curd",
+    "si": "දී",
+    "ta": "தயிர்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "whisked, for the marinade",
+    "si": "ගසාගත්, මැරිනේඩ් සඳහා",
+    "ta": "அடித்தது, ஊறவைக்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "3 onions",
+   "preparation": {
+    "en": "sliced thin, a third fried crisp for the top",
+    "si": "තුනීට කැපූ, තුනෙන් එකක් මතුපිටට කරකර වන තුරු බැදගත්",
+    "ta": "மெல்லியதாக நறுக்கியது, மூன்றில் ஒரு பங்கை மேலே தூவ மொறுமொறுப்பாக வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a large thumb",
+   "preparation": {
+    "en": "ground with the garlic",
+    "si": "සුදුලූනු සමඟ අඹරාගත්",
+    "ta": "பூண்டுடன் அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "8 cloves",
+   "preparation": {
+    "en": "ground to a paste",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_biriyani_masala",
+   "label": {
+    "en": "biriyani masala",
+    "si": "බුරියානි මසාලා",
+    "ta": "பிரியாணி மசாலா"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 1/2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_mint_leaves",
+   "label": {
+    "en": "mint leaves",
+    "si": "මින්චි කොළ",
+    "ta": "புதினா இலை"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a large handful",
+   "preparation": {
+    "en": "roughly torn",
+    "si": "රළුවට කඩාගත්",
+    "ta": "கையால் கிழித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කැපූ",
+    "ta": "நறுக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගත්",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 tomatoes",
+   "preparation": {
+    "en": "chopped",
+    "si": "කැපූ",
+    "ta": "நறுக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_ghee",
+   "label": {
+    "en": "ghee",
+    "si": "ගිතෙල්",
+    "ta": "நெய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for the rice",
+    "si": "බත් සඳහා",
+    "ta": "சோற்றுக்கு"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "2 sticks",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "6 pods",
+   "preparation": {
+    "en": "bruised",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1/4 cup",
+   "preparation": {
+    "en": "fried in ghee",
+    "si": "ගිතෙල් වල බැදගත්",
+    "ta": "நெய்யில் வறுத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice, squeezed over the rice before sealing",
+    "si": "වසන්නට පෙර බත මතට මිරිකන යුෂ",
+    "ta": "மூடுவதற்கு முன் சோற்றின் மேல் பிழியும் சாறு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 14,
+   "unit": "g",
+   "household": "2 1/4 tsp, meat and rice together",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Mix the mutton with the curd, ginger garlic paste, biriyani masala, turmeric, pepper and half the salt, and leave it to soak up the spice in a cool place.",
+    "minutes": 60
+   },
+   {
+    "text": "Fry a third of the onion in the ghee until deep brown and crisp, lift it out onto paper and keep it for the top.",
+    "minutes": 10
+   },
+   {
+    "text": "In the same pot fry the cinnamon, cardamom, cloves and fennel for a few seconds, then fry the rest of the onion with the green chillies until soft and golden.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the tomato and half the mint and coriander and cook until the tomato breaks down.",
+    "minutes": 5
+   },
+   {
+    "text": "Tip in the marinated mutton with all its marinade and fry on a high flame until the curd dries onto the meat and the oil shows at the edges.",
+    "minutes": 12
+   },
+   {
+    "text": "Add 300 ml of hot water, cover and simmer on a low flame until the meat is soft enough to pull from the bone and the gravy is thick.",
+    "minutes": 45
+   },
+   {
+    "text": "In a second pot boil plenty of salted water, add the drained rice and cook it only until it is three quarters done, then drain it at once.",
+    "minutes": 8
+   },
+   {
+    "text": "Spread the part cooked rice over the mutton, scatter the rest of the mint and coriander, dot the butter about, squeeze over the lime and pour two tablespoons of hot water round the side.",
+    "minutes": null
+   },
+   {
+    "text": "Cover the pot with a cloth under the lid and cook on the lowest flame, with a griddle underneath if your pot is thin, so the rice finishes in the meat steam.",
+    "minutes": 20
+   },
+   {
+    "text": "Rest the closed pot off the fire, then fold the rice and meat together from the bottom with a flat spoon and finish with the fried onion and cashew.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "එළු මස්, දී, ඉඟුරු සුදුලූනු පේස්ට්, බුරියානි මසාලා, කහ, ගම්මිරිස් සහ ලුණු වලින් අඩක් මිශ්‍ර කර, සිසිල් තැනක කුළුබඩු ඇදෙන්නට තබන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "ලූනු වලින් තුනෙන් එකක් ගිතෙල් වල තද දුඹුරු වී කරකර වන තුරු බැද, කඩදාසියක් මතට ගෙන මතුපිටට තබා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එම හැළියේම කුරුඳු, එනසාල්, කරාබුනැටි සහ මාදුරු තත්පර කිහිපයක් බැද, ඉතිරි ලූනු අමු මිරිස් සමඟ මුදු වී රන්වන් වන තුරු බදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "තක්කාලි සහ මින්චි, කොත්තමල්ලි වලින් අඩක් දමා තක්කාලි මැරෙන තුරු පිහන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මැරිනේට් කළ එළු මස් මැරිනේඩ් සමඟම දමා, මහ ගින්නේ, දී මස වටා වියළී දාරවලින් තෙල් පෙනෙන තුරු බදින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "උණු වතුර මිලි ලීටර් 300ක් දමා වහලා, අඩු ගින්නේ මස ඇටයෙන් ගැලවෙන තරමට මුදු වී හොද්ද ඝන වන තුරු තම්බන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "දෙවන හැළියක ලුණු වතුර ඕනෑ තරම් නටවා, වතුර බේරූ සහල් දමා හතරෙන් තුනක් පමණ පිසෙන තුරු පමණක් තම්බා, වහාම වතුර බේරා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "අඩක් පිසූ බත එළු මස් මතට විහිදුවා, ඉතිරි මින්චි සහ කොත්තමල්ලි විසුරුවා, බටර් තැනින් තැන දමා, දෙහි මිරිකා, දාරය දිගේ උණු වතුර මේස හැඳි දෙකක් වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පියන යටින් රෙද්දක් දමා වසා, හැළිය තුනී නම් යටින් තාච්චියක් තබා, අවම ගින්නේ බත මස් වාෂ්පයෙන් සම්පූර්ණ වන තුරු පිහන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "වසූ හැළිය ලිපෙන් බා තිබෙන්න දී, පැතලි හැන්දකින් පහළින් ඔසවා බත සහ මස එකට කලවම් කර, බැදපු ලූනු සහ කජු මතුපිටින් දමන්න.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஆட்டிறைச்சியுடன் தயிர், இஞ்சிப் பூண்டு விழுது, பிரியாணி மசாலா, மஞ்சள், மிளகு, பாதி உப்பு கலந்து, குளிர்ந்த இடத்தில் மசாலா ஏறும் வரை வையுங்கள்.",
+    "minutes": 60
+   },
+   {
+    "text": "வெங்காயத்தில் மூன்றில் ஒரு பங்கை நெய்யில் கடும் பொன்னிறமாக மொறுமொறுப்பாக வறுத்து, காகிதத்தில் எடுத்து மேலே தூவ வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே பாத்திரத்தில் பட்டை, ஏலக்காய், கிராம்பு, பெருஞ்சீரகத்தை சில செக்கன்கள் வதக்கி, மீதி வெங்காயத்தை பச்சை மிளகாயுடன் மென்மையாகி பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "தக்காளியையும் பாதி புதினா, கொத்தமல்லியையும் சேர்த்து தக்காளி கரையும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஊறிய ஆட்டிறைச்சியை மசாலா முழுவதுமாகச் சேர்த்து, பெருந்தீயில் தயிர் இறைச்சியில் ஒட்டி ஓரங்களில் எண்ணெய் தெரியும் வரை வதக்குங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "300 மில்லி வெந்நீர் ஊற்றி மூடி, சிறு தீயில் இறைச்சி எலும்பிலிருந்து விலகும் அளவு மென்மையாகி குழம்பு கெட்டியாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 45
+   },
+   {
+    "text": "இரண்டாவது பாத்திரத்தில் நிறைய உப்புத் தண்ணீரைக் கொதிக்கவைத்து, வடித்த அரிசியைப் போட்டு முக்கால் பங்கு வேகும் வரை மட்டும் வேகவைத்து உடனே வடியுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "பாதி வெந்த சோற்றை இறைச்சியின் மேல் பரப்பி, மீதி புதினா கொத்தமல்லியைத் தூவி, வெண்ணெயை இடையிடையே வைத்து, எலுமிச்சை பிழிந்து, ஓரமாக இரண்டு மேசைக்கரண்டி வெந்நீர் ஊற்றுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடிக்கு அடியில் ஒரு துணி வைத்து மூடி, பாத்திரம் மெல்லியதாக இருந்தால் அடியில் ஒரு தோசைக்கல் வைத்து, மிகக் குறைந்த தீயில் சோறு இறைச்சியின் ஆவியில் முழுமையாக வேகும் வரை வையுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "மூடிய பாத்திரத்தை இறக்கி சிறிது நேரம் வைத்திருந்து, தட்டையான கரண்டியால் அடியிலிருந்து தூக்கி சோற்றையும் இறைச்சியையும் கலந்து, வறுத்த வெங்காயமும் முந்திரியும் மேலே தூவுங்கள்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 60,
+  "cook_minutes": 90,
+  "passive_minutes": 60
+ },
+ "equipment": [
+  "heavy pot with a tight lid",
+  "second pot for parboiling the rice",
+  "cloth for sealing",
+  "griddle to put under the pot"
+ ],
+ "tips": {
+  "en": "Goat meat needs its long slow braise before the rice ever goes near it; rice added to half cooked mutton will be ruined by the time the meat is soft. Parboil the rice in well salted water and drain it while the grains still have a bite in the middle.",
+  "si": "එළු මසට බත ළං කරන්නට පෙර දිගු, සෙමින් උයන කාලයක් අවශ්‍යයි; අඩක් පිසුණු මසට බත් දැමුවොත් මස මුදු වන විට බත විනාශ වී ඇත. සහල් හොඳින් ලුණු දැමූ වතුරේ අඩක් තම්බා, ඇට මැද ටිකක් තද ගතියක් තිබෙන විටම වතුර බේරා ගන්න.",
+  "ta": "ஆட்டிறைச்சிக்கு சோறு அருகில் வரும் முன் நீண்ட மெதுவான வேக்காடு தேவை; பாதி வெந்த இறைச்சியில் சோறு சேர்த்தால் இறைச்சி மென்மையாகும் வரை சோறு கெட்டுவிடும். அரிசியை நல்ல உப்புத் தண்ணீரில் அரை வேக்காடாக வேகவைத்து, நடுவில் சிறிது கடினம் இருக்கும்போதே வடியுங்கள்."
+ },
+ "health_note": {
+  "en": "Mutton is a good source of iron and protein, useful for growing children and anyone told they are low on iron, but it carries more saturated fat than chicken or fish and the ghee adds to that. One plate, a curd raitha and a sharp onion salad make a better meal than second helpings.",
+  "si": "එළු මස් යකඩ සහ ප්‍රෝටීන් වල හොඳ මූලාශ්‍රයක් බැවින් වැඩෙන ළමයින්ට සහ යකඩ අඩු බව කියූ අයට ප්‍රයෝජනවත්, එනමුත් කුකුල් මස් හෝ මාළු වලට වඩා සංතෘප්ත මේදය වැඩියි, ගිතෙල් ද එයට එකතු වේ. දෙවන වාරයකට වඩා පිඟානක්, දී රයිතාවක් සහ සැර ලූනු සලාදයක් හොඳ කෑමක් වේ.",
+  "ta": "ஆட்டிறைச்சி இரும்புச்சத்துக்கும் புரதத்துக்கும் நல்ல ஆதாரம், வளரும் குழந்தைகளுக்கும் இரத்தச் சோகை உள்ளவர்களுக்கும் பயனுள்ளது; ஆனால் கோழி அல்லது மீனை விட கொழுப்பு அதிகம், நெய்யும் அதைக் கூட்டுகிறது. இரண்டாம் தட்டுக்குப் பதிலாக ஒரு தட்டு சோறு, தயிர் ரைத்தா, காரமான வெங்காய சாலட் சிறந்த உணவாகும்."
+ },
+ "tags": [
+  "high_protein",
+  "festive",
+  "filling",
+  "iron_rich",
+  "one_pot",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

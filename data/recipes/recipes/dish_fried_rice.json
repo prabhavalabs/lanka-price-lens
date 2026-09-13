@@ -1,0 +1,410 @@
+{
+ "id": "dish_fried_rice",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 350,
+  "description": {
+   "en": "A mound of fried rice with a devilled dish on the side",
+   "si": "පැත්තකින් ඩෙවල් එකක් සමඟ ෆ්‍රයිඩ් රයිස් ගොඩක්",
+   "ta": "பக்கத்தில் ஒரு டெவில் உணவுடன் ஒரு குவியல் பொரித்த சாதம்"
+  }
+ },
+ "yield_g": 1400,
+ "ingredients": [
+  {
+   "ref": "product_rice_nadu",
+   "label": {
+    "en": "nadu rice",
+    "si": "නාඩු සහල්",
+    "ta": "நாடு அரிசி"
+   },
+   "quantity": 360,
+   "unit": "g",
+   "household": "2 cups of raw rice",
+   "preparation": {
+    "en": "cooked the day before and cooled",
+    "si": "පෙර දින උයා සිසිල් කරගත්",
+    "ta": "முந்தின நாள் சமைத்து குளிர்வித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 eggs",
+   "preparation": {
+    "en": "lightly beaten",
+    "si": "සැහැල්ලුවෙන් ගසාගත්",
+    "ta": "லேசாக அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கேரட்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium carrot",
+   "preparation": {
+    "en": "cut into small cubes",
+    "si": "කුඩා කැට ලෙස කපාගත්",
+    "ta": "சிறு கனசதுரங்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_beans",
+   "label": {
+    "en": "beans",
+    "si": "බෝංචි",
+    "ta": "பீன்ஸ்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "half a stalk",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "cut into small cubes",
+    "si": "කුඩා කැට ලෙස කපාගත්",
+    "ta": "சிறு கனசதுரங்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_spring_onion",
+   "label": {
+    "en": "spring onion",
+    "si": "ලූනු කොළ",
+    "ta": "வெங்காயத் தாள்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 stalks",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சாஸ்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_oyster_sauce",
+   "label": {
+    "en": "oyster sauce",
+    "si": "ඔයිස්ටර් සෝස්",
+    "ta": "ஆயிஸ்டர் சாஸ்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cook the rice the day before with a little less water than usual so the grains stay separate, spread it on a tray and leave it to cool.",
+    "minutes": 25
+   },
+   {
+    "text": "Break up any lumps in the cold rice with wet fingers so it is loose before it goes in the pan.",
+    "minutes": null
+   },
+   {
+    "text": "Heat a tablespoon of the oil in a wide pan, pour in the beaten egg, scramble it until just set and lift it out.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the rest of the oil and fry the garlic, onion and green chilli on a high flame until they smell sweet.",
+    "minutes": 2
+   },
+   {
+    "text": "Put in the carrot and beans first, then the leeks, and keep everything moving so the vegetables cook but stay firm.",
+    "minutes": 4
+   },
+   {
+    "text": "Turn the flame to its highest, tip in the rice and toss it hard, pressing it against the hot pan.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour the soy sauce and oyster sauce down the side of the pan, sprinkle the pepper and salt and mix until every grain is coloured.",
+    "minutes": 2
+   },
+   {
+    "text": "Return the egg, fold it through with the spring onion and take the pan off the fire.",
+    "minutes": 1
+   },
+   {
+    "text": "Serve it straight away with a devilled dish or a chilli paste on the side.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් පෙර දින සාමාන්‍ය ප්‍රමාණයට වඩා ටිකක් අඩු වතුරෙන් උයා, ඇට වෙන් වෙන්ව තිබෙන ලෙස තැටියක් මත විහිදුවා සිසිල් වන්නට තබන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "සිසිල් වූ බතේ ගුලි ඇත්නම් තෙත් අතින් ලිහා, තැටියට දැමීමට පෙර ඇට ලිහිල් කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් තැටියක තෙල් මේස හැන්දක් රත් කර, ගසාගත් බිත්තර වත් කර, තදවන තුරු පමණක් සකසා ගොඩට ගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඉතිරි තෙල් දමා සුදුළූනු, ලූනු සහ අමු මිරිස් ලොකු ගින්දරේ සුවඳ නගින තුරු බැදගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පළමුව කැරට් සහ බෝංචි, පසුව ලීක්ස් දමා, එළවළු තදබව නැති නොවන ලෙස දිගටම කලවම් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ගින්දර උපරිමයට වැඩි කර, බත් දමා රත් වූ තැටියට තදින් තෙරපමින් හොඳින් පෙරළන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "සෝයා සෝස් සහ ඔයිස්ටර් සෝස් තැටියේ පැත්තෙන් වත් කර, ගම්මිරිස් සහ ලුණු ඉස, සෑම බත් ඇටයක්ම පාට වන තුරු කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "සකසාගත් බිත්තර නැවත දමා, ලූනු කොළ සමඟ මිශ්‍ර කර තැටිය ගින්නෙන් ඉවතට ගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ඩෙවල් එකක් හෝ මිරිස් පේස්ට් එකක් සමඟ වහාම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சாதத்தை முந்தின நாள் வழக்கத்தைவிட சிறிது குறைந்த தண்ணீரில் சமைத்து, அரிசி பிரிந்திருக்கும்படி ஒரு தட்டில் பரப்பி குளிர வைக்கவும்.",
+    "minutes": 25
+   },
+   {
+    "text": "குளிர்ந்த சாதத்தில் கட்டிகள் இருந்தால் நனைந்த கையால் உதிர்த்து, சட்டியில் போடும் முன் அரிசி உதிரியாக இருக்கச் செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான சட்டியில் ஒரு மேசைக்கரண்டி எண்ணெயைக் காய்ச்சி, அடித்த முட்டையை ஊற்றி, இறுகும் அளவுக்கு மட்டும் கிளறி எடுத்து வைக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மீதி எண்ணெயைச் சேர்த்து பூண்டு, வெங்காயம், பச்சை மிளகாயை பெரிய தீயில் நல்ல வாசனை வரும்வரை வதக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "முதலில் கேரட், பீன்ஸ், பின்னர் லீக்ஸ் சேர்த்து, காய்கறிகள் இறுக்கமாக இருக்கும்படி தொடர்ந்து கிளறவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தீயை அதிகமாக்கி, சாதத்தைச் சேர்த்து சூடான சட்டியில் அழுத்திக் கொண்டு நன்கு புரட்டவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சோயா சாஸ், ஆயிஸ்டர் சாஸை சட்டியின் ஓரமாக ஊற்றி, மிளகும் உப்பும் தூவி, ஒவ்வொரு அரிசியும் நிறம் பெறும்வரை கலக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கிளறிய முட்டையைத் திரும்பச் சேர்த்து, வெங்காயத் தாளுடன் கலந்து சட்டியைத் தீயிலிருந்து இறக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "டெவில் உணவு அல்லது மிளகாய் விழுதுடன் உடனே பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan or wok",
+  "tray for cooling rice"
+ ],
+ "tips": {
+  "en": "Cold rice and a very hot pan are the whole trick; fresh warm rice turns to a sticky lump no matter how much you toss it.",
+  "si": "සිසිල් බත් සහ හොඳින් රත් වූ තැටියක් තමයි මුළු රහස; උණුසුම් අළුත් බත් කොපමණ පෙරළුවත් ඇලෙන ගුලියක් වෙනවා.",
+  "ta": "குளிர்ந்த சாதமும் நன்கு சூடான சட்டியும்தான் முழு ரகசியம்; சூடான புதிய சாதம் எவ்வளவு புரட்டினாலும் ஒட்டும் கட்டியாகிவிடும்."
+ },
+ "health_note": {
+  "en": "Fried rice is filling and children eat it happily, but it is mostly white rice with oil and salty sauces; a big handful more vegetables and a side of salad balances the plate.",
+  "si": "ෆ්‍රයිඩ් රයිස් බඩ පුරවන අහරක් වන අතර දරුවන් ඒක කැමැත්තෙන් කනවා, නමුත් එහි වැඩි කොටස සුදු බත්, තෙල් හා ලුණු සහිත සෝස්; එළවළු අතලොස්සක් වැඩිපුර දමා සලාදයක් සමඟ බෙදීමෙන් පිඟාන සමබර වේ.",
+  "ta": "பொரித்த சாதம் வயிறு நிறைக்கும், குழந்தைகளும் விரும்பி சாப்பிடுவார்கள், ஆனால் அதில் பெரும்பாலும் வெள்ளை அரிசி, எண்ணெய், உப்பு நிறைந்த சாஸ்கள்; ஒரு கைப்பிடி காய்கறி அதிகமாகச் சேர்த்து சாலட்டுடன் பரிமாறினால் தட்டு சமநிலையாகும்."
+ },
+ "tags": [
+  "filling",
+  "kid_friendly",
+  "quick",
+  "one_pot",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

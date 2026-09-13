@@ -1,0 +1,379 @@
+{
+ "id": "dish_seeni_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 60,
+  "description": {
+   "en": "A heaped tablespoon beside rice or spread inside a roti",
+   "si": "බත් සමඟ හෝ රොටියක් ඇතුළේ තබන මේස හැන්දක්",
+   "ta": "சோற்றுடன் அல்லது ரொட்டிக்குள் வைக்கும் ஒரு மேசைக் கரண்டி"
+  }
+ },
+ "yield_g": 240,
+ "ingredients": [
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "about 25 small onions",
+   "preparation": {
+    "en": "peeled and sliced thin",
+    "si": "ලෙලි ගසා සිහින්ව කපාගත්",
+    "ta": "உரித்து மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "6 chillies",
+   "preparation": {
+    "en": "torn and ground coarse",
+    "si": "ඉරා රළුව තලාගත්",
+    "ta": "கிழித்து கரகரப்பாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த்தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பளகடா"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුව තලාගත්",
+    "ta": "கரகரப்பாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a lime-sized ball",
+   "preparation": {
+    "en": "soaked in 60 ml warm water, squeezed and strained, seeds discarded",
+    "si": "උණු වතුර මිලි 60ක දමා පොඟවා මිරිකා පෙරාගත්, ඇට ඉවත් කර",
+    "ta": "60 மி.லி. வெந்நீரில் ஊறவைத்து கரைத்து வடிகட்டியது, கொட்டை நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon stick",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm stick",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 pods, bruised",
+   "preparation": {
+    "en": "lightly crushed",
+    "si": "සැහැල්ලුවෙන් තලාගත්",
+    "ta": "லேசாக நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 cloves",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පේ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm length",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the small onions and slice them as thin as you can; thin slices fry down evenly while thick ones stay raw in the middle.",
+    "minutes": 15
+   },
+   {
+    "text": "Soak the tamarind in a little warm water, work it with your fingers and strain the juice, keeping the seeds out.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a heavy pan and drop in the cinnamon, cardamom, cloves, pandan and curry leaves until they crackle.",
+    "minutes": 2
+   },
+   {
+    "text": "Tip in all the onion at once with the salt and stir so every slice is coated in the oil.",
+    "minutes": null
+   },
+   {
+    "text": "Fry on a medium flame, stirring every few minutes, until the onion collapses and turns golden.",
+    "minutes": 20
+   },
+   {
+    "text": "Add the ground chilli, chilli powder and maldive fish and keep frying until the smell turns deep and toasty.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour in the tamarind juice and let it bubble away until the pan is almost dry.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the sugar and cook, stirring often now, until the sambol is dark, sticky and holds together on the spoon.",
+    "minutes": 8
+   },
+   {
+    "text": "Take it off the fire, pull out the cinnamon and pandan, and let it cool before bottling; it keeps a week in a clean dry jar.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "රතු ළූණු ලෙලි ගලවා හැකි තරම් සිහින්ව කපා ගන්න; සිහින් පෙති සමානව බැදෙන අතර ඝන පෙති මැද අමුවෙන් රැඳේ.",
+    "minutes": 15
+   },
+   {
+    "text": "සියඹලා ටිකක් උණු වතුරේ දමා ඇඟිලිවලින් මිරිකා, ඇට ඉවත් කර යුෂ පෙරා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බර පෑනක පොල් තෙල් රත් කර කුරුඳු, එනසාල්, කරාබුනැටි, රම්පේ සහ කරපිංචා දමා පොපිනවන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ළූණු සියල්ල එකවර ලුණු සමඟ දමා, සෑම පෙත්තකටම තෙල් ගෑවෙන්නට කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මධ්‍යම ගින්නේ, විනාඩි කීපයකට වරක් කලතමින්, ළූණු හැකිලී රන්වන් වන තුරු බදින්න.",
+    "minutes": 20
+   },
+   {
+    "text": "තලාගත් මිරිස්, මිරිස් කුඩු සහ උම්බලකඩ දමා සුවඳ ගැඹුරු වන තුරු තවදුරටත් බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සියඹලා යුෂ එකතු කර පෑන පාහේ සිඳෙන තුරු උතුරන්නට දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සීනි දමා, දැන් නිතර කලතමින්, සම්බෝල අඳුරු, ඇලෙනසුලු වී හැන්දේ රැඳෙන තුරු පිසින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ලිපෙන් බාගෙන කුරුඳු සහ රම්පේ ඉවත් කර, බෝතලයට දමන්නට පෙර සිසිල් වන්නට දෙන්න; පිරිසිදු වියළි බඳුනක සතියක් තබා ගත හැකිය.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "சின்ன வெங்காயத்தை உரித்து, முடிந்தவரை மெல்லியதாக நறுக்கவும்; மெல்லிய துண்டுகள் சமமாக வதங்கும், தடிமனானவை நடுவில் பச்சையாக இருக்கும்.",
+    "minutes": 15
+   },
+   {
+    "text": "புளியை சிறிது வெந்நீரில் ஊறவைத்து, விரலால் கரைத்து, கொட்டைகளை நீக்கி சாறு வடிகட்டவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "கனமான வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து, பட்டை, ஏலக்காய், கிராம்பு, ரம்பை, கறிவேப்பிலை போட்டு வெடிக்க விடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "வெங்காயம் முழுவதையும் ஒரே நேரத்தில் உப்புடன் சேர்த்து, ஒவ்வொரு துண்டிலும் எண்ணெய் படும்படி கிளறவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நடுத்தர தீயில், சில நிமிடங்களுக்கு ஒருமுறை கிளறி, வெங்காயம் சுருங்கி பொன்னிறமாகும் வரை வதக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "அரைத்த மிளகாய், மிளகாய்த்தூள், உம்பளகடா சேர்த்து வாசம் கெட்டியாகும் வரை மேலும் வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "புளிச் சாற்றை ஊற்றி, வாணலி கிட்டத்தட்ட வற்றும் வரை கொதிக்க விடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சீனி சேர்த்து, இப்போது அடிக்கடி கிளறி, சம்பல் கருமையாகி ஒட்டும் பதத்தில் கரண்டியில் தங்கும் வரை சமைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, பட்டையையும் ரம்பையையும் எடுத்து, புட்டியில் போடும் முன் ஆற விடவும்; சுத்தமான உலர்ந்த ஜாடியில் ஒரு வாரம் இருக்கும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 40,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "heavy pan or clay pot",
+  "wooden spoon",
+  "clean dry jar"
+ ],
+ "tips": {
+  "en": "The dark colour comes from patience, not from burning: keep the flame medium and use a wooden spoon so the sugar does not catch on the bottom. A spoon more tamarind, or a spoon less sugar, turns it from a bun filling into a relish for rice.",
+  "si": "අඳුරු පාට ලැබෙන්නේ ඉවසීමෙන්, පිළිස්සීමෙන් නොවේ; ගින්න මධ්‍යමව තබා ලී හැන්දක් යොදන්න, එවිට සීනි පතුලේ අල්ලන්නේ නැත. සියඹලා හැන්දක් වැඩියෙන් හෝ සීනි හැන්දක් අඩුවෙන් දැමූ විට, එය බනිස් පිරවුමක සිට බත් සමඟ කන ව්‍යංජනයක් දක්වා වෙනස් වේ.",
+  "ta": "கருமை நிறம் பொறுமையால் வருகிறது, கருகுவதால் அல்ல; தீயை நடுத்தரமாக வைத்து மரக் கரண்டியைப் பயன்படுத்தவும், அப்போது சீனி அடியில் பிடிக்காது. ஒரு கரண்டி புளி கூட்டினால், அல்லது ஒரு கரண்டி சீனி குறைத்தால், இது பன் பூரணத்திலிருந்து சோற்றுக்கான தொடுகறியாக மாறும்."
+ },
+ "health_note": {
+  "en": "It is mostly onion, which is no bad thing, but the sugar and oil make it dense, so a heaped tablespoon is one serving. Anyone watching blood sugar can halve the sugar and lean on the tamarind for the sweet-sour edge.",
+  "si": "මෙහි වැඩි කොටස ළූණු වන අතර එය හොඳ දෙයකි, නමුත් සීනි සහ තෙල් නිසා එය සාන්ද්‍ර වේ; එබැවින් මේස හැන්දක් එක් වාරයකි. රුධිර සීනි ගැන සැලකිලිමත් අයෙකුට සීනි භාගයකට අඩු කර ඇඹුල් රසය සඳහා සියඹලා යොදා ගත හැකිය.",
+  "ta": "இதில் பெரும்பாலும் வெங்காயமே, அது நல்லது, ஆனால் சீனியும் எண்ணெயும் இதைச் செறிவாக்குகின்றன; எனவே ஒரு மேசைக் கரண்டி ஒரு பங்கு. இரத்தச் சர்க்கரையைக் கவனிப்பவர்கள் சீனியைப் பாதியாகக் குறைத்து, இனிப்பு-புளிப்புக்கு புளியை நம்பலாம்."
+ },
+ "tags": [
+  "budget",
+  "comfort",
+  "kid_friendly",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

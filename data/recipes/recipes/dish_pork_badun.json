@@ -1,0 +1,415 @@
+{
+ "id": "dish_pork_badun",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "Dark sticky pork pieces, a small heap on the side of the plate",
+   "si": "පිඟානේ පසෙක කුඩා ගොඩක් ලෙස තියෙන කළු, ඇලෙන ඌරු මස් කැබලි",
+   "ta": "தட்டின் ஓரத்தில் ஒரு சிறு குவியலாகக் கருத்த, ஒட்டும் பன்றி இறைச்சித் துண்டுகள்"
+  }
+ },
+ "yield_g": 680,
+ "ingredients": [
+  {
+   "ref": "product_pork",
+   "label": {
+    "en": "pork with fat, shoulder or belly",
+    "si": "මේද සහිත ඌරු මස්",
+    "ta": "கொழுப்புடன் கூடிய பன்றி இறைச்சி"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "about 700 g",
+   "preparation": {
+    "en": "cut into 2 cm cubes, washed with salt",
+    "si": "සෙන්ටිමීටර දෙකක කැට කපා ලුණු දමා සෝදා ගත්",
+    "ta": "இரண்டு சென்டிமீட்டர் துண்டுகளாக நறுக்கி உப்பிட்டு அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "7 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 large pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "piece",
+   "household": "5 pods, broken",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩා ගත්",
+    "ta": "உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "நொறுக்கிய மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලා ගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "2 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "a 7 cm quill",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ කොළය",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 10 cm length",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 heaped tbsp, only if the pork is lean",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the pork with its fat into small cubes and wash them with a little salt, then drain.",
+    "minutes": null
+   },
+   {
+    "text": "Put the pork into a pot with the crushed garlic and ginger, gorakka, roasted curry powder, chilli flakes, pepper, turmeric, cinnamon, one sprig of curry leaves, the pandan, the salt and half a cup of water.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and cook on a medium fire, stirring now and then; the pork lets out its own fat and liquid as it goes.",
+    "minutes": 35
+   },
+   {
+    "text": "Keep cooking uncovered until the meat is tender and almost all the liquid has gone.",
+    "minutes": 10
+   },
+   {
+    "text": "Take the lid off and let the cubes fry in the fat they have rendered, turning them so they brown on all sides.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the broken dried chillies, the second sprig of curry leaves and the sliced red onion, with the coconut oil only if the pork was lean.",
+    "minutes": 4
+   },
+   {
+    "text": "Fry until the outside is dark, sticky and shrunken and the onion has gone almost black at the edges.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt and sourness, and press in another small piece of gorakka if it needs sharpening.",
+    "minutes": null
+   },
+   {
+    "text": "Let it cool in the pot; badun keeps two or three days in a covered clay pot and tastes better on the second day.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "මේද සහිත ඌරු මස් කුඩා කැට වලට කපා, ලුණු ටිකක් දමා සෝදා වතුර බේරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මස් වළඳකට දමා තලා ගත් සුදුළූණු සහ ඉඟුරු, ගොරකා, බැදපු තුනපහ, මිරිස් කැබලි, ගම්මිරිස්, කහ, කුරුඳු, කරපිංචා අත්තක්, රම්පෙ, ලුණු සහ වතුර කෝප්ප බාගයක් එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා මධ්‍යම ගින්නේ, විටින් විට කලවම් කරමින් උයන්න; ඌරු මස තමන්ගේ මේදයත් දියරත් නිකුත් කරනවා.",
+    "minutes": 35
+   },
+   {
+    "text": "වැහුම ගලවා, මස් මෘදු වී දියර බොහෝ දුරට සිඳී යන තුරු දිගටම උයන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "නිකුත් වූ මේදයේම කැට හැම පැත්තෙන්ම දුඹුරු වන ලෙස පෙරළමින් බැදෙන්න දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කඩා ගත් වියළි මිරිස්, දෙවන කරපිංචා අත්ත සහ කපා ගත් රතු ළූණු දමන්න; මස මේද අඩු නම් පමණක් පොල් තෙල් එකතු කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පිටත කළු වී ඇලෙන ගතියක් ගෙන හැකිලෙන තුරු සහ ළූණු දාර බොහෝ දුරට කළු වන තුරු බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලා, තව තියුණු කම අවශ්‍ය නම් තවත් කුඩා ගොරකා කැබැල්ලක් තලා දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළඳේම නිවෙන්න දෙන්න; වසා තැබූ මැටි වළඳක බැදුම දින දෙක තුනක් තියෙනවා, දෙවන දවසේ රස වැඩියි.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "கொழுப்புடன் உள்ள பன்றி இறைச்சியை சிறு துண்டுகளாக நறுக்கி, சிறிது உப்பிட்டு அலசி நீர் வடிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறைச்சியை பாத்திரத்தில் இட்டு இடித்த பூண்டு இஞ்சி, கொடுக்காய்ப்புளி, வறுத்த கறித்தூள், நொறுக்கிய மிளகாய், மிளகு, மஞ்சள், பட்டை, ஒரு கறிவேப்பிலைக் கொத்து, ரம்பை, உப்பு, அரை கப் நீர் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி நடுத்தர தீயில், இடையிடையே கிளறி வேகவிடுங்கள்; இறைச்சி தன் கொழுப்பையும் நீரையும் வெளியிடும்.",
+    "minutes": 35
+   },
+   {
+    "text": "மூடாமல், இறைச்சி மென்மையாகி நீர் கிட்டத்தட்ட முழுவதும் வற்றும் வரை தொடர்ந்து சமைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வெளியேறிய கொழுப்பிலேயே துண்டுகளை எல்லாப் பக்கமும் பழுப்பாகும்படி புரட்டி வறுக்கவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "உடைத்த வத்தல் மிளகாய், இரண்டாம் கறிவேப்பிலைக் கொத்து, நறுக்கிய சின்ன வெங்காயம் சேர்க்கவும்; இறைச்சி மெலிந்ததாக இருந்தால் மட்டும் தேங்காய் எண்ணெய் சேர்க்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "வெளிப்புறம் கருத்து ஒட்டும் பதம் வந்து சுருங்கும் வரை, வெங்காய ஓரங்கள் கிட்டத்தட்ட கருக்கும் வரை வறுக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பும் புளிப்பும் பார்த்து, தேவைப்பட்டால் இன்னொரு சிறு கொடுக்காய்ப்புளித் துண்டை அழுத்திச் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்திலேயே ஆறவிடுங்கள்; மூடிய மண் சட்டியில் இந்த வறுவல் இரண்டு மூன்று நாள் இருக்கும், இரண்டாம் நாள் சுவை கூடும்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 60,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "clay pot or heavy pan with lid",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Let the pork cook in its own fat rather than adding oil at the start, which is the whole trick of a badun. Keep the pot uncovered in the last stage so the steam leaves and the pieces dry instead of stewing.",
+  "si": "මුලදීම තෙල් දමනවා වෙනුවට ඌරු මස තමන්ගේ මේදයේම උයන්න දෙන්න; බැදුමක රහස මුළුමනින්ම ඒකයි. අන්තිම අදියරේදී වළඳ වහන්න එපා; එවිට වාෂ්පය පිට වී කැබලි තැම්බෙනවා වෙනුවට වියළෙනවා.",
+  "ta": "தொடக்கத்திலேயே எண்ணெய் சேர்ப்பதற்குப் பதிலாக இறைச்சி தன் கொழுப்பிலேயே வேகட்டும்; வறுவலின் ரகசியமே அதுதான். கடைசிக் கட்டத்தில் பாத்திரத்தை மூடாதீர்கள்; ஆவி வெளியேறி துண்டுகள் வேகாமல் காயும்."
+ },
+ "health_note": {
+  "en": "This is pork cooked in its own fat and then reduced, so it is high in saturated fat and, being a keeping dish, fairly salty as well. Eat it as a small side with plenty of rice and a green, and keep it well covered in a cool place.",
+  "si": "මේක තමන්ගේ මේදයේම උයා හිඳවා ගත් ඌරු මස්; ඒ නිසා සංතෘප්ත මේදය වැඩියි, තියා ගන්න කෑමක් නිසා ලුණුත් තරමක් වැඩියි. බත් සහ කොළ එළවළුවක් සමග කුඩා පසෙකින් කන්න, සිසිල් තැනක හොඳින් වසා තියා ගන්න.",
+  "ta": "இது தன் கொழுப்பிலேயே வெந்து சுருக்கப்பட்ட பன்றி இறைச்சி; எனவே நிறைவுற்ற கொழுப்பு அதிகம், பாதுகாத்து வைக்கும் உணவு என்பதால் உப்பும் சற்று அதிகம். நிறைய சாதத்துடனும் ஒரு கீரையுடனும் சிறு பக்க உணவாகச் சாப்பிடுங்கள், குளிர்ந்த இடத்தில் நன்கு மூடி வையுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "festive",
+  "comfort",
+  "high_sodium"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

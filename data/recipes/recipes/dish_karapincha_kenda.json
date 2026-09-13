@@ -1,0 +1,266 @@
+{
+ "id": "dish_karapincha_kenda",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 275,
+  "description": {
+   "en": "A cup of thin green porridge, drunk from the rim",
+   "si": "කෝප්පයේ දාරයෙන් බොන තුනී කොළ පාට කැඳ කෝප්පයක්",
+   "ta": "கோப்பையின் விளிம்பிலிருந்தே குடிக்கும் நீர்த்த பசுமை கஞ்சி"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "8 good sprigs, leaves only",
+   "preparation": {
+    "en": "leaves stripped from the stalks and washed",
+    "si": "කොටුවලින් ගලවා සෝදාගත් කොළ",
+    "ta": "தண்டிலிருந்து உருவி அலசிய இலைகள்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_rice_kekulu_red",
+   "label": {
+    "en": "red kekulu rice",
+    "si": "රතු කැකුළු සහල්",
+    "ta": "சிவப்பு கெக்குளு அரிசி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "washed twice",
+    "si": "දෙවරක් සෝදාගත්",
+    "ta": "இருமுறை அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "peeled and crushed",
+    "si": "ලෙලි ගසා තලාගත්",
+    "ta": "தோல் உரித்து இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 600,
+   "unit": "ml",
+   "household": "3 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்தது, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup and a little",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Strip the curry leaves off their stalks, wash them and shake off the water; stalks make the kenda bitter.",
+    "minutes": null
+   },
+   {
+    "text": "Grind the leaves with the crushed garlic and a cup of water to a dark green paste, on the stone or in the blender.",
+    "minutes": 10
+   },
+   {
+    "text": "Squeeze the paste through a clean cloth and keep the green juice; put the pulp back with another half cup of water and squeeze it a second time.",
+    "minutes": 5
+   },
+   {
+    "text": "Wash the rice and cook it in the thin coconut milk in a clay pot until every grain has burst and gone soft.",
+    "minutes": 20
+   },
+   {
+    "text": "Mash the rice against the side of the pot with the back of the ladle so the kenda is smooth and not lumpy.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thick coconut milk and the salt and bring it back to just below a boil, stirring the whole time.",
+    "minutes": 3
+   },
+   {
+    "text": "Take the pot off the fire, then stir in the curry leaf juice; if it boils after the juice goes in, the green turns dull brown.",
+    "minutes": null
+   },
+   {
+    "text": "Pour it into cups and drink it warm, before the rice settles to the bottom.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කරපිංචා කොළ කොටුවලින් ගලවා සෝදා වතුර ගසා දමන්න; කොටු නිසා කැඳ තිත්ත වේ.",
+    "minutes": null
+   },
+   {
+    "text": "කොළ, තලාගත් සුදුළූණු සහ වතුර කෝප්පයක් සමඟ ගලේ හෝ බ්ලෙන්ඩරයේ තද කොළ පාට පේස්ට් එකක් වන තුරු අඹරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිරිසිදු රෙද්දකින් මිරිකා කොළ පාට යුෂ වෙන් කරගන්න; ඉතිරි මදයට තව වතුර කෝප්ප භාගයක් දමා දෙවනුවත් මිරිකන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සහල් සෝදාගෙන, මැටි වළඳක තුනී පොල් කිරිවල, හැම ඇටයක් පිපිරී මෘදු වන තුරු තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කැඳ ගැටි නැතිව සිනිඳු වන්නට, පෑන් එකේ පැත්තට කෙන්දෙන් බත් පොඩි කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඝන පොල් කිරි සහ ලුණු දමා, දිගටම කලතමින්, උතුරන්නට ආසන්න තැනට ගෙන එන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වළඳ ලිපෙන් බාගෙන පසුව කරපිංචා යුෂ කලතන්න; යුෂ දැමූ පසු උතුරුවුවොත් කොළ පාට මැකී දුඹුරු වේ.",
+    "minutes": null
+   },
+   {
+    "text": "කෝප්පවලට වත් කර, බත් පහළට බැස යන්නට පෙර උණුසුම්ව බොන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கறிவேப்பிலையை தண்டிலிருந்து உருவி, அலசி, நீரை உதறுங்கள்; தண்டு இருந்தால் கஞ்சி கசக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "இலைகளை இடித்த பூண்டோடும் ஒரு கோப்பை நீரோடும் அம்மியில் அல்லது கிரைண்டரில் அரைத்து அடர் பச்சைப் பேஸ்ட்டாக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "சுத்தமான துணியில் பிழிந்து பச்சைச் சாற்றை எடுத்துக் கொள்ளுங்கள்; சக்கையில் இன்னும் அரை கோப்பை நீர் விட்டு இரண்டாம் முறையும் பிழியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அரிசியை அலசி, மண் சட்டியில் நீர்த்த தேங்காய்ப் பாலில், ஒவ்வொரு அரிசியும் வெடித்து மென்மையாகும் வரை வேகவைக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "கஞ்சி கட்டியில்லாமல் மெதுவாக இருக்க, கரண்டியின் பின்பக்கத்தால் சட்டியின் ஓரத்தில் சாதத்தை மசிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலையும் உப்பையும் சேர்த்து, தொடர்ந்து கலக்கியபடி, கொதிக்கும் நிலைக்குச் சற்று முன் வரை சூடாக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சட்டியை இறக்கிய பிறகே கறிவேப்பிலைச் சாற்றைக் கலக்கவும்; சாறு சேர்த்த பின் கொதித்தால் பச்சை நிறம் போய் பழுப்பாகிவிடும்.",
+    "minutes": null
+   },
+   {
+    "text": "கோப்பைகளில் ஊற்றி, சாதம் அடியில் அமர்வதற்கு முன் சூடாகக் குடியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot",
+  "grinding stone or blender",
+  "straining cloth"
+ ],
+ "tips": {
+  "en": "Pick the leaves from a tree you know, wash them well, and use them the same morning; curry leaves left in a bag overnight lose their smell. If the kenda is too thick by the time it reaches the cup, loosen it with a little warm water rather than boiling it again.",
+  "si": "දන්නා ගසකින් කොළ කඩාගෙන, හොඳින් සෝදා, එදා උදෑසනම පාවිච්චි කරන්න; රෑ පුරා බෑග් එකක තිබූ කරපිංචා සුවඳ නැති වේ. කෝප්පයට එන විට කැඳ ඉතා ඝන නම්, නැවත උතුරුවන්නට වඩා උණුසුම් වතුර ටිකකින් තුනී කරන්න.",
+  "ta": "தெரிந்த மரத்திலிருந்து இலை பறித்து, நன்றாக அலசி, அதே காலையிலேயே பயன்படுத்துங்கள்; பையில் இரவு முழுவதும் இருந்த கறிவேப்பிலை வாசத்தை இழக்கும். கோப்பைக்கு வரும்போது கஞ்சி மிகக் கெட்டியாக இருந்தால், மீண்டும் கொதிக்க வைப்பதற்குப் பதிலாக சிறிது வெதுவெதுப்பான நீர் சேர்த்து நீர்க்கவும்."
+ },
+ "health_note": {
+  "en": "Red rice and curry leaf bring fibre and a little iron, and a warm cup on an empty stomach is easy on an older person who cannot face rice at dawn. The coconut milk is where the fat sits, so use more of the thin squeeze and less of the thick if someone at home is told to watch their cholesterol.",
+  "si": "රතු කැකුළු සහ කරපිංචාවෙන් තන්තු සහ යකඩ ටිකක් ලැබෙනවා, උදෑසනම බත් කන්නට බැරි වැඩිහිටියෙකුට හිස් බඩට උණුසුම් කෝප්පයක් ලෙහෙසියි. තෙල් තිබෙන්නේ පොල් කිරිවල නිසා, ගෙදර කෙනෙකුට කොලෙස්ටරෝල් බලන්නට කියා තිබේ නම් තුනී කිරි වැඩියෙන්, ඝන කිරි අඩුවෙන් දමන්න.",
+  "ta": "சிவப்பு அரிசியும் கறிவேப்பிலையும் நார்ச்சத்தும் சிறிது இரும்பும் தருகின்றன; விடியற்காலையில் சாதம் சாப்பிட முடியாத முதியவருக்கு வெறும் வயிற்றில் ஒரு சூடான கோப்பை எளிதானது. கொழுப்பு இருப்பது தேங்காய்ப் பாலில்தான், எனவே வீட்டில் ஒருவருக்கு கொலஸ்ட்ரால் கவனிக்கச் சொல்லியிருந்தால் நீர்த்த பாலை அதிகமாகவும் கெட்டிப் பாலைக் குறைவாகவும் பயன்படுத்துங்கள்."
+ },
+ "tags": [
+  "budget",
+  "one_pot",
+  "light",
+  "high_fibre",
+  "iron_rich",
+  "traditional_remedy",
+  "elderly_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

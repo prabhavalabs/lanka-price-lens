@@ -1,0 +1,454 @@
+{
+ "id": "dish_devilled_squid",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 170,
+  "description": {
+   "en": "A plate of springy squid rings in a clinging hot sauce",
+   "si": "ඇලෙන සැර සෝස් සමඟ කැඩෙන ගතියෙන් තිබෙන දැල්ලෝ වළලු පිඟානක්",
+   "ta": "ஒட்டும் காரச் சாஸில் நெகிழும் கணவாய் வளையங்கள் ஒரு தட்டு"
+  }
+ },
+ "yield_g": 680,
+ "ingredients": [
+  {
+   "ref": "pantry_cuttlefish",
+   "label": {
+    "en": "squid or cuttlefish (dallo)",
+    "si": "දැල්ලෝ",
+    "ta": "கணவாய்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "3 medium squid",
+   "preparation": {
+    "en": "cleaned, quill and skin removed, cut into finger-wide rings",
+    "si": "පිරිසිදු කර, ඇට සහ හම ඉවත් කර, ඇඟිල්ලක් පළල වළලුවලට කපා",
+    "ta": "சுத்தம் செய்து, தோல் நீக்கி, விரல் அகலத்தில் வளையங்களாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cornflour",
+   "label": {
+    "en": "cornflour",
+    "si": "ඉරිඟු පිටි",
+    "ta": "சோள மாவு"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 50,
+   "unit": "ml",
+   "household": "3 tbsp and a little more",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "කෑලිවලට කපා",
+    "ta": "துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "capsicum",
+    "si": "මාළු මිරිස්",
+    "ta": "குடைமிளகாய்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "2 medium",
+   "preparation": {
+    "en": "cut into squares",
+    "si": "හතරැස් කැබලිවලට කපා",
+    "ta": "சதுரமாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "cut on the slant",
+    "si": "අතකට කපා",
+    "ta": "சாய்வாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 90,
+   "unit": "g",
+   "household": "1 medium",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "කෑලිවලට කපා",
+    "ta": "துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් පේස්ට්",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_tomato_sauce",
+   "label": {
+    "en": "tomato sauce",
+    "si": "තක්කාලි සෝස්",
+    "ta": "தக்காளி சாஸ்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "2 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சாஸ்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Clean the squid, pull out the quill and the skin, and cut the bodies into rings a finger wide, keeping the tentacles whole.",
+    "minutes": null
+   },
+   {
+    "text": "Rub the rings with salt, pepper, turmeric and cornflour and let them rest.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the oil in a wide pan until it is very hot and fry the squid in two batches for a minute and a half only, then lift it out.",
+    "minutes": 5
+   },
+   {
+    "text": "Temper the garlic, ginger and curry leaves in the same oil, then throw in the onion wedges and green chilli.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the capsicum and tomato and keep tossing over a high flame so nothing softens too far.",
+    "minutes": 2
+   },
+   {
+    "text": "Stir in the chilli paste, tomato sauce, soy sauce, sugar and a little water and cook until the sauce clings to the spoon.",
+    "minutes": 3
+   },
+   {
+    "text": "Slide the squid back in, toss for half a minute and take the pan off the fire before it tightens.",
+    "minutes": 1
+   },
+   {
+    "text": "Squeeze the lime over and serve while the rings still have their spring.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "දැල්ලෝ පිරිසිදු කර, ඇතුළේ ඇති තුනී ඇට සහ පිට හම ගලවා, කඳ ඇඟිල්ලක් පළල වළලුවලට කපන්න; අත් කැපීමකින් තොරව තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළලුවලට ලුණු, ගම්මිරිස්, කහ සහ ඉරිඟු පිටි ගා පොඩ්ඩක් තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පළල් පෑන් එකක තෙල් හොඳටම රත් කර, දැල්ලෝ දෙපාරකට බෙදා මිනිත්තු එකහමාරක් පමණක් බැද ඉවතට ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඒ තෙලේම සුදුළූණු, ඉඟුරු සහ කරපිංචා තෙල් දා, ලොකු ලූනු කෑලි සහ අමු මිරිස් දමන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "මාළු මිරිස් සහ තක්කාලි දමා ලිප ගිනි වැඩියෙන් තබා, කිසිවක් වැඩිපුර මෘදු නොවන්න කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "මිරිස් පේස්ට්, තක්කාලි සෝස්, සෝයා සෝස්, සීනි සහ ටිකක් වතුර දමා සෝස් එක හැන්දට ඇලෙන තෙක් පිසින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "දැල්ලෝ නැවත දමා තත්පර තිහක් පෙරළා, තද වීමට කලින් පෑන් එක ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා, වළලුවල කැඩෙන ගතිය තිබෙන අතරේම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கணவாயை சுத்தம் செய்து, உள்ளே உள்ள மெல்லிய எலும்பையும் தோலையும் நீக்கி, உடலை விரல் அகலத்தில் வளையங்களாக வெட்டவும்; கால்களை முழுதாக வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வளையங்களில் உப்பு, மிளகு, மஞ்சள், சோள மாவு தூவி சிறிது நேரம் வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அகலமான வாணலியில் எண்ணெயை நன்கு காய்ச்சி, கணவாயை இரண்டு தவணையாக ஒன்றரை நிமிடம் மட்டும் பொரித்து எடுக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "அதே எண்ணெயில் பூண்டு, இஞ்சி, கறிவேப்பிலை தாளித்து, வெங்காயத் துண்டுகளையும் பச்சை மிளகாயையும் போடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "குடைமிளகாயும் தக்காளியும் சேர்த்து, பெரும் தீயில் எதுவும் அதிகம் மென்மையாகாமல் கிளறவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மிளகாய் விழுது, தக்காளி சாஸ், சோயா சாஸ், சீனி, சிறிது தண்ணீர் விட்டு சாஸ் கரண்டியில் ஒட்டும் வரை சமைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "கணவாயை மீண்டும் போட்டு அரை நிமிடம் புரட்டி, இறுகும் முன் வாணலியை அடுப்பில் இருந்து இறக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "எலுமிச்சை சாறு பிழிந்து, வளையங்கள் நெகிழ்வுடன் இருக்கும் போதே பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 15,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "wide pan or wok",
+  "sharp knife"
+ ],
+ "tips": {
+  "en": "Squid is either cooked fast or cooked long, never in between. Two minutes in a hot pan keeps it tender; if it has already gone tough, add half a cup of water and simmer it for twenty minutes to soften again.",
+  "si": "දැල්ලෝ පිසින්නේ හරි ඉක්මනින්, නැත්නම් හරි හෙමින්; අතරමැදක් නැහැ. රත් වූ පෑන් එකේ මිනිත්තු දෙකක් නම් මෘදුයි. දැනටමත් තද වුණා නම් කෝප්පයක් බාගයක් වතුර දමා මිනිත්තු විස්සක් හෙමින් තම්බා නැවත මෘදු කර ගන්න.",
+  "ta": "கணவாயை மிக விரைவாக அல்லது மிக நீண்ட நேரம் சமைக்க வேண்டும், இடையில் அல்ல. சூடான வாணலியில் இரண்டு நிமிடம் என்றால் மென்மையாக இருக்கும்; இறுகிவிட்டால் அரை கோப்பை தண்ணீர் விட்டு இருபது நிமிடம் வேகவைத்து மீண்டும் மென்மையாக்கலாம்."
+ },
+ "health_note": {
+  "en": "Squid is low in fat and high in protein, but the soy sauce, tomato sauce and chilli paste together make this a salty plate; go easy if anyone at the table is watching blood pressure.",
+  "si": "දැල්ලන්ගේ තෙල් අඩුයි, ප්‍රෝටීන් වැඩියි; නමුත් සෝයා සෝස්, තක්කාලි සෝස් සහ මිරිස් පේස්ට් එකට එකතු වූ විට ලුණු ප්‍රමාණය ඉහළයි. ලේ පීඩනය බලාගෙන සිටින කෙනෙක් ඉන්නවා නම් ප්‍රමාණය අඩු කරන්න.",
+  "ta": "கணவாயில் கொழுப்பு குறைவு, புரதம் அதிகம்; ஆனால் சோயா சாஸ், தக்காளி சாஸ், மிளகாய் விழுது சேர்ந்து உப்பு அதிகமாகிறது. இரத்த அழுத்தம் பார்த்துக் கொள்பவர்கள் இருந்தால் அளவை குறைக்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "comfort",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

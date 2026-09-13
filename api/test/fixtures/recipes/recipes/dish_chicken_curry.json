@@ -1,0 +1,17 @@
+{
+  "id": "dish_chicken_curry",
+  "base_servings": 4,
+  "serving": { "role": "with_rice", "portion_g": 180 },
+  "yield_g": 900,
+  "ingredients": [
+    { "ref": "product_chicken", "label": { "en": "chicken, curry cut" }, "quantity": 600, "unit": "g", "household": "about half a bird" },
+    { "ref": "product_big_onion", "label": { "en": "big onion" }, "quantity": 1, "unit": "piece" },
+    { "ref": "pantry_coconut_milk", "label": { "en": "coconut milk" }, "quantity": 200, "unit": "ml", "household": "1 cup" },
+    { "ref": "product_salt", "label": { "en": "salt" }, "quantity": 6, "unit": "g", "household": "1 tsp", "scaling": "sublinear" },
+    { "ref": null, "label": { "en": "pandan leaf" }, "quantity": 1, "unit": "piece", "scaling": "fixed" }
+  ],
+  "steps": { "en": [{ "text": "Marinate the chicken." }, { "text": "Fry the onion." }, { "text": "Simmer in coconut milk.", "minutes": 30 }] },
+  "times": { "prep_minutes": 15, "cook_minutes": 40 },
+  "tags": ["comfort"],
+  "review_needed": ["si", "ta"]
+}

@@ -1,0 +1,318 @@
+{
+ "id": "dish_kalu_dodol",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 85,
+  "description": {
+   "en": "Two dark glossy diamonds of dodol",
+   "si": "දිලිසෙන කළු දොදොල් කැබලි දෙකක්",
+   "ta": "பளபளக்கும் கருமையான தொதொல் இரண்டு துண்டுகள்"
+  }
+ },
+ "yield_g": 340,
+ "ingredients": [
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut",
+    "si": "පොල්",
+    "ta": "தேங்காய்"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "1 and a half coconuts, scraped",
+   "preparation": {
+    "en": "scraped; squeeze about 350 ml thick milk, then add warm water and squeeze again for 250 ml thin milk",
+    "si": "ගාගෙන මිලි ලීටර් 350ක් පමණ මිටි කිරි මිරිකා, උණු වතුර දමා නැවත මිරිකා දිය කිරි මිලි ලීටර් 250ක් ගන්න",
+    "ta": "துருவி, சுமார் 350 மில்லி கெட்டிப் பால் பிழிந்து, பின் வெந்நீர் சேர்த்து மீண்டும் பிழிந்து 250 மில்லி நீர்ப் பால் எடுக்கவும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "kithul jaggery",
+    "si": "කිතුල් හකුරු",
+    "ta": "கிதுல் வெல்லம்"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "2 blocks",
+   "preparation": {
+    "en": "broken small",
+    "si": "කුඩා කැබලි කරගත්",
+    "ta": "சிறு துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாகு"
+   },
+   "quantity": 50,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 35,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "broken in halves",
+    "si": "දෙකට කඩාගත්",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 small stick",
+   "preparation": {
+    "en": "powdered",
+    "si": "කුඩු කරගත්",
+    "ta": "பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, powdered",
+   "preparation": {
+    "en": "seeds powdered",
+    "si": "ඇට කුඩු කරගත්",
+    "ta": "விதைகளைப் பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 5,
+   "unit": "ml",
+   "household": "1 tsp, for the tray",
+   "preparation": {
+    "en": "to rub the setting tray",
+    "si": "තැටිය ගැල්වීමට",
+    "ta": "தட்டில் தடவ"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the coconut, squeeze out the thick first milk and keep it aside, then add warm water to the scrapings and squeeze again for the thin milk.",
+    "minutes": 20
+   },
+   {
+    "text": "Melt the jaggery in the thin milk with the treacle over a low fire and strain it into a heavy pan or clay pot.",
+    "minutes": 15
+   },
+   {
+    "text": "Mix the rice flour smoothly into the thick milk without lumps and stir it into the pan with the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Cook over a low fire, stirring the whole time in one direction, until the mixture thickens and turns the colour of wet earth.",
+    "minutes": 60
+   },
+   {
+    "text": "Keep stirring as it goes from brown to almost black and begins to pull away from the sides of the pan.",
+    "minutes": 120
+   },
+   {
+    "text": "Stir in the cinnamon, cardamom and cashew and carry on until oil beads on the surface and a spoonful holds its shape.",
+    "minutes": 45
+   },
+   {
+    "text": "Pour it into a tray rubbed with coconut oil and smooth the top with the back of a wet spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Leave it uncovered to set firm, then cut into diamonds with an oiled knife.",
+    "minutes": 120
+   }
+  ],
+  "si": [
+   {
+    "text": "පොල් ගා ගෙන මිටි කිරි මිරිකා වෙනම තියා, ගාගත් පොල් වලට උණු වතුර දමා නැවත මිරිකා දිය කිරි ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "දිය කිරි වලට හකුරු සහ කිතුල් පැණි දමා අඩු ගින්නේ දිය කර, බර පෑනකට හෝ මැටි වළඳකට පෙරා ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "මිටි කිරි වල සහල් පිටි ගුලි නොවන සේ දිය කර, ලුණු සමඟ පෑනට එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අඩු ගින්නේ, එක් දිශාවකට නිතර කලවම් කරමින්, මිශ්‍රණය ගනකම් වී තෙත් පස් පාට වන තුරු තම්බන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "දුඹුරු පාටින් කළු පාට වන තුරු, පෑනේ පැති වලින් වෙන් වීමට පටන් ගන්නා තුරු කලවම් කිරීම නවත්වන්න එපා.",
+    "minutes": 120
+   },
+   {
+    "text": "කුරුඳු, එනසාල් සහ කජු දමා, මතු පිට තෙල් බිඳිති එන තුරු සහ හැන්දකින් ගත් කොටස හැඩය රඳවන තුරු තවත් කලවම් කරන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "පොල් තෙල් ගැල්වූ තැටියකට වත් කර, තෙත් හැන්දක පිටුපසින් උඩ පිට සමතලා කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නොවසා තබා හොඳින් තද වූ පසු, තෙල් ගැල්වූ පිහියකින් කැති හැඩයට කපන්න.",
+    "minutes": 120
+   }
+  ],
+  "ta": [
+   {
+    "text": "தேங்காயைத் துருவி, கெட்டியான முதல் பாலைப் பிழிந்து தனியே வைத்து, துருவலில் வெந்நீர் சேர்த்து மீண்டும் பிழிந்து நீர்ப் பால் எடுக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "நீர்ப் பாலில் வெல்லத்தையும் கிதுல் பாகையும் சேர்த்துக் குறைந்த தீயில் கரைத்து, கனமான சட்டியிலோ மண் சட்டியிலோ வடிகட்டவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "கெட்டிப் பாலில் அரிசி மாவைக் கட்டி இல்லாமல் கரைத்து, உப்புடன் சட்டியில் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குறைந்த தீயில், ஒரே திசையில் தொடர்ந்து கிளறி, கலவை கெட்டியாகி ஈர மண் நிறத்திற்கு வரும் வரை வேகவிடவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "பழுப்பு நிறத்திலிருந்து கிட்டத்தட்ட கருப்பாகி, சட்டியின் ஓரங்களை விட்டு விலகத் தொடங்கும் வரை கிளறுவதை நிறுத்த வேண்டாம்.",
+    "minutes": 120
+   },
+   {
+    "text": "இலவங்கப்பட்டை, ஏலக்காய், முந்திரி சேர்த்து, மேற்பரப்பில் எண்ணெய் துளிகள் தெரியும் வரை, கரண்டியில் எடுத்தால் உருவம் தங்கும் வரை கிளறவும்.",
+    "minutes": 45
+   },
+   {
+    "text": "தேங்காய் எண்ணெய் தடவிய தட்டில் ஊற்றி, ஈரக் கரண்டியின் பின்புறத்தால் மேற்பரப்பைச் சமன் செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடாமல் வைத்து நன்கு இறுகிய பின், எண்ணெய் தடவிய கத்தியால் வைர வடிவமாக வெட்டவும்.",
+    "minutes": 120
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 240,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "heavy pan or clay pot",
+  "long wooden spoon",
+  "setting tray"
+ ],
+ "tips": {
+  "en": "Two people and one long wooden spoon make this far easier, because the stirring cannot stop once the mixture thickens. The dodol is done when the oil separates and sits shining on top.",
+  "si": "මිශ්‍රණය ගනකම් වූ පසු කලවම් කිරීම නවත්වන්න බැරි නිසා, දෙදෙනෙකු සහ දිගු ලී හැන්දක් ඇත්නම් වැඩ ගොඩක් පහසුයි. තෙල් වෙන් වී මතු පිට දිලිසෙන විට දොදොල් හරි.",
+  "ta": "கலவை கெட்டியான பின் கிளறுவதை நிறுத்த முடியாது; எனவே இருவரும் ஒரு நீளமான மரக் கரண்டியும் இருந்தால் வேலை மிக எளிது. எண்ணெய் பிரிந்து மேலே பளபளக்கும்போது தொதொல் தயார்."
+ },
+ "health_note": {
+  "en": "Kalu dodol is coconut fat and jaggery cooked down to a very concentrated block, so a small piece carries a lot of energy. The jaggery gives some iron, but this is a festival sweet, not an everyday snack.",
+  "si": "කළු දොදොල් යනු පොල් මේදය හා හකුරු ඉතා ඝන ලෙස තම්බා ගත් දෙයක් නිසා කුඩා කැබැල්ලක වුවද ශක්තිය ඉහළයි. හකුරු වලින් යකඩ ටිකක් ලැබේ; එහෙත් මෙය දිනපතා නොව උත්සව රසකැවිලියකි.",
+  "ta": "களு தொதொல், தேங்காய்க் கொழுப்பும் வெல்லமும் மிகக் கெட்டியாகச் சுருக்கியது; எனவே சிறு துண்டிலும் சக்தி அதிகம். வெல்லம் சிறிது இரும்புச்சத்தைத் தருகிறது, ஆனால் இது தினசரி தின்பண்டம் அல்ல, விழா இனிப்பு."
+ },
+ "tags": [
+  "festive",
+  "high_sugar",
+  "comfort",
+  "filling",
+  "iron_rich"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

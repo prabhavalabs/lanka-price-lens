@@ -1,0 +1,197 @@
+{
+ "id": "dish_boiled_manioc",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 220,
+  "description": {
+   "en": "A few hot floury pieces with scraped coconut on the side",
+   "si": "උණුසුම් පිටිගැසුණු කැබලි කීපයක්, පැත්තෙන් ගාගත් පොල් ටිකක්",
+   "ta": "சூடான பொலபொலப்பான துண்டுகள் சிலவும், பக்கத்தில் துருவிய தேங்காயும்"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_manioc",
+   "label": {
+    "en": "manioc (cassava) root",
+    "si": "මඤ්ඤොක්කා",
+    "ta": "மரவள்ளிக்கிழங்கு"
+   },
+   "quantity": 1000,
+   "unit": "g",
+   "household": "2 medium roots",
+   "preparation": {
+    "en": "peeled thickly, centre fibre removed, cut into finger lengths",
+    "si": "ඝන ලෙස ලෙලි ගසා, මැද නාරටිය ඉවත් කර, ඇඟිල්ලක් දිග කපා ගත්",
+    "ta": "தடிமனாக உரித்து, நடு நாரை நீக்கி, விரல் நீளத்தில் நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": {
+    "en": "for the boiling water and a pinch for the coconut",
+    "si": "තෙම්බෙන වතුරට සහ පොල් සඳහා ස්වල්පයක්",
+    "ta": "வேகவைக்கும் தண்ணீருக்கும், தேங்காய்க்கு ஒரு சிறிதும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "half a coconut, scraped",
+   "preparation": {
+    "en": "freshly scraped, to eat alongside",
+    "si": "අලුතින් ගාගත්, සමඟ කෑමට",
+    "ta": "புதிதாகத் துருவியது, உடன் சாப்பிட"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Split the skin of each root with a knife tip, peel it away thickly in strips, and cut the flesh into finger-length pieces.",
+    "minutes": 10
+   },
+   {
+    "text": "Pull out the hard fibre running down the centre of every piece and rinse them through two changes of water.",
+    "minutes": null
+   },
+   {
+    "text": "Put the pieces in a wide pot with water well above them, add the salt, and bring to a rolling boil with the lid off.",
+    "minutes": 10
+   },
+   {
+    "text": "Boil until a stick pushes through without resistance and the pieces begin to split open.",
+    "minutes": 22
+   },
+   {
+    "text": "Pour away all the cooking water at once and leave the pot on the dying fire for a minute so the steam escapes and the flesh turns floury.",
+    "minutes": 2
+   },
+   {
+    "text": "Break the hot pieces open with your fingers onto a plate.",
+    "minutes": null
+   },
+   {
+    "text": "Scrape coconut over them with a pinch of salt, or serve with pol sambol or lunu miris.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිහි තුඩෙන් පොත්ත ඉරා, ඝන ලෙස ලෙලි ගසා ඉවත් කර, මඤ්ඤොක්කා ඇඟිල්ලක් දිග කැබලිවලට කපා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එක් එක් කැබැල්ලේ මැදින් යන තද නාරටිය ඇද ඉවත් කර, දෙවතාවක් වතුර මාරු කරමින් සෝදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් හැළියකට කැබලි දමා, ඒවාට හොඳින් ඉහළින් වතුර වත් කර, ලුණු එකතු කර, මුවහ නොකර උතුරන්න තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කූරක් පහසුවෙන් ඇදෙන තෙක්, කැබලි ඉරිතලා යන තෙක් තෙම්බෙන්න දෙන්න.",
+    "minutes": 22
+   },
+   {
+    "text": "වතුර සම්පූර්ණයෙන් බේරා ඉවත් කර, හැළිය මිනිත්තුවක් ලිප මතම තබා තෙතමනය යවා ගන්න; එවිට මඤ්ඤොක්කා පිටිගැසෙයි.",
+    "minutes": 2
+   },
+   {
+    "text": "උණුසුම්ව ම අතින් කැබලි කඩා පිඟානට දමා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලුණු ස්වල්පයක් සමඟ ගාගත් පොල් ඉහින්න, නැතිනම් පොල් සම්බෝලයක් හෝ ලූනු මිරිස් සමඟ දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கத்தி நுனியால் தோலைக் கீறி, தடிமனாக உரித்து, கிழங்கை விரல் நீளத் துண்டுகளாக நறுக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒவ்வொரு துண்டின் நடுவே செல்லும் கடினமான நாரை எடுத்துவிட்டு, இரு முறை தண்ணீர் மாற்றி அலசவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான பாத்திரத்தில் துண்டுகளை இட்டு, நன்கு மூழ்கும் அளவு தண்ணீரும் உப்பும் சேர்த்து, மூடாமல் கொதிக்கவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "குச்சி எதிர்ப்பின்றி உள்ளே இறங்கும் வரை, துண்டுகள் வெடித்துத் திறக்கத் தொடங்கும் வரை வேகவிடவும்.",
+    "minutes": 22
+   },
+   {
+    "text": "தண்ணீரை முழுவதும் வடித்துவிட்டு, ஒரு நிமிடம் அடுப்பில் வைத்து ஆவியைப் போக்கவும்; கிழங்கு பொலபொலவென மாறும்.",
+    "minutes": 2
+   },
+   {
+    "text": "சூடாக இருக்கும்போதே கையால் துண்டுகளை உடைத்துத் தட்டில் போடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிது உப்புடன் துருவிய தேங்காயைத் தூவவும், அல்லது பொல் சம்பல் அல்லது லுணு மிரிசுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pot with lid",
+  "coconut scraper"
+ ],
+ "tips": {
+  "en": "Buy manioc that snaps white and clean, and cook it the same day; a root that has sat for days turns grey and bitter at the ends. Always boil it uncovered in plenty of water and throw the water away.",
+  "si": "කැඩූ විට සුදු පැහැයෙන් පිරිසිදුව පෙනෙන මඤ්ඤොක්කා ගෙන, එදිනම උයන්න; දින දෙක තුනක් තිබූ අල දෙකෙළවර අළු පැහැ වී තිත්ත වේ. සෑම විටම මුවහ නොකර, වතුර බහුලව යොදා තෙම්බා, ඒ වතුර ඉවත් කරන්න.",
+  "ta": "உடைக்கும்போது வெண்மையாகத் தெரியும் கிழங்கை வாங்கி, அன்றே சமைக்கவும்; நாட்கள் தங்கிய கிழங்கு நுனிகளில் சாம்பல் நிறமாகிக் கசக்கும். எப்போதும் மூடாமல், நிறைய தண்ணீரில் வேகவைத்து அந்தத் தண்ணீரை ஊற்றிவிடவும்."
+ },
+ "health_note": {
+  "en": "A filling, naturally gluten-free starch that gives energy but very little protein, so eat it with pol sambol, dried fish or an egg. Cassava must be peeled properly and boiled right through in plenty of water that is then thrown away, and anyone watching blood sugar should keep to a small plateful.",
+  "si": "මෙය බඩ පිරෙන, ග්ලූටන් රහිත පිෂ්ටයකි; ශක්තිය දෙන නමුත් ප්‍රෝටීන් ඉතා අල්පය, එබැවින් පොල් සම්බෝල, කරවල හෝ බිත්තරයක් සමඟ ගන්න. මඤ්ඤොක්කා හොඳින් ලෙලි ගසා, වතුර බහුලව යොදා හොඳින් තෙම්බා ඒ වතුර ඉවත් කළ යුතුය; රුධිර සීනි බලා ගන්නා අය කුඩා පිඟානකට සීමා වන්න.",
+  "ta": "வயிறு நிரம்பும், பசையம் இல்லாத மாவுச்சத்து உணவு; சக்தி தரும், ஆனால் புரதம் மிகக் குறைவு, எனவே பொல் சம்பல், கருவாடு அல்லது ஒரு முட்டையுடன் சாப்பிடவும். மரவள்ளியை நன்கு உரித்து, நிறைய தண்ணீரில் முழுமையாக வேகவைத்து அந்தத் தண்ணீரை ஊற்றிவிட வேண்டும்; இரத்த சர்க்கரையைக் கவனிப்பவர்கள் சிறிய அளவே எடுக்கவும்."
+ },
+ "tags": [
+  "budget",
+  "filling",
+  "one_pot",
+  "comfort",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,268 @@
+{
+ "id": "dish_pol_roti",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 200,
+  "description": {
+   "en": "Two thick coconut roti, hot off the griddle",
+   "si": "තැටියෙන් ගත් උණුසුම් ගොරෝසු පොල් රොටී දෙකක්",
+   "ta": "கல்லில் இருந்து எடுத்த சூடான இரண்டு தடித்த தேங்காய் ரொட்டி"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "සූරාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "half a coconut, grated",
+   "preparation": {
+    "en": "freshly grated",
+    "si": "අද සූරාගත්",
+    "ta": "புதிதாக துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "4 tsp, for the griddle",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "quarter cup",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Tip the flour, grated coconut, chopped chilli, onion and salt into a wide basin and rub them together with your fingers.",
+    "minutes": null
+   },
+   {
+    "text": "Add water a little at a time and bring it together into a stiff dough, firmer than a bread dough.",
+    "minutes": 8
+   },
+   {
+    "text": "Knead it just until it holds; too much kneading squeezes the oil out of the coconut and makes the roti tough.",
+    "minutes": null
+   },
+   {
+    "text": "Rest the dough under a damp cloth while the griddle heats.",
+    "minutes": 10
+   },
+   {
+    "text": "Divide it into eight balls and pat each one out on an oiled board or between your palms to the thickness of a finger.",
+    "minutes": null
+   },
+   {
+    "text": "Lay the roti on a dry hot griddle and cook it without oil until brown patches form underneath.",
+    "minutes": 4
+   },
+   {
+    "text": "Turn it, brush a few drops of oil around the edge and press the middle with a cloth so it cooks right through.",
+    "minutes": 3
+   },
+   {
+    "text": "Stack the roti in a covered dish and serve them hot with lunu miris or katta sambol.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිටි, සූරාගත් පොල්, කපාගත් මිරිස්, ලූනු සහ ලුණු පළල් බඳුනකට දමා ඇඟිලිවලින් හොඳින් අතගාන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ටිකෙන් ටික වතුර දමා, පාන් ගුලියකට වඩා තද ගුලියක් සාදාගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "එකට රැඳෙන තරමට පමණක් අනන්න; වැඩිපුර අනන විට පොල් තෙල් මිදී රොටිය තදවේ.",
+    "minutes": null
+   },
+   {
+    "text": "තැටිය රත් වන අතරතුර ගුලිය තෙත් රෙද්දක් යට තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බෝල අටකට බෙදා, තෙල් තැවරූ ලෑල්ලක හෝ අත්ල අතර තබා ඇඟිල්ලක ඝනකමට තට්ටු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වියළි රත් තැටියේ රොටිය තබා, තෙල් නොදමා යටින් දුඹුරු ලප එන තුරු පුළුස්සන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "හරවා, දාරය වටේට තෙල් බිංදු කිහිපයක් තවරා, මැද රෙද්දකින් තෙරපමින් හරියටම පිළිස්සෙන්නට හරින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රොටී වසන ලද භාජනයක එකක් මත එකක් තබා, ලුණු මිරිස් හෝ කට්ට සම්බෝල් සමඟ උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாவு, துருவிய தேங்காய், நறுக்கிய மிளகாய், வெங்காயம், உப்பை ஒரு அகலமான பாத்திரத்தில் இட்டு விரல்களால் நன்கு கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கொஞ்சம் கொஞ்சமாக தண்ணீர் சேர்த்து, பாண் மாவைவிட இறுக்கமான மாவாகப் பிசையவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "ஒட்டிக்கொள்ளும் அளவுக்கு மட்டும் பிசையவும்; அதிகமாகப் பிசைந்தால் தேங்காயின் எண்ணெய் வெளியேறி ரொட்டி இறுகிவிடும்.",
+    "minutes": null
+   },
+   {
+    "text": "கல் சூடாகும் நேரத்தில் மாவை ஈரமான துணிக்கு அடியில் வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "எட்டு உருண்டைகளாகப் பிரித்து, எண்ணெய் தடவிய பலகையில் அல்லது உள்ளங்கைகளுக்கு இடையே ஒரு விரல் கனத்திற்குத் தட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வறட்சியான சூடான கல்லில் ரொட்டியை வைத்து, எண்ணெய் இல்லாமல் அடிப்பகுதியில் பழுப்பு புள்ளிகள் வரும்வரை சுடவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "திருப்பி, விளிம்பைச் சுற்றி சில துளிகள் எண்ணெய் தடவி, நடுவை துணியால் அழுத்தி முழுவதும் வேகும்படி சுடவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "ரொட்டிகளை மூடிய பாத்திரத்தில் அடுக்கி, லுணு மிரிஸ் அல்லது கட்ட சம்பலுடன் சூடாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 20,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "flat griddle",
+  "wide mixing basin"
+ ],
+ "tips": {
+  "en": "Heavy on the coconut and light on the water is the village way; a handful of rice flour in the mix gives the crisp edge some people like.",
+  "si": "පොල් වැඩියෙන්, වතුර අඩුවෙන් දැමීම තමයි ගමේ ක්‍රමය; මිශ්‍රණයට සහල් පිටි අතලොස්සක් දැමුවොත් සමහරු කැමති කරමුරු දාරයක් ලැබෙනවා.",
+  "ta": "தேங்காய் அதிகமாகவும் தண்ணீர் குறைவாகவும் சேர்ப்பது கிராமத்து முறை; கலவையில் ஒரு கைப்பிடி அரிசி மாவு சேர்த்தால் சிலர் விரும்பும் மொறுமொறுப்பான விளிம்பு கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "The scraped coconut brings fibre and makes one roti satisfying, but it is also where the fat is, so two roti with a sambol is a sensible meal rather than four.",
+  "si": "සූරාගත් පොල් වලින් තන්තු ලැබෙන අතර එක රොටියක්ම තෘප්තිමත් කරනවා, නමුත් තෙල් ඇත්තේද එහිමයි, ඒ නිසා හතරක් වෙනුවට සම්බෝලයක් සමඟ රොටී දෙකක් සාධාරණ කෑමක්.",
+  "ta": "துருவிய தேங்காய் நார்ச்சத்து தந்து ஒரு ரொட்டியே வயிறு நிறைக்கும், ஆனால் கொழுப்பும் அதிலேயே உள்ளது, எனவே நான்கு அல்லாமல் சம்பலுடன் இரண்டு ரொட்டி பொருத்தமான உணவு."
+ },
+ "tags": [
+  "filling",
+  "budget",
+  "high_fibre",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

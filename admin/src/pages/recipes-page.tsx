@@ -1,4 +1,4 @@
-import { RiArrowLeftSLine, RiArrowRightSLine, RiBookOpenLine, RiExternalLinkLine, RiFireLine, RiLeafLine, RiPriceTag3Line, RiTimeLine } from "@remixicon/react";
+import { RiArrowLeftSLine, RiArrowRightSLine, RiBookOpenLine, RiExternalLinkLine, RiFireLine, RiLeafLine, RiPriceTag3Line, RiRestaurantLine, RiTimeLine } from "@remixicon/react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -93,6 +93,12 @@ export function RecipesPage() {
           icon={<RiPriceTag3Line />}
           label="Dishes fully priceable"
           value={overview.data?.coverage ? String(overview.data.coverage.dishes_fully_priced) : "—"}
+        />
+        <StatTile
+          hint={overview.data ? `${overview.data.recipes.with_si} with Sinhala, ${overview.data.recipes.with_ta} with Tamil · ${overview.data.recipes.review_needed} flagged for review · ${overview.data.recipes.ingredients} ingredients in the registry` : "Loading"}
+          icon={<RiRestaurantLine />}
+          label="Full recipes"
+          value={overview.data ? `${overview.data.recipes.total} of ${overview.data.dishes}` : "—"}
         />
         <StatTile hint="Named in the catalogue but not yet in the price vocabulary; the pantry mapping backlog" icon={<RiLeafLine />} label="Unpriced ingredients" value={overview.data ? String(overview.data.unpriced_ingredients.length) : "—"} />
         <StatTile hint={overview.data ? `${overview.data.references.channels} channels · ${overview.data.references.blogs} blogs · ${overview.data.references.institutional} institutional` : "Loading"} icon={<RiExternalLinkLine />} label="Reference sources" value={overview.data ? String(overview.data.references.channels + overview.data.references.blogs + overview.data.references.institutional) : "—"} />

@@ -1,0 +1,482 @@
+{
+ "id": "dish_beef_with_potatoes",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 220,
+  "description": {
+   "en": "Two pieces of beef, a potato quarter and gravy over rice",
+   "si": "බත් මතට හරක් මස් කැබලි දෙකක්, අල කෑල්ලක් සහ හොදි",
+   "ta": "சாதத்தின் மேல் இரு இறைச்சித் துண்டுகள், ஒரு உருளைக்கிழங்கு துண்டு, கிரேவி"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef, stewing cut",
+    "si": "හරක් මස්",
+    "ta": "மாட்டிறைச்சி"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "about 450 g",
+   "preparation": {
+    "en": "cut into 3 cm cubes, washed",
+    "si": "සෙන්ටිමීටර තුනක කැබලිවලට කපා සෝදා ගත්",
+    "ta": "மூன்று சென்டிமீட்டர் துண்டுகளாக நறுக்கி அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අල",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "4 medium potatoes",
+   "preparation": {
+    "en": "peeled and quartered, kept in water",
+    "si": "පොතු ඉවත් කර හතරට කපා වතුරේ තබා ගත්",
+    "ta": "தோல் நீக்கி நான்காக நறுக்கி நீரில் வைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large tomato",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறித்தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "2 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed, ground",
+    "si": "කොත්තමල්ලි කුඩු",
+    "ta": "கொத்தமல்லித் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin, ground",
+    "si": "සූදුරු කුඩු",
+    "ta": "சீரகத் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm quill",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 pods",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 cloves",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "one and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන වර මිරිකා ගත් තුනී කිරි",
+    "ta": "இரண்டாம் பால், தளர்ந்த பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකා ගත් ගන කිරි",
+    "ta": "முதல் பால், கெட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the beef and drain it; peel the potatoes, cut each into four and keep them in water so they do not darken.",
+    "minutes": null
+   },
+   {
+    "text": "Rub the beef with the turmeric, curry powder, chilli powder, coriander, cumin, garlic, ginger and salt.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the beef into a pot with the cinnamon, cardamom, cloves, curry leaves and the thin coconut milk, bring to a boil, then cover and simmer low until the meat is tender.",
+    "minutes": 40
+   },
+   {
+    "text": "Heat the coconut oil in a small pan, fry the sliced big onion until soft, add the tomato and cook until it melts, then tip the lot into the pot.",
+    "minutes": 5
+   },
+   {
+    "text": "Slip in the potato quarters, add a little hot water if the pot looks tight, cover and cook until a fork goes through them.",
+    "minutes": 12
+   },
+   {
+    "text": "Pour in the thick coconut milk and warm it through on a low fire without letting it come to a rolling boil.",
+    "minutes": 4
+   },
+   {
+    "text": "Press one or two potato pieces against the side of the pot and stir, so the starch thickens the gravy.",
+    "minutes": null
+   },
+   {
+    "text": "Check the salt and simmer uncovered for a few minutes if the gravy is still thin.",
+    "minutes": 3
+   },
+   {
+    "text": "Serve hot over rice, or with gothamba roti for the children to dip.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "හරක් මස් සෝදා වතුර බේරන්න. අල පොතු ඉවත් කර හතරට කපා, කළු වෙන්න නොදී වතුරේ තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මසට කහ, තුනපහ, මිරිස් කුඩු, කොත්තමල්ලි, සූදුරු, සුදුළූණු, ඉඟුරු සහ ලුණු අතුල්ලන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මස් වළඳකට දමා කුරුඳු, එනසාල්, කරාබුනැටි, කරපිංචා සහ තුනී පොල් කිරි එකතු කර උතුරවා, වසා ගිනි අඩුවෙන් මස් මෘදු වන තුරු උයන්න.",
+    "minutes": 40
+   },
+   {
+    "text": "කුඩා පෑන් එකක පොල් තෙල් රත් කර ලොකු ළූණු මෘදු වන තුරු බැදගෙන, තක්කාලි දමා දිය වන තුරු උයා, ඒ සියල්ල වළඳට දමන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අල කැබලි දමා, වළඳ හිඳී ඇත්නම් රත් වතුර ටිකක් එකතු කර, වසා අල ගැටයකින් විද යන තුරු උයන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගන පොල් කිරි වත් කර ගිනි අඩුවෙන්, තදින් උතුරන්නට නොදී රස්නය දෙන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "අල කැබලි එකක් දෙකක් වළඳේ පැත්තට තලා කලවම් කරන්න; අලයේ පිෂ්ටය හොදිය තද කරනවා.",
+    "minutes": null
+   },
+   {
+    "text": "ලුණු බලා, හොදි තවම තුනී නම් වැහුමක් නොදා මිනිත්තු කිහිපයක් හිඳෙන්න දෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බත් සමග උණුසුමින් පිළිගන්වන්න, නැත්නම් ළමයින්ට තවරා ගන්න ගොදම්බ රොටී සමග දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இறைச்சியை அலசி நீர் வடிக்கவும். உருளைக்கிழங்கைத் தோல் நீக்கி நான்காக நறுக்கி, கறுக்காமல் இருக்க நீரில் வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறைச்சியில் மஞ்சள், கறித்தூள், மிளகாய்த் தூள், கொத்தமல்லி, சீரகம், பூண்டு, இஞ்சி, உப்பு சேர்த்துத் தேய்க்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "இறைச்சியை பாத்திரத்தில் இட்டு பட்டை, ஏலக்காய், கிராம்பு, கறிவேப்பிலை, இரண்டாம் தேங்காய்ப் பால் சேர்த்துக் கொதிக்கவிட்டு, மூடி குறைந்த தீயில் இறைச்சி மெதுவாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 40
+   },
+   {
+    "text": "சிறு வாணலியில் எண்ணெயைக் காயவிட்டு பெரிய வெங்காயத்தை மென்மையாகும் வரை வதக்கி, தக்காளி சேர்த்துக் கரையும் வரை வதக்கி, அனைத்தையும் பாத்திரத்தில் சேர்க்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "உருளைக்கிழங்கு துண்டுகளைச் சேர்த்து, நீர் குறைவாக இருந்தால் சுடுநீர் சிறிது ஊற்றி, மூடி முள்ளால் குத்தினால் இறங்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலை ஊற்றி குறைந்த தீயில், பொங்கவிடாமல் சூடாக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "ஒன்றிரண்டு உருளைக்கிழங்கு துண்டுகளை பாத்திர ஓரத்தில் அழுத்தி மசித்துக் கலக்கவும்; மாவுச்சத்து கிரேவியை இறுக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "உப்பைச் சரிபார்த்து, கிரேவி இன்னும் தளர்வாக இருந்தால் மூடாமல் சில நிமிடம் சுருக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "சாதத்துடன் சூடாகப் பரிமாறுங்கள், அல்லது பிள்ளைகள் தொட்டுச் சாப்பிட கொத்தம்பு ரொட்டியுடன் கொடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 60,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy pot with lid",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Put the potato in only after the beef is soft, or it will break up into mush while the meat is still tough. Old potatoes thicken the gravy better than new ones.",
+  "si": "අල දමන්නේ මස් මෘදු වුණාට පස්සේ පමණයි; නැත්නම් මස් තවම හැඩි වෙලා තියෙද්දී අල දිය වෙලා යනවා. අලුත් අලවලට වඩා පරණ අල හොදිය හොඳින් තද කරනවා.",
+  "ta": "இறைச்சி மெதுவான பின்பே உருளைக்கிழங்கைச் சேர்க்கவும்; இல்லையெனில் இறைச்சி கடினமாக இருக்கும்போதே கிழங்கு கரைந்துவிடும். பழைய கிழங்கு புதியதை விட கிரேவியை நன்கு இறுக்கும்."
+ },
+ "health_note": {
+  "en": "Stretching a small piece of beef with potato keeps the cost and the fat per plate down while still giving iron and protein. The potato adds starch, so take a little less rice than usual with it.",
+  "si": "කුඩා හරක් මස් කැබැල්ලක් අල සමග දිගු කර ගැනීමෙන් පිඟානකට එන මිලත් මේදයත් අඩු වෙනවා, යකඩ සහ ප්‍රෝටීන් තවමත් ලැබෙනවා. අල පිෂ්ටය එකතු කරන නිසා සාමාන්‍යයට වඩා බත් ටිකක් අඩුවෙන් ගන්න.",
+  "ta": "சிறிய இறைச்சித் துண்டை உருளைக்கிழங்குடன் நீட்டுவதால் ஒரு தட்டுக்கு வரும் செலவும் கொழுப்பும் குறையும், இரும்பும் புரதமும் கிடைக்கும். கிழங்கு மாவுச்சத்து சேர்ப்பதால் வழக்கத்தை விட சாதத்தைக் குறைக்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "budget",
+  "filling",
+  "one_pot",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

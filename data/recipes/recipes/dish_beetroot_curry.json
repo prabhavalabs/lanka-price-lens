@@ -1,0 +1,299 @@
+{
+ "id": "dish_beetroot_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "A deep magenta spoonful of beetroot in coconut gravy beside rice",
+   "si": "බතට එක්ක තද රෝස පාට පොල් කිරි හොදියේ බීට්රූට් හැන්දක්",
+   "ta": "சாதத்துடன் அடர் சிவப்பு தேங்காய்ப்பால் பீட்ரூட் கறி ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_beetroot",
+   "label": {
+    "en": "beetroot",
+    "si": "බීට්රූට්",
+    "ta": "பீட்ரூட்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 medium beetroots",
+   "preparation": {
+    "en": "peeled and cut into matchsticks",
+    "si": "ලෙලි ගසා ගිනිකූරු ආකාරයට කපාගත්",
+    "ta": "தோல் சீவி நீளமாக சிறு குச்சிகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small handful, sliced",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon stick",
+    "si": "කුරුඳු කෑල්ලක්",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 3 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the beetroot and cut it into matchsticks about as thick as a pencil lead; keep them even so they cook together.",
+    "minutes": 12
+   },
+   {
+    "text": "Put the beetroot in a pot with the onion, green chillies, curry leaves, cinnamon, turmeric, curry powder and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and bring it to a boil, then lower the flame and cover the pot.",
+    "minutes": 5
+   },
+   {
+    "text": "Simmer until the beetroot is tender to the bite and the gravy has turned deep magenta.",
+    "minutes": 14
+   },
+   {
+    "text": "Pour in the thick coconut milk and stir gently, keeping the flame low so the milk does not split.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt, lift out the cinnamon if you like, and take the pot off the fire.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "බීට්රූට් ලෙලි ගසා, පැන්සල් මිනකට ගණකමට ගිනිකූරු ආකාරයට කපන්න; එක සමානව තැම්බෙන්න කෑලි එක ප්‍රමාණයේ තබා ගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "කපාගත් බීට්රූට් මුට්ටියකට දමා, ලූනු, අමු මිරිස්, කරපිංචා, කුරුඳු, කහ, තුනපහ සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර උතුරන්න තබා, පසුව ගින්න අඩු කර වහන් දමන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බීට්රූට් හපන්න පහසු මට්ටමට මුදු වී, හොදි තද රෝස පාට වන තුරු මද ගින්නේ තම්බන්න.",
+    "minutes": 14
+   },
+   {
+    "text": "මුල් කිරි වත් කර සෙමින් කලවම් කරන්න; කිරි කැඩෙන්නේ නැති වෙන්න ගින්න අඩුවෙන් තබා ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රස බලා, කැමති නම් කුරුඳු කෑල්ල ඉවත් කර, මුට්ටිය ගින්නෙන් අයින් කරන්න.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "பீட்ரூட்டைத் தோல் சீவி, பென்சில் முனை தடிமனுக்கு நீளமான குச்சிகளாக நறுக்குங்கள்; ஒரே அளவில் இருந்தால் சரியாக வேகும்.",
+    "minutes": 12
+   },
+   {
+    "text": "நறுக்கிய பீட்ரூட்டை பாத்திரத்தில் போட்டு, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, பட்டை, மஞ்சள், கறி மசாலா, உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பால் விட்டு கொதிக்க வையுங்கள், பிறகு தீயைக் குறைத்து மூடி வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "பீட்ரூட் மென்மையாகி, குழம்பு அடர் சிவப்பாக மாறும் வரை சிறு தீயில் வேகவிடுங்கள்.",
+    "minutes": 14
+   },
+   {
+    "text": "முதல் பாலை விட்டு மெதுவாகக் கிளறுங்கள்; பால் திரியாமல் இருக்க தீயைக் குறைவாக வையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பு பார்த்து, விருப்பமானால் பட்டையை எடுத்துவிட்டு, அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot with a lid",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Cut the beetroot thin: thick pieces need twice the time and the gravy goes pale while it waits. A squeeze of lime at the end lifts the sweetness, and the colour on your hands washes off with a wet lime skin.",
+  "si": "බීට්රූට් තුනීට කපන්න: ගණකම් කෑලිවලට දෙගුණයක් වෙලාව ගත වන අතර, ඒ අතරේ හොදියේ පාට මැකී යයි. අවසානයේ දෙහි යුෂ ටිකක් එකතු කළොත් මිහිර උස්සා පෙන්වයි; අත්වල පාට දෙහි ලෙල්ලකින් අතුල්ලා ඉවත් කරගන්න.",
+  "ta": "பீட்ரூட்டை மெல்லியதாக நறுக்குங்கள்: தடிமன் துண்டுகளுக்கு இரு மடங்கு நேரம் தேவை, அந்த நேரத்தில் குழம்பின் நிறம் மங்கும். கடைசியில் கொஞ்சம் எலுமிச்சை சாறு இனிப்பை தூக்கிக் காட்டும்; கையில் ஏறிய நிறத்தை எலுமிச்சைத் தோலால் தேய்த்து கழுவுங்கள்."
+ },
+ "health_note": {
+  "en": "Beetroot brings folate, natural nitrates that are kind to blood pressure, and a good amount of fibre; the colour that shows in the toilet the next day is harmless. It is naturally sweet, so a diabetic household should keep to one spoonful and not add sugar.",
+  "si": "බීට්රූට් වලින් ෆෝලේට්, රුධිර පීඩනයට හිතකර ස්වාභාවික නයිට්‍රේට් සහ හොඳ තන්තු ප්‍රමාණයක් ලැබේ; පසු දින වැසිකිළියේ දක්නා පාට හානිකර නොවේ. එය ස්වභාවයෙන්ම මිහිරි නිසා දියවැඩියාව ඇති ගෙදරක හැන්දකට සීමා වී, සීනි එකතු නොකරන්න.",
+  "ta": "பீட்ரூட்டில் ஃபோலேட், இரத்த அழுத்தத்துக்கு நல்ல இயற்கை நைட்ரேட், நல்ல நார்ச்சத்து உண்டு; அடுத்த நாள் நிறம் தெரிவது பிரச்சினை இல்லை. இயற்கையாகவே இனிப்பு, எனவே சர்க்கரை நோய் உள்ள வீட்டில் ஒரு கரண்டியுடன் நிறுத்துங்கள், சீனி சேர்க்க வேண்டாம்."
+ },
+ "tags": [
+  "high_fibre",
+  "iron_rich",
+  "heart_healthy",
+  "kid_friendly",
+  "budget",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

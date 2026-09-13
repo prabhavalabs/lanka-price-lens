@@ -1,0 +1,332 @@
+{
+ "id": "dish_bottle_gourd_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 190,
+  "description": {
+   "en": "A ladle of soft white curry with rice",
+   "si": "බතට එකතු කරන මෘදු සුදු කිරි හොදි හැන්දක්",
+   "ta": "சாதத்துடன் ஒரு கரண்டி மென்மையான வெள்ளைக் கறி"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_luffa",
+   "label": {
+    "en": "bottle gourd (labu)",
+    "si": "ලබු",
+    "ta": "சுரைக்காய்"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "1 small gourd",
+   "preparation": {
+    "en": "peeled, spongy centre trimmed, cut into 3 cm cubes",
+    "si": "ලෙලි ගසා, මැද මෘදු කොටස ඉවත් කර, සෙන්ටිමීටර තුනක කැට ලෙස කපා",
+    "ta": "தோல் சீவி, நடுப் பஞ்சுப் பகுதியை நீக்கி, மூன்று சென்டிமீட்டர் துண்டுகளாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලාගෙන",
+    "ta": "நீளமாகக் கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "2 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගෙන",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the bottle gourd, scrape out the very soft seeded middle if the gourd is mature, and cut the flesh into even cubes.",
+    "minutes": null
+   },
+   {
+    "text": "Put the cubes into a clay pot with the onion, slit green chillies, garlic, turmeric, fenugreek, pandan and curry leaves.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk, add the salt, and bring it to a slow boil over a medium flame without stirring much.",
+    "minutes": 5
+   },
+   {
+    "text": "Cover and simmer until the cubes turn translucent and a spoon goes through them easily.",
+    "minutes": 10
+   },
+   {
+    "text": "Lower the flame, pour in the thick coconut milk and swirl the pot by the rim instead of stirring hard, so the gourd stays whole.",
+    "minutes": 3
+   },
+   {
+    "text": "Let it come to the edge of a boil only, then take it off at once so the milk does not split.",
+    "minutes": 2
+   },
+   {
+    "text": "Rest the pot for a few minutes before serving; the gravy thickens slightly as it stands.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "ලබු ලෙලි ගසා, ඇට සහිත මැද මෘදු කොටස මුහුකුරා ඇත්නම් හැන්දකින් ඉවත් කර, මදය එක සමාන කැට ලෙස කපන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැපූ කැට මැටි වළඳකට දමා, ලූනු, පලාගත් අමු මිරිස්, සුදුලූනු, කහ, උළුහාල්, රම්පෙ හා කරපිංචා එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි වත් කර ලුණු දමා, මධ්‍යම ගින්නේ වැඩිය කලතන්නේ නැතිව සෙමින් උතුරන්නට තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වහන්නක් දමා, කැට පාරාන්ධ බවින් මිදී හැන්දක් පහසුවෙන් ඇදෙන තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගින්න අඩු කර මිටි කිරි වත් කර, ලබු කැට කැඩෙන්නේ නැතිව වළඳ දාරයෙන් අල්ලා සෙමින් සොලවන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "උතුරන්නට ආසන්න වූ විගස ලිපෙන් ඉවතට ගන්න; එසේ නොවුවහොත් කිරි කැඩේ.",
+    "minutes": 2
+   },
+   {
+    "text": "බෙදන්නට පෙර වළඳ විනාඩි කිහිපයක් තබන්න; හොදි ටිකක් ගනට හැරේ.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "சுரைக்காயின் தோலைச் சீவி, காய் முதிர்ந்திருந்தால் விதையுள்ள பஞ்சுப் பகுதியை ஸ்பூனால் நீக்கி, சதைப்பகுதியை சம அளவு துண்டுகளாக நறுக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கிய துண்டுகளை மண் சட்டியில் இட்டு, வெங்காயம், கீறிய பச்சை மிளகாய், பூண்டு, மஞ்சள், வெந்தயம், ரம்பை, கறிவேப்பிலை சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி, உப்பு போட்டு, நடுத்தர தீயில் அதிகம் கிளறாமல் மெதுவாகக் கொதிக்க விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மூடி வைத்து, துண்டுகள் கண்ணாடி போல மாறி ஸ்பூன் எளிதாக இறங்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "தீயைக் குறைத்து தடிமன் பாலை ஊற்றி, துண்டுகள் உடையாமல் சட்டியை விளிம்பில் பிடித்து மெல்ல ஆட்டுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "கொதிக்க ஆரம்பிக்கும் தருணத்திலேயே அடுப்பிலிருந்து இறக்குங்கள்; இல்லையெனில் பால் பிரிந்துவிடும்.",
+    "minutes": 2
+   },
+   {
+    "text": "பரிமாறும் முன் சில நிமிடம் அப்படியே வையுங்கள்; குழம்பு சற்று கெட்டியாகும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 20,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or medium saucepan",
+  "peeler and knife"
+ ],
+ "tips": {
+  "en": "Taste a raw sliver before cooking; a bitter gourd should go straight to the bin because the whole pot will turn bitter. Keep the flame gentle after the thick milk goes in.",
+  "si": "උයන්නට පෙර අමු පෙත්තක් රස බලන්න; තිත්ත නම් මුළු වළඳම තිත්ත වන නිසා ලබු ඉවත දමන්න. මිටි කිරි දැමූ පසු ගින්න අඩුවෙන් තබන්න.",
+  "ta": "சமைக்கும் முன் ஒரு சிறு துண்டைச் சுவைத்துப் பாருங்கள்; கசந்தால் அந்தச் சுரைக்காயை தூக்கி எறியுங்கள், இல்லையேல் சட்டி முழுவதும் கசக்கும். தடிமன் பால் சேர்த்த பிறகு தீ மெதுவாக இருக்க வேண்டும்."
+ },
+ "health_note": {
+  "en": "Bottle gourd is mostly water, easy on the stomach and light enough for children, elders and anyone recovering from illness. The calories here come almost entirely from the coconut milk, so use thin milk generously and thick milk sparingly.",
+  "si": "ලබු බොහෝ දුරට ජලයෙන් සමන්විත බැවින් බඩට සැහැල්ලු වන අතර දරුවන්ට, වැඩිහිටියන්ට හා අසනීපයෙන් සුවවන අයට ගැළපේ. මෙහි කැලරි බොහොමයක් පොල් කිරිවලින් නිසා දිය කිරි වැඩිපුර, මිටි කිරි අඩුවෙන් යොදන්න.",
+  "ta": "சுரைக்காயில் பெரும்பாலும் நீர்ச்சத்தே உள்ளது; வயிற்றுக்கு இலகுவானது, குழந்தைகளுக்கும் முதியவர்களுக்கும் நோய் தேறுபவர்களுக்கும் ஏற்றது. இதன் கலோரி கிட்டத்தட்ட முழுவதும் தேங்காய்ப் பாலில் இருந்தே வருகிறது, எனவே நீர்ப் பாலை அதிகமாகவும் தடிமன் பாலை குறைவாகவும் பயன்படுத்துங்கள்."
+ },
+ "tags": [
+  "low_calorie",
+  "light",
+  "hydrating",
+  "kid_friendly",
+  "elderly_friendly",
+  "one_pot",
+  "budget",
+  "quick"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

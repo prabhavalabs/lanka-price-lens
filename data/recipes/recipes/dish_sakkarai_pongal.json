@@ -1,0 +1,329 @@
+{
+ "id": "dish_sakkarai_pongal",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 280,
+  "description": {
+   "en": "A warm bowl of sweet rice glossy with ghee and studded with cashew",
+   "si": "ගිතෙල් වලින් දිලිසෙන, කජු විසිරුණු උණුසුම් පැණි බත් බඳුනක්",
+   "ta": "நெய்யில் மினுமினுக்கும், முந்திரி பதித்த சூடான இனிப்புச் சோற்றுக் கிண்ணம்"
+  }
+ },
+ "yield_g": 1150,
+ "ingredients": [
+  {
+   "ref": "product_rice_raw_white",
+   "label": {
+    "en": "raw white rice",
+    "si": "අමු සුදු සහල්",
+    "ta": "பச்சை வெள்ளை அரிசி"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "washed",
+    "si": "හෝදාගත්",
+    "ta": "அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_gram",
+   "label": {
+    "en": "split green gram",
+    "si": "මුං පරිප්පු",
+    "ta": "பாசிப் பருப்பு"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "dry roasted in the pan until it smells nutty",
+    "si": "සුවඳ නගින තුරු පෑන් එකේ වියළිව බැදගත්",
+    "ta": "வாசனை வரும் வரை சட்டியில் வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பசும்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "கருப்பட்டி"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "3 pieces",
+   "preparation": {
+    "en": "melted with a little water and strained",
+    "si": "වතුර ටිකක් සමඟ දිය කර පෙරාගත්",
+    "ta": "சிறிது தண்ணீரில் உருக்கி வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "only if the jaggery is mild",
+    "si": "හකුරු මිහිරි අඩු නම් පමණි",
+    "ta": "கருப்பட்டி இனிப்பு குறைவாக இருந்தால் மட்டும்"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "pantry_ghee",
+   "label": {
+    "en": "ghee",
+    "si": "ගිතෙල්",
+    "ta": "நெய்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "fried in ghee until golden",
+    "si": "ගිතෙල් වල රන්වන් වන තුරු බැදගත්",
+    "ta": "நெய்யில் பொன்னிறமாக வறுத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_raisins",
+   "label": {
+    "en": "raisins",
+    "si": "මුද්දරප්පලම්",
+    "ta": "திராட்சை"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "fried in the same ghee until they puff",
+    "si": "එම ගිතෙල් වලම පිම්බෙන තුරු බැදගත්",
+    "ta": "அதே நெய்யில் பொங்கும் வரை வறுத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "4 pods, powdered",
+   "preparation": {
+    "en": "seeds crushed to a powder",
+    "si": "ඇට කුඩු කරගත්",
+    "ta": "விதைகளைப் பொடி செய்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dry roast the split green gram in a pan on a low flame until it turns a shade darker and smells nutty, then wash it with the rice.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the rice and gram in a wide pot with the milk and 600 ml of water and bring it to a boil, letting it rise up the pot once for luck as Pongal is meant to.",
+    "minutes": 10
+   },
+   {
+    "text": "Lower the flame and cook, stirring often, until both the rice and the gram are soft enough to mash against the side of the pot.",
+    "minutes": 25
+   },
+   {
+    "text": "While that cooks, melt the jaggery with 100 ml of water in a small pan and strain it through a cloth to leave the grit behind.",
+    "minutes": 8
+   },
+   {
+    "text": "Mash the cooked rice and gram lightly with the back of the ladle so the mixture is soft but not a paste.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the strained jaggery syrup and the sugar if you are using it, and cook on a low flame, stirring, until the mixture thickens and pulls together.",
+    "minutes": 10
+   },
+   {
+    "text": "Fry the cashew and raisins in the ghee in a small pan until the nuts are golden and the raisins swell.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir the ghee, nuts, raisins and powdered cardamom through the pongal and take it off the fire while it is still loose enough to pour.",
+    "minutes": 2
+   },
+   {
+    "text": "Serve it warm in bowls; it sets as it cools, so add a splash of hot milk if it stiffens.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මුං පරිප්පු අඩු ගින්නේ පෑන් එකක, වර්ණය මදක් තද වී සුවඳ නගින තුරු වියළිව බැද, සහල් සමඟ සෝදා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පළල් හැළියකට සහල් සහ මුං, කිරි සහ වතුර මිලි ලීටර් 600ක් දමා නටවන්න; පොංගල් සම්ප්‍රදායට අනුව එක වරක් හැළියෙන් ඉතිරී යන්නට ඉඩ දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගිනි අඩු කර, නිතර හොඳවමින්, සහල් සහ මුං දෙකම හැළියේ පැත්තට තද කර මිරිකිය හැකි තරමට මුදු වන තුරු පිහන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "එය පිසෙන අතරේ කුඩා පෑන් එකක හකුරු වතුර මිලි ලීටර් 100ක් සමඟ දිය කර, රෙද්දකින් පෙරා කසට ඉවත් කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පිසූ බත් සහ මුං, හැන්දේ පිටුපසින් සැහැල්ලුවෙන් තලා, මුදු නමුත් පේස්ට් නොවන ලෙස සකසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෙරාගත් හකුරු පැණි සහ (යොදන්නේ නම්) සීනි දමා, අඩු ගින්නේ හොඳවමින්, මිශ්‍රණය ඝන වී එකට බැඳෙන තුරු පිහන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කුඩා පෑන් එකක ගිතෙල් වල කජු සහ මුද්දරප්පලම්, කජු රන්වන් වී මුද්දරප්පලම් පිම්බෙන තුරු බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ගිතෙල්, කජු, මුද්දරප්පලම් සහ එනසාල් කුඩු පොංගල් එකට කලවම් කර, තවමත් වත් කළ හැකි තරම් ලිහිල්ව තිබෙන විට ලිපෙන් බාන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "බඳුන් වලට දමා උණුසුම්ව ඉදිරිපත් කරන්න; සිසිල් වන විට තද වන බැවින් අවශ්‍ය නම් උණු කිරි ටිකක් එකතු කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாசிப் பருப்பை சிறு தீயில் சட்டியில், நிறம் சற்று மாறி வாசனை வரும் வரை வறுத்து, அரிசியுடன் சேர்த்து அலசுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அகலமான பாத்திரத்தில் அரிசியும் பருப்பும் போட்டு, பாலும் 600 மில்லி தண்ணீரும் ஊற்றி கொதிக்கவையுங்கள்; பொங்கல் மரபுப்படி ஒரு முறை பொங்கி வழியட்டும்.",
+    "minutes": 10
+   },
+   {
+    "text": "தீயைக் குறைத்து, அடிக்கடி கிளறி, அரிசியும் பருப்பும் பாத்திரத்தின் பக்கத்தில் மசியும் அளவு மென்மையாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 25
+   },
+   {
+    "text": "அது வேகும்போது சிறிய சட்டியில் கருப்பட்டியை 100 மில்லி தண்ணீரில் உருக்கி, துணியில் வடிகட்டி கசடை நீக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "வெந்த அரிசியையும் பருப்பையும் கரண்டியின் பின்புறத்தால் லேசாக மசித்து, மென்மையாக ஆனால் விழுதாகாமல் வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "வடிகட்டிய கருப்பட்டிப் பாகையும், சேர்ப்பதாக இருந்தால் சீனியையும் ஊற்றி, சிறு தீயில் கிளறி கலவை கெட்டியாகி ஒன்றாகச் சேரும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "சிறிய சட்டியில் நெய்யில் முந்திரியையும் திராட்சையையும், முந்திரி பொன்னிறமாகி திராட்சை பொங்கும் வரை வறுக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "நெய், முந்திரி, திராட்சை, ஏலக்காய்ப் பொடி அனைத்தையும் பொங்கலில் கலந்து, இன்னும் ஊற்றக்கூடிய தளர்வான நிலையிலேயே இறக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "கிண்ணங்களில் சூடாகப் பரிமாறுங்கள்; ஆறினால் இறுகும், அப்போது சிறிது சூடான பால் சேர்க்குங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 45,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide heavy pot",
+  "small pan for the syrup",
+  "cloth or strainer",
+  "ladle"
+ ],
+ "tips": {
+  "en": "Strain the melted jaggery, because even good jaggery carries sand and bits of bark that will spoil the mouthful. Add the syrup only after the rice is fully soft, since rice stops softening once the sweetness goes in.",
+  "si": "දිය කළ හකුරු පෙරන්න; හොඳ හකුරු වුවද වැලි සහ පොතු කැබලි ගෙන එන අතර ඒවා කටට හසු වී රස නසයි. බත සම්පූර්ණයෙන් මුදු වූ පසුව පමණක් පැණි දමන්න, මිහිරි රස එකතු වූ පසු බත තවත් මුදු නොවේ.",
+  "ta": "உருக்கிய கருப்பட்டியை வடிகட்டுங்கள்; நல்ல கருப்பட்டியிலும் மணலும் பட்டைத் துகள்களும் இருக்கும், அவை வாயில் பட்டால் சுவை கெடும். அரிசி முழுவதும் மென்மையான பின்னரே பாகைச் சேர்க்குங்கள், இனிப்பு சேர்ந்த பின் அரிசி மேலும் வேகாது."
+ },
+ "health_note": {
+  "en": "This is a festival sweet: jaggery is still sugar, and the ghee adds plenty of fat, so a small bowl is the right share even on Pongal day. The green gram and milk do bring some protein, which makes it kinder than a plain sugar sweet.",
+  "si": "මෙය උත්සව රසකැවිල්ලකි; හකුරු වුවද සීනි වන අතර ගිතෙල් වලින් මේදය බොහෝ එකතු වේ, එබැවින් පොංගල් දිනයේ වුවද කුඩා බඳුනක් සාධාරණයි. මුං සහ කිරි වලින් ප්‍රෝටීන් ටිකක් ලැබෙන බැවින් සරල සීනි රසකැවිලි වලට වඩා මෘදුයි.",
+  "ta": "இது பண்டிகை இனிப்பு: கருப்பட்டியும் சர்க்கரையே, நெய்யும் நிறைய கொழுப்பு சேர்க்கிறது; எனவே பொங்கல் நாளிலும் ஒரு சிறு கிண்ணமே சரியான பங்கு. பாசிப் பருப்பும் பாலும் சிறிது புரதம் தருவதால் வெறும் சர்க்கரை இனிப்பை விட இது மிதமானது."
+ },
+ "tags": [
+  "festive",
+  "high_sugar",
+  "comfort",
+  "kid_friendly",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,330 @@
+{
+ "id": "dish_murunga_leaf_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 60,
+  "description": {
+   "en": "A small heap of dark green mallung at the edge of the rice plate",
+   "si": "බත් පිඟානේ කෙළවරට තද කොළ පැහැති මැල්ලුම් ගොඩක්",
+   "ta": "சாதத் தட்டின் ஓரத்தில் ஒரு சிறு குவியல் பச்சை வதக்கல்"
+  }
+ },
+ "yield_g": 240,
+ "ingredients": [
+  {
+   "ref": "pantry_murunga_leaves",
+   "label": {
+    "en": "moringa (murunga) leaves, picked off the stalks",
+    "si": "මුරුංගා කොළ, කරල්වලින් ගලවාගත්",
+    "ta": "தண்டிலிருந்து உருவிய முருங்கை இலை"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "a large bowlful of picked leaves",
+   "preparation": {
+    "en": "leaflets pulled off the tough stalks, washed and drained",
+    "si": "දෘඩ දඬු වලින් කොළ ගලවා, සෝදා, වතුර බේරා",
+    "ta": "கடினமான தண்டுகளிலிருந்து இலைகளை உருவி, அலசி, நீர் வடித்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "2 cloves",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලා",
+    "ta": "பொடியாக இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பலகடா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp, pounded",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කොටා",
+    "ta": "கரடுமுரடாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed",
+   "preparation": {
+    "en": "juice only, added off the fire",
+    "si": "යුෂ පමණක්, ලිපෙන් ඉවතට ගත් පසු",
+    "ta": "சாறு மட்டும், அடுப்பை விட்டு இறக்கிய பின்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 5,
+   "unit": "ml",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Strip the leaflets off the murunga stalks with your fingers, leaving the woody stems behind, and throw away any yellowed leaves.",
+    "minutes": 15
+   },
+   {
+    "text": "Wash the leaves in two changes of water and drain them well in a basket so the mallung does not turn watery.",
+    "minutes": null
+   },
+   {
+    "text": "Rub the scraped coconut together with the onion, chilli, garlic, turmeric, pepper and the pounded maldive fish, using your hand so the coconut takes the colour.",
+    "minutes": 3
+   },
+   {
+    "text": "Heat the pan with the teaspoon of oil, put in the drained leaves with two tablespoons of water and cook uncovered on a high flame, stirring, until they wilt.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the coconut mixture and the salt and toss over a lower flame until the mallung is dry and smells cooked, not raw.",
+    "minutes": 4
+   },
+   {
+    "text": "Take the pan off the fire, squeeze in the lime and serve; mallung goes dull if it sits too long.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මුරුංගා කරල්වල දෘඩ දඬු අත නොහැර, ඇඟිලිවලින් කොළ පමණක් ගලවා ගන්න; කහ පැහැ වූ කොළ ඉවත් කරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "කොළ දෙවරක් වතුර මාරු කර සෝදා, කූඩයක දමා හොඳින් වතුර බේරන්න; එවිට මැල්ලුම දියාරු වන්නේ නැහැ.",
+    "minutes": null
+   },
+   {
+    "text": "ගාගත් පොල්, ළූණු, මිරිස්, සුදු ළූණු, කහ, ගම්මිරිස් සහ කොටාගත් උම්බලකඩ අතින්ම මිශ්‍ර කරන්න; පොල්වලට කහ පාට වදිනවා.",
+    "minutes": 3
+   },
+   {
+    "text": "පෑන් රත් කර තේ හැන්දක් තෙල් දමා, බේරාගත් කොළ සහ මේස හැඳි දෙකක වතුර දමා, වහන්නේ නැතුව තද ගින්නේ කලවම් කරමින් කොළ මැලවෙන තුරු තියන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පොල් මිශ්‍රණය සහ ලුණු දමා, ගිනි අඩු කර, මැල්ලුම වේලී අමු ගතිය යන තුරු පෙරළමින් තියන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන දෙහි යුෂ මිරිකා වහාම බෙදන්න; වේලා තිබුණොත් මැල්ලුමේ පාට සහ රස නැති වෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "முருங்கைத் தண்டுகளிலிருந்து விரல்களால் இலைகளை மட்டும் உருவவும், கடினமான தண்டுகளை விட்டுவிடவும்; மஞ்சளாகிய இலைகளை நீக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "இலைகளை இரு முறை தண்ணீர் மாற்றி அலசி, கூடையில் போட்டு நீரை நன்றாக வடிக்கவும்; இல்லையேல் வதக்கல் நீராகி விடும்.",
+    "minutes": null
+   },
+   {
+    "text": "துருவிய தேங்காயுடன் வெங்காயம், மிளகாய், பூண்டு, மஞ்சள், மிளகு, இடித்த உம்பலகடா ஆகியவற்றைக் கையால் பிசைந்து கலக்கவும்; தேங்காய்க்கு நிறம் ஏறும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சட்டியைக் காயவைத்து ஒரு டீஸ்பூன் எண்ணெய் விட்டு, வடித்த இலைகளையும் இரண்டு மேசைக்கரண்டி தண்ணீரையும் போட்டு, மூடாமல் பெரிய தீயில் கிளறி இலைகள் வதங்கும் வரை வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "தேங்காய்க் கலவையையும் உப்பையும் சேர்த்து, தீயைக் குறைத்து, வதக்கல் வற்றி பச்சை வாசனை போகும் வரை புரட்டவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி தேசிக்காய்ச் சாறு பிழிந்து உடனே பரிமாறவும்; நேரம் ஆனால் வதக்கலின் நிறமும் சுவையும் போய்விடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 8,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan or wok"
+ ],
+ "tips": {
+  "en": "Pick the leaves in the morning while they are still crisp, and pull only the soft green leaflets; a single woody stalk left in the pan spoils every mouthful. Cook it quickly and uncovered so the green stays bright.",
+  "si": "කොළ උදේ, තවම තෙතමනය සහිතව තියෙන වෙලාවේ ගලවා ගන්න, මෘදු කොළ පමණක් තෝරන්න; දෘඩ දඬු එකක් තිබුණත් සෑම බත් පිඬකම රස නැති වෙනවා. කොළ පාට රැකෙන්න ඉක්මනින්, වහන්නේ නැතුව උයන්න.",
+  "ta": "காலையில் இலைகள் இளமையாக இருக்கும் போதே உருவவும், மெல்லிய பச்சை இலைகளை மட்டும் எடுக்கவும்; ஒரு கடினமான தண்டு இருந்தாலும் ஒவ்வொரு வாயும் கெட்டுவிடும். பச்சை நிறம் தங்க வேண்டுமானால் மூடாமல் விரைவாகச் சமைக்கவும்."
+ },
+ "health_note": {
+  "en": "Murunga leaves are one of the cheapest sources of iron, calcium and vitamin A a household can pluck from its own tree, and the lime at the end helps the body take up the iron. If you add maldive fish the salt goes up, so use less salt in the pan.",
+  "si": "ගෙදර ගසකින්ම කඩාගන්න පුළුවන් මුරුංගා කොළ, යකඩ, කැල්සියම් සහ විටමින් A ලබා ගැනීමට තියෙන ලාබම මාර්ගයක්; අන්තිමට දමන දෙහි නිසා ශරීරයට යකඩ උරාගැනීම පහසු වෙනවා. උම්බලකඩ දැමුවොත් ලුණු ප්‍රමාණය වැඩි වන නිසා පෑන් එකට ලුණු අඩුවෙන් දමන්න.",
+  "ta": "வீட்டு மரத்திலேயே பறிக்கக் கூடிய முருங்கை இலை, இரும்புச்சத்து, கால்சியம், வைட்டமின் ஏ கிடைக்கும் மிக மலிவான வழி; கடைசியில் சேர்க்கும் தேசிக்காய் இரும்புச்சத்தை உடல் எடுக்க உதவும். உம்பலகடா சேர்த்தால் உப்பு அதிகமாகும், எனவே சட்டியில் உப்பைக் குறைக்கவும்."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "iron_rich",
+  "calcium_rich",
+  "diabetic_friendly",
+  "weight_loss_friendly",
+  "quick",
+  "light",
+  "budget"
+ ],
+ "review_needed": [
+  "quantities"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

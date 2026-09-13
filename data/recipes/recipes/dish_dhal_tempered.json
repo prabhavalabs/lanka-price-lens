@@ -1,0 +1,339 @@
+{
+ "id": "dish_dhal_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "A thick ladle of dhal streaked with dark tempering, next to rice",
+   "si": "අඳුරු තෙම්පරාදුව මතුවෙන ඝන පරිප්පු හැන්දක් බත් සමඟ",
+   "ta": "கருத்த தாளிப்பு தெரியும் கெட்டியான பருப்பு ஒரு கரண்டி, சாதத்துடன்"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_red_dhal",
+   "label": {
+    "en": "red dhal",
+    "si": "පරිප්පු",
+    "ta": "மைசூர் பருப்பு"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "washed in two or three changes of water",
+    "si": "දෙතුන් වරක් සෝදාගත්",
+    "ta": "இரண்டு மூன்று முறை கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 180,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව පෙති කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "broken in half",
+    "si": "දෙකට කඩාගත්",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the dhal in two or three changes of water until the water is no longer cloudy.",
+    "minutes": null
+   },
+   {
+    "text": "Put the dhal in a pot with three cups of water, the turmeric and the pandan leaf, and bring it to a boil with the lid off.",
+    "minutes": 5
+   },
+   {
+    "text": "Skim off the froth, then simmer until the grains collapse into a soft mash.",
+    "minutes": 15
+   },
+   {
+    "text": "Stir in the thick coconut milk and the salt, let it return to a gentle bubble and take the pot off the fire.",
+    "minutes": 3
+   },
+   {
+    "text": "Heat the coconut oil in a separate pan and drop in the mustard seeds.",
+    "minutes": 2
+   },
+   {
+    "text": "When they pop, add the onion, garlic, broken dried chillies and curry leaves and fry until the onion is deep brown at the edges.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour the whole tempering, oil and all, into the dhal and stir once so the dark streaks stay visible.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and rest before serving so the smoky flavour settles into the dhal.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "පරිප්පු වතුර පැහැදිලි වන තුරු දෙතුන් වරක් සෝදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළඳකට පරිප්පු, කහ කුඩු සහ රම්පෙ සමඟ කෝප්ප තුනක් වතුර දමා, වසන්නේ නැතිව උතුරන්න තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මතුවන පෙණ ඉවත් කර, ඇට හොඳින් තැලී මෘදු වන තුරු මද ගින්නේ තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "මුල් පොල් කිරි සහ ලුණු දමා නැවත සෙමින් උතුරන විට වළඳ ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වෙනම පෑනක පොල් තෙල් රත් කර අබ දමන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "අබ පිපිරුණු පසු ලූනු, සුදුළූනු, කැඩූ වියළි මිරිස් සහ කරපිංචා දමා ලූනු දාර හොඳට දුඹුරු වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "තෙම්පරාදුව තෙල් සමඟම පරිප්පු මතට වත් කර, අඳුරු ඉරි පෙනෙන සේ එක් වරක් පමණක් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බෙදන්නට පෙර වසා තබා රසය පරිප්පුවට කිඳා බැසෙන්නට ඉඩ දෙන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "பருப்பை தண்ணீர் தெளிவாகும் வரை இரண்டு மூன்று முறை கழுவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பருப்பை மஞ்சள் தூள், ரம்பை இலையுடன் மூன்று கப் தண்ணீரில் இட்டு மூடாமல் கொதிக்கவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "நுரையை நீக்கிவிட்டு, பருப்பு நன்கு கரையும் வரை குறைந்த தணலில் வேகவிடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலும் உப்பும் சேர்த்து மீண்டும் மெதுவாகக் கொதிக்கும்போது அடுப்பிலிருந்து இறக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "தனி வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து கடுகு சேர்க்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கடுகு வெடித்ததும் வெங்காயம், பூண்டு, உடைத்த வத்தல் மிளகாய், கறிவேப்பிலை சேர்த்து வெங்காயம் ஓரம் நன்கு கருகும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தாளிப்பை எண்ணெயுடன் சேர்த்து பருப்பின் மேல் ஊற்றி, கருத்த கோடுகள் தெரியும்படி ஒரு முறை மட்டும் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பரிமாறும் முன் மூடி வைத்து சுவை பருப்பில் இறங்கவிடவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 8,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "heavy pot with a lid",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Let the onion in the tempering go past golden to a real brown, that is where the smoky taste comes from. For a lunch packet cook the dhal drier and hold back half the coconut milk.",
+  "si": "තෙම්පරාදුවේ ලූනු රන්වන් තලය පසු කර හොඳින් දුඹුරු වන තුරු බැදගන්න; දුමාරයේ රසය එන්නේ එතැනිනුයි. බත් පැකට් සඳහා නම් පරිප්පු තව තද කර පොල් කිරි අඩක් පමණක් යොදන්න.",
+  "ta": "தாளிப்பில் வெங்காயத்தை பொன்னிறம் தாண்டி நன்கு பொன்னிறமாகக் கருகும் வரை வதக்கவும்; அதுவே புகைச் சுவையைத் தரும். சாதப் பார்சலுக்கு பருப்பைக் கெட்டியாக வைத்து தேங்காய்ப்பாலைப் பாதியாகக் குறைக்கவும்."
+ },
+ "health_note": {
+  "en": "Dhal is the cheapest protein most households have, and it also carries fibre, folate and iron. The oil in the tempering and the coconut milk both add fat, so a modest ladle beside rice is the right amount.",
+  "si": "පරිප්පු බොහෝ ගෙදරක ලබා ගත හැකි ලාභම ප්‍රෝටීන් අතර තන්තු, ෆෝලේට් සහ යකඩද ලබා දෙයි. තෙම්පරාදුවේ තෙල් සහ පොල් කිරි යන දෙකෙන්ම තෙල් එකතු වන බැවින් බත් සමඟ මධ්‍යස්ථ හැන්දක් ගැනීම සුදුසුයි.",
+  "ta": "பருப்பு பல வீடுகளுக்குக் கிடைக்கும் மலிவான புரதம்; நார்ச்சத்து, ஃபோலேட், இரும்புச்சத்தும் உண்டு. தாளிப்பு எண்ணெயும் தேங்காய்ப்பாலும் கொழுப்பைச் சேர்ப்பதால் சாதத்துடன் அளவான ஒரு கரண்டியே போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "budget",
+  "comfort",
+  "filling",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

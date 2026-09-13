@@ -1,0 +1,497 @@
+{
+ "id": "dish_duck_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 190,
+  "description": {
+   "en": "A ladle of dark strong duck curry with rice or pittu",
+   "si": "බත් හෝ පිට්ටු සමඟ අඳුරු තද තාරා කරි ලාඩුවක්",
+   "ta": "சாதத்துடனோ பிட்டுடனோ ஒரு கரண்டி கரும் கடுஞ்சுவை வாத்துக் கறி"
+  }
+ },
+ "yield_g": 980,
+ "ingredients": [
+  {
+   "ref": "pantry_duck",
+   "label": {
+    "en": "duck, curry cut with bone",
+    "si": "තාරා මස්, කරි කැපුම",
+    "ta": "வாத்து இறைச்சி, எலும்புடன் கறி வெட்டு"
+   },
+   "quantity": 750,
+   "unit": "g",
+   "household": "about half a duck",
+   "preparation": {
+    "en": "skin and loose fat removed, cut into pieces, washed",
+    "si": "හම හා අමතර තෙල් ඉවත් කර කැබලිවලට කපා සෝදාගත්",
+    "ta": "தோலையும் தளர்ந்த கொழுப்பையும் நீக்கி, துண்டுகளாக வெட்டி, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "roasted scraped coconut",
+    "si": "බැදගත් ගාගත් පොල්",
+    "ta": "வறுத்த துருவிய தேங்காய்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "half a cup, scraped",
+   "preparation": {
+    "en": "dry roasted dark and ground to a paste",
+    "si": "අඳුරු වන තුරු වියළි ලෙස බැදගෙන පේස්ට් එකක් වන තුරු අඹරාගත්",
+    "ta": "கறுக்க வறுத்து விழுதாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டி, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "8 chillies, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp, roasted and ground",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, crushed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 small pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the duck pieces, pull off the skin and the loose fat, and rub the meat with turmeric, a little salt and half the ground chilli.",
+    "minutes": 15
+   },
+   {
+    "text": "Dry roast the scraped coconut in a pan, stirring without stopping until it is a deep brown, then grind it with the roasted coriander into a thick paste.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and fry the onion, garlic, ginger, curry leaves, cinnamon, cloves and cardamom until the onion is brown.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the roasted curry powder, the rest of the chilli, cumin, fennel and pepper and fry on a low flame so the spices darken without burning.",
+    "minutes": 3
+   },
+   {
+    "text": "Put in the duck and turn the pieces in the spice until every side is coated and the meat has tightened.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the gorakka, the salt and two cups of water, cover the pot and simmer on a low flame until the duck is tender to the bone.",
+    "minutes": 45
+   },
+   {
+    "text": "Stir in the ground coconut paste and cook uncovered so the gravy thickens and turns almost black.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour in the thick coconut milk, let it come to one slow bubble, taste for salt and sourness and take the pot off the fire.",
+    "minutes": 6
+   },
+   {
+    "text": "Leave the curry covered for a while before serving; duck curry is always better after it has stood.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "තාරා මස් කැබලි සෝදා, හම සහ අමතර තෙල් ඉවත් කර, කහ, ලුණු ස්වල්පයක් සහ අඹරාගත් මිරිස් භාගයක් අතුල්ලන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ගාගත් පොල් පෑන් එකක නවත්වන්නේ නැතිව කලවම් කරමින් තද දුඹුරු වන තුරු වියළි ලෙස බැදගෙන, බැදගත් කොත්තමල්ලි සමඟ ඝන පේස්ට් එකක් වන තුරු අඹරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මැටි වළඳක පොල් තෙල් රස්නේ කර, ළූණු, සුදුළූණු, ඉඟුරු, කරපිංචා, කුරුඳු, කරාබුනැටි සහ එනසාල් ළූණු දුඹුරු වන තුරු බදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බැදපු තුනපහ, ඉතිරි මිරිස්, සූදුරු, මාදුරු සහ ගම්මිරිස් දමා, නොදැවී කුළුබඩු අඳුරු වන ලෙස අඩු ගින්නේ බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "තාරා මස් දමා, සෑම පැත්තකට ම කුළුබඩු ගෑවී මස තද වන තුරු පෙරළන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ගොරකා, ලුණු සහ කෝප්ප දෙකක වතුර දමා, වළඳ වසා, මස ඇට දක්වා මෘදු වන තුරු අඩු ගින්නේ උයන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "අඹරාගත් පොල් පේස්ට් දමා, හොද්ද තද වී පාහේ කළු පාට වන තුරු වැසුමක් නැතිව උයන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඝන පොල් කිරි වත් කර, එක් වරක් සෙමින් උතුරන්නට දී, ලුණු හා ඇඹුල රස බලා වළඳ ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පිළිගැන්වීමට පෙර ටික වෙලාවක් වසා තබන්න; තාරා කරිය තිබී කෑමට වඩාත් රසවත් වේ.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "வாத்துத் துண்டுகளைக் கழுவி, தோலையும் தளர்ந்த கொழுப்பையும் நீக்கி, மஞ்சள், கொஞ்சம் உப்பு, பாதி அரைத்த மிளகாய் சேர்த்துத் தேய்த்து வையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "துருவிய தேங்காயை சட்டியில் இடைவிடாமல் கிளறி கடுங்கபில நிறம் வரும் வரை வறுத்து, வறுத்த மல்லியுடன் சேர்த்துக் கெட்டி விழுதாக அரையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, பட்டை, கிராம்பு, ஏலக்காயை வெங்காயம் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "வறுத்த கறித் தூள், மீதி மிளகாய், சீரகம், பெருஞ்சீரகம், மிளகு சேர்த்து, கருகாமல் மசாலா கறுக்கும் வரை சிறு தீயில் வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "வாத்து இறைச்சியைச் சேர்த்து, எல்லாப் பக்கமும் மசாலா படிந்து இறைச்சி இறுகும் வரை புரட்டுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "கோரக்கா, உப்பு, இரண்டு கப் நீர் சேர்த்து, பாத்திரத்தை மூடி, இறைச்சி எலும்பு வரை மென்மையாகும் வரை சிறு தீயில் சமையுங்கள்.",
+    "minutes": 45
+   },
+   {
+    "text": "அரைத்த தேங்காய் விழுதைச் சேர்த்து, குழம்பு கெட்டியாகி கிட்டத்தட்ட கறுப்பாகும் வரை மூடாமல் சமையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலை ஊற்றி, ஒரு முறை மெதுவாகக் கொதிக்க வைத்து, உப்பையும் புளிப்பையும் பார்த்து இறக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "பரிமாறும் முன் சிறிது நேரம் மூடி வையுங்கள்; வாத்துக் கறி ஆறி நின்றபின் இன்னும் சுவையாக இருக்கும்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 80,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "clay pot with a lid",
+  "pan for roasting the coconut",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "Take off the skin and the loose fat before cooking, or the gravy floats in duck fat instead of thickening. Roast the coconut until it is genuinely dark, since that is what gives this curry its colour and its heavy village taste.",
+  "si": "උයන්නට පෙර හම සහ අමතර තෙල් ඉවත් කරන්න; නැතිනම් හොද්ද තද වෙනවා වෙනුවට තාරා තෙලේ පා වේ. පොල් හරියටම අඳුරු වන තුරු බදින්න; මේ කරියේ පාටත් ගමේ තද රසත් එන්නේ එයින්.",
+  "ta": "சமைப்பதற்கு முன் தோலையும் தளர்ந்த கொழுப்பையும் நீக்குங்கள்; இல்லையேல் குழம்பு கெட்டியாகாமல் வாத்துக் கொழுப்பில் மிதக்கும். தேங்காயை உண்மையிலேயே கறுக்கும் வரை வறுக்குங்கள்; இந்தக் கறியின் நிறமும் கிராமத்துக் கடுஞ்சுவையும் அதிலிருந்தே வரும்."
+ },
+ "health_note": {
+  "en": "Duck is rich in iron and protein but much fattier than chicken, so removing the skin before cooking changes the dish more than any other single step. Because the gravy is dark with roasted spice and gorakka, a small ladle goes a long way with rice.",
+  "si": "තාරා මස්වල යකඩ හා ප්‍රෝටීන් බහුල නමුත් කුකුල් මස්වලට වඩා තෙල් වැඩි බැවින්, උයන්නට පෙර හම ඉවත් කිරීම අනෙක් ඕනෑම පියවරකට වඩා කෑම වෙනස් කරයි. හොද්ද බැදපු කුළුබඩු හා ගොරකාවෙන් තද බැවින් බත් සමඟ කුඩා ලාඩුවක් ඉතා දුර යයි.",
+  "ta": "வாத்து இறைச்சியில் இரும்பும் புரதமும் நிறைந்திருக்கும், ஆனால் கோழியை விடக் கொழுப்பு மிக அதிகம்; எனவே சமைப்பதற்கு முன் தோலை நீக்குவது வேறு எந்த ஒரு படியையும் விட உணவை மாற்றும். குழம்பு வறுத்த மசாலாவும் கோரக்காவும் சேர்ந்து கடுமையாக இருப்பதால், சாதத்துடன் ஒரு சிறிய கரண்டியே நீண்ட தூரம் போகும்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "festive",
+  "filling",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

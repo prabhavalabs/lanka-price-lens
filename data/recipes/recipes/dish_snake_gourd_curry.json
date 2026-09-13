@@ -1,0 +1,326 @@
+{
+ "id": "dish_snake_gourd_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 180,
+  "description": {
+   "en": "A soft, gentle curry of pale green half-moons in thin coconut gravy",
+   "si": "තුනී පොල් කිරි හොදියේ, ලා කොළ පැහැති අඩ සඳ පෙති සහිත මෘදු හොදියක්",
+   "ta": "நீர்த்த தேங்காய்க் குழம்பில் வெளிர் பச்சை அரைவட்டத் துண்டுகளுடன் ஒரு மிருதுவான கறி"
+  }
+ },
+ "yield_g": 780,
+ "ingredients": [
+  {
+   "ref": "product_snake_gourd",
+   "label": {
+    "en": "snake gourd",
+    "si": "පතෝල",
+    "ta": "புடலங்காய்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "1 long gourd",
+   "preparation": {
+    "en": "ridges scraped, split, seedy core removed if old, cut into half-moons",
+    "si": "ඉරි සූරා, දිගට පලා, පරණ නම් මැද ඇට කොටස ඉවත් කර, අඩ සඳ ආකාරයට කපා",
+    "ta": "மேற்புறத்தைச் சுரண்டி, நீளமாகக் கீறி, முதிர்ந்ததென்றால் விதைப் பகுதியை நீக்கி, அரைவட்டமாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලා",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 8,
+   "unit": "ml",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the ridged skin of the gourd lightly with a knife, split it lengthwise and scoop out the seedy middle if the gourd is old, then cut it into half-moons a finger thick.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the pieces into the pot with the onion, slit chillies, turmeric, curry powder, curry leaves, pandan and the thin coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and cook on a medium flame; the gourd lets out a lot of its own water, so add no more.",
+    "minutes": 8
+   },
+   {
+    "text": "Take the lid off and let that water boil away until the gravy is no longer watery.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the salt and the thick milk and take the pot off at the first bubble.",
+    "minutes": 2
+   },
+   {
+    "text": "Temper coconut oil with a few onion slices and curry leaves and stir it in.",
+    "minutes": 3
+   },
+   {
+    "text": "Serve hot on the same day; this curry does not keep well overnight.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පතෝලේ ඉරි සහිත පිටත පිහියෙන් සැහැල්ලුවට සූරා, දිගට පලා, ගෙඩිය පරණ නම් මැද ඇට සහිත කොටස ඉවත් කර, ඇඟිල්ලක ඝනකමට අඩ සඳ ආකාරයට කපන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කැබලි මුට්ටියට දමා ළූණු, පලාගත් මිරිස්, කහ, තුනපහ, කරපිංචා, රම්පෙ සහ තුනී පොල් කිරි එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා මද ගින්නේ තම්බන්න; පතෝලෙන්ම වතුර ගොඩක් නිකුත් වන නිසා අමතර වතුර දාන්න එපා.",
+    "minutes": 8
+   },
+   {
+    "text": "වැස්ම ඉවතට ගෙන, හොදිය දියාරු ගතිය නැති වන තුරු එම වතුර හිඳී යන්න දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලුණු සහ ඝන කිරි දමා, පළමු උතුරේදීම මුට්ටිය ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පොල් තෙල් ළූණු පෙති සහ කරපිංචා සමඟ තෙම්පරාදු කර හොදියට එකතු කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "එදිනම උණුසුම්ව බෙදන්න; මේ හොදිය රෑ තියලා හොඳ නැහැ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "புடலங்காயின் மேற்புறத்தைக் கத்தியால் லேசாகச் சுரண்டி, நீளமாகக் கீறி, காய் முதிர்ந்ததென்றால் நடு விதைப் பகுதியை நீக்கி, விரல் தடிமனில் அரைவட்டமாக நறுக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "துண்டுகளை சட்டியில் இட்டு வெங்காயம், கீறிய மிளகாய், மஞ்சள், கறி மசாலா, கறிவேப்பிலை, ரம்பை, இரண்டாம் தேங்காய்ப்பால் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி மிதமான தீயில் வேகவிடவும்; காயிலிருந்தே நிறைய நீர் வரும், எனவே தண்ணீர் சேர்க்க வேண்டாம்.",
+    "minutes": 8
+   },
+   {
+    "text": "மூடியை எடுத்து, குழம்பு நீர்த்துப் போகாத பக்குவம் வரும் வரை அந்த நீரை வற்ற விடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "உப்பும் முதல் பாலும் சேர்த்து, முதல் கொதியிலேயே சட்டியை இறக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தேங்காய் எண்ணெயில் வெங்காயத் துண்டுகளையும் கறிவேப்பிலையையும் தாளித்துக் குழம்பில் கலக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "அதே நாளில் சூடாகப் பரிமாறவும்; இந்தக் கறி இரவு வைத்தால் சுவை குறையும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 18,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan or clay pot with a lid",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Buy a gourd that is still slim and firm; a fat one is full of hard seeds and cottony flesh. If the curry comes out too thin, mash a few pieces into the gravy rather than adding flour.",
+  "si": "තවම සිහින්, තද පතෝල ගෙඩියක් ගන්න; මහත ගෙඩියක් තුළ තද ඇට සහ පුළුන් වගේ මදයක් තියෙනවා. හොදිය වැඩියෙන් දියාරු නම් පිටි දාන්නේ නැතුව කැබලි කීපයක් හොදියේ තලා දමන්න.",
+  "ta": "இன்னும் மெலிந்து இறுக்கமாக இருக்கும் காயையே வாங்கவும்; பெரிதாக இருந்தால் கெட்டியான விதைகளும் பஞ்சு போன்ற சதையும் இருக்கும். குழம்பு மிக நீர்த்திருந்தால் மாவு சேர்க்காமல் சில துண்டுகளை மசித்து விடவும்."
+ },
+ "health_note": {
+  "en": "Snake gourd is mostly water, so this is one of the lightest curries on the plate and suits anyone who has been unwell or is eating less. Keep the thick milk modest and it stays light on fat as well.",
+  "si": "පතෝලේ වැඩිපුරම තියෙන්නේ ජලය නිසා, පිඟානේ තියෙන සැහැල්ලුම හොදිවලින් එකක් මේක; අසනීපෙන් නැගිටපු කෙනෙකුට හෝ අඩුවෙන් කන කෙනෙකුට හොඳයි. ඝන කිරි අඩුවෙන් යෙදුවොත් තෙල් ගතියත් අඩුවෙන් තියෙනවා.",
+  "ta": "புடலங்காயில் பெரும்பாலும் நீரே இருப்பதால், தட்டில் மிக இலகுவான கறிகளில் இதுவும் ஒன்று; நோய் தெளிந்தவர்களுக்கும் குறைவாகச் சாப்பிடுபவர்களுக்கும் ஏற்றது. முதல் பாலைக் குறைவாகச் சேர்த்தால் கொழுப்பும் குறைவாகவே இருக்கும்."
+ },
+ "tags": [
+  "low_calorie",
+  "light",
+  "quick",
+  "high_fibre",
+  "elderly_friendly",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

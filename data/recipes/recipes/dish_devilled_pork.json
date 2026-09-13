@@ -1,0 +1,450 @@
+{
+ "id": "dish_devilled_pork",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 185,
+  "description": {
+   "en": "Crisp pork cubes in a sticky red sauce, shared from one dish",
+   "si": "එක් පිඟානකින් බෙදා ගන්නා, ඇලෙන රතු සෝස් සහිත කරකර ඌරු මස් කැට",
+   "ta": "ஒரே தட்டில் பகிரும், ஒட்டும் சிவப்புச் சோஸில் மொறுமொறுப்பான பன்றி இறைச்சித் துண்டுகள்"
+  }
+ },
+ "yield_g": 740,
+ "ingredients": [
+  {
+   "ref": "product_pork",
+   "label": {
+    "en": "pork, shoulder or belly",
+    "si": "ඌරු මස්",
+    "ta": "பன்றி இறைச்சி"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "about 600 g",
+   "preparation": {
+    "en": "cut into bite-size cubes with a little fat on each",
+    "si": "මඳ මේදය සහිතව කටට ගන්න පහසු කැට කපා ගත්",
+    "ta": "சிறிது கொழுப்புடன் வாய்க்கு அடங்கும் துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "cut into wedges, layers separated",
+    "si": "පෙතිවලට කපා ස්තර වෙන් කර ගත්",
+    "ta": "இதழ்களாக நறுக்கி பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "capsicum",
+    "si": "මාළු මිරිස්",
+    "ta": "குடை மிளகாய்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large capsicum",
+   "preparation": {
+    "en": "cut into thick squares",
+    "si": "ගොරෝසු හතරැස් කැබලිවලට කපා ගත්",
+    "ta": "தடிமனான சதுரங்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 firm tomato",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "පෙතිවලට කපා ගත්",
+    "ta": "இதழ்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "half for boiling, half chopped",
+    "si": "බාගයක් තැම්බීමට, බාගයක් කපා ගත්",
+    "ta": "பாதி வேகவைப்பதற்கு, பாதி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "cut on the slant",
+    "si": "ඇලයට කපා ගත්",
+    "ta": "சாய்வாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 pods, broken",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩා ගත්",
+    "ta": "உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් තලපය",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_tomato_sauce",
+   "label": {
+    "en": "tomato sauce",
+    "si": "තක්කාලි සෝස්",
+    "ta": "தக்காளி சோஸ்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 12,
+   "unit": "ml",
+   "household": "2 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp; the pork gives its own fat too",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the pork into bite-size cubes, leaving a little fat on each piece so they crisp instead of drying out.",
+    "minutes": null
+   },
+   {
+    "text": "Boil the cubes with the salt, a piece of ginger and half a cup of water until soft, then let the water dry away.",
+    "minutes": 30
+   },
+   {
+    "text": "Heat the coconut oil in a wok and fry the boiled pork over a high flame until the edges are brown and crisp, then lift it out and leave the fat in the pan.",
+    "minutes": 10
+   },
+   {
+    "text": "Temper the broken dried chillies, chopped garlic, ginger and curry leaves in that same fat.",
+    "minutes": 1
+   },
+   {
+    "text": "Throw in the onion wedges, capsicum and green chillies and toss over a high flame.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir in the chilli paste and fry until the oil reddens and the raw smell has gone.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the tomato wedges, tomato sauce, soy sauce, vinegar and sugar and cook to a glaze.",
+    "minutes": 3
+   },
+   {
+    "text": "Return the pork and toss until every cube wears the sauce.",
+    "minutes": 2
+   },
+   {
+    "text": "Taste for salt and sour; the vinegar should cut the fat of the pork rather than hide behind it.",
+    "minutes": null
+   },
+   {
+    "text": "Serve hot, with rice or as a bite at a gathering.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ඌරු මස් කටට ගන්න පහසු කැට වලට කපන්න; හැම කැබැල්ලකම මඳ මේදයක් තියන්න, එවිට ඒවා වියළෙනවා වෙනුවට කරකර ගතියක් ගන්නවා.",
+    "minutes": null
+   },
+   {
+    "text": "කැට ලුණු, ඉඟුරු කැබැල්ලක් සහ වතුර කෝප්ප බාගයක් සමග මෘදු වන තුරු තම්බා, වතුර සිඳී යන්න දෙන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "වොක් එකක පොල් තෙල් රත් කර, තැම්බූ මස් ලොකු ගින්නේ දාර දුඹුරු වී කරකර වන තුරු බැදගෙන, මස් ඉවතට ගෙන මේදය පෑන් එකේම තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එම මේදයේම කඩා ගත් වියළි මිරිස්, කපා ගත් සුදුළූණු, ඉඟුරු සහ කරපිංචා තෙම්පරාදු කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ළූණු පෙති, මාළු මිරිස් සහ අමු මිරිස් දමා ලොකු ගින්නේ පෙරළන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මිරිස් තලපය දමා තෙල රතු වී අමු ගඳ නැති වන තුරු බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තක්කාලි පෙති, තක්කාලි සෝස්, සෝයා සෝස්, විනාකිරි සහ සීනි දමා ඇලෙන සෝස් එකක් වන තුරු උයන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මස් නැවත දමා හැම කැබැල්ලකටම සෝස් වදින තුරු පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලන්න; විනාකිරි ඌරු මසේ මේදය කපා දැක්විය යුතුයි, ඒ පිටුපස සැඟවිය යුතු නෑ.",
+    "minutes": null
+   },
+   {
+    "text": "බත් සමග, නැත්නම් සාදයක බයිට් එකක් ලෙස උණුසුමින් පිළිගන්වන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பன்றி இறைச்சியை வாய்க்கு அடங்கும் துண்டுகளாக நறுக்குங்கள்; ஒவ்வொரு துண்டிலும் சிறிது கொழுப்பு இருக்கட்டும், அப்போது காய்ந்து போகாமல் மொறுமொறுப்பாகும்.",
+    "minutes": null
+   },
+   {
+    "text": "துண்டுகளை உப்பு, ஒரு இஞ்சித் துண்டு, அரை கப் நீருடன் மென்மையாகும் வரை வேகவைத்து, நீரை வற்றவிடுங்கள்.",
+    "minutes": 30
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவிட்டு, வேகவைத்த இறைச்சியைப் பெருந்தீயில் ஓரம் பழுப்பாகி மொறுமொறுப்பாகும் வரை வறுத்து எடுத்து, கொழுப்பை வாணலியிலேயே விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே கொழுப்பில் உடைத்த வத்தல் மிளகாய், நறுக்கிய பூண்டு, இஞ்சி, கறிவேப்பிலை தாளிக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "வெங்காய இதழ்கள், குடை மிளகாய், பச்சை மிளகாய் சேர்த்து பெருந்தீயில் புரட்டுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மிளகாய் விழுதைச் சேர்த்து எண்ணெய் சிவந்து பச்சை வாசனை போகும் வரை வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "தக்காளி இதழ்கள், தக்காளி சோஸ், சோயா சோஸ், வினிகர், சீனி சேர்த்து ஒட்டும் சோஸாகும் வரை சமைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "இறைச்சியை மீண்டும் சேர்த்து ஒவ்வொரு துண்டிலும் சோஸ் படியும் வரை புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "உப்பும் புளிப்பும் பாருங்கள்; வினிகர் இறைச்சியின் கொழுப்பை வெட்ட வேண்டும், அதன் பின்னால் மறையக் கூடாது.",
+    "minutes": null
+   },
+   {
+    "text": "சாதத்துடன், அல்லது கூட்டத்தில் ஒரு சிற்றுண்டியாக, சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 45,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot for boiling",
+  "wok or wide frying pan",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "Boil the pork first and let it cool before frying; cold cubes crisp far better than warm ones. Pour off most of the rendered fat before the sauce goes in, or the finished dish sits in oil.",
+  "si": "ඌරු මස් මුලින්ම තම්බා, බදින්නට පෙර නිවෙන්න දෙන්න; උණුසුම් කැටවලට වඩා සිසිල් කැට හොඳින් කරකර වෙනවා. සෝස් දමන්නට පෙර නිකුත් වූ මේදයෙන් වැඩි කොටසක් බේරන්න, නැත්නම් අන්තිම කෑම තෙලේ පීනනවා.",
+  "ta": "இறைச்சியை முதலில் வேகவைத்து, வறுப்பதற்கு முன் ஆறவிடுங்கள்; சூடான துண்டுகளை விட குளிர்ந்தவை நன்கு மொறுமொறுப்பாகும். சோஸ் சேர்க்கும் முன் வெளியேறிய கொழுப்பில் பெரும்பகுதியை வடித்துவிடுங்கள், இல்லையெனில் முடிந்த உணவு எண்ணெயில் மிதக்கும்."
+ },
+ "health_note": {
+  "en": "Pork carries more fat than chicken or beef, and frying plus salty sauces makes this one of the heavier short eats. Keep the portion small, serve something sour and fresh beside it, and let the children have the tomato and onion more than the meat.",
+  "si": "ඌරු මසේ මේදය කුකුල් හෝ හරක් මසට වඩා වැඩියි, ඊට බැදීමත් ලුණු සහිත සෝස් වර්ගත් එකතු වීම නිසා මේක බර කෙටි කෑමක්. කොටස කුඩාවට තියා ගන්න, ඇඹුල් නැවුම් දෙයක් පසෙක දෙන්න, ළමයින්ට මසට වඩා තක්කාලි සහ ළූණු දෙන්න.",
+  "ta": "பன்றி இறைச்சியில் கோழி அல்லது மாட்டிறைச்சியை விட கொழுப்பு அதிகம்; அத்துடன் வறுவலும் உப்புச் சோஸ்களும் சேர்வதால் இது கனமான சிற்றுண்டியாகிறது. பங்கைச் சிறியதாக வைத்து, புளிப்பான புதிய ஒன்றைப் பக்கத்தில் பரிமாறி, பிள்ளைகளுக்கு இறைச்சியை விட தக்காளியும் வெங்காயமும் கொடுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "high_sodium",
+  "festive",
+  "street_food",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

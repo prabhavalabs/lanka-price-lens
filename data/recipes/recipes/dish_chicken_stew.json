@@ -1,0 +1,496 @@
+{
+ "id": "dish_chicken_stew",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 320,
+  "description": {
+   "en": "A bowl of white stew with a piece of chicken, potato and carrot",
+   "si": "කුකුල් මස් කැබැල්ලක්, අල සහ කැරට් සමග සුදු ඉස්ටුවක් බඳුනක්",
+   "ta": "ஒரு கோழித் துண்டு, உருளைக்கிழங்கு, காரட் கொண்ட வெள்ளை ஸ்டூ ஒரு கிண்ணம்"
+  }
+ },
+ "yield_g": 1400,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken, curry cut with bone",
+    "si": "කුකුල් මස්, ඇට සමග කරි කපා ගත්",
+    "ta": "கோழி இறைச்சி, எலும்புடன் கறித் துண்டுகள்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 large pieces",
+   "preparation": {
+    "en": "washed, skin taken off",
+    "si": "සෝදා හම ඉවත් කර ගත්",
+    "ta": "அலசி தோல் நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අල",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "3 medium potatoes",
+   "preparation": {
+    "en": "peeled and cut into thick cubes",
+    "si": "පොතු ඉවත් කර ගොරෝසු කැට කපා ගත්",
+    "ta": "தோல் நீக்கி பெரிய துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "காரட்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 carrots",
+   "preparation": {
+    "en": "cut into rounds",
+    "si": "රවුම්වලට කපා ගත්",
+    "ta": "வட்டமாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "cut into thick slices",
+    "si": "ගොරෝසු පෙතිවලට කපා ගත්",
+    "ta": "தடிமனாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 stalk",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit, seeds left in or taken out for children",
+    "si": "පලා ගත්; ළමයින්ට ඇට ඉවත් කරන්න",
+    "ta": "கீறியது; பிள்ளைகளுக்கு விதைகளை நீக்கவும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp, cracked",
+   "preparation": {
+    "en": "coarsely cracked",
+    "si": "රළු ලෙස තලා ගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "a 7 cm quill",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 pods",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 cloves",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "one and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන වර මිරිකා ගත් තුනී කිරි",
+    "ta": "இரண்டாம் பால், தளர்ந்த பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකා ගත් ගන කිරි",
+    "ta": "முதல் பால், கெட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cornflour",
+   "label": {
+    "en": "cornflour",
+    "si": "ඉරිඟු පිටි",
+    "ta": "சோள மாவு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "slaked in cold water",
+    "si": "සිසිල් වතුරේ දිය කර ගත්",
+    "ta": "குளிர்ந்த நீரில் கரைத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the chicken and take the skin off; peel and cube the potato and carrot and slice the onion and leeks.",
+    "minutes": null
+   },
+   {
+    "text": "Put the chicken into a pot with the garlic, ginger, slit green chillies, pepper, cinnamon, cardamom, cloves, curry leaves, salt and the thin coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it up slowly, cover and simmer until the chicken is half done.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the potato and carrot and cook covered until a fork goes into the potato.",
+    "minutes": 12
+   },
+   {
+    "text": "Put in the leeks and the onion slices and cook a few minutes only, so they keep some body and do not turn to threads.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the coconut oil straight from the bottle; nothing in a stew is browned, and the pot should stay white.",
+    "minutes": null
+   },
+   {
+    "text": "Add the thick coconut milk on a low fire and stir gently, keeping it under a boil.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir in the slaked cornflour if you want a stew that coats the bread rather than running off it.",
+    "minutes": 2
+   },
+   {
+    "text": "Check the salt and pepper; a stew is meant to be mild, and the heat should come only from the pepper and the slit chillies.",
+    "minutes": null
+   },
+   {
+    "text": "Serve warm with hoppers, sliced bread or string hoppers.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුකුල් මස් සෝදා හම ඉවත් කරන්න. අල සහ කැරට් පොතු ඉවත් කර කැට කපා, ළූණු සහ ලීක්ස් කපා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මස් වළඳකට දමා සුදුළූණු, ඉඟුරු, පලා ගත් අමු මිරිස්, ගම්මිරිස්, කුරුඳු, එනසාල්, කරාබුනැටි, කරපිංචා, ලුණු සහ තුනී පොල් කිරි එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෙමින් රස්නය දී වසා, මස් අඩක් තැම්බෙන තුරු උයන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "අල සහ කැරට් දමා, අලයට ගැටයක් විද යන තුරු වසා උයන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ලීක්ස් සහ ළූණු පෙති දමා මිනිත්තු කිහිපයක් පමණක් උයන්න; ඒවා නූල් වගේ දිය නොවී ටිකක් හැඩය තියෙන්න ඕන.",
+    "minutes": 4
+   },
+   {
+    "text": "පොල් තෙල් බෝතලයෙන්ම කෙළින්ම වත් කරන්න; ඉස්ටුවේ කිසිවක් දුඹුරු කරන්නේ නෑ, වළඳ සුදු පැහැයෙන්ම තියෙන්න ඕන.",
+    "minutes": null
+   },
+   {
+    "text": "ගිනි අඩුවෙන් ගන පොල් කිරි එකතු කර, උතුරන්නට නොදී සෙමින් කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පාන් එකෙන් ගලා නොගොස් ඇලෙන ඉස්ටුවක් ඕන නම් දිය කර ගත් ඉරිඟු පිටි එකතු කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලුණු සහ ගම්මිරිස් බලන්න; ඉස්ටුව සැර අඩු විය යුතුයි, සැර එන්නේ ගම්මිරිස් සහ පලා ගත් මිරිස්වලින් පමණයි.",
+    "minutes": null
+   },
+   {
+    "text": "ආප්ප, පාන් පෙති හෝ ඉඳිආප්ප සමග උණුසුමින් පිළිගන්වන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கோழியை அலசி தோலை நீக்குங்கள். உருளைக்கிழங்கும் காரட்டும் தோல் நீக்கி துண்டுகளாக, வெங்காயமும் லீக்ஸும் நறுக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கோழியை பாத்திரத்தில் இட்டு பூண்டு, இஞ்சி, கீறிய பச்சை மிளகாய், மிளகு, பட்டை, ஏலக்காய், கிராம்பு, கறிவேப்பிலை, உப்பு, இரண்டாம் தேங்காய்ப் பால் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மெதுவாகச் சூடாக்கி மூடி, கோழி பாதி வேகும் வரை வைக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "உருளைக்கிழங்கும் காரட்டும் சேர்த்து, கிழங்கில் முள் இறங்கும் வரை மூடி வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "லீக்ஸும் வெங்காயமும் சேர்த்து சில நிமிடம் மட்டும் வேகவிடுங்கள்; அவை நாராகக் கரையாமல் சிறிது பதத்துடன் இருக்க வேண்டும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தேங்காய் எண்ணெயை நேரடியாக ஊற்றுங்கள்; ஸ்டூவில் எதையும் பழுப்பாக்குவதில்லை, பாத்திரம் வெண்மையாகவே இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "குறைந்த தீயில் கெட்டித் தேங்காய்ப் பாலைச் சேர்த்து, பொங்காமல் மெதுவாகக் கலக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பாணில் ஒட்டும் ஸ்டூ வேண்டுமானால் கரைத்த சோள மாவைச் சேர்க்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "உப்பும் மிளகும் பார்க்கவும்; ஸ்டூ காரம் குறைந்ததாகவே இருக்க வேண்டும், காரம் மிளகிலும் கீறிய மிளகாயிலும் மட்டுமே இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆப்பம், பாண் துண்டுகள் அல்லது இடியப்பத்துடன் சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 40,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot with lid",
+  "ladle"
+ ],
+ "tips": {
+  "en": "Do not let the pot brown at any stage, because the colour is half of what makes it a stew instead of a curry. It thickens as it cools, so keep it a little thinner than you want it on the plate.",
+  "si": "කිසි අවස්ථාවක වළඳේ දුඹුරු වෙන්න දෙන්න එපා; කරියක් නොව ඉස්ටුවක් වීමේ අඩක් තියෙන්නේ ඒ පාටේ. නිවෙන විට එය තද වන නිසා පිඟානේ ඕන ගනකමට වඩා ටිකක් තුනී තියා ගන්න.",
+  "ta": "எந்தக் கட்டத்திலும் பாத்திரத்தில் பழுப்பு ஏற்படவிடாதீர்கள்; கறியாக அல்லாமல் ஸ்டூவாக இருப்பதில் பாதி அந்த நிறத்திலே உள்ளது. ஆறும்போது இறுகும், எனவே தட்டில் வேண்டிய பதத்தை விட சிறிது தளர்வாக வைக்கவும்."
+ },
+ "health_note": {
+  "en": "One of the gentlest dishes for small children, elders and anyone with a sore mouth or a weak stomach, with vegetables cooked soft and very little chilli. The coconut milk still carries fat, so use more thin milk and less thick if the stew is for someone recovering.",
+  "si": "කුඩා ළමයින්ට, වැඩිහිටියන්ට සහ කට රිදෙන හෝ බඩ දුර්වල අයට මෘදුම කෑමක්; එළවළු මෘදුව උයා තියෙනවා, මිරිස් ඉතා අඩුයි. පොල් කිරිවල මේදය තවම තියෙන නිසා සුවය ලබන කෙනෙකුට නම් තුනී කිරි වැඩියෙන් ගන කිරි අඩුවෙන් යොදන්න.",
+  "ta": "சிறு பிள்ளைகள், முதியவர்கள், வாய்ப்புண் அல்லது பலவீனமான வயிறு உள்ளவர்களுக்கு மிக மென்மையான உணவு; காய்கறிகள் மென்மையாக வேகவைக்கப்பட்டு மிளகாய் மிகக் குறைவு. தேங்காய்ப் பாலில் கொழுப்பு உள்ளது, எனவே மீள்பவருக்கு என்றால் இரண்டாம் பாலை அதிகமாகவும் கெட்டிப் பாலைக் குறைவாகவும் பயன்படுத்துங்கள்."
+ },
+ "tags": [
+  "kid_friendly",
+  "elderly_friendly",
+  "light",
+  "comfort",
+  "one_pot",
+  "filling",
+  "high_protein"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

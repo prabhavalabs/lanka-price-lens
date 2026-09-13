@@ -1,0 +1,180 @@
+{
+ "id": "dish_lime_juice",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 250,
+  "description": {
+   "en": "A tall glass over ice, handed to a visitor at midday",
+   "si": "දවල්ට ආ අමුත්තෙකුට දෙන අයිස් සහිත උස් වීදුරුවක්",
+   "ta": "நண்பகலில் வந்த விருந்தாளிக்குக் கொடுக்கும் பனிக்கட்டியிட்ட உயரமான கிளாஸ்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 6,
+   "unit": "piece",
+   "household": "6 limes, about 90 ml of juice",
+   "preparation": {
+    "en": "rolled on the board, cut and squeezed",
+    "si": "පෝරුවේ පෙරළා කපා මිරිකාගත්",
+    "ta": "பலகையில் உருட்டி, வெட்டிப் பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a good pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Roll the limes under your palm on the board so they give up their juice easily, then cut them in half.",
+    "minutes": null
+   },
+   {
+    "text": "Squeeze the juice into a jug and pick out the seeds; leave a little pulp in, it belongs there.",
+    "minutes": null
+   },
+   {
+    "text": "Put the sugar and the pinch of salt into the jug and add about 200 ml of warm water.",
+    "minutes": null
+   },
+   {
+    "text": "Stir until you cannot feel any grains on the bottom of the jug.",
+    "minutes": 2
+   },
+   {
+    "text": "Top up with cold water to make it a litre in all and taste it; add a spoon more sugar or another squeeze of lime to balance it.",
+    "minutes": null
+   },
+   {
+    "text": "Drop ice into the glasses, not into the jug, and pour just before you carry it out.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "දෙහි ගෙඩි පෝරුවේ අත්ලෙන් තද කර පෙරළා, යුෂ පහසුවෙන් එන ලෙස මෘදු කරගෙන දෙකට කපන්න.",
+    "minutes": null
+   },
+   {
+    "text": "යුෂ ජෝගුවකට මිරිකා ගෙන ඇට අහුරාගෙන ඉවත් කරන්න; මදය ටිකක් තිබීම වරදක් නොවේ.",
+    "minutes": null
+   },
+   {
+    "text": "සීනි සහ ලුණු ටිකක් ජෝගුවට දමා, උණුසුම් වතුර මිලිලීටර් 200ක් පමණ එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ජෝගුවේ පහළ සීනි කැට දැනෙන්නේ නැති වන තුරු හොඳින් කලතන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "සිසිල් වතුරෙන් ලීටරයක් වන තුරු පුරවා රස බලන්න; අවශ්‍ය නම් සීනි හැන්දක් හෝ දෙහි ටිකක් තව එකතු කර රස හදාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අයිස් ජෝගුවට නොව වීදුරුවලට දමා, පිටතට ගෙන යන මොහොතේම වක් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "எலுமிச்சைகளை பலகையில் உள்ளங்கையால் அழுத்தி உருட்டி, சாறு எளிதாக வரும்படி மெல்லியதாக்கி, இரண்டாக வெட்டுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சாற்றை ஜாக்கில் பிழிந்து, விதைகளை எடுத்து விடுங்கள்; சிறிது சுளை இருந்தால் தவறில்லை.",
+    "minutes": null
+   },
+   {
+    "text": "சீனியையும் ஒரு சிட்டிகை உப்பையும் ஜாக்கில் இட்டு, சுமார் 200 மில்லி வெதுவெதுப்பான நீர் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஜாக்கின் அடியில் சீனி கட்டி தட்டுப்படாத வரை நன்றாகக் கலக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "குளிர்ந்த நீர் விட்டு மொத்தம் ஒரு லிட்டராக்கி, சுவைத்துப் பாருங்கள்; தேவைப்பட்டால் ஒரு கரண்டி சீனி அல்லது இன்னும் சிறிது எலுமிச்சை சேர்த்துச் சரிசெய்யுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பனிக்கட்டியை ஜாக்கில் அல்லாமல் கிளாஸ்களில் போட்டு, வெளியே எடுத்துச் செல்லும் நேரத்திலேயே ஊற்றவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "jug",
+  "lime squeezer or hands",
+  "long spoon"
+ ],
+ "tips": {
+  "en": "Dissolve the sugar in a little warm water first; in cold water it sits at the bottom and the last glass is the sweet one. Squeeze the limes only when you are ready to serve, because the juice turns bitter if it stands for hours.",
+  "si": "සීනි මුලින්ම උණුසුම් වතුර ටිකකින් දිය කරගන්න; සීතල වතුරේ එය පහළම රැඳී, අන්තිම වීදුරුව පමණක් පැණි රස වේ. දෙහි මිරිකන්නේ බෙදන්නට සූදානම් වූ විට පමණයි, පැය ගණන් තිබුණොත් යුෂ තිත්ත වේ.",
+  "ta": "சீனியை முதலில் கொஞ்சம் வெதுவெதுப்பான நீரில் கரைத்துக் கொள்ளுங்கள்; குளிர்ந்த நீரில் அது அடியில் தங்கி, கடைசி கிளாஸ் மட்டும் இனிப்பாகிவிடும். பரிமாறத் தயாராகும் போதே எலுமிச்சையைப் பிழியுங்கள், மணிநேரம் இருந்தால் சாறு கசக்கும்."
+ },
+ "health_note": {
+  "en": "Mostly water with a good dose of vitamin C, and the pinch of salt replaces what you sweat out in the heat. The four tablespoons of sugar are the real cost of the glass, so cut it down for children and leave it out for anyone with diabetes.",
+  "si": "බොහෝ දුරට වතුරයි, විටමින් C ප්‍රමාණයක් සමඟ; ලුණු ටිකෙන් රස්නෙට දහඩියෙන් යන ලුණු නැවත ලැබේ. වීදුරුවේ ඇත්තම බර සීනි මේස හැඳි හතරයි, එබැවින් ළමයින්ට අඩු කරන්න, දියවැඩියාව ඇති අයට අත් හරින්න.",
+  "ta": "பெரும்பாலும் நீரே, அதனுடன் நல்ல அளவு வைட்டமின் C; ஒரு சிட்டிகை உப்பு வெயிலில் வியர்வையாகப் போன உப்பை ஈடுசெய்யும். கிளாஸின் உண்மையான சுமை அந்த நான்கு மேசைக்கரண்டி சீனி, எனவே குழந்தைகளுக்குக் குறைத்து, நீரிழிவு உள்ளவர்களுக்கு விட்டுவிடுங்கள்."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "hydrating",
+  "light",
+  "low_fat",
+  "kid_friendly",
+  "immune_support"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

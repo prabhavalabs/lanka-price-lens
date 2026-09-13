@@ -1,0 +1,236 @@
+{
+ "id": "dish_pittu",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 230,
+  "description": {
+   "en": "A thick round of crumbly steamed pittu with gravy poured over",
+   "si": "හොද්ද වත් කරගත්, කැඩෙන සුළු පිට්ටු කැබැල්ලක්",
+   "ta": "குழம்பு ஊற்றிய, உதிரும் தன்மையுள்ள ஒரு துண்டு புட்டு"
+  }
+ },
+ "yield_g": 920,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 cups",
+   "preparation": {
+    "en": "dry roasted until warm and sandy",
+    "si": "වියළි ලෙස උණුසුම් වන තුරු බැදගත්",
+    "ta": "மணல் பதம் வரும்வரை வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "සූරාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "half a coconut, grated",
+   "preparation": {
+    "en": "freshly grated",
+    "si": "අද සූරාගත්",
+    "ta": "புதிதாக துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකාගත් ගන කිරි",
+    "ta": "முதல் பால், தடிப்பானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Roast the rice flour in a dry pan on a low flame, stirring all the time, until it is warm and smells nutty but has not coloured.",
+    "minutes": 8
+   },
+   {
+    "text": "Mix the salt into the flour, then sprinkle water over it a few spoons at a time and rub it in with your fingertips.",
+    "minutes": 5
+   },
+   {
+    "text": "Keep going until a handful squeezed in the fist holds together but breaks apart again when you rub it, which is the right damp crumb.",
+    "minutes": null
+   },
+   {
+    "text": "Fold the grated coconut through the damp flour lightly, without pressing it into lumps.",
+    "minutes": null
+   },
+   {
+    "text": "Fill the bamboo or steel pittu cylinder in layers, a handful of the mixture and a sprinkle of coconut, without packing it down.",
+    "minutes": null
+   },
+   {
+    "text": "Set the cylinder over a pot of boiling water and steam it until the steam comes through the top freely.",
+    "minutes": 12
+   },
+   {
+    "text": "Give it two more minutes after the steam appears, then push the pittu out with a stick onto a plate.",
+    "minutes": 2
+   },
+   {
+    "text": "Repeat with the rest of the mixture, keeping the finished pittu covered so it stays warm.",
+    "minutes": 10
+   },
+   {
+    "text": "Serve it hot with thick coconut milk poured over and a fish or chickpea curry on the side.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් පිටි වියළි තැටියක අඩු ගින්දරේ, දිගටම කලවම් කරමින්, පාට නොවී උණුසුම් වී සුවඳ නගින තුරු බැදගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පිටිවලට ලුණු මිශ්‍ර කර, හැඳි කිහිපයක් බැගින් වතුර ඉසිමින් ඇඟිලි තුඩුවලින් පිටි අතගාන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අතට ගෙන මිරිකූ විට එකට රැඳී, නැවත අතගා විට කැඩී යන පදම එන තුරු දිගටම කරන්න; එයයි නියම තෙත් පදම.",
+    "minutes": null
+   },
+   {
+    "text": "සූරාගත් පොල් තෙත් පිටි සමඟ ගුලි නොවන ලෙස සැහැල්ලුවෙන් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උණ හෝ වානේ පිට්ටු බම්බුව, මිශ්‍රණයෙන් අතලොස්සක් සහ පොල් ටිකක් වශයෙන් ස්ථර ලෙස, තදින් නොතබා පුරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නටන වතුර ඇති භාජනයක් මත බම්බුව තබා, ඉහළින් වාෂ්ප නිදහසේ එන තුරු තැම්බෙන්නට හරින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "වාෂ්ප පෙනුනු පසු තවත් විනාඩි දෙකක් තබා, පිට්ටු කූරකින් තල්ලු කර පිඟානකට හරවන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඉතිරි මිශ්‍රණයෙන් එසේම සාදා, සාදාගත් පිට්ටු උණුසුම්ව තබාගැනීමට වසා තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගන පොල් කිරි ඉහළින් වත් කර, මාළු කරියක් හෝ කඩල කරියක් සමඟ උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசி மாவை வறட்சியான சட்டியில் குறைந்த தீயில், தொடர்ந்து கிளறி, நிறம் மாறாமல் வெதுவெதுப்பாகி வாசனை வரும்வரை வறுக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "மாவில் உப்பைக் கலந்து, சில கரண்டி தண்ணீரை தெளித்து விரல் நுனிகளால் மாவைக் கசக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "கையில் பிடித்து அழுத்தினால் ஒட்டிக்கொண்டு, மீண்டும் தேய்த்தால் உதிரும் பதம் வரும்வரை தொடரவும்; அதுவே சரியான ஈரப் பதம்.",
+    "minutes": null
+   },
+   {
+    "text": "துருவிய தேங்காயை ஈரமான மாவுடன் கட்டியாகாமல் லேசாகக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூங்கில் அல்லது எஃகு புட்டுக் குழாயில், ஒரு கைப்பிடி மாவும் சிறிது தேங்காயும் என அடுக்கடுக்காக, அழுத்தாமல் நிரப்பவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்கும் தண்ணீர் உள்ள பாத்திரத்தின் மேல் குழாயை வைத்து, மேலிருந்து ஆவி தாராளமாக வரும்வரை வேகவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "ஆவி வந்த பின் மேலும் இரண்டு நிமிடம் வைத்து, புட்டை ஒரு குச்சியால் தள்ளி தட்டில் இறக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மீதி மாவிலும் அதேபோல் செய்து, செய்த புட்டை சூடாக இருக்க மூடி வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலை மேலே ஊற்றி, மீன் கறி அல்லது கடலைக் கறியுடன் சூடாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pittu bamboo or steel cylinder",
+  "steaming pot",
+  "dry pan for roasting flour"
+ ],
+ "tips": {
+  "en": "The water is everything: too little and the pittu is powdery, too much and it steams into a solid cake, so add it a spoon at a time and test a fistful.",
+  "si": "වතුර ප්‍රමාණයයි ප්‍රධාන දෙය: අඩු නම් පිට්ටු කුඩු වේ, වැඩි නම් තදවී කැවුමක් වේ, ඒ නිසා හැන්දෙන් හැන්දට දමා අතට ගෙන පදම බලන්න.",
+  "ta": "தண்ணீரின் அளவே முக்கியம்: குறைந்தால் புட்டு பொடியாகும், அதிகமானால் இறுகிக் கட்டியாகும், எனவே கரண்டியால் சேர்த்து கையில் பிடித்துப் பதம் பார்க்கவும்."
+ },
+ "health_note": {
+  "en": "Pittu is steamed rather than fried and the grated coconut brings fibre, but coconut also brings fat; made with red rice flour it is more filling and kinder on blood sugar.",
+  "si": "පිට්ටු බැදීමකින් තොරව තැම්බෙන අහරක් වන අතර සූරාගත් පොල් වලින් තන්තු ලැබෙනවා, නමුත් පොල් සමඟ තෙල්ද එනවා; රතු සහල් පිටියෙන් සාදන විට වඩාත් පිරෙන, රුධිර සීනියට මෘදු අහරක් වේ.",
+  "ta": "புட்டு பொரிக்கப்படாமல் ஆவியில் வேகும் உணவு, துருவிய தேங்காய் நார்ச்சத்து தருகிறது, ஆனால் தேங்காயில் கொழுப்பும் உண்டு; சிவப்பு அரிசி மாவில் செய்யும்போது அது மேலும் வயிறு நிறைக்கும், இரத்தச் சர்க்கரைக்கும் மென்மையானது."
+ },
+ "tags": [
+  "filling",
+  "budget",
+  "high_fibre",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,289 @@
+{
+ "id": "dish_kokis",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 55,
+  "description": {
+   "en": "Three or four crisp rosettes, eaten by hand",
+   "si": "අතින් කන, කරකර හඬ නගන කොකිස් තුනක් හතරක්",
+   "ta": "கையால் சாப்பிடும் மூன்று நான்கு மொறுமொறு கோகிஸ்"
+  }
+ },
+ "yield_g": 220,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "හලාගත්",
+    "ta": "சலித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 160,
+   "unit": "ml",
+   "household": "two thirds of a cup",
+   "preparation": {
+    "en": "thick, first squeeze from half a coconut",
+    "si": "පොල් ගෙඩි බාගයකින් මිරිකාගත් මුල් ඝන කිරි",
+    "ta": "அரை தேங்காயின் முதல் அடர் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg, beaten",
+   "preparation": {
+    "en": "beaten well; it is what makes the kokis brittle",
+    "si": "හොඳින් ගසාගත්, කොකිස් කැඩෙන සුළු වන්නේ මේකෙන්",
+    "ta": "நன்றாக அடித்த; கோகிஸ் மொறுமொறுப்பாக வருவது இதனால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a quarter tsp, for colour",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 tbsp, for the sweet version",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "enough to cover the mould",
+   "preparation": {
+    "en": "for frying; strain and keep what is left",
+    "si": "බැදීම සඳහා, ඉතිරි වූ තෙල් පෙරා තබා ගන්න",
+    "ta": "பொரிக்க; மீதியை வடிகட்டி வைக்கவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Sieve the rice flour with the salt and turmeric into a basin, adding the sugar if you want the sweet kind.",
+    "minutes": null
+   },
+   {
+    "text": "Beat the egg into the thick coconut milk, then pour it into the flour a little at a time and beat until the batter is smooth and runs off the spoon like thin cream.",
+    "minutes": null
+   },
+   {
+    "text": "Rest the batter for half an hour, then check it again, as rice flour thickens as it stands and may need a spoon of milk.",
+    "minutes": 30
+   },
+   {
+    "text": "Heat the oil in a pan deep enough to cover the mould, and stand the kokis mould in the oil to heat with it.",
+    "minutes": 8
+   },
+   {
+    "text": "Lift the hot mould out, shake off the drip and dip it into the batter so that three quarters of its depth is coated, never over the top edge.",
+    "minutes": null
+   },
+   {
+    "text": "Lower the coated mould back into the oil and hold it there until the rosette loosens by itself, helping it with a fork if it clings.",
+    "minutes": null
+   },
+   {
+    "text": "Let the kokis fry free of the mould, turning once, until it is pale gold and stops bubbling, then lift it out with the fork.",
+    "minutes": 35
+   },
+   {
+    "text": "Stand the mould back in the oil to reheat before every dip, because a cool mould keeps the batter stuck to it.",
+    "minutes": null
+   },
+   {
+    "text": "Drain the kokis on paper and cool them fully; store in a tin with a tight lid, since they go soft in an hour in damp air.",
+    "minutes": 20
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් පිටි, ලුණු සහ කහ බඳුනකට හලා ගන්න, පැණි රස කොකිස් නම් සීනිත් දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර ඝන පොල් කිරිවලට ගසා, එය පිටිවලට ටික ටික දමා, තුනී ක්‍රීම් වගේ හැන්දෙන් ගලා යන සිනිඳු මිශ්‍රණයක් වන තුරු ගසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මිශ්‍රණය පැය බාගයක් නිදහන්න, පසුව නැවත බලන්න, සහල් පිටි තිබෙන විට ඝන වන නිසා කිරි හැන්දක් අවශ්‍ය විය හැක.",
+    "minutes": 30
+   },
+   {
+    "text": "අච්චුව ගිලෙන තරමට ගැඹුරු පෑන් එකක තෙල් රත් කර, කොකිස් අච්චුව ද තෙලේ තබා එකට රත් වෙන්න දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "රත් වූ අච්චුව ඉවතට ගෙන, වැටෙන තෙල් ටික සොලවා, ගැඹුරෙන් තුනෙන් තුනක් තෙමෙන ලෙස මිශ්‍රණයට බහන්න, උඩ දාරයට ඉහළින් නොවේ.",
+    "minutes": null
+   },
+   {
+    "text": "මිශ්‍රණය තැවරුණු අච්චුව නැවත තෙලට බහා, කොකිස් එක තනිවම ගැලවෙන තුරු අල්ලා ගෙන සිටින්න, ඇලී තිබේ නම් ගෑරුප්පුවකින් උදව් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අච්චුවෙන් ගැලවුණු කොකිස් එක එක වරක් හරවමින්, සුදුමැලි රන් පාට වී බුබුළු නවතින තුරු බැදගෙන, ගෑරුප්පුවෙන් ඉවතට ගන්න.",
+    "minutes": 35
+   },
+   {
+    "text": "හැම වරක් බහන්නට පෙර අච්චුව නැවත තෙලේ තබා රත් කරන්න, සිසිල් අච්චුවට මිශ්‍රණය ඇලී තියෙනවා.",
+    "minutes": null
+   },
+   {
+    "text": "කොකිස් කඩදාසියක බේරා හොඳින් සිසිල් කර, තද පියනක් ඇති ටින් එකක තබන්න, තෙත් වාතයේ පැයකින් මුදු වෙනවා.",
+    "minutes": 20
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசி மாவை உப்பு, மஞ்சளுடன் பாத்திரத்தில் சலியுங்கள்; இனிப்பு வகை வேண்டுமானால் சீனியும் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டையை அடர் தேங்காய்ப் பாலில் அடித்து, அதை மாவில் கொஞ்சம் கொஞ்சமாகச் சேர்த்து, கரண்டியில் நீர்மையான கிரீம் போல வழியும் மிருதுவான கலவை வரும்வரை அடியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கலவையை அரை மணி நேரம் ஊற வைத்து, பிறகு மீண்டும் பாருங்கள் - அரிசி மாவு இறுகுவதால் ஒரு கரண்டி பால் தேவைப்படலாம்.",
+    "minutes": 30
+   },
+   {
+    "text": "அச்சு மூழ்கும் ஆழத்தில் எண்ணெயைக் காயவிட்டு, கோகிஸ் அச்சையும் எண்ணெயில் வைத்து சேர்ந்தே சூடாக விடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சூடான அச்சை எடுத்து, வழியும் எண்ணெயை உதறி, ஆழத்தில் மூன்றில் மூன்று பங்கு நனையும்படி கலவையில் தோய்த்து எடுங்கள் - மேல் விளிம்பைத் தாண்டக் கூடாது.",
+    "minutes": null
+   },
+   {
+    "text": "கலவை படிந்த அச்சை மீண்டும் எண்ணெயில் இறக்கி, கோகிஸ் தானாக விலகும்வரை பிடித்திருங்கள்; ஒட்டியிருந்தால் முள்கரண்டியால் மெதுவாக விலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அச்சிலிருந்து விலகிய கோகிஸை ஒருமுறை திருப்பி, வெளிர் பொன்னிறமாகி குமிழி நின்றபின் முள்கரண்டியால் எடுங்கள்.",
+    "minutes": 35
+   },
+   {
+    "text": "ஒவ்வொரு முறை தோய்ப்பதற்கும் முன் அச்சை எண்ணெயில் வைத்து மீண்டும் சூடாக்குங்கள்; ஆறிய அச்சில் கலவை ஒட்டிக்கொள்ளும்.",
+    "minutes": null
+   },
+   {
+    "text": "கோகிஸை காகிதத்தில் வடித்து முழுவதும் ஆற விட்டு, இறுக்கமான மூடியுள்ள டப்பாவில் வையுங்கள் - ஈரக் காற்றில் ஒரு மணி நேரத்தில் மென்மையாகிவிடும்.",
+    "minutes": 20
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 45,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "kokis mould",
+  "deep pan",
+  "fork",
+  "airtight tin"
+ ],
+ "tips": {
+  "en": "Everything turns on the mould being as hot as the oil: dip a cool mould and the batter refuses to come off, dip one too deep and the batter runs over the top and locks the rosette on. Keep the batter thin enough to run, and stir the basin now and then because the rice flour settles at the bottom. Fry on medium, since dark kokis taste of burnt oil however pretty the shape.",
+  "si": "සියල්ල තියෙන්නේ අච්චුව තෙල් තරම් රත් වීම මතයි, සිසිල් අච්චුවකට මිශ්‍රණය ඇලුණොත් ගැලවෙන්නේ නැහැ, වැඩිපුර ගැඹුරට බහුවොත් මිශ්‍රණය උඩින් ගලා කොකිස් එක අච්චුවට හිර වෙනවා. මිශ්‍රණය ගලා යන තරමට තුනීව තබා ගන්න, පිටි පතුලට බැස යන නිසා නිතර නිතර කලතන්න. මධ්‍යම ගින්නේ බදින්න, හැඩය කොපමණ ලස්සන වුණත් අඳුරු කොකිස්වල පිළිස්සුණු තෙල් රසයි.",
+  "ta": "எல்லாமே அச்சு எண்ணெயைப் போல சூடாக இருப்பதில் இருக்கிறது - ஆறிய அச்சில் கலவை ஒட்டி விலகாது, மிக ஆழமாகத் தோய்த்தால் கலவை மேலே வழிந்து கோகிஸ் அச்சில் பூட்டிக்கொள்ளும். கலவையை வழியும் அளவுக்கு நீர்மையாக வையுங்கள், மாவு அடியில் தங்குவதால் அடிக்கடி கலக்குங்கள். நடுத்தர தீயில் பொரியுங்கள் - வடிவம் எவ்வளவு அழகாக இருந்தாலும் கருத்த கோகிஸில் கருகிய எண்ணெய் சுவையே இருக்கும்."
+ },
+ "health_note": {
+  "en": "Kokis are light in the hand but they are still rice flour fried in oil, and because they are crisp and salted people eat a dozen without noticing. Serve them out on a plate in counted numbers rather than leaving the tin open, and drain them well on paper while hot so the oil goes back to the pan and not into the eater.",
+  "si": "කොකිස් අතට සැහැල්ලු වුවත්, ඒවා තෙලේ බැදූ සහල් පිටි තමයි, කරකර ගතියක් සහ ලුණු රසක් ඇති නිසා නොදැනුවත්ව දුසිමක් කනවා. ටින් එක අරින්නට දෙනවා වෙනුවට ගණන් කර පිඟානකට බෙදන්න, උණුසුම්ව තිබියදී කඩදාසියක හොඳින් බේරන්න, එවිට තෙල් යන්නේ පෑන් එකට, කන කෙනාට නොවේ.",
+  "ta": "கோகிஸ் கையில் இலகுவாக இருந்தாலும் அது எண்ணெயில் பொரித்த அரிசி மாவே; மொறுமொறுப்பும் உப்புச் சுவையும் இருப்பதால் தெரியாமல் பத்துப் பன்னிரண்டு சாப்பிட்டுவிடுவார்கள். டப்பாவைத் திறந்து வைக்காமல் எண்ணி ஒரு தட்டில் பரிமாறுங்கள்; சூடாக இருக்கும்போதே காகிதத்தில் நன்றாக வடியுங்கள் - எண்ணெய் சட்டிக்குத் திரும்பட்டும், சாப்பிடுபவருக்கு அல்ல."
+ },
+ "tags": [
+  "deep_fried",
+  "festive",
+  "kid_friendly",
+  "budget",
+  "comfort"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

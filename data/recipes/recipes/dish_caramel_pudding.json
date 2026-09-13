@@ -1,0 +1,280 @@
+{
+ "id": "dish_caramel_pudding",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 140,
+  "description": {
+   "en": "A turned-out slice of custard sitting in its own caramel",
+   "si": "තමන්ගේම කැරමල් එක මැද තිබෙන පුඩිං පෙත්තක්",
+   "ta": "தன் கேரமல் பாகிலேயே அமர்ந்திருக்கும் புட்டிங் துண்டு"
+  }
+ },
+ "yield_g": 560,
+ "ingredients": [
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar for the caramel",
+    "si": "කැරමල් සඳහා සීනි",
+    "ta": "கேரமலுக்கு சீனி"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 large eggs",
+   "preparation": {
+    "en": "beaten just until smooth, not frothy",
+    "si": "පෙණ නොනගින ලෙස, සිනිඳු වන තුරු පමණක් ගසාගත්",
+    "ta": "நுரை வராமல், மிருதுவாகும்வரை மட்டும் அடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 350,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_milk_powder",
+   "label": {
+    "en": "full cream milk powder",
+    "si": "කිරිපිටි",
+    "ta": "பால் பவுடர்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp, for body",
+   "preparation": {
+    "en": "whisked into the milk",
+    "si": "කිරිවලට කලතාගත්",
+    "ta": "பாலில் கரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar for the custard",
+    "si": "පුඩිං සඳහා සීනි",
+    "ta": "புட்டிங்கிற்கு சீனி"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vanilla",
+   "label": {
+    "en": "vanilla essence",
+    "si": "වැනිලා එසන්ස්",
+    "ta": "வெனிலா எசன்ஸ்"
+   },
+   "quantity": 3,
+   "unit": "ml",
+   "household": "half a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_condensed_milk",
+   "label": {
+    "en": "condensed milk",
+    "si": "ඝන කිරි",
+    "ta": "அடர் பால்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "3 tbsp, in place of some of the sugar",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Put the caramel sugar with a spoon of water into the aluminium mould or a thick steel bowl and hold it over a low flame until the sugar melts and turns the colour of strong tea.",
+    "minutes": 6
+   },
+   {
+    "text": "Tilt the mould so the caramel runs over the base, then set it down to harden; move fast, because caramel taken past dark brown turns bitter.",
+    "minutes": null
+   },
+   {
+    "text": "Whisk the milk powder into the fresh milk and warm it until it is just hot to the finger, never boiling.",
+    "minutes": 5
+   },
+   {
+    "text": "Beat the eggs with the custard sugar and vanilla only until smooth, since air beaten in now becomes holes in the pudding later.",
+    "minutes": null
+   },
+   {
+    "text": "Pour the warm milk into the eggs in a thin stream, stirring all the while so the eggs do not scramble.",
+    "minutes": null
+   },
+   {
+    "text": "Strain the custard through a tea strainer over the hardened caramel, and skim off any froth on top.",
+    "minutes": null
+   },
+   {
+    "text": "Cover the mould tightly with foil or a fitting plate, stand it in a pan of simmering water and steam on low heat until the centre only just wobbles when tapped.",
+    "minutes": 40
+   },
+   {
+    "text": "Lift the mould out, let it cool to room temperature, then chill it well so the custard sets firm.",
+    "minutes": 120
+   },
+   {
+    "text": "Run a knife around the edge, put a rimmed plate over the mould and turn the whole thing over in one movement so the caramel runs down the sides.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කැරමල් සඳහා සීනි, හැන්දක වතුර සමඟ ඇලුමිනියම් අච්චුවකට හෝ ඝන වානේ බඳුනකට දමා, අඩු ගින්නේ සීනි දියවී තද තේ පාට වන තුරු තබන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "අච්චුව හරවා කැරමල් පතුල පුරා පැතිරෙන්නට දී, තදවෙන්නට තියන්න, ඉක්මන් වන්න, තද දුඹුරු පසු කළොත් කැරමල් තිත්ත වේ.",
+    "minutes": null
+   },
+   {
+    "text": "කිරිපිටි නැවුම් කිරිවලට කලතා, ඇඟිල්ලට උණුසුම් වන තුරු පමණක් රත් කරන්න, කිසිසේත් නොතබන්න උතුරන්නට.",
+    "minutes": 5
+   },
+   {
+    "text": "බිත්තර, සීනි සහ වැනිලා සමඟ සිනිඳු වන තුරු පමණක් ගසන්න, දැන් ඇතුළු වන වාතය පසුව පුඩිං එකේ සිදුරු වේ.",
+    "minutes": null
+   },
+   {
+    "text": "උණුසුම් කිරි තුනී දහරාවක් ලෙස බිත්තරවලට වත් කරන්න, නොනවතින්ම කලතමින්, එවිට බිත්තර කැටි නොවේ.",
+    "minutes": null
+   },
+   {
+    "text": "මිශ්‍රණය තේ පෙරහනකින් පෙරා, තදවුණු කැරමල් මතට වත් කර, උඩ පෙණ ඇත්නම් ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අච්චුව ෆොයිල් හෝ ගැළපෙන පිඟානකින් තදින් වසා, උතුරන වතුර ඇති මුට්ටියක් තුළ තබා, මැද තට්ටු කළ විට සුළු වශයෙන් සෙලවෙන තුරු අඩු ගින්නේ තැම්බෙන්නට දෙන්න.",
+    "minutes": 40
+   },
+   {
+    "text": "අච්චුව ඉවතට ගෙන කාමර උෂ්ණත්වයට සිසිල් වීමෙන් පසු, හොඳින් ශීතකරණයේ තබන්න, එවිට පුඩිං තදව මිදේ.",
+    "minutes": 120
+   },
+   {
+    "text": "දාර වටේ පිහියක් ගෙන ගොස්, දාරයක් ඇති පිඟානක් අච්චුව මතට තබා, එක වරම හරවන්න, කැරමල් පැති දිගේ ගලා යනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கேரமலுக்கான சீனியை ஒரு கரண்டி நீருடன் அலுமினிய அச்சிலோ தடிமனான எவர்சில்வர் கிண்ணத்திலோ போட்டு, சிறு தீயில் சீனி உருகி கடும் தேநீர் நிறமாகும்வரை வையுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அச்சைச் சாய்த்து கேரமலை அடிமுழுவதும் பரவ விட்டு, இறுக வையுங்கள்; வேகமாகச் செய்யுங்கள் - அடர் பழுப்பைத் தாண்டினால் கசக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "பால் பவுடரை பாலில் கரைத்து, விரலுக்கு சூடாகும் அளவுக்கு மட்டும் காயவிடுங்கள் - கொதிக்க விடக் கூடாது.",
+    "minutes": 5
+   },
+   {
+    "text": "முட்டையை சீனியும் வெனிலாவும் சேர்த்து மிருதுவாகும்வரை மட்டும் அடியுங்கள்; இப்போது சேரும் காற்றே பின்னர் புட்டிங்கில் துளைகளாகும்.",
+    "minutes": null
+   },
+   {
+    "text": "சூடான பாலை மெல்லிய கோடாக முட்டைக் கலவையில் ஊற்றி, தொடர்ந்து கிளறுங்கள் - முட்டை கட்டியாகாது.",
+    "minutes": null
+   },
+   {
+    "text": "கலவையை தேநீர் வடிகட்டியில் வடித்து இறுகிய கேரமல் மேல் ஊற்றி, மேலே நுரை இருந்தால் எடுத்து விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அச்சை படலத்தாலோ பொருத்தமான தட்டாலோ இறுக்கி மூடி, கொதிக்கும் நீர் உள்ள பாத்திரத்தில் வைத்து, நடுப்பகுதி தட்டினால் சற்றே அசையும்வரை சிறு தீயில் ஆவியில் வேக விடுங்கள்.",
+    "minutes": 40
+   },
+   {
+    "text": "அச்சை எடுத்து அறை வெப்பத்திற்கு ஆறவிட்டு, பின் நன்றாகக் குளிர வையுங்கள் - புட்டிங் இறுகும்.",
+    "minutes": 120
+   },
+   {
+    "text": "ஓரமாக கத்தியை ஓட்டி, விளிம்புள்ள தட்டை அச்சின் மேல் வைத்து ஒரே அசைவில் திருப்புங்கள் - கேரமல் ஓரங்களில் வழியும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 45,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "aluminium pudding mould or thick steel bowl",
+  "large pan with lid for steaming",
+  "whisk",
+  "tea strainer"
+ ],
+ "tips": {
+  "en": "Keep the water under the mould at a bare simmer, because a hard boil makes the custard bubble and set full of holes. Straining is what separates a wedding-buffet pudding from a homely one, so do not skip it. If the pudding will not come out, stand the mould in an inch of hot water for a minute to soften the caramel and try again.",
+  "si": "අච්චුව යට වතුර සුළු වශයෙන් උතුරන තරමට තබා ගන්න, තදින් උතුරුවුවහොත් පුඩිං බුබුළු නැඟී සිදුරු පිරී මිදේ. පෙරීම තමයි විවාහ මංගල්‍යයේ පුඩිං සහ ගෙදර පුඩිං අතර වෙනස, ඒක මඟ හරින්න එපා. පුඩිං ගැලවෙන්නේ නැත්නම්, අච්චුව අඟලක් උණු වතුරේ මිනිත්තුවක් තබා කැරමල් මුදු කර නැවත උත්සාහ කරන්න.",
+  "ta": "அச்சின் அடியில் உள்ள நீர் மெதுவாகக் கொதிக்க வேண்டும்; பொங்கிக் கொதித்தால் புட்டிங்கில் காற்றுத் துளைகள் நிறைந்துவிடும். வடிகட்டுவதுதான் கல்யாண புட்டிங்கையும் சாதாரண புட்டிங்கையும் வேறுபடுத்துகிறது - அதைத் தவிர்க்க வேண்டாம். புட்டிங் வெளியே வராவிட்டால், அச்சை ஒரு அங்குல வெந்நீரில் ஒரு நிமிடம் வைத்து கேரமலை மென்மையாக்கி மீண்டும் முயலுங்கள்."
+ },
+ "health_note": {
+  "en": "Eggs and milk give this pudding real protein and calcium, which is more than most sweets on a buffet table offer, and its softness suits children and the elderly. The sugar, though, is there twice over in the caramel and the custard, so one slice is the sensible share for anyone managing diabetes.",
+  "si": "බිත්තර සහ කිරි නිසා මේ පුඩිං එකෙන් සැබෑ ප්‍රෝටීන් සහ කැල්සියම් ලැබේ, බුෆේ මේසයේ බොහෝ කැවිලිවලට වඩා එය වටී, මුදු නිසා ළමයින්ට සහ වැඩිහිටියන්ට ගැළපේ. එහෙත් සීනි කැරමල් එකේත් පුඩිං එකේත් දෙවරක් ඇති නිසා, දියවැඩියාව පාලනය කරන කෙනෙකුට එක පෙත්තක් ඇති.",
+  "ta": "முட்டையும் பாலும் இந்தப் புட்டிங்கிற்கு உண்மையான புரதத்தையும் கால்சியத்தையும் தருகின்றன - விருந்து மேசையின் பல இனிப்புகளை விட இது மேல்; மென்மையானதால் குழந்தைகளுக்கும் முதியவர்களுக்கும் ஏற்றது. ஆனால் சீனி கேரமலிலும் புட்டிங்கிலும் இருமுறை சேர்வதால், சர்க்கரை நோய் உள்ளவர்களுக்கு ஒரு துண்டே போதும்."
+ },
+ "tags": [
+  "calcium_rich",
+  "high_sugar",
+  "kid_friendly",
+  "elderly_friendly",
+  "festive",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,187 @@
+{
+ "id": "dish_belimal_tea",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 200,
+  "description": {
+   "en": "A pale amber cup taken in the evening, without milk",
+   "si": "සවසට කිරි නැතිව බොන ලා තඹ පාට කෝප්පයක්",
+   "ta": "மாலையில் பால் இல்லாமல் குடிக்கும் வெளிர் மஞ்சள் கோப்பை"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "pantry_beli_flowers",
+   "label": {
+    "en": "dried beli flowers",
+    "si": "වියලි බෙලිමල්",
+    "ta": "காய்ந்த வில்வ மலர்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "picked over for stalks and grit",
+    "si": "කොටු සහ කුණු ඉවත් කරගත්",
+    "ta": "தண்டுகளையும் குப்பையையும் நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1 small lump a cup",
+   "preparation": {
+    "en": "broken up",
+    "si": "කැඩූ",
+    "ta": "உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 16,
+   "unit": "g",
+   "household": "1 tsp a cup",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Shake the dried flowers out on a plate and pick away any stalks, leaves or grit that came with them.",
+    "minutes": null
+   },
+   {
+    "text": "Rinse them once in cold water and drain; shop-bought flowers carry dust from the sacks.",
+    "minutes": null
+   },
+   {
+    "text": "Bring 900 ml of water to the boil in a small pan.",
+    "minutes": 4
+   },
+   {
+    "text": "Drop in the flowers, cut the fire down to the lowest and let them steep with the pan covered.",
+    "minutes": 8
+   },
+   {
+    "text": "Do not let it boil hard once the flowers are in; a rolling boil strips the scent and leaves only a woody taste.",
+    "minutes": null
+   },
+   {
+    "text": "Strain into cups, sweeten with a lump of jaggery or a spoon of sugar, and drink it hot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වියලි බෙලිමල් පිඟානකට දමා, ඒ සමඟ ආ කොටු, කොළ හෝ කුණු ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සිසිල් වතුරෙන් වරක් සෝදා වතුර බේරෙන්නට තබන්න; කඩෙන් ගත් මල් වලට ගෝනියේ දූවිලි තිබේ.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා බඳුනක මිලිලීටර් 900ක් වතුර උතුරන්න තබන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මල් දමා, ගිනි අඩුම තැනට හරවා, බඳුන වසා පෙඟෙන්නට තබන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මල් දැමූ පසු තදින් උතුරන්නට ඉඩ දෙන්න එපා; තද උතුරාවෙන් සුවඳ නැති වී ලී ගතියක් පමණක් ඉතිරි වේ.",
+    "minutes": null
+   },
+   {
+    "text": "කෝප්පවලට පෙරාගෙන, හකුරු කැබැල්ලකින් හෝ සීනි හැන්දකින් රස කර, උණුසුම්ව බොන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "காய்ந்த மலர்களை ஒரு தட்டில் கொட்டி, அவற்றோடு வந்த தண்டு, இலை, குப்பையை நீக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "குளிர்ந்த நீரில் ஒருமுறை அலசி வடிகட்டுங்கள்; கடையில் வாங்கிய மலர்களில் சாக்குத் தூசு இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய பாத்திரத்தில் 900 மில்லி தண்ணீரைக் கொதிக்க வைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "மலர்களைப் போட்டு, தீயை மிகக் குறைத்து, பாத்திரத்தை மூடி ஊறவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "மலர் போட்ட பிறகு கடுமையாகக் கொதிக்கவிட வேண்டாம்; வேகமான கொதிப்பில் வாசம் போய், மரச் சுவையே மிஞ்சும்.",
+    "minutes": null
+   },
+   {
+    "text": "கோப்பைகளில் வடிகட்டி, ஒரு வெல்லத் துண்டு அல்லது ஒரு கரண்டி சீனி சேர்த்து, சூடாகக் குடியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 3,
+  "cook_minutes": 10,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "small pan",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Keep the dried flowers in a closed bottle away from the stove; damp flowers go musty and the tea tastes of nothing. The same flowers will give a second, lighter pot if you steep them again straight away.",
+  "si": "වියලි මල් ලිපෙන් ඈත්කර වැසෙන බෝතලයක තබන්න; තෙත් වූ මල් මුස්පේන්තු වී තේ එකට රසයක් නැති වේ. එම මල් වහාම දෙවනුව පෙඟුවොත් තුනී දෙවෙනි පෝච්චියක් ලැබේ.",
+  "ta": "காய்ந்த மலர்களை அடுப்புக்கு அருகில் அல்லாமல், மூடிய பாட்டிலில் வைக்கவும்; ஈரமான மலர் பூசணம் பிடித்து தேநீருக்கு சுவையே இருக்காது. அதே மலர்களை உடனே மீண்டும் ஊறவைத்தால் இரண்டாவது, நீர்த்த பாத்திரம் கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "No caffeine and no fat, so it suits an evening cup and suits elders who cannot sleep after tea. Sweeten it lightly; it is the jaggery, not the flowers, that adds the calories.",
+  "si": "කැෆේන් නැති, තෙල් නැති නිසා සවස් කෝප්පයටත්, තේ බීවොත් නින්ද නොයන වැඩිහිටියන්ටත් හොඳයි. පැණි රස අඩුවෙන් තබන්න; කැලරි එකතු කරන්නේ මල් නොව හකුරුයි.",
+  "ta": "காஃபீனும் கொழுப்பும் இல்லாததால் மாலைக் கோப்பைக்கும், தேநீர் குடித்தால் தூக்கம் வராத முதியவர்களுக்கும் ஏற்றது. இனிப்பைக் குறைவாக வையுங்கள்; கலோரி சேர்ப்பது மலர் அல்ல, வெல்லமே."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "low_calorie",
+  "low_fat",
+  "light",
+  "hydrating",
+  "comfort",
+  "traditional_remedy",
+  "elderly_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

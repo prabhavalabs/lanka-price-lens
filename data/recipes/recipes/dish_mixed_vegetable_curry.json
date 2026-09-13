@@ -1,0 +1,431 @@
+{
+ "id": "dish_mixed_vegetable_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 220,
+  "description": {
+   "en": "A ladle of vegetables in pale coconut gravy over rice",
+   "si": "බත් මතට එළවළු සහිත ලා පොල් කිරි හොදි හැන්දක්",
+   "ta": "சாதத்தின் மேல் ஒரு கரண்டி காய்கறியும் வெளிர் தேங்காய்க் குழம்பும்"
+  }
+ },
+ "yield_g": 950,
+ "ingredients": [
+  {
+   "ref": "product_ash_plantain",
+   "label": {
+    "en": "ash plantain",
+    "si": "අළු කෙසෙල්",
+    "ta": "காய் வாழைக்காய்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 plantain",
+   "preparation": {
+    "en": "peeled and cut into thick half-moons, held in water with a little turmeric",
+    "si": "ලෙලි ඉවත් කර ඝනට අඩ සඳ ආකාරයට කපා, කහ ටිකක් දැමූ වතුරේ තබා",
+    "ta": "தோல் நீக்கி தடிமனாக அரைவட்டமாக நறுக்கி, கொஞ்சம் மஞ்சள் கலந்த நீரில் போட்டு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අර්තාපල්",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 medium potato",
+   "preparation": {
+    "en": "peeled, cut into 2 cm cubes",
+    "si": "ලෙලි ඉවත් කර සෙන්ටිමීටර දෙකක කැට වලට කපා",
+    "ta": "தோல் நீக்கி 2 செ.மீ. கட்டிகளாக வெட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கரட்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large carrot",
+   "preparation": {
+    "en": "cut into thick rounds",
+    "si": "ඝනට රවුම් කපා",
+    "ta": "தடிமனாக வட்டமாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_beans",
+   "label": {
+    "en": "beans",
+    "si": "බෝංචි",
+    "ta": "பீன்ஸ்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "topped and cut into 3 cm lengths",
+    "si": "කෙළවර ඉවත් කර සෙන්ටිමීටර තුනක කැබලිවලට කපා",
+    "ta": "நுனிகளை நீக்கி 3 செ.மீ. நீளமாக வெட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup and a little more",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "5 or 6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලා",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp, coarsely ground",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the plantain, potato, carrot and beans to roughly the same size so that they finish cooking together, and keep the plantain in turmeric water until you need it.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the harder pieces, plantain, potato and carrot, into the pot with the thin coconut milk, turmeric, fenugreek, pandan, curry leaves, slit chillies and sliced onion.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and simmer on a medium flame until the potato is about half cooked.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the beans and crushed garlic and cook on until every piece is tender but still holds its shape.",
+    "minutes": 7
+   },
+   {
+    "text": "Season with salt and coarse pepper and taste the gravy; it should be gentle, not hot.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thick milk, keep the flame low, stir in one direction and lift the pot off at the first bubble so the milk does not split.",
+    "minutes": 3
+   },
+   {
+    "text": "Temper the coconut oil with a few onion slices and curry leaves and stir the whole tempering into the pot.",
+    "minutes": 3
+   },
+   {
+    "text": "Let the curry stand off the fire; the gravy thickens a little as it settles.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "කෙසෙල්, අර්තාපල්, කැරට් සහ බෝංචි එකම ප්‍රමාණයට කපා ගන්න, එවිට සියල්ල එකවර පැහෙනවා; කෙසෙල් අවශ්‍ය වන තුරු කහ වතුරේ තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "තදම කැබලි, එනම් කෙසෙල්, අර්තාපල් සහ කැරට්, තුනී පොල් කිරි, කහ, උළුහාල්, රම්පෙ, කරපිංචා, පලාගත් මිරිස් සහ ළූණු සමඟ මුට්ටියට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා මද ගින්නේ අර්තාපල් අඩක් පැහෙන තුරු තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බෝංචි සහ තලාගත් සුදු ළූණු දමා, සියලු කැබලි හැඩය නැති නොවී මෘදු වන තුරු තවත් තම්බන්න.",
+    "minutes": 7
+   },
+   {
+    "text": "ලුණු සහ රළු ගම්මිරිස් දමා හොදිය රස බලන්න; සැරට නොව මෘදුවට තිබිය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "ඝන කිරි වත් කර, ගිනි අඩු කර, එක් දිශාවකට කලවම් කරමින්, කිරි කැඩෙන්නට පෙර පළමු උතුරේදීම මුට්ටිය ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පොල් තෙල් ළූණු පෙති සහ කරපිංචා සමඟ තෙම්පරාදු කර, මුළු තෙම්පරාදුවම හොදියට එකතු කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන මිනිත්තු කීපයක් තියන්න; හොදිය ටිකක් තදවෙනවා.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "வாழைக்காய், உருளைக்கிழங்கு, கரட், பீன்ஸ் ஆகியவற்றை ஏறக்குறைய ஒரே அளவில் நறுக்கவும், அப்போது எல்லாம் ஒன்றாக வேகும்; வாழைக்காயை மஞ்சள் நீரில் வைத்திருக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "கடினமான துண்டுகளான வாழைக்காய், உருளை, கரட் ஆகியவற்றை இரண்டாம் தேங்காய்ப்பால், மஞ்சள், வெந்தயம், ரம்பை, கறிவேப்பிலை, கீறிய மிளகாய், நறுக்கிய வெங்காயத்துடன் சட்டியில் இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி, மிதமான தீயில் உருளைக்கிழங்கு பாதி வேகும் வரை கொதிக்க விடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "பீன்ஸ், தட்டிய பூண்டு சேர்த்து, எல்லா துண்டுகளும் வடிவம் கெடாமல் மென்மையாகும் வரை வேகவிடவும்.",
+    "minutes": 7
+   },
+   {
+    "text": "உப்பும் இடித்த மிளகும் சேர்த்து குழம்பைச் சுவைத்துப் பார்க்கவும்; காரமாக இல்லாமல் மிருதுவாக இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "முதல் பாலை ஊற்றி, தீயைக் குறைத்து, ஒரே திசையில் கிளறி, பால் திரியும் முன் முதல் கொதியிலேயே சட்டியை இறக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "தேங்காய் எண்ணெயில் வெங்காயத் துண்டுகளையும் கறிவேப்பிலையையும் தாளித்து, அதை முழுவதுமாகக் குழம்பில் கலக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி சில நிமிடம் வைக்கவும்; குழம்பு சற்று தடிக்கும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or wide pan with a lid",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Whatever four or five vegetables the market gave you cheaply will work, as long as you put the slow ones in first and the quick ones in last. A beaten spoon of rice flour in the thick milk saves the gravy if it looks like splitting.",
+  "si": "වෙළඳපොලෙන් ලාබෙට ලැබුණු එළවළු හතරක් පහක් මේ ආකාරයටම කරන්න පුළුවන්; හිර වන්නට කල් ගන්න ඒවා පළමුව, ඉක්මනින් පැහෙන ඒවා අන්තිමට දමන්න. ඝන කිරි කැඩෙන ලකුණක් නම් සහල් පිටි තේ හැන්දක් කලවම් කර දැමීමෙන් හොදිය බේරගන්න පුළුවන්.",
+  "ta": "சந்தையில் மலிவாகக் கிடைத்த நாலைந்து காய்கறிகளை இப்படியே சமைக்கலாம்; வேக நேரம் அதிகம் தேவைப்படுவதை முதலில், விரைவில் வேகுவதைக் கடைசியில் சேர்க்கவும். முதல் பால் திரியும் போலத் தோன்றினால் ஒரு டீஸ்பூன் அரிசி மாவைக் கலந்து விட்டால் குழம்பு தப்பிக்கும்."
+ },
+ "health_note": {
+  "en": "One pot like this gets four or five different vegetables and a good amount of fibre onto the plate at low cost. The coconut milk is where most of the calories sit, so use the thin milk generously and the thick milk sparingly if the meal is already rich.",
+  "si": "මෙවැනි එක් මුට්ටියකින් එළවළු වර්ග හතරක් පහක් සහ හොඳ තන්තු ප්‍රමාණයක් අඩු වියදමකින් පිඟානට ගන්න පුළුවන්. කැලරි වැඩිපුර තියෙන්නේ පොල් කිරියේ නිසා, කෑම දැනටමත් තෙල් සහිත නම් තුනී කිරි වැඩිපුර, ඝන කිරි අඩුවෙන් යොදන්න.",
+  "ta": "இப்படி ஒரு சட்டியில் நாலைந்து காய்கறிகளும் நல்ல நார்ச்சத்தும் குறைந்த செலவில் தட்டுக்கு வந்துவிடும். கலோரி பெரும்பாலும் தேங்காய்ப்பாலில்தான்; உணவே கொழுப்பு நிறைந்ததாக இருந்தால் இரண்டாம் பாலை அதிகமாகவும் முதல் பாலைக் குறைவாகவும் பயன்படுத்தவும்."
+ },
+ "tags": [
+  "high_fibre",
+  "light",
+  "budget",
+  "one_pot",
+  "kid_friendly",
+  "elderly_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,5 +1,5 @@
 /**
- * The "How to use" guide: nine sections of steps with screenshots of the live site. The screenshots
+ * The "How to use" guide: eleven sections of steps with screenshots of the live site. The screenshots
  * live in public/guide and are refreshed by scripts/guide-screenshots.js; the test checks that every
  * file here exists at the declared size. The same guide is docs/user-guide.md in the repository.
  */
@@ -116,13 +116,43 @@ export const guideSections: GuideSection[] = [
     summary: "Under the store comparison, “Cook with your basket” suggests dishes from a catalogue of 363 Sri Lankan dishes, best fit first: how many of a dish's key ingredients you already have, how much of your basket it uses, and what is still to buy.",
     steps: [
       "Each card names the dish, its kind, time, and difficulty, and what it still needs.",
-      "A dish page splits its ingredients into “From your basket” and “Still to buy”, the latter at today's cheapest price per unit with an “Add” for each, then pantry items, variants, and what it goes well with, with a rough extra cost.",
+      "A dish page splits its key ingredients into “From your basket” and “Still to buy”, the latter at today's cheapest price per unit with an “Add” for each, then variants and what it goes well with.",
       "“Recipes” in the header browses the whole catalogue by name in any language or by ingredient.",
     ],
     figures: [
       { file: "cook", alt: "Dish cards under the basket, each with its category, time, difficulty, and what it still needs", caption: "Dishes that fit what you have, best fit first, each saying what is still to buy.", width: 1680, height: 1059 },
       { file: "recipe", alt: "A dish page with ingredients still to buy at today's cheapest price and the ingredients already in the basket", caption: "A dish: what you have, what is still to buy at today's cheapest price, and the rough extra cost.", width: 1920, height: 1200 },
       { file: "recipes", alt: "The recipe catalogue filtered by “curry”, one card per dish", caption: "The whole catalogue, searchable by name in any language or by ingredient.", width: 1920, height: 1200 },
+    ],
+  },
+  {
+    id: "servings",
+    title: "Cook for any number",
+    summary: "Every dish carries a full recipe: quantities as you buy them, the method step by step, and the numbers that follow from them. Set how many you are cooking for and every amount scales; calories per serving and the cost per serving at today's cheapest sellers come with it. The time does not change: a pot for twenty simmers as long as a pot for four.",
+    steps: [
+      "Use the “Cooking for” control or the 4, 6, 10, and 20 buttons. Salt, oil for tempering, and whole spices grow a little slower than the headcount, as they do in a real kitchen.",
+      "“Per serving” gives energy, protein, fat, carbohydrate, fibre, and sodium for one person's portion, computed from each ingredient's edible weight against a nutrition table built for Sri Lankan foods and checked against published composition tables.",
+      "“Cost per serving” prices the ingredients at today's cheapest published seller. A “≈” means something is not priced yet or a price is older than a week; the card says which.",
+      "“Read in” switches the method between English, Sinhala, and Tamil. Sinhala and Tamil text is machine drafted until a person has reviewed it, and the page says so.",
+      "On the recipes page the chips and the calorie cap ask a question of the whole catalogue: weight loss, high protein, low calorie, quick, budget, and so on, sorted by fewest calories, most protein, quickest, or cheapest.",
+    ],
+    figures: [
+      { file: "servings", alt: "A hoppers recipe scaled to ten people, with calories, cost, and time per serving and the ingredient list in grams", caption: "One recipe for ten: every amount, the calories, and the cost follow the headcount; the time stays.", width: 1920, height: 1200 },
+      { file: "recipes-filters", alt: "The recipes page filtered to weight-loss-friendly dishes, fewest calories first, each card showing calories and protein per serving", caption: "Ask the catalogue a question: weight loss, fewest calories first.", width: 1920, height: 1200 },
+    ],
+  },
+  {
+    id: "menus",
+    title: "Plan a menu",
+    summary: "A menu is a meal for an occasion: a Sunday lunch, a poya dana, a birthday tea. Name it, say how many are coming, add recipes from their pages, and the whole meal is worked out: calories per person, cost per person at today's prices, and one shopping list summed across every recipe.",
+    steps: [
+      "On any recipe, “Add to a menu” adds it to a menu you have or starts a new one. “Menus” in the header lists them.",
+      "Each recipe follows the headcount unless you set its own servings: a sambol made for the table, a sweet for half the guests. “Follow headcount” puts it back.",
+      "Change the number of people and everything recomputes. “Add priced items to basket” moves the shopping list into your basket in real amounts, so the store comparison prices the whole meal.",
+      "Menus live in this browser, like the basket; nothing is sent anywhere until you share it.",
+    ],
+    figures: [
+      { file: "menu", alt: "A Sunday lunch menu for eight: three recipes with their servings, calories and cost per person, and the merged shopping list", caption: "A menu for eight: per-person totals, each recipe's servings, and one shopping list.", width: 1920, height: 1200 },
     ],
   },
   {

@@ -1,0 +1,436 @@
+{
+ "id": "dish_lagoon_prawn_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 230,
+  "description": {
+   "en": "Three or four head-on prawns with thick roasted-spice gravy and rice",
+   "si": "හිස් සමඟම ඉස්සන් තුන් හතරක්, ඝන බැදපු කුළුබඩු හොදි සහ බත් සමඟ",
+   "ta": "தலையுடன் மூன்று நான்கு இறால், வறுத்த மசாலா கெட்டி குழம்புடன் சாதத்துடன்"
+  }
+ },
+ "yield_g": 920,
+ "ingredients": [
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "prawns, head on",
+    "si": "ඉස්සෝ, හිස් සමඟ",
+    "ta": "இறால், தலையுடன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "8 large lagoon prawns",
+   "preparation": {
+    "en": "legs and head spike trimmed, deveined through the back, washed",
+    "si": "කකුල් සහ හිසේ කටුව කපා, පිටිකොටින් නහර ගලවා, සෝදා",
+    "ta": "கால்களும் தலை முள்ளும் வெட்டி, முதுகில் நரம்பு நீக்கி, அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a small ball",
+   "preparation": {
+    "en": "soaked in half a cup of water and strained",
+    "si": "කෝප්පයක් බාගයක් වතුරේ පොඟවා පෙරා",
+    "ta": "அரை கோப்பை நீரில் ஊறவைத்து வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "தளர்ந்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "ඉරා",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Snip the legs and the sharp spike off the prawn heads but leave the heads and shells on, then devein each one through a slit in the back and wash them.",
+    "minutes": null
+   },
+   {
+    "text": "Rub the prawns with a little of the turmeric and salt and keep them aside.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil in a clay pot and temper the onion, garlic, ginger, curry leaves and pandan leaf until the onion is golden.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the roasted curry powder, chilli powder, pepper and the rest of the turmeric and fry until the oil separates at the edge of the pot.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk with the tamarind water and cook until the spices bind into a gravy.",
+    "minutes": 6
+   },
+   {
+    "text": "Slide in the prawns in one layer, cover the pot and cook until the shells turn orange red.",
+    "minutes": 5
+   },
+   {
+    "text": "Turn the prawns once and press one or two heads with the back of a spoon so the juices run into the gravy.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the thick coconut milk and the green chilli and let it come only just to the boil.",
+    "minutes": 3
+   },
+   {
+    "text": "Take the pot off the fire, taste for salt and let it rest so the gravy thickens before serving with rice.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "ඉස්සන්ගේ කකුල් සහ හිසේ තියුණු කටුව කපා දමන්න, නමුත් හිස සහ පොත්ත තියන්න; පිටිකොටේ පොඩි කැපුමක් දමා නහර ගලවා සෝදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉස්සන්ට කහ සහ ලුණු මදක් ගා පසෙකින් තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළං භාජනයක තෙල් රත් කර, ලූනු, සුදුළූණු, ඉඟුරු, කරපිංචා සහ රම්පෙ ලූනු රන්වන් වන තෙක් තෙල් දාන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බැදපු තුනපහ, මිරිස් කුඩු, ගම්මිරිස් සහ ඉතිරි කහ දමා, භාජනයේ කොනින් තෙල් වෙන් වන තෙක් බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "දිය කිරි සහ සියඹලා වතුර දමා, කුළුබඩු හොදියක් ලෙස බැඳෙන තෙක් පිසින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ඉස්සන් එක ස්ථරයකට තබා, වැසුම දමා, පොත්තු තැඹිලි රතු පාට වන තෙක් පිසින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඉස්සන් වරක් හරවා, හිස් එකක් දෙකක් හැන්දේ පිටුපසින් තලා යුෂ හොදියට එන්න දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "මිටි කිරි සහ අමු මිරිස් දමා, නටන්නට ආසන්නම වන තෙක් පමණක් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලිපෙන් ඉවත් කර ලුණු රස බලා, හොදිය ඝන වෙන්න මදක් තියා බත් සමඟ බෙදන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "இறாலின் கால்களையும் தலையின் கூர் முள்ளையும் வெட்டவும், ஆனால் தலையும் ஓடும் இருக்கட்டும்; முதுகில் சிறு கீறல் போட்டு நரம்பை நீக்கி அலசவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறாலில் சிறிது மஞ்சளும் உப்பும் தூவி ஒரு பக்கம் வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் எண்ணெயை காய்ச்சி, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, ரம்பை இலையை வெங்காயம் பொன்னிறமாகும் வரை தாளிக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "வறுத்த கறித்தூள், மிளகாய்த் தூள், மிளகு, மீதி மஞ்சள் சேர்த்து, சட்டியின் ஓரத்தில் எண்ணெய் பிரியும் வரை வதக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தளர்ந்த தேங்காய்ப் பாலையும் புளி நீரையும் விட்டு, மசாலா குழம்பாக சேரும் வரை சமைக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "இறாலை ஒரே அடுக்காக வைத்து, மூடி போட்டு, ஓடு ஆரஞ்சு சிவப்பாகும் வரை வேகவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "இறாலை ஒருமுறை திருப்பி, ஒன்றிரண்டு தலைகளை கரண்டியின் பின்பக்கத்தால் அழுத்தி சாறு குழம்பில் இறங்கவிடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கெட்டியான பாலையும் பச்சை மிளகாயையும் சேர்த்து, கொதிக்க வரும் நிலை வரை மட்டும் வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "அடுப்பில் இருந்து இறக்கி உப்பு பார்த்து, குழம்பு இறுக சிறிது நேரம் வைத்து சாதத்துடன் பரிமாறவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot with lid",
+  "kitchen scissors"
+ ],
+ "tips": {
+  "en": "The heads are where the flavour lives, so do not let the fish seller take them off. Five minutes is enough cooking for a large prawn: once the shell is red the meat is done, and every extra minute makes it tougher.",
+  "si": "රසය තියෙන්නේ හිස්වල; ඒ නිසා මාළු කඩේ ඒවා කපන්න දෙන්න එපා. ලොකු ඉස්සෙකුට මිනිත්තු පහක් ඇති; පොත්ත රතු වුණාම මස් පිසී අවසන්, ඉන් පස්සේ හැම මිනිත්තුවක්ම මස තද කරනවා.",
+  "ta": "சுவை இருப்பது தலைகளில்; எனவே மீன் கடையில் அவற்றை வெட்ட விடாதீர்கள். பெரிய இறாலுக்கு ஐந்து நிமிடம் போதும்; ஓடு சிவந்தால் இறைச்சி வெந்துவிட்டது, அதற்கு பிறகு ஒவ்வொரு நிமிடமும் அதை இறுக்கமாக்கும்."
+ },
+ "health_note": {
+  "en": "Head-on prawns give protein, iodine and zinc, and the heads carry most of the cholesterol along with most of the taste. With roasted spices and coconut milk this is a rich dish, so keep to three or four prawns and fill the plate with rice and greens.",
+  "si": "හිස් සමඟ ඉස්සන්ගෙන් ප්‍රෝටීන්, අයඩීන් සහ සින්ක් ලැබෙනවා; රසේ වැඩි කොටස වගේම කොලෙස්ටරෝල් වැඩි කොටසත් තියෙන්නේ හිස්වල. බැදපු කුළුබඩු සහ පොල් කිරි නිසා මේක සරුයි, ඒ නිසා ඉස්සන් තුන් හතරකින් නවතා පිඟාන බත් සහ පලා වර්ගවලින් පුරවා ගන්න.",
+  "ta": "தலையுடன் உள்ள இறாலில் புரதம், அயோடின், துத்தநாகம் கிடைக்கும்; சுவையின் பெரும்பகுதியும் கொலஸ்ட்ராலின் பெரும்பகுதியும் தலைகளில்தான். வறுத்த மசாலாவும் தேங்காய்ப் பாலும் சேர்வதால் இது கொழுப்பு நிறைந்த உணவு, எனவே மூன்று நான்கு இறாலுடன் நிறுத்தி, தட்டை சாதத்தாலும் கீரையாலும் நிரப்புங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "festive",
+  "one_pot",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}
