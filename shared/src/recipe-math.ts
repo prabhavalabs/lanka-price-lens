@@ -179,6 +179,17 @@ export function quantityInPricedUnit(ingredient: Pick<RecipeIngredient, "quantit
   return grams !== null && entry?.measures.bunch_g ? grams / entry.measures.bunch_g : null;
 }
 
+/** What one scaled ingredient line costs at the price the lookup offers, or null when nothing prices it. */
+export function lineCost(ingredient: Pick<RecipeIngredient, "ref" | "label" | "quantity" | "unit" | "part">, lookup: IngredientLookup, prices: PriceLookup): IngredientCost | null {
+  if (!ingredient.ref || !isPricedIngredient(ingredient.ref)) return null;
+  const entry = lookup(ingredient.ref);
+  const price = prices(ingredient.ref, ingredient);
+  const amount = price ? quantityInPricedUnit(ingredient, price.unit, entry) : null;
+  if (!price || amount === null) return null;
+  const cost = Math.round(amount * consumedShare(ingredient) * price.price * 100) / 100;
+  return { ref: ingredient.ref, label: ingredient.label.en, quantity: ingredient.quantity, unit: ingredient.unit, amount: Math.round(amount * 1000) / 1000, price_unit: price.unit, unit_price: price.price, cost, seller: price.seller, observed_on: price.observed_on, stale: price.stale };
+}
+
 export function recipeCost(recipe: Recipe, lookup: IngredientLookup, prices: PriceLookup, servings = recipe.base_servings): RecipeCost {
   const lines: IngredientCost[] = [];
   const unpriced: string[] = [];
@@ -186,17 +197,14 @@ export function recipeCost(recipe: Recipe, lookup: IngredientLookup, prices: Pri
   let stale = false;
   for (const ingredient of scaleIngredients(recipe, servings)) {
     if (ingredient.optional) continue;
-    const entry = ingredient.ref ? lookup(ingredient.ref) : undefined;
-    const price = ingredient.ref && isPricedIngredient(ingredient.ref) ? prices(ingredient.ref, ingredient) : undefined;
-    const amount = price ? quantityInPricedUnit(ingredient, price.unit, entry) : null;
-    if (!price || amount === null || !ingredient.ref) {
+    const line = lineCost(ingredient, lookup, prices);
+    if (!line) {
       unpriced.push(ingredient.label.en);
       continue;
     }
-    const cost = Math.round(amount * consumedShare(ingredient) * price.price * 100) / 100;
-    stale = stale || price.stale;
-    total += cost;
-    lines.push({ ref: ingredient.ref, label: ingredient.label.en, quantity: ingredient.quantity, unit: ingredient.unit, amount: Math.round(amount * 1000) / 1000, price_unit: price.unit, unit_price: price.price, cost, seller: price.seller, observed_on: price.observed_on, stale: price.stale });
+    stale = stale || line.stale;
+    total += line.cost;
+    lines.push(line);
   }
   return { total: Math.round(total * 100) / 100, per_serving: Math.round((total / servings) * 100) / 100, servings, lines, unpriced, estimated: stale || unpriced.length > 0 };
 }
@@ -245,7 +253,19 @@ function fraction(value: number): string {
   return whole === 0 ? glyph : `${whole}${glyph}`;
 }
 
-export type MenuLine = { ref: string | null; label: string; unit: RecipeIngredient["unit"]; quantity: number; recipes: string[] };
+export type MenuLine = {
+  ref: string | null;
+  label: string;
+  unit: RecipeIngredient["unit"];
+  quantity: number;
+  recipes: string[];
+  /** Rupees for the summed amount at today's cheapest sellers, or null when nothing prices it. */
+  cost: number | null;
+  unit_price: number | null;
+  price_unit: IngredientPrice["unit"] | null;
+  sellers: string[];
+  stale: boolean;
+};
 
 export type MenuTotals = {
   people: number;
@@ -279,10 +299,23 @@ export function menuTotals(menu: Menu, recipes: (id: string) => Recipe | undefin
     }
     for (const ingredient of scaleIngredients(recipe, servings)) {
       if (ingredient.optional) continue;
-      const key = `${ingredient.ref ?? ingredient.label.en.toLowerCase()}|${ingredient.unit}`;
-      const line = shopping.get(key) ?? { ref: ingredient.ref, label: ingredient.label.en, unit: ingredient.unit, quantity: 0, recipes: [] };
+      // One line per product (whatever each recipe called it) or per pantry wording, per unit: thick and thin coconut milk
+      // are one "coconut milk" to buy, while "chicken, curry cut" and "chicken" are one chicken.
+      const entry = ingredient.ref ? lookup(ingredient.ref) : undefined;
+      const product = Boolean(ingredient.ref && isPricedIngredient(ingredient.ref));
+      const label = product ? (entry?.names.en ?? ingredient.label.en) : ingredient.label.en;
+      const key = product ? `${ingredient.ref}|${ingredient.unit}` : `${label.toLowerCase()}|${ingredient.unit}`;
+      const line = shopping.get(key) ?? { ref: ingredient.ref, label, unit: ingredient.unit, quantity: 0, recipes: [], cost: null, unit_price: null, price_unit: null, sellers: [], stale: false };
       line.quantity += ingredient.quantity;
       if (!line.recipes.includes(recipe.id)) line.recipes.push(recipe.id);
+      const priced = prices ? lineCost(ingredient, lookup, prices) : null;
+      if (priced) {
+        line.cost = Math.round(((line.cost ?? 0) + priced.cost) * 100) / 100;
+        line.unit_price = line.unit_price ?? priced.unit_price;
+        line.price_unit = line.price_unit ?? priced.price_unit;
+        if (!line.sellers.includes(priced.seller)) line.sellers.push(priced.seller);
+        line.stale = line.stale || priced.stale;
+      }
       shopping.set(key, line);
     }
   }

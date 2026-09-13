@@ -199,7 +199,7 @@ export const fetchRecipeQuery = (params: RecipeQueryParams): Promise<RecipeQuery
 };
 
 export type MenuInput = { id: string; name: string; occasion: string | null; people: number; items: Array<{ recipe_id: string; servings: number | null }>; created_at: string };
-export type MenuLine = { ref: string | null; label: string; unit: "g" | "ml" | "piece"; quantity: number; recipes: string[] };
+export type MenuLine = { ref: string | null; label: string; unit: "g" | "ml" | "piece"; quantity: number; recipes: string[]; cost: number | null; unit_price: number | null; price_unit: "kg" | "l" | "piece" | "bunch" | null; sellers: string[]; stale: boolean };
 export type MenuTotals = {
   people: number;
   items: Array<{ recipe_id: string; servings: number; nutrition: RecipeNutrition; cost: RecipeCost | null }>;

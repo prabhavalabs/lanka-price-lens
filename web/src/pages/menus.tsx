@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
 import { computeMenu, fetchRecipes, type MenuTotals } from "@/lib/api";
-import { dishCategoryLabel, rupees } from "@/lib/format";
+import { dishCategoryLabel, rupees, unitLabel } from "@/lib/format";
 import { usePageTitle } from "@/lib/page-title";
 import { amountLabel, gramsLabel, kcalLabel } from "@/lib/recipe-format";
 import { basketStore } from "@/store/basket";
@@ -314,37 +314,83 @@ function MenuDetail({ menu }: { menu: Menu }) {
         </Card>
       ) : null}
 
-      {data?.shopping.length ? (
-        <Card>
-          <CardContent className="p-0">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
-              <div><h2 className="font-heading text-lg font-semibold">Shopping list</h2><p className="text-xs text-muted-foreground">Everything across the recipes, summed. Priced products can go to your basket in these amounts.</p></div>
-              <Button
-                onClick={() => {
-                  for (const line of data.shopping) {
-                    if (!line.ref?.startsWith("product_")) continue;
-                    const unit = line.unit === "piece" ? "piece" : line.unit === "ml" ? "l" : "kg";
-                    const quantity = line.unit === "piece" ? Math.ceil(line.quantity) : Math.max(0.05, Math.round((line.quantity / 1000) * 100) / 100);
-                    basketStore.add(line.ref, line.label, unit, quantity);
-                  }
-                }}
-                size="sm"
-                variant="outline"
-              >
-                Add priced items to basket
-              </Button>
-            </div>
-            <ul className="grid gap-x-6 sm:grid-cols-2">
-              {data.shopping.map((line) => (
-                <li key={`${line.ref ?? line.label}-${line.unit}`} className="flex items-center gap-3 border-b px-4 py-2 text-sm">
-                  <span className="min-w-0 flex-1 truncate">{line.ref?.startsWith("product_") ? <Link to={`/p/${line.ref}`} className="no-underline hover:text-primary">{line.label}</Link> : line.label}</span>
-                  <span className="font-medium tabular-nums">{amountLabel(line.quantity, line.unit)}</span>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-      ) : null}
+      {data?.shopping.length ? (() => {
+        const main = data.shopping.filter((line) => line.ref?.startsWith("product_"));
+        const pantry = data.shopping.filter((line) => !line.ref?.startsWith("product_"));
+        const pricedTotal = data.shopping.reduce((sum, line) => sum + (line.cost ?? 0), 0);
+        const pricedLines = data.shopping.filter((line) => line.cost !== null).length;
+        let number = 0;
+        const row = (line: (typeof data.shopping)[number]) => {
+          number += 1;
+          return (
+            <li key={`${line.ref ?? line.label}-${line.unit}`} className="grid grid-cols-[1.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-0.5 px-4 py-2.5 sm:grid-cols-[1.75rem_minmax(0,1.4fr)_5.5rem_minmax(0,1fr)_6rem]">
+              <span className="text-xs text-muted-foreground tabular-nums">{number}.</span>
+              <div className="min-w-0">
+                <p className="truncate text-sm font-medium">{line.ref?.startsWith("product_") ? <Link to={`/p/${line.ref}`} className="no-underline hover:text-primary">{line.label}</Link> : line.label}</p>
+                <p className="truncate text-[11px] text-muted-foreground">{line.recipes.length > 1 ? `in ${line.recipes.length} recipes` : `in ${data.names[line.recipes[0] ?? ""]?.en ?? "1 recipe"}`}</p>
+              </div>
+              <p className="text-right text-sm font-semibold tabular-nums">{amountLabel(line.quantity, line.unit)}</p>
+              <div className="col-start-2 min-w-0 text-[11px] leading-snug text-muted-foreground sm:col-start-4 sm:text-xs">
+                {line.cost !== null && line.unit_price !== null && line.price_unit ? (
+                  <>
+                    <p className="tabular-nums"><span className="text-foreground">{rupees(line.unit_price)} {unitLabel(line.price_unit)}</span><span className="sm:hidden"> · <span className="font-semibold text-foreground">{rupees(line.cost)}</span></span></p>
+                    <p className="truncate">{line.sellers.join(", ")}{line.stale ? <span className="ml-1 rounded bg-muted px-1 py-px text-[10px]">older price</span> : null}</p>
+                  </>
+                ) : line.ref?.startsWith("product_") ? <p>No published price today</p> : <p><span className="rounded bg-muted px-1 py-px text-[10px]">pantry</span> not priced yet</p>}
+              </div>
+              <p className="hidden text-right text-sm font-semibold tabular-nums sm:block">{line.cost !== null ? rupees(line.cost) : <span className="font-normal text-muted-foreground">—</span>}</p>
+            </li>
+          );
+        };
+        return (
+          <Card>
+            <CardContent className="p-0">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
+                <div><h2 className="font-heading text-lg font-semibold">Shopping list</h2><p className="text-xs text-muted-foreground">Everything across the recipes, summed once per ingredient, at today's cheapest published sellers. Priced products can go to your basket in these amounts.</p></div>
+                <Button
+                  onClick={() => {
+                    for (const line of data.shopping) {
+                      if (!line.ref?.startsWith("product_")) continue;
+                      const unit = line.unit === "piece" ? "piece" : line.unit === "ml" ? "l" : "kg";
+                      const quantity = line.unit === "piece" ? Math.ceil(line.quantity) : Math.max(0.05, Math.round((line.quantity / 1000) * 100) / 100);
+                      basketStore.add(line.ref, line.label, unit, quantity);
+                    }
+                  }}
+                  size="sm"
+                  variant="outline"
+                >
+                  Add priced items to basket
+                </Button>
+              </div>
+              <div className="hidden grid-cols-[1.75rem_minmax(0,1.4fr)_5.5rem_minmax(0,1fr)_6rem] gap-x-3 border-b px-4 py-2 text-[11px] font-medium uppercase text-muted-foreground sm:grid">
+                <span className="col-span-2">Ingredient</span>
+                <span className="text-right">Amount</span>
+                <span>Cheapest today</span>
+                <span className="text-right">Price</span>
+              </div>
+              {main.length ? (
+                <section>
+                  <h3 className="border-b bg-muted/30 px-4 py-1.5 text-[11px] font-medium uppercase text-muted-foreground">Main ingredients</h3>
+                  <ul className="divide-y">{main.map(row)}</ul>
+                </section>
+              ) : null}
+              {pantry.length ? (
+                <section>
+                  <h3 className="border-y bg-muted/30 px-4 py-1.5 text-[11px] font-medium uppercase text-muted-foreground">Pantry and others</h3>
+                  <ul className="divide-y">{pantry.map(row)}</ul>
+                </section>
+              ) : null}
+              <div className="flex items-center justify-between gap-3 border-t bg-muted/30 px-4 py-2.5">
+                <div>
+                  <p className="text-sm font-semibold">Estimated shopping cost</p>
+                  <p className="text-[11px] text-muted-foreground">{pricedLines} of {data.shopping.length} lines priced{pantry.length ? `; ${pantry.length} pantry or unpriced not counted` : ""}</p>
+                </div>
+                <p className="text-right tabular-nums"><span className="text-base font-semibold">{data.total.estimated ? "≈ " : ""}{rupees(pricedTotal)}</span></p>
+              </div>
+            </CardContent>
+          </Card>
+        );
+      })() : null}
 
       <MenuDialog menu={menu} onOpenChange={setEditing} onSaved={() => setEditing(false)} open={editing} />
       <AddRecipesDialog menu={menu} onOpenChange={setAdding} open={adding} />

@@ -154,6 +154,10 @@ test("a menu scales each recipe to its servings, merges the shopping list, and t
   assert.equal(totals.total.estimated, true);
   const onion = totals.shopping.find((line) => line.ref === "product_big_onion" && line.unit === "g");
   assert.equal(onion?.quantity, 120, "grams and pieces of the same ingredient stay separate lines");
+  assert.equal(onion?.label, "Big onion", "a product line takes the registry's name, whatever the recipe called it");
+  const chicken = totals.shopping.find((line) => line.ref === "product_chicken");
+  assert.deepEqual([chicken?.cost, chicken?.unit_price, chicken?.price_unit, chicken?.sellers], [1200, 1000, "kg", ["Keells"]], "a shopping line carries what its summed amount costs and where");
+  assert.equal(totals.shopping.find((line) => line.ref === "pantry_coconut_milk")?.cost, null);
   assert.deepEqual(totals.shopping.find((line) => line.ref === "product_salt")?.recipes, ["dish_chicken_curry", "dish_lunu_miris"]);
   assert.equal(totals.shopping.find((line) => line.ref === "product_salt")?.quantity, roundKitchen(6 * 2 ** 0.75 + 3, "g"));
 });
