@@ -57,7 +57,7 @@ test("the store loads the registry and the recipes, and the index carries nutrit
 test("a recipe view scales to the headcount and keeps per-serving nutrition; a menu totals and merges the shopping list", () => {
   const six = recipeView(store, index, "dish_parippu", 6, null)!;
   assert.equal(six.servings, 6);
-  assert.deepEqual(six.ingredients.map((line) => [line.label.en, line.quantity, line.household]), [["red dhal", 300, "1½ cup"], ["big onion", 1.5, null], ["coconut milk", 300, "1¼ cup"], ["salt", 8, "1¼ tsp"]]);
+  assert.deepEqual(six.ingredients.map((line) => [line.label.en, line.quantity, line.household]), [["red dhal", 300, "1½ cup"], ["big onion", 1.5, null], ["coconut milk", 300, "1¼ cup"], ["salt", 8, "1¼ tsp"]], "spoons and cups are derived for weighed lines; a count is its own measure");
   assert.equal(six.ingredients[0]!.names?.si, "පරිප්පු");
   assert.equal(six.nutrition.per_serving.kcal, 281);
   assert.equal(six.yield_g, 975);

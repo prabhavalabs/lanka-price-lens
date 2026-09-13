@@ -198,7 +198,8 @@ export function recipeView(store: RecipeStore, index: Map<string, RecipeIndexEnt
   const priced = new Set(cost?.lines.map((line) => line.ref) ?? []);
   const ingredients: RecipeIngredientView[] = scaleIngredients(recipe, servings).map((line) => {
     const registryEntry = line.ref ? store.registry.get(line.ref) : undefined;
-    const household = servings === recipe.base_servings && line.household ? line.household : householdMeasure(line.unit === "g" ? line.quantity : line.quantity * (line.unit === "ml" ? registryEntry?.density_g_per_ml ?? 1 : registryEntry?.measures.piece_g ?? 0), registryEntry);
+    // The drafter's own measure at the base headcount; at another headcount a spoon or cup is derived for weighed lines, and a count is its own measure.
+    const household = servings === recipe.base_servings && line.household ? line.household : line.unit === "piece" ? null : householdMeasure(line.unit === "g" ? line.quantity : line.quantity * (registryEntry?.density_g_per_ml ?? 1), registryEntry);
     return { ...line, names: registryEntry?.names ?? null, household, priced: Boolean(line.ref && priced.has(line.ref)), nutrition_known: Boolean(registryEntry) };
   });
   return {
