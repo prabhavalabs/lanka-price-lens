@@ -65,7 +65,7 @@ export function GuidePage() {
           <p className="text-[11px] font-medium uppercase tracking-wide text-primary">Guide</p>
           <h1 className="text-balance font-heading text-3xl font-semibold tracking-tight sm:text-4xl">How to use PriceLens</h1>
           <p className="max-w-2xl text-pretty text-muted-foreground">
-            Five minutes from the front page to a priced shopping list and a dish to cook from it. Everything here works the same on a phone, and nothing needs an account.
+            Five minutes from the front page to a priced shopping list and a dish to cook from it. Everything here works the same on a phone, and nothing needs an account until you want to keep menus and recipes.
           </p>
           <ol className="flex flex-wrap gap-1.5 lg:hidden">
             {guideSections.map((section, index) => (

@@ -211,3 +211,51 @@ in `app.ts`, settings, end-to-end checks) follows.
    guards, guide section.
 5. **Site: content UI**: menus on the account with local import, gating, own recipes (list,
    editor with registry search, view), admin Accounts page.
+
+## State
+
+Shipped on `feat/accounts`: all five workstreams, mounted in `api/src/app.ts` (`/v1/account`,
+`/v1/auth/google`, `/v1/admin/accounts`, `GET /v1/public/ingredients?q=` for the recipe
+editor). Decisions taken at integration:
+
+- Sign-in throttling counts failures only (five wrong passwords per address per fifteen
+  minutes), because many connections share one address; the account itself locks after five
+  wrong passwords regardless of address. A password reset marks the address verified, since
+  the person just proved they read mail there.
+- The recipe list route answers summaries with `base_servings`, `summary`, `ingredient_count`
+  and `minutes` (prep plus cook) so the cards need no second request; admin rows carry
+  `identities` (the linked providers) beside `has_password`.
+- Own recipes cannot yet be placed in a menu: their ids (`dish_user_…`) are unknown to the
+  public compute route, so the recipe page hides "Add to a menu" for them. A menu that mixes
+  corpus and own recipes needs the compute route to read the account's recipes; that is the
+  next step, together with alerts on the account.
+- A new own recipe starts at 150 g per serving and 600 g for the pot (four servings), so a
+  first draft saves without a scale; both are plain fields to correct.
+
+## Local testing
+
+- **Mail through Resend.** Leave `LPL_SENDGRID_API_KEY` empty and set `LPL_RESEND_API_KEY`
+  (a free Resend key): `createAccountMailer` in `api/src/account/mail.ts` then sends the same
+  templates through Resend. `LPL_MAIL_FROM` must be a sender Resend accepts: an address on a
+  domain verified there, or its shared `PriceLens <onboarding@resend.dev>`, which only delivers
+  to the address the Resend account was opened with. With neither key set the API logs
+  "Account mail is not configured" once and every send answers `MAIL_NOT_CONFIGURED`;
+  registering still works, but no verification or reset mail arrives, and since tokens are
+  stored hashed there is no way to read a link back out of the database. To try a template
+  without sending, `renderAccountMail(kind, input)` returns the subject, html, and text.
+- **A Google client for localhost.** In the same Cloud project, create a second OAuth client
+  (Web application, "PriceLens local"). The redirect URI has to be the origin the browser is
+  on: when the API serves the built site itself, `http://localhost:3000` and
+  `http://localhost:3000/v1/auth/google/callback`; with the Vite dev server (port 5174, which
+  proxies `/v1` to the API), `http://localhost:5174` and
+  `http://localhost:5174/v1/auth/google/callback`, plus `LPL_SITE_ORIGIN=http://localhost:5174`
+  so the API builds the redirect URI from that origin rather than from the proxied request.
+  Put the client's id and secret in `.env` as `LPL_GOOGLE_CLIENT_ID` and
+  `LPL_GOOGLE_CLIENT_SECRET`; the consent screen can stay in testing mode with your address
+  as a test user. The session cookie is not marked Secure outside production, so plain http
+  works.
+- **`LPL_ACCOUNT_STATE_SECRET`** signs the cookie that carries the OAuth state and PKCE verifier
+  between `/v1/auth/google/start` and the callback (HMAC-SHA256, ten minutes). Unset, the API
+  uses a random value per process, which is fine locally; in production set a long random value
+  (`openssl rand -base64 32`) so a sign-in that spans a restart or lands on another process
+  still completes instead of ending at `/account/login?error=google`.

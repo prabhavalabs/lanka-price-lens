@@ -2,9 +2,9 @@
 
 PriceLens shows what food costs today across Sri Lanka's open markets and supermarkets, how
 prices are moving, what a shopping list would cost at each store, and what to cook from it. It
-is at [price.prabhavalabs.com](https://price.prabhavalabs.com), needs no account, and works the
-same on a phone. The same guide, with these screenshots, is on the site at
-[price.prabhavalabs.com/guide](https://price.prabhavalabs.com/guide).
+is at [price.prabhavalabs.com](https://price.prabhavalabs.com), needs no account to read, and
+works the same on a phone; an account keeps your menus and recipes. The same guide, with these
+screenshots, is on the site at [price.prabhavalabs.com/guide](https://price.prabhavalabs.com/guide).
 
 1. [Start here](#1-start-here)
 2. [Find a product](#2-find-a-product)
@@ -13,8 +13,11 @@ same on a phone. The same guide, with these screenshots, is on the site at
 5. [Build a basket](#5-build-a-basket)
 6. [Compare stores](#6-compare-stores)
 7. [Cook from your basket](#7-cook-from-your-basket)
-8. [Phone and theme](#8-phone-and-theme)
-9. [Feedback and privacy](#9-feedback-and-privacy)
+8. [Cook for any number](#8-cook-for-any-number)
+9. [Plan a menu](#9-plan-a-menu)
+10. [Your account](#10-your-account)
+11. [Phone and theme](#11-phone-and-theme)
+12. [Feedback and privacy](#12-feedback-and-privacy)
 
 ## 1. Start here
 
@@ -194,12 +197,37 @@ one shopping list summed across every recipe.
 3. Change the number of people and everything recomputes. "Add priced items to
    basket" moves the shopping list into your basket in real amounts, so the
    store comparison prices the whole meal.
-4. Menus live in this browser, like the basket; nothing is sent anywhere until
-   you share it.
+4. Menus are kept on your account, so they follow you to another phone. Menus
+   made before you signed in are offered for saving the first time you open the
+   page signed in.
 
 ![A menu for eight](../web/public/guide/menu.png)
 
-## 10. Phone and theme
+## 10. Your account
+
+Reading prices never needs an account. One keeps your menus and your own recipes on the
+server, so they follow you to another phone or browser, and later carries price alerts. Sign
+in with an email and a password, or with Google.
+
+1. "Sign in" at the right of the header opens the sign-in page; "Create an account" asks for
+   a name, an email, and a password of ten characters or more. Long beats complicated: a few
+   words you will remember are better than a short jumble.
+2. A verification link goes to the address. Until you open it you can sign in and read
+   everything, but menus and recipes wait; the thin bar under the header resends the link.
+3. "Continue with Google" signs in with a Google account and needs no password. If the
+   address already has a PriceLens account, Google joins it.
+4. Your picture or initials in the header open the account menu: Account, Menus, My recipes,
+   Sign out. The account page holds your name and language, your email and password, which
+   mail you want, every device signed in (with "Sign out everywhere else"), and, at the
+   bottom, deleting the account.
+5. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
+   hour; using it signs every other device out.
+
+Five wrong passwords in a row lock sign-in for fifteen minutes; the wait is the same whether
+the address has an account or not. Deleting the account removes your menus and recipes with
+it. The basket in this browser stays, since it was never uploaded.
+
+## 11. Phone and theme
 
 Everything works on a phone: the header keeps the search box, the basket, and the menu; cards
 stack in one column; the chart answers to a tap instead of a hover.
@@ -216,7 +244,7 @@ stack in one column; the chart answers to a tap instead of a hover.
 | --- | --- |
 | ![The board on a phone](../web/public/guide/phone-board.png) | ![The basket on a phone](../web/public/guide/phone-basket.png) |
 
-## 11. Feedback and privacy
+## 12. Feedback and privacy
 
 "Feedback" in the header, or the link in the footer, opens a short form: choose Feedback or
 Report a bug, write at least ten characters, and leave an email only if you want a reply. The

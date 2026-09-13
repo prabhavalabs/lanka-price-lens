@@ -149,10 +149,27 @@ export const guideSections: GuideSection[] = [
       "On any recipe, “Add to a menu” adds it to a menu you have or starts a new one. “Menus” in the header lists them.",
       "Each recipe follows the headcount unless you set its own servings: a sambol made for the table, a sweet for half the guests. “Follow headcount” puts it back.",
       "Change the number of people and everything recomputes. “Add priced items to basket” moves the shopping list into your basket in real amounts, so the store comparison prices the whole meal.",
-      "Menus live in this browser, like the basket; nothing is sent anywhere until you share it.",
+      "Menus are kept on your account, so they follow you to another phone. Menus made before you signed in are offered for saving the first time you open the page signed in.",
     ],
     figures: [
       { file: "menu", alt: "A Sunday lunch menu for eight: three recipes with their servings, calories and cost per person, and the merged shopping list", caption: "A menu for eight: per-person totals, each recipe's servings, and one shopping list.", width: 1920, height: 1200 },
+    ],
+  },
+  {
+    id: "account",
+    title: "Your account",
+    summary: "Reading prices never needs an account. One keeps your menus and your own recipes on the server, so they follow you to another phone or browser, and later carries price alerts. Sign in with an email and a password, or with Google.",
+    steps: [
+      "“Sign in” at the right of the header opens the sign-in page; “Create an account” asks for a name, an email, and a password of ten characters or more. Long beats complicated: a few words you will remember are better than a short jumble.",
+      "A verification link goes to the address. Until you open it you can sign in and read everything, but menus and recipes wait; the thin bar under the header resends the link.",
+      "“Continue with Google” signs in with a Google account and needs no password. If the address already has a PriceLens account, Google joins it.",
+      "Your picture or initials in the header open the account menu: Account, Menus, My recipes, Sign out. The account page holds your name and language, your email and password, which mail you want, every device signed in (with “Sign out everywhere else”), and, at the bottom, deleting the account.",
+      "Forgot the password? “Forgot password?” on the sign-in page mails a link that works for an hour; using it signs every other device out.",
+    ],
+    figures: [],
+    tips: [
+      "Five wrong passwords in a row lock sign-in for fifteen minutes; the wait is the same whether the address has an account or not.",
+      "Deleting the account removes your menus and recipes with it. The basket in this browser stays, since it was never uploaded.",
     ],
   },
   {
