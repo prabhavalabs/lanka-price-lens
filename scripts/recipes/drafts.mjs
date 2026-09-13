@@ -59,6 +59,12 @@ export function normaliseRecipe(raw) {
     scaling: ["linear", "sublinear", "fixed"].includes(line.scaling) ? line.scaling : "linear",
     part: ["main", "tempering", "marinade", "batter", "dough", "filling", "sauce", "syrup", "garnish", "serving", "frying"].includes(line.part) ? line.part : "main",
   }));
+  // Thin (second-squeeze) coconut milk has its own registry entry; drafts name the squeeze in the preparation.
+  for (const line of recipe.ingredients) {
+    if (line.ref !== "pantry_coconut_milk") continue;
+    const wording = `${line.label.en} ${line.preparation?.en ?? ""} ${line.household ?? ""}`;
+    if (/\bthin\b|second|third|light|diluted/iu.test(wording) && !/\bthick\b|first/iu.test(wording.replace(/second|third/giu, ""))) line.ref = "pantry_coconut_milk_thin";
+  }
   // Oil listed for deep frying is bought whole but mostly comes back out of the pan; mark it so the calculator counts the absorbed share.
   const fryingWords = /deep[- ]?fr(?:y|ied|ying)|for (?:deep )?frying|to (?:deep )?fry|frying oil|shallow[- ]?fry/iu;
   for (const line of recipe.ingredients) {

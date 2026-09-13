@@ -22,7 +22,8 @@ const warn = (file, id, message) => warnings.push({ file, id, message });
 // Ingredient registry drafts
 const registry = new Map();
 const skeleton = existsSync(join(directory, "registry-skeleton.json")) ? JSON.parse(readFileSync(join(directory, "registry-skeleton.json"), "utf8")) : [];
-const expectedIds = new Set(skeleton.map((entry) => entry.id));
+const corrections = existsSync("data/recipes/corrections/ingredients.json") ? JSON.parse(readFileSync("data/recipes/corrections/ingredients.json", "utf8")) : {};
+const expectedIds = new Set([...skeleton.map((entry) => entry.id), ...(corrections._additions ?? []).map((entry) => entry.id)]);
 const kcalRange = { vegetable: [10, 160], leafy: [15, 120], fruit: [20, 400], grain: [300, 400], flour: [300, 420], pulse: [280, 420], meat: [100, 400], poultry: [100, 300], fish: [60, 250], seafood: [50, 200], dried_fish: [150, 400], egg: [130, 170], dairy: [30, 900], fat_oil: [700, 900], spice: [200, 600], herb: [20, 350], sweetener: [250, 420], condiment: [0, 600], nut_seed: [450, 700], beverage: [0, 400], prepared: [50, 600], other: [0, 900] };
 for (const file of files.filter((name) => /^out-nutrition-\d+\.json$/u.test(name))) {
   let entries;
@@ -57,6 +58,12 @@ for (const file of files.filter((name) => /^out-nutrition-\d+\.json$/u.test(name
     if (!entry.names.ta) warn(file, entry.id, "no Tamil name");
     if (entry.density_g_per_ml === null && entry.state !== "dried" && /milk|oil|treacle|vinegar|sauce|juice|water|toddy|syrup|honey/iu.test(entry.names.en)) warn(file, entry.id, "liquid without a density");
   }
+}
+
+// The merged registry (with owner corrections and additions) is what recipes are judged against when it exists.
+if (existsSync("data/recipes/ingredients.json")) {
+  registry.clear();
+  for (const entry of JSON.parse(readFileSync("data/recipes/ingredients.json", "utf8")).ingredients) registry.set(entry.id, entry);
 }
 
 // Recipe drafts
@@ -128,6 +135,13 @@ console.log(`errors: ${problems.length}`, tally(problems));
 console.log(`warnings: ${warnings.length}`, tally(warnings));
 if (problems.length) process.exitCode = 1;
 if (recipes.size && registry.size) {
-  const kcals = [...recipes.values()].map((recipe) => recipe.computed.kcal).sort((a, b) => a - b);
+  const ranked = [...recipes.values()].sort((a, b) => a.computed.kcal - b.computed.kcal);
+  const kcals = ranked.map((recipe) => recipe.computed.kcal);
   console.log(`kcal per serving: min ${kcals[0]}, median ${kcals[Math.floor(kcals.length / 2)]}, max ${kcals.at(-1)}`);
+  const line = (recipe) => `${recipe.id} ${recipe.computed.kcal} kcal (${recipe.serving.role}, ${recipe.serving.portion_g} g)`;
+  console.log("lowest:", ranked.slice(0, 8).map(line).join(" | "));
+  console.log("highest:", ranked.slice(-8).reverse().map(line).join(" | "));
+  const pieceless = new Set();
+  for (const recipe of recipes.values()) for (const ingredient of recipe.ingredients) if (ingredient.unit === "piece" && ingredient.ref && registry.get(ingredient.ref)?.measures.piece_g === null) pieceless.add(ingredient.ref);
+  if (pieceless.size) console.log("counted in pieces without a piece weight:", [...pieceless].sort().join(", "));
 }

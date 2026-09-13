@@ -1228,7 +1228,7 @@
   {
    "id": "pantry_coconut_milk",
    "names": {
-    "en": "Coconut milk",
+    "en": "Coconut milk, thick",
     "si": "පොල් කිරි",
     "si_latn": "pol kiri",
     "ta": "தேங்காய்ப் பால்",
@@ -1236,7 +1236,7 @@
    },
    "group": "other",
    "state": "raw",
-   "as_purchased_note": "squeezed at home from freshly grated mature coconut; first (thick) and second (thin) extracts combined",
+   "as_purchased_note": "first squeeze of grated coconut, home pressed or a good tinned milk",
    "edible_portion": 1,
    "density_g_per_ml": 1,
    "measures": {
@@ -1251,8 +1251,8 @@
     "protein_g": 2.3,
     "fat_g": 24,
     "carb_g": 5.5,
-    "fibre_g": 2.2,
-    "sugar_g": 3.3,
+    "fibre_g": 0.5,
+    "sugar_g": 2.5,
     "sodium_mg": 15
    },
    "sources": [
@@ -1281,9 +1281,62 @@
      "carb_g": null
     }
    ],
-   "basis": "Followed USDA raw expressed coconut milk. A Sri Lankan first extract squeezed with little water is close to USDA coconut cream (330 kcal) and a second extract nearer 90 to 120 kcal; since almost every curry uses both, the value sits at the USDA milk figure, nudged up slightly for the high-fat mature nuts grated here.",
+   "basis": "Thick first-squeeze milk, close to USDA raw coconut milk (230 kcal). The draft averaged thick and thin; thin milk is its own entry so a recipe's second squeeze is not counted at first-squeeze richness.",
    "confidence": "medium",
    "notes": "Thick first extract alone is roughly 300 to 330 kcal per 100 g; thin second extract roughly 100 kcal. Tinned coconut milk is comparable to the thick extract. Split the entry if recipes distinguish thick and thin.",
+   "reviewed": false
+  },
+  {
+   "id": "pantry_coconut_milk_thin",
+   "names": {
+    "en": "Coconut milk, thin",
+    "si": "දියර පොල් කිරි",
+    "si_latn": "diyara pol kiri",
+    "ta": "இரண்டாம் தேங்காய்ப் பால்",
+    "ta_latn": "irandaam thengaai paal"
+   },
+   "group": "dairy",
+   "state": "raw",
+   "as_purchased_note": "second and third squeeze of the same grated coconut with more water",
+   "edible_portion": 1,
+   "density_g_per_ml": 1,
+   "measures": {
+    "tsp_g": 5,
+    "tbsp_g": 15,
+    "cup_g": 240,
+    "piece_g": null,
+    "bunch_g": null
+   },
+   "nutrition": {
+    "kcal": 95,
+    "protein_g": 1,
+    "fat_g": 9.5,
+    "carb_g": 2.2,
+    "fibre_g": 0.2,
+    "sugar_g": 1,
+    "sodium_mg": 8
+   },
+   "sources": [
+    {
+     "name": "USDA FoodData Central",
+     "entry": "Nuts, coconut milk, raw (liquid expressed from grated meat and water)",
+     "kcal": 230,
+     "protein_g": 2.3,
+     "fat_g": 23.8,
+     "carb_g": 5.5
+    },
+    {
+     "name": "Sri Lanka Food Composition Tables (MRI)",
+     "entry": "Coconut milk, second extract",
+     "kcal": null,
+     "protein_g": null,
+     "fat_g": null,
+     "carb_g": null
+    }
+   ],
+   "basis": "A second squeeze carries roughly two fifths of the first squeeze's fat once the same flesh is pressed again with about twice the water; set at 95 kcal, between the MRI second-extract reading and household practice.",
+   "confidence": "medium",
+   "notes": "Recipe lines whose preparation says thin or second squeeze are pointed here by the draft normaliser.",
    "reviewed": false
   },
   {

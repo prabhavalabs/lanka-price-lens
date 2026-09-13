@@ -1,10 +1,84 @@
 {
-  "_note": "Owner corrections applied over the drafted registry at merge time (scripts/recipes/merge-drafts.mjs --corrections). Keyed by ingredient id; fields deep-merge.",
+  "_note": "Owner corrections applied over the drafted registry at merge time (scripts/recipes/merge-drafts.mjs --corrections). Entries keyed by ingredient id deep-merge into the draft; `_additions` are whole entries the drafts do not carry.",
   "product_coconut": {
     "edible_portion": 1,
     "as_purchased_note": "grated flesh; one dehusked nut yields about 250 g",
-    "measures": { "piece_g": 250 },
+    "measures": {
+      "piece_g": 250
+    },
     "basis": "Recipes quote coconut as grams of grated flesh (or nuts, 250 g of flesh each), so the edible fraction is 1 and a piece is the flesh of one nut; the price is per nut.",
     "notes": "Corrected from the draft, which set an edible fraction of 0.45 against the whole nut while recipes weigh the flesh."
-  }
+  },
+  "pantry_coconut_milk": {
+    "names": {
+      "en": "Coconut milk, thick"
+    },
+    "as_purchased_note": "first squeeze of grated coconut, home pressed or a good tinned milk",
+    "nutrition": {
+      "kcal": 235,
+      "protein_g": 2.3,
+      "fat_g": 24,
+      "carb_g": 5.5,
+      "fibre_g": 0.5,
+      "sugar_g": 2.5,
+      "sodium_mg": 15
+    },
+    "basis": "Thick first-squeeze milk, close to USDA raw coconut milk (230 kcal). The draft averaged thick and thin; thin milk is its own entry so a recipe's second squeeze is not counted at first-squeeze richness.",
+    "confidence": "medium"
+  },
+  "_additions": [
+    {
+      "id": "pantry_coconut_milk_thin",
+      "names": {
+        "en": "Coconut milk, thin",
+        "si": "දියර පොල් කිරි",
+        "si_latn": "diyara pol kiri",
+        "ta": "இரண்டாம் தேங்காய்ப் பால்",
+        "ta_latn": "irandaam thengaai paal"
+      },
+      "group": "dairy",
+      "state": "raw",
+      "as_purchased_note": "second and third squeeze of the same grated coconut with more water",
+      "edible_portion": 1,
+      "density_g_per_ml": 1,
+      "measures": {
+        "tsp_g": 5,
+        "tbsp_g": 15,
+        "cup_g": 240,
+        "piece_g": null,
+        "bunch_g": null
+      },
+      "nutrition": {
+        "kcal": 95,
+        "protein_g": 1,
+        "fat_g": 9.5,
+        "carb_g": 2.2,
+        "fibre_g": 0.2,
+        "sugar_g": 1,
+        "sodium_mg": 8
+      },
+      "sources": [
+        {
+          "name": "USDA FoodData Central",
+          "entry": "Nuts, coconut milk, raw (liquid expressed from grated meat and water)",
+          "kcal": 230,
+          "protein_g": 2.3,
+          "fat_g": 23.8,
+          "carb_g": 5.5
+        },
+        {
+          "name": "Sri Lanka Food Composition Tables (MRI)",
+          "entry": "Coconut milk, second extract",
+          "kcal": null,
+          "protein_g": null,
+          "fat_g": null,
+          "carb_g": null
+        }
+      ],
+      "basis": "A second squeeze carries roughly two fifths of the first squeeze's fat once the same flesh is pressed again with about twice the water; set at 95 kcal, between the MRI second-extract reading and household practice.",
+      "confidence": "medium",
+      "notes": "Recipe lines whose preparation says thin or second squeeze are pointed here by the draft normaliser.",
+      "reviewed": false
+    }
+  ]
 }

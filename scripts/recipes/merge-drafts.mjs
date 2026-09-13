@@ -38,6 +38,7 @@ const ingredients = [];
 for (const file of files.filter((name) => /^out-nutrition-\d+\.json$/u.test(name))) {
   for (const raw of JSON.parse(readFileSync(join(directory, file), "utf8"))) ingredients.push(ingredientSchema.parse(corrected(normaliseIngredient(raw))));
 }
+for (const addition of corrections._additions ?? []) ingredients.push(ingredientSchema.parse(normaliseIngredient(addition)));
 ingredients.sort((left, right) => left.id.localeCompare(right.id));
 const registry = ingredientRegistrySchema.parse({ schema_version: "1.0.0", reviewed_by: reviewedBy, reviewed_at: date, ingredients });
 writeFileSync(join(out, "ingredients.json"), `${JSON.stringify(registry, null, 1)}\n`);
