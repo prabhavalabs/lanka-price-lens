@@ -132,8 +132,7 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
             </div>
           </div>
           <div className="hidden grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_8.5rem] gap-x-4 border-b px-5 py-2 text-[11px] font-medium uppercase text-muted-foreground sm:grid">
-            <span />
-            <span>Ingredient</span>
+            <span className="col-span-2">Ingredient</span>
             <span className="text-right">Amount</span>
             <span>Cheapest today</span>
             <span className="text-right">Basket</span>
