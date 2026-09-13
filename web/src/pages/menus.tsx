@@ -254,8 +254,14 @@ function MenuDetail({ menu }: { menu: Menu }) {
 
       {data ? (
         <section className="grid gap-3 sm:grid-cols-3">
+          <Card className="border-primary/40">
+            <CardContent className="p-4">
+              <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Cost for {data.people} {data.people === 1 ? "person" : "people"}</p>
+              <p className="mt-1 font-heading text-3xl font-semibold tabular-nums">{data.total.cost !== null ? `${data.total.estimated ? "≈ " : ""}${rupees(data.total.cost)}` : "—"}</p>
+              <p className="text-xs text-muted-foreground">{data.total.cost !== null ? <>{rupees(data.per_person.cost ?? 0)} per person · priced items only{data.total.estimated ? " · some prices older or missing" : ""}</> : "prices are not available right now"}</p>
+            </CardContent>
+          </Card>
           <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">Per person</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{kcalLabel(data.per_person.nutrition.kcal)}</p><p className="text-xs text-muted-foreground">{gramsLabel(data.per_person.nutrition.protein_g)} protein · {gramsLabel(data.per_person.nutrition.fat_g)} fat · {gramsLabel(data.per_person.nutrition.carb_g)} carbs</p></CardContent></Card>
-          <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">Cost per person</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{data.per_person.cost !== null ? `${data.total.estimated ? "≈ " : ""}${rupees(data.per_person.cost)}` : "—"}</p><p className="text-xs text-muted-foreground">{data.total.cost !== null ? `${rupees(data.total.cost)} for ${data.people}, priced items only` : "prices are not available right now"}</p></CardContent></Card>
           <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">Whole meal</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{kcalLabel(data.total.nutrition.kcal)}</p><p className="text-xs text-muted-foreground">{data.shopping.length} things to buy{data.unknown.length ? ` · ${data.unknown.length} recipes no longer exist` : ""}</p></CardContent></Card>
         </section>
       ) : null}
