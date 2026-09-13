@@ -84,7 +84,7 @@ export function RecipeSearchBar({ search, onChange, total, fetching }: { search:
             </PopoverContent>
           </Popover>
           <Select onValueChange={(value) => set({ sort: value === "relevance" ? "" : value })} value={search.sort || "relevance"}>
-            <SelectTrigger aria-label="Sort" className="h-10 w-40"><SelectValue /></SelectTrigger>
+            <SelectTrigger aria-label="Sort" className="w-40 px-3 text-sm data-[size=default]:h-10"><SelectValue /></SelectTrigger>
             <SelectContent>{sortOptions.map((option) => <SelectItem key={option.value || "relevance"} value={option.value || "relevance"}>{option.label}</SelectItem>)}</SelectContent>
           </Select>
         </div>
