@@ -278,12 +278,20 @@ function MenuDetail({ menu }: { menu: Menu }) {
                 const computed = data?.items.find((entry) => entry.recipe_id === item.recipe_id);
                 const servings = item.servings ?? menu.people;
                 return (
-                  <li key={item.recipe_id} className="flex flex-wrap items-center gap-3 px-4 py-2.5">
-                    <div className="min-w-0 flex-1">
+                  <li key={item.recipe_id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 px-4 py-2.5 sm:grid-cols-[minmax(0,1fr)_7rem_auto]">
+                    <div className="min-w-0">
                       <Link to={`/r/${item.recipe_id}?people=${servings}`} className="block truncate text-sm font-medium no-underline hover:text-primary">{data?.names[item.recipe_id]?.en ?? item.label}</Link>
-                      {computed ? <p className="text-[11px] text-muted-foreground tabular-nums">{kcalLabel(computed.nutrition.per_serving.kcal)} per serving{computed.cost ? ` · ${computed.cost.estimated ? "≈ " : ""}${rupees(computed.cost.total)} for ${computed.servings}` : ""}</p> : null}
+                      {computed ? <p className="text-[11px] text-muted-foreground tabular-nums">{kcalLabel(computed.nutrition.per_serving.kcal)} per serving{computed.cost?.lines.length ? ` · ${rupees(computed.cost.per_serving)} each` : ""}</p> : null}
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="text-right tabular-nums sm:order-none">
+                      {computed?.cost?.lines.length ? (
+                        <>
+                          <p className="text-sm font-semibold">{computed.cost.estimated ? "≈ " : ""}{rupees(computed.cost.total)}</p>
+                          <p className="text-[11px] text-muted-foreground">for {computed.servings}</p>
+                        </>
+                      ) : computed ? <p className="text-[11px] text-muted-foreground">not priced</p> : null}
+                    </div>
+                    <div className="col-span-2 flex items-center justify-end gap-1 sm:col-span-1">
                       <div aria-label={`Servings of ${item.label}`} className="inline-flex items-center gap-0.5 rounded-lg border p-0.5" role="group">
                         <Button aria-label="Fewer servings" disabled={servings <= 1} onClick={() => menuStore.setServings(menu.id, item.recipe_id, servings - 1)} size="icon-sm" variant="ghost"><RiSubtractLine className="size-3.5" /></Button>
                         <span className="w-10 text-center text-sm tabular-nums">{servings}</span>
@@ -296,6 +304,12 @@ function MenuDetail({ menu }: { menu: Menu }) {
                 );
               })}
             </ul>
+            {data?.total.cost !== null && data?.total.cost !== undefined ? (
+              <div className="flex items-center justify-between gap-3 border-t bg-muted/30 px-4 py-2.5">
+                <p className="text-sm font-semibold">Total for {data.people} {data.people === 1 ? "person" : "people"}</p>
+                <p className="text-right tabular-nums"><span className="text-sm font-semibold">{data.total.estimated ? "≈ " : ""}{rupees(data.total.cost)}</span><span className="ml-2 text-[11px] text-muted-foreground">{rupees(data.per_person.cost ?? 0)} per person</span></p>
+              </div>
+            ) : null}
           </CardContent>
         </Card>
       ) : null}
