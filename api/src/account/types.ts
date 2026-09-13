@@ -3,7 +3,7 @@ import type { AccountLocale, AccountPreferences, AccountProfile } from "@lanka-p
 /**
  * The contracts of the accounts system. Every module under api/src/account codes against these
  * types: the store (SQLite, foundry/src/db.ts tables), the service (register, sign in, tokens),
- * the mailer (branded mail through SendGrid), the Google sign-in, and the routes. app.ts mounts
+ * the mailer (branded mail through Resend), the Google sign-in, and the routes. app.ts mounts
  * the routes; nothing here reaches into app.ts.
  */
 
