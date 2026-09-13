@@ -221,3 +221,26 @@ export type FeedbackKind = "feedback" | "bug";
 export type FeedbackStatus = "new" | "seen" | "done";
 export type FeedbackItem = { id: string; kind: FeedbackKind; message: string; email: string | null; page: string | null; user_agent: string | null; status: FeedbackStatus; created_at: string; updated_at: string };
 export type FeedbackList = { items: FeedbackItem[]; total: number; page: number; pageSize: number; counts: Record<FeedbackStatus, number> };
+
+export type AccountStatus = "active" | "disabled";
+/** An account as `GET /v1/admin/accounts` lists it: the row without its password hash, plus what it keeps. */
+export type AdminAccount = {
+  id: string;
+  email: string;
+  email_verified_at: string | null;
+  display_name: string;
+  avatar_url: string | null;
+  locale: "en" | "si" | "ta";
+  status: AccountStatus;
+  failed_login_count: number;
+  locked_until: string | null;
+  preferences: { notify_email: boolean; notify_digest: boolean; notify_alerts: boolean };
+  created_at: string;
+  updated_at: string;
+  has_password: boolean;
+  /** Linked sign-in providers ("google"), when the API includes them; an account without a password signed up with Google. */
+  identities: ("google")[];
+  menus: number;
+  recipes: number;
+};
+export type AdminAccountUpdate = AdminAccount & { sessions_revoked: number };

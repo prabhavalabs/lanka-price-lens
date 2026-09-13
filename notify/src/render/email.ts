@@ -36,3 +36,16 @@ export function emailHtml(message: Message): string {
 export function emailParts(message: Message): { subject: string; text: string; html: string } {
   return { subject: message.title.slice(0, 200), text: plainText(message), html: emailHtml(message) };
 }
+
+/**
+ * What one target receives: the rendered message, unless its meta carries a `subject`, or a
+ * ready-made `html` and `text` (a branded template that should pass through unchanged, with the
+ * message left as the plain fallback). Empty overrides are ignored.
+ */
+export function emailContent(message: Message, meta: Record<string, unknown> | undefined): { subject: string; text: string; html: string } {
+  const parts = emailParts(message);
+  const subject = typeof meta?.subject === "string" && meta.subject.trim() ? meta.subject.trim().slice(0, 200) : parts.subject;
+  const html = typeof meta?.html === "string" && meta.html.trim() ? meta.html : parts.html;
+  const text = typeof meta?.text === "string" && meta.text.trim() ? meta.text : parts.text;
+  return { subject, text, html };
+}

@@ -1,6 +1,7 @@
 export { channelKinds, isChannelKind, classifyStatus, mask, type Channel, type ChannelKind, type Delivery, type FetchLike, type Target } from "./channel.ts";
 export { createDiscordChannel, isDiscordWebhook, type DiscordConfig } from "./channels/discord.ts";
 export { createEmailChannel, isEmailAddress, type EmailConfig } from "./channels/email.ts";
+export { createSendGridChannel, parseMailbox, sendGridEndpoint, type SendGridConfig } from "./channels/sendgrid.ts";
 export { createSlackChannel, isSlackWebhook, type SlackConfig } from "./channels/slack.ts";
 export { createTelegramChannel, parseTelegramUpdate, setTelegramWebhook, telegramDeepLink, telegramIdentity, type TelegramConfig, type TelegramInbound } from "./channels/telegram.ts";
 export { createWebPushChannel, encryptPushPayload, generateVapidKeys, parsePushSubscription, pushTarget, vapidAuthorization, type PushSubscription, type VapidKeys, type WebPushConfig } from "./channels/webpush.ts";
@@ -8,7 +9,7 @@ export { actionSchema, formatChange, lineSchema, message, messageSchema, parseMe
 export { defaultBackoffMs, defaultPauseMs, dispatchOutbox, type ChannelRegistry, type DispatchEvent, type DispatchOptions, type DispatchReport, type EnqueueEntry, type OutboxEntry, type OutboxStatus, type OutboxStore } from "./outbox.ts";
 export { createChannels, sendDirect, type ChannelsConfig } from "./registry.ts";
 export { discordEmbed, discordColours, type DiscordEmbed } from "./render/discord.ts";
-export { emailHtml, emailParts } from "./render/email.ts";
+export { emailContent, emailHtml, emailParts, escapeHtml } from "./render/email.ts";
 export { slackBlocks, slackPayload, type SlackBlock } from "./render/slack.ts";
 export { telegramHtml, telegramCaptionLimit, telegramMessageLimit } from "./render/telegram.ts";
 export { lineText, plainText, shortText } from "./render/text.ts";

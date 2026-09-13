@@ -157,7 +157,7 @@ test("prices come per product and unit from the published sources, fresh and che
 
     const query = await app.request("http://localhost/v1/public/recipes/query?max_kcal=300&sort=cost");
     const results = (await query.json()) as { payload: { items: Array<{ dish: { id: string }; cost_per_serving: number | null }> } };
-    assert.deepEqual(results.payload.items.map((item) => [item.dish.id, item.cost_per_serving]), [["dish_parippu", 7.65]]);
+    assert.deepEqual(results.payload.items.map((item) => [item.dish.id, item.cost_per_serving]), [["dish_parippu", null]], "one priced line of four counted is not a cost worth ranking by");
 
     const menu = await app.request("http://localhost/v1/public/menus/compute", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id: "menu_1", name: "Poya lunch", people: 10, items: [{ recipe_id: "dish_parippu" }, { recipe_id: "dish_chicken_curry", servings: 5 }, { recipe_id: "dish_nope" }], created_at: "2026-09-13T06:00:00.000Z" }) });
     assert.equal(menu.status, 200);

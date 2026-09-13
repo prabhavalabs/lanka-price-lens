@@ -693,6 +693,77 @@ function migrate(database: OperationalDatabase): void {
   addColumn(database, "source", "paused_until", "TEXT");
   addColumn(database, "source", "last_capture_error", "TEXT");
   addColumn(database, "source", "last_capture_at", "TEXT");
+
+  // Accounts on the public site (docs/accounts.md): people, their sign-in methods, sessions,
+  // one-time tokens, and what they keep on the account. Personal data stays here, never in the warehouse.
+  database.exec(`
+    CREATE TABLE IF NOT EXISTS account (
+      id TEXT PRIMARY KEY,
+      email TEXT NOT NULL COLLATE NOCASE UNIQUE,
+      email_verified_at TEXT,
+      password_hash TEXT,
+      display_name TEXT NOT NULL,
+      avatar_url TEXT,
+      locale TEXT NOT NULL DEFAULT 'en' CHECK (locale IN ('en', 'si', 'ta')),
+      status TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'disabled')),
+      failed_login_count INTEGER NOT NULL DEFAULT 0,
+      locked_until TEXT,
+      preferences_json TEXT NOT NULL DEFAULT '{}',
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    ) STRICT;
+    CREATE TABLE IF NOT EXISTS account_identity (
+      provider TEXT NOT NULL CHECK (provider IN ('google')),
+      subject TEXT NOT NULL,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      email TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      PRIMARY KEY (provider, subject)
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS account_identity_account_idx ON account_identity(account_id);
+    CREATE TABLE IF NOT EXISTS account_session (
+      token_hash TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      created_at TEXT NOT NULL,
+      expires_at TEXT NOT NULL,
+      revoked_at TEXT,
+      user_agent TEXT,
+      address TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS account_session_account_idx ON account_session(account_id, expires_at DESC);
+    CREATE TABLE IF NOT EXISTS account_token (
+      token_hash TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      kind TEXT NOT NULL CHECK (kind IN ('verify_email', 'reset_password', 'change_email')),
+      payload TEXT,
+      expires_at TEXT NOT NULL,
+      used_at TEXT,
+      created_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS account_token_account_kind_idx ON account_token(account_id, kind);
+    CREATE TABLE IF NOT EXISTS account_menu (
+      id TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      occasion TEXT,
+      people INTEGER NOT NULL,
+      items_json TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS account_menu_account_idx ON account_menu(account_id, updated_at DESC);
+    CREATE TABLE IF NOT EXISTS account_recipe (
+      id TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      category TEXT NOT NULL,
+      recipe_json TEXT NOT NULL,
+      visibility TEXT NOT NULL DEFAULT 'private' CHECK (visibility IN ('private')),
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS account_recipe_account_idx ON account_recipe(account_id, updated_at DESC);
+  `);
 }
 
 function addColumn(database: OperationalDatabase, table: string, column: string, definition: string): void {

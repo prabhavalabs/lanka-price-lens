@@ -1,13 +1,21 @@
 import { bodyExcerpt, classifyStatus, failure, type Channel, type FetchLike, type Target } from "../channel.ts";
 import type { Message } from "../message.ts";
-import { emailParts } from "../render/email.ts";
+import { emailContent } from "../render/email.ts";
 
 /**
  * Email through Resend's HTTP API. The address is the recipient; `meta.reply_to` sets the
- * reply address and `meta.subject` overrides the title as subject.
+ * reply address, `meta.subject` overrides the title as subject, and `meta.html` with
+ * `meta.text` carry a finished template through unchanged.
  */
 
-export type EmailConfig = { apiKey: string; from: string; fetch?: FetchLike | undefined; endpoint?: string | undefined };
+export type EmailConfig = {
+  apiKey: string;
+  from: string;
+  /** Which service the key belongs to; the registry builds the matching channel. Resend unless said otherwise. */
+  provider?: "resend" | "sendgrid" | undefined;
+  fetch?: FetchLike | undefined;
+  endpoint?: string | undefined;
+};
 
 export const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/u;
 
@@ -26,15 +34,14 @@ export function createEmailChannel(config: EmailConfig): Channel {
     },
     send: async (target: Target, message: Message) => {
       if (!isEmailAddress(target.address)) return failure("EMAIL_ADDRESS_INVALID", { gone: true });
-      const parts = emailParts(message);
-      const subject = typeof target.meta?.subject === "string" && target.meta.subject.trim() ? target.meta.subject.trim().slice(0, 200) : parts.subject;
+      const content = emailContent(message, target.meta);
       const replyTo = typeof target.meta?.reply_to === "string" && isEmailAddress(target.meta.reply_to) ? target.meta.reply_to : null;
       let response: Response;
       try {
         response = await request(endpoint, {
           method: "POST",
           headers: { authorization: `Bearer ${config.apiKey}`, "content-type": "application/json" },
-          body: JSON.stringify({ from: config.from, to: [target.address], subject, text: parts.text, html: parts.html, ...(replyTo ? { reply_to: replyTo } : {}) }),
+          body: JSON.stringify({ from: config.from, to: [target.address], subject: content.subject, text: content.text, html: content.html, ...(replyTo ? { reply_to: replyTo } : {}) }),
           signal: AbortSignal.timeout(15_000),
         });
       } catch (error) {

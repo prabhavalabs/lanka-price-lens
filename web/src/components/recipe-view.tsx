@@ -1,7 +1,8 @@
 import { RiAddLine, RiCheckLine, RiTimeLine, RiToolsLine } from "@remixicon/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
+import { AccountActionError, signInPath } from "@/components/account-notice";
 import { IngredientImage } from "@/components/ingredient-image";
 import { PeopleInput } from "@/components/people-input";
 import { Badge } from "@/components/ui/badge";
@@ -16,8 +17,9 @@ import { amountLabel, disambiguator, gramsLabel, ingredientName, kcalLabel, loca
 import { cn } from "@/lib/utils";
 import { QuantityControl } from "@/components/quantity";
 import { basketStore, formatQuantity, useBasket } from "@/store/basket";
+import { useAccount } from "@/store/account";
 import { languageNames, languageStore, useLanguage } from "@/store/language";
-import { menuStore, useMenus } from "@/store/menus";
+import { useMenuActions, useMenus } from "@/store/menus";
 
 /**
  * The full recipe: pick how many people, and every quantity, the nutrition, and the cost follow.
@@ -25,7 +27,7 @@ import { menuStore, useMenus } from "@/store/menus";
  * language the reader chooses; machine-drafted Sinhala or Tamil says so until a person has
  * reviewed it.
  */
-export function RecipeViewSection({ dishId, dishName, recipe, servings, onServings, loading }: { dishId: string; dishName: string; recipe: RecipeView; servings: number; onServings: (value: number) => void; loading: boolean }) {
+export function RecipeViewSection({ dishId, dishName, recipe, servings, onServings, loading, addToMenu = true }: { dishId: string; dishName: string; recipe: RecipeView; servings: number; onServings: (value: number) => void; loading: boolean; /** False for a person's own recipe, which a menu cannot hold yet. */ addToMenu?: boolean | undefined }) {
   const lang = useLanguage();
   const language: Lang = recipe.languages.includes(lang) ? lang : "en";
   const steps = recipe.steps[language] ?? recipe.steps.en;
@@ -125,7 +127,7 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
             </div>
             <div className="flex flex-wrap gap-2">
               {toBuy.length ? <Button onClick={addAll} size="sm">Add {toBuy.length === buyable.length ? "all" : "the rest"} to basket</Button> : null}
-              <AddToMenu dishId={dishId} dishName={dishName} />
+              {addToMenu ? <AddToMenu dishId={dishId} dishName={dishName} /> : null}
             </div>
           </div>
           <div className="hidden grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_6rem_8.5rem] gap-x-4 border-b px-5 py-2 text-[11px] font-medium uppercase text-muted-foreground sm:grid">
@@ -269,38 +271,49 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
   );
 }
 
-/** "Add to a menu": pick one of the household's menus or start a new one from here. */
+/** "Add to a menu": a visitor is asked to sign in; a signed-in person picks one of the account's menus or starts a new one from here. */
 function AddToMenu({ dishId, dishName }: { dishId: string; dishName: string }) {
-  const { menus } = useMenus();
+  const account = useAccount();
+  const location = useLocation();
+  if (account.status === "loading") return <Button disabled size="sm" variant="outline">Add to a menu</Button>;
+  if (account.status === "signed_out") return <Button asChild size="sm" variant="outline"><Link to={signInPath(`${location.pathname}${location.search}`)}>Sign in to add to a menu</Link></Button>;
+  return <AddToMenuPopover dishId={dishId} dishName={dishName} />;
+}
+
+function AddToMenuPopover({ dishId, dishName }: { dishId: string; dishName: string }) {
+  const { menus, status } = useMenus();
+  const actions = useMenuActions();
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [people, setPeople] = useState(6);
   const inMenus = menus.filter((menu) => menu.items.some((item) => item.recipe_id === dishId));
   return (
-    <Popover onOpenChange={setOpen} open={open}>
+    <Popover onOpenChange={(next) => { if (!next) actions.clearError(); setOpen(next); }} open={open}>
       <PopoverTrigger asChild>
         <Button size="sm" variant={inMenus.length ? "secondary" : "outline"}>{inMenus.length ? `In ${inMenus.length} ${inMenus.length === 1 ? "menu" : "menus"}` : "Add to a menu"}</Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-72 space-y-3">
+        <AccountActionError error={actions.error} onDismiss={actions.clearError} />
+        {status === "loading" ? <p className="text-sm text-muted-foreground">Fetching your menus…</p> : null}
         {menus.length ? (
           <ul className="space-y-1">
             {menus.map((menu) => {
               const added = menu.items.some((item) => item.recipe_id === dishId);
               return (
                 <li key={menu.id} className="flex items-center gap-2">
-                  <div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{menu.name}</p><p className="text-[11px] text-muted-foreground">{menu.people} people · {menu.items.length} {menu.items.length === 1 ? "recipe" : "recipes"}</p></div>
-                  {added ? <Button onClick={() => menuStore.removeRecipe(menu.id, dishId)} size="sm" variant="ghost">Remove</Button> : <Button onClick={() => menuStore.addRecipe(menu.id, { id: dishId, label: dishName })} size="sm" variant="outline">Add</Button>}
+                  <div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{menu.name}</p><p className="text-[11px] text-muted-foreground tabular-nums">{menu.people} people · {menu.items.length} {menu.items.length === 1 ? "recipe" : "recipes"}</p></div>
+                  {added ? <Button onClick={() => void actions.removeRecipe(menu.id, dishId)} size="sm" type="button" variant="ghost">Remove</Button> : <Button onClick={() => void actions.addRecipe(menu.id, { id: dishId, label: dishName })} size="sm" type="button" variant="outline">Add</Button>}
                 </li>
               );
             })}
           </ul>
-        ) : <p className="text-sm text-muted-foreground">A menu is a meal for an occasion: name it, say how many are coming, and every recipe in it scales to them.</p>}
+        ) : status === "ready" ? <p className="text-sm text-muted-foreground">A menu is a meal for an occasion: name it, say how many are coming, and every recipe in it scales to them.</p> : null}
         <form
           className="space-y-2 border-t pt-3"
-          onSubmit={(event) => {
+          onSubmit={async (event) => {
             event.preventDefault();
-            const id = menuStore.create({ name: name.trim() || `${dishName} menu`, people });
-            menuStore.addRecipe(id, { id: dishId, label: dishName });
+            const created = await actions.create({ name: name.trim() || `${dishName} menu`, people, items: [{ id: dishId, label: dishName }] });
+            if (!created) return;
             setName("");
             setOpen(false);
           }}
@@ -310,7 +323,7 @@ function AddToMenu({ dishId, dishName }: { dishId: string; dishName: string }) {
           <div className="flex items-center gap-2">
             <PeopleInput max={1000} onChange={setPeople} value={people} />
             <span className="text-xs text-muted-foreground">people</span>
-            <Button className="ml-auto" size="sm" type="submit">Create and add</Button>
+            <Button className="ml-auto" disabled={actions.pending} size="sm" type="submit">{actions.pending ? "Saving…" : "Create and add"}</Button>
           </div>
         </form>
         {menus.length ? <Link className="block text-xs underline" onClick={() => setOpen(false)} to="/menus">All menus</Link> : null}

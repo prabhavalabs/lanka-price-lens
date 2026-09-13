@@ -1,3 +1,4 @@
+import { randomBytes } from "node:crypto";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -36,6 +37,17 @@ import { runWithRetry } from "@lanka-pricelens/foundry/retry";
 import { listFeedback, parseFeedback, RateLimiter, submitFeedback, updateFeedbackStatus } from "./feedback.ts";
 import { createOwnerNotifier, feedbackMessage, type OwnerNotifier } from "./notify.ts";
 import { CardCache, pageCard, productCard, productPhoto, recipeCard, renderCard, siteCard } from "./og.ts";
+import { envelope, jsonObject, sameOrigin } from "./http.ts";
+import { adminAccountRoutes } from "./account/admin-routes.ts";
+import { contentRoutes } from "./account/content-routes.ts";
+import { createContentStore } from "./account/content.ts";
+import { googleRoutes } from "./account/google.ts";
+import { createAccountMailer } from "./account/mail.ts";
+import { requireAccount, type AccountVariables } from "./account/middleware.ts";
+import { accountRoutes } from "./account/routes.ts";
+import { createAccountService } from "./account/service.ts";
+import { createAccountStore } from "./account/store.ts";
+import { defaultAccountConfig, type AccountConfig, type AccountMailer } from "./account/types.ts";
 import { Presence, presenceIdPattern } from "./presence.ts";
 import { publicBasket, publicOverview } from "./public.ts";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
@@ -83,16 +95,22 @@ import {
   type AdminUser,
 } from "./auth.ts";
 
-type AppBindings = { Variables: { adminUser: AdminUser } };
+type AppBindings = { Variables: { adminUser: AdminUser } & Partial<AccountVariables> };
 
 export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
-  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; ownerNotifier?: OwnerNotifier; presence?: Presence } = {},
+  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; ownerNotifier?: OwnerNotifier; presence?: Presence; accounts?: { config?: Partial<AccountConfig> | undefined; mailer?: AccountMailer | undefined } | undefined } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
   const owner = options.ownerNotifier ?? createOwnerNotifier();
+  // Visitor accounts: the store and service live on the operational database; mail goes through the account mailer.
+  const accountConfig: AccountConfig = { ...defaultAccountConfig, siteOrigin: null, google: null, stateSecret: randomBytes(32).toString("base64url"), secureCookies: process.env.NODE_ENV === "production", ...options.accounts?.config };
+  const accountStore = createAccountStore(database);
+  const accountMailer = options.accounts?.mailer ?? createAccountMailer();
+  const accountService = createAccountService({ store: accountStore, mailer: accountMailer, config: accountConfig });
+  const contentStore = createContentStore(database);
   const presence = options.presence ?? new Presence();
   /** The PostgreSQL warehouse behind the price explorer; null when not configured or unreachable (the routes answer 503). */
   const warehouse = async (): Promise<WarehouseClient | null> => {
@@ -273,6 +291,21 @@ export function createApp(
     const priced = client ? await pricedProducts(client).catch(() => null) : null;
     return context.json(envelope(context.get("requestId"), listDishes(options.recipes, filters, priced)));
   });
+  // The ingredient registry for the recipe editor: names in three languages, whether the warehouse prices it.
+  app.get("/v1/public/ingredients", (context) => {
+    if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
+    const needle = (context.req.query("q") ?? "").trim().toLowerCase().slice(0, 60);
+    const tokens = needle.split(/\s+/u).filter(Boolean);
+    const rank = (names: string): number => (!tokens.length ? 0 : names.startsWith(needle) ? 0 : tokens.every((token) => names.includes(token)) ? 1 : 2);
+    const items = [...options.recipes.registry.values()]
+      .map((entry) => ({ entry, names: [entry.names.en, entry.names.si, entry.names.si_latn, entry.names.ta, entry.names.ta_latn].filter((value): value is string => Boolean(value)).join(" ").toLowerCase() }))
+      .filter(({ names }) => !tokens.length || tokens.every((token) => names.includes(token)))
+      .sort((left, right) => rank(left.names) - rank(right.names) || Number(!left.entry.id.startsWith("product_")) - Number(!right.entry.id.startsWith("product_")) || left.entry.names.en.localeCompare(right.entry.names.en))
+      .slice(0, 30)
+      .map(({ entry }) => ({ id: entry.id, names: { en: entry.names.en, si: entry.names.si, ta: entry.names.ta }, group: entry.group, priced: entry.id.startsWith("product_"), unit_hint: entry.density_g_per_ml ? "ml" : entry.measures.piece_g && entry.measures.piece_g >= 20 ? "piece" : "g" }));
+    context.header("Cache-Control", "public, max-age=3600");
+    return context.json(envelope(context.get("requestId"), { items, total: options.recipes.registry.size }));
+  });
   // Recipes with numbers: filter by calories, protein, time, tags, or cost per serving, and sort by them.
   app.get("/v1/public/recipes/query", async (context) => {
     if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
@@ -342,6 +375,13 @@ export function createApp(
     if (!detail) return context.json(envelope(context.get("requestId"), null, false, "Product not found"), 404);
     return context.json(envelope(context.get("requestId"), detail));
   });
+
+  // Visitor accounts: sign-up, sign-in, recovery, profile; menus and own recipes on the account; Google sign-in.
+  app.route("/v1/account", accountRoutes({ store: accountStore, service: accountService, config: accountConfig }));
+  const accountGuard = requireAccount(accountStore, accountConfig);
+  for (const path of ["/v1/account/menus", "/v1/account/menus/*", "/v1/account/recipes", "/v1/account/recipes/*"]) app.use(path, accountGuard);
+  app.route("/v1/account", contentRoutes({ content: contentStore, recipes: options.recipes, warehouse, published }));
+  app.route("/v1/auth/google", googleRoutes({ store: accountStore, config: accountConfig, createSession: (accountId, meta) => accountStore.createSession(accountId, meta, accountConfig.sessionSeconds, new Date()) }));
 
   app.post("/v1/auth/login", bodyLimit({ maxSize: 16 * 1024 }), async (context) => {
     if (!sameOrigin(context)) return context.json(envelope(context.get("requestId"), null, false, "Cross-origin request rejected"), 403);
@@ -415,6 +455,7 @@ export function createApp(
     return context.json(envelope(context.get("requestId"), null, true, "Signed out"));
   });
   app.use("/v1/admin/*", requireOwner);
+  app.route("/v1/admin/accounts", adminAccountRoutes({ store: accountStore, content: contentStore }));
 
   app.get("/v1/admin/events/workflows", (context) => {
     const suppliedCursor = context.req.header("Last-Event-ID") ?? context.req.query("after");
@@ -1328,7 +1369,16 @@ export function createProductionApp(): Hono<AppBindings> {
   // The recipe catalogue is optional at runtime: an image built before it existed still serves everything else.
   const recipesDirectory = resolve(process.env.LPL_RECIPES_DIR ?? "../data/recipes");
   const recipes = existsSync(resolve(recipesDirectory, "catalogue.json")) ? readRecipeStore(recipesDirectory) : undefined;
-  const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}), ...(recipes ? { recipes } : {}) });
+  const googleClientId = process.env.LPL_GOOGLE_CLIENT_ID?.trim();
+  const googleClientSecret = process.env.LPL_GOOGLE_CLIENT_SECRET?.trim();
+  const accounts = {
+    config: {
+      siteOrigin: process.env.LPL_SITE_ORIGIN?.trim() || null,
+      google: googleClientId && googleClientSecret ? { clientId: googleClientId, clientSecret: googleClientSecret } : null,
+      ...(process.env.LPL_ACCOUNT_STATE_SECRET?.trim() ? { stateSecret: process.env.LPL_ACCOUNT_STATE_SECRET.trim() } : {}),
+    },
+  };
+  const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}), ...(recipes ? { recipes } : {}), accounts });
   // Product photos and store logos, shared by the admin and the public site.
   const imagesRoot = defaultImagesRoot();
   app.use("/images/*", async (context, next) => {
@@ -1431,20 +1481,6 @@ function readCatalogSync(manifestsDirectory: string, mappingsDirectory: string, 
  * from X-Forwarded-Proto when the proxy sends it. A browser cannot forge either
  * header on a cross-site request, so the protection against forged posts stands.
  */
-function sameOrigin(context: Context): boolean {
-  const origin = context.req.header("origin");
-  if (!origin) return true;
-  let requested: URL;
-  try {
-    requested = new URL(origin);
-  } catch {
-    return false;
-  }
-  const host = context.req.header("x-forwarded-host")?.split(",")[0]?.trim() || context.req.header("host") || new URL(context.req.url).host;
-  if (requested.host !== host) return false;
-  const protocol = context.req.header("x-forwarded-proto")?.split(",")[0]?.trim();
-  return protocol ? requested.protocol === `${protocol}:` : true;
-}
 
 type ListRequest = { requestedPage: number; pageSize: number; search: string; status: string };
 
@@ -1480,21 +1516,7 @@ function pageRequest(request: ListRequest, total: number): { page: number; pageS
   return { page, pageSize: request.pageSize, offset: (page - 1) * request.pageSize, total, pages };
 }
 
-function envelope<T>(requestId: string, payload: T, success = true, message = "OK"): ApiEnvelope<T> {
-  return { success, message, payload, meta: { request_id: requestId, generated_at: new Date().toISOString() } };
-}
 
-/** The request body as a plain object, or null when it is missing, not JSON, or not an object. An empty body counts as `{}`. */
-async function jsonObject(context: Context): Promise<Record<string, unknown> | null> {
-  const text = await context.req.text();
-  if (!text.trim()) return {};
-  try {
-    const parsed: unknown = JSON.parse(text);
-    return typeof parsed === "object" && parsed && !Array.isArray(parsed) ? (parsed as Record<string, unknown>) : null;
-  } catch {
-    return null;
-  }
-}
 
 /** A `yyyy-mm-dd` string, undefined when absent, false when malformed. */
 function optionalDate(value: unknown): string | undefined | false {
