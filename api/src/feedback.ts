@@ -81,6 +81,11 @@ export class RateLimiter {
     this.windowMs = windowMs;
   }
 
+  /** True when the key has used up its budget, without spending another hit. */
+  exhausted(key: string, now = Date.now()): boolean {
+    return (this.hits.get(key) ?? []).filter((stamp) => now - stamp < this.windowMs).length >= this.limit;
+  }
+
   allow(key: string, now = Date.now()): boolean {
     const recent = (this.hits.get(key) ?? []).filter((stamp) => now - stamp < this.windowMs);
     if (recent.length >= this.limit) {
