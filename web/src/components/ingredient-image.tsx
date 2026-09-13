@@ -20,7 +20,7 @@ export function IngredientImage({ id, label, size = "md", className }: { id: str
   if (id?.startsWith("product_")) return <ProductImage id={id} label={label} size={size} className={className} />;
   const slug = id?.startsWith("pantry_") ? id.slice("pantry_".length) : null;
   if (slug && failedId !== id) {
-    return <img alt="" className={cn("shrink-0 bg-muted object-cover ring-1 ring-white/10", sizes[size], className)} decoding="async" loading="lazy" onError={() => setFailedId(id)} src={`/images/pantry/${slug}.jpg`} />;
+    return <img alt="" className={cn("shrink-0 bg-muted object-cover ring-1 ring-white/10", sizes[size], className)} decoding="async" loading="eager" onError={() => setFailedId(id)} src={`/images/pantry/${slug}.jpg`} />;
   }
   return <span aria-hidden className={cn("grid shrink-0 place-items-center bg-muted font-heading font-semibold text-muted-foreground ring-1 ring-border", sizes[size], className)}>{label.slice(0, 1).toUpperCase()}</span>;
 }
