@@ -459,8 +459,10 @@ export function queryRecipes(store: RecipeStore, index: Map<string, RecipeIndexE
       if (!tokens.every((token) => haystack.includes(token))) continue;
     }
     const cost = prices ? recipeCost(recipe, lookup, prices) : null;
-    // A recipe with nothing priced has no cost, not a cost of nothing.
-    const priced = cost && cost.lines.length > 0 ? cost : null;
+    // A recipe with nothing priced has no cost, not a cost of nothing; and one priced on a few side lines only
+    // (a sweet whose treacle and flour are pantry items) must not rank as the cheapest dish on the site.
+    const counted = recipe.ingredients.filter((line) => !line.optional).length;
+    const priced = cost && cost.lines.length > 0 && cost.lines.length * 2 >= counted ? cost : null;
     if (query.max_cost !== null && priced && priced.per_serving > query.max_cost) continue;
     items.push({ dish, metrics, cost_per_serving: priced?.per_serving ?? null, cost_estimated: priced?.estimated ?? null });
   }
