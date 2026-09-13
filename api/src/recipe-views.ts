@@ -373,7 +373,8 @@ export type RecipeQuery = {
   category: string;
   meal: string;
   protein: string;
-  diet: string;
+  /** Diet needs, all of which must hold: vegetarian, vegan, gluten_free, and the exclusions egg_free and dairy_free. */
+  diet: string[];
   region: string;
   occasion: string;
   /** Every listed tag must be present. */
@@ -390,6 +391,15 @@ export type RecipeQuery = {
 
 export type RecipeQueryItem = { dish: Dish; metrics: RecipeMetrics; cost_per_serving: number | null; cost_estimated: boolean | null };
 
+/** What a reader can ask of a dish's diet: a tag the catalogue gives it, or something it must not contain. */
+export const dietNeeds = new Set(["vegetarian", "vegan", "gluten_free", "egg_free", "dairy_free"]);
+
+function meetsDiet(diet: readonly string[], need: string): boolean {
+  if (need === "egg_free") return !diet.includes("contains_egg");
+  if (need === "dairy_free") return !diet.includes("contains_dairy");
+  return diet.includes(need);
+}
+
 export function parseRecipeQuery(get: (name: string) => string | undefined): RecipeQuery {
   const text = (name: string, limit = 40) => (get(name) ?? "").slice(0, limit);
   const number = (name: string) => {
@@ -403,7 +413,7 @@ export function parseRecipeQuery(get: (name: string) => string | undefined): Rec
     category: text("category"),
     meal: text("meal"),
     protein: text("protein"),
-    diet: text("diet"),
+    diet: (get("diet") ?? "").split(",").map((need) => need.trim()).filter((need) => dietNeeds.has(need)).slice(0, 5),
     region: text("region"),
     occasion: text("occasion"),
     tags: (get("tags") ?? "").split(",").map((tag) => tag.trim()).filter((tag) => known.has(tag)).slice(0, 8),
@@ -433,7 +443,7 @@ export function queryRecipes(store: RecipeStore, index: Map<string, RecipeIndexE
     if (query.category && dish.category !== query.category) continue;
     if (query.meal && !(dish.meal_slots as string[]).includes(query.meal)) continue;
     if (query.protein && !(dish.protein_source as string[]).includes(query.protein)) continue;
-    if (query.diet && !(dish.diet as string[]).includes(query.diet)) continue;
+    if (query.diet.length && !query.diet.every((need) => meetsDiet(dish.diet, need))) continue;
     if (query.region && dish.region !== query.region) continue;
     if (query.occasion && !(dish.occasions as string[]).includes(query.occasion)) continue;
     if (query.tags.length && !query.tags.every((tag) => (metrics.tags as string[]).includes(tag))) continue;

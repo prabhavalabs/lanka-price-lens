@@ -8,6 +8,7 @@ export type RecipeSearch = {
   q: string;
   category: string;
   tags: string[];
+  diet: string[];
   max_kcal: number | null;
   min_protein: number | null;
   max_minutes: number | null;
@@ -25,6 +26,15 @@ export const sortOptions: Array<{ value: string; label: string }> = [
   { value: "name", label: "By name" },
 ];
 
+export const dietOptions: Array<{ value: string; label: string }> = [
+  { value: "vegetarian", label: "Vegetarian" },
+  { value: "vegan", label: "Vegan" },
+  { value: "gluten_free", label: "Gluten free" },
+  { value: "egg_free", label: "Egg free" },
+  { value: "dairy_free", label: "Dairy free" },
+];
+const dietValues = new Set(dietOptions.map((option) => option.value));
+
 export const kcalOptions = [150, 250, 400, 600];
 export const proteinOptions = [10, 20, 30];
 export const minutesOptions = [20, 30, 60];
@@ -40,6 +50,7 @@ export function readSearch(params: URLSearchParams): RecipeSearch {
     q: (params.get("q") ?? "").slice(0, 100),
     category: params.get("category") ?? "",
     tags: (params.get("tags") ?? "").split(",").map((tag) => tag.trim()).filter(Boolean),
+    diet: (params.get("diet") ?? "").split(",").map((need) => need.trim()).filter((need) => dietValues.has(need)),
     max_kcal: number(params.get("max_kcal")),
     min_protein: number(params.get("min_protein")),
     max_minutes: number(params.get("max_minutes")),
@@ -55,6 +66,7 @@ export function writeSearch(search: RecipeSearch): URLSearchParams {
   if (search.q.trim()) params.set("q", search.q.trim());
   if (search.category) params.set("category", search.category);
   if (search.tags.length) params.set("tags", search.tags.join(","));
+  if (search.diet.length) params.set("diet", search.diet.join(","));
   if (search.max_kcal) params.set("max_kcal", String(search.max_kcal));
   if (search.min_protein) params.set("min_protein", String(search.min_protein));
   if (search.max_minutes) params.set("max_minutes", String(search.max_minutes));
@@ -69,6 +81,7 @@ export function toQueryParams(search: RecipeSearch): RecipeQueryParams {
     q: search.q.trim() || undefined,
     category: search.category || undefined,
     tags: search.tags.length ? search.tags : undefined,
+    diet: search.diet.length ? search.diet : undefined,
     max_kcal: search.max_kcal ?? undefined,
     min_protein: search.min_protein ?? undefined,
     max_minutes: search.max_minutes ?? undefined,
@@ -81,7 +94,7 @@ export function toQueryParams(search: RecipeSearch): RecipeQueryParams {
 
 /** How many filters are set beyond the text and the sort: the badge on the Filters button. */
 export function activeFilterCount(search: RecipeSearch): number {
-  return (search.category ? 1 : 0) + search.tags.length + (search.max_kcal ? 1 : 0) + (search.min_protein ? 1 : 0) + (search.max_minutes ? 1 : 0) + (search.max_cost ? 1 : 0);
+  return (search.category ? 1 : 0) + search.tags.length + search.diet.length + (search.max_kcal ? 1 : 0) + (search.min_protein ? 1 : 0) + (search.max_minutes ? 1 : 0) + (search.max_cost ? 1 : 0);
 }
 
-export const emptySearch: RecipeSearch = { q: "", category: "", tags: [], max_kcal: null, min_protein: null, max_minutes: null, max_cost: null, sort: "", page: 1 };
+export const emptySearch: RecipeSearch = { q: "", category: "", tags: [], diet: [], max_kcal: null, min_protein: null, max_minutes: null, max_cost: null, sort: "", page: 1 };

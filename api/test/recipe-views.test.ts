@@ -108,6 +108,10 @@ test("the query filters on the index and sorts by the asked measure", () => {
   assert.equal(ranked.items[0]!.dish.id, "dish_chicken_curry", "a name carrying every search word ranks first");
   assert.deepEqual(queryRecipes(store, index, parseRecipeQuery((name) => ({ q: "onion" })[name]), null).items.map((item) => item.dish.id), ["dish_chicken_curry", "dish_parippu"], "ingredient matches still list, everyday first");
   assert.equal(queryRecipes(store, index, parseRecipeQuery((name) => ({ tags: "nonsense" })[name]), null).total, 2, "unknown tags are ignored");
+  assert.deepEqual(queryRecipes(store, index, parseRecipeQuery((name) => ({ diet: "vegetarian,gluten_free" })[name]), null).items.map((item) => item.dish.id), ["dish_parippu"], "every diet need must hold");
+  assert.deepEqual(queryRecipes(store, index, parseRecipeQuery((name) => ({ diet: "egg_free,dairy_free" })[name]), null).items.map((item) => item.dish.id).sort(), ["dish_chicken_curry", "dish_parippu"], "exclusions pass dishes that contain neither");
+  assert.equal(queryRecipes(store, index, parseRecipeQuery((name) => ({ diet: "vegan" })[name]), null).items.some((item) => item.dish.id === "dish_chicken_curry"), false);
+  assert.equal(parseRecipeQuery((name) => ({ diet: "vegan,keto,nonsense" })[name]).diet.length, 1, "unknown needs are dropped");
 });
 
 test("prices come per product and unit from the published sources, fresh and cheapest first, and cost follows the unit the recipe can convert", async () => {

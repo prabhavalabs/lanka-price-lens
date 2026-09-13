@@ -8,7 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { dishCategoryLabel, rupees } from "@/lib/format";
 import { filterTags, tagLabel } from "@/lib/recipe-format";
-import { activeFilterCount, costOptions, emptySearch, kcalOptions, minutesOptions, proteinOptions, sortOptions, type RecipeSearch } from "@/lib/recipe-search";
+import { activeFilterCount, costOptions, dietOptions, emptySearch, kcalOptions, minutesOptions, proteinOptions, sortOptions, type RecipeSearch } from "@/lib/recipe-search";
 import { cn } from "@/lib/utils";
 
 const categories = ["rice_and_grains", "vegetable", "pulses_and_eggs", "sambol_and_condiment", "fish_and_seafood", "meat_and_poultry", "snack", "sweet", "drink"];
@@ -24,9 +24,12 @@ export function RecipeSearchBar({ search, onChange, total, fetching }: { search:
   const filters = activeFilterCount(search);
   const set = (patch: Partial<RecipeSearch>) => onChange({ ...search, ...patch, page: 1 });
   const toggleTag = (tag: string) => set({ tags: search.tags.includes(tag) ? search.tags.filter((entry) => entry !== tag) : [...search.tags, tag] });
+  const toggleDiet = (need: string) => set({ diet: search.diet.includes(need) ? search.diet.filter((entry) => entry !== need) : [...search.diet, need] });
+  const dietLabel = (need: string) => dietOptions.find((option) => option.value === need)?.label ?? need;
   const chips: Array<{ key: string; label: string; clear: () => void }> = [
     ...(search.category ? [{ key: "category", label: dishCategoryLabel(search.category), clear: () => set({ category: "" }) }] : []),
     ...search.tags.map((tag) => ({ key: `tag-${tag}`, label: tagLabel(tag), clear: () => toggleTag(tag) })),
+    ...search.diet.map((need) => ({ key: `diet-${need}`, label: dietLabel(need), clear: () => toggleDiet(need) })),
     ...(search.max_kcal ? [{ key: "kcal", label: `Under ${search.max_kcal} kcal`, clear: () => set({ max_kcal: null }) }] : []),
     ...(search.min_protein ? [{ key: "protein", label: `${search.min_protein} g protein or more`, clear: () => set({ min_protein: null }) }] : []),
     ...(search.max_minutes ? [{ key: "minutes", label: `Under ${search.max_minutes} min`, clear: () => set({ max_minutes: null }) }] : []),
@@ -57,6 +60,9 @@ export function RecipeSearchBar({ search, onChange, total, fetching }: { search:
                 </FilterGroup>
                 <FilterGroup title="Good for">
                   {filterTags.map((tag) => <Chip active={search.tags.includes(tag)} key={tag} onClick={() => toggleTag(tag)}>{tagLabel(tag)}</Chip>)}
+                </FilterGroup>
+                <FilterGroup title="Diet">
+                  {dietOptions.map((option) => <Chip active={search.diet.includes(option.value)} key={option.value} onClick={() => toggleDiet(option.value)}>{option.label}</Chip>)}
                 </FilterGroup>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <FilterGroup title="Calories per serving">

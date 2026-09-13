@@ -179,7 +179,7 @@ export const fetchRecipe = (id: string, servings?: number | undefined): Promise<
 export type RecipeMetrics = { kcal: number; protein_g: number; fat_g: number; carb_g: number; fibre_g: number | null; minutes: number; tags: string[]; role: string; portion_g: number; languages: Lang[] };
 export type RecipeQueryItem = { dish: Dish; metrics: RecipeMetrics; cost_per_serving: number | null; cost_estimated: boolean | null };
 export type RecipeQueryList = { items: RecipeQueryItem[]; page: number; pageSize: number; total: number; pages: number };
-export type RecipeQueryParams = { q?: string | undefined; category?: string | undefined; tags?: string[] | undefined; max_kcal?: number | undefined; min_protein?: number | undefined; max_minutes?: number | undefined; max_cost?: number | undefined; sort?: string | undefined; page?: number | undefined; cost?: boolean | undefined };
+export type RecipeQueryParams = { q?: string | undefined; category?: string | undefined; tags?: string[] | undefined; diet?: string[] | undefined; max_kcal?: number | undefined; min_protein?: number | undefined; max_minutes?: number | undefined; max_cost?: number | undefined; sort?: string | undefined; page?: number | undefined; cost?: boolean | undefined };
 
 /** Recipes that fit a question: by calories, protein, time, tags, or cost per serving. */
 export const fetchRecipeQuery = (params: RecipeQueryParams, signal?: AbortSignal): Promise<RecipeQueryList> => {
@@ -187,6 +187,7 @@ export const fetchRecipeQuery = (params: RecipeQueryParams, signal?: AbortSignal
   if (params.q) search.set("q", params.q);
   if (params.category) search.set("category", params.category);
   if (params.tags?.length) search.set("tags", params.tags.join(","));
+  if (params.diet?.length) search.set("diet", params.diet.join(","));
   if (params.max_kcal) search.set("max_kcal", String(params.max_kcal));
   if (params.min_protein) search.set("min_protein", String(params.min_protein));
   if (params.max_minutes) search.set("max_minutes", String(params.max_minutes));
