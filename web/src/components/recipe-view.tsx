@@ -124,7 +124,7 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
           <div className="flex flex-wrap items-start justify-between gap-3 border-b px-4 py-4 sm:px-5">
             <div>
               <h2 className="text-balance font-heading text-lg font-semibold">Ingredients for {servings}</h2>
-              <p className="text-pretty text-xs text-muted-foreground">{recipe.ingredients.length} items · {buyable.length} priced today{cost?.lines.length ? ` · ${cost.estimated ? "≈ " : ""}${rupees(cost.total)} for the priced ones` : ""}. Amounts as bought, before trimming.</p>
+              <p className="text-pretty text-xs text-muted-foreground">{recipe.ingredients.length} items · {buyable.length} priced today{cost?.lines.length ? ` · ${cost.estimated ? "≈ " : ""}${rupees(cost.total)} for ${servings} (${rupees(cost.per_serving)} per person), priced items only` : ""}. Amounts as bought, before trimming.</p>
             </div>
             <div className="flex flex-wrap gap-2">
               {toBuy.length ? <Button onClick={addAll} size="sm">Add {toBuy.length === buyable.length ? "all" : "the rest"} to basket</Button> : null}
@@ -195,6 +195,19 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
                 </ul>
               </section>
             ))}
+            {cost ? (
+              <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 border-t bg-muted/30 px-4 py-3 sm:grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_6rem_8.5rem] sm:gap-x-4 sm:px-5">
+                <div className="sm:col-span-4">
+                  <p className="text-sm font-semibold">Total for {servings} {servings === 1 ? "person" : "people"}</p>
+                  <p className="text-[11px] text-muted-foreground">{cost.lines.length} priced {cost.lines.length === 1 ? "item" : "items"} at today's cheapest sellers{cost.unpriced.length ? `; ${cost.unpriced.length} without a price not counted` : ""}{cost.lines.some((line) => line.stale) ? "; some prices are older than a week" : ""}. Per-person figures shift a little with the headcount because amounts round to what a kitchen can measure.</p>
+                </div>
+                <div className="text-right tabular-nums">
+                  <p className="text-base font-semibold">{cost.estimated ? "≈ " : ""}{rupees(cost.total)}</p>
+                  <p className="text-[11px] text-muted-foreground">{rupees(cost.per_serving)} per person</p>
+                </div>
+                <span className="hidden sm:block" />
+              </div>
+            ) : null}
           </div>
         </CardContent>
       </Card>
