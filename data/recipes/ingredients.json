@@ -2836,14 +2836,14 @@
     "tsp_g": null,
     "tbsp_g": null,
     "cup_g": null,
-    "piece_g": null,
+    "piece_g": 5,
     "bunch_g": 100
    },
    "nutrition": null,
    "sources": [],
    "basis": "No food composition table carries Macaranga peltata leaf, and I would not put a leafy-green average against it without a reading, so the nutrition is left null.",
    "confidence": "low",
-   "notes": "Used mainly as a wrapping and covering leaf and in village herbal preparations rather than as a cooked green, so the missing values rarely affect a dish total. Tamil name left null.",
+   "notes": "A piece is one leaf of about 5 g, used to wrap halapa.",
    "reviewed": false
   },
   {
@@ -7916,14 +7916,14 @@
    },
    "group": "herb",
    "state": "raw",
-   "as_purchased_note": "sprigs, sold in a small bunch",
+   "as_purchased_note": "sprigs, sold in a small bunch; a piece is one sprig of about 2 g",
    "edible_portion": 0.7,
    "density_g_per_ml": null,
    "measures": {
     "tsp_g": null,
     "tbsp_g": null,
     "cup_g": 20,
-    "piece_g": 0.2,
+    "piece_g": 2,
     "bunch_g": 20
    },
    "nutrition": {
@@ -7955,7 +7955,7 @@
    ],
    "basis": "Both tables give the same picture for a dry, leathery leaf; took the Indian figure. Edible 0.70 for leaflets stripped off the woody sprig. 4P+9F+4C gives 108, matching exactly.",
    "confidence": "medium",
-   "notes": "Site group is vegetable; herb chosen from the brief's group list. Unlike Indian practice, Sri Lankan cooking usually leaves karapincha in the dish and it is eaten, so its calcium and iron do count.",
+   "notes": "Recipes count sprigs, so a piece is a sprig rather than a single leaf.",
    "reviewed": false
   },
   {

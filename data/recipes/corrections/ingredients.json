@@ -80,5 +80,18 @@
       "notes": "Recipe lines whose preparation says thin or second squeeze are pointed here by the draft normaliser.",
       "reviewed": false
     }
-  ]
+  ],
+  "product_curry_leaves": {
+    "measures": {
+      "piece_g": 2
+    },
+    "as_purchased_note": "sprigs, sold in a small bunch; a piece is one sprig of about 2 g",
+    "notes": "Recipes count sprigs, so a piece is a sprig rather than a single leaf."
+  },
+  "pantry_kenda_leaf": {
+    "measures": {
+      "piece_g": 5
+    },
+    "notes": "A piece is one leaf of about 5 g, used to wrap halapa."
+  }
 }
