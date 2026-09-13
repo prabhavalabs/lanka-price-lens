@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --watch src/index.ts",
+    "dev": "node --env-file-if-exists=../.env --watch src/index.ts",
     "start": "node src/index.ts",
     "build": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
@@ -13,6 +13,7 @@
   "dependencies": {
     "@hono/node-server": "2.1.1",
     "@lanka-pricelens/foundry": "workspace:*",
+    "@lanka-pricelens/notify": "workspace:*",
     "@lanka-pricelens/shared": "workspace:*",
     "@resvg/resvg-js": "2.6.2",
     "hono": "4.13.2"

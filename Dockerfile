@@ -8,6 +8,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json ./
 COPY shared/package.json shared/package.json
 COPY archive/package.json archive/package.json
 COPY foundry/package.json foundry/package.json
+COPY notify/package.json notify/package.json
 COPY api/package.json api/package.json
 COPY admin/package.json admin/package.json
 COPY web/package.json web/package.json
@@ -15,6 +16,7 @@ RUN pnpm install --frozen-lockfile
 COPY shared shared
 COPY archive archive
 COPY foundry foundry
+COPY notify notify
 COPY api api
 COPY admin admin
 COPY web web
@@ -35,6 +37,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json ./
 COPY shared/package.json shared/package.json
 COPY archive/package.json archive/package.json
 COPY foundry/package.json foundry/package.json
+COPY notify/package.json notify/package.json
 COPY api/package.json api/package.json
 COPY admin/package.json admin/package.json
 COPY web/package.json web/package.json
@@ -47,6 +50,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends python3 make g+
 COPY shared/src shared/src
 COPY archive/src archive/src
 COPY foundry/src foundry/src
+COPY notify/src notify/src
 COPY api/src api/src
 COPY api/assets api/assets
 COPY data/manifests data/manifests
