@@ -455,9 +455,16 @@ export function queryRecipes(store: RecipeStore, index: Map<string, RecipeIndexE
     items.push({ dish, metrics, cost_per_serving: priced?.per_serving ?? null, cost_estimated: priced?.estimated ?? null });
   }
   const exact = (item: RecipeQueryItem) => (needle && item.dish.names.en.toLowerCase() === needle ? 0 : 1);
+  // Every search word in a name beats a match through an ingredient or a tag ("potato cur" is potato curry first).
+  const nameRank = (item: RecipeQueryItem) => {
+    if (!tokens.length) return 0;
+    const name = [item.dish.names.en, item.dish.names.si, item.dish.names.si_latn, item.dish.names.ta, item.dish.names.ta_latn].filter((value): value is string => Boolean(value)).join(" ").toLowerCase();
+    const hits = tokens.filter((token) => name.includes(token)).length;
+    return hits === tokens.length ? 0 : hits ? 1 : 2;
+  };
   const byName = (left: RecipeQueryItem, right: RecipeQueryItem) => left.dish.names.en.localeCompare(right.dish.names.en);
   const sorters: Record<RecipeQuery["sort"], (left: RecipeQueryItem, right: RecipeQueryItem) => number> = {
-    relevance: (left, right) => exact(left) - exact(right) || left.dish.popularity - right.dish.popularity || byName(left, right),
+    relevance: (left, right) => nameRank(left) - nameRank(right) || exact(left) - exact(right) || left.dish.popularity - right.dish.popularity || byName(left, right),
     kcal: (left, right) => left.metrics.kcal - right.metrics.kcal || byName(left, right),
     protein: (left, right) => right.metrics.protein_g - left.metrics.protein_g || byName(left, right),
     cost: (left, right) => (left.cost_per_serving ?? Number.POSITIVE_INFINITY) - (right.cost_per_serving ?? Number.POSITIVE_INFINITY) || byName(left, right),

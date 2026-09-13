@@ -104,6 +104,9 @@ test("the query filters on the index and sorts by the asked measure", () => {
   assert.deepEqual(tagged.items.map((item) => item.dish.id), ["dish_parippu"]);
   const quick = queryRecipes(store, index, parseRecipeQuery((name) => ({ max_minutes: "30", q: "dhal" })[name]), null);
   assert.deepEqual(quick.items.map((item) => item.dish.id), ["dish_parippu"]);
+  const ranked = queryRecipes(store, index, parseRecipeQuery((name) => ({ q: "chicken cur" })[name]), null);
+  assert.equal(ranked.items[0]!.dish.id, "dish_chicken_curry", "a name carrying every search word ranks first");
+  assert.deepEqual(queryRecipes(store, index, parseRecipeQuery((name) => ({ q: "onion" })[name]), null).items.map((item) => item.dish.id), ["dish_chicken_curry", "dish_parippu"], "ingredient matches still list, everyday first");
   assert.equal(queryRecipes(store, index, parseRecipeQuery((name) => ({ tags: "nonsense" })[name]), null).total, 2, "unknown tags are ignored");
 });
 
