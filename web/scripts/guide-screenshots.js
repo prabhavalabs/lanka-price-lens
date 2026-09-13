@@ -146,7 +146,7 @@ async (page) => {
   // A full recipe scaled to ten, with calories and cost per serving.
   await tab.goto(`${origin}/r/dish_hoppers?people=10`);
   await settle(tab, "h2:has-text('Ingredients for 10')");
-  await tab.getByRole("group", { name: "Number of people" }).scrollIntoViewIfNeeded();
+  await tab.getByRole("group", { name: "People stepper" }).scrollIntoViewIfNeeded();
   await clearHeader(tab);
   await shot(tab, "servings");
 

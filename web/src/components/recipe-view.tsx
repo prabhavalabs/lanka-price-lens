@@ -1,8 +1,9 @@
-import { RiAddLine, RiCheckLine, RiSubtractLine, RiTimeLine, RiToolsLine } from "@remixicon/react";
+import { RiAddLine, RiCheckLine, RiTimeLine, RiToolsLine } from "@remixicon/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { IngredientImage } from "@/components/ingredient-image";
+import { PeopleInput } from "@/components/people-input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -56,11 +57,7 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
         <CardContent className="flex flex-wrap items-center gap-4 p-4">
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium">Cooking for</span>
-            <div aria-label="Number of people" className="inline-flex items-center gap-0.5 rounded-lg border border-primary/40 bg-primary/5 p-0.5" role="group">
-              <Button aria-label="Fewer people" disabled={servings <= 1} onClick={() => onServings(servings - 1)} size="icon-sm" variant="ghost"><RiSubtractLine className="size-3.5" /></Button>
-              <Input aria-label="People" className="h-7 w-14 border-0 bg-transparent text-center text-sm font-semibold tabular-nums shadow-none focus-visible:ring-0" inputMode="numeric" onChange={(event) => { const value = Number(event.target.value); if (Number.isFinite(value) && value >= 1 && value <= 500) onServings(Math.round(value)); }} value={servings} />
-              <Button aria-label="More people" disabled={servings >= 500} onClick={() => onServings(servings + 1)} size="icon-sm" variant="ghost"><RiAddLine className="size-3.5" /></Button>
-            </div>
+            <PeopleInput onChange={onServings} value={servings} />
             <span className="text-sm text-muted-foreground">{servings === 1 ? "person" : "people"}</span>
           </div>
           <div className="flex flex-wrap gap-1">{[4, 6, 10, 20].map((preset) => <Button key={preset} className="rounded-full" onClick={() => onServings(preset)} size="sm" variant={servings === preset ? "default" : "outline"}>{preset}</Button>)}</div>
