@@ -4,7 +4,7 @@ import test from "node:test";
 
 import { openOperationalDatabase } from "@lanka-pricelens/foundry/db";
 import { createSourceCatalog } from "@lanka-pricelens/foundry/manifest";
-import { sourceManifestSchema } from "@lanka-pricelens/shared";
+import { sourceManifestSchema, type Recipe } from "@lanka-pricelens/shared";
 
 import { createApp } from "../src/app.ts";
 import { buildRecipeIndex, parseRecipeQuery, priceLookupFor, priceOptions, purchaseFor, queryRecipes, recipeView, stepViews } from "../src/recipe-views.ts";
@@ -76,7 +76,13 @@ test("steps name the ingredient lines they use, in any of the three languages", 
   const plural = stepViews([{ text: "Slice the onions and fry the chillies.", minutes: null }], [{ ref: "product_big_onion", label: { en: "big onion", si: null, ta: null }, quantity: 1, unit: "piece", household: null, preparation: null, optional: false, scaling: "linear", part: "main" }, { ref: "product_green_chillies", label: { en: "green chilli, slit", si: null, ta: null }, quantity: 2, unit: "piece", household: null, preparation: null, optional: false, scaling: "linear", part: "main" }], "en");
   assert.deepEqual(plural[0]!.uses, [0, 1], "plurals in the step match singular labels; a two-word label needs only its head word");
   const strict = stepViews([{ text: "Pour in the milk.", minutes: null }], [{ ref: "pantry_coconut_milk", label: { en: "thick coconut milk, first squeeze", si: null, ta: null }, quantity: 200, unit: "ml", household: null, preparation: null, optional: false, scaling: "linear", part: "main" }], "en");
-  assert.deepEqual(strict[0]!.uses, [], "a three-word label needs a second word beside its head");
+  assert.deepEqual(strict[0]!.uses, [], "a three-word label needs its whole phrase");
+  const line = (ref: string, en: string, preparation: string | null = null): Recipe["ingredients"][number] => ({ ref, label: { en, si: null, ta: null }, quantity: 1, unit: "g", household: null, preparation: preparation ? { en: preparation, si: null, ta: null } : null, optional: false, scaling: "linear", part: "main" });
+  const curry = [line("product_green_chillies", "green chillies"), line("pantry_chilli_powder", "chilli powder"), line("product_curry_leaves", "curry leaves"), line("pantry_curry_powder", "curry powder"), line("pantry_coconut_milk_thin", "coconut milk", "thin, second squeeze"), line("pantry_coconut_milk", "coconut milk", "thick, first squeeze")];
+  const phrases = stepViews([{ text: "Mix in the curry powder and chilli powder and leave it to take the spice.", minutes: null }, { text: "Temper the green chillies and curry leaves.", minutes: null }, { text: "Pour in the thin coconut milk and simmer.", minutes: null }, { text: "Add the coconut milk and heat without boiling.", minutes: null }], curry, "en");
+  assert.deepEqual(phrases.map((step) => step.uses), [[1, 3], [0, 2], [4], [4, 5]], "phrases are consumed before head words; 'leave it' is not curry leaves; a named squeeze keeps only its line");
+  const unique = stepViews([{ text: "Rub in the turmeric and drop in the pandan.", minutes: null }, { text: "Stir the powder in.", minutes: null }], [line("product_turmeric", "turmeric powder"), line("pantry_pandan_leaf", "pandan leaf"), line("pantry_chilli_powder", "chilli powder")], "en");
+  assert.deepEqual(unique.map((step) => step.uses), [[0, 1], []], "an ambiguous head word yields to a first word that names one ingredient alone");
 });
 
 test("the purchase amount is in the basket's unit: the priced unit when priced, the line's own otherwise, rounded up", () => {

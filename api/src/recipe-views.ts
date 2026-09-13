@@ -267,11 +267,17 @@ function stem(word: string): string {
   return word;
 }
 
+/** Head words too ambiguous to stand for an ingredient on their own: "leave it to rest" is not curry leaves. */
+const ambiguousHeads = new Set(["leave", "leaf", "seed", "powder", "paste", "stock", "water", "oil", "piece", "cut", "flour", "juice", "sauce", "skin", "head"]);
+
 /**
  * Which ingredient lines a step names, so the page can show the scaled amounts beside the
- * step. English needs the label's head word ("dhal" of "red dhal") and, for longer labels,
- * one more of its words; Sinhala and Tamil match the label's last word with its last letter
- * free, which absorbs most case endings. A hint, so a loose match is better than a missed one.
+ * step. English first matches whole label phrases in the step ("chilli powder") and removes
+ * them, then lets a short label stand on its head word alone ("dhal" for red dhal) unless
+ * that word is ambiguous. When lines share a label (thick and thin coconut milk), a step that
+ * names one squeeze keeps only that line. Sinhala and Tamil match the label's last word with
+ * its last letter free, which absorbs most case endings. A hint, so a miss is better than a
+ * wrong chip.
  */
 export function stepViews(steps: Array<{ text: string; minutes: number | null }>, ingredients: Recipe["ingredients"], language: Language): RecipeStepView[] {
   const keys = ingredients.map((line) => {
@@ -287,18 +293,79 @@ export function stepViews(steps: Array<{ text: string; minutes: number | null }>
   });
   return steps.map((step) => {
     const text = step.text.toLowerCase();
-    const words = language === "en" ? new Set(text.replace(/[^a-z\s-]/gu, " ").split(/\s+/u).map(stem)) : null;
     const uses: number[] = [];
-    keys.forEach((key, index) => {
-      if (!key) return;
-      if ("words" in key) {
+    if (language === "en") {
+      let words = text.replace(/[^a-z\s-]/gu, " ").split(/\s+/u).filter(Boolean).map(stem);
+      // Whole phrases first, longest first, each consumed so "chilli powder" cannot also stand for green chillies.
+      const order = keys.map((key, index) => ({ key, index })).filter((entry): entry is { key: { words: string[] }; index: number } => Boolean(entry.key && "words" in entry.key)).sort((a, b) => b.key.words.length - a.key.words.length);
+      const matched = new Set<number>();
+      for (const { key, index } of order) {
+        if (key.words.length < 2 || matched.has(index)) continue;
+        const at = findPhrase(words, key.words);
+        if (at < 0) continue;
+        // Lines with the same phrase (thick and thin coconut milk) share the one occurrence.
+        const phrase = key.words.join(" ");
+        for (const entry of order) if (entry.key.words.join(" ") === phrase) matched.add(entry.index);
+        words = [...words.slice(0, at), ...words.slice(at + key.words.length)];
+      }
+      const remaining = new Set(words);
+      const wordCounts = new Map<string, number>();
+      for (const { key } of order) for (const word of new Set(key.words)) wordCounts.set(word, (wordCounts.get(word) ?? 0) + 1);
+      for (const { key, index } of order) {
+        if (matched.has(index) || key.words.length > 2) continue;
         const head = key.words.at(-1)!;
-        const others = key.words.slice(0, -1).filter((word) => words!.has(word)).length;
-        if (words!.has(head) && (key.words.length <= 2 || others >= 1)) uses.push(index);
-      } else if (text.includes(key.prefix)) uses.push(index);
-    });
-    return { text: step.text, minutes: step.minutes, uses };
+        if (head.length >= 4 && !ambiguousHeads.has(head) && remaining.has(head)) matched.add(index);
+        // "turmeric powder", "pandan leaf": the head is ambiguous but the first word names one ingredient alone.
+        else if (key.words.length === 2 && ambiguousHeads.has(head)) {
+          const first = key.words[0]!;
+          if (first.length >= 5 && wordCounts.get(first) === 1 && remaining.has(first)) matched.add(index);
+        }
+      }
+      uses.push(...[...matched].sort((a, b) => a - b));
+    } else {
+      keys.forEach((key, index) => {
+        if (key && "prefix" in key && text.includes(key.prefix)) uses.push(index);
+      });
+    }
+    return { text: step.text, minutes: step.minutes, uses: disambiguate(uses, ingredients, text, language) };
   });
+}
+
+function findPhrase(words: string[], phrase: string[]): number {
+  for (let at = 0; at + phrase.length <= words.length; at += 1) {
+    if (phrase.every((word, offset) => words[at + offset] === word)) return at;
+  }
+  return -1;
+}
+
+const squeezeWords: Record<Language, Array<[RegExp, RegExp]>> = {
+  en: [[/\bthin\b|second/u, /\bthin\b|second/u], [/\bthick\b|first/u, /\bthick\b|first/u]],
+  si: [[/තුනී|දෙවන|දෙවැනි/u, /තුනී|දෙවන|දෙවැනි/u], [/ගන|මිටි|පළමු/u, /ගන|මිටි|පළමු/u]],
+  ta: [[/நீர்த்த|இரண்டாம்|மெல்லிய/u, /நீர்த்த|இரண்டாம்|மெல்லிய/u], [/கெட்டி|முதல்/u, /கெட்டி|முதல்/u]],
+};
+
+/** Among matched lines that share a label, keep the ones whose preparation the step also names (thick against thin). */
+function disambiguate(uses: number[], ingredients: Recipe["ingredients"], text: string, language: Language): number[] {
+  const byLabel = new Map<string, number[]>();
+  for (const index of uses) {
+    const label = ingredients[index]!.label.en.toLowerCase();
+    byLabel.set(label, [...(byLabel.get(label) ?? []), index]);
+  }
+  const keep = new Set(uses);
+  for (const group of byLabel.values()) {
+    if (group.length < 2) continue;
+    for (const [inText, inPreparation] of squeezeWords[language]) {
+      if (!inText.test(text)) continue;
+      const named = group.filter((index) => {
+        const preparation = ingredients[index]!.preparation;
+        const wording = ((language === "en" ? preparation?.en : language === "si" ? preparation?.si : preparation?.ta) ?? preparation?.en ?? "").toLowerCase();
+        return inPreparation.test(wording);
+      });
+      if (named.length && named.length < group.length) for (const index of group) if (!named.includes(index)) keep.delete(index);
+      break;
+    }
+  }
+  return uses.filter((index) => keep.has(index));
 }
 
 export type RecipeQuery = {

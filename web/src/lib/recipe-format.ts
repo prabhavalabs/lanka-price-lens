@@ -54,7 +54,7 @@ export function ingredientName(line: RecipeIngredientView, lang: Lang): string {
 
 /** "600 g", "1.5 l", "2 pcs", "½ pc". */
 export function amountLabel(quantity: number, unit: "g" | "ml" | "piece"): string {
-  if (unit === "piece") return `${fractional(quantity)} ${quantity === 1 ? "pc" : "pcs"}`;
+  if (unit === "piece") return `${fractional(quantity)} ${quantity <= 1 ? "pc" : "pcs"}`;
   if (unit === "g") return quantity >= 1000 ? `${trim(quantity / 1000)} kg` : `${trim(quantity)} g`;
   return quantity >= 1000 ? `${trim(quantity / 1000)} l` : `${trim(quantity)} ml`;
 }
@@ -88,4 +88,30 @@ export function macroShares(nutrition: Nutrition): { protein: number; fat: numbe
   const p = Math.round((protein / total) * 100);
   const f = Math.round((fat / total) * 100);
   return { protein: p, fat: f, carb: Math.max(0, 100 - p - f) };
+}
+
+/** Section labels for the parts of a recipe, in the order they are usually laid out. */
+export const partLabels: Record<string, string> = {
+  main: "Main",
+  marinade: "Marinade",
+  batter: "Batter",
+  dough: "Dough",
+  filling: "Filling",
+  tempering: "Tempering",
+  sauce: "Sauce",
+  syrup: "Syrup",
+  frying: "For frying",
+  garnish: "Garnish",
+  serving: "To serve",
+};
+
+export function partLabel(part: string): string {
+  return partLabels[part] ?? part;
+}
+
+/** A short qualifier for a line whose name another line shares: the preparation ("thin, second squeeze"), so two coconut milks read apart. */
+export function disambiguator(line: RecipeIngredientView, lang: Lang, all: RecipeIngredientView[]): string | null {
+  const twins = all.filter((other) => other !== line && ingredientName(other, lang) === ingredientName(line, lang));
+  if (!twins.length) return null;
+  return localized(line.preparation, lang)?.split(/[,;]/u)[0]?.trim() ?? null;
 }

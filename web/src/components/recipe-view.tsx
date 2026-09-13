@@ -1,7 +1,8 @@
-import { RiAddLine, RiSubtractLine } from "@remixicon/react";
+import { RiAddLine, RiCheckLine, RiSubtractLine, RiTimeLine, RiToolsLine } from "@remixicon/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { IngredientImage } from "@/components/ingredient-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,7 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import type { Lang, RecipeView } from "@/lib/api";
 import { minutesLabel, rupees, unitLabel } from "@/lib/format";
-import { amountLabel, gramsLabel, ingredientName, kcalLabel, localized, macroShares, tagLabel } from "@/lib/recipe-format";
+import { amountLabel, disambiguator, gramsLabel, ingredientName, kcalLabel, localized, macroShares, partLabel, tagLabel } from "@/lib/recipe-format";
 import { cn } from "@/lib/utils";
 import { QuantityControl } from "@/components/quantity";
 import { basketStore, formatQuantity, useBasket } from "@/store/basket";
@@ -41,6 +42,14 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
   const addAll = () => {
     for (const line of toBuy) if (line.ref && line.purchase) basketStore.add(line.ref, line.names?.en ?? line.label.en, line.purchase.unit, line.purchase.quantity);
   };
+  // Lines grouped by the part of the dish they belong to, in order of first appearance; indices stay the recipe's own so the steps can point at them.
+  const groups: Array<{ part: string; lines: Array<{ line: (typeof recipe.ingredients)[number]; index: number }> }> = [];
+  recipe.ingredients.forEach((line, index) => {
+    const group = groups.find((entry) => entry.part === line.part);
+    if (group) group.lines.push({ line, index });
+    else groups.push({ part: line.part, lines: [{ line, index }] });
+  });
+  const totalMinutes = recipe.times.prep_minutes + recipe.times.cook_minutes + recipe.times.passive_minutes;
   return (
     <div className="space-y-6">
       <Card>
@@ -112,86 +121,130 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
 
       <Card>
         <CardContent className="p-0">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
-            <div><h2 className="font-heading text-lg font-semibold">Ingredients for {servings}</h2><p className="text-xs text-muted-foreground">As bought, before trimming. Salt, oil, and whole spices grow a little slower than the headcount. Prices are today's cheapest published seller for that amount.</p></div>
+          <div className="flex flex-wrap items-start justify-between gap-3 border-b px-4 py-4 sm:px-5">
+            <div>
+              <h2 className="text-balance font-heading text-lg font-semibold">Ingredients for {servings}</h2>
+              <p className="text-pretty text-xs text-muted-foreground">{recipe.ingredients.length} items · {buyable.length} priced today{cost?.lines.length ? ` · ${cost.estimated ? "≈ " : ""}${rupees(cost.total)} for the priced ones` : ""}. Amounts as bought, before trimming.</p>
+            </div>
             <div className="flex flex-wrap gap-2">
               {toBuy.length ? <Button onClick={addAll} size="sm">Add {toBuy.length === buyable.length ? "all" : "the rest"} to basket</Button> : null}
               <AddToMenu dishId={dishId} dishName={dishName} />
             </div>
           </div>
-          <ul className={cn("divide-y transition-opacity", loading && "opacity-60")}>
-            {recipe.ingredients.map((line, index) => {
-              const name = ingredientName(line, language);
-              const preparation = localized(line.preparation, language);
-              const owned = Boolean(line.ref && have.has(line.ref));
+          <div className="hidden grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_8.5rem] gap-x-4 border-b px-5 py-2 text-[11px] font-medium uppercase text-muted-foreground sm:grid">
+            <span />
+            <span>Ingredient</span>
+            <span className="text-right">Amount</span>
+            <span>Cheapest today</span>
+            <span className="text-right">Basket</span>
+          </div>
+          <div className={cn("transition-opacity", loading && "opacity-60")}>
+            {groups.map((group) => (
+              <section key={group.part}>
+                {groups.length > 1 ? <h3 className="border-b bg-muted/30 px-4 py-1.5 text-[11px] font-medium uppercase text-muted-foreground sm:px-5">{partLabel(group.part)}</h3> : null}
+                <ul className="divide-y">
+                  {group.lines.map(({ line, index }) => {
+                    const name = ingredientName(line, language);
+                    const preparation = localized(line.preparation, language);
+                    const owned = Boolean(line.ref && have.has(line.ref));
+                    const displayName = line.names?.en ?? line.label.en;
+                    return (
+                      <li key={index} className="grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1.5 px-4 py-3 sm:grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_8.5rem] sm:gap-x-4 sm:px-5">
+                        <IngredientImage id={line.ref} label={name} size="md" className="row-span-2 self-start sm:row-span-1 sm:self-center" />
+                        <div className="min-w-0">
+                          <p className="truncate text-sm font-medium leading-tight">
+                            {line.ref?.startsWith("product_") ? <Link to={`/p/${line.ref}`} className="no-underline hover:text-primary">{name}</Link> : name}
+                          </p>
+                          <p className="mt-0.5 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] text-muted-foreground">
+                            {preparation ? <span className="truncate">{preparation}</span> : null}
+                            {line.optional ? <Badge variant="outline" className="h-4 px-1 text-[10px] font-normal">optional</Badge> : null}
+                            {line.part === "frying" ? <Badge variant="outline" className="h-4 px-1 text-[10px] font-normal">absorbed share counted</Badge> : null}
+                          </p>
+                        </div>
+                        <div className="text-right tabular-nums">
+                          <p className="text-sm font-semibold leading-tight">{amountLabel(line.quantity, line.unit)}</p>
+                          {line.household ? <p className="text-[11px] text-muted-foreground">{line.household}</p> : null}
+                        </div>
+                        <div className="col-start-2 min-w-0 text-[11px] leading-snug text-muted-foreground sm:col-start-4 sm:text-xs">
+                          {line.cost ? (
+                            <>
+                              <p className="tabular-nums"><span className="font-semibold text-foreground">{rupees(line.cost.cost)}</span> <span>· {rupees(line.cost.unit_price)} {unitLabel(line.cost.price_unit)}</span></p>
+                              <p className="truncate">{line.cost.seller}{line.cost.stale ? <span className="ml-1 rounded bg-muted px-1 py-px text-[10px]">older price</span> : null}</p>
+                            </>
+                          ) : line.ref?.startsWith("product_") ? <p>No published price today</p> : <p><span className="rounded bg-muted px-1 py-px text-[10px]">pantry</span> not priced yet</p>}
+                        </div>
+                        <div className="col-start-3 row-start-2 flex items-center justify-end gap-1.5 sm:col-start-5 sm:row-start-auto">
+                          {line.ref && line.purchase ? (
+                            owned ? (
+                              <>
+                                <RiCheckLine aria-label="In your basket" className="size-4 shrink-0 text-primary" />
+                                <QuantityControl id={line.ref} label={displayName} unit={line.purchase.unit} />
+                              </>
+                            ) : (
+                              <Button aria-label={`Add ${formatQuantity(line.purchase.quantity, line.purchase.unit)} of ${displayName} to basket`} className="tabular-nums" onClick={() => basketStore.add(line.ref!, displayName, line.purchase!.unit, line.purchase!.quantity)} size="sm" variant="outline">
+                                <RiAddLine className="size-3.5" />
+                                {formatQuantity(line.purchase.quantity, line.purchase.unit)}
+                              </Button>
+                            )
+                          ) : null}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent className="p-4 sm:p-5">
+          <div className="flex flex-wrap items-start justify-between gap-2">
+            <div>
+              <h2 className="text-balance font-heading text-lg font-semibold">Method</h2>
+              <p className="text-xs text-muted-foreground">{steps.length} steps · about {minutesLabel(totalMinutes)} · amounts shown for {servings}</p>
+            </div>
+            {machine ? <Badge variant="outline" className="text-[10px] font-normal text-muted-foreground">{languageNames[language]} machine drafted, awaiting review</Badge> : null}
+          </div>
+          <ol className="mt-5">
+            {steps.map((step, index) => {
+              const last = index === steps.length - 1;
               return (
-                <li key={`${line.ref ?? line.label.en}-${index}`} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 px-4 py-2.5 sm:grid-cols-[minmax(0,1.3fr)_auto_minmax(0,1fr)_auto]">
-                  <div className="min-w-0">
-                    <p className="text-sm font-medium">
-                      {line.ref?.startsWith("product_") ? <Link to={`/p/${line.ref}`} className="no-underline hover:text-primary">{name}</Link> : name}
-                      {line.optional ? <span className="ml-1 text-xs text-muted-foreground">(optional)</span> : null}
-                      {line.part === "frying" ? <span className="ml-1 text-xs text-muted-foreground">(only what is absorbed counts)</span> : null}
-                    </p>
-                    {preparation ? <p className="text-[11px] text-muted-foreground">{preparation}</p> : null}
-                  </div>
-                  <div className="text-right tabular-nums">
-                    <p className="text-sm font-semibold">{amountLabel(line.quantity, line.unit)}</p>
-                    {line.household ? <p className="text-[11px] text-muted-foreground">{line.household}</p> : null}
-                  </div>
-                  <div className="col-span-2 min-w-0 text-[11px] text-muted-foreground sm:col-span-1 sm:text-right sm:text-xs">
-                    {line.cost ? (
-                      <>
-                        <span className="font-medium text-foreground tabular-nums">{rupees(line.cost.cost)}</span>
-                        <span className="tabular-nums"> · {rupees(line.cost.unit_price)} {unitLabel(line.cost.price_unit)} × {line.cost.price_unit === "piece" || line.cost.price_unit === "bunch" ? `${line.cost.amount} ${line.cost.price_unit === "bunch" ? "bunch" : line.cost.amount === 1 ? "pc" : "pcs"}` : formatQuantity(line.cost.amount, line.cost.price_unit)}</span>
-                        <span className="block truncate sm:inline"> at {line.cost.seller}{line.cost.stale ? ", older price" : ""}</span>
-                      </>
-                    ) : line.ref?.startsWith("product_") ? "no published price today" : "pantry item, not priced"}
-                  </div>
-                  <div className="col-start-2 row-start-1 flex justify-end sm:col-start-4 sm:row-auto">
-                    {line.ref && line.purchase ? (
-                      owned ? (
-                        <QuantityControl id={line.ref} label={line.names?.en ?? line.label.en} unit={line.purchase.unit} />
-                      ) : (
-                        <Button aria-label={`Add ${formatQuantity(line.purchase.quantity, line.purchase.unit)} of ${line.names?.en ?? line.label.en} to basket`} onClick={() => basketStore.add(line.ref!, line.names?.en ?? line.label.en, line.purchase!.unit, line.purchase!.quantity)} size="sm" variant="outline">
-                          Add {formatQuantity(line.purchase.quantity, line.purchase.unit)}
-                        </Button>
-                      )
+                <li key={index} className="relative flex gap-4 pb-6 last:pb-0">
+                  {!last ? <span aria-hidden className="absolute left-3.5 top-8 bottom-0 w-px bg-border" /> : null}
+                  <span className="relative grid size-7 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground tabular-nums">{index + 1}</span>
+                  <div className="min-w-0 flex-1 pt-0.5">
+                    <p className="text-pretty text-[15px] leading-relaxed">{step.text}</p>
+                    {step.minutes || step.uses.length ? (
+                      <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                        {step.minutes ? <span className="inline-flex items-center gap-1 rounded-md border px-1.5 py-0.5 text-[11px] text-muted-foreground tabular-nums"><RiTimeLine className="size-3" />{minutesLabel(step.minutes)}</span> : null}
+                        {step.uses.map((use) => {
+                          const line = recipe.ingredients[use];
+                          if (!line) return null;
+                          const twin = disambiguator(line, language, recipe.ingredients);
+                          return (
+                            <span key={use} className="inline-flex items-center gap-1.5 rounded-md bg-muted/60 py-0.5 pl-0.5 pr-2 text-[11px]">
+                              <IngredientImage id={line.ref} label={ingredientName(line, language)} size="xs" />
+                              <span className="truncate">{ingredientName(line, language)}{twin ? <span className="text-muted-foreground"> ({twin})</span> : null}</span>
+                              <span className="font-medium tabular-nums">{amountLabel(line.quantity, line.unit)}</span>
+                            </span>
+                          );
+                        })}
+                      </div>
                     ) : null}
                   </div>
                 </li>
               );
             })}
-          </ul>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent className="p-4">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="font-heading text-lg font-semibold">Method</h2>
-            {machine ? <span className="text-[11px] text-muted-foreground">{languageNames[language]} text is machine drafted and awaits review.</span> : null}
-          </div>
-          <ol className="mt-3 space-y-3">
-            {steps.map((step, index) => (
-              <li key={index} className="flex gap-3">
-                <span className="grid size-6 shrink-0 place-items-center rounded-full bg-primary/10 text-xs font-semibold text-primary tabular-nums">{index + 1}</span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-pretty text-sm leading-relaxed">{step.text}</p>
-                  {step.minutes ? <p className="text-[11px] text-muted-foreground">{minutesLabel(step.minutes)}</p> : null}
-                  {step.uses.length ? (
-                    <div className="mt-1.5 flex flex-wrap gap-1">
-                      {step.uses.map((use) => {
-                        const line = recipe.ingredients[use];
-                        if (!line) return null;
-                        return <Badge key={use} variant="secondary" className="text-[10px] font-normal tabular-nums">{ingredientName(line, language)} · {amountLabel(line.quantity, line.unit)}</Badge>;
-                      })}
-                    </div>
-                  ) : null}
-                </div>
-              </li>
-            ))}
           </ol>
-          {recipe.equipment.length ? <p className="mt-4 text-xs text-muted-foreground">You need: {recipe.equipment.join(", ")}.</p> : null}
+          {recipe.equipment.length ? (
+            <div className="mt-5 flex flex-wrap items-center gap-1.5 border-t pt-4 text-xs text-muted-foreground">
+              <RiToolsLine className="size-3.5" />
+              <span>You need</span>
+              {recipe.equipment.map((item) => <Badge key={item} variant="outline" className="font-normal">{item}</Badge>)}
+            </div>
+          ) : null}
         </CardContent>
       </Card>
 
