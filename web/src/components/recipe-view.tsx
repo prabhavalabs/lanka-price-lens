@@ -131,10 +131,11 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
               <AddToMenu dishId={dishId} dishName={dishName} />
             </div>
           </div>
-          <div className="hidden grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_8.5rem] gap-x-4 border-b px-5 py-2 text-[11px] font-medium uppercase text-muted-foreground sm:grid">
+          <div className="hidden grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_6rem_8.5rem] gap-x-4 border-b px-5 py-2 text-[11px] font-medium uppercase text-muted-foreground sm:grid">
             <span className="col-span-2">Ingredient</span>
             <span className="text-right">Amount</span>
             <span>Cheapest today</span>
+            <span className="text-right">Price for {servings}</span>
             <span className="text-right">Basket</span>
           </div>
           <div className={cn("transition-opacity", loading && "opacity-60")}>
@@ -148,7 +149,7 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
                     const owned = Boolean(line.ref && have.has(line.ref));
                     const displayName = line.names?.en ?? line.label.en;
                     return (
-                      <li key={index} className="grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1.5 px-4 py-3 sm:grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_8.5rem] sm:gap-x-4 sm:px-5">
+                      <li key={index} className="grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1.5 px-4 py-3 sm:grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_6rem_8.5rem] sm:gap-x-4 sm:px-5">
                         <IngredientImage id={line.ref} label={name} size="md" className="row-span-2 self-start sm:row-span-1 sm:self-center" />
                         <div className="min-w-0">
                           <p className="truncate text-sm font-medium leading-tight">
@@ -167,12 +168,13 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
                         <div className="col-start-2 min-w-0 text-[11px] leading-snug text-muted-foreground sm:col-start-4 sm:text-xs">
                           {line.cost ? (
                             <>
-                              <p className="tabular-nums"><span className="font-semibold text-foreground">{rupees(line.cost.cost)}</span> <span>· {rupees(line.cost.unit_price)} {unitLabel(line.cost.price_unit)}</span></p>
+                              <p className="tabular-nums"><span className="text-foreground">{rupees(line.cost.unit_price)} {unitLabel(line.cost.price_unit)}</span><span className="sm:hidden"> · <span className="font-semibold text-foreground">{rupees(line.cost.cost)}</span> for {servings}</span></p>
                               <p className="truncate">{line.cost.seller}{line.cost.stale ? <span className="ml-1 rounded bg-muted px-1 py-px text-[10px]">older price</span> : null}</p>
                             </>
                           ) : line.ref?.startsWith("product_") ? <p>No published price today</p> : <p><span className="rounded bg-muted px-1 py-px text-[10px]">pantry</span> not priced yet</p>}
                         </div>
-                        <div className="col-start-3 row-start-2 flex items-center justify-end gap-1.5 sm:col-start-5 sm:row-start-auto">
+                        <div className="hidden text-right text-sm font-semibold tabular-nums sm:block">{line.cost ? rupees(line.cost.cost) : <span className="font-normal text-muted-foreground">—</span>}</div>
+                        <div className="col-start-3 row-start-2 flex items-center justify-end gap-1.5 sm:col-start-6 sm:row-start-auto">
                           {line.ref && line.purchase ? (
                             owned ? (
                               <>
