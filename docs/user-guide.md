@@ -229,11 +229,12 @@ it. The basket in this browser stays, since it was never uploaded.
 
 ## 11. Phone and theme
 
-Everything works on a phone: the header keeps the search box, the basket, and the menu; cards
-stack in one column; the chart answers to a tap instead of a hover.
+Everything works on a phone: the header keeps the search box, recipes, menus, the basket, and
+your account, with the rest behind the ⋯ menu; cards stack in one column; the chart answers to
+a tap instead of a hover.
 
-1. The theme follows your device. The icon at the right of the header offers Light, Dark, or
-   Device setting, and remembers the choice in this browser.
+1. The theme follows your device. The ⋯ menu at the right of the header offers Light, Dark,
+   or Device setting, and remembers the choice in this browser.
 2. Add the site to your home screen from the browser's share menu to open it like an app.
 
 ![Dark theme](../web/public/guide/dark.png)
@@ -246,14 +247,16 @@ stack in one column; the chart answers to a tap instead of a hover.
 
 ## 12. Feedback and privacy
 
-"Feedback" in the header, or the link in the footer, opens a short form: choose Feedback or
-Report a bug, write at least ten characters, and leave an email only if you want a reply. The
+"Send feedback" in the ⋯ menu at the right of the header, or the link in the footer, opens a
+short form: choose Feedback or Report a bug, write at least ten characters, and leave an email only if you want a reply. The
 page you were on is attached automatically and the message is forwarded to the site's owner.
 
 The footer quietly counts how many people are on the site right now, using a random id kept
 only for the open tab; no cookies. Your basket and theme stay in your browser. Where the site
 runs Google Analytics it does so with IP anonymisation and respects the browser's "do not
-track" setting. Sources, permissions, and method are on the About page.
+track" setting. Sources, permissions, and method are on the About page. The Discord button in
+the bottom corner joins the Prabhava Labs community, where PriceLens updates land first; the
+same link sits in the ⋯ menu and the footer.
 
 ![The feedback form](../web/public/guide/feedback.png)
 
