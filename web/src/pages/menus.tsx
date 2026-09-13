@@ -3,8 +3,10 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
+import { AccountActionError } from "@/components/account-notice";
 import { ErrorState } from "@/components/error-state";
 import { PeopleInput } from "@/components/people-input";
+import { RequireAccount } from "@/components/require-account";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,12 +22,23 @@ import { dishCategoryLabel, rupees, unitLabel } from "@/lib/format";
 import { usePageTitle } from "@/lib/page-title";
 import { amountLabel, gramsLabel, kcalLabel } from "@/lib/recipe-format";
 import { basketStore } from "@/store/basket";
-import { menuStore, useMenu, useMenus, type Menu } from "@/store/menus";
+import { readLegacyMenus, rememberDishLabels, useMenu, useMenuActions, useMenus, writeLegacyMenus, type Menu } from "@/store/menus";
 
-/** The household's menus: a meal for an occasion, with a headcount every recipe scales to. */
+const plural = (count: number, noun: string, many = `${noun}s`) => `${count} ${count === 1 ? noun : many}`;
+
+/** The household's menus: a meal for an occasion, with a headcount every recipe scales to. Kept on the account. */
 export function MenusPage() {
   usePageTitle("Your menus · PriceLens");
-  const { menus } = useMenus();
+  return (
+    <RequireAccount description="Menus are kept on your account, so they are there on any device you sign in from." title="Sign in to see your menus">
+      <MenusIndex />
+    </RequireAccount>
+  );
+}
+
+function MenusIndex() {
+  const { menus, status, error, refetch } = useMenus();
+  const actions = useMenuActions();
   const navigate = useNavigate();
   const [editing, setEditing] = useState<Menu | "new" | null>(null);
   const [deleting, setDeleting] = useState<Menu | null>(null);
@@ -38,7 +51,11 @@ export function MenusPage() {
         </div>
         {menus.length ? <Button onClick={() => setEditing("new")}><RiAddLine className="size-4" />New menu</Button> : null}
       </header>
-      {menus.length ? (
+      <LegacyMenusCard />
+      <AccountActionError error={actions.error} onDismiss={actions.clearError} />
+      {status === "loading" ? <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"><Skeleton className="h-32 rounded-xl" /><Skeleton className="h-32 rounded-xl" /><Skeleton className="h-32 rounded-xl" /></div> : null}
+      {status === "error" ? <ErrorState error={error} onRetry={refetch} /> : null}
+      {status === "ready" && menus.length ? (
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {menus.map((menu) => (
             <Card key={menu.id} className="transition-colors hover:border-primary/50">
@@ -46,7 +63,7 @@ export function MenusPage() {
                 <div className="flex items-start justify-between gap-2">
                   <Link to={`/menus/${menu.id}`} className="min-w-0 no-underline">
                     <h2 className="truncate font-heading text-base font-semibold hover:text-primary">{menu.name}</h2>
-                    <p className="text-xs text-muted-foreground">{menu.people} {menu.people === 1 ? "person" : "people"} · {menu.items.length} {menu.items.length === 1 ? "recipe" : "recipes"}{menu.occasion ? ` · ${menu.occasion}` : ""}</p>
+                    <p className="text-xs text-muted-foreground tabular-nums">{plural(menu.people, "person", "people")} · {plural(menu.items.length, "recipe")}{menu.occasion ? ` · ${menu.occasion}` : ""}</p>
                   </Link>
                   <div className="flex shrink-0 gap-0.5">
                     <Button aria-label={`Edit ${menu.name}`} onClick={() => setEditing(menu)} size="icon-sm" variant="ghost"><RiEditLine className="size-4" /></Button>
@@ -59,14 +76,15 @@ export function MenusPage() {
             </Card>
           ))}
         </div>
-      ) : (
+      ) : null}
+      {status === "ready" && !menus.length ? (
         <Card>
           <CardContent className="flex flex-col items-center gap-3 p-10 text-center">
             <p className="max-w-md text-pretty text-sm text-muted-foreground">No menus yet. Start one for the next meal you are planning, then add recipes from their pages or from inside the menu.</p>
             <Button onClick={() => setEditing("new")}><RiAddLine className="size-4" />New menu</Button>
           </CardContent>
         </Card>
-      )}
+      ) : null}
       <MenuDialog
         menu={editing === "new" ? null : editing}
         onOpenChange={(open) => { if (!open) setEditing(null); }}
@@ -75,6 +93,51 @@ export function MenusPage() {
       />
       <DeleteMenuDialog menu={deleting} onOpenChange={(open) => { if (!open) setDeleting(null); }} />
     </div>
+  );
+}
+
+/**
+ * Menus this browser kept before accounts existed, offered once: saved to the account one by
+ * one (what is saved leaves the browser at once, so a retry never doubles up) or discarded.
+ */
+function LegacyMenusCard() {
+  const [legacy, setLegacy] = useState<Menu[]>(() => readLegacyMenus());
+  const [saving, setSaving] = useState(false);
+  const actions = useMenuActions();
+  if (!legacy.length) return null;
+  const keep = (menus: Menu[]) => {
+    writeLegacyMenus(menus);
+    setLegacy(menus);
+  };
+  const save = async () => {
+    setSaving(true);
+    actions.clearError();
+    // Oldest first, so the newest ends up at the top of the account's list.
+    let remaining = legacy;
+    for (const menu of [...legacy].reverse()) {
+      const saved = await actions.createFrom(menu);
+      if (!saved) break;
+      remaining = remaining.filter((entry) => entry.id !== menu.id);
+      keep(remaining);
+    }
+    setSaving(false);
+  };
+  return (
+    <Card className="border-primary/40">
+      <CardContent className="space-y-3 p-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="min-w-0">
+            <h2 className="font-heading text-base font-semibold">Menus from before you signed in</h2>
+            <p className="text-pretty text-xs text-muted-foreground">{plural(legacy.length, "menu")} kept in this browser: {legacy.map((menu) => menu.name).join(", ")}. Save them to your account to keep them, or let them go.</p>
+          </div>
+          <div className="flex shrink-0 gap-2">
+            <Button disabled={saving} onClick={() => keep([])} size="sm" type="button" variant="ghost">Discard</Button>
+            <Button disabled={saving} onClick={() => void save()} size="sm" type="button">{saving ? "Saving…" : "Save to my account"}</Button>
+          </div>
+        </div>
+        <AccountActionError error={actions.error} onDismiss={actions.clearError} />
+      </CardContent>
+    </Card>
   );
 }
 
@@ -90,19 +153,20 @@ function MenuDialog({ menu, open, onOpenChange, onSaved }: { menu: Menu | null; 
 }
 
 function MenuForm({ menu, onSaved }: { menu: Menu | null; onSaved: (id: string, created: boolean) => void }) {
+  const actions = useMenuActions();
   const [name, setName] = useState(menu?.name ?? "");
   const [occasion, setOccasion] = useState(menu?.occasion ?? "");
   const [people, setPeople] = useState(menu?.people ?? 4);
   return (
     <form
       className="space-y-4"
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
         if (menu) {
-          menuStore.update(menu.id, { name: name.trim() || menu.name, occasion: occasion.trim() || null, people });
-          onSaved(menu.id, false);
+          if (await actions.update(menu.id, { name: name.trim() || menu.name, occasion: occasion.trim() || null, people })) onSaved(menu.id, false);
         } else {
-          onSaved(menuStore.create({ name: name.trim() || "Untitled menu", occasion: occasion.trim() || null, people }), true);
+          const created = await actions.create({ name: name.trim() || "Untitled menu", occasion: occasion.trim() || null, people });
+          if (created) onSaved(created.id, true);
         }
       }}
     >
@@ -123,9 +187,10 @@ function MenuForm({ menu, onSaved }: { menu: Menu | null; onSaved: (id: string, 
           <Label>People</Label>
           <PeopleInput max={1000} onChange={setPeople} value={people} />
         </div>
+        <AccountActionError error={actions.error} onDismiss={actions.clearError} />
       </div>
       <DialogFooter>
-        <Button type="submit">{menu ? "Save" : "Create menu"}</Button>
+        <Button disabled={actions.pending} type="submit">{actions.pending ? "Saving…" : menu ? "Save" : "Create menu"}</Button>
       </DialogFooter>
     </form>
   );
@@ -133,22 +198,30 @@ function MenuForm({ menu, onSaved }: { menu: Menu | null; onSaved: (id: string, 
 
 /** Deleting a menu is final: it and its recipes go together, after a confirmation. */
 function DeleteMenuDialog({ menu, onOpenChange, onDeleted }: { menu: Menu | null; onOpenChange: (open: boolean) => void; onDeleted?: (() => void) | undefined }) {
+  const actions = useMenuActions();
   return (
-    <AlertDialog onOpenChange={onOpenChange} open={menu !== null}>
+    <AlertDialog onOpenChange={(open) => { if (!open) actions.clearError(); onOpenChange(open); }} open={menu !== null}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Delete “{menu?.name}”?</AlertDialogTitle>
-          <AlertDialogDescription>The menu and its {menu?.items.length ?? 0} {menu?.items.length === 1 ? "recipe" : "recipes"} are removed from this browser. Your basket is not touched.</AlertDialogDescription>
+          <AlertDialogDescription>The menu and its {plural(menu?.items.length ?? 0, "recipe")} are removed from your account. Your basket is not touched.</AlertDialogDescription>
         </AlertDialogHeader>
+        <AccountActionError error={actions.error} />
         <AlertDialogFooter>
           <AlertDialogCancel>Keep it</AlertDialogCancel>
           <AlertDialogAction
-            onClick={() => {
-              if (menu) menuStore.remove(menu.id);
-              onDeleted?.();
+            disabled={actions.pending}
+            onClick={async (event) => {
+              // Stays open until the server has answered, so a refusal shows here.
+              event.preventDefault();
+              if (!menu) return;
+              if (await actions.remove(menu.id)) {
+                onOpenChange(false);
+                onDeleted?.();
+              }
             }}
           >
-            Delete menu
+            {actions.pending ? "Deleting…" : "Delete menu"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -158,6 +231,7 @@ function DeleteMenuDialog({ menu, onOpenChange, onDeleted }: { menu: Menu | null
 
 /** Search the recipe catalogue and add dishes straight into the menu. */
 function AddRecipesDialog({ menu, open, onOpenChange }: { menu: Menu; open: boolean; onOpenChange: (open: boolean) => void }) {
+  const actions = useMenuActions();
   const [query, setQuery] = useState("");
   // Typing is debounced; a superseded request is cancelled through the query's signal; the last results stay while the next load.
   const debounced = useDebouncedValue(query.trim(), 250);
@@ -165,24 +239,25 @@ function AddRecipesDialog({ menu, open, onOpenChange }: { menu: Menu; open: bool
   const inMenu = new Set(menu.items.map((item) => item.recipe_id));
   const settled = results.data && !results.isFetching;
   return (
-    <CommandDialog description="Type a dish or an ingredient; Enter adds the highlighted one." onOpenChange={onOpenChange} open={open} title="Add recipes to the menu">
+    <CommandDialog description="Type a dish or an ingredient; Enter adds the highlighted one." onOpenChange={(next) => { if (!next) actions.clearError(); onOpenChange(next); }} open={open} title="Add recipes to the menu">
       {/* The server already matched names in three languages and ingredients; cmdk must not filter again by id. */}
       <Command shouldFilter={false}>
       <CommandInput onValueChange={setQuery} placeholder="Search dishes: parippu, pol sambol, chicken…" value={query} />
       <CommandList>
+        {actions.error ? <div className="p-2"><AccountActionError error={actions.error} onDismiss={actions.clearError} /></div> : null}
         {results.isPending ? <div className="p-3 text-sm text-muted-foreground">Looking…</div> : null}
         {results.isError ? <div className="p-3 text-sm text-muted-foreground">The search did not answer. Try again in a moment.</div> : null}
         {settled && results.data.items.length === 0 ? <CommandEmpty>Nothing matches. Try another spelling or an ingredient.</CommandEmpty> : null}
         {results.data?.items.length ? (
-          <CommandGroup heading={`${results.data.total} ${results.data.total === 1 ? "dish" : "dishes"}${results.isFetching ? " · updating" : ""}`}>
+          <CommandGroup heading={`${plural(results.data.total, "dish", "dishes")}${results.isFetching ? " · updating" : ""}`}>
             {results.data.items.map((dish) => {
               const added = inMenu.has(dish.id);
               return (
                 <CommandItem
                   key={dish.id}
                   onSelect={() => {
-                    if (added) menuStore.removeRecipe(menu.id, dish.id);
-                    else menuStore.addRecipe(menu.id, { id: dish.id, label: dish.names.en });
+                    if (added) void actions.removeRecipe(menu.id, dish.id);
+                    else void actions.addRecipe(menu.id, { id: dish.id, label: dish.names.en });
                   }}
                   value={dish.id}
                 >
@@ -205,17 +280,32 @@ function AddRecipesDialog({ menu, open, onOpenChange }: { menu: Menu; open: bool
 /** One menu: the headcount, each recipe with its own servings, totals per person, and the shopping list. */
 export function MenuPage() {
   const { id = "" } = useParams();
-  const menu = useMenu(id);
+  return (
+    <RequireAccount description="Menus are kept on your account. Sign in to open this one." title="Sign in to open this menu">
+      <MenuLoader id={id} />
+    </RequireAccount>
+  );
+}
+
+function MenuLoader({ id }: { id: string }) {
+  const { menu, status, error, refetch } = useMenu(id);
   usePageTitle(menu ? `${menu.name} · menu for ${menu.people} · PriceLens` : "Menu · PriceLens");
-  if (!menu) return <p className="py-16 text-center text-muted-foreground">This menu is not in this browser. <Link to="/menus" className="underline">All menus</Link></p>;
+  if (status === "loading") return <div className="space-y-4"><Skeleton className="h-6 w-40 rounded-md" /><Skeleton className="h-24 rounded-xl" /><Skeleton className="h-64 rounded-xl" /></div>;
+  if (status === "error") return <ErrorState error={error} fallback={{ to: "/menus", label: "All menus" }} onRetry={refetch} />;
+  if (!menu) return <p className="py-16 text-center text-muted-foreground">This menu is not on your account. <Link to="/menus" className="underline">All menus</Link></p>;
   return <MenuDetail menu={menu} />;
 }
 
 function MenuDetail({ menu }: { menu: Menu }) {
   const navigate = useNavigate();
+  const actions = useMenuActions();
   const totals = useQuery({
     queryKey: ["menu", menu.id, menu.people, menu.items.map((item) => `${item.recipe_id}:${item.servings ?? ""}`).join(",")],
-    queryFn: () => computeMenu({ id: menu.id, name: menu.name, occasion: menu.occasion, people: menu.people, items: menu.items.map((item) => ({ recipe_id: item.recipe_id, servings: item.servings })), created_at: menu.created_at }),
+    queryFn: async () => {
+      const computed = await computeMenu({ id: menu.id, name: menu.name, occasion: menu.occasion, people: menu.people, items: menu.items.map((item) => ({ recipe_id: item.recipe_id, servings: item.servings })), created_at: menu.created_at });
+      rememberDishLabels(computed.names);
+      return computed;
+    },
     enabled: menu.items.length > 0,
     placeholderData: keepPreviousData,
   });
@@ -229,16 +319,18 @@ function MenuDetail({ menu }: { menu: Menu }) {
       <header className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <h1 className="text-balance font-heading text-3xl font-semibold tracking-tight">{menu.name}</h1>
-          <p className="text-sm text-muted-foreground">{menu.items.length} {menu.items.length === 1 ? "recipe" : "recipes"}{menu.occasion ? ` · ${menu.occasion}` : ""} · saved for {menu.people} {menu.people === 1 ? "person" : "people"}</p>
+          <p className="text-sm text-muted-foreground tabular-nums">{plural(menu.items.length, "recipe")}{menu.occasion ? ` · ${menu.occasion}` : ""} · saved for {plural(menu.people, "person", "people")}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-sm font-medium">People</span>
-          <PeopleInput max={1000} onChange={(value) => menuStore.update(menu.id, { people: value })} value={menu.people} />
+          <PeopleInput max={1000} onChange={(value) => void actions.update(menu.id, { people: value })} value={menu.people} />
           <Button onClick={() => setAdding(true)} size="sm"><RiSearchLine className="size-4" />Add recipes</Button>
           <Button aria-label="Edit menu" onClick={() => setEditing(true)} size="icon-sm" variant="ghost"><RiEditLine className="size-4" /></Button>
           <Button aria-label="Delete menu" onClick={() => setDeleting(true)} size="icon-sm" variant="ghost"><RiDeleteBinLine className="size-4" /></Button>
         </div>
       </header>
+
+      <AccountActionError error={actions.error} onDismiss={actions.clearError} />
 
       {menu.items.length === 0 ? (
         <Card>
@@ -256,7 +348,7 @@ function MenuDetail({ menu }: { menu: Menu }) {
         <section className="grid gap-3 sm:grid-cols-3">
           <Card className="border-primary/40">
             <CardContent className="p-4">
-              <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Cost for {data.people} {data.people === 1 ? "person" : "people"}</p>
+              <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Cost for {plural(data.people, "person", "people")}</p>
               <p className="mt-1 font-heading text-3xl font-semibold tabular-nums">{data.total.cost !== null ? `${data.total.estimated ? "≈ " : ""}${rupees(data.total.cost)}` : "—"}</p>
               <p className="text-xs text-muted-foreground">{data.total.cost !== null ? <>{rupees(data.per_person.cost ?? 0)} per person · priced items only{data.total.estimated ? " · some prices older or missing" : ""}</> : "prices are not available right now"}</p>
             </CardContent>
@@ -277,10 +369,11 @@ function MenuDetail({ menu }: { menu: Menu }) {
               {menu.items.map((item) => {
                 const computed = data?.items.find((entry) => entry.recipe_id === item.recipe_id);
                 const servings = item.servings ?? menu.people;
+                const name = data?.names[item.recipe_id]?.en ?? item.label;
                 return (
                   <li key={item.recipe_id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 px-4 py-2.5 sm:grid-cols-[minmax(0,1fr)_7rem_auto]">
                     <div className="min-w-0">
-                      <Link to={`/r/${item.recipe_id}?people=${servings}`} className="block truncate text-sm font-medium no-underline hover:text-primary">{data?.names[item.recipe_id]?.en ?? item.label}</Link>
+                      <Link to={`/r/${item.recipe_id}?people=${servings}`} className="block truncate text-sm font-medium no-underline hover:text-primary">{name}</Link>
                       {computed ? <p className="text-[11px] text-muted-foreground tabular-nums">{kcalLabel(computed.nutrition.per_serving.kcal)} per serving{computed.cost?.lines.length ? ` · ${rupees(computed.cost.per_serving)} each` : ""}</p> : null}
                     </div>
                     <div className="text-right tabular-nums sm:order-none">
@@ -292,13 +385,13 @@ function MenuDetail({ menu }: { menu: Menu }) {
                       ) : computed ? <p className="text-[11px] text-muted-foreground">not priced</p> : null}
                     </div>
                     <div className="col-span-2 flex items-center justify-end gap-1 sm:col-span-1">
-                      <div aria-label={`Servings of ${item.label}`} className="inline-flex items-center gap-0.5 rounded-lg border p-0.5" role="group">
-                        <Button aria-label="Fewer servings" disabled={servings <= 1} onClick={() => menuStore.setServings(menu.id, item.recipe_id, servings - 1)} size="icon-sm" variant="ghost"><RiSubtractLine className="size-3.5" /></Button>
+                      <div aria-label={`Servings of ${name}`} className="inline-flex items-center gap-0.5 rounded-lg border p-0.5" role="group">
+                        <Button aria-label="Fewer servings" disabled={servings <= 1} onClick={() => void actions.setServings(menu.id, item.recipe_id, servings - 1)} size="icon-sm" variant="ghost"><RiSubtractLine className="size-3.5" /></Button>
                         <span className="w-10 text-center text-sm tabular-nums">{servings}</span>
-                        <Button aria-label="More servings" onClick={() => menuStore.setServings(menu.id, item.recipe_id, servings + 1)} size="icon-sm" variant="ghost"><RiAddLine className="size-3.5" /></Button>
+                        <Button aria-label="More servings" onClick={() => void actions.setServings(menu.id, item.recipe_id, servings + 1)} size="icon-sm" variant="ghost"><RiAddLine className="size-3.5" /></Button>
                       </div>
-                      {item.servings !== null ? <Button className="text-xs" onClick={() => menuStore.setServings(menu.id, item.recipe_id, null)} size="sm" variant="ghost">Follow headcount</Button> : <Badge variant="outline" className="text-[10px]">all</Badge>}
-                      <Button aria-label={`Remove ${item.label}`} onClick={() => menuStore.removeRecipe(menu.id, item.recipe_id)} size="icon-sm" variant="ghost"><RiDeleteBinLine className="size-3.5" /></Button>
+                      {item.servings !== null ? <Button className="text-xs" onClick={() => void actions.setServings(menu.id, item.recipe_id, null)} size="sm" variant="ghost">Follow headcount</Button> : <Badge variant="outline" className="text-[10px]">all</Badge>}
+                      <Button aria-label={`Remove ${name}`} onClick={() => void actions.removeRecipe(menu.id, item.recipe_id)} size="icon-sm" variant="ghost"><RiDeleteBinLine className="size-3.5" /></Button>
                     </div>
                   </li>
                 );
@@ -306,7 +399,7 @@ function MenuDetail({ menu }: { menu: Menu }) {
             </ul>
             {data?.total.cost !== null && data?.total.cost !== undefined ? (
               <div className="flex items-center justify-between gap-3 border-t bg-muted/30 px-4 py-2.5">
-                <p className="text-sm font-semibold">Total for {data.people} {data.people === 1 ? "person" : "people"}</p>
+                <p className="text-sm font-semibold">Total for {plural(data.people, "person", "people")}</p>
                 <p className="text-right tabular-nums"><span className="text-sm font-semibold">{data.total.estimated ? "≈ " : ""}{rupees(data.total.cost)}</span><span className="ml-2 text-[11px] text-muted-foreground">{rupees(data.per_person.cost ?? 0)} per person</span></p>
               </div>
             ) : null}

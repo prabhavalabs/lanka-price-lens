@@ -10,6 +10,7 @@ import { ConfirmEmailPage } from "@/pages/account/confirm-email";
 import { ForgotPasswordPage } from "@/pages/account/forgot";
 import { LoginPage } from "@/pages/account/login";
 import { ProfilePage } from "@/pages/account/profile";
+import { MyRecipeEditorPage, MyRecipePage, MyRecipesPage } from "@/pages/account/recipes";
 import { RegisterPage } from "@/pages/account/register";
 import { ResetPasswordPage } from "@/pages/account/reset";
 import { VerifyEmailPage } from "@/pages/account/verify";
@@ -69,6 +70,10 @@ export function App() {
         <Route path="/account/reset" element={<ResetPasswordPage />} />
         <Route path="/account/verify" element={<VerifyEmailPage />} />
         <Route path="/account/confirm-email" element={<ConfirmEmailPage />} />
+        <Route path="/account/recipes" element={<MyRecipesPage />} />
+        <Route path="/account/recipes/new" element={<MyRecipeEditorPage />} />
+        <Route path="/account/recipes/:id" element={<MyRecipePage />} />
+        <Route path="/account/recipes/:id/edit" element={<MyRecipeEditorPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/guide" element={<GuidePage />} />
         <Route path="*" element={<p className="py-16 text-center text-muted-foreground">This page does not exist.</p>} />
