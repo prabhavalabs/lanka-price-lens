@@ -42,6 +42,8 @@ test("dish catalogue lists, searches in any name, filters, and measures price co
   assert.deepEqual(listDishes(store, { ...request, search: "paruppu" }, null).items.map((dish) => dish.id), ["dish_parippu"], "a Tamil romanised name finds the dish");
   assert.deepEqual(listDishes(store, { ...request, search: "පරිප්පු" }, null).items.map((dish) => dish.id), ["dish_parippu"], "a Sinhala script name finds the dish");
   assert.deepEqual(listDishes(store, { ...request, search: "pandan" }, null).items.map((dish) => dish.id), ["dish_chicken_curry"], "an unpriced ingredient finds the dish");
+  assert.deepEqual(listDishes(store, { ...request, search: "chicken cur" }, null).items.map((dish) => dish.id)[0], "dish_chicken_curry", "every search word in the name outranks an ingredient match");
+  assert.deepEqual(listDishes(store, { ...request, search: "big onion" }, null).items.map((dish) => dish.id), ["dish_chicken_curry", "dish_parippu"], "an ingredient-only match still lists, everyday dishes first");
   assert.deepEqual(listDishes(store, { ...request, protein: "dhal" }, null).items.map((dish) => dish.id), ["dish_parippu"]);
   assert.deepEqual(listDishes(store, { ...request, meal: "breakfast", diet: "vegan" }, null).items.map((dish) => dish.id), ["dish_parippu"]);
   assert.equal(listDishes(store, { ...request, category: "sweet" }, null).total, 0);

@@ -159,9 +159,11 @@ function DeleteMenuDialog({ menu, onOpenChange, onDeleted }: { menu: Menu | null
 /** Search the recipe catalogue and add dishes straight into the menu. */
 function AddRecipesDialog({ menu, open, onOpenChange }: { menu: Menu; open: boolean; onOpenChange: (open: boolean) => void }) {
   const [query, setQuery] = useState("");
-  const debounced = useDebouncedValue(query.trim(), 220);
-  const results = useQuery({ queryKey: ["recipes-pick", debounced], queryFn: () => fetchRecipes({ q: debounced || undefined }), enabled: open, placeholderData: keepPreviousData, staleTime: 60_000 });
+  // Typing is debounced; a superseded request is cancelled through the query's signal; the last results stay while the next load.
+  const debounced = useDebouncedValue(query.trim(), 250);
+  const results = useQuery({ queryKey: ["recipes-pick", debounced], queryFn: ({ signal }) => fetchRecipes({ q: debounced || undefined, pageSize: 30 }, signal), enabled: open, placeholderData: keepPreviousData, staleTime: 60_000 });
   const inMenu = new Set(menu.items.map((item) => item.recipe_id));
+  const settled = results.data && !results.isFetching;
   return (
     <CommandDialog description="Type a dish or an ingredient; Enter adds the highlighted one." onOpenChange={onOpenChange} open={open} title="Add recipes to the menu">
       {/* The server already matched names in three languages and ingredients; cmdk must not filter again by id. */}
@@ -169,9 +171,10 @@ function AddRecipesDialog({ menu, open, onOpenChange }: { menu: Menu; open: bool
       <CommandInput onValueChange={setQuery} placeholder="Search dishes: parippu, pol sambol, chicken…" value={query} />
       <CommandList>
         {results.isPending ? <div className="p-3 text-sm text-muted-foreground">Looking…</div> : null}
-        <CommandEmpty>Nothing matches. Try another spelling or an ingredient.</CommandEmpty>
+        {results.isError ? <div className="p-3 text-sm text-muted-foreground">The search did not answer. Try again in a moment.</div> : null}
+        {settled && results.data.items.length === 0 ? <CommandEmpty>Nothing matches. Try another spelling or an ingredient.</CommandEmpty> : null}
         {results.data?.items.length ? (
-          <CommandGroup heading={`${results.data.total} ${results.data.total === 1 ? "dish" : "dishes"}`}>
+          <CommandGroup heading={`${results.data.total} ${results.data.total === 1 ? "dish" : "dishes"}${results.isFetching ? " · updating" : ""}`}>
             {results.data.items.map((dish) => {
               const added = inMenu.has(dish.id);
               return (

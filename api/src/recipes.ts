@@ -99,9 +99,17 @@ export function listDishes(store: RecipeStore, request: DishListRequest, priced:
       .toLowerCase();
     return tokens.every((token) => haystack.includes(token));
   });
-  // An exact name match floats to the top; then everyday dishes before occasional ones; then by name.
+  // Dishes whose name carries every search word come before dishes matched only through an ingredient or a variant
+  // ("potato cur" is potato curry before beef curry with potatoes); an exact name first; then everyday dishes; then by name.
+  const nameOf = (dish: Dish) => [dish.names.en, dish.names.si, dish.names.si_latn, dish.names.ta, dish.names.ta_latn].filter((value): value is string => Boolean(value)).join(" ").toLowerCase();
+  const nameRank = (dish: Dish) => {
+    if (!tokens.length) return 0;
+    const name = nameOf(dish);
+    const hits = tokens.filter((token) => name.includes(token)).length;
+    return hits === tokens.length ? 0 : hits ? 1 : 2;
+  };
   const exact = (dish: Dish) => (needle && dish.names.en.toLowerCase() === needle ? 0 : 1);
-  matches.sort((left, right) => exact(left) - exact(right) || left.popularity - right.popularity || left.names.en.localeCompare(right.names.en));
+  matches.sort((left, right) => nameRank(left) - nameRank(right) || exact(left) - exact(right) || left.popularity - right.popularity || left.names.en.localeCompare(right.names.en));
   const total = matches.length;
   const pages = Math.max(1, Math.ceil(total / request.pageSize));
   const page = Math.min(Math.max(1, request.page), pages);

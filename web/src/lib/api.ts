@@ -56,11 +56,13 @@ export function describeFailure(status: number, message: string | null | undefin
   return new ApiError(status, message ?? `Request failed (${status})`, false);
 }
 
-async function get<T>(path: string): Promise<T> {
+async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
   let response: Response;
   try {
-    response = await fetch(path, { headers: { accept: "application/json" } });
-  } catch {
+    response = await fetch(path, { headers: { accept: "application/json" }, ...(signal ? { signal } : {}) });
+  } catch (error) {
+    // A superseded request is not a failure; let the caller's query library drop it.
+    if (error instanceof DOMException && error.name === "AbortError") throw error;
     throw describeFailure(0, null);
   }
   const body = (await response.json().catch(() => null)) as Envelope<T> | null;
@@ -223,12 +225,12 @@ export async function computeMenu(menu: MenuInput): Promise<MenuTotals> {
 
 export type DishList = { items: Dish[]; page: number; pageSize: number; total: number; pages: number };
 
-export const fetchRecipes = (params: { q?: string | undefined; category?: string | undefined; meal?: string | undefined; page?: number | undefined }): Promise<DishList> => {
+export const fetchRecipes = (params: { q?: string | undefined; category?: string | undefined; meal?: string | undefined; page?: number | undefined; pageSize?: number | undefined }, signal?: AbortSignal): Promise<DishList> => {
   const search = new URLSearchParams();
   if (params.q) search.set("q", params.q);
   if (params.category) search.set("category", params.category);
   if (params.meal) search.set("meal", params.meal);
   if (params.page) search.set("page", String(params.page));
-  search.set("pageSize", "24");
-  return get<DishList>(`/v1/public/recipes?${search}`);
+  search.set("pageSize", String(params.pageSize ?? 24));
+  return get<DishList>(`/v1/public/recipes?${search}`, signal);
 };
