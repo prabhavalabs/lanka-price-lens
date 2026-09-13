@@ -1,4 +1,4 @@
-import { RiAddLine, RiDeleteBinLine, RiEditLine, RiSubtractLine } from "@remixicon/react";
+import { RiAddLine, RiDeleteBinLine, RiEditLine, RiSearchLine, RiSubtractLine } from "@remixicon/react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -9,12 +9,14 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
-import { computeMenu, type MenuTotals } from "@/lib/api";
-import { rupees } from "@/lib/format";
+import { useDebouncedValue } from "@/hooks/use-debounced-value";
+import { computeMenu, fetchRecipes, type MenuTotals } from "@/lib/api";
+import { dishCategoryLabel, rupees } from "@/lib/format";
 import { usePageTitle } from "@/lib/page-title";
 import { amountLabel, gramsLabel, kcalLabel } from "@/lib/recipe-format";
 import { basketStore } from "@/store/basket";
@@ -154,6 +156,49 @@ function DeleteMenuDialog({ menu, onOpenChange, onDeleted }: { menu: Menu | null
   );
 }
 
+/** Search the recipe catalogue and add dishes straight into the menu. */
+function AddRecipesDialog({ menu, open, onOpenChange }: { menu: Menu; open: boolean; onOpenChange: (open: boolean) => void }) {
+  const [query, setQuery] = useState("");
+  const debounced = useDebouncedValue(query.trim(), 220);
+  const results = useQuery({ queryKey: ["recipes-pick", debounced], queryFn: () => fetchRecipes({ q: debounced || undefined }), enabled: open, placeholderData: keepPreviousData, staleTime: 60_000 });
+  const inMenu = new Set(menu.items.map((item) => item.recipe_id));
+  return (
+    <CommandDialog description="Type a dish or an ingredient; Enter adds the highlighted one." onOpenChange={onOpenChange} open={open} title="Add recipes to the menu">
+      {/* The server already matched names in three languages and ingredients; cmdk must not filter again by id. */}
+      <Command shouldFilter={false}>
+      <CommandInput onValueChange={setQuery} placeholder="Search dishes: parippu, pol sambol, chicken…" value={query} />
+      <CommandList>
+        {results.isPending ? <div className="p-3 text-sm text-muted-foreground">Looking…</div> : null}
+        <CommandEmpty>Nothing matches. Try another spelling or an ingredient.</CommandEmpty>
+        {results.data?.items.length ? (
+          <CommandGroup heading={`${results.data.total} ${results.data.total === 1 ? "dish" : "dishes"}`}>
+            {results.data.items.map((dish) => {
+              const added = inMenu.has(dish.id);
+              return (
+                <CommandItem
+                  key={dish.id}
+                  onSelect={() => {
+                    if (added) menuStore.removeRecipe(menu.id, dish.id);
+                    else menuStore.addRecipe(menu.id, { id: dish.id, label: dish.names.en });
+                  }}
+                  value={dish.id}
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium">{dish.names.en}{dish.names.si ? <span className="ml-1.5 text-xs font-normal text-muted-foreground">{dish.names.si}</span> : null}</p>
+                    <p className="truncate text-[11px] text-muted-foreground">{dishCategoryLabel(dish.category)} · {dish.prep_minutes + dish.cook_minutes} min</p>
+                  </div>
+                  {added ? <Badge variant="secondary" className="text-[10px]">Added</Badge> : <Badge variant="outline" className="text-[10px]">Add</Badge>}
+                </CommandItem>
+              );
+            })}
+          </CommandGroup>
+        ) : null}
+      </CommandList>
+      </Command>
+    </CommandDialog>
+  );
+}
+
 /** One menu: the headcount, each recipe with its own servings, totals per person, and the shopping list. */
 export function MenuPage() {
   const { id = "" } = useParams();
@@ -173,6 +218,7 @@ function MenuDetail({ menu }: { menu: Menu }) {
   });
   const data: MenuTotals | undefined = totals.data;
   const [editing, setEditing] = useState(false);
+  const [adding, setAdding] = useState(false);
   const [deleting, setDeleting] = useState(false);
   return (
     <div className="space-y-6">
@@ -185,6 +231,7 @@ function MenuDetail({ menu }: { menu: Menu }) {
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-sm font-medium">People</span>
           <PeopleInput max={1000} onChange={(value) => menuStore.update(menu.id, { people: value })} value={menu.people} />
+          <Button onClick={() => setAdding(true)} size="sm"><RiSearchLine className="size-4" />Add recipes</Button>
           <Button aria-label="Edit menu" onClick={() => setEditing(true)} size="icon-sm" variant="ghost"><RiEditLine className="size-4" /></Button>
           <Button aria-label="Delete menu" onClick={() => setDeleting(true)} size="icon-sm" variant="ghost"><RiDeleteBinLine className="size-4" /></Button>
         </div>
@@ -193,7 +240,8 @@ function MenuDetail({ menu }: { menu: Menu }) {
       {menu.items.length === 0 ? (
         <Card>
           <CardContent className="flex flex-col items-center gap-3 p-8 text-center">
-            <p className="text-pretty text-sm text-muted-foreground">No recipes yet. Browse the <Link to="/recipes" className="underline">recipes</Link> and use “Add to a menu” on any of them.</p>
+            <p className="text-pretty text-sm text-muted-foreground">No recipes yet. Search the catalogue and add dishes to this menu, or use “Add to a menu” on any recipe page.</p>
+            <Button onClick={() => setAdding(true)}><RiSearchLine className="size-4" />Add recipes</Button>
           </CardContent>
         </Card>
       ) : null}
@@ -214,6 +262,7 @@ function MenuDetail({ menu }: { menu: Menu }) {
           <CardContent className="p-0">
             <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
               <div><h2 className="font-heading text-lg font-semibold">Recipes</h2><p className="text-xs text-muted-foreground">Each follows the headcount unless you set its own servings (a sambol for the table, a sweet for half the guests).</p></div>
+              <Button onClick={() => setAdding(true)} size="sm" variant="outline"><RiSearchLine className="size-4" />Add recipes</Button>
             </div>
             <ul className="divide-y">
               {menu.items.map((item) => {
@@ -275,6 +324,7 @@ function MenuDetail({ menu }: { menu: Menu }) {
       ) : null}
 
       <MenuDialog menu={menu} onOpenChange={setEditing} onSaved={() => setEditing(false)} open={editing} />
+      <AddRecipesDialog menu={menu} onOpenChange={setAdding} open={adding} />
       <DeleteMenuDialog menu={deleting ? menu : null} onDeleted={() => navigate("/menus")} onOpenChange={setDeleting} />
     </div>
   );
