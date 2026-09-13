@@ -153,13 +153,25 @@ test("a menu scales each recipe to its servings, merges the shopping list, and t
   assert.equal(totals.per_person.cost, 150);
   assert.equal(totals.total.estimated, true);
   const onion = totals.shopping.find((line) => line.ref === "product_big_onion" && line.unit === "g");
-  assert.equal(onion?.quantity, 120, "grams and pieces of the same ingredient stay separate lines");
+  assert.equal(onion?.quantity, 120, "an onion is counted whole (120 g a piece), so the piece line and the gram line stay apart");
+  assert.equal(totals.shopping.filter((line) => line.ref === "product_big_onion").length, 2);
   assert.equal(onion?.label, "Big onion", "a product line takes the registry's name, whatever the recipe called it");
   const chicken = totals.shopping.find((line) => line.ref === "product_chicken");
   assert.deepEqual([chicken?.cost, chicken?.unit_price, chicken?.price_unit, chicken?.sellers], [1200, 1000, "kg", ["Keells"]], "a shopping line carries what its summed amount costs and where");
   assert.equal(totals.shopping.find((line) => line.ref === "pantry_coconut_milk")?.cost, null);
   assert.deepEqual(totals.shopping.find((line) => line.ref === "product_salt")?.recipes, ["dish_chicken_curry", "dish_lunu_miris"]);
   assert.equal(totals.shopping.find((line) => line.ref === "product_salt")?.quantity, roundKitchen(6 * 2 ** 0.75 + 3, "g"));
+});
+
+test("small pieces join the gram line and both coconut milks are one thing to buy", () => {
+  const chilli = ingredientSchema.parse({ id: "product_green_chillies", names: { en: "Green chillies" }, group: "vegetable", state: "raw", edible_portion: 0.95, measures: { piece_g: 5, tsp_g: null, tbsp_g: null, cup_g: null, bunch_g: null }, nutrition: { kcal: 34, protein_g: 2.2, fat_g: 0.4, carb_g: 6.5 }, basis: "t", confidence: "high" });
+  const thin = ingredientSchema.parse({ ...registry.get("pantry_coconut_milk"), id: "pantry_coconut_milk_thin", names: { en: "Coconut milk, thin" } });
+  const find = (id: string) => (id === "product_green_chillies" ? chilli : id === "pantry_coconut_milk_thin" ? thin : registry.get(id));
+  const one: Recipe = recipeSchema.parse({ id: "dish_a", base_servings: 4, serving: { role: "side", portion_g: 100 }, yield_g: 400, ingredients: [{ ref: "product_green_chillies", label: { en: "green chillies" }, quantity: 4, unit: "piece" }, { ref: "pantry_coconut_milk", label: { en: "coconut milk" }, quantity: 100, unit: "ml", preparation: { en: "thick" } }], steps: { en: [{ text: "Cook." }] }, times: { prep_minutes: 1, cook_minutes: 1 } });
+  const two: Recipe = recipeSchema.parse({ id: "dish_b", base_servings: 4, serving: { role: "side", portion_g: 100 }, yield_g: 400, ingredients: [{ ref: "product_green_chillies", label: { en: "green chilli" }, quantity: 10, unit: "g" }, { ref: "pantry_coconut_milk_thin", label: { en: "coconut milk" }, quantity: 200, unit: "ml", preparation: { en: "thin" } }], steps: { en: [{ text: "Cook." }] }, times: { prep_minutes: 1, cook_minutes: 1 } });
+  const menu = menuSchema.parse({ id: "m", name: "m", people: 4, items: [{ recipe_id: "dish_a" }, { recipe_id: "dish_b" }], created_at: "2026-09-13T06:00:00.000Z" });
+  const totals = menuTotals(menu, (id) => (id === "dish_a" ? one : two), find);
+  assert.deepEqual(totals.shopping.map((line) => [line.ref, line.label, line.quantity, line.unit, line.recipes.length]), [["pantry_coconut_milk", "coconut milk", 300, "ml", 2], ["product_green_chillies", "Green chillies", 30, "g", 2]], "four chillies of 5 g join the 10 g line; thin and thick milk are one line");
 });
 
 test("schemas refuse mismatched step counts and duplicate ingredients; the energy check is an aid", () => {

@@ -253,6 +253,12 @@ function fraction(value: number): string {
   return whole === 0 ? glyph : `${whole}${glyph}`;
 }
 
+/** Below this piece weight a "piece" is bought by weight, not counted: a sprig, a chilli, a clove of garlic. */
+export const countedPieceGrams = 20;
+
+/** Pantry entries that are one thing to buy: the second squeeze comes from the same coconut as the first. */
+export const shoppingAliases: Record<string, string> = { pantry_coconut_milk_thin: "pantry_coconut_milk" };
+
 export type MenuLine = {
   ref: string | null;
   label: string;
@@ -304,9 +310,15 @@ export function menuTotals(menu: Menu, recipes: (id: string) => Recipe | undefin
       const entry = ingredient.ref ? lookup(ingredient.ref) : undefined;
       const product = Boolean(ingredient.ref && isPricedIngredient(ingredient.ref));
       const label = product ? (entry?.names.en ?? ingredient.label.en) : ingredient.label.en;
-      const key = product ? `${ingredient.ref}|${ingredient.unit}` : `${label.toLowerCase()}|${ingredient.unit}`;
-      const line = shopping.get(key) ?? { ref: ingredient.ref, label, unit: ingredient.unit, quantity: 0, recipes: [], cost: null, unit_price: null, price_unit: null, sellers: [], stale: false };
-      line.quantity += ingredient.quantity;
+      // Small pieces (a sprig, a chilli, a clove) are bought by weight, so they join the gram line; whole things (eggs, limes) stay counted.
+      const pieceGrams = entry?.measures.piece_g ?? null;
+      const byWeight = ingredient.unit === "piece" && pieceGrams !== null && pieceGrams < countedPieceGrams;
+      const unit: RecipeIngredient["unit"] = byWeight ? "g" : ingredient.unit;
+      const quantity = byWeight ? ingredient.quantity * (pieceGrams ?? 0) : ingredient.quantity;
+      const shoppingRef = ingredient.ref ? (shoppingAliases[ingredient.ref] ?? ingredient.ref) : null;
+      const key = product ? `${shoppingRef}|${unit}` : `${shoppingRef ?? label.toLowerCase()}|${unit}`;
+      const line = shopping.get(key) ?? { ref: shoppingRef, label, unit, quantity: 0, recipes: [], cost: null, unit_price: null, price_unit: null, sellers: [], stale: false };
+      line.quantity += quantity;
       if (!line.recipes.includes(recipe.id)) line.recipes.push(recipe.id);
       const priced = prices ? lineCost(ingredient, lookup, prices) : null;
       if (priced) {
