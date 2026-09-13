@@ -308,7 +308,7 @@ function AddToMenu({ dishId, dishName }: { dishId: string; dishName: string }) {
           <p className="text-xs font-medium">New menu</p>
           <Input aria-label="Menu name" maxLength={120} onChange={(event) => setName(event.target.value)} placeholder="Sunday lunch, poya dana…" value={name} />
           <div className="flex items-center gap-2">
-            <Input aria-label="People" className="w-20" inputMode="numeric" max={1000} min={1} onChange={(event) => setPeople(Math.min(1000, Math.max(1, Number(event.target.value) || 1)))} type="number" value={people} />
+            <PeopleInput max={1000} onChange={setPeople} value={people} />
             <span className="text-xs text-muted-foreground">people</span>
             <Button className="ml-auto" size="sm" type="submit">Create and add</Button>
           </div>

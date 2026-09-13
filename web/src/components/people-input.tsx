@@ -47,9 +47,10 @@ export function PeopleInput({ value, onChange, min = 1, max = 500, stepper = tru
   if (!stepper) return <div className={className}>{field}</div>;
   return (
     <div aria-label={`${label} stepper`} className={cn("inline-flex items-center gap-0.5 rounded-lg border border-primary/40 bg-primary/5 p-0.5", className)} role="group">
-      <Button aria-label={`Fewer ${label.toLowerCase()}`} disabled={value <= min} onClick={() => onChange(Math.max(min, value - 1))} size="icon-sm" variant="ghost"><RiSubtractLine className="size-3.5" /></Button>
+      {/* type="button": inside a form these must never submit it. */}
+      <Button aria-label={`Fewer ${label.toLowerCase()}`} disabled={value <= min} onClick={() => onChange(Math.max(min, value - 1))} size="icon-sm" type="button" variant="ghost"><RiSubtractLine className="size-3.5" /></Button>
       {field}
-      <Button aria-label={`More ${label.toLowerCase()}`} disabled={value >= max} onClick={() => onChange(Math.min(max, value + 1))} size="icon-sm" variant="ghost"><RiAddLine className="size-3.5" /></Button>
+      <Button aria-label={`More ${label.toLowerCase()}`} disabled={value >= max} onClick={() => onChange(Math.min(max, value + 1))} size="icon-sm" type="button" variant="ghost"><RiAddLine className="size-3.5" /></Button>
     </div>
   );
 }
