@@ -99,15 +99,16 @@ export const ingredientRegistrySchema = z
     for (const [index, ingredient] of registry.ingredients.entries()) {
       if (seen.has(ingredient.id)) context.addIssue({ code: "custom", message: `Duplicate ingredient id ${ingredient.id}`, path: ["ingredients", index, "id"] });
       seen.add(ingredient.id);
-      if (!ingredient.nutrition) continue;
-      const expected = atwaterEnergy(ingredient.nutrition);
-      // Atwater check: an entry whose energy is far from its macros was mistyped somewhere.
-      if (expected > 20 && Math.abs(ingredient.nutrition.kcal - expected) / expected > 0.3) context.addIssue({ code: "custom", message: `${ingredient.id}: ${ingredient.nutrition.kcal} kcal but macros give about ${Math.round(expected)}`, path: ["ingredients", index, "nutrition"] });
     }
   });
 export type IngredientRegistry = z.infer<typeof ingredientRegistrySchema>;
 
-/** Energy the macros account for: 4 kcal/g protein and available carbohydrate, 9 fat, 2 fibre (tables discount fibre this way). */
+/**
+ * Energy the macros account for: 4 kcal/g protein and available carbohydrate, 9 fat, 2 fibre
+ * (tables discount fibre this way). A checking aid, not a rule: vanilla extract carries ethanol,
+ * baking powder non-nutritive salts, tea and cocoa polyphenols, so the validator warns and a
+ * person decides.
+ */
 export function atwaterEnergy(nutrition: Nutrition): number {
   const fibre = Math.min(nutrition.fibre_g ?? 0, nutrition.carb_g);
   return 4 * nutrition.protein_g + 9 * nutrition.fat_g + 4 * (nutrition.carb_g - fibre) + 2 * fibre;

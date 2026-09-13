@@ -1,0 +1,10 @@
+{
+  "_note": "Owner corrections applied over the drafted registry at merge time (scripts/recipes/merge-drafts.mjs --corrections). Keyed by ingredient id; fields deep-merge.",
+  "product_coconut": {
+    "edible_portion": 1,
+    "as_purchased_note": "grated flesh; one dehusked nut yields about 250 g",
+    "measures": { "piece_g": 250 },
+    "basis": "Recipes quote coconut as grams of grated flesh (or nuts, 250 g of flesh each), so the edible fraction is 1 and a piece is the flesh of one nut; the price is per nut.",
+    "notes": "Corrected from the draft, which set an edible fraction of 0.45 against the whole nut while recipes weigh the flesh."
+  }
+}
