@@ -4,6 +4,7 @@ import {
   RiFeedbackLine,
   RiExpandUpDownLine,
   RiFilePdf2Line,
+  RiGroupLine,
   RiHistoryLine,
   RiLineChartLine,
   RiRestaurantLine,
@@ -55,7 +56,10 @@ const intelligence: NavigationItem[] = [
   { to: "/recipes", label: "Recipes", icon: RiRestaurantLine, end: false },
   { to: "/feedback", label: "Feedback", icon: RiFeedbackLine, end: false, detail: "Public site" },
 ];
-const navigation = [...operations, ...intelligence];
+const community: NavigationItem[] = [
+  { to: "/accounts", label: "Accounts", icon: RiGroupLine, end: false },
+];
+const navigation = [...operations, ...intelligence, ...community];
 
 function sidebarPreference(): boolean {
   return typeof document === "undefined" || !document.cookie.split("; ").includes("sidebar_state=false");
@@ -87,6 +91,7 @@ export function AppShell() {
         <SidebarContent>
           <NavigationGroup items={operations} label="Operations" pathname={location.pathname} />
           <NavigationGroup items={intelligence} label="Intelligence" pathname={location.pathname} />
+          <NavigationGroup items={community} label="Community" pathname={location.pathname} />
         </SidebarContent>
         <SidebarFooter>
           <UserMenu />
