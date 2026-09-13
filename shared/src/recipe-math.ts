@@ -135,7 +135,21 @@ function rawNutrition(recipe: Recipe, lookup: IngredientLookup, servings: number
   return { per_serving: divideNutrition(total, servings), total, servings, coverage: { counted, with_nutrition: withNutrition, missing }, edible_g_per_serving: Math.round(edible / servings) };
 }
 
-export type IngredientCost = { ref: string; label: string; quantity: number; unit: RecipeIngredient["unit"]; cost: number; seller: string; observed_on: string; stale: boolean };
+export type IngredientCost = {
+  ref: string;
+  label: string;
+  quantity: number;
+  unit: RecipeIngredient["unit"];
+  /** The line's amount in the unit the price is quoted in (0.1 kg, 2 pieces), before the frying share. */
+  amount: number;
+  price_unit: IngredientPrice["unit"];
+  /** Rupees per `price_unit` at the seller. */
+  unit_price: number;
+  cost: number;
+  seller: string;
+  observed_on: string;
+  stale: boolean;
+};
 
 export type RecipeCost = {
   total: number;
@@ -182,7 +196,7 @@ export function recipeCost(recipe: Recipe, lookup: IngredientLookup, prices: Pri
     const cost = Math.round(amount * consumedShare(ingredient) * price.price * 100) / 100;
     stale = stale || price.stale;
     total += cost;
-    lines.push({ ref: ingredient.ref, label: ingredient.label.en, quantity: ingredient.quantity, unit: ingredient.unit, cost, seller: price.seller, observed_on: price.observed_on, stale: price.stale });
+    lines.push({ ref: ingredient.ref, label: ingredient.label.en, quantity: ingredient.quantity, unit: ingredient.unit, amount: Math.round(amount * 1000) / 1000, price_unit: price.unit, unit_price: price.price, cost, seller: price.seller, observed_on: price.observed_on, stale: price.stale });
   }
   return { total: Math.round(total * 100) / 100, per_serving: Math.round((total / servings) * 100) / 100, servings, lines, unpriced, estimated: stale || unpriced.length > 0 };
 }

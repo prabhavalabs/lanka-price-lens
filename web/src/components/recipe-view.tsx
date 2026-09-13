@@ -1,4 +1,4 @@
-import { RiAddLine, RiCheckLine, RiSubtractLine } from "@remixicon/react";
+import { RiAddLine, RiSubtractLine } from "@remixicon/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,9 +9,11 @@ import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import type { Lang, RecipeView } from "@/lib/api";
-import { minutesLabel, rupees } from "@/lib/format";
+import { minutesLabel, rupees, unitLabel } from "@/lib/format";
 import { amountLabel, gramsLabel, ingredientName, kcalLabel, localized, macroShares, tagLabel } from "@/lib/recipe-format";
 import { cn } from "@/lib/utils";
+import { QuantityControl } from "@/components/quantity";
+import { basketStore, formatQuantity, useBasket } from "@/store/basket";
 import { languageNames, languageStore, useLanguage } from "@/store/language";
 import { menuStore, useMenus } from "@/store/menus";
 
@@ -29,6 +31,16 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
   const shares = macroShares(nutrition);
   const cost = recipe.cost;
   const machine = language !== "en" && !recipe.review[language];
+  const basket = useBasket();
+  const have = new Set(basket.lines.map((line) => line.id));
+  const buyable = recipe.ingredients.filter((line) => line.purchase && line.ref);
+  const inBasket = buyable.filter((line) => have.has(line.ref!));
+  const toBuy = buyable.filter((line) => !have.has(line.ref!));
+  const toBuyCost = toBuy.reduce((sum, line) => sum + (line.cost?.cost ?? 0), 0);
+  const toBuyUnpriced = toBuy.filter((line) => !line.cost).length;
+  const addAll = () => {
+    for (const line of toBuy) if (line.ref && line.purchase) basketStore.add(line.ref, line.names?.en ?? line.label.en, line.purchase.unit, line.purchase.quantity);
+  };
   return (
     <div className="space-y-6">
       <Card>
@@ -92,22 +104,33 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
         </Card>
       </section>
 
+      <section className="grid gap-3 sm:grid-cols-3">
+        <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">In your basket</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{inBasket.length} <span className="text-sm font-normal text-muted-foreground">of {buyable.length}</span></p><p className="text-xs text-muted-foreground">priced ingredients; pantry items are assumed at home</p></CardContent></Card>
+        <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">Still to buy</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{toBuy.length}</p><p className="text-xs text-muted-foreground">{toBuy.length ? `for ${servings} ${servings === 1 ? "person" : "people"}, in the amounts below` : "you have every priced ingredient"}</p></CardContent></Card>
+        <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">To buy the rest</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{toBuy.length && toBuy.some((line) => line.cost) ? `${toBuyUnpriced || cost?.estimated ? "≈ " : ""}${rupees(toBuyCost)}` : "—"}</p><p className="text-xs text-muted-foreground">{toBuy.length ? `the missing amounts at today's cheapest sellers${toBuyUnpriced ? `; ${toBuyUnpriced} without a price yet` : ""}` : "nothing missing"}</p></CardContent></Card>
+      </section>
+
       <Card>
         <CardContent className="p-0">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
-            <div><h2 className="font-heading text-lg font-semibold">Ingredients for {servings}</h2><p className="text-xs text-muted-foreground">As bought, before trimming. Salt, oil, and whole spices grow a little slower than the headcount.</p></div>
-            <AddToMenu dishId={dishId} dishName={dishName} />
+            <div><h2 className="font-heading text-lg font-semibold">Ingredients for {servings}</h2><p className="text-xs text-muted-foreground">As bought, before trimming. Salt, oil, and whole spices grow a little slower than the headcount. Prices are today's cheapest published seller for that amount.</p></div>
+            <div className="flex flex-wrap gap-2">
+              {toBuy.length ? <Button onClick={addAll} size="sm">Add {toBuy.length === buyable.length ? "all" : "the rest"} to basket</Button> : null}
+              <AddToMenu dishId={dishId} dishName={dishName} />
+            </div>
           </div>
           <ul className={cn("divide-y transition-opacity", loading && "opacity-60")}>
             {recipe.ingredients.map((line, index) => {
               const name = ingredientName(line, language);
               const preparation = localized(line.preparation, language);
+              const owned = Boolean(line.ref && have.has(line.ref));
               return (
-                <li key={`${line.ref ?? line.label.en}-${index}`} className="flex items-center gap-3 px-4 py-2.5">
-                  <div className="min-w-0 flex-1">
+                <li key={`${line.ref ?? line.label.en}-${index}`} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 px-4 py-2.5 sm:grid-cols-[minmax(0,1.3fr)_auto_minmax(0,1fr)_auto]">
+                  <div className="min-w-0">
                     <p className="text-sm font-medium">
                       {line.ref?.startsWith("product_") ? <Link to={`/p/${line.ref}`} className="no-underline hover:text-primary">{name}</Link> : name}
                       {line.optional ? <span className="ml-1 text-xs text-muted-foreground">(optional)</span> : null}
+                      {line.part === "frying" ? <span className="ml-1 text-xs text-muted-foreground">(only what is absorbed counts)</span> : null}
                     </p>
                     {preparation ? <p className="text-[11px] text-muted-foreground">{preparation}</p> : null}
                   </div>
@@ -115,7 +138,26 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
                     <p className="text-sm font-semibold">{amountLabel(line.quantity, line.unit)}</p>
                     {line.household ? <p className="text-[11px] text-muted-foreground">{line.household}</p> : null}
                   </div>
-                  {line.priced ? <RiCheckLine aria-label="Priced today" className="size-4 shrink-0 text-primary" /> : <span className="size-4 shrink-0" aria-hidden="true" />}
+                  <div className="col-span-2 min-w-0 text-[11px] text-muted-foreground sm:col-span-1 sm:text-right sm:text-xs">
+                    {line.cost ? (
+                      <>
+                        <span className="font-medium text-foreground tabular-nums">{rupees(line.cost.cost)}</span>
+                        <span className="tabular-nums"> · {rupees(line.cost.unit_price)} {unitLabel(line.cost.price_unit)} × {line.cost.price_unit === "piece" || line.cost.price_unit === "bunch" ? `${line.cost.amount} ${line.cost.price_unit === "bunch" ? "bunch" : line.cost.amount === 1 ? "pc" : "pcs"}` : formatQuantity(line.cost.amount, line.cost.price_unit)}</span>
+                        <span className="block truncate sm:inline"> at {line.cost.seller}{line.cost.stale ? ", older price" : ""}</span>
+                      </>
+                    ) : line.ref?.startsWith("product_") ? "no published price today" : "pantry item, not priced"}
+                  </div>
+                  <div className="col-start-2 row-start-1 flex justify-end sm:col-start-4 sm:row-auto">
+                    {line.ref && line.purchase ? (
+                      owned ? (
+                        <QuantityControl id={line.ref} label={line.names?.en ?? line.label.en} unit={line.purchase.unit} />
+                      ) : (
+                        <Button aria-label={`Add ${formatQuantity(line.purchase.quantity, line.purchase.unit)} of ${line.names?.en ?? line.label.en} to basket`} onClick={() => basketStore.add(line.ref!, line.names?.en ?? line.label.en, line.purchase!.unit, line.purchase!.quantity)} size="sm" variant="outline">
+                          Add {formatQuantity(line.purchase.quantity, line.purchase.unit)}
+                        </Button>
+                      )
+                    ) : null}
+                  </div>
                 </li>
               );
             })}
@@ -136,6 +178,15 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
                 <div className="min-w-0 flex-1">
                   <p className="text-pretty text-sm leading-relaxed">{step.text}</p>
                   {step.minutes ? <p className="text-[11px] text-muted-foreground">{minutesLabel(step.minutes)}</p> : null}
+                  {step.uses.length ? (
+                    <div className="mt-1.5 flex flex-wrap gap-1">
+                      {step.uses.map((use) => {
+                        const line = recipe.ingredients[use];
+                        if (!line) return null;
+                        return <Badge key={use} variant="secondary" className="text-[10px] font-normal tabular-nums">{ingredientName(line, language)} · {amountLabel(line.quantity, line.unit)}</Badge>;
+                      })}
+                    </div>
+                  ) : null}
                 </div>
               </li>
             ))}

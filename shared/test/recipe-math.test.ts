@@ -79,6 +79,7 @@ test("cost per serving converts purchased amounts to the priced unit and flags w
   assert.equal(cost.lines.length, 3);
   assert.equal(cost.lines[0]!.cost, 780);
   assert.equal(cost.lines[1]!.cost, 33.6, "one onion is 120 g at Rs 280 a kilo");
+  assert.deepEqual([cost.lines[1]!.amount, cost.lines[1]!.price_unit, cost.lines[1]!.unit_price], [0.12, "kg", 280], "the breakdown names the amount in the priced unit and the unit price");
   assert.equal(cost.lines[2]!.cost, 0.54);
   assert.equal(cost.total, 814.14);
   assert.equal(cost.per_serving, 203.54);

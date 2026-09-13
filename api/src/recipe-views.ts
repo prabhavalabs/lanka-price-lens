@@ -11,6 +11,7 @@ import {
   scaleIngredients,
   type Dish,
   type Ingredient,
+  type IngredientCost,
   type IngredientPrice,
   type Language,
   type Menu,
@@ -165,7 +166,13 @@ export type RecipeIngredientView = RecipeIngredient & {
   household: string | null;
   priced: boolean;
   nutrition_known: boolean;
+  /** The breakdown behind the line's cost: the seller, the unit price, the amount in that unit, and the rupees; null when unpriced. */
+  cost: IngredientCost | null;
+  /** What to put in the basket for this line: the amount in the unit the basket prices it in (kilos, litres, pieces). */
+  purchase: { quantity: number; unit: "kg" | "l" | "piece" } | null;
 };
+
+export type RecipeStepView = { text: string; minutes: number | null; /** Ingredient lines this step names, as indices into `ingredients`. */ uses: number[] };
 
 export type RecipeView = {
   id: string;
@@ -174,7 +181,7 @@ export type RecipeView = {
   serving: Recipe["serving"];
   yield_g: number;
   ingredients: RecipeIngredientView[];
-  steps: Recipe["steps"];
+  steps: { en: RecipeStepView[]; si: RecipeStepView[] | null; ta: RecipeStepView[] | null };
   times: Recipe["times"];
   equipment: string[];
   tips: Recipe["tips"];
@@ -195,13 +202,22 @@ export function recipeView(store: RecipeStore, index: Map<string, RecipeIndexEnt
   const lookup = (id: string) => store.registry.get(id);
   const nutrition = recipeNutrition(recipe, lookup, servings);
   const cost = prices ? recipeCost(recipe, lookup, prices, servings) : null;
-  const priced = new Set(cost?.lines.map((line) => line.ref) ?? []);
-  const ingredients: RecipeIngredientView[] = scaleIngredients(recipe, servings).map((line) => {
+  // Cost lines pair with ingredient lines in order; a ref may appear twice (thick and thin milk), so consume them as a queue per ref.
+  const costQueue = new Map<string, IngredientCost[]>();
+  for (const line of cost?.lines ?? []) costQueue.set(line.ref, [...(costQueue.get(line.ref) ?? []), line]);
+  const scaled = scaleIngredients(recipe, servings);
+  const ingredients: RecipeIngredientView[] = scaled.map((line) => {
     const registryEntry = line.ref ? store.registry.get(line.ref) : undefined;
     // The drafter's own measure at the base headcount; at another headcount a spoon or cup is derived for weighed lines, and a count is its own measure.
     const household = servings === recipe.base_servings && line.household ? line.household : line.unit === "piece" ? null : householdMeasure(line.unit === "g" ? line.quantity : line.quantity * (registryEntry?.density_g_per_ml ?? 1), registryEntry);
-    return { ...line, names: registryEntry?.names ?? null, household, priced: Boolean(line.ref && priced.has(line.ref)), nutrition_known: Boolean(registryEntry) };
+    const lineCost = line.ref && !line.optional ? (costQueue.get(line.ref)?.shift() ?? null) : null;
+    return { ...line, names: registryEntry?.names ?? null, household, priced: Boolean(lineCost), nutrition_known: Boolean(registryEntry), cost: lineCost, purchase: purchaseFor(line, lineCost, registryEntry) };
   });
+  const steps = {
+    en: stepViews(recipe.steps.en, scaled, "en"),
+    si: recipe.steps.si ? stepViews(recipe.steps.si, scaled, "si") : null,
+    ta: recipe.steps.ta ? stepViews(recipe.steps.ta, scaled, "ta") : null,
+  };
   return {
     id: recipe.id,
     servings,
@@ -209,7 +225,7 @@ export function recipeView(store: RecipeStore, index: Map<string, RecipeIndexEnt
     serving: recipe.serving,
     yield_g: Math.round((recipe.yield_g * servings) / recipe.base_servings),
     ingredients,
-    steps: recipe.steps,
+    steps,
     times: recipe.times,
     equipment: recipe.equipment,
     tips: recipe.tips,
@@ -221,6 +237,68 @@ export function recipeView(store: RecipeStore, index: Map<string, RecipeIndexEnt
     review_needed: recipe.review_needed,
     languages: metrics.languages,
   };
+}
+
+/**
+ * The amount to buy for a line, in the unit the basket keeps (kilos, litres, pieces): the priced
+ * unit when the line is priced, otherwise the line's own unit converted. Kilos and litres round up
+ * to ten grams, pieces to whole ones.
+ */
+export function purchaseFor(line: Pick<RecipeIngredient, "ref" | "quantity" | "unit">, cost: IngredientCost | null, entry: Ingredient | undefined): RecipeIngredientView["purchase"] {
+  if (!line.ref || !line.ref.startsWith("product_")) return null;
+  const unit = cost ? (cost.price_unit === "bunch" ? "piece" : cost.price_unit) : line.unit === "ml" ? "l" : line.unit === "piece" ? "piece" : "kg";
+  // Computed from the line itself rather than the cost's rounded amount, so a quarter gram of turmeric still buys its minimum.
+  const amount = cost?.price_unit === "bunch" ? Math.ceil(cost.amount) : unit === "piece" && line.unit === "piece" ? line.quantity : quantityInPricedUnit(line, unit, entry);
+  if (amount === null || !Number.isFinite(amount) || amount < 0) return null;
+  return { quantity: unit === "piece" ? Math.max(1, Math.ceil(amount - 1e-9)) : Math.max(0.05, Math.ceil(amount * 100) / 100), unit };
+}
+
+/** Words of a label worth matching in a step: the phrase before any comma or bracket, lowercased, three letters or more. */
+function labelKey(label: string): string {
+  return label.split(/[,(]/u)[0]!.trim().toLowerCase();
+}
+
+/** A crude stem so "chillies", "chilli", and "chilly" meet, as do "onions" and "onion". */
+function stem(word: string): string {
+  if (word.endsWith("ies")) return `${word.slice(0, -3)}i`;
+  if (word.endsWith("y")) return `${word.slice(0, -1)}i`;
+  if (word.endsWith("es") && /(?:sh|ch|x|s)es$/u.test(word)) return word.slice(0, -2);
+  if (word.endsWith("s") && !word.endsWith("ss")) return word.slice(0, -1);
+  return word;
+}
+
+/**
+ * Which ingredient lines a step names, so the page can show the scaled amounts beside the
+ * step. English needs the label's head word ("dhal" of "red dhal") and, for longer labels,
+ * one more of its words; Sinhala and Tamil match the label's last word with its last letter
+ * free, which absorbs most case endings. A hint, so a loose match is better than a missed one.
+ */
+export function stepViews(steps: Array<{ text: string; minutes: number | null }>, ingredients: Recipe["ingredients"], language: Language): RecipeStepView[] {
+  const keys = ingredients.map((line) => {
+    const label = language === "en" ? line.label.en : ((language === "si" ? line.label.si : line.label.ta) ?? "");
+    if (!label) return null;
+    if (language === "en") {
+      const words = labelKey(label).split(/\s+/u).filter((word) => word.length >= 3).map(stem);
+      return words.length ? { words } : null;
+    }
+    // The head noun comes last in Sinhala and Tamil too ("රතු පරිප්පු", "பெரிய வெங்காயம்"); its last letter is left free for case endings.
+    const head = labelKey(label).split(/\s+/u).filter(Boolean).at(-1) ?? "";
+    return head.length >= 3 ? { prefix: head.slice(0, Math.max(2, head.length - 1)) } : null;
+  });
+  return steps.map((step) => {
+    const text = step.text.toLowerCase();
+    const words = language === "en" ? new Set(text.replace(/[^a-z\s-]/gu, " ").split(/\s+/u).map(stem)) : null;
+    const uses: number[] = [];
+    keys.forEach((key, index) => {
+      if (!key) return;
+      if ("words" in key) {
+        const head = key.words.at(-1)!;
+        const others = key.words.slice(0, -1).filter((word) => words!.has(word)).length;
+        if (words!.has(head) && (key.words.length <= 2 || others >= 1)) uses.push(index);
+      } else if (text.includes(key.prefix)) uses.push(index);
+    });
+    return { text: step.text, minutes: step.minutes, uses };
+  });
 }
 
 export type RecipeQuery = {

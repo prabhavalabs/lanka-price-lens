@@ -7,7 +7,7 @@ import { createSourceCatalog } from "@lanka-pricelens/foundry/manifest";
 import { sourceManifestSchema } from "@lanka-pricelens/shared";
 
 import { createApp } from "../src/app.ts";
-import { buildRecipeIndex, parseRecipeQuery, priceLookupFor, priceOptions, queryRecipes, recipeView } from "../src/recipe-views.ts";
+import { buildRecipeIndex, parseRecipeQuery, priceLookupFor, priceOptions, purchaseFor, queryRecipes, recipeView, stepViews } from "../src/recipe-views.ts";
 import { readRecipeStore } from "../src/recipes.ts";
 import { seed, warehouseFor } from "./helpers/warehouse.ts";
 
@@ -65,6 +65,30 @@ test("a recipe view scales to the headcount and keeps per-serving nutrition; a m
   assert.equal(recipeView(store, index, "dish_red_rice", 4, null), null);
 });
 
+test("steps name the ingredient lines they use, in any of the three languages", () => {
+  const recipe = store.recipes.get("dish_parippu")!;
+  const en = stepViews(recipe.steps.en, recipe.ingredients, "en");
+  assert.deepEqual(en.map((step) => step.uses), [[0], [1, 2], [3]], "dhal; onion and coconut milk; salt");
+  const si = stepViews(recipe.steps.si!, recipe.ingredients, "si");
+  assert.deepEqual(si.map((step) => step.uses), [[0], [1, 2], [3]]);
+  const ta = stepViews(recipe.steps.ta!, recipe.ingredients, "ta");
+  assert.deepEqual(ta.map((step) => step.uses), [[0], [1, 2], [3]]);
+  const plural = stepViews([{ text: "Slice the onions and fry the chillies.", minutes: null }], [{ ref: "product_big_onion", label: { en: "big onion", si: null, ta: null }, quantity: 1, unit: "piece", household: null, preparation: null, optional: false, scaling: "linear", part: "main" }, { ref: "product_green_chillies", label: { en: "green chilli, slit", si: null, ta: null }, quantity: 2, unit: "piece", household: null, preparation: null, optional: false, scaling: "linear", part: "main" }], "en");
+  assert.deepEqual(plural[0]!.uses, [0, 1], "plurals in the step match singular labels; a two-word label needs only its head word");
+  const strict = stepViews([{ text: "Pour in the milk.", minutes: null }], [{ ref: "pantry_coconut_milk", label: { en: "thick coconut milk, first squeeze", si: null, ta: null }, quantity: 200, unit: "ml", household: null, preparation: null, optional: false, scaling: "linear", part: "main" }], "en");
+  assert.deepEqual(strict[0]!.uses, [], "a three-word label needs a second word beside its head");
+});
+
+test("the purchase amount is in the basket's unit: the priced unit when priced, the line's own otherwise, rounded up", () => {
+  const onion = store.registry.get("product_big_onion");
+  assert.deepEqual(purchaseFor({ ref: "product_big_onion", quantity: 120, unit: "g" }, { ref: "product_big_onion", label: "onion", quantity: 120, unit: "g", amount: 0.12, price_unit: "kg", unit_price: 255, cost: 30.6, seller: "Dambulla", observed_on: "2026-09-04", stale: false }, onion), { quantity: 0.12, unit: "kg" });
+  assert.deepEqual(purchaseFor({ ref: "product_big_onion", quantity: 1.5, unit: "piece" }, { ref: "product_big_onion", label: "onion", quantity: 1.5, unit: "piece", amount: 1.5, price_unit: "piece", unit_price: 40, cost: 60, seller: "Keells", observed_on: "2026-09-04", stale: false }, onion), { quantity: 2, unit: "piece" }, "pieces round up to whole");
+  assert.deepEqual(purchaseFor({ ref: "product_big_onion", quantity: 6, unit: "g" }, null, onion), { quantity: 0.05, unit: "kg" }, "an unpriced product line still buys at least fifty grams");
+  assert.deepEqual(purchaseFor({ ref: "product_big_onion", quantity: 0.25, unit: "g" }, { ref: "product_big_onion", label: "onion", quantity: 0.25, unit: "g", amount: 0, price_unit: "kg", unit_price: 255, cost: 0.06, seller: "Dambulla", observed_on: "2026-09-04", stale: false }, onion), { quantity: 0.05, unit: "kg" }, "a pinch whose priced amount rounds to nothing still buys the minimum");
+  assert.deepEqual(purchaseFor({ ref: "product_big_onion", quantity: 0.5, unit: "piece" }, null, onion), { quantity: 1, unit: "piece" });
+  assert.equal(purchaseFor({ ref: "pantry_coconut_milk", quantity: 200, unit: "ml" }, null, undefined), null, "pantry entries are not in the basket's vocabulary");
+});
+
 test("the query filters on the index and sorts by the asked measure", () => {
   const light = queryRecipes(store, index, parseRecipeQuery((name) => ({ max_kcal: "300" })[name]), null);
   assert.deepEqual(light.items.map((item) => item.dish.id), ["dish_parippu"]);
@@ -105,6 +129,8 @@ test("prices come per product and unit from the published sources, fresh and che
     assert.equal(view.cost?.estimated, true);
     assert.equal(view.ingredients[1]!.priced, true);
     assert.equal(view.ingredients[0]!.priced, false);
+    assert.deepEqual([view.ingredients[1]!.cost?.unit_price, view.ingredients[1]!.cost?.amount, view.ingredients[1]!.cost?.seller, view.ingredients[1]!.purchase], [255, 0.12, "Dambulla", { quantity: 0.12, unit: "kg" }], "the line carries its own breakdown and what to put in the basket");
+    assert.deepEqual(view.steps.en.map((step) => step.uses), [[0], [1, 2], [3]]);
 
     const catalog = createSourceCatalog(sources.map((manifest) => ({ manifest, mappingBundle: undefined })));
     const app = createApp(database, undefined, undefined, { recipes: store, catalog, warehouse: async () => client });

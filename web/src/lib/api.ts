@@ -129,7 +129,8 @@ export const fetchRecommendations = (ids: string[], limit = 12): Promise<Recomme
 export type Lang = "en" | "si" | "ta";
 export type Localized = { en: string; si: string | null; ta: string | null };
 export type Nutrition = { kcal: number; protein_g: number; fat_g: number; carb_g: number; fibre_g: number | null; sugar_g: number | null; sodium_mg: number | null };
-export type RecipeStep = { text: string; minutes: number | null };
+export type RecipeStep = { text: string; minutes: number | null; /** Ingredient lines the step names, as indices into the recipe's ingredients. */ uses: number[] };
+export type IngredientCostLine = { ref: string; label: string; quantity: number; unit: string; amount: number; price_unit: "kg" | "l" | "piece" | "bunch"; unit_price: number; cost: number; seller: string; observed_on: string; stale: boolean };
 export type RecipeIngredientView = {
   ref: string | null;
   label: Localized;
@@ -144,8 +145,10 @@ export type RecipeIngredientView = {
   names: { en: string; si: string | null; si_latn: string | null; ta: string | null; ta_latn: string | null } | null;
   priced: boolean;
   nutrition_known: boolean;
+  cost: IngredientCostLine | null;
+  purchase: { quantity: number; unit: "kg" | "l" | "piece" } | null;
 };
-export type RecipeCost = { total: number; per_serving: number; servings: number; lines: Array<{ ref: string; label: string; quantity: number; unit: string; cost: number; seller: string; observed_on: string; stale: boolean }>; unpriced: string[]; estimated: boolean };
+export type RecipeCost = { total: number; per_serving: number; servings: number; lines: IngredientCostLine[]; unpriced: string[]; estimated: boolean };
 export type RecipeNutrition = { per_serving: Nutrition; total: Nutrition; servings: number; coverage: { counted: number; with_nutrition: number; missing: string[] }; edible_g_per_serving: number };
 /** The full recipe scaled to a headcount: quantities, method in up to three languages, nutrition and cost per serving. */
 export type RecipeView = {

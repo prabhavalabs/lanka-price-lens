@@ -24,9 +24,10 @@ export function RecipePage() {
   const { id = "" } = useParams();
   const [params, setParams] = useSearchParams();
   const requested = Number(params.get("people"));
-  const servings = Number.isFinite(requested) && requested >= 1 ? Math.min(500, Math.round(requested)) : 0;
+  // One person unless the address says otherwise: the recipe is written for four, the reader usually cooks for themselves first.
+  const servings = Number.isFinite(requested) && requested >= 1 ? Math.min(500, Math.round(requested)) : 1;
   const basket = useBasket();
-  const recipe = useQuery({ queryKey: ["recipe", id, servings], queryFn: () => fetchRecipe(id, servings || undefined), enabled: Boolean(id), placeholderData: keepPreviousData });
+  const recipe = useQuery({ queryKey: ["recipe", id, servings], queryFn: () => fetchRecipe(id, servings), enabled: Boolean(id), placeholderData: keepPreviousData });
   const setServings = (value: number) => {
     const next = new URLSearchParams(params);
     next.set("people", String(value));
@@ -66,13 +67,15 @@ export function RecipePage() {
 
       {dish.recipe ? <RecipeViewSection dishId={dish.id} dishName={dish.names.en} loading={recipe.isFetching} onServings={setServings} recipe={dish.recipe} servings={dish.recipe.servings} /> : null}
 
+      {dish.recipe ? null : (
       <section className="grid gap-3 sm:grid-cols-3">
         <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">In your basket</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{inBasket.length} <span className="text-sm font-normal text-muted-foreground">of {dish.ingredients.length}</span></p></CardContent></Card>
         <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">Still to buy</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{toBuy.length}</p><p className="text-xs text-muted-foreground">{dish.other_ingredients.length ? `plus ${dish.other_ingredients.length} pantry items` : "no pantry items listed"}</p></CardContent></Card>
         <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">Rough extra cost</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{toBuy.length ? rupees(estimate) : rupees(0)}</p><p className="text-xs text-muted-foreground">{toBuy.length ? `one unit of each at today's cheapest seller${unpriced ? `; ${unpriced} without a price yet` : ""}` : "you have everything priced"}</p></CardContent></Card>
       </section>
+      )}
 
-      {toBuy.length ? (
+      {!dish.recipe && toBuy.length ? (
         <Card>
           <CardContent className="p-0">
             <div className="border-b px-4 py-3"><h2 className="font-heading text-lg font-semibold">Still to buy</h2><p className="text-xs text-muted-foreground">Key ingredients not in your basket, at today's cheapest price per unit; add what you need in the amount you need.</p></div>
@@ -92,7 +95,7 @@ export function RecipePage() {
         </Card>
       ) : null}
 
-      {inBasket.length ? (
+      {!dish.recipe && inBasket.length ? (
         <Card>
           <CardContent className="p-0">
             <div className="border-b px-4 py-3"><h2 className="font-heading text-lg font-semibold">From your basket</h2></div>
@@ -110,7 +113,7 @@ export function RecipePage() {
         </Card>
       ) : null}
 
-      {dish.other_ingredients.length ? (
+      {!dish.recipe && dish.other_ingredients.length ? (
         <Card>
           <CardContent className="p-4">
             <h2 className="font-heading text-lg font-semibold">Pantry and others</h2>
