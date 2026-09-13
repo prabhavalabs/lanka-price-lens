@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { categoryLabel, changeLabel, relativeDay, rupeeRange, rupees, unitLabel } from "../src/lib/format.ts";
+import { minutesLabel, categoryLabel, changeLabel, relativeDay, rupeeRange, rupees, unitLabel } from "../src/lib/format.ts";
 
 test("prices, units, dates, and changes read as a shopper expects", () => {
   assert.equal(rupees(1250), "Rs 1,250");
@@ -34,4 +34,13 @@ test("ages read in words and grow coarser with time", async () => {
   assert.equal(ageLabel("2026-05-05", today), "4 months ago");
   assert.equal(ageLabel("2025-11-25", today), "9 months ago");
   assert.equal(ageLabel("2024-09-01", today), "2 years ago");
+});
+
+test("minutes read as minutes, hours, days, or weeks", () => {
+  assert.equal(minutesLabel(45), "45 min");
+  assert.equal(minutesLabel(90), "1 h 30 min");
+  assert.equal(minutesLabel(120), "2 h");
+  assert.equal(minutesLabel(1440), "24 h");
+  assert.equal(minutesLabel(4320), "3 days");
+  assert.equal(minutesLabel(43200), "4 weeks");
 });
