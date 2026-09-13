@@ -8,6 +8,12 @@ import { describeFailure, type Envelope } from "./api.ts";
  * signed out, a 403 with code EMAIL_NOT_VERIFIED means the address still needs verifying.
  */
 
+/** A live session as the profile page lists it; the API never sends the token itself. */
+export type AccountSessionSummary = { id: string; created_at: string; expires_at: string; user_agent: string | null; address: string | null; current: boolean };
+
+/** A row of the recipe list: the recipe's own columns plus what the cards show without loading it. */
+export type UserRecipeSummary = Pick<UserRecipe, "id" | "account_id" | "name" | "category" | "visibility" | "created_at" | "updated_at" | "base_servings" | "summary"> & { ingredient_count: number; minutes: number };
+
 export class AccountApiError extends Error {
   readonly status: number;
   readonly code: string | null;
@@ -45,15 +51,20 @@ export const accountApi = {
   changeEmail: (input: { new_email: string; password: string }) => call<null>("POST", "/v1/account/change-email", input),
   confirmEmail: (token: string) => call<AccountProfile>("POST", "/v1/account/confirm-email", { token }),
   deleteAccount: (input: { password?: string; confirm: "DELETE" }) => call<null>("DELETE", "/v1/account/me", input),
+  sessions: {
+    list: (signal?: AbortSignal) => call<AccountSessionSummary[]>("GET", "/v1/account/sessions", undefined, signal),
+    /** Signs every other device out; answers how many sessions went. */
+    revokeOthers: () => call<{ revoked: number }>("POST", "/v1/account/sessions/revoke-others", {}),
+  },
   menus: {
-    list: (signal?: AbortSignal) => call<AccountMenu[]>("GET", "/v1/account/menus", undefined, signal),
+    list: (signal?: AbortSignal) => call<{ items: AccountMenu[]; total: number; limit: number }>("GET", "/v1/account/menus", undefined, signal),
     get: (id: string, signal?: AbortSignal) => call<AccountMenu>("GET", `/v1/account/menus/${encodeURIComponent(id)}`, undefined, signal),
     create: (input: AccountMenuInput) => call<AccountMenu>("POST", "/v1/account/menus", input),
     update: (id: string, input: AccountMenuInput) => call<AccountMenu>("PUT", `/v1/account/menus/${encodeURIComponent(id)}`, input),
     remove: (id: string) => call<null>("DELETE", `/v1/account/menus/${encodeURIComponent(id)}`),
   },
   recipes: {
-    list: (signal?: AbortSignal) => call<UserRecipe[]>("GET", "/v1/account/recipes", undefined, signal),
+    list: (signal?: AbortSignal) => call<{ items: UserRecipeSummary[]; total: number; limit: number }>("GET", "/v1/account/recipes", undefined, signal),
     get: (id: string, servings?: number, signal?: AbortSignal) => call<UserRecipe & { view: unknown }>("GET", `/v1/account/recipes/${encodeURIComponent(id)}${servings ? `?servings=${servings}` : ""}`, undefined, signal),
     create: (input: UserRecipeInput) => call<UserRecipe>("POST", "/v1/account/recipes", input),
     update: (id: string, input: UserRecipeInput) => call<UserRecipe>("PUT", `/v1/account/recipes/${encodeURIComponent(id)}`, input),

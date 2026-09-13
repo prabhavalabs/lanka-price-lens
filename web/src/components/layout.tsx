@@ -2,11 +2,13 @@ import { RiBookOpenLine, RiCalendarEventLine, RiInformationLine, RiRestaurantLin
 import type { ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
 
+import { AccountMenu } from "@/components/account-menu";
 import { FeedbackDialog } from "@/components/feedback-dialog";
 import { PresenceNote } from "@/components/presence";
 import { QuickBasket } from "@/components/quick-basket";
 import { SearchBox } from "@/components/search-box";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { VerifyBanner } from "@/components/verify-banner";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useSiteConfig } from "@/lib/site-config";
@@ -40,10 +42,12 @@ export function Layout({ children }: { children: ReactNode }) {
             <NavLink to="/about" className={({ isActive }) => cn("hidden no-underline sm:inline-flex", isActive && "text-primary")}>
               <Button className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost"><RiInformationLine className="size-4" /><span className="hidden sm:inline">About</span></Button>
             </NavLink>
+            <AccountMenu />
             <ThemeToggle />
           </nav>
         </div>
       </header>
+      <VerifyBanner />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:py-8">{children}</main>
       <footer className="border-t border-border/70">
         <div className="mx-auto max-w-6xl space-y-2 px-4 py-6 text-xs text-muted-foreground">

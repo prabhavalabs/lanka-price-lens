@@ -1,7 +1,7 @@
 import type { AccountProfile } from "@lanka-pricelens/shared";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { accountApi, AccountApiError } from "@/lib/account-api";
+import { accountApi, AccountApiError } from "../lib/account-api.ts";
 
 /**
  * Who is signed in, for the whole site. One query against /v1/account/me, shared by every
