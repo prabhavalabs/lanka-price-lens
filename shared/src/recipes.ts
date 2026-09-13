@@ -122,7 +122,8 @@ export function isPricedIngredient(id: string): boolean {
 export const servingRoles = ["with_rice", "main", "side", "staple", "snack", "sweet", "drink", "condiment", "breakfast"] as const;
 export const recipeUnits = ["g", "ml", "piece"] as const;
 export const scalingModes = ["linear", "sublinear", "fixed"] as const;
-export const ingredientParts = ["main", "tempering", "marinade", "batter", "dough", "filling", "sauce", "syrup", "garnish", "serving"] as const;
+/** `frying` marks oil for deep frying: bought in full, but only the absorbed share counts towards calories and cost. */
+export const ingredientParts = ["main", "tempering", "marinade", "batter", "dough", "filling", "sauce", "syrup", "garnish", "serving", "frying"] as const;
 export const recipeTags = [
   "high_protein", "low_calorie", "low_carb", "low_fat", "high_fibre", "iron_rich", "calcium_rich", "diabetic_friendly", "weight_loss_friendly", "heart_healthy",
   "kid_friendly", "pregnancy_friendly", "elderly_friendly", "quick", "one_pot", "budget", "festive", "street_food", "comfort", "light", "filling", "probiotic",

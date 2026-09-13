@@ -25,6 +25,14 @@ export type PriceLookup = (id: string, line: Pick<RecipeIngredient, "quantity" |
 /** Sublinear ingredients (salt, tempering oil, whole spices) grow with this power of the headcount ratio. */
 export const sublinearExponent = 0.75;
 
+/** The share of deep-frying oil that ends up in the food; the rest stays in the pan and is reused. */
+export const fryingOilAbsorption = 0.15;
+
+/** How much of an ingredient line the dish actually takes in: all of it, or the absorbed share of frying oil. */
+export function consumedShare(ingredient: Pick<RecipeIngredient, "part">): number {
+  return ingredient.part === "frying" ? fryingOilAbsorption : 1;
+}
+
 export function scaleFactor(baseServings: number, servings: number, scaling: RecipeIngredient["scaling"]): number {
   const ratio = servings / baseServings;
   if (scaling === "fixed") return 1;
@@ -120,7 +128,7 @@ function rawNutrition(recipe: Recipe, lookup: IngredientLookup, servings: number
       continue;
     }
     withNutrition += 1;
-    const edibleGrams = grams * entry.edible_portion;
+    const edibleGrams = grams * entry.edible_portion * consumedShare(ingredient);
     edible += edibleGrams;
     total = addNutrition(total, entry.nutrition, edibleGrams / 100);
   }
@@ -171,7 +179,7 @@ export function recipeCost(recipe: Recipe, lookup: IngredientLookup, prices: Pri
       unpriced.push(ingredient.label.en);
       continue;
     }
-    const cost = Math.round(amount * price.price * 100) / 100;
+    const cost = Math.round(amount * consumedShare(ingredient) * price.price * 100) / 100;
     stale = stale || price.stale;
     total += cost;
     lines.push({ ref: ingredient.ref, label: ingredient.label.en, quantity: ingredient.quantity, unit: ingredient.unit, cost, seller: price.seller, observed_on: price.observed_on, stale: price.stale });

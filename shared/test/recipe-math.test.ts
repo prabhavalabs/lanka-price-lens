@@ -89,6 +89,29 @@ test("cost per serving converts purchased amounts to the priced unit and flags w
   assert.equal(quantityInPricedUnit({ quantity: 1, unit: "piece" }, "kg", registry.get("product_salt")), null, "a piece without a known weight cannot be priced by the kilo");
 });
 
+test("deep-frying oil counts only its absorbed share towards calories and cost, but is bought in full", () => {
+  const oil = ingredientSchema.parse({ id: "product_coconut_oil", names: { en: "Coconut oil" }, group: "fat_oil", state: "processed", edible_portion: 1, density_g_per_ml: 0.92, nutrition: { kcal: 862, protein_g: 0, fat_g: 100, carb_g: 0 }, basis: "USDA", confidence: "high" });
+  const fried: Recipe = recipeSchema.parse({
+    id: "dish_kavum",
+    base_servings: 4,
+    serving: { role: "sweet", portion_g: 70 },
+    yield_g: 280,
+    ingredients: [
+      { ref: "product_big_onion", label: { en: "big onion" }, quantity: 200, unit: "g" },
+      { ref: "product_coconut_oil", label: { en: "coconut oil" }, quantity: 400, unit: "ml", preparation: { en: "for deep frying" }, part: "frying" },
+    ],
+    steps: { en: [{ text: "Fry." }] },
+    times: { prep_minutes: 5, cook_minutes: 20 },
+  });
+  const find = (id: string) => (id === "product_coconut_oil" ? oil : registry.get(id));
+  const nutrition = recipeNutrition(fried, find);
+  // 400 ml × 0.92 = 368 g of oil, 15% absorbed = 55.2 g → 476 kcal; onion 200 × 0.9 × 0.4 = 72 kcal.
+  assert.equal(nutrition.total.kcal, 548);
+  const cost = recipeCost(fried, find, (id) => (id === "product_coconut_oil" ? { price: 1000, unit: "l", seller: "Keells", observed_on: "2026-09-12", stale: false } : undefined));
+  assert.equal(cost.lines[0]!.cost, 60, "0.4 l at Rs 1,000 a litre, 15% of it");
+  assert.equal(scaleIngredients(fried, 4)[1]!.quantity, 400, "the shopping amount stays the full bottle");
+});
+
 test("computed tags follow per-serving thresholds by role", () => {
   assert.deepEqual(computedTags({ kcal: 120, protein_g: 14, fat_g: 3, carb_g: 8, fibre_g: 5, sugar_g: 1, sodium_mg: 300 }, "side"), ["low_calorie", "high_protein", "low_carb", "low_fat", "high_fibre"]);
   assert.deepEqual(computedTags({ kcal: 620, protein_g: 12, fat_g: 30, carb_g: 70, fibre_g: 2, sugar_g: 35, sodium_mg: 900 }, "main"), ["high_sugar", "high_sodium"]);

@@ -57,8 +57,15 @@ export function normaliseRecipe(raw) {
     preparation: localized(line.preparation),
     optional: Boolean(line.optional),
     scaling: ["linear", "sublinear", "fixed"].includes(line.scaling) ? line.scaling : "linear",
-    part: ["main", "tempering", "marinade", "batter", "dough", "filling", "sauce", "syrup", "garnish", "serving"].includes(line.part) ? line.part : "main",
+    part: ["main", "tempering", "marinade", "batter", "dough", "filling", "sauce", "syrup", "garnish", "serving", "frying"].includes(line.part) ? line.part : "main",
   }));
+  // Oil listed for deep frying is bought whole but mostly comes back out of the pan; mark it so the calculator counts the absorbed share.
+  const fryingWords = /deep[- ]?fr(?:y|ied|ying)|for (?:deep )?frying|to (?:deep )?fry|frying oil|shallow[- ]?fry/iu;
+  for (const line of recipe.ingredients) {
+    const oil = /oil$|^oil\b|_oil$|ghee|margarine/iu.test(`${line.ref ?? ""} ${line.label.en}`);
+    const wording = [line.label.en, line.preparation?.en ?? "", line.household ?? ""].join(" ");
+    if (oil && line.part !== "tempering" && line.unit !== "piece" && line.quantity >= 100 && fryingWords.test(wording)) line.part = "frying";
+  }
   recipe.steps = { en: steps(raw.steps?.en) ?? [{ text: "Method to be written.", minutes: null }], si: steps(raw.steps?.si), ta: steps(raw.steps?.ta) };
   recipe.times = { prep_minutes: Math.max(0, Math.round(number(raw.times?.prep_minutes) ?? 0)), cook_minutes: Math.max(0, Math.round(number(raw.times?.cook_minutes) ?? 0)), passive_minutes: Math.max(0, Math.round(number(raw.times?.passive_minutes) ?? 0)) };
   recipe.equipment = Array.isArray(raw.equipment) ? raw.equipment.map(text).filter(Boolean) : [];
