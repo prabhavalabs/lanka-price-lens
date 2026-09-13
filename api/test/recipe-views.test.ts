@@ -90,6 +90,14 @@ test("prices come per product and unit from the published sources, fresh and che
     assert.equal(onion[0]!.stale, false);
     assert.equal(options.has("product_chicken"), false, "nothing priced, no options");
     const lookup = priceLookupFor(options, store.registry);
+    // A packet of leaves priced "per piece" must not price a sprig: with a piece weight under 20 g the kilo price wins.
+    const leafOptions = new Map([["product_curry_leaves", [{ product_id: "product_curry_leaves", price: 30, unit: "piece" as const, seller: "Glomark", observed_on: "2026-09-04", stale: false }, { product_id: "product_curry_leaves", price: 1200, unit: "kg" as const, seller: "Pettah", observed_on: "2026-09-04", stale: false }]]]);
+    const leafRegistry = new Map([["product_curry_leaves", { ...store.registry.get("product_big_onion")!, id: "product_curry_leaves", measures: { tsp_g: null, tbsp_g: null, cup_g: 20, piece_g: 0.2, bunch_g: null } }]]);
+    assert.equal(priceLookupFor(leafOptions, leafRegistry)("product_curry_leaves", { quantity: 5, unit: "piece" })?.unit, "kg");
+    const eggOptions = new Map([["product_egg", [{ product_id: "product_egg", price: 900, unit: "kg" as const, seller: "Pettah", observed_on: "2026-09-04", stale: false }, { product_id: "product_egg", price: 40, unit: "piece" as const, seller: "Keells", observed_on: "2026-09-04", stale: false }]]]);
+    const eggRegistry = new Map([["product_egg", { ...store.registry.get("product_big_onion")!, id: "product_egg", measures: { tsp_g: null, tbsp_g: null, cup_g: null, piece_g: 55, bunch_g: null } }]]);
+    assert.equal(priceLookupFor(eggOptions, eggRegistry)("product_egg", { quantity: 2, unit: "piece" })?.unit, "piece", "eggs are counted and priced whole");
+    assert.equal(priceLookupFor(eggOptions, eggRegistry)("product_egg", { quantity: 110, unit: "g" })?.unit, "piece", "even a line in grams prices eggs by the piece through the piece weight");
     const view = recipeView(store, index, "dish_parippu", 4, lookup)!;
     assert.equal(view.cost?.lines.length, 1, "only the onion is priced in the seeded warehouse");
     assert.equal(view.cost?.lines[0]!.cost, 30.6, "one 120 g onion at Rs 255 a kilo");

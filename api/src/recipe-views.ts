@@ -114,6 +114,7 @@ export async function priceOptions(client: WarehouseClient, sources: SourceManif
     const unit = normalisePricedUnit(row.unit);
     if (!unit) continue;
     const age = Math.round((Date.parse(`${day}T00:00:00Z`) - Date.parse(`${row.observed_on}T00:00:00Z`)) / 86_400_000);
+    if (age > maxPriceAgeDays) continue;
     const option: PriceOption = { product_id: row.product_id, price: Number(row.mid) / 100, unit, seller: row.seller, observed_on: row.observed_on, stale: age > staleAfterDays(row.cadence ?? undefined) };
     options.set(row.product_id, [...(options.get(row.product_id) ?? []), option]);
   }
@@ -128,11 +129,29 @@ function normalisePricedUnit(unit: string): IngredientPrice["unit"] | null {
   return null;
 }
 
-/** A lookup that picks, per ingredient line, the cheapest option in a unit the registry can convert the line to. */
+/** A price older than this is not a price any more, stale flag or not; it never enters a cost. */
+export const maxPriceAgeDays = 90;
+
+/**
+ * Below this piece weight a "piece" on a shelf is a packet, not the thing the recipe counts (a
+ * sprig of curry leaves, one green chilli, a cardamom pod), so such lines are priced by weight.
+ */
+export const countedPieceGrams = 20;
+
+/**
+ * A lookup that picks, per ingredient line, the cheapest option in a unit the registry can
+ * convert the line to. Weight prices come first; a per-piece price is used only for things
+ * genuinely sold and counted whole (eggs, coconuts, limes), never for a packet of leaves.
+ */
 export function priceLookupFor(options: Map<string, PriceOption[]>, registry: Map<string, Ingredient>): PriceLookup {
   return (id, line) => {
     const entry = registry.get(id);
-    for (const option of options.get(id) ?? []) {
+    const candidates = options.get(id) ?? [];
+    const byWeight = candidates.filter((option) => option.unit === "kg" || option.unit === "l");
+    const counted = (entry?.measures.piece_g ?? 0) >= countedPieceGrams;
+    const ordered = counted ? [...candidates.filter((option) => option.unit === "piece"), ...byWeight, ...candidates.filter((option) => option.unit === "bunch")] : [...byWeight, ...candidates.filter((option) => option.unit === "bunch"), ...(line.unit === "piece" && !entry?.measures.piece_g ? candidates.filter((option) => option.unit === "piece") : [])];
+    // Cheapest fresh first within the preferred unit, then the next unit; the sort within a unit comes from priceOptions.
+    for (const option of ordered) {
       if (quantityInPricedUnit(line, option.unit, entry) !== null) return option;
     }
     return undefined;
@@ -284,8 +303,10 @@ export function queryRecipes(store: RecipeStore, index: Map<string, RecipeIndexE
       if (!tokens.every((token) => haystack.includes(token))) continue;
     }
     const cost = prices ? recipeCost(recipe, lookup, prices) : null;
-    if (query.max_cost !== null && cost && cost.per_serving > query.max_cost) continue;
-    items.push({ dish, metrics, cost_per_serving: cost?.per_serving ?? null, cost_estimated: cost?.estimated ?? null });
+    // A recipe with nothing priced has no cost, not a cost of nothing.
+    const priced = cost && cost.lines.length > 0 ? cost : null;
+    if (query.max_cost !== null && priced && priced.per_serving > query.max_cost) continue;
+    items.push({ dish, metrics, cost_per_serving: priced?.per_serving ?? null, cost_estimated: priced?.estimated ?? null });
   }
   const exact = (item: RecipeQueryItem) => (needle && item.dish.names.en.toLowerCase() === needle ? 0 : 1);
   const byName = (left: RecipeQueryItem, right: RecipeQueryItem) => left.dish.names.en.localeCompare(right.dish.names.en);

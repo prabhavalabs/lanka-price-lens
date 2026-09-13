@@ -76,8 +76,8 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
         <Card>
           <CardContent className="p-4">
             <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Cost per serving</p>
-            <p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{cost ? `${cost.estimated ? "≈ " : ""}${rupees(cost.per_serving)}` : "—"}</p>
-            <p className="text-xs text-muted-foreground">{cost ? `${rupees(cost.total)} for ${servings}, at today's cheapest sellers` : "prices are not available right now"}</p>
+            <p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{cost?.lines.length ? `${cost.estimated ? "≈ " : ""}${rupees(cost.per_serving)}` : "—"}</p>
+            <p className="text-xs text-muted-foreground">{cost?.lines.length ? `${rupees(cost.total)} for ${servings}, at today's cheapest sellers${cost.unpriced.length ? ", priced items only" : ""}` : cost ? "none of the ingredients has a published price yet" : "prices are not available right now"}</p>
             {cost?.unpriced.length ? <p className="mt-2 text-[11px] text-muted-foreground">Not priced yet: {cost.unpriced.join(", ")}</p> : null}
             {cost?.lines.some((line) => line.stale) ? <p className="mt-1 text-[11px] text-muted-foreground">Some prices are older than a week.</p> : null}
           </CardContent>
