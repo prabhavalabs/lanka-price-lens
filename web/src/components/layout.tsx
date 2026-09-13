@@ -1,4 +1,4 @@
-import { RiBookOpenLine, RiInformationLine, RiRestaurantLine } from "@remixicon/react";
+import { RiBookOpenLine, RiCalendarEventLine, RiInformationLine, RiRestaurantLine } from "@remixicon/react";
 import type { ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
 
@@ -28,6 +28,9 @@ export function Layout({ children }: { children: ReactNode }) {
           <nav className="ml-auto flex items-center gap-0 sm:gap-1">
             <NavLink to="/recipes" className={({ isActive }) => cn("no-underline", isActive && "text-primary")}>
               <Button className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost"><RiRestaurantLine className="size-4" /><span className="hidden sm:inline">Recipes</span></Button>
+            </NavLink>
+            <NavLink to="/menus" className={({ isActive }) => cn("no-underline", isActive && "text-primary")}>
+              <Button className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost"><RiCalendarEventLine className="size-4" /><span className="hidden sm:inline">Menus</span></Button>
             </NavLink>
             <QuickBasket />
             <NavLink to="/guide" className={({ isActive }) => cn("no-underline", isActive && "text-primary")}>

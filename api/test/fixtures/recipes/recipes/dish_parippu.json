@@ -1,0 +1,20 @@
+{
+  "id": "dish_parippu",
+  "base_servings": 4,
+  "serving": { "role": "with_rice", "portion_g": 150, "description": { "en": "A ladle of dhal with rice", "si": "බත් සමඟ පරිප්පු හැන්දක්", "ta": "சோற்றுடன் ஒரு கரண்டி பருப்பு" } },
+  "yield_g": 650,
+  "ingredients": [
+    { "ref": "product_red_dhal", "label": { "en": "red dhal", "si": "රතු පරිප්පු", "ta": "சிவப்பு பருப்பு" }, "quantity": 200, "unit": "g", "household": "1 cup", "preparation": { "en": "washed", "si": "සෝදාගත්", "ta": "கழுவியது" } },
+    { "ref": "product_big_onion", "label": { "en": "big onion", "si": "ලොකු ලූනු", "ta": "பெரிய வெங்காயம்" }, "quantity": 1, "unit": "piece", "household": "1 medium", "preparation": { "en": "sliced", "si": "පෙති කපාගත්", "ta": "நறுக்கியது" } },
+    { "ref": "pantry_coconut_milk", "label": { "en": "coconut milk", "si": "පොල් කිරි", "ta": "தேங்காய்ப் பால்" }, "quantity": 200, "unit": "ml", "household": "1 cup", "preparation": { "en": "thick, first squeeze", "si": "මිටි කිරි", "ta": "முதல் பால்" } },
+    { "ref": "product_salt", "label": { "en": "salt", "si": "ලුණු", "ta": "உப்பு" }, "quantity": 6, "unit": "g", "household": "1 tsp", "scaling": "sublinear" }
+  ],
+  "steps": {
+    "en": [{ "text": "Boil the dhal with turmeric until soft.", "minutes": 15 }, { "text": "Add the onion and coconut milk and simmer.", "minutes": 5 }, { "text": "Season with salt and serve." }],
+    "si": [{ "text": "පරිප්පු කහ දමා මෘදු වන තුරු තම්බන්න.", "minutes": 15 }, { "text": "ලූනු සහ පොල් කිරි දමා නොනවත්වා තම්බන්න.", "minutes": 5 }, { "text": "ලුණු දමා පිළිගන්වන්න." }],
+    "ta": [{ "text": "பருப்பை மஞ்சளுடன் மென்மையாகும் வரை வேகவைக்கவும்.", "minutes": 15 }, { "text": "வெங்காயம், தேங்காய்ப் பால் சேர்த்து கொதிக்கவிடவும்.", "minutes": 5 }, { "text": "உப்பு சேர்த்து பரிமாறவும்." }]
+  },
+  "times": { "prep_minutes": 5, "cook_minutes": 20 },
+  "tags": ["budget", "kid_friendly"],
+  "health_note": { "en": "Dhal brings protein and fibre; the coconut milk brings most of the fat.", "si": null, "ta": null }
+}

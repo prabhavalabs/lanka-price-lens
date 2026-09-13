@@ -1,0 +1,132 @@
+import assert from "node:assert/strict";
+import { resolve } from "node:path";
+import test from "node:test";
+
+import { openOperationalDatabase } from "@lanka-pricelens/foundry/db";
+import { createSourceCatalog } from "@lanka-pricelens/foundry/manifest";
+import { sourceManifestSchema } from "@lanka-pricelens/shared";
+
+import { createApp } from "../src/app.ts";
+import { buildRecipeIndex, parseRecipeQuery, priceLookupFor, priceOptions, queryRecipes, recipeView } from "../src/recipe-views.ts";
+import { readRecipeStore } from "../src/recipes.ts";
+import { seed, warehouseFor } from "./helpers/warehouse.ts";
+
+const store = readRecipeStore(resolve(import.meta.dirname, "fixtures/recipes"));
+const index = buildRecipeIndex(store);
+
+const manifestFor = (id: string, name: string, adapter?: unknown) =>
+  sourceManifestSchema.parse({
+    id,
+    name,
+    owner: name,
+    landing_url: `https://${id}.example/`,
+    retrieval_method: adapter ? "api_snapshot" : "scheduled_download",
+    expected_cadence: "daily",
+    formats: [adapter ? "json" : "pdf"],
+    geographic_scope: "t",
+    price_types: [adapter ? "retail_online_store" : "wholesale_observed"],
+    rights_status: "approved_permission",
+    rights_evidence_ref: "docs",
+    attribution_text: `Source: ${name}`,
+    retention_policy: "preserve_source_evidence",
+    parser_owner: "tests",
+    reviewed_by: "tests",
+    reviewed_at: "2026-01-01",
+    review_due_at: "2099-01-01",
+    request_interval_ms: 1000,
+    max_attempts: 3,
+    enabled: true,
+    ...(adapter ? { adapter } : {}),
+  });
+
+test("the store loads the registry and the recipes, and the index carries nutrition, minutes, and earned tags", () => {
+  assert.equal(store.registry.size, 5);
+  assert.deepEqual([...store.recipes.keys()], ["dish_chicken_curry", "dish_parippu"]);
+  const parippu = index.get("dish_parippu")!;
+  // dhal 200 g → 700 kcal; onion 120 × 0.9 → 43; coconut milk 200 → 380; over four.
+  assert.equal(parippu.metrics.kcal, 281);
+  assert.equal(parippu.metrics.protein_g, 13.3);
+  assert.equal(parippu.metrics.minutes, 25);
+  assert.deepEqual(parippu.metrics.languages, ["en", "si", "ta"]);
+  assert.ok(parippu.metrics.tags.includes("budget"), "curated tags stay");
+  assert.ok(parippu.metrics.tags.includes("high_protein"), "13 g of protein in a side earns the tag");
+  assert.ok(parippu.metrics.tags.includes("high_fibre"));
+  assert.equal(index.has("dish_red_rice"), false, "a dish without a recipe is not indexed");
+});
+
+test("a recipe view scales to the headcount and keeps per-serving nutrition; a menu totals and merges the shopping list", () => {
+  const six = recipeView(store, index, "dish_parippu", 6, null)!;
+  assert.equal(six.servings, 6);
+  assert.deepEqual(six.ingredients.map((line) => [line.label.en, line.quantity, line.household]), [["red dhal", 300, "1½ cup"], ["big onion", 1.5, null], ["coconut milk", 300, "1¼ cup"], ["salt", 8, "1¼ tsp"]]);
+  assert.equal(six.ingredients[0]!.names?.si, "පරිප්පු");
+  assert.equal(six.nutrition.per_serving.kcal, 281);
+  assert.equal(six.yield_g, 975);
+  assert.equal(six.cost, null, "no prices, no cost");
+  assert.equal(recipeView(store, index, "dish_red_rice", 4, null), null);
+});
+
+test("the query filters on the index and sorts by the asked measure", () => {
+  const light = queryRecipes(store, index, parseRecipeQuery((name) => ({ max_kcal: "300" })[name]), null);
+  assert.deepEqual(light.items.map((item) => item.dish.id), ["dish_parippu"]);
+  const protein = queryRecipes(store, index, parseRecipeQuery((name) => ({ sort: "protein" })[name]), null);
+  assert.deepEqual(protein.items.map((item) => item.dish.id), ["dish_chicken_curry", "dish_parippu"]);
+  const tagged = queryRecipes(store, index, parseRecipeQuery((name) => ({ tags: "budget,high_fibre" })[name]), null);
+  assert.deepEqual(tagged.items.map((item) => item.dish.id), ["dish_parippu"]);
+  const quick = queryRecipes(store, index, parseRecipeQuery((name) => ({ max_minutes: "30", q: "dhal" })[name]), null);
+  assert.deepEqual(quick.items.map((item) => item.dish.id), ["dish_parippu"]);
+  assert.equal(queryRecipes(store, index, parseRecipeQuery((name) => ({ tags: "nonsense" })[name]), null).total, 2, "unknown tags are ignored");
+});
+
+test("prices come per product and unit from the published sources, fresh and cheapest first, and cost follows the unit the recipe can convert", async () => {
+  const database = openOperationalDatabase(":memory:");
+  seed(database);
+  const client = await warehouseFor(database);
+  try {
+    const sources = [manifestFor("harti", "HARTI"), manifestFor("keells", "Keells", { kind: "keells_api", settings: {} }), manifestFor("cargills", "Cargills", { kind: "cargills_api", settings: {} })];
+    const options = await priceOptions(client, sources, ["product_big_onion", "product_egg", "product_chicken"], new Date("2026-09-05T00:00:00Z"));
+    const onion = options.get("product_big_onion")!;
+    assert.equal(onion[0]!.unit, "kg");
+    assert.equal(onion[0]!.price, 255, "Dambulla's cheapest variety (imported) on its newest day, fresh");
+    assert.equal(onion[0]!.stale, false);
+    assert.equal(options.has("product_chicken"), false, "nothing priced, no options");
+    const lookup = priceLookupFor(options, store.registry);
+    const view = recipeView(store, index, "dish_parippu", 4, lookup)!;
+    assert.equal(view.cost?.lines.length, 1, "only the onion is priced in the seeded warehouse");
+    assert.equal(view.cost?.lines[0]!.cost, 30.6, "one 120 g onion at Rs 255 a kilo");
+    assert.deepEqual(view.cost?.unpriced, ["red dhal", "coconut milk", "salt"]);
+    assert.equal(view.cost?.estimated, true);
+    assert.equal(view.ingredients[1]!.priced, true);
+    assert.equal(view.ingredients[0]!.priced, false);
+
+    const catalog = createSourceCatalog(sources.map((manifest) => ({ manifest, mappingBundle: undefined })));
+    const app = createApp(database, undefined, undefined, { recipes: store, catalog, warehouse: async () => client });
+    const detail = await app.request("http://localhost/v1/public/recipes/dish_parippu?servings=2");
+    assert.equal(detail.status, 200);
+    const payload = (await detail.json()) as { payload: { id: string; recipe: { servings: number; ingredients: Array<{ quantity: number }>; nutrition: { per_serving: { kcal: number } }; cost: { per_serving: number } } } };
+    assert.equal(payload.payload.recipe.servings, 2);
+    assert.equal(payload.payload.recipe.ingredients[0]!.quantity, 100);
+    assert.equal(payload.payload.recipe.nutrition.per_serving.kcal, 281);
+    assert.equal(payload.payload.recipe.cost.per_serving, 7.65, "half an onion for two, over two");
+
+    const query = await app.request("http://localhost/v1/public/recipes/query?max_kcal=300&sort=cost");
+    const results = (await query.json()) as { payload: { items: Array<{ dish: { id: string }; cost_per_serving: number | null }> } };
+    assert.deepEqual(results.payload.items.map((item) => [item.dish.id, item.cost_per_serving]), [["dish_parippu", 7.65]]);
+
+    const menu = await app.request("http://localhost/v1/public/menus/compute", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id: "menu_1", name: "Poya lunch", people: 10, items: [{ recipe_id: "dish_parippu" }, { recipe_id: "dish_chicken_curry", servings: 5 }, { recipe_id: "dish_nope" }], created_at: "2026-09-13T06:00:00.000Z" }) });
+    assert.equal(menu.status, 200);
+    const totals = (await menu.json()) as { payload: { items: Array<{ recipe_id: string; servings: number }>; shopping: Array<{ ref: string | null; label: string; quantity: number; unit: string; recipes: string[] }>; per_person: { nutrition: { kcal: number }; cost: number }; unknown: string[]; names: Record<string, { en: string }> } };
+    assert.deepEqual(totals.payload.items.map((item) => [item.recipe_id, item.servings]), [["dish_parippu", 10], ["dish_chicken_curry", 5]]);
+    assert.deepEqual(totals.payload.unknown, ["dish_nope"]);
+    assert.equal(totals.payload.names.dish_parippu!.en, "Dhal curry");
+    const onions = totals.payload.shopping.find((line) => line.ref === "product_big_onion");
+    assert.deepEqual([onions?.quantity, onions?.unit, onions?.recipes], [4, "piece", ["dish_parippu", "dish_chicken_curry"]], "2.5 onions for ten of dhal plus 1.5 for five of curry (1.25 rounded up), as the recipe cards show them");
+    assert.ok(totals.payload.per_person.nutrition.kcal > 0);
+    assert.equal(totals.payload.per_person.cost, Math.round((2.5 * 0.12 * 255 * 100 + 1.5 * 0.12 * 255 * 100) / 10) / 100);
+
+    const bad = await app.request("http://localhost/v1/public/menus/compute", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: "x", people: 0, items: [] }) });
+    assert.equal(bad.status, 400);
+  } finally {
+    await client.close();
+    database.close();
+  }
+});

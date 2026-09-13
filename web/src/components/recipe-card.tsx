@@ -1,4 +1,5 @@
 import { RiTimeLine } from "@remixicon/react";
+import type React from "react";
 import { Link } from "react-router-dom";
 
 import { Badge } from "@/components/ui/badge";
@@ -8,7 +9,7 @@ import { dishCategoryLabel, minutesLabel, titleCase } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 /** A dish at a glance: name, category, time, and, when it comes from the basket, how much of it the shopper already has. */
-export function RecipeCard({ dish, matched, missing, labels, className }: { dish: Dish; matched?: string[] | undefined; missing?: string[] | undefined; labels?: Record<string, string> | undefined; className?: string | undefined }) {
+export function RecipeCard({ dish, matched, missing, labels, className, children }: { dish: Dish; matched?: string[] | undefined; missing?: string[] | undefined; labels?: Record<string, string> | undefined; className?: string | undefined; children?: React.ReactNode }) {
   const total = dish.key_ingredients.length;
   const have = matched?.length ?? 0;
   const names = [dish.names.si, dish.names.ta_latn && !dish.names.si ? dish.names.ta_latn : null].filter(Boolean).join(" · ");
@@ -26,6 +27,7 @@ export function RecipeCard({ dish, matched, missing, labels, className }: { dish
             <Badge variant="outline" className="gap-1 text-[10px]"><RiTimeLine className="size-3" />{minutesLabel(dish.prep_minutes + dish.cook_minutes)}</Badge>
             <Badge variant="outline" className="text-[10px]">{titleCase(dish.difficulty)}</Badge>
           </div>
+          {children}
           {matched ? (
             <div className="space-y-1">
               <div className="flex items-center gap-2 text-xs">

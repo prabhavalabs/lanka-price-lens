@@ -63,6 +63,7 @@ import { streamSSE } from "hono/streaming";
 
 import { productDetail, searchProducts } from "./explorer.ts";
 import { dishDetail, ingredientPrices, listDishes, pricedProducts, productLabels, readRecipeStore, recipeOverview, recommendDishes, type RecipeStore } from "./recipes.ts";
+import { buildRecipeIndex, computeMenu, parseRecipeQuery, priceLookupFor, priceOptions, pricedProductIds, queryRecipes, recipeView, type RecipeIndexEntry } from "./recipe-views.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
 import {
   archivedKnowledgePdf,
@@ -149,6 +150,19 @@ export function createApp(
   const published = () => catalog.entries.filter((entry) => canPublishSource(entry.manifest)).map((entry) => entry.manifest);
   /** Each source's expected cadence, which decides how old a price may be before the explorer marks it stale. */
   const sourceCadence = () => Object.fromEntries(catalog.entries.map((entry) => [entry.manifest.id, entry.manifest.expected_cadence]));
+  /** Every recipe's nutrition and tags, computed once from the corpus; cost is added per request from today's prices. */
+  const recipeIndex: Map<string, RecipeIndexEntry> = options.recipes ? buildRecipeIndex(options.recipes) : new Map();
+  /** Today's cheapest published price per product and unit for the given recipes, or null when the warehouse is away. */
+  const recipePrices = async (entries: RecipeIndexEntry[]) => {
+    const client = await warehouse();
+    if (!client || !options.recipes) return null;
+    try {
+      return priceLookupFor(await priceOptions(client, published(), pricedProductIds(entries.map((entry) => entry.recipe))), options.recipes.registry);
+    } catch (error) {
+      console.error(JSON.stringify({ level: "error", message: "Recipe prices unavailable", detail: error instanceof Error ? error.message : String(error) }));
+      return null;
+    }
+  };
   app.use("/v1/public/*", async (context, next) => {
     await next();
     context.header("Access-Control-Allow-Origin", "*");
@@ -259,6 +273,29 @@ export function createApp(
     const priced = client ? await pricedProducts(client).catch(() => null) : null;
     return context.json(envelope(context.get("requestId"), listDishes(options.recipes, filters, priced)));
   });
+  // Recipes with numbers: filter by calories, protein, time, tags, or cost per serving, and sort by them.
+  app.get("/v1/public/recipes/query", async (context) => {
+    if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
+    const query = parseRecipeQuery((name) => context.req.query(name));
+    const prices = query.max_cost !== null || query.sort === "cost" || context.req.query("cost") === "1" ? await recipePrices([...recipeIndex.values()]) : null;
+    return context.json(envelope(context.get("requestId"), queryRecipes(options.recipes, recipeIndex, query, prices)));
+  });
+  // A household's menu, totalled: every recipe scaled to the headcount, nutrition and cost per person, one shopping list.
+  app.post("/v1/public/menus/compute", bodyLimit({ maxSize: 32 * 1024 }), async (context) => {
+    if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
+    let body: unknown;
+    try {
+      body = await context.req.json();
+    } catch {
+      return context.json(envelope(context.get("requestId"), null, false, "Body must be JSON"), 400);
+    }
+    const ids = typeof body === "object" && body !== null && Array.isArray((body as { items?: unknown }).items) ? ((body as { items: Array<{ recipe_id?: unknown }> }).items.map((item) => item.recipe_id).filter((id): id is string => typeof id === "string")) : [];
+    const prices = await recipePrices(ids.map((id) => recipeIndex.get(id)).filter((entry): entry is RecipeIndexEntry => Boolean(entry)));
+    const computed = computeMenu(options.recipes, recipeIndex, body, prices);
+    if (!computed.ok) return context.json(envelope(context.get("requestId"), null, false, computed.error), 400);
+    context.header("Cache-Control", "no-store");
+    return context.json(envelope(context.get("requestId"), computed.result));
+  });
   app.get("/v1/public/recipes/recommend", async (context) => {
     if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
     const ids = [...new Set((context.req.query("products") ?? "").split(",").map((id) => id.trim()).filter((id) => /^[a-z0-9_]+$/u.test(id)))].slice(0, 60);
@@ -281,7 +318,10 @@ export function createApp(
     const client = await warehouse();
     const labels = client ? await productLabels(client, dish.key_ingredients).catch(() => new Map<string, string>()) : new Map<string, string>();
     const prices = client ? await ingredientPrices(client, dish.key_ingredients).catch(() => null) : null;
-    return context.json(envelope(context.get("requestId"), dishDetail(options.recipes, dishId, labels, prices)));
+    const entry = recipeIndex.get(dishId);
+    const servings = Math.min(500, Math.max(1, Math.round(Number(context.req.query("servings") ?? entry?.recipe.base_servings ?? 4) || entry?.recipe.base_servings || 4)));
+    const recipe = entry ? recipeView(options.recipes, recipeIndex, dishId, servings, await recipePrices([entry])) : null;
+    return context.json(envelope(context.get("requestId"), { ...dishDetail(options.recipes, dishId, labels, prices), recipe }));
   });
   app.get("/v1/public/basket", async (context) => {
     const client = await warehouse();
@@ -738,7 +778,9 @@ export function createApp(
     const client = await warehouse();
     const labels = client ? await productLabels(client, dish.key_ingredients).catch(() => new Map<string, string>()) : new Map<string, string>();
     const prices = client ? await ingredientPrices(client, dish.key_ingredients).catch(() => null) : null;
-    return context.json(envelope(context.get("requestId"), dishDetail(options.recipes, dishId, labels, prices)));
+    const entry = recipeIndex.get(dishId);
+    const recipe = entry ? recipeView(options.recipes, recipeIndex, dishId, entry.recipe.base_servings, await recipePrices([entry])) : null;
+    return context.json(envelope(context.get("requestId"), { ...dishDetail(options.recipes, dishId, labels, prices), recipe }));
   });
   app.get("/v1/admin/sources/:id/unmapped-labels", (context) => {
     const entry = catalog.find(context.req.param("id"));

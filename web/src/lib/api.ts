@@ -126,7 +126,97 @@ export type Recommendations = { recommendations: Recommendation[]; labels: Recor
 export const fetchRecommendations = (ids: string[], limit = 12): Promise<Recommendations> =>
   ids.length ? get<Recommendations>(`/v1/public/recipes/recommend?products=${encodeURIComponent(ids.join(","))}&limit=${limit}`) : Promise.resolve({ recommendations: [], labels: {}, prices: {} });
 
-export const fetchRecipe = (id: string): Promise<DishDetail> => get<DishDetail>(`/v1/public/recipes/${encodeURIComponent(id)}`);
+export type Lang = "en" | "si" | "ta";
+export type Localized = { en: string; si: string | null; ta: string | null };
+export type Nutrition = { kcal: number; protein_g: number; fat_g: number; carb_g: number; fibre_g: number | null; sugar_g: number | null; sodium_mg: number | null };
+export type RecipeStep = { text: string; minutes: number | null };
+export type RecipeIngredientView = {
+  ref: string | null;
+  label: Localized;
+  quantity: number;
+  base_quantity: number;
+  unit: "g" | "ml" | "piece";
+  household: string | null;
+  preparation: Localized | null;
+  optional: boolean;
+  scaling: "linear" | "sublinear" | "fixed";
+  part: string;
+  names: { en: string; si: string | null; si_latn: string | null; ta: string | null; ta_latn: string | null } | null;
+  priced: boolean;
+  nutrition_known: boolean;
+};
+export type RecipeCost = { total: number; per_serving: number; servings: number; lines: Array<{ ref: string; label: string; quantity: number; unit: string; cost: number; seller: string; observed_on: string; stale: boolean }>; unpriced: string[]; estimated: boolean };
+export type RecipeNutrition = { per_serving: Nutrition; total: Nutrition; servings: number; coverage: { counted: number; with_nutrition: number; missing: string[] }; edible_g_per_serving: number };
+/** The full recipe scaled to a headcount: quantities, method in up to three languages, nutrition and cost per serving. */
+export type RecipeView = {
+  id: string;
+  servings: number;
+  base_servings: number;
+  serving: { role: string; portion_g: number; description: Localized | null };
+  yield_g: number;
+  ingredients: RecipeIngredientView[];
+  steps: { en: RecipeStep[]; si: RecipeStep[] | null; ta: RecipeStep[] | null };
+  times: { prep_minutes: number; cook_minutes: number; passive_minutes: number };
+  equipment: string[];
+  tips: Localized | null;
+  health_note: Localized | null;
+  tags: string[];
+  nutrition: RecipeNutrition;
+  cost: RecipeCost | null;
+  review: { en: boolean; si: boolean; ta: boolean };
+  review_needed: string[];
+  languages: Lang[];
+};
+
+export const fetchRecipe = (id: string, servings?: number | undefined): Promise<DishDetail & { recipe: RecipeView | null }> =>
+  get<DishDetail & { recipe: RecipeView | null }>(`/v1/public/recipes/${encodeURIComponent(id)}${servings ? `?servings=${servings}` : ""}`);
+
+export type RecipeMetrics = { kcal: number; protein_g: number; fat_g: number; carb_g: number; fibre_g: number | null; minutes: number; tags: string[]; role: string; portion_g: number; languages: Lang[] };
+export type RecipeQueryItem = { dish: Dish; metrics: RecipeMetrics; cost_per_serving: number | null; cost_estimated: boolean | null };
+export type RecipeQueryList = { items: RecipeQueryItem[]; page: number; pageSize: number; total: number; pages: number };
+export type RecipeQueryParams = { q?: string | undefined; category?: string | undefined; tags?: string[] | undefined; max_kcal?: number | undefined; min_protein?: number | undefined; max_minutes?: number | undefined; max_cost?: number | undefined; sort?: string | undefined; page?: number | undefined; cost?: boolean | undefined };
+
+/** Recipes that fit a question: by calories, protein, time, tags, or cost per serving. */
+export const fetchRecipeQuery = (params: RecipeQueryParams): Promise<RecipeQueryList> => {
+  const search = new URLSearchParams();
+  if (params.q) search.set("q", params.q);
+  if (params.category) search.set("category", params.category);
+  if (params.tags?.length) search.set("tags", params.tags.join(","));
+  if (params.max_kcal) search.set("max_kcal", String(params.max_kcal));
+  if (params.min_protein) search.set("min_protein", String(params.min_protein));
+  if (params.max_minutes) search.set("max_minutes", String(params.max_minutes));
+  if (params.max_cost) search.set("max_cost", String(params.max_cost));
+  if (params.sort) search.set("sort", params.sort);
+  if (params.page) search.set("page", String(params.page));
+  if (params.cost) search.set("cost", "1");
+  search.set("pageSize", "24");
+  return get<RecipeQueryList>(`/v1/public/recipes/query?${search}`);
+};
+
+export type MenuInput = { id: string; name: string; occasion: string | null; people: number; items: Array<{ recipe_id: string; servings: number | null }>; created_at: string };
+export type MenuLine = { ref: string | null; label: string; unit: "g" | "ml" | "piece"; quantity: number; recipes: string[] };
+export type MenuTotals = {
+  people: number;
+  items: Array<{ recipe_id: string; servings: number; nutrition: RecipeNutrition; cost: RecipeCost | null }>;
+  shopping: MenuLine[];
+  per_person: { nutrition: Nutrition; cost: number | null };
+  total: { nutrition: Nutrition; cost: number | null; estimated: boolean };
+  names: Record<string, DishNames>;
+  unknown: string[];
+};
+
+/** Totals a menu on the server: every recipe scaled to the headcount, nutrition and cost per person, one shopping list. */
+export async function computeMenu(menu: MenuInput): Promise<MenuTotals> {
+  let response: Response;
+  try {
+    response = await fetch("/v1/public/menus/compute", { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify(menu) });
+  } catch {
+    throw describeFailure(0, null);
+  }
+  const body = (await response.json().catch(() => null)) as Envelope<MenuTotals> | null;
+  if (!response.ok || !body || body.success === false) throw describeFailure(response.status, body?.message);
+  return body.payload;
+}
 
 export type DishList = { items: Dish[]; page: number; pageSize: number; total: number; pages: number };
 

@@ -11,6 +11,7 @@ import { BoardPage } from "@/pages/board";
 import { GuidePage } from "@/pages/guide";
 import { ProductPage } from "@/pages/product";
 import { RecipePage } from "@/pages/recipe";
+import { MenuPage, MenusPage } from "@/pages/menus";
 import { RecipesPage } from "@/pages/recipes";
 
 /** Loads analytics when the deployment has an id, and reports a page view on every route change. */
@@ -52,6 +53,8 @@ export function App() {
         <Route path="/basket" element={<BasketPage />} />
         <Route path="/recipes" element={<RecipesPage />} />
         <Route path="/r/:id" element={<RecipePage />} />
+        <Route path="/menus" element={<MenusPage />} />
+        <Route path="/menus/:id" element={<MenuPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/guide" element={<GuidePage />} />
         <Route path="*" element={<p className="py-16 text-center text-muted-foreground">This page does not exist.</p>} />

@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "reviewed_by": "tests",
+  "reviewed_at": "2026-09-13",
+  "ingredients": [
+    { "id": "product_red_dhal", "names": { "en": "Red dhal", "si": "පරිප්පු", "ta": "பருப்பு" }, "group": "pulse", "state": "dried", "edible_portion": 1, "measures": { "cup_g": 200, "tbsp_g": 12, "tsp_g": 4 }, "nutrition": { "kcal": 350, "protein_g": 24, "fat_g": 1.2, "carb_g": 60, "fibre_g": 11 }, "sources": [{ "name": "USDA FoodData Central", "entry": "Lentils, raw", "kcal": 352 }], "basis": "USDA lentils raw", "confidence": "high" },
+    { "id": "product_big_onion", "names": { "en": "Big onion", "si": "ලොකු ලූනු", "ta": "பெரிய வெங்காயம்" }, "group": "vegetable", "state": "raw", "edible_portion": 0.9, "measures": { "piece_g": 120 }, "nutrition": { "kcal": 40, "protein_g": 1.1, "fat_g": 0.1, "carb_g": 9.3, "fibre_g": 1.7 }, "sources": [{ "name": "USDA FoodData Central", "entry": "Onions, raw", "kcal": 40 }], "basis": "USDA onions raw", "confidence": "high" },
+    { "id": "product_chicken", "names": { "en": "Chicken", "si": "කුකුල් මස්", "ta": "கோழி இறைச்சி" }, "group": "poultry", "state": "raw", "as_purchased_note": "curry cut, bone in", "edible_portion": 0.68, "nutrition": { "kcal": 215, "protein_g": 18.6, "fat_g": 15.1, "carb_g": 0 }, "sources": [{ "name": "USDA FoodData Central", "entry": "Chicken, meat and skin, raw", "kcal": 215 }], "basis": "USDA meat and skin", "confidence": "high" },
+    { "id": "pantry_coconut_milk", "names": { "en": "Coconut milk", "si": "පොල් කිරි", "ta": "தேங்காய்ப் பால்" }, "group": "dairy", "state": "raw", "edible_portion": 1, "density_g_per_ml": 1, "measures": { "cup_g": 240, "tbsp_g": 15, "tsp_g": 5 }, "nutrition": { "kcal": 190, "protein_g": 2, "fat_g": 20, "carb_g": 3 }, "sources": [{ "name": "Indian Food Composition Tables 2017", "entry": "Coconut milk", "kcal": 190 }], "basis": "home squeezed, thick", "confidence": "medium" },
+    { "id": "product_salt", "names": { "en": "Salt", "si": "ලුණු", "ta": "உப்பு" }, "group": "condiment", "state": "processed", "edible_portion": 1, "measures": { "tsp_g": 6, "tbsp_g": 18 }, "nutrition": { "kcal": 0, "protein_g": 0, "fat_g": 0, "carb_g": 0, "sodium_mg": 38000 }, "basis": "table salt", "confidence": "high" }
+  ]
+}
