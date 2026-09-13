@@ -4,8 +4,8 @@ import type { AccountMailer, MailResult } from "./types.ts";
 
 /**
  * The branded mail the accounts system sends: one layout, seven templates, and a plain-text
- * part for every message. Delivery goes through the notify package's email channel, SendGrid
- * in production (`LPL_SENDGRID_API_KEY`) or Resend for local work (`LPL_RESEND_API_KEY`), from
+ * part for every message. Delivery goes through the notify package's email channel: Resend
+ * (`LPL_RESEND_API_KEY`, the domain verified there), or SendGrid when only its key is set, from
  * `LPL_MAIL_FROM`. Without a key nothing is sent: the mailer says so once in the log and every
  * send answers with a failure instead of throwing, so registering and resetting keep working
  * on a machine without mail.
@@ -179,8 +179,9 @@ export function createAccountMailer(environment: Record<string, string | undefin
   const sendgridKey = environment.LPL_SENDGRID_API_KEY?.trim();
   const resendKey = environment.LPL_RESEND_API_KEY?.trim();
   const from = environment.LPL_MAIL_FROM?.trim() || defaultAccountMailFrom;
-  const provider = sendgridKey ? "sendgrid" : resendKey ? "resend" : null;
-  const apiKey = sendgridKey || resendKey || "";
+  // Resend is the mail provider (prabhavalabs.com is verified there); SendGrid stays as an alternative when only its key is set.
+  const provider = resendKey ? "resend" : sendgridKey ? "sendgrid" : null;
+  const apiKey = resendKey || sendgridKey || "";
   const channels: ChannelRegistry | null = provider ? createChannels({ email: { provider, apiKey, from }, fetch: request }) : null;
   const replyTo = parseMailbox(from).email;
   let warned = false;
@@ -195,7 +196,7 @@ export function createAccountMailer(environment: Record<string, string | undefin
     if (!channels) {
       if (!warned) {
         warned = true;
-        log(`Account mail is not configured: set LPL_SENDGRID_API_KEY (or LPL_RESEND_API_KEY for local work) and LPL_MAIL_FROM. Not sending "${rendered.subject}" to ${maskAddress(input.to)}.`);
+        log(`Account mail is not configured: set LPL_RESEND_API_KEY and LPL_MAIL_FROM (a sender on a domain verified in Resend). Not sending "${rendered.subject}" to ${maskAddress(input.to)}.`);
       }
       return { ok: false, error: "MAIL_NOT_CONFIGURED" };
     }

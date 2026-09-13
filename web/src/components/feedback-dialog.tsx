@@ -12,10 +12,22 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { trackEvent } from "@/lib/analytics";
 import { postFeedback, type FeedbackKind } from "@/lib/api";
 
+type Props = {
+  /** What opens the dialog; the default is the header's Feedback button. `null` renders no trigger, for a parent that controls `open`. */
+  trigger?: ReactNode;
+  open?: boolean | undefined;
+  onOpenChange?: ((open: boolean) => void) | undefined;
+};
+
 /** Feedback or a bug report in two taps: what kind, what happened, an optional address for a reply. The page you were on comes along. */
-export function FeedbackDialog({ trigger }: { trigger?: ReactNode }) {
+export function FeedbackDialog({ trigger, open: controlledOpen, onOpenChange }: Props) {
   const location = useLocation();
-  const [open, setOpen] = useState(false);
+  const [ownOpen, setOwnOpen] = useState(false);
+  const open = controlledOpen ?? ownOpen;
+  const setOpen = (next: boolean) => {
+    setOwnOpen(next);
+    onOpenChange?.(next);
+  };
   const [kind, setKind] = useState<FeedbackKind>("feedback");
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
@@ -33,9 +45,11 @@ export function FeedbackDialog({ trigger }: { trigger?: ReactNode }) {
   };
   return (
     <Dialog onOpenChange={(next) => { setOpen(next); if (!next) reset(); }} open={open}>
-      <DialogTrigger asChild>
-        {trigger ?? <Button className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost"><RiFeedbackLine className="size-4" /><span className="hidden sm:inline">Feedback</span></Button>}
-      </DialogTrigger>
+      {trigger === null ? null : (
+        <DialogTrigger asChild>
+          {trigger ?? <Button className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost"><RiFeedbackLine className="size-4" /><span className="hidden sm:inline">Feedback</span></Button>}
+        </DialogTrigger>
+      )}
       <DialogContent className="sm:max-w-md">
         {send.isSuccess ? (
           <>

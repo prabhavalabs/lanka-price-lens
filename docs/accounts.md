@@ -16,7 +16,7 @@ sets up outside the repository.
   State-changing routes refuse cross-origin requests (`sameOrigin` in `api/src/http.ts`).
 - **Tokens** for verification, password reset, and email change are random, stored hashed, single
   use, and short-lived (verification a day, reset an hour); making a new one voids the old.
-- **Mail** goes through SendGrid from an authenticated domain, branded, with a plain-text part,
+- **Mail** goes through Resend from a verified domain, branded, with a plain-text part,
   and links back to the site. Account mail (verification, resets, changes) is always sent;
   everything else honours the person's preferences.
 - **Google** sign-in is OAuth 2.0 authorization code with PKCE, server side; the ID token is
@@ -156,26 +156,26 @@ Templates in `api/src/account/mail.ts`: verification, welcome (after verificatio
 reset, password changed, email change confirmation (to the new address), email changed notice
 (to the old address), account deleted. One layout: the PriceLens mark, a headline, one clear
 button, the same link in plain text under it, and a footer saying why the mail was sent. Text
-alternative for every message. Sent through the notify package's SendGrid channel
-(`notify/src/channels/sendgrid.ts`), `LPL_SENDGRID_API_KEY` and `LPL_MAIL_FROM`
+alternative for every message. Sent through the notify package's Resend channel
+(`notify/src/channels/email.ts`), `LPL_RESEND_API_KEY` and `LPL_MAIL_FROM`
 ("PriceLens <hello@prabhavalabs.com>").
 
-### SendGrid and the domain (owner steps)
+### Resend and the domain (owner steps)
 
-1. In SendGrid, Settings → Sender Authentication → **Authenticate Your Domain**:
-   `prabhavalabs.com`, DNS host Cloudflare, "Use automated security" on, link branding on
-   (`links.prabhavalabs.com`). SendGrid gives three CNAME records for the domain (two DKIM
-   selectors and the return path, `em####.prabhavalabs.com`) and two for link branding; add
-   them in Cloudflare **with the proxy off (DNS only)** and verify.
-2. Add a DMARC record: `_dmarc.prabhavalabs.com TXT "v=DMARC1; p=quarantine; rua=mailto:dmarc@prabhavalabs.com; adkim=s; aspf=r"`.
-   Start at `p=none` for a week if the domain sends other mail, then quarantine.
-3. Keep the existing SPF record and add SendGrid: `include:sendgrid.net` (one SPF record only,
-   under ten lookups).
-4. Create a **restricted API key** with only Mail Send; put it in `/etc/lanka-price-lens/app.env`
-   as `LPL_SENDGRID_API_KEY`. In Mail Settings turn **click tracking and open tracking off**
-   for these transactional mails, so links stay on our domain.
-5. Set `LPL_MAIL_FROM=PriceLens <hello@prabhavalabs.com>` (a verified single sender is not needed
-   once the domain is authenticated).
+prabhavalabs.com is already verified in Resend (DKIM `resend._domainkey`, and the SPF MX and
+TXT records on `send.prabhavalabs.com`), and `_dmarc.prabhavalabs.com` publishes
+`v=DMARC1; p=none; rua=mailto:marc-reports@prabhavalabs.com`. Production sends as
+`LPL_MAIL_FROM=PriceLens <info.price@prabhavalabs.com>` with the key already in app.env, so
+account mail works without further setup. Two optional improvements:
+
+1. Once the DMARC reports show only Resend and Cloudflare sending for the domain, move the
+   policy to `p=quarantine` (later `p=reject`) so spoofed mail is dropped; nothing on our side
+   changes.
+2. Keep click and open tracking off for the domain in Resend (Domains → prabhavalabs.com →
+   tracking): rewritten links are what spam filters and people distrust in a password reset.
+
+SendGrid remains a fallback in the code (`notify/src/channels/sendgrid.ts`, used when only
+`LPL_SENDGRID_API_KEY` is set) but is not configured anywhere.
 
 ### Google sign-in (owner steps)
 
@@ -191,7 +191,7 @@ alternative for every message. Sent through the notify package's SendGrid channe
 
 ## Settings
 
-`LPL_SITE_ORIGIN`, `LPL_SENDGRID_API_KEY`, `LPL_MAIL_FROM`, `LPL_GOOGLE_CLIENT_ID`,
+`LPL_SITE_ORIGIN`, `LPL_RESEND_API_KEY`, `LPL_MAIL_FROM`, `LPL_GOOGLE_CLIENT_ID`,
 `LPL_GOOGLE_CLIENT_SECRET`, `LPL_ACCOUNT_STATE_SECRET` (random, signs the OAuth state cookie).
 All in `.env.example`, compose, and the VPS app.env.
 
@@ -202,7 +202,7 @@ in `app.ts`, settings, end-to-end checks) follows.
 
 1. **Data and core auth (API)**: tables, the store, the service (register, sign in, sessions,
    tokens, password and email changes, deletion), the account routes, middleware, tests.
-2. **Mail and Google (API + notify)**: the SendGrid channel, the branded templates, the mailer,
+2. **Mail and Google (API + notify)**: the email channels, the branded templates, the mailer,
    the Google sign-in flow with ID token verification, tests with a stubbed network.
 3. **Content (API)**: menus and own recipes on the account, computed views, admin accounts list,
    tests.
@@ -234,11 +234,10 @@ editor). Decisions taken at integration:
 
 ## Local testing
 
-- **Mail through Resend.** Leave `LPL_SENDGRID_API_KEY` empty and set `LPL_RESEND_API_KEY`
-  (a free Resend key): `createAccountMailer` in `api/src/account/mail.ts` then sends the same
-  templates through Resend. `LPL_MAIL_FROM` must be a sender Resend accepts: an address on a
-  domain verified there, or its shared `PriceLens <onboarding@resend.dev>`, which only delivers
-  to the address the Resend account was opened with. With neither key set the API logs
+- **Mail through Resend.** Set `LPL_RESEND_API_KEY` (the same key as production, or a free one):
+  `createAccountMailer` in `api/src/account/mail.ts` sends the templates through Resend.
+  `LPL_MAIL_FROM` must be a sender Resend accepts: an address on a domain verified there, or its shared `PriceLens <onboarding@resend.dev>`, which only delivers
+  to the address the Resend account was opened with. With no key set the API logs
   "Account mail is not configured" once and every send answers `MAIL_NOT_CONFIGURED`;
   registering still works, but no verification or reset mail arrives, and since tokens are
   stored hashed there is no way to read a link back out of the database. To try a template

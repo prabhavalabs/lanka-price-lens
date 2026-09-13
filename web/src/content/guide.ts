@@ -175,9 +175,9 @@ export const guideSections: GuideSection[] = [
   {
     id: "phone",
     title: "Phone and theme",
-    summary: "Everything works on a phone: the header keeps the search box, the basket, and the menu; cards stack in one column; the chart answers to a tap instead of a hover.",
+    summary: "Everything works on a phone: the header keeps the search box, recipes, menus, the basket, and your account, with the rest behind the ⋯ menu; cards stack in one column; the chart answers to a tap instead of a hover.",
     steps: [
-      "The theme follows your device. The icon at the right of the header offers Light, Dark, or Device setting, and remembers the choice in this browser.",
+      "The theme follows your device. The ⋯ menu at the right of the header offers Light, Dark, or Device setting, and remembers the choice in this browser.",
       "Add the site to your home screen from the browser's share menu to open it like an app.",
     ],
     figures: [
@@ -189,11 +189,12 @@ export const guideSections: GuideSection[] = [
   {
     id: "feedback",
     title: "Feedback and privacy",
-    summary: "“Feedback” in the header, or the link in the footer, opens a short form: choose Feedback or Report a bug, write at least ten characters, and leave an email only if you want a reply. The page you were on is attached automatically and the message is forwarded to the site's owner.",
+    summary: "“Send feedback” in the ⋯ menu at the right of the header, or the link in the footer, opens a short form: choose Feedback or Report a bug, write at least ten characters, and leave an email only if you want a reply. The page you were on is attached automatically and the message is forwarded to the site's owner.",
     steps: [
       "The footer quietly counts how many people are on the site right now, using a random id kept only for the open tab; no cookies.",
       "Your basket and theme stay in your browser. Where the site runs Google Analytics it does so with IP anonymisation and respects the browser's “do not track” setting.",
       "Sources, permissions, and method are on the About page.",
+      "The Discord button in the bottom corner joins the Prabhava Labs community, where PriceLens updates land first; the same link sits in the ⋯ menu and the footer.",
     ],
     figures: [
       { file: "feedback", alt: "The feedback dialog with a choice between feedback and a bug report, a message field, and an optional email", caption: "Feedback or a bug report, with the page you were on attached automatically.", width: 672, height: 546, half: true },

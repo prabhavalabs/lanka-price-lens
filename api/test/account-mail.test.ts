@@ -101,7 +101,7 @@ test("without a key the mailer is unconfigured, says so once, and answers every 
   assert.deepEqual(await mailer.accountDeleted(samples.accountDeleted.input), { ok: false, error: "MAIL_NOT_CONFIGURED" });
   assert.equal(calls.length, 0);
   assert.equal(lines.length, 1);
-  assert.match(lines[0]!, /LPL_SENDGRID_API_KEY/u);
+  assert.match(lines[0]!, /LPL_RESEND_API_KEY/u);
   assert.match(lines[0]!, /am…@example\.com/u);
   assert.ok(!lines[0]!.includes("amal@example.com"), "the address is masked in the log");
 });
@@ -127,7 +127,7 @@ test("with a SendGrid key mail goes to SendGrid as the branded html and text, fr
   assert.equal(body.tracking_settings.click_tracking.enable, false);
 });
 
-test("with only a Resend key mail goes to Resend from the default sender; SendGrid wins when both are set", async () => {
+test("with a Resend key mail goes to Resend from the default sender; Resend wins when both keys are set", async () => {
   const resend = recorder(() => new Response(JSON.stringify({ id: "re_1" })));
   const mailer = createAccountMailer({ LPL_RESEND_API_KEY: "re_local" }, resend.request);
   assert.equal(mailer.configured, true);
@@ -139,9 +139,9 @@ test("with only a Resend key mail goes to Resend from the default sender; SendGr
   assert.equal(resend.calls[0]!.body.subject, "Your PriceLens account is ready");
   assert.equal(resend.calls[0]!.body.html, renderAccountMail("welcome", samples.welcome.input).html);
 
-  const both = recorder();
+  const both = recorder(() => new Response(JSON.stringify({ id: "re_2" })));
   await createAccountMailer({ LPL_RESEND_API_KEY: "re_local", LPL_SENDGRID_API_KEY: "SG.prod" }, both.request).welcome(samples.welcome.input);
-  assert.equal(both.calls[0]!.url, "https://api.sendgrid.com/v3/mail/send");
+  assert.equal(both.calls[0]!.url, "https://api.resend.com/emails");
 });
 
 test("delivery problems come back as results, never as exceptions", async () => {
