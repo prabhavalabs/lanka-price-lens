@@ -74,7 +74,7 @@ export function normaliseRecipe(raw) {
   for (const line of recipe.ingredients) {
     const oil = /oil$|^oil\b|_oil$|ghee|margarine/iu.test(`${line.ref ?? ""} ${line.label.en}`);
     const wording = [line.label.en, line.preparation?.en ?? "", line.household ?? ""].join(" ");
-    if (oil && line.part !== "tempering" && line.unit !== "piece" && line.quantity >= 100 && fryingWords.test(wording)) line.part = "frying";
+    if (oil && line.part !== "tempering" && line.unit !== "piece" && line.quantity >= 40 && fryingWords.test(wording)) line.part = "frying";
   }
   recipe.steps = { en: steps(raw.steps?.en) ?? [{ text: "Method to be written.", minutes: null }], si: steps(raw.steps?.si), ta: steps(raw.steps?.ta) };
   recipe.times = { prep_minutes: Math.max(0, Math.round(number(raw.times?.prep_minutes) ?? 0)), cook_minutes: Math.max(0, Math.round(number(raw.times?.cook_minutes) ?? 0)), passive_minutes: Math.max(0, Math.round(number(raw.times?.passive_minutes) ?? 0)) };
