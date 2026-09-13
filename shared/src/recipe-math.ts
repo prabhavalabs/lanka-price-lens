@@ -115,7 +115,7 @@ function rawNutrition(recipe: Recipe, lookup: IngredientLookup, servings: number
     counted += 1;
     const entry = ingredient.ref ? lookup(ingredient.ref) : undefined;
     const grams = gramsOf(ingredient, entry);
-    if (!entry || grams === null) {
+    if (!entry || !entry.nutrition || grams === null) {
       missing.push(ingredient.label.en);
       continue;
     }

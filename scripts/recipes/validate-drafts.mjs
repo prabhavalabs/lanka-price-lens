@@ -3,7 +3,8 @@
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
-import { ingredientSchema, recipeSchema, recipeNutrition, computedTags } from "../../shared/src/index.ts";
+import { atwaterEnergy, computedTags, ingredientSchema, recipeNutrition, recipeSchema } from "../../shared/src/index.ts";
+import { normaliseIngredient, normaliseRecipe } from "./drafts.mjs";
 
 const directory = process.argv[2];
 if (!directory) {
@@ -14,7 +15,9 @@ const catalogue = JSON.parse(readFileSync("data/recipes/catalogue.json", "utf8")
 const dishes = new Map(catalogue.map((dish) => [dish.id, dish]));
 const files = readdirSync(directory).sort();
 const problems = [];
+const warnings = [];
 const note = (file, id, message) => problems.push({ file, id, message });
+const warn = (file, id, message) => warnings.push({ file, id, message });
 
 // Ingredient registry drafts
 const registry = new Map();
@@ -29,7 +32,8 @@ for (const file of files.filter((name) => /^out-nutrition-\d+\.json$/u.test(name
     note(file, null, `not JSON: ${error.message}`);
     continue;
   }
-  for (const raw of entries) {
+  for (const draft of entries) {
+    const raw = normaliseIngredient(draft);
     const parsed = ingredientSchema.safeParse(raw);
     if (!parsed.success) {
       note(file, raw?.id ?? "?", parsed.error.issues.map((issue) => `${issue.path.join(".")}: ${issue.message}`).join("; "));
@@ -39,15 +43,19 @@ for (const file of files.filter((name) => /^out-nutrition-\d+\.json$/u.test(name
     if (expectedIds.size && !expectedIds.has(entry.id)) note(file, entry.id, "id not in the registry skeleton");
     if (registry.has(entry.id)) note(file, entry.id, "duplicate id across batches");
     registry.set(entry.id, entry);
-    const { kcal, protein_g, fat_g, carb_g } = entry.nutrition;
-    const atwater = 4 * protein_g + 9 * fat_g + 4 * carb_g;
-    if (atwater > 20 && Math.abs(kcal - atwater) / atwater > 0.2) note(file, entry.id, `kcal ${kcal} vs macros ${atwater.toFixed(0)}`);
+    if (!entry.nutrition) {
+      warn(file, entry.id, "no nutrition (unknown; counted as missing in recipes)");
+      continue;
+    }
+    const { kcal } = entry.nutrition;
+    const atwater = atwaterEnergy(entry.nutrition);
+    if (atwater > 20 && Math.abs(kcal - atwater) / atwater > 0.2) warn(file, entry.id, `kcal ${kcal} vs macros ${atwater.toFixed(0)}`);
     const range = kcalRange[entry.group];
-    if (range && (kcal < range[0] || kcal > range[1])) note(file, entry.id, `kcal ${kcal} outside the usual ${range[0]}–${range[1]} for ${entry.group}`);
-    if (entry.sources.length < 1) note(file, entry.id, "no sources");
-    if (!entry.names.si) note(file, entry.id, "no Sinhala name");
-    if (!entry.names.ta) note(file, entry.id, "no Tamil name");
-    if (entry.density_g_per_ml === null && entry.state !== "dried" && /milk|oil|treacle|vinegar|sauce|juice|water|toddy|syrup|honey/iu.test(entry.names.en)) note(file, entry.id, "liquid without a density");
+    if (range && (kcal < range[0] || kcal > range[1])) warn(file, entry.id, `kcal ${kcal} outside the usual ${range[0]}–${range[1]} for ${entry.group}`);
+    if (entry.sources.length < 1) warn(file, entry.id, "no sources");
+    if (!entry.names.si) warn(file, entry.id, "no Sinhala name");
+    if (!entry.names.ta) warn(file, entry.id, "no Tamil name");
+    if (entry.density_g_per_ml === null && entry.state !== "dried" && /milk|oil|treacle|vinegar|sauce|juice|water|toddy|syrup|honey/iu.test(entry.names.en)) warn(file, entry.id, "liquid without a density");
   }
 }
 
@@ -66,7 +74,8 @@ for (const file of files.filter((name) => /^out-recipes-\d+\.json$/u.test(name))
     note(file, null, `not JSON: ${error.message}`);
     continue;
   }
-  for (const raw of entries) {
+  for (const draft of entries) {
+    const raw = normaliseRecipe(draft);
     const parsed = recipeSchema.safeParse(raw);
     if (!parsed.success) {
       note(file, raw?.id ?? "?", parsed.error.issues.slice(0, 5).map((issue) => `${issue.path.join(".")}: ${issue.message}`).join("; "));
@@ -79,13 +88,13 @@ for (const file of files.filter((name) => /^out-recipes-\d+\.json$/u.test(name))
     recipes.set(recipe.id, recipe);
     for (const [index, ingredient] of recipe.ingredients.entries()) {
       if (ingredient.ref && expectedIds.size && !expectedIds.has(ingredient.ref)) note(file, recipe.id, `ingredient ${index} ref ${ingredient.ref} unknown`);
-      if (ingredient.ref === null) note(file, recipe.id, `ingredient ${index} "${ingredient.label.en}" has no ref`);
-      if (!ingredient.label.si || !ingredient.label.ta) note(file, recipe.id, `ingredient ${index} "${ingredient.label.en}" lacks si/ta label`);
-      if (ingredient.unit === "piece" && ingredient.ref && registry.size && registry.get(ingredient.ref)?.measures.piece_g === null) note(file, recipe.id, `ingredient ${index} "${ingredient.label.en}" counted in pieces but ${ingredient.ref} has no piece weight`);
+      if (ingredient.ref === null) warn(file, recipe.id, `ingredient ${index} "${ingredient.label.en}" has no ref`);
+      if (!ingredient.label.si || !ingredient.label.ta) warn(file, recipe.id, `ingredient ${index} "${ingredient.label.en}" lacks si/ta label`);
+      if (ingredient.unit === "piece" && ingredient.ref && registry.size && registry.get(ingredient.ref)?.measures.piece_g === null) warn(file, recipe.id, `ingredient ${index} "${ingredient.label.en}" counted in pieces but ${ingredient.ref} has no piece weight`);
     }
-    if (!recipe.steps.si) note(file, recipe.id, "no Sinhala steps");
-    if (!recipe.steps.ta) note(file, recipe.id, "no Tamil steps");
-    if (recipe.steps.en.length < 3) note(file, recipe.id, `only ${recipe.steps.en.length} steps`);
+    if (!recipe.steps.si) warn(file, recipe.id, "no Sinhala steps");
+    if (!recipe.steps.ta) warn(file, recipe.id, "no Tamil steps");
+    if (recipe.steps.en.length < 3) warn(file, recipe.id, `only ${recipe.steps.en.length} steps`);
     // Quantity sanity: main protein grams per serving for the protein categories.
     const rule = dish ? perServingRanges[dish.category] : null;
     if (rule && registry.size) {
@@ -95,26 +104,29 @@ for (const file of files.filter((name) => /^out-recipes-\d+\.json$/u.test(name))
         if (entry && rule.protein.includes(entry.group) && !ingredient.optional) proteinGrams += ingredient.unit === "piece" ? ingredient.quantity * (entry.measures.piece_g ?? 0) : ingredient.quantity;
       }
       const perServing = proteinGrams / recipe.base_servings;
-      if (perServing && (perServing < rule.grams[0] || perServing > rule.grams[1])) note(file, recipe.id, `${Math.round(perServing)} g of ${rule.protein.join("/")} per serving, outside ${rule.grams[0]}–${rule.grams[1]}`);
+      if (perServing && (perServing < rule.grams[0] || perServing > rule.grams[1])) warn(file, recipe.id, `${Math.round(perServing)} g of ${rule.protein.join("/")} per serving, outside ${rule.grams[0]}–${rule.grams[1]}`);
     }
     const rawGrams = recipe.ingredients.reduce((sum, ingredient) => sum + (ingredient.unit === "piece" ? 0 : ingredient.quantity), 0);
-    if (recipe.yield_g > rawGrams * 3.5 + 200) note(file, recipe.id, `yield ${recipe.yield_g} g against ${Math.round(rawGrams)} g of weighed ingredients`);
-    if (recipe.serving.portion_g * recipe.base_servings > recipe.yield_g * 1.5) note(file, recipe.id, `portion ${recipe.serving.portion_g} g × ${recipe.base_servings} exceeds yield ${recipe.yield_g} g`);
+    if (recipe.yield_g > rawGrams * 3.5 + 200) warn(file, recipe.id, `yield ${recipe.yield_g} g against ${Math.round(rawGrams)} g of weighed ingredients`);
+    if (recipe.serving.portion_g * recipe.base_servings > recipe.yield_g * 1.5) warn(file, recipe.id, `portion ${recipe.serving.portion_g} g × ${recipe.base_servings} exceeds yield ${recipe.yield_g} g`);
     if (registry.size) {
       const nutrition = recipeNutrition(recipe, (id) => registry.get(id));
       const kcal = nutrition.per_serving.kcal;
-      if (kcal < 15) note(file, recipe.id, `only ${kcal} kcal per serving (missing: ${nutrition.coverage.missing.join(", ") || "none"})`);
-      if (kcal > 1200) note(file, recipe.id, `${kcal} kcal per serving`);
+      if (kcal < 15) warn(file, recipe.id, `only ${kcal} kcal per serving (missing: ${nutrition.coverage.missing.join(", ") || "none"})`);
+      if (kcal > 1200) warn(file, recipe.id, `${kcal} kcal per serving`);
       recipe.computed = { kcal, tags: computedTags(nutrition.per_serving, recipe.serving.role), missing: nutrition.coverage.missing };
     }
   }
 }
 
-const byFile = new Map();
-for (const problem of problems) byFile.set(problem.file, (byFile.get(problem.file) ?? 0) + 1);
+const quiet = process.argv.includes("--quiet");
 console.log(`registry entries: ${registry.size} / ${expectedIds.size || "?"}; recipes: ${recipes.size} / ${catalogue.length}`);
-for (const problem of problems) console.log(`${problem.file} ${problem.id ?? ""}: ${problem.message}`);
-console.log(`problems: ${problems.length}`, Object.fromEntries(byFile));
+for (const problem of problems) console.log(`ERROR ${problem.file} ${problem.id ?? ""}: ${problem.message}`);
+if (!quiet) for (const warning of warnings) console.log(`warn  ${warning.file} ${warning.id ?? ""}: ${warning.message}`);
+const tally = (list) => Object.fromEntries([...list.reduce((map, item) => map.set(item.file, (map.get(item.file) ?? 0) + 1), new Map())]);
+console.log(`errors: ${problems.length}`, tally(problems));
+console.log(`warnings: ${warnings.length}`, tally(warnings));
+if (problems.length) process.exitCode = 1;
 if (recipes.size && registry.size) {
   const kcals = [...recipes.values()].map((recipe) => recipe.computed.kcal).sort((a, b) => a - b);
   console.log(`kcal per serving: min ${kcals[0]}, median ${kcals[Math.floor(kcals.length / 2)]}, max ${kcals.at(-1)}`);

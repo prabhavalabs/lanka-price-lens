@@ -4,6 +4,7 @@ import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { ingredientRegistrySchema, ingredientSchema, recipeSchema } from "../../shared/src/index.ts";
+import { normaliseIngredient, normaliseRecipe } from "./drafts.mjs";
 
 const [directory, ...rest] = process.argv.slice(2);
 const flag = (name) => {
@@ -21,7 +22,7 @@ const files = readdirSync(directory).sort();
 
 const ingredients = [];
 for (const file of files.filter((name) => /^out-nutrition-\d+\.json$/u.test(name))) {
-  for (const raw of JSON.parse(readFileSync(join(directory, file), "utf8"))) ingredients.push(ingredientSchema.parse(raw));
+  for (const raw of JSON.parse(readFileSync(join(directory, file), "utf8"))) ingredients.push(ingredientSchema.parse(normaliseIngredient(raw)));
 }
 ingredients.sort((left, right) => left.id.localeCompare(right.id));
 const registry = ingredientRegistrySchema.parse({ schema_version: "1.0.0", reviewed_by: reviewedBy, reviewed_at: date, ingredients });
@@ -33,7 +34,7 @@ mkdirSync(join(out, "recipes"), { recursive: true });
 let written = 0;
 for (const file of files.filter((name) => /^out-recipes-\d+\.json$/u.test(name))) {
   for (const raw of JSON.parse(readFileSync(join(directory, file), "utf8"))) {
-    const recipe = recipeSchema.parse(raw);
+    const recipe = recipeSchema.parse(normaliseRecipe(raw));
     for (const line of recipe.ingredients) if (line.ref && !ids.has(line.ref)) throw new Error(`${recipe.id}: unknown ingredient ${line.ref}`);
     writeFileSync(join(out, "recipes", `${recipe.id}.json`), `${JSON.stringify(recipe, null, 1)}\n`);
     written += 1;

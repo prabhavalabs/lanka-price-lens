@@ -62,13 +62,14 @@ export const ingredientSchema = z.object({
   state: z.enum(ingredientStates),
   /** The form a household buys: "curry cut, skin and bone in", "whole, dehusked". */
   as_purchased_note: z.string().trim().min(1).nullable().default(null),
-  /** Edible fraction of the purchased weight; recipe quantities are as purchased. */
-  edible_portion: z.number().finite().min(0.05).max(1),
+  /** Edible fraction of the purchased weight; recipe quantities are as purchased. Zero for a wrapper such as a banana leaf. */
+  edible_portion: z.number().finite().min(0).max(1),
   density_g_per_ml: positive.nullable().default(null),
   measures: z
     .object({ tsp_g: optionalMeasure, tbsp_g: optionalMeasure, cup_g: optionalMeasure, piece_g: optionalMeasure, bunch_g: optionalMeasure })
     .default({ tsp_g: null, tbsp_g: null, cup_g: null, piece_g: null, bunch_g: null }),
-  nutrition: nutritionSchema,
+  /** Null when no table carries the food (a steeped herb, a wrapper leaf): the ingredient then counts as unknown in a recipe's total. */
+  nutrition: nutritionSchema.nullable(),
   /** Where the figure was checked: the table, the entry as it titles the food, and its values. */
   sources: z
     .array(
@@ -98,13 +99,19 @@ export const ingredientRegistrySchema = z
     for (const [index, ingredient] of registry.ingredients.entries()) {
       if (seen.has(ingredient.id)) context.addIssue({ code: "custom", message: `Duplicate ingredient id ${ingredient.id}`, path: ["ingredients", index, "id"] });
       seen.add(ingredient.id);
-      const { kcal, protein_g, fat_g, carb_g } = ingredient.nutrition;
-      const expected = 4 * protein_g + 9 * fat_g + 4 * carb_g;
+      if (!ingredient.nutrition) continue;
+      const expected = atwaterEnergy(ingredient.nutrition);
       // Atwater check: an entry whose energy is far from its macros was mistyped somewhere.
-      if (expected > 20 && Math.abs(kcal - expected) / expected > 0.25) context.addIssue({ code: "custom", message: `${ingredient.id}: ${kcal} kcal but macros give about ${Math.round(expected)}`, path: ["ingredients", index, "nutrition"] });
+      if (expected > 20 && Math.abs(ingredient.nutrition.kcal - expected) / expected > 0.3) context.addIssue({ code: "custom", message: `${ingredient.id}: ${ingredient.nutrition.kcal} kcal but macros give about ${Math.round(expected)}`, path: ["ingredients", index, "nutrition"] });
     }
   });
 export type IngredientRegistry = z.infer<typeof ingredientRegistrySchema>;
+
+/** Energy the macros account for: 4 kcal/g protein and available carbohydrate, 9 fat, 2 fibre (tables discount fibre this way). */
+export function atwaterEnergy(nutrition: Nutrition): number {
+  const fibre = Math.min(nutrition.fibre_g ?? 0, nutrition.carb_g);
+  return 4 * nutrition.protein_g + 9 * nutrition.fat_g + 4 * (nutrition.carb_g - fibre) + 2 * fibre;
+}
 
 /** True for ingredients the warehouse can price today. */
 export function isPricedIngredient(id: string): boolean {

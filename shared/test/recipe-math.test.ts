@@ -140,4 +140,5 @@ test("schemas refuse mismatched step counts and energy far from the macros", () 
   const registryCheck = ingredientRegistrySchema.safeParse({ schema_version: "1.0.0", reviewed_by: "tests", reviewed_at: "2026-09-13", ingredients: [{ ...registry.get("product_chicken"), nutrition: { kcal: 500, protein_g: 18.6, fat_g: 15.1, carb_g: 0 } }] });
   assert.equal(registryCheck.success, false);
   assert.match(registryCheck.success ? "" : registryCheck.error.issues[0]!.message, /500 kcal but macros give about 210/u);
+  assert.equal(ingredientRegistrySchema.safeParse({ schema_version: "1.0.0", reviewed_by: "tests", reviewed_at: "2026-09-13", ingredients: [{ ...registry.get("product_chicken"), nutrition: null, edible_portion: 0 }] }).success, true, "unknown nutrition and a zero edible portion are allowed");
 });
