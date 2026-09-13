@@ -31,8 +31,8 @@ export function AccountMenu() {
   if (account.status === "loading") return <Skeleton aria-hidden className="mx-1 size-6 rounded-full" />;
   if (account.status === "signed_out") {
     return (
-      <Button asChild className="gap-1.5 px-1.5 sm:px-2.5" size="sm" variant="ghost">
-        <Link className="no-underline" to={withReturnTo("/account/login", locationPath(location))}><RiUserLine className="size-4" /><span className="hidden sm:inline">Sign in</span></Link>
+      <Button asChild className="gap-1.5 px-1.5 md:px-2.5" size="sm" variant="ghost">
+        <Link className="no-underline" to={withReturnTo("/account/login", locationPath(location))}><RiUserLine className="size-4" /><span className="hidden md:inline">Sign in</span></Link>
       </Button>
     );
   }
