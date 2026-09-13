@@ -4,7 +4,7 @@ import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 import { atwaterEnergy, computedTags, ingredientSchema, recipeNutrition, recipeSchema } from "../../shared/src/index.ts";
-import { normaliseIngredient, normaliseRecipe } from "./drafts.mjs";
+import { normaliseIngredient, normaliseRecipe, poolDrafts } from "./drafts.mjs";
 
 const directory = process.argv[2];
 if (!directory) {
@@ -73,15 +73,10 @@ const perServingRanges = {
   pulses_and_eggs: { protein: ["pulse", "egg"], grams: [25, 120] },
 };
 const recipes = new Map();
-for (const file of files.filter((name) => /^out-recipes-\d+\.json$/u.test(name))) {
-  let entries;
-  try {
-    entries = JSON.parse(readFileSync(join(directory, file), "utf8"));
-  } catch (error) {
-    note(file, null, `not JSON: ${error.message}`);
-    continue;
-  }
-  for (const draft of entries) {
+const pooled = poolDrafts(readdirSync, readFileSync, join, directory);
+for (const problem of pooled.problems) note(problem.file, problem.id, problem.message);
+{
+  for (const { raw: draft, file } of pooled.pool.values()) {
     const raw = normaliseRecipe(draft);
     const parsed = recipeSchema.safeParse(raw);
     if (!parsed.success) {

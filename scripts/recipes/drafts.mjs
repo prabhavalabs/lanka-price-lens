@@ -96,3 +96,49 @@ export function energyConsistent(nutrition, tolerance = 0.3) {
   const expected = atwaterEnergy(nutrition);
   return expected <= 20 || Math.abs(nutrition.kcal - expected) / expected <= tolerance;
 }
+
+/**
+ * Reads every out-recipes-NN.json in a directory as one pool. Drafting agents shared scratch
+ * files and some recipes landed in a sibling batch's output; a recipe is taken from the file
+ * of the batch that owns its id when that file has it, otherwise from wherever it is.
+ */
+export function poolDrafts(readdirSync, readFileSync, join, directory) {
+  const files = readdirSync(directory).sort();
+  const owner = new Map();
+  for (const file of files.filter((name) => /^recipe-batch-\d+\.json$/u.test(name))) {
+    const number = /(\d+)\.json$/u.exec(file)[1];
+    for (const dish of JSON.parse(readFileSync(join(directory, file), "utf8"))) owner.set(dish.id, number);
+  }
+  const pool = new Map();
+  const problems = [];
+  for (const file of files.filter((name) => /^out-recipes-\d+\.json$/u.test(name))) {
+    const number = /(\d+)\.json$/u.exec(file)[1];
+    let entries;
+    try {
+      entries = JSON.parse(readFileSync(join(directory, file), "utf8"));
+    } catch (error) {
+      problems.push({ file, id: null, message: `not JSON: ${error.message}` });
+      continue;
+    }
+    if (!Array.isArray(entries)) {
+      problems.push({ file, id: null, message: "not an array" });
+      continue;
+    }
+    for (const raw of entries) {
+      const id = raw?.id;
+      if (typeof id !== "string") {
+        problems.push({ file, id: null, message: "entry without an id" });
+        continue;
+      }
+      const own = owner.get(id) === number;
+      const existing = pool.get(id);
+      if (existing && existing.own && !own) continue;
+      if (existing && existing.own && own) {
+        problems.push({ file, id, message: "listed twice in its own batch" });
+        continue;
+      }
+      pool.set(id, { raw, file, own });
+    }
+  }
+  return { pool, problems, owner };
+}

@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { join, resolve } from "node:path";
 
 import { ingredientRegistrySchema, ingredientSchema, recipeSchema } from "../../shared/src/index.ts";
-import { normaliseIngredient, normaliseRecipe } from "./drafts.mjs";
+import { normaliseIngredient, normaliseRecipe, poolDrafts } from "./drafts.mjs";
 
 const [directory, ...rest] = process.argv.slice(2);
 const flag = (name) => {
@@ -47,12 +47,12 @@ console.log(`ingredients.json: ${registry.ingredients.length} entries, ${Object.
 const ids = new Set(registry.ingredients.map((entry) => entry.id));
 mkdirSync(join(out, "recipes"), { recursive: true });
 let written = 0;
-for (const file of files.filter((name) => /^out-recipes-\d+\.json$/u.test(name))) {
-  for (const raw of JSON.parse(readFileSync(join(directory, file), "utf8"))) {
-    const recipe = recipeSchema.parse(normaliseRecipe(raw));
-    for (const line of recipe.ingredients) if (line.ref && !ids.has(line.ref)) throw new Error(`${recipe.id}: unknown ingredient ${line.ref}`);
-    writeFileSync(join(out, "recipes", `${recipe.id}.json`), `${JSON.stringify(recipe, null, 1)}\n`);
-    written += 1;
-  }
+const pooled = poolDrafts(readdirSync, readFileSync, join, directory);
+if (pooled.problems.length) throw new Error(pooled.problems.map((problem) => `${problem.file} ${problem.id ?? ""}: ${problem.message}`).join("\n"));
+for (const { raw } of pooled.pool.values()) {
+  const recipe = recipeSchema.parse(normaliseRecipe(raw));
+  for (const line of recipe.ingredients) if (line.ref && !ids.has(line.ref)) throw new Error(`${recipe.id}: unknown ingredient ${line.ref}`);
+  writeFileSync(join(out, "recipes", `${recipe.id}.json`), `${JSON.stringify(recipe, null, 1)}\n`);
+  written += 1;
 }
 console.log(`recipes/: ${written} files`);
