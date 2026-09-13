@@ -72,7 +72,7 @@ export function normaliseRecipe(raw) {
   // Oil listed for deep frying is bought whole but mostly comes back out of the pan; mark it so the calculator counts the absorbed share.
   const fryingWords = /deep[- ]?fr(?:y|ied|ying)|for (?:deep )?frying|to (?:deep )?fry|frying oil|shallow[- ]?fry/iu;
   for (const line of recipe.ingredients) {
-    const oil = /oil$|^oil\b|_oil$|ghee|margarine/iu.test(`${line.ref ?? ""} ${line.label.en}`);
+    const oil = /\boil\b|_oil\b|ghee|margarine/iu.test(`${line.ref ?? ""} ${line.label.en}`);
     const wording = [line.label.en, line.preparation?.en ?? "", line.household ?? ""].join(" ");
     if (oil && line.part !== "tempering" && line.unit !== "piece" && line.quantity >= 40 && fryingWords.test(wording)) line.part = "frying";
   }
