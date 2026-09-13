@@ -1,0 +1,406 @@
+{
+ "id": "dish_mullet_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 220,
+  "description": {
+   "en": "A thick slice of mullet in coconut gravy with rice",
+   "si": "බත් සමඟ පොල් කිරි හොදියේ ඝන මුලට් පෙත්තක්",
+   "ta": "சாதத்துடன் தேங்காய்ப்பால் குழம்பில் தடிமனான மடவை மீன் துண்டு"
+  }
+ },
+ "yield_g": 880,
+ "ingredients": [
+  {
+   "ref": "product_mullet",
+   "label": {
+    "en": "mullet",
+    "si": "මුලට් (කලපු මාළු)",
+    "ta": "மடவை மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "2 medium fish",
+   "preparation": {
+    "en": "scaled, gutted and cut into thick slices",
+    "si": "කොරපොතු ගලවා, බඩවැල් ඉවත් කර, ඝන පෙතිවලට කපා",
+    "ta": "செதுள் நீக்கி, குடல் அகற்றி, தடிமனான துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காப்புளி (கோரக்கா)"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "2 dried pieces",
+   "preparation": {
+    "en": "soaked in hot water and crushed soft",
+    "si": "උණු වතුරේ පොඟවා තලා",
+    "ta": "சுடுநீரில் ஊறவைத்து நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 90,
+   "unit": "g",
+   "household": "9 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறி மசாலா தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "ඉරා",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "தளர்ந்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scale the mullet from tail towards the head, slit the belly, take out the insides and the black lining, then wash it several times in salted water.",
+    "minutes": null
+   },
+   {
+    "text": "Cut the fish into thick slices across the body and rub them with the turmeric and half the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Soak the gorakka in half a cup of hot water and crush it soft with your fingers.",
+    "minutes": 10
+   },
+   {
+    "text": "In a clay pot mix the onion, garlic, fenugreek, curry leaves, pandan leaf, curry powder and chilli powder with the thin coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to a gentle boil and cook until the onion is soft and the powders no longer taste raw.",
+    "minutes": 7
+   },
+   {
+    "text": "Add the gorakka water and the green chilli, then lay the fish in one layer and spoon gravy over each piece.",
+    "minutes": 2
+   },
+   {
+    "text": "Cook without stirring until the flesh parts from the bone when you press it with a spoon.",
+    "minutes": 12
+   },
+   {
+    "text": "Pour in the thick milk and the oil, shake the pot, bring it just to the boil and set it aside to rest before serving.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "මුලට් මාළුවේ කොරපොතු වලිගයේ සිට හිස දෙසට ගලවා, බඩ ඉරා, ඇතුළු කොටස් සහ කළු පටලය ඉවත් කර, ලුණු වතුරෙන් කිහිප වරක් සෝදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මාළුව හරහට ඝන පෙතිවලට කපා, කහ සහ ලුණු වලින් බාගයක් ගාන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගොරකා කෝප්පයක් බාගයක් උණු වතුරේ පොඟවා, ඇඟිලිවලින් තලා මෘදු කර ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වළං භාජනයක ලූනු, සුදුළූණු, උළුහාල්, කරපිංචා, රම්පෙ, තුනපහ සහ මිරිස් කුඩු දිය කිරි සමඟ අනා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "හෙමින් නටවා, ලූනු මෘදු වී කුඩුවල අමු රස යන තෙක් පිසින්න.",
+    "minutes": 7
+   },
+   {
+    "text": "ගොරකා වතුර සහ අමු මිරිස් දමා, මාළු එක ස්ථරයකට තබා, හැම කෑල්ලකට මතින් හොදි වත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කලතන්නේ නැතිව, හැන්දකින් තැලූ විට මස කටුවෙන් ගැලවෙන තෙක් පිසින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "මිටි කිරි සහ තෙල් දමා, භාජනය සොලවා, නටන්නට ආසන්නම වන තෙක් තබා, බෙදන්නට කලින් මදක් තියන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மடவை மீனின் செதுள்களை வாலில் இருந்து தலை நோக்கி நீக்கி, வயிற்றை கீறி, உள்ளுறுப்புகளையும் கறுப்பு படலத்தையும் அகற்றி, உப்பு நீரில் பலமுறை அலசவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மீனை குறுக்காக தடிமனான துண்டுகளாக வெட்டி, மஞ்சளும் பாதி உப்பும் தூவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கொடுக்காப்புளியை அரை கோப்பை சுடுநீரில் ஊறவைத்து, கையால் நசுக்கி மென்மையாக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் வெங்காயம், பூண்டு, வெந்தயம், கறிவேப்பிலை, ரம்பை இலை, கறித்தூள், மிளகாய்த் தூள் ஆகியவற்றை தளர்ந்த தேங்காய்ப் பாலுடன் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மெதுவாக கொதிக்க வைத்து, வெங்காயம் மென்மையாகி தூள்களின் பச்சை சுவை போகும் வரை சமைக்கவும்.",
+    "minutes": 7
+   },
+   {
+    "text": "புளி நீரையும் பச்சை மிளகாயையும் சேர்த்து, மீனை ஒரே அடுக்காக வைத்து, ஒவ்வொரு துண்டின் மேலும் குழம்பை ஊற்றவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கிளறாமல், கரண்டியால் அழுத்தினால் இறைச்சி முள்ளில் இருந்து பிரியும் வரை வேகவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "கெட்டியான பாலையும் எண்ணெயையும் விட்டு, சட்டியை அசைத்து, கொதிக்க வரும் நிலை வரை வைத்து, பரிமாறும் முன் சிறிது நேரம் வைக்கவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot with lid",
+  "scaling knife"
+ ],
+ "tips": {
+  "en": "Mullet from the lagoon can taste muddy, so wash it in salted water and take out the black lining inside the belly; that lining is what carries the off taste. A whole fish left in thick slices holds together far better than small chunks.",
+  "si": "කලපුවෙන් ගත්ත මුලට් මාළුවට මඩ රසයක් එන්න පුළුවන්; ඒ නිසා ලුණු වතුරෙන් සෝදා, බඩ ඇතුළේ ඇති කළු පටලය ඉවත් කරන්න. ඒ පටලය තමයි අමිහිරි රසය රැගෙන එන්නේ. පොඩි කැට වෙනුවට ඝන පෙතිවලට කැපුවොත් මාළුව කැඩෙන්නේ නැහැ.",
+  "ta": "கடலோர குளத்து மடவை மீனுக்கு சேற்று சுவை வரக்கூடும்; எனவே உப்பு நீரில் அலசி, வயிற்றின் உள்ளே உள்ள கறுப்பு படலத்தை நீக்கவும். அந்த படலமே அந்த சுவையை கொண்டு வருகிறது. சிறு துண்டுகளுக்கு பதிலாக தடிமனான துண்டுகளாக வெட்டினால் மீன் உடையாது."
+ },
+ "health_note": {
+  "en": "Mullet is a mild, moderately oily fish with good protein and omega fats, and cooked in gravy nothing is lost to frying. The coconut milk carries most of the calories here, so use more of the thin milk if you want it lighter.",
+  "si": "මුලට් කියන්නේ මෘදු, මධ්‍යම තෙල් සහිත මාළුවක්; හොඳ ප්‍රෝටීන් සහ ඔමේගා තෙල් තියෙනවා. හොදියේ පිසීම නිසා බදින විට වැනසෙන කිසිවක් නැහැ. කැලරි වැඩිපුරම එන්නේ පොල් කිරි වලින්, ඒ නිසා සැහැල්ලු කරන්න ඕනෑ නම් දිය කිරි වැඩියෙන් පාවිච්චි කරන්න.",
+  "ta": "மடவை மீன் மிதமான எண்ணெய்ச் சத்து கொண்ட, சுவை மிதமான மீன்; நல்ல புரதமும் ஒமேகா கொழுப்பும் உள்ளது. குழம்பில் சமைப்பதால் பொரிப்பில் இழக்கும் எதுவும் இல்லை. கலோரி பெரும்பாலும் தேங்காய்ப் பாலில் இருந்தே வருகிறது, எனவே இலகுவாக வேண்டுமானால் தளர்ந்த பாலை அதிகம் பயன்படுத்துங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "one_pot",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

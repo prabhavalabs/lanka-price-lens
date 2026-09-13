@@ -1,0 +1,435 @@
+{
+ "id": "dish_ramadan_kanji",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 480,
+  "description": {
+   "en": "A deep bowl of thick meat porridge to break the fast with",
+   "si": "උපවාසය බිඳීමට ගන්නා ඝන මස් කැඳ බඳුනක්",
+   "ta": "நோன்பு திறக்கப் பருகும் கெட்டியான இறைச்சிக் கஞ்சி ஒரு கிண்ணம்"
+  }
+ },
+ "yield_g": 1950,
+ "ingredients": [
+  {
+   "ref": "product_rice_nadu",
+   "label": {
+    "en": "nadu rice",
+    "si": "නාඩු සහල්",
+    "ta": "நாடு அரிசி"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "washed",
+    "si": "හෝදාගත්",
+    "ta": "அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef",
+    "si": "හරක් මස්",
+    "ta": "மாட்டு இறைச்சி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "a large piece with some bone",
+   "preparation": {
+    "en": "cut into small pieces, a little bone left in for flavour",
+    "si": "කුඩාවට කැපූ, රසය සඳහා ඇට ටිකක් සහිත",
+    "ta": "சிறு துண்டுகளாக வெட்டியது, சுவைக்கு சிறிது எலும்புடன்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල්කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thick, first squeeze, added at the end",
+    "si": "ඝන, පළමු මිරිකීම, අවසානයේ දමන",
+    "ta": "கெட்டியானது, முதல் பால், இறுதியில் சேர்ப்பது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "chopped",
+    "si": "කැපූ",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb tip",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கரட்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 carrots",
+   "preparation": {
+    "en": "diced small",
+    "si": "කුඩාවට කැපූ",
+    "ta": "சிறு துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 1/4 tsp",
+   "preparation": {
+    "en": "lightly crushed",
+    "si": "සැහැල්ලුවෙන් තලාගත්",
+    "ta": "லேசாக நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "coarsely ground",
+    "si": "රළුවට අඹරාගත්",
+    "ta": "கொரகொரப்பாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 stick",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mint_leaves",
+   "label": {
+    "en": "mint leaves",
+    "si": "මින්චි කොළ",
+    "ta": "புதினா இலை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "chopped, stirred in at the end",
+    "si": "කැපූ, අවසානයේ දමන",
+    "ta": "நறுக்கியது, இறுதியில் சேர்ப்பது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "1 1/2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Heat the oil in a large pot and fry the onion, garlic, ginger, curry leaves, cinnamon, fennel and cumin until the onion is soft and the kitchen smells of the spices.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the beef with the turmeric, pepper and half the salt and turn it about on a high flame until the meat has taken colour all over.",
+    "minutes": 6
+   },
+   {
+    "text": "Pour in 1.5 litres of water, bring it to a boil and then let it simmer with the lid half on until the meat is tender.",
+    "minutes": 35
+   },
+   {
+    "text": "Lift out the largest pieces of beef, pull the meat off any bone, shred it with two forks and return it to the pot.",
+    "minutes": null
+   },
+   {
+    "text": "Add the washed rice and the diced carrot and cook on a low flame, stirring from the bottom now and then so it does not catch.",
+    "minutes": 25
+   },
+   {
+    "text": "Keep cooking until the grains have burst and the porridge is thick enough to coat the spoon, adding hot water if it tightens too much.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour in the thick coconut milk, add the rest of the salt and the mint, and let it come to the gentlest simmer without boiling hard.",
+    "minutes": 5
+   },
+   {
+    "text": "Taste for salt and pepper, and ladle it out hot; it thickens as it stands, so keep a jug of hot water nearby.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "විශාල හැළියක තෙල් රත් කර, ලූනු, සුදුලූනු, ඉඟුරු, කරපිංචා, කුරුඳු, මාදුරු සහ සූදුරු දමා ලූනු මුදු වී කුළුබඩු සුවඳ නගින තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "හරක් මස්, කහ, ගම්මිරිස් සහ ලුණු වලින් අඩක් දමා, මහ ගින්නේ මස හාත්පසින්ම වර්ණය ගන්නා තුරු පෙරළමින් බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "වතුර ලීටර් 1.5ක් දමා නටවා, පසුව පියන අඩක් වසා මස මුදු වන තුරු සෙමින් තම්බන්න.",
+    "minutes": 35
+   },
+   {
+    "text": "ලොකු මස් කැබලි ඉවතට ගෙන, ඇටවලින් මස ගලවා, ගෑරුප්පු දෙකකින් ඉරා නැවත හැළියට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෝදාගත් සහල් සහ කැපූ කැරට් දමා, අඩු ගින්නේ, පතුලෙන් අතරින් පතර හොඳවමින් නොඇලෙන ලෙස පිහන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "බත් ඇට පැළී කැඳ හැන්දේ තැවරෙන තරමට ඝන වන තුරු දිගටම පිහන්න; ඉතා තද වේ නම් උණු වතුර ටිකක් එකතු කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඝන පොල්කිරි වත් කර, ඉතිරි ලුණු සහ මින්චි දමා, තදින් නටන්නට නොදී ඉතා සෙමින් රත් වන්නට දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලුණු සහ ගම්මිරිස් රස බලා උණුසුම්ව බෙදන්න; තිබෙන විට තව ඝන වන බැවින් උණු වතුර ජෝගුවක් අත ළඟ තබා ගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பெரிய பாத்திரத்தில் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, பட்டை, பெருஞ்சீரகம், சீரகம் சேர்த்து வெங்காயம் மென்மையாகி வாசனை வரும் வரை வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மாட்டிறைச்சியுடன் மஞ்சள், மிளகு, பாதி உப்பு சேர்த்து, பெருந்தீயில் இறைச்சி முழுவதும் நிறம் மாறும் வரை புரட்டி வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "1.5 லிட்டர் தண்ணீர் ஊற்றி கொதிக்கவைத்து, பின் மூடியை பாதி மூடி இறைச்சி மென்மையாகும் வரை மெதுவாக வேகவிடுங்கள்.",
+    "minutes": 35
+   },
+   {
+    "text": "பெரிய இறைச்சித் துண்டுகளை எடுத்து, எலும்பிலிருந்து இறைச்சியைப் பிரித்து, இரண்டு முள்கரண்டிகளால் கிழித்து மீண்டும் பாத்திரத்தில் போடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அலசிய அரிசியையும் நறுக்கிய கரட்டையும் சேர்த்து, சிறு தீயில் அடியிலிருந்து இடையிடையே கிளறி பிடிக்காமல் வேகவிடுங்கள்.",
+    "minutes": 25
+   },
+   {
+    "text": "பருக்கைகள் வெடித்து கஞ்சி கரண்டியில் ஒட்டும் அளவு கெட்டியாகும் வரை தொடர்ந்து வேகவிடுங்கள்; மிக இறுகினால் வெந்நீர் சேர்க்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலை ஊற்றி, மீதி உப்பையும் புதினாவையும் சேர்த்து, கொதிக்க விடாமல் மிக மெதுவாகச் சூடாகட்டும்.",
+    "minutes": 5
+   },
+   {
+    "text": "உப்பும் மிளகும் பார்த்து சூடாகப் பரிமாறுங்கள்; வைத்திருந்தால் மேலும் கெட்டியாகும், எனவே வெந்நீர் அருகில் வைத்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 60,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "large heavy pot",
+  "ladle",
+  "two forks for shredding the meat"
+ ],
+ "tips": {
+  "en": "Cook the meat soft before the rice goes in, because once the starch thickens the pot the meat stops softening and the bottom catches easily. Add the coconut milk only at the end and never let it boil hard, or it splits and the kanji looks curdled.",
+  "si": "බත් දැමීමට පෙර මස මුදු කර ගන්න; පිෂ්ටය හැළිය ඝන කළ පසු මස තවත් මුදු නොවන අතර පතුල ඉක්මනින් ඇලෙයි. පොල්කිරි අවසානයේ පමණක් දමා තදින් නටන්නට කිසිසේත් ඉඩ නොදෙන්න, නැතිනම් එය කැඩී කැඳ කැපී ගිය ලෙස පෙනෙයි.",
+  "ta": "அரிசி சேர்க்கும் முன் இறைச்சியை நன்றாக வேகவையுங்கள்; மாவுச்சத்து பாத்திரத்தைக் கெட்டியாக்கிய பின் இறைச்சி மேலும் வேகாது, அடியும் பிடிக்கும். தேங்காய்ப் பாலை இறுதியிலேயே சேர்த்து கொதிக்க விடாதீர்கள், இல்லையேல் பால் திரிந்து கஞ்சி பிரிந்து தெரியும்."
+ },
+ "health_note": {
+  "en": "After a long fast a warm, soft porridge is easier on an empty stomach than fried food, and the meat and rice together restore energy and iron gently. Watch the salt if you are serving a large group, and keep water and dates alongside so the meal is not all at once.",
+  "si": "දිගු උපවාසයකින් පසු උණුසුම්, මුදු කැඳක් හිස් බඩකට බැදපු කෑමවලට වඩා පහසුයි; මස සහ බත එකට ශක්තිය හා යකඩ සෙමින් යථා තත්ත්වයට පත් කරයි. විශාල පිරිසකට දෙන විට ලුණු කෙරෙහි අවධානය යොමු කර, කෑම එකවර නොවන පරිදි වතුර සහ රටඉඳි පසෙක තබා ගන්න.",
+  "ta": "நீண்ட நோன்புக்குப் பிறகு சூடான மென்மையான கஞ்சி வெறும் வயிற்றுக்கு பொரித்த உணவை விட இதமானது; இறைச்சியும் அரிசியும் சேர்ந்து ஆற்றலையும் இரும்புச்சத்தையும் மெதுவாகத் திரும்பத் தருகின்றன. பெரிய கூட்டத்துக்குப் பரிமாறும்போது உப்பைக் கவனியுங்கள்; தண்ணீரும் பேரீச்சம்பழமும் உடன் வையுங்கள், உணவு ஒரே நேரத்தில் அடைக்காமல் இருக்கும்."
+ },
+ "tags": [
+  "comfort",
+  "filling",
+  "high_protein",
+  "iron_rich",
+  "elderly_friendly",
+  "one_pot",
+  "hydrating"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

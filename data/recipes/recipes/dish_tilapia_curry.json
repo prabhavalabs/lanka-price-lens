@@ -1,0 +1,378 @@
+{
+ "id": "dish_tilapia_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 200,
+  "description": {
+   "en": "A fried tilapia piece with its gravy, over rice",
+   "si": "බත් සමඟ බැදපු තිලාපියා කෑල්ලක් සහ හොදි",
+   "ta": "சாதத்துடன் பொரித்த திலாப்பியா துண்டும் குழம்பும்"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "pantry_tilapia",
+   "label": {
+    "en": "tilapia",
+    "si": "තිලාපියා",
+    "ta": "திலாப்பியா"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "2 medium fish",
+   "preparation": {
+    "en": "scaled, cleaned and cut into steaks",
+    "si": "කොරපොතු ගලවා පිරිසිදු කර කෑලිවලට කපාගත්",
+    "ta": "செதில் நீக்கிச் சுத்தம் செய்து துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "for shallow frying",
+    "si": "බැදගැනීමට",
+    "ta": "பொரிப்பதற்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "frying"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "தட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගත්",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 large piece",
+   "preparation": {
+    "en": "soaked and mashed",
+    "si": "වතුරේ දමා තලාගත්",
+    "ta": "ஊறவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ කුඩු",
+    "ta": "கறித் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்த்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarter cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scale and gut the tilapia, wash it well inside and out and cut it across into thick steaks.",
+    "minutes": 12
+   },
+   {
+    "text": "Rub the pieces with salt and half the turmeric and leave them while you heat the oil.",
+    "minutes": 5
+   },
+   {
+    "text": "Shallow fry the pieces in the hot coconut oil on both sides until the skin is golden and firm, then lift them onto a plate.",
+    "minutes": 10
+   },
+   {
+    "text": "In the same oil temper the onion, garlic, green chilli and curry leaves until the onion softens.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the curry powder, chilli powder and the rest of the turmeric and stir them in the oil for a moment.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the mashed goraka with its water and the thin coconut milk, add salt and simmer until it thickens.",
+    "minutes": 8
+   },
+   {
+    "text": "Return the fried fish to the pan, spoon gravy over it and simmer gently without stirring.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the thick coconut milk, bring it almost to a boil, taste for salt and sourness and take it off the fire.",
+    "minutes": 3
+   }
+  ],
+  "si": [
+   {
+    "text": "තිලාපියාගේ කොරපොතු ගලවා බඩවැල් ඉවත් කර, ඇතුළත පිටත හොඳින් සෝදා, හරස් අතට ලොකු කෑලිවලට කපන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "කෑලිවලට ලුණු සහ කහ භාගයක් ගල්වා, තෙල් රත් වන තුරු තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "රත් වූ පොල් තෙලේ කෑලි දෙපැත්ත හම රන්වන් වී තද වන තුරු බැදගෙන පිඟානකට අරගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එම තෙලේම ළූණු, සුදුළූණු, අමු මිරිස් සහ කරපිංචා දමා ළූණු මෘදු වන තුරු තෙල් දාන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "තුනපහ කුඩු, මිරිස් කුඩු සහ ඉතිරි කහ දමා මොහොතක් තෙලේ කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "තලාගත් ගොරකා ඒ වතුර සමඟ සහ දිය පොල් කිරි වත් කර, ලුණු දමා හොදි තද වන තුරු තබන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බැදපු මාළු නැවත පෑන් එකට දමා, හොදි ඒ මතට වත් කර, කලවම් නොකර සෙමින් පිසින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මිටි පොල් කිරි දමා නටන්න ආසන්න වන තුරු තබා, ලුණු සහ ඇඹුල රස බලා ලිපෙන් ඉවත් කරන්න.",
+    "minutes": 3
+   }
+  ],
+  "ta": [
+   {
+    "text": "திலாப்பியாவின் செதிலை நீக்கி, குடலை எடுத்து, உள்ளும் புறமும் நன்கு கழுவி, குறுக்காகப் பெரிய துண்டுகளாக வெட்டுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "துண்டுகளில் உப்பும் பாதி மஞ்சளும் தடவி, எண்ணெய் காயும் வரை வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "காய்ந்த தேங்காய் எண்ணெயில் இரு பக்கமும் தோல் பொன்னிறமாகி இறுகும் வரை பொரித்து, தட்டில் எடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே எண்ணெயில் வெங்காயம், பூண்டு, பச்சை மிளகாய், கறிவேப்பிலை போட்டு வெங்காயம் மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கறித் தூள், மிளகாய்த் தூள், மீதி மஞ்சள் சேர்த்து ஒரு நிமிடம் எண்ணெயில் கிளறுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "மசித்த கொடுக்காய்ப்புளியை அதன் நீருடன், நீர்த்த தேங்காய்ப் பாலையும் விட்டு, உப்புச் சேர்த்து குழம்பு இறுகும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "பொரித்த மீனைத் திரும்பச் சேர்த்து, குழம்பை மேலே ஊற்றி, கிளறாமல் மெதுவாக வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலைச் சேர்த்து, கொதிக்க வரும் நிலையில் உப்பையும் புளிப்பையும் பார்த்து இறக்குங்கள்.",
+    "minutes": 3
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan",
+  "clay pot or heavy pan"
+ ],
+ "tips": {
+  "en": "Frying the pieces first keeps freshwater fish from breaking up in the gravy and takes away the muddy smell of tank fish. Wash it with a little lime before frying for the same reason.",
+  "si": "මුලින් බැදගැනීමෙන් වැව් මාළු හොදියේ කැඩෙන එක නවතිනවා, වැව් මාළුවේ මඩ ගඳත් යනවා. ඒ හේතුවටම බදින්න කලින් දෙහි ටිකක් දමා සෝදන්න.",
+  "ta": "முதலில் பொரிப்பதால் நன்னீர் மீன் குழம்பில் உடையாமல் இருக்கும், குளத்து மீனின் மண் வாசமும் போகும். அதே காரணத்துக்காக பொரிப்பதற்கு முன் சிறிது எலுமிச்சை சேர்த்துக் கழுவுங்கள்."
+ },
+ "health_note": {
+  "en": "Tilapia is one of the cheapest ways to put fish protein on the table and it is low in fat itself. The frying oil and the thick milk are where the calories come in, so drain the pieces well after frying.",
+  "si": "මේසයට මාළු ප්‍රෝටීන් ගන්න තිලාපියා ලාබම මාර්ගයක්; මාළුවේ මේදය අඩුයි. කැලරි එන්නේ බැදපු තෙලෙන් සහ මිටි කිරිවලින්, ඒ නිසා බැදලා කෑලිවල තෙල් හොඳින් බේරෙන්න තියන්න.",
+  "ta": "மேசைக்கு மீன் புரதம் கொண்டுவர திலாப்பியா மிக மலிவான வழி; மீனிலேயே கொழுப்பு குறைவு. கலோரி வருவது பொரித்த எண்ணெயிலும் கெட்டிப் பாலிலும், எனவே பொரித்த பின் எண்ணெயை நன்கு வடியவிடுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "budget",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

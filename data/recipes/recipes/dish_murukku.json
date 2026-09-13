@@ -1,0 +1,335 @@
+{
+ "id": "dish_murukku",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 90,
+  "description": {
+   "en": "Three or four spirals from the tin with tea",
+   "si": "තේ සමඟ ටින් එකෙන් ගත් මුරුක්කු තුනක් හතරක්",
+   "ta": "தேநீருடன் டப்பியிலிருந்து எடுத்த மூன்று நான்கு சுருள் முறுக்கு"
+  }
+ },
+ "yield_g": 360,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "lightly dry-roasted and sieved",
+    "si": "ලා ලෙස වියළි ලෙස බැදගෙන පෙරාගත්",
+    "ta": "லேசாக வறுத்துச் சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_urad_dhal_flour",
+   "label": {
+    "en": "urad dhal flour",
+    "si": "උළුඳු පිටි",
+    "ta": "உளுந்து மாவு"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "½ cup",
+   "preparation": {
+    "en": "sieved",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": {
+    "en": "lightly crushed",
+    "si": "ලා ලෙස කොටාගත්",
+    "ta": "லேசாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_sesame_seeds",
+   "label": {
+    "en": "sesame seeds",
+    "si": "තල",
+    "ta": "எள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1½ tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies, ground",
+    "si": "අඹරාගත් වියළි මිරිස්",
+    "ta": "அரைத்த காய்ந்த மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies, ground to a powder",
+   "preparation": {
+    "en": "dry-roasted and ground fine, or use the same weight of chilli powder",
+    "si": "වියළි ලෙස බැදගෙන සිහින්ව අඹරාගත්; නැතිනම් ඒ තරම් මිරිස් කුඩු",
+    "ta": "வறுத்து நன்கு அரைத்தது; அல்லது அதே அளவு மிளகாய்த் தூள்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_asafoetida",
+   "label": {
+    "en": "asafoetida",
+    "si": "පෙරුම්කායම්",
+    "ta": "பெருங்காயம்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "1½ tbsp",
+   "preparation": {
+    "en": "soft, rubbed into the flour",
+    "si": "මෘදු, පිටිවලට අතුල්ලාගත්",
+    "ta": "மிருதுவானது, மாவில் தேய்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "1¾ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dry-roast the rice flour on a low fire for a couple of minutes until it smells warm but takes no colour; this keeps the murukku from drinking oil.",
+    "minutes": 3
+   },
+   {
+    "text": "Sieve it with the urad dhal flour, salt, ground dried chilli and asafoetida into a wide bowl.",
+    "minutes": null
+   },
+   {
+    "text": "Rub in the soft butter with the crushed cumin and sesame until a fistful holds its shape when squeezed.",
+    "minutes": null
+   },
+   {
+    "text": "Add hot water a little at a time and work it into a stiff dough, softer than roti dough but not sticky.",
+    "minutes": 8
+   },
+   {
+    "text": "Keep the dough covered with a damp cloth while you work; a dry dough cracks as it leaves the press.",
+    "minutes": null
+   },
+   {
+    "text": "Fill the murukku press with the star plate and screw the top down firmly.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil in a deep pan on a medium fire; a pinch of dough should rise steadily, not fiercely.",
+    "minutes": 6
+   },
+   {
+    "text": "Press spirals straight into the oil, three or four turns each, working from the outside in.",
+    "minutes": null
+   },
+   {
+    "text": "Fry until the hissing dies down and the coils are an even brown, turning them once.",
+    "minutes": 20
+   },
+   {
+    "text": "Lift onto paper, cool completely and store in a tin with a tight lid; they keep a fortnight.",
+    "minutes": 30
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් පිටි අඩු ලිපේ මිනිත්තු දෙකක් පමණ, පාට නොවෙනස්ව උණුසුම් සුවඳක් එන තෙක් වියළි ලෙස බැදගන්න; එවිට මුරුක්කු තෙල් අඩුවෙන් උරා ගනී.",
+    "minutes": 3
+   },
+   {
+    "text": "එය උළුඳු පිටි, ලුණු, අඹරාගත් වියළි මිරිස් සහ පෙරුම්කායම් සමඟ පළල් බඳුනකට පෙරා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කොටාගත් සූදුරු සහ තල සමඟ මෘදු බටර් අතුල්ලා, අතට ගෙන මිරිකූ විට හැඩය රඳවන තෙක් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උණු වතුර ටිකෙන් ටික දමමින්, රොටී පිටිවලට වඩා මෘදු නමුත් නොඇලෙන තද ගුලියක් අනා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "වැඩ කරන අතරතුර පිටි ගුලිය තෙත් රෙද්දකින් වසා තබන්න; වියළි ගුලියක් අච්චුවෙන් එන විට ඉරෙයි.",
+    "minutes": null
+   },
+   {
+    "text": "මුරුක්කු අච්චුවට තරු තැටිය දමා, පිටි පුරවා, මුදුන තදින් කරකවා වසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගැඹුරු පෑනක තෙල් මධ්‍යම ලිපේ රත් කරන්න; පිටි ස්වල්පයක් තදින් නොව ස්ථාවරව නැඟිය යුතුය.",
+    "minutes": 6
+   },
+   {
+    "text": "පිටතින් ඇතුළට යන ලෙස, එකකට වට තුනක් හතරක් බැගින්, කෙළින්ම තෙලට මුරුක්කු අඹරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ශබ්දය නැවතී වළලු සමව දුඹුරු වන තෙක්, එක් වරක් පෙරළමින් බැදගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කඩදාසියකට ගෙන, හොඳින් සිසිල් කර, තදින් වැසෙන ටින් එකක තබන්න; සති දෙකක් පමණ තිබේ.",
+    "minutes": 30
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசி மாவை குறைந்த தீயில் இரண்டு நிமிடம், நிறம் மாறாமல் வெதுவெதுப்பான வாசனை வரும் வரை வறுக்கவும்; இதனால் முறுக்கு எண்ணெயைக் குறைவாக உறிஞ்சும்.",
+    "minutes": 3
+   },
+   {
+    "text": "அதை உளுந்து மாவு, உப்பு, அரைத்த காய்ந்த மிளகாய், பெருங்காயத்துடன் ஒரு அகலமான கிண்ணத்தில் சலிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இடித்த சீரகம், எள்ளுடன் மிருதுவான வெண்ணெயைத் தேய்த்து, ஒரு பிடி எடுத்து அழுத்தினால் வடிவம் பிடிக்கும் வரை கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சூடான நீரைக் கொஞ்சம் கொஞ்சமாகச் சேர்த்து, ரொட்டி மாவை விட மிருதுவான ஆனால் ஒட்டாத இறுக்கமான மாவாகப் பிசையவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "வேலை செய்யும்போது மாவை ஈரத் துணியால் மூடி வைக்கவும்; வறண்ட மாவு அச்சிலிருந்து வரும்போது வெடிக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "முறுக்கு அச்சில் நட்சத்திரத் தட்டைப் போட்டு, மாவை நிரப்பி, மேற்பகுதியை இறுக்கமாகத் திருகவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆழமான வாணலியில் எண்ணெயை நடுத்தர தீயில் காயவைக்கவும்; ஒரு சிறிது மாவு வேகமாக அல்ல, நிதானமாக மேலெழ வேண்டும்.",
+    "minutes": 6
+   },
+   {
+    "text": "வெளியிலிருந்து உள்நோக்கி, ஒவ்வொன்றுக்கும் மூன்று நான்கு சுற்றாக, நேரடியாக எண்ணெயில் பிழியவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சத்தம் அடங்கி சுருள்கள் சமமான பொன்னிறமாகும் வரை, ஒரு முறை திருப்பிப் பொரிக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "காகிதத்தில் எடுத்து, முழுமையாக ஆறவிட்டு, இறுக்கமான மூடியுள்ள டப்பியில் வைக்கவும்; இரண்டு வாரம் இருக்கும்.",
+    "minutes": 30
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 30,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "murukku press with star plate",
+  "deep pan",
+  "airtight tin"
+ ],
+ "tips": {
+  "en": "Too much butter and the murukku falls apart in the oil; too little and it is hard on the teeth. Press a test spiral first, and if it breaks as it comes out, work in a spoon of hot water rather than more fat.",
+  "si": "බටර් වැඩි නම් මුරුක්කු තෙලේ දී කැඩී යයි; අඩු නම් දතට තදයි. පළමුව එකක් අඹරා බලන්න; අච්චුවෙන් එනකොටම කැඩේ නම්, තව මේදය නොව උණු වතුර හැන්දක් දමා අනන්න.",
+  "ta": "வெண்ணெய் அதிகமானால் முறுக்கு எண்ணெயில் உடைந்துவிடும்; குறைவானால் பல்லுக்குக் கடினமாக இருக்கும். முதலில் ஒரு சோதனைச் சுருளைப் பிழிந்து பாருங்கள்; அச்சிலிருந்து வரும்போதே உடைந்தால், கூடுதல் கொழுப்பு அல்ல, ஒரு ஸ்பூன் சூடான நீர் சேர்த்துப் பிசையவும்."
+ },
+ "health_note": {
+  "en": "Rice and urad flour fried into a coil is mostly starch and oil, with a little protein from the dhal flour, so it is a treat to keep in a tin rather than a snack to eat by the handful. Because it keeps so well the danger is quantity, not the recipe.",
+  "si": "සහල් සහ උළුඳු පිටිවලින් සාදා බැදූ මුරුක්කුවල ඇත්තේ බොහෝ දුරට පිෂ්ටය සහ තෙල්, උළුඳු පිටිවලින් ප්‍රෝටීන් ස්වල්පයක් ය. එබැවින් අතට අත කන කෙටි කෑමක් නොව, ටිනයක තබා ගන්නා සත්කාරයකි. එය බොහෝ කල් තිබෙන බැවින් අවදානම ඇත්තේ ප්‍රමාණය තුළ මිස වට්ටෝරුව තුළ නොවේ.",
+  "ta": "அரிசி, உளுந்து மாவில் பொரித்த முறுக்கில் பெரும்பாலும் மாவுச்சத்தும் எண்ணெயும்தான், உளுந்து மாவிலிருந்து சிறிது புரதம். எனவே கைநிறையச் சாப்பிடும் சிற்றுண்டி அல்ல, டப்பியில் வைத்திருக்கும் விருந்து. நீண்ட நாள் கெடாது என்பதால் ஆபத்து அளவில்தான், செய்முறையில் அல்ல."
+ },
+ "tags": [
+  "deep_fried",
+  "festive",
+  "budget",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

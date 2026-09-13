@@ -1,0 +1,308 @@
+{
+ "id": "dish_dambala_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 70,
+  "description": {
+   "en": "A crunchy dry mallung of finely chopped winged beans",
+   "si": "සිහින්ව කපාගත් දඹල සහිත කිරිච්චි වේලුණු මැල්ලුමක්",
+   "ta": "மிக நறுக்கிய சிறகுப் பீன்ஸ் கொண்ட மொறுமொறுப்பான வற்றல் வதக்கல்"
+  }
+ },
+ "yield_g": 300,
+ "ingredients": [
+  {
+   "ref": "product_dambala",
+   "label": {
+    "en": "winged beans (dambala)",
+    "si": "දඹල",
+    "ta": "சிறகுப் பீன்ஸ் (தம்பள)"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 cups, chopped",
+   "preparation": {
+    "en": "tops trimmed, sliced very thin across the ridges",
+    "si": "කෙළවර ඉවත් කර, ඉරි හරහට ඉතා සිහින්ව කපා",
+    "ta": "நுனிகளை நீக்கி, சிறகுகளுக்கு குறுக்கே மிக மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලා",
+    "ta": "பொடியாக இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பலகடா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp, pounded",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කොටා",
+    "ta": "கரடுமுரடாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed",
+   "preparation": {
+    "en": "juice only, added off the fire",
+    "si": "යුෂ පමණක්, ලිපෙන් ඉවතට ගත් පසු",
+    "ta": "சாறு மட்டும், அடுப்பை விட்டு இறக்கிய பின்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 5,
+   "unit": "ml",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Trim the ends off the winged beans and slice them across the ridges as thin as you can manage; thick slices stay tough in a mallung.",
+    "minutes": 12
+   },
+   {
+    "text": "Wash the slices and drain them; do not soak them, or they lose their crunch.",
+    "minutes": 2
+   },
+   {
+    "text": "Mix the scraped coconut with the onion, chilli, turmeric, pepper and pounded maldive fish with your fingers.",
+    "minutes": 3
+   },
+   {
+    "text": "Heat a pan with the teaspoon of oil, add the beans with three tablespoons of water and cook covered on a medium flame until they lose their raw taste but keep a bite.",
+    "minutes": 5
+   },
+   {
+    "text": "Uncover, add the coconut mixture and salt and toss until the pan is dry and the coconut has warmed through.",
+    "minutes": 4
+   },
+   {
+    "text": "Take it off the fire and squeeze the lime over; served this way the mallung stays bright green and crisp.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "දඹලවල කෙළවර ඉවත් කර, ඉරි හරහට හැකි තරම් සිහින්ව කපන්න; ඝන පෙති මැල්ලුමේ තද ගතියෙන් තියෙනවා.",
+    "minutes": 12
+   },
+   {
+    "text": "කපාගත් ඒවා සෝදා වතුර බේරන්න; පොඟවන්න එපා, කිරිච්චි ගතිය නැති වෙනවා.",
+    "minutes": 2
+   },
+   {
+    "text": "ගාගත් පොල්, ළූණු, මිරිස්, කහ, ගම්මිරිස් සහ කොටාගත් උම්බලකඩ ඇඟිලිවලින් මිශ්‍ර කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පෑන් එකක තේ හැන්දක් තෙල් රත් කර, දඹල සහ මේස හැඳි තුනක වතුර දමා, වසා මද ගින්නේ අමු රස යන නමුත් කිරිච්චි ගතිය තියෙන තුරු උයන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වැස්ම ඉවතට ගෙන පොල් මිශ්‍රණය සහ ලුණු දමා, පෑන් වේලී පොල් උණුසුම් වන තුරු පෙරළන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන දෙහි යුෂ මිරිකන්න; මේ ආකාරයට කළ විට මැල්ලුම කොළ පාටින්, කිරිච්චි ගතියෙන් තියෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிறகுப் பீன்ஸின் நுனிகளை நீக்கி, சிறகுகளுக்குக் குறுக்கே முடிந்த அளவு மெல்லியதாக நறுக்கவும்; தடித்த துண்டுகள் வதக்கலில் கடினமாகவே இருக்கும்.",
+    "minutes": 12
+   },
+   {
+    "text": "நறுக்கியதை அலசி நீர் வடிக்கவும்; ஊறவைக்க வேண்டாம், மொறுமொறுப்பு போய்விடும்.",
+    "minutes": 2
+   },
+   {
+    "text": "துருவிய தேங்காயுடன் வெங்காயம், மிளகாய், மஞ்சள், மிளகு, இடித்த உம்பலகடா சேர்த்து விரல்களால் கலக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சட்டியில் ஒரு டீஸ்பூன் எண்ணெயைக் காய்ச்சி, பீன்ஸையும் மூன்று மேசைக்கரண்டி நீரையும் சேர்த்து மூடி, மிதமான தீயில் பச்சைச் சுவை போகும் ஆனால் கடிக்கும் தன்மை இருக்கும் வரை வேகவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மூடியை எடுத்து, தேங்காய்க் கலவையையும் உப்பையும் சேர்த்து, சட்டி வற்றி தேங்காய் சூடாகும் வரை புரட்டவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி தேசிக்காய்ச் சாறு பிழியவும்; இப்படிச் செய்தால் வதக்கல் பச்சை நிறத்திலும் மொறுமொறுப்பிலும் இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 10,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan or wok"
+ ],
+ "tips": {
+  "en": "Buy pods that snap cleanly when you bend one; a bendy dambala is old and will stay stringy. The whole dish is in the chopping, so take the time to get the slices paper thin.",
+  "si": "නවන විට කිට් ගාලා කැඩෙන කරල් ගන්න; නැවෙන දඹල පරණයි, නාරටි ගතියෙන්ම තියෙනවා. මුළු කෑමේ රසය තියෙන්නේ කැපීමේ නිසා, පෙති කඩදාසි වගේ තුනී වෙන්න කාලය ගන්න.",
+  "ta": "வளைக்கும் போது சுளுவாக முறியும் காய்களை வாங்கவும்; வளைந்து கொடுக்கும் காய் முதிர்ந்தது, நாராகவே இருக்கும். உணவின் சுவை முழுவதும் நறுக்குவதில்தான், எனவே காகிதம் போல மெல்லியதாக நறுக்கப் பொறுமை காட்டவும்."
+ },
+ "health_note": {
+  "en": "Winged beans give more protein than most vegetables along with good fibre, so this small side does more for a rice plate than it looks. Cooked briefly like this it keeps its vitamin C, and the lime at the end adds a little more.",
+  "si": "දඹලවලින් බොහෝ එළවළුවලට වඩා ප්‍රෝටීන් ලැබෙනවා, තන්තුත් හොඳට තියෙනවා; ඒ නිසා මේ පොඩි පිඟානෙන් බත් වේලකට පේන්නට වඩා ප්‍රයෝජනයක් වෙනවා. මේ විදියට ඉක්මනින් උයන විට විටමින් C රැකෙනවා, අන්තිමේ දමන දෙහියෙන් තවත් ටිකක් එකතු වෙනවා.",
+  "ta": "சிறகுப் பீன்ஸில் பல காய்கறிகளை விட அதிக புரதமும் நல்ல நார்ச்சத்தும் உள்ளது; எனவே இந்தச் சிறு பகுதி தோற்றத்தை விட அதிகம் பயன் தரும். இப்படி விரைவாகச் சமைத்தால் வைட்டமின் சி தங்கும், கடைசியில் சேர்க்கும் தேசிக்காய் மேலும் சிறிது சேர்க்கும்."
+ },
+ "tags": [
+  "high_fibre",
+  "low_calorie",
+  "iron_rich",
+  "quick",
+  "light",
+  "budget"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

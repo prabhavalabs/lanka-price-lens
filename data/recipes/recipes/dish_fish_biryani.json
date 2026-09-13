@@ -1,0 +1,549 @@
+{
+ "id": "dish_fish_biryani",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 450,
+  "description": {
+   "en": "A deep plate of ghee rice with a fish steak buried in it",
+   "si": "මාළු පෙත්තක් සහිත ගිතෙල් බත් ගැඹුරු පිඟානක්",
+   "ta": "நெய்ச் சோற்றுக்குள் ஒரு மீன் துண்டுடன் ஒரு ஆழமான தட்டு"
+  }
+ },
+ "yield_g": 1800,
+ "ingredients": [
+  {
+   "ref": "product_thalapath",
+   "label": {
+    "en": "thalapath, sailfish steaks",
+    "si": "තලපත් මාළු පෙති",
+    "ta": "தலப்பத் மீன் துண்டுகள்"
+   },
+   "quantity": 550,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "washed, rubbed with lime and salt, cut in thick steaks",
+    "si": "හෝදා දෙහි සහ ලුණු තැවරූ, ඝන පෙති ලෙස කැපූ",
+    "ta": "அலசி எலுமிச்சை உப்பு தடவி, தடிமனான துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed and soaked for twenty minutes",
+    "si": "හෝදා විනාඩි විස්සක් පොඟවාගත්",
+    "ta": "அலசி இருபது நிமிடம் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curd",
+   "label": {
+    "en": "curd",
+    "si": "දී",
+    "ta": "தயிர்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2/3 cup",
+   "preparation": {
+    "en": "whisked smooth, for the marinade",
+    "si": "සිනිඳු වන තුරු ගසාගත්, මැරිනේඩ් සඳහා",
+    "ta": "மென்மையாக அடித்தது, ஊறவைக்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 large onions",
+   "preparation": {
+    "en": "sliced thin, half of it fried crisp for the top",
+    "si": "තුනීට කැපූ, අඩක් මතුපිටට කරකර වන තුරු බැදගත්",
+    "ta": "மெல்லியதாக நறுக்கியது, பாதியை மேலே தூவ மொறுமொறுப்பாக வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a thumb",
+   "preparation": {
+    "en": "ground to a paste with the garlic",
+    "si": "සුදුලූනු සමඟ අඹරාගත්",
+    "ta": "பூண்டுடன் அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "7 cloves",
+   "preparation": {
+    "en": "ground to a paste",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_mint_leaves",
+   "label": {
+    "en": "mint leaves",
+    "si": "මින්චි කොළ",
+    "ta": "புதினா இலை"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "picked off the stalks",
+    "si": "කොළ පමණක් ගලවාගත්",
+    "ta": "தண்டிலிருந்து பிரித்த இலைகள்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කැපූ",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගත්",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_biriyani_masala",
+   "label": {
+    "en": "biryani spice mix",
+    "si": "බුරියානි මසාලා",
+    "ta": "பிரியாணி மசாலா"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "2 sticks",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "4 pods",
+   "preparation": {
+    "en": "bruised",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_ghee",
+   "label": {
+    "en": "ghee",
+    "si": "ගිතෙල්",
+    "ta": "நெய்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "for frying the onion and searing the fish",
+    "si": "ලූනු බැදීමට සහ මාළු පෙති පිටතින් බැදීමට",
+    "ta": "வெங்காயம் வறுக்கவும் மீனை வதக்கவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1/4 cup",
+   "preparation": {
+    "en": "fried in the ghee",
+    "si": "ගිතෙල් වල බැදගත්",
+    "ta": "நெய்யில் வறுத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice, for the fish",
+    "si": "යුෂ, මාළු සඳහා",
+    "ta": "சாறு, மீனுக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp, fish and rice together",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub the fish steaks with lime juice, salt and turmeric and leave them in a bowl for a quarter of an hour, then rinse and pat dry.",
+    "minutes": 15
+   },
+   {
+    "text": "Mix the curd with the ginger garlic paste, biryani spice mix, pepper and a little salt, coat the steaks in it and set them aside to take the spice.",
+    "minutes": 20
+   },
+   {
+    "text": "Fry half the sliced onion in the coconut oil until deep brown and crisp, lift it onto paper, and keep it for the top.",
+    "minutes": 8
+   },
+   {
+    "text": "Lay the marinated steaks in the same oil and sear them briefly on both sides so they hold together, then lift them out with the thick marinade clinging on.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the ghee to a wide pot, fry the cinnamon, cardamom, cloves and fennel for a few seconds, then fry the rest of the onion with the green chillies until soft.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the drained rice and half the mint and coriander, turning gently until the grains smell of ghee.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in 700 ml of hot water, add the rest of the salt, bring it to a boil and cook uncovered until the water is level with the rice.",
+    "minutes": 10
+   },
+   {
+    "text": "Set the fish steaks on the rice with their marinade, scatter the remaining herbs, cover the pot with a cloth under the lid and cook on the lowest flame.",
+    "minutes": 20
+   },
+   {
+    "text": "Turn off the fire and leave the pot closed so the steam finishes the fish and the rice.",
+    "minutes": 15
+   },
+   {
+    "text": "Open it up, lift the rice from the sides without breaking the steaks, and serve with the fried onion and cashew on top.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු පෙති වලට දෙහි යුෂ, ලුණු සහ කහ තවරා පැයෙන් හතරෙන් එකක් තබා, පසුව සෝදා පිස ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "දී, ඉඟුරු සුදුලූනු පේස්ට්, බුරියානි මසාලා, ගම්මිරිස් සහ ලුණු ටිකක් මිශ්‍ර කර මාළු පෙති එහි ගල්වා, කුළුබඩු රස ඇදෙන්නට තබන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කැපූ ලූනු වලින් අඩක් පොල් තෙලේ තද දුඹුරු වී කරකර වන තුරු බැද, කඩදාසියක් මතට ගෙන මතුපිටට තබා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "එම තෙලේම මැරිනේට් කළ මාළු පෙති තබා, දෙපැත්ත කෙටියෙන් බැද ඒවා විසිරෙන්නේ නැති ලෙස තද කර, මැරිනේඩ් ඇලී තිබෙන ලෙසම ඉවතට ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පළල් හැළියකට ගිතෙල් දමා කුරුඳු, එනසාල්, කරාබුනැටි සහ මාදුරු තත්පර කිහිපයක් බැද, ඉතිරි ලූනු අමු මිරිස් සමඟ මුදු වන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වතුර බේරූ සහල් සහ මින්චි, කොත්තමල්ලි වලින් අඩක් දමා, ගිතෙල් සුවඳ බත් ඇටවලට එන තුරු සෙමින් කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "උණු වතුර මිලි ලීටර් 700ක් දමා ඉතිරි ලුණු එකතු කර, නටවා, වතුර සහල් මට්ටමට බසින තුරු වහන්නේ නැතිව පිහන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මාළු පෙති මැරිනේඩ් සමඟ බත මතට තබා, ඉතිරි කොළ විසුරුවා, පියන යටින් රෙද්දක් දමා වසා අවම ගින්නේ පිහන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ගිනි නිවා, හැළිය වසාම තබා වාෂ්පයෙන් මාළු සහ බත සම්පූර්ණ වන්නට ඉඩ දෙන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වැඩුම ඇර, පෙති කැඩෙන්නේ නැති ලෙස පැතිවලින් බත ඔසවා, බැදපු ලූනු සහ කජු මතුපිටින් දමා ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் துண்டுகளில் எலுமிச்சைச் சாறு, உப்பு, மஞ்சள் தடவி கால் மணி நேரம் வைத்து, பின் அலசி துடைத்து வையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "தயிருடன் இஞ்சிப் பூண்டு விழுது, பிரியாணி மசாலா, மிளகு, சிறிது உப்பு கலந்து மீன் துண்டுகளில் பூசி, மசாலா ஏறும் வரை வையுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "நறுக்கிய வெங்காயத்தில் பாதியை தேங்காய் எண்ணெயில் கடும் பொன்னிறமாக மொறுமொறுப்பாக வறுத்து, காகிதத்தில் எடுத்து மேலே தூவ வைத்துக் கொள்ளுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அதே எண்ணெயில் ஊறிய மீன் துண்டுகளை வைத்து இரு பக்கமும் சுருக்கமாக வதக்கி உடையாமல் இறுகச் செய்து, மசாலா ஒட்டியிருக்கும்படியே எடுத்து வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அகலமான பாத்திரத்தில் நெய் விட்டு பட்டை, ஏலக்காய், கிராம்பு, பெருஞ்சீரகத்தை சில செக்கன்கள் வதக்கி, மீதி வெங்காயத்தை பச்சை மிளகாயுடன் மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வடித்த அரிசியையும் பாதி புதினா, கொத்தமல்லியையும் சேர்த்து, பருக்கைகளில் நெய் வாசனை வரும் வரை மெதுவாகக் கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "700 மில்லி வெந்நீர் ஊற்றி மீதி உப்பு சேர்த்து, கொதிக்க வைத்து, தண்ணீர் அரிசியின் மட்டத்துக்கு வரும் வரை மூடாமல் வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மீன் துண்டுகளை மசாலாவுடன் சோற்றின் மேல் வைத்து, மீதி இலைகளைத் தூவி, மூடிக்கு அடியில் ஒரு துணி வைத்து மூடி மிகக் குறைந்த தீயில் வேகவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "தீயை அணைத்து, பாத்திரத்தை மூடியே வைத்திருந்து ஆவியில் மீனும் சோறும் முழுமையாக வேகட்டும்.",
+    "minutes": 15
+   },
+   {
+    "text": "திறந்து, துண்டுகள் உடையாமல் ஓரங்களிலிருந்து சோற்றைத் தூக்கி, வறுத்த வெங்காயமும் முந்திரியும் மேலே தூவிப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 50,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "wide heavy pot with a tight lid",
+  "frying pan",
+  "cloth for sealing the lid",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "Fish is not mutton: it needs only the last twenty minutes of steaming, so add it when the rice is already half cooked or it will break into shreds. A firm steak fish such as thalapath or paraw holds its shape far better than a soft-fleshed fish.",
+  "si": "මාළු, එළු මස් නොවේ; වාෂ්පයේ අවසන් විනාඩි විස්ස පමණක් අවශ්‍ය බැවින් බත අඩක් පිසුණු පසු දමන්න, නැතිනම් මාළු ඉරී යයි. තලපත් හෝ පරාවු වැනි තද මාළු මෘදු මාළු වලට වඩා හැඩය හොඳින් රඳවා ගනී.",
+  "ta": "மீன் ஆட்டிறைச்சி அல்ல; ஆவியில் கடைசி இருபது நிமிடங்களே தேவை, எனவே சோறு பாதி வெந்த பின்னரே சேர்க்குங்கள், இல்லையேல் மீன் சிதறிவிடும். தலப்பத் அல்லது பாறை போன்ற இறுகிய மீன் மென்மையான மீனை விட வடிவத்தை நன்றாகத் தாங்கும்."
+ },
+ "health_note": {
+  "en": "Fish gives good protein with less saturated fat than mutton, so this is the lighter biryani, but the ghee and fried onion still make it a feast dish rather than an everyday one. Serve it with a curd raitha and a tomato salad so the plate is not all rice.",
+  "si": "එළු මස් වලට වඩා අඩු සංතෘප්ත මේදයක් සමඟ මාළු වලින් හොඳ ප්‍රෝටීන් ලැබෙන බැවින් මෙය සැහැල්ලු බුරියානියකි, එනමුත් ගිතෙල් සහ බැදපු ලූනු නිසා එය දිනපතා නොව උත්සව කෑමකි. පිඟාන පුරාම බත් නොවන ලෙස දී රයිතාවක් සහ තක්කාලි සලාදයක් සමඟ දෙන්න.",
+  "ta": "ஆட்டிறைச்சியை விட குறைந்த கொழுப்புடன் மீன் நல்ல புரதம் தருகிறது, எனவே இது இலகுவான பிரியாணி; ஆனாலும் நெய்யும் வறுத்த வெங்காயமும் இதை அன்றாட உணவாக அல்ல, விருந்து உணவாகவே வைக்கின்றன. தட்டு முழுவதும் சோறாக இருக்காமல் தயிர் ரைத்தாவும் தக்காளி சாலட்டும் சேர்த்துப் பரிமாறுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "festive",
+  "filling",
+  "one_pot",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

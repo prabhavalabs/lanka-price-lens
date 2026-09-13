@@ -1,0 +1,329 @@
+{
+ "id": "dish_imbul_kiribath",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 250,
+  "description": {
+   "en": "Two or three thick rounds of rolled milk rice with a dark coconut filling",
+   "si": "ඝන පණි පොල් පුරවා රොල් කළ කිරිබත් කැබලි දෙක තුනක්",
+   "ta": "இனிப்பு தேங்காய் பூரணம் வைத்து சுருட்டிய பால் சோற்றின் இரண்டு மூன்று தடிமனான துண்டுகள்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "washed in two or three changes of water and drained",
+    "si": "දෙතුන් වතාවක් හෝදා වතුර බේරාගත්",
+    "ta": "இரண்டு மூன்று தண்ணீரில் அலசி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල්කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "flesh of half a coconut",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "අලුතින් ගා ගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "கருப்பட்டி"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 pieces, broken small",
+   "preparation": {
+    "en": "chopped or crushed",
+    "si": "කැබලි කර ගත්",
+    "ta": "சிறு துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 1/2 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 small piece",
+   "preparation": {
+    "en": "broken, or a pinch of powder",
+    "si": "කැබලි කළ, නැතිනම් කුඩු මිටක්",
+    "ta": "உடைத்தது, அல்லது ஒரு சிட்டிகை தூள்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "2 pods, crushed",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_banana_leaf",
+   "label": {
+    "en": "banana leaf",
+    "si": "කෙසෙල් කොළ",
+    "ta": "வாழை இலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 pieces a forearm long",
+   "preparation": {
+    "en": "wiped clean and warmed over the flame",
+    "si": "පිස දමා ගිනි දැල්ල මතින් රත් කර ගත්",
+    "ta": "துடைத்து நெருப்பில் வாட்டியது"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the rice in two or three changes of water until the water runs clear, then drain it well.",
+    "minutes": null
+   },
+   {
+    "text": "Put the rice in a heavy pot with 500 ml water and the salt, cover, and cook on a medium flame until almost all the water has gone.",
+    "minutes": 15
+   },
+   {
+    "text": "Pour in the thick coconut milk, stir once with a wooden spoon and cook on a low flame, stirring now and then, until the grains are soft and sticky and the milk is taken up.",
+    "minutes": 12
+   },
+   {
+    "text": "While the rice cooks, melt the jaggery with three tablespoons of water in a small pan on a low flame.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the grated coconut, sugar, cinnamon and cardamom and stir until the mixture turns dark, thick and leaves the side of the pan. This is the pani pol.",
+    "minutes": 10
+   },
+   {
+    "text": "Pass the banana leaf over the flame for a few seconds until it turns glossy and bends without splitting, and lay it on a flat tray.",
+    "minutes": null
+   },
+   {
+    "text": "Spread the hot milk rice on the leaf in a rectangle about a finger thick, pressing it flat with the back of a wet spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Lay the pani pol in a line along the middle, then lift the edge of the leaf and roll the rice over the filling into a firm log, wrapping the leaf closed.",
+    "minutes": null
+   },
+   {
+    "text": "Let the roll rest until it is only just warm so that it sets, then cut it across into thick rounds with a wet knife.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් දෙතුන් වතාවක් හෝදා, වතුර පැහැදිලි වන තුරු සෝදා හොඳින් වතුර බේරා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බර වූ හැළියකට සහල්, වතුර මිලි ලීටර් 500ක් සහ ලුණු දමා වහලා මධ්‍යම ගින්නේ වතුර හිඳෙන තුරු තම්බා ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ඝන පොල්කිරි එකතු කර ලී හැන්දකින් එක වරක් කලවම් කර, අඩු ගින්නේ අතරින් පතර හොඳවා, බත මුදු වී කිරි උරා ගන්නා තුරු තබන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "බත උයන අතරේ කුඩා පෑන් එකක හකුරු සහ වතුර මේස හැඳි තුනක් දමා අඩු ගින්නේ දිය කර ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගා ගත් පොල්, සීනි, කුරුඳු සහ එනසාල් දමා, මිශ්‍රණය තද පාටට හැරී ඝන වී පෑන් එකෙන් ගැලවෙන තුරු හොඳවන්න. මෙය පණි පොල්.",
+    "minutes": 10
+   },
+   {
+    "text": "කෙසෙල් කොළය ගිනි දැල්ල මතින් තත්පර කිහිපයක් ගෙන යන්න; එය දිලිසෙන ගතියක් ගෙන ඉරෙන්නේ නැතිව නැමෙන විට පැතලි තැටියක් මතට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උණුසුම් කිරිබත කොළය මත ඇඟිල්ලක් ඝනකමට හතරැස් හැඩයට තබා, තෙත් හැන්දක පිටුපසින් තට්ටු කර පැතලි කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පණි පොල් මැදින් තිරයක් ලෙස තබා, කොළයේ කෙළවර ඔසවා බත පුරවා ගන්නා ලෙස තදින් රොල් කර කොළයෙන් ඔතා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "රොල් එක මද උණුසුම් වන තුරු තිබෙන්න දී තද වූ පසු, තෙත් පිහියකින් ඝන රවුම් ලෙස කපා ගන්න.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசியை இரண்டு மூன்று தண்ணீரில் தெளிவாக வரும் வரை அலசி நன்றாக வடித்து விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கனமான பாத்திரத்தில் அரிசி, 500 மில்லி தண்ணீர், உப்பு போட்டு மூடி நடுத்தர தீயில் தண்ணீர் வற்றும் வரை வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலை ஊற்றி மரக்கரண்டியால் ஒரு முறை கிளறி, சிறு தீயில் இடையிடையே கிளறி சோறு மென்மையாகி பால் இறுகும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "சோறு வேகும்போது ஒரு சிறிய சட்டியில் கருப்பட்டியை மூன்று மேசைக்கரண்டி தண்ணீரில் சிறு தீயில் உருக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "துருவிய தேங்காய், சீனி, பட்டை, ஏலக்காய் சேர்த்து கலவை கறுத்து கெட்டியாகி சட்டியை விட்டு விலகும் வரை கிளறுங்கள். இதுவே பணி பொல் பூரணம்.",
+    "minutes": 10
+   },
+   {
+    "text": "வாழை இலையை நெருப்பில் சில செக்கன்கள் காட்டி, பிசுபிசுப்பாகி கிழியாமல் வளையும் நிலையில் தட்டில் பரத்துங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சூடான பால் சோற்றை இலையில் ஒரு விரல் தடிமனுக்கு சதுரமாகப் பரப்பி, நனைத்த கரண்டியின் பின்புறத்தால் தட்டி சமன் செய்யுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பூரணத்தை நடுவில் ஒரு கோடாக வைத்து, இலையின் ஓரத்தை உயர்த்தி சோற்றை பூரணத்தின் மேல் இறுக்கமாகச் சுருட்டி இலையால் மூடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சுருளை வெதுவெதுப்பாகும் வரை வைத்து இறுகிய பின், நனைத்த கத்தியால் தடிமனான வட்டங்களாக வெட்டுங்கள்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 40,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "heavy pot with lid",
+  "small pan for the filling",
+  "flat tray",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "The filling must be dry enough to hold its shape, otherwise the syrup soaks into the rice and the rounds fall apart. Cut only after the roll has cooled to hand warmth, and wet the knife between cuts.",
+  "si": "පණි පොල් හොඳින් වියළි විය යුතුය; නැතිනම් පැණි බතට උරා ගොස් රවුම් ලිහිල් වේ. රොල් අතට දරාගත හැකි උණුසුමට පැමිණි පසුම කපන්න, පිහිය කැපුම් අතර තෙත් කරගන්න.",
+  "ta": "பூரணம் நன்றாக இறுகியிருக்க வேண்டும், இல்லையேல் பாகு சோற்றில் இறங்கி துண்டுகள் உதிரும். சுருள் கை பொறுக்கும் சூட்டுக்கு வந்த பிறகே வெட்டுங்கள்; வெட்டுக்கு இடையே கத்தியை நனையுங்கள்."
+ },
+ "health_note": {
+  "en": "Rich in coconut fat and jaggery sugar, so one or two rounds with plain tea is enough for most people. Those watching blood sugar are better off with plain milk rice and a chilli sambol instead of the sweet filling.",
+  "si": "පොල් මේදය සහ හකුරු සීනි වැඩි බැවින් සරල තේ එකක් සමඟ රවුම් එකක් දෙකක් ප්‍රමාණවත්. රුධිර සීනි බලා සිටින අයට පණි පොල් වෙනුවට සරල කිරිබත් සමඟ ලුණු මිරිස් වඩාත් සුදුසුයි.",
+  "ta": "தேங்காய்க் கொழுப்பும் கருப்பட்டி இனிப்பும் அதிகம், எனவே வெறும் தேநீருடன் ஒன்று இரண்டு துண்டுகள் போதும். இரத்தச் சர்க்கரையைக் கவனிப்பவர்கள் இனிப்பு பூரணத்துக்குப் பதிலாக வெறும் பால் சோற்றுடன் மிளகாய் சம்பல் சேர்த்துக் கொள்வது நல்லது."
+ },
+ "tags": [
+  "festive",
+  "high_sugar",
+  "filling",
+  "kid_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

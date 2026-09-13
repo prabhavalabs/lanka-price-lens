@@ -1,0 +1,303 @@
+{
+ "id": "dish_mung_kavum",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 90,
+  "description": {
+   "en": "Two diamonds in their thin fried coat",
+   "si": "තුනී බැදූ කබායක් ඇති මුං කැවුම් දෙකක්",
+   "ta": "மெல்லிய பொரித்த மேலுறையுடன் இரண்டு துண்டுகள்"
+  }
+ },
+ "yield_g": 360,
+ "ingredients": [
+  {
+   "ref": "product_green_gram",
+   "label": {
+    "en": "green gram",
+    "si": "මුං ඇට",
+    "ta": "பச்சைப் பயறு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "dry roasted, skins rubbed off, ground fine and sieved",
+    "si": "වියළිව බැදූ, පොත්ත ඉවත් කර, සිහින්ව අඹරා හලාගත්",
+    "ta": "வறுத்து, தோல் நீக்கி, நன்றாக அரைத்து சலித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "7 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "half a block, scraped",
+   "preparation": {
+    "en": "melted with the treacle and strained",
+    "si": "පැණි සමඟ දියකර පෙරාගත්",
+    "ta": "பாணியுடன் உருக்கி வடிகட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "half a cup, for the coating batter",
+   "preparation": {
+    "en": "mixed with water and a pinch of salt into a thin batter",
+    "si": "වතුර සහ ලුණු ටිකක් සමඟ තුනී මිශ්‍රණයක් ලෙස කලවම් කරගත්",
+    "ta": "நீரும் சிறிது உப்பும் சேர்த்து நீர்மையான கலவையாகக் கலந்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, seeds crushed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 180,
+   "unit": "ml",
+   "household": "enough for a deep pan",
+   "preparation": {
+    "en": "for frying; strain and reuse what is left",
+    "si": "බැදීම සඳහා, ඉතිරි තෙල් පෙරා නැවත භාවිත කරන්න",
+    "ta": "பொரிக்க; மீதியை வடிகட்டி மீண்டும் பயன்படுத்தவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Roast the green gram in a dry pan on low heat, stirring, until the skins crack and the kitchen smells of it, then cool and rub the skins off between your palms.",
+    "minutes": 20
+   },
+   {
+    "text": "Grind the cleaned gram at the mill or in a grinder and sieve it fine; anything left in the sieve goes back for another round.",
+    "minutes": 15
+   },
+   {
+    "text": "Warm the treacle with the scraped jaggery and a spoon of water into a syrup, strain it, and let it cool to just warm.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the syrup to the gram flour with the salt and cardamom and work it with your hand into a stiff dough that holds its shape when squeezed.",
+    "minutes": null
+   },
+   {
+    "text": "Press the dough firmly into a flat tray about one and a half centimetres thick, pressing out every air pocket, and rest it so it holds together.",
+    "minutes": 30
+   },
+   {
+    "text": "Cut into diamonds with an oiled knife and lift them out carefully; they break easily at this stage.",
+    "minutes": null
+   },
+   {
+    "text": "Mix the rice flour with water and a pinch of salt into a thin batter that just coats the back of a spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil on medium in a deep pan, dip each diamond in the batter and slide it in, frying two or three at a time.",
+    "minutes": null
+   },
+   {
+    "text": "Fry until the coat is set and pale gold, turning once with a slotted spoon, then lift out and drain on paper.",
+    "minutes": 30
+   },
+   {
+    "text": "Cool completely before stacking, and eat within a few days while the coat is still crisp.",
+    "minutes": 30
+   }
+  ],
+  "si": [
+   {
+    "text": "මුං ඇට වියළි පෑන් එකක අඩු ගින්නේ කලතමින්, පොත්ත පැලී කුස්සිය පුරා සුවඳ එන තුරු බැදගෙන, සිසිල් කර අත් අතරේ අතුල්ලා පොත්ත ඉවත් කරන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පිරිසිදු කරගත් මුං මෝලේ හෝ ග්‍රයින්ඩරයේ අඹරා සිහින්ව හලා ගන්න, පෙරහනේ ඉතිරි වන කොටස නැවත අඹරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "කිතුල් පැණි, ගා ගත් හකුරු සහ හැන්දක වතුර සමඟ රත් කර පැණියක් සාදා, පෙරා ගෙන උණුසුම් තරමට සිසිල් වෙන්න දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පැණිය මුං පිටිවලට, ලුණු සහ එනසාල් සමඟ දමා, තද කළ විට හැඩය රඳවා ගන්නා තද ගුලියක් වන තුරු අතින් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගුලිය පැතලි තැටියකට සෙන්ටිමීටර එකහමාරක් ඝනට, වායු කුහර නැති වන ලෙස තදින් තට්ටු කර, එකට රැඳෙන්නට නිදහන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "තෙල් ගෑ පිහියකින් කැට කපා ප්‍රවේශමෙන් ගලවා ගන්න, මේ අවස්ථාවේ ඒවා ලේසියෙන් කැඩෙනවා.",
+    "minutes": null
+   },
+   {
+    "text": "සහල් පිටි, වතුර සහ ලුණු ටිකක් සමඟ, හැන්දක පිටුපසට තැවරෙන තරමේ තුනී මිශ්‍රණයක් ලෙස කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගැඹුරු පෑන් එකක පොල් තෙල් මධ්‍යම ගින්නේ රත් කර, එක කැටයක් මිශ්‍රණයට බහා තෙලට දමන්න, එකවර දෙකක් තුනක් බදින්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිටත කබාය තදවී ලා රන් පාට වන තුරු, සිදුරු හැන්දකින් එක වරක් හරවා බැදගෙන, ඉවතට ගෙන කඩදාසියක බේරන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "එකට තබන්නට පෙර හොඳින් සිසිල් කරන්න, කබාය කරකර ගතියෙන් තිබෙන දින කිහිපය තුළ කන්න.",
+    "minutes": 30
+   }
+  ],
+  "ta": [
+   {
+    "text": "பச்சைப் பயறை வறண்ட வாணலியில் சிறு தீயில் கிளறி, தோல் வெடித்து நல்ல மணம் வரும்வரை வறுத்து, ஆறியபின் கைகளுக்கு இடையில் தேய்த்து தோலை நீக்குங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "சுத்தம் செய்த பயறை மில்லிலோ மிக்ஸியிலோ அரைத்து நன்றாகச் சலியுங்கள்; சல்லடையில் தங்கியதை மீண்டும் அரைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "பாணியை துருவிய வெல்லத்துடன், ஒரு கரண்டி நீர் விட்டு பாகாக்கி, வடிகட்டி, வெதுவெதுப்பாக ஆற விடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "பாகை பயறு மாவில் உப்பும் ஏலக்காயும் சேர்த்து ஊற்றி, அழுத்தினால் வடிவம் தங்கும் இறுகிய மாவாகக் கையால் பிசையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மாவை தட்டையான தட்டில் ஒன்றரை சென்டிமீட்டர் தடிமனுக்கு, காற்று இல்லாமல் இறுக்கமாகத் தட்டி, ஒட்டிக்கொள்ள சிறிது நேரம் விடுங்கள்.",
+    "minutes": 30
+   },
+   {
+    "text": "எண்ணெய் தடவிய கத்தியால் சாய்சதுரங்களாக வெட்டி கவனமாக எடுங்கள்; இந்தக் கட்டத்தில் எளிதில் உடையும்.",
+    "minutes": null
+   },
+   {
+    "text": "அரிசி மாவை நீரும் சிறிது உப்பும் சேர்த்து, கரண்டியின் பின்பக்கத்தில் ஒட்டும் அளவு நீர்மையான கலவையாகக் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆழமான வாணலியில் தேங்காய் எண்ணெயை நடுத்தர தீயில் காயவிட்டு, ஒவ்வொரு துண்டையும் கலவையில் தோய்த்து விடுங்கள் - ஒரு நேரத்தில் இரண்டு மூன்று.",
+    "minutes": null
+   },
+   {
+    "text": "மேலுறை இறுகி வெளிர் பொன்னிறமாகும்வரை, துளைக்கரண்டியால் ஒருமுறை திருப்பிப் பொரித்து, எடுத்து காகிதத்தில் வடியுங்கள்.",
+    "minutes": 30
+   },
+   {
+    "text": "அடுக்குவதற்கு முன் முழுவதும் ஆற விடுங்கள்; மேலுறை மொறுமொறுப்பாக இருக்கும் சில நாட்களுக்குள் சாப்பிடுங்கள்.",
+    "minutes": 30
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 60,
+  "cook_minutes": 30,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "heavy pan for roasting",
+  "grinder or mill",
+  "fine sieve",
+  "flat tray",
+  "deep frying pan",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "The sieving is the whole secret: coarse gram flour will not bind and the diamonds fall apart in the oil, so sieve twice even if it takes another ten minutes. Press the dough hard into the tray, because air pockets are where the pieces break. If the diamonds still crumble, add a spoon of warm treacle and press again rather than adding water.",
+  "si": "මුළු රහස තියෙන්නේ හැලීමේයි, රළු මුං පිටි එකට බැඳෙන්නේ නැහැ, කැට තෙලේ ඉරෙනවා, ඒ නිසා තව මිනිත්තු දහයක් ගියත් දෙවරක් හලන්න. ගුලිය තැටියට තදින් තට්ටු කරන්න, කැබලි කැඩෙන්නේ වායු කුහර තියෙන තැනින්. තවමත් කැඩෙනවා නම්, වතුර වෙනුවට උණුසුම් පැණි හැන්දක් දමා නැවත තට්ටු කරන්න.",
+  "ta": "முழு ரகசியமும் சலிப்பதில்தான் - பரட்டையான பயறு மாவு ஒட்டாது, துண்டுகள் எண்ணெயில் உதிர்ந்துவிடும்; பத்து நிமிடம் கூடுதலாக ஆனாலும் இருமுறை சலியுங்கள். மாவை தட்டில் நன்றாக அழுத்துங்கள் - காற்று இருக்கும் இடத்திலேயே உடையும். இன்னும் உதிர்ந்தால், நீருக்குப் பதிலாக ஒரு கரண்டி சூடான பாணி சேர்த்து மீண்டும் அழுத்துங்கள்."
+ },
+ "health_note": {
+  "en": "Because the body of this sweet is green gram rather than rice flour, it carries real protein and fibre and sits heavier and longer than kavum does. It is still a fried treacle sweet, though, so one or two diamonds with tea is the portion, and the frying oil matters more than the flour it coats.",
+  "si": "මේ රසකැවිල්ලේ ප්‍රධාන කොටස සහල් පිටි නොව මුං ඇට නිසා, එයින් සැබෑ ප්‍රෝටීන් සහ තන්තු ලැබෙනවා, කැවුමට වඩා බඩට බරයි, වැඩි වෙලාවක් තිබෙනවා. එහෙත් එය තවමත් බැදූ පැණි කැවිල්ලක් නිසා තේ එකක් සමඟ එකක් දෙකක් ඇති, ආවරණය කරන පිටිවලට වඩා වැදගත් බැදූ තෙලයි.",
+  "ta": "இந்த இனிப்பின் அடிப்படை அரிசி மாவு அல்ல, பச்சைப் பயறு என்பதால் உண்மையான புரதமும் நார்ச்சத்தும் உள்ளது; கவும்மை விட வயிற்றில் கனமாகவும் நீண்ட நேரமும் நிற்கும். இருந்தாலும் இது பொரித்த பாணி இனிப்பே - தேநீருடன் ஒன்றிரண்டு துண்டுகளே ஒரு பங்கு; மேலுறை மாவை விட பொரித்த எண்ணெயே முக்கியம்."
+ },
+ "tags": [
+  "high_sugar",
+  "deep_fried",
+  "festive",
+  "high_fibre",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,283 @@
+{
+ "id": "dish_beans_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 95,
+  "description": {
+   "en": "A dry, crunchy spoonful of sliced beans with onion and chilli",
+   "si": "ලූනු හා මිරිස් සමඟ බැදගත් වියළි, කරකර ගතියෙන් යුතු බෝංචි හැන්දක්",
+   "ta": "வெங்காயமும் மிளகாயும் சேர்த்த உலர்ந்த, கறுகறுப்பான பீன்ஸ் வறுவல் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 390,
+ "ingredients": [
+  {
+   "ref": "product_beans",
+   "label": {
+    "en": "green beans",
+    "si": "බෝංචි",
+    "ta": "பீன்ஸ்"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 heaped cups, sliced",
+   "preparation": {
+    "en": "topped and sliced very thin on the slant",
+    "si": "දෙකෙළවර ඉවත් කර හරහට ඉතා තුනීට කපාගත්",
+    "ta": "நுனி நீக்கி சாய்வாக மிக மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වේළුණු මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැලිවලට කඩාගත්",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp, crushed",
+   "preparation": {
+    "en": "crushed coarse",
+    "si": "රළුවට කුඩු කරගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Top and tail the beans and slice them very thin on the slant, almost shaving them; the thinner they are, the better this dish works.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and drop in the dried chillies and curry leaves until they darken and smell toasted.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the sliced onion and fry on a high flame until the edges brown.",
+    "minutes": 3
+   },
+   {
+    "text": "Put in the beans with the turmeric, chilli flakes, pepper and salt, and keep them moving in the pan.",
+    "minutes": 4
+   },
+   {
+    "text": "Stir-fry uncovered until the beans darken in colour and the pan is dry, but stop while they still crunch.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt and serve, or let it cool and pack it for lunch.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බෝංචි වල දෙකෙළවර ඉවත් කර, හරහට ඉතා තුනීට, සුරන තරමට කපන්න; තුනී වන තරමට මේ දේ හොඳට හැදේ.",
+    "minutes": 10
+   },
+   {
+    "text": "පුළුල් පෑන් එකක පොල් තෙල් රත් කර, වේළුණු මිරිස් සහ කරපිංචා දමා, පාට තදවී බැදුණු සුවඳ එන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කපාගත් ළූණු දමා තද ගින්නේ දාර දුඹුරු වන තුරු බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බෝංචි, කහ, මිරිස් කැබලි, ගම්මිරිස් සහ ලුණු දමා, පෑන් එකේ නොනවත්වා පෙරළන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "බෝංචි වල පාට තදවී පෑන් එක වියළෙන තුරු වහන් නොදමා බදින්න; කරකර ගතිය තියෙන අතරේ නවත්වන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රස බලා ඉදිරිපත් කරන්න, නැත්නම් සිසිල් වූ පසු දවල් කෑමට අසුරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பீன்ஸின் நுனிகளை நீக்கி, சாய்வாக மிக மெல்லியதாக, கிட்டத்தட்ட சீவுவது போல நறுக்குங்கள்; மெல்லியதாக இருந்தால்தான் இந்த வறுவல் நன்றாக வரும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வத்தல் மிளகாயையும் கறிவேப்பிலையையும் போட்டு, நிறம் அடர்ந்து வறுத்த வாசம் வரும் வரை விடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நறுக்கிய வெங்காயத்தைச் சேர்த்து, பெரிய தீயில் ஓரம் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "பீன்ஸ், மஞ்சள், மிளகாய்த் துகள், மிளகு, உப்பு சேர்த்து, சட்டியில் நிற்காமல் புரட்டுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "பீன்ஸின் நிறம் அடர்ந்து சட்டி உலரும் வரை மூடாமல் வதக்குங்கள்; கறுகறுப்பு இருக்கும்போதே நிறுத்துங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பு பார்த்துப் பரிமாறுங்கள், அல்லது ஆறியதும் மதிய உணவுக்குப் பொதியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 12,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan",
+  "sharp knife"
+ ],
+ "tips": {
+  "en": "Dry heat and a wide pan are everything: pile the beans up or cover them and they steam into a soft grey heap. If you want it richer, throw in a handful of dried sprats with the onion.",
+  "si": "වියළි රත් ගතිය හා පුළුල් පෑන් එකක් තමයි ප්‍රධාන: බෝංචි ගොඩ ගැසුවොත් හෝ වහන් දැමුවොත් තැම්බී මුදු අළු ගොඩක් වේ. තවත් සාරවත් කරන්න ඕන නම් ළූණු සමඟ හාල්මැස්සන් අතක් දමන්න.",
+  "ta": "உலர்ந்த சூடும் அகலமான சட்டியும்தான் முக்கியம்: பீன்ஸை குவித்தாலோ மூடினாலோ வெந்து மென்மையான குவியலாகிவிடும். இன்னும் சுவை வேண்டுமானால் வெங்காயத்துடன் ஒரு கை நெத்திலி கருவாட்டைப் போடுங்கள்."
+ },
+ "health_note": {
+  "en": "A dry tempering keeps the fibre and vitamins of the beans with no coconut milk at all, so this is the lightest way to eat them; the two tablespoons of oil are the only fat. It travels well in a lunch box and does not spoil by midday in the heat.",
+  "si": "වියළි තෙල්දාලයක් නිසා පොල් කිරි කිසිසේත් නැතිව බෝංචි වල තන්තු හා විටමින් රැකේ; ඒවා කන්න ඇති සැහැල්ලුම ක්‍රමය මෙයයි. මේද වශයෙන් ඇත්තේ තෙල් හැඳි දෙක පමණයි. බත් පැකට් එකකට හොඳින් ගැළපෙන අතර උණුසුමේ දවල් වන තුරු නරක් වන්නේ නැත.",
+  "ta": "உலர் வறுவலில் தேங்காய்ப் பாலே இல்லாமல் பீன்ஸின் நார்ச்சத்தும் வைட்டமின்களும் தங்கும், அதனால் இதுவே அதைச் சாப்பிடும் மிக இலகுவான வழி; கொழுப்பு என்பது அந்த இரு ஸ்பூன் எண்ணெய் மட்டுமே. மதிய உணவுப் பொட்டலத்தில் நன்றாக இருக்கும், வெயிலிலும் மதியம் வரை கெடாது."
+ },
+ "tags": [
+  "low_calorie",
+  "low_carb",
+  "high_fibre",
+  "quick",
+  "weight_loss_friendly",
+  "light",
+  "budget"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

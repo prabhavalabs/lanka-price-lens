@@ -1,0 +1,356 @@
+{
+ "id": "dish_mango_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 160,
+  "description": {
+   "en": "A few wedges of mango with its sweet-sour gravy",
+   "si": "පැණි ඇඹුල් හොදිය සමඟ අඹ පෙති කිහිපයක්",
+   "ta": "இனிப்பு புளிப்புக் குழம்புடன் சில மாங்காய்த் துண்டுகள்"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_mango",
+   "label": {
+    "en": "half-ripe mango",
+    "si": "මැදිවියේ අඹ",
+    "ta": "அரை பழுத்த மாங்காய்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "2 large mangoes",
+   "preparation": {
+    "en": "washed, cut into thick wedges with the skin on, seed kept in",
+    "si": "සෝදා, ලෙලි සමඟ ගන පෙති ලෙස කපා, ඇටය ද යොදාගෙන",
+    "ta": "கழுவி, தோலுடன் தடிமனான துண்டுகளாக நறுக்கி, கொட்டையையும் சேர்த்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගෙන",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, ground to a paste",
+   "preparation": {
+    "en": "ground with a little water into a paste",
+    "si": "වතුර ටිකක් සමඟ අඹරා පේස්ට් කර",
+    "ta": "கொஞ்சம் நீர் விட்டு அரைத்து விழுதாக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm stick",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 and 1/2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the mangoes well and cut them into thick wedges without peeling; the skin keeps each piece from falling apart.",
+    "minutes": 8
+   },
+   {
+    "text": "Grind the mustard seeds with a spoon of water into a rough paste on the grinding stone or in a small blender.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the mango wedges into a pot with the onion, green chillies, turmeric, curry powder, cinnamon, curry leaves and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and cook covered on a medium flame until the wedges soften but still hold their shape.",
+    "minutes": 10
+   },
+   {
+    "text": "Stir in the mustard paste and the sugar and let them cook into the gravy.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the thick coconut milk, lower the flame and cook gently until the gravy is glossy and coats a spoon.",
+    "minutes": 6
+   },
+   {
+    "text": "Taste and balance it: a little more sugar if the mangoes are very sour, a little more salt if the sweetness is running away.",
+    "minutes": null
+   },
+   {
+    "text": "Take out the cinnamon stick and serve warm; it keeps two days in the fridge and the taste deepens.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අඹ හොඳින් සෝදා, ලෙලි ගසන්නේ නැතිව ගන පෙති ලෙස කපන්න; ලෙලි නිසා පෙති කැඩී යන්නේ නැත.",
+    "minutes": 8
+   },
+   {
+    "text": "අබ ඇට වතුර හැන්දක් සමඟ මිරිස් ගලේ හෝ කුඩා බ්ලෙන්ඩරයක අඹරා රළු පේස්ට් එකක් සාදාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අඹ පෙති වළඳකට දමා, ලූනු, අමු මිරිස්, කහ, තුනපහ, කුරුඳු, කරපිංචා හා ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි වත් කර වහන්නක් දමා මධ්‍යම ගින්නේ, පෙති මෘදු වී එහෙත් හැඩය රැඳී තිබෙන තුරු උයන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "අබ පේස්ට් හා සීනි එකතු කර, ඒවා හොදියට එකතු වන තුරු උයන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මිටි කිරි දමා, ගින්න අඩු කර, හොදිය දිලිසෙන ගතියට පැමිණ හැන්දට ඇලෙන තුරු සෙමින් උයන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "රස බලා සමතුලිත කරන්න: අඹ ඉතා ඇඹුල් නම් සීනි තව ටිකක්, පැණි රස වැඩි නම් ලුණු තව ටිකක්.",
+    "minutes": null
+   },
+   {
+    "text": "කුරුඳු කෑල්ල ඉවත් කර උණුසුම්ව බෙදන්න; ශීතකරණයේ දින දෙකක් තිබෙන අතර රසය තවත් ගැඹුරු වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாங்காய்களை நன்கு கழுவி, தோல் சீவாமல் தடிமனான துண்டுகளாக நறுக்குங்கள்; தோல் இருப்பதால் துண்டுகள் உடையாது.",
+    "minutes": 8
+   },
+   {
+    "text": "கடுகை ஒரு ஸ்பூன் நீருடன் அம்மியிலோ சிறிய மிக்சியிலோ அரைத்து கரடான விழுதாக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மாங்காய்த் துண்டுகளை சட்டியில் இட்டு, வெங்காயம், பச்சை மிளகாய், மஞ்சள், கறி மசாலா, இலவங்கப்பட்டை, கறிவேப்பிலை, உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி மூடி நடுத்தர தீயில், துண்டுகள் மென்மையாகி ஆனால் வடிவம் மாறாமல் இருக்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கடுகு விழுதையும் சீனியையும் சேர்த்து, அவை குழம்பில் கலக்கும் வரை கொதிக்க விடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "தடிமன் பாலைச் சேர்த்து, தீயைக் குறைத்து, குழம்பு பளபளப்பாகி ஸ்பூனில் பிடிக்கும் வரை மெல்ல வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "சுவைத்துச் சரிசெய்யுங்கள்: மாங்காய் மிகவும் புளித்தால் கொஞ்சம் சீனி, இனிப்பு அதிகமானால் கொஞ்சம் உப்பு.",
+    "minutes": null
+   },
+   {
+    "text": "இலவங்கப்பட்டையை எடுத்து சூடாகப் பரிமாறுங்கள்; குளிர்சாதனப் பெட்டியில் இரண்டு நாள் இருக்கும், சுவையும் கூடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or pan",
+  "grinding stone or small blender"
+ ],
+ "tips": {
+  "en": "Use mangoes that are firm and just turning, not fully ripe ones, or the wedges dissolve into a jam. Grinding the mustard fresh gives the sharp bite that a spoon of bottled paste cannot match.",
+  "si": "හොඳින් ඉදුණු ඒවා නොව, තද, දැන් ඉදෙන්නට පටන් ගත් අඹ යොදාගන්න; නැතිනම් පෙති දිය වී ජෑම් වගේ වේ. අබ නැවුම්ව අඹරා ගැනීමෙන් ලැබෙන තියුණු රසය බෝතලේ පේස්ට් හැන්දකින් ලැබෙන්නේ නැත.",
+  "ta": "முற்றிலும் பழுத்ததை அல்லாமல், கெட்டியாக இருந்து இப்போது பழுக்கத் தொடங்கும் மாங்காயைப் பயன்படுத்துங்கள்; இல்லையேல் துண்டுகள் கரைந்து ஜாம் ஆகிவிடும். கடுகை புதிதாக அரைப்பதால் கிடைக்கும் கூர்மையான சுவை, பாட்டில் விழுதில் கிடைக்காது."
+ },
+ "health_note": {
+  "en": "Mango brings vitamin A and vitamin C to the plate, but the fruit's own sugar plus the spoonful added means this is a sweet curry; a couple of wedges is the right helping for anyone watching their blood sugar. The coconut milk carries most of the fat.",
+  "si": "අඹවලින් විටමින් ඒ හා විටමින් සී පිඟානට එකතු වේ; එහෙත් ගෙඩියේ ස්වභාවික සීනි සමඟ එකතු කරන සීනි නිසා මෙය පැණි රස ව්‍යංජනයකි. රුධිර සීනි ගැන සැලකිලිමත් අයට පෙති දෙකක් ප්‍රමාණවත්. මේදය බොහෝමය පොල් කිරිවලින්.",
+  "ta": "மாங்காய் தட்டுக்கு வைட்டமின் ஏ யும் வைட்டமின் சி யும் சேர்க்கிறது; ஆனால் பழத்தின் இயற்கை சர்க்கரையுடன் சேர்க்கும் சீனியும் இருப்பதால் இது இனிப்புக் கறி. இரத்த சர்க்கரை கவனம் உள்ளவர்களுக்கு இரண்டு துண்டுகளே சரியான அளவு. கொழுப்பு பெரும்பாலும் தேங்காய்ப் பாலில் இருந்தே வருகிறது."
+ },
+ "tags": [
+  "festive",
+  "kid_friendly",
+  "comfort",
+  "immune_support",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

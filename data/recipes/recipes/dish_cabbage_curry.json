@@ -1,0 +1,313 @@
+{
+ "id": "dish_cabbage_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 160,
+  "description": {
+   "en": "A ladle of soft cabbage in thin white gravy",
+   "si": "තුනී සුදු හොදියේ මෘදු ගෝවා හැන්දක්",
+   "ta": "நீர்க் குழம்பில் மென்மையான முட்டைகோஸ் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 680,
+ "ingredients": [
+  {
+   "ref": "product_cabbage",
+   "label": {
+    "en": "cabbage",
+    "si": "ගෝවා",
+    "ta": "முட்டைகோஸ்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "half a small cabbage",
+   "preparation": {
+    "en": "shredded finger-thin, thick ribs removed",
+    "si": "ඇඟිලි ගනට කපා, තද නාරටි ඉවත් කර",
+    "ta": "விரல் தடிமனில் நறுக்கி, கெட்டி நரம்புகள் நீக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනී ලෙස කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගෙන",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Quarter the cabbage, cut away the hard stem and shred the leaves about as thick as a finger so they hold their shape in the gravy.",
+    "minutes": null
+   },
+   {
+    "text": "Put the cabbage into a pot with the onion, green chillies, turmeric, curry powder, fenugreek, curry leaves and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk, cover, and cook on a medium flame; the cabbage will throw out its own water in the first few minutes.",
+    "minutes": 8
+   },
+   {
+    "text": "Open the pot and stir once so the leaves at the bottom change places with those on top.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thick coconut milk and let it heat until the first bubbles show at the rim, then take the pot off so the milk stays white.",
+    "minutes": 4
+   },
+   {
+    "text": "Check the salt; cabbage swallows salt and a mild curry still needs enough to taste.",
+    "minutes": null
+   },
+   {
+    "text": "Serve while the cabbage still has a slight bite, with rice and a sambol.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ගෝවා හතරට කපා, තද කඳ ඉවත් කර, කොළ ඇඟිලි ගනට කපන්න; එවිට හොදියේ හැඩය රැඳේ.",
+    "minutes": null
+   },
+   {
+    "text": "කපාගත් ගෝවා වළඳකට දමා, ලූනු, අමු මිරිස්, කහ, තුනපහ, උළුහාල්, කරපිංචා හා ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි වත් කර වහන්නක් දමා මධ්‍යම ගින්නේ උයන්න; මුල් විනාඩි කිහිපයේ ගෝවා තමන්ගේ වතුර පිට කරයි.",
+    "minutes": 8
+   },
+   {
+    "text": "වහන්න ඉවත් කර, පතුලේ කොළ ඉහළට එන සේ එක් වරක් කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මිටි කිරි වත් කර, දාරයේ බුබුළු එන තුරු පමණක් රස්නය කර, කිරි සුදු පැහැයෙන් තබාගන්නට ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලුණු රස බලන්න; ගෝවා ලුණු උරාගන්නා නිසා මෘදු ව්‍යංජනයකට වුවද ප්‍රමාණවත් ලුණු අවශ්‍යයි.",
+    "minutes": null
+   },
+   {
+    "text": "ගෝවා තුළ තවම සුළු දැඩි බවක් ඇති විටම බත් හා සම්බෝලයක් සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "முட்டைகோஸை நான்காக வெட்டி, கெட்டியான தண்டை நீக்கி, இலைகளை விரல் தடிமனில் நறுக்குங்கள்; அப்போது குழம்பில் வடிவம் தங்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கியதை சட்டியில் இட்டு, வெங்காயம், பச்சை மிளகாய், மஞ்சள், கறி மசாலா, வெந்தயம், கறிவேப்பிலை, உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி மூடி நடுத்தர தீயில் வேகவிடுங்கள்; முதல் சில நிமிடங்களில் முட்டைகோஸ் தன் நீரையே விடும்.",
+    "minutes": 8
+   },
+   {
+    "text": "மூடியைத் திறந்து, அடியில் உள்ள இலைகள் மேலே வரும்படி ஒருமுறை கிளறுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "தடிமன் பாலை ஊற்றி, விளிம்பில் குமிழி வரும் வரை மட்டும் சூடாக்கி, பால் வெள்ளையாக இருக்க அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "உப்பைச் சரிபாருங்கள்; முட்டைகோஸ் உப்பை உறிஞ்சும், எனவே மிதமான கறிக்கும் போதுமான உப்பு தேவை.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டைகோஸில் சிறு கடினத்தன்மை இருக்கும்போதே சாதத்துடனும் சம்பலுடனும் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot with lid",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Do not let it boil long after the thick milk goes in, or the cabbage turns grey and smells strong. Cutting the shreds a little thick is what keeps this from collapsing into mush.",
+  "si": "මිටි කිරි දැමූ පසු බොහෝ වේලා උතුරන්නට නොදෙන්න; නැතිනම් ගෝවා අළු පැහැයට හැරී තියුණු ගඳක් නගී. තීරු ටිකක් ගනට කැපීමයි මෙය පොඩිවී යාම වළක්වන්නේ.",
+  "ta": "தடிமன் பால் சேர்த்த பிறகு நீண்ட நேரம் கொதிக்க விடாதீர்கள்; முட்டைகோஸ் சாம்பல் நிறமாகி கடுமையான வாசனை வரும். துண்டுகளைச் சற்று தடிமனாக நறுக்குவதே இது கூழாகாமல் காக்கும்."
+ },
+ "health_note": {
+  "en": "Cabbage is one of the cheapest sources of fibre and vitamin C on the market table and this version is light because the gravy carries most of the flavour. Cook it briefly; long boiling loses much of the vitamin C into the gravy.",
+  "si": "ගෝවා යනු වෙළඳපොළේ ලාභම කෙඳි හා විටමින් සී මූලාශ්‍රයක් වන අතර, රස හොදියෙන් එන නිසා මෙම ක්‍රමය සැහැල්ලුයි. කෙටි වෙලාවක් උයන්න; බොහෝ වේලා තැම්බීමෙන් විටමින් සී හොදියට වැගිරේ.",
+  "ta": "சந்தையில் கிடைக்கும் மிக மலிவான நார்ச்சத்து மற்றும் வைட்டமின் சி ஆதாரங்களில் ஒன்று முட்டைகோஸ்; சுவை குழம்பில் இருப்பதால் இந்த முறை இலகுவானது. குறைந்த நேரமே சமையுங்கள்; நீண்ட நேரம் கொதிக்க வைத்தால் வைட்டமின் சி குழம்பில் கரைந்துவிடும்."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "light",
+  "kid_friendly",
+  "quick",
+  "budget",
+  "one_pot",
+  "weight_loss_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

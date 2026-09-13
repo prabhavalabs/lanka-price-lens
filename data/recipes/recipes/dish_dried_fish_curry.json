@@ -1,0 +1,391 @@
+{
+ "id": "dish_dried_fish_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 180,
+  "description": {
+   "en": "A ladle of salty dried fish curry with enough gravy to wet the rice",
+   "si": "බත මොලවා ගන්න තරම් හොදි සමඟ කරවල කැබලි කීපයක්",
+   "ta": "சாதத்தை நனைக்கும் அளவு குழம்புடன் சில கருவாட்டுத் துண்டுகள்"
+  }
+ },
+ "yield_g": 850,
+ "ingredients": [
+  {
+   "ref": "product_dried_fish_katta",
+   "label": {
+    "en": "dried fish, katta",
+    "si": "කරවල, කට්ට",
+    "ta": "கருவாடு, கட்டா"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "about 2 cups of pieces",
+   "preparation": {
+    "en": "rinsed, soaked in warm water, cut into bite-size pieces",
+    "si": "හෝදා, උණු වතුරේ පොඟවා, කටට ගන්න පුළුවන් කැබලිවලට කපා ගත්ත",
+    "ta": "கழுவி, வெந்நீரில் ஊறவைத்து, வாய்க்கு அடங்கும் துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "6 to 8 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්ත",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්ත",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthwise",
+    "si": "දිගට පලා ගත්ත",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொரக்கா"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 small pieces",
+   "preparation": {
+    "en": "rinsed",
+    "si": "හෝදා ගත්ත",
+    "ta": "கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ දියර කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ගාටි කිරි",
+    "ta": "முதல் பால், கட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp, only if needed",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the dried fish under running water and soak it in warm water so the hardest salt washes out.",
+    "minutes": 20
+   },
+   {
+    "text": "Squeeze the pieces dry, pull out the big bones and cut the fish small.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the onion, garlic, green chilli, curry leaves and pandan until the onion softens.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the turmeric, chilli powder and curry powder for half a minute so the raw smell leaves the pot.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk, drop in the goraka and bring it to a simmer.",
+    "minutes": 5
+   },
+   {
+    "text": "Slide in the dried fish and cook uncovered until the pieces swell and turn soft.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the thick coconut milk, taste before you add any salt, and let it bubble gently without hard stirring.",
+    "minutes": 5
+   },
+   {
+    "text": "Lift the pot off the fire and leave it covered; the gravy thickens as it stands.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "කරවල ගලායන වතුරෙන් හොඳට හෝදලා, වැඩිපුර ලුණු ඉවත් වෙන්න උණු වතුරේ පොඟවා ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පොඟවපු කරවල මිරිකා වතුර බැහැර කර, ලොකු කටු ඉවත් කරලා කුඩා කැබලිවලට කපා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුට්ටියක පොල් තෙල් රත් කරලා ලූනු, සුදුළූනු, අමු මිරිස්, කරපිංචා සහ රම්පෙ ලූනු මැලවෙන තුරු තෙල් දාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කහ කුඩු, මිරිස් කුඩු සහ තුනපහ දමා අමු ගඳ නැති වෙන්න තත්පර තිහක් පමණ අනගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙවන මිරිකීමේ දියර පොල් කිරි වත් කරලා, ගොරකා දමා, හොදි උතුරන්න තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කරවල කැබලි හොදියට දමලා, වහන්නේ නැතිව, කරවල පිම්බෙන තුරු තම්බා ගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගාටි පොල් කිරි එකතු කරලා, ලුණු දාන්න කලින් රස බලා, තදින් නොකලවම් කර සෙමින් උතුරවන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලිපෙන් අයින් කරලා වහලා තියන්න; වෙලාව යද්දී හොදි තව ටිකක් තද වේවි.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "கருவாட்டை ஓடும் தண்ணீரில் அலசி, கூடுதல் உப்பு போக வெந்நீரில் ஊறவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "ஊறிய துண்டுகளைப் பிழிந்து, பெரிய முள்ளுகளை எடுத்து, சிறு துண்டுகளாக வெட்டுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து, வெங்காயம், பூண்டு, பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை சேர்த்து வெங்காயம் வதங்கும் வரை தாளியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மஞ்சள் தூள், மிளகாய்த் தூள், கறி மசாலா சேர்த்து பச்சை வாசனை போக அரை நிமிடம் கிளறுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பாலை ஊற்றி, கொரக்கா போட்டு, கொதிக்க விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கருவாட்டுத் துண்டுகளைப் போட்டு, மூடாமல், அவை ஊறி மெதுவாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "கட்டித் தேங்காய்ப் பாலை சேர்த்து, உப்பு தேவையா என்று சுவைத்துப் பார்த்து, அதிகம் கிளறாமல் மெதுவாகக் கொதிக்கவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அடுப்பை அணைத்து, மூடிப் போட்டு வையுங்கள்; இருக்க இருக்க குழம்பு இறுகும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "bowl for soaking"
+ ],
+ "tips": {
+  "en": "Taste before salting at all; some katta is salty enough to carry the whole pot. On a lean day a few pieces of breadfruit or ash plantain dropped in with the thin milk stretch the curry for two more plates.",
+  "si": "ලුණු දාන්න කලින් රස බලන්න; සමහර කට්ට කරවලේම ලුණු හොදියට ඇති. සල්ලි අඩු දවසක දියර කිරි දාන වෙලාවේ දෙල් හෝ අල කෙසෙල් කැබලි කීපයක් දැම්මොත් හොදිය තව දෙන්නෙකුට ඇති.",
+  "ta": "உப்பு போடுவதற்கு முன் சுவைத்துப் பாருங்கள்; சில கட்டா கருவாட்டில் இருக்கும் உப்பே குழம்புக்குப் போதும். செலவு குறைக்க வேண்டிய நாளில், நீர்ப் பால் ஊற்றும்போது சில ஈரப்பலா அல்லது வாழைக்காய் துண்டுகளைப் போட்டால் குழம்பு இன்னும் இரண்டு பேருக்கு நீளும்."
+ },
+ "health_note": {
+  "en": "Dried fish gives strong protein and some calcium from the small bones, but it carries a lot of salt. Keep the portion to a couple of pieces if anyone at home is watching blood pressure, and let the coconut milk do the seasoning instead of more salt.",
+  "si": "කරවලෙන් හොඳ ප්‍රෝටීන් සහ කුඩා කටුවලින් කැල්සියම් ටිකක් ලැබෙනවා, නමුත් ලුණු ගොඩක් තියෙනවා. ගෙදර කෙනෙක් අධි රුධිර පීඩනය බලාගෙන ඉන්නවා නම් කැබලි දෙකකින් නවතින්න, ලුණු වැඩි කරන්නේ නැතිව පොල් කිරියෙන් රස ගන්න.",
+  "ta": "கருவாட்டில் நல்ல புரதமும், சிறு முள்ளுகளில் இருந்து கால்சியமும் கிடைக்கும், ஆனால் உப்பு அதிகம். வீட்டில் யாருக்கும் இரத்த அழுத்தம் இருந்தால் இரண்டு துண்டுகளோடு நிற்கவும்; உப்பைக் கூட்டாமல் தேங்காய்ப் பாலில் சுவையை எடுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "high_sodium",
+  "budget",
+  "comfort",
+  "filling",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

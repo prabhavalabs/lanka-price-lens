@@ -1,0 +1,426 @@
+{
+ "id": "dish_beef_smore",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 210,
+  "description": {
+   "en": "Two or three slices of beef with potato and dark gravy",
+   "si": "අල සහ අඳුරු හොද්ද සමඟ හරක් මස් පෙති දෙක තුනක්",
+   "ta": "உருளைக்கிழங்கும் கரும் குழம்பும் சேர்ந்த இரண்டு மூன்று மாட்டிறைச்சித் துண்டுகள்"
+  }
+ },
+ "yield_g": 1150,
+ "ingredients": [
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef, one whole piece",
+    "si": "හරක් මස්, එක් කැබැල්ලක්",
+    "ta": "மாட்டிறைச்சி, ஒரே பெரிய துண்டு"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "1 piece of topside",
+   "preparation": {
+    "en": "trimmed and pricked all over with a fork",
+    "si": "අමතර තෙල් ඉවත් කර ගෑරුප්පුවෙන් හාරා සිදුරු කරගත්",
+    "ta": "கொழுப்பை நீக்கி, முள்கரண்டியால் எல்லாப் பக்கமும் குத்திய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අල",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "4 medium potatoes",
+   "preparation": {
+    "en": "peeled, left whole or halved",
+    "si": "පොතු ඉවත් කර සම්පූර්ණයෙන් හෝ දෙකට කපාගත්",
+    "ta": "தோல் சீவி, முழுவதுமாக அல்லது இரண்டாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 onions",
+   "preparation": {
+    "en": "sliced thick",
+    "si": "ඝනට කපාගත්",
+    "ta": "தடிமனாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp, coarsely crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලාගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "தேசிக்காய்ச் சாறு"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "juice of 1 small lime",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டி, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்க்க, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_worcestershire_sauce",
+   "label": {
+    "en": "worcestershire sauce",
+    "si": "වොස්ටර්ෂයර් සෝස්",
+    "ta": "வொர்செஸ்டர்ஷயர் சோஸ்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Prick the beef all over with a fork and rub it with the crushed garlic, ginger, pepper, salt, lime juice and vinegar, working the mixture into the holes.",
+    "minutes": 15
+   },
+   {
+    "text": "Leave the meat in the marinade in a cool place, turning it once so both sides take the sourness.",
+    "minutes": 45
+   },
+   {
+    "text": "Lay the beef in a deep pot with the sliced onion, cinnamon, cloves and cardamom, pour in the thin coconut milk and bring it slowly to a simmer.",
+    "minutes": 10
+   },
+   {
+    "text": "Cover the pot and cook on a low flame, turning the meat every twenty minutes or so, until a skewer slides in with no resistance.",
+    "minutes": 70
+   },
+   {
+    "text": "Slip in the potatoes and cook until they are soft but still whole, adding a little hot water if the pot is too dry for them.",
+    "minutes": 18
+   },
+   {
+    "text": "Lift the beef out onto a board and let it rest while you finish the gravy.",
+    "minutes": 10
+   },
+   {
+    "text": "Stir the thick coconut milk and the worcestershire sauce into the pot, taste for salt and sourness, and let the gravy reduce until it is dark and glossy.",
+    "minutes": 10
+   },
+   {
+    "text": "Slice the rested beef across the grain, lay the slices back in the gravy with the potatoes, and warm everything through before bringing the pot to the table.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "හරක් මස් කැබැල්ල ගෑරුප්පුවෙන් හොඳින් හාරා, තලාගත් සුදුළූණු, ඉඟුරු, ගම්මිරිස්, ලුණු, දෙහි යුෂ සහ විනාකිරි සිදුරු තුළට යන ලෙස අතුල්ලන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "මිශ්‍රණය සමඟ මස සිසිල් තැනක තබා, පැති දෙකට ම ඇඹුල දැනෙන ලෙස වරක් පෙරළන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "ගැඹුරු භාජනයක මස තබා, කපාගත් ළූණු, කුරුඳු, කරාබුනැටි සහ එනසාල් දමා, තුනී පොල් කිරි වත් කර සෙමින් උණු වන්නට තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "භාජනය වසා අඩු ගින්නේ, විනාඩි විස්සකට වරක් පමණ මස පෙරළමින්, ඉරටුවක් පහසුවෙන් ඇතුළු වන තුරු උයන්න.",
+    "minutes": 70
+   },
+   {
+    "text": "අල දමා, ඒවා මෘදු වී නමුත් කැඩී නොයන තුරු උයන්න; භාජනය වියළි නම් උණු වතුර ස්වල්පයක් එකතු කරන්න.",
+    "minutes": 18
+   },
+   {
+    "text": "මස කැබැල්ල ලෑල්ලකට ගෙන, හොද්ද අවසන් කරන අතරතුර එය නිවී එන්නට තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඝන පොල් කිරි සහ වොස්ටර්ෂයර් සෝස් භාජනයට දමා, ලුණු හා ඇඹුල රස බලා, හොද්ද අඳුරු වී දිලිසෙන තුරු සිඳෙන්නට දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "නිවුණු මස නාරටිවලට හරහට පෙති කපා, අල සමඟ නැවත හොද්දට දමා, මේසයට ගෙන යාමට පෙර හොඳින් උණුසුම් කරගන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாட்டிறைச்சித் துண்டை முள்கரண்டியால் எல்லாப் பக்கமும் குத்தி, இடித்த பூண்டு, இஞ்சி, மிளகு, உப்பு, தேசிக்காய்ச் சாறு, வினிகர் ஆகியவற்றைத் துளைகளுக்குள் இறங்கும்படி தேய்த்து விடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "ஊறவைத்த இறைச்சியைக் குளிர்ந்த இடத்தில் வைத்து, இரு பக்கமும் புளிப்பு இறங்க ஒரு முறை திருப்பி விடுங்கள்.",
+    "minutes": 45
+   },
+   {
+    "text": "ஆழமான பாத்திரத்தில் இறைச்சியை வைத்து, நறுக்கிய வெங்காயம், பட்டை, கிராம்பு, ஏலக்காய் சேர்த்து, இரண்டாம் தேங்காய்ப் பாலை விட்டு மெதுவாகக் கொதிக்க வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "பாத்திரத்தை மூடி, சிறு தீயில், இருபது நிமிடத்திற்கு ஒரு முறை இறைச்சியைத் திருப்பி, ஒரு குச்சி எதிர்ப்பில்லாமல் உள்நுழையும் வரை சமையுங்கள்.",
+    "minutes": 70
+   },
+   {
+    "text": "உருளைக்கிழங்கைச் சேர்த்து, உடையாமல் மென்மையாகும் வரை வேக விடுங்கள்; நீர் குறைவாக இருந்தால் கொஞ்சம் சுடுநீர் சேருங்கள்.",
+    "minutes": 18
+   },
+   {
+    "text": "இறைச்சியை ஒரு பலகையில் எடுத்து வைத்து, குழம்பை முடிக்கும் வரை ஆற விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலையும் வொர்செஸ்டர்ஷயர் சோஸையும் சேர்த்து, உப்பையும் புளிப்பையும் பார்த்து, குழம்பு கறுத்து மினுமினுக்கும் வரை வற்ற விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஆறிய இறைச்சியை நரம்புக்கு எதிராகத் துண்டுகளாக வெட்டி, உருளைக்கிழங்குடன் குழம்பில் திரும்ப வைத்து, மேசைக்குக் கொண்டு போகும் முன் நன்கு சூடாக்குங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 110,
+  "passive_minutes": 55
+ },
+ "equipment": [
+  "deep heavy pot with a lid",
+  "carving board and knife",
+  "skewer for testing"
+ ],
+ "tips": {
+  "en": "Slice the beef only after it has rested, or the juices run out and the slices dry. If the gravy stays pale, lift out the meat and let the milk catch a little colour on a higher flame before you return the slices.",
+  "si": "මස නිවුණාට පසුව පමණක් පෙති කපන්න; නැතිනම් යුෂ පිට වී පෙති වියළේ. හොද්ද තවමත් සුදු නම් මස ඉවතට ගෙන, ගින්න වැඩි කර කිරි ස්වල්පයක් පාට වන්නට දී පසුව පෙති නැවත දමන්න.",
+  "ta": "இறைச்சி ஆறிய பிறகே துண்டுகளாக வெட்டுங்கள்; இல்லையேல் சாறு வெளியேறி துண்டுகள் காய்ந்துவிடும். குழம்பு வெள்ளையாகவே இருந்தால் இறைச்சியை எடுத்து வைத்து, தீயைக் கூட்டி பால் சிறிது நிறம் பிடிக்க விட்டு, பின்பு துண்டுகளைத் திரும்ப வையுங்கள்."
+ },
+ "health_note": {
+  "en": "A slow-cooked beef dish gives strong protein, iron and zinc, and because nothing is fried the fat comes mainly from the coconut milk. It is still a heavy plate, so keep it to two slices with plenty of rice and a vegetable beside it.",
+  "si": "සෙමින් උයන මෙම හරක් මස් කෑමෙන් හොඳ ප්‍රෝටීන්, යකඩ සහ සින්ක් ලැබෙන අතර කිසිවක් නොබදින බැවින් තෙල් එන්නේ ප්‍රධාන වශයෙන් පොල් කිරිවලින්. එහෙත් එය බර කෑමක් වන බැවින් බත් හා එළවළුවක් සමඟ පෙති දෙකකට සීමා කරන්න.",
+  "ta": "மெதுவாகச் சமைத்த இந்த மாட்டிறைச்சி உணவு நல்ல புரதம், இரும்பு, துத்தநாகம் தரும்; எதையும் பொரிக்காததால் கொழுப்பு பெரும்பாலும் தேங்காய்ப் பாலிலிருந்தே வருகிறது. இருந்தாலும் இது கனமான உணவு, எனவே சாதத்துடனும் ஒரு காய்கறியுடனும் இரண்டு துண்டுகளுக்கு வைத்துக் கொள்ளுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "festive",
+  "comfort",
+  "filling",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

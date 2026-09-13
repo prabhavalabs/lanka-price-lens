@@ -1,0 +1,434 @@
+{
+ "id": "dish_seeni_sambol_bun",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 190,
+  "description": {
+   "en": "Two buns with dark sweet-hot onion sambol inside",
+   "si": "ඇතුළත තද පැහැති, පැණි රස සහ සැර ලූනු සම්බෝල ඇති බනිස් දෙකක්",
+   "ta": "உள்ளே அடர் நிறமான, இனிப்பும் காரமும் கலந்த வெங்காய சம்பல் உள்ள இரண்டு பன்கள்"
+  }
+ },
+ "yield_g": 760,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "instant yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_margarine",
+   "label": {
+    "en": "margarine",
+    "si": "මාගරින්",
+    "ta": "மார்கரின்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "soft",
+    "si": "මෘදු",
+    "ta": "மிருதுவானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup, some for brushing",
+   "preparation": {
+    "en": "warmed",
+    "si": "ලා උණුසුම්",
+    "ta": "வெதுவெதுப்பாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 large onions",
+   "preparation": {
+    "en": "sliced as thin as you can manage",
+    "si": "හැකි තරම් සිහින්ව පෙති කැපූ",
+    "ta": "முடிந்த அளவு மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பலகடா (கருவாடு)"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp, pounded",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කොටාගත්",
+    "ta": "கொரகொரப்பாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "piece",
+   "household": "6 chillies",
+   "preparation": {
+    "en": "soaked and ground",
+    "si": "තෙමා අඹරාගත්",
+    "ta": "ஊறவைத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a lime-sized ball",
+   "preparation": {
+    "en": "soaked in a little warm water, pulp squeezed out",
+    "si": "ලා උණුසුම් වතුරේ තෙමා යුෂ මිරිකාගත්",
+    "ta": "சிறிது வெதுவெதுப்பான நீரில் ஊறவைத்துச் சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 tbsp, part for the dough",
+   "preparation": {
+    "en": "a spoon for the yeast, the rest for the sambol",
+    "si": "හැන්දක් යීස්ට් සඳහා, ඉතිරිය සම්බෝලයට",
+    "ta": "ஒரு ஸ்பூன் ஈஸ்டுக்கு, மீதி சம்பலுக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "கருப்பட்டி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a small piece, broken",
+   "preparation": {
+    "en": "broken small",
+    "si": "කුඩාවට කඩාගත්",
+    "ta": "சிறியதாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "for the sambol",
+    "si": "සම්බෝලයට",
+    "ta": "சம்பலுக்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a small piece of bark",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1½ tsp in all",
+   "preparation": {
+    "en": "for dough and sambol",
+    "si": "පිටි ගුලියට සහ සම්බෝලයට",
+    "ta": "மாவுக்கும் சம்பலுக்கும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Stir a spoon of the sugar and the yeast into 150 ml warm water and leave it until it foams.",
+    "minutes": 10
+   },
+   {
+    "text": "Rub the margarine into the flour with a teaspoon of salt, pour in the yeast water and the milk, knead to a soft dough and leave it covered until doubled.",
+    "minutes": 75
+   },
+   {
+    "text": "Slice the big onions very thin; a seeni sambol is only as good as the cut.",
+    "minutes": 15
+   },
+   {
+    "text": "Fry the onion slowly in coconut oil with the curry leaf, cinnamon and pounded maldive fish until it goes limp, then keeps browning.",
+    "minutes": 20
+   },
+   {
+    "text": "Add the ground chilli, tamarind pulp, remaining sugar, jaggery and salt and cook down to a dark sticky sambol that does not run on the spoon.",
+    "minutes": 12
+   },
+   {
+    "text": "Cool the sambol completely, then divide the dough and the sambol into eight portions each.",
+    "minutes": null
+   },
+   {
+    "text": "Flatten each piece of dough, spoon sambol into the middle, draw the edges over and seal them well, setting each bun seam down on a greased tray.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and prove until the buns feel light to the touch.",
+    "minutes": 30
+   },
+   {
+    "text": "Brush with milk and bake at 200 C until the tops are glossy and brown.",
+    "minutes": 20
+   },
+   {
+    "text": "Rest for ten minutes before eating; sugar in the filling holds a lot of heat.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "ලා උණුසුම් වතුර මිලි ලීටර් 150ට සීනි හැන්දක් සහ යීස්ට් දමා කලතා, පෙණ නඟින තෙක් තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිටිවලට තේ හැන්දක ලුණු දමා මාගරින් අතුල්ලා, යීස්ට් වතුර සහ කිරි වත් කර මෘදු පිටි ගුලියක් අනා, වසා දෙගුණ වන තෙක් තබන්න.",
+    "minutes": 75
+   },
+   {
+    "text": "බී ලූනු ඉතා සිහින්ව පෙති කපන්න; සීනි සම්බෝලයේ ගුණය තීරණය වන්නේ මේ කැපුමෙන් ය.",
+    "minutes": 15
+   },
+   {
+    "text": "පොල් තෙලේ කරපිංචා, කුරුඳු සහ කොටාගත් උම්බලකඩ සමඟ ලූනු සෙමින් බැදගන්න; මුලින් මැලවී, පසුව දුඹුරු වේ.",
+    "minutes": 20
+   },
+   {
+    "text": "අඹරාගත් මිරිස්, සියඹලා යුෂ, ඉතිරි සීනි, හකුරු සහ ලුණු දමා, හැන්දේ නොගලා යන තරම් තද, ඇලෙන සුළු සම්බෝලයක් වන තෙක් උයන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "සම්බෝල හොඳින් සිසිල් කර, පිටි ගුලියත් සම්බෝලයත් අට කොටසට බෙදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එක් එක් පිටි කොටස තට්ටු කර, මැදට සම්බෝල හැන්දක් තබා, දාර එකට ගෙන හොඳින් වසා, බනිස් තෙල් ගෑ තැටියක මැහුම පහතට තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා, අතට සැහැල්ලුවක් දැනෙන තෙක් පිම්බෙන්න දෙන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "කිරි ගල්වා, සෙල්සියස් 200ක උඳුනක මුදුන දිලිසෙන දුඹුරු පැහැයක් වන තෙක් පිළිස්සෙන්න දෙන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කෑමට පෙර විනාඩි දහයක් තිබෙන්න දෙන්න; සම්බෝලයේ සීනි නිසා එය බොහෝ වෙලා උණුසුම්ව තිබේ.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "150 மில்லி வெதுவெதுப்பான தண்ணீரில் ஒரு ஸ்பூன் சீனியும் ஈஸ்டும் கலக்கி, நுரை வரும் வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மாவில் ஒரு தேக்கரண்டி உப்புடன் மார்கரினைத் தேய்த்து, ஈஸ்ட் தண்ணீரும் பாலும் ஊற்றி மிருதுவான மாவாகப் பிசைந்து, மூடி இரட்டிப்பாகும் வரை வைக்கவும்.",
+    "minutes": 75
+   },
+   {
+    "text": "பெரிய வெங்காயத்தை மிக மெல்லியதாக நறுக்கவும்; சீனி சம்பலின் தரம் இந்த நறுக்கிலேயே இருக்கிறது.",
+    "minutes": 15
+   },
+   {
+    "text": "தேங்காய் எண்ணெயில் கறிவேப்பிலை, இலவங்கப்பட்டை, இடித்த உம்பலகடா சேர்த்து வெங்காயத்தை மெதுவாக வதக்கவும்; முதலில் வதங்கி, பின் பொன்னிறமாகும்.",
+    "minutes": 20
+   },
+   {
+    "text": "அரைத்த மிளகாய், புளிச்சாறு, மீதி சீனி, கருப்பட்டி, உப்பு சேர்த்து, கரண்டியில் வழியாத அடர்ந்த பிசுபிசுப்பான சம்பலாகும் வரை வதக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "சம்பலை முழுமையாக ஆறவிட்டு, மாவையும் சம்பலையும் எட்டு பங்காகப் பிரிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு மாவுத் துண்டையும் தட்டி, நடுவில் சம்பலை வைத்து, விளிம்புகளை மேலே சேர்த்து நன்கு மூடி, மூட்டு கீழாக எண்ணெய் தடவிய தட்டில் வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி, கையில் இலகுவாகத் தெரியும் வரை பூரிக்கவிடவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "பால் தடவி, 200 செல்சியஸில் மேற்பரப்பு மினுமினுப்பான பொன்னிறம் வரும் வரை சுடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "சாப்பிடுமுன் பத்து நிமிடம் வைக்கவும்; சம்பலில் உள்ள சீனியால் அது நெடுநேரம் சூடாக இருக்கும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 20,
+  "passive_minutes": 105
+ },
+ "equipment": [
+  "heavy pan",
+  "mixing bowl",
+  "baking tray",
+  "oven"
+ ],
+ "tips": {
+  "en": "Cook the sambol down further than feels necessary; a wet filling steams inside the bun and leaves a hollow gap under the crust. A vegetarian household can leave out the maldive fish and add a spoon more tamarind instead.",
+  "si": "සම්බෝල අවශ්‍ය යැයි හැඟෙන තැනට වඩා ටිකක් වැඩිපුර උයන්න; තෙත් සම්බෝල බනිස ඇතුළේ වාෂ්ප වී පොත්ත යටින් හිස් තැනක් හදයි. මාළු නොකන ගෙදරක උම්බලකඩ නොදමා, ඒ වෙනුවට සියඹලා තව හැන්දක් දමන්න.",
+  "ta": "சம்பலை தேவை என்று தோன்றுவதை விடச் சற்று அதிகமாக வதக்கவும்; ஈரமான சம்பல் பன்னுக்குள் ஆவியாகி மேல் ஓட்டின் கீழ் வெற்றிடம் ஏற்படுத்தும். மீன் சாப்பிடாத வீட்டில் உம்பலகடாவை விட்டுவிட்டு, பதிலாக ஒரு ஸ்பூன் புளி அதிகம் சேர்க்கலாம்."
+ },
+ "health_note": {
+  "en": "Sugar and jaggery cooked into the onion plus salted maldive fish make this bun both sweet and salty, so it is not the one to have every day. One at tea, and a lighter meal afterwards, keeps it in proportion.",
+  "si": "ලූනු සමඟ උයන සීනි හා හකුරු, එමෙන්ම ලුණු සහිත උම්බලකඩ නිසා මෙම බනිස පැණි රස හා ලුණු රස දෙකෙන්ම බරය; එබැවින් දිනපතා ගැනීමට සුදුසු නැත. තේ වේලාවට එකක් ගෙන, ඊළඟ වේල සැහැල්ලු කරගන්න.",
+  "ta": "வெங்காயத்துடன் சேர்த்து வதக்கிய சீனியும் கருப்பட்டியும், உப்புள்ள உம்பலகடாவும் இந்தப் பன்னை இனிப்பிலும் உப்பிலும் கனமாக்குகின்றன; எனவே தினமும் சாப்பிடத் தகுந்ததல்ல. தேநீர் நேரத்தில் ஒன்று, அதற்குப் பிறகு இலகுவான உணவு என்று வைத்துக்கொள்ளவும்."
+ },
+ "tags": [
+  "street_food",
+  "comfort",
+  "filling",
+  "high_sugar",
+  "high_sodium"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

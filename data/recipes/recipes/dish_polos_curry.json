@@ -1,0 +1,460 @@
+{
+ "id": "dish_polos_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 240,
+  "description": {
+   "en": "A ladle of dark, meaty jackfruit pieces in thick roasted gravy",
+   "si": "බැදපු කුළුබඩු සහිත ඝන කළු හොදියේ, මසක් වගේ පොලොස් කැබලි හැන්දක්",
+   "ta": "வறுத்த மசாலா கலந்த கரும் குழம்பில் இறைச்சி போன்ற பலாக்காய்த் துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 980,
+ "ingredients": [
+  {
+   "ref": "product_polos",
+   "label": {
+    "en": "young jackfruit (polos)",
+    "si": "පොලොස්",
+    "ta": "பலாக்காய்"
+   },
+   "quantity": 650,
+   "unit": "g",
+   "household": "half a small young jackfruit, cleaned weight",
+   "preparation": {
+    "en": "skin and core removed, cut into 3 cm cubes, kept in water",
+    "si": "ලෙලි සහ මැද කොටස ඉවත් කර සෙන්ටිමීටර තුනක කැට කපා, වතුරේ තබා",
+    "ta": "தோலும் நடுப்பாகமும் நீக்கி 3 செ.மீ. கட்டிகளாக வெட்டி, நீரில் போட்டு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut, for the dark paste",
+    "si": "කළු පොල් පේස්ට් සඳහා ගාගත් පොල්",
+    "ta": "கரும் விழுதுக்குத் துருவிய தேங்காய்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "dry-roasted dark and ground",
+    "si": "තෙල් නැතුව තද පාටට බැදගෙන අඹරා",
+    "ta": "எண்ணெய் இல்லாமல் கருகும் வரை வறுத்து அரைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "මිරිස් කරල්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "6 chillies",
+   "preparation": {
+    "en": "roasted with the coconut",
+    "si": "පොල් සමඟ බැදගෙන",
+    "ta": "தேங்காயுடன் வறுத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "கொத்தமல்லி விதை"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "roasted with the coconut",
+    "si": "පොල් සමඟ බැදගෙන",
+    "ta": "தேங்காயுடன் வறுத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "7 or 8 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a thumb-tip piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 small pieces",
+   "preparation": {
+    "en": "soaked in a little hot water",
+    "si": "රස්නෙ වතුර ස්වල්පයක දමා",
+    "ta": "கொஞ்சம் சூடான நீரில் ஊறவைத்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබු නැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 0.5,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp, some for the boiling water",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub a little oil on your hands and the knife, cut away the spiny skin and the hard core of the young jackfruit, cube the flesh and drop the pieces into water so the sap does not blacken them.",
+    "minutes": 20
+   },
+   {
+    "text": "Boil the cubes in salted water until a fingernail goes in easily, then drain them.",
+    "minutes": 20
+   },
+   {
+    "text": "Dry-roast the scraped coconut with the dried chillies and coriander seed in a heavy pan over a low flame, stirring all the while, until the coconut is deep brown, then grind it with a splash of water into a dark paste.",
+    "minutes": 12
+   },
+   {
+    "text": "Heat the coconut oil in the curry pot and brown the onion, garlic, ginger, curry leaves, pandan and cloves.",
+    "minutes": 5
+   },
+   {
+    "text": "Lower the flame, stir in the roasted curry powder and turmeric for a moment only, so they wake up but do not burn.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the drained jackfruit, the soaked gorakka with its water, the thin coconut milk and the salt, and simmer covered until the pieces are soft and have drunk the gravy.",
+    "minutes": 20
+   },
+   {
+    "text": "Stir in the ground coconut paste and cook uncovered until the gravy darkens and clings to the pieces.",
+    "minutes": 8
+   },
+   {
+    "text": "Pour in the thick milk, bring it to one bubble and lift the pot off the fire.",
+    "minutes": 3
+   },
+   {
+    "text": "Let it rest before serving; polos tastes better an hour later and better still the next day.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "අත් සහ පිහියට තෙල් ටිකක් ගල්වා, පොලොස්වල කටු සහිත ලෙලි සහ මැද තද කොටස ඉවත් කර, ඇට වර්ග කැට කපා, කිරි නිසා කළු නොවෙන්න වතුරට දමන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ලුණු දැමූ වතුරේ, නියපොත්තක් පහසුවෙන් ඇදෙන තුරු තම්බා වතුර බේරන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ගාගත් පොල්, මිරිස් කරල් සහ කොත්තමල්ලි බර පෑන් එකක මද ගින්නේ, දිගටම කලවම් කරමින්, පොල් තද දුඹුරු පාට වන තුරු තෙල් නැතුව බැදගෙන, වතුර ස්වල්පයක් සමඟ අඹරා කළු පේස්ට් එකක් හදන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "හොදි මුට්ටියේ පොල් තෙල් රත් කර, ළූණු, සුදු ළූණු, ඉඟුරු, කරපිංචා, රම්පෙ සහ කරාබු නැටි දමා බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගිනි අඩු කර, බැදපු තුනපහ සහ කහ දමා ක්ෂණිකව කලවම් කරන්න; පිළිස්සෙන්නට ඉඩ දෙන්න එපා.",
+    "minutes": 1
+   },
+   {
+    "text": "බේරාගත් පොලොස්, ඇඹරූ ගොරකා එහි වතුරත් සමඟ, තුනී පොල් කිරි සහ ලුණු දමා, වසා, කැබලි මෘදු වී හොදිය උරාගන්නා තුරු තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "අඹරාගත් පොල් පේස්ට් එකතු කර, වහන්නේ නැතුව හොදිය කළු පැහැ ගෙන කැබලිවලට ඇලෙන තුරු උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඝන කිරි වත් කර එක් උතුරක් පමණක් එන්න දී මුට්ටිය ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බෙදන්නට පෙර මිනිත්තු කීපයක් නිශ්චලව තියන්න; පොලොස් පැයකින් පසු වඩා රසයි, පසු දින තව රසයි.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "கைகளிலும் கத்தியிலும் கொஞ்சம் எண்ணெய் தடவி, பலாக்காயின் முள் தோலையும் நடுக் கடினப் பகுதியையும் நீக்கி, சதையைக் கட்டிகளாக வெட்டி, பால் கருக்காமல் இருக்க நீரில் போடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "உப்பு நீரில், நகம் எளிதாக இறங்கும் வரை வேகவைத்து நீரை வடிக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "துருவிய தேங்காய், காய்ந்த மிளகாய், கொத்தமல்லி விதையை கனமான சட்டியில் சிறு தீயில் தொடர்ந்து கிளறி, தேங்காய் அடர் பழுப்பாகும் வரை எண்ணெய் இல்லாமல் வறுத்து, கொஞ்சம் நீர் சேர்த்து அரைத்துக் கரும் விழுதாக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "கறி சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, ரம்பை, கிராம்பு சேர்த்து வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தீயைக் குறைத்து, வறுத்த கறி மசாலாவும் மஞ்சளும் சேர்த்து ஒரு நொடி மட்டும் கிளறவும்; கருகவிடக் கூடாது.",
+    "minutes": 1
+   },
+   {
+    "text": "வடித்த பலாக்காய், ஊறிய கொடுக்காய்ப்புளி அதன் நீருடன், இரண்டாம் தேங்காய்ப்பால், உப்பு சேர்த்து மூடி, துண்டுகள் மென்மையாகி குழம்பை உள்வாங்கும் வரை கொதிக்க விடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "அரைத்த தேங்காய் விழுதைக் கலந்து, மூடாமல், குழம்பு கறுத்து துண்டுகளில் ஒட்டும் வரை சமைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "முதல் பாலை ஊற்றி ஒரே கொதி வந்ததும் சட்டியை இறக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பரிமாறும் முன் சற்று ஆற விடவும்; பலாக்காய்க் கறி ஒரு மணி நேரம் கழித்து மேலும் சுவைக்கும், மறுநாள் இன்னும் சுவைக்கும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 45,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot or heavy pan with a lid",
+  "heavy pan for roasting",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "Choose a jackfruit young enough that the seeds are still soft and white; once the seeds harden the pieces stay rubbery however long you cook them. Keep the pot uncovered for the last stretch so the gravy tightens around the cubes.",
+  "si": "ඇට තවම මෘදු, සුදු පාට තියෙන තරම් ළපටි පොලොස් ගෙඩියක් තෝරන්න; ඇට තද වුණාට පස්සේ කොච්චර උයනත් කැබලි ලේනුවක් වගේ තියෙනවා. අන්තිම කොටසේ මුට්ටිය නොවසා තියලා හොදිය කැබලි වටා තදවෙන්න දෙන්න.",
+  "ta": "விதைகள் இன்னும் மெல்லியதாக, வெள்ளையாக இருக்கும் அளவு இளம் பலாக்காயையே தேர்ந்தெடுக்கவும்; விதை கெட்டியானால் எவ்வளவு வேகவைத்தாலும் துண்டுகள் ரப்பர் போலவே இருக்கும். கடைசிக் கட்டத்தில் மூடாமல் வைத்து குழம்பு துண்டுகளில் ஒட்டும் வரை சமைக்கவும்."
+ },
+ "health_note": {
+  "en": "Polos is filling and high in fibre, which is why it stands in for meat at almsgivings, though it carries none of the protein meat would give; put a dhal or an egg beside it. The roasted coconut and coconut milk make this one of the heavier vegetable curries in fat.",
+  "si": "පොලොස් තන්තු බහුල, පිරෙන කෑමක් නිසා දානවලදී මස් වෙනුවට යොදනවා; නමුත් මස්වලින් ලැබෙන ප්‍රෝටීන් එහි නැහැ, ඒ නිසා පරිප්පුවක් හෝ බිත්තරයක් සමඟ කන්න. බැදපු පොල් සහ පොල් කිරි නිසා මේක තෙල් ගතිය වැඩිම එළවළු හොදිවලින් එකක්.",
+  "ta": "பலாக்காய் நார்ச்சத்து நிறைந்து வயிறு நிரப்புவதால் தானங்களில் இறைச்சிக்குப் பதிலாகப் பயன்படுகிறது; ஆனால் இறைச்சியில் உள்ள புரதம் இதில் இல்லை, எனவே பருப்போ முட்டையோ சேர்த்துக் கொள்ளவும். வறுத்த தேங்காயும் தேங்காய்ப்பாலும் சேர்வதால் கொழுப்பு அதிகமான காய்கறிக் கறிகளில் இதுவும் ஒன்று."
+ },
+ "tags": [
+  "high_fibre",
+  "filling",
+  "budget",
+  "comfort",
+  "festive"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,617 @@
+{
+ "id": "dish_lamprais",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 520,
+  "description": {
+   "en": "One banana leaf parcel per person, opened at the table",
+   "si": "මේසයේ ඇර ගන්නා, එක් අයෙකුට එක් කෙසෙල් කොළ පාර්සලයක්",
+   "ta": "மேசையில் திறக்கப்படும், ஒருவருக்கு ஒரு வாழை இலைப் பொதி"
+  }
+ },
+ "yield_g": 2080,
+ "ingredients": [
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed and drained",
+    "si": "හෝදා වතුර බේරාගත්",
+    "ta": "அலசி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_stock",
+   "label": {
+    "en": "meat stock",
+    "si": "මස් සුප් හොද්ද",
+    "ta": "இறைச்சி சாறு"
+   },
+   "quantity": 700,
+   "unit": "ml",
+   "household": "3 cups",
+   "preparation": {
+    "en": "from boiling the beef and chicken bones with spices",
+    "si": "හරක් මස් සහ කුකුල් මස් ඇට කුළුබඩු සමඟ තැම්බූ",
+    "ta": "மாட்டு, கோழி எலும்புகளை மசாலாவுடன் கொதிக்கவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_ghee",
+   "label": {
+    "en": "ghee",
+    "si": "ගිතෙල්",
+    "ta": "நெய்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef",
+    "si": "හරක් මස්",
+    "ta": "மாட்டு இறைச்சி"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "a fist-sized piece",
+   "preparation": {
+    "en": "cut into small cubes",
+    "si": "කුඩා කැට ලෙස කැපූ",
+    "ta": "சிறு கட்டிகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken",
+    "si": "කුකුල් මස්",
+    "ta": "கோழி இறைச்சி"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 thighs",
+   "preparation": {
+    "en": "on the bone, cut small",
+    "si": "ඇට සමඟ කුඩාවට කැපූ",
+    "ta": "எலும்புடன் சிறியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_minced_meat",
+   "label": {
+    "en": "minced meat for the frikkadels",
+    "si": "ෆ්‍රිකඩෙල් සඳහා අඹරාගත් මස්",
+    "ta": "பிரிக்கடெல் உருண்டைக்கு அரைத்த இறைச்சி"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "mixed with breadcrumbs, onion and pepper",
+    "si": "පාන් කුඩු, ලූනු සහ ගම්මිරිස් සමඟ මිශ්‍ර කළ",
+    "ta": "ரொட்டித் தூள், வெங்காயம், மிளகுடன் கலந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_breadcrumbs",
+   "label": {
+    "en": "breadcrumbs",
+    "si": "පාන් කුඩු",
+    "ta": "ரொட்டித் தூள்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "1/2 cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 eggs",
+   "preparation": {
+    "en": "two beaten for the meatballs, two hard boiled and halved",
+    "si": "දෙකක් මස් බෝල සඳහා ගසාගත්, දෙකක් තම්බා දෙකට කැපූ",
+    "ta": "இரண்டு உருண்டைக்கு அடித்தது, இரண்டு வேகவைத்து பாதியாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_brinjals",
+   "label": {
+    "en": "brinjals",
+    "si": "වම්බටු",
+    "ta": "கத்தரிக்காய்"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2 medium brinjals",
+   "preparation": {
+    "en": "cut in fingers, salted, and fried for the moju",
+    "si": "ඇඟිලි ලෙස කපා ලුණු දමා මොජු සඳහා බැදගත්",
+    "ta": "விரல் வடிவில் வெட்டி உப்பு போட்டு மொஜுவுக்கு பொரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 onions",
+   "preparation": {
+    "en": "sliced, shared between the curry, the moju and the sambol",
+    "si": "කැපූ, ව්‍යංජනය, මොජු සහ සම්බෝල අතර බෙදා ගන්නා",
+    "ta": "நறுக்கியது, கறி, மொஜு, சம்பல் மூன்றுக்கும் பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி கருவாடு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp, pounded",
+   "preparation": {
+    "en": "pounded fine",
+    "si": "සිහින්ව කොටාගත්",
+    "ta": "நன்றாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_shrimp_paste",
+   "label": {
+    "en": "shrimp paste for the blachan sambol",
+    "si": "බ්ලචාන් සම්බෝලයට ඉස්සන් පේස්ට්",
+    "ta": "பிளாச்சான் சம்பலுக்கு இறால் பேஸ்ட்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "4 tsp",
+   "preparation": {
+    "en": "roasted for a moment",
+    "si": "මොහොතක් රටවාගත්",
+    "ta": "ஒரு நொடி வாட்டியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල්කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thick, first squeeze, for the meat curry",
+    "si": "ඝන, පළමු මිරිකීම, මස් ව්‍යංජනයට",
+    "ta": "கெட்டியானது, முதல் பால், இறைச்சிக் கறிக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "3 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "2 sticks",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "4 pods",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "coarsely ground",
+    "si": "රළුවට අඹරාගත්",
+    "ta": "கொரகொரப்பாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for the brinjal moju",
+    "si": "වම්බටු මොජු සඳහා",
+    "ta": "கத்தரிக்காய் மொஜுவுக்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "for the moju",
+    "si": "මොජු සඳහා",
+    "ta": "மொஜுவுக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 80,
+   "unit": "ml",
+   "household": "5 tbsp",
+   "preparation": {
+    "en": "for frying the brinjal and the meatballs",
+    "si": "වම්බටු සහ මස් බෝල බැදීමට",
+    "ta": "கத்தரிக்காயும் இறைச்சி உருண்டையும் பொரிக்க"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "pantry_banana_leaf",
+   "label": {
+    "en": "banana leaf",
+    "si": "කෙසෙල් කොළ",
+    "ta": "வாழை இலை"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 large squares",
+   "preparation": {
+    "en": "wiped and softened over the flame",
+    "si": "පිස ගිනි දැල්ල මතින් මුදු කරගත්",
+    "ta": "துடைத்து நெருப்பில் வாட்டியது"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "serving"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp across all the parts",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Boil the beef and chicken with a piece of cinnamon, a few cloves, half an onion, pepper and salt in 1.2 litres of water until the meat is tender, then strain and keep the stock.",
+    "minutes": 45
+   },
+   {
+    "text": "Return the cooked beef and chicken to a pan with sliced onion, roasted curry powder, chilli powder and the thick coconut milk, and simmer to a dark, thick mixed meat curry.",
+    "minutes": 20
+   },
+   {
+    "text": "Mix the minced meat with breadcrumbs, chopped onion, pepper, salt and two beaten eggs, roll into small balls the size of a lime, and fry them in hot oil until dark brown; these are the frikkadels.",
+    "minutes": 15
+   },
+   {
+    "text": "Salt the cut brinjal, leave it a quarter hour, squeeze it dry and fry it, then toss it with onion, vinegar, sugar, a little chilli powder and salt to make the moju.",
+    "minutes": 20
+   },
+   {
+    "text": "Pound the roasted shrimp paste with a little onion, chilli powder, maldive fish and salt into a stiff blachan sambol.",
+    "minutes": 8
+   },
+   {
+    "text": "Now the rice: melt the ghee in a pot, fry the cardamom, cloves and cinnamon, add the drained rice and stir for a minute.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in 700 ml of the strained stock, check the salt, boil hard until the liquid drops to the level of the rice, then cover and steam on the lowest flame.",
+    "minutes": 20
+   },
+   {
+    "text": "Warm the banana leaves over the flame until they bend, and lay them out on the table.",
+    "minutes": null
+   },
+   {
+    "text": "On each leaf put a mound of stock rice, then a spoon of the meat curry, two frikkadels, a spoon of brinjal moju, half a boiled egg and a small heap of blachan around it.",
+    "minutes": null
+   },
+   {
+    "text": "Fold the leaf into a flat parcel, tuck the ends under, and bake the parcels in a moderate oven or on a heavy covered griddle so the flavours run into the rice.",
+    "minutes": 20
+   },
+   {
+    "text": "Serve the parcels closed and let each person open their own at the table.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "හරක් මස් සහ කුකුල් මස්, කුරුඳු කැබැල්ලක්, කරාබුනැටි කිහිපයක්, ලූනු අඩක්, ගම්මිරිස් සහ ලුණු සමඟ වතුර ලීටර් 1.2ක දමා මස් මුදු වන තුරු තම්බා, පෙරා සුප් හොද්ද තබා ගන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "තැම්බූ හරක් මස් සහ කුකුල් මස් නැවත පෑන් එකකට දමා, කැපූ ලූනු, බැදපු තුනපහ, මිරිස් කුඩු සහ ඝන පොල්කිරි එකතු කර, තද පාට ඝන මිශ්‍ර මස් ව්‍යංජනයක් වන තුරු හොඳින් තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "අඹරාගත් මස්, පාන් කුඩු, කැපූ ලූනු, ගම්මිරිස්, ලුණු සහ ගසාගත් බිත්තර දෙකක් මිශ්‍ර කර දෙහි ගෙඩියක් තරමේ බෝල සාදා, රත් තෙලේ තද දුඹුරු වන තුරු බදින්න; මේවා ෆ්‍රිකඩෙල්.",
+    "minutes": 15
+   },
+   {
+    "text": "කැපූ වම්බටු වලට ලුණු දමා පැයෙන් හතරෙන් එකක් තබා, මිරිකා වතුර ඉවත් කර බැද, ලූනු, විනාකිරි, සීනි, මිරිස් කුඩු ටිකක් සහ ලුණු සමඟ කලවම් කර මොජු සාදා ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "රටවාගත් ඉස්සන් පේස්ට්, ලූනු ටිකක්, මිරිස් කුඩු, උම්බලකඩ සහ ලුණු එකට කොටා තද බ්ලචාන් සම්බෝලයක් සාදා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "දැන් බත: හැළියක ගිතෙල් දිය කර එනසාල්, කරාබුනැටි සහ කුරුඳු බැද, වතුර බේරූ සහල් දමා මිනිත්තුවක් කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පෙරාගත් සුප් හොද්දෙන් මිලි ලීටර් 700ක් දමා ලුණු රස බලා, දිය සහල් මට්ටමට බසින තුරු තදින් නටවා, පසුව වසා අවම ගින්නේ වාෂ්පයෙන් පිහන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කෙසෙල් කොළ ගිනි දැල්ල මතින් ගෙන නැමෙන තරමට මුදු කර, මේසය මත එළා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එක් එක් කොළය මත සුප් හොදි බත් ගොඩක් තබා, වටේට මස් ව්‍යංජනය හැන්දක්, ෆ්‍රිකඩෙල් දෙකක්, වම්බටු මොජු හැන්දක්, තම්බාගත් බිත්තර අඩක් සහ බ්ලචාන් කුඩා ගොඩක් තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කොළය පැතලි පාර්සලයක් ලෙස නවා කෙළවර යටින් රුවා, මධ්‍යම උදුනක හෝ බර, වැසූ තාච්චියක තබා රස බතට ඇදෙන තුරු පිහන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පාර්සල වසාම ඉදිරිපත් කර, එක් එක් අයට තමන්ගේ පාර්සලය මේසයේ ඇර ගන්නට දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாட்டிறைச்சியையும் கோழியையும் ஒரு துண்டு பட்டை, சில கிராம்பு, அரை வெங்காயம், மிளகு, உப்புடன் 1.2 லிட்டர் தண்ணீரில் இறைச்சி மென்மையாகும் வரை கொதிக்கவைத்து, வடிகட்டி சாற்றை வைத்துக் கொள்ளுங்கள்.",
+    "minutes": 45
+   },
+   {
+    "text": "வெந்த இறைச்சிகளை மீண்டும் சட்டியில் இட்டு, நறுக்கிய வெங்காயம், வறுத்த கறி மசாலா, மிளகாய்த் தூள், கெட்டித் தேங்காய்ப் பால் சேர்த்து கருமையான கெட்டியான கலவைக் கறியாகும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "அரைத்த இறைச்சியுடன் ரொட்டித் தூள், நறுக்கிய வெங்காயம், மிளகு, உப்பு, அடித்த இரண்டு முட்டை கலந்து எலுமிச்சை அளவு உருண்டைகளாக உருட்டி, காய்ந்த எண்ணெயில் கடும் பொன்னிறமாகப் பொரிக்குங்கள்; இவை பிரிக்கடெல்.",
+    "minutes": 15
+   },
+   {
+    "text": "நறுக்கிய கத்தரிக்காயில் உப்பு தூவி கால் மணி நேரம் வைத்து, பிழிந்து பொரித்து, வெங்காயம், வினிகர், சீனி, சிறிது மிளகாய்த் தூள், உப்புடன் கலந்து மொஜு செய்யுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "வாட்டிய இறால் பேஸ்ட்டை சிறிது வெங்காயம், மிளகாய்த் தூள், மாசி, உப்புடன் இடித்து இறுகிய பிளாச்சான் சம்பலாக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "இப்போது சோறு: பாத்திரத்தில் நெய்யை உருக்கி ஏலக்காய், கிராம்பு, பட்டை வதக்கி, வடித்த அரிசியைச் சேர்த்து ஒரு நிமிடம் கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "வடிகட்டிய சாற்றில் 700 மில்லி ஊற்றி உப்பு பார்த்து, நீர் அரிசியின் மட்டத்துக்கு வரும் வரை நன்றாகக் கொதிக்கவைத்து, பின் மூடி மிகக் குறைந்த தீயில் ஆவியில் வேகவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "வாழை இலைகளை நெருப்பில் வாட்டி வளையும் நிலைக்குக் கொண்டு வந்து மேசையில் விரியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு இலையிலும் சாற்றுச் சோற்றைக் குவித்து, சுற்றி ஒரு கரண்டி இறைச்சிக் கறி, இரண்டு பிரிக்கடெல், ஒரு கரண்டி கத்தரிக்காய் மொஜு, அரை வேகவைத்த முட்டை, சிறிது பிளாச்சான் வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "இலையை தட்டையான பொதியாக மடித்து நுனிகளை அடியில் சொருகி, நடுத்தர அடுப்பில் அல்லது கனமான மூடிய தோசைக்கல்லில் வைத்து சுவைகள் சோற்றில் இறங்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "பொதிகளை மூடியே பரிமாறி, ஒவ்வொருவரும் தங்கள் பொதியை மேசையிலேயே திறக்கட்டும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 90,
+  "cook_minutes": 120,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "large pot for the stock",
+  "two pans",
+  "oven or heavy covered griddle",
+  "banana leaves",
+  "mortar and pestle"
+ ],
+ "tips": {
+  "en": "Cook everything a day ahead and assemble on the day; the parcels only need the last twenty minutes of baking to come together. Do not make the curry watery, because the rice has already taken all the stock it can hold and a wet curry turns the parcel soggy.",
+  "si": "සියල්ල පෙර දින උයා, දිනයේදී පාර්සල පමණක් සකසන්න; පාර්සල වලට අවශ්‍ය වන්නේ අවසන් විනාඩි විස්සක උදුන් කාලයයි. ව්‍යංජනය දියාරු නොකරන්න, බත දැනටමත් ගත හැකි සියලු සුප් හොද්ද උරාගෙන ඇති බැවින් තෙත් ව්‍යංජනය පාර්සලය තෙත් කර දමයි.",
+  "ta": "எல்லாவற்றையும் முந்தின நாளே சமைத்து, அன்று பொதி மட்டும் கட்டுங்கள்; பொதிகளுக்கு கடைசி இருபது நிமிட வேக்காடே தேவை. கறியை நீர்க்க விடாதீர்கள், சோறு ஏற்கனவே தாங்கும் அளவு சாற்றை உறிஞ்சிவிட்டது, நீர்க்கறி பொதியை சகதியாக்கிவிடும்."
+ },
+ "health_note": {
+  "en": "This is one of the heaviest plates in the Sri Lankan kitchen: three meats, fried meatballs, ghee rice and shrimp paste together bring a lot of fat and salt. Treat it as a Christmas or wedding meal, share one parcel between two if the day is a working day, and eat something green beside it.",
+  "si": "මෙය ලංකාවේ කුස්සියේ බරම පිඟන් වලින් එකකි; මස් තුනක්, බැදපු මස් බෝල, ගිතෙල් බත් සහ ඉස්සන් පේස්ට් එකට මේදය සහ ලුණු බොහෝ ගෙන එයි. එය නත්තලට හෝ මංගල උත්සවයකට තබා, වැඩ දිනයක් නම් පාර්සලයක් දෙදෙනෙකු බෙදාගෙන, පසෙක කොළ එළවළුවක් සමඟ ගන්න.",
+  "ta": "இது இலங்கை சமையலின் மிகக் கனமான தட்டுகளில் ஒன்று; மூன்று இறைச்சிகள், பொரித்த உருண்டைகள், நெய்ச் சோறு, இறால் பேஸ்ட் அனைத்தும் சேர்ந்து கொழுப்பும் உப்பும் அதிகம் தருகின்றன. கிறிஸ்மஸ் அல்லது கல்யாண உணவாகவே வைத்து, வேலை நாளாக இருந்தால் ஒரு பொதியை இருவர் பங்கிட்டு, பக்கத்தில் ஒரு பசுங்காய்கறி சேர்த்துக் கொள்ளுங்கள்."
+ },
+ "tags": [
+  "festive",
+  "high_protein",
+  "filling",
+  "comfort",
+  "high_sodium"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

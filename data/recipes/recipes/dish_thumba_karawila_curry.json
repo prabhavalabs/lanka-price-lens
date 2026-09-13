@@ -1,0 +1,347 @@
+{
+ "id": "dish_thumba_karawila_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 145,
+  "description": {
+   "en": "A ladle of gourd slices in a thick, barely wet coconut gravy",
+   "si": "ඝන, ඉස්ම අඩු පොල් කිරි ගතියේ කරවිල පෙති හැන්දක්",
+   "ta": "கெட்டியான, குழம்பு குறைந்த தேங்காய்ப் பாகல் துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 580,
+ "ingredients": [
+  {
+   "ref": "pantry_spiny_gourd",
+   "label": {
+    "en": "spiny gourd",
+    "si": "තුම්බ කරවිල",
+    "ta": "முள் பாகல்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "8 to 10 small gourds",
+   "preparation": {
+    "en": "ends trimmed, cut into rounds",
+    "si": "දෙකෙළවර ඉවත් කර රවුම්වලට කපාගත්",
+    "ta": "இரு முனைகளை நீக்கி வட்டங்களாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the spiny gourds, trim both ends and cut them into rounds, leaving the smallest ones whole.",
+    "minutes": 10
+   },
+   {
+    "text": "Rub the slices with a little salt and turmeric, leave them a few minutes and squeeze them lightly; this takes the last of the bitterness off.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a pan and temper the sliced onion, broken dried chillies and curry leaves.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the gourd slices and fry them on a medium fire until the edges brown a little.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the turmeric, roasted curry powder, pepper and salt so the spices coat every slice.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer uncovered until the slices are tender.",
+    "minutes": 13
+   },
+   {
+    "text": "Add the thick coconut milk and take the pan off as soon as it bubbles.",
+    "minutes": 3
+   },
+   {
+    "text": "It should stay on the dry side rather than swimming in gravy.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තුම්බ කරවිල සෝදා, දෙකෙළවර කපා, රවුම්වලට කපන්න; කුඩාම ඒවා සම්පූර්ණයෙන් තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෙතිවලට ස්වල්ප ලුණු සහ කහ තවරා විනාඩි කිහිපයක් තබා මදක් මිරිකන්න; මෙයින් ඉතිරි තිත්ත ගතිය යයි.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් එකේ පොල් තෙල් රත් කර, කපාගත් ලූනු, කැඩූ වියළි මිරිස් සහ කරපිංචා තෙල්දාලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කරවිල පෙති දමා, මධ්‍යම ගින්නේ දාර මදක් දුඹුරු වන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කහ, බැදපු තුනපහ, ගම්මිරිස් සහ ලුණු එක් කර, සෑම පෙත්තකටම තැවරෙන සේ කලතන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, වැසුමක් නැතිව පෙති මෘදු වන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 13
+   },
+   {
+    "text": "ඝන පොල් කිරි එකතු කර, උතුරන විගස පෑන් ළිපෙන් ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ඉස්මේ පාවෙනවා වෙනුවට එය තරමක් වියළි පැත්තට තිබිය යුතුයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "முள் பாகலைக் கழுவி, இரு முனைகளையும் வெட்டி, வட்டங்களாக நறுக்குங்கள்; மிகச் சிறியவற்றை முழுதாக விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "துண்டுகளில் சிறிது உப்பும் மஞ்சளும் தடவி, சில நிமிடம் வைத்து லேசாகப் பிழியுங்கள்; எஞ்சிய கசப்பு போய்விடும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, நறுக்கிய வெங்காயம், உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலையைத் தாளியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "பாகல் துண்டுகளைப் போட்டு, நடுத்தீயில் விளிம்புகள் சற்று பழுப்பாகும் வரை வறுக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மஞ்சள், வறுத்த கறி மசாலா, மிளகு, உப்பு சேர்த்து, ஒவ்வொரு துண்டிலும் படும்படி கிளறுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலை ஊற்றி, மூடாமல், துண்டுகள் மிருதுவாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 13
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, கொதி வந்தவுடன் சட்டியை இறக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "குழம்பில் மிதப்பதைவிட சற்று வறண்ட பதத்திலேயே இருக்க வேண்டும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Pick young gourds with tight green spines; the older yellow ones are seedy and much more bitter. Frying the slices before the milk goes in keeps them from turning to mush.",
+  "si": "කටු තදින් සහ කොළ පැහැයෙන් යුත් ළපටි ගෙඩි තෝරන්න; වයසක කහ ඒවා ඇට සහිත සහ බෙහෙවින් තිත්තයි. කිරි දැමීමට පෙර පෙති බැදීමෙන් ඒවා ලෙලි වීම වළක්වයි.",
+  "ta": "முள் இறுக்கமாகவும் பச்சையாகவும் உள்ள இளம் காய்களைத் தேர்ந்தெடுங்கள்; முதிர்ந்த மஞ்சள் காய்கள் விதை நிறைந்தவை, மிகக் கசப்பானவை. பால் சேர்க்கும் முன் துண்டுகளை வறுத்தால் அவை கூழாகாமல் இருக்கும்."
+ },
+ "health_note": {
+  "en": "Spiny gourd is a bitter-family vegetable, low in calories and high in fibre, and it is one of the vegetables older people eat to keep sugar in check. Fry it lightly and the dish stays light too.",
+  "si": "තුම්බ කරවිල කරවිල පවුලේ එළවළුවක් වන අතර කැලරි අඩු, තන්තු වැඩියි; සීනි පාලනයට වැඩිහිටියන් කන එළවළු අතරින් එකකි. සැහැල්ලුවෙන් බැදුවහොත් කෑමත් සැහැල්ලු වේ.",
+  "ta": "முள் பாகல் பாகற்குடும்பக் காய்; கலோரி குறைவு, நார்ச்சத்து அதிகம். சர்க்கரையைக் கட்டுக்குள் வைக்க வயதானவர்கள் சாப்பிடும் காய்களில் இதுவும் ஒன்று. லேசாக வறுத்தால் உணவும் இலகுவாக இருக்கும்."
+ },
+ "tags": [
+  "high_fibre",
+  "low_calorie",
+  "diabetic_friendly",
+  "budget",
+  "light"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

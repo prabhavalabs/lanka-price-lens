@@ -1,0 +1,289 @@
+{
+ "id": "dish_devilled_cashew",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 80,
+  "description": {
+   "en": "A small bowl of hot salty nuts with drinks",
+   "si": "බීම සමඟ ගන්නා, සැර ලුණු රස කජු කුඩා බඳුනක්",
+   "ta": "பானத்துடன் சாப்பிடும், காரமான உப்பு முந்திரி ஒரு சிறிய கிண்ணம்"
+  }
+ },
+ "yield_g": 320,
+ "ingredients": [
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "raw cashew nuts",
+    "si": "අමු කජු",
+    "ta": "பச்சை முந்திரி"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "picked over, dark or shrivelled ones thrown out",
+    "si": "වෙන් කර බලාගත්, කලු හෝ මැලවුණු ඒවා ඉවත් කළ",
+    "ta": "பார்த்துப் பிரித்தது, கருத்த அல்லது சுருங்கியவை நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කඩාගත්",
+    "ta": "துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "¾ tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට කුඩු කරගත්",
+    "ta": "கொரகொரப்பாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": {
+    "en": "just enough to round off the chilli",
+    "si": "මිරිස් සැර තුලනය කරන්නට පමණක්",
+    "ta": "காரத்தைச் சமன் செய்ய மட்டும்"
+   },
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick over the cashews and throw out any that are dark or shrivelled; one bad nut turns the whole pan bitter.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a heavy pan on a low fire, because cashews burn from one moment to the next.",
+    "minutes": 2
+   },
+   {
+    "text": "Fry the broken dried chillies and curry leaves until they crackle, then lift them out and keep them aside.",
+    "minutes": 1
+   },
+   {
+    "text": "Put the cashews into the same oil and keep them moving with a spoon so they colour evenly.",
+    "minutes": 8
+   },
+   {
+    "text": "When they are the colour of weak tea all over, lift them out at once; they go on darkening off the fire.",
+    "minutes": 2
+   },
+   {
+    "text": "Toss the hot nuts in a bowl with the salt, chilli powder, pepper and the pinch of sugar.",
+    "minutes": null
+   },
+   {
+    "text": "Return the fried chilli and curry leaf and toss again so everything clings to the warm oil.",
+    "minutes": null
+   },
+   {
+    "text": "Cool them completely before storing, or they soften in the tin.",
+    "minutes": 20
+   }
+  ],
+  "si": [
+   {
+    "text": "කජු වෙන් කර බලා, කලු වූ හෝ මැලවුණු ඒවා ඉවත් කරන්න; එක නරක ඇටයක් මුළු පෑනම තිත්ත කරයි.",
+    "minutes": null
+   },
+   {
+    "text": "බර පෑනක පොල් තෙල් අඩු ලිපේ රත් කරන්න; කජු මොහොතකින් පිළිස්සෙන බැවිනි.",
+    "minutes": 2
+   },
+   {
+    "text": "කඩාගත් වියළි මිරිස් සහ කරපිංචා ශබ්ද නඟින තෙක් බැදගෙන, ඉවතට ගෙන පසෙකින් තබන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "එම තෙලට ම කජු දමා, සමව පාට වන ලෙස හැන්දකින් නොනවත්වා හොළවන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "හැම පැත්තෙන්ම ලා තේ පාට වූ විගස ඉවතට ගන්න; ලිපෙන් ඉවත් කළාට පසුවත් පාට තද වේ.",
+    "minutes": 2
+   },
+   {
+    "text": "උණුසුම් කජු බඳුනකට දමා, ලුණු, මිරිස් කුඩු, ගම්මිරිස් සහ සීනි ස්වල්පය සමඟ හොළවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බැදගත් මිරිස් සහ කරපිංචා නැවත දමා, උණුසුම් තෙලේ සියල්ල ඇලෙන ලෙස නැවත හොළවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ටින් එකේ තබන්නට පෙර හොඳින් සිසිල් කරන්න; නැතිනම් මෘදු වේ.",
+    "minutes": 20
+   }
+  ],
+  "ta": [
+   {
+    "text": "முந்திரியைப் பார்த்துப் பிரித்து, கருத்த அல்லது சுருங்கியவற்றை நீக்கவும்; ஒரு கெட்ட பருப்பே வாணலி முழுவதையும் கசக்க வைக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "கனமான வாணலியில் தேங்காய் எண்ணெயைக் குறைந்த தீயில் காயவைக்கவும்; முந்திரி ஒரு கணத்தில் கருகிவிடும்.",
+    "minutes": 2
+   },
+   {
+    "text": "உடைத்த காய்ந்த மிளகாயையும் கறிவேப்பிலையையும் படபடக்கும் வரை பொரித்து, எடுத்துத் தனியே வைக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "அதே எண்ணெயில் முந்திரியைப் போட்டு, சமமாக நிறம் வர கரண்டியால் தொடர்ந்து கிளறவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "எல்லாப் பக்கமும் வெளிர் தேநீர் நிறம் வந்ததும் உடனே எடுக்கவும்; அடுப்பிலிருந்து எடுத்தபின்பும் நிறம் அடர்ந்துகொண்டே போகும்.",
+    "minutes": 2
+   },
+   {
+    "text": "சூடான முந்திரியை ஒரு கிண்ணத்தில் இட்டு, உப்பு, மிளகாய்த் தூள், மிளகு, சிறிது சீனியுடன் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பொரித்த மிளகாயையும் கறிவேப்பிலையையும் மீண்டும் சேர்த்து, சூடான எண்ணெயில் எல்லாம் ஒட்டும்படி மீண்டும் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "டப்பியில் வைப்பதற்கு முன் முழுமையாக ஆறவிடவும்; இல்லையேல் மென்மையாகிவிடும்.",
+    "minutes": 20
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "heavy pan",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "Take the nuts out earlier than looks right, because the heat inside them keeps cooking after they leave the pan. Sprinkle the chilli powder only on the hot nuts off the fire; in the pan it scorches and turns bitter.",
+  "si": "නිවැරදි යැයි පෙනෙන තැනට වඩා ටිකක් කලින් කජු ඉවතට ගන්න; ඇතුළත රස්නය පෑනෙන් ඉවත් කළාට පසුවත් පිසීම කරගෙන යයි. මිරිස් කුඩු දමන්නේ ලිපෙන් ඉවත් කළ උණුසුම් කජුවලට පමණි; පෑනේ ම දැමුවහොත් පිළිස්සී තිත්ත වේ.",
+  "ta": "சரி என்று தோன்றுவதை விடச் சற்று முன்னதாகவே முந்திரியை எடுக்கவும்; உள்ளே உள்ள சூடு வாணலியிலிருந்து எடுத்த பின்னும் வேகவைத்துக்கொண்டே இருக்கும். மிளகாய்த் தூளை அடுப்பிலிருந்து எடுத்த சூடான முந்திரியில் மட்டுமே தூவவும்; வாணலியிலேயே போட்டால் கருகிக் கசக்கும்."
+ },
+ "health_note": {
+  "en": "Cashews carry protein, iron and mostly unsaturated fat, so a small bowl is a far better thing to nibble with a drink than a packet of crisps. They are dense in calories and the salt adds up, so keep it to a handful each and use a light hand with the salt.",
+  "si": "කජුවල ප්‍රෝටීන්, යකඩ සහ බොහෝ දුරට අසංතෘප්ත මේදය ඇත; එබැවින් බීමක් සමඟ කන්නට චිප්ස් පැකට්ටුවකට වඩා කුඩා බඳුනක් කජු බොහෝ හොඳයි. එහෙත් කැලරි ඉතා ඝනය, ලුණු ද එකතු වේ; එබැවින් එක් අයෙකුට අතක් පමණට සීමා කර, ලුණු අඩුවෙන් යොදන්න.",
+  "ta": "முந்திரியில் புரதம், இரும்புச்சத்து, பெரும்பாலும் நிறைவுறா கொழுப்பு உண்டு; எனவே பானத்துடன் சிப்ஸ் பாக்கெட்டை விட ஒரு சிறு கிண்ணம் முந்திரி மிகச் சிறந்தது. ஆனால் கலோரி அடர்த்தி அதிகம், உப்பும் சேரும்; எனவே ஒருவருக்கு ஒரு கைப்பிடி அளவில் வைத்து, உப்பைக் குறைவாகப் பயன்படுத்தவும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "iron_rich",
+  "festive",
+  "quick",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,307 @@
+{
+ "id": "dish_dried_sprats_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 55,
+  "description": {
+   "en": "A crisp spoonful of sprats beside rice or string hoppers",
+   "si": "බත හෝ ඉඳිආප්ප සමඟ ගන්නා කුරුකුරු හාල්මැස්සෝ හැන්දක්",
+   "ta": "சாதத்துடனோ இடியப்பத்துடனோ சேர்த்துக்கொள்ளும் ஒரு கரண்டி மொறுமொறுப்பான கருவாடு"
+  }
+ },
+ "yield_g": 230,
+ "ingredients": [
+  {
+   "ref": "product_sprats",
+   "label": {
+    "en": "dried sprats",
+    "si": "හාල්මැස්සන්",
+    "ta": "நெத்தலி கருவாடு"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "heads pinched off, rinsed and drained dry",
+    "si": "හිස් ගලවා, හෝදා වතුර බේරා ගත්ත",
+    "ta": "தலைகளை நீக்கி, கழுவி நீர் வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්ත",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "piece",
+   "household": "5 chillies",
+   "preparation": {
+    "en": "broken in two",
+    "si": "දෙකට කඩා ගත්ත",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a small piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime",
+   "preparation": {
+    "en": "squeezed over at the end",
+    "si": "අන්තිමට මතුවට මිරිකා ගත්ත",
+    "ta": "இறுதியில் மேலே பிழிந்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, only if needed",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pinch off the heads, rinse the sprats and spread them on a cloth so they dry; wet sprats spit in the oil.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil and fry the sprats in two batches over a strong flame until they are crisp.",
+    "minutes": 6
+   },
+   {
+    "text": "Scoop the sprats out and set them aside on a plate.",
+    "minutes": null
+   },
+   {
+    "text": "Drop the onion, dried chilli, curry leaves and pandan into the same oil and fry until the onion browns at the edges.",
+    "minutes": 5
+   },
+   {
+    "text": "Lower the flame, add turmeric and chilli powder and stir once.",
+    "minutes": null
+   },
+   {
+    "text": "Return the sprats, toss them through the onion, and take the pan off the fire while they are still crisp.",
+    "minutes": 2
+   },
+   {
+    "text": "Squeeze in the lime, taste, and add a pinch of salt only if the sprats were mild.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "හිස් ගලවලා, හාල්මැස්සන් හෝදලා රෙද්දක් මත විහිදුවා වියළෙන්න තියන්න; තෙත් හාල්මැස්සන් තෙලේ පනිනවා.",
+    "minutes": 5
+   },
+   {
+    "text": "පොල් තෙල් රත් කරලා, හොඳ ගින්නේ දෙපාරකට බෙදා හාල්මැස්සන් කුරුකුරු වෙන තුරු බැද ගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "බැදපු හාල්මැස්සන් පිඟානකට අරගෙන පැත්තකින් තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එම තෙලේම ලූනු, වියළි මිරිස්, කරපිංචා සහ රම්පෙ දමා ලූනු දාරවල් දුඹුරු වෙන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගිනි අඩු කරලා කහ කුඩු සහ මිරිස් කුඩු දමා එක වරක් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බැදපු හාල්මැස්සන් නැවත දමා ලූනු සමඟ කලවම් කර, තවම කුරුකුරු වෙලා තියෙද්දීම ලිපෙන් අයින් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "දෙහි මිරිකා රස බලා, හාල්මැස්සන් ලුණු අඩු නම් පමණක් ලුණු ස්වල්පයක් දාන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தலைகளை நீக்கி, கருவாட்டை அலசி, ஒரு துணியில் பரப்பி உலர விடுங்கள்; ஈரமான கருவாடு எண்ணெயில் தெறிக்கும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தேங்காய் எண்ணெயைக் காயவைத்து, நல்ல தீயில் இரு தவணையாக கருவாட்டை மொறுமொறுப்பாக வறுக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "வறுத்த கருவாட்டை எடுத்து ஒரு தட்டில் ஒதுக்கி வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அதே எண்ணெயில் வெங்காயம், வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை போட்டு வெங்காயத்தின் ஓரம் பொன்னிறமாகும் வரை வறுக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தீயைக் குறைத்து மஞ்சள் தூளும் மிளகாய்த் தூளும் சேர்த்து ஒரு முறை கிளறுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கருவாட்டை மீண்டும் போட்டு வெங்காயத்துடன் கலக்கி, மொறுமொறுப்பு இருக்கும்போதே அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "தேசிக்காய் பிழிந்து சுவைத்துப் பார்த்து, கருவாட்டில் உப்பு குறைவாக இருந்தால் மட்டும் ஒரு சிட்டிகை உப்பு சேர்க்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "Everything here depends on the sprats going into hot oil dry and coming out before they soften. If the family likes it wetter, add a chopped tomato with the onion and cook two minutes longer.",
+  "si": "මේකේ හැම දෙයක්ම තියෙන්නේ හාල්මැස්සන් වියළිව රත් තෙලට දාලා, මෙලෙක් වෙන්න කලින් අයින් කරන එකේ. තෙත් විදියට කැමති නම් ලූනු සමඟ තක්කාලි ගෙඩියක් කපා දමා තව විනාඩි දෙකක් තම්බන්න.",
+  "ta": "இதன் ரகசியம் கருவாட்டை உலர்ந்த நிலையில் காய்ந்த எண்ணெயில் போட்டு, மென்மையாகும் முன் எடுப்பதே. வீட்டில் ஈரமாக விரும்பினால் வெங்காயத்துடன் ஒரு தக்காளியை நறுக்கிப் போட்டு இரண்டு நிமிடம் கூட வேகவிடுங்கள்."
+ },
+ "health_note": {
+  "en": "Cheap protein with the calcium of the whole little fish, but fried in oil and already salty, so it belongs at the side of the plate and not in the middle.",
+  "si": "ලාභ ප්‍රෝටීන් එක්කම මුළු මාළුවේ කැල්සියම් ලැබෙනවා, නමුත් තෙලේ බැදපු, ලුණු තියෙන කෑමක් නිසා පිඟානේ මැදට නෙවෙයි, කෙළවරට ගන්න.",
+  "ta": "மலிவான புரதமும், முழு மீனின் கால்சியமும் கிடைக்கும்; ஆனால் எண்ணெயில் வறுத்தது, உப்பும் உள்ளது, அதனால் தட்டின் நடுவில் அல்ல, ஓரத்தில் வைக்க வேண்டியது."
+ },
+ "tags": [
+  "high_protein",
+  "calcium_rich",
+  "budget",
+  "quick",
+  "high_sodium",
+  "low_carb"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,287 @@
+{
+ "id": "dish_potato_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 135,
+  "description": {
+   "en": "A dry spoonful of browned potato wedges with onion and chilli",
+   "si": "ලූනු හා මිරිස් සමඟ බැදගත් වියළි අල පලු හැන්දක්",
+   "ta": "வெங்காயமும் மிளகாயும் சேர்த்து வதக்கிய உலர்ந்த உருளைக்கிழங்கு ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 550,
+ "ingredients": [
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අල",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "4 medium potatoes",
+   "preparation": {
+    "en": "boiled just tender, peeled and cut into wedges",
+    "si": "හරියටම තැම්බී, ලෙලි ගසා පලු කපාගත්",
+    "ta": "சற்றே வேகவைத்து, தோல் உரித்து, பிளவுகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "sliced thick",
+    "si": "ගණකමට කපාගත්",
+    "ta": "தடிமனாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වේළුණු මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැලිවලට කඩාගත්",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "2 1/2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp, for the boiling water",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp in all",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Boil the potatoes in their skins with the turmeric and half the salt until a knife goes in with slight resistance; do not let them go floury.",
+    "minutes": 15
+   },
+   {
+    "text": "Drain them, let them cool enough to handle, peel, and cut each one into four or six wedges.",
+    "minutes": 8
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and put in the dried chillies, curry leaves and pandan until they give off their smell.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the sliced onion and fry until the edges brown; keep the flame high so it does not stew.",
+    "minutes": 4
+   },
+   {
+    "text": "Put in the potato wedges with the chilli flakes and the rest of the salt, and turn them over carefully so the pieces do not break.",
+    "minutes": 2
+   },
+   {
+    "text": "Leave the pan alone for a minute at a time between turns, so the potato catches and browns on each face.",
+    "minutes": 8
+   },
+   {
+    "text": "Taste for salt and serve hot; it also packs well once cooled.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අල ලෙලි සමඟම කහ හා ලුණු අඩක් දමා, පිහියක් ටිකක් හිරවෙන තරමට තම්බන්න; පිටි ගතියට යන්න ඉඩ දෙන්න එපා.",
+    "minutes": 15
+   },
+   {
+    "text": "වතුර බේරා, අතට ගත හැකි තරමට සිසිල් වූ පසු ලෙලි ගසා, එකක් පලු හතරකට හෝ හයකට කපන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පුළුල් පෑන් එකක පොල් තෙල් රත් කර, වේළුණු මිරිස්, කරපිංචා සහ රම්පෙ දමා සුවඳ එන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කපාගත් ළූණු දමා දාර දුඹුරු වන තුරු බදින්න; තැම්බෙන්නට ඉඩ නොදී ගින්න තදින් තබා ගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "අල පලු, මිරිස් කැබලි සහ ඉතිරි ලුණු දමා, කෑලි නොකැඩෙන්න ප්‍රවේශමෙන් පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පෙරළීම් අතර විනාඩියක් පමණ පෑන් එක අතහරින්න; එවිට අල හැම පැත්තෙන්ම අල්ලා දුඹුරු වේ.",
+    "minutes": 8
+   },
+   {
+    "text": "රස බලා උණුසුම්ව ඉදිරිපත් කරන්න; සිසිල් වූ පසු බත් පැකට් එකකටත් හොඳින් ගැළපේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "உருளைக்கிழங்கை தோலுடன், மஞ்சளும் பாதி உப்பும் சேர்த்து, கத்தி சற்று இறுக்கத்துடன் இறங்கும் வரை வேகவையுங்கள்; மாவாகும் வரை வேண்டாம்.",
+    "minutes": 15
+   },
+   {
+    "text": "தண்ணீரை வடித்து, கையால் தொடும் அளவுக்கு குளிர்ந்ததும் தோல் உரித்து, ஒவ்வொன்றையும் நான்கு அல்லது ஆறு பிளவுகளாக நறுக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை போட்டு வாசம் வரும் வரை வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நறுக்கிய வெங்காயத்தைச் சேர்த்து ஓரம் பொன்னிறமாகும் வரை வதக்குங்கள்; வேகாமல் இருக்க தீ பெரிதாக இருக்கட்டும்.",
+    "minutes": 4
+   },
+   {
+    "text": "உருளைக்கிழங்கு பிளவுகள், மிளகாய்த் துகள், மீதி உப்பு சேர்த்து, துண்டுகள் உடையாமல் கவனமாகப் புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "புரட்டல்களுக்கு இடையே ஒரு நிமிடம் சட்டியைத் தொடாமல் விடுங்கள்; அப்போதுதான் ஒவ்வொரு பக்கமும் பொன்னிறமாகும்.",
+    "minutes": 8
+   },
+   {
+    "text": "உப்பு பார்த்து சூடாகப் பரிமாறுங்கள்; குளிர்ந்த பிறகு மதிய உணவுப் பொட்டலத்திலும் நன்றாக இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 18,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot for boiling",
+  "wide heavy pan"
+ ],
+ "tips": {
+  "en": "Boil the potato the evening before if the morning is busy; cold boiled potato holds its shape far better in the pan. Let the wedges sit still between turns, because constant stirring gives you mash instead of brown edges.",
+  "si": "උදේ කාර්යබහුල නම් අල රෑට තම්බා ගන්න; සිසිල් වූ තැම්බූ අල පෑන් එකේ හැඩය හොඳින් රැකේ. පෙරළීම් අතර පලු නිශ්චලව තබන්න; නිතර කලවම් කළොත් දුඹුරු දාර වෙනුවට ලැබෙන්නේ අල පොඩියක්.",
+  "ta": "காலை வேலை அதிகம் என்றால் உருளைக்கிழங்கை முந்தின இரவே வேகவையுங்கள்; குளிர்ந்த வேகவைத்த கிழங்கு சட்டியில் வடிவம் கெடாமல் இருக்கும். புரட்டல்களுக்கு இடையே அசைக்காமல் விடுங்கள்; அடிக்கடி கிளறினால் பொன்னிற ஓரத்துக்குப் பதிலாக மசியலே கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "This is the same potato as the curry but with more oil and no coconut milk, so it is drier on the plate and heavier on fat; children love it, which is reason enough to cook it now and then rather than daily. Two and a half tablespoons of oil for four people is the honest limit.",
+  "si": "මේ අලම තමයි කරියේත් ඇත්තේ; නමුත් මෙහි තෙල් වැඩි වන අතර පොල් කිරි නැත, එනිසා පිඟානේ වියළි නමුත් මේදය වැඩියි. දරුවන් මෙය ලොකුවට රුචි කරන නිසා දිනපතා නොව වේලාවකට වරක් හදන්න. හතර දෙනෙකුට තෙල් හැඳි දෙකහමාරක් යනු සාධාරණ සීමාවයි.",
+  "ta": "கறியில் இருக்கும் அதே கிழங்குதான், ஆனால் எண்ணெய் அதிகம், தேங்காய்ப் பால் இல்லை; எனவே தட்டில் உலர்ந்து இருக்கும், கொழுப்பு கூடும். குழந்தைகளுக்கு மிகவும் பிடிக்கும் என்பதால் தினமும் அல்ல, இடையிடையே செய்யுங்கள். நான்கு பேருக்கு இரண்டரை ஸ்பூன் எண்ணெய் என்பதே நேர்மையான வரம்பு."
+ },
+ "tags": [
+  "filling",
+  "comfort",
+  "kid_friendly",
+  "budget",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

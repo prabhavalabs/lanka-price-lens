@@ -1,0 +1,404 @@
+{
+ "id": "dish_paraw_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 215,
+  "description": {
+   "en": "A steak of trevally with a ladle of sour coconut gravy",
+   "si": "ඇඹුල් පොල් කිරි හොදි හැන්දක් සමඟ පරාව පෙත්තක්",
+   "ta": "புளிப்பு தேங்காய்ப்பால் குழம்பு ஒரு கரண்டியுடன் ஒரு பாரை மீன் துண்டு"
+  }
+ },
+ "yield_g": 860,
+ "ingredients": [
+  {
+   "ref": "product_paraw",
+   "label": {
+    "en": "paraw (trevally)",
+    "si": "පරාව",
+    "ta": "பாரை மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "cut into steaks, washed in salted water and drained",
+    "si": "පෙති කපා, ලුණු වතුරෙන් සෝදා වතුර බේරා",
+    "ta": "துண்டுகளாக வெட்டி, உப்பு நீரில் அலசி வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 18,
+   "unit": "g",
+   "household": "a small lime-sized ball",
+   "preparation": {
+    "en": "soaked in half a cup of warm water and strained",
+    "si": "කෝප්පයක් බාගයක් උණු වතුරේ පොඟවා පෙරා",
+    "ta": "அரை கோப்பை வெதுவெதுப்பான நீரில் ஊறவைத்து வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 90,
+   "unit": "g",
+   "household": "9 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறி மசாலா தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "ඉරා",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "தளர்ந்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the trevally into thick steaks, wash them in water with a pinch of salt and leave them to drain.",
+    "minutes": null
+   },
+   {
+    "text": "Soak the tamarind in half a cup of warm water, squeeze it and strain out the pulp.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the onion, garlic, fenugreek, curry leaves, pandan leaf, curry powder, chilli powder and turmeric into a clay pot with the thin coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Boil it gently until the onion is soft and the gravy no longer smells of raw spice.",
+    "minutes": 8
+   },
+   {
+    "text": "Pour in the tamarind water, add the salt and let it boil once more.",
+    "minutes": 2
+   },
+   {
+    "text": "Lay the fish steaks in one layer with the green chilli, spoon gravy over them and cook without stirring.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the thick coconut milk and the oil and bring it just to the edge of a boil, moving the pot rather than the spoon.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt and sourness, then rest the pot before serving with rice.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "පරාව ඝන පෙතිවලට කපා, ලුණු ටිකක් දමපු වතුරෙන් සෝදා වතුර බේරෙන්න තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සියඹලා කෝප්පයක් බාගයක් උණු වතුරේ පොඟවා, මිරිකා පල්ප් එක පෙරා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වළං භාජනයකට ලූනු, සුදුළූණු, උළුහාල්, කරපිංචා, රම්පෙ, තුනපහ, මිරිස් කුඩු සහ කහ දමා දිය කිරි සමඟ අනන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලූනු මෘදු වී කුඩුවල අමු ගඳ යන තෙක් හෙමින් නටවන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "සියඹලා වතුර සහ ලුණු දමා නැවත වරක් නටවන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "මාළු පෙති එක ස්ථරයකට තබා, අමු මිරිස් දමා, මතින් හොදි වත් කර කලතන්නේ නැතිව පිසින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මිටි කිරි සහ තෙල් දමා, හැන්ද වෙනුවට භාජනය සොලවමින්, නටන්නට ආසන්නම වන තෙක් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලා, බත් සමඟ බෙදන්නට කලින් භාජනය මදක් තියන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாரை மீனை தடிமனான துண்டுகளாக வெட்டி, சிறிது உப்பு கலந்த நீரில் அலசி வடியவிடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "புளியை அரை கோப்பை வெதுவெதுப்பான நீரில் ஊறவைத்து, பிழிந்து சக்கையை வடிகட்டவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் வெங்காயம், பூண்டு, வெந்தயம், கறிவேப்பிலை, ரம்பை இலை, கறித்தூள், மிளகாய்த் தூள், மஞ்சள் ஆகியவற்றை தளர்ந்த தேங்காய்ப் பாலுடன் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வெங்காயம் மென்மையாகி, தூள்களின் பச்சை வாசனை போகும் வரை மெதுவாக கொதிக்க விடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "புளி நீரையும் உப்பையும் சேர்த்து மீண்டும் ஒருமுறை கொதிக்க வைக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மீன் துண்டுகளை ஒரே அடுக்காக வைத்து, பச்சை மிளகாய் போட்டு, மேலே குழம்பை ஊற்றி கிளறாமல் வேகவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "கெட்டியான பாலையும் எண்ணெயையும் சேர்த்து, கரண்டியை அல்ல சட்டியை அசைத்து, கொதிக்க வரும் நிலை வரை வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பும் புளிப்பும் பார்த்து, சாதத்துடன் பரிமாறும் முன் சட்டியை சிறிது நேரம் வைக்கவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot with lid"
+ ],
+ "tips": {
+  "en": "Trevally has firm flesh that will take ten minutes in the gravy without breaking, which makes it the easiest fish to learn curry on. For a Jaffna-style pot, swap the curry powder for Jaffna curry powder and leave out the thick milk.",
+  "si": "පරාවේ මස තද නිසා හොදියේ මිනිත්තු දහයක් තිබුණත් කැඩෙන්නේ නැහැ; ඒ නිසා මාළු කරි හදන්න ඉගෙන ගන්න ලේසිම මාළුව මේකයි. යාපනය විදියට ඕනෑ නම් තුනපහ වෙනුවට යාපනය තුනපහ දමා, මිටි කිරි අත් හරින්න.",
+  "ta": "பாரை மீனின் இறைச்சி இறுகியது, குழம்பில் பத்து நிமிடம் இருந்தாலும் உடையாது; எனவே மீன் கறி சமைக்க கற்க எளிதான மீன் இதுவே. யாழ்ப்பாண பாணியில் வேண்டுமானால் கறித்தூளுக்கு பதிலாக யாழ்ப்பாண கறித்தூள் போட்டு, கெட்டியான பாலை விட்டுவிடவும்."
+ },
+ "health_note": {
+  "en": "Trevally is a lean white fish, so most of the fat in the pot comes from the coconut milk and the spoon of oil. This is a sound everyday curry for growing children and for anyone who needs protein without much fat, as long as the milk is not overdone.",
+  "si": "පරාව තෙල් අඩු සුදු මාළුවක්; ඒ නිසා භාජනයේ තෙල් වැඩිපුරම එන්නේ පොල් කිරි සහ තෙල් හැන්දෙන්. පොල් කිරි වැඩි නොකළොත් මේක වැඩෙන ළමයින්ට සහ තෙල් අඩුවෙන් ප්‍රෝටීන් ඕනෑ කෙනෙකුට හොඳ එදිනෙදා කරියක්.",
+  "ta": "பாரை மீன் கொழுப்பு குறைந்த வெள்ளை மீன்; எனவே சட்டியில் உள்ள கொழுப்பு பெரும்பாலும் தேங்காய்ப் பாலிலும் ஒரு கரண்டி எண்ணெயிலும் இருந்தே வருகிறது. பாலை அளவுக்கு அதிகமாக்காவிட்டால், வளரும் குழந்தைகளுக்கும் குறைந்த கொழுப்பில் புரதம் தேவைப்படுபவர்களுக்கும் இது நல்ல அன்றாட கறி."
+ },
+ "tags": [
+  "high_protein",
+  "one_pot",
+  "comfort",
+  "kid_friendly",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

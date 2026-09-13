@@ -1,0 +1,381 @@
+{
+ "id": "dish_omelette_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 205,
+  "description": {
+   "en": "Two or three omelette squares in spiced coconut gravy",
+   "si": "කුළුබඩු පොල් කිරි හොදියේ ඔම්ලට් කැබලි දෙක තුනක්",
+   "ta": "மசாலா தேங்காய்ப்பால் கறியில் இரண்டு மூன்று ஆம்லெட் துண்டுகள்"
+  }
+ },
+ "yield_g": 830,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 5,
+   "unit": "piece",
+   "household": "5 eggs",
+   "preparation": {
+    "en": "beaten",
+    "si": "ගසාගත්",
+    "ta": "அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "half chopped fine, half sliced",
+    "si": "අඩක් සිහින්ව කපා, අඩක් පෙති කපාගත්",
+    "ta": "பாதி மெல்லியதாக, பாதி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 tomato",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப்பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "two thirds of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Beat the eggs with half the salt and a pinch of the turmeric until they are light and frothy.",
+    "minutes": 1
+   },
+   {
+    "text": "Stir the finely chopped half of the onion and half the curry leaves into the beaten egg.",
+    "minutes": null
+   },
+   {
+    "text": "Heat half the coconut oil in a pan and cook the egg as one thick omelette, browned on both sides.",
+    "minutes": 6
+   },
+   {
+    "text": "Slide it onto a board and cut it into squares about two fingers wide.",
+    "minutes": null
+   },
+   {
+    "text": "In the same pan heat the rest of the oil and fry the sliced onion, green chilli and remaining curry leaves until soft.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the rest of the turmeric with the chilli powder and roasted curry powder and stir on a low flame.",
+    "minutes": 1
+   },
+   {
+    "text": "Put in the chopped tomato and mash it down until it melts into the spices.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in the thin coconut milk with the rest of the salt and simmer until the gravy thickens.",
+    "minutes": 6
+   },
+   {
+    "text": "Lay the omelette squares in the gravy and spoon it over them without stirring.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the thick coconut milk, let it warm through for a minute and serve with rice or string hoppers.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "බිත්තර ලුණු අඩක් සහ කහ කුඩු ස්වල්පයක් සමඟ පෙණ නගින තුරු ගසන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "සිහින්ව කපාගත් ලූනු අඩක් සහ කරපිංචා අඩක් ගසාගත් බිත්තරයට කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑනක පොල් තෙල් අඩක් රත් කර, බිත්තර මිශ්‍රණය එක් ඝන ඔම්ලට් එකක් ලෙස දෙපැත්ත දුඹුරු වන තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ලෑල්ලකට ගෙන ඇඟිලි දෙකක් පමණ පළලට හතරැස් කැබලිවලට කපන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එම පෑනේම ඉතිරි තෙල් රත් කර, පෙති කපාගත් ලූනු, අමු මිරිස් සහ ඉතිරි කරපිංචා මෘදු වන තුරු බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ඉතිරි කහ කුඩු, මිරිස් කුඩු සහ බැදපු තුනපහ දමා මද ගින්නේ කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "කපාගත් තක්කාලි දමා කුළුබඩු සමඟ දිය වන තුරු තලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "දෙවන පොල් කිරි සහ ඉතිරි ලුණු දමා හොදිය තද වන තුරු තම්බන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ඔම්ලට් කැබලි හොදියට තබා, කලවම් නොකර උඩින් හොදි වත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මුල් පොල් කිරි දමා මිනිත්තුවක් රත් වන්නට තබා, බත් හෝ ඉඳිආප්ප සමඟ බෙදන්න.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "முட்டைகளை பாதி உப்பு, சிறிது மஞ்சள் தூளுடன் நுரை வரும் வரை அடிக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "மெல்லியதாக நறுக்கிய பாதி வெங்காயத்தையும் பாதி கறிவேப்பிலையையும் அடித்த முட்டையில் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியில் பாதி தேங்காய் எண்ணெயைக் காயவைத்து, முட்டைக் கலவையை ஒரே தடித்த ஆம்லெட்டாக இருபுறமும் பொன்னிறமாகும் வரை சுடவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "பலகையில் எடுத்து, இரண்டு விரல் அகலத்தில் சதுரத் துண்டுகளாக வெட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அதே வாணலியில் மீதி எண்ணெயைக் காயவைத்து, நறுக்கிய வெங்காயம், பச்சை மிளகாய், மீதி கறிவேப்பிலை சேர்த்து மென்மையாகும் வரை வதக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "மீதி மஞ்சள் தூள், மிளகாய்த் தூள், வறுத்த கறித்தூள் சேர்த்து குறைந்த தணலில் கிளறவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "நறுக்கிய தக்காளியைச் சேர்த்து மசாலாவுடன் கரையும் வரை மசிக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப்பாலையும் மீதி உப்பையும் சேர்த்து கறி இறுகும் வரை கொதிக்கவிடவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "ஆம்லெட் துண்டுகளை கறியில் வைத்து, கலக்காமல் மேலே கறியை ஊற்றவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலைச் சேர்த்து ஒரு நிமிடம் சூடாக்கி, சாதம் அல்லது இடியப்பத்துடன் பரிமாறவும்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan",
+  "board and knife"
+ ],
+ "tips": {
+  "en": "Make the omelette thick and let it cool a little before cutting, or the squares fall apart in the gravy. Once the pieces are in the pan, spoon the gravy over them instead of stirring.",
+  "si": "ඔම්ලට් ඝනව බදා, කපන්නට පෙර ටිකක් සිසිල් වන්නට දෙන්න; නොඑසේ නම් කැබලි හොදියේ කැඩී යයි. කැබලි පෑනට දැමූ පසු කලවම් කරනවා වෙනුවට උඩින් හොදි වත් කරන්න.",
+  "ta": "ஆம்லெட்டைத் தடிமனாகச் சுட்டு, வெட்டும் முன் சற்று ஆறவிடவும்; இல்லையேல் துண்டுகள் கறியில் உடைந்துவிடும். துண்டுகளை வாணலியில் வைத்த பிறகு கலக்காமல் மேலே கறியை ஊற்றவும்."
+ },
+ "health_note": {
+  "en": "This is how a small household stretches five eggs across four plates, and it still gives each person good protein. The gravy holds the coconut fat, so keep the portion to two or three squares with plenty of rice and vegetables.",
+  "si": "කුඩා පවුලක් බිත්තර පහක් පිඟාන් හතරකට බෙදාගන්නා ක්‍රමය මෙයයි; එහෙත් එක් අයෙකුට හොඳ ප්‍රෝටීන් ප්‍රමාණයක් ලැබේ. පොල් තෙල ඇත්තේ හොදියේ බැවින් බත් සහ එළවළු ගොඩක් සමඟ කැබලි දෙක තුනකින් නවතින්න.",
+  "ta": "ஐந்து முட்டையை நான்கு தட்டுக்கு விரிக்கும் சிறு குடும்பத்தின் வழி இது; இருந்தும் ஒவ்வொருவருக்கும் நல்ல புரதம் கிடைக்கும். தேங்காய்க் கொழுப்பு கறியில் இருப்பதால், நிறைய சாதமும் காய்கறியும் சேர்த்து இரண்டு மூன்று துண்டுகளில் நிறுத்தவும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "budget",
+  "comfort",
+  "kid_friendly",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

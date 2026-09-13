@@ -1,0 +1,460 @@
+{
+ "id": "dish_beef_satay",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 120,
+  "description": {
+   "en": "Three or four skewers each with a spoon of peanut sauce",
+   "si": "එක් අයෙකුට ඉරටු තුනක් හතරක්, රටකජු සෝස් හැන්දක් සමඟ",
+   "ta": "ஒருவருக்கு மூன்று நான்கு குச்சிகள், ஒரு ஸ்பூன் வேர்க்கடலை சோஸுடன்"
+  }
+ },
+ "yield_g": 560,
+ "ingredients": [
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef, boneless",
+    "si": "හරක් මස්, ඇට නැති",
+    "ta": "மாட்டிறைச்சி, எலும்பில்லாதது"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "half a kilo",
+   "preparation": {
+    "en": "cut into 2 cm cubes across the grain",
+    "si": "නාරටිවලට හරහට සෙන්ටිමීටර දෙකක කැටවලට කපාගත්",
+    "ta": "நரம்புக்கு எதிராக இரண்டு சென்டிமீட்டர் கட்டிகளாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "half ground into the marinade, half sliced for the sauce",
+    "si": "භාගයක් අඹරා මැරිනේඩ් එකට, භාගයක් සෝස් එකට කපාගත්",
+    "ta": "பாதி அரைத்து ஊறவைப்புக்கு, பாதி நறுக்கி சோஸுக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "ground to a paste",
+    "si": "පේස්ට් එකක් වන තුරු අඹරාගත්",
+    "ta": "விழுதாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "ground to a paste",
+    "si": "පේස්ට් එකක් වන තුරු අඹරාගත්",
+    "ta": "விழுதாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_lemongrass",
+   "label": {
+    "en": "lemongrass",
+    "si": "සේර",
+    "ta": "எலுமிச்சைப் புல்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 stalk, white part",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp, roasted and ground",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "வாணலியில் வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_peanuts",
+   "label": {
+    "en": "peanuts",
+    "si": "රටකජු",
+    "ta": "வேர்க்கடலை"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 cup, roasted",
+   "preparation": {
+    "en": "roasted, skins rubbed off, coarsely ground",
+    "si": "බැදගෙන පොතු ඉවත් කර රළු ලෙස අඹරාගත්",
+    "ta": "வறுத்து, தோல் நீக்கி, கரகரப்பாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "7 chillies",
+   "preparation": {
+    "en": "soaked in hot water and ground to a paste",
+    "si": "උණු වතුරේ පොඟවා පේස්ට් එකක් වන තුරු අඹරාගත්",
+    "ta": "சுடுநீரில் ஊறவைத்து விழுதாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டி, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a lime-sized ball",
+   "preparation": {
+    "en": "soaked in a little warm water, pulp squeezed out",
+    "si": "උණු වතුර ස්වල්පයක පොඟවා යුෂ මිරිකාගත්",
+    "ta": "கொஞ்சம் சூடான நீரில் ஊறவைத்துச் சாறு பிழிந்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": {
+    "en": "for the sauce and for basting",
+    "si": "සෝස් එකට සහ ඉරටු තෙල් ගැල්වීමට",
+    "ta": "சோஸுக்கும் குச்சிகளில் தடவுவதற்கும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Grind half the big onion, the garlic, ginger and lemongrass into a rough paste and mix it with the roasted ground coriander, cumin, fennel, turmeric, soy sauce and salt.",
+    "minutes": 10
+   },
+   {
+    "text": "Rub this paste into the beef cubes, cover the bowl and leave it in a cool place so the meat softens and takes the spice.",
+    "minutes": 60
+   },
+   {
+    "text": "Soak wooden skewers in water while the meat marinates so they do not burn on the coals.",
+    "minutes": null
+   },
+   {
+    "text": "For the sauce, heat the coconut oil in a small pan and fry the remaining sliced onion with the soaked chilli paste until the raw edge is gone.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the ground peanuts, tamarind pulp, sugar, a little salt and the thick coconut milk, and simmer on a low flame until the sauce is thick enough to hold a spoon mark.",
+    "minutes": 12
+   },
+   {
+    "text": "Thread four or five cubes onto each skewer, pressing them close but not tight, and brush them with a little oil.",
+    "minutes": 10
+   },
+   {
+    "text": "Grill the skewers over glowing coals or on a hot ridged pan, turning them often, until the edges char and the meat is just cooked through.",
+    "minutes": 12
+   },
+   {
+    "text": "Pile the skewers on a dish, spoon some sauce over them and put the rest in a bowl alongside for dipping.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ලොකු ළූණු භාගයක්, සුදුළූණු, ඉඟුරු සහ සේර රළු පේස්ට් එකක් වන තුරු අඹරා, බැදගත් කොත්තමල්ලි, සූදුරු, මාදුරු, කහ, සෝයා සෝස් සහ ලුණු සමඟ මිශ්‍ර කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මෙම මිශ්‍රණය හරක් මස් කැටවලට හොඳින් අතුල්ලා, භාජනය වසා සිසිල් තැනක තබා මස් මුදු වී කුළුබඩු කිඳා බසින්නට දෙන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "මස් පොඟවන අතරතුර ලී ඉරටු වතුරේ පොඟවා ගන්න; එවිට ගිනි අඟුරු මත ඒවා නොදැවේ.",
+    "minutes": null
+   },
+   {
+    "text": "සෝස් එකට කුඩා පෑන් එකක පොල් තෙල් රස්නේ කර, ඉතිරි කපාගත් ළූණු සහ පොඟවාගත් මිරිස් පේස්ට් අමු ගඳ යන තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "අඹරාගත් රටකජු, සියඹලා යුෂ, සීනි, ලුණු ස්වල්පයක් සහ ඝන පොල් කිරි දමා, හැන්දේ ලකුණ රැඳෙන තරමට තද වන තුරු අඩු ගින්නේ උයන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "එක් ඉරටුවකට මස් කැට හතරක් පහක් තදින් නොව සමීපව අමුණා, තෙල් ස්වල්පයක් ගල්වන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "රත් වූ ගිනි අඟුරු මත හෝ රත් වූ ලෝහ තැටියක තබා, නිතර පෙරළමින්, දාර පිළිස්සී මස් හරියට උයන තුරු පුලුස්සන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඉරටු තැටියකට ගොඩගසා ඒ මත සෝස් ස්වල්පයක් වත් කර, ඉතිරි සෝස් බඳුනකට දමා අල්ලා ගැනීමට පසෙක තබන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாதி பெரிய வெங்காயம், பூண்டு, இஞ்சி, எலுமிச்சைப் புல் ஆகியவற்றைக் கரகரப்பாக அரைத்து, வறுத்து அரைத்த மல்லி, சீரகம், பெருஞ்சீரகம், மஞ்சள், சோயா சோஸ், உப்புடன் கலக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "இந்த விழுதை மாட்டிறைச்சிக் கட்டிகளில் நன்றாகத் தேய்த்து, மூடி, குளிர்ந்த இடத்தில் வைத்து இறைச்சி மென்மையாகி மசாலா இறங்க விடுங்கள்.",
+    "minutes": 60
+   },
+   {
+    "text": "இறைச்சி ஊறும் நேரத்தில் மரக் குச்சிகளை நீரில் ஊறவைத்து வையுங்கள்; அப்போது கரியில் அவை எரியாது.",
+    "minutes": null
+   },
+   {
+    "text": "சோஸுக்கு, சிறு சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, மீதி நறுக்கிய வெங்காயத்தையும் ஊறிய மிளகாய் விழுதையும் பச்சை வாசம் போகும் வரை வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அரைத்த வேர்க்கடலை, புளிச் சாறு, சீனி, கொஞ்சம் உப்பு, கெட்டித் தேங்காய்ப் பால் சேர்த்து, ஸ்பூன் தடம் நிற்கும் அளவு கெட்டியாகும் வரை சிறு தீயில் கொதிக்க வையுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "ஒவ்வொரு குச்சியிலும் நான்கு ஐந்து கட்டிகளாக, இறுக்கமாக அல்லாமல் நெருக்கமாகக் கோர்த்து, மேலே கொஞ்சம் எண்ணெய் தடவுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "எரியும் கரியின் மேலோ சூடான தட்டின் மேலோ வைத்து, அடிக்கடி திருப்பி, ஓரங்கள் கருகி இறைச்சி சரியாக வேகும் வரை சுடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "குச்சிகளைத் தட்டில் அடுக்கி, மேலே கொஞ்சம் சோஸ் ஊற்றி, மீதியைத் தொட்டுக் கொள்ள ஒரு கிண்ணத்தில் பக்கத்தில் வையுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 20,
+  "passive_minutes": 60
+ },
+ "equipment": [
+  "wooden or metal skewers",
+  "charcoal grill or ridged pan",
+  "grinding stone or blender",
+  "small pan for the sauce"
+ ],
+ "tips": {
+  "en": "Cut the beef across the grain and keep the cubes small, or the outside chars before the middle is done. A spoon of the marinade stirred into the peanut sauce ties the two halves of the dish together.",
+  "si": "හරක් මස් නාරටිවලට හරහට කපා කැට කුඩාවට තබන්න; නැතිනම් මැද උයන්නට පෙර පිටත පිළිස්සේ. මැරිනේඩ් හැන්දක් රටකජු සෝස් එකට කලවම් කළ විට කෑමේ දෙකොටස එකට බැඳේ.",
+  "ta": "மாட்டிறைச்சியை நரம்புக்கு எதிராக வெட்டி, கட்டிகளைச் சிறியதாக வையுங்கள்; இல்லையேல் உள்ளே வேகும் முன் வெளியே கருகிவிடும். ஊறவைத்த விழுதில் ஒரு ஸ்பூன் வேர்க்கடலை சோஸில் கலந்தால் இரண்டு பகுதியும் ஒரே சுவையில் இணையும்."
+ },
+ "health_note": {
+  "en": "Grilling over coals needs little oil, so most of the fat here comes from the peanut and coconut sauce rather than the meat. The soy sauce and salt together make it a salty plate, so go easy on the sauce if you are watching blood pressure.",
+  "si": "ගිනි අඟුරු මත පුලුස්සන බැවින් තෙල් අවශ්‍ය වන්නේ ඉතා අල්පයකි; මෙහි ඇති තෙල් බොහෝමයක් එන්නේ මස්වලින් නොව රටකජු හා පොල් කිරි සෝස් එකෙන්. සෝයා සෝස් හා ලුණු එකට ලුණු රස ඉහළ නංවන බැවින් රුධිර පීඩනය ගැන සැලකිලිමත් නම් සෝස් අඩුවෙන් ගන්න.",
+  "ta": "கரியில் சுடுவதால் எண்ணெய் மிகக் குறைவே தேவை; இதில் உள்ள கொழுப்பு பெரும்பாலும் இறைச்சியிலிருந்து அல்ல, வேர்க்கடலை தேங்காய்ப் பால் சோஸிலிருந்தே வருகிறது. சோயா சோஸும் உப்பும் சேர்ந்து உப்புச் சத்தைக் கூட்டுவதால், இரத்த அழுத்தம் பார்க்கிறவர்கள் சோஸை அளவாக எடுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "festive",
+  "filling",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

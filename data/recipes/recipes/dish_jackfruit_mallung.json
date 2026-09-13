@@ -1,0 +1,318 @@
+{
+ "id": "dish_jackfruit_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 100,
+  "description": {
+   "en": "A generous spoonful of shredded jackfruit mallung with rice",
+   "si": "බත් සමඟ ඉරාගත් කොස් මැල්ලුමෙන් පිරුණු හැන්දක්",
+   "ta": "சாதத்துடன் கிழித்த பலாக்காய் வதக்கல் ஒரு நிறைவான கரண்டி"
+  }
+ },
+ "yield_g": 420,
+ "ingredients": [
+  {
+   "ref": "product_polos",
+   "label": {
+    "en": "boiled jackfruit flesh",
+    "si": "තම්බාගත් කොස් මදය",
+    "ta": "வேகவைத்த பலாக்காய்ச் சதை"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "flesh from a quarter of a small jackfruit",
+   "preparation": {
+    "en": "boiled and pulled into shreds",
+    "si": "තම්බා අතින් ඉරාගත්",
+    "ta": "வேகவைத்து கையால் கிழித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, grated",
+    "si": "ගාපු පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 1/4 cups grated",
+   "preparation": {
+    "en": "freshly grated",
+    "si": "අළුතින් ගාගත්",
+    "ta": "புதிதாகத் துருவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி கருவாடு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 5,
+   "unit": "ml",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the half-ripe jackfruit open, take the flesh off the pods, pull the seeds out and wash the pieces.",
+    "minutes": 15
+   },
+   {
+    "text": "Boil the flesh in salted water until a knife slides in without resistance.",
+    "minutes": 20
+   },
+   {
+    "text": "Drain it well, let it cool enough to handle and pull the flesh into coarse shreds with your fingers.",
+    "minutes": null
+   },
+   {
+    "text": "Grate the coconut, chop the onion and chillies and pound the maldive fish if you are using it.",
+    "minutes": null
+   },
+   {
+    "text": "Put the shredded jackfruit in a pan with the onion, chillies, curry leaves, turmeric, pepper, maldive fish and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Add the grated coconut and the coconut oil and toss everything over a low fire until it is hot right through and dry.",
+    "minutes": 5
+   },
+   {
+    "text": "Taste for pepper; jackfruit takes more than you expect, and salt brings the sweetness out.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අඩක් ඉදුණු කොස් ගෙඩිය කපා, මදය මුවහතෙන් වෙන් කර, ඇට ඉවත් කර, කැබලි සෝදා ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ලුණු දැමූ වතුරේ පිහියක් පහසුවෙන් ඇදෙන තුරු මදය තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "වතුර හොඳින් බේරා, අතට දරාගත හැකි උණුසුමට පැමිණි විට, ඇඟිලිවලින් රළුවට ඉරා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පොල් ගාගෙන, ලූනු සහ මිරිස් කපා, උම්බලකඩ යොදන්නේ නම් එය කුටා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉරාගත් කොස් මදය පෑන් එකකට දමා ලූනු, මිරිස්, කරපිංචා, කහ, ගම්මිරිස්, උම්බලකඩ සහ ලුණු එක් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගාපු පොල් සහ පොල් තෙල් එකතු කර, අඩු ගින්නේ මුළු මිශ්‍රණය රත් වී වේළෙන තුරු පෙරළන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගම්මිරිස් රස බලන්න; කොස්ට හිතන්නවාට වඩා ගම්මිරිස් යයි, ලුණු එහි පැණි රස මතු කරයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாதி பழுத்த பலாக்காயை வெட்டி, சுளைகளிலிருந்து சதையை எடுத்து, கொட்டைகளை நீக்கி, துண்டுகளைக் கழுவுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "உப்பு நீரில், கத்தி எதிர்ப்பில்லாமல் உள்ளே போகும் வரை சதையை வேகவையுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "நீரை நன்கு வடித்து, கையால் தொடும் அளவு குளிர்ந்ததும், விரலால் பெரிய இழைகளாகக் கிழியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "தேங்காயைத் துருவி, வெங்காயமும் மிளகாயும் நறுக்கி, மாசி சேர்ப்பதாக இருந்தால் அதை இடித்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கிழித்த பலாச் சதையை ஒரு சட்டியில் இட்டு, வெங்காயம், மிளகாய், கறிவேப்பிலை, மஞ்சள், மிளகு, மாசி, உப்பு சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "துருவிய தேங்காயும் தேங்காய் எண்ணெயும் சேர்த்து, குறைந்த தீயில் முழுவதும் சூடாகி வறண்டு வரும் வரை புரட்டுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மிளகைச் சுவைத்துப் பாருங்கள்; பலாவுக்கு நினைத்ததைவிட மிளகு தேவைப்படும், உப்பு அதன் இனிப்பை வெளிக்கொண்டு வரும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "large pot for boiling",
+  "pan",
+  "coconut scraper"
+ ],
+ "tips": {
+  "en": "This is the best use for jackfruit boiled the day before. Oil the knife before you cut the fruit and the sap will not stick to it.",
+  "si": "පෙර දින තම්බාගත් කොස් සඳහා මෙය හොඳම භාවිතයයි. ගෙඩිය කපන්නට පෙර පිහියට තෙල් තවරන්න, එවිට කිරි ඇලෙන්නේ නැත.",
+  "ta": "முதல் நாள் வேகவைத்த பலாவுக்கு இதுவே சிறந்த பயன். காயை வெட்டும் முன் கத்தியில் எண்ணெய் தடவினால் பால் ஒட்டாது."
+ },
+ "health_note": {
+  "en": "Jackfruit gives good fibre and fills the stomach like rice does, so it suits a plate where you are cutting down on rice. The grated coconut carries the fat, so keep it to one spoonful.",
+  "si": "කොස් හොඳ තන්තු ලබා දෙන අතර බත් සේ බඩ පුරවයි; බත් අඩු කරන පිඟානකට හොඳින් ගැළපේ. තෙල් ඇත්තේ ගාපු පොල්වල බැවින් හැන්දකින් නවතන්න.",
+  "ta": "பலாக்காய் நல்ல நார்ச்சத்து தரும், சாதம் போலவே வயிறு நிறைக்கும்; சாதத்தைக் குறைக்கும் தட்டுக்கு இது பொருத்தம். கொழுப்பு துருவிய தேங்காயில் இருப்பதால் ஒரு கரண்டியுடன் நிறுத்துங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "filling",
+  "budget",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

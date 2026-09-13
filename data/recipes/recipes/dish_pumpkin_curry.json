@@ -1,0 +1,331 @@
+{
+ "id": "dish_pumpkin_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 180,
+  "description": {
+   "en": "A soft, sweet spoonful of pumpkin in mild coconut gravy with rice",
+   "si": "බතට එක්ක මෘදු පොල් කිරි හොදියේ තැම්බූ මිහිරි වට්ටක්කා හැන්දක්",
+   "ta": "சாதத்துடன் மிதமான தேங்காய்ப்பால் குழம்பில் மென்மையான பரங்கிக்காய் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 780,
+ "ingredients": [
+  {
+   "ref": "product_pumpkin",
+   "label": {
+    "en": "pumpkin",
+    "si": "වට්ටක්කා",
+    "ta": "பரங்கிக்காய்"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "a thick wedge of pumpkin",
+   "preparation": {
+    "en": "seeds scraped out, cut into large chunks, skin left on",
+    "si": "ඇට ඉවත් කර, ලොකු කැලිවලට කපා, ලෙලි සමඟම",
+    "ta": "விதை நீக்கி, பெரிய துண்டுகளாக நறுக்கி, தோலுடன்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small handful, sliced",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp, ground to a paste",
+   "preparation": {
+    "en": "ground with a little water to a paste",
+    "si": "වතුර ටිකක් සමඟ ගා ගත් අබ තලපයක්",
+    "ta": "சிறிது தண்ணீருடன் அரைத்த கடுகு விழுது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup and a little more",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape out the seeds and soft centre, then cut the pumpkin into chunks about two fingers wide, leaving the skin on so the pieces hold together.",
+    "minutes": 12
+   },
+   {
+    "text": "Grind the mustard seeds with a spoon of water on a grinding stone or in a small grinder until you have a rough paste.",
+    "minutes": 3
+   },
+   {
+    "text": "Put the pumpkin in a clay pot with the onion, green chillies, curry leaves, pandan, fenugreek, turmeric and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and cook covered on a medium flame until the pumpkin is soft at the edges.",
+    "minutes": 12
+   },
+   {
+    "text": "Stir in the mustard paste and the thick coconut milk, keeping the flame low.",
+    "minutes": 3
+   },
+   {
+    "text": "Break up three or four pieces against the pot with the back of the ladle so the gravy turns thick and golden, leaving the rest whole.",
+    "minutes": 2
+   },
+   {
+    "text": "Let it steam once without boiling, taste for salt, and take it off the fire.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "වට්ටක්කා ඇට හා මුදු මැද කොටස ඉවත් කර, ඇඟිලි දෙකක් පළල කැලිවලට කපන්න; කෑලි එකට රැකෙන්න ලෙලි ඉවත් නොකරන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "අබ ඇට වතුර හැන්දක් සමඟ මිරිස් ගලේ හෝ කුඩා ග්‍රයින්ඩරයක රළු තලපයක් වන තුරු ගා ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වට්ටක්කා කැලි මුට්ටියකට දමා, ලූනු, අමු මිරිස්, කරපිංචා, රම්පෙ, උළුහාල්, කහ සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, වහන් දමා මධ්‍යම ගින්නේ, වට්ටක්කා දාරවලින් මුදු වන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගින්න අඩුවෙන් තබා අබ තලපය සහ මුල් කිරි එකතු කර කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කැලි තුන හතරක් හැන්දේ පිටතින් මුට්ටියට තද කර පොඩි කරන්න; එවිට හොදි ගන රන්වන් පාටක් ගනී, ඉතිරි කැලි එලෙසම තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "උතුරන්නට නොදී එක වරක් හුමාලය එන්න දී, රස බලා ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "பரங்கிக்காயின் விதைகளையும் மெல்லிய நடுப்பகுதியையும் நீக்கி, இரு விரல் அகலத்துக்கு துண்டுகளாக நறுக்குங்கள்; துண்டுகள் உடையாமல் இருக்க தோலை நீக்க வேண்டாம்.",
+    "minutes": 12
+   },
+   {
+    "text": "கடுகை ஒரு ஸ்பூன் தண்ணீருடன் அம்மியில் அல்லது சிறு மிக்ஸியில் கரகரப்பான விழுதாக அரையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "பரங்கிக்காய் துண்டுகளை மண் பாத்திரத்தில் போட்டு, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை, வெந்தயம், மஞ்சள், உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பால் ஊற்றி, மூடி நடுத்தர தீயில் காய் ஓரங்களில் மென்மையாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "தீயைக் குறைத்து கடுகு விழுதையும் முதல் பாலையும் சேர்த்துக் கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மூன்று நான்கு துண்டுகளை கரண்டியின் பின்பகுதியால் பாத்திரத்தில் அழுத்தி மசியுங்கள்; குழம்பு கெட்டியாகி பொன்னிறமாகும், மீதி துண்டுகளை அப்படியே விடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "கொதிக்க விடாமல் ஒரு முறை ஆவி வர விட்டு, உப்பு பார்த்து இறக்குங்கள்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "grinding stone or small grinder"
+ ],
+ "tips": {
+  "en": "Leave the skin on: it holds the chunks together and softens enough to eat by the time the flesh is done. The ground mustard is what keeps a pumpkin curry from tasting like pudding, so do not leave it out.",
+  "si": "ලෙලි තබා ගන්න: කෑලි එකට රඳවා ගන්නා අතර ඇතුළත මුදු වන විට ලෙලිත් කන්න පුළුවන් තරමට මුදු වේ. වට්ටක්කා කරිය ඇල්ලෙන රසයක් නොගැනීමට හේතුව ගා ගත් අබයි, එය අත් නොහරින්න.",
+  "ta": "தோலை நீக்க வேண்டாம்: அது துண்டுகளைப் பிடித்து வைக்கும், சதை வேகும் நேரத்தில் தோலும் சாப்பிடும் அளவுக்கு மென்மையாகும். பரங்கிக்காய் கறி வெறும் இனிப்பாக மாறாமல் இருக்கக் காரணம் அரைத்த கடுகுதான், அதை விட்டுவிடாதீர்கள்."
+ },
+ "health_note": {
+  "en": "Pumpkin is full of vitamin A and fibre for very few calories, and the skin adds more of both. It is naturally sweet, so a diabetic household should treat it as part of the starch on the plate and go easy on the thick coconut milk.",
+  "si": "වට්ටක්කා වල කැලරි ඉතා අඩුවෙන් විටමින් ඒ හා තන්තු බහුල අතර, ලෙලි නිසා දෙකම තවත් වැඩි වේ. එය ස්වභාවයෙන්ම මිහිරි නිසා දියවැඩියාව ඇති ගෙදරක එය පිඟානේ පිටි කොටසේ කොටසක් ලෙස සලකා, මුල් කිරි අඩුවෙන් තබා ගන්න.",
+  "ta": "பரங்கிக்காயில் மிகக் குறைந்த கலோரியில் வைட்டமின் ஏ-வும் நார்ச்சத்தும் நிறைந்துள்ளது, தோல் அவை இரண்டையும் இன்னும் கூட்டும். இயற்கையாகவே இனிப்பு என்பதால், சர்க்கரை நோய் உள்ள வீட்டில் இதை தட்டில் உள்ள மாவுச்சத்தின் ஒரு பகுதியாகக் கருதி, கெட்டிப் பாலைக் குறைத்து வையுங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "low_calorie",
+  "budget",
+  "comfort",
+  "kid_friendly",
+  "elderly_friendly",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

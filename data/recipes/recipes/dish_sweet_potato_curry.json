@@ -1,0 +1,325 @@
+{
+ "id": "dish_sweet_potato_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 190,
+  "description": {
+   "en": "A few sweet, soft pieces in mild coconut gravy",
+   "si": "මෘදු, පැණි රසැති කැබලි කීපයක් ලා පොල් කිරි හොදියක",
+   "ta": "மிருதுவான, இனிப்புச் சுவையுள்ள சில துண்டுகள் மிதமான தேங்காய்க் குழம்பில்"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_sweet_potato",
+   "label": {
+    "en": "sweet potato",
+    "si": "බතල",
+    "ta": "சர்க்கரைவள்ளிக்கிழங்கு"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "3 medium tubers",
+   "preparation": {
+    "en": "peeled and cut into 3 cm pieces",
+    "si": "ලෙලි ඉවත් කර සෙන්ටිමීටර තුනක කැබලිවලට කපා",
+    "ta": "தோல் நீக்கி 3 செ.மீ. துண்டுகளாக வெட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලා",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the sweet potato, cut it into pieces about 3 cm across and rinse off the starch that clings to the cut faces.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the pieces in the pot with the thin coconut milk, onion, slit chillies, turmeric, curry powder, curry leaves and pandan.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and cook on a medium flame until a knife tip goes in but the pieces do not fall apart.",
+    "minutes": 15
+   },
+   {
+    "text": "Add the salt and let the gravy reduce uncovered so it clings instead of running.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour in the thick milk and lift the pot off at the first bubble; the sweetness of the tuber shows now.",
+    "minutes": 2
+   },
+   {
+    "text": "Temper the coconut oil with onion slices and curry leaves and pour it over the pot.",
+    "minutes": 3
+   },
+   {
+    "text": "Let it settle a few minutes before serving; the gravy thickens as the starch cools.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "බතල ලෙලි ඉවත් කර, සෙන්ටිමීටර තුනක් පමණ කැබලිවලට කපා, කැපූ තැන්වල ඇලෙන පිෂ්ටය සෝදා ඉවත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කැබලි මුට්ටියට දමා තුනී පොල් කිරි, ළූණු, පලාගත් මිරිස්, කහ, තුනපහ, කරපිංචා සහ රම්පෙ එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා මද ගින්නේ, පිහියක් ඇතුළට යන නමුත් කැබලි කැඩී නොයන තරමට තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ලුණු දමා, වහන්නේ නැතුව හොදිය හිඳී ඇලෙන ගතියට එන තුරු තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඝන කිරි වත් කර පළමු උතුරේදීම ලිපෙන් ඉවතට ගන්න; දැන් අලයේ පැණි රස මතු වෙනවා.",
+    "minutes": 2
+   },
+   {
+    "text": "පොල් තෙල් ළූණු පෙති සහ කරපිංචා සමඟ තෙම්පරාදු කර මුට්ටියට වත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බෙදන්නට පෙර මිනිත්තු කීපයක් තියන්න; පිෂ්ටය සිසිල් වන විට හොදිය තදවෙනවා.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "சர்க்கரைவள்ளிக்கிழங்கைத் தோல் நீக்கி, சுமார் 3 செ.மீ. துண்டுகளாக வெட்டி, வெட்டிய இடங்களில் ஒட்டியிருக்கும் மாவுச்சத்தை அலசி விடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "துண்டுகளை சட்டியில் இட்டு இரண்டாம் தேங்காய்ப்பால், வெங்காயம், கீறிய மிளகாய், மஞ்சள், கறி மசாலா, கறிவேப்பிலை, ரம்பை சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி மிதமான தீயில், கத்தி முனை உள்ளே இறங்கும் அளவுக்கு, ஆனால் துண்டுகள் உடையாத அளவுக்கு வேகவிடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "உப்பு சேர்த்து, மூடாமல், குழம்பு வற்றி ஒட்டும் பக்குவம் வரும் வரை வைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "முதல் பாலை ஊற்றி முதல் கொதியிலேயே இறக்கவும்; இப்போது கிழங்கின் இனிப்பு வெளிப்படும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தேங்காய் எண்ணெயில் வெங்காயத் துண்டுகளையும் கறிவேப்பிலையையும் தாளித்து சட்டியில் ஊற்றவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பரிமாறும் முன் சில நிமிடம் வைக்கவும்; மாவுச்சத்து ஆறும்போது குழம்பு தடிக்கும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or pan with a lid",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Do not stir much once the pieces soften, or you will end up with a mash; rock the pot instead. Keep the chilli light so the natural sweetness has room, and pick firm tubers with no soft dark patches.",
+  "si": "කැබලි මෘදු වුණාට පස්සේ වැඩිය කලවම් කරන්න එපා, නැත්නම් අල මැෂ් වෙනවා; ඒ වෙනුවට මුට්ටිය සොලවන්න. අලයේ පැණි රස මතු වෙන්න මිරිස් අඩුවෙන් තියන්න, තද, කළු ලප නැති අල තෝරාගන්න.",
+  "ta": "துண்டுகள் மென்மையான பிறகு அதிகம் கிளறாதீர்கள், இல்லையேல் மசியாகிவிடும்; சட்டியை அசைத்தால் போதும். கிழங்கின் இயற்கை இனிப்பு வெளிப்பட மிளகாயைக் குறைவாக வைக்கவும், இறுக்கமான, கறுப்புப் புள்ளிகள் இல்லாத கிழங்கைத் தேர்ந்தெடுக்கவும்."
+ },
+ "health_note": {
+  "en": "Sweet potato gives fibre and the orange pigment that becomes vitamin A, but it is still a starchy root with natural sugar, so treat it as part of the rice on the plate rather than as a free vegetable. Anyone managing blood sugar should take a small piece or two.",
+  "si": "බතලවලින් තන්තු සහ විටමින් A බවට හැරෙන තැඹිලි වර්ණකය ලැබෙනවා; නමුත් එය ස්වභාවික සීනි සහිත පිෂ්ටමය අලයක් නිසා, නිකම් එළවළුවක් ලෙස නොව පිඟානේ බතේ කොටසක් ලෙස සලකන්න. රුධිර සීනි පාලනය කරන කෙනෙක් කැබලි එකක් දෙකක් පමණ ගන්න.",
+  "ta": "சர்க்கரைவள்ளியில் நார்ச்சத்தும் வைட்டமின் ஏ ஆக மாறும் சத்தும் உண்டு; ஆனால் இது இயற்கை இனிப்புள்ள மாவுச்சத்துக் கிழங்கே, எனவே இதைத் தட்டில் உள்ள சாதத்தின் ஒரு பகுதியாகவே கருதவும். இரத்தச் சர்க்கரையைக் கட்டுப்படுத்துபவர்கள் ஒன்றிரண்டு துண்டுகளே எடுக்கவும்."
+ },
+ "tags": [
+  "high_fibre",
+  "kid_friendly",
+  "filling",
+  "budget",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

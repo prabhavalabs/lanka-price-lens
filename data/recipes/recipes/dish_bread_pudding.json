@@ -1,0 +1,318 @@
+{
+ "id": "dish_bread_pudding",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 150,
+  "description": {
+   "en": "A spoonful of soft custard pudding with its caramel",
+   "si": "කැරමල් සමඟ මෘදු පාන් පුඩිං හැන්දක්",
+   "ta": "கேரமலுடன் ஒரு கரண்டி மிருதுவான பாண் புட்டிங்"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_bread",
+   "label": {
+    "en": "bread",
+    "si": "පාන්",
+    "ta": "பாண்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "5 thick slices, a day or two old",
+   "preparation": {
+    "en": "torn into pieces, crusts left on",
+    "si": "කැබලි කරගත්, පොත්ත සමඟම",
+    "ta": "துண்டுகளாகக் கிழித்தது, விளிம்புடன்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "එළකිරි",
+    "ta": "பசும்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 eggs",
+   "preparation": {
+    "en": "beaten",
+    "si": "ගසාගත්",
+    "ta": "அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 110,
+   "unit": "g",
+   "household": "half a cup, 3 tbsp of it for the caramel",
+   "preparation": {
+    "en": "50 g for the caramel, the rest for the custard",
+    "si": "කැරමල් සඳහා ග්‍රෑම් 50ක්, ඉතිරිය කිරි මිශ්‍රණයට",
+    "ta": "கேரமலுக்கு 50 கிராம், மீதி பால் கலவைக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": {
+    "en": "melted",
+    "si": "උණු කරගත්",
+    "ta": "உருக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_raisins",
+   "label": {
+    "en": "sultanas",
+    "si": "කිස්මිස්",
+    "ta": "உலர் திராட்சை"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "rinsed",
+    "si": "සෝදාගත්",
+    "ta": "கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vanilla",
+   "label": {
+    "en": "vanilla",
+    "si": "වැනිලා",
+    "ta": "வெனிலா"
+   },
+   "quantity": 3,
+   "unit": "ml",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch of powder",
+   "preparation": {
+    "en": "powdered",
+    "si": "කුඩු කරගත්",
+    "ta": "பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_nutmeg",
+   "label": {
+    "en": "nutmeg",
+    "si": "සාදික්කා",
+    "ta": "சாதிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a light grating",
+   "preparation": {
+    "en": "grated",
+    "si": "ගාගත්",
+    "ta": "துருவியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Tear the bread into rough pieces and put them in a bowl.",
+    "minutes": null
+   },
+   {
+    "text": "Warm the milk with 60 g of the sugar until it steams, pour it over the bread and leave it to soak.",
+    "minutes": 15
+   },
+   {
+    "text": "Melt the remaining 50 g of sugar in a small pan without stirring until it turns the colour of amber, then pour it into the baking dish and tilt the dish to coat the base.",
+    "minutes": 6
+   },
+   {
+    "text": "Beat the eggs with the vanilla and work them into the soaked bread with the melted butter until the bread breaks down.",
+    "minutes": null
+   },
+   {
+    "text": "Stir in the sultanas, cinnamon and a grating of nutmeg.",
+    "minutes": null
+   },
+   {
+    "text": "Pour the mixture over the set caramel and level the top.",
+    "minutes": null
+   },
+   {
+    "text": "Stand the dish in a tray of hot water and bake in a moderate oven until the pudding is set with only a slight wobble in the middle.",
+    "minutes": 45
+   },
+   {
+    "text": "Rest it for a quarter of an hour, then turn it out so the caramel runs down, or spoon it straight from the dish.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "පාන් අතින් කැබලි කර බඳුනකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කිරි සීනි ග්‍රෑම් 60ක් සමඟ හුමාලය එන තුරු රත් කර, පාන් මතට වත් කර තෙමෙන්න තියන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ඉතිරි සීනි ග්‍රෑම් 50 කුඩා පෑනකට දමා, කලවම් නොකර දුඹුරු පාට වන තුරු උණු කර, බේක් කරන භාජනයට වත් කර පතුල වැසෙන සේ හරවන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "බිත්තර වැනිලා සමඟ ගසා, උණු කරගත් බටර් සමඟ තෙමූ පාන් මතට දමා, පාන් දිය වන තුරු හොඳින් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කිස්මිස්, කුරුඳු කුඩු සහ ගාගත් සාදික්කා ටිකක් දමා කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තද වූ කැරමල් මතට මිශ්‍රණය වත් කර උඩ පිට සමතලා කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "භාජනය උණු වතුර ඇති තැටියක් මැදට තබා, මැද ටිකක් සෙලවෙන තරමට පමණක් තද වන තුරු මධ්‍යම උදුනේ බේක් කරන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "විනාඩි පහළොවක් තියා, කැරමල් ගලා යන සේ පෙරළා ගන්න, නැතහොත් භාජනයෙන්ම හැන්දෙන් බෙදන්න.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாணைக் கையால் துண்டுகளாகக் கிழித்து ஒரு பாத்திரத்தில் போடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாலை 60 கிராம் சீனியுடன் ஆவி வரும் வரை சூடாக்கி, பாண் மேல் ஊற்றி ஊறவிடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "மீதி 50 கிராம் சீனியைச் சிறு சட்டியில் கிளறாமல் பொன்னிறமாகும் வரை உருக்கி, பேக் செய்யும் பாத்திரத்தில் ஊற்றி அடி முழுவதும் பரவச் சாய்க்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "முட்டைகளை வெனிலாவுடன் அடித்து, உருக்கிய வெண்ணெயுடன் ஊறிய பாணில் சேர்த்து, பாண் கரையும் வரை கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உலர் திராட்சை, இலவங்கப்பட்டைப் பொடி, துருவிய சாதிக்காய் சேர்த்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறுகிய கேரமல் மேல் கலவையை ஊற்றி மேற்பரப்பைச் சமன் செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்தைச் சூடான தண்ணீர் உள்ள தட்டின் நடுவில் வைத்து, நடு லேசாக அசையும் பதத்தில் இறுகும் வரை மிதமான அவனில் பேக் செய்யவும்.",
+    "minutes": 45
+   },
+   {
+    "text": "பதினைந்து நிமிடம் வைத்து, கேரமல் வழியும்படி கவிழ்த்து எடுக்கவும், அல்லது பாத்திரத்திலிருந்தே கரண்டியால் பரிமாறவும்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 45,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "oven",
+  "baking dish",
+  "small pan for caramel",
+  "water tray"
+ ],
+ "tips": {
+  "en": "Stale bread is better than fresh; it drinks the milk without turning to paste. Bake in a water tray so the custard sets smooth instead of curdling at the edges.",
+  "si": "නවුම් පාන් වෙනුවට පරණ පාන් හොඳයි; එය පේස්ට් නොවී කිරි හොඳින් උරා ගනී. දාර කැඩී නොයා සිනිඳුව තද වීමට උණු වතුර තැටියක් මැදින් බේක් කරන්න.",
+  "ta": "புதிய பாணை விட ஒரு நாள் பழைய பாண் நல்லது; அது பாலைக் குழைவாக மாறாமல் உறிஞ்சும். விளிம்பு திரியாமல் மிருதுவாக இறுக, தண்ணீர்த் தட்டில் வைத்துப் பேக் செய்யவும்."
+ },
+ "health_note": {
+  "en": "Milk and egg give useful protein and calcium, which makes this gentler than most sweets, but the caramel and sugar are still considerable. Cutting the sugar by a third works well if there are sultanas in it.",
+  "si": "කිරි සහ බිත්තර වලින් ප්‍රෝටීන් සහ කැල්සියම් ලැබෙන නිසා මෙය බොහෝ රසකැවිලිවලට වඩා මෘදුයි; එහෙත් කැරමල් සහ සීනි ප්‍රමාණය තවමත් වැඩියි. කිස්මිස් දමා ඇති විට සීනි තුනෙන් එකකින් අඩු කිරීම හොඳින් ගැළපේ.",
+  "ta": "பாலும் முட்டையும் புரதமும் கால்சியமும் தருவதால் இது பல இனிப்புகளை விட மிதமானது; இருந்தும் கேரமலும் சீனியும் கணிசம். உலர் திராட்சை இருந்தால் சீனியை மூன்றில் ஒரு பங்கு குறைத்தாலும் சுவை நன்றாக இருக்கும்."
+ },
+ "tags": [
+  "kid_friendly",
+  "comfort",
+  "budget",
+  "high_sugar",
+  "calcium_rich",
+  "elderly_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,308 @@
+{
+ "id": "dish_thampala_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 65,
+  "description": {
+   "en": "A small heap of soft amaranth leaves cooked with coconut",
+   "si": "පොල් සමඟ උයාගත් මෘදු තම්පලා කොළ ගොඩක්",
+   "ta": "தேங்காயுடன் சமைத்த மென்மையான அரைக்கீரையின் சிறு குவியல்"
+  }
+ },
+ "yield_g": 260,
+ "ingredients": [
+  {
+   "ref": "product_thampala",
+   "label": {
+    "en": "amaranth leaves (thampala)",
+    "si": "තම්පලා",
+    "ta": "அரைக்கீரை"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 large bunches",
+   "preparation": {
+    "en": "leaves and tender stalks chopped fine, tough stems discarded",
+    "si": "කොළ සහ මෘදු දඬු සිහින්ව කපා, තද දඬු ඉවත් කර",
+    "ta": "இலையும் மெல்லிய தண்டும் மிக நறுக்கி, கடினமான தண்டுகளை நீக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "2 cloves",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලා",
+    "ta": "பொடியாக இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பலகடா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp, pounded",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කොටා",
+    "ta": "கரடுமுரடாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 5,
+   "unit": "ml",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick over the thampala, throw out any tough lower stems and chop the leaves and tender stalks fine.",
+    "minutes": 8
+   },
+   {
+    "text": "Wash in two waters and drain in a basket; thampala holds a lot of water between its leaves.",
+    "minutes": 4
+   },
+   {
+    "text": "Rub the coconut with the onion, chilli, garlic, turmeric, pepper and pounded maldive fish until the coconut is yellow all through.",
+    "minutes": 3
+   },
+   {
+    "text": "Put the greens into a hot pan with the teaspoon of oil and two tablespoons of water and cook uncovered, stirring, until they wilt right down.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the coconut mixture and salt and keep tossing on a low flame until the pan is dry.",
+    "minutes": 5
+   },
+   {
+    "text": "Taste, correct the salt and serve straight away while the mallung is still bright.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තම්පලා පිරිසිදු කර, යටින් තියෙන තද දඬු ඉවත් කර, කොළ සහ මෘදු දඬු සිහින්ව කපන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "දෙවරක් වතුරෙන් සෝදා කූඩයක දමා වතුර බේරන්න; තම්පලා කොළ අතරේ වතුර ගොඩක් රැඳෙනවා.",
+    "minutes": 4
+   },
+   {
+    "text": "පොල්වලට ළූණු, මිරිස්, සුදු ළූණු, කහ, ගම්මිරිස් සහ කොටාගත් උම්බලකඩ දමා, පොල් හොඳට කහ පාට වන තුරු අතුල්ලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රත් වූ පෑන් එකකට තේ හැන්දක් තෙල් සහ මේස හැඳි දෙකක වතුර සමඟ පලා දමා, වහන්නේ නැතුව කලවම් කරමින් හොඳින් මැලවෙන තුරු උයන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පොල් මිශ්‍රණය සහ ලුණු දමා, අඩු ගින්නේ පෑන් වේලෙන තුරු පෙරළමින් තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "රස බලා ලුණු හදාගෙන, මැල්ලුම තවම පාට සහිතව තියෙන වෙලාවේ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரைக்கீரையைப் பரிசோதித்து, அடியில் உள்ள கடினமான தண்டுகளை நீக்கி, இலையையும் மெல்லிய தண்டையும் மிக நறுக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "இரு முறை அலசி கூடையில் நீர் வடிக்கவும்; அரைக்கீரை இலைகளுக்கு இடையே நிறைய நீர் தங்கும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தேங்காயுடன் வெங்காயம், மிளகாய், பூண்டு, மஞ்சள், மிளகு, இடித்த உம்பலகடா சேர்த்து, தேங்காய் முழுவதும் மஞ்சள் நிறமாகும் வரை பிசையவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "காய்ந்த சட்டியில் ஒரு டீஸ்பூன் எண்ணெயும் இரண்டு மேசைக்கரண்டி நீரும் விட்டு கீரையைப் போட்டு, மூடாமல் கிளறி நன்றாக வதங்கும் வரை சமைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தேங்காய்க் கலவையையும் உப்பையும் சேர்த்து, சிறு தீயில் சட்டி வற்றும் வரை புரட்டவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சுவைத்து உப்பைச் சரிபார்த்து, வதக்கல் நிறம் மாறாத நேரத்திலேயே பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 10,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan or wok"
+ ],
+ "tips": {
+  "en": "Thampala wilts to a quarter of its volume, so a bundle that looks far too big is about right. The lower stems stay stringy however long you cook them, so cut them off at the market rather than in the pan.",
+  "si": "තම්පලා උයන විට හතරෙන් එකකට පමණ අඩු වන නිසා, ලොකු වැඩියි කියලා හිතෙන මිටියක් හරියටම හරි. යටි දඬු කොච්චර උයනත් නාරටි ගතියෙන් තියෙන නිසා, පෑන් එකේ නෙවෙයි වෙළඳපොලේම ඒවා කපා ඉවත් කරන්න.",
+  "ta": "அரைக்கீரை கால் பங்காகச் சுருங்கும், எனவே மிகப் பெரிதாகத் தோன்றும் கட்டே சரியான அளவு. அடித் தண்டுகள் எவ்வளவு சமைத்தாலும் நாராகவே இருக்கும், எனவே சட்டியில் அல்ல, சந்தையிலேயே அவற்றை நீக்கிவிடவும்."
+ },
+ "health_note": {
+  "en": "Thampala is one of the cheapest greens in the market and gives iron, calcium and fibre for the price of a bus ticket. It is naturally a little high in oxalate, so people with a history of kidney stones should not eat it every day.",
+  "si": "තම්පලා වෙළඳපොලේ තියෙන ලාබම පලා වර්ගවලින් එකක්; බස් ගාස්තුවක මුදලට යකඩ, කැල්සියම් සහ තන්තු ලැබෙනවා. එහි ඔක්සලේට් ප්‍රමාණය ස්වභාවිකවම ටිකක් වැඩි නිසා, වකුගඩු ගල් තිබූ අය හැමදාම කන එක හොඳ නැහැ.",
+  "ta": "அரைக்கீரை சந்தையில் மிக மலிவான கீரைகளில் ஒன்று; பஸ் கட்டண அளவு பணத்திற்கு இரும்புச்சத்து, கால்சியம், நார்ச்சத்து கிடைக்கும். இதில் ஆக்சலேட் இயற்கையாகவே சற்று அதிகம், எனவே சிறுநீரகக் கல் வந்தவர்கள் தினமும் சாப்பிடுவது நல்லதல்ல."
+ },
+ "tags": [
+  "iron_rich",
+  "calcium_rich",
+  "high_fibre",
+  "low_calorie",
+  "weight_loss_friendly",
+  "quick",
+  "light",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

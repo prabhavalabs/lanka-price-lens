@@ -1,0 +1,289 @@
+{
+ "id": "dish_banana_fritters",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 120,
+  "description": {
+   "en": "Two hot fritter halves with tea",
+   "si": "තේ සමඟ උණුසුම් බජ්ජි කැබලි දෙකක්",
+   "ta": "தேநீருடன் சூடான இரண்டு பஜ்ஜித் துண்டுகள்"
+  }
+ },
+ "yield_g": 480,
+ "ingredients": [
+  {
+   "ref": "product_banana",
+   "label": {
+    "en": "ripe plantain",
+    "si": "ඉදුණු කෙසෙල්",
+    "ta": "பழுத்த வாழைப்பழம்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 large ripe plantains",
+   "preparation": {
+    "en": "peeled and split lengthwise",
+    "si": "ලෙලි ගසා දිගට දෙබෑ කරගත්",
+    "ta": "தோலுரித்து நீளவாக்கில் பிளந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "for a crisper coating",
+    "si": "වඩා කරකර ආලේපනයකට",
+    "ta": "மொறுமொறுப்பான பூச்சுக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "in the batter, plus a little to dust",
+    "si": "පිටි මිශ්‍රණයට, ඉහින්නට ස්වල්පයක් ද",
+    "ta": "மாவில், மேலே தூவ சிறிதும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a good pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, for colour",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_baking_powder",
+   "label": {
+    "en": "baking powder",
+    "si": "බේකින් පවුඩර්",
+    "ta": "பேக்கிங் பவுடர்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1¼ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the plantains and split each one lengthwise, or cut them on the slant into thick pieces if they are very long.",
+    "minutes": null
+   },
+   {
+    "text": "Whisk the wheat flour, rice flour, sugar, salt, a pinch of turmeric and the baking powder with about 150 ml water into a batter as thick as treacle.",
+    "minutes": null
+   },
+   {
+    "text": "Let the batter stand so the flour swells and the sugar dissolves.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the oil in a deep pan on a medium fire; too hot and the coating darkens before the fruit warms through.",
+    "minutes": 5
+   },
+   {
+    "text": "Hold a piece of plantain by one end, draw it through the batter and lower it gently into the oil.",
+    "minutes": null
+   },
+   {
+    "text": "Fry three or four pieces at a time, turning once, until the coating is crisp and brown.",
+    "minutes": 8
+   },
+   {
+    "text": "Lift them onto a rack and dust with a little sugar if the fruit was not very sweet.",
+    "minutes": null
+   },
+   {
+    "text": "Eat hot, with plain tea to cut the sweetness.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කෙසෙල් ලෙලි ගසා එක එක දිගට දෙබෑ කරන්න, ඉතා දිග නම් ඇදට ඝන කැබලිවලට කපන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තිරිඟු පිටි, සහල් පිටි, සීනි, ලුණු, කහ ස්වල්පයක් සහ බේකින් පවුඩර් වතුර මිලි ලීටර් 150ක් පමණ සමඟ ගසා, පැණි තරම් ඝන මිශ්‍රණයක් සාදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිටි ඉදී සීනි දිය වන්නට මිශ්‍රණය ටික වෙලාවක් තිබෙන්න දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගැඹුරු පෑනක තෙල් මධ්‍යම ලිපේ රත් කරන්න; ඉතා රත් වුවහොත් කෙසෙල් උණුසුම් වන්නට පෙර පිටත කලු වේ.",
+    "minutes": 5
+   },
+   {
+    "text": "කෙසෙල් කැබැල්ලක් එක් කෙළවරකින් අල්ලා, පිටි මිශ්‍රණයේ ගිල්වා, සෙමින් තෙලට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වරකට තුනක් හතරක් දමා, එක් වරක් පෙරළමින්, ආලේපනය කරකර ගතියෙන් දුඹුරු වන තෙක් බැදගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "රාක්කයකට ගෙන, කෙසෙල් එතරම් පැණි රස නොවූයේ නම් සීනි ස්වල්පයක් ඉහින්න.",
+    "minutes": null
+   },
+   {
+    "text": "පැණි රස කපා ගන්නට සරල තේ සමඟ උණුසුම්ව කන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வாழைப்பழங்களைத் தோலுரித்து ஒவ்வொன்றையும் நீளவாக்கில் பிளக்கவும், மிக நீளமாக இருந்தால் சாய்வாகத் தடிமனான துண்டுகளாக நறுக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கோதுமை மாவு, அரிசி மாவு, சீனி, உப்பு, சிறிது மஞ்சள், பேக்கிங் பவுடர் ஆகியவற்றை சுமார் 150 மில்லி தண்ணீருடன் அடித்து, பாகு போல் கெட்டியான கலவையாக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மாவு ஊறி சீனி கரைய, கலவையைச் சிறிது நேரம் வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஆழமான வாணலியில் எண்ணெயை நடுத்தர தீயில் காயவைக்கவும்; அதிகச் சூடானால் பழம் சூடாகுமுன் வெளிப்பூச்சு கருகிவிடும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு வாழைத் துண்டை ஒரு முனையில் பிடித்து, மாவுக் கலவையில் தோய்த்து, மெதுவாக எண்ணெயில் இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு முறைக்கு மூன்று நான்கு துண்டுகளாகப் போட்டு, ஒரு முறை திருப்பி, பூச்சு மொறுமொறுப்பாகி பொன்னிறமாகும் வரை பொரிக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "வலையில் எடுத்து வைத்து, பழம் அதிக இனிப்பாக இல்லாவிட்டால் சிறிது சீனி தூவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இனிப்பைச் சமன்செய்ய சாதாரண தேநீருடன் சூடாகச் சாப்பிடவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "deep pan",
+  "slotted spoon",
+  "wire rack"
+ ],
+ "tips": {
+  "en": "Use plantains that are ripe but still firm; an over-ripe one collapses in the oil and the batter slides off. Ash plantain cut the same way and fried in a savoury batter with chilli makes the salty version.",
+  "si": "ඉදුණු නමුත් තවමත් තද කෙසෙල් ගන්න; වැඩිපුර ඉදුණු ගෙඩියක් තෙලේ කැඩී පිටි මිශ්‍රණය ගැලවී යයි. අලු කෙසෙල් එලෙසම කපා, මිරිස් සහිත ලුණු රස මිශ්‍රණයකින් බැදූ විට ලුණු රස වර්ගය ලැබේ.",
+  "ta": "பழுத்த ஆனால் இன்னும் இறுக்கமான வாழையைப் பயன்படுத்தவும்; மிகவும் பழுத்தது எண்ணெயில் உடைந்து மாவு நழுவிவிடும். அரிசி வாழையை அதே போல் நறுக்கி, மிளகாய் சேர்த்த உப்புக் கலவையில் பொரித்தால் காரமான வகை கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "A ripe plantain brings potassium, some fibre and natural sugar, but batter and frying turn a piece of fruit into a heavy sweet. Two halves each is plenty, and children do not need the sugar dusting on top.",
+  "si": "ඉදුණු කෙසෙල් ගෙඩියකින් පොටෑසියම්, තන්තු ස්වල්පයක් සහ ස්වාභාවික සීනි ලැබේ; එහෙත් පිටි මිශ්‍රණය සහ තෙල් නිසා පලතුරු කැබැල්ලක් බර පැණි කෑමක් වේ. එකකට කැබලි දෙකක් ප්‍රමාණවත්, දරුවන්ට මුදුනේ සීනි ඉහීම අවශ්‍ය නැත.",
+  "ta": "பழுத்த வாழைப்பழம் பொட்டாசியம், சிறிது நார்ச்சத்து, இயற்கை இனிப்பு தரும்; ஆனால் மாவுப் பூச்சும் பொரிப்பும் ஒரு பழத் துண்டை கனமான இனிப்பாக மாற்றுகிறது. ஒருவருக்கு இரண்டு துண்டு போதும், குழந்தைகளுக்கு மேலே சீனி தூவ வேண்டியதில்லை."
+ },
+ "tags": [
+  "deep_fried",
+  "high_sugar",
+  "kid_friendly",
+  "comfort",
+  "quick"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

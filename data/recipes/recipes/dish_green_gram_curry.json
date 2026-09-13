@@ -1,0 +1,370 @@
+{
+ "id": "dish_green_gram_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 215,
+  "description": {
+   "en": "A ladle of whole green gram in light coconut gravy",
+   "si": "සැහැල්ලු පොල් කිරි හොදියේ මුං ඇට හැන්දක්",
+   "ta": "இலகுவான தேங்காய்ப்பால் கறியில் பச்சைப் பயறு ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 870,
+ "ingredients": [
+  {
+   "ref": "product_green_gram",
+   "label": {
+    "en": "green gram",
+    "si": "මුං ඇට",
+    "ta": "பச்சைப் பயறு"
+   },
+   "quantity": 220,
+   "unit": "g",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "washed and soaked for four hours",
+    "si": "සෝදා පැය හතරක් පොඟවාගත්",
+    "ta": "கழுவி நான்கு மணி நேரம் ஊறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට හෙළාගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறித்தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப்பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "two thirds of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the green gram, throw away any grains that float, and soak for four hours.",
+    "minutes": 240
+   },
+   {
+    "text": "Drain and boil in fresh water with the turmeric until the grains are soft but not burst open.",
+    "minutes": 30
+   },
+   {
+    "text": "Keep a cup of the cooking water and drain away the rest.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the onion, garlic, green chilli, curry leaves and pandan until the onion turns clear.",
+    "minutes": 4
+   },
+   {
+    "text": "Stir in the curry powder for half a minute so it loses its raw edge.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the boiled gram, the saved water and the salt, mixing gently so the grains stay whole.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer until the gravy thickens slightly around the grain.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the thick coconut milk, shake the pan and bring it just to a bubble.",
+    "minutes": 2
+   },
+   {
+    "text": "Take it off the fire and serve with rice, pittu or string hoppers.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මුං ඇට සෝදා, පාවෙන ඇට ඉවත් කර, පැය හතරක් පොඟවන්න.",
+    "minutes": 240
+   },
+   {
+    "text": "වතුර බේරා, අලුත් වතුරට කහ කුඩු දමා ඇට පුපුරන්නේ නැතිව මෘදු වන තුරු තම්බන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "තැම්බූ වතුරෙන් කෝප්පයක් වෙන් කර ඉතිරිය බේරා දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑනක පොල් තෙල් රත් කර ලූනු, සුදුළූනු, අමු මිරිස්, කරපිංචා සහ රම්පෙ ලූනු පැහැදිලි වන තුරු බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "අමු තුනපහ දමා අමු ගතිය යන තුරු තත්පර තිහක් කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "තැම්බූ මුං ඇට, වෙන් කරගත් වතුර සහ ලුණු දමා, ඇට නොකැඩෙන්නට සෙමින් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙවන පොල් කිරි වත් කර, ඇට වටා හොදිය ටිකක් තද වන තුරු තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මුල් පොල් කිරි දමා පෑන සෙලවා, උතුරන්නට ආසන්න වන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ගින්නෙන් ඉවත් කර බත්, පිට්ටු හෝ ඉඳිආප්ප සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பச்சைப் பயறைக் கழுவி, மிதப்பவற்றை நீக்கி, நான்கு மணி நேரம் ஊற வைக்கவும்.",
+    "minutes": 240
+   },
+   {
+    "text": "வடித்து, புதிய தண்ணீரில் மஞ்சள் தூள் சேர்த்து பயறு வெடிக்காமல் மென்மையாகும் வரை வேகவிடவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "வேகவைத்த தண்ணீரில் ஒரு கப் தனியே வைத்து மீதியை வடிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை இலை சேர்த்து வெங்காயம் வெளிர்நிறமாகும் வரை வதக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "கறித்தூள் சேர்த்து பச்சை வாசம் போக அரை நிமிடம் கிளறவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "வேகவைத்த பயறு, வைத்த தண்ணீர், உப்பு சேர்த்து பயறு உடையாமல் மெதுவாகக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப்பாலை ஊற்றி, பயறைச் சுற்றி கறி சற்று இறுகும் வரை கொதிக்கவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலைச் சேர்த்து வாணலியை ஆட்டி, கொதி வரும் தறுவாயில் நிற்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "இறக்கி சாதம், பிட்டு அல்லது இடியப்பத்துடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 40,
+  "passive_minutes": 240
+ },
+ "equipment": [
+  "heavy pot with a lid",
+  "pan for the gravy"
+ ],
+ "tips": {
+  "en": "Stop boiling the moment a grain gives under the thumb; green gram goes from firm to mush in a few minutes. Mix gently once the milk is in, or the curry turns into a porridge instead of whole grains in gravy.",
+  "si": "ඇටයක් මාපටැඟිල්ලෙන් තලන විට තැලෙන මොහොතේම තැම්බීම නවත්වන්න; මුං ඇට තදින් සිට පල්ප් වීමට ගත වන්නේ මිනිත්තු කිහිපයකි. කිරි දැමූ පසු සෙමින් කලවම් කරන්න, නොඑසේ නම් හොදියේ මුළු ඇට වෙනුවට කැඳක් වේ.",
+  "ta": "பெருவிரலால் அழுத்தினால் பயறு நசுங்கும் தருணத்திலேயே வேகவைப்பதை நிறுத்தவும்; பச்சைப் பயறு இறுகிய நிலையிலிருந்து மசியும் நிலைக்கு சில நிமிடங்களில் மாறிவிடும். பால் சேர்த்த பிறகு மெதுவாகக் கலக்கவும், இல்லையேல் கறி கஞ்சியாகிவிடும்."
+ },
+ "health_note": {
+  "en": "Green gram is one of the lightest pulses on the stomach and gives protein, fibre and folate without the heaviness of chickpeas. Made with second-extract milk it suits a meat-free day or an evening meal for someone who is unwell.",
+  "si": "මුං ඇට බඩට ඉතාම පහසු ධාන්‍යයක් වන අතර කඩල වැනි බර ගතියක් නොමැතිව ප්‍රෝටීන්, තන්තු සහ ෆෝලේට් ලබා දෙයි. දෙවන කිරියෙන් පිසූ විට මස් නොකන දිනකට හෝ අසනීප කෙනෙකුගේ රාත්‍රී ආහාරයට සුදුසුයි.",
+  "ta": "பச்சைப் பயறு வயிற்றுக்கு மிக இலகுவான பயறு வகை; கடலையின் கனத்தன்மை இல்லாமல் புரதம், நார்ச்சத்து, ஃபோலேட் தருகிறது. இரண்டாம் பாலில் சமைத்தால் மாமிசம் இல்லாத நாளுக்கும், உடல்நலம் சரியில்லாதவரின் இரவு உணவுக்கும் ஏற்றது."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "diabetic_friendly",
+  "light",
+  "budget",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,374 @@
+{
+ "id": "dish_onion_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 120,
+  "description": {
+   "en": "A small ladle of jammy whole onions, enough to season a plate of rice",
+   "si": "බත් පිඟානකට රසය ගෙන දෙන පමණට, පැණි ගතියට තෙම්බුණු මුළු ලූනු කුඩා හැන්දක්",
+   "ta": "ஒரு தட்டு சாதத்திற்குச் சுவை தரும் அளவு, ஜாம் பதத்தில் வேகவைத்த முழு வெங்காயம் சிறிய கரண்டி"
+  }
+ },
+ "yield_g": 480,
+ "ingredients": [
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 cups of small onions",
+   "preparation": {
+    "en": "peeled, left whole",
+    "si": "ලෙලි ගලවා සම්පූර්ණයෙන්",
+    "ta": "தோல் உரித்து முழுதாக"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "lightly crushed",
+    "si": "මදක් තලාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 small pieces",
+   "preparation": {
+    "en": "a dry piece, rinsed",
+    "si": "වියළි කැබැල්ලක්, සෝදාගත්",
+    "ta": "காய்ந்த துண்டு, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the small red onions and leave them whole, picking ones of the same size so they cook together.",
+    "minutes": 15
+   },
+   {
+    "text": "Crush the garlic cloves lightly with the flat of the knife.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the dried chillies, curry leaves and pandan leaf.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the whole onions and the garlic and fry them on a medium fire until the edges brown.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir in the turmeric, roasted curry powder, goraka and salt, then pour in the thin coconut milk.",
+    "minutes": 2
+   },
+   {
+    "text": "Simmer uncovered until the onions are soft to the centre and the gravy is dark and syrupy.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the sugar and the thick coconut milk and cook a few minutes more until it turns jammy.",
+    "minutes": 5
+   },
+   {
+    "text": "Serve a spoonful each; it is strong enough to season a whole plate of rice on its own.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුඩා රතු ලූනු ලෙලි ගලවා කැපීමකින් තොරව තබන්න; එකම ප්‍රමාණයේ ඒවා තෝරාගන්න, එවිට එකවර ඉදෙයි.",
+    "minutes": 15
+   },
+   {
+    "text": "සුදුලූනු ගෙඩි පිහියේ පැත්තෙන් මදක් තලා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, වියළි මිරිස්, කරපිංචා සහ රම්පෙ තෙල්දාලන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "මුළු ලූනු සහ සුදුලූනු දමා, මධ්‍යම ගින්නේ දාර දුඹුරු වන තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "කහ, බැදපු තුනපහ, ගොරකා සහ ලුණු එක් කර, තුනී පොල් කිරි වත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "වැසුමක් නැතිව, ලූනු මැද දක්වා මෘදු වී ඉස්ම කළු පැහැගෙන පැණි වගේ වන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සීනි සහ ඝන පොල් කිරි එකතු කර, පැණි ගතියක් එන තුරු තවත් විනාඩි කිහිපයක් උයන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "එක් අයෙකුට හැන්දක් පමණ පිළිගන්වන්න; මුළු බත් පිඟානකට රසය දෙන්නට එය තරම් තියුණුයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சின்ன வெங்காயத்தைத் தோல் உரித்து முழுதாக வையுங்கள்; ஒரே அளவுள்ளவற்றைத் தேர்ந்தெடுத்தால் சேர்ந்தே வேகும்.",
+    "minutes": 15
+   },
+   {
+    "text": "பூண்டுப் பல்லுகளைக் கத்தியின் பட்டையால் லேசாக இடியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, காய்ந்த மிளகாய், கறிவேப்பிலை, ரம்பையைத் தாளியுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "முழு வெங்காயத்தையும் பூண்டையும் போட்டு, நடுத்தீயில் விளிம்புகள் பொன்னிறமாகும் வரை வறுக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மஞ்சள், வறுத்த கறி மசாலா, கோரக்கா, உப்பு சேர்த்துக் கிளறி, நீர்த்த தேங்காய்ப் பாலை ஊற்றுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "மூடாமல், வெங்காயம் நடுவரை மிருதுவாகி குழம்பு கறுத்து பாகு பதம் வரும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "சீனியையும் தடித்த தேங்காய்ப் பாலையும் சேர்த்து, ஜாம் பதம் வரும் வரை இன்னும் சில நிமிடம் வேகவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒருவருக்கு ஒரு கரண்டி பரிமாறுங்கள்; ஒரு தட்டு சாதத்திற்குச் சுவை தரும் அளவு காரமும் சுவையும் இதில் உண்டு.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Small village onions are worth the extra peeling; big onion pieces turn watery and will not go jammy. A piece of goraka and a teaspoon of sugar together are what make the gravy taste finished.",
+  "si": "ගම්වල කුඩා ලූනු, ලෙලි ගැලවීමට ගත වන අමතර වෙලාවට වටිනවා; ලොකු ලූනු කැබලි වතුරෙන් යුතු වන අතර පැණි ගතියක් නොදෙයි. ගොරකා කැබැල්ලක් සහ සීනි තේ හැන්දක් එකට යෙදීමෙන් ඉස්මට සම්පූර්ණ රසයක් එයි.",
+  "ta": "கிராமத்துச் சின்ன வெங்காயம் தோல் உரிக்கும் கூடுதல் நேரத்திற்குத் தகுந்தது; பெரிய வெங்காயத் துண்டுகள் நீர்த்துப்போகும், ஜாம் பதம் வராது. ஒரு கோரக்கா துண்டும் ஒரு தேக்கரண்டி சீனியும் சேர்ந்தே குழம்புக்கு முழுமையான சுவை தரும்."
+ },
+ "health_note": {
+  "en": "Onions give useful plant compounds and this curry needs no other vegetable to make rice tasty, but it is cooked with oil, coconut milk and a little sugar. A spoonful each is the sensible amount.",
+  "si": "ලූනුවලින් ප්‍රයෝජනවත් ශාක සංයෝග ලැබෙන අතර, බත රසවත් කරන්නට මේ කරියට වෙන එළවළුවක් අවශ්‍ය නැත; එහෙත් තෙල්, පොල් කිරි සහ ස්වල්ප සීනි යොදා ඇත. එක් අයෙකුට හැන්දක් තරමයි නිවැරදි ප්‍රමාණය.",
+  "ta": "வெங்காயம் பயனுள்ள தாவரச் சேர்மங்களைத் தரும், சாதத்தைச் சுவையாக்க இந்தக் கறிக்கு வேறு காய்கறி தேவையில்லை; ஆனால் எண்ணெய், தேங்காய்ப் பால், சிறிது சீனி சேர்த்திருக்கிறது. ஒருவருக்கு ஒரு கரண்டியே சரியான அளவு."
+ },
+ "tags": [
+  "budget",
+  "comfort",
+  "one_pot",
+  "immune_support"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

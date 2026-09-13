@@ -1,0 +1,295 @@
+{
+ "id": "dish_mint_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 35,
+  "description": {
+   "en": "A spoonful of fresh green mint paste beside biriyani or fried rice",
+   "si": "බුරියානි හෝ ෆ්‍රයිඩ් රයිස් සමඟ තබන අමු මින්චි පේස්ට් හැන්දක්",
+   "ta": "பிரியாணி அல்லது பொரித்த சாதத்துடன் வைக்கும் பச்சைப் புதினா விழுது ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 140,
+ "ingredients": [
+  {
+   "ref": "product_mint_leaves",
+   "label": {
+    "en": "mint leaves",
+    "si": "මින්චි කොළ",
+    "ta": "புதினா இலை"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 loosely packed cups of leaves",
+   "preparation": {
+    "en": "leaves picked off the stalks and washed",
+    "si": "කොළ ගැලවා සෝදාගත්",
+    "ta": "இலைகளை தண்டிலிருந்து பிரித்து கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a small bunch",
+   "preparation": {
+    "en": "washed and roughly chopped",
+    "si": "සෝදා ගොරෝසුවට කපාගත්",
+    "ta": "கழுவி பெரிதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 green chillies",
+   "preparation": {
+    "en": "stalks off",
+    "si": "කරල් ඉවත් කරගත්",
+    "ta": "தாள் நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "3 small red onions",
+   "preparation": {
+    "en": "peeled and roughly cut",
+    "si": "ලෙලි ගලවා ගොරෝසුවට කපාගත්",
+    "ta": "தோல் உரித்து பெரிதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "scraped",
+    "si": "සූරාගත්",
+    "ta": "சுரண்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "juice of 1 lime",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකාගත්",
+    "ta": "சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_chickpea",
+   "label": {
+    "en": "roasted split chickpea",
+    "si": "බැදපු කඩල",
+    "ta": "பொட்டுக்கடலை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "for body, ground in with the leaves",
+    "si": "ගැටිති ගතියට, කොළ සමඟ ගාගත්",
+    "ta": "கெட்டிக்காக, இலைகளுடன் அரைத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curd",
+   "label": {
+    "en": "curd",
+    "si": "දී",
+    "ta": "தயிர்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "whisked loose, stirred in at the end",
+    "si": "ගසාගෙන, අවසානයේ එකතු කරගත්",
+    "ta": "கலக்கி, இறுதியில் சேர்த்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick the mint leaves off their stalks, keep the tender coriander stems and wash both well in two changes of water.",
+    "minutes": 5
+   },
+   {
+    "text": "Shake the leaves dry in a cloth so the sambol does not come out watery.",
+    "minutes": 2
+   },
+   {
+    "text": "Put the green chillies, onion, ginger and salt into the grinding stone or the blender jar and pound them first.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the mint, coriander and the roasted chickpea and grind to a thick green paste, without adding water.",
+    "minutes": 4
+   },
+   {
+    "text": "Squeeze in the lime juice and taste; the salt should be a little sharp because it goes with rich rice.",
+    "minutes": null
+   },
+   {
+    "text": "Stir in the curd if you want it milder, and serve it fresh; the green dulls within a few hours.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මින්චි කොළ ගැලවා ගන්න, කොත්තමල්ලි මෘදු කඳත් තබා ගෙන, දෙවතාවක් වතුර මාරු කරමින් හොඳින් සෝදන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සම්බෝල වතුර ගතියට නොයන්න කොළ රෙද්දක දමා වතුර ගසා දමන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "අමු මිරිස්, ලූනු, ඉඟුරු සහ ලුණු මුලින්ම මිරිස් ගලට හෝ බ්ලෙන්ඩර් භාජනයට දමා තලා ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මින්චි, කොත්තමල්ලි සහ බැදපු කඩල එකතු කර, වතුර නොදමා ගැටිති කොළ පේස්ට් එකක් වන තුරු ගාන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා රස බලන්න; බර බත් සමඟ යන නිසා ලුණු මදක් වැඩිපුර තියෙන්න ඕන.",
+    "minutes": null
+   },
+   {
+    "text": "සැර අඩු කරන්න අවශ්‍ය නම් දී එකතු කර, නැවුම්ව ඉදිරිපත් කරන්න; පැය කිහිපයකින් කොළ පැහැය මැකෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "புதினா இலைகளை தண்டிலிருந்து பிரித்து, கொத்தமல்லியின் மெல்லிய தண்டுகளையும் வைத்து, இரண்டு முறை நீரை மாற்றி நன்கு கழுவுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "சம்பல் நீராகாமல் இருக்க, இலைகளை துணியில் போட்டு நீரை உதறி விடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "பச்சை மிளகாய், வெங்காயம், இஞ்சி, உப்பு ஆகியவற்றை முதலில் அம்மியில் அல்லது மிக்சி ஜாடியில் போட்டு நசுக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "புதினா, கொத்தமல்லி, பொட்டுக்கடலை சேர்த்து, தண்ணீர் விடாமல் கெட்டியான பச்சை விழுதாக அரையுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "எலுமிச்சை சாறு பிழிந்து சுவை பாருங்கள்; கொழுப்பான சாதத்துடன் செல்வதால் உப்பு சற்று கூடுதலாக இருக்கலாம்.",
+    "minutes": null
+   },
+   {
+    "text": "காரம் குறைய வேண்டுமானால் தயிரைச் சேர்த்து, புதிதாகவே பரிமாறுங்கள்; சில மணி நேரத்தில் பச்சை நிறம் மங்கிவிடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "grinding stone or blender",
+  "cloth for drying leaves"
+ ],
+ "tips": {
+  "en": "Grind without water or the sambol separates on the plate; the onion and lime give all the moisture it needs. Mint stalks are bitter, so take only the leaves even though it takes longer.",
+  "si": "වතුර නොදමා ගාන්න; නැතිනම් පිඟානේ තියෙද්දී වෙන් වෙනවා. ලූනු සහ දෙහි වලින්ම අවශ්‍ය තෙතමනය ලැබෙනවා. මින්චි කඳ තිත්ත නිසා, වෙලාව ගත වුවත් කොළ පමණක් ගන්න.",
+  "ta": "தண்ணீர் விடாமல் அரையுங்கள்; இல்லையெனில் தட்டில் நீர் பிரிந்துவிடும். வெங்காயமும் எலுமிச்சையும் தேவையான ஈரத்தைத் தரும். புதினாவின் தண்டு கசக்கும், எனவே நேரம் ஆனாலும் இலைகளை மட்டும் எடுங்கள்."
+ },
+ "health_note": {
+  "en": "Mint and coriander bring almost no calories but plenty of flavour, and a green sambol like this is the easiest way to get fresh leaves onto a plate of oily rice. Mint also settles a full stomach after a heavy festival meal.",
+  "si": "මින්චි සහ කොත්තමල්ලි කැලරි නැතිවම රසය ගෙනෙනවා; තෙල් බත් පිඟානකට අමු කොළ එකතු කර ගන්න මේ වගේ කොළ පැහැ සම්බෝලයක් ලේසිම ක්‍රමයයි. උත්සව කෑමකින් පසු බර බඩටත් මින්චි සැහැල්ලුවක් දෙනවා.",
+  "ta": "புதினாவும் கொத்தமல்லியும் கலோரி இல்லாமல் சுவையைத் தருகின்றன; எண்ணெய் சாதத் தட்டில் பச்சை இலைகளைச் சேர்க்க இது போன்ற பச்சை சம்பலே எளிதான வழி. விருந்து உணவுக்குப் பிறகு வயிற்றுக்கும் புதினா இதமாக இருக்கும்."
+ },
+ "tags": [
+  "low_calorie",
+  "quick",
+  "light",
+  "weight_loss_friendly",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

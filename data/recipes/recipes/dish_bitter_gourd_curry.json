@@ -1,0 +1,347 @@
+{
+ "id": "dish_bitter_gourd_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 145,
+  "description": {
+   "en": "A small spoonful of bitter gourd in thick coconut gravy beside rice",
+   "si": "බතට එක්ක ගන පොල් කිරි හොදියේ තැම්බූ කරවිල හැන්දක්",
+   "ta": "சாதத்துடன் கெட்டியான தேங்காய்ப்பால் குழம்பில் பாகற்காய் ஒரு ஸ்பூன்"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_bitter_gourd",
+   "label": {
+    "en": "bitter gourd",
+    "si": "කරවිල",
+    "ta": "பாகற்காய்"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "3 medium gourds",
+   "preparation": {
+    "en": "sliced into thin rings, seeds removed, rubbed with salt and turmeric",
+    "si": "ඇට ඉවත් කර තුනී වළලු ආකාරයට කපා, ලුණු හා කහ ගාගත්",
+    "ta": "விதை நீக்கி மெல்லிய வளையங்களாக நறுக்கி, உப்பும் மஞ்சளும் தடவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for frying the gourd",
+    "si": "කරවිල බැදීමට",
+    "ta": "பாகற்காய் வதக்குவதற்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small handful, sliced",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp in all",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": {
+    "en": "to round off the bitterness",
+    "si": "තිත්ත ගතිය මොට කිරීමට",
+    "ta": "கசப்பைக் குறைக்க"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp in all",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Slice the bitter gourd into thin rings, flick out the hard seeds, and rub the rings with half the salt and half the turmeric.",
+    "minutes": 10
+   },
+   {
+    "text": "Leave them in a colander so the bitter juice runs out, then press them between your palms and shake off the liquid.",
+    "minutes": 15
+   },
+   {
+    "text": "Heat the coconut oil and fry the rings on a medium flame until the edges are brown and papery.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the onion, green chillies and curry leaves to the same pan and fry until the onion is soft.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir in the rest of the turmeric and the roasted curry powder, then pour in the thin coconut milk with the rest of the salt.",
+    "minutes": 2
+   },
+   {
+    "text": "Simmer uncovered until the gravy has reduced by about a third and the rings are soft.",
+    "minutes": 7
+   },
+   {
+    "text": "Add the thick coconut milk and the sugar, keep the flame low, and stir until the gravy thickens and coats the rings.",
+    "minutes": 4
+   },
+   {
+    "text": "Taste and take it off the fire; the bitterness should be present but rounded, not raw.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කරවිල තුනී වළලු ආකාරයට කපා, තද ඇට ඉවත් කර, ලුණු අඩක් හා කහ අඩක් වළලු වලට ගාන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "තිත්ත යුෂ බැස යන්න පෙරන භාජනයක තබා, පසුව අත් දෙක අතර තද කර දියර ඉවත් කරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පොල් තෙල් රත් කර, මධ්‍යම ගින්නේ, වළලු වල දාර දුඹුරු වී කඩදාසි වගේ වන තුරු බදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "එම පෑන් එකටම ලූනු, අමු මිරිස් සහ කරපිංචා දමා ලූනු මුදු වන තුරු බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ඉතිරි කහ සහ බැදපු තුනපහ දමා කලවම් කර, තුනී පොල් කිරි සහ ඉතිරි ලුණු වත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "හොදි තුනෙන් එකකින් පමණ අඩු වී වළලු මුදු වන තුරු වහන් නොදමා තම්බන්න.",
+    "minutes": 7
+   },
+   {
+    "text": "මුල් කිරි සහ සීනි එකතු කර, ගින්න අඩුවෙන් තබා, හොදි ගනවී වළලු වල ඇතිල්ලෙන තුරු කලවම් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "රස බලා ගින්නෙන් ඉවත් කරන්න; තිත්ත ගතිය තිබිය යුතු නමුත් අමු නොව මොට විය යුතුයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாகற்காயை மெல்லிய வளையங்களாக நறுக்கி, கெட்டியான விதைகளை நீக்கி, பாதி உப்பும் பாதி மஞ்சளும் தடவுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கசப்பு நீர் வடிய வடிகட்டியில் வைத்து, பிறகு உள்ளங்கைகளுக்கு இடையே அழுத்தி நீரை நீக்குங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "தேங்காய் எண்ணெயைக் காய்ச்சி, நடுத்தர தீயில் வளையங்களின் ஓரம் பொன்னிறமாகி மொறுமொறுப்பாகும் வரை வதக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அதே சட்டியில் வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை சேர்த்து, வெங்காயம் மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மீதி மஞ்சளையும் வறுத்த கறி மசாலாவையும் சேர்த்துக் கிளறி, இரண்டாம் தேங்காய்ப் பாலையும் மீதி உப்பையும் ஊற்றுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "குழம்பு மூன்றில் ஒரு பங்கு சுருங்கி, வளையங்கள் மென்மையாகும் வரை மூடாமல் வேகவிடுங்கள்.",
+    "minutes": 7
+   },
+   {
+    "text": "முதல் பாலையும் சீனியையும் சேர்த்து, தீயைக் குறைத்து, குழம்பு கெட்டியாகி வளையங்களில் ஒட்டும் வரை கிளறுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "சுவை பார்த்து இறக்குங்கள்; கசப்பு இருக்க வேண்டும், ஆனால் பச்சையாக அல்ல, மென்மையாக இருக்க வேண்டும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "wide pan",
+  "colander",
+  "sharp knife"
+ ],
+ "tips": {
+  "en": "Salting and squeezing takes the harsh edge off without throwing away what the gourd is good for; skipping that step is why some people say they cannot eat karawila. Choose small, dark, firm gourds, as the big pale ones are the most bitter of all.",
+  "si": "ලුණු ගා මිරිකා ගැනීමෙන් කරවිලෙහි ගුණය නැති නොකර දරුණු තිත්ත ගතිය අඩු වේ; ඒ පියවර මඟ හැරීම නිසා තමයි සමහරු කරවිල කන්න බැහැ කියන්නේ. කුඩා, තද පාට, තදින් ඇති ගෙඩි තෝරන්න; ලොකු ලා පාට ගෙඩි තමයි වඩාත්ම තිත්ත.",
+  "ta": "உப்பு தடவி பிழிவது கசப்பின் கடுமையை மட்டும் குறைக்கும், பாகற்காயின் நன்மையை அல்ல; அந்தப் படியைத் தவிர்ப்பதால்தான் சிலர் பாகற்காய் சாப்பிட முடியாது என்கிறார்கள். சிறிய, அடர் நிற, கெட்டியான காய்களைத் தேர்ந்தெடுங்கள்; பெரிய வெளிர் நிறக் காய்தான் மிகவும் கசக்கும்."
+ },
+ "health_note": {
+  "en": "Bitter gourd is the vegetable Sri Lankan households cook when someone in the family is watching blood sugar, and it brings fibre and vitamin C for very few calories. It is food, not medicine: anyone on diabetes tablets should keep taking them and speak to their doctor rather than rely on karawila.",
+  "si": "ගෙදර කෙනෙකුට රුධිර සීනි බලා ගන්නට ඕන වූ විට ලාංකික ගෙවල්වල පිසින එළවළුව කරවිලයි; කැලරි ඉතා අඩුවෙන් තන්තු හා විටමින් සී ලබා දෙයි. එය ආහාරයක් මිස බෙහෙතක් නොවේ: දියවැඩියා පෙති ගන්නා අය ඒවා දිගටම ගනිමින්, කරවිල මත රඳා නොසිට වෛද්‍යවරයාගෙන් විමසන්න.",
+  "ta": "வீட்டில் யாராவது இரத்தச் சர்க்கரையைக் கவனிக்க வேண்டியிருக்கும்போது இலங்கை வீடுகளில் சமைக்கப்படும் காய் பாகற்காய்; மிகக் குறைந்த கலோரியில் நார்ச்சத்தும் வைட்டமின் சி-யும் தரும். இது உணவு, மருந்து அல்ல: நீரிழிவு மாத்திரை எடுப்பவர்கள் அதைத் தொடர்ந்து எடுத்துக்கொண்டு, பாகற்காயை நம்பாமல் மருத்துவரிடம் கேளுங்கள்."
+ },
+ "tags": [
+  "low_calorie",
+  "low_carb",
+  "high_fibre",
+  "diabetic_friendly",
+  "weight_loss_friendly",
+  "traditional_remedy"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,379 @@
+{
+ "id": "dish_fish_cutlet",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 110,
+  "description": {
+   "en": "Three crisp cutlets on a saucer with tea",
+   "si": "තේ සමඟ පිඟාන් කැබැල්ලක තිබෙන කරකර හඬ දෙන කට්ලට් තුනක්",
+   "ta": "தேநீருடன் ஒரு சாசரில் மூன்று மொறுமொறுப்பான கட்லெட்"
+  }
+ },
+ "yield_g": 440,
+ "ingredients": [
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අර්තාපල්",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "4 medium potatoes",
+   "preparation": {
+    "en": "boiled in the skin, peeled and mashed smooth",
+    "si": "පොත්ත සමඟ තෙම්බා, ලෙලි ගසා හොඳින් පොඩි කරගත්",
+    "ta": "தோலுடன் வேகவைத்து, உரித்து, கட்டியில்லாமல் மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tin_fish",
+   "label": {
+    "en": "tinned fish",
+    "si": "ටින් මාළු",
+    "ta": "டின் மீன்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 small tin, drained",
+   "preparation": {
+    "en": "drained and flaked, oil pressed out",
+    "si": "තෙල් මිරිකා ඉවත් කර පොඩි කරගත්",
+    "ta": "எண்ணெயைப் பிழிந்து வடித்து, நார்நாராகப் பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "chopped fine, seeds in for heat",
+    "si": "සිහින්ව කැපූ, ඇට සමඟම",
+    "ta": "பொடியாக நறுக்கியது, விதையுடன்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig, torn",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "freshly crushed",
+    "si": "අලුතින් කුඩු කරගත්",
+    "ta": "புதிதாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": {
+    "en": "beaten with a spoon of water, for dipping",
+    "si": "වතුර හැන්දක් සමඟ ගසාගත්, තවරා ගැනීමට",
+    "ta": "ஒரு ஸ்பூன் தண்ணீருடன் அடித்தது, தோய்க்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_breadcrumbs",
+   "label": {
+    "en": "breadcrumbs",
+    "si": "පාන් කුඩු",
+    "ta": "ரொட்டித் தூள்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1½ cups",
+   "preparation": {
+    "en": "dry",
+    "si": "වියළි",
+    "ta": "உலர்ந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1¼ cups, most stays in the pan",
+   "preparation": {
+    "en": "deep enough to float the cutlets; only a part is absorbed",
+    "si": "කට්ලට් පාවෙන තරම් ගැඹුරට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "கட்லெட் மிதக்கும் அளவு ஆழமாக; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Boil the potatoes in their skins until a stick goes through, peel them warm and mash without lumps.",
+    "minutes": 20
+   },
+   {
+    "text": "Drain the tinned fish well, press out the oil against the side of the tin and flake the fish.",
+    "minutes": null
+   },
+   {
+    "text": "Temper the chopped onion, green chilli and torn curry leaf in a spoon of the oil until soft.",
+    "minutes": 5
+   },
+   {
+    "text": "Mix the tempering, fish and potato with pepper, salt and lime juice and taste; it should be sharper than seems right, because frying dulls it.",
+    "minutes": null
+   },
+   {
+    "text": "Roll the mixture into twelve balls the size of a small lime, pressing each one firm.",
+    "minutes": 10
+   },
+   {
+    "text": "Dip each ball in the beaten egg, then roll it in breadcrumbs, pressing so no patch is left bare.",
+    "minutes": null
+   },
+   {
+    "text": "Rest the crumbed balls on a tray so the coating sets.",
+    "minutes": 15
+   },
+   {
+    "text": "Heat the oil in a deep pan until a crumb browns in a few seconds.",
+    "minutes": 5
+   },
+   {
+    "text": "Fry five or six at a time, turning them with a slotted spoon, until dark gold and firm.",
+    "minutes": 10
+   },
+   {
+    "text": "Lift them onto a wire rack so the undersides stay crisp, and serve warm.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අර්තාපල් පොත්ත සමඟ කූරක් ඇදෙන තෙක් තෙම්බා, උණුසුම්ව ම ලෙලි ගසා ගුලි නොමැතිව පොඩි කර ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ටින් මාළුවේ තෙල් හොඳින් බේරා, ටිනයේ පැත්තට තද කර මිරිකා, මාළු පොඩි කර ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තෙල් හැන්දක දමා කැපූ ලූනු, අමු මිරිස් සහ කඩාගත් කරපිංචා මෘදු වන තෙක් තෙම්පරාදු කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "තෙම්පරාදුව, මාළු සහ අර්තාපල් ගම්මිරිස්, ලුණු සහ දෙහි යුෂ සමඟ මිශ්‍ර කර රස බලන්න; බැදීමෙන් රස අඩු වන බැවින් අවශ්‍ය තරමට වඩා තියුණු විය යුතුය.",
+    "minutes": null
+   },
+   {
+    "text": "මිශ්‍රණය කුඩා දෙහි ගෙඩියක් තරමේ ගුලි දොළහකට තදින් රවුම් කර ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එක් එක් ගුලිය ගසාගත් බිත්තරයේ තවරා, පාන් කුඩුවල පෙරළා, කිසි තැනක් හිස්ව නොයන ලෙස තද කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පාන් කුඩු ගැල්වූ ගුලි තැටියක තබා, ආලේපනය තද වන තෙක් තිබෙන්න දෙන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ගැඹුරු පෑනක තෙල් රත් කර, පාන් කුඩු ස්වල්පයක් තත්පර කීපයකින් දුඹුරු වන තෙක් බලා සිටින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වරකට පහක් හයක් දමා, සිදුරු හැන්දෙන් පෙරළමින් තද රන්වන් වන තෙක් බැදගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "යටි පැත්ත කරකර ගතියෙන් තිබෙන්න කම්බි රාක්කයකට ගෙන, උණුසුම්ව දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "உருளைக்கிழங்கைத் தோலுடன் குச்சி இறங்கும் வரை வேகவைத்து, சூடாக இருக்கும்போதே உரித்து, கட்டியில்லாமல் மசிக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "டின் மீனின் எண்ணெயை நன்கு வடித்து, டின் பக்கத்தில் அழுத்திப் பிழிந்து, மீனை நார்நாராகப் பிரிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு ஸ்பூன் எண்ணெயில் நறுக்கிய வெங்காயம், பச்சை மிளகாய், கிழித்த கறிவேப்பிலை போட்டு மென்மையாகும் வரை தாளிக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தாளிதம், மீன், உருளைக்கிழங்கை மிளகு, உப்பு, எலுமிச்சைச் சாறுடன் கலந்து சுவைக்கவும்; பொரிக்கும்போது சுவை குறையும் என்பதால் தேவைக்கு அதிகமாகக் காரமாக இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "கலவையைச் சிறிய எலுமிச்சை அளவில் பன்னிரண்டு உருண்டைகளாக இறுக்கமாக உருட்டவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒவ்வொரு உருண்டையையும் அடித்த முட்டையில் தோய்த்து, ரொட்டித் தூளில் புரட்டி, எந்த இடமும் வெறுமையாக இல்லாமல் அழுத்தவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தூள் பூசிய உருண்டைகளைத் தட்டில் வைத்து, பூச்சு இறுகும் வரை விடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "ஆழமான வாணலியில் எண்ணெயைக் காயவைத்து, ஒரு சிறிது தூள் சில நொடிகளில் பொன்னிறமாகும் நிலைக்கு வரவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு முறைக்கு ஐந்து ஆறு உருண்டைகளாகப் போட்டு, துளையுள்ள கரண்டியால் திருப்பி, அடர் பொன்னிறமாகும் வரை பொரிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அடிப்பக்கம் மொறுமொறுப்பாக இருக்க கம்பி வலையில் எடுத்து வைத்து, சூடாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 35,
+  "cook_minutes": 15,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "deep pan",
+  "slotted spoon",
+  "wire rack"
+ ],
+ "tips": {
+  "en": "Mash the potato while it is hot and let the mixture cool before rolling, or the balls crack in the oil. Crumbed cutlets keep a day in the fridge and can be fried straight from cold.",
+  "si": "අර්තාපල් උණුසුම්ව ම පොඩි කර, මිශ්‍රණය සිසිල් වූ පසු ගුලි කරන්න; නැතිනම් තෙලේ දමන විට ගුලි පැළෙයි. පාන් කුඩු ගැල්වූ කට්ලට් ශීතකරණයේ දිනක් තබා, සිසිල්ව ම බැදිය හැක.",
+  "ta": "உருளைக்கிழங்கைச் சூடாக இருக்கும்போதே மசித்து, கலவை ஆறியபின் உருட்டவும்; இல்லையேல் எண்ணெயில் உருண்டைகள் வெடிக்கும். தூள் பூசிய கட்லெட்டை குளிர்சாதனப் பெட்டியில் ஒரு நாள் வைத்து, குளிர்ந்த நிலையிலேயே பொரிக்கலாம்."
+ },
+ "health_note": {
+  "en": "Potato and tuna together give protein and potassium, but the crumb coating and the deep oil make this a heavy bite; two or three cutlets are a snack, not a meal. Drain them on a rack and resist making them a daily habit.",
+  "si": "අර්තාපල් සහ ටින් මාළු එකට ප්‍රෝටීන් සහ පොටෑසියම් දෙයි; එහෙත් පාන් කුඩු ආලේපනය සහ ගැඹුරු තෙල් නිසා මෙය බර කෑමකි. කට්ලට් දෙක තුනක් කෙටි කෑමක් පමණි, බත් වේලක් නොවේ. රාක්කයක තෙල් බේරා, දිනපතා පුරුද්දක් නොකර ගන්න.",
+  "ta": "உருளைக்கிழங்கும் டின் மீனும் சேர்ந்து புரதமும் பொட்டாசியமும் தரும்; ஆனால் ரொட்டித்தூள் பூச்சும் ஆழ எண்ணெய்யும் இதை கனமான உணவாக்கும். இரண்டு மூன்று கட்லெட் ஒரு சிற்றுண்டி, சாப்பாடு அல்ல. வலையில் எண்ணெய் வடித்து, தினசரிப் பழக்கமாக்க வேண்டாம்."
+ },
+ "tags": [
+  "deep_fried",
+  "street_food",
+  "festive",
+  "kid_friendly",
+  "comfort",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

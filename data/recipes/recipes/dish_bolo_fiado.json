@@ -1,0 +1,302 @@
+{
+ "id": "dish_bolo_fiado",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 85,
+  "description": {
+   "en": "A striped wedge of layered cake with tea",
+   "si": "තේ සමඟ ගන්නා, තීරු තීරු ලෙස ඇති ස්ථර කේක් කැබැල්ලක්",
+   "ta": "தேநீருடன் ஒரு கோடுகள் கொண்ட அடுக்குக் கேக் துண்டு"
+  }
+ },
+ "yield_g": 340,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 eggs",
+   "preparation": {
+    "en": "at room temperature",
+    "si": "කාමර උෂ්ණත්වයේ",
+    "ta": "அறை வெப்பநிலையில்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "sifted twice",
+    "si": "දෙවරක් පෙරාගත්",
+    "ta": "இருமுறை சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 90,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": {
+    "en": "softened, plus a little for the tin",
+    "si": "මෘදු කරගත්; තැටියට තවත් ටිකක්",
+    "ta": "மிருதுவாக்கியது; தட்டுக்கும் சிறிது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 80,
+   "unit": "ml",
+   "household": "one third of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 small stick, powdered",
+   "preparation": {
+    "en": "powdered",
+    "si": "කුඩු කරගත්",
+    "ta": "பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "2 pods, powdered",
+   "preparation": {
+    "en": "seeds powdered",
+    "si": "ඇට කුඩු කරගත්",
+    "ta": "விதைகளைப் பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_nutmeg",
+   "label": {
+    "en": "nutmeg",
+    "si": "සාදික්කා",
+    "ta": "சாதிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a light grating",
+   "preparation": {
+    "en": "grated",
+    "si": "ගාගත්",
+    "ta": "துருவியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Beat the butter and sugar until pale and light, then beat in the eggs one at a time.",
+    "minutes": 10
+   },
+   {
+    "text": "Fold in the sifted flour with the thick coconut milk, cinnamon, cardamom and nutmeg to a batter that pours slowly from the spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Butter a small round tin, line the base with paper, and heat the oven with only the top element on.",
+    "minutes": 10
+   },
+   {
+    "text": "Spread two spoons of batter in a thin even layer over the base of the tin.",
+    "minutes": null
+   },
+   {
+    "text": "Grill close to the heat until the layer is set and browned in patches.",
+    "minutes": 5
+   },
+   {
+    "text": "Spoon on the next thin layer over the browned one and grill again, and keep going layer by layer until the batter is finished.",
+    "minutes": 60
+   },
+   {
+    "text": "If the top colours too fast, move the tin lower or lay paper over it, and check with a stick that the middle is firm.",
+    "minutes": null
+   },
+   {
+    "text": "Cool the cake in the tin, turn it out, and cut down through the stripes with a thin knife so the layers show.",
+    "minutes": 30
+   }
+  ],
+  "si": [
+   {
+    "text": "බටර් සහ සීනි සුදුමැලි වී සැහැල්ලු වන තුරු ගසා, බිත්තර එකින් එක දමා තවත් ගසන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෙරාගත් තිරිඟු පිටි, මිටි පොල් කිරි, කුරුඳු, එනසාල් සහ සාදික්කා දමා, හැන්දෙන් සෙමින් වැටෙන පිටි මිශ්‍රණයක් සාදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා රවුම් තැටියකට බටර් ගල්වා යටින් කඩදාසි එලා, උදුන උඩ පැත්තේ ගිනි පමණක් තබා රත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "තැටියේ පතුලේ පිටි මිශ්‍රණයෙන් හැඳි දෙකක් තුනී ස්ථරයක් ලෙස තවරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගිනි ළඟින්ම තබා, ස්ථරය තද වී තැනින් තැන දුඹුරු වන තුරු බේක් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "දුඹුරු වූ ස්ථරය මතට ඊළඟ තුනී ස්ථරය දමා නැවත බේක් කර, පිටි මිශ්‍රණය ඉවර වන තුරු ස්ථරෙන් ස්ථරය මෙසේ කරගෙන යන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "උඩ පිට ඉක්මනින් පාට වේ නම් තැටිය පහළට ගෙන හෝ කඩදාසියක් මුදුනේ තබා, ඉරටුවකින් මැද තද දැයි බලන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තැටියේම සිසිල් කර පෙරළා ගෙන, ස්ථර පෙනෙන සේ තුනී පිහියකින් සිරස්ව කපන්න.",
+    "minutes": 30
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெண்ணெயையும் சீனியையும் வெளிறி லேசாகும் வரை அடித்து, முட்டைகளை ஒன்றன் பின் ஒன்றாகச் சேர்த்து அடிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சலித்த மாவு, கெட்டியான தேங்காய்ப் பால், இலவங்கப்பட்டை, ஏலக்காய், சாதிக்காய் சேர்த்து, கரண்டியில் மெதுவாக வடியும் மாவுக் கலவையாக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய வட்டத் தட்டில் வெண்ணெய் தடவி, அடியில் காகிதம் விரித்து, அவனின் மேல் தீயை மட்டும் போட்டுச் சூடாக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "தட்டின் அடியில் இரண்டு கரண்டி கலவையை மெல்லிய சமமான அடுக்காகப் பரப்பவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தீக்கு அருகில் வைத்து, அடுக்கு இறுகி இடையிடையே பொன்னிறமாகும் வரை வேகவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "பொன்னிறமான அடுக்கின் மேல் அடுத்த மெல்லிய அடுக்கை ஊற்றி மீண்டும் வேகவைத்து, கலவை தீரும் வரை அடுக்கடுக்காகத் தொடரவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "மேற்பரப்பு விரைவில் கருகினால் தட்டைக் கீழே இறக்கவும் அல்லது காகிதம் மூடவும்; குச்சியால் நடு இறுகியதா எனப் பார்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தட்டிலேயே குளிரவிட்டு, கவிழ்த்து எடுத்து, அடுக்குகள் தெரியும்படி மெல்லிய கத்தியால் நேராக வெட்டவும்.",
+    "minutes": 30
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 90,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "oven with top heat or grill",
+  "small round tin",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "Patience is the whole recipe: thin layers browned one at a time give the stripes, and a thick layer rushed under the heat will stay raw inside and blur the pattern.",
+  "si": "මේ වට්ටෝරුවේ රහස ඉවසීමයි; තුනී ස්ථර එකෙකින් එකක් දුඹුරු කිරීමෙන් තීරු ලැබේ, ඉක්මන් කර ගන දමන ස්ථරය ඇතුළෙන් අමු වී තීරු නොපෙනී යයි.",
+  "ta": "இந்தப் பலகாரத்தின் ரகசியம் பொறுமை; மெல்லிய அடுக்குகளை ஒன்றன் பின் ஒன்றாகப் பொன்னிறமாக்குவதே கோடுகளைத் தரும், அவசரமாக ஊற்றும் தடிமனான அடுக்கு உள்ளே பச்சையாக இருந்து கோடுகளை மறைக்கும்."
+ },
+ "health_note": {
+  "en": "This is a butter, egg and sugar cake with coconut milk, so it is rich and heavy for its size. Serve it in thin wedges as the occasional celebration cake it is meant to be.",
+  "si": "බටර්, බිත්තර, සීනි සහ පොල් කිරි වලින් සාදන මේ කේක් කුඩා කැබැල්ලක් වුවද බර වේ. විශේෂ අවස්ථාවකට සීමා කර, තුනී කැබලිවලට කපා දෙන්න.",
+  "ta": "வெண்ணெய், முட்டை, சீனி, தேங்காய்ப் பால் கொண்ட இந்தக் கேக் சிறிய துண்டிலும் கனமானது. விசேட நாட்களுக்கு மட்டும் வைத்து, மெல்லிய துண்டுகளாகப் பரிமாறவும்."
+ },
+ "tags": [
+  "festive",
+  "high_sugar",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

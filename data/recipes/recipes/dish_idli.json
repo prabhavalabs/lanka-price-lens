@@ -1,0 +1,243 @@
+{
+ "id": "dish_idli",
+ "base_servings": 4,
+ "serving": {
+  "role": "breakfast",
+  "portion_g": 220,
+  "description": {
+   "en": "Four soft idli with chutney and a lentil gravy",
+   "si": "චට්නි සහ පරිප්පු හොද්ද සමඟ මෘදු ඉඩ්ලි හතරක්",
+   "ta": "சட்னியும் பருப்புக் குழம்பும் சேர்த்து நான்கு மென்மையான இட்லி"
+  }
+ },
+ "yield_g": 880,
+ "ingredients": [
+  {
+   "ref": "product_rice_raw_white",
+   "label": {
+    "en": "raw white rice",
+    "si": "සුදු අමු සහල්",
+    "ta": "பச்சை வெள்ளை அரிசி"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "washed and drained",
+    "si": "සෝදා වතුර බේරාගත්",
+    "ta": "கழுவி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_urad_dhal",
+   "label": {
+    "en": "urad dhal",
+    "si": "උඳු",
+    "ta": "உளுந்து"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp, for the plates",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the rice and put it to soak in plenty of water; soak the urad dhal with the fenugreek in a separate bowl.",
+    "minutes": 300
+   },
+   {
+    "text": "Grind the urad dhal first with a little of its soaking water into a light, fluffy paste.",
+    "minutes": 8
+   },
+   {
+    "text": "Grind the rice separately to a slightly grainy paste, a little coarser than the dhal.",
+    "minutes": 8
+   },
+   {
+    "text": "Mix the two by hand in a big pot, lifting the batter as you go so air stays in it, and leave the salt out for now.",
+    "minutes": 3
+   },
+   {
+    "text": "Cover it and leave it in a warm corner until the batter has risen and smells pleasantly sour.",
+    "minutes": 480
+   },
+   {
+    "text": "Stir in the salt gently, without knocking all the air out of the batter.",
+    "minutes": null
+   },
+   {
+    "text": "Oil the idli plates, spoon the batter into the hollows and do not fill them right to the brim.",
+    "minutes": null
+   },
+   {
+    "text": "Stack the plates in the steamer over boiling water, cover and steam until a wet finger comes away clean.",
+    "minutes": 12
+   },
+   {
+    "text": "Rest them for two minutes, lift the idli out with a wet spoon and serve them hot with coconut chutney and sambar.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් සෝදා වතුර බහුලව දමා පොඟවන්න; උඳු සහ උළුහාල් වෙනම බඳුනක පොඟවන්න.",
+    "minutes": 300
+   },
+   {
+    "text": "පළමුව උඳු, ඒ පොඟවූ වතුරෙන් ස්වල්පයක් සමඟ, සැහැල්ලු පිම්බුණු පේස්ට් එකක් ලෙස අඹරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "සහල් වෙනම, උඳු වලට වඩා ටිකක් ගොරෝසු ලෙස, මඳක් රළු පේස්ට් එකක් ලෙස අඹරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ලොකු භාජනයක දෙකම අතින් මිශ්‍ර කරන්න, වාතය රැඳෙන ලෙස ගුලිය ඔසවමින්; ලුණු දැන් නොදමන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වසා උණුසුම් තැනක තබන්න, ගුලිය පිම්බී සුවඳ ඇඹුල් වන තුරු.",
+    "minutes": 480
+   },
+   {
+    "text": "ගුලියේ ඇති වාතය සියල්ල පිටනොවන ලෙස, ලුණු සැහැල්ලුවෙන් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉඩ්ලි තැටි තෙල් තවරා, වළවලට ගුලිය හැන්දෙන් දමන්න, දාරය දක්වා නොපුරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නටන වතුර මත වාෂ්ප භාජනයේ තැටි එකක් මත එකක් තබා වසා, තෙත් ඇඟිල්ලක් අතගා පිරිසිදුව එන තුරු තැම්බෙන්නට හරින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "විනාඩි දෙකක් තබා, තෙත් හැන්දකින් ඉඩ්ලි ගලවා, පොල් චට්නි සහ සම්බාර් සමඟ උණුසුම්ව බෙදන්න.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசியைக் கழுவி நிறைய தண்ணீரில் ஊறவைக்கவும்; உளுந்தையும் வெந்தயத்தையும் தனி கிண்ணத்தில் ஊறவைக்கவும்.",
+    "minutes": 300
+   },
+   {
+    "text": "முதலில் உளுந்தை, அது ஊறிய தண்ணீரில் சிறிதளவு சேர்த்து, இலகுவான பொங்கிய விழுதாக அரைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "அரிசியைத் தனியாக, உளுந்தைவிட சிறிது கரகரப்பாக, லேசான சொரசொரப்பான விழுதாக அரைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "பெரிய பாத்திரத்தில் இரண்டையும் கையால் கலக்கவும், காற்று தங்கும்படி மாவை உயர்த்திக் கலக்கவும்; உப்பை இப்போது சேர்க்க வேண்டாம்.",
+    "minutes": 3
+   },
+   {
+    "text": "மூடி வெதுவெதுப்பான இடத்தில் வைக்கவும், மாவு பொங்கி இனிய புளிப்பு வாசனை வரும்வரை.",
+    "minutes": 480
+   },
+   {
+    "text": "மாவில் உள்ள காற்று முழுவதும் வெளியேறாமல், உப்பை மெதுவாகக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இட்லித் தட்டுகளில் எண்ணெய் தடவி, குழிவுகளில் மாவை இடவும், விளிம்பு வரை நிரப்ப வேண்டாம்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்கும் நீரின் மேல் ஆவி பாத்திரத்தில் தட்டுகளை அடுக்கி மூடி, நனைந்த விரலைத் தொட்டால் ஒட்டாமல் வரும்வரை வேகவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "இரண்டு நிமிடம் வைத்து, நனைந்த கரண்டியால் இட்லியை எடுத்து, தேங்காய்ச் சட்னி, சாம்பாருடன் சூடாகப் பரிமாறவும்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 780
+ },
+ "equipment": [
+  "wet grinder or heavy blender",
+  "idli plates and steamer"
+ ],
+ "tips": {
+  "en": "Three parts rice to one part urad dhal, ground separately and folded by hand, gives the softest idli; adding the salt only after fermenting keeps the batter rising well.",
+  "si": "සහල් කොටස් තුනකට උඳු කොටසක්, වෙන වෙනම අඹරා අතින් මිශ්‍ර කිරීම තමයි මෘදුම ඉඩ්ලි දෙන්නේ; පැසවීමෙන් පසුව පමණක් ලුණු දැමීමෙන් ගුලිය හොඳින් පිම්බෙනවා.",
+  "ta": "மூன்று பங்கு அரிசிக்கு ஒரு பங்கு உளுந்து, தனித்தனியாக அரைத்து கையால் கலப்பதுதான் மிக மென்மையான இட்லி தரும்; புளித்த பிறகே உப்பு சேர்ப்பது மாவு நன்கு பொங்க உதவும்."
+ },
+ "health_note": {
+  "en": "Steamed, almost without oil, and the fermented rice and urad dhal together make the protein easier to absorb, so idli suits children, elders and anyone with a weak stomach.",
+  "si": "තෙල් නොමැති තරම් තැම්බූ අහරක් වන අතර පැසුණු සහල් හා උඳු එකට ප්‍රෝටීන් අවශෝෂණය පහසු කරන බැවින් ඉඩ්ලි දරුවන්ට, වැඩිහිටියන්ට සහ ආමාශය දුර්වල අයට සුදුසුයි.",
+  "ta": "எண்ணெய் கிட்டத்தட்ட இல்லாமல் ஆவியில் வேகும் உணவு, புளித்த அரிசியும் உளுந்தும் சேர்ந்து புரதத்தை உறிஞ்ச எளிதாக்குகின்றன, எனவே இட்லி குழந்தைகளுக்கும் முதியவர்களுக்கும் வயிறு பலவீனமானவர்களுக்கும் ஏற்றது."
+ },
+ "tags": [
+  "light",
+  "low_fat",
+  "elderly_friendly",
+  "kid_friendly",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

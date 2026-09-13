@@ -1,0 +1,195 @@
+{
+ "id": "dish_kurakkan_thalapa",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 200,
+  "description": {
+   "en": "A lump of stiff dark dough pinched off and dipped in a strong curry",
+   "si": "සැර හොද්දකට ගිල්වා ගෙන කන තද කුරක්කන් තලප ගුලියක්",
+   "ta": "காரமான கறியில் தொட்டு சாப்பிடும் இறுகிய கருமை நிற களி உருண்டை"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "pantry_kurakkan_flour",
+   "label": {
+    "en": "finger millet flour",
+    "si": "කුරක්කන් පිටි",
+    "ta": "குரக்கன் மா"
+   },
+   "quantity": 280,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "හලා ගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "3/4 cup grated",
+   "preparation": {
+    "en": "stirred in at the end, village style",
+    "si": "ගමේ ක්‍රමයට අවසානයේ දමන",
+    "ta": "கிராமத்து முறையில் இறுதியில் சேர்ப்பது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Bring 700 ml of water to a hard boil in a heavy pot with the salt.",
+    "minutes": 6
+   },
+   {
+    "text": "Take out a cupful of the boiling water and set it aside in case the dough turns too stiff.",
+    "minutes": null
+   },
+   {
+    "text": "Tip the millet flour into the boiling water all at once and let it sit for half a minute without stirring so the flour wets through.",
+    "minutes": 1
+   },
+   {
+    "text": "Lower the flame and now stir hard with a strong wooden spoon, pressing the dough against the side of the pot, until there are no dry pockets left.",
+    "minutes": 8
+   },
+   {
+    "text": "Keep working it on the low flame until the dough pulls away from the pot in one dark glossy mass and no raw smell remains.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir in the grated coconut if you are using it, and splash in a little of the reserved water if the dough is too tight to move.",
+    "minutes": 2
+   },
+   {
+    "text": "Turn the dough onto a wet plate, wet your hand and pat it into a smooth mound, then pinch off lumps while hot and dip them in the curry.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බර හැළියක වතුර මිලි ලීටර් 700ක් සහ ලුණු දමා හොඳින් නටවා ගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "තලප ඉතා තද වුවහොත් යොදා ගැනීමට නටන වතුරෙන් කෝප්පයක් ගෙන වෙන් කර තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කුරක්කන් පිටි එකවර නටන වතුරට දමා, කලවම් නොකර තත්පර තිහක් පමණ තබා පිටි තෙත් වන්නට දෙන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ගිනි අඩු කර, ශක්තිමත් ලී හැන්දකින් තදින් හොඳවන්න; තලප හැළියේ පැත්තට තද කර, වියළි ගුලි ඉතිරි නොවන තුරු වැඩ කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "අඩු ගින්නේම, තලප එක් අඳුරු දිලිසෙන ගුලියක් ලෙස හැළියෙන් ගැලවෙන තුරු සහ අමු ගඳ නැති වන තුරු දිගටම හොඳවන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පොල් යොදන්නේ නම් දමා කලවම් කරන්න; තලප හොඳවන්න බැරි තරම් තද නම් වෙන් කර තැබූ වතුර ටිකක් ඉස්සන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තෙත් පිඟානකට තලප දමා, අත තෙත් කර සිනිඳු ගොඩක් ලෙස තට්ටු කර, උණුසුම්ව තිබෙන විටම ගුලි කඩා ගෙන හොද්දට ගිල්වා ගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கனமான பாத்திரத்தில் 700 மில்லி தண்ணீரும் உப்பும் போட்டு நன்றாகக் கொதிக்க வையுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "களி மிகவும் இறுகினால் பயன்படுத்த, கொதிக்கும் தண்ணீரில் ஒரு கோப்பை எடுத்து தனியாக வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "குரக்கன் மாவை ஒரே தடவையில் கொதிக்கும் தண்ணீரில் கொட்டி, கிளறாமல் அரை நிமிடம் விட்டு மா முழுவதும் ஈரமாகட்டும்.",
+    "minutes": 1
+   },
+   {
+    "text": "தீயைக் குறைத்து, உறுதியான மரக்கரண்டியால் பாத்திரத்தின் பக்கத்தில் அழுத்தி, உலர்ந்த கட்டிகள் இல்லாமல் போகும் வரை பலமாகக் கிளறுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சிறு தீயிலேயே தொடர்ந்து கிளறி, களி ஒரே கருமையான பிசுபிசுப்பான உருண்டையாகப் பாத்திரத்தை விட்டு விலகும் வரை, பச்சை வாசனை போகும் வரை வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "தேங்காய் சேர்ப்பதாக இருந்தால் இப்போது கலந்து, கிளற முடியாத அளவு இறுகியிருந்தால் ஒதுக்கிய தண்ணீரை சிறிது தெளியுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நனைத்த தட்டில் களியைக் கொட்டி, கையை நனைத்து மெதுவாகத் தட்டி வடிவமாக்கி, சூடாக இருக்கும்போதே உருண்டைகளாகப் பிடித்து கறியில் தொட்டுச் சாப்பிடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy pot",
+  "strong wooden spoon or thalapa stick",
+  "wet plate"
+ ],
+ "tips": {
+  "en": "The stirring is the whole dish: if you stop early the middle stays raw and gritty. Wet the plate and your hand before shaping, and eat it hot, because thalapa sets hard once it cools.",
+  "si": "හොඳවීමයි මුළු වැඩේ; ඉක්මනින් නැවතුවොත් මැද අමු ගතියක් රැඳෙයි. හැඩ ගැස්වීමට පෙර පිඟාන සහ අත තෙත් කර ගන්න, සිසිල් වූ පසු තලප තද වන බැවින් උණුසුම්ව අනුභව කරන්න.",
+  "ta": "கிளறுவதே இந்த உணவின் முழு வேலை; சீக்கிரம் நிறுத்தினால் நடுவில் பச்சையாகவும் சொரசொரப்பாகவும் இருக்கும். வடிவமைப்பதற்கு முன் தட்டையும் கையையும் நனையுங்கள்; குளிர்ந்தால் களி இறுகிவிடும், எனவே சூடாகவே சாப்பிடுங்கள்."
+ },
+ "health_note": {
+  "en": "Almost no added fat and a lot of millet fibre, which fills the stomach slowly and suits people watching sugar and weight. It is low in protein on its own, so pair it with a dhal, dried fish or a fish curry.",
+  "si": "එකතු කළ මේදය බොහෝ දුරට නැති, කුරක්කන් තන්තු බහුල ආහාරයක් බැවින් බඩ සෙමින් පිරෙයි; සීනි සහ බර බලා සිටින අයට සුදුසුයි. තනිව ප්‍රෝටීන් අඩු බැවින් පරිප්පු, කරවල හෝ මාළු හොද්දක් සමඟ ගන්න.",
+  "ta": "சேர்க்கப்பட்ட கொழுப்பு கிட்டத்தட்ட இல்லை; குரக்கன் நார்ச்சத்து அதிகம் என்பதால் வயிறு மெதுவாக நிறைகிறது, சர்க்கரையையும் எடையையும் கவனிப்பவர்களுக்கு ஏற்றது. தனியாகப் புரதம் குறைவு, எனவே பருப்பு, கருவாடு அல்லது மீன் கறியுடன் சேர்த்துக் கொள்ளுங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "diabetic_friendly",
+  "budget",
+  "one_pot",
+  "filling",
+  "low_fat"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

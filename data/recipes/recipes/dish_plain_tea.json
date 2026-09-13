@@ -1,0 +1,180 @@
+{
+ "id": "dish_plain_tea",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 200,
+  "description": {
+   "en": "A cup of plain tea with a lump of jaggery on the saucer",
+   "si": "පිඟානේ හකුරු කැබැල්ලක් සමඟ කහට කෝප්පයක්",
+   "ta": "தட்டில் ஒரு வெல்லத் துண்டுடன் ஒரு கோப்பை கட்டித் தேநீர்"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "pantry_black_tea",
+   "label": {
+    "en": "Ceylon black tea leaves",
+    "si": "තේ කොළ",
+    "ta": "தேயிலை"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "kithul jaggery",
+    "si": "කිතුල් හකුරු",
+    "ta": "கித்துல் வெல்லம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 small lumps, one each",
+   "preparation": {
+    "en": "cut into bite-sized pieces",
+    "si": "කටට ගන්නා ප්‍රමාණයට කපාගත්",
+    "ta": "வாய்க்கு அடங்கும் அளவில் வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 tsp a cup, for those who want it in the tea",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the tea pot with a splash of boiling water and throw that water out, so the pot is warm when the leaves go in.",
+    "minutes": null
+   },
+   {
+    "text": "Boil 850 ml of water and take it off the moment it comes to a full boil.",
+    "minutes": 4
+   },
+   {
+    "text": "Put the tea leaves in the warmed pot and pour the water over them from a little height.",
+    "minutes": null
+   },
+   {
+    "text": "Cover the pot and let the tea draw until it is the colour of weak treacle.",
+    "minutes": 3
+   },
+   {
+    "text": "Strain it into cups; a plain tea should be clear enough to see the bottom of the cup through it.",
+    "minutes": null
+   },
+   {
+    "text": "Put a lump of jaggery on each saucer to bite between sips, and hand the sugar bowl to anyone who wants it stirred in instead.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තේ පෝච්චිය උතුරන වතුර ටිකකින් සෝදා එම වතුර ඉවත් කරන්න; එවිට තේ කොළ දමන විට පෝච්චිය උණුසුම්.",
+    "minutes": null
+   },
+   {
+    "text": "මිලිලීටර් 850ක් වතුර හොඳින් උතුරන විගස ලිපෙන් බාගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "උණුසුම් පෝච්චියට තේ කොළ දමා, ටිකක් උසින් වතුර වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෝච්චිය වසා, තුනී පැණි පාටක් එනතුරු තේ බැසීමට තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කෝප්පවලට පෙරාගන්න; කහට කෝප්පයක් හරහා කෝප්පයේ පත්ල දැකිය හැකි තරම් පැහැදිලි විය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "එක එක පිඟානේ, උගුරක් බීලා කටට ගන්නට හකුරු කැබැල්ලක් තබන්න; තේ එකට කලතන්න කැමති අයට සීනි බඳුන දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தேநீர்ப் பாத்திரத்தை கொதிக்கும் நீரால் அலசி அந்த நீரைக் கொட்டிவிடுங்கள்; தேயிலை போடும்போது பாத்திரம் சூடாக இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "850 மில்லி தண்ணீரை நன்கு கொதித்ததும் உடனே அடுப்பிலிருந்து இறக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "சூடான பாத்திரத்தில் தேயிலையை இட்டு, சிறிது உயரத்திலிருந்து நீரை ஊற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி வைத்து, நீர்த்த பாகு நிறம் வரும் வரை தேநீர் ஊறவிடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "கோப்பைகளில் வடிகட்டவும்; கட்டித் தேநீர், கோப்பையின் அடி தெரியும் அளவுக்குத் தெளிவாக இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு தட்டிலும் ஒரு வெல்லத் துண்டு வைத்து, இடையிடையே கடித்துக் குடிக்கச் சொல்லுங்கள்; தேநீரிலேயே கலக்க விரும்புவர்களுக்கு சீனிக் கிண்ணத்தைக் கொடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 2,
+  "cook_minutes": 4,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "kettle or small pan",
+  "tea pot",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Use water that has just boiled, not water that has been sitting on the fire boiling away, or the tea tastes flat. Biting the jaggery instead of stirring it in means you use half as much of it for the same sweetness.",
+  "si": "නරක් වන තුරු ලිප මත උතුරන වතුර නොව, දැන් උතුරාගත් වතුර පාවිච්චි කරන්න, නැත්නම් තේ රසය මැරෙයි. හකුරු තේ එකට කලතන්නට වඩා කටට ගැනීමෙන්, එකම පැණි රසට අඩක් හකුරු ප්‍රමාණය සෑහේ.",
+  "ta": "அடுப்பில் நெடுநேரம் கொதித்துக் கொண்டிருந்த நீரை அல்ல, இப்போதே கொதித்த நீரையே பயன்படுத்துங்கள், இல்லையேல் தேநீரின் சுவை போய்விடும். வெல்லத்தைக் கலக்காமல் கடித்துக் குடித்தால், அதே இனிப்புக்கு பாதி வெல்லமே போதும்."
+ },
+ "health_note": {
+  "en": "The cheapest hot drink in the kitchen and the lightest: no milk, no fat, and only the jaggery you choose to bite. Strong tea on an empty stomach can gnaw at some people, so take it with a piece of something.",
+  "si": "කුස්සියේ ලාභම සහ සැහැල්ලුම උණු බීම: කිරි නැත, තෙල් නැත, ඇත්තේ ඔබ කටට ගන්නා හකුරු ප්‍රමාණය පමණයි. හිස් බඩට තද තේ බීම කිහිප දෙනෙකුට බඩට රිදවන නිසා, කන්නට මොනවා හෝ ටිකක් සමඟ ගන්න.",
+  "ta": "சமையலறையில் மிக மலிவான, மிக இலகுவான சூடான பானம்: பால் இல்லை, கொழுப்பு இல்லை, நீங்கள் கடிக்கும் வெல்லம் மட்டுமே. வெறும் வயிற்றில் கடுமையான தேநீர் சிலருக்கு எரிச்சல் தரும், எனவே ஏதாவது ஒரு பலகாரத்துடன் குடியுங்கள்."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "low_calorie",
+  "low_fat",
+  "light",
+  "hydrating",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

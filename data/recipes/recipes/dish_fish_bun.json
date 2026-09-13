@@ -1,0 +1,434 @@
+{
+ "id": "dish_fish_bun",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 180,
+  "description": {
+   "en": "Two soft buns with a spoonful of spiced fish in each",
+   "si": "එකකට කුළුබඩු මාළු හැන්දක් බැගින් ඇති මෘදු බනිස් දෙකක්",
+   "ta": "ஒன்றுக்கு ஒரு ஸ்பூன் மசாலா மீன் உள்ள மிருதுவான இரண்டு பன்கள்"
+  }
+ },
+ "yield_g": 720,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "instant yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "dough"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "a spoon of it to wake the yeast",
+    "si": "එයින් හැන්දක් යීස්ට් අවදි කිරීමට",
+    "ta": "அதில் ஒரு ஸ்பூன் ஈஸ்டை எழுப்ப"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1½ tsp in all",
+   "preparation": {
+    "en": "for dough and filling together",
+    "si": "පිටි සහ මාලුව යන දෙකටම",
+    "ta": "மாவுக்கும் உள்ளடக்கத்திற்கும் சேர்த்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_margarine",
+   "label": {
+    "en": "margarine",
+    "si": "මාගරින්",
+    "ta": "மார்கரின்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "soft",
+    "si": "මෘදු",
+    "ta": "மிருதுவானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup, plus a little for brushing",
+   "preparation": {
+    "en": "warmed to blood heat",
+    "si": "ලා උණුසුම් කරගත්",
+    "ta": "வெதுவெதுப்பாகச் சூடாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_tin_fish",
+   "label": {
+    "en": "tinned fish",
+    "si": "ටින් මාළු",
+    "ta": "டின் மீன்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 small tin, drained",
+   "preparation": {
+    "en": "drained well and flaked",
+    "si": "තෙල් බේරා ඉවත් කර පොඩි කරගත්",
+    "ta": "எண்ணெயை வடித்து, நார்நாராகப் பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අර්තාපල්",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 small potatoes",
+   "preparation": {
+    "en": "boiled and mashed",
+    "si": "තෙම්බා පොඩි කරගත්",
+    "ta": "வேகவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "soaked and ground coarsely",
+    "si": "තෙමා රළුවට අඹරාගත්",
+    "ta": "ஊறவைத்து கொரகொரப்பாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for tempering the filling",
+    "si": "මාලුව තෙම්පරාදු කිරීමට",
+    "ta": "உள்ளடக்கத்தைத் தாளிக்க"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "¾ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "juice of half a lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Warm 150 ml water, stir in a spoon of the sugar and the yeast, and leave it until a froth rises.",
+    "minutes": 10
+   },
+   {
+    "text": "Rub the margarine into the flour with the rest of the sugar and a teaspoon of salt, pour in the yeast water and the warm milk, and knead to a soft springy dough.",
+    "minutes": 12
+   },
+   {
+    "text": "Cover the bowl with a damp cloth and keep it in a warm corner until the dough doubles.",
+    "minutes": 60
+   },
+   {
+    "text": "Meanwhile temper the big onion, ground dried chilli and curry leaf in coconut oil until the onion browns at the edges.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the flaked fish and mashed potato with pepper, the remaining salt and the lime juice, and cook until the mixture is dry enough to hold a ball.",
+    "minutes": 8
+   },
+   {
+    "text": "Cool the filling completely, then divide both dough and filling into eight.",
+    "minutes": null
+   },
+   {
+    "text": "Flatten each piece of dough on your palm, put filling in the middle, gather the edges over it, pinch them shut and set the bun seam down on a greased tray.",
+    "minutes": null
+   },
+   {
+    "text": "Cover the tray and prove again until the buns look light and puffy.",
+    "minutes": 30
+   },
+   {
+    "text": "Brush the tops with milk and bake in a hot oven at 200 C until deep brown.",
+    "minutes": 20
+   },
+   {
+    "text": "Cool on a rack for ten minutes before biting in; the filling holds its heat.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "වතුර මිලි ලීටර් 150ක් ලා උණුසුම් කර, සීනි හැන්දක් සහ යීස්ට් දමා කලතා, පෙණ නඟින තෙක් තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිටිවලට ඉතිරි සීනි සහ තේ හැන්දක ලුණු දමා මාගරින් අතුල්ලා, යීස්ට් වතුර සහ උණුසුම් කිරි වත් කර, මෘදු ඉලාස්ටික් ගතියක් එන තෙක් අනන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "බඳුන තෙත් රෙද්දකින් වසා, උණුසුම් තැනක තබා පිටි ගුලිය දෙගුණ වන තෙක් තිබෙන්න දෙන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "ඒ අතර පොල් තෙලේ බී ලූනු, අඹරාගත් වියළි මිරිස් සහ කරපිංචා දමා, ලූනු දාර දුඹුරු වන තෙක් තෙම්පරාදු කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පොඩි කරගත් මාළු සහ අර්තාපල්, ගම්මිරිස්, ඉතිරි ලුණු සහ දෙහි යුෂ දමා, ගුලියක් ලෙස රඳවා ගත හැකි තරම් වියළෙන තෙක් උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මාලුව හොඳින් සිසිල් වූ පසු, පිටි ගුලියත් මාලුවත් අටට බෙදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිටි ගුලියේ එක් කොටසක් අත්ලේ තට්ටු කර, මැදට මාලුව තබා, දාර එකට ගෙන තදින් වසා, බනිස් එක මැහුම පහතට තෙල් ගෑ තැටියක තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තැටිය වසා, බනිස් පිම්බී සැහැල්ලු පෙනුමක් එන තෙක් නැවත තිබෙන්න දෙන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "මුදුනේ කිරි ගල්වා, සෙල්සියස් 200ක උණුසුම් උඳුනක තද දුඹුරු වන තෙක් පිළිස්සෙන්න දෙන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "රාක්කයක තබා විනාඩි දහයක් සිසිල් වන්න දෙන්න; ඇතුළත මාලුව බොහෝ වෙලා උණුසුම්ව තිබේ.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "150 மில்லி தண்ணீரை வெதுவெதுப்பாக்கி, ஒரு ஸ்பூன் சீனியும் ஈஸ்டும் சேர்த்துக் கலக்கி, நுரை வரும் வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மாவில் மீதி சீனியும் ஒரு தேக்கரண்டி உப்பும் சேர்த்து மார்கரினைத் தேய்த்து, ஈஸ்ட் தண்ணீரையும் சூடான பாலையும் ஊற்றி, மிருதுவான சாகுபடியான மாவாகப் பிசையவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "பாத்திரத்தை ஈரத் துணியால் மூடி, வெதுவெதுப்பான இடத்தில் வைத்து மாவு இரட்டிப்பாகும் வரை விடவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "இதற்கிடையில் தேங்காய் எண்ணெயில் பெரிய வெங்காயம், அரைத்த காய்ந்த மிளகாய், கறிவேப்பிலை போட்டு, வெங்காயத்தின் விளிம்பு பொன்னிறமாகும் வரை தாளிக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "பிரித்த மீனையும் மசித்த உருளைக்கிழங்கையும், மிளகு, மீதி உப்பு, எலுமிச்சைச் சாறு சேர்த்து, உருட்ட வரும் அளவு வறண்டு போகும் வரை வதக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "கலவை முழுமையாக ஆறியபின், மாவையும் கலவையையும் எட்டு பங்காகப் பிரிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு மாவு உருண்டையை உள்ளங்கையில் தட்டி, நடுவில் கலவையை வைத்து, விளிம்புகளை மேலே சேர்த்து இறுக்கி மூடி, மூட்டு கீழ்ப்பக்கமாக எண்ணெய் தடவிய தட்டில் வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தட்டை மூடி, பன்கள் பூரித்து இலகுவாகத் தெரியும் வரை மீண்டும் புளிக்கவிடவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "மேலே பால் தடவி, 200 செல்சியஸ் சூடான அவனில் நல்ல பொன்னிறம் வரும் வரை சுடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "வலையில் வைத்து பத்து நிமிடம் ஆறவிட்டுப் பிறகு சாப்பிடவும்; உள்ளே உள்ள கலவை நெடுநேரம் சூடாக இருக்கும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 20,
+  "passive_minutes": 90
+ },
+ "equipment": [
+  "mixing bowl",
+  "baking tray",
+  "oven"
+ ],
+ "tips": {
+  "en": "Seal the seam properly and put it underneath, or the filling leaks out and burns black on the tray. If you have no oven, the same dough and filling can be shaped into buns and steamed, though the top will stay pale.",
+  "si": "මැහුම හොඳින් වසා එය පහතට හරවන්න; නැතිනම් මාලුව පිටතට ගලා තැටියේ පිළිස්සී කළු වේ. උඳුනක් නැතිනම් මේම පිටි ගුලිය හා මාලුව බනිස් හැඩයට සාදා වාෂ්පයෙන් තැම්බිය හැක; එහෙත් මුදුන ලා පැහැයෙන් රැඳේ.",
+  "ta": "மூட்டை நன்கு மூடி, கீழ்ப்பக்கமாக வைக்கவும்; இல்லையேல் கலவை வெளியே வந்து தட்டில் கருகிவிடும். அவன் இல்லையென்றால் இதே மாவையும் கலவையையும் பன் வடிவில் செய்து ஆவியில் வேகவைக்கலாம்; ஆனால் மேற்பரப்பு வெளிறியே இருக்கும்."
+ },
+ "health_note": {
+  "en": "The tuna gives useful protein and a little omega-3 fat, but the bun is refined flour and both the tinned fish and the dough carry salt. One bun with plain tea is a fair snack; two every day is not, especially for anyone minding blood pressure.",
+  "si": "ටින් මාළුවෙන් ප්‍රයෝජනවත් ප්‍රෝටීන් සහ ඔමේගා-3 මේදය ස්වල්පයක් ලැබේ; නමුත් බනිස් සාදන්නේ පිරිපහදු කළ පිටිවලින් වන අතර ටින් මාළුවේ සහ පිටිවල ලුණු ද ඇත. සරල තේ සමඟ එක් බනිසක් සාධාරණ කෑමකි; දිනපතා දෙකක් නොවේ, විශේෂයෙන් රුධිර පීඩනය බලා ගන්නා අයට.",
+  "ta": "டின் மீன் நல்ல புரதமும் சிறிது ஒமேகா-3 கொழுப்பும் தரும்; ஆனால் பன் சுத்திகரித்த மாவு, மேலும் டின் மீனிலும் மாவிலும் உப்பு உண்டு. சாதாரண தேநீருடன் ஒரு பன் நியாயமான சிற்றுண்டி; தினமும் இரண்டு அல்ல, குறிப்பாக இரத்த அழுத்தத்தைக் கவனிப்பவர்களுக்கு."
+ },
+ "tags": [
+  "filling",
+  "street_food",
+  "comfort",
+  "kid_friendly",
+  "budget",
+  "high_sodium"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

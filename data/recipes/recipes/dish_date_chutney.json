@@ -1,0 +1,327 @@
+{
+ "id": "dish_date_chutney",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 35,
+  "description": {
+   "en": "A dark sticky spoonful served with rice or short eats",
+   "si": "බත් හෝ කෙටි කෑම සමඟ තබන තද පැහැ ඇලෙන සුළු චට්නි හැන්දක්",
+   "ta": "சாதம் அல்லது சிற்றுண்டியுடன் வைக்கும் கரும் பிசுபிசுப்பான சட்னி ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 150,
+ "ingredients": [
+  {
+   "ref": "pantry_dates",
+   "label": {
+    "en": "dates",
+    "si": "රට ඉඳි",
+    "ta": "பேரீச்சம்பழம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "8 dates",
+   "preparation": {
+    "en": "stones taken out, chopped",
+    "si": "ඇට ඉවත් කර කපාගත්",
+    "ta": "கொட்டை நீக்கி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a lime sized ball",
+   "preparation": {
+    "en": "soaked in warm water and the pulp squeezed out",
+    "si": "උණු වතුරේ පොඟවා යුෂ මිරිකාගත්",
+    "ta": "வெதுவெதுப்பான நீரில் ஊறவைத்து சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියලි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3 dried chillies",
+   "preparation": {
+    "en": "broken, soaked with the tamarind",
+    "si": "කැඩූ, සියඹලා සමඟ පොඟවාගත්",
+    "ta": "உடைத்து, புளியுடன் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "scraped and chopped",
+    "si": "සූරා කපාගත්",
+    "ta": "சுரண்டி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "dry roasted and crushed",
+    "si": "බැදගෙන තලාගත්",
+    "ta": "வறுத்து நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Soak the tamarind and the broken dried chillies in a cup of warm water until the tamarind loosens.",
+    "minutes": 10
+   },
+   {
+    "text": "Squeeze the tamarind with your fingers and strain the pulp, keeping the soaked chillies aside.",
+    "minutes": 5
+   },
+   {
+    "text": "Grind the soaked chillies with the ginger, garlic and roasted cumin into a paste.",
+    "minutes": 8
+   },
+   {
+    "text": "Take the stones out of the dates and chop them small.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the dates, the ground paste and the tamarind water into a pan and bring it to a slow bubble.",
+    "minutes": 5
+   },
+   {
+    "text": "Simmer on a low flame, mashing the dates against the side of the pan with the spoon as they soften.",
+    "minutes": 15
+   },
+   {
+    "text": "Stir in the sugar, salt and chilli powder and cook until the chutney is thick and glossy and pulls away from the pan.",
+    "minutes": 8
+   },
+   {
+    "text": "Take it off the fire, stir in the vinegar if you want it to keep, and cool it before bottling.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "සියඹලා සහ කැඩූ වියලි මිරිස් උණුසුම් වතුර කෝප්පයක පොඟවා, සියඹලා ලිහිල් වන තුරු තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සියඹලා ඇඟිලිවලින් මිරිකා යුෂ පෙරා ගන්න; පොඟවාගත් මිරිස් වෙනම තබා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පොඟවාගත් මිරිස්, ඉඟුරු, සුදුලූනු සහ බැදගත් සූදුරු එකට ගාගෙන පේස්ට් එකක් හදා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "රට ඉඳිවල ඇට ඉවත් කර කුඩාවට කපා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "රට ඉඳි, ගාගත් මිශ්‍රණය සහ සියඹලා යුෂ පෑන් එකකට දමා සෙමින් තලා එන තුරු රත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අඩු ගින්නේ, රට ඉඳි මෘදු වන විට හැන්දෙන් පෑන් පැත්තට තලා ගනිමින් පිසගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "සීනි, ලුණු සහ මිරිස් කුඩු එකතු කර, චට්නි ගැටිති වී දිලිසෙමින් පෑන් එකෙන් වෙන් වන තුරු පිසගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගින්නෙන් ඉවතට ගෙන, කල් තබා ගැනීමට අවශ්‍ය නම් විනාකිරි එකතු කර, බෝතල් කිරීමට පෙර සිසිල් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "புளியையும் உடைத்த வத்தல் மிளகாயையும் ஒரு கப் வெதுவெதுப்பான நீரில், புளி இளகும் வரை ஊறவையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "புளியை விரல்களால் கரைத்து சாறை வடிகட்டுங்கள்; ஊறிய மிளகாயை தனியே எடுத்து வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஊறிய மிளகாய், இஞ்சி, பூண்டு, வறுத்த சீரகம் ஆகியவற்றை ஒன்றாக அரைத்து விழுதாக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "பேரீச்சம்பழத்தின் கொட்டைகளை நீக்கி சிறிதாக நறுக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "பேரீச்சம்பழம், அரைத்த விழுது, புளித் தண்ணீர் ஆகியவற்றை ஒரு பாத்திரத்தில் போட்டு மெதுவாகக் கொதிக்க விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "சிறு தீயில், பேரீச்சம்பழம் மென்மையாகும்போது கரண்டியால் பாத்திரத்தின் ஓரத்தில் மசித்துக் கொண்டே வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "சீனி, உப்பு, மிளகாய்த் தூள் சேர்த்து, சட்னி கெட்டியாகி பளபளத்து பாத்திரத்தை விட்டு விலகும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, நீண்ட நாள் வைக்க வேண்டுமானால் வினிகர் சேர்த்து, ஜாடியில் அடைப்பதற்கு முன் குளிரவிடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "grinding stone or blender",
+  "heavy pan",
+  "strainer",
+  "dry glass jar"
+ ],
+ "tips": {
+  "en": "Soft dates need no soaking, but hard ones should sit in the warm tamarind water for ten minutes or they stay lumpy. Keep it a little thinner than you want; it stiffens in the jar overnight.",
+  "si": "මෘදු රට ඉඳි පොඟවන්න අවශ්‍ය නැහැ, නමුත් තද ඒවා උණුසුම් සියඹලා වතුරේ විනාඩි දහයක් තැබිය යුතුයි; නැතිනම් ගුලි ගැසී තියෙනවා. ඔබට අවශ්‍ය ගැටිති තරමට වඩා මදක් තුනීව තබන්න; රැයක් බෝතලයේ තිබුණාම තව ගැටිති වෙනවා.",
+  "ta": "மென்மையான பேரீச்சம்பழத்திற்கு ஊறவைக்க வேண்டியதில்லை, ஆனால் கடினமானதை வெதுவெதுப்பான புளித் தண்ணீரில் பத்து நிமிடம் ஊறவைக்க வேண்டும், இல்லையெனில் கட்டியாகவே இருக்கும். நீங்கள் விரும்பும் கெட்டியை விட சற்று இளகலாக வையுங்கள்; ஜாடியில் ஒரு இரவில் இறுகிவிடும்."
+ },
+ "health_note": {
+  "en": "The sweetness here comes mostly from the dates, which bring fibre, potassium and a little iron along with it, but it is still a sweet chutney and a spoon is the right amount. Cut the added sugar out altogether if the dates are very ripe.",
+  "si": "මෙහි මිහිර වැඩිපුරම රට ඉඳිවලින්; ඒවායින් කෙඳි, පොටෑසියම් සහ යකඩ ටිකකුත් ලැබෙනවා. එහෙත් මෙය තවමත් මිහිරි චට්නියක් නිසා හැන්දක් ප්‍රමාණවත්. රට ඉඳි හොඳට ඉදුණු නම් එකතු කරන සීනි සම්පූර්ණයෙන් අත් හරින්න පුළුවන්.",
+  "ta": "இதன் இனிப்பு பெரும்பாலும் பேரீச்சம்பழத்திலிருந்தே வருகிறது; அதனுடன் நார்ச்சத்து, பொட்டாசியம், சிறிது இரும்புச்சத்தும் கிடைக்கிறது. இருந்தாலும் இது இனிப்புச் சட்னி என்பதால் ஒரு கரண்டியே சரியான அளவு. பேரீச்சம்பழம் நன்கு பழுத்திருந்தால் சேர்க்கும் சீனியை முழுவதும் விட்டுவிடலாம்."
+ },
+ "tags": [
+  "high_sugar",
+  "high_fibre",
+  "festive",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

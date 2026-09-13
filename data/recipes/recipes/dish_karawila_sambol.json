@@ -1,0 +1,310 @@
+{
+ "id": "dish_karawila_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 65,
+  "description": {
+   "en": "A small heap of crisp bitter gourd sambol",
+   "si": "හැපෙනසුලු කරවිල සම්බෝල කුඩා ගොඩක්",
+   "ta": "சொறுக்கான பாகற்காய்ச் சம்பல் ஒரு சிறு குவியல்"
+  }
+ },
+ "yield_g": 260,
+ "ingredients": [
+  {
+   "ref": "product_bitter_gourd",
+   "label": {
+    "en": "bitter gourd",
+    "si": "කරවිල",
+    "ta": "பாகற்காய்"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2 medium gourds",
+   "preparation": {
+    "en": "washed, ends trimmed, sliced as thin as a coin",
+    "si": "සෝදා කෙළවර කපා කාසියක් තරම් සිහින්ව කපාගත්",
+    "ta": "கழுவி நுனி நீக்கி நாணயம் போல் மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": {
+    "en": "half for salting the slices, half for the mixing",
+    "si": "භාගයක් පෙති ලුණු ගෑමට, භාගයක් මිශ්‍ර කිරීමට",
+    "ta": "பாதி துண்டுகளுக்கு, பாதி கலக்கும்போது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1½ tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chilli",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, freshly scraped",
+    "si": "සීරූ පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "a quarter cup, packed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණි",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, ground",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැට",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the bitter gourds, trim the ends and slice them as thin as a coin, seeds and all if the gourd is young.",
+    "minutes": 10
+   },
+   {
+    "text": "Rub the slices with half the salt and leave them in a colander; a dark juice will drip out.",
+    "minutes": 15
+   },
+   {
+    "text": "Squeeze the slices in your hands to get rid of that juice, which carries the harshest of the bitterness.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the slices spread out on a high flame until the edges brown and they smell nutty.",
+    "minutes": 5
+   },
+   {
+    "text": "Lift them onto a plate so the steam escapes and they stay crisp instead of softening.",
+    "minutes": 3
+   },
+   {
+    "text": "Mix the sliced onion, green chilli and the rest of the salt in a bowl and rub them together with your fingers.",
+    "minutes": null
+   },
+   {
+    "text": "Add the scraped coconut, then the fried bitter gourd, and toss lightly so the slices do not break up.",
+    "minutes": null
+   },
+   {
+    "text": "Squeeze the lime over, grind on the pepper and serve at once, while there is still crunch in it.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කරවිල සෝදා කෙළවර කපා, කාසියක් තරම් සිහින්ව කපා ගන්න; ළා කරවිල නම් ඇට සමඟම දමන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෙති ලුණු භාගයක් ගා පෙරනයක තබන්න; අඳුරු යුෂ බේරී යනු ඇත.",
+    "minutes": 15
+   },
+   {
+    "text": "පෙති අතින් මිරිකා එම යුෂ ඉවත් කරන්න; දැඩිම තිත්ත රසය එය සමඟ යයි.",
+    "minutes": null
+   },
+   {
+    "text": "පෑනක පොල් තෙල් රත් කර, පෙති විසිරුවා තද ගින්නේ කෙළවර දුඹුරු වන තුරු, සුවඳ එන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඒවා පිඟානකට ගෙන වාෂ්පය පිට වන්නට දෙන්න; එවිට මුදු නොවී හැපෙනසුලුව රැඳේ.",
+    "minutes": 3
+   },
+   {
+    "text": "කැපූ ළූණු, අමු මිරිස් සහ ඉතිරි ලුණු බඳුනක දමා ඇඟිලිවලින් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සීරූ පොල් දමා, පසුව බැදගත් කරවිල එකතු කර, පෙති කැඩී නොයන සේ සැහැල්ලුවෙන් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙහි මිරිකා, ගම්මිරිස් දමා, හැපෙනසුලු බව තිබෙන අතරේ වහාම ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாகற்காயைக் கழுவி, நுனிகளை நீக்கி, நாணயம் போல் மெல்லியதாக நறுக்கவும்; இளங்காய் என்றால் விதையுடன் சேர்க்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "துண்டுகளில் பாதி உப்பைத் தடவி, வடிகட்டியில் வைக்கவும்; கறுப்பு நிற நீர் வடியும்.",
+    "minutes": 15
+   },
+   {
+    "text": "துண்டுகளைக் கையால் பிழிந்து அந்த நீரை நீக்கவும்; கடுமையான கசப்பு அதனுடன் போகும்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து, துண்டுகளைப் பரப்பி அதிக தீயில் ஓரங்கள் பொன்னிறமாகி வாசம் வரும் வரை பொரிக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "அவற்றை ஒரு தட்டில் எடுத்து ஆவி போக விடவும்; அப்போது மென்மையாகாமல் சொறுக்காக இருக்கும்.",
+    "minutes": 3
+   },
+   {
+    "text": "நறுக்கிய வெங்காயம், பச்சை மிளகாய், மீதி உப்பை ஒரு கிண்ணத்தில் போட்டு விரல்களால் பிசையவும்.",
+    "minutes": null
+   },
+   {
+    "text": "துருவிய தேங்காயைச் சேர்த்து, பிறகு பொரித்த பாகற்காயைச் சேர்த்து, துண்டுகள் உடையாமல் லேசாகக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "எலுமிச்சையைப் பிழிந்து, மிளகு சேர்த்து, சொறுக்கு இருக்கும்போதே உடனே பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 5,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "colander",
+  "frying pan",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "Salting and squeezing is the whole trick; skip it and the sambol is punishing rather than pleasant. Fry in a single layer on a high flame, because crowded slices steam themselves soft.",
+  "si": "ලුණු ගා මිරිකා ගැනීම මුළු රහසයි; එය අත්හැරියොත් සම්බෝල රසවත් නොව දරාගත නොහැකි තරම් තිත්ත වේ. එක් තට්ටුවකට පමණක් දමා තද ගින්නේ බදින්න; පෙති තදින් පුරවුවහොත් ඒවා වාෂ්පයෙන් මුදු වේ.",
+  "ta": "உப்பு தடவிப் பிழிவதே முக்கியம்; அதைத் தவிர்த்தால் சம்பல் சுவையாக இல்லாமல் கடுமையான கசப்பாக இருக்கும். ஒரே அடுக்காகப் பரப்பி அதிக தீயில் பொரிக்கவும்; நெருக்கமாகப் போட்டால் துண்டுகள் ஆவியில் மென்மையாகிவிடும்."
+ },
+ "health_note": {
+  "en": "Bitter gourd is very low in calories and starch, and it is the vegetable households keep for anyone with high blood sugar. Squeezing out the juice takes away some of the bitterness but leaves the fibre and minerals behind.",
+  "si": "කරවිලවල කැලරි සහ පිෂ්ඨය ඉතා අඩු අතර, රුධිර සීනි ඉහළ අයෙකු සිටින නිවෙස්වල නිතර භාවිත කරන එළවළුවකි. යුෂ මිරිකා ඉවත් කිරීමෙන් තිත්ත රසය ස්වල්පයක් අඩු වුවත් තන්තු සහ ඛනිජ ලවණ එසේම රැඳේ.",
+  "ta": "பாகற்காயில் கலோரியும் மாவுச்சத்தும் மிகக் குறைவு; இரத்தச் சர்க்கரை அதிகம் உள்ளவர்களுக்காக வீடுகளில் வைத்திருக்கும் காய் இதுவே. சாற்றைப் பிழிந்தால் கசப்பு சற்று குறையும், ஆனால் நார்ச்சத்தும் தாதுக்களும் அப்படியே இருக்கும்."
+ },
+ "tags": [
+  "low_calorie",
+  "low_carb",
+  "high_fibre",
+  "diabetic_friendly",
+  "weight_loss_friendly",
+  "heart_healthy",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

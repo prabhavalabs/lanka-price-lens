@@ -1,0 +1,264 @@
+{
+ "id": "dish_kurakkan_kenda",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 275,
+  "description": {
+   "en": "A warm brown cup that stands in for breakfast",
+   "si": "උදෑසන කෑමට ඉඩ ගන්නා උණුසුම් දුඹුරු කෝප්පයක්",
+   "ta": "காலை உணவுக்குப் பதிலாகக் குடிக்கும் சூடான பழுப்பு நிற கோப்பை"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "pantry_kurakkan_flour",
+   "label": {
+    "en": "finger millet flour",
+    "si": "කුරක්කන් පිටි",
+    "ta": "கேழ்வரகு மாவு"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "mixed smooth with cold water",
+    "si": "සිසිල් වතුරෙන් ගැටි නැති ලෙස මිශ්‍ර කරගත්",
+    "ta": "குளிர்ந்த நீரில் கட்டியில்லாமல் கரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 500,
+   "unit": "ml",
+   "household": "2 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்தது, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "2 lumps, scraped",
+   "preparation": {
+    "en": "scraped or broken small",
+    "si": "හෑරූ හෝ කුඩාවට කැඩූ",
+    "ta": "சுரண்டியது அல்லது சிறியதாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a good pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp, to pour on top",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Put the kurakkan flour in a bowl and work it to a thin, lump-free batter with 200 ml of cold water; cold water first is what keeps it smooth.",
+    "minutes": 5
+   },
+   {
+    "text": "Bring the thin coconut milk to the boil in a pot with the pinch of salt.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour the flour batter into the boiling milk in a thin stream with one hand while you stir hard with the other.",
+    "minutes": 3
+   },
+   {
+    "text": "Keep stirring on a low fire until the porridge loses its raw flour smell and thickens enough to coat the ladle.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the scraped jaggery and stir until it has melted right through.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thick coconut milk, let it come back to steaming, and take the pot off the fire before it boils hard.",
+    "minutes": 2
+   },
+   {
+    "text": "Taste it; it should be drinkable from a cup, so loosen it with a little hot water if it has gone too thick.",
+    "minutes": null
+   },
+   {
+    "text": "Pour into cups, trickle a little kithul treacle on top if you have it, and drink it hot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුරක්කන් පිටි බඳුනකට දමා සිසිල් වතුර මිලිලීටර් 200කින් ගැටි නැති තුනී මාවක් වන තුරු මිශ්‍ර කරන්න; සිනිඳුව තබා ගන්නේ මුලින්ම සිසිල් වතුර දැමීමෙන්.",
+    "minutes": 5
+   },
+   {
+    "text": "බඳුනක තුනී පොල් කිරි, ලුණු ටිකක් සමඟ උතුරන්න තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "එක් අතකින් පිටි මාව සිහින් දහරාවක් ලෙස උතුරන කිරි වලට වත් කරමින්, අනෙක් අතින් තදින් කලතන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "අමු පිටි සුවඳ නැති වී, කැඳ කෙන්දේ තැවරෙන තරමට ඝන වන තුරු අඩු ගින්නේ කලතන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "හෑරූ හකුරු දමා, හොඳින් දිය වන තුරු කලතන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඝන පොල් කිරි වත් කර, නැවත හුමාලය නගින තුරු තබා, තදින් උතුරන්නට පෙර ලිපෙන් බාගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "රස බලන්න; කෝප්පයෙන් බොන්නට පුළුවන් විය යුතුයි, ඉතා ඝන නම් උණු වතුර ටිකකින් තුනී කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කෝප්පවලට වත් කර, තිබේ නම් උඩින් කිතුල් පැණි ටිකක් වගුරුවා, උණුසුම්ව බොන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கேழ்வரகு மாவை ஒரு கிண்ணத்தில் இட்டு, 200 மில்லி குளிர்ந்த நீரில் கட்டியில்லாத நீர்த்த மாவாகக் கரைக்கவும்; முதலில் குளிர்ந்த நீர் சேர்ப்பதே அதை மென்மையாக வைக்கும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு பாத்திரத்தில் நீர்த்த தேங்காய்ப் பாலை, ஒரு சிட்டிகை உப்புடன் கொதிக்க வைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு கையால் மாவுக் கரைசலை மெல்லிய கோடாகக் கொதிக்கும் பாலில் ஊற்றியபடி, மறு கையால் வேகமாகக் கலக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பச்சை மாவு வாசம் போய், கஞ்சி கரண்டியில் ஒட்டும் அளவு கெட்டியாகும் வரை குறைந்த தீயில் கலக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "சுரண்டிய வெல்லத்தைச் சேர்த்து, முழுமையாகக் கரையும் வரை கலக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலை ஊற்றி, மீண்டும் ஆவி வரும் வரை வைத்து, கடுமையாகக் கொதிப்பதற்கு முன் இறக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "சுவைத்துப் பாருங்கள்; கோப்பையில் குடிக்கக்கூடியதாக இருக்க வேண்டும், மிகக் கெட்டியானால் சிறிது சூடான நீரில் நீர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கோப்பைகளில் ஊற்றி, இருந்தால் மேலே சிறிது கித்துல் பாணி ஊற்றி, சூடாகக் குடியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy pot",
+  "whisk or long spoon",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "The one mistake to avoid is tipping dry flour into hot liquid; mix it cold first and pour it in slowly, or you will be picking lumps out with a spoon. For a savoury version, leave the jaggery out and put in crushed garlic and a little more salt.",
+  "si": "වළක්වා ගත යුතු එකම වැරැද්ද අමු පිටි උණු දියරයට හෙළීමයි; මුලින්ම සිසිල් වතුරෙන් මිශ්‍ර කර හෙමින් වත් කරන්න, නැත්නම් හැන්දෙන් ගැටි අහුරන්නට වේවි. ලුණු රසට හදනවා නම් හකුරු අත් හැර, තලාගත් සුදුළූණු සහ ලුණු තව ටිකක් දමන්න.",
+  "ta": "தவிர்க்க வேண்டிய ஒரே தவறு, உலர் மாவை சூடான திரவத்தில் கொட்டுவது; முதலில் குளிர்ந்த நீரில் கரைத்து, மெதுவாக ஊற்றுங்கள், இல்லையேல் கரண்டியால் கட்டிகளை எடுக்க வேண்டியிருக்கும். உப்புச் சுவையில் வேண்டுமானால் வெல்லத்தை விட்டுவிட்டு, இடித்த பூண்டும் சிறிது கூடுதல் உப்பும் சேர்க்கவும்."
+ },
+ "health_note": {
+  "en": "Finger millet is one of the better grains in the shop for calcium, iron and fibre, and this cup releases its energy slowly enough to hold a child until the interval bell. Two lumps of jaggery for four cups is already a fair amount of sugar, so a diabetic household should take it salted with garlic instead.",
+  "si": "කඩේ ඇති ධාන්‍ය අතර කැල්සියම්, යකඩ සහ තන්තු සඳහා කුරක්කන් හොඳම එකකි; මේ කෝප්පයේ ශක්තිය හෙමින් නිදහස් වන නිසා ළමයෙකුට පාසැලේ විවේක සීනුව වන තුරු ඔරොත්තු දේ. කෝප්ප හතරකට හකුරු කැට දෙකක් දැනටමත් හොඳ සීනි ප්‍රමාණයක් නිසා, දියවැඩියාව ඇති ගෙදරක සුදුළූණු දමා ලුණු රසට ගන්න.",
+  "ta": "கடையில் கிடைக்கும் தானியங்களில் கால்சியம், இரும்பு, நார்ச்சத்துக்கு கேழ்வரகு சிறந்தது; இந்தக் கோப்பையின் சக்தி மெதுவாக வெளிப்படுவதால் ஒரு குழந்தையை இடைவேளை மணி வரை தாங்கும். நான்கு கோப்பைக்கு இரண்டு வெல்லத் துண்டு ஏற்கனவே நல்ல சர்க்கரை அளவு, எனவே நீரிழிவு உள்ள வீட்டில் பூண்டு சேர்த்து உப்புச் சுவையில் குடிப்பது நல்லது."
+ },
+ "tags": [
+  "budget",
+  "one_pot",
+  "filling",
+  "comfort",
+  "calcium_rich",
+  "iron_rich",
+  "high_fibre",
+  "kid_friendly",
+  "elderly_friendly",
+  "high_sugar"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

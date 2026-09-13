@@ -1,0 +1,338 @@
+{
+ "id": "dish_breudher",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 100,
+  "description": {
+   "en": "A thick slice with butter and a sliver of cheese",
+   "si": "බටර් සහ චීස් පෙත්තක් සමඟ ගන්නා ගන පෙත්තක්",
+   "ta": "வெண்ணெயும் சீஸ் துண்டும் சேர்த்து ஒரு தடிமனான துண்டு"
+  }
+ },
+ "yield_g": 400,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp, plus a little for the mould",
+   "preparation": {
+    "en": "softened",
+    "si": "මෘදු කරගත්",
+    "ta": "மிருதுவாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 eggs",
+   "preparation": {
+    "en": "beaten",
+    "si": "ගසාගත්",
+    "ta": "அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "එළකිරි",
+    "ta": "பசும்பால்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "a quarter cup",
+   "preparation": {
+    "en": "warmed to blood heat",
+    "si": "ලා උණුසුමට රත් කරගත්",
+    "ta": "கை பொறுக்கும் சூட்டில் சூடாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_raisins",
+   "label": {
+    "en": "raisins",
+    "si": "කිස්මිස්",
+    "ta": "உலர் திராட்சை"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": {
+    "en": "rinsed",
+    "si": "සෝදාගත්",
+    "ta": "கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_brandy",
+   "label": {
+    "en": "brandy",
+    "si": "බ්‍රැන්ඩි",
+    "ta": "பிராந்தி"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "to soak the raisins",
+    "si": "කිස්මිස් තෙමීමට",
+    "ta": "திராட்சையை ஊறவைக்க"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Warm the milk to blood heat, stir in the yeast with a spoon of the sugar, and leave it in a warm place until it froths up.",
+    "minutes": 15
+   },
+   {
+    "text": "Rub the butter into the sifted flour with the salt until the flour looks like fine crumbs.",
+    "minutes": null
+   },
+   {
+    "text": "Beat the eggs with the rest of the sugar and work them into the flour with the yeast milk to a soft sticky dough.",
+    "minutes": 10
+   },
+   {
+    "text": "Knead the dough on the table, slapping and folding it, until it stretches without tearing.",
+    "minutes": 10
+   },
+   {
+    "text": "Cover the bowl with a cloth and stand it in a warm corner of the kitchen until the dough has doubled.",
+    "minutes": 90
+   },
+   {
+    "text": "Soak the raisins in the brandy while the dough rises.",
+    "minutes": null
+   },
+   {
+    "text": "Knock the dough back, work in the raisins with their brandy, and press it into a well buttered fluted mould, filling it half way.",
+    "minutes": null
+   },
+   {
+    "text": "Leave it to rise again until the dough reaches the rim of the mould.",
+    "minutes": 45
+   },
+   {
+    "text": "Bake in a moderate oven until the crust is deep brown and the cake sounds hollow when tapped.",
+    "minutes": 40
+   },
+   {
+    "text": "Turn it out, let it cool a little, and serve thick slices with butter and a sliver of Edam cheese.",
+    "minutes": 20
+   }
+  ],
+  "si": [
+   {
+    "text": "කිරි ලා උණුසුමට රත් කර, සීනි හැන්දක් සමඟ යීස්ට් දමා කලවම් කර, පෙණ එන තුරු උණුසුම් තැනක තියන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පෙරාගත් පිටි හා ලුණු සමඟ බටර් අතින් මිශ්‍ර කර, පිටි සිහින් කුඩු වගේ වන තුරු අනන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර ඉතිරි සීනි සමඟ ගසා, යීස්ට් කිරි සමඟ පිටි වලට දමා, මෘදු ඇලෙන සුළු පිඬක් සාදන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිඬ මේසය මත තබා, ගසමින් හා නවමින්, ඇද්ද විට නොකැඩී දිගු වන තුරු අනන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බඳුන රෙද්දකින් වසා, කුස්සියේ උණුසුම් කොනක තබා, පිඬ දෙගුණ වන තුරු තියන්න.",
+    "minutes": 90
+   },
+   {
+    "text": "පිඬ පිපෙන අතරතුර කිස්මිස් බ්‍රැන්ඩි වල තෙමෙන්න තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිඬ තට්ටු කර වාතය ඉවත් කර, බ්‍රැන්ඩි සමඟම කිස්මිස් මිශ්‍ර කර, බටර් ගැල්වූ රැලි සහිත අච්චුවක අඩක් පමණ පිරෙන සේ තද කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අච්චුවේ කෙළවරට පිඬ එන තුරු නැවත පිපෙන්න තියන්න.",
+    "minutes": 45
+   },
+   {
+    "text": "මධ්‍යම උදුනේ, පොත්ත හොඳ දුඹුරු පාට වී තට්ටු කළ විට හිස් හඬක් එන තුරු බේක් කරන්න.",
+    "minutes": 40
+   },
+   {
+    "text": "පෙරළා ගෙන ටිකක් සිසිල් කර, ගන පෙති කපා බටර් සහ එඩම් චීස් පෙත්තක් සමඟ දෙන්න.",
+    "minutes": 20
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாலைக் கை பொறுக்கும் சூட்டில் சூடாக்கி, ஒரு கரண்டி சீனியுடன் ஈஸ்ட்டைக் கலந்து, நுரைக்கும் வரை சூடான இடத்தில் வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "சலித்த மாவுடன் உப்பும் வெண்ணெயும் சேர்த்துக் கையால் பிசைந்து, மாவு நைசான தூள் போல் ஆகும் வரை கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டைகளை மீதி சீனியுடன் அடித்து, ஈஸ்ட் பாலுடன் மாவில் சேர்த்து, மிருதுவான ஒட்டும் மாவுக் கட்டியாகப் பிசையவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மாவைப் பலகையில் வைத்து, அடித்து மடித்து, இழுத்தால் கிழியாமல் நீளும் வரை பிசையவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பாத்திரத்தைத் துணியால் மூடி, சமையலறையின் சூடான மூலையில் வைத்து, மாவு இரட்டிப்பாகும் வரை விடவும்.",
+    "minutes": 90
+   },
+   {
+    "text": "மாவு பொங்கும் நேரத்தில் உலர் திராட்சையைப் பிராந்தியில் ஊறவைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மாவைத் தட்டி காற்றை வெளியேற்றி, பிராந்தியுடன் திராட்சையைக் கலந்து, வெண்ணெய் தடவிய பூவேலை அச்சில் பாதி அளவுக்கு அழுத்தி நிரப்பவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அச்சின் விளிம்பு வரை மாவு உயரும் வரை மீண்டும் பொங்கவிடவும்.",
+    "minutes": 45
+   },
+   {
+    "text": "மிதமான அவனில், மேற்பரப்பு நல்ல பொன்னிறமாகி, தட்டினால் வெற்று ஒலி வரும் வரை பேக் செய்யவும்.",
+    "minutes": 40
+   },
+   {
+    "text": "கவிழ்த்து எடுத்து, சற்று குளிரவிட்டு, தடிமனான துண்டுகளாக வெட்டி வெண்ணெயும் எடாம் சீஸ் துண்டும் சேர்த்துப் பரிமாறவும்.",
+    "minutes": 20
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 45,
+  "passive_minutes": 150
+ },
+ "equipment": [
+  "fluted mould or bundt tin",
+  "oven",
+  "mixing bowl",
+  "cloth"
+ ],
+ "tips": {
+  "en": "Yeast will not wake in hot milk, so test it on the inside of your wrist before adding it. The dough is meant to be soft and buttery, so resist the urge to add more flour while kneading.",
+  "si": "උණු කිරි වල යීස්ට් වැඩ නොකරයි; එබැවින් කිරි අත මැණික් කටුවට තබා උණුසුම බලන්න. පිඬ මෘදු හා බටර් ගතියෙන් තිබිය යුතුය, එබැවින් අනන අතරේ තවත් පිටි දැමීමට යන්න එපා.",
+  "ta": "சூடான பாலில் ஈஸ்ட் வேலை செய்யாது; எனவே பாலின் சூட்டை மணிக்கட்டில் தொட்டுப் பார்க்கவும். மாவு மிருதுவாகவும் வெண்ணெய்ப் பசையுடனும் இருக்க வேண்டும், எனவே பிசையும்போது கூடுதல் மாவு சேர்க்க வேண்டாம்."
+ },
+ "health_note": {
+  "en": "Breudher is a butter and egg bread rather than a sugary cake, so it sits lighter than rich cake, but the butter still makes it heavy for a breakfast. A slice with fruit and plain tea is a fair portion.",
+  "si": "බ්‍රෝඩර් යනු සීනි බහුල කේක් එකක් නොව බටර් හා බිත්තර බහුල පාන් වර්ගයකි; එබැවින් රිච් කේක් වලට වඩා සැහැල්ලුයි. එහෙත් බටර් නිසා උදෑසන ආහාරයට තරමක් බරයි; පලතුරු හා තේ සමඟ පෙත්තක් සෑහේ.",
+  "ta": "ப்ரௗடர் சீனி நிறைந்த கேக் அல்ல, வெண்ணெயும் முட்டையும் கொண்ட பாண் வகை; எனவே ரிச் கேக்கை விட லேசானது. இருந்தும் வெண்ணெயால் காலை உணவுக்குக் கனமானது; பழத்துடனும் தேநீருடனும் ஒரு துண்டே போதும்."
+ },
+ "tags": [
+  "festive",
+  "comfort",
+  "filling",
+  "kid_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

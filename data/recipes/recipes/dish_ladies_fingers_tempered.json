@@ -1,0 +1,290 @@
+{
+ "id": "dish_ladies_fingers_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 80,
+  "description": {
+   "en": "A dry, crisp heap of okra beside the rice",
+   "si": "බතට පසෙකින් තබන වියළි, කරකර ගතියේ බණ්ඩක්කා ගොඩක්",
+   "ta": "சாதத்தின் ஓரத்தில் காய்ந்த, மொறுமொறுப்பான வெண்டைக்காய் குவியல்"
+  }
+ },
+ "yield_g": 330,
+ "ingredients": [
+  {
+   "ref": "product_ladies_fingers",
+   "label": {
+    "en": "okra",
+    "si": "බණ්ඩක්කා",
+    "ta": "வெண்டைக்காய்"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "about 20 young pods",
+   "preparation": {
+    "en": "wiped dry, tops trimmed, cut into 2 cm pieces",
+    "si": "පිස වියළා, තුඩ කපා, සෙන්ටිමීටර දෙකක කැබලි ලෙස කපා",
+    "ta": "துடைத்து உலர்த்தி, தலைப்பகுதியை நீக்கி, இரண்டு சென்டிமீட்டர் துண்டுகளாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වේළූ මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩාගෙන",
+    "ta": "உடைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "රළු මිරිස් කුඩු",
+    "ta": "கரடு மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wipe each pod dry with a cloth instead of washing it at the last minute; water is what makes okra slimy in the pan.",
+    "minutes": 6
+   },
+   {
+    "text": "Trim the tops and cut the pods into pieces about two fingers wide apart, leaving the very small ones whole.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan until it is properly hot, then put in the okra with the turmeric and half the salt.",
+    "minutes": 3
+   },
+   {
+    "text": "Fry on a high flame without covering the pan and stir only now and then, until the sticky threads disappear and the edges brown.",
+    "minutes": 10
+   },
+   {
+    "text": "Push the okra aside, add the onion, dried chillies and curry leaves and fry until the onion browns at the edges.",
+    "minutes": 4
+   },
+   {
+    "text": "Sprinkle in the chilli flakes and the rest of the salt and toss everything together over the fire.",
+    "minutes": 1
+   },
+   {
+    "text": "Squeeze the lime over off the fire and serve straight away, before the okra softens.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අවසන් මොහොතේ සෝදන්නට වඩා සෑම කරලක්ම රෙදිකඩකින් පිස වියළන්න; බණ්ඩක්කා පෑනේ ලිස්සන ගතියට ගන්නේ වතුරයි.",
+    "minutes": 6
+   },
+   {
+    "text": "තුඩ කපා, කරල් ඇඟිලි දෙකක පළලට කැබලි ලෙස කපන්න; ඉතා කුඩා ඒවා මුළුමනින් තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පළල් පෑනකට පොල් තෙල් දමා හොඳින් රස්නය කර, කහ හා ලුණු භාගයක් සමඟ බණ්ඩක්කා දමන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වහන්නක් නොදමා අධික ගින්නේ, ඇලෙන නූල් ගතිය නැති වී දාර දුඹුරු වන තුරු, ඉඳහිට පමණක් කලතමින් බැදගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බණ්ඩක්කා පැත්තකට තල්ලු කර, ලූනු, වේළූ මිරිස් හා කරපිංචා දමා ලූනු දාර දුඹුරු වන තුරු බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "රළු මිරිස් කුඩු හා ඉතිරි ලුණු ඉස, සියල්ල ගින්නේ එකට කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන දෙහි යුෂ මිරිකා, බණ්ඩක්කා මෘදු වීමට පෙර වහාම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கடைசி நேரத்தில் கழுவுவதற்குப் பதிலாக ஒவ்வொரு காயையும் துணியால் துடைத்து உலர்த்துங்கள்; வெண்டைக்காயை வாணலியில் வழுவழுப்பாக்குவது நீரே.",
+    "minutes": 6
+   },
+   {
+    "text": "தலைப்பகுதியை நீக்கி, காய்களை இரண்டு விரல் அளவு துண்டுகளாக நறுக்குங்கள்; மிகச் சிறியவற்றை முழுதாக வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அகலமான வாணலியில் தேங்காய் எண்ணெயை நன்கு காயவைத்து, மஞ்சளும் பாதி உப்பும் சேர்த்து வெண்டைக்காயைப் போடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மூடாமல் அதிக தீயில், ஒட்டும் நூல் தன்மை போய் ஓரங்கள் பொன்னிறமாகும் வரை, இடையிடையே மட்டும் கிளறி வதக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வெண்டைக்காயை ஓரமாக ஒதுக்கி, வெங்காயம், வத்தல் மிளகாய், கறிவேப்பிலை சேர்த்து வெங்காயம் ஓரங்களில் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "மிளகாய்த் தூளும் மீதி உப்பும் தூவி, எல்லாவற்றையும் தீயில் ஒன்றாகக் கலக்குங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "அடுப்பை அணைத்து தேசிக்காய்ச் சாற்றைப் பிழிந்து, வெண்டைக்காய் மென்மையாகும் முன் உடனே பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 18,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan or wok",
+  "cloth for wiping"
+ ],
+ "tips": {
+  "en": "Dry pods, a hot pan and very little stirring are the three things that keep okra from turning sticky. Pick pods that snap when you bend the tip; a bendy one is old and full of seeds.",
+  "si": "වියළි කරල්, රස්නය වූ පෑන හා අවම කැලතීම යන තුනයි බණ්ඩක්කා ඇලෙන ගතියට යාම වළක්වන්නේ. තුඩ නැමූ විට කැඩෙන කරල් තෝරන්න; නොකැඩී නැමෙන එකක් මහත් වී ඇට පිරී ඇත.",
+  "ta": "காய்ந்த காய்கள், சூடான வாணலி, குறைந்த கிளறல் இந்த மூன்றே வெண்டைக்காய் வழுவழுப்பாவதைத் தடுக்கும். நுனியை வளைத்தால் ஒடியும் காய்களைத் தேர்ந்தெடுங்கள்; வளைந்து கொடுப்பது முதிர்ந்து விதை நிறைந்தது."
+ },
+ "health_note": {
+  "en": "Okra is well known for its soft fibre, which helps digestion and slows down how quickly a rice meal raises blood sugar. This version is fried, so serve it in a small heap and keep the oil measured.",
+  "si": "බණ්ඩක්කාවල ඇති මෘදු කෙඳි ආහාර දිරවීමට උපකාරී වන අතර, බත් කෑමකින් රුධිර සීනි ඉහළ යන වේගය ද අඩු කරයි. මෙය තෙලේ බැදෙන නිසා කුඩා ගොඩක් ලෙස බෙදා තෙල් මැනගෙන යොදන්න.",
+  "ta": "வெண்டைக்காயின் மென்மையான நார்ச்சத்து செரிமானத்திற்கு உதவுவதோடு, சாத உணவு இரத்த சர்க்கரையை உயர்த்தும் வேகத்தையும் குறைக்கிறது. இது எண்ணெயில் வதக்கப்படுவதால் சிறிய அளவில் பரிமாறி, எண்ணெயை அளவாகவே பயன்படுத்துங்கள்."
+ },
+ "tags": [
+  "high_fibre",
+  "budget",
+  "comfort",
+  "diabetic_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

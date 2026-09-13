@@ -1,0 +1,343 @@
+{
+ "id": "dish_jackfruit_seed_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 160,
+  "description": {
+   "en": "A ladle of floury seeds in dark spiced gravy",
+   "si": "තද පැහැ කුළුබඩු හොදියේ පිටි ගතියේ කොස් ඇට හැන්දක්",
+   "ta": "கருமையான மசாலாக் குழம்பில் மாவுப் பதத்தில் வெந்த கொட்டைகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "pantry_jackfruit_seeds",
+   "label": {
+    "en": "jackfruit seeds",
+    "si": "කොස් ඇට",
+    "ta": "பலாக்கொட்டை"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "seeds from one large jackfruit",
+   "preparation": {
+    "en": "white outer shell peeled off, larger seeds halved",
+    "si": "සුදු පිට කවචය ගලවා, ලොකු ඇට දෙකට කපා",
+    "ta": "வெள்ளை மேல் ஓட்டை உரித்து, பெரிய கொட்டைகளை இரண்டாக வெட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වේළූ මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩාගෙන",
+    "ta": "உடைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 small piece",
+   "preparation": {
+    "en": "rinsed",
+    "si": "සෝදාගෙන",
+    "ta": "கழுவி"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and 1/2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub the seeds in a cloth to get the slippery coating off, then peel away the white shell with a small knife.",
+    "minutes": 15
+   },
+   {
+    "text": "Boil the peeled seeds in salted water with the turmeric until a seed crumbles floury when pressed, skimming any froth.",
+    "minutes": 20
+   },
+   {
+    "text": "Drain the seeds and rub off the thin brown skin that loosens during boiling.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the seeds into a clay pot with the onion, broken dried chillies, roasted curry powder, gorakka, pandan, curry leaves and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer so the seeds darken and take in the spice.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the thick coconut milk and cook gently until the gravy thickens around the seeds.",
+    "minutes": 5
+   },
+   {
+    "text": "Take out the gorakka piece before serving, as biting into it is unpleasantly sour.",
+    "minutes": null
+   },
+   {
+    "text": "Serve with rice; this is a thrifty pot made from what most people throw away.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කොස් ඇට රෙදිකඩක් තුළ අතුල්ලා ලිස්සන ආලේපනය ඉවත් කර, පසුව කුඩා පිහියකින් සුදු කවචය ගලවන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ගැලවූ ඇට ලුණු වතුරේ කහ සමඟ, ඇටයක් තද කළ විට පිටි ලෙස කැඩෙන තුරු තම්බන්න; පෙණ ඇත්නම් ඉවතට ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "වතුර බේරා, තැම්බීමේදී ගැලවී එන තුනී දුඹුරු පටලය අතුල්ලා ඉවත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඇට මැටි වළඳකට දමා, ලූනු, කඩාගත් වේළූ මිරිස්, බැදපු තුනපහ, ගොරකා, රම්පෙ, කරපිංචා හා ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි වත් කර, ඇට තද පැහැයට හැරී කුළුබඩු රස උරාගන්නා තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මිටි කිරි දමා, ඇට වටා හොදිය ගනට වන තුරු අඩු ගින්නේ උයන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බෙදන්නට පෙර ගොරකා කෑල්ල ඉවත් කරන්න; එය කටට ගිය විට ඉතා ඇඹුල්.",
+    "minutes": null
+   },
+   {
+    "text": "බත් සමඟ බෙදන්න; බොහෝ දෙනා ඉවත දමන දෙයකින් හදන ඉතිරිකිරීමේ වළඳකි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கொட்டைகளை ஒரு துணியில் தேய்த்து வழுவழுப்பான மேற்படலத்தை நீக்கி, பின் சிறிய கத்தியால் வெள்ளை ஓட்டை உரியுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "உரித்த கொட்டைகளை உப்பு நீரில் மஞ்சளுடன், ஒரு கொட்டை அழுத்தினால் மாவாக நொறுங்கும் வரை வேகவிடுங்கள்; நுரையை அகற்றுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "நீரை வடித்து, வேகும்போது தளர்ந்த மெல்லிய பழுப்புத் தோலைத் தேய்த்து நீக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கொட்டைகளை மண் சட்டியில் இட்டு, வெங்காயம், உடைத்த வத்தல் மிளகாய், வறுத்த கறி மசாலா, கோரக்கா, ரம்பை, கறிவேப்பிலை, உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி, கொட்டைகள் கருமையாகி மசாலாவை உள்வாங்கும் வரை கொதிக்க விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "தடிமன் பாலைச் சேர்த்து, கொட்டைகளைச் சுற்றி குழம்பு கெட்டியாகும் வரை மெல்லிய தீயில் வேகவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "பரிமாறும் முன் கோரக்கா துண்டை எடுத்து விடுங்கள்; அது வாயில் அகப்பட்டால் மிகவும் புளிக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "சாதத்துடன் பரிமாறுங்கள்; பலர் தூக்கி எறியும் ஒன்றிலிருந்து செய்யும் சிக்கனமான கறி இது.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 35,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "cloth for rubbing",
+  "small knife",
+  "pot",
+  "clay pot"
+ ],
+ "tips": {
+  "en": "Peeling is quicker if you dry the seeds in the sun for a day first; the shell then cracks off in one piece. Do not skip the boiling stage, because a half-cooked seed is hard and chalky in the middle.",
+  "si": "ඇට පළමුව දිනක් අව්වේ වේළුවහොත් ගැලවීම ඉක්මන් වේ; එවිට කවචය එක කැබැල්ලක් ලෙස ගැලවේ. තැම්බීමේ අදියර මඟ නොහරින්න; අඩ තැම්බූ ඇටයක මැද තදයි, පිටි ගතියි.",
+  "ta": "கொட்டைகளை முதலில் ஒரு நாள் வெயிலில் காயவைத்தால் உரிப்பது எளிது; ஓடு ஒரே துண்டாக வெடித்து விலகும். வேகவைக்கும் படியை விட்டுவிடாதீர்கள்; அரைகுறையாக வெந்த கொட்டை நடுவில் கெட்டியாகவும் மாவாகவும் இருக்கும்."
+ },
+ "health_note": {
+  "en": "Jackfruit seeds are starchy with a fair amount of plant protein and fibre, so they sit somewhere between a vegetable and a rice on the plate. They are heavy in the stomach, so a moderate ladle suits elders and anyone prone to bloating.",
+  "si": "කොස් ඇටවල පිෂ්ඨය මෙන්ම හොඳ පැළෑටි ප්‍රෝටීන් හා කෙඳි ද ඇති නිසා පිඟානේ ඒවා එළවළුවක් හා බතක් අතර තැනක වැටේ. බඩට බරයි; එබැවින් වැඩිහිටියන්ට හා බඩ පිපෙන අයට සාමාන්‍ය හැන්දක් සුදුසුයි.",
+  "ta": "பலாக்கொட்டையில் மாவுச்சத்துடன் நல்ல அளவு தாவரப் புரதமும் நார்ச்சத்தும் உள்ளன; எனவே தட்டில் இது காய்கறிக்கும் சாதத்திற்கும் இடையிலான இடத்தைப் பிடிக்கிறது. வயிற்றுக்கு கனமானது, எனவே முதியவர்களுக்கும் வாயுத் தொல்லை உள்ளவர்களுக்கும் மிதமான அளவே ஏற்றது."
+ },
+ "tags": [
+  "high_fibre",
+  "filling",
+  "budget",
+  "comfort",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

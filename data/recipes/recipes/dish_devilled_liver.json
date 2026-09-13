@@ -1,0 +1,429 @@
+{
+ "id": "dish_devilled_liver",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 110,
+  "description": {
+   "en": "A small hot plate to share, with rice or on its own with a drink",
+   "si": "බෙදාගෙන කන කුඩා සැර පිඟානක්, බත් සමඟ හෝ තනිව",
+   "ta": "பங்கிட்டுச் சாப்பிடும் சிறிய காரமான தட்டு, சாதத்துடனோ தனியாகவோ"
+  }
+ },
+ "yield_g": 460,
+ "ingredients": [
+  {
+   "ref": "pantry_liver",
+   "label": {
+    "en": "beef or chicken liver",
+    "si": "හරක් හෝ කුකුල් අක්මාව",
+    "ta": "மாட்டு அல்லது கோழி ஈரல்"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "about half a kilo",
+   "preparation": {
+    "en": "membrane trimmed, cut into 2 cm pieces, soaked in salted water and drained",
+    "si": "පටලය ඉවත් කර සෙන්ටිමීටර දෙකක කැබලිවලට කපා, ලුණු වතුරේ පොඟවා වතුර බේරාගත්",
+    "ta": "படலத்தை நீக்கி, இரண்டு சென்டிமீட்டர் துண்டுகளாக வெட்டி, உப்பு நீரில் ஊறவைத்து வடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "cut into thick wedges, layers separated",
+    "si": "ඝන කෑලිවලට කපා, පත්‍ර වෙන් කරගත්",
+    "ta": "தடிமனான துண்டுகளாக வெட்டி, அடுக்குகளைப் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "capsicum",
+    "si": "මාළු මිරිස්",
+    "ta": "குடைமிளகாய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large capsicum",
+   "preparation": {
+    "en": "cut into squares",
+    "si": "කොටුවලට කපාගත්",
+    "ta": "சதுரங்களாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 firm tomato",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "කෑලිවලට කපාගත්",
+    "ta": "துண்டுகளாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "cut on the slant",
+    "si": "ඇලයට කපාගත්",
+    "ta": "சாய்வாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "4 chillies, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කඩාගත්",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලාගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් පේස්ට්",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_tomato_sauce",
+   "label": {
+    "en": "tomato sauce",
+    "si": "තක්කාලි සෝස්",
+    "ta": "தக்காளி சோஸ்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Trim the liver, cut it into bite-sized pieces and soak it in salted water for a few minutes, then drain and pat it dry on a cloth.",
+    "minutes": 10
+   },
+   {
+    "text": "Rub the liver with half the crushed pepper, a little salt and a spoon of the vinegar and leave it while you cut the vegetables.",
+    "minutes": 10
+   },
+   {
+    "text": "Mix the chilli paste, soy sauce, tomato sauce and the rest of the vinegar in a cup so the sauce is ready to go in at once.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan until it is almost smoking, then sear the liver in one layer without crowding it, turning the pieces once.",
+    "minutes": 4
+   },
+   {
+    "text": "Lift the liver out onto a plate while it is still pink in the middle; it will finish cooking later.",
+    "minutes": null
+   },
+   {
+    "text": "In the same oil fry the broken dried chilli, curry leaves, garlic, ginger and green chilli for a moment, then add the onion wedges and capsicum and keep them moving on a high flame so they stay crisp.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the sauce mixture, let it bubble and thicken, then return the liver with the tomato wedges and toss everything hard for a minute.",
+    "minutes": 3
+   },
+   {
+    "text": "Finish with the rest of the crushed pepper, check the salt and serve it straight from the pan while it is hot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අක්මාවේ පටලය ඉවත් කර, කන පහසු කැබලිවලට කපා, මිනිත්තු කිහිපයක් ලුණු වතුරේ පොඟවා, වතුර බේරා රෙද්දකින් තුවා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "අක්මාවට තලාගත් ගම්මිරිස් භාගයක්, ලුණු ස්වල්පයක් සහ විනාකිරි හැන්දක් අතුල්ලා, එළවළු කපන තුරු තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මිරිස් පේස්ට්, සෝයා සෝස්, තක්කාලි සෝස් සහ ඉතිරි විනාකිරි කෝප්පයක මිශ්‍ර කර, එකවර දැමීමට සූදානම් කර ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් පෑන් එකක පොල් තෙල් දුම් නගින තරමට රස්නේ කර, අක්මාව එක් තට්ටුවක් ලෙස, ගැහැරී නොයන ලෙස, වරක් පෙරළමින් බදින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මැද තවමත් රෝස පැහැයෙන් තිබෙන විට අක්මාව පිඟානකට ගන්න; ඉතිරි උයන්න පසුව සිදු වේ.",
+    "minutes": null
+   },
+   {
+    "text": "එම තෙලේ ම කඩාගත් වියළි මිරිස්, කරපිංචා, සුදුළූණු, ඉඟුරු සහ අමු මිරිස් මොහොතක් බැදගෙන, ලොකු ළූණු කෑලි සහ මාළු මිරිස් දමා, කරකර ගතිය නැති නොවන ලෙස විශාල ගින්නේ දිගට ම කලවම් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "සෝස් මිශ්‍රණය වත් කර උතුරා තද වන්නට දී, අක්මාව සහ තක්කාලි කෑලි නැවත දමා, මිනිත්තුවක් හොඳින් කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ඉතිරි තලාගත් ගම්මිරිස් දමා, ලුණු රස බලා, උණුසුම්ව ම පෑන් එකෙන් ම පිළිගන්වන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஈரலின் படலத்தை நீக்கி, வாய்க்கு அடங்கும் துண்டுகளாக வெட்டி, சில நிமிடம் உப்பு நீரில் ஊறவைத்து, வடித்து ஒரு துணியில் ஒற்றி எடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஈரலுடன் பாதி இடித்த மிளகு, கொஞ்சம் உப்பு, ஒரு ஸ்பூன் வினிகர் சேர்த்துத் தேய்த்து, காய்கறிகளை வெட்டும் வரை வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மிளகாய் விழுது, சோயா சோஸ், தக்காளி சோஸ், மீதி வினிகர் ஆகியவற்றை ஒரு கோப்பையில் கலந்து, ஒரே நேரத்தில் சேர்க்கத் தயாராக வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான சட்டியில் தேங்காய் எண்ணெயைப் புகை வரும் அளவு காய்ச்சி, ஈரலை நெருக்கமில்லாமல் ஒரே அடுக்காகப் பரப்பி, ஒரு முறை திருப்பி வறுக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "நடுவில் இன்னும் சிறிது பச்சையாக இருக்கும்போதே ஈரலைத் தட்டில் எடுத்து வையுங்கள்; மீதி வேகுவது பின்னர் நடக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "அதே எண்ணெயில் உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலை, பூண்டு, இஞ்சி, பச்சை மிளகாயை ஒரு நிமிடம் வதக்கி, பின் வெங்காயத் துண்டுகளையும் குடைமிளகாயையும் சேர்த்து, மொரிசுப்பு போகாமல் பெரிய தீயில் புரட்டுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கலந்த சோஸை ஊற்றி, கொதித்துக் கெட்டியாக விட்டு, ஈரலையும் தக்காளித் துண்டுகளையும் மீண்டும் சேர்த்து ஒரு நிமிடம் நன்றாகப் புரட்டுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மீதி இடித்த மிளகைத் தூவி, உப்பைப் பார்த்து, சூடாக சட்டியிலிருந்தே பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "wide heavy pan or wok",
+  "slotted spoon",
+  "cloth for drying the liver"
+ ],
+ "tips": {
+  "en": "Liver turns to rubber the moment it overcooks, so sear it first, take it out, and put it back only when the sauce is ready. High flame and an uncrowded pan are what keep the onion and capsicum crisp instead of watery.",
+  "si": "අක්මාව වැඩිපුර උයුවහොත් වහාම රබර් වේ; එබැවින් මුලින් බැදගෙන ඉවතට ගෙන, සෝස් සූදානම් වූ විට පමණක් නැවත දමන්න. ලොකු ළූණු සහ මාළු මිරිස් වතුර නොවී කරකර ගතියෙන් තබා ගැනීමට විශාල ගින්නක් හා ගැහැරී නැති පෑන් එකක් අවශ්‍යයි.",
+  "ta": "ஈரல் சற்று அதிகம் வெந்தாலே ரப்பராகிவிடும்; எனவே முதலில் வறுத்து எடுத்து வைத்து, சோஸ் தயாரானபின்பே திரும்பச் சேருங்கள். வெங்காயமும் குடைமிளகாயும் நீர் விடாமல் மொறுமொறுப்பாக இருக்க பெரிய தீயும் நெருக்கமில்லாத சட்டியும் தேவை."
+ },
+ "health_note": {
+  "en": "Liver is one of the richest everyday sources of iron and vitamin A, which is why it is often cooked for growing children and for anyone who is pale and tired. It is also high in cholesterol and vitamin A builds up in the body, so once a week is plenty, and pregnant women are usually told to keep away from it.",
+  "si": "යකඩ සහ විටමින් A වැඩිපුරම ලැබෙන එදිනෙදා ආහාරයක් වන අක්මාව, වැඩෙන දරුවන්ට සහ සුදුමැලි වී වෙහෙසෙන අයට උයන්නේ එබැවිනි. එහෙත් කොලෙස්ටරෝල් ඉහළ අතර විටමින් A ශරීරයේ එකතු වන බැවින් සතියකට වරක් ප්‍රමාණවත්; ගැබිනි මවුවරුන්ට සාමාන්‍යයෙන් අක්මාවෙන් වැළකී සිටීමට කියනු ලැබේ.",
+  "ta": "இரும்புச் சத்தும் வைட்டமின் ஏ-வும் மிக அதிகம் உள்ள அன்றாட உணவுகளில் ஒன்று ஈரல்; வளரும் குழந்தைகளுக்கும் வெளிறி இளைத்தவர்களுக்கும் இதைச் சமைப்பது அதனால்தான். ஆனால் கொலஸ்ட்ரோல் அதிகம், வைட்டமின் ஏ உடலில் தேங்கும் என்பதால் வாரம் ஒரு முறை போதும்; கர்ப்பிணிகளுக்கு இதை தவிர்க்கச் சொல்வது வழக்கம்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_carb",
+  "quick",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

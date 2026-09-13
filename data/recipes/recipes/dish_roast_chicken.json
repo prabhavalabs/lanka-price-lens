@@ -1,0 +1,407 @@
+{
+ "id": "dish_roast_chicken",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 230,
+  "description": {
+   "en": "A quarter of the bird with roast potato and pan gravy",
+   "si": "බදාගත් අල සහ පෑන් හොද්ද සමඟ කුකුළාගෙන් හතරෙන් පංගුවක්",
+   "ta": "வறுத்த உருளைக்கிழங்கும் சட்டிக் குழம்புமாக கோழியில் கால் பங்கு"
+  }
+ },
+ "yield_g": 1250,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "whole chicken",
+    "si": "මුළු කුකුළෙක්",
+    "ta": "முழுக் கோழி"
+   },
+   "quantity": 1200,
+   "unit": "g",
+   "household": "1 small bird",
+   "preparation": {
+    "en": "cleaned, skin pricked all over",
+    "si": "පිරිසිදු කර, හම හාත්පසින් සිදුරු කරගත්",
+    "ta": "சுத்தம் செய்து, தோலை எல்லாப் பக்கமும் குத்திய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "தேசிக்காய்ச் சாறு"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "juice of 1 lime",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed to a paste",
+    "si": "පේස්ට් එකක් වන තුරු තලාගත්",
+    "ta": "விழுதாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed to a paste",
+    "si": "පේස්ට් එකක් වන තුරු තලාගත්",
+    "ta": "விழுதாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp, coarsely crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලාගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_worcestershire_sauce",
+   "label": {
+    "en": "worcestershire sauce",
+    "si": "වොස්ටර්ෂයර් සෝස්",
+    "ta": "வொர்செஸ்டர்ஷயர் சோஸ்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 heaped tbsp",
+   "preparation": {
+    "en": "softened, for rubbing over the skin",
+    "si": "හම මත ගැල්වීමට මෘදු කරගත්",
+    "ta": "தோலில் தடவ மென்மையாக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 onions",
+   "preparation": {
+    "en": "cut into thick rings for the base of the pan",
+    "si": "පෑන් පතුලට තැබීමට ඝන වළලුවලට කපාගත්",
+    "ta": "சட்டியின் அடியில் வைக்கத் தடிமனான வளையங்களாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අල",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "4 medium potatoes",
+   "preparation": {
+    "en": "peeled and halved",
+    "si": "පොතු ඉවත් කර දෙකට කපාගත්",
+    "ta": "தோல் சீவி இரண்டாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_stock",
+   "label": {
+    "en": "chicken stock",
+    "si": "කුකුල් මස් සුප් හොද්ද",
+    "ta": "கோழி சாறு"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "or water from boiling the neck and wing tips",
+    "si": "නැතිනම් බෙල්ල හා පියාපත් කෙළවර තම්බාගත් වතුර",
+    "ta": "அல்லது கழுத்தும் சிறகு நுனிகளும் வேகவைத்த நீர்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 9,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Prick the chicken skin all over with a fork and rub the bird inside and out with lime juice, crushed garlic and ginger, pepper, salt, soy sauce and worcestershire sauce.",
+    "minutes": 20
+   },
+   {
+    "text": "Leave it in a cool place, spooning the marinade over it once or twice so the flavour reaches the thick parts.",
+    "minutes": 60
+   },
+   {
+    "text": "Lay the onion rings on the bottom of a heavy pan or roasting dish, put the cinnamon and cloves among them and sit the chicken on top, breast up.",
+    "minutes": 5
+   },
+   {
+    "text": "Rub the softened butter over the skin, pour the stock and the leftover marinade around the bird and cover the pan tightly with a lid or foil.",
+    "minutes": 5
+   },
+   {
+    "text": "Roast in a moderate oven, or cook covered on a low flame on the stove, basting with the pan juices every twenty minutes.",
+    "minutes": 50
+   },
+   {
+    "text": "Tuck the halved potatoes into the juices around the chicken and turn them over so they take the colour of the gravy.",
+    "minutes": 5
+   },
+   {
+    "text": "Uncover and cook on until the potatoes are soft and the skin of the bird has browned, testing the thigh: the juice must run clear, with no pink.",
+    "minutes": 30
+   },
+   {
+    "text": "Lift the chicken onto a board and let it rest before carving, or the juices run out onto the board instead of staying in the meat.",
+    "minutes": 12
+   },
+   {
+    "text": "Set the pan on the flame, mash a few of the onions into the juices and boil them down into a dark gravy to pour over the carved pieces.",
+    "minutes": 6
+   }
+  ],
+  "si": [
+   {
+    "text": "කුකුළාගේ හම ගෑරුප්පුවෙන් හාත්පසින් හාරා, ඇතුළතින් හා පිටතින් දෙහි යුෂ, තලාගත් සුදුළූණු හා ඉඟුරු, ගම්මිරිස්, ලුණු, සෝයා සෝස් සහ වොස්ටර්ෂයර් සෝස් අතුල්ලන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "සිසිල් තැනක තබා, ඝන කොටස්වලටත් රස යන ලෙස වර දෙකක් මිශ්‍රණය උඩින් වත් කරන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "බර පෑන් එකක හෝ බේකින් තැටියක පතුලේ ළූණු වළලු අතුරා, ඒ අතරට කුරුඳු සහ කරාබුනැටි දමා, කුකුළා පපුව උඩ සිටින සේ තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මෘදු කරගත් බටර් හම මත ගල්වා, සුප් හොද්ද සහ ඉතිරි මැරිනේඩ් එක කුකුළා වටා වත් කර, පෑන් වැසුමකින් හෝ ෆොයිල් එකකින් තදින් වසන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මධ්‍යම උණුසුමේ උඳුනක බදින්න, නැතිනම් උදුනේ අඩු ගින්නේ වසා තබා උයන්න; මිනිත්තු විස්සකට වරක් පෑන් යුෂ උඩින් වත් කරන්න.",
+    "minutes": 50
+   },
+   {
+    "text": "දෙකට කපාගත් අල කුකුළා වටා ඇති යුෂ අතරට දමා, හොද්දේ පාට අඳින ලෙස පෙරළන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වැසුම ඉවත් කර, අල මෘදු වී හම දුඹුරු වන තුරු උයන්න; කලවය අනිනවිට යුෂ රෝස පාටක් නැතිව පැහැදිලිව පිට විය යුතුය.",
+    "minutes": 30
+   },
+   {
+    "text": "කුකුළා ලෑල්ලකට ගෙන, කපන්නට පෙර නිවෙන්නට තබන්න; නැතිනම් යුෂ මසේ නොරැඳී ලෑල්ලට ගලා යයි.",
+    "minutes": 12
+   },
+   {
+    "text": "පෑන් එක ගින්නේ තබා, ළූණු කිහිපයක් යුෂ අතර මිරිකා, අඳුරු හොද්දක් වන තුරු සිඳවා, කපාගත් කැබලි මත වත් කරන්න.",
+    "minutes": 6
+   }
+  ],
+  "ta": [
+   {
+    "text": "கோழியின் தோலை முள்கரண்டியால் எல்லாப் பக்கமும் குத்தி, உள்ளேயும் வெளியேயும் தேசிக்காய்ச் சாறு, இடித்த பூண்டு இஞ்சி, மிளகு, உப்பு, சோயா சோஸ், வொர்செஸ்டர்ஷயர் சோஸ் சேர்த்துத் தேய்த்து விடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "குளிர்ந்த இடத்தில் வைத்து, தடிமனான பகுதிகளுக்கும் சுவை இறங்க ஒன்றிரண்டு முறை கலவையை மேலே ஊற்றுங்கள்.",
+    "minutes": 60
+   },
+   {
+    "text": "கனமான சட்டியின் அல்லது வறுக்கும் தட்டின் அடியில் வெங்காய வளையங்களைப் பரப்பி, அவற்றுக்கு இடையே பட்டையும் கிராம்பும் வைத்து, கோழியை மார்பு மேல்நோக்கி வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மென்மையாக்கிய வெண்ணெயைத் தோலில் தடவி, கோழி சாற்றையும் மீதி ஊறவைப்புக் கலவையையும் சுற்றி ஊற்றி, சட்டியை மூடியாலோ படலத்தாலோ இறுக்க மூடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "நடுத்தர சூட்டில் அடுப்பில் வறுக்குங்கள், அல்லது அடுப்பில் மூடி சிறு தீயில் சமையுங்கள்; இருபது நிமிடத்திற்கு ஒரு முறை சட்டிச் சாற்றை மேலே ஊற்றுங்கள்.",
+    "minutes": 50
+   },
+   {
+    "text": "இரண்டாக வெட்டிய உருளைக்கிழங்கைக் கோழியைச் சுற்றியுள்ள சாற்றில் இட்டு, குழம்பின் நிறம் ஏறும்படி புரட்டுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மூடியை நீக்கி, உருளைக்கிழங்கு மென்மையாகி தோல் பொன்னிறமாகும் வரை சமையுங்கள்; தொடையைக் குத்திப் பார்த்தால் சாறு சிவப்பின்றித் தெளிவாக வர வேண்டும்.",
+    "minutes": 30
+   },
+   {
+    "text": "கோழியை ஒரு பலகையில் எடுத்து, வெட்டுவதற்கு முன் ஆற விடுங்கள்; இல்லையேல் சாறு இறைச்சியில் நில்லாமல் பலகையில் வழிந்துவிடும்.",
+    "minutes": 12
+   },
+   {
+    "text": "சட்டியை அடுப்பில் வைத்து, சில வெங்காயங்களைச் சாற்றில் மசித்து, கரும் குழம்பாக வற்ற வைத்து, வெட்டிய துண்டுகளின் மேல் ஊற்றுங்கள்.",
+    "minutes": 6
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 90,
+  "passive_minutes": 72
+ },
+ "equipment": [
+  "heavy pan or roasting dish with a lid",
+  "carving board",
+  "spoon for basting"
+ ],
+ "tips": {
+  "en": "Prick the skin and marinate for at least an hour, because a whole bird takes flavour only where the marinade can get in. If you have no oven, the covered pot on a low flame works just as well; brown the skin at the end with the lid off.",
+  "si": "හම හාරා අඩුම තරමේ පැයක්වත් මැරිනේඩ් කරන්න; මුළු කුකුළෙකුට රස වදින්නේ මිශ්‍රණය ඇතුළු විය හැකි තැන්වලට පමණි. උඳුනක් නැත්නම් අඩු ගින්නේ වසා තැබූ භාජනයක් එකසේ ම හොඳයි; අවසානයේ වැසුම ඉවත් කර හම දුඹුරු කර ගන්න.",
+  "ta": "தோலைக் குத்திக் குறைந்தது ஒரு மணி நேரமாவது ஊறவையுங்கள்; முழுக் கோழிக்குச் சுவை ஏறுவது கலவை உள்ளே செல்லும் இடங்களில் மட்டுமே. அடுப்பு இல்லையென்றால் மூடிய பாத்திரம் சிறு தீயில் அதே அளவு நன்றாகவே வேலை செய்யும்; இறுதியில் மூடியை நீக்கித் தோலைப் பொன்னிறமாக்குங்கள்."
+ },
+ "health_note": {
+  "en": "Roasting needs far less oil than frying, and if you take the skin off at the table this becomes one of the leanest ways to serve a whole bird. The soy and worcestershire sauces carry the salt here, so there is no need to add more at the table.",
+  "si": "බැදීමට වඩා රෝස්ට් කිරීමට තෙල් අවශ්‍ය වන්නේ බොහෝ අඩුවෙන් වන අතර, මේසයේ දී හම ඉවත් කළහොත් මුළු කුකුළෙකු පිළිගැන්වීමට ඇති තෙල් අඩුම ක්‍රමයක් වේ. මෙහි ලුණු එන්නේ සෝයා සහ වොස්ටර්ෂයර් සෝස්වලින් බැවින් මේසයේ දී තව ලුණු දැමීමට අවශ්‍ය නැත.",
+  "ta": "பொரிப்பதை விட வறுப்பதற்கு எண்ணெய் மிகக் குறைவே தேவை; மேசையில் தோலை நீக்கிச் சாப்பிட்டால் முழுக் கோழியைப் பரிமாறும் மிகக் குறைந்த கொழுப்பு வழிகளில் இதுவும் ஒன்று. இங்கு உப்பு சோயா, வொர்செஸ்டர்ஷயர் சோஸ்களிலிருந்தே வருகிறது, எனவே மேசையில் மேலும் உப்பு சேர்க்கத் தேவையில்லை."
+ },
+ "tags": [
+  "high_protein",
+  "festive",
+  "kid_friendly",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

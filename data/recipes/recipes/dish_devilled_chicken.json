@@ -1,0 +1,471 @@
+{
+ "id": "dish_devilled_chicken",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 160,
+  "description": {
+   "en": "A hot plateful of chicken and onion wedges to share beside rice",
+   "si": "බත් සමග බෙදා ගන්නා සැර කුකුල් මස් සහ ළූණු පෙති පිඟානක්",
+   "ta": "சாதத்துடன் பகிர்ந்து கொள்ளும் காரமான கோழியும் வெங்காய இதழ்களும்"
+  }
+ },
+ "yield_g": 650,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken, boneless",
+    "si": "කුකුල් මස්, ඇට නැති",
+    "ta": "கோழி இறைச்சி, எலும்பு நீக்கியது"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "4 thigh fillets",
+   "preparation": {
+    "en": "cut into bite-size cubes",
+    "si": "කටට ගන්න පහසු කැබලිවලට කපා ගත්",
+    "ta": "வாய்க்கு அடங்கும் துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "cut into wedges and the layers separated",
+    "si": "පෙතිවලට කපා ස්තර වෙන් කර ගත්",
+    "ta": "இதழ்களாக நறுக்கி பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "capsicum",
+    "si": "මාළු මිරිස්",
+    "ta": "குடை மிளகாய்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large capsicum",
+   "preparation": {
+    "en": "cut into thick squares",
+    "si": "ගොරෝසු හතරැස් කැබලිවලට කපා ගත්",
+    "ta": "தடிமனான சதுரங்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 small firm tomato",
+   "preparation": {
+    "en": "cut into wedges, seeds left in",
+    "si": "පෙතිවලට කපා ගත්",
+    "ta": "இதழ்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා ගත්",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා ගත්",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "cut on the slant",
+    "si": "ඇලයට කපා ගත්",
+    "ta": "சாய்வாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 pods, broken",
+   "preparation": {
+    "en": "broken into two",
+    "si": "දෙකට කඩා ගත්",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් තලපය",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_tomato_sauce",
+   "label": {
+    "en": "tomato sauce",
+    "si": "තක්කාලි සෝස්",
+    "ta": "தக்காளி சோஸ்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_cornflour",
+   "label": {
+    "en": "cornflour",
+    "si": "ඉරිඟු පිටි",
+    "ta": "சோள மாவு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": {
+    "en": "cracked",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "half tsp, the sauces are already salty",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub the chicken cubes with the chopped garlic, ginger, pepper, salt, half the soy sauce and half the cornflour and set aside.",
+    "minutes": 15
+   },
+   {
+    "text": "Heat the coconut oil in a wok or wide pan and fry the chicken in two batches over a high flame until the edges are brown, then lift it out.",
+    "minutes": 10
+   },
+   {
+    "text": "Drop the broken dried chillies and the curry leaves into the same oil and let them crackle for a few seconds.",
+    "minutes": 1
+   },
+   {
+    "text": "Throw in the onion wedges, capsicum and green chillies and toss them hard over a high flame so they colour but stay crunchy.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir in the chilli paste and cook until it loses its raw smell and the oil turns red.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the tomato wedges with the tomato sauce, the rest of the soy sauce, the vinegar and the sugar and cook to a sticky sauce.",
+    "minutes": 3
+   },
+   {
+    "text": "Return the chicken and toss until every cube is coated and shining.",
+    "minutes": 2
+   },
+   {
+    "text": "Slake the remaining cornflour in two tablespoons of water and drizzle it in only if you want a clinging gravy rather than a dry devil.",
+    "minutes": 1
+   },
+   {
+    "text": "Serve straight away, while the onion still snaps and the chicken is hot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුකුල් මස් කැබලිවලට කපා ගත් සුදුළූණු, ඉඟුරු, ගම්මිරිස්, ලුණු, සෝයා සෝස් බාගයක් සහ ඉරිඟු පිටි බාගයක් අතුල්ලා පසෙකට තියන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වොක් එකක හෝ පළල් පෑන් එකක පොල් තෙල් රත් කර, මස් දෙකට බෙදා ලොකු ගින්නේ දාර රන්වන් වන තුරු බැදගෙන ඉවතට ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එම තෙලට කඩා ගත් වියළි මිරිස් සහ කරපිංචා දමා තත්පර කිහිපයක් පිපිරෙන්න දෙන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ළූණු පෙති, මාළු මිරිස් සහ අමු මිරිස් දමා ලොකු ගින්නේ වේගයෙන් පෙරළන්න; ඒවා තැම්බෙන්නේ නැතුව සැරට තැවෙන්න ඕන.",
+    "minutes": 3
+   },
+   {
+    "text": "මිරිස් තලපය දමා අමු ගඳ නැති වී තෙල රතු වන තුරු බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තක්කාලි පෙති, තක්කාලි සෝස්, ඉතිරි සෝයා සෝස්, විනාකිරි සහ සීනි දමා සෝස් ඇලෙන ගානට උයන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බැදගත් මස් නැවත දමා සියලු කැබලි සෝස් වලින් වැසී දිලිසෙන තුරු පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "වියළි දෙවල් එකක් නොව හොදි සහිත එකක් ඕන නම් ඉතිරි ඉරිඟු පිටි වතුර මේස හැඳි දෙකක දිය කර වත් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ළූණු කරකර ගතිය තියෙන අතරේ, උණුසුමින්ම පිළිගන්වන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கோழித் துண்டுகளில் நறுக்கிய பூண்டு, இஞ்சி, மிளகு, உப்பு, பாதி சோயா சோஸ், பாதி சோள மாவு சேர்த்து தேய்த்து வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவிட்டு கோழியை இரு தவணையாக பெருந்தீயில் ஓரம் பொன்னிறமாகும் வரை பொரித்து எடுக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே எண்ணெயில் உடைத்த வத்தல் மிளகாயும் கறிவேப்பிலையும் இட்டு சில வினாடிகள் வெடிக்கவிடுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "வெங்காய இதழ்கள், குடை மிளகாய், பச்சை மிளகாய் சேர்த்து பெருந்தீயில் விரைவாகப் புரட்டுங்கள்; அவை கறுமுறுப்பாக இருக்க வேண்டும்.",
+    "minutes": 3
+   },
+   {
+    "text": "மிளகாய் விழுதைச் சேர்த்து பச்சை வாசனை போய் எண்ணெய் சிவக்கும் வரை வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "தக்காளி இதழ்கள், தக்காளி சோஸ், மீதி சோயா சோஸ், வினிகர், சீனி சேர்த்து சோஸ் ஒட்டும் பதம் வரை சமைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பொரித்த கோழியை மீண்டும் சேர்த்து ஒவ்வொரு துண்டும் சோஸில் மூடி மின்னும் வரை புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "காய்ந்த தேவிலுக்குப் பதிலாக கிரேவியுடன் வேண்டுமானால் மீதி சோள மாவை இரண்டு மேசைக்கரண்டி நீரில் கரைத்து ஊற்றுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "வெங்காயம் கறுமுறுப்பாக இருக்கும்போதே சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "wok or wide frying pan",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "The pan must be hot enough that the onion hisses the moment it lands, otherwise the vegetables sweat and the devil turns into a wet curry. Cook it last, after the rice and other curries are done.",
+  "si": "ළූණු දැම්ම ගමන් හිස් ගාන තරමට පෑන් රත් වෙලා තියෙන්න ඕන; නැත්නම් එළවළු වතුර දමා දෙවල් එක තෙත් කරියක් වෙනවා. බත් සහ අනෙක් කරි ඉවර වුණාට පස්සේ අන්තිමට මේක උයන්න.",
+  "ta": "வெங்காயம் விழுந்ததும் சீறும் அளவு வாணலி காய்ந்திருக்க வேண்டும்; இல்லையெனில் காய்கறிகள் நீர் விட்டு தேவில் ஈரக் கறியாகிவிடும். சாதமும் மற்ற கறிகளும் முடிந்த பின் இதைக் கடைசியாகச் சமைக்கவும்."
+ },
+ "health_note": {
+  "en": "There is good protein here and very little starch, but the soy sauce, tomato sauce and chilli paste together carry a lot of salt and some hidden sugar. Anyone told to keep salt down should take a small serving with plenty of rice.",
+  "si": "මෙහි හොඳ ප්‍රෝටීන් ප්‍රමාණයක් තියෙනවා, පිෂ්ටය අඩුයි. නමුත් සෝයා සෝස්, තක්කාලි සෝස් සහ මිරිස් තලපය එකතු වී ලුණු සහ සැඟවුණු සීනි ගොඩක් එනවා. ලුණු අඩු කරන්න කියලා තියෙන කෙනෙක් නම් බත් වැඩියෙන් ගෙන මේකෙන් ටිකක් ගන්න.",
+  "ta": "இதில் நல்ல புரதம் உண்டு, மாவுப்பொருள் மிகக் குறைவு. ஆனால் சோயா சோஸ், தக்காளி சோஸ், மிளகாய் விழுது சேர்ந்து அதிக உப்பையும் மறைந்த சீனியையும் கொண்டுவரும். உப்பைக் குறைக்கச் சொல்லப்பட்டவர்கள் சாதம் அதிகமாக எடுத்து இதில் சிறிதே எடுக்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "high_sodium",
+  "street_food",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

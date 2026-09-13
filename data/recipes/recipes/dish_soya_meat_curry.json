@@ -1,0 +1,387 @@
+{
+ "id": "dish_soya_meat_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 210,
+  "description": {
+   "en": "A ladle of soya chunks in thick tomato and coconut gravy",
+   "si": "ඝන තක්කාලි පොල් කිරි හොදියේ සෝයා මීට් හැන්දක්",
+   "ta": "கெட்டியான தக்காளி தேங்காய்ப்பால் கறியில் சோயா துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 850,
+ "ingredients": [
+  {
+   "ref": "pantry_soya_chunks",
+   "label": {
+    "en": "textured soya chunks",
+    "si": "සෝයා මීට්",
+    "ta": "சோயா துண்டுகள்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 packet, about 2 cups dry",
+   "preparation": {
+    "en": "soaked in hot water and squeezed dry",
+    "si": "උණු වතුරේ පොඟවා මිරිකාගත්",
+    "ta": "சுடுநீரில் ஊறவைத்துப் பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "2 small tomatoes",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb joint",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப்பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "two thirds of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Bring a pot of water to the boil, drop in the soya chunks with a pinch of salt and turn off the fire.",
+    "minutes": 2
+   },
+   {
+    "text": "Leave them in the hot water until they swell and are soft right through.",
+    "minutes": 10
+   },
+   {
+    "text": "Drain and squeeze each handful hard between your palms until no watery liquid comes out.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the squeezed chunks on a high flame until they colour at the edges.",
+    "minutes": 5
+   },
+   {
+    "text": "Push them to one side, add the onion, garlic, ginger and curry leaves and fry until the onion is soft.",
+    "minutes": 5
+   },
+   {
+    "text": "Lower the flame and stir in the turmeric, chilli powder and roasted curry powder for half a minute.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the chopped tomato and the salt and mash it into the spices until it breaks down into a rough paste.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the thin coconut milk, cover and simmer until the soya has drunk up most of the gravy.",
+    "minutes": 10
+   },
+   {
+    "text": "Finish with the thick coconut milk, give it one more minute on the fire and serve with rice or pittu.",
+    "minutes": 2
+   }
+  ],
+  "si": [
+   {
+    "text": "වළඳක වතුර උතුරවා, ලුණු ස්වල්පයක් සමඟ සෝයා මීට් දමා ගින්න නිවා දමන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඒවා පිම්බී ඇතුළත දක්වා මෘදු වන තුරු උණු වතුරේ තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වතුර බේරා, අතට ගෙන වතුර ගලන්නේ නැති තරමට හොඳින් මිරිකන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑනක පොල් තෙල් රත් කර මිරිකාගත් සෝයා තද ගින්නේ දාර දුඹුරු වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඒවා පැත්තකට කර ලූනු, සුදුළූනු, ඉඟුරු සහ කරපිංචා දමා ලූනු මෘදු වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගිනි අඩු කර කහ කුඩු, මිරිස් කුඩු සහ බැදපු තුනපහ දමා තත්පර තිහක් කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "කපාගත් තක්කාලි සහ ලුණු දමා, තක්කාලි කුළුබඩු සමඟ තැලී පේස්ට් වන තුරු තලන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "දෙවන පොල් කිරි වත් කර වසා, සෝයා හොදිය බොහෝ දුරට උරාගන්නා තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුල් පොල් කිරි දමා තව මිනිත්තුවක් ගින්නේ තබා බත් හෝ පිට්ටු සමඟ බෙදන්න.",
+    "minutes": 2
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாத்திரத்தில் தண்ணீரைக் கொதிக்கவைத்து, சிறிது உப்புடன் சோயா துண்டுகளைப் போட்டு அடுப்பை அணைக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "அவை ஊறிப் பெருகி உள்ளே வரை மென்மையாகும் வரை சூடான நீரில் விடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வடித்து, கைகளுக்கு இடையே நீர் வராத அளவு நன்றாகப் பிழியவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து பிழிந்த சோயாவை அதிக தணலில் ஓரம் பொன்னிறமாகும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "அவற்றை ஓரம் ஒதுக்கி, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை சேர்த்து வெங்காயம் மென்மையாகும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தணலைக் குறைத்து மஞ்சள் தூள், மிளகாய்த் தூள், வறுத்த கறித்தூள் சேர்த்து அரை நிமிடம் கிளறவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "நறுக்கிய தக்காளியும் உப்பும் சேர்த்து, தக்காளி மசாலாவுடன் கலந்து விழுதாகும் வரை மசிக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப்பாலை ஊற்றி மூடி, சோயா கறியைப் பெரும்பாலும் உறிஞ்சும் வரை கொதிக்கவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலைச் சேர்த்து இன்னும் ஒரு நிமிடம் அடுப்பில் வைத்து சாதம் அல்லது பிட்டுடன் பரிமாறவும்.",
+    "minutes": 2
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "pot for soaking",
+  "wide pan or clay pot"
+ ],
+ "tips": {
+  "en": "The squeezing is the whole recipe; chunks left wet stay bland and spongy however long you cook them. Season the gravy a shade stronger than you would for meat, because soya soaks up flavour rather than giving any.",
+  "si": "මේ ව්‍යංජනයේ මුළු රහසම මිරිකීමයි; තෙත්ව තිබූ කැබලි කොපමණ තැම්බුවත් රසයක් නැතිව ස්පොන්ජි ලෙසම පවතී. සෝයා රසය ලබා දෙනවා වෙනුවට උරාගන්නා බැවින් හොදිය මසට වඩා ටිකක් තදින් රස කරගන්න.",
+  "ta": "இந்த சமையலின் ரகசியமே பிழிவது; ஈரமாக விட்ட துண்டுகள் எவ்வளவு வேகவைத்தாலும் சுவையின்றி கடற்பாசி போலவே இருக்கும். சோயா சுவையைத் தருவதில்லை, உறிஞ்சுகிறது, அதனால் கறியை மாமிசத்துக்குச் செய்வதைவிடச் சற்று அதிகமாகச் சுவைக்கவைக்கவும்."
+ },
+ "health_note": {
+  "en": "Soya chunks carry protein close to that of meat with no cholesterol, and they cost a fraction of a chicken, which is why many families lean on them. Packet mixes are often very salty, so buy plain chunks and salt the pot yourself.",
+  "si": "සෝයා මීට් වලින් මස් වලට ආසන්න ප්‍රෝටීන් ප්‍රමාණයක් කොලෙස්ටරෝල් නොමැතිව ලැබෙන අතර මිල කුකුළු මස්වලින් සුළු කොටසකි; බොහෝ පවුල් මේ නිසාම එය භාවිත කරයි. සීසන් කළ පැකට් මිශ්‍රණවල ලුණු ඉතා වැඩි බැවින් සාමාන්‍ය සෝයා ගෙන ලුණු ඔබම දමා ගන්න.",
+  "ta": "சோயா துண்டுகள் மாமிசத்துக்கு அருகிலான புரதத்தை கொலஸ்ட்ரால் இல்லாமல் தருகின்றன, விலையும் கோழிக்கறியில் சிறு பகுதியே; அதனால்தான் பல குடும்பங்கள் இதை நம்புகின்றன. சுவையூட்டிய பாக்கெட் கலவைகளில் உப்பு மிக அதிகம், எனவே சாதாரண துண்டுகளை வாங்கி உப்பை நீங்களே சேர்க்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "budget",
+  "filling",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,307 @@
+{
+ "id": "dish_muscat",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 80,
+  "description": {
+   "en": "Two chewy translucent blocks studded with cashew",
+   "si": "කජු සහිත, පාරදෘශ්‍ය හපන රස මස්කට් කැබලි දෙකක්",
+   "ta": "முந்திரி இட்ட, ஒளிபுகும் மெல்லும் இரண்டு துண்டுகள்"
+  }
+ },
+ "yield_g": 320,
+ "ingredients": [
+  {
+   "ref": "pantry_cornflour",
+   "label": {
+    "en": "corn flour",
+    "si": "ඉරිඟු පිටි",
+    "ta": "சோள மாவு"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "half a cup and a spoon",
+   "preparation": {
+    "en": "whisked into cold water without lumps",
+    "si": "සිසිල් වතුරේ ගුලි නොවන සේ දිය කරගත්",
+    "ta": "குளிர்ந்த நீரில் கட்டி இல்லாமல் கரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 170,
+   "unit": "g",
+   "household": "three quarters of a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "syrup"
+  },
+  {
+   "ref": "pantry_ghee",
+   "label": {
+    "en": "ghee",
+    "si": "ගිතෙල්",
+    "ta": "நெய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": {
+    "en": "melted",
+    "si": "උණු කරගත්",
+    "ta": "உருக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 and a half tbsp, plus a little for the tray",
+   "preparation": {
+    "en": "melted",
+    "si": "උණු කරගත්",
+    "ta": "உருக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "broken in halves, lightly fried in a little ghee",
+    "si": "දෙකට කඩා ගිතෙල් ටිකකින් ටිකක් බැදගත්",
+    "ta": "இரண்டாக உடைத்து, சிறிது நெய்யில் லேசாக வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, powdered",
+   "preparation": {
+    "en": "seeds powdered",
+    "si": "ඇට කුඩු කරගත්",
+    "ta": "விதைகளைப் பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch of powder",
+   "preparation": {
+    "en": "powdered",
+    "si": "කුඩු කරගත්",
+    "ta": "பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_food_colouring",
+   "label": {
+    "en": "food colouring",
+    "si": "කෑම වර්ණ",
+    "ta": "உணவு நிறம்"
+   },
+   "quantity": 1,
+   "unit": "ml",
+   "household": "a few drops of red or green",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Whisk the corn flour into 300 ml of cold water until not a single lump is left.",
+    "minutes": null
+   },
+   {
+    "text": "Boil the sugar with 150 ml of water in a heavy pan until it thickens into a light syrup.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour the corn flour water into the syrup in a thin stream, stirring hard all the while so it does not set in lumps.",
+    "minutes": null
+   },
+   {
+    "text": "Cook on a low fire, stirring without stopping, until the mixture turns clear and thick and comes away from the spoon.",
+    "minutes": 25
+   },
+   {
+    "text": "Add the ghee and butter a spoon at a time, letting each spoon be taken up before the next goes in.",
+    "minutes": 15
+   },
+   {
+    "text": "Stir in the cardamom, cinnamon, fried cashew and a few drops of colouring if you want it tinted.",
+    "minutes": null
+   },
+   {
+    "text": "Keep cooking until the mass is glossy and a little pressed between wet fingers feels chewy rather than sticky.",
+    "minutes": 10
+   },
+   {
+    "text": "Spread it in a buttered tray to the thickness of a finger and level the top with a wet spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Let it cool and set, then cut into blocks and keep them in a tin between sheets of paper.",
+    "minutes": 120
+   }
+  ],
+  "si": [
+   {
+    "text": "ඉරිඟු පිටි සිසිල් වතුර මිලි ලීටර් 300ක් සමඟ ගුලියක්වත් නැති වන තුරු හොඳින් දිය කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බර පෑනකට සීනි සහ වතුර මිලි ලීටර් 150ක් දමා, ලා පැණි හලක් වන තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඉරිඟු පිටි වතුර පැණි වලට සිහින් දහරාවක් ලෙස වත් කරමින්, ගුලි නොවන සේ දිගටම හොඳින් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අඩු ගින්නේ, නවත්වන්නේ නැතිව කලවම් කරමින්, මිශ්‍රණය පාරදෘශ්‍ය වී ගන වී හැන්දෙන් වෙන් වන තුරු තම්බන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "ගිතෙල් සහ බටර් හැන්දෙන් හැන්ද දමමින්, එකක් සම්පූර්ණයෙන් එකතු වූ පසු ඊළඟ එක දමන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "එනසාල්, කුරුඳු, බැදගත් කජු සහ අවශ්‍ය නම් කෑම වර්ණ බිංදු කිහිපයක් දමා කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මිශ්‍රණය දිලිසෙන තුරු සහ තෙත් ඇඟිලි අතරේ තද කළ විට ඇලෙන්නේ නැතිව හපන ගතියක් දැනෙන තුරු තවත් තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බටර් ගැල්වූ තැටියකට ඇඟිල්ලක් පමණ ගනකමට තවරා, තෙත් හැන්දකින් උඩ පිට සමතලා කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සිසිල් වී තද වූ පසු කැබලිවලට කපා, කඩදාසි අතරේ තබා භාජනයක ගබඩා කරන්න.",
+    "minutes": 120
+   }
+  ],
+  "ta": [
+   {
+    "text": "சோள மாவை 300 மில்லி குளிர்ந்த தண்ணீரில் ஒரு கட்டி கூட இல்லாமல் கரைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கனமான சட்டியில் சீனியையும் 150 மில்லி தண்ணீரையும் சேர்த்து, லேசான பாகு பதம் வரும் வரை கொதிக்கவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "கரைத்த சோள மாவுத் தண்ணீரை மெல்லிய கம்பியாகப் பாகில் ஊற்றி, கட்டி விழாமல் தொடர்ந்து வேகமாகக் கிளறவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குறைந்த தீயில், நிற்காமல் கிளறி, கலவை ஒளிபுகுந்து கெட்டியாகிக் கரண்டியை விட்டு விலகும் வரை வேகவிடவும்.",
+    "minutes": 25
+   },
+   {
+    "text": "நெய்யையும் வெண்ணெயையும் ஒரு கரண்டியாகச் சேர்த்து, ஒன்று முழுவதும் கலந்த பின்பே அடுத்ததைச் சேர்க்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "ஏலக்காய், இலவங்கப்பட்டை, வறுத்த முந்திரி, விரும்பினால் சில துளி உணவு நிறம் சேர்த்துக் கிளறவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கலவை பளபளக்கும் வரை, ஈர விரல்களுக்கு இடையே அழுத்தினால் ஒட்டாமல் மெல்லும் பதம் வரும் வரை தொடர்ந்து வேகவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வெண்ணெய் தடவிய தட்டில் ஒரு விரல் தடிமனுக்குப் பரப்பி, ஈரக் கரண்டியால் மேற்பரப்பைச் சமன் செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குளிர்ந்து இறுகிய பின் துண்டுகளாக வெட்டி, காகிதங்களுக்கு இடையே டப்பாவில் சேமிக்கவும்.",
+    "minutes": 120
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 60,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "heavy pan",
+  "long wooden spoon",
+  "setting tray"
+ ],
+ "tips": {
+  "en": "The arm does the work here: stop stirring for a minute and the bottom catches and the whole pan tastes burnt. Add the ghee only after the mixture is clear, or it will refuse to take it up.",
+  "si": "මෙහි වැඩේ අතට බරයි; විනාඩියක් කලවම් නොකර තිබුණොත් පතුල පිළිස්සී මුළු ලොතේම රස නැති වේ. මිශ්‍රණය පාරදෘශ්‍ය වූ පසුම ගිතෙල් දමන්න, නැත්නම් එය එකතු වන්නේ නැත.",
+  "ta": "இதில் வேலை முழுக்க கையில்: ஒரு நிமிடம் கிளறாமல் விட்டாலும் அடி பிடித்து முழுக் கலவையும் கருகிய சுவையாகும். கலவை ஒளிபுகுந்த பின்பே நெய் சேர்க்கவும், இல்லாவிட்டால் அது கலக்காது."
+ },
+ "health_note": {
+  "en": "Muscat is sugar, starch and ghee and nothing else of substance, so it is best treated as a festive treat in one small block. Anyone with diabetes should take a taste rather than a portion.",
+  "si": "මස්කට් යනු සීනි, පිෂ්ටය සහ ගිතෙල් පමණයි; වෙනත් පෝෂණයක් නැති නිසා උත්සව අවස්ථාවක කුඩා කැබැල්ලකට සීමා කරන්න. දියවැඩියාව ඇති අයට රස බැලීමක් පමණක් සෑහේ.",
+  "ta": "மஸ்கட்டில் சீனி, மாச்சத்து, நெய் தவிர வேறு சத்து இல்லை; எனவே விழா நாளில் ஒரு சிறு துண்டாகவே வைத்துக்கொள்ளவும். நீரிழிவு உள்ளவர்கள் ஒரு சுவைக்கு மட்டும் எடுப்பது நல்லது."
+ },
+ "tags": [
+  "festive",
+  "high_sugar",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

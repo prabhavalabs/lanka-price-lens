@@ -1,0 +1,306 @@
+{
+ "id": "dish_dried_fish_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 60,
+  "description": {
+   "en": "A small heap of dry, hot dried fish at the edge of the plate",
+   "si": "පිඟානේ කෙළවරට දාගන්න වියළි, සැර කරවල ටිකක්",
+   "ta": "தட்டின் ஓரத்தில் வைக்கும் காரமான, உலர்ந்த கருவாடு சிறிதளவு"
+  }
+ },
+ "yield_g": 250,
+ "ingredients": [
+  {
+   "ref": "product_dried_fish_katta",
+   "label": {
+    "en": "dried fish, katta",
+    "si": "කරවල, කට්ට",
+    "ta": "கருவாடு, கட்டா"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "about 1 and a half cups of pieces",
+   "preparation": {
+    "en": "rinsed, soaked for a few minutes, cut into small pieces",
+    "si": "හෝදා, විනාඩි කීපයක් පොඟවා, කුඩා කැබලිවලට කපා ගත්ත",
+    "ta": "கழுவி, சில நிமிடம் ஊறவைத்து, சிறு துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "piece",
+   "household": "5 chillies",
+   "preparation": {
+    "en": "broken, most seeds shaken out",
+    "si": "කඩා, ඇට වැඩිපුර ඉවත් කර ගත්ත",
+    "ta": "உடைத்து, விதைகளை உதிர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a small piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice squeezed in at the end",
+    "si": "අන්තිමට මිරිකා ගන්නා යුෂ",
+    "ta": "இறுதியில் பிழியும் சாறு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, only if needed",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the dried fish, soak it briefly in warm water, then squeeze it dry and cut it into small pieces.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the dried fish over a good flame until the pieces are hard at the edges.",
+    "minutes": 6
+   },
+   {
+    "text": "Lift the fish out onto a plate and leave most of the oil in the pan.",
+    "minutes": null
+   },
+   {
+    "text": "In the same oil temper the onion, dried chilli, curry leaves and pandan until the onion turns golden.",
+    "minutes": 5
+   },
+   {
+    "text": "Sprinkle in the turmeric and chilli flakes and stir once so they do not burn.",
+    "minutes": null
+   },
+   {
+    "text": "Return the fish, toss everything together over a low flame until the mixture looks dry and glossy.",
+    "minutes": 3
+   },
+   {
+    "text": "Squeeze the lime over, taste before adding even a pinch of salt, and take the pan off the fire.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කරවල හෝදලා උණු වතුරේ ටික වෙලාවක් පොඟවා, මිරිකා වතුර බැහැර කර කුඩා කැබලිවලට කපා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් එකේ පොල් තෙල් රත් කරලා, හොඳ ගිනි මතුවේ කරවල කැබලි දාරවල් තදවෙන තුරු බැද ගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "බැදපු කරවල පිඟානකට අරගෙන, තෙල් වැඩි කොටස පෑන් එකේ තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එම තෙලේම ලූනු, වියළි මිරිස්, කරපිංචා සහ රම්පෙ ලූනු රන්වන් වෙන තුරු තෙල් දාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කහ කුඩු සහ මිරිස් කැබලි ඉහලා, පිළිස්සෙන්න ඉඩ නොදී එක වරක් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බැදපු කරවල නැවත දමා, මද ගින්නේ මිශ්‍රණය වියළී දිලිසෙන තුරු හොඳට කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා, ලුණු ස්වල්පයක් වත් දාන්න කලින් රස බලා, පෑන් එක ලිපෙන් අයින් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கருவாட்டை அலசி, வெந்நீரில் சிறிது நேரம் ஊறவைத்து, பிழிந்து சிறு துண்டுகளாக வெட்டுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து, நல்ல தீயில் கருவாட்டுத் துண்டுகளை ஓரம் இறுகும் வரை வறுக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "வறுத்த கருவாட்டை ஒரு தட்டில் எடுத்து, எண்ணெயின் பெரும்பகுதியை வாணலியில் விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அதே எண்ணெயில் வெங்காயம், வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை சேர்த்து வெங்காயம் பொன்னிறமாகும் வரை தாளியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மஞ்சள் தூளும் மிளகாய்த் துகளும் தூவி, கருகாமல் ஒரு முறை கிளறுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கருவாட்டை மீண்டும் போட்டு, சிறு தீயில் கலவை உலர்ந்து பளபளக்கும் வரை கிளறிக் கலக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "தேசிக்காய் சாறு பிழிந்து, ஒரு சிட்டிகை உப்பு போடுவதற்கு முன்பும் சுவைத்துப் பார்த்து, வாணலியை இறக்குங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "heavy frying pan"
+ ],
+ "tips": {
+  "en": "Fry the fish first and the onion after, never together, or the onion burns while the fish is still soft. A chopped tomato added with the onion turns it into a moist tempering that children eat more happily.",
+  "si": "කරවල කලින්, ලූනු පස්සේ බැදගන්න; එකට දැම්මොත් කරවල තවම මෙලෙක් වෙලා ඉතින් ලූනු පිළිස්සෙනවා. ලූනු සමඟ තක්කාලි ගෙඩියක් කපා දැම්මොත් ළමයින්ට කන්න පහසු තෙත් තෙල්දාලක් හැදෙනවා.",
+  "ta": "கருவாட்டை முதலில், வெங்காயத்தை பின்பு வறுக்கவும்; சேர்த்து போட்டால் கருவாடு மென்மையாக இருக்கும்போதே வெங்காயம் கருகிவிடும். வெங்காயத்துடன் ஒரு தக்காளியை நறுக்கிப் போட்டால் குழந்தைகள் விரும்பும் ஈரமான வருவலாகும்."
+ },
+ "health_note": {
+  "en": "This is a salty, oily relish rather than a main dish, so a spoonful or two beside rice is the honest portion. It does give useful protein for very little money.",
+  "si": "මේක ප්‍රධාන ව්‍යංජනයක් නෙවෙයි, ලුණු සහ තෙල් වැඩි රසකාරකයක්, ඒ නිසා බත සමඟ හැඳි එකක් දෙකක් ඇති. අඩු මුදලකට හොඳ ප්‍රෝටීන් ටිකක් ලැබෙන එක වාසියක්.",
+  "ta": "இது பிரதான கறி அல்ல, உப்பும் எண்ணெயும் கூடிய ஒரு தொட்டுக்கொள்ளும் பதார்த்தம்; சாதத்துடன் ஒன்றிரண்டு கரண்டி போதும். குறைந்த செலவில் நல்ல புரதம் கிடைப்பது இதன் பலம்."
+ },
+ "tags": [
+  "high_protein",
+  "high_sodium",
+  "low_carb",
+  "quick",
+  "budget",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

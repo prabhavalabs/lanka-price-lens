@@ -1,0 +1,402 @@
+{
+ "id": "dish_mora_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 225,
+  "description": {
+   "en": "A thick slice of shark with dark sour gravy over rice",
+   "si": "බත් මතට කළු ඇඹුල් හොදි සමඟ ඝන මෝර පෙත්තක්",
+   "ta": "சாதத்தின் மேல் கறுத்த புளிப்பு குழம்புடன் தடிமனான சுறா துண்டு"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_mora",
+   "label": {
+    "en": "mora (shark)",
+    "si": "මෝර",
+    "ta": "சுறா"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 thick slices",
+   "preparation": {
+    "en": "cut into thick pieces, washed with lime and turmeric",
+    "si": "ඝන කෑලිවලට කපා, දෙහි සහ කහ දමා සෝදා",
+    "ta": "தடிமனான துண்டுகளாக வெட்டி, எலுமிச்சையும் மஞ்சளும் சேர்த்து அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காப்புளி (கோரக்கா)"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "3 dried pieces",
+   "preparation": {
+    "en": "soaked in hot water and ground to a paste",
+    "si": "උණු වතුරේ පොඟවා අඹරා පේස්ට් කර",
+    "ta": "சுடுநீரில் ஊறவைத்து விழுதாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed, some ground with the gorakka",
+    "si": "තලා; කොටසක් ගොරකා සමඟ අඹරා",
+    "ta": "நசுக்கியது; ஒரு பகுதி புளியுடன் அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 and a half tsp, coarsely ground",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp, some for washing the fish",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "தளர்ந்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, for washing the fish",
+   "preparation": {
+    "en": "juiced, used to wash the fish",
+    "si": "යුෂ මිරිකා, මාළු සෝදන්නට",
+    "ta": "சாறு பிழிந்து, மீனை அலசுவதற்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the shark pieces in water with the lime juice and a little turmeric, rubbing them well, then rinse twice more; this is what clears the sharp smell.",
+    "minutes": null
+   },
+   {
+    "text": "Soak the gorakka in half a cup of hot water until soft and grind it to a paste with two cloves of the garlic.",
+    "minutes": 15
+   },
+   {
+    "text": "Rub the fish with the salt, turmeric and half the pepper and leave it while you begin the gravy.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the oil in a clay pot and temper the onion, remaining garlic and curry leaves until the onion browns at the edges.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the roasted curry powder, chilli powder and the rest of the pepper and fry so the spices wake up without burning.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk with the gorakka paste and cook until the gravy darkens and thickens a little.",
+    "minutes": 8
+   },
+   {
+    "text": "Lay in the shark pieces in one layer, cover the pot and cook without stirring, shaking the pot once or twice.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the thick coconut milk, let it come just to the boil and check the salt and sourness.",
+    "minutes": 4
+   },
+   {
+    "text": "Leave the pot to stand before serving; shark curry improves as the gorakka works into the meat.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "මෝර කෑලි දෙහි යුෂ සහ කහ ටිකක් දමපු වතුරේ හොඳින් අතගා සෝදා, තව දෙපාරක් පිරිසිදු වතුරෙන් සෝදන්න; තියුණු ගඳ යන්නේ මෙහෙම කළොත් තමයි.",
+    "minutes": null
+   },
+   {
+    "text": "ගොරකා කෝප්පයක් බාගයක් උණු වතුරේ මෘදු වන තෙක් පොඟවා, සුදුළූණු බික්කටක් දෙකක් සමඟ අඹරා පේස්ට් කර ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "මාළුවට ලුණු, කහ සහ ගම්මිරිස් වලින් බාගයක් ගා, හොදිය පටන් ගන්නා අතරේ තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වළං භාජනයක තෙල් රත් කර, ලූනු, ඉතිරි සුදුළූණු සහ කරපිංචා ලූනු කොන දුඹුරු වන තෙක් තෙල් දාන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බැදපු තුනපහ, මිරිස් කුඩු සහ ඉතිරි ගම්මිරිස් දමා, පිච්චෙන්නේ නැතිව කුළුබඩු අවදි වන තෙක් බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "දිය කිරි සහ ගොරකා පේස්ට් දමා, හොදිය පාට තදවී මදක් ඝන වන තෙක් පිසින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මෝර කෑලි එක ස්ථරයකට තබා, වැසුම දමා, කලතන්නේ නැතිව භාජනය වරක් දෙපාරක් සොලවමින් පිසින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "මිටි කිරි දමා, නටන්නට ආසන්නම වන තෙක් තබා, ලුණු සහ ඇඹුල රස බලන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "බෙදන්නට කලින් භාජනය මදක් තියන්න; ගොරකා මසට වදින විට මෝර කරිය තව රසයි.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "சுறா துண்டுகளை எலுமிச்சை சாறும் சிறிது மஞ்சளும் கலந்த நீரில் நன்கு தேய்த்து அலசி, பின் இருமுறை சுத்தமான நீரில் கழுவவும்; கடுமையான வாசனை போவது இதனால்தான்.",
+    "minutes": null
+   },
+   {
+    "text": "கொடுக்காப்புளியை அரை கோப்பை சுடுநீரில் மென்மையாகும் வரை ஊறவைத்து, இரண்டு பூண்டு பல்லுடன் அரைத்து விழுதாக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "மீனில் உப்பு, மஞ்சள், பாதி மிளகு தூவி, குழம்பு தொடங்கும் வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் எண்ணெயை காய்ச்சி, வெங்காயம், மீதி பூண்டு, கறிவேப்பிலையை வெங்காயம் ஓரங்களில் பொன்னிறமாகும் வரை தாளிக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "வறுத்த கறித்தூள், மிளகாய்த் தூள், மீதி மிளகு சேர்த்து, கருகாமல் மசாலா வாசனை எழும் வரை வதக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தளர்ந்த தேங்காய்ப் பாலையும் புளி விழுதையும் விட்டு, குழம்பு நிறம் அடர்ந்து சிறிது இறுகும் வரை சமைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "சுறா துண்டுகளை ஒரே அடுக்காக வைத்து, மூடி போட்டு, கிளறாமல் சட்டியை ஒன்றிரண்டு முறை அசைத்து வேகவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "கெட்டியான பாலை விட்டு, கொதிக்க வரும் நிலை வரை வைத்து, உப்பும் புளிப்பும் பார்க்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "பரிமாறும் முன் சட்டியை சிறிது நேரம் வைக்கவும்; புளி இறைச்சியில் இறங்கும்போது சுறா கறி இன்னும் சுவையாகும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 35,
+  "passive_minutes": 25
+ },
+ "equipment": [
+  "clay pot with lid",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "The lime and turmeric wash is not optional with shark; skip it and the whole kitchen smells of ammonia. Buy it cut fresh that morning, and cook it the same day, since shark goes off faster than most fish.",
+  "si": "මෝරට දෙහි සහ කහ දමා සෝදන එක අත්හළ හැකි දෙයක් නොවේ; ඒක නොකළොත් මුළු ගෙදරම ගඳ ගහනවා. ඒ උදේ කැපූ අලුත් මෝර ගෙන ඒ දවසේම පිසින්න; මෝර බොහෝ මාළුවලට වඩා ඉක්මනින් නරක් වෙනවා.",
+  "ta": "சுறாவுக்கு எலுமிச்சை மஞ்சள் கழுவல் தவிர்க்க முடியாதது; அதை விட்டால் வீடு முழுக்க வாசனை அடிக்கும். அந்த காலையில் வெட்டிய புதிய சுறாவை வாங்கி அதே நாளில் சமைக்கவும்; சுறா மற்ற மீன்களை விட விரைவில் கெட்டுவிடும்."
+ },
+ "health_note": {
+  "en": "Shark is boneless and filling, which makes it easy to serve to children, but large predatory fish carry more mercury than small ones, so keep it to an occasional dish rather than a weekly habit, and give small children the smaller fish instead.",
+  "si": "මෝර කටු නැති, පිරෙන කෑමක්; ඒ නිසා ළමයින්ට දෙන්න පහසුයි. එහෙත් ලොකු මාළු කුඩා මාළුවලට වඩා රසදිය රැඳවුම් වැඩියෙන් තියාගන්නවා, ඒ නිසා සතිපතා නොව විටින් විට ගන්න කෑමක් ලෙස තබා ගන්න; කුඩා දරුවන්ට කුඩා මාළු දෙන්න.",
+  "ta": "சுறாவில் முள் இல்லை, வயிறு நிறைக்கும்; எனவே குழந்தைகளுக்கு பரிமாற எளிது. ஆனால் பெரிய மீன்கள் சிறிய மீன்களை விட அதிக பாதரசத்தை சேமிக்கின்றன, எனவே வாரந்தோறும் அல்ல, அரிதாகவே சமைக்கவும்; சிறு குழந்தைகளுக்கு சிறிய மீன்களே நல்லது."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "iron_rich",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

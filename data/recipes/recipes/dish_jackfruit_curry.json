@@ -1,0 +1,345 @@
+{
+ "id": "dish_jackfruit_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 250,
+  "description": {
+   "en": "A filling plateful that takes the place of most of the rice",
+   "si": "බතේ වැඩි කොටසක් වෙනුවට ගන්නා පිරුණු පිඟාන් කොටසක්",
+   "ta": "சாதத்தின் பெரும்பகுதிக்குப் பதிலாக அமையும் நிறைவான பங்கு"
+  }
+ },
+ "yield_g": 1050,
+ "ingredients": [
+  {
+   "ref": "product_polos",
+   "label": {
+    "en": "half-ripe jackfruit flesh",
+    "si": "මැදිවියේ කොස් මදය",
+    "ta": "அரை முதிர்ச்சி பலாச் சதை"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "flesh from a quarter of a medium jackfruit",
+   "preparation": {
+    "en": "cleaned of skin and core, cut into large chunks, kept in water",
+    "si": "ලෙලි හා මැද කොටස ඉවත් කර ලොකු කැබලි ලෙස කපා වතුරේ තබා",
+    "ta": "தோலும் நடுப்பகுதியும் நீக்கி, பெரிய துண்டுகளாக நறுக்கி நீரில் போட்டு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "7 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගෙන",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වේළූ මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩාගෙන",
+    "ta": "உடைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 450,
+   "unit": "ml",
+   "household": "2 and 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Oil your hands and the knife, cut the jackfruit section open, and cut away the thick skin and the stringy core.",
+    "minutes": 15
+   },
+   {
+    "text": "Cut the flesh into chunks the size of a small lime and drop them into a bowl of water as you work.",
+    "minutes": 10
+   },
+   {
+    "text": "Boil the chunks in water with the turmeric and half the salt until a piece can be pressed in with a finger, then drain them.",
+    "minutes": 20
+   },
+   {
+    "text": "Return the drained chunks to the pot with the onion, green chillies, broken dried chillies, fenugreek, pandan, curry leaves and the rest of the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer uncovered so the pieces take in the spice and the gravy reduces.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the thick coconut milk and cook on a low flame until the gravy coats the pieces.",
+    "minutes": 6
+   },
+   {
+    "text": "Mash a couple of chunks with the back of the spoon to thicken the pot and take it off the fire.",
+    "minutes": null
+   },
+   {
+    "text": "Serve hot with red rice and pol sambol; a village meal in the season is built around this pot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අත් හා පිහියට තෙල් ගල්වා, කොස් කැබැල්ල කපා විවෘත කර, ගන ලෙලි හා නාරටි සහිත මැද කොටස ඉවත් කරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "මදය කුඩා දෙහි ගෙඩියක ප්‍රමාණයේ කැබලි ලෙස කපා, වැඩ කරන අතරම වතුර බඳුනකට දමන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කහ හා ලුණු භාගයක් සමඟ වතුරේ, කැබැල්ලක් ඇඟිල්ලෙන් තද කළ විට ඇදෙන තුරු තම්බා, වතුර බේරාගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "බේරාගත් කැබලි නැවත වළඳට දමා, ලූනු, අමු මිරිස්, කඩාගත් වේළූ මිරිස්, උළුහාල්, රම්පෙ, කරපිංචා හා ඉතිරි ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි වත් කර, කැබලිවලට කුළුබඩු රස ඇදී හොදිය අඩු වන තුරු වහන්නක් නොදමා තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "මිටි කිරි දමා, හොදිය කැබලිවලට ඇලෙන තුරු අඩු ගින්නේ උයන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "කැබලි දෙකක් හැන්දේ පිටෙන් තලා වළඳ ගනට කර ලිපෙන් ඉවතට ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "රතු බත් හා පොල් සම්බෝල සමඟ උණුසුම්ව බෙදන්න; කාලයේ ගමේ කෑමක් හැදෙන්නේ මේ වළඳ වටායි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கைகளிலும் கத்தியிலும் எண்ணெய் தடவி, பலாத் துண்டைப் பிளந்து, தடிமனான தோலையும் நார் நடுப்பகுதியையும் நீக்குங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "சதையை சிறிய தேசிக்காய் அளவு துண்டுகளாக நறுக்கி, வேலை செய்யும்போதே நீர் நிரம்பிய பாத்திரத்தில் போடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மஞ்சளும் பாதி உப்பும் சேர்த்த நீரில், ஒரு துண்டு விரலால் அழுத்தினால் இளகும் வரை வேகவைத்து, நீரை வடியுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "வடித்த துண்டுகளை சட்டியில் மீண்டும் இட்டு, வெங்காயம், பச்சை மிளகாய், உடைத்த வத்தல் மிளகாய், வெந்தயம், ரம்பை, கறிவேப்பிலை, மீதி உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி, துண்டுகள் மசாலாவை உள்வாங்கி குழம்பு வற்றும் வரை மூடாமல் கொதிக்க விடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "தடிமன் பாலைச் சேர்த்து, குழம்பு துண்டுகளில் பிடிக்கும் வரை மெல்லிய தீயில் வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "இரண்டு துண்டுகளை ஸ்பூன் முதுகால் நசுக்கி சட்டியைக் கெட்டியாக்கி, அடுப்பிலிருந்து இறக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சிவப்பு சாதத்துடனும் தேங்காய்ச் சம்பலுடனும் சூடாகப் பரிமாறுங்கள்; பருவத்தில் கிராமத்து உணவே இந்தச் சட்டியை மையமாகக் கொண்டது.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 40,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy knife",
+  "large pot",
+  "bowl of water",
+  "clay pot for the curry"
+ ],
+ "tips": {
+  "en": "The stage of the fruit decides everything: at this middle stage the flesh is firm and slightly starchy, while a riper one turns sweet and falls apart. Wipe the knife with an oiled cloth whenever the white latex builds up.",
+  "si": "ගෙඩියේ මුහුකුරා ඇති අවස්ථාව තමයි සියල්ල තීරණය කරන්නේ: මේ මැදිවියේදී මදය තදයි, ටිකක් පිටි ගතියි; වැඩිපුර ඉදුණු එකක් පැණි රසට හැරී කැඩී යයි. සුදු කිරි එකතු වන සැම විටම තෙල් තැවරූ රෙදිකඩකින් පිහිය පිස දමන්න.",
+  "ta": "பலாவின் முதிர்ச்சி நிலையே எல்லாவற்றையும் தீர்மானிக்கிறது: இந்த நடுநிலையில் சதை கெட்டியாகவும் சற்று மாவுத்தன்மையுடனும் இருக்கும்; அதிகம் பழுத்தது இனிப்பாகி உடைந்துவிடும். வெள்ளைப் பால் சேரும்போதெல்லாம் எண்ணெய் தடவிய துணியால் கத்தியைத் துடையுங்கள்."
+ },
+ "health_note": {
+  "en": "Half-ripe jackfruit is starchy, so this counts as the starch on the plate and the rice beside it should be cut down; taken that way it gives more fibre than the same weight of rice. The fat comes from the coconut milk, so keep the thick milk to one cup.",
+  "si": "මැදිවියේ කොස්වල පිෂ්ඨය ඇති බැවින් මෙය පිඟානේ පිෂ්ඨ කොටස ලෙස ගණන් ගෙන බත් අඩු කළ යුතුයි; එසේ ගත් විට එම බර ප්‍රමාණයේ බතට වඩා කෙඳි ලැබේ. මේදය පොල් කිරිවලින් නිසා මිටි කිරි කෝප්පයකට සීමා කරන්න.",
+  "ta": "அரை முதிர்ச்சிப் பலாவில் மாவுச்சத்து உள்ளது; எனவே இதைத் தட்டின் மாவுப் பகுதியாகக் கணக்கிட்டு சாதத்தைக் குறைக்க வேண்டும். அப்படிச் சாப்பிட்டால் அதே எடை சாதத்தை விட அதிக நார்ச்சத்து கிடைக்கும். கொழுப்பு தேங்காய்ப் பாலில் இருந்து வருகிறது, எனவே தடிமன் பாலை ஒரு கப்பாக வைத்துக்கொள்ளுங்கள்."
+ },
+ "tags": [
+  "filling",
+  "high_fibre",
+  "budget",
+  "comfort",
+  "one_pot"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

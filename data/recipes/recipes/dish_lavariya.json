@@ -1,0 +1,283 @@
+{
+ "id": "dish_lavariya",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 130,
+  "description": {
+   "en": "Two warm stuffed rolls with a spoon of treacle",
+   "si": "පැණි හැන්දක් සමඟ උණුසුම් ලාවරිය දෙකක්",
+   "ta": "ஒரு கரண்டி பாகுடன் சூடான இரண்டு சுருள்கள்"
+  }
+ },
+ "yield_g": 520,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "sifted",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut",
+    "si": "පොල්",
+    "ta": "தேங்காய்"
+   },
+   "quantity": 160,
+   "unit": "g",
+   "household": "1 and a half cups, scraped",
+   "preparation": {
+    "en": "scraped, white part only",
+    "si": "සුදු මදය පමණක් ගාගත්",
+    "ta": "வெள்ளைப் பகுதி மட்டும் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "1 block, grated",
+   "preparation": {
+    "en": "grated",
+    "si": "ගාගත්",
+    "ta": "துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாகு"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "4 tbsp, some for serving",
+   "preparation": {
+    "en": "part for the filling, part poured over at the table",
+    "si": "කොටසක් පිරවුමට, කොටසක් මේසයේ උඩින් වත් කිරීමට",
+    "ta": "ஒரு பகுதி பூரணத்திற்கு, ஒரு பகுதி மேசையில் ஊற்ற"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "2 pods",
+   "preparation": {
+    "en": "seeds crushed",
+    "si": "ඇට තලාගත්",
+    "ta": "விதைகளை நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "a piece dropped into the filling",
+    "si": "පිරවුමට කැබැල්ලක් දමන්න",
+    "ta": "பூரணத்தில் ஒரு துண்டு போடவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Boil water with the salt, pour it over the rice flour and mix with a spoon handle to a hot stiff dough.",
+    "minutes": 10
+   },
+   {
+    "text": "Knead the dough while it is still warm until it is smooth and stops crumbling; add a little more hot water if it cracks.",
+    "minutes": null
+   },
+   {
+    "text": "Cook the scraped coconut with the jaggery, half the treacle, the cardamom and the cinnamon over a low fire until dark and sticky.",
+    "minutes": 12
+   },
+   {
+    "text": "Let the filling cool enough to handle and divide it into eight lumps.",
+    "minutes": 10
+   },
+   {
+    "text": "Press the dough into a string hopper mould and squeeze a nest of strings onto each string hopper mat.",
+    "minutes": null
+   },
+   {
+    "text": "Lay a lump of filling along the middle of each nest, squeeze a second layer of strings over it, and lift the sides of the mat so the roll closes.",
+    "minutes": 15
+   },
+   {
+    "text": "Stack the mats in a steamer over boiling water and steam until the strings are cooked through and glossy.",
+    "minutes": 15
+   },
+   {
+    "text": "Ease the rolls off the mats while warm and serve with the rest of the treacle spooned over.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ලුණු දමා වතුර නටවා, සහල් පිටි මතට වත් කර හැන්දක මිටෙන් අනා උණුසුම් තද පිඬක් සාදන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිඬ උණුසුම්ව ඇති විටම, සිනිඳු වී කැඩෙන ගතිය යන තුරු අනන්න; ඉරි තැලෙනවා නම් උණු වතුර ටිකක් තවත් දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගාගත් පොල්, හකුරු, කිතුල් පැණි වලින් අඩක්, එනසාල් සහ කුරුඳු කැබැල්ලක් සමඟ අඩු ගින්නේ, අඳුරු වී ඇලෙන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "පිරවුම අතට දැරෙන තරමට සිසිල් කර ගුලි අටකට බෙදන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිඬ ඉඳිආප්ප යන්ත්‍රයට දමා, ඉඳිආප්ප තැටියක් මතට නූල් රවුමක් පිට කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එක් රවුමක් මැදට පිරවුම් ගුලියක් තබා, උඩින් නැවත නූල් ස්ථරයක් පිට කර, තැටියේ දාර ඔසවා රෝල් වසන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "තැටි උණු වතුර මත භාජනයේ ගොඩගසා, නූල් හොඳින් තැම්බී දිලිසෙන තුරු වාෂ්පයේ තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "උණුසුම්ව ඇති විටම රෝල් තැටියෙන් ගලවා, ඉතිරි කිතුල් පැණි උඩින් වත් කර දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "உப்பு சேர்த்துத் தண்ணீரைக் கொதிக்கவைத்து, அரிசி மாவின் மேல் ஊற்றி, கரண்டியின் பிடியால் கலக்கி சூடான இறுகிய மாவாக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மாவு சூடாக இருக்கும்போதே, மிருதுவாகி உதிராமல் இருக்கும் வரை பிசையவும்; வெடிப்பு வந்தால் சிறிது வெந்நீர் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "துருவிய தேங்காயை, வெல்லம், பாதி கிதுல் பாகு, ஏலக்காய், ஒரு துண்டு இலவங்கப்பட்டையுடன் குறைந்த தீயில் கருமையாகி ஒட்டும் வரை வேகவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "பூரணத்தைக் கையால் தொடும் அளவுக்குக் குளிரவிட்டு எட்டு உருண்டைகளாகப் பிரிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மாவை இடியப்ப அச்சில் நிரப்பி, ஒவ்வொரு இடியப்பத் தட்டிலும் ஒரு சுற்று நூல்களைப் பிழியவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு சுற்றின் நடுவில் ஒரு பூரண உருண்டையை வைத்து, மேலே இரண்டாம் அடுக்கு நூல்களைப் பிழிந்து, தட்டின் ஓரங்களைத் தூக்கிச் சுருளை மூடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "தட்டுகளைக் கொதிக்கும் தண்ணீருக்கு மேல் அடுக்கி, நூல்கள் நன்கு வெந்து பளபளக்கும் வரை ஆவியில் வேகவிடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "சூடாக இருக்கும்போதே சுருள்களைத் தட்டிலிருந்து விலக்கி, மீதி கிதுல் பாகை மேலே ஊற்றிப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 30,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "string hopper mould",
+  "string hopper mats",
+  "steamer",
+  "pan for the filling"
+ ],
+ "tips": {
+  "en": "Work the dough hot; a cooled dough breaks as it leaves the mould and the strings will not hold the filling. Two thin layers of strings hold better than one thick one.",
+  "si": "පිඬ උණුසුම්ව ඇති විටම වැඩ කරන්න; සිසිල් වූ පිඬ යන්ත්‍රයෙන් පිට වන විට කැඩී පිරවුම රඳවා ගන්නේ නැත. එක ගන ස්ථරයකට වඩා තුනී ස්ථර දෙකක් හොඳින් රඳවයි.",
+  "ta": "மாவு சூடாக இருக்கும்போதே வேலை செய்யவும்; குளிர்ந்த மாவு அச்சிலிருந்து வரும்போது உடைந்து பூரணத்தைத் தாங்காது. ஒரு தடிமனான அடுக்கை விட இரண்டு மெல்லிய அடுக்குகள் நன்றாகப் பிடிக்கும்."
+ },
+ "health_note": {
+  "en": "Steamed rather than fried, so lavariya is easier on the stomach than most sweets, but the filling is coconut and jaggery and the rolls are filling. Two with plain tea makes a reasonable breakfast for a working day.",
+  "si": "බැදීමක් නැති, තැම්බූ නිසා ලාවරිය බොහෝ රසකැවිලිවලට වඩා බඩට මෘදුයි; එහෙත් පිරවුම පොල් හා හකුරු නිසා බඩ පිරේ. සාමාන්‍ය දිනයක උදෑසන ආහාරයට තේ සමඟ දෙකක් සෑහේ.",
+  "ta": "பொரிக்காமல் ஆவியில் வேகுவதால் லாவரியா பல இனிப்புகளை விட வயிற்றுக்கு மிதமானது; ஆனால் பூரணம் தேங்காயும் வெல்லமும் என்பதால் வயிறு நிறையும். வேலை நாள் காலை உணவுக்குச் சாதா தேநீருடன் இரண்டு போதும்."
+ },
+ "tags": [
+  "comfort",
+  "kid_friendly",
+  "filling",
+  "festive",
+  "high_fibre"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,280 @@
+{
+ "id": "dish_milk_toffee",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 75,
+  "description": {
+   "en": "Three or four small squares off the tray",
+   "si": "තැටියෙන් ගත් කුඩා කැට තුනක් හතරක්",
+   "ta": "தட்டிலிருந்து எடுத்த மூன்று நான்கு சிறு துண்டுகள்"
+  }
+ },
+ "yield_g": 300,
+ "ingredients": [
+  {
+   "ref": "pantry_condensed_milk",
+   "label": {
+    "en": "condensed milk",
+    "si": "ඝන කිරි",
+    "ta": "அடர் பால்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "just over half a tin",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "three quarters of a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_milk_powder",
+   "label": {
+    "en": "full cream milk powder",
+    "si": "කිරිපිටි",
+    "ta": "பால் பவுடர்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": {
+    "en": "sieved, added at the end",
+    "si": "හලාගත්, අවසානයේ දමන්නට",
+    "ta": "சலித்து, இறுதியில் சேர்க்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a small handful, roasted and broken",
+   "preparation": {
+    "en": "lightly roasted and broken",
+    "si": "සැහැල්ලුවෙන් බැදූ, කඩාගත්",
+    "ta": "லேசாக வறுத்து உடைத்த"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vanilla",
+   "label": {
+    "en": "vanilla essence",
+    "si": "වැනිලා එසන්ස්",
+    "ta": "வெனிலா எசன்ஸ்"
+   },
+   "quantity": 2,
+   "unit": "ml",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, to lift the sweetness",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Grease a small flat tray with butter and keep it beside the stove, because once the toffee is ready there is no time to look for one.",
+    "minutes": null
+   },
+   {
+    "text": "Put the sugar with 60 ml of water in a thick pan and stir on low until the sugar has dissolved and the syrup is clear.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the condensed milk, butter and salt and stir steadily on a low flame, always in the same direction, keeping the spoon on the bottom of the pan.",
+    "minutes": 10
+   },
+   {
+    "text": "Cook on, stirring without a break, until the mixture darkens to a light caramel and thickens enough that the spoon leaves a track that closes slowly.",
+    "minutes": 8
+   },
+   {
+    "text": "Test by dropping a little into a cup of cold water: when it gathers into a soft ball you can press between two fingers, it is ready.",
+    "minutes": null
+   },
+   {
+    "text": "Take the pan off the fire, beat in the sieved milk powder fast so it does not lump, then the vanilla and cashew.",
+    "minutes": null
+   },
+   {
+    "text": "Pour into the greased tray at once and smooth the top with a buttered spoon before it stiffens.",
+    "minutes": null
+   },
+   {
+    "text": "Mark squares with a buttered knife while the toffee is still warm and soft enough to take the line.",
+    "minutes": 10
+   },
+   {
+    "text": "Leave to set at room temperature, then cut through the marks and lift the squares out.",
+    "minutes": 60
+   }
+  ],
+  "si": [
+   {
+    "text": "කුඩා පැතලි තැටියක බටර් ගා ලිප ළඟ තබා ගන්න, ටොෆි හැදුණාම එකක් හොයන්නට වෙලාවක් නැහැ.",
+    "minutes": null
+   },
+   {
+    "text": "සීනි සහ මිලි ලීටර් 60ක වතුර ඝන මුට්ටියකට දමා, සීනි දියවී පැණිය පැහැදිලි වන තුරු අඩු ගින්නේ කලතන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඝන කිරි, බටර් සහ ලුණු දමා, හැන්ද මුට්ටියේ පතුලේ තබාගෙන, එකම දිශාවට අඩු ගින්නේ දිගටම කලතන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "නොනවතින්ම කලතමින්, මිශ්‍රණය ලා කැරමල් පාටට හැරී, හැන්දෙන් ඇති ලකුණ සෙමෙන් වැසෙන තරමට ඝන වන තුරු තියන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "සිසිල් වතුර කෝප්පයකට ටිකක් දමා බලන්න, ඇඟිලි දෙකෙන් තද කළ හැකි මුදු බෝලයක් වුණොත් හරි.",
+    "minutes": null
+   },
+   {
+    "text": "මුට්ටිය ලිපෙන් ඉවත් කර, හලාගත් කිරිපිටි කැට නොවන ලෙස ඉක්මනින් ගසා මිශ්‍ර කර, පසුව වැනිලා සහ කජු දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වහාම බටර් ගෑ තැටියට වත් කර, තදවන්නට පෙර බටර් ගෑ හැන්දකින් මතුපිට සමතලා කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ටොෆි තවම උණුසුම්ව මුදුව තිබෙන අතරම, බටර් ගෑ පිහියකින් කැට සලකුණු කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කාමර උෂ්ණත්වයේ මිදෙන්නට තබා, පසුව සලකුණු දිගේ කපා කැට ගලවා ගන්න.",
+    "minutes": 60
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிறு தட்டையான தட்டில் வெண்ணெய் தடவி அடுப்பருகே வையுங்கள் - டோஃபி தயாரானபின் தட்டைத் தேட நேரம் இருக்காது.",
+    "minutes": null
+   },
+   {
+    "text": "சீனியை 60 மில்லி நீருடன் தடிமனான பாத்திரத்தில் போட்டு, சீனி கரைந்து பாகு தெளிவாகும்வரை சிறு தீயில் கிளறுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அடர் பால், வெண்ணெய், உப்பு சேர்த்து, கரண்டியை அடியில் வைத்தபடி, ஒரே திசையில் சிறு தீயில் தொடர்ந்து கிளறுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "இடைவிடாமல் கிளறி, கலவை வெளிர் கேரமல் நிறமாகி, கரண்டி விட்ட தடம் மெதுவாக மூடும் பதம்வரை வேக விடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "ஒரு கிண்ணம் குளிர்ந்த நீரில் சிறிது விட்டுப் பாருங்கள் - இரு விரல்களுக்கு இடையில் அழுத்தக்கூடிய மென் உருண்டையானால் தயார்.",
+    "minutes": null
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, சலித்த பால் பவுடரை கட்டியாகாமல் வேகமாக அடித்துக் கலந்து, பிறகு வெனிலாவும் முந்திரியும் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உடனே வெண்ணெய் தடவிய தட்டில் ஊற்றி, இறுகும் முன் வெண்ணெய் தடவிய கரண்டியால் மேற்பரப்பை சமன் செய்யுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "டோஃபி சூடாகவும் மென்மையாகவும் இருக்கும்போதே வெண்ணெய் தடவிய கத்தியால் துண்டுக் கோடுகளைப் போடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அறை வெப்பத்தில் இறுக விட்டு, பிறகு கோடுகளின் வழியே வெட்டி துண்டுகளை எடுங்கள்.",
+    "minutes": 60
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 25,
+  "passive_minutes": 60
+ },
+ "equipment": [
+  "thick heavy pan",
+  "wooden spoon",
+  "small flat tray",
+  "buttered knife"
+ ],
+ "tips": {
+  "en": "Never let the spoon rest, because milk toffee catches on the bottom of the pan in seconds and a burnt patch flavours the whole tray. Undercook and it will not set, so trust the cold water test rather than the clock; if a batch stays sticky, put it back on the fire with a spoon of water and cook it a little further. Cut while warm, because cold toffee shatters instead of slicing.",
+  "si": "හැන්ද නවත්වන්න එපා, කිරි ටොෆි තත්පර ගණනකින් මුට්ටියේ පතුලට අල්ලනවා, පිළිස්සුණු තැනක රසය මුළු තැටියටම යනවා. අඩුවෙන් තැම්බුණොත් මිදෙන්නේ නැහැ, ඒ නිසා ඔරලෝසුවට වඩා සිසිල් වතුර පරීක්ෂණය විශ්වාස කරන්න, ඇලෙන ගතිය තිබේ නම් වතුර හැන්දක් දමා නැවත ලිපට තබන්න. උණුසුම්ව කපන්න, සිසිල් ටොෆි කැපෙන්නේ නැහැ, පළුදු වෙනවා.",
+  "ta": "கரண்டியை ஒரு நொடியும் நிற்க விடாதீர்கள் - பால் டோஃபி நொடிகளில் அடியில் பிடித்துக்கொள்ளும், கருகிய ஒரு பகுதி முழுத் தட்டின் சுவையையும் கெடுக்கும். குறைவாக வேக வைத்தால் இறுகாது; அதனால் கடிகாரத்தை விட குளிர்நீர்ச் சோதனையை நம்புங்கள்; ஒட்டிக்கொண்டிருந்தால் ஒரு கரண்டி நீர் விட்டு மீண்டும் அடுப்பில் வையுங்கள். சூடாக இருக்கும்போதே வெட்டுங்கள் - ஆறிய டோஃபி வெட்டாமல் உடைந்துவிடும்."
+ },
+ "health_note": {
+  "en": "This is sugar and milk solids and nothing else, so a square is a sweet in the truest sense and two with tea is enough for anyone. The milk does carry a little calcium and protein, and the cashew some good fat, but a diabetic in the family should be given fruit rather than a square off this tray.",
+  "si": "මෙය සීනි සහ කිරි ඝන ද්‍රව්‍ය මිස අන් කිසිවක් නොවේ, ඒ නිසා එක කැබැල්ලක් ඇත්තෙන්ම රසකැවිල්ලක්, තේ එකක් සමඟ දෙකක් ඕනෑම කෙනෙකුට ඇති. කිරිවලින් සුළු කැල්සියම් සහ ප්‍රෝටීන්, කජුවලින් සුළු හොඳ මේදයක් ලැබෙනවා, එහෙත් ගෙදර දියවැඩියා රෝගියෙකුට මේ තැටියෙන් කැබැල්ලක් වෙනුවට පලතුරක් දෙන්න.",
+  "ta": "இது சீனியும் பால் திரட்சியும் மட்டுமே; ஒரு துண்டே உண்மையான இனிப்பு, தேநீருடன் இரண்டு போதும். பாலில் கொஞ்சம் கால்சியமும் புரதமும், முந்திரியில் கொஞ்சம் நல்ல கொழுப்பும் உள்ளது; ஆனால் வீட்டில் சர்க்கரை நோயாளிக்கு இந்தத் தட்டின் துண்டுக்குப் பதிலாக ஒரு பழத்தைக் கொடுங்கள்."
+ },
+ "tags": [
+  "high_sugar",
+  "calcium_rich",
+  "kid_friendly",
+  "budget",
+  "festive",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

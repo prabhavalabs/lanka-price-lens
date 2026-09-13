@@ -1,0 +1,322 @@
+{
+ "id": "dish_anchovy_fry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 110,
+  "description": {
+   "en": "A small heap of crisp little fish eaten whole, bones and all",
+   "si": "කටු ඇතුළුව කන කුඩා කුරුකුරු මාළු ටිකක්",
+   "ta": "முள்ளுடன் சேர்த்து சாப்பிடும் மொறுமொறுப்பான சிறு மீன் கொஞ்சம்"
+  }
+ },
+ "yield_g": 460,
+ "ingredients": [
+  {
+   "ref": "product_hurulla",
+   "label": {
+    "en": "fresh anchovies",
+    "si": "අමු නෙත්තලි මාළු",
+    "ta": "பச்சை நெத்திலி மீன்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "about 4 cups of little fish",
+   "preparation": {
+    "en": "heads and insides cleaned out, rinsed and drained dry",
+    "si": "හිස් සහ ඇතුළත ඉවත් කර, හෝදා වතුර බේරා ගත්ත",
+    "ta": "தலையும் உள்ளும் நீக்கி, கழுவி நீர் வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "ground to a paste",
+    "si": "අඹරා පේස්ට් කර ගත්ත",
+    "ta": "விழுதாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மா"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "half a cup, for frying",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්ත",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, in wedges",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "කැබලිවලට කපා ගත්ත",
+    "ta": "துண்டுகளாக வெட்டியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Clean the little fish, rinse them well, and leave them in a colander so every drop of water runs off.",
+    "minutes": 15
+   },
+   {
+    "text": "Mix the turmeric, chilli powder, garlic paste and salt, and turn the fish through it with a light hand.",
+    "minutes": 5
+   },
+   {
+    "text": "Let the fish sit with the rub while the oil heats.",
+    "minutes": 10
+   },
+   {
+    "text": "Sprinkle the rice flour over and toss so each fish wears a thin dusty coat, no more.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a small deep pan until a pinch of flour rises at once.",
+    "minutes": 4
+   },
+   {
+    "text": "Fry the fish in three or four small batches so the oil stays hot, lifting each batch out when it is golden and stiff.",
+    "minutes": 9
+   },
+   {
+    "text": "In the last of the oil fry the onion and curry leaves until brown and crisp.",
+    "minutes": 2
+   },
+   {
+    "text": "Scatter the fried onion and curry leaves over the fish and serve with lime wedges.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුඩා මාළු පිරිසිදු කරලා, හොඳට හෝදලා, වතුර හැම බිංදුවක්ම බේරෙන්න පෙරන එකේ තියන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "කහ කුඩු, මිරිස් කුඩු, සුදුළූනු පේස්ට් සහ ලුණු කලවම් කරලා, මාළු සෙමින් ඒකට පෙරළා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "තෙල් රත් වෙන අතරේ මාළු රසකාරක සමඟ තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සහල් පිටි ඉහලා, හැම මාළුවකට සිහින් පිටි තට්ටුවක් පමණක් අලවන්න; වැඩිපුර එපා.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා ගැඹුරු පෑන් එකක පොල් තෙල් රත් කරන්න; පිටි ස්වල්පයක් දැම්මම එකපාරම මතුවෙනවා නම් ඇති.",
+    "minutes": 4
+   },
+   {
+    "text": "තෙල් රත්ව තියාගන්න මාළු කොටස් තුන හතරකට බෙදා බැදගන්න, රන්වන් වෙලා තද වුණාම එක එක කොටස අයින් කරන්න.",
+    "minutes": 9
+   },
+   {
+    "text": "ඉතුරු තෙලේ ලූනු සහ කරපිංචා දුඹුරු වෙලා කුරුකුරු වෙන තුරු බැදගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "බැදපු ලූනු සහ කරපිංචා මාළු මතට ඉහලා, දෙහි කැබලි සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிறு மீன்களை சுத்தம் செய்து, நன்கு அலசி, ஒரு துளி நீரும் இல்லாமல் வடிய சல்லடையில் வையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "மஞ்சள், மிளகாய்த் தூள், பூண்டு விழுது, உப்பு கலந்து, மீனை மெதுவாகப் புரட்டி மசாலாவில் தொட்டுக்கொள்ளுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "எண்ணெய் காயும் வரை மீனை மசாலாவுடன் ஊற வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "அரிசி மாவைத் தூவி, ஒவ்வொரு மீனுக்கும் மெல்லிய மாவுப் படலம் மட்டும் ஒட்டும்படி புரட்டுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய ஆழமான வாணலியில் தேங்காய் எண்ணெயைக் காயவிடுங்கள்; ஒரு சிட்டிகை மாவு போட்டதும் சட்டென மேலே எழுந்தால் பதம்.",
+    "minutes": 4
+   },
+   {
+    "text": "எண்ணெய் சூடு குறையாமல் இருக்க மீனை மூன்று நான்கு தவணையாக வறுத்து, பொன்னிறமாகி இறுகியதும் எடுங்கள்.",
+    "minutes": 9
+   },
+   {
+    "text": "மிச்சம் இருக்கும் எண்ணெயில் வெங்காயத்தையும் கறிவேப்பிலையையும் பொன்னிறமாக மொறுமொறுப்பாக வறுக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "வறுத்த வெங்காயத்தையும் கறிவேப்பிலையையும் மீன்மேல் தூவி, தேசிக்காய் துண்டுகளுடன் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 15,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "small deep pan",
+  "colander",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "Small batches and hot oil are everything; a crowded pan drops the temperature and the fish soak up oil instead of crisping. Very small anchovies need no cleaning beyond a rinse, and the flour can be left out altogether for a lighter fry.",
+  "si": "කුඩා කොටස් සහ රත් තෙල් තමයි මුළු කතාව; පෑන් එක පිරෙන්න දැම්මොත් තෙල් සිසිල් වෙලා, මාළු කුරුකුරු නොවී තෙල් උරා ගන්නවා. ඉතා කුඩා නෙත්තලි නම් හෝදාගත්තා ඇති, සැහැල්ලු බැදුමකට පිටි නොදාත් හරි.",
+  "ta": "சிறு தவணைகளும் காய்ந்த எண்ணெயும்தான் முக்கியம்; வாணலி நிரம்பினால் சூடு குறைந்து மீன் மொறுமொறுப்பாகாமல் எண்ணெயை உறிஞ்சும். மிகச் சிறிய நெத்திலிக்கு அலசுவது போதும்; இலகுவான வறுவலுக்கு மாவையே தவிர்க்கலாம்."
+ },
+ "health_note": {
+  "en": "Eaten whole, these little fish give protein along with the calcium of their soft bones, which is good for growing children and older knees. They are deep fried, so drain them well and serve them beside a plain vegetable rather than with another fried dish.",
+  "si": "කටු ඇතුළුව කන නිසා මේ කුඩා මාළුවලින් ප්‍රෝටීන් එක්කම මෘදු කටුවල කැල්සියම් ලැබෙනවා; වැඩෙන ළමයින්ට සහ වයසක අයගේ දණහිස්වලට හොඳයි. ගැඹුරු තෙලේ බැදපු නිසා තෙල් හොඳට බේරලා, තව බැදපු කෑමක් නොව සරල එළවළුවක් සමඟ බෙදන්න.",
+  "ta": "முள்ளுடன் சாப்பிடுவதால் இந்தச் சிறு மீன்கள் புரதத்துடன் கால்சியமும் தருகின்றன; வளரும் குழந்தைகளுக்கும் வயதானவர்களின் மூட்டுகளுக்கும் நல்லது. ஆழமான எண்ணெயில் வறுத்தது, எனவே எண்ணெயை நன்கு வடித்து, இன்னொரு வறுவலுடன் அல்ல, எளிய காய்கறியுடன் பரிமாறுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "calcium_rich",
+  "deep_fried",
+  "kid_friendly",
+  "budget",
+  "street_food"
+ ],
+ "review_needed": [
+  "si"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

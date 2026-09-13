@@ -1,0 +1,391 @@
+{
+ "id": "dish_jaffna_fish_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 220,
+  "description": {
+   "en": "A piece of fish and a drumstick in sour red gravy over rice",
+   "si": "බත මතට ඇඹුල් රතු හොදියේ මාළු කැබැල්ලක් සහ මුරුංගා කැබැල්ලක්",
+   "ta": "சாதத்தின் மேல் புளிப்பான சிவப்புக் குழம்பில் ஒரு மீன் துண்டும் ஒரு முருங்கைக்காயும்"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "product_paraw",
+   "label": {
+    "en": "paraw, trevally",
+    "si": "පරව් මාළු",
+    "ta": "பாறை மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "cut into steaks, rubbed with turmeric and rinsed",
+    "si": "පෙති කපා, කහ අතුල්ලා හෝදා ගත්ත",
+    "ta": "துண்டுகளாக வெட்டி, மஞ்சள் தேய்த்துக் கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a lime-sized ball",
+   "preparation": {
+    "en": "soaked in a cup of warm water, pulp squeezed out",
+    "si": "උණු වතුර කෝප්පයක පොඟවා, යුෂ මිරිකා ගත්ත",
+    "ta": "ஒரு கப் வெந்நீரில் ஊறவைத்து, சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaffna_curry_powder",
+   "label": {
+    "en": "Jaffna curry powder",
+    "si": "යාපනේ තුනපහ",
+    "ta": "யாழ்ப்பாணக் கறித்தூள்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්ත",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_drumstick",
+   "label": {
+    "en": "drumstick",
+    "si": "මුරුංගා",
+    "ta": "முருங்கைக்காய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 drumsticks",
+   "preparation": {
+    "en": "scraped and cut into finger lengths",
+    "si": "සීරලා ඇඟිල්ලක් දිගට කපා ගත්ත",
+    "ta": "சீவி, விரல் நீளத்துக்கு வெட்டியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "split",
+    "si": "පලා ගත්ත",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ගාටි කිරි",
+    "ta": "முதல் பால், கட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub the fish with turmeric and a little salt, rinse it and leave it to drain.",
+    "minutes": 5
+   },
+   {
+    "text": "Soak the tamarind in a cup of warm water, work it with your fingers and strain out the seeds and fibre.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the fenugreek first, then the onion, garlic, green chilli and curry leaves.",
+    "minutes": 6
+   },
+   {
+    "text": "Lower the flame, add the Jaffna curry powder, chilli powder and turmeric, and fry them in the oil until they smell roasted rather than raw.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in the tamarind water with a cup of plain water, add salt and the drumstick, and simmer until the drumstick is tender.",
+    "minutes": 10
+   },
+   {
+    "text": "Slide the fish into the gravy in one layer and cook without stirring, spooning gravy over the pieces.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the thick coconut milk, swirl the pot, and let it come only to the edge of a boil.",
+    "minutes": 4
+   },
+   {
+    "text": "Take it off the fire and leave it to stand; the sourness and the spice settle together as it cools.",
+    "minutes": 20
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළුවට කහ සහ ලුණු ටිකක් අතුල්ලලා හෝදලා, වතුර බේරෙන්න තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සියඹලා උණු වතුර කෝප්පයක පොඟවලා, ඇඟිලිවලින් මිරිකා, ඇට සහ නාරටි පෙරලා ඉවත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුට්ටියක පොල් තෙල් රත් කරලා මුලින් උළුහාල්, පස්සේ ලූනු, සුදුළූනු, අමු මිරිස් සහ කරපිංචා තෙල් දාගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ගිනි අඩු කරලා යාපනේ තුනපහ, මිරිස් කුඩු සහ කහ කුඩු දමා, අමු ගඳ නැතිව බැදුණු සුවඳ එන තුරු තෙලේ අනගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "සියඹලා යුෂ සහ සාමාන්‍ය වතුර කෝප්පයක් වත් කරලා, ලුණු සහ මුරුංගා දමා, මුරුංගා මෙලෙක් වෙන තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මාළු එක තට්ටුවක් විදියට හොදියට බහාලා, කලවම් නොකර, හොදි මාළු මතට වත් කරමින් පිසගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගාටි පොල් කිරි එකතු කරලා මුට්ටිය සොලවා, උතුරන්න ආසන්න තැනකට පමණක් රත් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලිපෙන් අයින් කරලා තියන්න; සිසිල් වෙද්දී ඇඹුල සහ කුළුබඩු රස එකට හිඳෙනවා.",
+    "minutes": 20
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீனில் மஞ்சளும் சிறிது உப்பும் தேய்த்து அலசி, நீர் வடிய வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "புளியை ஒரு கப் வெந்நீரில் ஊறவைத்து, விரலால் கரைத்து, கொட்டையும் நாரும் நீக்கி வடிகட்டுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து முதலில் வெந்தயம், பின்பு வெங்காயம், பூண்டு, பச்சை மிளகாய், கறிவேப்பிலை தாளியுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "தீயைக் குறைத்து யாழ்ப்பாணக் கறித்தூள், மிளகாய்த் தூள், மஞ்சள் சேர்த்து, பச்சை வாசனை போய் வறுத்த மணம் வரும் வரை எண்ணெயில் கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "புளித் தண்ணீரையும் ஒரு கப் சாதாரண தண்ணீரையும் ஊற்றி, உப்பும் முருங்கைக்காயும் போட்டு, காய் வேகும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மீனை ஒரே அடுக்காக குழம்பில் விட்டு, கிளறாமல், குழம்பை மேலே ஊற்றிக்கொண்டே வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கட்டித் தேங்காய்ப் பாலை சேர்த்து சட்டியை அசைத்து, கொதி வரும் நிலைக்கு மட்டும் சூடாக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி வையுங்கள்; ஆறும்போது புளிப்பும் மசாலாவும் ஒன்றாகச் சேர்ந்து சுவை கூடும்.",
+    "minutes": 20
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "clay pot",
+  "sieve for the tamarind"
+ ],
+ "tips": {
+  "en": "The Jaffna powder is the dish, so fry it properly in the oil before any liquid goes in; a raw spice smell never leaves afterwards. Raw mango or brinjal can stand in for the drumstick when the tree is bare.",
+  "si": "යාපනේ තුනපහ තමයි මේ කරියේ පණ; ඒ නිසා දියර දාන්න කලින් තෙලේ හොඳට බැදගන්න, නැත්නම් අමු කුළුබඩු ගඳ අන්තිම දක්වා යන්නේ නැහැ. මුරුංගා නැති කාලෙක අමු අඹ හෝ වම්බටු දැම්මත් හරි.",
+  "ta": "யாழ்ப்பாணக் கறித்தூளே இந்தக் குழம்பின் உயிர்; அதனால் தண்ணீர் ஊற்றும் முன் அதை எண்ணெயில் நன்கு வறுக்கவும், இல்லையேல் பச்சை வாசனை கடைசி வரை நிற்கும். முருங்கை இல்லாத காலத்தில் மாங்காய் அல்லது கத்தரிக்காய் சேர்க்கலாம்."
+ },
+ "health_note": {
+  "en": "Tamarind and fenugreek do most of the work here, so the curry needs less coconut milk than a southern red curry. It is a hot dish with a fair amount of salt, so a plain vegetable and plenty of rice balance the plate.",
+  "si": "මේකේ ප්‍රධාන වැඩ කරන්නේ සියඹලා සහ උළුහාල් නිසා, දකුණේ රතු කරියට වඩා පොල් කිරි අඩුවෙන් ඇති. සැර වැඩි, ලුණුත් සෑහෙන තරම් නිසා සරල එළවළුවක් සහ බත් හොඳ ප්‍රමාණයක් සමඟ ගන්න.",
+  "ta": "இதில் பெரும் வேலை புளியும் வெந்தயமும் செய்வதால், தென்பகுதி சிவப்புக் குழம்பைவிட தேங்காய்ப் பால் குறைவே தேவை. காரமும் உப்பும் கூடிய கறி, எனவே எளிய காய்கறி ஒன்றுடனும் நல்ல அளவு சாதத்துடனும் சேர்த்துக்கொள்ளுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "heart_healthy",
+  "festive",
+  "one_pot",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

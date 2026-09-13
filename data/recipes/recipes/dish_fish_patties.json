@@ -1,0 +1,391 @@
+{
+ "id": "dish_fish_patties",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 135,
+  "description": {
+   "en": "Three small crimped patties, still warm",
+   "si": "තවමත් උණුසුම්, දාර හැඩ ගැසූ කුඩා පැටිස් තුනක්",
+   "ta": "இன்னும் சூடாக இருக்கும், விளிம்பு மடித்த மூன்று சிறிய பட்டீஸ்"
+  }
+ },
+ "yield_g": 540,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "sieved, for the pastry",
+    "si": "පෙරාගත්, පිටි ගුලියට",
+    "ta": "சலித்தது, மாவுக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_margarine",
+   "label": {
+    "en": "margarine",
+    "si": "මාගරින්",
+    "ta": "மார்கரின்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "cold, rubbed into the flour",
+    "si": "සිසිල්, පිටිවලට අතුල්ලා ගැනීමට",
+    "ta": "குளிர்ந்தது, மாவில் தேய்க்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1¼ tsp in all",
+   "preparation": {
+    "en": "for pastry and filling",
+    "si": "පිටි ගුලියට සහ මාලුවට",
+    "ta": "மாவுக்கும் உள்ளடக்கத்திற்கும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_tin_fish",
+   "label": {
+    "en": "tinned fish",
+    "si": "ටින් මාළු",
+    "ta": "டின் மீன்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "¾ of a small tin, drained",
+   "preparation": {
+    "en": "drained and flaked",
+    "si": "තෙල් බේරා පොඩි කරගත්",
+    "ta": "எண்ணெய் வடித்து நார்நாராகப் பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අර්තාපල්",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 small potatoes",
+   "preparation": {
+    "en": "boiled and mashed",
+    "si": "තෙම්බා පොඩි කරගත්",
+    "ta": "வேகவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "soaked and ground",
+    "si": "තෙමා අඹරාගත්",
+    "ta": "ஊறவைத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "¼ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "¾ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for the filling",
+    "si": "මාලුවට පොල් තෙල්",
+    "ta": "உள்ளடக்கத்திற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1½ tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1¼ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub the margarine into the flour and salt until the mixture looks like coarse crumbs, then bring it together with about 90 ml cold water into a firm dough and leave it to rest under a bowl.",
+    "minutes": 20
+   },
+   {
+    "text": "Temper the onion, ground dried chilli and curry leaf in coconut oil until the onion is soft and smells sweet.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the flaked fish, mashed potato, turmeric, pepper and salt and cook until quite dry, then cool it.",
+    "minutes": 10
+   },
+   {
+    "text": "Roll the dough out thin, about two millimetres, and cut rounds with the rim of a teacup.",
+    "minutes": null
+   },
+   {
+    "text": "Put a teaspoon of filling on each round, wet the edge with a finger, fold it over into a half moon and crimp the edge with a fork or your fingertips.",
+    "minutes": null
+   },
+   {
+    "text": "Keep the finished patties under a cloth so the pastry does not dry and crack.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the frying oil on a medium fire; too hot and the pastry colours before it cooks through.",
+    "minutes": 5
+   },
+   {
+    "text": "Slide in five or six patties, turn them once, and fry until blistered and pale gold.",
+    "minutes": 10
+   },
+   {
+    "text": "Drain on paper and let them stand a moment; the filling is scalding.",
+    "minutes": null
+   },
+   {
+    "text": "Serve with tea. Left in an open basket they stay crisp for a few hours.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිටි හා ලුණු සමඟ මාගරින් රළු කුඩු ලෙස පෙනෙන තෙක් අතුල්ලා, සිසිල් වතුර මිලි ලීටර් 90ක් පමණ දමා තද පිටි ගුලියක් අනා, බඳුනක් යටින් නිදාගන්න තබන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පොල් තෙලේ ලූනු, අඹරාගත් වියළි මිරිස් සහ කරපිංචා දමා, ලූනු මෘදු වී සුවඳ එන තෙක් තෙම්පරාදු කරන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පොඩි කරගත් මාළු, අර්තාපල්, කහ, ගම්මිරිස් සහ ලුණු දමා හොඳින් වියළෙන තෙක් උයා, සිසිල් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිටි ගුලිය මිලිමීටර දෙකක් පමණ තුනී වන සේ පෙරළා, තේ කෝප්පයක දාරයෙන් රවුම් කපා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එක් එක් රවුමට තේ හැන්දක මාලුව තබා, දාරය ඇඟිල්ලෙන් තෙමා, අඩ සඳක් සේ නවා, දාරය දෙබලයකින් හෝ ඇඟිලි තුඩුවලින් රැළි ගස්සා වසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සාදාගත් පැටිස් රෙද්දක් යටින් තබන්න; නැතිනම් පිටි වියළී පැළෙයි.",
+    "minutes": null
+   },
+   {
+    "text": "බැදගැනීමේ තෙල් මධ්‍යම ලිපේ රත් කරන්න; ඉතා රත් වුවහොත් ඇතුළත පිසෙන්නට පෙර පිටත දුඹුරු වේ.",
+    "minutes": 5
+   },
+   {
+    "text": "වරකට පැටිස් පහක් හයක් දමා, එක් වරක් පෙරළා, පිටත බුබුළු නැඟී ලා රන්වන් වන තෙක් බැදගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කඩදාසියක තෙල් බේරා, මොහොතක් තිබෙන්න දෙන්න; ඇතුළත මාලුව ඉතා උණුසුම්.",
+    "minutes": null
+   },
+   {
+    "text": "තේ සමඟ දෙන්න. විවෘත කූඩයක තැබුවහොත් පැය කීපයක් කරකර ගතිය රැඳේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாவிலும் உப்பிலும் மார்கரினைத் தேய்த்து கொரகொரப்பான தூள் போல் ஆனபின், சுமார் 90 மில்லி குளிர்ந்த தண்ணீர் விட்டு இறுக்கமான மாவாகப் பிசைந்து, ஒரு கிண்ணத்தால் மூடி ஓய்வு கொடுக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "தேங்காய் எண்ணெயில் வெங்காயம், அரைத்த காய்ந்த மிளகாய், கறிவேப்பிலை போட்டு, வெங்காயம் மென்மையாகி வாசனை வரும் வரை தாளிக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "பிரித்த மீன், மசித்த உருளைக்கிழங்கு, மஞ்சள், மிளகு, உப்பு சேர்த்து நன்கு வறளும் வரை வதக்கி ஆறவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மாவை இரண்டு மில்லிமீட்டர் அளவு மெல்லியதாக இட்டு, தேநீர்க் கோப்பையின் விளிம்பால் வட்டங்களாக வெட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு வட்டத்திலும் ஒரு தேக்கரண்டி கலவையை வைத்து, விளிம்பை விரலால் நனைத்து, அரைநிலா வடிவில் மடித்து, முள்கரண்டியாலோ விரல் நுனியாலோ விளிம்பை மடித்து ஒட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "செய்து முடித்த பட்டீஸை ஒரு துணியின் கீழ் வைக்கவும்; இல்லையேல் மாவு வறண்டு வெடிக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "பொரிக்கும் எண்ணெயை நடுத்தர தீயில் காயவைக்கவும்; அதிகச் சூடானால் உள்ளே வேகுமுன் வெளியே நிறம் மாறிவிடும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு முறைக்கு ஐந்து ஆறு பட்டீஸ் போட்டு, ஒரு முறை திருப்பி, மேற்பரப்பில் கொப்புளம் வந்து வெளிர் பொன்னிறமாகும் வரை பொரிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "காகிதத்தில் எண்ணெய் வடித்து, ஒரு கணம் வைக்கவும்; உள்ளடக்கம் மிகச் சூடாக இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "தேநீருடன் பரிமாறவும். திறந்த கூடையில் வைத்தால் சில மணி நேரம் மொறுமொறுப்பாக இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 15,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "rolling pin",
+  "teacup or cutter",
+  "deep pan"
+ ],
+ "tips": {
+  "en": "Press the crimped edge hard and check for gaps; one open seam and the filling leaks and spoils the whole pan of oil. The same patties can be brushed with milk and baked at 200 C if you want them lighter.",
+  "si": "රැළි ගැසූ දාරය තදින් තද කර, හිඩැස් තිබේදැයි බලන්න; එක් දාරයක් විවෘත වුවහොත් මාලුව ගලා තෙල් පෑනම නරක් වේ. සැහැල්ලු ලෙස අවශ්‍ය නම් මේම පැටිස් කිරි ගල්වා සෙල්සියස් 200ක උඳුනක පිළිස්සිය හැක.",
+  "ta": "மடித்த விளிம்பை நன்கு அழுத்தி, இடைவெளி உள்ளதா எனப் பாருங்கள்; ஒரு மூட்டு திறந்திருந்தாலும் கலவை வெளியேறி எண்ணெய் முழுவதும் கெட்டுவிடும். இலகுவாக வேண்டுமானால் இதே பட்டீஸில் பால் தடவி 200 செல்சியஸில் சுடலாம்."
+ },
+ "health_note": {
+  "en": "A small patty is mostly refined flour and potato with a little fish, and it is fried in fat, so it fills a gap rather than feeding anyone. Serve them with a plain tea and something fresh, and keep them for tea time rather than as a meal.",
+  "si": "කුඩා පැටිසයක බොහෝ දුරට ඇත්තේ පිරිපහදු කළ පිටි, අර්තාපල් සහ මාළු ස්වල්පයක්; එය තෙලේ ද බැදේ. එබැවින් එය කුසගින්න මඟ හරවන නමුත් පෝෂණයක් නොදෙයි. සරල තේ සහ නැවුම් යමක් සමඟ, තේ වේලාවට පමණක් ගන්න.",
+  "ta": "ஒரு சிறிய பட்டீஸில் பெரும்பாலும் சுத்திகரித்த மாவு, உருளைக்கிழங்கு, சிறிது மீன் மட்டுமே; அதுவும் எண்ணெயில் பொரிந்தது. எனவே பசியை மறைக்கும், ஊட்டம் தராது. சாதாரண தேநீருடன், புதிதான ஏதாவதுடன், தேநீர் நேரத்திற்கு மட்டும் வைக்கவும்."
+ },
+ "tags": [
+  "deep_fried",
+  "street_food",
+  "comfort",
+  "kid_friendly",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

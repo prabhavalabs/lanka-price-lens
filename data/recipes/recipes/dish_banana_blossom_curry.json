@@ -1,0 +1,388 @@
+{
+ "id": "dish_banana_blossom_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 190,
+  "description": {
+   "en": "A dark, filling spoonful of chopped blossom in spiced coconut gravy",
+   "si": "කුළුබඩු සහිත පොල් කිරි හොදියේ, කපාගත් මුව සහිත තද පාට පිරෙන හැන්දක්",
+   "ta": "மசாலா கலந்த தேங்காய்க் குழம்பில் நறுக்கிய வாழைப்பூவின் கரும், வயிறு நிரப்பும் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_plantain_flower",
+   "label": {
+    "en": "banana blossom",
+    "si": "කෙසෙල් මුව",
+    "ta": "வாழைப்பூ"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "1 blossom, cleaned weight",
+   "preparation": {
+    "en": "outer bracts and stiff styles removed, florets chopped, held in water with lime",
+    "si": "පිටත පෙති සහ තද නාරටි ඉවත් කර, මුව සිහින්ව කපා, දෙහි දැමූ වතුරේ තබා",
+    "ta": "வெளிப் புறத் தோல்களும் கடினமான நாரும் நீக்கி, பூக்களை நறுக்கி, தேசிக்காய் நீரில் போட்டு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime, for the soaking water",
+    "si": "පොඟවන වතුරට දෙහි",
+    "ta": "ஊறவைக்கும் நீருக்குத் தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, squeezed into the water",
+   "preparation": {
+    "en": "juice squeezed into a bowl of water",
+    "si": "වතුර බඳුනකට යුෂ මිරිකා",
+    "ta": "ஒரு பாத்திரம் நீரில் சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "මිරිස් කරල්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "4 or 5 chillies",
+   "preparation": {
+    "en": "broken up",
+    "si": "කැබලිවලට කඩා",
+    "ta": "துண்டுகளாக உடைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 or 3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel away the purple outer bracts of the blossom until you reach the pale tender florets, and keep a bowl of water with lime juice squeezed into it beside you.",
+    "minutes": 10
+   },
+   {
+    "text": "Pull the stiff thread and the little tip out of each floret, chop the florets small and drop them into the lime water as you go, so they do not blacken your hands or the pot.",
+    "minutes": 20
+   },
+   {
+    "text": "Squeeze the chopped blossom hard in your fist to press the bitter water out, then rinse once more.",
+    "minutes": 3
+   },
+   {
+    "text": "Boil it in fresh water with a pinch of salt and turmeric until the pieces lose their raw crunch, then drain well.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in the pot and brown the onion, garlic, broken dried chillies, curry leaves and pandan.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the roasted curry powder and turmeric off the high flame for a moment, then add the drained blossom and turn it through the spices.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk with the salt, cover and simmer until the blossom is soft and dark and the gravy has come down.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the thick milk, bring it to one bubble and take the pot off.",
+    "minutes": 3
+   },
+   {
+    "text": "Let it rest before serving; like polos, this curry improves as it sits.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "මුවේ පිටත දම් පාට පෙති ගලවා මෘදු ලා පාට මල් කොටසට එන තුරු ඉවත් කරන්න, දෙහි යුෂ මිරිකූ වතුර බඳුනක් අත ළඟ තබා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එක එක මලේ තද නාරටිය සහ කුඩා අග්‍රය ගලවා, මල් සිහින්ව කපමින්, කපන පාසා දෙහි වතුරට දමන්න; එවිට අත් හෝ මුට්ටිය කළු වන්නේ නැහැ.",
+    "minutes": 20
+   },
+   {
+    "text": "කපාගත් මුව අතට ගෙන තදින් මිරිකා තිත්ත වතුර ඉවත් කර, තව වරක් සෝදන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලුණු ස්වල්පයක් සහ කහ දැමූ නැවුම් වතුරේ, අමු කිරිච්චි ගතිය නැති වන තුරු තම්බා, හොඳින් වතුර බේරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, ළූණු, සුදු ළූණු, කඩාගත් මිරිස් කරල්, කරපිංචා සහ රම්පෙ බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගිනි අඩු කර බැදපු තුනපහ සහ කහ මොහොතක් කලවම් කර, බේරාගත් මුව දමා කුළුබඩු සමඟ පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලුණු සමඟ තුනී පොල් කිරි වත් කර, වසා, මුව මෘදු වී තද පාට වන තුරු, හොදිය හිඳෙන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඝන කිරි දමා එක් උතුරක් එන්න දී මුට්ටිය ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බෙදන්නට පෙර ටික වෙලාවක් තියන්න; පොලොස් වගේම මේ හොදියත් තියෙන්න තියෙන්න රස වැඩියි.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "வாழைப்பூவின் வெளியே உள்ள ஊதா நிற இதழ்களை, உள்ளே மென்மையான வெளிர் நிறப் பூக்கள் வரும் வரை உரிக்கவும்; தேசிக்காய்ச் சாறு பிழிந்த ஒரு பாத்திரம் நீரைப் பக்கத்தில் வைத்துக் கொள்ளவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒவ்வொரு பூவிலும் உள்ள கடினமான நாரையும் சிறு நுனியையும் நீக்கி, பூக்களை மிக நறுக்கி, நறுக்கும் போதே தேசிக்காய் நீரில் போடவும்; அப்போது கையும் சட்டியும் கறுக்காது.",
+    "minutes": 20
+   },
+   {
+    "text": "நறுக்கிய பூவை கைப்பிடியில் அடக்கி நன்றாகப் பிழிந்து கசப்பு நீரை வெளியேற்றி, மீண்டும் ஒரு முறை அலசவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "புது நீரில் கொஞ்சம் உப்பும் மஞ்சளும் சேர்த்து, பச்சைக் கடினம் போகும் வரை வேகவைத்து, நீரை நன்றாக வடிக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலை, ரம்பை சேர்த்து வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தீயைக் குறைத்து வறுத்த கறி மசாலாவும் மஞ்சளும் ஒரு நொடி கிளறி, வடித்த பூவைச் சேர்த்து மசாலாவுடன் புரட்டவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "உப்புடன் இரண்டாம் தேங்காய்ப்பாலை ஊற்றி மூடி, பூ மென்மையாகி கறுத்து, குழம்பு வற்றும் வரை கொதிக்க விடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "முதல் பாலைச் சேர்த்து ஒரு கொதி வந்ததும் சட்டியை இறக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பரிமாறும் முன் சற்று ஆற விடவும்; பலாக்காய்க் கறியைப் போலவே இதுவும் நேரம் செல்லச் செல்ல சுவைக்கும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 35,
+  "cook_minutes": 25,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot or pan with a lid",
+  "bowl for the lime water"
+ ],
+ "tips": {
+  "en": "The cleaning is the whole job, so sit with a bowl of lime water and do it patiently; every stiff thread you leave behind will be felt in the mouth. Rub a little coconut oil on your hands first and the sap will wash off easily.",
+  "si": "මුළු වැඩේම තියෙන්නේ මුව පිරිසිදු කිරීමේ, ඒ නිසා දෙහි වතුර බඳුනක් එක්ක ඉඳගෙන ඉවසිලිවන්තව කරන්න; අත නොහැරි එක් තද නාරටියක් වුණත් කන විට දැනෙනවා. කලින් අත්වල පොල් තෙල් ටිකක් ගල්වා ගත්තොත් කිරි පහසුවෙන් සෝදා ගන්න පුළුවන්.",
+  "ta": "வேலை முழுவதும் பூவைச் சுத்தம் செய்வதிலேயே; தேசிக்காய் நீர்ப் பாத்திரத்துடன் அமர்ந்து பொறுமையாகச் செய்யவும்; விட்டுவிட்ட ஒரு கடினமான நாரும் வாயில் தெரியும். முன்பே கைகளில் கொஞ்சம் தேங்காய் எண்ணெய் தடவினால் பூவின் பால் எளிதாகக் கழுவும்."
+ },
+ "health_note": {
+  "en": "Banana blossom is high in fibre and iron and very low in calories for how filling it is, which is why it stretches a meal so well. Nothing here is heavy except the coconut milk, so a single ladle keeps the dish light.",
+  "si": "කෙසෙල් මුවේ තන්තු සහ යකඩ වැඩි, කැලරි නම් ඉතා අඩු; ඒ නිසාම මේක කෑම වේලක් දිගු කරනවා. පොල් කිරි හැර මෙහි බර දෙයක් නැති නිසා හැන්දක් ගැනීමෙන් කෑම සැහැල්ලුවෙන් තියෙනවා.",
+  "ta": "வாழைப்பூவில் நார்ச்சத்தும் இரும்புச்சத்தும் அதிகம், வயிறு நிரம்பும் அளவுக்கு கலோரி மிகக் குறைவு; அதனால்தான் இது ஒரு வேளை உணவை நீட்டிக்கிறது. தேங்காய்ப்பாலைத் தவிர கனமான எதுவும் இதில் இல்லை, எனவே ஒரு கரண்டி எடுத்தால் உணவு இலகுவாகவே இருக்கும்."
+ },
+ "tags": [
+  "high_fibre",
+  "iron_rich",
+  "budget",
+  "festive",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,258 @@
+{
+ "id": "dish_paratha",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 200,
+  "description": {
+   "en": "Two flaky flatbreads to tear and dip in gravy",
+   "si": "හොද්දට ගිල්වා ගෙන කන ලෙලි ගැසෙන රොටි දෙකක්",
+   "ta": "குழம்பில் தொட்டுச் சாப்பிட இரண்டு அடுக்கு பரோட்டா"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மா"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "හලා ගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "4 tbsp",
+   "preparation": {
+    "en": "for the dough, the coiling and the griddle",
+    "si": "පිටි ගුලියට, රෝල් කිරීමට සහ තාච්චියට",
+    "ta": "மாவுக்கும், சுருட்டுவதற்கும், தோசைக்கல்லுக்கும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_margarine",
+   "label": {
+    "en": "margarine",
+    "si": "මාගරින්",
+    "ta": "மார்கரின்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "softened, for brushing between the layers",
+    "si": "තට්ටු අතර ගැල්වීමට මුදු කරගත්",
+    "ta": "அடுக்குகளுக்கு இடையே தடவ மென்மையாக்கியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "milk",
+    "si": "කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "warmed",
+    "si": "මදක් උණු කරගත්",
+    "ta": "வெதுவெதுப்பாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Mix the flour, sugar and salt in a wide basin, then work in the warm milk and about 130 ml of water to make a soft sticky dough.",
+    "minutes": 5
+   },
+   {
+    "text": "Knead the dough on the table, slapping and stretching it, until it is smooth and springs back when pressed.",
+    "minutes": 10
+   },
+   {
+    "text": "Divide it into eight balls, rub each one all over with oil, put them in a covered dish and leave them to rest so the gluten relaxes.",
+    "minutes": 120
+   },
+   {
+    "text": "Take one oiled ball and stretch it on an oiled table with the palm of your hand into a sheet so thin you can see the table through it, working from the middle outwards.",
+    "minutes": null
+   },
+   {
+    "text": "Brush the sheet with a little margarine or oil, gather it into loose pleats like a fan, then wind the pleated rope into a coil and tuck the end under.",
+    "minutes": null
+   },
+   {
+    "text": "Rest the coils again while you stretch the rest, then press each coil flat with your palm into a round about the size of a saucer.",
+    "minutes": 15
+   },
+   {
+    "text": "Cook on a hot griddle with a little oil, turning twice, until both sides are spotted brown and the edges look layered.",
+    "minutes": 5
+   },
+   {
+    "text": "While it is hot, clap the paratha between your palms or crush it lightly so the layers loosen, and keep the pile covered with a cloth.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පළල් බේසමකට තිරිඟු පිටි, සීනි සහ ලුණු දමා මිශ්‍ර කර, උණුසුම් කිරි සහ වතුර මිලි ලීටර් 130ක් පමණ දමා මුදු, ඇලෙන සුළු පිටි ගුලියක් සාදා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මේසය මත පිටි ගුලිය තබා ගසමින් සහ අදිමින්, සිනිඳු වී තද කළ විට නැවත ඉහළ එන තුරු මිශ්‍ර කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගුලි අටකට බෙදා, එක් එක් ගුලියට හාත්පස තෙල් ගල්වා, වැසෙන භාජනයක දමා ග්ලූටන් ලිහිල් වන තුරු තිබෙන්න දෙන්න.",
+    "minutes": 120
+   },
+   {
+    "text": "තෙල් ගැල්වූ ගුලියක් ගෙන තෙල් ගැල්වූ මේසය මත, මැදින් පිටතට අත්ලෙන් අදිමින්, යටින් මේසය පෙනෙන තරම් තුනී තලයක් ලෙස විහිදුවා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තලය මතට මාගරින් හෝ තෙල් ටිකක් ගල්වා, පංකාවක් සේ ලිහිල් රැලි ගසා එකතු කර, එම කඹය රෝල් කර ගොඩක් සාදා කෙළවර යටින් රුවා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉතිරි ගුලි විහිදුවන අතරේ රෝල් කළ ගොඩවල් තිබෙන්න දී, පසුව එක් එක් ගොඩ අත්ලෙන් තට්ටු කර පිඟාන් තැටියක් තරමට පැතලි කරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "රත් වූ තාච්චියේ තෙල් ටිකක් දමා, දෙවතාවක් පෙරළමින්, දෙපැත්තේ දුඹුරු පැල්ලම් එන තුරු සහ දාරවල් තට්ටු ලෙස පෙනෙන තුරු පිහන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "උණුසුම්ව තිබෙන විටම පරාටා අත්ල දෙක අතර තට්ටු කර හෝ සැහැල්ලුවෙන් තලා තට්ටු ලිහිල් කර, ගොඩ රෙද්දකින් වසා තබන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "அகலமான பாத்திரத்தில் மா, சீனி, உப்பு கலந்து, வெதுவெதுப்பான பாலும் சுமார் 130 மில்லி தண்ணீரும் சேர்த்து மென்மையான பிசுபிசுப்பான மாவாகப் பிசையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மாவை மேசையில் வைத்து அடித்தும் இழுத்தும், பிசுபிசுப்பு போய் மிருதுவாகி அழுத்தினால் திரும்பி எழும் வரை பிசையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "எட்டு உருண்டைகளாகப் பிரித்து ஒவ்வொன்றுக்கும் எண்ணெய் தடவி, மூடிய பாத்திரத்தில் வைத்து பசை தளரும் வரை ஓய்வெடுக்கவிடுங்கள்.",
+    "minutes": 120
+   },
+   {
+    "text": "எண்ணெய் தடவிய ஒரு உருண்டையை எண்ணெய் தடவிய மேசையில் வைத்து, நடுவிலிருந்து வெளிப்புறமாக உள்ளங்கையால் இழுத்து, மேசை தெரியும் அளவு மெல்லிய விரிப்பாகப் பரத்துங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "விரிப்பின் மேல் சிறிது மார்கரின் அல்லது எண்ணெய் தடவி, விசிறி போல் தளர்வான மடிப்புகளாகச் சேர்த்து, அந்தக் கயிற்றைச் சுருட்டி உருண்டையாக்கி நுனியை அடியில் சொருகுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மீதி உருண்டைகளைப் பரத்தும்போது சுருட்டியவற்றை ஓய்வெடுக்கவிட்டு, பின் ஒவ்வொன்றையும் உள்ளங்கையால் அழுத்தி தட்டு அளவு வட்டமாக்குங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "காய்ந்த தோசைக்கல்லில் சிறிது எண்ணெய் விட்டு, இரு முறை திருப்பி, இரு பக்கமும் பொன்னிற புள்ளிகள் வந்து ஓரங்களில் அடுக்குகள் தெரியும் வரை சுடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "சூடாக இருக்கும்போதே பரோட்டாவை இரு உள்ளங்கைகளுக்கு இடையே தட்டி அல்லது லேசாக நசுக்கி அடுக்குகளைத் தளர்த்தி, அடுக்கை துணியால் மூடி வையுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 20,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "wide basin",
+  "oiled table or large board",
+  "flat griddle",
+  "cloth for covering"
+ ],
+ "tips": {
+  "en": "The long oiled rest is what lets the dough stretch thin without tearing; rushing it gives you a thick bread with no layers. Do not let the griddle get so hot that the outside browns before the inside layers set.",
+  "si": "තෙල් ගල්වා දිගු වේලාවක් තිබෙන්න දීමයි පිටි ගුලිය ඉරෙන්නේ නැතිව තුනීට ඇදෙන්නට හේතුව; ඉක්මන් වුවහොත් තට්ටු නැති ඝන රොටියක් ලැබෙයි. ඇතුළේ තට්ටු තැම්බෙන්නට පෙර පිටත දුඹුරු වන තරම් තාච්චිය රත් නොකරන්න.",
+  "ta": "எண்ணெய் தடவி நீண்ட நேரம் ஓய்வு கொடுப்பதே மாவு கிழியாமல் மெல்லியதாக இழுக்க உதவுகிறது; அவசரப்பட்டால் அடுக்கில்லாத தடிமனான ரொட்டியே கிடைக்கும். உள் அடுக்குகள் வேகும் முன் வெளிப்புறம் கருகும் அளவு கல்லை சூடாக்க வேண்டாம்."
+ },
+ "health_note": {
+  "en": "Two parathas carry a fair amount of oil and refined flour, so they sit heavy; balance them with a vegetable curry rather than two meat gravies. Households eating them often can use half wholemeal flour for more fibre.",
+  "si": "පරාටා දෙකකින් තෙල් සහ පිරිපහදු කළ පිටි සැලකිය යුතු ලෙස ලැබෙන බැවින් බඩට බරයි; මස් හොදි දෙකක් වෙනුවට එළවළු ව්‍යංජනයක් සමඟ සමතුලිත කරන්න. නිතර කන ගෙවල් වල අඩක් සම්පූර්ණ තිරිඟු පිටි යොදා තන්තු වැඩි කර ගත හැකියි.",
+  "ta": "இரண்டு பரோட்டாவில் எண்ணெயும் சுத்திகரித்த மாவும் நல்ல அளவு இருப்பதால் வயிற்றுக்குக் கனமானது; இரண்டு இறைச்சிக் குழம்புகளுக்குப் பதிலாக ஒரு காய்கறிக் கறியுடன் சமன் செய்யுங்கள். அடிக்கடி சாப்பிடும் வீடுகள் பாதி முழுக்கோதுமை மா சேர்த்து நார்ச்சத்தை அதிகரிக்கலாம்."
+ },
+ "tags": [
+  "filling",
+  "comfort",
+  "street_food"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

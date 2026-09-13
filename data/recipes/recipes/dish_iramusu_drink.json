@@ -1,0 +1,215 @@
+{
+ "id": "dish_iramusu_drink",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 250,
+  "description": {
+   "en": "A chilled glass of sweet root cordial",
+   "si": "පැණි රස මුල් කැඳ වර්ගයේ සිසිල් වීදුරුවක්",
+   "ta": "இனிப்பான வேர்ப் பானத்தின் குளிர்ந்த கிளாஸ்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "pantry_iramusu",
+   "label": {
+    "en": "iramusu, sarsaparilla root",
+    "si": "ඉරමුසු",
+    "ta": "நன்னாரி வேர்"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a small bundle of roots",
+   "preparation": {
+    "en": "washed clean of soil and bruised",
+    "si": "පස් සෝදා තලාගත්",
+    "ta": "மண் போக அலசி இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1 lump, in place of some sugar",
+   "preparation": {
+    "en": "scraped",
+    "si": "හෑරූ",
+    "ta": "சுரண்டியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණක්",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the roots two or three times until no soil comes away in the water, then bruise them under a stone so the pieces split open.",
+    "minutes": 10
+   },
+   {
+    "text": "Cut the roots into short lengths and put them in a pan with one litre of water.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to the boil, then keep it on a low fire until the water is a clear reddish brown and smells sweet and earthy.",
+    "minutes": 15
+   },
+   {
+    "text": "Stir in the sugar, and the jaggery if you are using it, and let it dissolve completely.",
+    "minutes": 3
+   },
+   {
+    "text": "Take the pan off the fire and leave the roots standing in the liquid as it cools; that is where the last of the flavour comes from.",
+    "minutes": 30
+   },
+   {
+    "text": "Strain out the roots, squeeze in the lime juice if you like a sharper glass, and pour into a clean bottle.",
+    "minutes": null
+   },
+   {
+    "text": "Chill it and serve over ice in small glasses; it keeps four or five days in the fridge.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වතුරට පස් නොඑන තුරු මුල් දෙතුන් වතාවක් සෝදා, පසුව ගලක් යටින් තලා කැබලි පලා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුල් කොට කැබලිවලට කපා, වතුර ලීටරයක් සමඟ බඳුනකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උතුරන්න තබා, පසුව අඩු ගින්නේ, වතුර පැහැදිලි රතු දුඹුරු පාටක් වී පැණි සහ පස් සුවඳක් එනතුරු තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "සීනි, සහ දමනවා නම් හකුරු, දමා සම්පූර්ණයෙන් දිය වන තුරු කලතන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බඳුන ලිපෙන් බාගෙන, සිසිල් වන අතරේ මුල් දියරය තුළම තබන්න; අන්තිම රසය එන්නේ එහෙමයි.",
+    "minutes": 30
+   },
+   {
+    "text": "මුල් පෙරා ඉවත් කර, තියුණු රසක් කැමති නම් දෙහි යුෂ මිරිකා, පිරිසිදු බෝතලයකට වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සිසිල් කර කුඩා වීදුරුවල අයිස් මතට බෙදන්න; ශීතකරණයේ දින හතර පහක් තිබේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "நீரில் மண் வராத வரை வேர்களை இரண்டு மூன்று முறை அலசி, பிறகு கல்லின் கீழ் இடித்து துண்டுகள் பிளக்கும்படி செய்யுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வேர்களைச் சிறு துண்டுகளாக வெட்டி, ஒரு லிட்டர் நீரோடு பாத்திரத்தில் இடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்க வைத்து, பிறகு குறைந்த தீயில், நீர் தெளிவான செம்பழுப்பு நிறமாகி இனிப்பான மண் வாசம் வரும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "சீனியையும், சேர்ப்பதாக இருந்தால் வெல்லத்தையும் இட்டு, முழுமையாகக் கரையும் வரை கலக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பாத்திரத்தை இறக்கி, ஆறும் வரை வேர்களை திரவத்திலேயே விட்டு வையுங்கள்; கடைசி சுவை வருவது அப்படியே.",
+    "minutes": 30
+   },
+   {
+    "text": "வேர்களை வடிகட்டி நீக்கி, கூர்மையான சுவை வேண்டுமானால் எலுமிச்சைச் சாறு பிழிந்து, சுத்தமான பாட்டிலில் ஊற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குளிர்வித்து சிறிய கிளாஸ்களில் பனிக்கட்டி மேல் பரிமாறவும்; குளிர்சாதனப் பெட்டியில் நான்கு ஐந்து நாள் இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "pan",
+  "strainer",
+  "clean bottle"
+ ],
+ "tips": {
+  "en": "Buy the roots from a herbal shop that sells them whole, and keep them dry in paper rather than a plastic bag. The same roots will give a second, paler pot if you boil them again the next day, and that one needs much less sugar.",
+  "si": "මුල් මුළුමනින්ම විකුණන ඕසු කඩෙන් ගන්න, ඒවා පොලිතින් මල්ලක නොව කඩදාසියේ වියලිව තබන්න. එම මුල් පසුදා නැවත තැම්බුවොත් තුනී දෙවෙනි බඳුනක් දේ, එයට සීනි ගොඩක් අඩුවෙන් සෑහේ.",
+  "ta": "வேர்களை முழுதாக விற்கும் நாட்டு மருந்துக் கடையில் வாங்குங்கள், அவற்றை பிளாஸ்டிக் பையில் அல்லாமல் காகிதத்தில் உலர்வாக வையுங்கள். அதே வேர்களை மறுநாள் மீண்டும் கொதிக்க வைத்தால் இரண்டாவது, வெளிர் நிறப் பாத்திரம் கிடைக்கும், அதற்கு சீனி மிகக் குறைவே தேவை."
+ },
+ "health_note": {
+  "en": "The root itself adds nothing heavy, so what you drink is sweetened water: half a cup of sugar over four glasses is the thing to watch. Take it as a cooling drink on a hot afternoon and make it with much less sugar if anyone at home has diabetes.",
+  "si": "මුලෙන් බරක් එකතු වන්නේ නැති නිසා, බොන්නේ පැණි රස කළ වතුරයි: වීදුරු හතරකට සීනි කෝප්ප භාගයක් යන එකයි බලන්නට ඕන. රස්නෙ දහවලක සිසිල් බීමක් ලෙස ගන්න, ගෙදර කෙනෙකුට දියවැඩියාව ඇත්නම් සීනි ගොඩක් අඩුවෙන් හදන්න.",
+  "ta": "வேரால் கனமான எதுவும் சேர்வதில்லை, எனவே குடிப்பது இனிப்பு சேர்த்த நீரே: நான்கு கிளாஸுக்கு அரை கோப்பை சீனி என்பதே கவனிக்க வேண்டியது. வெயில் மதியத்தில் குளிர்ச்சிப் பானமாக எடுத்துக் கொள்ளுங்கள்; வீட்டில் ஒருவருக்கு நீரிழிவு இருந்தால் சீனியை மிகக் குறைத்துச் செய்யுங்கள்."
+ },
+ "tags": [
+  "high_sugar",
+  "hydrating",
+  "light",
+  "traditional_remedy",
+  "budget"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

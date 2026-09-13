@@ -1,0 +1,360 @@
+{
+ "id": "dish_mushroom_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 150,
+  "description": {
+   "en": "A ladle of mushroom strips in coconut gravy, with rice or string hoppers",
+   "si": "බත් හෝ ඉඳිආප්ප සමඟ පොල් කිරි ඉස්මේ හතු තීරු හැන්දක්",
+   "ta": "சாதம் அல்லது இடியப்பத்துடன் தேங்காய்க் குழம்பில் காளான் துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_oyster_mushroom",
+   "label": {
+    "en": "oyster mushroom",
+    "si": "බෙලි හතු",
+    "ta": "சிப்பிக் காளான்"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 large packets",
+   "preparation": {
+    "en": "torn into strips",
+    "si": "තීරුවලට ඉරාගත්",
+    "ta": "நீளத் துண்டுகளாகக் கிழித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 small onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthways",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "3/4 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wipe the oyster mushrooms with a damp cloth rather than washing them; they drink water and then give it all back into the pan.",
+    "minutes": 5
+   },
+   {
+    "text": "Tear them into strips along the grain and cut the tough stem ends off.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a pan and temper the sliced big onion, slit chillies, curry leaves and pandan leaf.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir in the turmeric, roasted curry powder and pepper for a moment so the spices open up in the oil.",
+    "minutes": 1
+   },
+   {
+    "text": "Put in the mushrooms with the salt, raise the fire and let the water they release cook away.",
+    "minutes": 8
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer until the strips are soft and have taken the colour of the gravy.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the thick coconut milk, let it come once to the boil and take the pan off the fire.",
+    "minutes": 2
+   },
+   {
+    "text": "Do not keep it on the fire after the thick milk goes in, or the gravy will split and go oily.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බෙලි හතු සේදීමට වඩා තෙත් රෙදි කැබැල්ලකින් පිස ගන්න; ඒවා වතුර උරාගෙන පසුව පෑන් එකට මුදා හරියි.",
+    "minutes": 5
+   },
+   {
+    "text": "නූල් අනුව තීරුවලට ඉරා, දැඩි කඳ කෙළවර කපා ඉවත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් එකේ පොල් තෙල් රත් කර, කපාගත් ලොකු ලූනු, පලාගත් මිරිස්, කරපිංචා සහ රම්පෙ තෙල්දාලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කහ, බැදපු තුනපහ සහ ගම්මිරිස් එක් කර, කුළුබඩු තෙලේ මතු වන තුරු මොහොතක් කලතන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "හතු සහ ලුණු දමා, ගිනි වැඩි කර, ඒවා මුදා හරින වතුර සිඳෙන්න දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, තීරු මෘදු වී ඉස්මේ පැහැය ගන්නා තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ඝන පොල් කිරි එකතු කර, එක් වරක් උතුරුවා පෑන් ළිපෙන් ඉවත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඝන කිරි දැමූ පසු ගින්නේ තබන්න එපා; එසේ කළොත් ඉස්ම කැඩී තෙල් වෙන් වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிப்பிக் காளானைக் கழுவாமல் ஈரத் துணியால் துடையுங்கள்; அவை நீரை உறிஞ்சி பிறகு சட்டியில் முழுவதையும் விட்டுவிடும்.",
+    "minutes": 5
+   },
+   {
+    "text": "நார் திசையில் நீளத் துண்டுகளாகக் கிழித்து, கெட்டியான தண்டு முனைகளை வெட்டி நீக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, நறுக்கிய பெரிய வெங்காயம், கீறிய மிளகாய், கறிவேப்பிலை, ரம்பையைத் தாளியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மஞ்சள், வறுத்த கறி மசாலா, மிளகு சேர்த்து, மசாலா எண்ணெயில் மணம் வரும் வரை ஒரு கணம் கிளறுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "காளானையும் உப்பையும் போட்டு, தீயை உயர்த்தி, அவை விடும் நீர் முழுவதும் சுருங்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலை ஊற்றி, துண்டுகள் மிருதுவாகி குழம்பின் நிறம் ஏறும் வரை வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, ஒரு கொதி வந்தவுடன் சட்டியை இறக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "தடித்த பால் சேர்த்தபின் தீயில் வைத்திருக்க வேண்டாம்; குழம்பு பிரிந்து எண்ணெய் மேலே வந்துவிடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pan",
+  "damp cloth"
+ ],
+ "tips": {
+  "en": "Buy mushrooms that are dry and white at the edges; a slimy packet will never firm up in the pan. Tear rather than cut, and the strips hold the gravy better.",
+  "si": "දාරවල වේළුණු, සුදු පැහැ හතු මිලදී ගන්න; ලෙලි ගතියක් ඇති පැකට්ටුවක් පෑන් එකේ කිසිදා දැඩි නොවේ. කැපීමට වඩා ඉරා ගන්න, එවිට තීරු ඉස්ම හොඳින් රඳවා ගනී.",
+  "ta": "விளிம்புகள் உலர்ந்து வெள்ளையாக இருக்கும் காளானை வாங்குங்கள்; வழுவழுப்பான பாக்கெட் சட்டியில் ஒருபோதும் இறுகாது. வெட்டாமல் கிழியுங்கள், துண்டுகள் குழம்பை நன்றாகப் பிடித்துக் கொள்ளும்."
+ },
+ "health_note": {
+  "en": "Oyster mushrooms are light, high in fibre and low in calories, which is why many vegetarian households use them where meat would go, though they do not carry as much protein as meat does. The thick coconut milk is where the richness comes from.",
+  "si": "බෙලි හතු සැහැල්ලු, තන්තු වැඩි, කැලරි අඩු බැවින් බොහෝ නිර්මාංශ ගෙදරවල මස් වෙනුවට යොදයි; නමුත් මස් තරම් ප්‍රෝටීන් ඒවායේ නැත. පිරිපුන් රසය එන්නේ ඝන පොල් කිරිවලින්.",
+  "ta": "சிப்பிக் காளான் இலகுவானது, நார்ச்சத்து அதிகம், கலோரி குறைவு; அதனால்தான் பல சைவ வீடுகளில் இறைச்சிக்குப் பதிலாக இதைப் பயன்படுத்துகிறார்கள், இறைச்சி அளவு புரதம் இதில் இல்லை. கொழுப்பு வருவது தடித்த தேங்காய்ப் பாலிலிருந்தே."
+ },
+ "tags": [
+  "high_fibre",
+  "quick",
+  "one_pot",
+  "light",
+  "low_calorie"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

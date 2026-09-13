@@ -1,0 +1,180 @@
+{
+ "id": "dish_lunu_dehi",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 20,
+  "description": {
+   "en": "A quarter of salted lime, sliced thin on the side of the rice",
+   "si": "බත් පසෙකට තුනීට කපා ගන්නා ලුණු දෙහි කැබැල්ලක්",
+   "ta": "சாதத்தின் ஓரத்தில் மெல்லியதாக நறுக்கி வைக்கும் உப்பு எலுமிச்சை ஒரு துண்டு"
+  }
+ },
+ "yield_g": 90,
+ "ingredients": [
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "limes",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 firm limes",
+   "preparation": {
+    "en": "washed and wiped completely dry, cut almost through into quarters",
+    "si": "සෝදා මුළුමනින්ම පිසදා, කෙළවර නොකපා කෑලි හතරට පලාගත්",
+    "ta": "கழுவி முழுவதும் துடைத்து, அடிப்பகுதி இணைந்திருக்கும்படி நான்காகப் பிளந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "coarse salt",
+    "si": "ගොරෝසු ලුණු",
+    "ta": "கல் உப்பு"
+   },
+   "quantity": 35,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "coarse sea salt, not fine table salt",
+    "si": "ගොරෝසු මුහුදු ලුණු, සිහින් මේස ලුණු නොවේ",
+    "ta": "கல் உப்பு, பொடி உப்பு அல்ல"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick firm limes with clean unbroken skins; a bruised one will spoil the whole jar.",
+    "minutes": null
+   },
+   {
+    "text": "Wash them, then wipe them absolutely dry with a cloth and leave them in the air a while longer.",
+    "minutes": 10
+   },
+   {
+    "text": "Cut each lime into quarters from the top but stop short of the base so it stays in one piece.",
+    "minutes": 5
+   },
+   {
+    "text": "Press coarse salt into the cuts and rub the outside of each lime with salt as well.",
+    "minutes": 10
+   },
+   {
+    "text": "Pack them into a clean dry glass jar, sprinkling more salt between the layers, and close the lid.",
+    "minutes": null
+   },
+   {
+    "text": "Stand the jar in the sun through the day and bring it in at night, shaking it now and then so the brine washes over the fruit.",
+    "minutes": 43200
+   },
+   {
+    "text": "Over four to eight weeks the juice draws out, the salt melts into a brown brine and the skins go soft; lift out a quarter at a time with a dry spoon.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පොත්ත පිරිසිදු, තැලීම් නැති තද දෙහි තෝරා ගන්න; තැලුණු එකක් සම්පූර්ණ බෝතලයම නරක් කරනවා.",
+    "minutes": null
+   },
+   {
+    "text": "සෝදා ගත් පසු රෙද්දකින් මුළුමනින්ම පිසදා, තව ටිකක් වේලාවක් සුළඟට තබා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එක් දෙහි ගෙඩියක් ඉහළ සිට කෑලි හතරට පලන්න, නමුත් පහළ කෙළවර නොකපා තියෙන්න දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පලාගත් පැලුම්වලට ගොරෝසු ලුණු තද කර පුරවා, පිටත පැත්තටත් ලුණු අතුල්ලන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිරිසිදු වියලි වීදුරු බෝතලයකට, ස්තර අතරට තව ලුණු ඉස ඇතුළට තද කර පුරවා, වැස්ම වසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බෝතලය දවසේ අව්වේ තබා රෑට ඇතුළට ගන්න; ලුණු දිය ගෙඩිවලට වැදෙන්න වේලාවකට වරක් සොලවන්න.",
+    "minutes": 43200
+   },
+   {
+    "text": "සති හතරේ සිට අටක් ඇතුළත යුෂ මතුවී, ලුණු දිය වී දුඹුරු ලුණු වතුරක් හැදී පොත්ත මෘදු වෙනවා; වියලි හැන්දකින් එකවර කැබැල්ලක් ගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தோல் சுத்தமாக, அடிபடாத, இறுக்கமான எலுமிச்சைகளைத் தேர்ந்தெடுங்கள்; ஒன்று அடிபட்டிருந்தாலும் ஜாடி முழுவதும் கெட்டுவிடும்.",
+    "minutes": null
+   },
+   {
+    "text": "கழுவிய பிறகு துணியால் முழுவதும் துடைத்து, இன்னும் சிறிது நேரம் காற்றில் உலர விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒவ்வொரு எலுமிச்சையையும் மேலிருந்து நான்காகப் பிளங்கள், ஆனால் அடிப்பகுதியை வெட்டாமல் இணைந்திருக்க விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "பிளவுகளில் கல் உப்பை அழுத்தி நிரப்பி, வெளிப்புறத்திலும் உப்பைத் தேய்யுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "சுத்தமான உலர்ந்த கண்ணாடி ஜாடியில், அடுக்குகளுக்கு இடையே மேலும் உப்பு தூவி அடைத்து, மூடியை மூடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஜாடியை பகலில் வெயிலில் வைத்து இரவில் உள்ளே எடுங்கள்; உப்புநீர் பழங்களின் மேல் படும்படி அவ்வப்போது குலுக்குங்கள்.",
+    "minutes": 43200
+   },
+   {
+    "text": "நான்கு முதல் எட்டு வாரங்களில் சாறு இறங்கி, உப்பு கரைந்து பழுப்பு உப்புநீராகி தோல் மென்மையாகும்; உலர்ந்த கரண்டியால் ஒரு துண்டாக எடுத்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 0,
+  "passive_minutes": 43200
+ },
+ "equipment": [
+  "clean dry glass jar with a lid",
+  "knife",
+  "dry spoon"
+ ],
+ "tips": {
+  "en": "Water is the enemy: dry hands, dry jar, dry spoon, and the limes will keep for a year or more. A grown jar is worth making, so multiply the limes and salt together and the same jar serves the house for months.",
+  "si": "වතුර තමයි හතුරා: අත් වියලි, බෝතලය වියලි, හැන්ද වියලි නම් දෙහි අවුරුද්දකට වැඩිය තියෙනවා. ලොකු බෝතලයක් හදා ගැනීම වටිනවා, ඒ නිසා දෙහි සහ ලුණු දෙකම එකට වැඩි කර ගන්න; එක බෝතලයක් ගෙදරට මාස ගණනකට ඇති.",
+  "ta": "நீரே எதிரி: கைகள் உலர்ந்து, ஜாடி உலர்ந்து, கரண்டி உலர்ந்திருந்தால் எலுமிச்சை ஒரு வருடத்துக்கும் மேல் கெடாது. பெரிய ஜாடியாகச் செய்வது நல்லது; எலுமிச்சையையும் உப்பையும் ஒன்றாகப் பெருக்கிச் செய்தால் ஒரே ஜாடி வீட்டுக்கு மாதங்களுக்குப் போதும்."
+ },
+ "health_note": {
+  "en": "This is salt and lime and nothing else, so the calories are nil but the sodium is high; one thin sliver is the serving, not a whole quarter for one person if blood pressure is watched at home. Many households keep it for a queasy stomach, which is tradition rather than medicine.",
+  "si": "මෙහි ඇත්තේ ලුණු සහ දෙහි පමණයි; කැලරි නැති තරම් වුවත් සෝඩියම් ඉතා වැඩියි. ගෙදර රුධිර පීඩනය බලනවා නම් එක් තුනී පෙත්තක් ප්‍රමාණවත්, කෙනෙකුට කාල් ගෙඩියක් නොවේ. බඩේ අමාරුවට ලුණු දෙහි ගන්නා පුරුද්ද බොහෝ ගෙවල්වල තියෙනවා; එය සම්ප්‍රදායක්, බෙහෙතක් නොවේ.",
+  "ta": "இதில் உப்பும் எலுமிச்சையும் தவிர வேறு எதுவும் இல்லை; கலோரி இல்லை, ஆனால் சோடியம் மிக அதிகம். வீட்டில் இரத்த அழுத்தத்தைக் கவனிக்கிறீர்கள் என்றால் ஒரு மெல்லிய துண்டே அளவு, ஒரு முழு கால் துண்டு அல்ல. வயிற்றுக் கலக்கத்திற்கு இதைப் பயன்படுத்தும் பழக்கம் பல வீடுகளில் உண்டு; அது மரபு, மருந்து அல்ல."
+ },
+ "tags": [
+  "low_calorie",
+  "high_sodium",
+  "budget",
+  "traditional_remedy"
+ ],
+ "review_needed": [
+  "quantities"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

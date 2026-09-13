@@ -1,0 +1,313 @@
+{
+ "id": "dish_dambala_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 140,
+  "description": {
+   "en": "A ladle of sliced winged bean in light coconut gravy",
+   "si": "තුනී පොල් කිරි හොදියේ දඹල පෙති හැන්දක්",
+   "ta": "இலகுவான தேங்காய்க் குழம்பில் நறுக்கிய தம்பளா ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 570,
+ "ingredients": [
+  {
+   "ref": "product_dambala",
+   "label": {
+    "en": "winged beans",
+    "si": "දඹල",
+    "ta": "தம்பளா (சிறகு அவரை)"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 large handfuls of pods",
+   "preparation": {
+    "en": "strings pulled off, sliced thin on the slant",
+    "si": "නාරටි ඉවත් කර, ඇලයට තුනී පෙති ලෙස කපා",
+    "ta": "நார்களை நீக்கி, சாய்வாக மெல்லிய துண்டுகளாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගෙන",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Snap the tip off one pod to check that it is young; if it bends without snapping, the pod is too old for a curry.",
+    "minutes": null
+   },
+   {
+    "text": "Trim the ends, run a knife along the ridges to take off any tough string, and slice the pods thin on the slant.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the slices in a pot with the onion, green chillies, turmeric, curry powder, pandan, curry leaves and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and cook uncovered on a medium flame so the green colour holds.",
+    "minutes": 10
+   },
+   {
+    "text": "Taste a slice; it should be cooked but still have a nutty bite rather than going soft.",
+    "minutes": null
+   },
+   {
+    "text": "Add the thick coconut milk, swirl the pot and heat until the gravy just begins to bubble at the edge.",
+    "minutes": 4
+   },
+   {
+    "text": "Take it off and serve; dambala goes dull and grey if it is kept on the fire.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "එක් කරලක තුඩ කඩා බලන්න; ලා කරලක් නම් සැරෙන් කැඩේ. නොකැඩී නැමෙනවා නම් එය ව්‍යංජනයට වැඩිය මහත්.",
+    "minutes": null
+   },
+   {
+    "text": "දෙකෙළවර කපා, දාරවල් දිගේ පිහියක් ගෙන ගොස් තද නාරටි ඉවත් කර, කරල් ඇලයට තුනී පෙති ලෙස කපන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කැපූ පෙති වළඳකට දමා ලූනු, අමු මිරිස්, කහ, තුනපහ, රම්පෙ, කරපිංචා හා ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි වත් කර, කොළ පාට රැඳෙන පිණිස වහන්නක් නොදමා මධ්‍යම ගින්නේ උයන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෙත්තක් රස බලන්න; තැම්බී තිබිය යුතු නමුත් මෘදු වී නොයා තවම කජු වගේ දැඩි බවක් තිබිය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "මිටි කිරි එකතු කර වළඳ සොලවා, දාරයේ බුබුළු එන්නට පටන් ගන්නා තුරු පමණක් රස්නය කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන බෙදන්න; ගින්නේ තියාගෙන සිටියොත් දඹල පාට අළු වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஒரு காயின் நுனியை ஒடித்துப் பாருங்கள்; இளசாக இருந்தால் சட்டென ஒடியும். ஒடியாமல் வளைந்தால் அது கறிக்கு மிகவும் முதிர்ந்தது.",
+    "minutes": null
+   },
+   {
+    "text": "இரு முனைகளையும் நீக்கி, விளிம்புகளில் கத்தியை ஓட்டி கெட்டி நார்களை நீக்கி, காய்களை சாய்வாக மெல்லியதாக நறுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "நறுக்கியதை சட்டியில் இட்டு, வெங்காயம், பச்சை மிளகாய், மஞ்சள், கறி மசாலா, ரம்பை, கறிவேப்பிலை, உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி, பச்சை நிறம் தங்க மூடாமல் நடுத்தர தீயில் வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒரு துண்டைச் சுவைத்துப் பாருங்கள்; வெந்திருக்க வேண்டும், ஆனால் மென்மையாகிவிடாமல் கடினமான பதம் இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "தடிமன் பாலைச் சேர்த்து சட்டியை ஆட்டி, விளிம்பில் குமிழி வரும் வரை மட்டும் சூடாக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "இறக்கிப் பரிமாறுங்கள்; அடுப்பில் வைத்திருந்தால் தம்பளா நிறம் மங்கி சாம்பலாகும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 18,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Slice thin and on the slant so the ridged edges cook at the same speed as the middle. If the pods came from the garden fence and are a little old, the same recipe works better as a mallung with scraped coconut.",
+  "si": "දාර සහිත කොටස් මැද කොටසට සමානව උයන පිණිස තුනී ලෙස, ඇලයට කපන්න. වැටේ දඹල ටිකක් මහත් නම්, එම ප්‍රමාණ ගාගත් පොල් සමඟ මැල්ලුමක් ලෙස වඩාත් හොඳින් ගැළපේ.",
+  "ta": "விளிம்புப் பகுதிகள் நடுப்பகுதியுடன் சமமாக வேகும்படி மெல்லியதாகச் சாய்வாக நறுக்குங்கள். வேலியில் பிடுங்கிய காய்கள் சற்று முதிர்ந்திருந்தால், இதே அளவுகளை துருவிய தேங்காயுடன் வதக்கலாகச் செய்வது நல்லது."
+ },
+ "health_note": {
+  "en": "Winged beans are one of the cheapest garden vegetables and give fibre and a little plant protein for almost nothing in season. The gravy is light because only half a cup of thick milk goes in, which suits an evening meal.",
+  "si": "දඹල යනු වත්තේ ලාභම එළවළුවලින් එකක් වන අතර, කාලයට ලැබෙන විට කිසිත් නොවන මිලට කෙඳි හා සුළු පැළෑටි ප්‍රෝටීන් ලබා දේ. මිටි කිරි කෝප්ප භාගයක් පමණක් යන නිසා හොදිය සැහැල්ලුයි; රාත්‍රි කෑමට ගැළපේ.",
+  "ta": "தம்பளா தோட்டத்தில் கிடைக்கும் மிக மலிவான காய்களில் ஒன்று; பருவத்தில் ஏதுமில்லாத விலையில் நார்ச்சத்தும் சிறிது தாவரப் புரதமும் தருகிறது. அரை கப் தடிமன் பால் மட்டுமே சேர்வதால் குழம்பு இலகுவானது; இரவு உணவுக்கு ஏற்றது."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "budget",
+  "quick",
+  "one_pot",
+  "light"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

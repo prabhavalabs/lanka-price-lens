@@ -1,0 +1,313 @@
+{
+ "id": "dish_semiya_payasam",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 200,
+  "description": {
+   "en": "A cup of warm milky payasam to close the meal",
+   "si": "කෑම අවසානයේ දෙන උණුසුම් කිරි පායාසම් කෝප්පයක්",
+   "ta": "உணவின் இறுதியில் ஒரு கிண்ணம் சூடான பால் பாயசம்"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "pantry_vermicelli",
+   "label": {
+    "en": "vermicelli",
+    "si": "සෙමියා",
+    "ta": "சேமியா"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 and a half cups, broken short",
+   "preparation": {
+    "en": "broken into short lengths",
+    "si": "කෙටි කැබලිවලට කඩාගත්",
+    "ta": "குறுகிய துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "එළකිරි",
+    "ta": "பசும்பால்"
+   },
+   "quantity": 600,
+   "unit": "ml",
+   "household": "2 and a half cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_milk_powder",
+   "label": {
+    "en": "full cream milk powder",
+    "si": "කිරිපිටි",
+    "ta": "பால் மா"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "mixed smoothly with a little warm water",
+    "si": "උණු වතුර ටිකකින් ගුලි නොවන සේ දිය කරගත්",
+    "ta": "சிறிது வெந்நீரில் கட்டி இல்லாமல் கரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "6 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter or ghee",
+    "si": "බටර් හෝ ගිතෙල්",
+    "ta": "வெண்ணெய் அல்லது நெய்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "broken in halves",
+    "si": "දෙකට කඩාගත්",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_raisins",
+   "label": {
+    "en": "sultanas",
+    "si": "කිස්මිස්",
+    "ta": "உலர் திராட்சை"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "rinsed",
+    "si": "සෝදාගත්",
+    "ta": "கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "4 pods",
+   "preparation": {
+    "en": "seeds crushed",
+    "si": "ඇට තලාගත්",
+    "ta": "விதைகளை நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_condensed_milk",
+   "label": {
+    "en": "condensed milk",
+    "si": "ඝනකිරි",
+    "ta": "இனிப்புப் பால்"
+   },
+   "quantity": 50,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "for a richer payasam; reduce the sugar if you use it",
+    "si": "වඩාත් රසවත් කිරීමට; භාවිත කරන්නේ නම් සීනි අඩු කරන්න",
+    "ta": "கூடுதல் சுவைக்கு; சேர்த்தால் சீனியைக் குறைக்கவும்"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Melt the butter in a heavy pan and fry the cashew and sultanas until the nuts are golden and the fruit puffs up, then lift them out.",
+    "minutes": 4
+   },
+   {
+    "text": "Brown the broken vermicelli in the same butter over a low fire, stirring, until it takes the colour of strong tea.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour in 200 ml of hot water and cook until the strands are soft but not mushy.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the fresh milk and bring it to a slow boil, stirring from the bottom so nothing catches.",
+    "minutes": 8
+   },
+   {
+    "text": "Stir the milk powder smoothly into a little warm water and add it with the sugar.",
+    "minutes": null
+   },
+   {
+    "text": "Simmer gently until the payasam thickens enough to coat the back of the spoon; it thickens more as it cools.",
+    "minutes": 8
+   },
+   {
+    "text": "Stir in the crushed cardamom, the condensed milk if you are using it, and most of the cashew and sultanas.",
+    "minutes": null
+   },
+   {
+    "text": "Ladle it warm into cups with the rest of the cashew on top, or cool it and serve it chilled in the evening.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බර පෑනකට බටර් දමා උණු කර, කජු රන් වන් පාට වන තුරු සහ කිස්මිස් පිම්බෙන තුරු බැද, ඉවතට ගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "එම බටර් වලම කඩාගත් සෙමියා අඩු ගින්නේ, තේ පාට වන තුරු පෙරළමින් බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "උණු වතුර මිලි ලීටර් 200ක් දමා, සෙමියා මෘදු වන නමුත් තැළී නොයන තුරු තම්බන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "එළකිරි දමා, පතුලෙන් කලවම් කරමින් සෙමින් නටන තුරු රත් කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කිරිපිටි උණු වතුර ටිකකින් ගුලි නොවන සේ දිය කර, සීනි සමඟ දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "හැන්දේ පිටුපසේ රැඳෙන තරමට ගනකම් වන තුරු අඩු ගින්නේ තම්බන්න; සිසිල් වන විට තවත් ගන වේ.",
+    "minutes": 8
+   },
+   {
+    "text": "තලාගත් එනසාල්, භාවිත කරන්නේ නම් ඝනකිරි, සහ කජු හා කිස්මිස් වැඩි කොටස දමා කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උණුසුම්ව කෝප්පවලට බෙදා ඉතිරි කජු උඩින් දමන්න, නැතහොත් සිසිල් කර සවස දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கனமான சட்டியில் வெண்ணெயை உருக்கி, முந்திரி பொன்னிறமாகும் வரை, திராட்சை பூரிக்கும் வரை வறுத்து எடுக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "அதே வெண்ணெயில் உடைத்த சேமியாவைக் குறைந்த தீயில், கடுமையான தேநீர் நிறம் வரும் வரை கிளறி வறுக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "200 மில்லி வெந்நீர் ஊற்றி, சேமியா மிருதுவாகும், ஆனால் கூழாகாத பதம் வரை வேகவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "பசும்பாலைச் சேர்த்து, அடியில் பிடிக்காமல் கிளறி மெதுவாகக் கொதிக்கவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "பால் மாவைச் சிறிது வெந்நீரில் கட்டி இல்லாமல் கரைத்து, சீனியுடன் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கரண்டியின் பின்புறத்தில் ஒட்டும் அளவுக்குக் கெட்டியாகும் வரை மெல்லிய தீயில் வேகவிடவும்; குளிரும்போது மேலும் கெட்டியாகும்.",
+    "minutes": 8
+   },
+   {
+    "text": "நசுக்கிய ஏலக்காய், விரும்பினால் இனிப்புப் பால், பெரும்பாலான முந்திரி, திராட்சை சேர்த்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சூடாகக் கிண்ணங்களில் ஊற்றி மீதி முந்திரியை மேலே தூவவும், அல்லது குளிரவைத்து மாலையில் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy pan",
+  "ladle"
+ ],
+ "tips": {
+  "en": "Brown the vermicelli properly; that toasted smell is the whole difference between payasam and sweet milk. Keep the fire low after the milk goes in so it does not catch at the bottom.",
+  "si": "සෙමියා හොඳින් බදින්න; පායාසම් සහ සීනි දැමූ කිරි අතර වෙනස එම බැදුණු සුවඳයි. කිරි දැමූ පසු පතුල පිළිස්සෙන්නේ නැති සේ ගිනි අඩුවෙන් තබා ගන්න.",
+  "ta": "சேமியாவை நன்கு வறுக்கவும்; அந்த வறுவல் வாசனையே பாயசத்தையும் சீனிப் பாலையும் வேறுபடுத்துகிறது. பால் சேர்த்த பின் அடி பிடிக்காமல் இருக்கத் தீயைக் குறைவாக வைக்கவும்."
+ },
+ "health_note": {
+  "en": "Milk and milk powder give calcium and a decent amount of protein, which makes this a kinder dessert for children and older people. The sugar is the thing to watch, and it works well with a third less.",
+  "si": "කිරි සහ කිරිපිටි වලින් කැල්සියම් සහ ප්‍රෝටීන් හොඳ ප්‍රමාණයක් ලැබෙන නිසා මෙය ළමයින්ට හා වැඩිහිටියන්ට මෘදු අතුරුපසකි. බලාගත යුත්තේ සීනි ප්‍රමාණය පමණයි; තුනෙන් එකකින් අඩු කළත් රස හොඳින් තිබේ.",
+  "ta": "பாலும் பால் மாவும் கால்சியமும் நல்ல அளவு புரதமும் தருவதால், இது குழந்தைகளுக்கும் வயதானவர்களுக்கும் மிதமான இனிப்பு. கவனிக்க வேண்டியது சீனியே; மூன்றில் ஒரு பங்கு குறைத்தாலும் சுவை நன்றாக இருக்கும்."
+ },
+ "tags": [
+  "calcium_rich",
+  "kid_friendly",
+  "elderly_friendly",
+  "comfort",
+  "festive",
+  "high_sugar",
+  "quick"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,382 @@
+{
+ "id": "dish_seer_fish_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 210,
+  "description": {
+   "en": "One thick steak with gravy, over rice",
+   "si": "බත් මතට දමන ලොකු මාළු කෑල්ලක් සහ හොදි",
+   "ta": "சாதத்தின் மேல் ஒரு பெரிய மீன் துண்டும் குழம்பும்"
+  }
+ },
+ "yield_g": 840,
+ "ingredients": [
+  {
+   "ref": "product_thalapath",
+   "label": {
+    "en": "seer fish",
+    "si": "තෝර මාළු",
+    "ta": "வஞ்சிரம் மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "cut into steaks, washed",
+    "si": "කෑලිවලට කපා සෝදාගත්",
+    "ta": "துண்டுகளாக வெட்டிக் கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a lime-sized ball",
+   "preparation": {
+    "en": "soaked in warm water and strained",
+    "si": "උණු වතුරේ දමා පෙරාගත්",
+    "ta": "வெந்நீரில் ஊறவைத்துப் பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ කුඩු",
+    "ta": "கறித் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்த்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarter cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the steaks well, rub them with a little turmeric and salt and leave them on a plate.",
+    "minutes": 10
+   },
+   {
+    "text": "Soak the tamarind in half a cup of warm water, squeeze it with your fingers and strain out the seeds and fibre.",
+    "minutes": 10
+   },
+   {
+    "text": "Mix the curry powder, chilli powder and turmeric with a few spoons of water into a loose paste.",
+    "minutes": null
+   },
+   {
+    "text": "Put the onion, garlic, fenugreek, curry leaves, spice paste, tamarind water, thin coconut milk and salt into a clay pot and bring it to a boil.",
+    "minutes": 8
+   },
+   {
+    "text": "Simmer until the raw smell of the powders is gone and the gravy has thickened a little.",
+    "minutes": 10
+   },
+   {
+    "text": "Lay the fish steaks in one layer and spoon the gravy over them; from here on do not stir with a spoon.",
+    "minutes": 1
+   },
+   {
+    "text": "Cover and cook on a low flame, moving the pot itself rather than the fish, until the steaks are firm and opaque.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour the thick coconut milk and the coconut oil around the edge and heat until it just starts to bubble.",
+    "minutes": 3
+   },
+   {
+    "text": "Take the pot off the fire and let it rest so the gravy settles into the fish.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු කෑලි හොඳින් සෝදා කහ සහ ලුණු ටිකක් ගල්වා පිඟානක තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සියඹලා උණු වතුර කෝප්ප භාගයක දමා ඇඟිලිවලින් මිරිකා ඇට සහ පොතු පෙරා ඉවත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "තුනපහ කුඩු, මිරිස් කුඩු සහ කහ වතුර හැඳි කිහිපයක් සමඟ මිශ්‍ර කර තුනී තලපයක් හදාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මැටි වළඳකට ළූණු, සුදුළූණු, උළුහාල්, කරපිංචා, කුළුබඩු තලපය, සියඹලා වතුර, දිය පොල් කිරි සහ ලුණු දමා නටවන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කුඩුවල අමු ගඳ නැති වී හොදි ටිකක් තද වන තුරු අඩු ගින්නේ තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මාළු කෑලි එක තලයකට අතුරා හොදි ඒ මතට හැන්දෙන් වත් කරන්න; මෙතැන් සිට හැන්දෙන් කලවම් කරන්න එපා.",
+    "minutes": 1
+   },
+   {
+    "text": "වහලා අඩු ගින්නේ, මාළු නොසෙල්වා වළඳම සෙලවමින්, කෑලි තද වී සුදු පැහැ වන තුරු පිසින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මිටි පොල් කිරි සහ පොල් තෙල් වළඳේ දාරයෙන් වත් කර, නටන්න පටන් ගන්නා තුරු පමණක් රත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වළඳ ලිපෙන් ඉවත් කර, හොදි මාළුවට රසය දෙන්න මඳක් තියන්න.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் துண்டுகளை நன்கு கழுவி, சிறிது மஞ்சளும் உப்பும் தடவி ஒரு தட்டில் வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "புளியை அரை கப் வெந்நீரில் ஊறவைத்து, கையால் பிசைந்து, கொட்டையும் நாரும் நீக்கி வடிகட்டுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கறித் தூள், மிளகாய்த் தூள், மஞ்சளை சில கரண்டி நீரில் கலந்து நீர்க்க விழுதாக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் வெங்காயம், பூண்டு, வெந்தயம், கறிவேப்பிலை, தூள் விழுது, புளி நீர், நீர்த்த தேங்காய்ப் பால், உப்பு சேர்த்துக் கொதிக்க வையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "தூளின் பச்சை வாசம் போய், குழம்பு சற்று இறுகும் வரை சிறு தீயில் கொதிக்கவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மீன் துண்டுகளை ஒரே அடுக்காக அடுக்கி, குழம்பைக் கரண்டியால் மேலே ஊற்றுங்கள்; இதற்குப் பிறகு கரண்டியால் கிளறாதீர்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "மூடி, சிறு தீயில், மீனை அசைக்காமல் சட்டியையே ஆட்டி, துண்டுகள் இறுகும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலையும் தேங்காய் எண்ணெயையும் சட்டி ஓரமாக விட்டு, கொதிக்கத் தொடங்கும் வரை சூடாக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "சட்டியை இறக்கி, குழம்பு மீனில் இறங்க சிறிது நேரம் வையுங்கள்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Seer fish is expensive, so treat it gently: build the gravy first and put the fish in only at the end, or the steaks fall apart and the money is wasted. A day-old curry tastes even better.",
+  "si": "තෝර මාළු මිල අධිකයි, ඒ නිසා ප්‍රවේශමෙන් හදන්න: හොදි මුලින් හදාගෙන මාළු අන්තිමට දමන්න, නැත්නම් කෑලි කැඩී මුදල නාස්ති වෙනවා. දවසක් පැරණි කරිය තව රසයි.",
+  "ta": "வஞ்சிரம் விலை அதிகம், எனவே பதமாகச் சமையுங்கள்: குழம்பை முதலில் தயாரித்து, மீனை இறுதியில் மட்டும் சேருங்கள், இல்லையேல் துண்டுகள் உடைந்து பணம் வீணாகும். மறுநாள் குழம்பு இன்னும் சுவையாக இருக்கும்."
+ },
+ "health_note": {
+  "en": "Seer is a firm, lean fish with good protein and the oils that are kind to the heart. Most of the fat in the dish comes from the coconut milk, so keep the thick milk to the amount given.",
+  "si": "තෝර තද, අඩු මේද මාළුවක්; හොඳ ප්‍රෝටීන් සහ හදවතට හිතකර තෙල් තියෙනවා. කෑමේ මේදය වැඩිපුරම එන්නේ පොල් කිරිවලින්, ඒ නිසා මිටි කිරි දී ඇති ප්‍රමාණයට සීමා කරන්න.",
+  "ta": "வஞ்சிரம் இறுக்கமான, குறைந்த கொழுப்புள்ள மீன்; நல்ல புரதமும் இதயத்துக்கு உதவும் எண்ணெய்ச் சத்தும் உண்டு. உணவின் கொழுப்பு பெரும்பாலும் தேங்காய்ப் பாலில் இருந்தே வருகிறது, எனவே கெட்டிப் பாலை கொடுத்த அளவிலேயே வையுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "heart_healthy",
+  "festive",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

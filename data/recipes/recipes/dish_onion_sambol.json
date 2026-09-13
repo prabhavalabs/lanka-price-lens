@@ -1,0 +1,265 @@
+{
+ "id": "dish_onion_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 40,
+  "description": {
+   "en": "A small heap of sharp raw onion relish on the side of the plate",
+   "si": "පිඟානේ පසෙකට දමා ගන්නා සැර අමු ලූනු සම්බෝල ගොඩක්",
+   "ta": "தட்டின் ஓரத்தில் வைக்கும் காரமான பச்சை வெங்காய சம்பல் ஒரு சிறு குவியல்"
+  }
+ },
+ "yield_g": 160,
+ "ingredients": [
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "about 10 small red onions",
+   "preparation": {
+    "en": "peeled and sliced as thin as possible",
+    "si": "ලෙලි ගලවා හැකි තරම් තුනීට කපාගත්",
+    "ta": "தோல் உரித்து முடிந்தவரை மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 green chillies",
+   "preparation": {
+    "en": "sliced fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "juice of 1 lime",
+   "preparation": {
+    "en": "juiced, seeds kept out",
+    "si": "ඇට ඉවත් කර යුෂ මිරිකාගත්",
+    "ta": "கொட்டை நீக்கி சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": {
+    "en": "freshly crushed",
+    "si": "අලුතින් තලාගත්",
+    "ta": "புதிதாக நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 5,
+   "unit": "ml",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the red onions and slice them as thin as your knife allows; a blunt knife bruises them and makes the sambol watery.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the slices in a bowl with the salt and chilli powder.",
+    "minutes": null
+   },
+   {
+    "text": "Rub everything together with your fingertips until the onion softens and takes on a glossy red colour.",
+    "minutes": 3
+   },
+   {
+    "text": "Squeeze the lime over, add the green chilli and the crushed pepper and mix again.",
+    "minutes": null
+   },
+   {
+    "text": "Taste it: a pinch of sugar if the onion bites too hard, a teaspoon of vinegar if the dish has to sit on the table for a while.",
+    "minutes": null
+   },
+   {
+    "text": "Let it stand so the juices draw out, then serve it in a small dish.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "රතු ලූනු ලෙලි ගලවා, පිහියෙන් හැකි තරම් තුනීට කපා ගන්න; මොට පිහියකින් ලූනු තලනවා, එවිට සම්බෝල වතුර වෙනවා.",
+    "minutes": 5
+   },
+   {
+    "text": "කපාගත් ලූනු බඳුනකට දමා ලුණු සහ මිරිස් කුඩු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඇඟිලි තුඩුවලින්, ලූනු මෘදු වී රතු පැහැයට දිලිසෙන තුරු හොඳින් අතුල්ලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා, අමු මිරිස් සහ තලාගත් ගම්මිරිස් දමා නැවත මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "රස බලන්න: ලූනු සැරට කන්නේ නම් සීනි මදක්, මේසය මත ටික වේලාවක් තියෙන්නට නම් විනාකිරි තේ හැන්දක්.",
+    "minutes": null
+   },
+   {
+    "text": "යුෂ මතුවෙන්න ටිකක් තියා, කුඩා පිඟානකට දමා ඉදිරිපත් කරන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "சின்ன வெங்காயத்தை உரித்து, கத்தி அனுமதிக்கும் அளவு மெல்லியதாக நறுக்குங்கள்; மழுங்கிய கத்தி வெங்காயத்தை நசுக்கி சம்பலை நீராக்கிவிடும்.",
+    "minutes": 5
+   },
+   {
+    "text": "நறுக்கியதை ஒரு பாத்திரத்தில் போட்டு உப்பும் மிளகாய்த் தூளும் சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "விரல் நுனிகளால், வெங்காயம் மென்மையாகி சிவப்பாக பளபளக்கும் வரை நன்கு பிசையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "எலுமிச்சை சாறு பிழிந்து, பச்சை மிளகாயும் நசுக்கிய மிளகும் சேர்த்து மீண்டும் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சுவை பாருங்கள்: வெங்காயம் மிகக் காரமாக இருந்தால் ஒரு சிட்டிகை சீனி, மேசையில் சிறிது நேரம் இருக்க வேண்டுமானால் ஒரு தேக்கரண்டி வினிகர்.",
+    "minutes": null
+   },
+   {
+    "text": "சாறு இறங்க சிறிது நேரம் வைத்துவிட்டு, சிறிய கிண்ணத்தில் பரிமாறுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 8,
+  "cook_minutes": 0,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "sharp knife",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "Mix it just before the meal; onion sambol left from morning goes limp and smells strong by evening. Rubbing the salt in first is what takes the raw harshness out of the onion.",
+  "si": "කෑමට ටික වෙලාවකට කලින් හදා ගන්න; උදේ හදපු ලූනු සම්බෝල හවස වන විට මැලවී සැර ගඳක් එනවා. මුලින්ම ලුණු අතුල්ලීමයි ලූනුවේ අමු සැරය ඉවත් කරන්නේ.",
+  "ta": "சாப்பாட்டுக்கு சற்று முன்பே கலக்குங்கள்; காலையில் செய்த வெங்காய சம்பல் மாலையில் வதங்கி கடுமையான வாசனை அடிக்கும். முதலில் உப்பை பிசைவதே வெங்காயத்தின் பச்சைக் காரத்தை நீக்குகிறது."
+ },
+ "health_note": {
+  "en": "Raw onion with lime and no oil is about the lightest thing on a rice plate, and the lime helps the body take up iron from the rest of the meal. It is hot and salty, so a small heap is enough for anyone with a tender stomach.",
+  "si": "තෙල් නැති, දෙහි සමඟ හදන අමු ලූනු බත් පිඟානේ තියෙන සැහැල්ලුම දෙයක්; දෙහි නිසා අනෙක් කෑමවලින් යකඩ අවශෝෂණය වීමත් වැඩි වෙනවා. සැර සහ ලුණු ගතිය නිසා බඩ සංවේදී අයට කුඩා ගොඩක් ප්‍රමාණවත්.",
+  "ta": "எண்ணெய் இல்லாமல் எலுமிச்சையுடன் செய்யும் பச்சை வெங்காயம் சாதத் தட்டில் மிகவும் இலகுவான ஒன்று; எலுமிச்சை மற்ற உணவிலிருந்து இரும்பை உடல் எடுத்துக்கொள்ள உதவுகிறது. காரமும் உப்பும் அதிகம் என்பதால், வயிறு உணர்திறன் உள்ளவர்களுக்கு ஒரு சிறு அளவே போதும்."
+ },
+ "tags": [
+  "low_calorie",
+  "low_fat",
+  "quick",
+  "budget",
+  "weight_loss_friendly",
+  "light"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

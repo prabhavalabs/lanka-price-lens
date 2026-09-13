@@ -1,0 +1,318 @@
+{
+ "id": "dish_knolkhol_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 140,
+  "description": {
+   "en": "A ladle of firm kohlrabi cubes in coconut gravy with rice",
+   "si": "බත් සමඟ පොල් කිරි ඉස්මේ දැඩි නෝකෝල් කැබලි හැන්දක්",
+   "ta": "சாதத்துடன் தேங்காய்க் குழம்பில் இறுக்கமான நோல்கோல் துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 560,
+ "ingredients": [
+  {
+   "ref": "product_knolkhol",
+   "label": {
+    "en": "kohlrabi",
+    "si": "නෝකෝල්",
+    "ta": "நோல்கோல்"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "2 medium bulbs",
+   "preparation": {
+    "en": "cut into small cubes",
+    "si": "කුඩා කැබලිවලට කපාගත්",
+    "ta": "சிறு துண்டுகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthways",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the leaves off the kohlrabi, peel the bulb thickly because the outer layer is woody, and cut it into small cubes.",
+    "minutes": 10
+   },
+   {
+    "text": "Wash the cubes and put them in a pot with the sliced onion, slit chillies, curry leaves, turmeric, curry powder, pepper and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and cook covered on a medium fire.",
+    "minutes": 12
+   },
+   {
+    "text": "Uncover and taste a cube; it should be tender but still have a bite, like a good carrot.",
+    "minutes": null
+   },
+   {
+    "text": "Add the thick coconut milk and simmer without the lid until the gravy clings to the cubes.",
+    "minutes": 8
+   },
+   {
+    "text": "Take the pot off the fire and let it stand a few minutes before serving.",
+    "minutes": 5
+   },
+   {
+    "text": "If the bulbs came with their leaves, chop them fine and cook them as a mallung so nothing is wasted.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "නෝකෝල් වල කොළ කපා ඉවත් කර, පිටත තට්ටුව දැඩි බැවින් ලෙලි ගනකමට ගලවා, කුඩා කැබලිවලට කපන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කැබලි සෝදා, මුට්ටියකට දමා කපාගත් ලූනු, පලාගත් මිරිස්, කරපිංචා, කහ, තුනපහ, ගම්මිරිස් සහ ලුණු එක් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, වසා මධ්‍යම ගින්නේ උයන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "වැසුම ඉවත් කර කැබැල්ලක් රස බලන්න; හොඳ කැරට් එකක් සේ මෘදු වුවත් කන විට ගතියක් තිබිය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "ඝන පොල් කිරි එකතු කර, වැසුමක් නැතිව ඉස්ම කැබලිවලට තැවරෙන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මුට්ටිය ළිපෙන් ඉවත් කර, පිළිගැන්වීමට පෙර විනාඩි කිහිපයක් තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කොළ සමඟ ගෙන ආවේ නම්, ඒවා සිහින්ව කපා මැල්ලුමක් සේ උයන්න; කිසිවක් නාස්ති නොවේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "நோல்கோலின் இலைகளை வெட்டி, வெளிப்பட்டை நாராக இருப்பதால் தோலை தடிமனாகச் சீவி, சிறு துண்டுகளாக நறுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "துண்டுகளைக் கழுவி, சட்டியில் இட்டு, நறுக்கிய வெங்காயம், கீறிய மிளகாய், கறிவேப்பிலை, மஞ்சள், கறி மசாலா, மிளகு, உப்பு சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலை ஊற்றி, மூடி நடுத்தீயில் வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "மூடியைத் திறந்து ஒரு துண்டைச் சுவைத்துப் பாருங்கள்; நல்ல கரட் போல மிருதுவாக இருந்தாலும் கடிக்கும் பதம் இருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, மூடாமல் குழம்பு துண்டுகளில் ஒட்டும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சட்டியை இறக்கி, பரிமாறும் முன் சில நிமிடங்கள் வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "இலைகளுடன் வாங்கியிருந்தால், அவற்றைப் பொடியாக நறுக்கி வதக்கலாகச் செய்யுங்கள்; ஒன்றும் வீணாகாது.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Peel deeper than you think you should; a woody ring left on the outside will stay hard however long you cook it. Small bulbs are sweeter than the big ones.",
+  "si": "සිතන ප්‍රමාණයටත් වඩා ගැඹුරට ලෙලි ගලවන්න; පිටත ඉතිරි වන දැඩි වළල්ලක් කොපමණ උයුවත් තද වේ. කුඩා ගෙඩි ලොකු ඒවාට වඩා පැණි රසයි.",
+  "ta": "நினைப்பதைவிட ஆழமாகத் தோல் சீவுங்கள்; வெளியே விடப்படும் நார்ப்பட்டை எவ்வளவு வேகவைத்தாலும் கெட்டியாகவே இருக்கும். சிறிய கிழங்குகள் பெரியவற்றைவிட இனிப்பானவை."
+ },
+ "health_note": {
+  "en": "Kohlrabi is low in starch and high in fibre, which makes this a good curry for someone watching sugar. Keep the thick milk to half a cup and the whole pot stays light.",
+  "si": "නෝකෝල් පිෂ්ඨය අඩු, තන්තු වැඩි එළවළුවක් බැවින් සීනි පිළිබඳ සැලකිලිමත් අයට මෙය හොඳ කරියකි. ඝන කිරි කෝප්ප භාගයකට සීමා කළොත් මුළු මුට්ටියම සැහැල්ලුයි.",
+  "ta": "நோல்கோலில் மாவுச்சத்து குறைவு, நார்ச்சத்து அதிகம்; சர்க்கரையைக் கவனிப்பவர்களுக்கு இது நல்ல கறி. தடித்த பாலை அரை கப்பாக வைத்தால் சட்டி முழுவதும் இலகுவாக இருக்கும்."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "light",
+  "budget",
+  "diabetic_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

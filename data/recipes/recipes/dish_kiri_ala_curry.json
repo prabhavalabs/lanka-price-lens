@@ -1,0 +1,335 @@
+{
+ "id": "dish_kiri_ala_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 170,
+  "description": {
+   "en": "A ladle of soft yam pieces in thick coconut gravy with rice",
+   "si": "බත් සමඟ ඝන පොල් කිරි ඉස්මේ මෘදු අල කැබලි හැන්දක්",
+   "ta": "சாதத்துடன் தடித்த தேங்காய்க் குழம்பில் மிருதுவான கிழங்கு துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 680,
+ "ingredients": [
+  {
+   "ref": "pantry_kiri_ala",
+   "label": {
+    "en": "kiri ala yam",
+    "si": "කිරි අල",
+    "ta": "கிரி அல கிழங்கு"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "2 medium yams",
+   "preparation": {
+    "en": "peeled and cut into thick cubes",
+    "si": "ලෙලි ගලවා විශාල කැබලිවලට කපාගත්",
+    "ta": "தோல் சீவி பெரிய துண்டுகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthways",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the kiri ala under running water and cut it into thick cubes; the raw skin can itch, so rinse your hands after.",
+    "minutes": 15
+   },
+   {
+    "text": "Wash the cubes twice to take the loose starch off and drain them.",
+    "minutes": null
+   },
+   {
+    "text": "Boil the cubes in water with a little turmeric and salt until the outside is soft but the middle still holds.",
+    "minutes": 15
+   },
+   {
+    "text": "Pour that water away, put the cubes back in a clay pot and add the thin coconut milk, onion, chillies, curry leaves, pandan leaf, curry powder and pepper.",
+    "minutes": null
+   },
+   {
+    "text": "Simmer uncovered until the yam is soft to the middle and the gravy has thickened a little.",
+    "minutes": 12
+   },
+   {
+    "text": "Pour in the thick coconut milk, roll the pot once and let it come just to a boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Lift the pandan leaf out and serve it hot; the gravy sets as it cools.",
+    "minutes": 3
+   }
+  ],
+  "si": [
+   {
+    "text": "කිරි අල ගලා යන වතුරේ ලෙලි ගලවා විශාල කැබලිවලට කපන්න; අමු ලෙලි කසන බැවින් පසුව අත් සෝදන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "කැබලි දෙවරක් සෝදා පිටත පිෂ්ඨය ඉවත් කර වතුර බේරා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ස්වල්ප කහ සහ ලුණු සමඟ වතුරේ, පිටත මෘදු වී මැද තවම දැඩිව තිබෙන තුරු තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "එම වතුර බැහැර කර, කැබලි නැවත මුට්ටියට දමා, තුනී පොල් කිරි, ලූනු, මිරිස්, කරපිංචා, රම්පෙ, තුනපහ සහ ගම්මිරිස් එක් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වැසුමක් නැතිව, අල මැද දක්වා මෘදු වී ඉස්ම මදක් ඝන වන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඝන පොල් කිරි වත් කර, මුට්ටිය එක් වරක් සොලවා, උතුරන්නට ආසන්න වන තුරු තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "රම්පෙ ඉවත් කර උණුසුම්ව පිළිගන්වන්න; සිසිල් වන විට ඉස්ම තද වේ.",
+    "minutes": 3
+   }
+  ],
+  "ta": [
+   {
+    "text": "கிரி அலவை ஓடும் நீரில் தோல் சீவி, பெரிய துண்டுகளாக நறுக்குங்கள்; பச்சைத் தோல் அரிக்கும், பிறகு கைகளைக் கழுவுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "துண்டுகளை இருமுறை கழுவி மேல் மாவை நீக்கி, நீரை வடியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிது மஞ்சளும் உப்பும் சேர்த்த நீரில், வெளிப்புறம் மிருதுவாகி நடுப்பகுதி இறுக்கமாக இருக்கும் வரை வேகவையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "அந்த நீரை ஊற்றிவிட்டு, துண்டுகளை மீண்டும் மண் சட்டியில் இட்டு, நீர்த்த தேங்காய்ப் பால், வெங்காயம், மிளகாய், கறிவேப்பிலை, ரம்பை, கறி மசாலா, மிளகு சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடாமல், கிழங்கு நடுவரை மிருதுவாகி குழம்பு சற்றுக் கெட்டியாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலை ஊற்றி, சட்டியை ஒருமுறை அசைத்து, கொதி வரும் பதம் வரை வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ரம்பை இலையை எடுத்துவிட்டு சூடாகப் பரிமாறுங்கள்; குளிர்ந்தால் குழம்பு இறுகிவிடும்.",
+    "minutes": 3
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 35,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Always throw the first boiling water away; it carries the sap that scratches the throat. Keep the cubes big, because kiri ala breaks down fast once it softens.",
+  "si": "පළමු තැම්බූ වතුර සැමවිටම බැහැර කරන්න; ගෙල කසන කිරි ඇත්තේ එහිය. කැබලි ලොකුව තබන්න, මෘදු වූ පසු කිරි අල ඉක්මනින් කැඩී යයි.",
+  "ta": "முதல் கொதி நீரை எப்போதும் ஊற்றிவிடுங்கள்; தொண்டையை அரிக்கும் பால் அதில்தான் இருக்கும். துண்டுகளைப் பெரிதாக வையுங்கள், மிருதுவானதும் கிரி அல விரைவில் உடையும்."
+ },
+ "health_note": {
+  "en": "Kiri ala is a starchy root, so treat it as part of the rice on the plate rather than as an extra vegetable. It brings useful fibre, but the thick coconut milk makes the dish heavy at night.",
+  "si": "කිරි අල පිෂ්ඨය සහිත අලයක් බැවින්, එය අමතර එළවළුවක් නොව පිඟානේ බතේ කොටසක් ලෙස සලකන්න. තන්තු හොඳින් ලැබෙන නමුත් ඝන පොල් කිරි නිසා රාත්‍රියට බර වේ.",
+  "ta": "கிரி அல மாவுச்சத்து நிறைந்த கிழங்கு, எனவே அதைக் கூடுதல் காய்கறியாக அல்லாமல் தட்டில் உள்ள சாதத்தின் பகுதியாகக் கருதுங்கள். நார்ச்சத்து நல்லது, ஆனால் தடித்த தேங்காய்ப் பால் இரவுக்குக் கனமாகும்."
+ },
+ "tags": [
+  "filling",
+  "budget",
+  "high_fibre",
+  "comfort",
+  "elderly_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

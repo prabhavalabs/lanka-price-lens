@@ -1,0 +1,314 @@
+{
+ "id": "dish_radish_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 160,
+  "description": {
+   "en": "A ladle of soft radish rounds in a mild coconut gravy with rice",
+   "si": "බත් සමඟ මෘදු පොල් කිරි ඉස්මේ රාබු රවුම් හැන්දක්",
+   "ta": "சாதத்துடன் மென்மையான தேங்காய்க் குழம்பில் முள்ளங்கி வட்டங்கள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 640,
+ "ingredients": [
+  {
+   "ref": "product_radish",
+   "label": {
+    "en": "white radish",
+    "si": "රාබු",
+    "ta": "வெள்ளை முள்ளங்கி"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "2 medium radishes",
+   "preparation": {
+    "en": "peeled and cut into finger-thick rounds",
+    "si": "ලෙලි ගලවා ඇඟිල්ලක් ගනකමට රවුම්වලට කපාගත්",
+    "ta": "தோல் சீவி விரல் தடிமன் வட்டங்களாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthways",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the tops off the radish, peel it and slice it into rounds about as thick as a finger.",
+    "minutes": 10
+   },
+   {
+    "text": "Boil the rounds briefly in water with a little turmeric and salt, then drain; this takes the sharp smell away.",
+    "minutes": 8
+   },
+   {
+    "text": "Put the drained rounds into a clay pot with the onion, chillies, curry leaves, fenugreek, curry powder and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer uncovered until the radish is soft and has turned sweet.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the thick coconut milk and let it just reach a boil, shaking the pot rather than stirring.",
+    "minutes": 4
+   },
+   {
+    "text": "Take it off the fire and leave it covered for a few minutes before serving.",
+    "minutes": 3
+   },
+   {
+    "text": "If the radish came with its leaves, chop them fine and cook them in with the rounds.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "රාබු වල උඩ කොටස කපා ඉවත් කර, ලෙලි ගලවා, ඇඟිල්ලක් ගනකමට රවුම්වලට කපන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ස්වල්ප කහ සහ ලුණු සමඟ වතුරේ කෙටියෙන් තම්බා වතුර බේරන්න; මෙයින් තියුණු ගඳ ඉවත් වේ.",
+    "minutes": 8
+   },
+   {
+    "text": "වතුර බේරාගත් රවුම් මුට්ටියකට දමා ලූනු, මිරිස්, කරපිංචා, උළුහාල්, තුනපහ සහ ලුණු එක් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, වැසුමක් නැතිව රාබු මෘදු වී පැණි රසක් එන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඝන පොල් කිරි එකතු කර, කලතන්නට වඩා මුට්ටිය සොලවමින්, උතුරන්නට ආසන්න වන තුරු තබන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ළිපෙන් ඉවත් කර, පිළිගැන්වීමට පෙර විනාඩි කිහිපයක් වසා තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "රාබු කොළ සමඟ ගෙන ආවේ නම්, ඒවා සිහින්ව කපා රවුම් සමඟම උයන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "முள்ளங்கியின் தலைப்பகுதியை வெட்டி, தோல் சீவி, விரல் தடிமன் வட்டங்களாக நறுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "சிறிது மஞ்சளும் உப்பும் சேர்த்த நீரில் குறுகிய நேரம் வேகவைத்து நீரை வடியுங்கள்; காரமான வாசனை போய்விடும்.",
+    "minutes": 8
+   },
+   {
+    "text": "நீர் வடித்த வட்டங்களை மண் சட்டியில் இட்டு, வெங்காயம், மிளகாய், கறிவேப்பிலை, வெந்தயம், கறி மசாலா, உப்பு சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலை ஊற்றி, மூடாமல், முள்ளங்கி மிருதுவாகி இனிப்புச் சுவை வரும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, கிளறாமல் சட்டியை அசைத்து, கொதிக்கும் பதம் வரை வையுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, பரிமாறும் முன் சில நிமிடங்கள் மூடி வையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "முள்ளங்கி இலையுடன் வந்திருந்தால், அதைப் பொடியாக நறுக்கி வட்டங்களுடன் சேர்த்தே சமையுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Slice the rounds evenly and do not cover the pot while the radish is boiling, or the smell settles into the gravy. A pinch of fenugreek is what turns a sharp radish sweet.",
+  "si": "රවුම් එක සමානව කපන්න, තැම්බෙන අතරතුර මුට්ටිය වසන්න එපා; එසේ නොවුවහොත් ගඳ ඉස්මට කා වදී. තියුණු රාබුවක් පැණි කරන්නේ උළුහාල් සුළු ප්‍රමාණයකි.",
+  "ta": "வட்டங்களைச் சமமாக நறுக்குங்கள், கொதிக்கும் போது சட்டியை மூட வேண்டாம்; இல்லாவிட்டால் வாசனை குழம்பில் தங்கிவிடும். காரமான முள்ளங்கியை இனிப்பாக்குவது ஒரு சிட்டிகை வெந்தயமே."
+ },
+ "health_note": {
+  "en": "Radish is mostly water and fibre, so this is a cheap, light curry, and many households cook it when someone has a cold or a blocked chest. Keep the thick milk modest and it stays light enough for dinner.",
+  "si": "රාබු බොහෝ දුරට ජලය සහ තන්තු බැවින් මෙය ලාභ, සැහැල්ලු කරියකි; සෙම්ප්‍රතිශ්‍යාවක් හෝ පපුවේ සෙම් ඇති විට බොහෝ ගෙදරවල මෙය උයයි. ඝන කිරි සීමිතව යෙදුවහොත් රාත්‍රී කෑමටත් සැහැල්ලුයි.",
+  "ta": "முள்ளங்கியில் பெரும்பாலும் நீரும் நார்ச்சத்தும்தான், எனவே இது மலிவான, இலகுவான கறி; சளி அல்லது நெஞ்சடைப்பு இருக்கும்போது பல வீடுகளில் இதைச் சமைப்பார்கள். தடித்த பாலை அளவாக வைத்தால் இரவு உணவுக்கும் இலகுவாக இருக்கும்."
+ },
+ "tags": [
+  "low_calorie",
+  "light",
+  "budget",
+  "traditional_remedy",
+  "high_fibre"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

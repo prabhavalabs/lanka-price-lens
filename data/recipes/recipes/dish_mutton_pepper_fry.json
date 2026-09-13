@@ -1,0 +1,388 @@
+{
+ "id": "dish_mutton_pepper_fry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "Dry peppery goat meat, a small heap beside rice or as an evening bite",
+   "si": "බත් පසෙක කුඩා ගොඩක් ලෙස හෝ සවස බයිට් එකක් ලෙස දෙන වියළි ගම්මිරිස් එළු මස්",
+   "ta": "சாதத்தின் ஓரத்தில் ஒரு சிறு குவியலாக அல்லது மாலைச் சிற்றுண்டியாகக் காய்ந்த மிளகு ஆட்டிறைச்சி"
+  }
+ },
+ "yield_g": 690,
+ "ingredients": [
+  {
+   "ref": "product_mutton",
+   "label": {
+    "en": "goat meat, bone-in",
+    "si": "එළු මස්, ඇට සහිත",
+    "ta": "ஆட்டிறைச்சி, எலும்புடன்"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "about 700 g, cut small",
+   "preparation": {
+    "en": "cut into small pieces on the bone, washed",
+    "si": "ඇට සමග කුඩා කැබලිවලට කපා සෝදා ගත්",
+    "ta": "எலும்புடன் சிறு துண்டுகளாக நறுக்கி அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "12 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "7 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece, part for the boiling",
+   "preparation": {
+    "en": "half crushed for boiling, half chopped",
+    "si": "බාගයක් තම්බන්න තලා, බාගයක් කපා ගත්",
+    "ta": "பாதி வேகவைக்க இடித்து, பாதி நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 heaped tsp, coarsely crushed",
+   "preparation": {
+    "en": "crushed coarse in a mortar so the pieces show",
+    "si": "කැබලි පෙනෙන ලෙස වංගෙඩියේ රළුවට තලා ගත්",
+    "ta": "துண்டுகள் தெரியும்படி உரலில் கரகரப்பாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 pods, broken",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩා ගත්",
+    "ta": "உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "crushed with the pepper",
+    "si": "ගම්මිරිස් සමග තලා ගත්",
+    "ta": "மிளகுடன் இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaffna_curry_powder",
+   "label": {
+    "en": "Jaffna curry powder",
+    "si": "යාපනය තුනපහ",
+    "ta": "யாழ்ப்பாணக் கறித்தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "3 sprigs, plenty",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_sesame_oil",
+   "label": {
+    "en": "sesame oil",
+    "si": "තල තෙල්",
+    "ta": "நல்லெண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the goat meat and cut it into small pieces on the bone, so that each one fries quickly later.",
+    "minutes": null
+   },
+   {
+    "text": "Boil the meat with the turmeric, salt, crushed ginger and one cup of water until tender, and keep the little stock that is left.",
+    "minutes": 40
+   },
+   {
+    "text": "Crush the pepper and fennel coarsely in a mortar; ground powder will not give the same rough bite.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil with the sesame oil and temper the sliced red onion, broken dried chillies and plenty of curry leaves.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the sliced garlic and chopped ginger and fry until golden.",
+    "minutes": 2
+   },
+   {
+    "text": "Put in the boiled meat with the Jaffna curry powder and fry it hard, turning it so the pieces take colour.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the crushed pepper and fennel with a few spoons of the reserved stock.",
+    "minutes": 2
+   },
+   {
+    "text": "Keep frying until the stock dries away and the pepper clings to the meat like a dark rough crust.",
+    "minutes": 5
+   },
+   {
+    "text": "Take it off the fire and cover it for a few minutes so the pepper smell settles into the meat before serving.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "එළු මස් සෝදා ඇට සමග කුඩා කැබලිවලට කපන්න; එවිට පසුව හැම කැබැල්ලක්ම ඉක්මනින් බැදෙනවා.",
+    "minutes": null
+   },
+   {
+    "text": "මස් කහ, ලුණු, තලා ගත් ඉඟුරු සහ වතුර කෝප්පයක් සමග මෘදු වන තුරු තම්බා, ඉතිරි වන සුප් ටික තියා ගන්න.",
+    "minutes": 40
+   },
+   {
+    "text": "ගම්මිරිස් සහ මාදුරු වංගෙඩියේ රළුවට තලා ගන්න; සිහින් කුඩු එම රළු සැර ගතිය දෙන්නේ නෑ.",
+    "minutes": null
+   },
+   {
+    "text": "පොල් තෙල් සහ තල තෙල් එකට රත් කර, කපා ගත් රතු ළූණු, කඩා ගත් වියළි මිරිස් සහ කරපිංචා ගොඩක් තෙම්පරාදු කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කපා ගත් සුදුළූණු සහ ඉඟුරු දමා රන්වන් වන තුරු බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තැම්බූ මස් සහ යාපනය තුනපහ දමා, කැබලිවලට පාට වදින ලෙස පෙරළමින් තදින් බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "තලා ගත් ගම්මිරිස් සහ මාදුරු, තියා ගත් සුප් හැඳි කිහිපයක් සමග දමන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "සුප් සිඳී ගම්මිරිස් රළු කළු පොත්තක් සේ මසට ඇලෙන තුරු දිගටම බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලිපෙන් ඉවත් කර මිනිත්තු කිහිපයක් වසා තියන්න; එවිට ගම්මිරිස් සුවඳ මසට හොඳින් වදිනවා.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஆட்டிறைச்சியை அலசி எலும்புடன் சிறு துண்டுகளாக நறுக்குங்கள்; அப்போது பின்னர் ஒவ்வொன்றும் விரைவாக வறுபடும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறைச்சியை மஞ்சள், உப்பு, இடித்த இஞ்சி, ஒரு கப் நீருடன் மென்மையாகும் வரை வேகவைத்து, மீதமான சாற்றை வைத்துக்கொள்ளுங்கள்.",
+    "minutes": 40
+   },
+   {
+    "text": "மிளகையும் பெருஞ்சீரகத்தையும் உரலில் கரகரப்பாக இடியுங்கள்; நைந்த தூள் அந்தக் கரகரப்பான காரத்தைத் தராது.",
+    "minutes": null
+   },
+   {
+    "text": "தேங்காய் எண்ணெயையும் நல்லெண்ணெயையும் சேர்த்துக் காயவிட்டு, நறுக்கிய சின்ன வெங்காயம், உடைத்த வத்தல் மிளகாய், நிறைய கறிவேப்பிலை தாளிக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "நறுக்கிய பூண்டும் இஞ்சியும் சேர்த்து பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "வேகவைத்த இறைச்சியையும் யாழ்ப்பாணக் கறித்தூளையும் சேர்த்து, துண்டுகளில் நிறம் ஏறும்படி புரட்டி நன்கு வறுக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "இடித்த மிளகையும் பெருஞ்சீரகத்தையும், வைத்திருந்த சாற்றில் சில கரண்டியுடன் சேர்க்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "சாறு வற்றி மிளகு இறைச்சியில் கரகரப்பான கரும் மேல்பூச்சாக ஒட்டும் வரை வறுத்துக்கொண்டே இருங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி சில நிமிடம் மூடி வையுங்கள்; மிளகு வாசனை இறைச்சிக்குள் நன்கு இறங்கும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 60,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "pot for boiling",
+  "wide frying pan",
+  "mortar and pestle"
+ ],
+ "tips": {
+  "en": "Crush the pepper yourself just before cooking; bought powder loses the smell that makes this dish worth the trouble. Do not throw away the boiling stock, because a few spoons of it carry the meat taste into the crust.",
+  "si": "ගම්මිරිස් උයන්න මොහොතකට කලින් තමන්ම තලා ගන්න; ගත් කුඩුවල මේ කෑමට වටින ඒ සුවඳ නෑ. තැම්බූ සුප් ටික ඉවත් කරන්න එපා, ඉන් හැඳි කිහිපයක් මසේ රසය පිටත පොත්තට ගෙන යනවා.",
+  "ta": "மிளகைச் சமைப்பதற்குச் சற்று முன்பே நீங்களே இடியுங்கள்; வாங்கிய தூளில் இந்த உணவுக்கு உரிய வாசனை இருக்காது. வேகவைத்த சாற்றைக் கொட்டாதீர்கள், அதில் சில கரண்டிகளே இறைச்சியின் சுவையை மேல்பூச்சுக்குள் கொண்டுசெல்கின்றன."
+ },
+ "health_note": {
+  "en": "Dry frying keeps out the coconut milk, so this is lighter than a mutton curry while still giving the same iron and protein. The pepper is heavy, which suits a cold evening but not an empty or sore stomach.",
+  "si": "වියළිව බදින නිසා පොල් කිරි නෑ; ඒ නිසා එළු මස් කරියකට වඩා මේක සැහැල්ලුයි, යකඩ සහ ප්‍රෝටීන් එකම ප්‍රමාණයයි. ගම්මිරිස් වැඩියි; එය සීතල සවසකට හොඳයි, නමුත් හිස් හෝ රිදෙන බඩකට නොවේ.",
+  "ta": "காய வறுப்பதால் தேங்காய்ப் பால் இல்லை; எனவே ஆட்டுக் கறியை விட இது இலகுவானது, இரும்பும் புரதமும் அதே அளவு. மிளகு அதிகம்; குளிர்ந்த மாலைக்கு ஏற்றது, ஆனால் வெறும் அல்லது எரிச்சலான வயிற்றுக்கு அல்ல."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_carb",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

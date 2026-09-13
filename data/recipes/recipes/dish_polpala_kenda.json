@@ -1,0 +1,248 @@
+{
+ "id": "dish_polpala_kenda",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 260,
+  "description": {
+   "en": "A thin cup taken in the morning, usually for a reason",
+   "si": "උදෑසන, බොහෝ විට හේතුවක් නිසා බොන තුනී කෝප්පයක්",
+   "ta": "காலையில், பெரும்பாலும் ஒரு காரணத்திற்காகக் குடிக்கும் நீர்த்த கோப்பை"
+  }
+ },
+ "yield_g": 1050,
+ "ingredients": [
+  {
+   "ref": "pantry_polpala",
+   "label": {
+    "en": "polpala herb",
+    "si": "පොල්පලා",
+    "ta": "சிறுபீளை"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 small dried bunches",
+   "preparation": {
+    "en": "roots and grit shaken off, washed",
+    "si": "මුල් සහ කුණු ගසා දමා සෝදාගත්",
+    "ta": "வேரும் குப்பையும் நீக்கி அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_rice_kekulu_red",
+   "label": {
+    "en": "red kekulu rice",
+    "si": "රතු කැකුළු සහල්",
+    "ta": "சிவப்பு கெக்குளு அரிசி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "washed",
+    "si": "සෝදාගත්",
+    "ta": "அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 500,
+   "unit": "ml",
+   "household": "2 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்தது, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Shake the polpala out on a plate, pull off the woody roots and wash the herb in two waters.",
+    "minutes": null
+   },
+   {
+    "text": "Boil the washed herb in 400 ml of water until the water takes on a pale green colour.",
+    "minutes": 10
+   },
+   {
+    "text": "Strain out the herb, pressing it against the strainer, and keep the liquid; throw the spent herb away.",
+    "minutes": 5
+   },
+   {
+    "text": "In a clay pot, cook the washed rice in the thin coconut milk until the grains split and go soft.",
+    "minutes": 20
+   },
+   {
+    "text": "Mash the rice with the back of the ladle so the kenda is even, then thin it with the polpala liquid.",
+    "minutes": null
+   },
+   {
+    "text": "Add the salt and the thick coconut milk and heat it until it steams, stirring so that the milk does not curdle.",
+    "minutes": 4
+   },
+   {
+    "text": "Take the pot off the fire before it boils; hard boiling after the thick milk goes in splits it into oil and grains.",
+    "minutes": null
+   },
+   {
+    "text": "Drink it warm on an empty stomach in the morning, plain and unsweetened.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පොල්පලා පිඟානකට ගසා, ලී වැනි මුල් ගලවා, කොළ වතුර දෙකකින් සෝදන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෝදාගත් පොල්පලා මිලිලීටර් 400ක වතුරේ, වතුරට ලා කොළ පාටක් එනතුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෙරහනට තද කරමින් පොල්පලා පෙරා ඉවත් කර දියරය තබා ගන්න; භාවිත කළ කොළ විසි කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මැටි වළඳක, සෝදාගත් සහල් තුනී පොල් කිරිවල, ඇට පලා මෘදු වන තුරු තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කැඳ එකසේ වන ලෙස කෙන්දේ පිටිපතින් බත් පොඩි කර, පසුව පොල්පලා දියරයෙන් තුනී කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලුණු සහ ඝන පොල් කිරි දමා, කිරි කැඩෙන්නේ නැති ලෙස කලතමින්, හුමාලය නගින තුරු රත් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "උතුරන්නට පෙර වළඳ ලිපෙන් බාගන්න; ඝන කිරි දැමූ පසු තදින් උතුරුවුවොත් එය තෙල් සහ කැට ලෙස කැඩේ.",
+    "minutes": null
+   },
+   {
+    "text": "උදෑසන හිස් බඩට, කිසිවක් නොදමා පැණි රස නැතිව, උණුසුම්ව බොන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிறுபீளையை ஒரு தட்டில் உதறி, மரம்போன்ற வேர்களை நீக்கி, இரண்டு தண்ணீரில் அலசுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அலசிய மூலிகையை 400 மில்லி நீரில், நீர் வெளிர் பச்சை நிறமாகும் வரை கொதிக்க வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வடிகட்டியில் அழுத்தி மூலிகையை நீக்கி, திரவத்தை வைத்துக் கொள்ளுங்கள்; பயன்படுத்திய மூலிகையை எறியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "மண் சட்டியில், அலசிய அரிசியை நீர்த்த தேங்காய்ப் பாலில், அரிசி வெடித்து மென்மையாகும் வரை வேகவைக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "கஞ்சி சமமாக இருக்க கரண்டியின் பின்பக்கத்தால் சாதத்தை மசித்து, பிறகு சிறுபீளைத் திரவத்தால் நீர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உப்பையும் கெட்டியான தேங்காய்ப் பாலையும் சேர்த்து, பால் திரியாமல் கலக்கியபடி, ஆவி வரும் வரை சூடாக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "கொதிப்பதற்கு முன் சட்டியை இறக்கவும்; கெட்டிப் பால் சேர்த்த பின் கடுமையாகக் கொதித்தால் அது எண்ணெயாகவும் துகளாகவும் பிரிந்துவிடும்.",
+    "minutes": null
+   },
+   {
+    "text": "காலையில் வெறும் வயிற்றில், இனிப்பு எதுவும் சேர்க்காமல், சூடாகக் குடியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot",
+  "small pan",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Boil the herb separately and add its liquid at the end, because polpala boiled with the rice for half an hour turns the whole pot bitter. Welpenela, hathawariya or iramusu can be used the same way when polpala is not in the shop.",
+  "si": "කොළ වෙනම තම්බා දියරය අන්තිමට දමන්න, මොකද පොල්පලා බත් සමඟ පැය භාගයක් උතුරුවුවොත් මුළු වළඳම තිත්ත වේ. පොල්පලා කඩේ නැති විට වැල්පෙනෙල, හාතාවාරිය හෝ ඉරමුසු එකම විදිහට පාවිච්චි කළ හැකියි.",
+  "ta": "மூலிகையைத் தனியாகக் கொதிக்க வைத்து அதன் திரவத்தை இறுதியில் சேர்க்கவும், ஏனெனில் சிறுபீளையை அரிசியுடன் அரை மணி நேரம் கொதிக்கவிட்டால் சட்டி முழுவதும் கசக்கும். சிறுபீளை கடையில் இல்லாதபோது வெல்பெனல, தண்ணீர்விட்டான், நன்னாரி ஆகியவற்றை அதே முறையில் பயன்படுத்தலாம்."
+ },
+ "health_note": {
+  "en": "Red rice gives the fibre and the coconut milk the fat; the herb itself mostly adds the taste and the warm fluid. People drink it hoping it helps with water works and stones, but a burning or blood when passing water is a doctor's business, not a kitchen one.",
+  "si": "තන්තු දෙන්නේ රතු කැකුළු, තෙල් දෙන්නේ පොල් කිරි; කොළයෙන් එකතු වන්නේ බොහෝ දුරට රසය සහ උණුසුම් දියරයයි. මුත්‍රා පහසුව සහ ගල් සඳහා පිහිටක් වේ යැයි බලාපොරොත්තුවෙන් මිනිස්සු මේක බොනවා, එහෙත් මුත්‍රා කරන විට දැවිල්ලක් හෝ ලේ ඇත්නම් එය කුස්සියේ නොව වෛද්‍යවරයාගේ කාරණයකි.",
+  "ta": "நார்ச்சத்து தருவது சிவப்பு அரிசி, கொழுப்பு தருவது தேங்காய்ப் பால்; மூலிகை பெரும்பாலும் சுவையையும் சூடான நீரையுமே சேர்க்கிறது. சிறுநீர்ப் பிரச்சினைகளுக்கும் கல்லுக்கும் உதவும் என்ற நம்பிக்கையில் மக்கள் இதைக் குடிக்கிறார்கள், ஆனால் சிறுநீர் கழிக்கும்போது எரிச்சலோ இரத்தமோ இருந்தால் அது சமையலறையின் வேலை அல்ல, மருத்துவரின் வேலை."
+ },
+ "tags": [
+  "budget",
+  "one_pot",
+  "light",
+  "high_fibre",
+  "traditional_remedy",
+  "hydrating",
+  "elderly_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

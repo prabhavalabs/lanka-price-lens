@@ -1,0 +1,428 @@
+{
+ "id": "dish_egg_kottu",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 310,
+  "description": {
+   "en": "A plate of chopped roti tossed with egg and vegetables",
+   "si": "බිත්තර හා එළවළු සමඟ කපාගත් රොටී පිඟානක්",
+   "ta": "முட்டையும் காய்கறியும் சேர்த்துக் கலக்கிய ஒரு தட்டு கொத்து"
+  }
+ },
+ "yield_g": 1240,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "about 2 and a half cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 65,
+   "unit": "ml",
+   "household": "about 4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 9,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 eggs",
+   "preparation": {
+    "en": "lightly beaten",
+    "si": "සැහැල්ලුවෙන් ගසාගත්",
+    "ta": "லேசாக அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 stalk",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கேரட்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium carrot",
+   "preparation": {
+    "en": "cut into thin strips",
+    "si": "සිහින් කූරු ලෙස කපාගත්",
+    "ta": "மெல்லிய நீளத் துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cabbage",
+   "label": {
+    "en": "cabbage",
+    "si": "ගෝවා",
+    "ta": "முட்டைக்கோஸ்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "a thick wedge",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாக கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ කුඩු",
+    "ta": "கறி மசாலாத் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சாஸ்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_stock",
+   "label": {
+    "en": "meat stock or leftover curry gravy",
+    "si": "මස් හොද්ද හෝ ඉතිරි වූ කරි හොද්ද",
+    "ta": "இறைச்சிக் குழம்பு அல்லது மீதமான கறிக் குழம்பு"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "half a cup",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "sauce"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Knead the flour with a third of the salt and water into a soft dough, oil it well and leave it covered to rest.",
+    "minutes": 30
+   },
+   {
+    "text": "Pull the dough into six balls, stretch each one thin on an oiled table and griddle both sides until spotted.",
+    "minutes": 15
+   },
+   {
+    "text": "Chop the cooled roti into fine shreds with two blades.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil on a wide griddle and temper the onion, green chilli and curry leaves.",
+    "minutes": 3
+   },
+   {
+    "text": "Throw in the leeks, carrot and cabbage and fry them on a high flame so they stay crisp.",
+    "minutes": 4
+   },
+   {
+    "text": "Sprinkle in the curry powder, chilli powder, turmeric and pepper and fry them for half a minute so they lose their raw smell.",
+    "minutes": 1
+   },
+   {
+    "text": "Push everything aside, pour the beaten egg onto the hot iron and scramble it, then fold it into the vegetables.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the chopped roti, the soy sauce and the rest of the salt, and chop and turn with two turners until the roti takes on the colour of the masala.",
+    "minutes": 4
+   },
+   {
+    "text": "Splash in the gravy if you have some, and serve it hot with lunu miris.",
+    "minutes": 1
+   }
+  ],
+  "si": [
+   {
+    "text": "පිටිවලට ලුණු වලින් තෙන් කොටසක් හා වතුර දමා මෘදු ගුලියක් අනා, තෙල් හොඳින් තවරා වසා විවේකයට තබන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "ගුලිය කොටස් හයකට ගෙන, තෙල් තැවරූ මේසයේ එකක් එකක් තුනීවට ඇද, තැටියේ දෙපැත්තම ලප එන තුරු පුළුස්සන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "සිසිල් වූ රොටී කටු දෙකකින් සිහින් පටිවලට කපාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් තැටියක තෙල් රත් කර ලූනු, අමු මිරිස් සහ කරපිංචා බැදගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලීක්ස්, කැරට් සහ ගෝවා දමා ලොකු ගින්දරේ, කරමුරු ගතිය තිබෙන ලෙස ඉක්මනින් බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "තුනපහ, මිරිස් කුඩු, කහ සහ ගම්මිරිස් ඉසිමින් දමා, අමු ගඳ යන තුරු තත්පර තිහක් පමණ බැදගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "සියල්ල පැත්තකට තල්ලු කර, රත් වූ තැටියට ගසාගත් බිත්තර වත් කර සකසා, පසුව එළවළු සමඟ මිශ්‍ර කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කපාගත් රොටී, සෝයා සෝස් සහ ඉතිරි ලුණු දමා, කටු දෙකකින් කොටමින් පෙරළමින් රොටී මසාලා පාට ගන්නා තුරු මිශ්‍ර කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "හොද්ද තිබේ නම් ඉසිමින් දමා, ලුණු මිරිස් සමඟ උණුසුම්ව බෙදන්න.",
+    "minutes": 1
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாவுடன் மூன்றில் ஒரு பங்கு உப்பும் தண்ணீரும் சேர்த்து மென்மையான மாவாகப் பிசைந்து, எண்ணெய் நன்கு தடவி மூடி ஓய்வெடுக்க வைக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "மாவை ஆறு உருண்டைகளாக்கி, எண்ணெய் தடவிய மேசையில் ஒவ்வொன்றையும் மெல்லியதாக விரித்து, தோசைக்கல்லில் இருபுறமும் புள்ளிகள் வரும்வரை சுடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "குளிர்ந்த ரொட்டியை இரு கத்திகளால் மெல்லிய துண்டுகளாக நறுக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான தோசைக்கல்லில் எண்ணெயைக் காய்ச்சி வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலையைத் தாளிக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "லீக்ஸ், கேரட், முட்டைக்கோஸைச் சேர்த்து பெரிய தீயில் கறுமுறுப்பாக இருக்கும்படி விரைவாக வதக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "கறி மசாலா, மிளகாய்த் தூள், மஞ்சள், மிளகு தூவி, பச்சை வாசனை போகும்வரை அரை நிமிடம் வதக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "எல்லாவற்றையும் ஒரு பக்கம் ஒதுக்கி, சூடான கல்லில் அடித்த முட்டையை ஊற்றிக் கிளறி, பின்னர் காய்கறியுடன் கலக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "நறுக்கிய ரொட்டி, சோயா சாஸ், மீதி உப்பைச் சேர்த்து, இரு கரண்டிகளால் வெட்டி புரட்டி ரொட்டி மசாலா நிறம் பெறும்வரை கலக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "குழம்பு இருந்தால் தெளித்து, லுணு மிரிசுடன் சூடாகப் பரிமாறவும்.",
+    "minutes": 1
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "flat griddle or wide pan",
+  "two kottu blades or turners"
+ ],
+ "tips": {
+  "en": "Egg kottu goes rubbery if the egg is cooked too long, so scramble it in the last minutes and stop while it is still soft.",
+  "si": "බිත්තර වැඩිපුර උයන විට කොත්තුව රබර් වගේ වෙනවා, ඒ නිසා අවසන් විනාඩි කිහිපයේ බිත්තර සකසා, තවමත් මෘදුව ඇති විට නවත්වන්න.",
+  "ta": "முட்டையை அதிக நேரம் சமைத்தால் கொத்து ரப்பர் போல் ஆகிவிடும், எனவே கடைசி நிமிடங்களில் முட்டையைக் கிளறி, மென்மையாக இருக்கும்போதே நிறுத்தவும்."
+ },
+ "health_note": {
+  "en": "This is the cheapest hot dinner a household can put together, and the eggs and vegetables make it reasonable; the salt from the soy sauce is the part to watch.",
+  "si": "මෙය ගෙදරක සකසාගත හැකි ලාභම උණුසුම් රාත්‍රී භෝජනයයි, බිත්තර හා එළවළු නිසා තරමක් සමබරයි; සෝයා සෝස් වලින් එන ලුණු ප්‍රමාණය ගැන පමණක් සැලකිලිමත් වන්න.",
+  "ta": "இது ஒரு குடும்பம் தயாரிக்கக்கூடிய மிகவும் மலிவான சூடான இரவு உணவு, முட்டையும் காய்கறியும் அதை ஓரளவு சமநிலையாக்குகிறது; சோயா சாஸில் வரும் உப்பு அளவை மட்டும் கவனிக்கவும்."
+ },
+ "tags": [
+  "budget",
+  "filling",
+  "street_food",
+  "comfort",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

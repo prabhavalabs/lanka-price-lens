@@ -1,0 +1,421 @@
+{
+ "id": "dish_fish_curry_with_drumstick",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 225,
+  "description": {
+   "en": "A ladle of gravy with a piece of fish and two lengths of drumstick",
+   "si": "මාළු කෑල්ලක් සහ මුරුංගා කෑලි දෙකක් සමඟ හොදි හැන්දක්",
+   "ta": "ஒரு மீன் துண்டும் இரண்டு முருங்கைக்காய் துண்டும் கொண்ட குழம்பு ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_balaya",
+   "label": {
+    "en": "balaya (skipjack tuna)",
+    "si": "බලයා",
+    "ta": "பலயா (சூரை வகை மீன்)"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "cut into steaks, washed and drained",
+    "si": "පෙති කපා සෝදා වතුර බේරා",
+    "ta": "துண்டுகளாக வெட்டி அலசி வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_drumstick",
+   "label": {
+    "en": "drumstick pods",
+    "si": "මුරුංගා",
+    "ta": "முருங்கைக்காய்"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": {
+    "en": "lightly scraped and cut into finger lengths",
+    "si": "මතුපිට සූරා ඇඟිල්ලක් දිගට කපා",
+    "ta": "மேல் தோலை சீவி விரல் நீளத்தில் வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a lime-sized ball",
+   "preparation": {
+    "en": "soaked in warm water and strained",
+    "si": "උණු වතුරේ පොඟවා පෙරා",
+    "ta": "வெதுவெதுப்பான நீரில் ஊறவைத்து வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "தளர்ந்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarter cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறி மசாலா தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "ඉරා",
+    "ta": "கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Clean the fish steaks, rub them with a little of the turmeric and salt and keep them on a plate.",
+    "minutes": null
+   },
+   {
+    "text": "Scrape the drumstick pods lightly, cut them into finger lengths and split the thick ones down the middle.",
+    "minutes": null
+   },
+   {
+    "text": "Soak the tamarind in half a cup of warm water, then squeeze it with your fingers and strain out the pulp.",
+    "minutes": 10
+   },
+   {
+    "text": "In a clay pot mix the onion, garlic, curry leaves, fenugreek, curry powder, chilli powder and the rest of the turmeric with the thin coconut milk.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to a boil over a medium fire and cook until the raw smell of the powders has gone.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the drumstick and green chilli and cook until the pods are tender but still holding their shape.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour in the tamarind water, slide in the fish pieces in one layer and let them cook without stirring.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the thick coconut milk and the oil, shake the pot gently and let it come only just to the boil.",
+    "minutes": 3
+   },
+   {
+    "text": "Check the salt and sourness and leave the pot to stand before serving with rice.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු පෙති පිරිසිදු කර, කහ සහ ලුණු මදක් ගා පිඟානක තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුරුංගා කරල් මතුපිට සූරා, ඇඟිල්ලක් දිගට කපා, ගොරෝසු ඒවා මැදින් පලා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සියඹලා කෝප්පයක් බාගයක් උණු වතුරේ පොඟවා, ඇඟිලිවලින් මිරිකා පල්ප් එක පෙරා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වළං භාජනයක ලූනු, සුදුළූණු, කරපිංචා, උළුහාල්, තුනපහ, මිරිස් කුඩු සහ ඉතිරි කහ දිය කිරි සමඟ අනා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මධ්‍යම ගින්නේ නටවා, කුඩුවල අමු ගඳ යන තෙක් පිසින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මුරුංගා සහ අමු මිරිස් දමා, කරල් මෘදු වී තවම හැඩය තිබෙන තෙක් පිසින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සියඹලා වතුර දමා, මාළු කෑලි එක ස්ථරයකට තබා, කලතන්නේ නැතිව පිසෙන්න දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "මිටි කිරි සහ තෙල් දමා, භාජනය හෙමින් සොලවා, නටන්නට ආසන්නම වන තෙක් පමණක් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලා, බෙදන්නට කලින් භාජනය මදක් තියන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் துண்டுகளை சுத்தம் செய்து, சிறிது மஞ்சளும் உப்பும் தூவி ஒரு தட்டில் வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முருங்கைக்காயின் மேல் தோலை சீவி, விரல் நீளத்தில் வெட்டி, தடிமனானவற்றை நடுவே பிளக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "புளியை அரை கோப்பை வெதுவெதுப்பான நீரில் ஊறவைத்து, கையால் பிழிந்து சாறை வடிகட்டவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் வெங்காயம், பூண்டு, கறிவேப்பிலை, வெந்தயம், கறித்தூள், மிளகாய்த் தூள், மீதி மஞ்சள் ஆகியவற்றை தளர்ந்த தேங்காய்ப் பாலுடன் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நடுத்தர தீயில் கொதிக்க வைத்து, தூள்களின் பச்சை வாசனை போகும் வரை சமைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "முருங்கைக்காயையும் பச்சை மிளகாயையும் போட்டு, காய் மென்மையாகி ஆனால் வடிவம் கெடாமல் இருக்கும் வரை வேகவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "புளி நீரை விட்டு, மீன் துண்டுகளை ஒரே அடுக்காக வைத்து, கிளறாமல் வேகவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "கெட்டியான பாலையும் எண்ணெயையும் விட்டு, சட்டியை மெதுவாக அசைத்து, கொதிக்க வரும் நிலை வரை மட்டும் வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பும் புளிப்பும் பார்த்து, பரிமாறும் முன் சட்டியை சிறிது நேரம் வைக்கவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot or heavy pan"
+ ],
+ "tips": {
+  "en": "Put the drumstick in before the fish, never together; the pods need ten minutes and the fish only eight, and fish added early falls apart into the gravy.",
+  "si": "මුරුංගා මාළුවට කලින් දමන්න, එකට දමන්න එපා; කරල්වලට මිනිත්තු දහයක් ඕනෑ, මාළුවට අටක් ඇති. මාළු කලින් දැම්මොත් කැඩිලා හොදියට යනවා.",
+  "ta": "முருங்கைக்காயை மீனுக்கு முன்பே போடவும், சேர்த்து போடக் கூடாது; காய்க்கு பத்து நிமிடம் தேவை, மீனுக்கு எட்டு நிமிடம் போதும். மீனை முன்பே போட்டால் உடைந்து குழம்பில் கரைந்துவிடும்."
+ },
+ "health_note": {
+  "en": "Drumstick adds fibre, calcium and iron to an already good protein dish, and the pods carry the gravy without any extra fat. If you want it lighter, use only the thin milk and stir in the thick milk right at the end.",
+  "si": "දැනටමත් ප්‍රෝටීන් හොඳ කෑමකට මුරුංගාවෙන් තන්තු, කැල්සියම් සහ යකඩ එකතු වෙනවා; අමතර තෙලක් නැතුව කරල් හොදිය රැගෙන යනවා. තව සැහැල්ලු කරගන්න ඕනෑ නම් දිය කිරි පමණක් පාවිච්චි කර, මිටි කිරි අන්තිමට දමන්න.",
+  "ta": "ஏற்கனவே புரதம் நிறைந்த இந்த உணவுக்கு முருங்கைக்காய் நார்ச்சத்து, கால்சியம், இரும்புச்சத்தை சேர்க்கிறது; கூடுதல் கொழுப்பு இல்லாமல் காய் குழம்பை சுவையாக்குகிறது. இன்னும் இலகுவாக வேண்டுமானால் தளர்ந்த பாலை மட்டும் பயன்படுத்தி, கெட்டியான பாலை இறுதியில் சேர்க்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "calcium_rich",
+  "iron_rich",
+  "one_pot",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

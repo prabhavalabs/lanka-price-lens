@@ -1,0 +1,182 @@
+{
+ "id": "dish_papadam",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 30,
+  "description": {
+   "en": "Three crisp wafers broken over the rice",
+   "si": "බත මතට කඩා දමන පපඩම් තුනක්",
+   "ta": "சோற்றின் மேல் உடைத்துப் போடும் மூன்று அப்பளம்"
+  }
+ },
+ "yield_g": 120,
+ "ingredients": [
+  {
+   "ref": "pantry_papadam",
+   "label": {
+    "en": "papadam wafers",
+    "si": "පපඩම්",
+    "ta": "அப்பளம்"
+   },
+   "quantity": 12,
+   "unit": "piece",
+   "household": "12 wafers",
+   "preparation": {
+    "en": "kept dry until the moment of frying",
+    "si": "බදින මොහොත දක්වා වියළිව තබාගත්",
+    "ta": "பொரிக்கும் நேரம் வரை உலர்வாக வைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 80,
+   "unit": "ml",
+   "household": "about 5 tbsp",
+   "preparation": {
+    "en": "for frying; strain and keep what is left in the pan",
+    "si": "බැදීම සඳහා; ඉතිරිය පෙරා තබා ගන්න",
+    "ta": "பொரிப்பதற்கு; மீதியை வடிகட்டி வைக்கவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Check that the wafers are bone dry; if the damp has softened them, spread them in the sun for ten minutes.",
+    "minutes": 10
+   },
+   {
+    "text": "Pour the oil into a small deep pan so it stands about two fingers deep and heat it on a medium flame.",
+    "minutes": 3
+   },
+   {
+    "text": "Test with the corner of one wafer: it should swell at once without browning.",
+    "minutes": null
+   },
+   {
+    "text": "Slide in one papadam and press it down with a slotted spoon for two seconds so it puffs flat instead of curling.",
+    "minutes": null
+   },
+   {
+    "text": "Turn it once, lift it out the moment the bubbling stops, and stand it against the side of the pan to drain.",
+    "minutes": null
+   },
+   {
+    "text": "Fry the rest one or two at a time with the flame steady; oil that is too hot scorches them dark and bitter.",
+    "minutes": 4
+   },
+   {
+    "text": "Pile them in a dry bowl and break them over the rice only when everyone has sat down, or they go limp.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පපඩම් හොඳින් වියළී ඇත්දැයි බලන්න; තෙතමනයෙන් මුදු වී ඇත්නම් විනාඩි දහයක් අව්වේ තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කුඩා ගැඹුරු පෑනකට තෙල් ඇඟිලි දෙකක් උසට දමා මධ්‍යම ගින්නේ රත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පපඩමක කොනකින් පරීක්ෂා කරන්න; එය දුඹුරු නොවී එකවර පිම්බිය යුතුය.",
+    "minutes": null
+   },
+   {
+    "text": "පපඩමක් තෙලට දමා, හෙලුණු හැන්දකින් තත්පර දෙකක් පහතට තද කරන්න; එවිට එය රැලි නොවී පැතලිව පිම්බේ.",
+    "minutes": null
+   },
+   {
+    "text": "එක් වරක් පෙරළා, බුබුලු නැවතුණු සැණින් ඉවතට ගෙන පෑනේ ඇලයේ තබා තෙල් බේරෙන්නට දෙන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉතිරිය එකෙන් දෙකෙන් බදින්න, ගින්න ස්ථාවරව තබා ගන්න; තෙල් ඉතා රත් නම් පපඩම් කළු වී තිත්ත වේ.",
+    "minutes": 4
+   },
+   {
+    "text": "වියළි බඳුනකට ගොඩ ගසා, සියල්ලෝ කෑමට වාඩි වූ පසු පමණක් බත මතට කඩා දමන්න; නැතිනම් ඒවා මුදු වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "அப்பளம் நன்கு உலர்ந்திருக்கிறதா என்று பாருங்கள்; ஈரத்தில் மென்மையாகிவிட்டால் பத்து நிமிடம் வெயிலில் வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சிறிய ஆழமான வாணலியில் இரண்டு விரல் உயரத்துக்கு எண்ணெய் விட்டு, நடுத்தர தீயில் காயவிடவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "ஒரு அப்பளத்தின் ஓரத்தை விட்டுப் பாருங்கள்; கருகாமல் உடனே பொங்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு அப்பளத்தை எண்ணெயில் விட்டு, துளை கரண்டியால் இரண்டு விநாடி அழுத்தவும்; அப்போது சுருங்காமல் தட்டையாகப் பொங்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு முறை திருப்பி, நுரை நின்றதும் எடுத்து வாணலியின் ஓரத்தில் சாய்த்து எண்ணெய் வடிய விடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மீதியை ஒன்றிரண்டாகப் பொரிக்கவும், தீயைச் சமமாக வைக்கவும்; எண்ணெய் மிகச் சூடானால் அப்பளம் கருகிக் கசக்கும்.",
+    "minutes": 4
+   },
+   {
+    "text": "உலர்ந்த கிண்ணத்தில் அடுக்கி, எல்லோரும் சாப்பிட அமர்ந்த பிறகே சோற்றின் மேல் உடைத்துப் போடவும்; இல்லையேல் சுவறிவிடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 2,
+  "cook_minutes": 5,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "small deep pan or wok",
+  "slotted spoon",
+  "dry bowl"
+ ],
+ "tips": {
+  "en": "Fry them last, after the curries are off the fire, and use the one panful of oil for the whole lot; strained and bottled, that oil will fry the next batch. Anyone avoiding oil can hold a wafer over the gas flame with tongs until it toasts dry.",
+  "si": "ව්‍යංජන ලිපෙන් බෑවෙන් පසු අවසානයේ බදින්න, එකම තෙල් ප්‍රමාණයෙන් සියල්ල බදින්න; පෙරා බෝතලයක තැබූ එම තෙලින් ඊළඟ වටයද බැදිය හැකිය. තෙල් වළක්වන අයෙකුට පපඩම අඬු ගෙන ගෑස් ගිනිසිළ මතට තබා වියළිව බැදිය හැකිය.",
+  "ta": "கறிகளை அடுப்பிலிருந்து இறக்கிய பிறகு கடைசியாகப் பொரிக்கவும், ஒரே வாணலி எண்ணெயில் எல்லாவற்றையும் பொரிக்கவும்; வடிகட்டி புட்டியில் வைத்த அந்த எண்ணெய் அடுத்த முறைக்கும் பயன்படும். எண்ணெயைத் தவிர்ப்பவர்கள் அப்பளத்தை கிடுக்கியால் பிடித்து அடுப்புத் தீயில் வாட்டிக் கொள்ளலாம்."
+ },
+ "health_note": {
+  "en": "Papadam are made of lentil flour, so they carry a little protein, but they are salted in the making and they drink up oil in the pan. Two or three wafers a person is plenty; toast them over the flame instead of frying if oil or salt is a worry at home.",
+  "si": "පපඩම් පරිප්පු පිටිවලින් සාදන බැවින් ප්‍රෝටීන් ස්වල්පයක් ඇත, නමුත් සාදන අවස්ථාවේම ලුණු දමා ඇති අතර ඒවා පෑනේ තෙල් උරා ගනී. එක් අයෙකුට පපඩම් දෙකක් තුනක් ප්‍රමාණවත්; තෙල් හෝ ලුණු ගැටලුවක් නම් බැදීම වෙනුවට ගිනිසිළ මතට තබා බදින්න.",
+  "ta": "அப்பளம் பருப்பு மாவில் செய்யப்படுவதால் சிறிது புரதம் உண்டு, ஆனால் செய்யும்போதே உப்பு சேர்க்கப்படுகிறது, வாணலியில் எண்ணெயையும் உறிஞ்சும். ஒருவருக்கு இரண்டு மூன்று அப்பளம் போதும்; எண்ணெய் அல்லது உப்பு கவலையாக இருந்தால் பொரிக்காமல் தீயில் வாட்டவும்."
+ },
+ "tags": [
+  "quick",
+  "deep_fried",
+  "high_sodium",
+  "kid_friendly",
+  "budget",
+  "festive"
+ ],
+ "review_needed": [
+  "quantities"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

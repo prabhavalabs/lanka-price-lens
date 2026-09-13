@@ -1,0 +1,369 @@
+{
+ "id": "dish_kadala_parippu_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 215,
+  "description": {
+   "en": "A thick, nutty ladle of bengal gram dhal",
+   "si": "ඝන, ගෙඩි රසැති කඩල පරිප්පු හැන්දක්",
+   "ta": "கெட்டியான, சுவையான கடலைப் பருப்புக் கறி ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 870,
+ "ingredients": [
+  {
+   "ref": "pantry_chana_dhal",
+   "label": {
+    "en": "split bengal gram",
+    "si": "කඩල පරිප්පු",
+    "ta": "கடலைப் பருப்பு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "washed and soaked in warm water for two hours",
+    "si": "සෝදා උණු වතුරේ පැය දෙකක් පොඟවාගත්",
+    "ta": "கழுவி வெந்நீரில் இரண்டு மணி நேரம் ஊறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට හෙළාගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "අමු තුනපහ",
+    "ta": "வறுக்காத கறித்தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப்பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "two thirds of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the bengal gram and soak it in warm water; it is a much harder grain than red dhal.",
+    "minutes": 120
+   },
+   {
+    "text": "Drain and boil in fresh water with the turmeric and pandan until a grain squashes but still holds together.",
+    "minutes": 30
+   },
+   {
+    "text": "Drain off the excess water, keeping half a cup of it for the gravy.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the onion, garlic, green chilli and curry leaves until soft.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the curry powder and stir it for half a minute on a low flame.",
+    "minutes": 1
+   },
+   {
+    "text": "Tip in the cooked gram with the reserved water and the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer, stirring now and then, until the gravy is thick and tastes nutty.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the thick coconut milk and let it come just to a bubble without boiling hard.",
+    "minutes": 2
+   },
+   {
+    "text": "Rest covered for a few minutes, then serve with rice, pittu or papadam.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "කඩල පරිප්පු සෝදා උණු වතුරේ පොඟවන්න; මෙය රතු පරිප්පුවට වඩා බෙහෙවින් තද ඇටයකි.",
+    "minutes": 120
+   },
+   {
+    "text": "වතුර බේරා, අලුත් වතුරට කහ කුඩු සහ රම්පෙ දමා ඇටය තැලෙන නමුත් හැඩය රැකෙන තුරු තම්බන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "අතිරික්ත වතුර බේරා දමා, හොදිය සඳහා කෝප්ප භාගයක් වෙන් කර තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑනක පොල් තෙල් රත් කර ලූනු, සුදුළූනු, අමු මිරිස් සහ කරපිංචා මෘදු වන තුරු බැදගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "අමු තුනපහ දමා මද ගින්නේ තත්පර තිහක් කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "තැම්බූ පරිප්පු, වෙන් කරගත් වතුර සහ ලුණු දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙවන පොල් කිරි වත් කර, නිතර කලවම් කරමින් හොදිය ඝන වී ගෙඩි රසක් එන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "මුල් පොල් කිරි දමා, තදින් උතුරන්නට ඉඩ නොදී උතුරන්නට ආසන්න වන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "මිනිත්තු කිහිපයක් වසා තබා බත්, පිට්ටු හෝ පපඩම් සමඟ බෙදන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "கடலைப் பருப்பைக் கழுவி வெந்நீரில் ஊற வைக்கவும்; இது மைசூர் பருப்பைவிட மிகவும் இறுகியது.",
+    "minutes": 120
+   },
+   {
+    "text": "வடித்து, புதிய தண்ணீரில் மஞ்சள் தூள், ரம்பை இலை சேர்த்து பருப்பு நசுங்கும், ஆனால் உருவம் மாறாத பதம் வரை வேகவிடவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "தேவையற்ற தண்ணீரை வடித்து, கறிக்காக அரை கப் தனியே வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, பச்சை மிளகாய், கறிவேப்பிலை சேர்த்து மென்மையாகும் வரை வதக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "கறித்தூள் சேர்த்து குறைந்த தணலில் அரை நிமிடம் கிளறவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "வேகவைத்த பருப்பு, வைத்த தண்ணீர், உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப்பாலை ஊற்றி, அவ்வப்போது கிளறி கறி கெட்டியாகி நல்ல சுவை வரும் வரை கொதிக்கவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலைச் சேர்த்து, பொங்கக் கொதிக்கவிடாமல் கொதி வரும் தறுவாயில் நிற்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "சில நிமிடம் மூடி வைத்து, சாதம், பிட்டு அல்லது அப்பளத்துடன் பரிமாறவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 40,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "heavy pot or pressure cooker",
+  "pan for the gravy"
+ ],
+ "tips": {
+  "en": "Bengal gram will not soften in salted or sour water, so add the salt only after the grain is cooked. If the household is in a hurry, give it four whistles in the pressure cooker instead of the long boil.",
+  "si": "කඩල පරිප්පු ලුණු හෝ ඇඹුල් වතුරේ මෘදු නොවන බැවින් ලුණු දමන්නේ ඇට තැම්බුණු පසුවයි. ඉක්මන් නම් දිගු වේලාවක් තැම්බීම වෙනුවට ප්‍රෙෂර් කුකරයේ විසිල් හතරක් දෙන්න.",
+  "ta": "கடலைப் பருப்பு உப்பு நீரிலோ புளிப்பு நீரிலோ வேகாது, எனவே பருப்பு வெந்த பிறகே உப்பு சேர்க்கவும். அவசரம் என்றால் நீண்ட நேரம் வேகவைப்பதற்குப் பதிலாக குக்கரில் நான்கு விசில் விடவும்."
+ },
+ "health_note": {
+  "en": "Bengal gram is heavier and more filling than red dhal, with more fibre and a slower release of energy, which suits a household that works through the afternoon. Anyone who finds pulses gassy should soak it well and throw away the soaking water.",
+  "si": "කඩල පරිප්පු රතු පරිප්පුවට වඩා බර සහ තෘප්තිමත් වන අතර තන්තු වැඩි, ශක්තිය සෙමින් නිකුත් කරන බැවින් දහවල පුරා වැඩ කරන පවුලකට සුදුසුයි. පරිප්පු නිසා ගෑස් ගතියක් දැනෙන අය හොඳින් පොඟවා පොඟවපු වතුර ඉවත දමන්න.",
+  "ta": "கடலைப் பருப்பு மைசூர் பருப்பைவிடக் கனமானதும் நிறைவானதும்; நார்ச்சத்து அதிகம், ஆற்றலை மெதுவாக விடுவிக்கும், பிற்பகல் முழுவதும் வேலை செய்யும் குடும்பத்துக்கு ஏற்றது. பயறு வகைகளால் வாயு தொல்லை உள்ளவர்கள் நன்கு ஊறவைத்து அந்த நீரைக் கொட்டிவிடவும்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "diabetic_friendly",
+  "budget",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

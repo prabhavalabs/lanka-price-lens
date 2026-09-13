@@ -1,0 +1,280 @@
+{
+ "id": "dish_katta_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 25,
+  "description": {
+   "en": "A very small dab at the side of the plate",
+   "si": "පිඟානේ පැත්තට ඉතා කුඩා තැවරුමක්",
+   "ta": "தட்டின் ஓரத்தில் மிகச் சிறிய அளவு"
+  }
+ },
+ "yield_g": 100,
+ "ingredients": [
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "10 to 12 chillies",
+   "preparation": {
+    "en": "stalks removed, seeds left in, dry-roasted",
+    "si": "පොහොර ඉවත් කර, බීජ සමඟම, වියළි පෑනක බැදගත්",
+    "ta": "தாள் நீக்கி, விதையுடன், எண்ணெய் இல்லாமல் வாட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பளகடா"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "dry-roasted and pounded coarse",
+    "si": "වියළි පෑනක බැද රළුව තලාගත්",
+    "ta": "வாட்டி கரகரப்பாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "peeled and roughly chopped",
+    "si": "ලෙලි ගසා රළුව කපාගත්",
+    "ta": "உரித்து பெரிதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණි",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp, ground",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැට",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": {
+    "en": "to round off the heat",
+    "si": "සැර මුදු කර ගැනීමට",
+    "ta": "காரத்தை மிதமாக்க"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Snap the stalks off the dried chillies and leave the seeds in, since this sambol is meant to bite.",
+    "minutes": null
+   },
+   {
+    "text": "Roast the chillies in a dry pan over a low flame, shaking the pan, until they darken and smell sharp; do not let them blacken.",
+    "minutes": 3
+   },
+   {
+    "text": "Roast the maldive fish in the same pan for a minute until it smells toasted, then let both cool.",
+    "minutes": 2
+   },
+   {
+    "text": "Crush the chillies with the salt and pepper on the grinding stone to a coarse dark powder.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the maldive fish and grind again until the two become one rough paste.",
+    "minutes": null
+   },
+   {
+    "text": "Put in the chopped red onion and pound with a rocking motion until the sambol turns wet and dark; a pinch of sugar here rounds off the heat.",
+    "minutes": 4
+   },
+   {
+    "text": "Squeeze in the lime, mix, and serve in a small dish; a dab at the side of the plate is enough for anyone.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වියළි මිරිස්වල පොහොර ගලවා ගන්න; මෙම සම්බෝල සැර විය යුතු බැවින් බීජ ඉවත් නොකරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මිරිස් වියළි පෑනක අඩු ගින්නේ, පෑන සොලවමින්, පාට තදවී තියුණු සුවඳ එන තුරු බදින්න; කළු වන්නට ඉඩ නොදෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "එම පෑනේම උම්බලකඩ විනාඩියක් බැද සුවඳ එන විට, දෙකම සිසිල් වන්නට දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "මිරිස්, ලුණු සහ ගම්මිරිස් සමඟ මිරිස් ගලේ තලා රළු අඳුරු කුඩක් සාදා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "උම්බලකඩ දමා දෙකම එකම රළු පේස්ට් එකක් වන තුරු නැවත තලන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැපූ රතු ළූණු දමා, සම්බෝල තෙත් වී අඳුරු වන තුරු ගල මත පෙරළා තලන්න; සීනි ස්වල්පයක් දැමුවහොත් සැර මුදු වේ.",
+    "minutes": 4
+   },
+   {
+    "text": "දෙහි මිරිකා මිශ්‍ර කර කුඩා පිඟානක ඉදිරිපත් කරන්න; පිඟානේ පැත්තට තැවරුමක් කාටත් ප්‍රමාණවත්.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வத்தல் மிளகாயின் தாள்களை நீக்கவும்; இந்தச் சம்பல் காரமாக இருக்க வேண்டும் என்பதால் விதைகளை நீக்க வேண்டாம்.",
+    "minutes": null
+   },
+   {
+    "text": "மிளகாயை வாணலியில் எண்ணெய் இல்லாமல் குறைந்த தீயில், வாணலியை அசைத்து, நிறம் கருமையாகி கார வாசம் வரும் வரை வாட்டவும்; கருகக்கூடாது.",
+    "minutes": 3
+   },
+   {
+    "text": "அதே வாணலியில் உம்பளகடாவை ஒரு நிமிடம் வாட்டி வாசம் வந்ததும், இரண்டையும் ஆற விடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மிளகாயை உப்பு, மிளகுடன் அம்மியில் இடித்து கரகரப்பான கறுத்த தூளாக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "உம்பளகடாவைச் சேர்த்து, இரண்டும் ஒரே கரகரப்பான விழுதாகும் வரை மீண்டும் இடிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கிய சின்ன வெங்காயத்தைச் சேர்த்து, சம்பல் ஈரமாகி கருமையாகும் வரை அம்மியில் உருட்டி இடிக்கவும்; சிறிது சீனி சேர்த்தால் காரம் மிதமாகும்.",
+    "minutes": 4
+   },
+   {
+    "text": "எலுமிச்சையைப் பிழிந்து கலந்து, சிறிய தட்டில் பரிமாறவும்; தட்டின் ஓரத்தில் ஒரு சிறு அளவே எல்லோருக்கும் போதும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 5,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "dry pan",
+  "grinding stone or mortar and pestle"
+ ],
+ "tips": {
+  "en": "Roast the chillies with the kitchen door open and stand upwind, because the smoke catches the throat. If it comes out too fierce, a spoon of scraped coconut or a pinch of sugar tames it without losing its character.",
+  "si": "මිරිස් බදින විට කුස්සියේ දොර ඇර, දුම එන දිශාවට පිටුපා සිටින්න; එම දුම උගුරට දැනේ. සැර වැඩි නම් සීරූ පොල් හැන්දක් හෝ සීනි ස්වල්පයක් දැමීමෙන් රසය නොනැසී සැර මුදු වේ.",
+  "ta": "மிளகாயை வாட்டும்போது சமையலறைக் கதவைத் திறந்து, புகை வராத பக்கம் நிற்கவும்; அந்தப் புகை தொண்டையைப் பிடிக்கும். மிகக் காரமாகிவிட்டால், ஒரு கரண்டி துருவிய தேங்காய் அல்லது சிறிது சீனி அதன் தன்மையைக் கெடுக்காமல் காரத்தைக் குறைக்கும்."
+ },
+ "health_note": {
+  "en": "There are barely any calories in it, but it is chilli, salt and dried fish concentrated into a paste, so small amounts only, especially for children and anyone with gastritis. Taken as a dab, it makes a plain plate of rice interesting without adding fat.",
+  "si": "මෙහි කැලරි නොමැති තරම්ය, නමුත් මිරිස්, ලුණු සහ උම්බලකඩ සාන්ද්‍ර පේස්ට් එකකි; එබැවින් කුඩා ප්‍රමාණවලින් පමණක්, විශේෂයෙන් දරුවන්ට සහ ගැස්ට්‍රයිටිස් ඇති අයට. තැවරුමක් ලෙස ගත් විට මේදය එකතු නොකර සාමාන්‍ය බත් පිඟානකට රසයක් දෙයි.",
+  "ta": "இதில் கலோரி இல்லை என்றே சொல்லலாம், ஆனால் மிளகாய், உப்பு, கருவாட்டுத் தூள் சேர்ந்த செறிவான விழுது; எனவே சிறிய அளவே, குறிப்பாக குழந்தைகளுக்கும் குடல் எரிச்சல் உள்ளவர்களுக்கும். ஒரு தொடுகறியாக எடுத்தால், கொழுப்பு சேர்க்காமல் வெறும் சோற்றைச் சுவையாக்கும்."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "low_calorie",
+  "low_carb",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

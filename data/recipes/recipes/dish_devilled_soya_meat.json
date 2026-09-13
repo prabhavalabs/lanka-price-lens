@@ -1,0 +1,403 @@
+{
+ "id": "dish_devilled_soya_meat",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 185,
+  "description": {
+   "en": "A plate of chewy soya chunks in sticky red sauce",
+   "si": "ඇලෙන රතු සෝස් වල හපන ගතියක් ඇති සෝයා කැබලි පිඟානක්",
+   "ta": "ஒட்டும் சிவப்பு சோஸில் மென்று சுவைக்கும் சோயா துண்டுகள்"
+  }
+ },
+ "yield_g": 740,
+ "ingredients": [
+  {
+   "ref": "pantry_soya_chunks",
+   "label": {
+    "en": "textured soya chunks",
+    "si": "සෝයා මීට්",
+    "ta": "சோயா துண்டுகள்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 packet, about 2 cups dry",
+   "preparation": {
+    "en": "soaked in boiling water and squeezed dry twice",
+    "si": "උතුරන වතුරේ පොඟවා දෙවරක් මිරිකාගත්",
+    "ta": "கொதிநீரில் ஊறவைத்து இருமுறை பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "cut into petals",
+    "si": "පෙති ලෙස කපාගත්",
+    "ta": "இதழ்களாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "capsicum",
+    "si": "මාළු මිරිස්",
+    "ta": "குடைமிளகாய்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 capsicum",
+   "preparation": {
+    "en": "cut into squares",
+    "si": "හතරැස් කැබලිවලට කපාගත්",
+    "ta": "சதுரமாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 firm tomato",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "කැබලිවලට කපාගත්",
+    "ta": "துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "cut on the slant",
+    "si": "ඇලකට කපාගත්",
+    "ta": "சாய்வாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a small piece",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_tomato_sauce",
+   "label": {
+    "en": "tomato sauce",
+    "si": "තක්කාලි සෝස්",
+    "ta": "தக்காளி சோஸ்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් පේස්ට්",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சோஸ்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pour boiling water over the soya chunks with a pinch of the salt and leave them to swell.",
+    "minutes": 10
+   },
+   {
+    "text": "Drain and squeeze every chunk dry between your palms, then squeeze a second time; wet soya will never crisp.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and fry the squeezed chunks in batches until brown and chewy at the edges.",
+    "minutes": 8
+   },
+   {
+    "text": "Lift them onto a plate and leave the flavoured oil in the pan.",
+    "minutes": null
+   },
+   {
+    "text": "Fry the garlic, ginger, onion petals, green chilli and curry leaves on a high flame until the onion just starts to char.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the capsicum and tomato and toss for a minute only, keeping them firm.",
+    "minutes": 1
+   },
+   {
+    "text": "Stir the tomato sauce, chilli paste, soy sauce, sugar and the rest of the salt with a splash of water and pour it in.",
+    "minutes": null
+   },
+   {
+    "text": "When the sauce bubbles and thickens, return the soya and toss until every chunk is coated and sticky.",
+    "minutes": 3
+   },
+   {
+    "text": "Serve hot with rice, fried rice or kottu.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "සෝයා මීට් මතට උතුරන වතුර සහ ලුණු ස්වල්පයක් දමා පිම්බෙන්නට තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වතුර බේරා එක් එක් කැබැල්ල අත් අතර මිරිකා වියළා, දෙවනුවත් මිරිකන්න; තෙත් සෝයා කිසිදා කරකර ගතියක් නොගනී.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් පෑනක පොල් තෙල් රත් කර, මිරිකාගත් කැබලි කණ්ඩායම් වශයෙන් දාර දුඹුරු වී හපන ගතියක් එන තුරු බැදගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඒවා පිඟානකට ගෙන, රස වැදුණු තෙල පෑනේම තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සුදුළූනු, ඉඟුරු, ලූනු පෙති, අමු මිරිස් සහ කරපිංචා තද ගින්නේ ලූනු දාර පිච්චෙන්නට පටන් ගන්නා තුරු බැදගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මාළු මිරිස් සහ තක්කාලි දමා, තද ගතිය රැකෙන සේ මිනිත්තුවක් පමණක් පෙරළන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "තක්කාලි සෝස්, මිරිස් පේස්ට්, සෝයා සෝස්, සීනි සහ ඉතිරි ලුණු වතුර ටිකක් සමඟ මිශ්‍ර කර පෑනට වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෝස් උතුරා තද වූ විට සෝයා නැවත දමා, සෑම කැබැල්ලකටම ඇලෙන තුරු පෙරළන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බත්, ෆ්‍රයිඩ් රයිස් හෝ කොත්තු සමඟ උණුසුම්ව බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சோயா துண்டுகளின் மேல் கொதிக்கும் நீரையும் சிறிது உப்பையும் ஊற்றி ஊறிப் பெருகவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வடித்து ஒவ்வொரு துண்டையும் கைகளுக்கு இடையே பிழிந்து, இரண்டாம் முறையும் பிழியவும்; ஈரமான சோயா ஒருபோதும் மொறுமொறுப்பாகாது.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து, பிழிந்த துண்டுகளைக் கொஞ்சம் கொஞ்சமாக ஓரம் பொன்னிறமாகி மென்று சுவைக்கும் பதம் வரை வதக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "அவற்றை ஒரு தட்டில் எடுத்து, சுவை ஏறிய எண்ணெயை வாணலியிலேயே விடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பூண்டு, இஞ்சி, வெங்காய இதழ்கள், பச்சை மிளகாய், கறிவேப்பிலையை அதிக தணலில் வெங்காயம் கருகத் தொடங்கும் வரை வதக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "குடைமிளகாயும் தக்காளியும் சேர்த்து, இறுகிய பதம் மாறாமல் ஒரு நிமிடம் மட்டும் புரட்டவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "தக்காளி சோஸ், மிளகாய் விழுது, சோயா சோஸ், சீனி, மீதி உப்பை சிறிது தண்ணீருடன் கலந்து வாணலியில் ஊற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சோஸ் கொதித்து இறுகியதும் சோயாவை மீண்டும் சேர்த்து, ஒவ்வொரு துண்டிலும் ஒட்டும் வரை புரட்டவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சாதம், பொரித்த சாதம் அல்லது கொத்துடன் சூடாகப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "wide pan or wok",
+  "bowl for soaking"
+ ],
+ "tips": {
+  "en": "Fry the soya in two batches rather than crowding the pan, otherwise the chunks steam instead of browning and stay soft. A handful of cashew thrown in at the end turns this into something you can hand round at a party.",
+  "si": "පෑන පිරෙන්නට නොදමා සෝයා කොටස් දෙකකට බැදගන්න; නොඑසේ නම් කැබලි බැදෙනවා වෙනුවට හුමාලයට ඉදී මෘදුව පවතී. අවසානයේ කජු අතමිටක් දැමුවහොත් උත්සවයකදී බෙදා ගත හැකි ආහාරයක් වේ.",
+  "ta": "வாணலியை நிரப்பாமல் சோயாவை இரண்டு தவணையாகப் பொரிக்கவும்; இல்லையேல் துண்டுகள் பொன்னிறமாகாமல் ஆவியில் வேகி மென்மையாகவே இருக்கும். இறுதியில் ஒரு கைப்பிடி முந்திரி சேர்த்தால் விருந்தில் பரிமாறக்கூடிய உணவாக மாறும்."
+ },
+ "health_note": {
+  "en": "Soya gives this dish real protein and fibre for a very small price, but frying plus bottled sauces mean plenty of oil and salt in the same plate. Serve it with rice and a plain vegetable rather than with another fried dish.",
+  "si": "සෝයා නිසා ඉතා අඩු මුදලකට සැබෑ ප්‍රෝටීන් සහ තන්තු ලැබෙන නමුත් බැදීම සහ බෝතලේ සෝස් නිසා එකම පිඟානේ තෙල් සහ ලුණු වැඩි වේ. තවත් බැදපු ව්‍යංජනයක් වෙනුවට බත් සහ සරල එළවළු ව්‍යංජනයක් සමඟ බෙදන්න.",
+  "ta": "சோயா மிகக் குறைந்த விலையில் உண்மையான புரதமும் நார்ச்சத்தும் தருகிறது; ஆனால் பொரிப்பதும் பாட்டில் சோஸ்களும் ஒரே தட்டில் எண்ணெயையும் உப்பையும் அதிகமாக்குகின்றன. மற்றொரு பொரித்த உணவுக்குப் பதிலாக சாதத்துடன் எளிய காய்கறிக் கறியைச் சேர்த்துப் பரிமாறவும்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "budget",
+  "festive",
+  "filling",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

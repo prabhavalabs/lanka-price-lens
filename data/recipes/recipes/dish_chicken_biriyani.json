@@ -1,0 +1,562 @@
+{
+ "id": "dish_chicken_biriyani",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 450,
+  "description": {
+   "en": "A plateful of biriyani rice with two pieces of chicken",
+   "si": "කුකුල් මස් කැබලි දෙකක් සමඟ බුරියානි බත් පිඟානක්",
+   "ta": "இரண்டு துண்டு கோழி இறைச்சியுடன் ஒரு தட்டு நிறைய பிரியாணி சாதம்"
+  }
+ },
+ "yield_g": 1800,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken",
+    "si": "කුකුල් මස්",
+    "ta": "கோழி இறைச்சி"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "about half a bird, curry cut",
+   "preparation": {
+    "en": "cut into curry pieces and washed",
+    "si": "කරි කැබලිවලට කපා සෝදාගත්",
+    "ta": "கறித் துண்டுகளாக வெட்டி கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed and drained",
+    "si": "සෝදා වතුර බේරාගත්",
+    "ta": "கழுவி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curd",
+   "label": {
+    "en": "curd",
+    "si": "දී (මුදවපු කිරි)",
+    "ta": "தயிர்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "three quarters of a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 large onions",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a thumb",
+   "preparation": {
+    "en": "crushed to a paste",
+    "si": "තලා පේස්ට් කරගත්",
+    "ta": "நசுக்கி விழுதாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "8 cloves",
+   "preparation": {
+    "en": "crushed to a paste",
+    "si": "තලා පේස්ට් කරගත්",
+    "ta": "நசுக்கி விழுதாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாக கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mint_leaves",
+   "label": {
+    "en": "mint leaves",
+    "si": "මින්ට් කොළ",
+    "ta": "புதினா இலை"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a small bunch",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a small bunch",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_ghee",
+   "label": {
+    "en": "ghee",
+    "si": "ගිතෙල්",
+    "ta": "நெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_biriyani_masala",
+   "label": {
+    "en": "biriyani masala",
+    "si": "බුරියානි මසාලා",
+    "ta": "பிரியாணி மசாலா"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 small sticks",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom pods",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "5 pods",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew nuts",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_food_colouring",
+   "label": {
+    "en": "yellow food colouring",
+    "si": "කහ පාට කෑම වර්ණය",
+    "ta": "மஞ்சள் உணவு நிறம்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch in a spoon of water",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Mix the chicken with the curd, half the ginger and garlic, half the biriyani masala, the turmeric, pepper, lime juice and half the salt and leave it in a cool place.",
+    "minutes": 60
+   },
+   {
+    "text": "Wash the rice, soak it in water for twenty minutes and drain it well.",
+    "minutes": 20
+   },
+   {
+    "text": "Fry the sliced onion in the oil until half of it is dark brown and crisp, lift that half out for the top and leave the rest in the pot.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the butter, the whole cinnamon, cardamom and cloves, the rest of the ginger and garlic and the green chilli, and fry until the spices smell strong.",
+    "minutes": 3
+   },
+   {
+    "text": "Tip in the marinated chicken with the rest of the biriyani masala and half the mint and coriander, and cook it covered in its own liquid until it is almost done.",
+    "minutes": 25
+   },
+   {
+    "text": "Lift the chicken pieces out and leave the thick gravy in the pot.",
+    "minutes": null
+   },
+   {
+    "text": "Pour three and a half cups of water into the gravy, add the ghee and the rest of the salt and bring it to a hard boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the drained rice, boil it uncovered until the water sits just level with the rice.",
+    "minutes": 8
+   },
+   {
+    "text": "Lay the chicken pieces on the rice, scatter the fried onion, the rest of the mint and coriander and the colouring water over the top.",
+    "minutes": null
+   },
+   {
+    "text": "Seal the pot with a tight lid or a sheet of foil under the lid, drop the flame to its lowest and let it steam together.",
+    "minutes": 20
+   },
+   {
+    "text": "Take it off the fire and leave it sealed so the grains firm up and the steam settles.",
+    "minutes": 10
+   },
+   {
+    "text": "Open it, fork the rice up from the bottom without breaking the chicken, top with fried cashew and serve with raita and brinjal moju.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුකුල් මස්වලට දී, ඉඟුරු සුදුළූනු වලින් භාගයක්, බුරියානි මසාලා භාගයක්, කහ, ගම්මිරිස්, දෙහි යුෂ සහ ලුණු භාගයක් දමා මිශ්‍ර කර, සිසිල් තැනක තබන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "සහල් සෝදා විනාඩි විස්සක් වතුරේ පොඟවා, හොඳින් වතුර බේරාගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කපාගත් ලූනු තෙලේ බැද, භාගයක් තද දුඹුරු වී මාළු වූ විට එය ඉහළට තබාගැනීමට ගොඩට ගෙන, ඉතිරිය භාජනයේ තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බටර්, කුරුඳු, එනසාල්, කරාබුනැටි, ඉතිරි ඉඟුරු සුදුළූනු සහ අමු මිරිස් දමා, කුළුබඩු සුවඳ තදින් නගින තුරු බැදගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "අච්චාරු කළ කුකුල් මස්, ඉතිරි බුරියානි මසාලා සහ මින්ට් කොත්තමල්ලි වලින් භාගයක් දමා, තමන්ගේ දියරයෙන්ම, මස් සෑහෙන තරමට තැම්බෙන තුරු වසා උයන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "කුකුල් මස් කැබලි ගොඩට ගෙන, ඝන හොද්ද භාජනයේ තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "හොද්දට කෝප්ප තුනහමාරක් වතුර වත් කර, ගිතෙල් සහ ඉතිරි ලුණු දමා තදින් නටවන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වතුර බේරාගත් සහල් දමා, වතුර සහල් මට්ටමට එන තුරු නොවසා නටවන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බත මත කුකුල් මස් කැබලි තබා, බැදගත් ලූනු, ඉතිරි මින්ට් කොත්තමල්ලි සහ වර්ණ වතුර ඉහළින් විසුරුවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "භාජනය තද වැස්මකින් හෝ වැස්ම යට තීරුවකින් මුද්‍රා කර, ගින්දර අවම කර එකට වාෂ්පයෙන් තැම්බෙන්නට හරින්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ගින්නෙන් ඉවතට ගෙන, ඇට තදවී වාෂ්පය පහත වැටෙන තුරු නොවසා නොහැර තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වැස්ම ඉවත් කර, කුකුල් මස් නොකඩා පතුලේ සිට බත ලිහා, බැදගත් කජු ඉහළින් දමා, රයිටා සහ වම්බටු මොජු සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கோழி இறைச்சியில் தயிர், பாதி இஞ்சி பூண்டு, பாதி பிரியாணி மசாலா, மஞ்சள், மிளகு, தேசிக்காய் சாறு, பாதி உப்பு சேர்த்துக் கலந்து, குளிர்ந்த இடத்தில் வைக்கவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "அரிசியைக் கழுவி இருபது நிமிடம் தண்ணீரில் ஊறவைத்து, நன்கு வடிக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "நறுக்கிய வெங்காயத்தை எண்ணெயில் வறுத்து, பாதி கருமையாகி மொறுமொறுப்பானதும் அதை மேலே தூவுவதற்கு எடுத்து, மீதியை பாத்திரத்தில் விடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வெண்ணெய், இலவங்கப்பட்டை, ஏலக்காய், கிராம்பு, மீதி இஞ்சி பூண்டு, பச்சை மிளகாய் சேர்த்து, மசாலா வாசனை நன்கு வரும்வரை வதக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "ஊறிய கோழி இறைச்சி, மீதி பிரியாணி மசாலா, பாதி புதினா கொத்தமல்லி சேர்த்து, அதன் சாற்றிலேயே இறைச்சி கிட்டத்தட்ட வேகும்வரை மூடி சமைக்கவும்.",
+    "minutes": 25
+   },
+   {
+    "text": "கோழித் துண்டுகளை எடுத்து, தடித்த குழம்பை பாத்திரத்தில் விடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குழம்பில் மூன்றரை கப் தண்ணீர் ஊற்றி, நெய்யும் மீதி உப்பும் சேர்த்து நன்கு கொதிக்கவைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "வடித்த அரிசியைச் சேர்த்து, தண்ணீர் அரிசியின் மட்டத்திற்கு வரும்வரை மூடாமல் கொதிக்கவைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "சாதத்தின் மேல் கோழித் துண்டுகளை வைத்து, வறுத்த வெங்காயம், மீதி புதினா கொத்தமல்லி, நிற நீரை மேலே தூவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்தை இறுக்கமான மூடியால் அல்லது மூடிக்கு அடியில் ஒரு தாளால் மூடி, தீயை மிகக் குறைத்து ஒன்றாக ஆவியில் வேகவிடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "தீயிலிருந்து இறக்கி, அரிசி இறுகி ஆவி அடங்கும்வரை மூடியே வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மூடியைத் திறந்து, இறைச்சி உடையாமல் அடியிலிருந்து சாதத்தை உதிர்த்து, வறுத்த முந்திரியை மேலே தூவி, ரைத்தா மற்றும் கத்தரிக்காய் மோஜுவுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 60,
+  "passive_minutes": 70
+ },
+ "equipment": [
+  "heavy pot with tight lid",
+  "pan for frying onions",
+  "wide serving dish"
+ ],
+ "tips": {
+  "en": "Three and a half cups of water to two cups of samba, measured into the gravy rather than plain water, is what gives biriyani rice its colour and taste; do not stir once it is sealed.",
+  "si": "සම්බා කෝප්ප දෙකකට වතුර කෝප්ප තුනහමාරක්, පැහැදිලි වතුරට වඩා හොද්දට මැන දැමීම තමයි බුරියානි බත්වලට පාටත් රසත් දෙන්නේ; මුද්‍රා කළ පසු කලවම් නොකරන්න.",
+  "ta": "இரண்டு கப் சம்பா அரிசிக்கு மூன்றரை கப் தண்ணீர், வெறும் தண்ணீரல்ல குழம்பில் அளந்து சேர்ப்பதுதான் பிரியாணி சாதத்திற்கு நிறமும் சுவையும் தருகிறது; மூடிய பிறகு கிளறவேண்டாம்."
+ },
+ "health_note": {
+  "en": "A festive dish that carries real protein from the chicken, but also butter, ghee and a large rice portion; serve it with a cucumber raita and keep to one plate.",
+  "si": "කුකුල් මස් වලින් සැබෑ ප්‍රෝටීන් ලැබෙන උත්සව අහරක්, එහෙත් බටර්, ගිතෙල් සහ විශාල බත් ප්‍රමාණයක්ද එහි ඇත; පිපිඤ්ඤා රයිටා සමඟ බෙදා එක් පිඟානකට සීමා වන්න.",
+  "ta": "கோழி இறைச்சியிலிருந்து உண்மையான புரதம் தரும் விழா உணவு, ஆனால் வெண்ணெய், நெய், பெரிய அளவு சாதமும் உள்ளது; வெள்ளரி ரைத்தாவுடன் பரிமாறி ஒரு தட்டுடன் நிறுத்தவும்."
+ },
+ "tags": [
+  "high_protein",
+  "festive",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

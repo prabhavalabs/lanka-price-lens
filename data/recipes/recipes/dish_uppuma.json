@@ -1,0 +1,379 @@
+{
+ "id": "dish_uppuma",
+ "base_servings": 4,
+ "serving": {
+  "role": "breakfast",
+  "portion_g": 250,
+  "description": {
+   "en": "A soft savoury mound of semolina with a chutney on the side",
+   "si": "පසෙක චට්නියක් සමඟ මුදු, ලුණු රස රුලං ගොඩක්",
+   "ta": "பக்கத்தில் சட்னியுடன் மென்மையான உப்புக்கார ரவைக் குவியல்"
+  }
+ },
+ "yield_g": 1000,
+ "ingredients": [
+  {
+   "ref": "pantry_semolina",
+   "label": {
+    "en": "semolina",
+    "si": "රුලං",
+    "ta": "ரவை"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "dry roasted until it smells nutty",
+    "si": "සුවඳ නගින තුරු වියළිව බැදගත්",
+    "ta": "வாசனை வரும் வரை வெறுமையாக வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seed",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_urad_dhal",
+   "label": {
+    "en": "urad dhal",
+    "si": "උඳු",
+    "ta": "உளுந்து"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "for the tempering",
+    "si": "තෙම්පරාදුවට",
+    "ta": "தாளிப்புக்கு"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "chopped",
+    "si": "කැපූ",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit lengthways",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a thumb tip",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கரட்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 carrot",
+   "preparation": {
+    "en": "diced small",
+    "si": "කුඩාවට කැපූ",
+    "ta": "சிறு துண்டுகளாக நறுக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": {
+    "en": "broken in halves",
+    "si": "දෙකට කඩාගත්",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juiced",
+   "preparation": {
+    "en": "juice only, stirred in at the end",
+    "si": "යුෂ පමණක්, අවසානයේ දමන",
+    "ta": "சாறு மட்டும், இறுதியில் சேர்ப்பது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dry roast the semolina in a heavy pan on a low flame, stirring all the time, until the grains are loose and smell toasted but have not coloured, then tip it onto a plate.",
+    "minutes": 8
+   },
+   {
+    "text": "Put 750 ml of water on to boil with half the salt in a separate pot.",
+    "minutes": 6
+   },
+   {
+    "text": "Heat the oil in the same pan, crackle the mustard seeds, then fry the urad dhal and cashew until pale gold.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the onion, green chillies, ginger and curry leaves and fry until the onion is glassy.",
+    "minutes": 4
+   },
+   {
+    "text": "Stir in the diced carrot with a splash of water and cook until it is just tender.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour the boiling water into the pan, add the rest of the salt and let it come back to a boil.",
+    "minutes": 2
+   },
+   {
+    "text": "Lower the flame and rain the roasted semolina in with one hand while stirring hard with the other so no lumps form.",
+    "minutes": 3
+   },
+   {
+    "text": "Cover and cook on the lowest flame until the semolina has drunk the water and comes away from the pan in a soft mass.",
+    "minutes": 5
+   },
+   {
+    "text": "Squeeze in the lime juice, fluff it with a fork and serve it warm, pressed into a cup and turned out as a mound if you like.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බර පෑන් එකක අඩු ගින්නේ, දිගටම කලවම් කරමින්, රුලං ලිහිල් වී බැදුණු සුවඳ නගින නමුත් වර්ණය මාරු නොවන තුරු වේළා, පිඟානකට දමා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "වෙනම හැළියක වතුර මිලි ලීටර් 750ක් සහ ලුණු වලින් අඩක් දමා නටවන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "එම පෑන් එකේ තෙල් රත් කර අබ ඇට පිපිරෙන්නට දී, උඳු සහ කජු රන්වන් වන තුරු බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලූනු, අමු මිරිස්, ඉඟුරු සහ කරපිංචා දමා ලූනු විනිවිද පෙනෙන ගතියට එන තුරු බදින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "කැපූ කැරට් සහ වතුර ටිකක් දමා, කැරට් මුදු වන තුරු පිහන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "නටන වතුර පෑන් එකට වත් කර, ඉතිරි ලුණු දමා නැවත නටන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ගිනි අඩු කර, එක් අතකින් බැදගත් රුලං වැස්සක් සේ දමමින් අනෙක් අතින් තදින් හොඳවන්න; ගුලි නොහැදෙන ලෙස බලා ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වහලා අවම ගින්නේ, රුලං වතුර උරා ගෙන මුදු ගුලියක් ලෙස පෑන් එකෙන් ගැලවෙන තුරු තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා, ගෑරුප්පුවකින් සැහැල්ලු කර, කැමති නම් කෝප්පයකට තද කර ගොඩක් ලෙස පෙරළා උණුසුම්ව ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கனமான சட்டியில் சிறு தீயில் தொடர்ந்து கிளறி, ரவை உதிரியாகி வாசனை வரும் வரை ஆனால் நிறம் மாறாமல் வறுத்து, தட்டில் கொட்டுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "தனி பாத்திரத்தில் 750 மில்லி தண்ணீரை பாதி உப்புடன் கொதிக்க வையுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அதே சட்டியில் எண்ணெயைக் காயவைத்து கடுகு வெடிக்கவிட்டு, உளுந்தும் முந்திரியும் பொன்னிறமாகும் வரை வறுக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "வெங்காயம், பச்சை மிளகாய், இஞ்சி, கறிவேப்பிலை சேர்த்து வெங்காயம் கண்ணாடி போல் ஆகும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "நறுக்கிய கரட்டை சிறிது தண்ணீருடன் சேர்த்து மென்மையாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கொதிக்கும் தண்ணீரை சட்டியில் ஊற்றி, மீதி உப்பு சேர்த்து மீண்டும் கொதிக்கவிடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "தீயைக் குறைத்து, ஒரு கையால் வறுத்த ரவையை மழை போல் தூவி மறு கையால் பலமாகக் கிளறுங்கள், கட்டி விழாமல் பாருங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மூடி மிகக் குறைந்த தீயில், ரவை தண்ணீரை உறிஞ்சி மென்மையான திரளாக சட்டியை விட்டு விலகும் வரை வேகவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "எலுமிச்சைச் சாறு பிழிந்து, முள்கரண்டியால் உதிர்த்து, விரும்பினால் ஒரு கோப்பையில் அழுத்தி கவிழ்த்து குவியலாக சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy pan",
+  "second pot for boiling water",
+  "fork"
+ ],
+ "tips": {
+  "en": "Two and a half cups of water to one cup of semolina gives a soft uppuma; less and it dries out as it cools. The water must be boiling when it meets the semolina, and the stirring hand must not stop, or you will be picking out lumps.",
+  "si": "රුලං කෝප්පයකට වතුර කෝප්ප දෙකහමාරක් දැමීමෙන් මුදු උප්පුමා ලැබෙයි; අඩු වුවහොත් සිසිල් වන විට වියළෙයි. රුලං හමු වන විට වතුර නටනවා තිබිය යුතුය, හොඳවන අත නැවතිය නොහැක, නැතිනම් ගුලි ඇහිඳින්නට වේ.",
+  "ta": "ஒரு கப் ரவைக்கு இரண்டரை கப் தண்ணீர் மென்மையான உப்புமா தரும்; குறைந்தால் குளிரும்போது உலர்ந்துவிடும். ரவையைச் சேர்க்கும்போது தண்ணீர் கொதித்திருக்க வேண்டும், கிளறும் கை நிற்கக் கூடாது, இல்லையேல் கட்டிகளை எடுக்க வேண்டியிருக்கும்."
+ },
+ "health_note": {
+  "en": "Light on oil and quick to digest, which makes it a kind breakfast for children and older people, and the vegetables add a little fibre to refined semolina. It is wheat, so households avoiding gluten should choose kurakkan or rice options instead.",
+  "si": "තෙල් අඩු, ඉක්මනින් දිරවන බැවින් ළමයින්ට සහ වැඩිහිටියන්ට මෘදු උදෑසන ආහාරයක්; එළවළු වලින් පිරිපහදු කළ රුලං වලට තන්තු ටිකක් එකතු වේ. මෙය තිරිඟු බැවින් ග්ලූටන් වළක්වන ගෙවල් වල කුරක්කන් හෝ සහල් විකල්ප තෝරා ගන්න.",
+  "ta": "எண்ணெய் குறைவு, விரைவில் ஜீரணமாகும், எனவே குழந்தைகளுக்கும் வயதானவர்களுக்கும் இதமான காலை உணவு; காய்கறிகள் சுத்திகரித்த ரவைக்கு சிறிது நார்ச்சத்து சேர்க்கின்றன. இது கோதுமை என்பதால் பசை தவிர்ப்பவர்கள் குரக்கன் அல்லது அரிசி வகைகளைத் தேர்ந்தெடுக்கலாம்."
+ },
+ "tags": [
+  "quick",
+  "one_pot",
+  "budget",
+  "kid_friendly",
+  "light",
+  "comfort",
+  "elderly_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

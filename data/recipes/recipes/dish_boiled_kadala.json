@@ -1,0 +1,295 @@
+{
+ "id": "dish_boiled_kadala",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 170,
+  "description": {
+   "en": "A small bowl of warm chickpeas with scraped coconut on top",
+   "si": "ගාගත් පොල් සමඟ උණුසුම් කඩල කුඩා බඳුනක්",
+   "ta": "துருவிய தேங்காயுடன் ஒரு சிறிய கிண்ணம் சூடான கடலை"
+  }
+ },
+ "yield_g": 690,
+ "ingredients": [
+  {
+   "ref": "product_chickpea",
+   "label": {
+    "en": "dried chickpeas",
+    "si": "කඩල",
+    "ta": "கொண்டைக்கடலை"
+   },
+   "quantity": 240,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "washed and soaked overnight",
+    "si": "සෝදා රාත්‍රිය පුරා පොඟවාගත්",
+    "ta": "கழுவி இரவு முழுவதும் ஊறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "අලුතින් ගාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "broken in half, seeds shaken out",
+    "si": "දෙකට කඩා ඇට ඉවත් කරගත්",
+    "ta": "இரண்டாக உடைத்து விதை நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "leaves stripped off the stalk",
+    "si": "කොළ ගලවාගත්",
+    "ta": "இலைகளைப் பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව පෙති කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the chickpeas, pick out any stones and soak them overnight in plenty of water.",
+    "minutes": 480
+   },
+   {
+    "text": "Drain the soaked chickpeas into a pot, cover with fresh water two fingers above the level and add half the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Boil steadily until a chickpea crushes easily between your fingers, topping up the water if it runs low.",
+    "minutes": 35
+   },
+   {
+    "text": "Drain off the cooking water and leave the chickpeas in the covered pot to steam themselves dry.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a small pan, drop in the mustard seeds and wait until they pop.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the onion if you are using it, then the broken dried chilli and curry leaves, and fry until the leaves crackle.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour the whole tempering over the chickpeas, add the rest of the salt and toss well.",
+    "minutes": null
+   },
+   {
+    "text": "Mix in the scraped coconut while the chickpeas are still warm and serve straight away.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කඩල හොඳින් සෝදා ගල් කැට ඉවත් කර, ප්‍රමාණවත් වතුරේ රාත්‍රිය පුරා පොඟවන්න.",
+    "minutes": 480
+   },
+   {
+    "text": "පොඟවාගත් කඩල වතුර බේරා වළඳකට දමා, ඇඟිලි දෙකක් උසට වතුර සහ ලුණු අඩක් එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කඩල ඇටයක් ඇඟිලි අතර පහසුවෙන් තැලෙන තුරු තම්බන්න; වතුර අඩු වුවහොත් තව ටිකක් දමන්න.",
+    "minutes": 35
+   },
+   {
+    "text": "තැම්බූ වතුර බේරා දමා, වළඳ වසා කඩල තමන්ගේ තෙතමනයෙන් වේලෙන්න තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කුඩා පෑනක පොල් තෙල් රත් කර අබ දමා පිපිරෙන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලූනු දමනවා නම් පළමුව දමා, පසුව කැඩූ වියළි මිරිස් සහ කරපිංචා දමා කරපිංචා කැඩෙන තුරු බැදගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තෙම්පරාදුව මුළුමනින්ම කඩල මතට වත් කර, ඉතිරි ලුණු දමා හොඳින් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කඩල උණුසුම්ව ඇති අතරේ ගාගත් පොල් මිශ්‍ර කර වහාම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கடலையை நன்றாகக் கழுவி, கல் இருந்தால் நீக்கி, நிறைய தண்ணீரில் இரவு முழுவதும் ஊற வைக்கவும்.",
+    "minutes": 480
+   },
+   {
+    "text": "ஊறிய கடலையை வடித்து பாத்திரத்தில் இட்டு, இரண்டு விரல் அளவு மேலே தண்ணீரும் பாதி உப்பும் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு கடலையை விரலால் நசுக்கினால் எளிதில் நசுங்கும் வரை வேகவிடவும்; தண்ணீர் குறைந்தால் சிறிது சேர்க்கவும்.",
+    "minutes": 35
+   },
+   {
+    "text": "வேகவைத்த தண்ணீரை வடித்துவிட்டு, பாத்திரத்தை மூடி கடலை ஆவியில் உலரவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சிறிய வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து கடுகைப் போட்டு வெடிக்கவிடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "வெங்காயம் சேர்ப்பதாக இருந்தால் முதலில் சேர்த்து, பிறகு உடைத்த வத்தல் மிளகாயும் கறிவேப்பிலையும் சேர்த்து இலை வெடிக்கும் வரை வதக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தாளிப்பை முழுவதும் கடலையின் மேல் ஊற்றி, மீதி உப்பையும் சேர்த்து நன்றாகக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கடலை சூடாக இருக்கும்போதே துருவிய தேங்காயைக் கலந்து உடனே பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 40,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "heavy pot with a lid",
+  "small tempering pan",
+  "colander"
+ ],
+ "tips": {
+  "en": "Salt the water only lightly at the start; chickpeas boiled in very salty water keep a hard skin. Yesterday's leftovers reheat well in a covered pan with a spoon of water.",
+  "si": "මුලින් වතුරට ලුණු දමන්නේ ස්වල්පයක් පමණයි; ලුණු වැඩි වතුරේ තැම්බූ කඩලවල පොත්ත තද වේ. ඉතිරි වූ කඩල හැන්දක් වතුර දමා වසා නැවත රත් කරගත හැකිය.",
+  "ta": "ஆரம்பத்தில் தண்ணீரில் உப்பைச் சிறிதளவே சேர்க்கவும்; உப்பு அதிகமான நீரில் வேகவைத்த கடலையின் தோல் இறுகிவிடும். மீதமான கடலையை ஒரு கரண்டி தண்ணீர் தெளித்து மூடி மீண்டும் சூடாக்கலாம்."
+ },
+ "health_note": {
+  "en": "Chickpeas give steady protein and plenty of fibre, and they release their energy slowly, which suits anyone watching blood sugar. The coconut adds fat, so keep it to a sprinkle rather than a handful.",
+  "si": "කඩල හොඳ ප්‍රෝටීන් සහ තන්තු ප්‍රමාණයක් ලබා දෙන අතර ශක්තිය සෙමින් නිකුත් කරන බැවින් රුධිර සීනි පිළිබඳ සැලකිලිමත් අයටද සුදුසුයි. පොල් මගින් තෙල් එකතු වන බැවින් ඉසින ප්‍රමාණයට සීමා කරගන්න.",
+  "ta": "கடலை நல்ல புரதமும் நார்ச்சத்தும் தருகிறது, ஆற்றலை மெதுவாக விடுவிப்பதால் இரத்த சர்க்கரையைக் கவனிப்பவர்களுக்கும் பொருத்தமானது. தேங்காய் கொழுப்பைச் சேர்ப்பதால் அளவாகத் தூவுவதே நல்லது."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "diabetic_friendly",
+  "budget",
+  "kid_friendly",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

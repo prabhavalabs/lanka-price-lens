@@ -1,0 +1,354 @@
+{
+ "id": "dish_love_cake",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 95,
+  "description": {
+   "en": "A small fudgy square scented with rose water",
+   "si": "රෝස වතුර සුවඳැති, මැද මෘදු කුඩා කැබැල්ලක්",
+   "ta": "ரோஸ் வாட்டர் மணக்கும் மிருதுவான ஒரு சிறு சதுரம்"
+  }
+ },
+ "yield_g": 380,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 eggs",
+   "preparation": {
+    "en": "yolks and whites separated",
+    "si": "කහ මදය හා සුදු මදය වෙන් කරගත්",
+    "ta": "மஞ்சள் கருவும் வெள்ளைக் கருவும் பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_semolina",
+   "label": {
+    "en": "semolina",
+    "si": "රුලං",
+    "ta": "ரவை"
+   },
+   "quantity": 90,
+   "unit": "g",
+   "household": "half a cup and a little more",
+   "preparation": {
+    "en": "lightly roasted",
+    "si": "ටිකක් බැදගත්",
+    "ta": "லேசாக வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "3 and a half tbsp",
+   "preparation": {
+    "en": "softened",
+    "si": "මෘදු කරගත්",
+    "ta": "மிருதுவாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "white sugar",
+    "si": "සුදු සීනි",
+    "ta": "வெள்ளைச் சீனி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "one third of a cup and a spoon",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "two small handfuls",
+   "preparation": {
+    "en": "chopped coarse, never powdered",
+    "si": "රළු ලෙස කපාගත්, කිසිසේත් කුඩු නොකර",
+    "ta": "கரகரப்பாக நறுக்கியது, பொடிக்கக் கூடாது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_candied_pumpkin",
+   "label": {
+    "en": "puhul dosi, candied pumpkin preserve",
+    "si": "පුහුල් දෝසි",
+    "ta": "பூசணி இனிப்பு"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 tbsp, chopped",
+   "preparation": {
+    "en": "chopped small",
+    "si": "කුඩාවට කපාගත්",
+    "ta": "நைசாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_rose_water",
+   "label": {
+    "en": "rose water",
+    "si": "රෝස වතුර",
+    "ta": "ரோஸ் வாட்டர்"
+   },
+   "quantity": 6,
+   "unit": "ml",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch of powder",
+   "preparation": {
+    "en": "powdered",
+    "si": "කුඩු කරගත්",
+    "ta": "பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, powdered",
+   "preparation": {
+    "en": "seeds powdered",
+    "si": "ඇට කුඩු කරගත්",
+    "ta": "விதைகளைப் பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_nutmeg",
+   "label": {
+    "en": "nutmeg",
+    "si": "සාදික්කා",
+    "ta": "சாதிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a light grating",
+   "preparation": {
+    "en": "grated",
+    "si": "ගාගත්",
+    "ta": "துருவியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, rind only",
+   "preparation": {
+    "en": "green rind grated, no juice",
+    "si": "කොළ ලෙල්ල ගාගත්, යුෂ නොදමන්න",
+    "ta": "பச்சைத் தோலை மட்டும் துருவியது, சாறு வேண்டாம்"
+   },
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Roast the semolina in a dry pan until warm and just fragrant, rub the softened butter through it, and leave it to stand so the grains swell.",
+    "minutes": 30
+   },
+   {
+    "text": "Chop the cashew coarsely; the pieces should still be visible in the finished cake.",
+    "minutes": 10
+   },
+   {
+    "text": "Beat the egg yolks with the sugar until thick and pale enough to hold a trail from the whisk.",
+    "minutes": 8
+   },
+   {
+    "text": "Fold the buttered semolina into the yolks with the cashew, chopped puhul dosi, rose water, cinnamon, cardamom, nutmeg and lime rind.",
+    "minutes": null
+   },
+   {
+    "text": "Whisk the egg whites to soft peaks and fold them through the heavy mixture in two lots.",
+    "minutes": 5
+   },
+   {
+    "text": "Line a small square tin with two layers of paper and pour the batter in to about a finger's depth.",
+    "minutes": null
+   },
+   {
+    "text": "Bake in a slow oven until the top has a pale dry crust but a skewer comes out a little sticky; the middle must stay fudgy.",
+    "minutes": 55
+   },
+   {
+    "text": "Leave the cake in the tin to cool completely, then cut small squares with a knife dipped in hot water.",
+    "minutes": 60
+   }
+  ],
+  "si": [
+   {
+    "text": "රුලං වියළි පෑනක උණුසුම් වී සුවඳ එන තුරු බැද, මෘදු බටර් අතින් මිශ්‍ර කර, ඇට පිපෙන්න පැයක් පමණ තියන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "කජු රළු ලෙස කපන්න; අවසන් කේක් එකේ කජු කැබලි පෙනෙන්න තිබිය යුතුය.",
+    "minutes": 10
+   },
+   {
+    "text": "බිත්තර කහ මදය සීනි සමඟ, ගසන උපකරණයෙන් ඇද්ද විට රේඛාවක් රැඳෙන තරමට ගන වී සුදුමැලි වන තුරු ගසන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බටර් මිශ්‍ර රුලං, කජු, කපාගත් පුහුල් දෝසි, රෝස වතුර, කුරුඳු, එනසාල්, සාදික්කා සහ දෙහි ලෙල්ල කහ මදයට එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බිත්තර සුදු මදය මෘදු පෙණ එන තුරු ගසා, බර මිශ්‍රණයට දෙපාරකට බෙදා සෙමින් එකතු කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කුඩා හතරැස් තැටියක කඩදාසි දෙතට්ටුවක් එලා, ඇඟිල්ලක් පමණ උසට මිශ්‍රණය වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අඩු ගින්නේ උදුනේ, උඩ පිට ලා පාට වියළි පොත්තක් වන නමුත් ඇනූ ඉරටුව ටිකක් ඇලෙන තුරු පමණක් බේක් කරන්න; මැද මෘදුව තිබිය යුතුය.",
+    "minutes": 55
+   },
+   {
+    "text": "තැටියේම හොඳින් සිසිල් වෙන්න තියා, උණු වතුරේ ඔබාගත් පිහියකින් කුඩා හතරැස් කැබලි කපන්න.",
+    "minutes": 60
+   }
+  ],
+  "ta": [
+   {
+    "text": "ரவையை வெறும் சட்டியில் சூடாகி வாசனை வரும் வரை வறுத்து, மிருதுவான வெண்ணெயைக் கையால் கலந்து, ரவை ஊறுவதற்கு வைக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "முந்திரியைக் கரகரப்பாக நறுக்கவும்; கேக்கில் துண்டுகள் தெரிய வேண்டும்.",
+    "minutes": 10
+   },
+   {
+    "text": "முட்டையின் மஞ்சள் கருவைச் சீனியுடன், அடிக்கும் கருவியில் கோடு தங்கும் அளவுக்குக் கெட்டியாகி வெளிறும் வரை அடிக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "வெண்ணெய் கலந்த ரவை, முந்திரி, நறுக்கிய பூசணி இனிப்பு, ரோஸ் வாட்டர், இலவங்கப்பட்டை, ஏலக்காய், சாதிக்காய், எலுமிச்சைத் தோல் ஆகியவற்றை மஞ்சள் கருவில் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முட்டையின் வெள்ளைக் கருவை மெல்லிய நுரை வரும் வரை அடித்து, கனமான கலவையில் இரண்டு தவணையாகச் சேர்க்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சிறிய சதுரத் தட்டில் இரண்டு அடுக்கு காகிதம் விரித்து, ஒரு விரல் உயரத்திற்குக் கலவையை ஊற்றவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குறைந்த வெப்பத்தில், மேல் லேசான உலர்ந்த மேற்பரப்பு வரும் வரை, ஆனால் சொருகிய குச்சி சிறிது ஒட்டும் பதத்தில் பேக் செய்யவும்; நடு மிருதுவாக இருக்க வேண்டும்.",
+    "minutes": 55
+   },
+   {
+    "text": "தட்டிலேயே முழுமையாகக் குளிரவிட்டு, சூடான தண்ணீரில் நனைத்த கத்தியால் சிறு சதுரங்களாக வெட்டவும்.",
+    "minutes": 60
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 60,
+  "passive_minutes": 60
+ },
+ "equipment": [
+  "oven",
+  "small square tin",
+  "greaseproof paper",
+  "whisk"
+ ],
+ "tips": {
+  "en": "Under bake rather than over bake; love cake is meant to be sticky in the middle and a dry one has lost the point. Letting the buttered semolina stand an hour is what gives the soft grain.",
+  "si": "වැඩිපුර බේක් කරන්නට වඩා ටිකක් අඩුවෙන් බේක් කරන්න; ලව් කේක් මැද ඇලෙන ගතියෙන් තිබිය යුතුය, වියළුණොත් එහි රසම නැති වේ. බටර් මිශ්‍ර රුලං පැයක් තැබීම නිසා එම මෘදු ගතිය ලැබේ.",
+  "ta": "அதிகமாகப் பேக் செய்வதை விடச் சற்று குறைவாகவே செய்யவும்; லவ் கேக்கின் நடு ஒட்டும் பதத்தில் இருக்க வேண்டும், உலர்ந்தால் அதன் தனித்தன்மை போய்விடும். வெண்ணெய் கலந்த ரவையை ஒரு மணி நேரம் வைப்பதே அந்த மிருதுவைத் தருகிறது."
+ },
+ "health_note": {
+  "en": "Cashew gives unsaturated fat, magnesium and a little iron, but this is still a cake of butter, egg and sugar with preserve in it. One small square is the traditional portion and a sensible one.",
+  "si": "කජු වලින් හොඳ මේදය, මැග්නීසියම් සහ යකඩ ටිකක් ලැබේ; එහෙත් මෙය බටර්, බිත්තර, සීනි සහ දෝසි සහිත කේක් එකකි. සම්ප්‍රදායික මෙන්ම බුද්ධිමත් ප්‍රමාණය කුඩා කැබැල්ලකි.",
+  "ta": "முந்திரி நல்ல கொழுப்பு, மக்னீசியம், சிறிது இரும்புச்சத்து தருகிறது; இருந்தும் இது வெண்ணெய், முட்டை, சீனி, இனிப்புப் பூசணி கொண்ட கேக். பாரம்பரியமாகவும் நியாயமாகவும் ஒரு சிறு சதுரமே பங்கு."
+ },
+ "tags": [
+  "festive",
+  "high_sugar",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

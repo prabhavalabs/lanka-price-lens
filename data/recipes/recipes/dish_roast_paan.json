@@ -1,0 +1,190 @@
+{
+ "id": "dish_roast_paan",
+ "base_servings": 4,
+ "serving": {
+  "role": "breakfast",
+  "portion_g": 95,
+  "description": {
+   "en": "Two dark toasted slices with butter melting in",
+   "si": "බටර් දිය වී යන, හොඳින් පිළිස්සූ පාන් පෙති දෙකක්",
+   "ta": "வெண்ணெய் உருகிய, நன்கு சுட்ட இரண்டு பாண் துண்டுகள்"
+  }
+ },
+ "yield_g": 380,
+ "ingredients": [
+  {
+   "ref": "product_bread",
+   "label": {
+    "en": "bakery bread",
+    "si": "බේකරි පාන්",
+    "ta": "பேக்கரி பாண்"
+   },
+   "quantity": 280,
+   "unit": "g",
+   "household": "8 thick slices",
+   "preparation": {
+    "en": "cut thick",
+    "si": "ඝනට කපාගත්",
+    "ta": "தடிமனாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "4 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jam",
+   "label": {
+    "en": "fruit jam",
+    "si": "ජෑම්",
+    "ta": "பழ ஜாம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the bread into thick slices, about a finger wide, so it does not dry out on the fire.",
+    "minutes": null
+   },
+   {
+    "text": "Heat a dry pan or hold the slice over a low gas flame with a fork or a wire holder.",
+    "minutes": 2
+   },
+   {
+    "text": "Toast each side until it is well browned, with a few dark spots, but not burnt right through.",
+    "minutes": 4
+   },
+   {
+    "text": "Take it off the heat and spread the butter on at once so it melts into the hot crumb.",
+    "minutes": null
+   },
+   {
+    "text": "Sprinkle sugar over the butter, or spread jam if the children prefer it that way.",
+    "minutes": null
+   },
+   {
+    "text": "Cut each slice across and serve with plain tea while the toast is still warm.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පාන් ඇඟිල්ලක් පමණ ඝනකමට කපාගන්න, එවිට ගින්නේ වියළී යන්නේ නැහැ.",
+    "minutes": null
+   },
+   {
+    "text": "වියළි තැටියක් රත් කරන්න, නැතහොත් ගෑස් ගින්දර අඩුවෙන් තබා ගෑරුප්පුවකින් හෝ කම්බි රාක්කයකින් පෙත්ත අල්ලන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "එක් පැත්තක් හොඳින් දුඹුරු වන තුරු, කළු ලප කිහිපයක් සමඟ, නමුත් හරහා නොදැවෙන ලෙස පිළිස්සන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ගින්නෙන් ඉවතට ගෙන, උණුසුම් පාන් තුළට දිය වන ලෙස වහාම බටර් තවරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බටර් මත සීනි ඉසින්න, නැතහොත් දරුවන් කැමති නම් ජෑම් තවරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එක් පෙත්තක් හරහට කපා, පාන් උණුසුම්ව ඇති විටම පිරිසිදු තේ එකක් සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாணை ஒரு விரல் கனத்தில் வெட்டவும், அப்போது தீயில் உலர்ந்து போகாது.",
+    "minutes": null
+   },
+   {
+    "text": "வறட்சியான சட்டியைக் காய்ச்சவும், அல்லது குறைந்த தீயின் மேல் முள்கரண்டி அல்லது கம்பி பிடியால் பாண் துண்டைப் பிடிக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "ஒவ்வொரு பக்கமும் நன்கு பழுப்பாகி, சில கருப்புப் புள்ளிகளுடன், ஆனால் முழுவதும் கருகாமல் சுடவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தீயிலிருந்து எடுத்து, சூடான பாணில் உருகும்படி உடனே வெண்ணெய் தடவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வெண்ணெய்க்கு மேல் சீனி தூவவும், அல்லது குழந்தைகள் விரும்பினால் ஜாம் தடவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு துண்டையும் குறுக்காக வெட்டி, பாண் சூடாக இருக்கும்போதே பிளேன் டீயுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 2,
+  "cook_minutes": 8,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "dry pan or wire toasting rack"
+ ],
+ "tips": {
+  "en": "Butter goes on off the fire, never before, or it burns and turns bitter; yesterday's bread roasts better than today's soft loaf.",
+  "si": "බටර් තවරන්නේ ගින්නෙන් ඉවතට ගත් පසුව, කිසිවිටෙක කලින් නොවේ, එසේ නොවුවහොත් එය දැවී තිත්ත වේ; ඊයේ පාන් අද මෘදු පාන් වලට වඩා හොඳින් පිළිස්සෙනවා.",
+  "ta": "வெண்ணெயை தீயிலிருந்து இறக்கிய பிறகே தடவவும், முன்னதாக அல்ல, இல்லையேல் அது கருகி கசக்கும்; நேற்றைய பாண் இன்றைய மென்மையான பாணைவிட நன்றாகச் சுடும்."
+ },
+ "health_note": {
+  "en": "Quick and cheap, but it is refined flour with butter and sugar and little else; a slice of roast paan with seeni sambol or an egg makes a steadier breakfast than sugar alone.",
+  "si": "ඉක්මන් හා ලාභ වුවත්, එය පිරිපහදු කළ පිටි, බටර් සහ සීනි පමණයි; සීනි පමණක් වෙනුවට සීනි සම්බෝල් හෝ බිත්තරයක් සමඟ ගැනීම වඩාත් ස්ථාවර උදෑසන ආහාරයක්.",
+  "ta": "விரைவானது, மலிவானது, ஆனால் இது சுத்திகரிக்கப்பட்ட மாவு, வெண்ணெய், சீனி மட்டுமே; சீனி மட்டுமல்லாமல் சீனி சம்பல் அல்லது ஒரு முட்டையுடன் சாப்பிடுவது நிலையான காலை உணவாகும்."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "kid_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

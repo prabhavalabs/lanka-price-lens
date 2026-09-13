@@ -1,0 +1,416 @@
+{
+ "id": "dish_kadala_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 225,
+  "description": {
+   "en": "A deep ladle of chickpeas in dark roasted-spice gravy",
+   "si": "අඳුරු බැදපු කුළුබඳු හොදියේ කඩල හැන්දක්",
+   "ta": "கருத்த வறுத்த மசாலா கறியில் கடலை ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_chickpea",
+   "label": {
+    "en": "dried chickpeas",
+    "si": "කඩල",
+    "ta": "கொண்டைக்கடலை"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "soaked overnight and drained",
+    "si": "රාත්‍රිය පුරා පොඟවා වතුර බේරාගත්",
+    "ta": "இரவு முழுவதும் ஊறவைத்து வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb joint",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 5 cm quill",
+   "preparation": {
+    "en": "broken into short pieces",
+    "si": "කුඩා කැබලිවලට කඩාගත්",
+    "ta": "சிறு துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித்தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப்பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "two thirds of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the chickpeas, pick out grit and soak them overnight in water three times their depth.",
+    "minutes": 480
+   },
+   {
+    "text": "Drain them into a pressure cooker or heavy pot, cover with water, add a pinch of salt and the pandan, and cook until soft but still whole.",
+    "minutes": 30
+   },
+   {
+    "text": "While they cook, slice the big onion, chop the garlic and ginger and break the cinnamon into short pieces.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and fry the onion, garlic, ginger, curry leaves and cinnamon until the onion browns at the edges.",
+    "minutes": 6
+   },
+   {
+    "text": "Turn the flame low, add the turmeric, chilli powder and roasted curry powder and stir until the oil darkens and smells toasted.",
+    "minutes": 1
+   },
+   {
+    "text": "Tip in the cooked chickpeas with a cup of their cooking water and the salt, and mix so every chickpea takes the spice.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer uncovered until the gravy comes down and thickens.",
+    "minutes": 12
+   },
+   {
+    "text": "Crush a spoonful of chickpeas against the side of the pot to give the gravy some body.",
+    "minutes": null
+   },
+   {
+    "text": "Add the thick coconut milk, bring it just to the edge of a boil and take the pot off the fire.",
+    "minutes": 3
+   },
+   {
+    "text": "Rest covered before serving with gothamba roti, pol roti or string hoppers.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "කඩල සෝදා ගල් ඉවත් කර, කඩල ප්‍රමාණයට තුන් ගුණයක් වතුර දමා රාත්‍රිය පුරා පොඟවන්න.",
+    "minutes": 480
+   },
+   {
+    "text": "වතුර බේරා ප්‍රෙෂර් කුකරයකට හෝ ඝන වළඳකට දමා, වැසෙන්නට වතුර, ලුණු ස්වල්පයක් සහ රම්පෙ සමඟ ඇට නොකැඩෙන්නට මෘදු වන තුරු තම්බන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "එය තැම්බෙන අතරේ බී ලූනු පෙති කපා, සුදුළූනු සහ ඉඟුරු කපා, කුරුඳු කුඩා කැබලිවලට කඩන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළඳක පොල් තෙල් රත් කර ලූනු, සුදුළූනු, ඉඟුරු, කරපිංචා සහ කුරුඳු ලූනු දාර දුඹුරු වන තුරු බැදගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ගිනි අඩු කර කහ කුඩු, මිරිස් කුඩු සහ බැදපු තුනපහ දමා තෙල් අඳුරු වී බැදුණු සුවඳ එන තුරු කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "තැම්බූ කඩල, එහි වතුර කෝප්පයක් සහ ලුණු දමා, සෑම කඩල ඇටයකටම කුළුබඩු වැදෙන සේ කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙවන පොල් කිරි වත් කර, වසන්නේ නැතිව හොදි අඩු වී තද වන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "හොදියට ඝනකම එන්නට කඩල හැන්දක් වළඳේ පැත්තට තලා මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුල් පොල් කිරි දමා උතුරන්නට ආසන්න වූ විගස වළඳ ගින්නෙන් ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ගොදම්බ රොටි, පොල් රොටි හෝ ඉඳිආප්ප සමඟ බෙදන්නට පෙර වසා තබන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "கொண்டைக்கடலையைக் கழுவி, கல்லை நீக்கி, மூன்று மடங்கு தண்ணீரில் இரவு முழுவதும் ஊற வைக்கவும்.",
+    "minutes": 480
+   },
+   {
+    "text": "வடித்து குக்கரிலோ கனமான பாத்திரத்திலோ இட்டு, மூழ்கும் அளவு தண்ணீர், சிறிது உப்பு, ரம்பை இலை சேர்த்து உடையாமல் மென்மையாக வேகவிடவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "அது வேகும்போது பெரிய வெங்காயத்தை நறுக்கி, பூண்டு இஞ்சியை நறுக்கி, பட்டையைச் சிறு துண்டுகளாக உடைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, பட்டை சேர்த்து வெங்காயம் ஓரம் பொன்னிறமாகும் வரை வதக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "தணலைக் குறைத்து மஞ்சள் தூள், மிளகாய்த் தூள், வறுத்த கறித்தூள் சேர்த்து எண்ணெய் கறுத்து வாசம் வரும் வரை கிளறவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "வேகவைத்த கடலை, அதன் தண்ணீர் ஒரு கப், உப்பு சேர்த்து ஒவ்வொரு கடலையிலும் மசாலா படும்படி கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப்பாலை ஊற்றி, மூடாமல் கறி இறுகும் வரை கொதிக்கவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "கறி கெட்டியாக ஒரு கரண்டி கடலையை சட்டியின் பக்கத்தில் நசுக்கிக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தடித்த தேங்காய்ப்பாலைச் சேர்த்து கொதி வரும் தறுவாயில் சட்டியை இறக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "கொத்தம்பு ரொட்டி, பொல் ரொட்டி அல்லது இடியப்பத்துடன் பரிமாறும் முன் மூடி வைக்கவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 50,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "pressure cooker or heavy pot",
+  "clay pot or deep pan"
+ ],
+ "tips": {
+  "en": "Keep the water the chickpeas boiled in; it is starchy and gives the gravy a body that plain water cannot. If you forgot to soak overnight, a two hour soak in warm water and a longer boil will do.",
+  "si": "කඩල තැම්බූ වතුර ඉවත් කරන්න එපා; එහි ඇති පිෂ්ටය හොදියට ඝනකම ලබා දෙයි. රාත්‍රියේ පොඟවන්නට අමතක වුවහොත් උණු වතුරේ පැය දෙකක් පොඟවා තව ටිකක් වැඩිපුර තම්බන්න.",
+  "ta": "கடலை வேகவைத்த தண்ணீரைக் கொட்டாதீர்கள்; அதில் உள்ள மாவுச்சத்து கறிக்குக் கெட்டித்தன்மை தரும். இரவில் ஊறவைக்க மறந்தால் வெதுவெதுப்பான நீரில் இரண்டு மணி நேரம் ஊறவைத்து சற்று அதிக நேரம் வேகவிடவும்."
+ },
+ "health_note": {
+  "en": "A bowl of kadala curry carries as much protein as a small piece of fish along with a lot of fibre, which keeps hunger away for hours. Most of the calories beyond the chickpeas come from the coconut milk and oil, so there is no need to add more of either.",
+  "si": "කඩල කරි බඳුනකින් කුඩා මාළු කැබැල්ලකට සමාන ප්‍රෝටීන් ප්‍රමාණයක් සහ තන්තු ගොඩක් ලැබෙන බැවින් පැය කිහිපයක් බඩගිනි නොදැනේ. කඩලට අමතරව කැලරි එන්නේ පොල් කිරි සහ තෙල් වලින් බැවින් ඒවා තවත් වැඩි කිරීම අවශ්‍ය නැත.",
+  "ta": "ஒரு கிண்ணம் கடலைக் கறியில் ஒரு சிறு மீன் துண்டுக்கு நிகரான புரதமும் நிறைய நார்ச்சத்தும் உள்ளது, பல மணி நேரம் பசி எடுக்காது. கடலையைத் தவிர மீதி கலோரி தேங்காய்ப்பாலிலும் எண்ணெயிலும் இருந்தே வருகிறது, அதனால் அவற்றை அதிகமாக்க வேண்டியதில்லை."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "diabetic_friendly",
+  "budget",
+  "filling",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

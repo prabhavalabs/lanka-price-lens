@@ -1,0 +1,311 @@
+{
+ "id": "dish_fresh_salad",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 190,
+  "description": {
+   "en": "A handful of dressed raw vegetables beside the main plate",
+   "si": "ප්‍රධාන පිඟානට පසෙකින් තබන අමු එළවළු අතලොස්සක්",
+   "ta": "பிரதான தட்டின் ஓரத்தில் வைக்கும் ஒரு பிடி பச்சைக் காய்கறி"
+  }
+ },
+ "yield_g": 760,
+ "ingredients": [
+  {
+   "ref": "product_salad_cucumber",
+   "label": {
+    "en": "salad cucumber",
+    "si": "සලාද පිපිඤ්ඤා",
+    "ta": "சாலட் வெள்ளரி"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "1 large cucumber",
+   "preparation": {
+    "en": "washed and sliced into thin rounds",
+    "si": "සෝදා තුනී වට ලෙස කපා",
+    "ta": "கழுவி மெல்லிய வட்டங்களாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 firm tomatoes",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "පෙති ලෙස කපා",
+    "ta": "துண்டுகளாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced into fine rings",
+    "si": "සිහින් වළලු ලෙස කපා",
+    "ta": "மெல்லிய வட்டங்களாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_iceberg_lettuce",
+   "label": {
+    "en": "iceberg lettuce",
+    "si": "අයිස්බර්ග් සලාද කොළ",
+    "ta": "ஐஸ்பெர்க் லெட்யூஸ்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "half a head",
+   "preparation": {
+    "en": "leaves washed in clean water and torn by hand",
+    "si": "පිරිසිදු වතුරෙන් සෝදා අතින් ඉරාගෙන",
+    "ta": "சுத்தமான நீரில் கழுவி கையால் கிழித்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கரட்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 carrot",
+   "preparation": {
+    "en": "scraped and grated",
+    "si": "සීරා ගෙන ගාගෙන",
+    "ta": "சீவித் துருவி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 limes, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp, freshly crushed",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගෙන",
+    "ta": "இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "sauce"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the lettuce leaf by leaf under running water, shake them dry and tear them into pieces by hand rather than cutting.",
+    "minutes": 4
+   },
+   {
+    "text": "Slice the cucumber into thin rounds, cut the tomato into wedges and slice the onion into fine rings.",
+    "minutes": 4
+   },
+   {
+    "text": "Soak the onion rings in cold water for a couple of minutes and drain them, which takes away the raw sting.",
+    "minutes": 2
+   },
+   {
+    "text": "Scrape and grate the carrot last so it does not dry out.",
+    "minutes": 2
+   },
+   {
+    "text": "Squeeze the lime into a cup, add the salt, pepper and the vinegar if you are using it, and stir until the salt dissolves.",
+    "minutes": null
+   },
+   {
+    "text": "Put the lettuce at the bottom of the serving bowl, pile the cucumber, tomato, onion and carrot on top.",
+    "minutes": null
+   },
+   {
+    "text": "Pour the dressing over only when the plates are on the table and turn it over twice; dressed early, the salad goes limp and watery.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "සලාද කොළ එකින් එක ගලා යන වතුරෙන් සෝදා, වතුර බේරා, කපන්නට වඩා අතින් කැබලි ලෙස ඉරාගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පිපිඤ්ඤා තුනී වට ලෙස කපා, තක්කාලි පෙති ලෙස කපා, ලූනු සිහින් වළලු ලෙස කපන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලූනු වළලු සිසිල් වතුරේ විනාඩි දෙකක් තබා වතුර බේරාගන්න; එවිට අමු සැර ගතිය නැති වේ.",
+    "minutes": 2
+   },
+   {
+    "text": "කැරට් අවසානයේ සීරා ගෙන ගාගන්න; එවිට එය වියළෙන්නේ නැත.",
+    "minutes": 2
+   },
+   {
+    "text": "දෙහි යුෂ කෝප්පයකට මිරිකා, ලුණු, ගම්මිරිස් හා (භාවිත කරන්නේ නම්) විනාකිරි දමා ලුණු දිය වන තුරු කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බෙදන බඳුනේ පතුලට සලාද කොළ දමා, ඒ මතට පිපිඤ්ඤා, තක්කාලි, ලූනු හා කැරට් ගොඩ ගසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිඟන් මේසයට ගෙන ආ පසු පමණක් සෝස් වත් කර දෙවරක් පෙරළන්න; කලින් දැමුවහොත් සලාදය මැලවී වතුර ගසයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "லெட்யூஸ் இலைகளை ஒன்றன்பின் ஒன்றாக ஓடும் நீரில் கழுவி, நீர் உலர்த்தி, வெட்டாமல் கையால் கிழியுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "வெள்ளரியை மெல்லிய வட்டங்களாக, தக்காளியை துண்டுகளாக, வெங்காயத்தை மெல்லிய வட்டங்களாக நறுக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "வெங்காய வட்டங்களை இரண்டு நிமிடம் குளிர்ந்த நீரில் போட்டு வடியுங்கள்; பச்சை காரம் போய்விடும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கரட்டை கடைசியாகச் சீவித் துருவுங்கள்; அப்போது அது காய்ந்துவிடாது.",
+    "minutes": 2
+   },
+   {
+    "text": "தேசிக்காய்ச் சாற்றை ஒரு கோப்பையில் பிழிந்து, உப்பு, மிளகு, (சேர்ப்பதாக இருந்தால்) வினிகர் போட்டு உப்பு கரையும் வரை கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பரிமாறும் கிண்ணத்தின் அடியில் லெட்யூஸை வைத்து, அதன் மேல் வெள்ளரி, தக்காளி, வெங்காயம், கரட் என அடுக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "தட்டுகள் மேசைக்கு வந்த பிறகே சாற்றை ஊற்றி இரு முறை புரட்டுங்கள்; முன்னதாகச் சேர்த்தால் சாலட் வாடி நீர் விடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "sharp knife",
+  "grater",
+  "serving bowl"
+ ],
+ "tips": {
+  "en": "Everything in this bowl is eaten raw, so wash the leaves leaf by leaf and use water you would drink. Keep the dressing in a separate cup if the salad has to wait for late eaters.",
+  "si": "මේ බඳුනේ සියල්ල අමුවෙන් කන නිසා කොළ එකින් එක සෝදන්න, බොන්නට ගන්නා තරම් පිරිසිදු වතුර යොදන්න. පසුව කන අය සිටී නම් සෝස් වෙනම කෝප්පයක තබන්න.",
+  "ta": "இந்தக் கிண்ணத்தில் எல்லாம் பச்சையாகவே சாப்பிடப்படுவதால், இலைகளை ஒன்றன்பின் ஒன்றாகக் கழுவுங்கள், குடிக்கத் தகுந்த நீரையே பயன்படுத்துங்கள். தாமதமாக வருபவர்கள் இருந்தால் சாற்றை தனிக் கோப்பையில் வையுங்கள்."
+ },
+ "health_note": {
+  "en": "Raw vegetables dressed only with lime, salt and pepper keep their vitamin C and add useful fibre and water to a plate of fried rice or devilled meat without any oil at all. Wash everything carefully, since nothing here is cooked.",
+  "si": "දෙහි, ලුණු හා ගම්මිරිස් පමණක් යොදා සකසන අමු එළවළුවලින් විටමින් සී රැඳෙන අතර, ෆ්‍රයිඩ් රයිස් හෝ දෙවල් මස් පිඟානකට තෙල් රහිතව කෙඳි හා ජලය එකතු කරයි. මෙහි කිසිවක් උයන්නේ නැති බැවින් සියල්ල හොඳින් සෝදන්න.",
+  "ta": "தேசிக்காய், உப்பு, மிளகு மட்டுமே சேர்த்த பச்சைக் காய்கறிகள் வைட்டமின் சி யைத் தக்கவைக்கின்றன; பொரித்த சாதம் அல்லது டெவில் இறைச்சித் தட்டுக்கு எண்ணெய் இல்லாமல் நார்ச்சத்தும் நீரும் சேர்க்கின்றன. இதில் எதுவும் சமைக்கப்படுவதில்லை, எனவே எல்லாவற்றையும் கவனமாகக் கழுவுங்கள்."
+ },
+ "tags": [
+  "low_calorie",
+  "low_fat",
+  "high_fibre",
+  "hydrating",
+  "light",
+  "quick",
+  "weight_loss_friendly",
+  "diabetic_friendly",
+  "heart_healthy",
+  "immune_support"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

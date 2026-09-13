@@ -1,0 +1,340 @@
+{
+ "id": "dish_dried_prawns_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 55,
+  "description": {
+   "en": "Two spoonfuls of crisp dried prawns on the edge of the plate",
+   "si": "පිඟානේ කොනට කැඩෙන ගතියෙන් තිබෙන කූනිස්සෝ හැඳි දෙකක්",
+   "ta": "தட்டின் ஓரத்தில் மொறுமொறுப்பான உலர் இறால் இரண்டு கரண்டி"
+  }
+ },
+ "yield_g": 220,
+ "ingredients": [
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "dried prawns (koonisso)",
+    "si": "කූනිස්සෝ",
+    "ta": "குஞ்சு இறால் (உலர் இறால்)"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "picked over for grit and rinsed quickly",
+    "si": "කුණු ඉවත් කර ඉක්මනින් සෝදා",
+    "ta": "கல் நீக்கி விரைவாக அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "2 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව පෙති කපා",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියලි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "5 chillies, broken",
+   "preparation": {
+    "en": "broken into short pieces",
+    "si": "කොට කැබලිවලට කඩා",
+    "ta": "சிறிய துண்டுகளாக ஒடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp, taste first",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick over the dried prawns for grit and bits of shell, rinse them quickly in cold water and drain; do not soak them or they lose their crunch.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a small pan and fry the dried prawns over a medium fire until they smell nutty and turn a deeper orange.",
+    "minutes": 5
+   },
+   {
+    "text": "Lift the prawns out with a slotted spoon and keep them on a plate.",
+    "minutes": null
+   },
+   {
+    "text": "In the same oil temper the sliced red onion, garlic, broken dried chillies, curry leaves and pandan leaf.",
+    "minutes": 4
+   },
+   {
+    "text": "Keep the fire moderate and cook until the onion collapses and browns at the edges without the chilli catching.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir in the turmeric and chilli powder for a few seconds only, so the powders do not burn.",
+    "minutes": null
+   },
+   {
+    "text": "Return the prawns and toss everything together until the mixture looks dry and separate.",
+    "minutes": 2
+   },
+   {
+    "text": "Take the pan off the fire, squeeze the lime over, taste before adding any salt, and keep what is left in a dry jar.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කූනිස්සන් අතරේ ඇති කුණු සහ පොතු කැබලි ඉවත් කර, සීතල වතුරෙන් ඉක්මනින් සෝදා වතුර බේරන්න; පොඟවන්න එපා, එවිට කැඩෙන ගතිය නැති වෙනවා.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා පෑන් එකක පොල් තෙල් රත් කර, මධ්‍යම ගින්නේ කූනිස්සන් සුවඳ එන තුරු, පාට තද තැඹිලි වන තෙක් බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සිදුරු හැන්දකින් කූනිස්සන් ඉවතට ගෙන පිඟානක තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඒ තෙලේම පෙති කපාගත් රතු ලූනු, සුදුළූණු, කඩාගත් වියලි මිරිස්, කරපිංචා සහ රම්පෙ දමා තෙල් දාන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ගින්න මධ්‍යම මට්ටමේ තබා, මිරිස් පිච්චෙන්නේ නැතිව ලූනු මැලවී කොන රන්වන් වන තෙක් පිසින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කහ සහ මිරිස් කුඩු දමා තත්පර කිහිපයක් පමණක් කලතන්න; කුඩු පිච්චෙන්න දෙන්න එපා.",
+    "minutes": null
+   },
+   {
+    "text": "කූනිස්සන් නැවත දමා, මිශ්‍රණය වේළී ලිහිල්ව තිබෙන තෙක් හොඳින් පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පෑන් එක ලිපෙන් ඉවත් කර දෙහි යුෂ මිරිකා, ලුණු දමන්නට කලින් රස බලා, ඉතිරි ටික වේළිච්ච බෝතලයක තබා ගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "உலர் இறாலில் உள்ள கல், ஓட்டுத் துகள்களை நீக்கி, குளிர்ந்த நீரில் விரைவாக அலசி வடிகட்டவும்; ஊறவைக்க வேண்டாம், மொறுமொறுப்பு போய்விடும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய வாணலியில் தேங்காய் எண்ணெயை காய்ச்சி, நடுத்தர தீயில் உலர் இறாலை வாசனை வரும் வரை, நிறம் அடர் ஆரஞ்சாகும் வரை வறுக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "துளை கரண்டியால் இறாலை எடுத்து ஒரு தட்டில் வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அதே எண்ணெயில் நறுக்கிய சின்ன வெங்காயம், பூண்டு, ஒடித்த வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை இலை போட்டு தாளிக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "தீயை நடுத்தரமாக வைத்து, மிளகாய் கருகாமல் வெங்காயம் வதங்கி ஓரங்களில் பொன்னிறமாகும் வரை சமைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "மஞ்சள், மிளகாய்த் தூள் சேர்த்து சில விநாடிகள் மட்டும் கிளறவும்; தூள் கருகக் கூடாது.",
+    "minutes": null
+   },
+   {
+    "text": "இறாலை மீண்டும் போட்டு, கலவை உலர்ந்து பிரிந்து நிற்கும் வரை நன்கு புரட்டவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "வாணலியை இறக்கி எலுமிச்சை சாறு பிழிந்து, உப்பு சேர்ப்பதற்கு முன் சுவைத்து, மீதியை உலர்ந்த பாட்டிலில் வைக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "small pan",
+  "slotted spoon",
+  "dry jar for storing"
+ ],
+ "tips": {
+  "en": "Fry the prawns first and the onion after, never together; the prawns need only a short time and turn bitter if they sit in the pan while the onion softens. Cooled properly, this keeps three or four days in a closed jar.",
+  "si": "මුලින් කූනිස්සන්, පසුව ලූනු බදින්න; එකට දමන්න එපා. කූනිස්සන්ට කෙටි වෙලාවක් ඇති, ලූනු මෘදු වන තුරු පෑන් එකේ තිබුණොත් තිත්ත රසයක් එනවා. හොඳින් සිසිල් කර වැසුණු බෝතලයක තැබුවොත් දින තුනක් හතරක් තියෙනවා.",
+  "ta": "முதலில் இறால், பின்னர் வெங்காயம் என்று வறுக்கவும்; சேர்த்து போடக் கூடாது. இறாலுக்கு குறைந்த நேரமே தேவை, வெங்காயம் வதங்கும் வரை வாணலியில் இருந்தால் கசப்பு வரும். நன்கு குளிர்வித்து மூடிய பாட்டிலில் வைத்தால் மூன்று நான்கு நாள் இருக்கும்."
+ },
+ "health_note": {
+  "en": "Dried prawns are eaten whole, shell and all, so they give a good amount of calcium along with protein and iron. They are salty by nature, which is why a spoonful is the right serving rather than a plateful.",
+  "si": "කූනිස්සන් පොත්තත් සමඟ කන නිසා ප්‍රෝටීන් සහ යකඩ එක්කම හොඳ කැල්සියම් ප්‍රමාණයක් ලැබෙනවා. ස්වභාවයෙන්ම ලුණු සහිත නිසා පිඟානක් නොව හැන්දක් තමයි නියම ප්‍රමාණය.",
+  "ta": "உலர் இறாலை ஓட்டுடன் சாப்பிடுவதால் புரதம், இரும்புச்சத்துடன் நல்ல கால்சியமும் கிடைக்கிறது. இயற்கையாகவே உப்பு அதிகம், எனவே தட்டு நிறைய அல்ல, ஒரு கரண்டி அளவே சரி."
+ },
+ "tags": [
+  "high_protein",
+  "calcium_rich",
+  "iron_rich",
+  "budget",
+  "quick",
+  "low_carb",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

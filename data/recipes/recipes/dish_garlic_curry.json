@@ -1,0 +1,348 @@
+{
+ "id": "dish_garlic_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 115,
+  "description": {
+   "en": "A small ladle of soft garlic cloves in gravy, taken with rice",
+   "si": "බත් සමඟ ගන්නා, ඉස්මේ තෙම්බුණු සුදුලූනු ගෙඩි කුඩා හැන්දක්",
+   "ta": "சாதத்துடன் எடுக்கும், குழம்பில் வேகவைத்த பூண்டு பல் சிறிய கரண்டி"
+  }
+ },
+ "yield_g": 460,
+ "ingredients": [
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "about 2 cups of peeled cloves",
+   "preparation": {
+    "en": "peeled, cloves left whole",
+    "si": "ලෙලි ගලවා ගෙඩි කැඩීමකින් තොරව",
+    "ta": "தோல் உரித்து, பல்லுகள் முழுதாக"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthways",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா புளி"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 small piece",
+   "preparation": {
+    "en": "a dry piece, rinsed",
+    "si": "වියළි කැබැල්ලක්, සෝදාගත්",
+    "ta": "காய்ந்த துண்டு, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the garlic and keep every clove whole; if you crush them the curry turns into a paste.",
+    "minutes": 10
+   },
+   {
+    "text": "Slice the red onion, slit the green chillies and pull the curry leaves off the sprig.",
+    "minutes": null
+   },
+   {
+    "text": "Put the garlic, onion, chillies, curry leaves, turmeric, roasted curry powder, fenugreek, goraka and salt into a clay pot and pour the thin coconut milk over.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to a boil uncovered, then drop the fire low and let it simmer until a clove gives way under the back of a spoon.",
+    "minutes": 15
+   },
+   {
+    "text": "Pour in the thick coconut milk with the coconut oil and stir gently in one direction so the cloves stay whole.",
+    "minutes": null
+   },
+   {
+    "text": "Let it rise just to the edge of a boil and lift the pot off; the gravy should coat the spoon.",
+    "minutes": 5
+   },
+   {
+    "text": "Leave it to stand off the fire for a few minutes before serving, so the garlic sweetens in the gravy.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "සුදුලූනු ලෙලි ගලවා හැම ගෙඩියක්ම කැඩීමකින් තොරව තබා ගන්න; තලා ගත්තොත් කරිය ගුලියක් වේ.",
+    "minutes": 10
+   },
+   {
+    "text": "රතු ලූනු කපා, අමු මිරිස් දිගට පලා, කරපිංචා කොළ කරලින් ගලවා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සුදුලූනු, ලූනු, මිරිස්, කරපිංචා, කහ, බැදපු තුනපහ, උළුහාල්, ගොරකා සහ ලුණු මුට්ටියකට දමා තුනී පොල් කිරි වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වැසුමක් නැතිව උතුරන්න දී, ගිනි අඩු කර, හැන්දේ පිටින් තැබූ විට ගෙඩියක් මෘදුව පැලෙන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ඝන පොල් කිරි සහ පොල් තෙල් එකතු කර, ගෙඩි කැඩෙන්නේ නැති සේ එක් දිශාවකට සෙමෙන් කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උතුරන්නට ආසන්න වූ විගස මුට්ටිය ළිපෙන් ඉවත් කරන්න; ඉස්ම හැන්දේ තැවරෙන ගතියක් තිබිය යුතුයි.",
+    "minutes": 5
+   },
+   {
+    "text": "පිළිගැන්වීමට පෙර මුට්ටිය විනාඩි කිහිපයක් එසේ තබන්න; එවිට සුදුලූනු ඉස්මේ පැණි රසක් ගනී.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "பூண்டை உரித்து, ஒவ்வொரு பல்லையும் உடைக்காமல் முழுதாக வைத்துக் கொள்ளுங்கள்; இடித்தால் கறி விழுதாகிவிடும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சின்ன வெங்காயத்தை நறுக்கி, பச்சை மிளகாயைக் கீறி, கறிவேப்பிலையைக் கொத்திலிருந்து பிரித்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பூண்டு, வெங்காயம், மிளகாய், கறிவேப்பிலை, மஞ்சள், வறுத்த கறி மசாலா, வெந்தயம், கோரக்கா, உப்பு எல்லாவற்றையும் மண் சட்டியில் இட்டு நீர்த்த தேங்காய்ப் பாலை ஊற்றுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடாமல் கொதிக்க வைத்து, பிறகு தீயைக் குறைத்து, கரண்டியால் அழுத்தினால் பூண்டு பல் நசுங்கும் வரை மெதுவாக வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலையும் தேங்காய் எண்ணெயையும் சேர்த்து, பல்லுகள் உடையாதபடி ஒரே திசையில் மெல்லக் கிளறுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்கும் பதத்திற்கு வந்தவுடன் சட்டியை அடுப்பிலிருந்து இறக்குங்கள்; குழம்பு கரண்டியில் ஒட்டும் பதமாக இருக்க வேண்டும்.",
+    "minutes": 5
+   },
+   {
+    "text": "பரிமாறும் முன் சில நிமிடங்கள் அப்படியே வைத்திருங்கள்; அப்போது பூண்டு குழம்பில் இனிக்கும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Pick plump local cloves; the small imported ones melt into the gravy. If the garlic is young and sharp, a pinch of sugar rounds it off.",
+  "si": "පෝෂ්‍ය දේශීය සුදුලූනු ගෙඩි තෝරන්න; ආනයනික කුඩා ඒවා ඉස්මේ දිය වී යයි. සුදුලූනු තදබල නම් සීනි ස්වල්පයක් රසය මට්ටම් කරයි.",
+  "ta": "பெரிய உள்ளூர் பூண்டை தேர்ந்தெடுங்கள்; இறக்குமதி செய்த சிறிய பல்லுகள் குழம்பில் கரைந்துவிடும். பூண்டு காரமாக இருந்தால் ஒரு சிட்டிகை சீனி சுவையை சமன் செய்யும்."
+ },
+ "health_note": {
+  "en": "Garlic cooked slowly in coconut milk is the old household answer to a cough or a blocked chest. The thick milk makes it rich, so one small ladle beside other curries is plenty.",
+  "si": "පොල් කිරි සමඟ සෙමෙන් උයන සුදුලූනු, කැස්සට සහ පපුවේ සෙම්ට ගෙදර පිළියමකි. ඝන කිරි නිසා තෙල් සහිත බැවින්, අනෙක් කරි සමඟ කුඩා හැන්දක් ප්‍රමාණවත්.",
+  "ta": "தேங்காய்ப் பாலில் மெதுவாக வேகவைத்த பூண்டு, இருமலுக்கும் நெஞ்சு சளிக்கும் பாரம்பரிய வீட்டு வைத்தியம். தடித்த பால் சேர்வதால் கொழுப்பு அதிகம், எனவே மற்ற கறிகளுடன் ஒரு சிறு கரண்டி போதும்."
+ },
+ "tags": [
+  "traditional_remedy",
+  "immune_support",
+  "budget",
+  "one_pot",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

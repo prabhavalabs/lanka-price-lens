@@ -1,0 +1,308 @@
+{
+ "id": "dish_spinach_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 65,
+  "description": {
+   "en": "A small mound of soft green mallung beside the heavier curries",
+   "si": "බර හොදි පැත්තට තියෙන මෘදු කොළ පැහැති මැල්ලුම් ගොඩක්",
+   "ta": "கனமான கறிகளுக்குப் பக்கத்தில் ஒரு சிறு குவியல் மென்மையான பச்சை வதக்கல்"
+  }
+ },
+ "yield_g": 260,
+ "ingredients": [
+  {
+   "ref": "product_spinach",
+   "label": {
+    "en": "spinach (nivithi)",
+    "si": "නිවිති",
+    "ta": "பசளிக்கீரை"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 bunches",
+   "preparation": {
+    "en": "leaves and soft stalks chopped fine, washed and drained",
+    "si": "කොළ සහ මෘදු දඬු සිහින්ව කපා, සෝදා වතුර බේරා",
+    "ta": "இலையும் மெல்லிய தண்டும் மிக நறுக்கி, அலசி நீர் வடித்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලා",
+    "ta": "பொடியாக இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பலகடா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp, pounded",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කොටා",
+    "ta": "கரடுமுரடாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime, squeezed",
+   "preparation": {
+    "en": "juice only, added off the fire",
+    "si": "යුෂ පමණක්, ලිපෙන් ඉවතට ගත් පසු",
+    "ta": "சாறு மட்டும், அடுப்பை விட்டு இறக்கிய பின்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 5,
+   "unit": "ml",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Chop the nivithi leaves and soft stalks fine, wash them and drain well; wet leaves turn a mallung into a puddle.",
+    "minutes": 10
+   },
+   {
+    "text": "Mix the scraped coconut with the onion, chilli, turmeric, pepper and pounded maldive fish, rubbing it with your fingers.",
+    "minutes": 3
+   },
+   {
+    "text": "Heat the pan with the teaspoon of oil, put in the chopped greens with a splash of water and cook on a high flame, uncovered, until they collapse.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the coconut mixture and salt and toss on a lower flame until the mallung looks dry and the coconut has lost its raw smell.",
+    "minutes": 4
+   },
+   {
+    "text": "Check that no water sits at the bottom of the pan; if it does, raise the flame for half a minute.",
+    "minutes": 1
+   },
+   {
+    "text": "Take it off the fire, squeeze the lime over and turn it through once.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "නිවිති කොළ සහ මෘදු දඬු සිහින්ව කපා, සෝදා හොඳින් වතුර බේරන්න; තෙත කොළවලින් මැල්ලුම දියර වෙනවා.",
+    "minutes": 10
+   },
+   {
+    "text": "ගාගත් පොල්, ළූණු, මිරිස්, කහ, ගම්මිරිස් සහ කොටාගත් උම්බලකඩ ඇඟිලිවලින් අතුල්ලා මිශ්‍ර කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පෑන් රත් කර තේ හැන්දක් තෙල් දමා, කැපූ පලා වර්ගය සහ වතුර ටිකක් දමා, වහන්නේ නැතුව තද ගින්නේ මැලවෙන තුරු උයන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පොල් මිශ්‍රණය සහ ලුණු දමා, ගිනි අඩු කර, මැල්ලුම වේලී පොල්වල අමු ගතිය යන තුරු පෙරළන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පෑන් පතුලේ වතුර රැඳී නැති බව බලන්න; තිබේ නම් තව මිනිත්තු බාගයක් තද ගින්නේ තියන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන දෙහි යුෂ මිරිකා එක් වරක් පෙරළන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பசளிக்கீரை இலையையும் மெல்லிய தண்டையும் மிக நறுக்கி, அலசி நீரை நன்றாக வடிக்கவும்; ஈரமான இலையால் வதக்கல் நீராகிவிடும்.",
+    "minutes": 10
+   },
+   {
+    "text": "துருவிய தேங்காயுடன் வெங்காயம், மிளகாய், மஞ்சள், மிளகு, இடித்த உம்பலகடா சேர்த்து விரல்களால் பிசைந்து கலக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சட்டியைக் காயவைத்து ஒரு டீஸ்பூன் எண்ணெய் விட்டு, நறுக்கிய கீரையையும் கொஞ்சம் நீரையும் போட்டு, மூடாமல் பெரிய தீயில் வதங்கும் வரை சமைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "தேங்காய்க் கலவையையும் உப்பையும் சேர்த்து, தீயைக் குறைத்து, வதக்கல் வற்றி தேங்காயின் பச்சை வாசனை போகும் வரை புரட்டவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "சட்டியின் அடியில் நீர் தங்கவில்லை என்பதைப் பாருங்கள்; இருந்தால் அரை நிமிடம் பெரிய தீயில் வைக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி, தேசிக்காய்ச் சாறு பிழிந்து ஒரு முறை புரட்டவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 8,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan or wok"
+ ],
+ "tips": {
+  "en": "A mallung wants heat and speed, not simmering; keep the flame high while the leaves wilt and low once the coconut goes in. Chop the stalks finer than the leaves so everything is soft at the same moment.",
+  "si": "මැල්ලුමට ඕන ගිනි රස්නය සහ වේගය, සෙමින් තැම්බීම නෙවෙයි; කොළ මැලවෙන තුරු තද ගින්නේ, පොල් දැමූ පසු අඩු ගින්නේ තියන්න. දඬු කොළවලට වඩා සිහින්ව කපන්න, එවිට සියල්ල එකවර මෘදු වෙනවා.",
+  "ta": "வதக்கலுக்கு வேண்டியது தீயின் வேகம், மெதுவான கொதி அல்ல; இலை வதங்கும் வரை பெரிய தீயிலும், தேங்காய் சேர்த்த பின் சிறு தீயிலும் வைக்கவும். தண்டை இலையை விட மெல்லியதாக நறுக்கினால் அனைத்தும் ஒரே நேரத்தில் மென்மையாகும்."
+ },
+ "health_note": {
+  "en": "This is one of the cheapest ways to put iron, folate and fibre on a rice plate, and the coconut is small enough that the dish stays light. Skip the maldive fish if anyone at the table is watching salt.",
+  "si": "බත් පිඟානකට යකඩ, ෆෝලේට් සහ තන්තු එකතු කරන්න තියෙන ලාබම ක්‍රමයක්; පොල් ප්‍රමාණයත් අඩු නිසා කෑම සැහැල්ලුවෙන් තියෙනවා. මේසේ කවුරුහරි ලුණු බලාගන්නවා නම් උම්බලකඩ නොදමන්න.",
+  "ta": "ஒரு சாதத் தட்டில் இரும்புச்சத்து, ஃபோலேட், நார்ச்சத்து சேர்க்க இது மிக மலிவான வழி; தேங்காய் அளவு குறைவாக இருப்பதால் உணவு இலகுவாகவே இருக்கும். உப்பைக் கவனிக்கும் யாராவது இருந்தால் உம்பலகடாவை விட்டுவிடவும்."
+ },
+ "tags": [
+  "iron_rich",
+  "high_fibre",
+  "low_calorie",
+  "weight_loss_friendly",
+  "quick",
+  "light",
+  "budget",
+  "pregnancy_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

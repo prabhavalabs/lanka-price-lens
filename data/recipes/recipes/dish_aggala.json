@@ -1,0 +1,261 @@
+{
+ "id": "dish_aggala",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 75,
+  "description": {
+   "en": "Three firm treacle balls with plain tea",
+   "si": "පැණි රසැති අග්ගලා ගුලි තුනක්, තේ සමඟ",
+   "ta": "மூன்று இறுகிய பாகு உருண்டைகள், சாதா தேநீருடன்"
+  }
+ },
+ "yield_g": 300,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "dry roasted until it smells nutty",
+    "si": "සුවඳ එන තුරු වියළි ලෙස බැදගත්",
+    "ta": "வாசனை வரும் வரை வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கிதுல் பாகு"
+   },
+   "quantity": 110,
+   "unit": "ml",
+   "household": "half a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "1 small block",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලි කරගත්",
+    "ta": "துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "lightly roasted and coarsely crushed",
+    "si": "ටිකක් බැද රළු ලෙස තලාගත්",
+    "ta": "லேசாக வறுத்துக் கரகரப்பாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a good pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut",
+    "si": "පොල්",
+    "ta": "தேங்காய்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "half a cup, grated",
+   "preparation": {
+    "en": "scraped fine, for the coconut version",
+    "si": "සිහින්ව ගාගත්, පොල් අග්ගලා සඳහා",
+    "ta": "நைசாகத் துருவியது, தேங்காய் வகைக்கு"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "dough"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dry roast the rice flour in a heavy pan over a low fire, stirring all the while, until it smells nutty and turns a shade darker.",
+    "minutes": 10
+   },
+   {
+    "text": "Roast the pepper for a moment in the same pan and crush it coarsely with the salt.",
+    "minutes": 2
+   },
+   {
+    "text": "Take the pan off the fire and let the flour cool until you can keep your hand in it.",
+    "minutes": 10
+   },
+   {
+    "text": "Melt the jaggery with the treacle and two spoons of water until it bubbles thickly and coats the spoon.",
+    "minutes": 8
+   },
+   {
+    "text": "Pour the hot syrup into the flour a little at a time, working it with a spoon first and then with your hand once it is cool enough.",
+    "minutes": null
+   },
+   {
+    "text": "Add the pepper, salt and the grated coconut if you are using it, and knead to a dough that holds its shape when squeezed.",
+    "minutes": null
+   },
+   {
+    "text": "Roll balls the size of a large cashew between your palms, pressing hard so they will not crumble.",
+    "minutes": 10
+   },
+   {
+    "text": "Leave the balls on a tray to firm up, then keep them in a dry tin where they last for weeks.",
+    "minutes": 30
+   }
+  ],
+  "si": [
+   {
+    "text": "බර පෑනකට සහල් පිටි දමා අඩු ගින්නේ, සුවඳ එන තුරු සහ පාට ටිකක් වෙනස් වන තුරු නිතර පෙරළමින් බදින්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එම පෑනේම ගම්මිරිස් මොහොතක් බැද, ලුණු සමඟ රළු ලෙස තලාගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පෑන ගින්නෙන් ඉවතට ගෙන, අතට දැරෙන තරමට පිටි සිසිල් වෙන්න තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "හකුරු, කිතුල් පැණි සහ වතුර හැඳි දෙකක් සමඟ උණු කර, හැන්දේ රැඳෙන තරමට ගනකම් කරගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "උණු පැණිය පිටි මතට ටිකෙන් ටික දමා මුලින් හැන්දකින්, පසුව සිසිල් වූ විට අතින්ම මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගම්මිරිස්, ලුණු සහ කැමති නම් ගාගත් පොල් දමා, තද කළ විට හැඩය රැඳෙන පිඬක් වන තුරු අනන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අත්ල අතරේ කජු ගෙඩියක් පමණ ගුලි සාදා, කැඩී නොයන සේ තදින් තද කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගුලි තැටියක තබා තද වෙන්න ඉඩ දී, වියළි භාජනයක තියන්න; සති කිහිපයක් නරක් නොවේ.",
+    "minutes": 30
+   }
+  ],
+  "ta": [
+   {
+    "text": "கனமான சட்டியில் அரிசி மாவைப் போட்டு, குறைந்த தீயில் வாசனை வரும் வரை, நிறம் சிறிது மாறும் வரை கிளறி வறுக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே சட்டியில் மிளகை ஒரு நிமிடம் வறுத்து, உப்புடன் சேர்த்துக் கரகரப்பாக இடிக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "சட்டியை அடுப்பிலிருந்து இறக்கி, கையால் தொடும் அளவுக்கு மாவு குளிரவிடவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வெல்லத்தையும் கிதுல் பாகையும் இரண்டு கரண்டி தண்ணீருடன் உருக்கி, கரண்டியில் ஒட்டும் அளவுக்குக் கெட்டியாகக் கொதிக்கவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "சூடான பாகை மாவில் சிறிது சிறிதாக ஊற்றி, முதலில் கரண்டியால், பின் குளிர்ந்ததும் கையால் பிசையவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மிளகு, உப்பு, விரும்பினால் துருவிய தேங்காய் சேர்த்து, அழுத்தினால் உருவம் தங்கும் பதத்திற்குப் பிசையவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உள்ளங்கையில் பெரிய முந்திரி அளவு உருண்டைகளாக உருட்டி, உடையாமல் இருக்க நன்கு அழுத்தவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "உருண்டைகளைத் தட்டில் வைத்து இறுகவிட்டு, உலர்ந்த டப்பாவில் சேமிக்கவும்; பல வாரங்கள் கெடாமல் இருக்கும்.",
+    "minutes": 30
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 20,
+  "passive_minutes": 30
+ },
+ "equipment": [
+  "heavy pan for roasting",
+  "small pan for syrup",
+  "tray"
+ ],
+ "tips": {
+  "en": "Roast the flour on the lowest fire you can manage; flour that catches even slightly turns the whole batch bitter, and hot flour will not take the syrup evenly.",
+  "si": "පිටි හැකි තරම් අඩු ගින්නේ බදින්න; ටිකක් හරි පිළිස්සුණොත් මුළු ලොතම තිත්ත වේ, උණුසුම් පිටි පැණි සමව අරගන්නේ නැත.",
+  "ta": "மாவை மிகக் குறைந்த தீயில் வறுக்கவும்; சிறிது கருகினாலும் முழு மாவும் கசக்கும், சூடான மாவு பாகைச் சமமாக ஏற்காது."
+ },
+ "health_note": {
+  "en": "Roasted rice flour and jaggery make this filling and give a little iron from the treacle, but each ball is mostly starch and sugar, so it suits a tea time treat more than a snack eaten by the handful.",
+  "si": "බැදගත් සහල් පිටි සහ හකුරු නිසා බඩ පිරෙන අතර පැණියෙන් ටිකක් යකඩ ලැබේ; එහෙත් එක ගුලියක බහුතරය පිෂ්ටය හා සීනි නිසා අතමිට පුරා නොකා තේ වෙලාවට එකක් දෙකක් ගන්න.",
+  "ta": "வறுத்த அரிசி மாவும் வெல்லமும் வயிறு நிறைக்கும், பாகில் சிறிது இரும்புச்சத்தும் உண்டு; ஆனால் ஒரு உருண்டையில் பெரும்பாலும் மாச்சத்தும் சீனியும் என்பதால், கை நிறைய உண்ணாமல் தேநீர் வேளையில் ஒன்றிரண்டு எடுப்பது நல்லது."
+ },
+ "tags": [
+  "high_sugar",
+  "budget",
+  "kid_friendly",
+  "comfort",
+  "iron_rich"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

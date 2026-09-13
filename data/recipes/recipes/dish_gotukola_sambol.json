@@ -1,0 +1,271 @@
+{
+ "id": "dish_gotukola_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 60,
+  "description": {
+   "en": "A small mound of raw green sambol at the side of the rice",
+   "si": "බත් පිඟානේ පැත්තකට අමු කොළ සම්බෝල ගොඩක්",
+   "ta": "சோற்றுத் தட்டின் ஓரத்தில் சிறிது பச்சைக் கீரைச் சம்பல்"
+  }
+ },
+ "yield_g": 240,
+ "ingredients": [
+  {
+   "ref": "product_gotukola",
+   "label": {
+    "en": "gotukola (pennywort) leaves",
+    "si": "ගොටුකොළ",
+    "ta": "வல்லாரைக் கீரை"
+   },
+   "quantity": 140,
+   "unit": "g",
+   "household": "2 large bunches",
+   "preparation": {
+    "en": "washed twice, tough stems pulled off, shredded as fine as thread",
+    "si": "දෙවරක් සෝදා, දැඩි කඳන් ඉවත් කර, නූල් සේ සිහින්ව කපා ගත්",
+    "ta": "இரண்டு முறை கழுவி, கெட்டியான தண்டுகளை நீக்கி, நூல் போல் மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, freshly scraped",
+    "si": "සීරූ පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 70,
+   "unit": "g",
+   "household": "half a cup, packed",
+   "preparation": {
+    "en": "scraped, kept loose",
+    "si": "සීරා ලිහිල්ව තබාගත්",
+    "ta": "துருவி தளர்வாக வைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 small onions",
+   "preparation": {
+    "en": "sliced very thin",
+    "si": "ඉතා සිහින්ව කපාගත්",
+    "ta": "மிக மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chilli",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine, seeds shaken out for children",
+    "si": "සිහින්ව කපාගත්, දරුවන්ට නම් බීජ ඉවත් කර",
+    "ta": "நறுக்கியது, குழந்தைகளுக்கு விதை நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණි",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, ground",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the gotukola in two changes of water and lift the leaves out, leaving the grit at the bottom of the basin.",
+    "minutes": 4
+   },
+   {
+    "text": "Pull the leaves and tender stalks off the tough stems and pile them on the board.",
+    "minutes": null
+   },
+   {
+    "text": "Roll the pile up tight and shred it as fine as thread, then tip it into a bowl.",
+    "minutes": 5
+   },
+   {
+    "text": "Rub the sliced red onion with the salt and a pinch of pepper between your fingers until it softens.",
+    "minutes": null
+   },
+   {
+    "text": "Add the scraped coconut and the chopped green chilli and mix with your hand, not a spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Fold in the shredded gotukola and squeeze the lime over it.",
+    "minutes": null
+   },
+   {
+    "text": "Taste for salt and sour, and serve within the hour while the green is still bright.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ගොටුකොළ දෙවරක් ජලයේ සෝදා, වැලි පහළ තැන්පත් වන්නට ඉඩ දී කොළ පමණක් අහුලා ගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "දැඩි කඳන්වලින් කොළ සහ මෘදු දඬු ගලවා කටගැස්ම මත ගොඩ ගසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගොඩ තදින් රෝල් කර නූලක් සේ සිහින්ව කපා, බඳුනකට දමා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කපාගත් රතු ළූණු ලුණු සහ ගම්මිරිස් ස්වල්පයක් සමඟ ඇඟිලි අතර මිශ්‍ර කර මුදු කර ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සීරූ පොල් සහ කැපූ අමු මිරිස් එකතු කර හැන්දකින් නොව අතින්ම මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සිහින්ව කැපූ ගොටුකොළ එකතු කර දෙහි යුෂ මිරිකා දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලා, කොළ පාට තවම දීප්තිමත්ව ඇති අතරේ පැයක් ඇතුළත ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வல்லாரையை இரண்டு தண்ணீரில் அலசி, மணல் அடியில் தங்கிய பின் இலைகளை மட்டும் எடுத்துக்கொள்ளவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "கெட்டியான தண்டுகளிலிருந்து இலைகளையும் மெல்லிய தண்டுகளையும் பிரித்து ஒரு பலகையில் குவிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "குவியலை இறுக்கச் சுருட்டி நூல் போல் மெல்லியதாக நறுக்கி, ஒரு கிண்ணத்தில் போடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "நறுக்கிய சின்ன வெங்காயத்தை உப்பு, சிறிது மிளகுத்தூள் சேர்த்து விரல்களால் பிசைந்து மென்மையாக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "துருவிய தேங்காயையும் நறுக்கிய பச்சை மிளகாயையும் சேர்த்து, கரண்டியால் அல்ல, கையால் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கிய வல்லாரையைச் சேர்த்து, எலுமிச்சைச் சாற்றைப் பிழியவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உப்பும் புளிப்பும் பார்த்து, கீரை பசுமையாக இருக்கும்போதே ஒரு மணி நேரத்துக்குள் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "sharp knife and board",
+  "coconut scraper",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "Shred the leaves with a sharp knife in one direction only; sawing bruises them and the sambol turns dark and watery. Squeeze the lime in at the very end, otherwise the green fades while you work.",
+  "si": "තියුණු පිහියකින් එක් දිශාවකට පමණක් කපන්න; ඉරා කැපීමෙන් කොළ තැළී සම්බෝල කළු පැහැ ගෙන වතුර වේ. දෙහි අන්තිම මොහොතේ මිරිකන්න, නැතිනම් වැඩ කරන අතරේ කොළ පාට මැකී යයි.",
+  "ta": "கூர்மையான கத்தியால் ஒரே திசையில் நறுக்கவும்; அரிந்து இழுத்தால் இலை நசுங்கி சம்பல் கறுத்து நீராகிவிடும். எலுமிச்சையை இறுதியில் பிழியவும், இல்லாவிட்டால் பசுமை மங்கும்."
+ },
+ "health_note": {
+  "en": "Raw gotukola brings fibre, iron and folate with almost no calories, and the little coconut fat alongside helps the body take up what the leaf offers. Wash the leaves in two or three changes of water, since they grow close to wet ground.",
+  "si": "අමු ගොටුකොළවලින් තන්තු, යකඩ සහ ෆෝලේට් ලැබෙන අතර කැලරි ඉතා අඩුය; එහි ඇති පොල් මේදය ස්වල්පයෙන් කොළවල පෝෂණ ගුණ ශරීරයට ගැනීමට උපකාරී වේ. කොළ තෙත් බිමට ආසන්නව වැඩෙන බැවින් දෙතුන් වරක් ජලයෙන් සෝදන්න.",
+  "ta": "பச்சை வல்லாரை நார்ச்சத்து, இரும்புச்சத்து, ஃபோலேட் தருகிறது, கலோரி மிகக் குறைவு; சேர்க்கும் தேங்காயின் சிறிது கொழுப்பு அச்சத்துக்களை உடல் எடுக்க உதவும். ஈரமான தரையில் வளர்வதால் இலைகளை இரண்டு மூன்று தண்ணீரில் நன்கு கழுவவும்."
+ },
+ "tags": [
+  "low_calorie",
+  "low_carb",
+  "high_fibre",
+  "iron_rich",
+  "weight_loss_friendly",
+  "heart_healthy",
+  "diabetic_friendly",
+  "quick",
+  "budget",
+  "light"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

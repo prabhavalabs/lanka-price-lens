@@ -1,0 +1,375 @@
+{
+ "id": "dish_mussel_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 195,
+  "description": {
+   "en": "A ladle of dark mussel curry over rice",
+   "si": "බත් මතට දමන කළු බෙල්ලෝ කරි හැන්දක්",
+   "ta": "சாதத்தின் மேல் ஒரு கரண்டி கருமையான கிளிஞ்சல் கறி"
+  }
+ },
+ "yield_g": 780,
+ "ingredients": [
+  {
+   "ref": "pantry_mussels",
+   "label": {
+    "en": "mussels",
+    "si": "බෙල්ලෝ",
+    "ta": "கடல் சிப்பி"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "a large bowl of shelled meat",
+   "preparation": {
+    "en": "boiled open, meat picked out, beards removed",
+    "si": "තම්බා කටු ඇර මස් වෙන් කරගත්, රැවුල ඉවත් කළ",
+    "ta": "வேகவைத்துத் திறந்து, இறைச்சி எடுத்து, நார் நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 130,
+   "unit": "g",
+   "household": "2 onions",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "தட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලාගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 large piece",
+   "preparation": {
+    "en": "soaked and mashed",
+    "si": "වතුරේ දමා තලාගත්",
+    "ta": "ஊறவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ කුඩු",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்த்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarter cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrub the shells clean and throw away any that stay open when tapped, then boil them in a finger of water until the shells gape.",
+    "minutes": 10
+   },
+   {
+    "text": "Pick the meat out of the shells, pull off the tough beard from each one and rinse the meat in the strained cooking water.",
+    "minutes": 20
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the onion, garlic and curry leaves until the onion browns.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the roasted curry powder, chilli powder, turmeric, crushed pepper and the mashed goraka and fry them for a moment.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the strained mussel water and the thin coconut milk and simmer until the gravy darkens and thickens.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the mussel meat and the salt and simmer only until the meat is hot through and has taken the spices.",
+    "minutes": 6
+   },
+   {
+    "text": "Pour in the thick coconut milk and let the pot bubble once.",
+    "minutes": 3
+   },
+   {
+    "text": "Take it off the fire and let it rest; check the salt only now, since the mussel water is already salty.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "බෙල්ලන්ගේ කටු හොඳින් මදින්න; තට්ටු කළත් වැහෙන්නේ නැති ඒවා ඉවතලන්න. ඉන්පසු ඇඟිල්ලක් උසට වතුර දමා කටු ඇරෙන තුරු තම්බන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කටුවෙන් මස් වෙන් කර, එක එකේ තද රැවුල ඉරාගෙන, පෙරාගත් තැම්බූ වතුරෙන් මස් සෝදන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "මැටි වළඳක පොල් තෙල් රත් කර ළූණු, සුදුළූණු සහ කරපිංචා ළූණු රන්වන් වන තුරු තෙල් දාන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බැදපු තුනපහ, මිරිස් කුඩු, කහ, තලාගත් ගම්මිරිස් සහ තලාගත් ගොරකා දමා මොහොතක් බැදගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "පෙරාගත් බෙල්ලන් වතුර සහ දිය පොල් කිරි දමා හොදි කළු පැහැ වී තද වන තුරු තබන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බෙල්ලන් මස් සහ ලුණු දමා, මස් හොඳින් රත් වී කුළුබඩු රසය අරගන්නා තුරු පමණක් පිසින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "මිටි පොල් කිරි වත් කර එක වරක් නටන්න දෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලිපෙන් ඉවත් කර මඳක් තියන්න; බෙල්ලන් වතුරේම ලුණු තියෙන නිසා ලුණු රස බලන්නේ දැන් පමණයි.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிப்பிகளை நன்கு தேய்த்துக் கழுவி, தட்டினாலும் மூடாதவற்றைத் தூக்கி எறியுங்கள்; பின்னர் ஒரு விரல் அளவு நீர் விட்டு ஓடு திறக்கும் வரை வேகவையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஓட்டில் இருந்து இறைச்சியை எடுத்து, ஒவ்வொன்றின் கடினமான நாரையும் நீக்கி, வடிகட்டிய வேகவைத்த நீரில் கழுவுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, கறிவேப்பிலை பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வறுத்த கறித் தூள், மிளகாய்த் தூள், மஞ்சள், இடித்த மிளகு, மசித்த புளி சேர்த்து ஒரு நிமிடம் வறுக்குங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "வடிகட்டிய சிப்பி நீரையும் நீர்த்த தேங்காய்ப் பாலையும் விட்டு, குழம்பு கருமையாகிக் கெட்டியாகும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சிப்பி இறைச்சியையும் உப்பையும் சேர்த்து, இறைச்சி நன்கு சூடாகி மசாலா ஏறும் வரை மட்டும் வேகவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலை விட்டு ஒரு முறை கொதிக்கவிடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "இறக்கி சிறிது நேரம் வையுங்கள்; சிப்பி நீரிலேயே உப்பு இருப்பதால் இப்போதுதான் உப்பைச் சரிபாருங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 35,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "large pot for boiling",
+  "clay pot",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Mussels toughen the moment they overcook, so they go in at the end, not at the start. Save the water they opened in and strain it through a cloth; it carries most of the sea flavour of the dish.",
+  "si": "බෙල්ලෝ වැඩිපුර පිසුණු සැණින් තද වෙනවා, ඒ නිසා ඒවා දමන්නේ අන්තිමට, මුලට නොවේ. කටු ඇරුණු වතුර රෙද්දකින් පෙරාගෙන තියාගන්න; කෑමේ මුහුදු රසය වැඩිපුරම තියෙන්නේ ඒකේ.",
+  "ta": "சிப்பி அதிகம் வெந்தால் உடனே இறுகிவிடும், எனவே அதைச் சேர்ப்பது இறுதியில், ஆரம்பத்தில் அல்ல. ஓடு திறந்த நீரைத் துணியில் வடிகட்டி வைத்துக் கொள்ளுங்கள்; உணவின் கடல் சுவை பெரும்பாலும் அதிலேயே உள்ளது."
+ },
+ "health_note": {
+  "en": "Mussels are unusually rich in iron and give lean protein for very little fat, which suits anyone who tires easily. They are naturally salty and must be really fresh, so buy them the morning they are gathered.",
+  "si": "බෙල්ලන්ගේ යකඩ ප්‍රමාණය විශේෂයෙන් වැඩියි; අඩු මේදයකින් හොඳ ප්‍රෝටීන් ලැබෙනවා, ඉක්මනින් වෙහෙසෙන අයට හොඳයි. ස්වභාවයෙන්ම ලුණු රසයි, හරිම නැවුම් විය යුතුයි, ඒ නිසා අහුලාගත් උදෑසනම මිලට ගන්න.",
+  "ta": "கடல் சிப்பியில் இரும்புச் சத்து வழக்கத்துக்கு மாறாக அதிகம்; மிகக் குறைந்த கொழுப்புடன் நல்ல புரதம் தருகிறது, விரைவில் களைப்படைபவர்களுக்கு நல்லது. இயற்கையாகவே உப்புச் சுவை உள்ளது, மிகவும் புதிதாக இருக்க வேண்டும், எனவே சேகரித்த காலையிலேயே வாங்குங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_fat",
+  "low_carb"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

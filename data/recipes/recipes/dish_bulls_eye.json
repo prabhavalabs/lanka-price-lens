@@ -1,0 +1,197 @@
+{
+ "id": "dish_bulls_eye",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 55,
+  "description": {
+   "en": "One fried egg per person, crisp at the edge and soft in the middle",
+   "si": "දාරය කරකර ගා මැද මෘදුව බැදගත් එක් බිත්තරයක්",
+   "ta": "ஓரம் மொறுமொறுவென, நடுவில் மென்மையாக பொரித்த ஒரு முட்டை"
+  }
+ },
+ "yield_g": 220,
+ "ingredients": [
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "1 egg a head",
+   "preparation": {
+    "en": "at room temperature",
+    "si": "කාමර උෂ්ණත්වයේ ඇති",
+    "ta": "அறை வெப்பநிலையில் உள்ளது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a pinch for each egg",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp, ground",
+   "preparation": {
+    "en": "coarsely ground",
+    "si": "රළුවට කුඩු කරගත්",
+    "ta": "பரும்பொடியாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Heat the coconut oil in a small pan over a medium flame until it runs thin and shimmers.",
+    "minutes": 2
+   },
+   {
+    "text": "Break one egg straight into the oil, keeping the yolk whole.",
+    "minutes": null
+   },
+   {
+    "text": "Let the white set without touching it until the edge turns lacy and brown.",
+    "minutes": 2
+   },
+   {
+    "text": "Spoon a little hot oil over the white around the yolk so the top sets while the yolk stays soft.",
+    "minutes": null
+   },
+   {
+    "text": "Sprinkle a pinch of salt and pepper and lift the egg onto the plate with a flat spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Fry the rest one or two at a time and serve at once with bread, roti or rice.",
+    "minutes": 4
+   }
+  ],
+  "si": [
+   {
+    "text": "කුඩා පෑනක පොල් තෙල් මධ්‍යම ගින්නේ සිහින් වී දිලිසෙන තුරු රත් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කහ මදය කැඩෙන්නට ඉඩ නොදී බිත්තරයක් කෙලින්ම තෙල් මතට කඩා දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අත නොගසා සුදු මදය තැම්බී දාරය දුඹුරු පැහැ ගන්නා තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කහ මදය අවට සුදු මද මතට රත් තෙල් ටිකක් හැන්දෙන් වත් කර, උඩ පැත්ත පමණක් තැම්බෙන්නට දෙන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලුණු සහ ගම්මිරිස් ස්වල්පයක් ඉස, පැතලි හැන්දකින් බිත්තරය පිඟානට ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉතිරි බිත්තර එකින් එක බැද, පාන්, රොටි හෝ බත් සමඟ වහාම බෙදන්න.",
+    "minutes": 4
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிறிய வாணலியில் தேங்காய் எண்ணெயை நடுத்தர தணலில் நன்கு காயவைக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மஞ்சள் கருவை உடைக்காமல் ஒரு முட்டையை எண்ணெயில் நேராக உடைத்து விடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தொடாமல், வெள்ளைக்கரு இறுகி ஓரம் பொன்னிறமாகும் வரை விடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கருவைச் சுற்றியுள்ள வெள்ளைக்கருவின் மேல் சூடான எண்ணெயை ஊற்றி மேற்பரப்பு மட்டும் இறுகவிடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிது உப்பும் மிளகும் தூவி, தட்டையான கரண்டியால் முட்டையைத் தட்டில் எடுக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மீதி முட்டைகளையும் ஒன்றிரண்டாகப் பொரித்து, பாண், ரொட்டி அல்லது சாதத்துடன் உடனே பரிமாறவும்.",
+    "minutes": 4
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 2,
+  "cook_minutes": 6,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "small frying pan",
+  "flat spoon or spatula"
+ ],
+ "tips": {
+  "en": "Get the oil properly hot before the egg goes in, that is what gives the brown frill at the edge. For small children cover the pan for a minute so the yolk cooks through.",
+  "si": "බිත්තරය දමන්නට පෙර තෙල් හොඳින් රත් වී තිබිය යුතුයි; එයයි දාරයේ දුඹුරු කරකර ගතිය ලබා දෙන්නේ. කුඩා දරුවන්ට නම් පෑන වසා මිනිත්තුවක් තබා කහ මදයද තම්බා ගන්න.",
+  "ta": "முட்டையை விடும் முன் எண்ணெய் நன்கு காய வேண்டும்; அதுவே ஓரத்தில் பொன்னிற விளிம்பைத் தரும். சிறு குழந்தைகளுக்கு வாணலியை ஒரு நிமிடம் மூடி கருவையும் வேகவிடவும்."
+ },
+ "health_note": {
+  "en": "One egg brings good quality protein, vitamin B12 and a little iron for very little money, which makes it a useful breakfast for growing children. It is fried, so one egg and a light hand with the oil is enough.",
+  "si": "එක් බිත්තරයකින් ඉතා අඩු මුදලකට හොඳ ප්‍රෝටීන්, විටමින් බී12 සහ යකඩ ස්වල්පයක් ලැබෙන බැවින් වැඩෙන දරුවන්ට හොඳ උදෑසන ආහාරයකි. බැදපු ආහාරයක් බැවින් තෙල් අඩුවෙන් යොදා එක් බිත්තරයකින් නවතින්න.",
+  "ta": "ஒரு முட்டை மிகக் குறைந்த செலவில் தரமான புரதம், பி12 வைட்டமின், சிறிதளவு இரும்புச்சத்து தருவதால் வளரும் குழந்தைகளுக்கு நல்ல காலை உணவு. பொரித்த உணவு என்பதால் எண்ணெயைக் குறைவாகப் பயன்படுத்தி ஒரு முட்டையில் நிறுத்துவது நல்லது."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "kid_friendly",
+  "budget",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

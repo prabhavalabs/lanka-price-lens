@@ -1,0 +1,320 @@
+{
+ "id": "dish_carrot_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 90,
+  "description": {
+   "en": "A dry orange mound of carrot and coconut",
+   "si": "කැරට් හා පොල් මිශ්‍ර වියළි තැඹිලි පැහැ ගොඩක්",
+   "ta": "கரட்டும் தேங்காயும் சேர்ந்த காய்ந்த ஆரஞ்சு நிற குவியல்"
+  }
+ },
+ "yield_g": 370,
+ "ingredients": [
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கரட்"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "3 medium carrots",
+   "preparation": {
+    "en": "scraped and grated coarse",
+    "si": "සීරා ගෙන රළුවට ගාගෙන",
+    "ta": "சீவி கரடாகத் துருவி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගාගත්",
+    "ta": "புதிதாகத் துருவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 small onions",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "பொடியாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "பொடியாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගෙන",
+    "ta": "இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the carrots rather than peeling them thickly, and grate them on the coarse side of the grater.",
+    "minutes": 8
+   },
+   {
+    "text": "Rub the scraped coconut together with the chopped onion, green chillies, turmeric, pepper and salt between your fingers so the coconut takes on the colour.",
+    "minutes": 3
+   },
+   {
+    "text": "Heat the coconut oil in a pan and pop the mustard seeds.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the grated carrot and stir over a medium flame just until it loses its raw smell.",
+    "minutes": 3
+   },
+   {
+    "text": "Fold in the coconut mixture, turn off the flame and keep stirring with the pan's own heat so the coconut warms without browning.",
+    "minutes": 3
+   },
+   {
+    "text": "Squeeze in the lime juice and mix once more.",
+    "minutes": null
+   },
+   {
+    "text": "Serve straight away while the carrot still has a light crunch.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කැරට් ඝන ලෙස ලෙලි ගසන්නේ නැතිව සීරා ගෙන, ගාන කබලේ රළු පැත්තෙන් ගාගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගාගත් පොල් සමඟ කපාගත් ලූනු, අමු මිරිස්, කහ, ගම්මිරිස් හා ලුණු ඇඟිලිවලින් අතුල්ලා, පොල් පාට ගන්නට තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පෑනකට පොල් තෙල් දමා අබ පිපිරෙන්නට තබන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ගාගත් කැරට් දමා මධ්‍යම ගින්නේ අමු ගඳ යන තුරු පමණක් කලතන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පොල් මිශ්‍රණය එකතු කර, ගින්න නිවා, පෑනේ රස්නයෙන්ම පොල් දුඹුරු නොවී රස්නය වන තුරු කලතන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා දමා නැවත වරක් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැරට් තුළ තවම සුළු කිරිච් බවක් ඇති විටම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கரட்டை தடிமனாகச் சீவாமல் மேல் தோலை மட்டும் சுரண்டி, துருவலின் கரடு பக்கத்தில் துருவுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "துருவிய தேங்காயுடன் நறுக்கிய வெங்காயம், பச்சை மிளகாய், மஞ்சள், மிளகு, உப்பு சேர்த்து விரல்களால் பிசைந்து தேங்காய் நிறம் பிடிக்க விடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயை காயவைத்து கடுகு வெடிக்க விடுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "துருவிய கரட்டைச் சேர்த்து, பச்சை வாசனை போகும் வரை மட்டும் நடுத்தர தீயில் கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "தேங்காய்க் கலவையைச் சேர்த்து, அடுப்பை அணைத்து, வாணலியின் சூட்டிலேயே தேங்காய் கருகாமல் சூடாகும் வரை கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "தேசிக்காய்ச் சாற்றைப் பிழிந்து மீண்டும் ஒருமுறை கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கரட்டில் சிறு கடினத்தன்மை இருக்கும்போதே பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 8,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "grater",
+  "pan",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "Grate rather than chop, and stop the cooking early; an overcooked carrot mallung turns wet and loses the sweetness that makes children eat it. Lime goes in off the fire so it keeps its edge.",
+  "si": "කපන්නට වඩා ගාන්න, උයන්න ඉක්මනින් නවත්වන්න; වැඩිපුර උයූ කැරට් මැල්ලුම තෙත් වී, දරුවන් කන පැණි රස නැති වේ. දෙහි ලිපෙන් ඉවත් කළ පසු දමන්න; එවිට රසය තියුණුව තිබේ.",
+  "ta": "நறுக்காமல் துருவுங்கள், சமையலை சீக்கிரம் நிறுத்துங்கள்; அதிகம் வேகவைத்த கரட் வதக்கல் ஈரமாகி, குழந்தைகள் விரும்பும் இனிப்புச் சுவையை இழக்கும். தேசிக்காயை அடுப்பை அணைத்த பிறகு சேர்த்தால் சுவை கூர்மையாக இருக்கும்."
+ },
+ "health_note": {
+  "en": "Carrot gives plenty of the vitamin A that helps children's eyes and skin, and the scraped coconut in a mallung adds a little fat that actually helps the body take that vitamin up. Fibre is good and the whole dish needs only two teaspoons of oil.",
+  "si": "කැරට්වලින් දරුවන්ගේ ඇස්වලට හා සමට උපකාරී විටමින් ඒ හොඳින් ලැබේ; මැල්ලුමේ පොල් එකතු කරන සුළු මේදය ඒ විටමින් ශරීරයට උරාගැනීමට ද උපකාරී වේ. කෙඳි හොඳින් ඇති අතර මුළු ව්‍යංජනයට තෙල් තේ හැන්ද දෙකක් පමණයි.",
+  "ta": "கரட்டில் குழந்தைகளின் கண்களுக்கும் தோலுக்கும் உதவும் வைட்டமின் ஏ நிறைய உள்ளது; வதக்கலில் சேரும் தேங்காய்க் கொழுப்பு அந்த வைட்டமினை உடல் உறிஞ்சவும் உதவுகிறது. நார்ச்சத்து நல்லது, மொத்த உணவுக்கு இரண்டு தேக்கரண்டி எண்ணெயே தேவை."
+ },
+ "tags": [
+  "low_calorie",
+  "high_fibre",
+  "kid_friendly",
+  "quick",
+  "light",
+  "budget",
+  "immune_support",
+  "weight_loss_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

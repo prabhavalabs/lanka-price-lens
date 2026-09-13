@@ -1,0 +1,350 @@
+{
+ "id": "dish_elabatu_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 155,
+  "description": {
+   "en": "A small spoonful of halved striped berries in dark sour gravy",
+   "si": "කළු ඇඹුල් හොදියේ, අඩකට කැපූ ඉරි සහිත එළබටු ස්වල්පයක්",
+   "ta": "கரும் புளிக் குழம்பில், இரண்டாகப் பிளந்த கோடுபோட்ட காய்கள் ஒரு சிறு கரண்டி"
+  }
+ },
+ "yield_g": 640,
+ "ingredients": [
+  {
+   "ref": "pantry_elabatu",
+   "label": {
+    "en": "elabatu berries",
+    "si": "එළබටු",
+    "ta": "எலபட்டு காய்"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 cups of berries",
+   "preparation": {
+    "en": "stalks removed, halved, held in salted water",
+    "si": "පොහොට්ටු ඉවත් කර අඩකට කපා, ලුණු වතුරේ තබා",
+    "ta": "காம்பை நீக்கி இரண்டாகப் பிளந்து, உப்பு நீரில் வைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "මිරිස් කරල්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "4 or 5 chillies",
+   "preparation": {
+    "en": "broken up",
+    "si": "කැබලිවලට කඩා",
+    "ta": "துண்டுகளாக உடைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 small pieces",
+   "preparation": {
+    "en": "soaked in a little hot water",
+    "si": "රස්නෙ වතුර ස්වල්පයක දමා",
+    "ta": "கொஞ்சம் சூடான நீரில் ஊறவைத்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදු ළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 or 3 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "தட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup and a little more",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pull the stalks off the elabatu, halve each berry and keep them in salted water; this also takes a little of the bitterness away.",
+    "minutes": 12
+   },
+   {
+    "text": "Soak the gorakka pieces in a few spoons of hot water so they soften and give up their sourness.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in the pot and fry the onion, garlic, broken dried chillies and curry leaves until the onion browns at the edges.",
+    "minutes": 5
+   },
+   {
+    "text": "Lower the flame and stir in the roasted curry powder and turmeric for a few seconds.",
+    "minutes": 1
+   },
+   {
+    "text": "Drain the berries, add them and turn them in the spices until the cut faces are coated.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk, the gorakka with its soaking water and the salt, cover and simmer until the berries are soft and the gravy has darkened.",
+    "minutes": 15
+   },
+   {
+    "text": "Add the thick milk, bring it to one bubble and take the pot off the fire; the sourness settles as it stands.",
+    "minutes": 3
+   }
+  ],
+  "si": [
+   {
+    "text": "එළබටුවල පොහොට්ටු ගලවා, එක එක ගෙඩිය අඩකට කපා, ලුණු වතුරේ තබන්න; එයින් තිත්ත ගතියෙන් ටිකකුත් අඩු වෙනවා.",
+    "minutes": 12
+   },
+   {
+    "text": "ගොරකා කැබලි රස්නෙ වතුර හැඳි කීපයක පොඟවන්න; එවිට මෘදු වී ඇඹුල් රස නිකුත් වෙනවා.",
+    "minutes": 10
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, ළූණු, සුදු ළූණු, කඩාගත් මිරිස් කරල් සහ කරපිංචා, ළූණු දාරවලින් දුඹුරු වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගිනි අඩු කර බැදපු තුනපහ සහ කහ තත්පර කීපයක් කලවම් කරන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "බටු වතුරෙන් ඉවත් කර දමා, කැපූ මුහුණත්වලට කුළුබඩු වදින තුරු පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තුනී පොල් කිරි, ගොරකා එහි පොඟවූ වතුරත් සමඟ සහ ලුණු දමා, වසා, බටු මෘදු වී හොදිය තද පාට වන තුරු තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ඝන කිරි දමා එක් උතුරක් එන්න දී මුට්ටිය ලිපෙන් ඉවතට ගන්න; තියෙන්න තියෙන්න ඇඹුල් රස සමතුලිත වෙනවා.",
+    "minutes": 3
+   }
+  ],
+  "ta": [
+   {
+    "text": "எலபட்டுக் காய்களின் காம்பை நீக்கி, ஒவ்வொன்றையும் இரண்டாகப் பிளந்து உப்பு நீரில் வைக்கவும்; இதனால் கசப்பும் கொஞ்சம் குறையும்.",
+    "minutes": 12
+   },
+   {
+    "text": "கொடுக்காய்ப்புளித் துண்டுகளைச் சில கரண்டி சூடான நீரில் ஊறவைக்கவும்; மென்மையாகி புளிப்பு வெளிவரும்.",
+    "minutes": 10
+   },
+   {
+    "text": "சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலை சேர்த்து வெங்காயத்தின் ஓரங்கள் பழுப்பாகும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தீயைக் குறைத்து வறுத்த கறி மசாலாவும் மஞ்சளும் சேர்த்து சில நொடிகள் கிளறவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "காய்களை வடித்துச் சேர்த்து, வெட்டிய பகுதிகளில் மசாலா படும் வரை புரட்டவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப்பால், ஊறிய கொடுக்காய்ப்புளி அதன் நீருடன், உப்பு சேர்த்து மூடி, காய்கள் மென்மையாகி குழம்பு கறுக்கும் வரை கொதிக்க விடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "தடித்த பாலைச் சேர்த்து ஒரு கொதி வந்ததும் சட்டியை இறக்கவும்; நேரம் செல்லச் செல்ல புளிப்பு சமநிலைக்கு வரும்.",
+    "minutes": 3
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or pan with a lid"
+ ],
+ "tips": {
+  "en": "Gorakka and elabatu belong together; the sourness is what carries the bitterness, so do not leave it out and do not replace it with tamarind, which is milder. Cook it long enough for the halves to go soft, because half-cooked elabatu is unpleasantly bitter.",
+  "si": "ගොරකා සහ එළබටු එකට යන දේවල්; තිත්ත ගතිය දරාගන්නේ ඇඹුල් රසය නිසා, ඒක අත් නොහරින්න, සියඹලා දාලා මාරු කරන්නත් එපා, ඒක මෘදුයි. අඩක් උයපු එළබටු අප්‍රසන්න තිත්තයි, ඒ නිසා කැබලි මෘදු වන තුරු ඉවසිලිවන්තව උයන්න.",
+  "ta": "கொடுக்காய்ப்புளியும் எலபட்டுவும் ஒன்றுக்கொன்று பொருந்துவை; கசப்பைத் தாங்குவது புளிப்பே, எனவே அதை விட வேண்டாம், மிருதுவான புளியால் மாற்றவும் வேண்டாம். பாதி வெந்த எலபட்டு கசப்பாக இருக்கும், எனவே துண்டுகள் மென்மையாகும் வரை பொறுமையாகச் சமைக்கவும்."
+ },
+ "health_note": {
+  "en": "Elabatu is a village vegetable with plenty of fibre and almost no calories, and its bitterness is the reason older people in the household ask for it with rice. Bitter vegetables suit a rice-heavy plate, though nothing in the pot replaces medicine.",
+  "si": "එළබටු කියන්නේ තන්තු බහුල, කැලරි පාහේ නැති ගම් එළවළුවක්; එහි තිත්ත රස නිසාම ගෙදර වැඩිහිටියෝ බත් එක්ක මේක අහනවා. තිත්ත එළවළු බත් වැඩි පිඟානකට හොඳයි, නමුත් මුට්ටියේ තියෙන කිසි දෙයක් බෙහෙතක් වෙනුවට යන්නේ නැහැ.",
+  "ta": "எலபட்டு நார்ச்சத்து நிறைந்த, கலோரி ஏறக்குறைய இல்லாத கிராமத்துக் காய்; அதன் கசப்பே வீட்டு முதியவர்கள் சாதத்துடன் இதைக் கேட்பதற்குக் காரணம். கசப்புக் காய்கள் சாதம் அதிகமான தட்டுக்கு ஏற்றவை, ஆனால் சட்டியில் உள்ள எதுவும் மருந்துக்குப் பதிலாகாது."
+ },
+ "tags": [
+  "high_fibre",
+  "low_calorie",
+  "budget",
+  "elderly_friendly",
+  "diabetic_friendly",
+  "traditional_remedy"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

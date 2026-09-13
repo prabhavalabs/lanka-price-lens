@@ -1,0 +1,381 @@
+{
+ "id": "dish_ghee_rice",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 315,
+  "description": {
+   "en": "A mound of yellow ghee rice beside a dark meat curry",
+   "si": "තද කරියක් සමඟ කහ පැහැති ගිතෙල් බත් ගොඩක්",
+   "ta": "கருமையான இறைச்சிக் கறியுடன் ஒரு குவியல் மஞ்சள் நெய் சோறு"
+  }
+ },
+ "yield_g": 1260,
+ "ingredients": [
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed and drained",
+    "si": "සෝදා වතුර බේරාගත්",
+    "ta": "கழுவி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_ghee",
+   "label": {
+    "en": "ghee",
+    "si": "ගිතෙල්",
+    "ta": "நெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 and a half large onions",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 small sticks",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom pods",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "4 pods",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "cashew nuts",
+    "si": "කජු",
+    "ta": "முந்திரி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_raisins",
+   "label": {
+    "en": "raisins",
+    "si": "මුද්දරප්පලම්",
+    "ta": "உலர் திராட்சை"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "pantry_stock",
+   "label": {
+    "en": "meat stock or leftover curry gravy",
+    "si": "මස් හොද්ද හෝ ඉතිරි වූ කරි හොද්ද",
+    "ta": "இறைச்சிக் குழம்பு அல்லது மீதமான கறிக் குழம்பு"
+   },
+   "quantity": 700,
+   "unit": "ml",
+   "household": "3 and a half cups of chicken stock",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the rice well, soak it for fifteen minutes and drain it until the grains are dry to the touch.",
+    "minutes": 15
+   },
+   {
+    "text": "Melt the butter with the ghee in a heavy pot and fry the cashew until it is pale gold, then lift it out.",
+    "minutes": 3
+   },
+   {
+    "text": "Fry the sliced onion in the same fat until most of it is golden brown, keeping a spoonful back for the top.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the cinnamon, cardamom, cloves, pandan leaf and curry leaves and let them crackle in the fat.",
+    "minutes": 1
+   },
+   {
+    "text": "Tip in the drained rice and turn it gently in the fat until every grain is coated and shining.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in the hot stock with the salt and pepper and bring it to a strong boil.",
+    "minutes": 4
+   },
+   {
+    "text": "Cover it, drop the flame right down and let the rice steam without being touched.",
+    "minutes": 15
+   },
+   {
+    "text": "Turn the fire off and leave the pot sealed so the grains separate.",
+    "minutes": 10
+   },
+   {
+    "text": "Fork it up from the bottom, scatter the fried cashew, raisins and reserved onion over it and serve with a dark chicken or mutton curry.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "සහල් හොඳින් සෝදා විනාඩි පහළොවක් පොඟවා, ඇට අතට වියළි දැනෙන තුරු වතුර බේරාගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ඝන පතුලක් ඇති භාජනයක බටර් හා ගිතෙල් දිය කර, කජු ලා රන්වන් වන තුරු බැද ගොඩට ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "එම තෙලේම කපාගත් ලූනු වැඩි කොටසක් රන් දුඹුරු වන තුරු බැද, ඉහළට දැමීමට හැන්දක් තබාගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කුරුඳු, එනසාල්, කරාබුනැටි, රම්පෙ සහ කරපිංචා දමා, තෙලේ පිපිරෙන්නට හරින්න.",
+    "minutes": 1
+   },
+   {
+    "text": "වතුර බේරාගත් සහල් දමා, සෑම ඇටයක්ම තෙල් තැවරී දිලිසෙන තුරු සැහැල්ලුවෙන් පෙරළන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "උණුසුම් හොද්ද, ලුණු සහ ගම්මිරිස් සමඟ වත් කර තදින් නටවන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "වසා ගින්දර හොඳින් අඩු කර, අත නොතබා බත වාෂ්පයෙන් තැම්බෙන්නට හරින්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ගින්දර නිවා, ඇට වෙන් වන ලෙස භාජනය වසා තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පතුලේ සිට ලිහා, බැදගත් කජු, මුද්දරප්පලම් සහ තබාගත් ලූනු ඉහළින් විසුරුවා, තද කුකුල් මස් හෝ එළු මස් කරියක් සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "அரிசியை நன்கு கழுவி பதினைந்து நிமிடம் ஊறவைத்து, அரிசி கைக்கு உலர்ந்து தெரியும்வரை வடிக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "தடித்த அடிப்பாகம் உள்ள பாத்திரத்தில் வெண்ணெயையும் நெய்யையும் உருக்கி, முந்திரியை வெளிர் பொன்னிறமாகும்வரை வறுத்து எடுக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "அதே கொழுப்பில் நறுக்கிய வெங்காயத்தை பெரும்பாலும் பொன்னிறமாகும்வரை வறுத்து, மேலே தூவ ஒரு கரண்டி எடுத்து வைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "இலவங்கப்பட்டை, ஏலக்காய், கிராம்பு, ரம்பை, கறிவேப்பிலை சேர்த்து, கொழுப்பில் வெடிக்கவிடவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "வடித்த அரிசியைச் சேர்த்து, ஒவ்வொரு அரிசியும் கொழுப்பில் தோய்ந்து பளபளக்கும்வரை மெதுவாகப் புரட்டவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சூடான குழம்பை உப்பு, மிளகுடன் ஊற்றி நன்கு கொதிக்கவைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "மூடி தீயை நன்கு குறைத்து, தொடாமல் சாதத்தை ஆவியில் வேகவிடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "தீயை அணைத்து, அரிசி பிரிவதற்கு பாத்திரத்தை மூடி வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அடியிலிருந்து உதிர்த்து, வறுத்த முந்திரி, உலர் திராட்சை, ஒதுக்கிய வெங்காயத்தை மேலே தூவி, கருமையான கோழி அல்லது ஆட்டிறைச்சிக் கறியுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 35,
+  "passive_minutes": 25
+ },
+ "equipment": [
+  "heavy pot with tight lid",
+  "flat spoon"
+ ],
+ "tips": {
+  "en": "Coating the drained rice in the fat before the stock goes in is what keeps the grains separate; if you have no stock, water with a crushed clove of garlic will do.",
+  "si": "හොද්ද දැමීමට පෙර වතුර බේරූ සහල් තෙලේ පෙරළීම තමයි ඇට වෙන් වෙන්ව තබන්නේ; හොද්ද නැත්නම් තලාගත් සුදුළූනු කරාබුවක් සමඟ වතුරද ප්‍රමාණවත්.",
+  "ta": "குழம்பு சேர்ப்பதற்கு முன் வடித்த அரிசியை கொழுப்பில் புரட்டுவதுதான் அரிசியை பிரிந்திருக்க வைக்கிறது; குழம்பு இல்லையென்றால் நசுக்கிய ஒரு பூண்டு பல்லுடன் தண்ணீரும் போதும்."
+ },
+ "health_note": {
+  "en": "Butter, ghee and fried cashew make this a rich plate, so it belongs with guests rather than every day; serve it with a vegetable curry and a raita to lighten the meal.",
+  "si": "බටර්, ගිතෙල් සහ බැදගත් කජු නිසා මෙය පොහොසත් පිඟානක් වන බැවින් දිනපතා නොව අමුත්තන් සඳහා සුදුසුයි; එළවළු කරියක් සහ රයිටා සමඟ බෙදීමෙන් කෑම සැහැල්ලු වේ.",
+  "ta": "வெண்ணெய், நெய், வறுத்த முந்திரி இதை செழிப்பான தட்டாக்குகின்றன, எனவே இது தினமும் அல்லாமல் விருந்தாளிகளுக்கு ஏற்றது; காய்கறிக் கறியும் ரைத்தாவும் சேர்த்துப் பரிமாறினால் உணவு இலகுவாகும்."
+ },
+ "tags": [
+  "festive",
+  "filling",
+  "comfort",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

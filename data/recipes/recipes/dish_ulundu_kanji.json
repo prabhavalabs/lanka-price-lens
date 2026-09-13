@@ -1,0 +1,279 @@
+{
+ "id": "dish_ulundu_kanji",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 275,
+  "description": {
+   "en": "A thick warm cup, sweet, drunk slowly",
+   "si": "හෙමින් බොන ඝන උණුසුම් පැණි රස කෝප්පයක්",
+   "ta": "மெதுவாகக் குடிக்கும் கெட்டியான, சூடான, இனிப்பு கோப்பை"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "pantry_urad_dhal",
+   "label": {
+    "en": "black gram, ulundu",
+    "si": "උඳු",
+    "ta": "உளுந்து"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "soaked two hours, then ground coarse",
+    "si": "පැය දෙකක් පොඟවා රළු ලෙස අඹරාගත්",
+    "ta": "இரண்டு மணி நேரம் ஊறவைத்து கரகரப்பாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_rice_raw_white",
+   "label": {
+    "en": "raw rice",
+    "si": "අමු සහල්",
+    "ta": "பச்சை அரிசி"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "a third of a cup",
+   "preparation": {
+    "en": "soaked with the gram and ground with it",
+    "si": "උඳු සමඟ පොඟවා එකට අඹරාගත්",
+    "ta": "உளுந்துடன் ஊறவைத்து சேர்த்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "palmyrah jaggery",
+    "si": "තල් හකුරු",
+    "ta": "பனை வெல்லம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "2 lumps",
+   "preparation": {
+    "en": "melted in a little water and strained",
+    "si": "වතුර ටිකකින් දිය කර පෙරාගත්",
+    "ta": "சிறிது நீரில் கரைத்து வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, crushed",
+   "preparation": {
+    "en": "crushed fine",
+    "si": "සිහින්ව පොඩි කරගත්",
+    "ta": "நைசாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the black gram and the raw rice together and leave them to soak in plenty of water.",
+    "minutes": 120
+   },
+   {
+    "text": "Drain them and grind them to a coarse, gritty batter with about 200 ml of water; it should not be as smooth as a vadai batter.",
+    "minutes": 10
+   },
+   {
+    "text": "Melt the palmyrah jaggery in 100 ml of water over a low fire and strain it through a cloth to take out the sand and bark.",
+    "minutes": 5
+   },
+   {
+    "text": "Bring 600 ml of water to the boil in a heavy pot with the pinch of salt.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour the ground batter into the boiling water slowly, stirring hard all the time so no lumps form.",
+    "minutes": 3
+   },
+   {
+    "text": "Cook on a low fire, stirring often and scraping the bottom, until the raw smell of the gram is gone and the kanji has thickened.",
+    "minutes": 20
+   },
+   {
+    "text": "Stir in the strained jaggery syrup and the crushed cardamom and cook two minutes more.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thick coconut milk, let it come just to steaming and take the pot off the fire before it boils.",
+    "minutes": 2
+   },
+   {
+    "text": "Serve warm in cups; it sets as it cools, so loosen it with hot water if it stands.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "උඳු සහ අමු සහල් එකට සෝදා, ඕනෑ තරම් වතුරේ පොඟවන්නට තබන්න.",
+    "minutes": 120
+   },
+   {
+    "text": "වතුර බේරාගෙන, මිලිලීටර් 200ක වතුරක් සමඟ රළු, කැටි ගතියක් ඇති මාවක් වන තුරු අඹරන්න; වඩේ මාව තරම් සිනිඳු නොවිය යුතුයි.",
+    "minutes": 10
+   },
+   {
+    "text": "තල් හකුරු මිලිලීටර් 100ක වතුරේ අඩු ගින්නේ දිය කර, වැලි සහ පොතු ඉවත් වන ලෙස රෙද්දකින් පෙරාගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බර බඳුනක මිලිලීටර් 600ක් වතුර, ලුණු ටිකක් සමඟ උතුරන්න තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අඹරාගත් මාව උතුරන වතුරට හෙමින් වත් කරමින්, ගැටි නොවදින ලෙස දිගටම තදින් කලතන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "අඩු ගින්නේ, විටින් විට කලතමින් සහ පත්ල හෑරමින්, උඳුවල අමු සුවඳ නැති වී කැඳ ඝන වන තුරු තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පෙරාගත් හකුරු පැණිය සහ පොඩි කළ එනසාල් දමා තව මිනිත්තු දෙකක් තම්බන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඝන පොල් කිරි වත් කර, හුමාලය නගින තැනට පමණක් ගෙන, උතුරන්නට පෙර බඳුන ලිපෙන් බාගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කෝප්පවලින් උණුසුම්ව බෙදන්න; සිසිල් වන විට තද වන නිසා, තිබුණොත් උණු වතුරෙන් තුනී කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "உளுந்தையும் பச்சை அரிசியையும் சேர்த்து அலசி, நிறைய நீரில் ஊற வைக்கவும்.",
+    "minutes": 120
+   },
+   {
+    "text": "நீரை வடித்து, சுமார் 200 மில்லி நீரோடு கரகரப்பான மாவாக அரைக்கவும்; வடை மாவு அளவுக்கு நைசாக இருக்கக் கூடாது.",
+    "minutes": 10
+   },
+   {
+    "text": "பனை வெல்லத்தை 100 மில்லி நீரில் குறைந்த தீயில் கரைத்து, மணலும் பட்டையும் போக ஒரு துணியில் வடிகட்டவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "கனமான பாத்திரத்தில் 600 மில்லி நீரை, ஒரு சிட்டிகை உப்புடன் கொதிக்க வைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "அரைத்த மாவை கொதிக்கும் நீரில் மெதுவாக ஊற்றியபடி, கட்டி விழாமல் இருக்க தொடர்ந்து வேகமாகக் கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "குறைந்த தீயில், அடிக்கடி கிளறி அடிப்பகுதியைச் சுரண்டியபடி, உளுந்தின் பச்சை வாசம் போய் கஞ்சி கெட்டியாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "வடிகட்டிய வெல்லப் பாகையும் இடித்த ஏலக்காயையும் சேர்த்து இரண்டு நிமிடம் மேலும் வேகவிடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலை ஊற்றி, ஆவி வரும் நிலைக்கு மட்டும் கொண்டுவந்து, கொதிப்பதற்கு முன் பாத்திரத்தை இறக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கோப்பைகளில் சூடாகப் பரிமாறவும்; ஆறும்போது இறுகும், எனவே வைத்திருந்தால் சூடான நீரில் நீர்க்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 30,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "grinder or grinding stone",
+  "heavy pot",
+  "straining cloth",
+  "long spoon"
+ ],
+ "tips": {
+  "en": "Grind it coarse and not to a paste; the slight grit is what makes this a kanji you can feel on the tongue instead of a smooth gruel. Stand at the pot and keep scraping the bottom, because ground gram catches and burns faster than rice does.",
+  "si": "පේස්ට් එකක් නොව රළුවට අඹරන්න; දිවට දැනෙන කැටි ගතිය තමයි මේක සිනිඳු ගුලියක් නොව කැඳක් කරන්නේ. බඳුන ළඟ සිටගෙන පත්ල දිගටම හෑරන්න, අඹරාගත් උඳු බත්වලට වඩා ඉක්මනින් අල්ලා පිළිස්සේ.",
+  "ta": "பேஸ்ட்டாக அல்ல, கரகரப்பாக அரைக்கவும்; நாக்கில் தெரியும் அந்தச் சிறு கரகரப்பே இதை மென்மையான கூழாக அல்லாமல் கஞ்சியாக ஆக்குகிறது. பாத்திரத்தின் அருகே நின்று அடியைத் தொடர்ந்து சுரண்டுங்கள், அரைத்த உளுந்து அரிசியை விட விரைவாகப் பிடித்துக் கருகும்."
+ },
+ "health_note": {
+  "en": "Black gram is one of the better plant proteins in the shop and brings iron and calcium with it, which is why this cup goes to new mothers and to anyone who has been ill. Two lumps of jaggery and a cup and a half of thick coconut milk make it a heavy drink, so one cup is a serving and it stands in for a meal rather than adding to one.",
+  "si": "කඩේ ඇති හොඳම ශාක ප්‍රෝටීන් අතර උඳු එකක්, ඒ සමඟ යකඩ සහ කැල්සියම් ලැබේ; අලුත් මව්වරුන්ට සහ අසනීප වූ අයට මේ කෝප්පය දෙන්නේ ඒ නිසයි. හකුරු කැට දෙකක් සහ ඝන පොල් කිරි කෝප්පයක් හමාරක් නිසා මේක බර බීමක්, එබැවින් කෝප්පයක් එක වේලකට සෑහේ; එය කෑමකට එකතු වන්නේ නොව කෑමක් වෙනුවට යන එකකි.",
+  "ta": "கடையில் கிடைக்கும் சிறந்த தாவரப் புரதங்களில் உளுந்து ஒன்று, அதனுடன் இரும்பும் கால்சியமும் வருகிறது; அதனால்தான் இந்தக் கோப்பை பேறுகாலத் தாய்மார்களுக்கும், நோய் வாய்ப்பட்டவர்களுக்கும் கொடுக்கப்படுகிறது. இரண்டு வெல்லத் துண்டும் ஒன்றரை கோப்பை கெட்டியான தேங்காய்ப் பாலும் இதைக் கனமான பானமாக்குகின்றன, எனவே ஒரு கோப்பையே ஒரு பங்கு; இது உணவுடன் சேர்வதல்ல, உணவுக்குப் பதிலாக வருவது."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "calcium_rich",
+  "high_fibre",
+  "filling",
+  "comfort",
+  "high_sugar",
+  "traditional_remedy"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

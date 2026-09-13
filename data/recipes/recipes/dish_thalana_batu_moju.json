@@ -1,0 +1,340 @@
+{
+ "id": "dish_thalana_batu_moju",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 95,
+  "description": {
+   "en": "A small mound of sweet-sour moju on the side of the plate",
+   "si": "පිඟානේ කෙළවරේ පැණි-ඇඹුල් මෝජු කුඩා ගොඩක්",
+   "ta": "தட்டின் ஓரத்தில் இனிப்பு-புளிப்பு மோஜு ஒரு சிறு அளவு"
+  }
+ },
+ "yield_g": 380,
+ "ingredients": [
+  {
+   "ref": "product_thalana_batu",
+   "label": {
+    "en": "thalana batu, small wild brinjals",
+    "si": "තලන බටු",
+    "ta": "தலன பட்டு, சிறு கத்தரி"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "3 cups of small brinjals",
+   "preparation": {
+    "en": "stalks removed, pricked with a fork",
+    "si": "නටු ඉවත් කර ගාරුප්පුවකින් සිදුරු කළ",
+    "ta": "தண்டுகளை நீக்கி முள்ளால் குத்திய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "piece",
+   "household": "6 chillies",
+   "preparation": {
+    "en": "slit lengthways",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "ground with the vinegar into a dressing",
+    "si": "විනාකිරි සමඟ අඹරාගත්",
+    "ta": "வினிகருடன் அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 1/2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "4 tbsp, for frying",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the thalana batu, pinch the stalks off and wipe them dry; wet ones spit in hot oil.",
+    "minutes": 10
+   },
+   {
+    "text": "Prick each one once with a fork so it does not burst while frying.",
+    "minutes": 5
+   },
+   {
+    "text": "Grind the mustard seeds with the vinegar, turmeric, chilli powder, sugar and salt into a thin dressing.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a deep pan and fry the batu in batches until the skins blister and go brown.",
+    "minutes": 12
+   },
+   {
+    "text": "Lift them onto paper, then fry the sliced big onion, slit green chillies and curry leaves in the same oil until they soften.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour most of the oil out of the pan, put everything back in and pour the mustard dressing over.",
+    "minutes": null
+   },
+   {
+    "text": "Cook on a low fire, turning, until the dressing clings to the batu and smells of vinegar rather than raw mustard.",
+    "minutes": 8
+   },
+   {
+    "text": "Cool it completely before storing; in a clean dry jar it keeps four or five days without a fridge.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තලන බටු සෝදා, නටු ගලවා, පිස වියළා ගන්න; තෙත් ඒවා රත් තෙලේ පනියි.",
+    "minutes": 10
+   },
+   {
+    "text": "බැදෙන විට පුපුරා නොයන ලෙස එක් එක් ගෙඩිය ගාරුප්පුවකින් එක් වරක් සිදුරු කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අබ, විනාකිරි, කහ, මිරිස් කුඩු, සීනි සහ ලුණු සමඟ අඹරා තුනී සෝස් එකක් සාදා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගැඹුරු පෑන් එකක පොල් තෙල් රත් කර, බටු කොටස් වශයෙන් ලෙලි පිපිරී දුඹුරු වන තුරු බදින්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඒවා කඩදාසියකට ගෙන, එම තෙලේම කපාගත් ලොකු ලූනු, පලාගත් අමු මිරිස් සහ කරපිංචා මෘදු වන තුරු බදින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් එකේ තෙල් වැඩි කොටසක් බැහැර කර, සියල්ල නැවත දමා, අබ සෝස් එක වත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "අඩු ගින්නේ පෙරළමින්, සෝස් එක බටුවලට තැවරී අමු අබ ගඳ නැති වී විනාකිරි සුවඳක් එන තුරු උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගබඩා කිරීමට පෙර සම්පූර්ණයෙන් නිවෙන්න දෙන්න; පිරිසිදු වියළි බෝතලයක ශීතකරණයක් නැතිව දින හතරක් පහක් තිබේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தலன பட்டுவைக் கழுவி, தண்டுகளை நீக்கி, துடைத்து உலர வையுங்கள்; ஈரமானவை சூடான எண்ணெயில் தெறிக்கும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வறுக்கும் போது வெடிக்காமல் இருக்க ஒவ்வொன்றையும் முள்ளால் ஒருமுறை குத்துங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கடுகை வினிகர், மஞ்சள், மிளகாய்த் தூள், சீனி, உப்புடன் சேர்த்து அரைத்து நீர்த்த கலவையாக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஆழமான சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, பட்டுவை சிறிது சிறிதாகத் தோல் கொப்புளித்து பழுப்பாகும் வரை வறுக்குங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "அவற்றைத் தாளில் எடுத்துவிட்டு, அதே எண்ணெயில் நறுக்கிய பெரிய வெங்காயம், கீறிய பச்சை மிளகாய், கறிவேப்பிலையை மிருதுவாகும் வரை வறுக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "சட்டியில் உள்ள எண்ணெயில் பெரும்பகுதியை ஊற்றிவிட்டு, எல்லாவற்றையும் மீண்டும் போட்டு, கடுகுக் கலவையை ஊற்றுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "குறைந்த தீயில் புரட்டியபடி, கலவை பட்டுவில் ஒட்டி, பச்சைக் கடுகு வாசனை போய் வினிகர் மணம் வரும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சேமிக்கும் முன் முழுவதுமாக ஆறவிடுங்கள்; சுத்தமான உலர்ந்த ஜாடியில் குளிர்சாதனப் பெட்டி இல்லாமலே நான்கைந்து நாள் இருக்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "deep pan for frying",
+  "grinding stone or small blender",
+  "clean dry jar"
+ ],
+ "tips": {
+  "en": "Keep the oil properly hot and fry in small batches; crowded batu steam instead of frying and go soft. Taste the dressing before it goes in, because the sugar and vinegar must balance while it is cold.",
+  "si": "තෙල් හොඳින් රත් කර, කුඩා කොටස් වශයෙන් බදින්න; පෑන් එක පිරී ගියොත් බටු බැදෙනවා වෙනුවට තැම්බී මෘදු වේ. සෝස් එක දැමීමට පෙර රස බලන්න; සිසිල්ව තිබියදීම සීනි සහ විනාකිරි සමතුලිත විය යුතුයි.",
+  "ta": "எண்ணெயை நன்கு காயவைத்து, சிறிது சிறிதாக வறுக்குங்கள்; சட்டி நிரம்பினால் பட்டு வறுபடாமல் வெந்து மிருதுவாகிவிடும். கலவையைச் சேர்க்கும் முன் சுவைத்துப் பாருங்கள்; ஆறிய நிலையிலேயே சீனியும் வினிகரும் சமநிலையில் இருக்க வேண்டும்."
+ },
+ "health_note": {
+  "en": "Moju is fried and carries both sugar and salt, so it belongs on the plate as a relish and not as the vegetable of the meal. The batu themselves are full of fibre, and draining the oil well makes a real difference.",
+  "si": "මෝජු බැදපු එකක් වන අතර සීනි සහ ලුණු දෙකම එහි ඇත; එබැවින් එය වේලේ එළවළුව නොව රස කැවිල්ලක් ලෙස පිඟානට එක් වේ. බටුවල තන්තු බහුල අතර, තෙල් හොඳින් බේරා ගැනීමෙන් විශාල වෙනසක් වේ.",
+  "ta": "மோஜு வறுத்தது, சீனியும் உப்பும் சேர்ந்தது; எனவே இது உணவின் காய்கறியாக அல்லாமல் தொட்டுக்கொள்ளும் பக்க உணவாகவே தட்டில் இடம்பெற வேண்டும். பட்டுவில் நார்ச்சத்து நிறைய உண்டு, எண்ணெயை நன்கு வடித்தால் பெரிய வித்தியாசம் தெரியும்."
+ },
+ "tags": [
+  "deep_fried",
+  "festive",
+  "budget",
+  "comfort",
+  "high_fibre"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,389 @@
+{
+ "id": "dish_chicken_soup",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 300,
+  "description": {
+   "en": "A hot cup of peppery broth before dinner or for someone unwell",
+   "si": "රාත්‍රී කෑමට පෙර හෝ අසනීප කෙනෙකුට දෙන ගම්මිරිස් රසැති උණුසුම් සුප් කෝප්පයක්",
+   "ta": "இரவு உணவுக்கு முன் அல்லது உடல்நலம் குன்றியவருக்கு ஒரு சூடான மிளகுச் சூப் கோப்பை"
+  }
+ },
+ "yield_g": 1200,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken, bony pieces and bones",
+    "si": "කුකුල් මස්, ඇට සහිත කැබලි",
+    "ta": "கோழி இறைச்சி, எலும்புள்ள துண்டுகள்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "wings, neck and back pieces",
+   "preparation": {
+    "en": "washed, skin taken off",
+    "si": "සෝදා හම ඉවත් කර ගත්",
+    "ta": "அலசி தோல் நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "half sliced for the stock, half diced",
+    "si": "බාගයක් සුප් එකට කපා, බාගයක් කැට කපා ගත්",
+    "ta": "பாதி சூப்புக்கு நறுக்கி, பாதி சிறு துண்டுகளாக"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp, cracked",
+   "preparation": {
+    "en": "coarsely cracked",
+    "si": "රළු ලෙස තලා ගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "காரட்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large carrot",
+   "preparation": {
+    "en": "diced small",
+    "si": "කුඩා කැට කපා ගත්",
+    "ta": "சிறு துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 stalk",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_celery",
+   "label": {
+    "en": "celery",
+    "si": "සැලරි",
+    "ta": "செலரி"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "1 stick",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 cloves",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cornflour",
+   "label": {
+    "en": "cornflour",
+    "si": "ඉරිඟු පිටි",
+    "ta": "சோள மாவு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp, only if you want it thicker",
+   "preparation": {
+    "en": "slaked in cold water",
+    "si": "සිසිල් වතුරේ දිය කර ගත්",
+    "ta": "குளிர்ந்த நீரில் கரைத்தது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the bony chicken pieces, take the skin off and put them in a pot with one and a half litres of cold water.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it slowly to a boil and lift off the grey foam that gathers on top with a spoon, which is what keeps the broth clear.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the crushed garlic, sliced ginger, cloves, cracked pepper and the sliced half of the onion, and simmer with the lid ajar.",
+    "minutes": 25
+   },
+   {
+    "text": "Lift out the chicken, pull the meat off the bones while it is warm and return the meat to the pot; throw the bones away.",
+    "minutes": null
+   },
+   {
+    "text": "Put in the diced carrot, leeks, celery and the diced onion.",
+    "minutes": null
+   },
+   {
+    "text": "Cook until the vegetables are soft but still holding their shape.",
+    "minutes": 8
+   },
+   {
+    "text": "If you want the thicker soup children like, stir in the slaked cornflour and let it boil once.",
+    "minutes": 2
+   },
+   {
+    "text": "Season with salt and more cracked pepper; the pepper should be felt at the back of the throat rather than on the tongue.",
+    "minutes": null
+   },
+   {
+    "text": "Scatter the coriander leaves and serve hot in cups, with bread on the side.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ඇට සහිත කුකුල් මස් කැබලි සෝදා හම ඉවත් කර, ලීටර් එකහමාරක සිසිල් වතුර සමග වළඳකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෙමින් උතුරවා, මතුපිටට එන අළු පැහැති පෙණ හැන්දකින් ඉවත් කරන්න; සුප් පැහැදිලිව තියෙන්නේ ඒකෙන්.",
+    "minutes": 10
+   },
+   {
+    "text": "තලා ගත් සුදුළූණු, කපා ගත් ඉඟුරු, කරාබුනැටි, තලා ගත් ගම්මිරිස් සහ කපා ගත් ළූණු බාගය දමා, වැහුම මඳක් ඇර උයන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "මස් ඉවතට ගෙන, උණුසුම් අතරේ ඇටවලින් මස් ගලවා නැවත වළඳට දමන්න; ඇට ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැට කපා ගත් කැරට්, ලීක්ස්, සැලරි සහ ඉතිරි ළූණු දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එළවළු මෘදු වී නමුත් හැඩය තවමත් තියෙන තුරු උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ළමයින් ප්‍රිය කරන තරමට ගන සුප් එකක් ඕන නම් දිය කර ගත් ඉරිඟු පිටි දමා වරක් උතුරවන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලුණු සහ තව ගම්මිරිස් දමා රස කරන්න; ගම්මිරිස් දැනිය යුත්තේ දිව මතට නොව උගුරේ පිටුපසටයි.",
+    "minutes": null
+   },
+   {
+    "text": "කොත්තමල්ලි කොළ විසුරුවා, පාන් සමග කෝප්පවලින් උණුසුමින් පිළිගන්වන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "எலும்புள்ள கோழித் துண்டுகளை அலசி தோலை நீக்கி, ஒன்றரை லீட்டர் குளிர்ந்த நீருடன் பாத்திரத்தில் இடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மெதுவாகக் கொதிக்கவிட்டு, மேலே சேரும் சாம்பல் நுரையைக் கரண்டியால் நீக்குங்கள்; சூப் தெளிவாக இருக்க அதுவே காரணம்.",
+    "minutes": 10
+   },
+   {
+    "text": "இடித்த பூண்டு, நறுக்கிய இஞ்சி, கிராம்பு, இடித்த மிளகு, நறுக்கிய பாதி வெங்காயம் சேர்த்து, மூடியை சிறிது திறந்து வேகவிடுங்கள்.",
+    "minutes": 25
+   },
+   {
+    "text": "கோழியை எடுத்து, சூடாக இருக்கும்போதே எலும்பிலிருந்து இறைச்சியைப் பிரித்து மீண்டும் பாத்திரத்தில் இடுங்கள்; எலும்பை நீக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கிய காரட், லீக்ஸ், செலரி, மீதி வெங்காயத்தைச் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "காய்கறிகள் மென்மையாகி ஆனால் வடிவம் இழக்காமல் இருக்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "பிள்ளைகள் விரும்பும் கெட்டியான சூப் வேண்டுமானால் கரைத்த சோள மாவைச் சேர்த்து ஒரு முறை கொதிக்கவிடுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "உப்பும் மேலும் இடித்த மிளகும் சேர்த்துச் சுவைக்கவும்; மிளகின் காரம் நாக்கில் அல்ல, தொண்டையின் பின்பகுதியில் உணரப்பட வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "கொத்தமல்லி இலையைத் தூவி, பாணுடன் கோப்பையில் சூடாகப் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 45,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "deep pot",
+  "ladle",
+  "skimming spoon"
+ ],
+ "tips": {
+  "en": "Wings, neck and back bones give a far better broth than breast meat, and they cost less. Start in cold water and keep the fire low, because a hard boil makes the soup cloudy.",
+  "si": "පියයුරු මසට වඩා අත්තිකා, බෙල්ල සහ පිටකොන්ද ඇට හොඳ සුප් එකක් දෙනවා, මිලත් අඩුයි. සිසිල් වතුරෙන් පටන් ගෙන ගිනි අඩුවෙන් තියන්න; තදින් උතුරුවීම සුප් අපැහැදිලි කරනවා.",
+  "ta": "மார்பு இறைச்சியை விட இறக்கை, கழுத்து, முதுகு எலும்புகள் மிகச் சிறந்த சூப்பைத் தரும், விலையும் குறைவு. குளிர்ந்த நீரில் ஆரம்பித்து தீயைக் குறைவாக வைக்கவும்; கடுமையாகக் கொதித்தால் சூப் கலங்கலாகும்."
+ },
+ "health_note": {
+  "en": "A light, warming cup that is easy on a weak appetite and puts back some fluid and salt after a fever, with the pepper and ginger giving the familiar comfort of a home remedy. It is low in calories, so it works as a starter rather than a meal unless you add rice or noodles.",
+  "si": "රුචිය අඩු වූ විට පහසුවෙන් ගත හැකි සැහැල්ලු, උණුසුම් කෝප්පයක්; උණකින් පසු දියරත් ලුණුත් නැවත සපයනවා, ගම්මිරිස් සහ ඉඟුරු දෙන ගෙදර බෙහෙතක සැනසීමත් තියෙනවා. කැලරි අඩු නිසා බත් හෝ නූඩ්ල්ස් එකතු නොකළොත් මේක කෑමක් නොව පූර්වාහාරයක්.",
+  "ta": "பசி குறைந்திருக்கும்போது எளிதில் அருந்தக்கூடிய இலகுவான, சூடான கோப்பை; காய்ச்சலுக்குப் பின் நீரையும் உப்பையும் திரும்பத் தரும், மிளகும் இஞ்சியும் வீட்டு மருந்தின் ஆறுதலைத் தரும். கலோரி குறைவு, எனவே சாதம் அல்லது நூடில்ஸ் சேர்க்காவிட்டால் இது உணவாக அல்ல, முன் உணவாகவே இருக்கும்."
+ },
+ "tags": [
+  "light",
+  "low_calorie",
+  "low_carb",
+  "hydrating",
+  "immune_support",
+  "traditional_remedy",
+  "elderly_friendly",
+  "kid_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

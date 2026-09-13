@@ -1,0 +1,338 @@
+{
+ "id": "dish_kadala_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 150,
+  "description": {
+   "en": "A dry, glossy spoonful of chickpeas with browned onion",
+   "si": "දුඹුරු ලූනු සමඟ වියළි, දිලිසෙන කඩල හැන්දක්",
+   "ta": "பொன்னிற வெங்காயத்துடன் உலர்ந்த, மினுங்கும் கடலை ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 600,
+ "ingredients": [
+  {
+   "ref": "product_chickpea",
+   "label": {
+    "en": "dried chickpeas",
+    "si": "කඩල",
+    "ta": "கொண்டைக்கடலை"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "soaked overnight and boiled soft",
+    "si": "රාත්‍රිය පුරා පොඟවා තම්බාගත්",
+    "ta": "இரவு முழுவதும் ஊறவைத்து வேகவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව පෙති කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "broken in half",
+    "si": "දෙකට කඩාගත්",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a small piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කෑලි",
+    "ta": "மிளகாய்த் துகள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_sprats",
+   "label": {
+    "en": "dried sprats",
+    "si": "හාල්මැස්සන්",
+    "ta": "நெத்திலி கருவாடு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "cleaned, heads removed",
+    "si": "සෝදා හිස් ඉවත් කරගත්",
+    "ta": "கழுவி தலை நீக்கியது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Soak the chickpeas overnight in plenty of water.",
+    "minutes": 480
+   },
+   {
+    "text": "Boil them with a pinch of the salt until soft enough to crush, then drain completely and let them steam dry.",
+    "minutes": 30
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and pop the mustard seeds.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the dried sprats if you are using them and fry until they smell toasted.",
+    "minutes": 2
+   },
+   {
+    "text": "Put in the onion, garlic, broken dried chillies, curry leaves and pandan and fry until the onion browns.",
+    "minutes": 5
+   },
+   {
+    "text": "Stir in the chilli flakes and the rest of the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Tip in the drained chickpeas and toss on a high flame until the pan is dry and every chickpea is glossy.",
+    "minutes": 5
+   },
+   {
+    "text": "Serve as a side on the rice plate, or in a bowl with evening tea.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කඩල ප්‍රමාණවත් වතුරේ රාත්‍රිය පුරා පොඟවන්න.",
+    "minutes": 480
+   },
+   {
+    "text": "ලුණු ස්වල්පයක් දමා තැලෙන තරමට මෘදු වන තුරු තම්බා, වතුර මුළුමනින්ම බේරා වේලෙන්නට තබන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "පළල් පෑනක පොල් තෙල් රත් කර අබ පිපිරෙන්නට දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "හාල්මැස්සන් දමනවා නම් දමා, බැදුණු සුවඳ එන තුරු බැදගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලූනු, සුදුළූනු, කැඩූ වියළි මිරිස්, කරපිංචා සහ රම්පෙ දමා ලූනු දුඹුරු වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මිරිස් කෑලි සහ ඉතිරි ලුණු දමා කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර බේරාගත් කඩල දමා, පෑන වේලී සෑම කඩල ඇටයක්ම දිලිසෙන තුරු තද ගින්නේ පෙරළන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බත් පිඟානට ව්‍යංජනයක් ලෙස, නැතහොත් සවස තේ සමඟ බඳුනකින් බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கொண்டைக்கடலையை நிறைய தண்ணீரில் இரவு முழுவதும் ஊற வைக்கவும்.",
+    "minutes": 480
+   },
+   {
+    "text": "சிறிது உப்புடன் நசுங்கும் அளவு மென்மையாகும் வரை வேகவைத்து, தண்ணீரை முழுவதும் வடித்து உலரவிடவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "அகலமான வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து கடுகைப் போட்டு வெடிக்கவிடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "நெத்திலி கருவாடு சேர்ப்பதாக இருந்தால் போட்டு, வாசம் வரும் வரை வதக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "வெங்காயம், பூண்டு, உடைத்த வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை இலை சேர்த்து வெங்காயம் பொன்னிறமாகும் வரை வதக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மிளகாய்த் துகளையும் மீதி உப்பையும் சேர்த்துக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வடித்த கடலையைச் சேர்த்து, வாணலி உலர்ந்து ஒவ்வொரு கடலையும் மினுமினுக்கும் வரை அதிக தணலில் புரட்டவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சாதத் தட்டில் ஒரு சைடாக, அல்லது மாலைத் தேநீருடன் ஒரு கிண்ணத்தில் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 45,
+  "passive_minutes": 480
+ },
+ "equipment": [
+  "pot for boiling",
+  "wide pan"
+ ],
+ "tips": {
+  "en": "The chickpeas must be dry before they meet the oil, otherwise the tempering steams and goes soggy instead of glossy. This is the best use for chickpeas left over from yesterday's boiling.",
+  "si": "තෙල් සමඟ එකතු වීමට පෙර කඩල වියළී තිබිය යුතුයි; නොඑසේ නම් තෙම්පරාදුව හුමාලයට ඉදී දිලිසෙනවා වෙනුවට තෙත් වේ. ඊයේ තම්බා ඉතිරි වූ කඩල සඳහා හොඳම භාවිතය මෙයයි.",
+  "ta": "எண்ணெயில் சேர்ப்பதற்கு முன் கடலை உலர்ந்திருக்க வேண்டும்; இல்லையேல் தாளிப்பு ஆவியில் வெந்து மினுமினுப்பின்றி ஈரமாகிவிடும். நேற்று வேகவைத்து மீதமான கடலைக்கு இதுவே சிறந்த பயன்பாடு."
+ },
+ "health_note": {
+  "en": "A dry tempered chickpea side brings protein and fibre to a rice plate that is otherwise mostly starch, and it fills a child better than a packet of biscuits at four o'clock. The only thing to watch is the oil, since dry frying tempts you to add more.",
+  "si": "පිෂ්ටය වැඩිපුර ඇති බත් පිඟානකට මෙම වියළි කඩල ව්‍යංජනය ප්‍රෝටීන් සහ තන්තු එකතු කරන අතර සවස හතරට බිස්කට් පැකට්ටුවකට වඩා දරුවෙකුට ඇති වේ. සැලකිලිමත් විය යුත්තේ තෙල් ගැන පමණයි; වියළි ලෙස බදින විට තව තෙල් දැමීමට හිත යයි.",
+  "ta": "பெரும்பாலும் மாவுச்சத்தே உள்ள சாதத் தட்டுக்கு இந்த உலர்ந்த கடலைச் சைடு புரதமும் நார்ச்சத்தும் சேர்க்கிறது; மாலை நான்கு மணிக்கு ஒரு பாக்கெட் பிஸ்கட்டைவிட குழந்தைக்கு நிறைவாக இருக்கும். கவனிக்க வேண்டியது எண்ணெய் மட்டுமே, உலர வறுக்கும்போது அதிகம் ஊற்றத் தோன்றும்."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "budget",
+  "filling",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

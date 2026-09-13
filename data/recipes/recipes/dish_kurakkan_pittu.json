@@ -1,0 +1,198 @@
+{
+ "id": "dish_kurakkan_pittu",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 160,
+  "description": {
+   "en": "A crumbled log of dark steamed flour and coconut, eaten with a thin curry",
+   "si": "තුනී හොද්දක් සමඟ කන, කඩා ගත් අඳුරු පිටි හා පොල් පිට්ටු කැබැල්ලක්",
+   "ta": "நீர்க் கறியுடன் சாப்பிடும், உதிர்த்த கருமை நிற மா தேங்காய் புட்டு"
+  }
+ },
+ "yield_g": 640,
+ "ingredients": [
+  {
+   "ref": "pantry_kurakkan_flour",
+   "label": {
+    "en": "finger millet flour",
+    "si": "කුරක්කන් පිටි",
+    "ta": "குரக்கன் மா"
+   },
+   "quantity": 320,
+   "unit": "g",
+   "household": "2 1/2 cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "පෙනේරයෙන් හලා ගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "flesh of half a coconut",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "අලුතින් ගා ගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": {
+    "en": "dissolved in the sprinkling water",
+    "si": "ඉස්නා වතුරේ දිය කර ගත්",
+    "ta": "தெளிக்கும் தண்ணீரில் கரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dry roast the millet flour in a pan on a low flame for a few minutes until it loses its raw smell, then let it cool a little.",
+    "minutes": 5
+   },
+   {
+    "text": "Dissolve the salt in about 180 ml of water and keep it beside you in a cup.",
+    "minutes": null
+   },
+   {
+    "text": "Sprinkle the salted water over the flour a little at a time, rubbing it through your fingers, until the flour holds together when pressed but breaks into crumbs when you open your hand.",
+    "minutes": 8
+   },
+   {
+    "text": "Mix two thirds of the grated coconut through the crumbs, keeping the rest for layering.",
+    "minutes": null
+   },
+   {
+    "text": "Fill the pittu bamboo or steamer loosely, a layer of crumbs then a scatter of coconut, without pressing it down, and set it over a pot of boiling water.",
+    "minutes": null
+   },
+   {
+    "text": "Steam until the flour smells cooked and steam rises freely through the top of the log.",
+    "minutes": 15
+   },
+   {
+    "text": "Push the log out onto a plate with the handle of a spoon and break it into rough pieces while hot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුරක්කන් පිටි අඩු ගින්නේ පෑන් එකක දමා අමු ගඳ යන තුරු මිනිත්තු කිහිපයක් වේළා ගෙන, මදක් සිසිල් වන්නට තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වතුර මිලි ලීටර් 180ක් පමණ ගෙන ලුණු දිය කර කෝප්පයක දමා අත ළඟ තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලුණු වතුර ටිකෙන් ටික පිටි මතට ඉස, ඇඟිලි අතරින් අතුල්ලමින්, තදින් මිරිකූ විට එකට බැඳෙන නමුත් අත ඇරූ විට කැඩී යන තරමට තෙත් කර ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගා ගත් පොල් වලින් තුනෙන් දෙකක් පිටි සමඟ මිශ්‍ර කර, ඉතිරිය තට්ටු අතර දැමීමට තබා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිට්ටු බම්බුව හෝ පිට්ටු භාජනය තදින් නොපුරවා, පිටි තට්ටුවක් පොල් ටිකක් ලෙස පුරවා, නටන වතුර හැළියක් මතට තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිටි පිසුණු සුවඳ නගින තුරු සහ වාෂ්ප ඉහළින් නිදහසේ පිටවන තුරු තැම්බෙන්න දෙන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "හැන්දක මිටෙන් තල්ලු කර පිට්ටු පිඟානකට දමා, උණුසුම්ව තිබෙන විටම කැබලි කර ගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "குரக்கன் மாவை சிறு தீயில் சட்டியில் பச்சை வாசனை போகும் வரை சில நிமிடம் வறுத்து, சற்று குளிரவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "சுமார் 180 மில்லி தண்ணீரில் உப்பைக் கரைத்து ஒரு கோப்பையில் கைக்கு அருகில் வைத்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "உப்புத் தண்ணீரை கொஞ்சம் கொஞ்சமாக மாவின் மேல் தெளித்து விரலால் பிசைந்து, பிடித்தால் பிடிபடும் ஆனால் கையை விட்டால் உதிரும் பக்குவத்துக்குக் கொண்டு வாருங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "துருவிய தேங்காயில் மூன்றில் இரண்டு பங்கை மாவுடன் கலந்து, மீதியை அடுக்குவதற்கு வைத்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "புட்டு மூங்கில் அல்லது புட்டுக் குழலில் அழுத்தாமல், ஒரு அடுக்கு மா ஒரு தூவல் தேங்காய் என நிரப்பி, கொதிக்கும் தண்ணீர்ப் பாத்திரத்தின் மேல் வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மா வெந்த வாசனை வந்து, மேலே ஆவி சுதந்திரமாக வெளியேறும் வரை வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "கரண்டியின் கைப்பிடியால் தள்ளி புட்டை தட்டில் இறக்கி, சூடாக இருக்கும்போதே உதிர்த்து விடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pittu bamboo or steamer",
+  "pot for boiling water",
+  "pan for roasting the flour"
+ ],
+ "tips": {
+  "en": "Millet flour takes less water than rice flour, so add the water in small sprinkles; once it is over-wet the pittu turns into a lump. Pack the bamboo loosely, because steam has to travel through the whole log.",
+  "si": "කුරක්කන් පිටි සහල් පිටිවලට වඩා අඩු වතුර ගන්නා බැවින් වතුර ටිකෙන් ටික ඉස්සන්න; වැඩිපුර තෙත් වූ විට පිට්ටු ගුලියක් වේ. වාෂ්පය මුළු පිට්ටුව හරහා යා යුතු බැවින් බම්බුව ලිහිල්ව පුරවන්න.",
+  "ta": "குரக்கன் மாவுக்கு அரிசி மாவை விட குறைந்த தண்ணீர் போதும்; எனவே கொஞ்சம் கொஞ்சமாகத் தெளியுங்கள். அதிகமானால் புட்டு கட்டியாகிவிடும். ஆவி முழுவதும் ஏற வேண்டுமென்பதால் குழலை இறுக்காமல் நிரப்புங்கள்."
+ },
+ "health_note": {
+  "en": "Finger millet brings good fibre, calcium and iron, and it releases its sugars more slowly than white rice flour, which is why many households keep it for people with diabetes. The coconut adds the fat, so a thin kiri hodi rather than a rich one keeps the meal balanced.",
+  "si": "කුරක්කන් වලින් හොඳ තන්තු, කැල්සියම් සහ යකඩ ලැබෙන අතර සුදු සහල් පිටිවලට වඩා සීනි සෙමින් මුදා හරී; ඒ නිසා දියවැඩියාව ඇති අයට බොහෝ ගෙවල් වල මෙය හදයි. පොල් වලින් මේදය එන බැවින් ඝන හොද්දක් වෙනුවට තුනී කිරි හොද්දක් සමඟ ගැනීම හොඳයි.",
+  "ta": "குரக்கனில் நல்ல நார்ச்சத்து, கால்சியம், இரும்புச்சத்து உண்டு; வெள்ளை அரிசி மாவை விட சர்க்கரையை மெதுவாக வெளியிடுவதால் நீரிழிவு உள்ளவர்களுக்கு பல வீடுகளில் இதைச் செய்கிறார்கள். தேங்காயில் கொழுப்பு வருவதால் கெட்டிக் கறிக்குப் பதிலாக நீர்த்த கிரி ஹொடி சேர்த்துக் கொள்வது சமநிலையானது."
+ },
+ "tags": [
+  "high_fibre",
+  "diabetic_friendly",
+  "filling",
+  "budget",
+  "calcium_rich"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

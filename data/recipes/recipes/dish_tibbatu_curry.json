@@ -1,0 +1,333 @@
+{
+ "id": "dish_tibbatu_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 105,
+  "description": {
+   "en": "A spoonful of bitter berries in coconut gravy, taken in small amounts",
+   "si": "කුඩා ප්‍රමාණයකින් ගන්නා, පොල් කිරි ඉස්මේ තිත්ත තිබ්බටු හැන්දක්",
+   "ta": "சிறிய அளவில் எடுக்கும், தேங்காய்க் குழம்பில் கசப்புச் சுண்டைக்காய் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 430,
+ "ingredients": [
+  {
+   "ref": "product_tibbatu",
+   "label": {
+    "en": "turkey berries",
+    "si": "තිබ්බටු",
+    "ta": "சுண்டைக்காய்"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 cups of berries",
+   "preparation": {
+    "en": "stalks off, crushed lightly so they split",
+    "si": "නටු ඉවත් කර පැලෙන සේ මදක් තලාගත්",
+    "ta": "தண்டு நீக்கி, வெடிக்கும் அளவு லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி கருவாடு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කුටාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pick over the berries, throw out the yellow ripe ones and pull the little stalks off.",
+    "minutes": 8
+   },
+   {
+    "text": "Crush each berry lightly with the back of a spoon so the spice can get inside, and drop them into salted water.",
+    "minutes": 7
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the sliced onion, broken dried chillies and curry leaves.",
+    "minutes": 3
+   },
+   {
+    "text": "Drain the berries and add them with the turmeric, roasted curry powder, pounded maldive fish and salt, and fry for a minute.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer uncovered until the berries are soft and no longer squeak against the spoon.",
+    "minutes": 14
+   },
+   {
+    "text": "Add the thick coconut milk and let it come just to the boil.",
+    "minutes": 3
+   },
+   {
+    "text": "Take it off the fire and serve a spoonful each; tibbatu is eaten in small amounts, not by the ladle.",
+    "minutes": 3
+   }
+  ],
+  "si": [
+   {
+    "text": "තිබ්බටු තෝරාගන්න; ඉදුණු කහ ඒවා ඉවත් කර, කුඩා නටු ගලවා දමන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කුළුබඩු ඇතුළට යන ලෙස එක් එක් ගෙඩිය හැන්දක පිටින් මදක් තලා, ලුණු වතුරට දමන්න.",
+    "minutes": 7
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, කපාගත් ලූනු, කැඩූ වියළි මිරිස් සහ කරපිංචා තෙල්දාලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "වතුර බේරාගත් තිබ්බටු, කහ, බැදපු තුනපහ, කුටාගත් උම්බලකඩ සහ ලුණු සමඟ දමා විනාඩියක් බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, වැසුමක් නැතිව, තිබ්බටු මෘදු වී හැන්දේ ගෑවෙන විට කිරිච් හඬක් නොඑන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 14
+   },
+   {
+    "text": "ඝන පොල් කිරි එකතු කර, උතුරන්නට ආසන්න වන තුරු තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ළිපෙන් ඉවත් කර එක් අයෙකුට හැන්දක් පමණ පිළිගන්වන්න; තිබ්බටු කන්නේ කුඩා ප්‍රමාණවලින් මිස ලොකු හැඳිවලින් නොවේ.",
+    "minutes": 3
+   }
+  ],
+  "ta": [
+   {
+    "text": "சுண்டைக்காய்களைத் தெரிந்தெடுங்கள்; பழுத்த மஞ்சள் காய்களை நீக்கி, சிறு தண்டுகளைப் பிய்த்து விடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "மசாலா உள்ளே இறங்க, ஒவ்வொரு காயையும் கரண்டியின் பின்பக்கத்தால் லேசாக நசுக்கி, உப்பு நீரில் போடுங்கள்.",
+    "minutes": 7
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, நறுக்கிய வெங்காயம், உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலையைத் தாளியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "நீர் வடித்த காய்களை மஞ்சள், வறுத்த கறி மசாலா, இடித்த மாசி, உப்புடன் சேர்த்து ஒரு நிமிடம் வறுக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலை ஊற்றி, மூடாமல், காய்கள் மிருதுவாகி கரண்டியில் கிறீச்சிடாத பதம் வரும் வரை வேகவிடுங்கள்.",
+    "minutes": 14
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, கொதிக்கும் பதம் வரை வையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, ஒருவருக்கு ஒரு கரண்டி பரிமாறுங்கள்; சுண்டைக்காயை சிறிய அளவிலேயே சாப்பிட வேண்டும்.",
+    "minutes": 3
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Crushing the berries matters more than anything else; whole ones stay hard and hold their bitterness. A little pounded maldive fish and enough salt balance that bitterness without hiding it.",
+  "si": "වෙන කවරදාකටත් වඩා වැදගත් වන්නේ ගෙඩි තලා ගැනීමයි; සම්පූර්ණ ගෙඩි තදව තිබෙන අතර තිත්ත රස රඳවා ගනී. කුටාගත් උම්බලකඩ ස්වල්පයක් සහ ප්‍රමාණවත් ලුණු එම තිත්ත රසය වසන් නොකර සමතුලිත කරයි.",
+  "ta": "எல்லாவற்றையும்விட முக்கியம் காய்களை நசுக்குவதே; முழுக் காய்கள் கெட்டியாகவே இருந்து கசப்பைத் தக்கவைக்கும். சிறிது இடித்த மாசியும் போதுமான உப்பும் அந்தக் கசப்பை மறைக்காமல் சமன் செய்யும்."
+ },
+ "health_note": {
+  "en": "Tibbatu is a bitter berry full of fibre that households have long cooked for a poor appetite and for sugar control. It is strong stuff, so a spoonful beside the rice is the right amount for anyone.",
+  "si": "තිබ්බටු යනු තන්තුවෙන් පිරි තිත්ත ගෙඩියක් වන අතර, රුචිය අඩු විට සහ සීනි පාලනයට ගෙදරවල දිගු කලක් තිස්සේ එය උයා ඇත. එය තියුණු බැවින්, බත සමඟ හැන්දක් ඕනෑම කෙනෙකුට නිවැරදි ප්‍රමාණයයි.",
+  "ta": "சுண்டைக்காய் நார்ச்சத்து நிறைந்த கசப்புக் காய்; பசியின்மைக்கும் சர்க்கரைக் கட்டுப்பாட்டுக்கும் வீடுகளில் நீண்ட காலமாகச் சமைக்கப்படுகிறது. காரத்தன்மை அதிகம், எனவே சாதத்துடன் ஒரு கரண்டியே எல்லோருக்கும் சரியான அளவு."
+ },
+ "tags": [
+  "high_fibre",
+  "iron_rich",
+  "diabetic_friendly",
+  "traditional_remedy",
+  "low_calorie"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -117,6 +117,33 @@ weighed ingredients, calories per serving, missing scripts. Only what passes is
 merged by `scripts/recipes/merge-drafts.mjs`. Sinhala and Tamil text is machine
 drafted until a person reviews it; the site says so on each recipe.
 
+### First recipe edition (2026-09-13)
+
+363 recipes over 363 dishes, 3,949 ingredient lines, every one naming a registry
+id; an average of eight steps, each in English, Sinhala, and Tamil; 249 registry
+entries (135 priced products, 114 pantry entries, four of them with no known
+nutrition). 82 recipes carry a review flag from the drafter: 72 for Tamil
+wording where a dish or a village vegetable has no settled Tamil name, 5 for
+Sinhala on northern dishes, 11 for quantities (preserves scaled down to four,
+communal pots, roe sacs, a ferment). Calories per serving run from 4 (lunu dehi)
+to 1,139 (lamprais), median 304.
+
+Corrections applied over the drafts, kept in `corrections/ingredients.json`:
+coconut is weighed as grated flesh (one nut about 250 g); thin second-squeeze
+coconut milk is its own entry at 95 kcal against 235 for thick; a curry-leaf
+piece is a sprig of 2 g; a kenda leaf weighs 5 g; moringa leaves join the
+registry (the wording map had sent them to the drumstick pod and to
+kathurumurunga). Two conventions the normaliser enforces on every draft: oil
+listed for deep frying is a `frying` line, bought in full but counted at the
+absorbed share for calories and cost; a coconut-milk line whose preparation says
+thin or second squeeze points at the thin entry.
+
+Known limits of this edition: pantry lines (1,078 of 3,949, coconut milk and
+curry powders first) have no price, so cost per serving is a floor and the site
+says so; the calorie figure is on a raw edible basis with water loss taken by
+`yield_g`, not by cooking retention factors; Sinhala and Tamil text is machine
+drafted throughout and awaits native review.
+
 ## What follows
 
 1. **Pantry pricing**: the registry's pantry entries priced through retail

@@ -1,0 +1,235 @@
+{
+ "id": "dish_boiled_sweet_corn",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 220,
+  "description": {
+   "en": "One hot cob each, rubbed with salt, lime and chilli",
+   "si": "ලුණු, දෙහි සහ මිරිස් ගැල්වූ, එක් අයෙකුට උණුසුම් බඩ ඉරිඟු කරලක්",
+   "ta": "உப்பு, எலுமிச்சை, மிளகாய் தடவிய, ஒருவருக்கு ஒரு சூடான சோளக் கதிர்"
+  }
+ },
+ "yield_g": 880,
+ "ingredients": [
+  {
+   "ref": "product_sweet_corn",
+   "label": {
+    "en": "sweet corn on the cob",
+    "si": "බඩ ඉරිඟු කරල්",
+    "ta": "சோளக் கதிர்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 cobs",
+   "preparation": {
+    "en": "husk and silk stripped off, a few inner leaves kept",
+    "si": "පොත්ත සහ නූල් ඉවත් කර, ඇතුළත කොළ කීපයක් තබා ගත්",
+    "ta": "மேல் தோலும் நாரும் நீக்கி, உள் இலைகள் சிலவற்றை வைத்துக்கொண்டது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp, half in the water",
+   "preparation": {
+    "en": "half for the boiling water, half for rubbing",
+    "si": "අඩක් තෙම්බෙන වතුරට, අඩක් ගැල්වීමට",
+    "ta": "பாதி வேகவைக்கும் நீருக்கு, பாதி தடவுவதற்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, cut in half",
+   "preparation": {
+    "en": "cut in half, used to rub the salt in",
+    "si": "දෙබෑ කර, ලුණු ගැල්වීමට යොදාගත්",
+    "ta": "இரண்டாகப் பிளந்து, உப்பைத் தடவப் பயன்படுத்துவது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "mixed with the rubbing salt",
+    "si": "ගැල්වීමේ ලුණු සමඟ මිශ්‍ර කරගත්",
+    "ta": "தடவும் உப்புடன் கலந்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "serving"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 tbsp, if you like",
+   "preparation": {
+    "en": "a curl on each hot cob",
+    "si": "එක් උණුසුම් කරලකට කැබැල්ලක්",
+    "ta": "ஒவ்வொரு சூடான கதிரிலும் ஒரு துண்டு"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Strip the husk and silk from each cob, snap off the stalk and rinse them.",
+    "minutes": 5
+   },
+   {
+    "text": "Keep a few of the tender inner leaves and lay them in the bottom of the pot; they help hold the sweetness.",
+    "minutes": null
+   },
+   {
+    "text": "Bring a wide pot of water to the boil with half the salt.",
+    "minutes": 8
+   },
+   {
+    "text": "Slide the cobs in, cover, and boil until a kernel pressed with a thumbnail bursts milky; young corn takes less time than old.",
+    "minutes": 22
+   },
+   {
+    "text": "Lift them out with tongs and let the steam go for a minute.",
+    "minutes": 2
+   },
+   {
+    "text": "Mix the remaining salt with the chilli powder on a saucer, cut the lime and dip a lime half into it.",
+    "minutes": null
+   },
+   {
+    "text": "Rub the lime half over each hot cob so the salt and chilli stick, add a curl of butter if you like, and eat straight away.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "එක් එක් කරලේ පොත්ත සහ නූල් ඉවත් කර, කඳ කඩා, සෝදා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඇතුළත ඇති මෘදු කොළ කීපයක් තබාගෙන හැළියේ පතුලේ තබන්න; ඒවා පැණි රස රඳවා ගැනීමට උපකාරී වේ.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් හැළියක වතුර, ලුණු අඩක් සමඟ උතුරන්න තබන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කරල් වතුරට දමා, වසා, නියපොත්තෙන් තද කළ විට ඇටයක් කිරි සහිතව පිපිරෙන තෙක් තෙම්බෙන්න දෙන්න; ළපටි බඩ ඉරිඟුවට කාලය අඩුවෙන් ගතවේ.",
+    "minutes": 22
+   },
+   {
+    "text": "අඬුවකින් ඉවතට ගෙන, මිනිත්තුවක් වාෂ්පය යන්න දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඉතිරි ලුණු සහ මිරිස් කුඩු පිඟාන් කැබැල්ලක මිශ්‍ර කර, දෙහි ගෙඩිය දෙබෑ කර, එක් කැබැල්ලක් එහි ගිල්වා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලුණු සහ මිරිස් ඇලෙන සේ එක් එක් උණුසුම් කරල මතට දෙහි කැබැල්ල අතුල්ලා, අවශ්‍ය නම් බටර් කැබැල්ලක් දමා, වහාම කන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ஒவ்வொரு கதிரின் மேல் தோலையும் நாரையும் நீக்கி, தண்டை உடைத்து, அலசவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "உள்ளே உள்ள மெல்லிய இலைகள் சிலவற்றை எடுத்துப் பாத்திரத்தின் அடியில் வைக்கவும்; அவை இனிப்பைத் தக்கவைக்க உதவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான பாத்திரத்தில் தண்ணீரை, பாதி உப்புடன் கொதிக்கவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "கதிர்களை இட்டு, மூடி, நகத்தால் அழுத்தினால் ஒரு மணி பால் போல் வெடிக்கும் வரை வேகவிடவும்; இளம் சோளத்திற்கு நேரம் குறைவு.",
+    "minutes": 22
+   },
+   {
+    "text": "கவ்வியால் எடுத்து, ஒரு நிமிடம் ஆவி போகவிடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மீதி உப்பையும் மிளகாய்த் தூளையும் ஒரு சாசரில் கலந்து, எலுமிச்சையைப் பிளந்து ஒரு துண்டை அதில் தோய்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உப்பும் மிளகாயும் ஒட்டும்படி ஒவ்வொரு சூடான கதிரிலும் எலுமிச்சைத் துண்டைத் தேய்த்து, விரும்பினால் ஒரு துண்டு வெண்ணெய் சேர்த்து, உடனே சாப்பிடவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pot with lid",
+  "tongs"
+ ],
+ "tips": {
+  "en": "Press a kernel with your thumbnail at the market: if it bursts with milk the corn is young and will boil sweet, and if it dents like rubber leave it. Do not add salt heavily to the water, because salt toughens the kernels.",
+  "si": "වෙළඳපොලේ ම නියපොත්තෙන් ඇටයක් තද කර බලන්න; කිරි සමඟ පිපිරේ නම් එය ළපටියි, තෙම්බූ විට පැණි රසයි; රබර් වැනි ගතියෙන් හැපේ නම් එය තෝරා නොගන්න. වතුරට ලුණු වැඩිපුර නොදමන්න; ලුණු නිසා ඇට තද වේ.",
+  "ta": "சந்தையிலேயே நகத்தால் ஒரு மணியை அழுத்திப் பாருங்கள்; பால் வந்து வெடித்தால் சோளம் இளமையானது, வேகவைத்தால் இனிப்பாக இருக்கும்; ரப்பர் போல் அழுந்தினால் அதை எடுக்க வேண்டாம். தண்ணீரில் உப்பை அதிகமாகச் சேர்க்க வேண்டாம்; உப்பு மணிகளைக் கடினமாக்கும்."
+ },
+ "health_note": {
+  "en": "Whole corn on the cob is a filling snack with fibre and almost no added fat, which makes it one of the better things sold by the roadside. The salt and chilli rub is what to go easy on, and anyone counting starch should treat a cob like a serving of rice.",
+  "si": "මුළු කරලක් ලෙස ගන්නා බඩ ඉරිඟු තන්තු සහිත, එකතු කළ මේදය පාහේ නැති, බඩ පිරෙන කෙටි කෑමකි; එබැවින් පාර දෙපස විකුණන හොඳ කෑම අතර එකකි. පරෙස්සම් විය යුත්තේ ගල්වන ලුණු සහ මිරිස් ය; පිෂ්ටය ගණන් කරන අය කරලක් බත් වේලකට සමාන යැයි සලකන්න.",
+  "ta": "முழு சோளக் கதிர் நார்ச்சத்துடன், கூடுதல் கொழுப்பு கிட்டத்தட்ட இல்லாமல் வயிறு நிரப்பும் சிற்றுண்டி; எனவே சாலையோரத்தில் விற்கும் நல்ல உணவுகளில் ஒன்று. கவனம் தேவைப்படுவது தடவும் உப்பும் மிளகாயும்; மாவுச்சத்தைக் கணக்கிடுபவர்கள் ஒரு கதிரை ஒரு வேளை சாதத்திற்குச் சமமாகக் கருதவும்."
+ },
+ "tags": [
+  "high_fibre",
+  "low_fat",
+  "kid_friendly",
+  "budget",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,345 @@
+{
+ "id": "dish_ash_pumpkin_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 200,
+  "description": {
+   "en": "A watery, very mild curry of translucent white cubes",
+   "si": "පාරදෘශ්‍ය සුදු කැට සහිත, ඉතා මෘදු දියර හොදියක්",
+   "ta": "ஒளிபுக விடும் வெண் கட்டிகளுடன், மிக மிருதுவான நீர்மையான கறி"
+  }
+ },
+ "yield_g": 850,
+ "ingredients": [
+  {
+   "ref": "product_ash_pumpkin",
+   "label": {
+    "en": "ash pumpkin (alu puhul)",
+    "si": "අළු පුහුල්",
+    "ta": "பூசணிக்காய்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "a thick wedge",
+   "preparation": {
+    "en": "skin pared off, seeds removed, cut into 3 cm cubes",
+    "si": "ලෙලි ඉවත් කර, ඇට ගලවා, සෙන්ටිමීටර තුනක කැට කපා",
+    "ta": "தோல் சீவி, விதைகளை நீக்கி, 3 செ.மீ. கட்டிகளாக வெட்டி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ තුනී කිරි",
+    "ta": "இரண்டாம் பால், நீர்த்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், தடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලා",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලා",
+    "ta": "பொடியாக இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 8,
+   "unit": "ml",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pare the tough skin off the ash pumpkin, scoop out the soft seedy middle and cut the flesh into cubes about 3 cm across.",
+    "minutes": 12
+   },
+   {
+    "text": "Put the cubes in the pot with the thin coconut milk, onion, slit chillies, turmeric, fenugreek, curry leaves and pandan.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and cook on a medium flame until the white cubes turn slightly glassy at the edges.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the salt and the crushed pepper; this curry is meant to be mild, so hold back on the chilli.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thick milk and let the pot come up to one bubble, then take it off the fire.",
+    "minutes": 3
+   },
+   {
+    "text": "Temper the coconut oil with a few onion slices and curry leaves and stir it through.",
+    "minutes": 3
+   },
+   {
+    "text": "Serve it soon; the cubes keep soaking up gravy and go soft if the pot sits too long.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අළු පුහුල්වල තද ලෙලි ඉවත් කර, මැද මෘදු ඇට කොටස ගලවා, මදය සෙන්ටිමීටර තුනක් පමණ කැට වලට කපන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "කැට මුට්ටියට දමා තුනී පොල් කිරි, ළූණු, පලාගත් මිරිස්, කහ, උළුහාල්, කරපිංචා සහ රම්පෙ එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා මද ගින්නේ, සුදු කැටවල දාර ටිකක් පාරදෘශ්‍ය වන තුරු තම්බන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ලුණු සහ තලාගත් ගම්මිරිස් දමන්න; මේ හොදිය මෘදුව තිබිය යුතු නිසා මිරිස් වැඩිපුර දාන්න එපා.",
+    "minutes": null
+   },
+   {
+    "text": "ඝන කිරි වත් කර එක් උතුරක් එන තුරු තියා, මුට්ටිය ලිපෙන් ඉවතට ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පොල් තෙල් ළූණු පෙති සහ කරපිංචා සමඟ තෙම්පරාදු කර හොදියට කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ඉක්මනින් බෙදන්න; වැඩි වෙලාවක් තිබුණොත් කැට හොදිය උරාගෙන මැලවෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பூசணிக்காயின் கடினமான தோலைச் சீவி, நடுவில் உள்ள மென்மையான விதைப் பகுதியை நீக்கி, சதையை சுமார் 3 செ.மீ. கட்டிகளாக வெட்டவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "கட்டிகளை சட்டியில் இட்டு இரண்டாம் தேங்காய்ப்பால், வெங்காயம், கீறிய மிளகாய், மஞ்சள், வெந்தயம், கறிவேப்பிலை, ரம்பை சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி மிதமான தீயில், வெண் கட்டிகளின் ஓரங்கள் சற்று ஒளிபுகும் நிலை வரும் வரை வேகவிடவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "உப்பும் இடித்த மிளகும் சேர்க்கவும்; இந்தக் கறி மிருதுவாக இருக்க வேண்டியது, எனவே மிளகாயைக் கூட்ட வேண்டாம்.",
+    "minutes": null
+   },
+   {
+    "text": "முதல் பாலை ஊற்றி ஒரு கொதி வரும் வரை வைத்து, சட்டியை இறக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "தேங்காய் எண்ணெயில் வெங்காயத் துண்டுகளையும் கறிவேப்பிலையையும் தாளித்துக் கலக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "விரைவில் பரிமாறவும்; நேரம் ஆனால் கட்டிகள் குழம்பை உறிஞ்சி மிக மென்மையாகிவிடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or pan with a lid",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Cut the cubes on the larger side; small pieces melt into the gravy before the meal reaches the table. A spoon of mustard paste stirred in at the end makes the sharper version some households prefer.",
+  "si": "කැට ටිකක් ලොකුවට කපන්න; පොඩි කැබලි කෑම මේසයට එන්නත් කලින් හොදියේ දිය වෙනවා. අන්තිමට අබ පේස්ට් හැන්දක් කලවම් කළොත් සමහර ගෙවල්වල කැමති තියුණු රසැති අනුවාදය ලැබෙනවා.",
+  "ta": "கட்டிகளைச் சற்று பெரியதாக வெட்டவும்; சிறிய துண்டுகள் உணவு மேசைக்கு வருவதற்கு முன்பே குழம்பில் கரைந்துவிடும். கடைசியில் ஒரு கரண்டி கடுகு விழுதைக் கலந்தால் சில வீடுகள் விரும்பும் காரமான வகை கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "Ash pumpkin is almost entirely water with very little sugar, which is why it is given to people getting over a fever and why it suits anyone watching weight or blood sugar. Keep the thick milk light and this is about as gentle as a curry gets.",
+  "si": "අළු පුහුල් සම්පූර්ණයෙන්ම වගේ ජලය, සීනි ප්‍රමාණයත් ඉතා අඩු; ඒ නිසාම උණෙන් සුවවෙන අයට දෙනවා, බර හෝ රුධිර සීනි බලාගන්න අයටත් ගැළපෙනවා. ඝන කිරි අඩුවෙන් යෙදුවොත් මෙය හොදියක් විය හැකි තරමටම මෘදුයි.",
+  "ta": "பூசணிக்காயில் ஏறக்குறைய முழுவதும் நீரே, சர்க்கரை மிகக் குறைவு; அதனால்தான் காய்ச்சல் தெளிந்தவர்களுக்குக் கொடுக்கிறார்கள், எடையையோ இரத்தச் சர்க்கரையையோ கவனிப்பவர்களுக்கும் ஏற்றது. முதல் பாலைக் குறைவாக வைத்தால் இது ஒரு கறி எவ்வளவு இலகுவாக இருக்க முடியுமோ அந்த அளவு இலகுவானது."
+ },
+ "tags": [
+  "low_calorie",
+  "light",
+  "hydrating",
+  "elderly_friendly",
+  "budget",
+  "diabetic_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,502 @@
+{
+ "id": "dish_jaffna_chicken_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 220,
+  "description": {
+   "en": "Two pieces in dark, sour, hot gravy with rice or string hoppers",
+   "si": "බත් හෝ ඉඳිආප්ප සමග කළු, ඇඹුල්, සැර හොදියේ කැබලි දෙකක්",
+   "ta": "சாதம் அல்லது இடியப்பத்துடன் கருத்த, புளிப்பான, காரமான குழம்பில் இரு துண்டுகள்"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken, curry cut with bone",
+    "si": "කුකුල් මස්, ඇට සමග කරි කපා ගත්",
+    "ta": "கோழி இறைச்சி, எலும்புடன் கறித் துண்டுகள்"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "about half a bird",
+   "preparation": {
+    "en": "cut into medium pieces, washed",
+    "si": "මධ්‍යම කැබලිවලට කපා සෝදා ගත්",
+    "ta": "நடுத்தர துண்டுகளாக நறுக்கி அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 18,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large tomato",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaffna_curry_powder",
+   "label": {
+    "en": "Jaffna curry powder",
+    "si": "යාපනය තුනපහ",
+    "ta": "யாழ்ப்பாணக் கறித்தூள்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 5,
+   "unit": "piece",
+   "household": "5 pods",
+   "preparation": {
+    "en": "dry-roasted and ground",
+    "si": "බැදගෙන අඹරා ගත්",
+    "ta": "வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed, ground",
+    "si": "කොත්තමල්ලි කුඩු",
+    "ta": "கொத்தமல்லித் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "dry-roasted and ground",
+    "si": "බැදගෙන අඹරා ගත්",
+    "ta": "வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "dry-roasted and ground",
+    "si": "බැදගෙන අඹරා ගත්",
+    "ta": "வறுத்து அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "dry-roasted",
+    "si": "බැදගත්",
+    "ta": "வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a lime-size ball",
+   "preparation": {
+    "en": "soaked in warm water and the juice squeezed out",
+    "si": "උණු වතුරේ පොඟවා යුෂ මිරිකා ගත්",
+    "ta": "வெதுவெதுப்பான நீரில் ஊறவைத்து சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "one and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන වර මිරිකා ගත් තුනී කිරි",
+    "ta": "இரண்டாம் பால், தளர்ந்த பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකා ගත් ගන කිරි",
+    "ta": "முதல் பால், கெட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_sesame_oil",
+   "label": {
+    "en": "sesame oil",
+    "si": "තල තෙල්",
+    "ta": "நல்லெண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 rounded tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the chicken, drain it and rub in the turmeric, salt and a spoon of the Jaffna curry powder, then keep it aside.",
+    "minutes": 15
+   },
+   {
+    "text": "Soak the tamarind in half a cup of warm water, squeeze out the juice with your fingers and throw away the fibre and seeds.",
+    "minutes": 5
+   },
+   {
+    "text": "Dry-roast the dried chillies and fenugreek in a pan, then grind them with the fennel and cumin to a coarse powder.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the sesame oil in a pot and temper the red onion and curry leaves until the onion is well browned, which is what darkens the gravy.",
+    "minutes": 4
+   },
+   {
+    "text": "Add the crushed garlic, ginger and the chopped tomato and cook until the tomato falls apart.",
+    "minutes": 4
+   },
+   {
+    "text": "Put in the chicken with the rest of the Jaffna curry powder, the ground spice and the pepper, and turn until every piece is coated.",
+    "minutes": 4
+   },
+   {
+    "text": "Pour in the thin coconut milk and the tamarind water, cover and simmer until the chicken is tender.",
+    "minutes": 15
+   },
+   {
+    "text": "Add the thick coconut milk and bring it only to a tremble, never to a hard boil.",
+    "minutes": 4
+   },
+   {
+    "text": "Rest it off the fire; the finished gravy should be dark, sour and hot, thicker than a southern chicken curry.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "කුකුල් මස් සෝදා වතුර බේරා, කහ, ලුණු සහ යාපනය තුනපහ හැන්දක් අතුල්ලා පසෙකට තියන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "සියඹලා උණු වතුර කෝප්ප බාගයක පොඟවා ඇඟිලිවලින් යුෂ මිරිකා ගෙන, කෙඳි සහ ඇට ඉවත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "වියළි මිරිස් සහ උළුහාල් පෑන් එකක බැදගෙන, මාදුරු සහ සූදුරු සමග රළු කුඩු බවට අඹරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වළඳක තල තෙල් රත් කර රතු ළූණු සහ කරපිංචා ළූණු හොඳින් දුඹුරු වන තුරු තෙම්පරාදු කරන්න; හොදියට කළු පාට එන්නේ ඒකෙන්.",
+    "minutes": 4
+   },
+   {
+    "text": "තලා ගත් සුදුළූණු, ඉඟුරු සහ කපා ගත් තක්කාලි දමා තක්කාලි දිය වන තුරු උයන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මස් සමග ඉතිරි යාපනය තුනපහ, අඹරා ගත් කුළුබඩු සහ ගම්මිරිස් දමා හැම කැබැල්ලක්ම වැසෙන තුරු පෙරළන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "තුනී පොල් කිරි සහ සියඹලා යුෂ වත් කර වසා, මස් මෘදු වන තුරු උයන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ගන පොල් කිරි එකතු කර, තදින් උතුරන්නට කිසිසේත් නොදී, මතුපිට සෙලවෙන තරමට පමණක් රස්නය දෙන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලිපෙන් ඉවත් කර ටිකක් තියන්න; අවසන් හොදිය කළු, ඇඹුල් සහ සැර විය යුතු අතර දකුණේ කුකුල් මස් කරියට වඩා තදයි.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "கோழியை அலசி நீர் வடித்து, மஞ்சள், உப்பு, ஒரு கரண்டி யாழ்ப்பாணக் கறித்தூள் சேர்த்துத் தேய்த்து ஒதுக்கி வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "புளியை அரை கப் வெதுவெதுப்பான நீரில் ஊறவைத்து விரலால் பிசைந்து சாறு எடுத்து, நாரையும் விதையையும் நீக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வத்தல் மிளகாயையும் வெந்தயத்தையும் வாணலியில் வறுத்து, பெருஞ்சீரகம், சீரகத்துடன் சேர்த்து கரகரப்பாக அரைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்தில் நல்லெண்ணெயைக் காயவிட்டு சின்ன வெங்காயத்தையும் கறிவேப்பிலையையும் வெங்காயம் நன்கு பழுப்பாகும் வரை வதக்குங்கள்; குழம்பு கருமையாவது அதனாலேயே.",
+    "minutes": 4
+   },
+   {
+    "text": "இடித்த பூண்டு, இஞ்சி, நறுக்கிய தக்காளி சேர்த்து தக்காளி கரையும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கோழியுடன் மீதி யாழ்ப்பாணக் கறித்தூள், அரைத்த மசாலா, மிளகு சேர்த்து ஒவ்வொரு துண்டும் மூடப்படும் வரை புரட்டுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பாலையும் புளித் தண்ணீரையும் ஊற்றி மூடி, கோழி மெதுவாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "கெட்டித் தேங்காய்ப் பாலைச் சேர்த்து, கடுமையாகக் கொதிக்கவிடாமல் மேற்பரப்பு அசையும் அளவு மட்டும் சூடாக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி சிறிது நேரம் வைக்கவும்; முடிந்த குழம்பு கருமையாக, புளிப்பாக, காரமாக, தென்பகுதிக் கோழிக் கறியை விட கெட்டியாக இருக்க வேண்டும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 40,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "heavy pot",
+  "grinding stone or blender",
+  "dry pan for roasting"
+ ],
+ "tips": {
+  "en": "Jaffna curry powder is heavier on fennel, fenugreek and roasted chilli than southern blends, so do not swap one for the other and expect the same curry. Sesame oil rather than coconut oil is what gives the northern smell people recognise.",
+  "si": "යාපනය තුනපහේ මාදුරු, උළුහාල් සහ බැදපු මිරිස් දකුණේ මිශ්‍රණවලට වඩා වැඩියි; ඒ නිසා එකක් වෙනුවට අනෙක දමා එකම කරිය බලාපොරොත්තු වෙන්න එපා. උතුරේ කරියට මිනිසුන් හඳුනන ඒ සුවඳ එන්නේ පොල් තෙල් නොව තල තෙල් නිසායි.",
+  "ta": "யாழ்ப்பாணக் கறித்தூளில் பெருஞ்சீரகம், வெந்தயம், வறுத்த மிளகாய் தென்பகுதிக் கலவைகளை விட அதிகம்; எனவே ஒன்றுக்குப் பதிலாக மற்றொன்றைப் போட்டு அதே கறியை எதிர்பார்க்க வேண்டாம். வடக்கின் அடையாள வாசனை தேங்காய் எண்ணெயால் அல்ல, நல்லெண்ணெயால் வருகிறது."
+ },
+ "health_note": {
+  "en": "The tamarind and the roasted spices mean less coconut milk is needed to make the gravy taste full, which keeps it a little lighter than a southern coconut curry. It is genuinely hot, so serve a plain vegetable or curd alongside for children.",
+  "si": "සියඹලා සහ බැදපු කුළුබඩු නිසා හොදියේ රස පිරෙන්න පොල් කිරි අඩුවෙන් ඇති; ඒ නිසා දකුණේ පොල් කිරි කරියකට වඩා මේක ටිකක් සැහැල්ලුයි. සැර ඇත්තටම වැඩි නිසා ළමයින්ට සාමාන්‍ය එළවළුවක් හෝ මුදවපු කිරි පසෙක දෙන්න.",
+  "ta": "புளியும் வறுத்த மசாலாவும் இருப்பதால் குழம்பு நிறைவான சுவை பெற குறைந்த தேங்காய்ப் பாலே போதும், எனவே தென்பகுதித் தேங்காய்க் கறியை விட இது சற்று இலகுவானது. காரம் உண்மையிலேயே அதிகம், எனவே பிள்ளைகளுக்கு சாதாரண காய்கறி அல்லது தயிரைப் பக்கத்தில் பரிமாறுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "filling",
+  "comfort",
+  "festive"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

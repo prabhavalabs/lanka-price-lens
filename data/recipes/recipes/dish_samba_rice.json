@@ -1,0 +1,193 @@
+{
+ "id": "dish_samba_rice",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 300,
+  "description": {
+   "en": "A plate of fluffy white rice for the curries to sit on",
+   "si": "ව්‍යංජන දමා ගැනීමට සුදු, සැහැල්ලු බත් පිඟානක්",
+   "ta": "கறிகளை வைத்துச் சாப்பிட உதிரியான வெள்ளைச் சோற்றின் ஒரு தட்டு"
+  }
+ },
+ "yield_g": 1200,
+ "ingredients": [
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed in three changes of water",
+    "si": "තුන් වතාවක් සෝදාගත්",
+    "ta": "மூன்று தண்ணீரில் அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": {
+    "en": "tied in a knot",
+    "si": "ගැටයක් ගසාගත්",
+    "ta": "முடிச்சு போட்டது"
+   },
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the samba rice in three changes of water, rubbing the grains between your palms, until the water is no longer cloudy.",
+    "minutes": null
+   },
+   {
+    "text": "Soak the washed rice in fresh water while you get the curries started; samba is a hard grain and drinks water slowly.",
+    "minutes": 15
+   },
+   {
+    "text": "Drain the rice, put it in a heavy pot with 800 ml of water, the salt and the knotted pandan leaf.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to a rolling boil uncovered and let it boil hard until the surface water has almost gone and craters appear between the grains.",
+    "minutes": 12
+   },
+   {
+    "text": "Turn the flame to the lowest, cover the pot tightly and let the rice steam without opening the lid.",
+    "minutes": 12
+   },
+   {
+    "text": "Take the pot off the fire and leave it closed so the grains finish on their own steam.",
+    "minutes": 8
+   },
+   {
+    "text": "Lift the rice from the bottom with a flat spoon so the grains separate, remove the pandan, and serve it straight away.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "සම්බා සහල් තුන් වතාවක්, අත්ල දෙක අතර අතුල්ලමින්, වතුර කිළිටි නොවන තුරු සෝදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ව්‍යංජන පටන් ගන්නා අතරේ සෝදාගත් සහල් අලුත් වතුරේ පොඟවා තබන්න; සම්බා තද ඇටයක් බැවින් වතුර සෙමින් උරා ගනී.",
+    "minutes": 15
+   },
+   {
+    "text": "වතුර බේරා සහල් බර හැළියකට දමා, වතුර මිලි ලීටර් 800ක්, ලුණු සහ ගැටය ගැසූ රම්පෙ එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වහන්නේ නැතිව හොඳින් නටවා, මතුපිට වතුර බොහෝ දුරට හිඳී බත් ඇට අතර කුඩා ලිං පෙනෙන තුරු තබන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගිනි අවම කර හැළිය තදින් වසා, පියන නොඇර බත වාෂ්පයෙන් තැම්බෙන්නට දෙන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "හැළිය ගින්නෙන් ඉවතට ගෙන, වසාම තිබෙන්න දී බත් ඇට තමන්ගේ වාෂ්පයෙන් සම්පූර්ණ වන්නට ඉඩ දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පැතලි හැන්දකින් පහළින් ඔසවා බත් ඇට වෙන් කර, රම්පෙ ඉවතට ගෙන වහාම ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சம்பா அரிசியை உள்ளங்கைகளுக்கு இடையே தேய்த்து, தண்ணீர் கலங்காமல் வரும் வரை மூன்று தடவை அலசுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கறிகளைத் தொடங்கும்போது அலசிய அரிசியை புதிய தண்ணீரில் ஊறவையுங்கள்; சம்பா கெட்டியான பருக்கை, தண்ணீரை மெதுவாக உறிஞ்சும்.",
+    "minutes": 15
+   },
+   {
+    "text": "அரிசியை வடித்து கனமான பாத்திரத்தில் இட்டு, 800 மில்லி தண்ணீர், உப்பு, முடிச்சுப் போட்ட ரம்பை இலை சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடாமல் நன்றாகக் கொதிக்க வைத்து, மேல் தண்ணீர் கிட்டத்தட்ட வற்றி பருக்கைகளுக்கு இடையே சிறு பொந்துகள் தெரியும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "தீயை மிகக் குறைத்து பாத்திரத்தை இறுக்கமாக மூடி, மூடியைத் திறக்காமல் சோற்றை ஆவியில் வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "பாத்திரத்தை இறக்கி, மூடியோடே வைத்திருந்து பருக்கைகள் தன் ஆவியிலேயே முழுமையாக வேகட்டும்.",
+    "minutes": 8
+   },
+   {
+    "text": "தட்டையான கரண்டியால் அடியிலிருந்து தூக்கி பருக்கைகளை உதிர்த்து, ரம்பையை எடுத்து விட்டு உடனே பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 30,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "heavy pot with a tight lid",
+  "flat serving spoon"
+ ],
+ "tips": {
+  "en": "Samba needs about two parts water to one part rice, a little more than nadu, and the short soak is what stops the centre staying chalky. Keeri samba is finer and cooks faster with slightly less water, while ponni samba behaves much like ordinary samba.",
+  "si": "සම්බාට සහල් එකකට වතුර දෙකක් පමණ අවශ්‍ය වේ, නාඩු වලට වඩා ටිකක් වැඩියි; කෙටි පොඟවීමයි මැද කැකෑරී තිබීම නවත්වන්නේ. කීරි සම්බා වඩා සිහින්, ටිකක් අඩු වතුරින් ඉක්මනින් පිසෙයි; පොන්නි සම්බා සාමාන්‍ය සම්බා ලෙසම හැසිරෙයි.",
+  "ta": "சம்பாவுக்கு ஒரு பங்கு அரிசிக்கு இரண்டு பங்கு தண்ணீர் தேவை, நாடு அரிசியை விட சற்று அதிகம்; குறுகிய ஊறல்தான் நடுப்பகுதி பச்சையாக இருப்பதைத் தடுக்கிறது. கீரி சம்பா நுட்பமானது, சற்று குறைந்த நீரில் விரைவாக வேகும்; பொன்னி சம்பா சாதாரண சம்பா போலவே இருக்கும்."
+ },
+ "health_note": {
+  "en": "Plain rice is the biggest share of the day's energy in most Sri Lankan homes, so the size of the plate matters more than anything cooked with it. A cup of cooked rice with two vegetable curries keeps the meal steadier than two cups with one curry.",
+  "si": "බොහෝ ලාංකික ගෙවල් වල දෛනික ශක්තියෙන් වැඩි කොටස සරල බතින් ලැබෙන බැවින්, එය සමඟ උයන ඕනෑම දෙයකට වඩා පිඟානේ ප්‍රමාණය වැදගත්. එළවළු ව්‍යංජන දෙකක් සමඟ බත් කෝප්පයක් ගැනීම, ව්‍යංජනයක් සමඟ කෝප්ප දෙකකට වඩා හොඳයි.",
+  "ta": "பல இலங்கை வீடுகளில் நாளின் பெரும்பாலான ஆற்றல் வெறும் சோற்றிலேயே வருகிறது; எனவே அதனுடன் சமைப்பதை விட தட்டின் அளவே முக்கியம். ஒரு கப் சோற்றுடன் இரண்டு காய்கறிக் கறிகள், ஒரு கறியுடன் இரண்டு கப் சோற்றை விட உடலுக்கு நல்லது."
+ },
+ "tags": [
+  "budget",
+  "filling",
+  "one_pot",
+  "kid_friendly",
+  "low_fat"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

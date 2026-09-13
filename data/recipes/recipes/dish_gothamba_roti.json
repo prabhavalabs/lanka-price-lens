@@ -1,0 +1,212 @@
+{
+ "id": "dish_gothamba_roti",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 175,
+  "description": {
+   "en": "Two thin folded roti to eat with a curry",
+   "si": "කරියක් සමඟ කන්නට තුනී රොටී දෙකක්",
+   "ta": "ஒரு கறியுடன் சாப்பிட இரண்டு மெல்லிய ரொட்டி"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 70,
+   "unit": "ml",
+   "household": "about 5 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_margarine",
+   "label": {
+    "en": "margarine",
+    "si": "මාජරින්",
+    "ta": "மார்ஜரின்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Sift the flour into a wide basin with the salt and make a well in the middle.",
+    "minutes": null
+   },
+   {
+    "text": "Add warm water a little at a time and knead for ten minutes until the dough is very soft, almost sticky, and springs back when pressed.",
+    "minutes": 12
+   },
+   {
+    "text": "Roll the dough into eight balls, sit them in a bowl with plenty of oil poured over, and cover them to rest.",
+    "minutes": 60
+   },
+   {
+    "text": "Oil a smooth table or a large steel tray, take one ball and press it out flat with your palm.",
+    "minutes": null
+   },
+   {
+    "text": "Lift the edge and swing the dough against the table, or push it outward from the middle, until it is thin enough to see your hand through.",
+    "minutes": null
+   },
+   {
+    "text": "Fold the four sides into the middle to make a square parcel, brushing a little margarine in if you like a richer roti.",
+    "minutes": null
+   },
+   {
+    "text": "Cook the parcel on a medium hot griddle, pressing it with a turner, until both sides are pale brown with dark spots.",
+    "minutes": 15
+   },
+   {
+    "text": "Clap the hot roti between your palms to loosen the layers and stack them under a cloth until the whole batch is done.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිටි සහ ලුණු පළල් බඳුනකට පෙරා දමා, මැදින් වළක් සාදාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උණුසුම් වතුර ටිකෙන් ටික දමා විනාඩි දහයක් අනා, ගුලිය ඉතා මෘදු, ටිකක් ඇලෙන සුළු, තෙරපූ විට ආපසු එන පදමට ගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ගුලිය බෝල අටකට හදා, බඳුනක තබා ඒ මත තෙල් හොඳින් වත් කර, වසා විවේකයට තබන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "සුමට මේසයක් හෝ ලොකු වානේ තැටියක් තෙල් තවරා, බෝලයක් ගෙන අත්ලෙන් තට්ටු කර පැතිරෙන්නට හරින්න.",
+    "minutes": null
+   },
+   {
+    "text": "දාරය අතට ගෙන මේසයට ගසමින්, නැතහොත් මැදින් පිටතට තල්ලු කරමින්, අත පෙනෙන තරමට තුනී වන තුරු ඇදගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දාර හතර මැදට නවා හතරැස් කොළයක් සාදන්න; පොහොසත් රසයක් අවශ්‍ය නම් ඇතුළට මාජරින් ස්වල්පයක් තවරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මධ්‍යම රස්නයේ තැටියක එය තබා, කටුවකින් තෙරපමින්, දෙපැත්තම ලා දුඹුරු පාටට කළු ලප සමඟ පිළිස්සෙන්නට හරින්න.",
+    "minutes": 15
+   },
+   {
+    "text": "උණුසුම් රොටිය අත්ල දෙක අතර තට්ටු කර ස්ථර ලිහා, මුළු කණ්ඩායම අවසන් වන තුරු රෙද්දක් යට එකක් මත එකක් තබන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாவையும் உப்பையும் ஒரு அகலமான பாத்திரத்தில் சலித்துப் போட்டு, நடுவில் ஒரு குழி செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வெதுவெதுப்பான தண்ணீரை கொஞ்சம் கொஞ்சமாகச் சேர்த்து பத்து நிமிடம் பிசைந்து, மாவு மிக மென்மையாக, சிறிது ஒட்டும் பதத்தில், அழுத்தினால் திரும்பி வரும் பதத்தில் கொண்டுவரவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "மாவை எட்டு உருண்டைகளாக உருட்டி, ஒரு கிண்ணத்தில் வைத்து மேலே நிறைய எண்ணெய் ஊற்றி, மூடி ஓய்வெடுக்க வைக்கவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "மென்மையான மேசை அல்லது பெரிய தட்டில் எண்ணெய் தடவி, ஒரு உருண்டையை எடுத்து உள்ளங்கையால் தட்டி விரிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "விளிம்பைப் பிடித்து மேசையில் அடித்து, அல்லது நடுவிலிருந்து வெளிப்புறமாகத் தள்ளி, கை தெரியும் அளவுக்கு மெல்லியதாக விரிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நான்கு பக்கங்களையும் நடுவே மடித்து சதுரமாக்கவும்; சுவை அதிகமாக வேண்டுமானால் உள்ளே சிறிது மார்ஜரின் தடவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நடுத்தர சூட்டில் உள்ள தோசைக்கல்லில் வைத்து, கரண்டியால் அழுத்தி, இருபுறமும் வெளிர் பழுப்பு நிறத்தில் கருப்புப் புள்ளிகளுடன் சுடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "சூடான ரொட்டியை இரு உள்ளங்கைகளுக்கு இடையே தட்டி அடுக்குகளை உதிர்த்து, எல்லாம் முடியும்வரை ஒரு துணிக்கு அடியில் அடுக்கி வைக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 20,
+  "passive_minutes": 60
+ },
+ "equipment": [
+  "flat griddle",
+  "smooth table or steel tray",
+  "bowl for oiling the dough"
+ ],
+ "tips": {
+  "en": "A well rested, oily dough is what lets the roti stretch thin without tearing; rushing the resting time is the usual reason it keeps breaking.",
+  "si": "හොඳින් විවේක ගත් තෙල් සහිත ගුලියක් තමයි රොටිය නොකැඩී තුනී වන්නට ඉඩ දෙන්නේ; විවේක කාලය ඉක්මන් කිරීම තමයි නිතර කැඩීමට හේතුව.",
+  "ta": "நன்றாக ஓய்வெடுத்த எண்ணெய் நிறைந்த மாவுதான் ரொட்டி கிழியாமல் மெல்லியதாக விரிய உதவுகிறது; ஓய்வு நேரத்தை குறைப்பதுதான் அடிக்கடி கிழிவதற்குக் காரணம்."
+ },
+ "health_note": {
+  "en": "Godamba roti is refined wheat flour and a fair amount of oil, so it sits heavy on its own; eating it with dhal or a vegetable curry rather than only sugar or sambol makes the meal better.",
+  "si": "ගොදම්බ රොටී පිරිපහදු කළ තිරිඟු පිටි සහ තෙල් ප්‍රමාණයක් සහිත බැවින් තනිව බරයි; සීනි හෝ සම්බෝල් පමණක් නොව පරිප්පු හෝ එළවළු කරියක් සමඟ කෑම වඩාත් හොඳයි.",
+  "ta": "கோதம்ப ரொட்டி சுத்திகரிக்கப்பட்ட கோதுமை மாவும் நல்ல அளவு எண்ணெயும் கொண்டது, எனவே தனியாக கனமாக இருக்கும்; சீனி அல்லது சம்பலுடன் மட்டுமல்லாமல் பருப்பு அல்லது காய்கறிக் கறியுடன் சாப்பிடுவது நல்லது."
+ },
+ "tags": [
+  "budget",
+  "filling",
+  "kid_friendly",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

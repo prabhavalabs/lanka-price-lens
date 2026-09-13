@@ -1,0 +1,187 @@
+{
+ "id": "dish_plain_red_rice",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 290,
+  "description": {
+   "en": "A mound of red rice for the middle of the plate",
+   "si": "පිඟාන මැදට රතු බත් ගොඩක්",
+   "ta": "தட்டின் நடுவிற்கு ஒரு குவியல் சிவப்பு சாதம்"
+  }
+ },
+ "yield_g": 1160,
+ "ingredients": [
+  {
+   "ref": "product_rice_kekulu_red",
+   "label": {
+    "en": "red kekulu rice",
+    "si": "රතු කැකුළු සහල්",
+    "ta": "சிவப்பு கெகுளு அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed and drained",
+    "si": "සෝදා වතුර බේරාගත්",
+    "ta": "கழுவி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the rice in two or three changes of water, rubbing it between your palms, and drain it.",
+    "minutes": null
+   },
+   {
+    "text": "Let it sit in fresh water for ten minutes, which shortens the cooking a little.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the drained rice in a pot with three and a half cups of water, the salt and the pandan leaf.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to a rolling boil uncovered, stirring once so the grains do not settle on the bottom.",
+    "minutes": 7
+   },
+   {
+    "text": "Cover, drop the flame to its lowest and leave it alone while the grains drink up the water.",
+    "minutes": 20
+   },
+   {
+    "text": "Lift the lid, check that the grains are soft but still have a bite, and give it five more minutes off the heat with the lid on.",
+    "minutes": 5
+   },
+   {
+    "text": "Fluff it up from the bottom with a flat spoon and serve it under the curries.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වතුර දෙතුන් වරක් මාරු කරමින්, අත්ල අතර අතුල්ලා සහල් සෝදා වතුර බේරාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නව වතුරේ විනාඩි දහයක් තබන්න; ඒ නිසා උයන කාලය ටිකක් අඩු වේ.",
+    "minutes": 10
+   },
+   {
+    "text": "වතුර බේරාගත් සහල්, කෝප්ප තුනහමාරක් වතුර, ලුණු සහ රම්පෙ සමඟ භාජනයකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නොවසා තදින් නටවන්න, ඇට පතුලට නොඇලෙන ලෙස එක් වරක් කලවම් කරන්න.",
+    "minutes": 7
+   },
+   {
+    "text": "වසා ගින්දර අවම කර, ඇට වතුර උරා ගන්නා තුරු අත නොතබා තබන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "වැස්ම ඉවත් කර ඇට මෘදු වී තවමත් තරමක් තදබවක් ඇත්දැයි බලා, ගින්නෙන් ඉවතට ගෙන වසා තවත් විනාඩි පහක් තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පැතලි හැන්දකින් පතුලේ සිට ලිහා, කරි යටින් බත් බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இரண்டு மூன்று முறை தண்ணீரை மாற்றி, உள்ளங்கைகளுக்கு இடையே தேய்த்து அரிசியைக் கழுவி வடிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "புதிய தண்ணீரில் பத்து நிமிடம் ஊற வைக்கவும்; இதனால் சமைக்கும் நேரம் சிறிது குறையும்.",
+    "minutes": 10
+   },
+   {
+    "text": "வடித்த அரிசியை மூன்றரை கப் தண்ணீர், உப்பு, ரம்பை இலையுடன் பாத்திரத்தில் இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடாமல் நன்கு கொதிக்கவைத்து, அரிசி அடியில் ஒட்டாமல் ஒரு முறை கிளறவும்.",
+    "minutes": 7
+   },
+   {
+    "text": "மூடி தீயை மிகக் குறைத்து, அரிசி தண்ணீரை உறிஞ்சும்வரை தொடாமல் விடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "மூடியைத் திறந்து அரிசி மென்மையாகி இன்னும் சிறிது இறுக்கம் உள்ளதா எனப் பார்த்து, தீயிலிருந்து இறக்கி மூடி மேலும் ஐந்து நிமிடம் வைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தட்டையான கரண்டியால் அடியிலிருந்து உதிர்த்து, கறிகளுக்கு அடியில் சாதத்தைப் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 35,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "heavy pot with lid or rice cooker"
+ ],
+ "tips": {
+  "en": "Red rice needs more water and more time than white, and it is better slightly firm; if it turns out hard, cover it off the fire for another ten minutes rather than adding water.",
+  "si": "රතු සහල්වලට සුදු සහල්වලට වඩා වතුරත් කාලයත් වැඩියෙන් අවශ්‍යයි, තවද තරමක් තදව තිබීම හොඳයි; තදවැඩි නම් වතුර දැමීම වෙනුවට ගින්නෙන් ඉවතට ගෙන තවත් විනාඩි දහයක් වසා තබන්න.",
+  "ta": "சிவப்பு அரிசிக்கு வெள்ளை அரிசியைவிட அதிக தண்ணீரும் நேரமும் தேவை, சிறிது இறுக்கமாக இருப்பது நல்லது; மிகவும் கடினமாக இருந்தால் தண்ணீர் சேர்ப்பதற்குப் பதிலாக தீயிலிருந்து இறக்கி மூடி மேலும் பத்து நிமிடம் வைக்கவும்."
+ },
+ "health_note": {
+  "en": "Unpolished red rice keeps its bran, so it gives more fibre and releases its energy more slowly than white rice, which suits anyone watching their sugar; the portion still matters.",
+  "si": "පොළිශ් නොකළ රතු සහල්වල පොත්ත රැඳී තිබෙන නිසා සුදු බත්වලට වඩා තන්තු වැඩියෙන් ලැබෙන අතර ශක්තිය මුදාහරින්නේ සෙමින්, එය සීනි ගැන සැලකිලිමත් අයට සුදුසුයි; එහෙත් ප්‍රමාණය තවමත් වැදගත්.",
+  "ta": "பாலிஷ் செய்யப்படாத சிவப்பு அரிசியில் தவிடு இருப்பதால் வெள்ளை அரிசியைவிட அதிக நார்ச்சத்து கிடைக்கிறது, சக்தியும் மெதுவாக வெளியிடப்படுகிறது, இது சர்க்கரையைக் கவனிப்பவர்களுக்கு ஏற்றது; ஆனாலும் அளவு முக்கியம்."
+ },
+ "tags": [
+  "high_fibre",
+  "filling",
+  "budget",
+  "diabetic_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

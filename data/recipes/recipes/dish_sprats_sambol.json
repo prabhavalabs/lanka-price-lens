@@ -1,0 +1,316 @@
+{
+ "id": "dish_sprats_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 40,
+  "description": {
+   "en": "A spoonful of crisp crushed sprats beside rice or a roti",
+   "si": "බත් හෝ රොටී සමඟ තබන කරකර ගතියට තලාගත් හාල්මැස්සෝ හැන්දක්",
+   "ta": "சாதம் அல்லது ரொட்டியுடன் வைக்கும் மொறுமொறுப்பான நசுக்கிய நெத்திலி ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 165,
+ "ingredients": [
+  {
+   "ref": "product_sprats",
+   "label": {
+    "en": "dried sprats",
+    "si": "හාල්මැස්සෝ",
+    "ta": "நெத்திலி கருவாடு"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "heads pinched off, rinsed and spread out to dry",
+    "si": "හිස් ඉවත් කර, සෝදා වේලා ගත්",
+    "ta": "தலை நீக்கி, கழுவி உலர்த்தியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for frying",
+    "si": "බැදීම සඳහා",
+    "ta": "பொரிப்பதற்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "5 small red onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියලි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "5 dried chillies",
+   "preparation": {
+    "en": "stalks off, broken in two",
+    "si": "කරල් ඉවත් කර දෙකට කැඩූ",
+    "ta": "தாள் நீக்கி இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "மிளகாய்த் துண்டுகள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "leaves stripped from the stalk",
+    "si": "කොළ ගැලවා ගත්",
+    "ta": "இலைகளை தண்டிலிருந்து பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "juice of 1 lime",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකාගත්",
+    "ta": "சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp, only if needed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Pinch the heads off the sprats if they are the larger kind, rinse them quickly and spread them on a cloth so they dry.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the sprats in two batches until they turn golden and snap when pressed.",
+    "minutes": 6
+   },
+   {
+    "text": "Lift them onto a paper and in the same oil fry the broken dried chillies and curry leaves for a few seconds only.",
+    "minutes": 1
+   },
+   {
+    "text": "Pound half the fried sprats with the fried chilli in a mortar, coarsely, so some fish stays whole for bite.",
+    "minutes": 3
+   },
+   {
+    "text": "Tip in the rest of the sprats, the sliced onion and the chilli flakes and crush them together lightly with your fingers.",
+    "minutes": 2
+   },
+   {
+    "text": "Squeeze the lime over and taste before adding any salt; dried sprats are salty already.",
+    "minutes": null
+   },
+   {
+    "text": "Spoon in a little of the frying oil for gloss and grind in the pepper if you like it sharper.",
+    "minutes": null
+   },
+   {
+    "text": "Serve the same day while the fish still has its crunch.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "හාල්මැස්සෝ ලොකු වර්ගය නම් හිස් ගලවා, ඉක්මනින් සෝදා රෙද්දක් මත අතුරා වේලා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පෑන් එකක පොල් තෙල් රත් කර, හාල්මැස්සෝ දෙවරකට බෙදා රන්වන් වී කරකර ගතිය එන තුරු බැද ගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ඒවා කඩදාසියක් මතට ගෙන, එම තෙලේම කැඩූ වියලි මිරිස් සහ කරපිංචා තත්පර කිහිපයක් පමණක් බැද ගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "බැදගත් හාල්මැස්සන්ගෙන් අඩක් බැදපු මිරිස් සමඟ වංගෙඩියේ ගොරෝසුවට තලා ගන්න; ටිකක් කන්න ගතියට සම්පූර්ණව තියෙන්න දෙන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ඉතිරි හාල්මැස්සෝ, තුනීට කපාගත් ලූනු සහ මිරිස් කැබලි දමා ඇඟිලිවලින් සැහැල්ලුවේ මිශ්‍ර කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා රස බලා පසුව පමණක් ලුණු එකතු කරන්න; හාල්මැස්සන්ට කලින්ම ලුණු ගතියක් තියෙනවා.",
+    "minutes": null
+   },
+   {
+    "text": "දිලිසෙන ගතියට බැදපු තෙල් ටිකක් දමා, තව සැර අවශ්‍ය නම් ගම්මිරිස් තලා එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මාළු කරකර ගතිය තියෙන අතරේම, එදිනම ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "நெத்திலி பெரிய வகையாக இருந்தால் தலையை நீக்கி, விரைவாகக் கழுவி, துணியில் பரப்பி உலர விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயை காய்ச்சி, நெத்திலியை இரண்டு தவணையாக பொன்னிறமாகி மொறுமொறுப்பாகும் வரை பொரியுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அவற்றை காகிதத்தில் எடுத்துவிட்டு, அதே எண்ணெயில் உடைத்த வத்தல் மிளகாயையும் கறிவேப்பிலையையும் சில நொடிகள் மட்டும் பொரியுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "பொரித்த நெத்திலியில் பாதியை, பொரித்த மிளகாயுடன் உரலில் கொரகொரப்பாக நசுக்குங்கள்; சில மீன் முழுமையாக இருக்கட்டும்.",
+    "minutes": 3
+   },
+   {
+    "text": "மீதி நெத்திலி, நறுக்கிய வெங்காயம், மிளகாய்த் துண்டுகள் ஆகியவற்றைப் போட்டு விரல்களால் லேசாக பிசையுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "எலுமிச்சை சாறு பிழிந்து சுவை பார்த்த பிறகே உப்பு சேருங்கள்; கருவாட்டில் ஏற்கனவே உப்பு உள்ளது.",
+    "minutes": null
+   },
+   {
+    "text": "பளபளப்புக்கு பொரித்த எண்ணெயில் கொஞ்சம் விட்டு, இன்னும் காரம் வேண்டுமானால் மிளகு நசுக்கிச் சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மீனின் மொறுமொறுப்பு இருக்கும்போதே, அதே நாளில் பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 8,
+  "cook_minutes": 10,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan",
+  "mortar and pestle"
+ ],
+ "tips": {
+  "en": "Fry the sprats on a steady medium flame; too hot and they blacken, too cool and they soak oil and go soft. A spoon of scraped coconut pounded in stretches the sambol for a bigger table.",
+  "si": "හාල්මැස්සෝ මධ්‍යම ගින්නේ බැදගන්න; ගිනි වැඩි නම් කළු වෙනවා, අඩු නම් තෙල් උරාගෙන මෘදු වෙනවා. ගෙදර අය වැඩි නම් ගාගත් පොල් හැන්දක් තලා එකතු කළොත් සම්බෝල ප්‍රමාණය වැඩි කර ගන්න පුළුවන්.",
+  "ta": "நெத்திலியை நடுத்தர தீயில் பொரியுங்கள்; தீ அதிகமானால் கருகும், குறைந்தால் எண்ணெயை உறிஞ்சி மென்மையாகிவிடும். வீட்டில் ஆட்கள் அதிகமானால் ஒரு கரண்டி துருவிய தேங்காயை நசுக்கிச் சேர்த்தால் சம்பல் அளவு கூடும்."
+ },
+ "health_note": {
+  "en": "Sprats are eaten bones and all, so they give good protein and calcium for very little money, which suits growing children and older people. They are salty and fried, so keep the portion to a spoonful if salt is a concern at home.",
+  "si": "හාල්මැස්සෝ ඇට සමඟම කන නිසා අඩු මුදලට හොඳ ප්‍රෝටීන් සහ කැල්සියම් ලැබෙනවා; එය වැඩෙන දරුවන්ට සහ වැඩිහිටියන්ට හොඳයි. ලුණු සහ තෙල් ගතිය නිසා, ගෙදර ලුණු ප්‍රශ්නයක් නම් හැන්දකට සීමා කරන්න.",
+  "ta": "நெத்திலியை முள்ளுடன் சேர்த்தே சாப்பிடுவதால், குறைந்த செலவில் நல்ல புரதமும் கால்சியமும் கிடைக்கிறது; வளரும் குழந்தைகளுக்கும் முதியவர்களுக்கும் ஏற்றது. உப்பும் எண்ணெயும் இருப்பதால், வீட்டில் உப்பு கவனிக்க வேண்டியிருந்தால் ஒரு கரண்டியுடன் நிறுத்துங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "calcium_rich",
+  "iron_rich",
+  "budget",
+  "quick",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

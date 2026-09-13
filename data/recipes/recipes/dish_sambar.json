@@ -1,0 +1,439 @@
+{
+ "id": "dish_sambar",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 270,
+  "description": {
+   "en": "A deep bowl of lentil stew with drumstick and carrot",
+   "si": "මුරුංගා සහ කැරට් සමඟ පරිප්පු හොදි ගැඹුරු බඳුනක්",
+   "ta": "முருங்கையும் கரட்டும் சேர்ந்த பருப்புக் குழம்பு ஒரு கிண்ணம்"
+  }
+ },
+ "yield_g": 1080,
+ "ingredients": [
+  {
+   "ref": "pantry_toor_dhal",
+   "label": {
+    "en": "toor dhal",
+    "si": "තෝර පරිප්පු",
+    "ta": "துவரம் பருப்பு"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "three quarters of a cup",
+   "preparation": {
+    "en": "washed",
+    "si": "සෝදාගත්",
+    "ta": "கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_drumstick",
+   "label": {
+    "en": "drumstick",
+    "si": "මුරුංගා",
+    "ta": "முருங்கைக்காய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 drumsticks",
+   "preparation": {
+    "en": "cut into finger lengths",
+    "si": "ඇඟිලි දිගට කපාගත්",
+    "ta": "விரல் நீளமாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கரட்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 carrot",
+   "preparation": {
+    "en": "cut into thick rounds",
+    "si": "ඝන රවුම්වලට කපාගත්",
+    "ta": "தடித்த வட்டங்களாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "cut into quarters",
+    "si": "කොටස් හතරකට කපාගත්",
+    "ta": "நான்காக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large tomato",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියම්බලා",
+    "ta": "புளி"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "a lime-sized ball",
+   "preparation": {
+    "en": "soaked, juice squeezed out",
+    "si": "පොඟවා යුෂ මිරිකාගත්",
+    "ta": "ஊறவைத்து சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_sambar_powder",
+   "label": {
+    "en": "sambar powder",
+    "si": "සම්බාර් කුඩු",
+    "ta": "சாம்பார் பொடி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried red chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "broken in half",
+    "si": "දෙකට කඩාගත්",
+    "ta": "இரண்டாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_asafoetida",
+   "label": {
+    "en": "asafoetida",
+    "si": "පෙරුංකායම්",
+    "ta": "பெருங்காயம்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small bunch",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the toor dhal and boil it with the turmeric and four cups of water until it is soft enough to whisk smooth.",
+    "minutes": 25
+   },
+   {
+    "text": "Soak the tamarind in warm water and squeeze out the juice, throwing away the fibres.",
+    "minutes": 10
+   },
+   {
+    "text": "Cut the drumstick into finger lengths, the carrot into thick rounds and the onion into quarters.",
+    "minutes": null
+   },
+   {
+    "text": "Boil the drumstick, carrot and onion in a little salted water until just tender, stopping before they go soft.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the tamarind juice, chopped tomato and sambar powder to the vegetables and cook until the sourness mellows.",
+    "minutes": 8
+   },
+   {
+    "text": "Whisk the cooked dhal smooth and pour it in with the rest of the salt.",
+    "minutes": null
+   },
+   {
+    "text": "Simmer, stirring so the dhal does not catch on the bottom, until everything comes together into one gravy.",
+    "minutes": 8
+   },
+   {
+    "text": "Heat the coconut oil in a small pan, pop the mustard seeds, then add the broken dried chilli, curry leaves and asafoetida.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour the tempering into the sambar and stir it through.",
+    "minutes": null
+   },
+   {
+    "text": "Scatter chopped coriander leaves over and serve with thosai, idli or string hoppers.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තෝර පරිප්පු සෝදා, කහ කුඩු සහ කෝප්ප හතරක් වතුර සමඟ හොඳින් තැලෙන තුරු තම්බන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "සියම්බලා උණු වතුරේ පොඟවා යුෂ මිරිකාගෙන කෙඳි ඉවත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුරුංගා ඇඟිලි දිගට, කැරට් ඝන රවුම්වලට සහ බී ලූනු කොටස් හතරකට කපන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මුරුංගා, කැරට් සහ ලූනු ලුණු වතුර ස්වල්පයක තැම්බෙන තුරු පමණක් තම්බන්න; මැලවෙන්නට කලින් නවත්වන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "එළවළුවලට සියම්බලා යුෂ, කපාගත් තක්කාලි සහ සම්බාර් කුඩු දමා ඇඹුල් ගතිය මෘදු වන තුරු තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "තැම්බූ පරිප්පු හොඳින් ගසා සුමට කර, ඉතිරි ලුණු සමඟ එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පරිප්පු පතුලට අල්ලන්නේ නැතිව කලවම් කරමින්, සියල්ල එක් හොදියක් වන තුරු තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කුඩා පෑනක පොල් තෙල් රත් කර අබ පිපිරවා, කැඩූ වියළි මිරිස්, කරපිංචා සහ පෙරුංකායම් දමන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තෙම්පරාදුව සම්බාර් එකට වත් කර කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කපාගත් කොත්තමල්ලි කොළ ඉස, තෝසෙ, ඉඩ්ලි හෝ ඉඳිආප්ප සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "துவரம் பருப்பைக் கழுவி, மஞ்சள் தூள், நான்கு கப் தண்ணீருடன் நன்கு கரையும் வரை வேகவிடவும்.",
+    "minutes": 25
+   },
+   {
+    "text": "புளியை வெந்நீரில் ஊறவைத்து சாறு பிழிந்து நாரை நீக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "முருங்கைக்காயை விரல் நீளமாக, கரட்டைத் தடித்த வட்டங்களாக, வெங்காயத்தை நான்காக வெட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "முருங்கை, கரட், வெங்காயத்தை சிறிது உப்பு நீரில் மென்மையாகும் வரை மட்டும் வேகவிடவும்; மசியும் முன் நிறுத்தவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "காய்கறிகளுடன் புளிச் சாறு, நறுக்கிய தக்காளி, சாம்பார் பொடி சேர்த்து புளிப்பு தணியும் வரை கொதிக்கவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "வேகவைத்த பருப்பை நன்கு மசித்து, மீதி உப்புடன் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "பருப்பு அடியில் பிடிக்காமல் கிளறியபடி, எல்லாம் ஒரே குழம்பாகச் சேரும் வரை கொதிக்கவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "சிறிய வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து கடுகு தாளித்து, உடைத்த வத்தல் மிளகாய், கறிவேப்பிலை, பெருங்காயம் சேர்க்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தாளிப்பை சாம்பாரில் ஊற்றிக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கிய கொத்தமல்லி இலையைத் தூவி, தோசை, இட்லி அல்லது இடியப்பத்துடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 40,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "two pots",
+  "whisk or wooden spoon",
+  "small tempering pan"
+ ],
+ "tips": {
+  "en": "Cook the vegetables separately from the dhal and bring them together only at the end, or the drumstick falls apart and the carrot turns to mush. Add the tamarind before the dhal, since dhal thrown into sour water takes much longer to soften.",
+  "si": "එළවළු පරිප්පුවෙන් වෙන්ව තම්බා අවසානයේ පමණක් එකතු කරන්න; නොඑසේ නම් මුරුංගා කැඩී කැරට් මැලවී යයි. පරිප්පු දැමීමට පෙර සියම්බලා දමන්න; ඇඹුල් වතුරට දැමූ පරිප්පු මෘදු වීමට බොහෝ කාලයක් ගත වේ.",
+  "ta": "காய்கறிகளைப் பருப்பிலிருந்து தனியாக வேகவைத்து இறுதியில் மட்டுமே சேர்க்கவும்; இல்லையேல் முருங்கை உடைந்து கரட் மசிந்துவிடும். பருப்புக்கு முன் புளியைச் சேர்க்கவும், புளிப்பு நீரில் இட்ட பருப்பு வேக நீண்ட நேரம் எடுக்கும்."
+ },
+ "health_note": {
+  "en": "One bowl brings pulse protein together with drumstick, carrot, onion and tomato, which is a lot of vegetable in a single pot. Tamarind and tomato help the body take up the iron in the dhal, and the fat is only the spoon of tempering oil.",
+  "si": "එක් බඳුනකින් පරිප්පු ප්‍රෝටීන් සමඟ මුරුංගා, කැරට්, ලූනු සහ තක්කාලි ලැබෙන බැවින් එක වළඳකින් එළවළු විශාල ප්‍රමාණයක් ලැබේ. සියම්බලා සහ තක්කාලි පරිප්පුවේ යකඩ ශරීරයට උරා ගැනීමට උදව් වන අතර තෙල ඇත්තේ තෙම්පරාදු හැන්දේ පමණයි.",
+  "ta": "ஒரு கிண்ணத்தில் பருப்புப் புரதத்துடன் முருங்கை, கரட், வெங்காயம், தக்காளி சேர்வதால் ஒரே பாத்திரத்தில் நிறைய காய்கறி கிடைக்கிறது. புளியும் தக்காளியும் பருப்பிலுள்ள இரும்புச்சத்தை உடல் எடுக்க உதவுகின்றன; கொழுப்பு தாளிப்பு எண்ணெயில் மட்டுமே."
+ },
+ "tags": [
+  "high_protein",
+  "high_fibre",
+  "iron_rich",
+  "heart_healthy",
+  "budget",
+  "filling",
+  "comfort",
+  "one_pot"
+ ],
+ "review_needed": [
+  "si"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

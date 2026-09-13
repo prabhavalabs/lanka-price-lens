@@ -1,0 +1,205 @@
+{
+ "id": "dish_plain_coffee",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 200,
+  "description": {
+   "en": "A hot cup of milk coffee, sweet as the boutique makes it",
+   "si": "කඩේ හදන විදිහට පැණි රස උණුසුම් කිරි කෝපි කෝප්පයක්",
+   "ta": "கடையில் செய்வதுபோல் இனிப்பான சூடான பால் கோப்பி ஒரு கோப்பை"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "pantry_coffee",
+   "label": {
+    "en": "instant coffee",
+    "si": "ක්ෂණික කෝපි",
+    "ta": "இன்ஸ்டன்ட் கோப்பி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_milk_powder",
+   "label": {
+    "en": "full cream milk powder",
+    "si": "කිරි පිටි",
+    "ta": "பால் பவுடர்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 tbsp",
+   "preparation": {
+    "en": "mixed smooth with a little warm water",
+    "si": "උණුසුම් වතුර ටිකකින් ගැටි නැති ලෙස මිශ්‍ර කරගත්",
+    "ta": "சிறிது வெதுவெதுப்பான நீரில் கட்டியில்லாமல் கரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 48,
+   "unit": "g",
+   "household": "4 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a small piece, boiled in",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Boil 600 ml of water, dropping in the piece of cinnamon if you want the evening cup to smell of it.",
+    "minutes": 3
+   },
+   {
+    "text": "Put the milk powder into a jug and mix it to a smooth cream with four tablespoons of warm water so that no lumps are left.",
+    "minutes": null
+   },
+   {
+    "text": "Put the coffee and the sugar into the cups, a heaped half teaspoon of coffee and a heaped teaspoon of sugar in each.",
+    "minutes": null
+   },
+   {
+    "text": "Pour a little of the boiling water onto the coffee in each cup and stir it into a dark paste; the coffee must dissolve before the milk goes in.",
+    "minutes": null
+   },
+   {
+    "text": "Stir the milk cream into the rest of the hot water in the jug.",
+    "minutes": null
+   },
+   {
+    "text": "Fill the cups with the hot milk, stirring each one as you pour.",
+    "minutes": null
+   },
+   {
+    "text": "Taste one cup and hand round the sugar bowl for anyone who takes it sweeter, and drink it hot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මිලිලීටර් 600ක් වතුර උතුරන්න තබන්න; සවස් කෝප්පයට කුරුඳු සුවඳ ඕන නම් කුරුඳු කැබැල්ලක් දමන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කිරි පිටි ජෝගුවකට දමා, උණුසුම් වතුර මේස හැඳි හතරකින් ගැටියක් නැති ක්‍රීම් එකක් වන තුරු මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කෝපි සහ සීනි කෝප්පවලට දමන්න; එකකට කෝපි තේ හැඳි භාගයක් සහ සීනි තේ හැන්දක් උඩට පිරී.",
+    "minutes": null
+   },
+   {
+    "text": "එක කෝප්පයකට උතුරන වතුර ටිකක් දමා කෝපි තද පේස්ට් එකක් වන ලෙස කලතන්න; කිරි දමන්නට පෙර කෝපි දිය විය යුතුයි.",
+    "minutes": null
+   },
+   {
+    "text": "ජෝගුවේ ඉතිරි උණු වතුරට කිරි ක්‍රීම් එක කලතන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වත් කරන අතරේ එක එක කෝප්පය කලතමින්, උණු කිරිවලින් කෝප්ප පුරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එක කෝප්පයක් රස බලා, වැඩිය පැණි රසට ගන්නා අයට සීනි බඳුන දෙන්න; උණුසුම්ව බොන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "600 மில்லி தண்ணீரைக் கொதிக்க வைக்கவும்; மாலைக் கோப்பையில் பட்டை வாசம் வேண்டுமானால் ஒரு பட்டைத் துண்டைப் போடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "பால் பவுடரை ஜாக்கில் இட்டு, நான்கு மேசைக்கரண்டி வெதுவெதுப்பான நீரில் கட்டி இல்லாத கிரீம் போலக் கரைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கோப்பியையும் சீனியையும் கோப்பைகளில் இடுங்கள்; ஒன்றுக்கு அரை தேக்கரண்டி கோப்பியும் நிரம்பிய ஒரு தேக்கரண்டி சீனியும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு கோப்பையிலும் சிறிது கொதிக்கும் நீர் விட்டு, கோப்பியை அடர் பேஸ்ட்டாகக் கலக்கவும்; பால் சேர்க்கும் முன் கோப்பி கரைந்திருக்க வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஜாக்கில் மீதமுள்ள சூடான நீரில் பால் கிரீமைக் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஊற்றும்போதே ஒவ்வொரு கோப்பையையும் கலக்கியபடி, சூடான பாலால் கோப்பைகளை நிரப்புங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு கோப்பையைச் சுவைத்துப் பார்த்து, அதிக இனிப்பு வேண்டுபவர்களுக்கு சீனிக் கிண்ணத்தைக் கொடுத்து, சூடாகக் குடியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 3,
+  "cook_minutes": 3,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "kettle or small pan",
+  "jug",
+  "spoon"
+ ],
+ "tips": {
+  "en": "Dissolve the coffee in a spoon of boiling water before the milk arrives, or the powder floats in brown specks on top of the cup. If you have real ground coffee, boil it in the water for two minutes and strain it, then carry on the same way.",
+  "si": "කිරි එන්නට පෙර කෝපි උතුරන වතුර හැන්දකින් දිය කරගන්න, නැත්නම් කුඩු දුඹුරු පුංචි ලප ලෙස කෝප්පය මතුපිට පාවේ. ඇත්ත අඹරාගත් කෝපි තිබේ නම්, එය වතුරේ මිනිත්තු දෙකක් තම්බා පෙරාගෙන, ඉන්පසු එකම විදිහට කරන්න.",
+  "ta": "பால் வருவதற்கு முன்பே கோப்பியை ஒரு கரண்டி கொதிக்கும் நீரில் கரைத்துக் கொள்ளுங்கள், இல்லையேல் பவுடர் பழுப்புத் துகள்களாக கோப்பையின் மேல் மிதக்கும். உண்மையான அரைத்த கோப்பி இருந்தால், அதை நீரில் இரண்டு நிமிடம் கொதிக்க வைத்து வடிகட்டி, பிறகு அதே முறையில் தொடருங்கள்."
+ },
+ "health_note": {
+  "en": "Milk powder gives calcium and a little protein, so a cup with a piece of bread is a real stop-gap between meals. Four heaped teaspoons of sugar for four cups is the part to cut, and strong coffee late in the evening keeps many people from sleeping.",
+  "si": "කිරි පිටියෙන් කැල්සියම් සහ ප්‍රෝටීන් ටිකක් ලැබෙන නිසා, කෝප්පයක් සහ පාන් කැබැල්ලක් කෑම අතර සැබෑ පිහිටක්. කපා දැමිය යුත්තේ කෝප්ප හතරකට යන උඩට පිරුණු තේ හැඳි හතරක සීනියි; රෑ අතට තද කෝපි බීම බොහෝ දෙනෙකුගේ නින්ද නැති කරයි.",
+  "ta": "பால் பவுடர் கால்சியமும் சிறிது புரதமும் தருகிறது, எனவே ஒரு கோப்பையும் ஒரு துண்டு பாணும் உணவுகளுக்கு இடையே நல்ல தாங்கல். குறைக்க வேண்டியது நான்கு கோப்பைக்குப் போகும் நான்கு நிரம்பிய தேக்கரண்டி சீனியே; இரவு நேரத்தில் கடுமையான கோப்பி பலருக்குத் தூக்கத்தைக் கெடுக்கும்."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "comfort",
+  "calcium_rich",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

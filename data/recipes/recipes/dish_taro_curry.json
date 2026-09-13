@@ -1,0 +1,364 @@
+{
+ "id": "dish_taro_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 155,
+  "description": {
+   "en": "A ladle of dense taro pieces in a spiced coconut gravy with rice",
+   "si": "බත් සමඟ කුළුබඩු පොල් කිරි ඉස්මේ ගහල අල කැබලි හැන්දක්",
+   "ta": "சாதத்துடன் மசாலா தேங்காய்க் குழம்பில் சேப்பங்கிழங்கு துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 620,
+ "ingredients": [
+  {
+   "ref": "pantry_taro",
+   "label": {
+    "en": "taro corms",
+    "si": "ගහල අල",
+    "ta": "சேப்பங்கிழங்கு"
+   },
+   "quantity": 450,
+   "unit": "g",
+   "household": "5 or 6 medium corms",
+   "preparation": {
+    "en": "peeled and cut into thick cubes",
+    "si": "ලෙලි ගලවා විශාල කැබලිවලට කපාගත්",
+    "ta": "தோல் சீவி பெரிய துண்டுகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 small pieces",
+   "preparation": {
+    "en": "a dry piece, rinsed",
+    "si": "වියළි කැබැල්ලක්, සෝදාගත්",
+    "ta": "காய்ந்த துண்டு, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a small ball",
+   "preparation": {
+    "en": "soaked in warm water and the pulp squeezed out",
+    "si": "උණු වතුරේ පොඟවා යුෂ මිරිකාගත්",
+    "ta": "வெந்நீரில் ஊறவைத்து சாறு பிழிந்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කැඩූ",
+    "ta": "துண்டுகளாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 1/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the taro corms under running water and cut them into thick pieces; rub a little oil on your hands first if your skin itches easily.",
+    "minutes": 15
+   },
+   {
+    "text": "Wash the pieces twice to take off the loose starch.",
+    "minutes": 5
+   },
+   {
+    "text": "Boil them in water with the goraka, the tamarind water and a little salt until half cooked, then pour that water away.",
+    "minutes": 15
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the sliced onion, broken dried chillies and curry leaves.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the taro with the turmeric, roasted curry powder and salt and turn the pieces over carefully so they do not break.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer until the pieces are soft right to the middle.",
+    "minutes": 12
+   },
+   {
+    "text": "Add the thick coconut milk, let it bubble once and lift the pot off the fire.",
+    "minutes": 3
+   },
+   {
+    "text": "Never serve taro underdone; if it is not cooked through the itch stays in the throat.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ගහල අල ගලා යන වතුරේ ලෙලි ගලවා ගනකමට කපන්න; අත් පහසුවෙන් කසයි නම් පළමුව ස්වල්ප තෙලක් තවරා ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පිටත පිෂ්ඨය ඉවත් වන ලෙස කැබලි දෙවරක් සෝදන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගොරකා, සියඹලා යුෂ සහ ස්වල්ප ලුණු සමඟ වතුරේ අඩක් ඉදෙන තුරු තම්බා, එම වතුර බැහැර කරන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "මුට්ටියේ පොල් තෙල් රත් කර, කපාගත් ලූනු, කැඩූ වියළි මිරිස් සහ කරපිංචා තෙල්දාලන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ගහල අල, කහ, බැදපු තුනපහ සහ ලුණු එක් කර, කැබලි නොකැඩෙන සේ පරෙස්සමින් පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, කැබලි මැද දක්වා මෘදු වන තුරු තෙම්බෙන්න දෙන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඝන පොල් කිරි එකතු කර, එක් වරක් උතුරුවා මුට්ටිය ළිපෙන් ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ගහල අල අඩක් ඉදුණු ගමන් කිසිවිටෙක පිළිගන්වන්න එපා; හොඳින් නොඉදුණොත් ගෙලේ කැසීම රැඳේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சேப்பங்கிழங்கை ஓடும் நீரில் தோல் சீவி, பெரிய துண்டுகளாக நறுக்குங்கள்; கை எளிதில் அரித்தால் முதலில் சிறிது எண்ணெய் தடவிக் கொள்ளுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "மேல் மாவு போக துண்டுகளை இருமுறை கழுவுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கோரக்கா, புளித் தண்ணீர், சிறிது உப்பு சேர்த்த நீரில் பாதி வேகும் வரை வேகவைத்து, அந்த நீரை ஊற்றிவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, நறுக்கிய வெங்காயம், உடைத்த காய்ந்த மிளகாய், கறிவேப்பிலையைத் தாளியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "கிழங்கை மஞ்சள், வறுத்த கறி மசாலா, உப்புடன் சேர்த்து, துண்டுகள் உடையாதபடி கவனமாகப் புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "நீர்த்த தேங்காய்ப் பாலை ஊற்றி, துண்டுகள் நடுவரை மிருதுவாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, ஒரு கொதி வந்தவுடன் சட்டியை இறக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "சேப்பங்கிழங்கை பாதி வெந்த நிலையில் ஒருபோதும் பரிமாற வேண்டாம்; நன்கு வேகாவிட்டால் தொண்டையில் அரிப்பு தங்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 35,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "pot for the first boil"
+ ],
+ "tips": {
+  "en": "The sour water in the first boil is what takes the itch out, so do not skip it and do not use that water in the gravy. Peel the corms dry-handed only if you know your skin tolerates them.",
+  "si": "කැසීම ඉවත් වන්නේ පළමු තැම්බීමේ ඇඹුල් වතුරෙනි; එය මඟ නොහරින්න, එම වතුර ඉස්මට යොදන්නත් එපා. ඔබේ සම දරාගනී යැයි දන්නේ නම් පමණක් අත් වියළිව ලෙලි ගලවන්න.",
+  "ta": "முதல் கொதியில் உள்ள புளிப்பு நீர்தான் அரிப்பை நீக்குகிறது, அதை விட்டுவிடாதீர்கள், அந்த நீரைக் குழம்பில் சேர்க்கவும் வேண்டாம். உங்கள் தோல் தாங்கும் என்று தெரிந்தால் மட்டுமே உலர்ந்த கையால் தோல் சீவுங்கள்."
+ },
+ "health_note": {
+  "en": "Taro is a starchy root that fills like rice and gives steady energy along with fibre and potassium. Because of that starch, count it as part of the rice on your plate rather than as a free vegetable.",
+  "si": "ගහල අල බත සේ බඩ පුරවන පිෂ්ඨය සහිත අලයක් වන අතර, තන්තු සහ පොටෑසියම් සමඟ ස්ථාවර ශක්තියක් දෙයි. එම පිෂ්ඨය නිසා, එය නොමිලේ එළවළුවක් ලෙස නොව පිඟානේ බතේ කොටසක් ලෙස ගණන් ගන්න.",
+  "ta": "சேப்பங்கிழங்கு மாவுச்சத்து நிறைந்த கிழங்கு; சாதம் போலவே வயிறு நிறைக்கும், நார்ச்சத்துடனும் பொட்டாசியத்துடனும் நிலையான சக்தி தரும். அந்த மாவுச்சத்து காரணமாக, இதைக் கூடுதல் காய்கறியாக அல்லாமல் தட்டில் உள்ள சாதத்தின் பகுதியாகக் கணக்கிடுங்கள்."
+ },
+ "tags": [
+  "filling",
+  "high_fibre",
+  "budget",
+  "comfort",
+  "elderly_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

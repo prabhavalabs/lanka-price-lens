@@ -1,0 +1,348 @@
+{
+ "id": "dish_ribbon_cake",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 115,
+  "description": {
+   "en": "A slice cut across the layers so the stripes show",
+   "si": "ඉරි පෙනෙන ලෙස තට්ටු හරහා කපාගත් පෙත්තක්",
+   "ta": "கோடுகள் தெரியும்படி அடுக்குகளைக் குறுக்கே வெட்டிய துண்டு"
+  }
+ },
+ "yield_g": 460,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "sieved twice with the baking powder",
+    "si": "බේකින් පවුඩර් සමඟ දෙවරක් හලාගත්",
+    "ta": "பேக்கிங் பவுடருடன் இருமுறை சலித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 110,
+   "unit": "g",
+   "household": "half a cup",
+   "preparation": {
+    "en": "softened at room temperature",
+    "si": "කාමර උෂ්ණත්වයේ මුදු වුණ",
+    "ta": "அறை வெப்பத்தில் மிருதுவாக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 110,
+   "unit": "g",
+   "household": "half a cup, ground fine",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 large eggs",
+   "preparation": {
+    "en": "at room temperature",
+    "si": "කාමර උෂ්ණත්වයේ",
+    "ta": "அறை வெப்பத்தில்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_baking_powder",
+   "label": {
+    "en": "baking powder",
+    "si": "බේකින් පවුඩර්",
+    "ta": "பேக்கிங் பவுடர்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_vanilla",
+   "label": {
+    "en": "vanilla essence",
+    "si": "වැනිලා එසන්ස්",
+    "ta": "வெனிலா எசன்ஸ்"
+   },
+   "quantity": 3,
+   "unit": "ml",
+   "household": "half a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_food_colouring",
+   "label": {
+    "en": "food colouring",
+    "si": "ආහාර වර්ණය",
+    "ta": "உணவு நிறம்"
+   },
+   "quantity": 2,
+   "unit": "ml",
+   "household": "a few drops each of pink and green",
+   "preparation": {
+    "en": "one colour stirred into each third of the batter",
+    "si": "මිශ්‍රණයේ තුනෙන් එකකට එක පාටක් බැගින්",
+    "ta": "கலவையின் ஒவ்வொரு மூன்றில் ஒரு பங்கிற்கும் ஒரு நிறம்"
+   },
+   "optional": true,
+   "scaling": "fixed",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_jam",
+   "label": {
+    "en": "jam",
+    "si": "ජෑම්",
+    "ta": "ஜாம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp of mixed fruit jam",
+   "preparation": {
+    "en": "stirred loose so it spreads without tearing the cake",
+    "si": "කේක් නොඉරා තවරෙන ලෙස කලතා ලිහිල් කරගත්",
+    "ta": "கேக் கிழியாமல் பரவும்படி கலக்கி நீர்மையாக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Bring the butter and eggs to room temperature, grease two small shallow trays or plan to bake the layers one after another in the same tin.",
+    "minutes": 20
+   },
+   {
+    "text": "Sieve the flour with the baking powder and salt twice.",
+    "minutes": null
+   },
+   {
+    "text": "Cream the butter and sugar until pale and light, beating in one direction until no sugar grains can be felt.",
+    "minutes": 10
+   },
+   {
+    "text": "Beat in the eggs one at a time, then fold in the flour in three lots alternating with the milk and vanilla.",
+    "minutes": null
+   },
+   {
+    "text": "Divide the batter into three equal bowls by spoonfuls, so the layers come out the same thickness, and colour one pink, one green and leave one plain.",
+    "minutes": null
+   },
+   {
+    "text": "Spread each batter thinly and evenly in a tray and bake in a moderate oven, around 175 C, until the top springs back and a skewer comes out clean.",
+    "minutes": 40
+   },
+   {
+    "text": "Turn the layers out and cool them flat, because a warm layer tears when jam is spread on it.",
+    "minutes": 30
+   },
+   {
+    "text": "Trim the edges square, spread loosened jam on the first layer, press the second on top, spread jam again and finish with the third.",
+    "minutes": null
+   },
+   {
+    "text": "Put a light plate on top and leave the stack to settle so it holds together when cut.",
+    "minutes": 30
+   },
+   {
+    "text": "Slice across the layers with a long knife wiped clean between cuts, so every piece shows its stripes.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "බටර් සහ බිත්තර කාමර උෂ්ණත්වයට එන්න දෙන්න, කුඩා මට්ටම් තැටි දෙකක තෙල් ගාන්න, නැත්නම් එකම තැටියේ තට්ටු එකින් එක පුළුස්සන්නට සූදානම් වන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පිටි, බේකින් පවුඩර් සහ ලුණු දෙවරක් හලා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බටර් සහ සීනි සුදුමැලි වී සැහැල්ලු වන තුරු, එක පැත්තට කලතමින්, සීනි කැට අතට නොදැනෙන තුරු කලතන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "බිත්තර එකින් එක දමා ගසා, පසුව පිටි තුන් වරකට, කිරි සහ වැනිලා මාරුවෙන් මාරුවට දමා සෙමෙන් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මිශ්‍රණය හැන්දෙන් මැනගෙන බඳුන් තුනකට සමව බෙදන්න, එවිට තට්ටු එකම ඝනකමට එනවා, එකක් රෝස පාට, එකක් කොළ පාට කර, එකක් සුදුවම තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එක එක මිශ්‍රණය තැටියේ තුනීට එකසේ තවරා, සෙල්සියස් 175ක් පමණ මධ්‍යම උණුසුමේ, මුදුන ඇඟිල්ලට නැවී නැවත එන තුරු සහ ඉත්ත පිරිසිදුව එන තුරු පුළුස්සන්න.",
+    "minutes": 40
+   },
+   {
+    "text": "තට්ටු හරවා ගෙන පැතලිව සිසිල් කරන්න, උණුසුම් තට්ටුවකට ජෑම් තැවරූ විට එය ඉරෙනවා.",
+    "minutes": 30
+   },
+   {
+    "text": "දාර හතරැස්ව කපා, පළමු තට්ටුවට ලිහිල් කරගත් ජෑම් තවරා, දෙවැන්න මතට තද කර, නැවත ජෑම් තවරා තුන්වැන්නෙන් අවසන් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මතට සැහැල්ලු පිඟානක් තබා ගොඩ රැඳෙන්නට තියන්න, එවිට කපන විට එකට තියෙනවා.",
+    "minutes": 30
+   },
+   {
+    "text": "දිග පිහියක් කැපුම් අතරේ පිස ගනිමින් තට්ටු හරහා කපන්න, එවිට හැම කැබැල්ලේම ඉරි පෙනෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெண்ணெயையும் முட்டையையும் அறை வெப்பத்திற்கு வர விடுங்கள்; இரண்டு சிறு ஆழமில்லாத தட்டுகளில் நெய் தடவுங்கள், அல்லது ஒரே தட்டில் அடுக்குகளை ஒன்றன்பின் ஒன்றாகச் சுடத் திட்டமிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "மாவு, பேக்கிங் பவுடர், உப்பு சேர்த்து இருமுறை சலியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "வெண்ணெயையும் சீனியையும் வெளிறி இலகுவாகும்வரை, ஒரே திசையில், சீனித் துகள் தெரியாதவரை அடியுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "முட்டைகளை ஒன்றன்பின் ஒன்றாகச் சேர்த்து அடித்து, பிறகு மாவை மூன்று தவணையாக, பாலும் வெனிலாவும் மாறி மாறிச் சேர்த்து மெதுவாகக் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கலவையை கரண்டியால் அளந்து மூன்று கிண்ணங்களில் சமமாகப் பிரியுங்கள் - அடுக்குகள் ஒரே தடிமனில் வரும்; ஒன்றை இளஞ்சிவப்பு, ஒன்றை பச்சை, ஒன்றை அப்படியே வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒவ்வொரு கலவையையும் தட்டில் மெல்லியதாகச் சமமாகப் பரப்பி, 175 C அளவு நடுத்தர சூட்டில், மேல் விரலுக்கு அமிழ்ந்து திரும்பும்வரை, குச்சி சுத்தமாக வரும்வரை சுடுங்கள்.",
+    "minutes": 40
+   },
+   {
+    "text": "அடுக்குகளைத் திருப்பி எடுத்து தட்டையாக ஆற விடுங்கள் - சூடான அடுக்கில் ஜாம் தடவினால் கிழியும்.",
+    "minutes": 30
+   },
+   {
+    "text": "ஓரங்களைச் சதுரமாக வெட்டி, முதல் அடுக்கில் நீர்மையாக்கிய ஜாமைப் பரப்பி, இரண்டாவதை மேலே அழுத்தி, மீண்டும் ஜாம் தடவி, மூன்றாவதால் முடியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மேலே இலகுவான தட்டு ஒன்றை வைத்து அடுக்கு அமர விடுங்கள் - வெட்டும்போது பிரியாமல் இருக்கும்.",
+    "minutes": 30
+   },
+   {
+    "text": "நீண்ட கத்தியை ஒவ்வொரு வெட்டுக்கும் இடையில் துடைத்து, அடுக்குகளைக் குறுக்கே வெட்டுங்கள் - ஒவ்வொரு துண்டிலும் கோடுகள் தெரியும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 40,
+  "passive_minutes": 60
+ },
+ "equipment": [
+  "two shallow trays or one small tin",
+  "oven",
+  "wooden spoon or beater",
+  "long knife",
+  "sieve"
+ ],
+ "tips": {
+  "en": "Measure the batter into the three bowls by the spoon instead of by eye, because an uneven layer shows in every slice once the cake is cut. Thin layers bake fast, so watch them from thirty minutes and take them out while still pale, since an overbaked layer goes dry and drags the jam. Colour with a couple of drops only; heavy colour tastes bitter and looks like shop cake.",
+  "si": "බඳුන් තුනට මිශ්‍රණය ඇසින් නොව හැන්දෙන් මැන දමන්න, තට්ටුවක් අසමාන නම් කැපූ විට හැම පෙත්තකින්ම එය පෙනෙනවා. තුනී තට්ටු ඉක්මනින් පිළිස්සෙන නිසා මිනිත්තු තිහේ සිට බලන්න, තවම ලා පාටින් තිබියදී ඉවතට ගන්න, වැඩිපුර පිළිස්සුණු තට්ටුව වියළී ජෑම් ඇදගෙන යනවා. බින්දු දෙකක් පමණක් දමන්න, වැඩිපුර පාට තිත්තයි, කඩේ කේක් වගේ පෙනෙනවා.",
+  "ta": "கலவையை கண்ணால் அல்லாமல் கரண்டியால் அளந்து மூன்று கிண்ணங்களில் பிரியுங்கள் - ஒரு அடுக்கு சமமில்லாவிட்டால் வெட்டிய ஒவ்வொரு துண்டிலும் அது தெரியும். மெல்லிய அடுக்குகள் வேகமாக வேகும், அதனால் முப்பது நிமிடத்திலிருந்தே கவனியுங்கள்; வெளிறியிருக்கும்போதே எடுங்கள் - அதிகம் வெந்த அடுக்கு காய்ந்து ஜாமை இழுத்துக் கிழிக்கும். இரண்டு துளி நிறமே போதும்; அதிக நிறம் கசக்கும், கடைக் கேக் போலவும் தோன்றும்."
+ },
+ "health_note": {
+  "en": "Ribbon cake is butter cake with jam added, which means a little more sugar again, and the colouring gives nothing but the look children come for. Cut it thin and it does the job at a birthday table; anyone managing sugar can take the plain layer without jam, or a slice of butter cake instead.",
+  "si": "රිබන් කේක් යනු ජෑම් එකතු කළ බටර් කේක් නිසා සීනි නැවතත් ටිකක් වැඩියි, පාටින් ලැබෙන්නේ ළමයි කැමති පෙනුම මිස වෙන කිසිවක් නොවේ. තුනීට කපන්න, එවිට උපන්දින මේසයට එය හොඳටම ඇති, සීනි පාලනය කරන කෙනෙක් ජෑම් නැති සුදු තට්ටුව හෝ බටර් කේක් පෙත්තක් ගන්න.",
+  "ta": "ரிப்பன் கேக் என்பது ஜாம் சேர்த்த பட்டர் கேக் - அதாவது இன்னும் கொஞ்சம் சீனி; நிறம் தருவது குழந்தைகள் விரும்பும் தோற்றத்தை மட்டுமே. மெல்லியதாக வெட்டினால் பிறந்தநாள் மேசைக்குப் போதும்; சர்க்கரையைக் கவனிப்பவர்கள் ஜாம் இல்லாத வெள்ளை அடுக்கையோ ஒரு பட்டர் கேக் துண்டையோ எடுக்கலாம்."
+ },
+ "tags": [
+  "high_sugar",
+  "kid_friendly",
+  "festive",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

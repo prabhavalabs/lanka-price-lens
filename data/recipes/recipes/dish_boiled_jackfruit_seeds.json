@@ -1,0 +1,225 @@
+{
+ "id": "dish_boiled_jackfruit_seeds",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 110,
+  "description": {
+   "en": "A small plate of peeled seeds with scraped coconut",
+   "si": "ලෙලි ගැලවූ කොස් ඇට සහ ගාගත් පොල් සහිත කුඩා පිඟානක්",
+   "ta": "தோலுரித்த கொட்டைகளும் துருவிய தேங்காயும் உள்ள ஒரு சிறிய தட்டு"
+  }
+ },
+ "yield_g": 450,
+ "ingredients": [
+  {
+   "ref": "pantry_jackfruit_seeds",
+   "label": {
+    "en": "jackfruit seeds",
+    "si": "කොස් ඇට",
+    "ta": "பலாக்கொட்டை"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "the seeds from one jak fruit",
+   "preparation": {
+    "en": "washed clean of the sticky flesh",
+    "si": "ඇලෙන මදය සෝදා ඉවත් කරගත්",
+    "ta": "ஒட்டும் சதையைக் கழுவி நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": {
+    "en": "in the boiling water, a pinch to finish",
+    "si": "තෙම්බෙන වතුරට, අවසානයට ස්වල්පයක්",
+    "ta": "வேகவைக்கும் நீரில், முடிக்க ஒரு சிறிது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "a third of a coconut, scraped",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "අලුතින් ගාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, if you like",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the seeds and rub off any sticky flesh still clinging to them.",
+    "minutes": 5
+   },
+   {
+    "text": "Nick the hard white shell of each seed with a knife tip so they cook evenly and peel without a fight later.",
+    "minutes": 10
+   },
+   {
+    "text": "Put them in a pot with water two fingers above, add the salt and bring to a boil.",
+    "minutes": 6
+   },
+   {
+    "text": "Boil until a seed crushes easily between finger and thumb, topping up with hot water if the pot runs low.",
+    "minutes": 35
+   },
+   {
+    "text": "Drain them and leave them to steam dry in the pot for a minute.",
+    "minutes": 2
+   },
+   {
+    "text": "Peel off the white shell and the thin brown skin under it while the seeds are still warm; cold seeds fight back.",
+    "minutes": null
+   },
+   {
+    "text": "Toss the warm seeds with a pinch of salt, a little pepper if you like, and scraped coconut.",
+    "minutes": null
+   },
+   {
+    "text": "Eat warm with plain tea, and keep any left over in the fridge for a kos ata curry.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කොස් ඇට සෝදා, තවමත් ඇලී ඇති මදය අතුල්ලා ඉවත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "එක් එක් ඇටයේ තද සුදු පොත්ත පිහි තුඩෙන් ඉරන්න; එවිට සමව පිසෙන අතර පසුව පහසුවෙන් ලෙලි ගැලවේ.",
+    "minutes": 10
+   },
+   {
+    "text": "හැළියකට දමා ඇඟිලි දෙකක් ඉහළින් වතුර වත් කර, ලුණු දමා උතුරන්න තබන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ඇටයක් ඇඟිල්ල හා මහපටැඟිල්ල අතර පහසුවෙන් තලෙන තෙක් තෙම්බන්න; වතුර අඩු වුවහොත් උණු වතුර එකතු කරන්න.",
+    "minutes": 35
+   },
+   {
+    "text": "වතුර බේරා, හැළියේ ම මිනිත්තුවක් වාෂ්පයෙන් වියළෙන්න තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ඇට උණුසුම්ව තිබියදී ම සුදු පොත්තත් ඒ යටින් ඇති තුනී දුඹුරු පටලයත් ගලවා දමන්න; සිසිල් වූ පසු ගැලවීම අමාරුයි.",
+    "minutes": null
+   },
+   {
+    "text": "උණුසුම් ඇට ලුණු ස්වල්පයක්, අවශ්‍ය නම් ගම්මිරිස් ස්වල්පයක් සහ ගාගත් පොල් සමඟ මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සරල තේ සමඟ උණුසුම්ව කන්න; ඉතිරි වූ ඒවා කොස් ඇට හොදි සඳහා ශීතකරණයේ තබා ගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கொட்டைகளைக் கழுவி, ஒட்டியிருக்கும் சதையைத் தேய்த்து நீக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒவ்வொரு கொட்டையின் கடினமான வெள்ளை ஓட்டையும் கத்தி நுனியால் கீறவும்; அப்போது சமமாக வேகும், பின்னர் எளிதாக உரியும்.",
+    "minutes": 10
+   },
+   {
+    "text": "பாத்திரத்தில் இட்டு, இரண்டு விரல் மேலே வரும் அளவு தண்ணீர் ஊற்றி, உப்பு சேர்த்துக் கொதிக்கவிடவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "ஒரு கொட்டை விரலுக்கும் கட்டைவிரலுக்கும் இடையில் எளிதாக நசுங்கும் வரை வேகவிடவும்; தண்ணீர் குறைந்தால் சூடான நீர் சேர்க்கவும்.",
+    "minutes": 35
+   },
+   {
+    "text": "வடித்துவிட்டு, பாத்திரத்திலேயே ஒரு நிமிடம் ஆவியில் உலரவிடவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கொட்டைகள் சூடாக இருக்கும்போதே வெள்ளை ஓட்டையும் அதன் கீழுள்ள மெல்லிய பழுப்புத் தோலையும் உரிக்கவும்; ஆறியபின் உரிப்பது கடினம்.",
+    "minutes": null
+   },
+   {
+    "text": "சூடான கொட்டைகளைச் சிறிது உப்பு, விரும்பினால் சிறிது மிளகு, துருவிய தேங்காயுடன் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "சாதாரண தேநீருடன் சூடாகச் சாப்பிடவும்; மீதியைப் பலாக்கொட்டைக் கறிக்காக குளிர்சாதனப் பெட்டியில் வைக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 40,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "pot with lid",
+  "coconut scraper"
+ ],
+ "tips": {
+  "en": "Seeds dry in the sun for a day peel far more easily and keep for weeks in a paper bag. Undercooked seeds are hard and sit heavily, so test one before taking the pot off the fire.",
+  "si": "දිනක් අව්වේ වියළාගත් ඇට ලෙලි ගැලවීම බෙහෙවින් පහසු අතර, කඩදාසි මල්ලක සති කීපයක් තබා ගත හැක. හරියට නොපිසුණු ඇට තද වන අතර බඩට බරයි; එබැවින් හැළිය ලිපෙන් බාන්නට පෙර එකක් පරීක්ෂා කරන්න.",
+  "ta": "ஒரு நாள் வெயிலில் உலர்த்திய கொட்டைகளை உரிப்பது மிக எளிது, காகிதப் பையில் சில வாரங்கள் வைக்கலாம். சரியாக வேகாத கொட்டை கடினமாகவும் வயிற்றுக்குக் கனமாகவும் இருக்கும்; எனவே பாத்திரத்தை இறக்கும் முன் ஒன்றைச் சோதித்துப் பாருங்கள்."
+ },
+ "health_note": {
+  "en": "Jackfruit seeds are a free seasonal food with starch, fibre and a fair amount of protein for a plant, and almost no fat until the coconut goes on. They need proper boiling to be digestible, and a light hand with the salt keeps this one of the healthiest things on the tea table.",
+  "si": "කොස් ඇට යනු කන්නයට ලැබෙන නොමිලේ ආහාරයකි; පිෂ්ටය, තන්තු සහ ශාකයකට සාපේක්ෂව හොඳ ප්‍රෝටීන් ප්‍රමාණයක් ඇති අතර පොල් දමන තුරු මේදය පාහේ නැත. දිරවීමට හොඳින් තෙම්බීම අවශ්‍යයි; ලුණු අඩුවෙන් යෙදුවහොත් තේ මේසයේ ඇති සෞඛ්‍ය සම්පන්නම දේවලින් එකක් වේ.",
+  "ta": "பலாக்கொட்டை பருவகாலத்தில் இலவசமாகக் கிடைக்கும் உணவு; மாவுச்சத்து, நார்ச்சத்து, தாவரத்துக்கு ஏற்ற அளவு புரதம் உண்டு, தேங்காய் சேர்க்கும் வரை கொழுப்பு கிட்டத்தட்ட இல்லை. செரிமானத்திற்கு நன்கு வேகவைக்க வேண்டும்; உப்பைக் குறைவாகப் பயன்படுத்தினால் தேநீர் மேசையில் உள்ள மிக ஆரோக்கியமான உணவுகளில் இதுவும் ஒன்று."
+ },
+ "tags": [
+  "high_fibre",
+  "budget",
+  "low_fat",
+  "one_pot",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

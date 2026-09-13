@@ -1,0 +1,424 @@
+{
+ "id": "dish_crab_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 350,
+  "description": {
+   "en": "Two or three pieces of crab in the shell with plenty of gravy to work through",
+   "si": "හොදි ගොඩක් සමඟ කටුව සහිත කකුළු කැබලි දෙක තුනක්",
+   "ta": "நிறைய குழம்புடன் ஓட்டுடன் கூடிய இரண்டு மூன்று நண்டு துண்டுகள்"
+  }
+ },
+ "yield_g": 1400,
+ "ingredients": [
+  {
+   "ref": "pantry_crab",
+   "label": {
+    "en": "crab",
+    "si": "කකුළුවෝ",
+    "ta": "நண்டு"
+   },
+   "quantity": 1200,
+   "unit": "g",
+   "household": "2 large lagoon crabs",
+   "preparation": {
+    "en": "cleaned, top shell lifted, claws cracked, cut in halves",
+    "si": "පිරිසිදු කර, ඉහළ කටුව ගලවා, දෑත් තලා, දෙකට කපා ගත්ත",
+    "ta": "சுத்தம் செய்து, மேல் ஓட்டை நீக்கி, கொடுக்குகளை நசுக்கி, இரண்டாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "8 small onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්ත",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb length",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා ගත්ත",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "கொத்தமல்லி விதை"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": {
+    "en": "roasted and coarsely ground",
+    "si": "බැදලා රළුවට අඹරා ගත්ත",
+    "ta": "வறுத்து பருமனாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp, crushed",
+   "preparation": {
+    "en": "crushed",
+    "si": "කුඩු කර ගත්ත",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1 and a half cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ දියර කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ගාටි කිරි",
+    "ta": "முதல் பால், கட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the crabs under running water with a brush, lift off the top shell, clean out the gills, and keep the shell for the pot.",
+    "minutes": 20
+   },
+   {
+    "text": "Crack the claws with the back of a knife so the gravy can get inside, and cut the bodies in half.",
+    "minutes": 10
+   },
+   {
+    "text": "Roast the coriander in a dry pan until it smells warm, then crush it coarsely with the pepper.",
+    "minutes": 5
+   },
+   {
+    "text": "Heat the coconut oil in a large pot and temper the onion, garlic, ginger, curry leaves and pandan until the onion is soft.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the roasted curry powder, chilli powder, turmeric and the crushed coriander and pepper, and fry them in the oil.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour in the thin coconut milk with the salt and bring it to a rolling boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Put in the crab pieces and the top shells, cover, and cook until the shells turn bright orange and the meat is set.",
+    "minutes": 15
+   },
+   {
+    "text": "Add the thick coconut milk and simmer uncovered until the gravy thickens and clings to the shells.",
+    "minutes": 8
+   },
+   {
+    "text": "Rest the pot off the fire, then serve it in a wide dish with a bowl for the shells.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "කකුළුවෝ ගලායන වතුරේ බුරුසුවකින් හෝදලා, ඉහළ කටුව ගලවලා, ඉස්සන් වගේ කොරපොතු කොටස් පිරිසිදු කරලා, ඒ කටුවත් මුට්ටියට තියාගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "හොදි ඇතුළට යන්න දෑත් පිහියේ පිටිපස්සෙන් තලලා, ඇඟ දෙකට කපා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කොත්තමල්ලි වියළි පෑන් එකේ සුවඳ එන තුරු බැදලා, ගම්මිරිස් සමඟ රළුවට තලා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලොකු මුට්ටියක පොල් තෙල් රත් කරලා ලූනු, සුදුළූනු, ඉඟුරු, කරපිංචා සහ රම්පෙ ලූනු මෙලෙක් වෙන තුරු තෙල් දාගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "බැදපු තුනපහ, මිරිස් කුඩු, කහ කුඩු සහ තලපු කොත්තමල්ලි, ගම්මිරිස් දමා තෙලේ අනගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "දෙවන මිරිකීමේ දියර පොල් කිරි සහ ලුණු දමා හොඳට උතුරන්න තියන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කකුළු කැබලි සහ ඉහළ කටු දමලා, වහලා, කටු තද තඹ පාට වෙලා මස් තදවෙන තුරු තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ගාටි පොල් කිරි එකතු කරලා, වහන්නේ නැතිව හොදි කටුවලට ඇලෙන තරමට තද වෙන තුරු උතුරවන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ලිපෙන් අයින් කරලා ටික වෙලාවක් තියලා, පළල් බඳුනක, කටු දාන්න වෙනම බඳුනකුත් සමඟ බෙදන්න.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "நண்டுகளை ஓடும் தண்ணீரில் தூரிகையால் கழுவி, மேல் ஓட்டை நீக்கி, உள்ளே உள்ள செதில் பகுதிகளை சுத்தம் செய்து, அந்த ஓட்டையும் சட்டிக்கு வைத்துக்கொள்ளுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "குழம்பு உள்ளே இறங்க கொடுக்குகளை கத்தியின் பின்பகுதியால் நசுக்கி, உடலை இரண்டாக வெட்டுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கொத்தமல்லியை வெறும் வாணலியில் மணம் வரும் வரை வறுத்து, மிளகுடன் பருமனாக இடியுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "பெரிய பாத்திரத்தில் தேங்காய் எண்ணெயைக் காயவைத்து வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, ரம்பை சேர்த்து வெங்காயம் மென்மையாகும் வரை தாளியுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "வறுத்த கறி மசாலா, மிளகாய்த் தூள், மஞ்சள், இடித்த கொத்தமல்லி மிளகு சேர்த்து எண்ணெயில் கிளறுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பாலையும் உப்பையும் சேர்த்து நன்கு கொதிக்க விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "நண்டுத் துண்டுகளையும் மேல் ஓடுகளையும் போட்டு, மூடி, ஓடு செம்மஞ்சள் நிறமாகி இறைச்சி இறுகும் வரை வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "கட்டித் தேங்காய்ப் பாலை சேர்த்து, மூடாமல் குழம்பு இறுகி ஓட்டில் ஒட்டும் வரை கொதிக்கவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி சிறிது நேரம் வைத்து, அகலமான பாத்திரத்தில், ஓடுகளைப் போட ஒரு கிண்ணத்துடன் பரிமாறுங்கள்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 40,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "large pot",
+  "brush for cleaning",
+  "heavy knife",
+  "mortar and pestle"
+ ],
+ "tips": {
+  "en": "Buy crabs that are heavy for their size and still moving; a light crab is mostly water. Cracking the claws before cooking is what lets the gravy into the meat, and the top shells put into the pot give the gravy most of its sweetness.",
+  "si": "ප්‍රමාණයට බර, තවම චලනය වෙන කකුළුවෝ ගන්න; සැහැල්ලු කකුළුවෙක් බොහෝ දුරට වතුරයි. උයන්න කලින් දෑත් තලන එකෙන් තමයි හොදිය මස් ඇතුළට යන්නේ, ඉහළ කටු මුට්ටියට දැම්මම හොදියේ මිහිරි රස වැඩියෙන් එනවා.",
+  "ta": "அளவுக்கு எடையாகவும், இன்னும் அசைந்துகொண்டும் இருக்கும் நண்டையே வாங்குங்கள்; இலேசான நண்டு பெரும்பாலும் தண்ணீர். சமைக்கும் முன் கொடுக்குகளை நசுக்குவதே குழம்பை இறைச்சிக்குள் கொண்டு செல்லும்; மேல் ஓடுகளைச் சட்டியில் போட்டால் குழம்புக்கு இனிப்புச் சுவை கூடும்."
+ },
+ "health_note": {
+  "en": "Crab meat is lean and rich in protein, iron and zinc, but the weight on the plate is mostly shell, so nobody eats as much as it looks. The thick coconut milk and the salt are the parts to watch, and anyone told to keep cholesterol low should take a smaller share.",
+  "si": "කකුළු මස් මේදය අඩු, ප්‍රෝටීන්, යකඩ සහ සින්ක් වැඩි ආහාරයක්; පිඟානේ බර වැඩිපුර කටුව නිසා පේන තරම් කන්නේ නැහැ. බලාගන්න ඕන ගාටි පොල් කිරි සහ ලුණු; කොලෙස්ටරෝල් අඩුවෙන් තියාගන්න කියලා කියපු අය ටිකක් අඩුවෙන් ගන්න.",
+  "ta": "நண்டு இறைச்சியில் கொழுப்பு குறைவு, புரதம், இரும்பு, துத்தநாகம் அதிகம்; தட்டில் உள்ள எடையின் பெரும்பகுதி ஓடு, எனவே பார்ப்பதுபோல் அதிகம் சாப்பிடுவதில்லை. கவனிக்க வேண்டியது கட்டித் தேங்காய்ப் பாலும் உப்பும்; கொலஸ்ட்ரால் குறைக்கச் சொல்லப்பட்டவர்கள் சிறிய பங்கே எடுக்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "festive",
+  "filling",
+  "low_carb",
+  "one_pot"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

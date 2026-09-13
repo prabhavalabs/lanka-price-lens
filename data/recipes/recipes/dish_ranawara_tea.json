@@ -1,0 +1,184 @@
+{
+ "id": "dish_ranawara_tea",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 200,
+  "description": {
+   "en": "A clear golden cup taken in place of tea",
+   "si": "තේ වෙනුවට බොන පැහැදිලි රන් පාට කෝප්පයක්",
+   "ta": "தேநீருக்குப் பதிலாகக் குடிக்கும் தெளிவான பொன்நிற கோப்பை"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "pantry_ranawara_flowers",
+   "label": {
+    "en": "dried ranawara flowers",
+    "si": "වියලි රණවරා මල්",
+    "ta": "காய்ந்த ஆவாரம்பூ"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "picked clean of stalks",
+    "si": "කොටු ඉවත් කරගත්",
+    "ta": "தண்டுகள் நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "1 small lump a cup",
+   "preparation": {
+    "en": "broken up",
+    "si": "කැඩූ",
+    "ta": "உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 16,
+   "unit": "g",
+   "household": "1 tsp a cup",
+   "preparation": null,
+   "optional": true,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Spread the dried flowers on a plate and take out stalks, leaves and any grit from the sack.",
+    "minutes": null
+   },
+   {
+    "text": "Rinse them quickly in cold water and drain them in a strainer.",
+    "minutes": null
+   },
+   {
+    "text": "Bring 900 ml of water to a boil in a small pan.",
+    "minutes": 4
+   },
+   {
+    "text": "Put in the flowers, drop the fire low and let them steep with the pan covered until the water is a clear gold, like weak king coconut water.",
+    "minutes": 8
+   },
+   {
+    "text": "Do not stew it long past that point; the colour goes muddy and a woody bitterness comes up.",
+    "minutes": null
+   },
+   {
+    "text": "Strain into cups, sweeten with a lump of jaggery or nothing at all, and drink it hot or at room temperature.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වියලි මල් පිඟානකට දමා, ගෝනියෙන් ආ කොටු, කොළ සහ කුණු ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සිසිල් වතුරෙන් ඉක්මනින් සෝදා පෙරහනක දමා වතුර බේරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා බඳුනක මිලිලීටර් 900ක් වතුර උතුරන්න තබන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මල් දමා, ගිනි අඩු කර, බඳුන වසා, තුනී තැඹිලි වතුර වගේ පැහැදිලි රන් පාටක් වන තුරු පෙඟෙන්නට තබන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඊට වඩා දිගටම තම්බන්න එපා; පාට කිලිටි වී ලී ගතියේ තිත්තක් මතු වේ.",
+    "minutes": null
+   },
+   {
+    "text": "කෝප්පවලට පෙරාගෙන, හකුරු කැබැල්ලකින් රස කරගෙන හෝ කිසිවක් නොදමා, උණුසුම්ව හෝ සාමාන්‍ය උෂ්ණත්වයේ බොන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "காய்ந்த மலர்களை ஒரு தட்டில் பரப்பி, சாக்கிலிருந்து வந்த தண்டு, இலை, குப்பையை நீக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "குளிர்ந்த நீரில் விரைவாக அலசி, வடிகட்டியில் இட்டு நீரை வடியவிடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய பாத்திரத்தில் 900 மில்லி தண்ணீரைக் கொதிக்க வைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "மலர்களைப் போட்டு, தீயைக் குறைத்து, பாத்திரத்தை மூடி, நீர்த்த இளநீர் போன்ற தெளிவான பொன்னிறம் வரும் வரை ஊறவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அதற்கு மேல் நெடுநேரம் கொதிக்கவிட வேண்டாம்; நிறம் கலங்கி, மரச் சுவையான கசப்பு வந்துவிடும்.",
+    "minutes": null
+   },
+   {
+    "text": "கோப்பைகளில் வடிகட்டி, ஒரு வெல்லத் துண்டு சேர்த்தோ அல்லது எதுவும் சேர்க்காமலோ, சூடாகவோ சாதாரண வெப்பத்திலோ குடியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 3,
+  "cook_minutes": 10,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "small pan",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Buy the flowers whole rather than as a powder; whole dried flowers keep their smell and you can see what you are getting. Half ranawara and half beli flowers in the same pan makes the gentler blend older people prefer in the evening.",
+  "si": "මල් කුඩු ලෙස නොව මුළු මල් ලෙස ගන්න; මුළු වියලි මල්වල සුවඳ රැඳෙන අතර, ගන්නේ මොනවාද කියා පේනවා. එකම බඳුනේ රණවරා භාගයක් සහ බෙලිමල් භාගයක් දැමුවොත් වැඩිහිටියන් සවසට කැමති මෘදු මිශ්‍රණය ලැබේ.",
+  "ta": "மலர்களைப் பொடியாக அல்ல, முழுதாகவே வாங்குங்கள்; முழு காய்ந்த மலர் வாசத்தைத் தக்கவைக்கும், வாங்குவது என்ன என்பதும் தெரியும். ஒரே பாத்திரத்தில் பாதி ஆவாரம்பூவும் பாதி வில்வ மலரும் போட்டால், முதியவர்கள் மாலையில் விரும்பும் மென்மையான கலவை கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "No caffeine, no fat and almost no calories if you drink it plain, which is why households where someone has diabetes keep a bag of these flowers. It is a pleasant daily drink and nothing more; it does not replace anyone's tablets or a clinic visit.",
+  "si": "කිසිවක් නොදමා බොනවා නම් කැෆේන් නැති, තෙල් නැති, කැලරි පාහේ නැති බීමක්; ගෙදර කෙනෙකුට දියවැඩියාව තිබේ නම් මේ මල් පැකට් එකක් තබා ගන්නේ ඒ නිසයි. මේක ප්‍රසන්න දිනපතා බීමක් පමණයි; කාගේවත් බෙහෙත් ගුලියක් හෝ සායනයට යාමක් වෙනුවට එය ගන්න බැහැ.",
+  "ta": "எதுவும் சேர்க்காமல் குடித்தால் காஃபீன், கொழுப்பு, கலோரி என எதுவுமே இல்லை; வீட்டில் ஒருவருக்கு நீரிழிவு இருந்தால் இந்த மலர்ப் பொட்டலத்தை வைத்திருப்பது அதனால்தான். இது இனிமையான தினசரிப் பானம் மட்டுமே; யாருடைய மாத்திரைக்கும் அல்லது கிளினிக் சந்திப்புக்கும் இது மாற்று அல்ல."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "low_calorie",
+  "low_fat",
+  "light",
+  "hydrating",
+  "traditional_remedy",
+  "elderly_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

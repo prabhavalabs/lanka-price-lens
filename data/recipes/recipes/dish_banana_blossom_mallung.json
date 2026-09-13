@@ -1,0 +1,319 @@
+{
+ "id": "dish_banana_blossom_mallung",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 70,
+  "description": {
+   "en": "A small heap of finely chopped blossom cooked dry with coconut",
+   "si": "පොල් සමඟ වේලෙන්නට උයාගත්, සිහින්ව කපාගත් මුව ගොඩක්",
+   "ta": "தேங்காயுடன் வற்றலாகச் சமைத்த, மிக நறுக்கிய வாழைப்பூவின் சிறு குவியல்"
+  }
+ },
+ "yield_g": 300,
+ "ingredients": [
+  {
+   "ref": "product_plantain_flower",
+   "label": {
+    "en": "banana blossom",
+    "si": "කෙසෙල් මුව",
+    "ta": "வாழைப்பூ"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "1 blossom, cleaned weight",
+   "preparation": {
+    "en": "cleaned and chopped very fine, held in lime water",
+    "si": "පිරිසිදු කර ඉතා සිහින්ව කපා, දෙහි වතුරේ තබා",
+    "ta": "சுத்தம் செய்து மிக நுணுக்கமாக நறுக்கி, தேசிக்காய் நீரில் வைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "scraped coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 cup, loosely packed",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "නැවුම්ව ගාගත්",
+    "ta": "புதிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "4 or 5 small onions",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மிக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1.5,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලා",
+    "ta": "பொடியாக இடித்து"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "உம்பலகடா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp, pounded",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කොටා",
+    "ta": "கரடுமுரடாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, most for the soaking water and a squeeze at the end",
+   "preparation": {
+    "en": "juice; most goes into the soaking water",
+    "si": "යුෂ; වැඩි කොටස පොඟවන වතුරට",
+    "ta": "சாறு; பெரும்பகுதி ஊறவைக்கும் நீருக்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarters of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 5,
+   "unit": "ml",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub a little coconut oil on your hands, peel off the tough outer bracts and take out the stiff thread from each floret.",
+    "minutes": 12
+   },
+   {
+    "text": "Chop the florets as fine as you can and drop them into a bowl of water with most of the lime juice squeezed in.",
+    "minutes": 20
+   },
+   {
+    "text": "Squeeze the chopped blossom in your fist to push out the dark bitter water, then rinse and drain.",
+    "minutes": 3
+   },
+   {
+    "text": "Put it in a pan with a splash of water, the turmeric and a pinch of salt and cook covered until the pieces are tender.",
+    "minutes": 8
+   },
+   {
+    "text": "Uncover and let all the water dry off; a mallung must be dry before the coconut goes in.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the scraped coconut, onion, chilli, pepper, maldive fish and the rest of the salt and toss on a low flame until it smells cooked.",
+    "minutes": 4
+   },
+   {
+    "text": "Take it off the fire, squeeze the last of the lime over and mix once.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "අත්වල පොල් තෙල් ටිකක් ගල්වා, පිටත තද පෙති ගලවා, එක එක මලේ තද නාරටිය ඉවත් කරන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "මල් හැකි තරම් සිහින්ව කපා, දෙහි යුෂ වැඩි කොටස මිරිකූ වතුර බඳුනකට දමන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කපාගත් මුව අතට ගෙන මිරිකා කළු තිත්ත වතුර ඉවත් කර, සෝදා වතුර බේරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පෑන් එකකට දමා වතුර ටිකක්, කහ සහ ලුණු ස්වල්පයක් එකතු කර, වසා, කැබලි මෘදු වන තුරු උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "වැස්ම ඉවතට ගෙන සියලු වතුර වේලෙන්න දෙන්න; පොල් දමන්නට කලින් මැල්ලුම වේලී තිබිය යුතුයි.",
+    "minutes": 3
+   },
+   {
+    "text": "ගාගත් පොල්, ළූණු, මිරිස්, ගම්මිරිස්, උම්බලකඩ සහ ඉතිරි ලුණු දමා, අඩු ගින්නේ අමු ගතිය යන තුරු පෙරළන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන ඉතිරි දෙහි යුෂ මිරිකා එක් වරක් කලවම් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கைகளில் கொஞ்சம் தேங்காய் எண்ணெய் தடவி, வெளிப்புற கடினமான இதழ்களை உரித்து, ஒவ்வொரு பூவிலும் உள்ள கடினமான நாரை நீக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "பூக்களை முடிந்த அளவு நுணுக்கமாக நறுக்கி, தேசிக்காய்ச் சாற்றின் பெரும்பகுதியைப் பிழிந்த நீர்ப் பாத்திரத்தில் போடவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "நறுக்கிய பூவை கைப்பிடியில் பிழிந்து கறுத்த கசப்பு நீரை வெளியேற்றி, அலசி வடிக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சட்டியில் இட்டு கொஞ்சம் நீர், மஞ்சள், சிறிதளவு உப்பு சேர்த்து மூடி, துண்டுகள் மென்மையாகும் வரை சமைக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "மூடியை எடுத்து நீர் முழுவதும் வற்ற விடவும்; தேங்காய் சேர்க்கும் முன் வதக்கல் வற்றியிருக்க வேண்டும்.",
+    "minutes": 3
+   },
+   {
+    "text": "துருவிய தேங்காய், வெங்காயம், மிளகாய், மிளகு, உம்பலகடா, மீதி உப்பு சேர்த்து, சிறு தீயில் பச்சை வாசனை போகும் வரை புரட்டவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி, மீதி தேசிக்காய்ச் சாற்றைப் பிழிந்து ஒரு முறை கலக்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 35,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan",
+  "bowl for the lime water"
+ ],
+ "tips": {
+  "en": "This is a dish for an unhurried morning; the finer you chop the blossom the better the mallung, and the lime water is what keeps it from turning black. Make it the day the flower comes off the tree, since a cut blossom darkens fast.",
+  "si": "මේක ඉක්මන් නැති උදෑසනකට කෑමක්; මුව කොච්චර සිහින්ව කපනවද ඒ තරමට මැල්ලුම හොඳයි, කළු වීම නවත්වන්නේ දෙහි වතුරයි. මල ගසෙන් කැපූ දවසේම හදන්න, කැපූ මුව ඉක්මනින් කළු වෙනවා.",
+  "ta": "இது அவசரமில்லாத காலைக்கான உணவு; பூவை எவ்வளவு நுணுக்கமாக நறுக்குகிறீர்களோ அந்த அளவு வதக்கல் சிறப்பாகும், கறுப்பாவதைத் தடுப்பது தேசிக்காய் நீரே. மரத்திலிருந்து பூவை வெட்டிய அன்றே செய்யவும், வெட்டிய பூ விரைவில் கறுத்துவிடும்."
+ },
+ "health_note": {
+  "en": "A mallung like this brings fibre and iron with almost no calories beyond the coconut, and it is easy on the stomach. Use the lime generously, since the vitamin C helps the body take up the iron from the blossom.",
+  "si": "මෙවැනි මැල්ලුමකින් පොල් හැර වෙනත් කැලරි නොමැතිව තන්තු සහ යකඩ ලැබෙනවා, බඩටත් සැහැල්ලුයි. දෙහි හොඳට යොදන්න; විටමින් C නිසා මුවේ යකඩ ශරීරයට උරාගැනීම වැඩි වෙනවා.",
+  "ta": "இது போன்ற வதக்கலில் தேங்காயைத் தவிர கூடுதல் கலோரி இல்லாமல் நார்ச்சத்தும் இரும்புச்சத்தும் கிடைக்கும், வயிற்றுக்கும் இலகு. தேசிக்காயை நன்றாகப் பயன்படுத்தவும்; வைட்டமின் சி இருப்பதால் பூவில் உள்ள இரும்புச்சத்தை உடல் எடுக்க உதவும்."
+ },
+ "tags": [
+  "high_fibre",
+  "iron_rich",
+  "low_calorie",
+  "weight_loss_friendly",
+  "light",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

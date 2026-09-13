@@ -1,0 +1,375 @@
+{
+ "id": "dish_lime_pickle",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 30,
+  "description": {
+   "en": "A small spoon of dark sour pickle at the edge of the rice plate",
+   "si": "බත් පිඟානේ කෙළවරට දමා ගන්නා කුඩා හැන්දක් තද පැහැ ඇඹුල් අච්චාරු",
+   "ta": "சாதத் தட்டின் ஓரத்தில் வைக்கும் ஒரு சிறிய கரண்டி கரும் புளிப்பு ஊறுகாய்"
+  }
+ },
+ "yield_g": 130,
+ "ingredients": [
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "limes",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "5 small limes",
+   "preparation": {
+    "en": "washed, wiped dry and cut into wedges",
+    "si": "සෝදා පිසදා කෑලිවලට කපාගත්",
+    "ta": "கழுவி துடைத்து துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "coarse salt",
+    "si": "ගොරෝසු ලුණු",
+    "ta": "கல் உப்பு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "for curing the limes",
+    "si": "දෙහි ලුණු දැමීම සඳහා",
+    "ta": "எலுமிச்சையை உப்பில் ஊறவைக்க"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියලි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "5 dried chillies",
+   "preparation": {
+    "en": "stalks removed, broken up",
+    "si": "කරල් ඉවත් කර කැඩූ",
+    "ta": "தாள் நீக்கி உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seed",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "ground with the vinegar",
+    "si": "විනාකිරි සමඟ ගාගත්",
+    "ta": "வினிகருடன் அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "dry roasted and powdered",
+    "si": "බැදගෙන කුඩු කරගත්",
+    "ta": "வறுத்து பொடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "scraped and cut into thin strips",
+    "si": "සූරා තුනී පටි ලෙස කපාගත්",
+    "ta": "சுரண்டி மெல்லிய துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "peeled and sliced",
+    "si": "ලෙලි ගලවා කපාගත්",
+    "ta": "தோல் உரித்து நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the limes, wipe them dry with a cloth and cut each one into four wedges.",
+    "minutes": null
+   },
+   {
+    "text": "Rub the wedges with the salt and turmeric in a clay or glass bowl and cover with a cloth.",
+    "minutes": 5
+   },
+   {
+    "text": "Spread the wedges on a flat tray and leave them in strong sun until the skins wrinkle and go dull, bringing the tray in at night.",
+    "minutes": 1440
+   },
+   {
+    "text": "Grind the dried chillies, mustard, roasted fenugreek and chilli powder with the vinegar into a thick paste.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the ginger strips and garlic until the smell rises.",
+    "minutes": 3
+   },
+   {
+    "text": "Spoon in the ground paste and cook on a low flame, stirring, until the oil shows at the edges.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the sun dried lime wedges with any juice they have given out and turn them over in the paste.",
+    "minutes": 2
+   },
+   {
+    "text": "Stir in the sugar, taste for salt and simmer very gently until the skins are soft and dark.",
+    "minutes": 10
+   },
+   {
+    "text": "Let it cool completely, then pack it into a dry glass bottle and keep one dry spoon for it.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "දෙහි හොඳින් සෝදා රෙද්දකින් පිසදා, එක් ගෙඩියක් කෑලි හතරට කපා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මැටි හෝ වීදුරු බඳුනකට දමා ලුණු සහ කහ කුඩු කෑලිවලට හොඳින් අතුල්ලා, රෙද්දකින් වසා තබන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කෑලි තැටියක් මත තුනී ලෙස අතුරා, පොත්ත රැලි වැටී පැහැය මැකෙන තුරු තද අව්වේ වේලා ගන්න; රෑට ඇතුළට ගන්න.",
+    "minutes": 1440
+   },
+   {
+    "text": "වියලි මිරිස්, අබ, බැදගත් උළුහාල් සහ මිරිස් කුඩු විනාකිරි සමඟ ගාගෙන ගොරෝසු පේස්ට් එකක් හදා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පෑන් එකක පොල් තෙල් රත් කර ඉඟුරු පටි සහ සුදුලූනු සුවඳ එන තුරු බැද ගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ගාගත් මිශ්‍රණය එකතු කර, අඩු ගින්නේ කලවම් කරමින් තෙල් මතුවෙන තුරු පිසගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "අව්වේ වේලූ දෙහි කෑලි, එකතු වූ යුෂ සමඟම දමා මිශ්‍රණයේ හොඳින් පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "සීනි එකතු කර ලුණු රස බලා, පොත්ත මෘදු වී පැහැය තද වන තුරු ඉතා අඩු ගින්නේ තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සම්පූර්ණයෙන් සිසිල් වූ පසු වියලි වීදුරු බෝතලයකට දමා, ඒ සඳහාම වියලි හැන්දක් තබා ගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "எலுமிச்சைகளை நன்றாக கழுவி, துணியால் துடைத்து, ஒவ்வொன்றையும் நான்கு துண்டுகளாக வெட்டுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மண் அல்லது கண்ணாடிப் பாத்திரத்தில் போட்டு உப்பும் மஞ்சள் தூளும் சேர்த்து நன்கு பிரட்டி, துணியால் மூடி வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "துண்டுகளை தட்டில் பரப்பி, தோல் சுருங்கி நிறம் மங்கும் வரை நல்ல வெயிலில் காயவிடுங்கள்; இரவில் உள்ளே எடுத்து வையுங்கள்.",
+    "minutes": 1440
+   },
+   {
+    "text": "வத்தல் மிளகாய், கடுகு, வறுத்த வெந்தயம், மிளகாய்த் தூள் ஆகியவற்றை வினிகர் விட்டு அரைத்து கெட்டியான விழுதாக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயை காய்ச்சி, இஞ்சித் துண்டுகளும் பூண்டும் வாசம் வரும் வரை வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "அரைத்த விழுதைச் சேர்த்து, சிறு தீயில் கிளறி எண்ணெய் பிரியும் வரை வேகவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வெயிலில் காய்ந்த எலுமிச்சைத் துண்டுகளை, சேர்ந்த சாறுடன் போட்டு விழுதில் நன்கு புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "சீனி சேர்த்து, உப்பு பார்த்து, தோல் மென்மையாகி நிறம் கருக்கும் வரை மிக சிறு தீயில் வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "முழுமையாக குளிர்ந்த பிறகு உலர்ந்த கண்ணாடி ஜாடியில் அடைத்து, அதற்கே ஒரு உலர்ந்த கரண்டியை வைத்துக் கொள்ளுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 20,
+  "passive_minutes": 1440
+ },
+ "equipment": [
+  "flat tray for sun drying",
+  "grinding stone or blender",
+  "heavy pan",
+  "dry glass jar"
+ ],
+ "tips": {
+  "en": "Every spoon and bottle must be bone dry; one drop of water and the pickle grows mould. When limes are cheap make five times this much at one go and it will sit in the cupboard for months.",
+  "si": "හැන්ද සහ බෝතලය මුළුමනින්ම වියලි විය යුතුයි; වතුර බිංදුවක් වැදුණොත් අච්චාරු පූදු වෙනවා. දෙහි මිල අඩු කාලයේ මෙයින් පස් ගුණයක් එකවර හදා ගත්තොත් මාස ගණනක් අල්මාරියේ තියා ගන්න පුළුවන්.",
+  "ta": "கரண்டியும் ஜாடியும் முழுவதும் உலர்ந்திருக்க வேண்டும்; ஒரு துளி நீர் விழுந்தாலும் ஊறுகாய் பூஞ்சை பிடிக்கும். எலுமிச்சை விலை குறைவாக இருக்கும்போது இதைவிட ஐந்து மடங்கு செய்து வைத்தால் மாதங்களுக்கு அலுமாரியில் கெடாமல் இருக்கும்."
+ },
+ "health_note": {
+  "en": "A sliver of lime pickle brings very few calories but a fair amount of salt, so anyone watching blood pressure should stop at a small spoon. The oil and sugar in it are there to keep the pickle, not to feed the meal.",
+  "si": "දෙහි අච්චාරු පොඩි ප්‍රමාණයකින් කැලරි ඉතා අඩුයි, නමුත් ලුණු ප්‍රමාණය වැඩියි; රුධිර පීඩනය ගැන සැලකිලිමත් අය කුඩා හැන්දකින් නවතින්න. තෙල් සහ සීනි එහි ඇත්තේ අච්චාරු කල් තබා ගැනීමට පමණයි.",
+  "ta": "ஒரு சிறிய துண்டு எலுமிச்சை ஊறுகாயில் கலோரி மிகக் குறைவு, ஆனால் உப்பு அதிகம்; இரத்த அழுத்தம் உள்ளவர்கள் ஒரு சிறிய கரண்டியில் நிறுத்திக் கொள்வது நல்லது. எண்ணெயும் சீனியும் ஊறுகாய் கெடாமல் இருக்கவே சேர்க்கப்படுகின்றன."
+ },
+ "tags": [
+  "low_calorie",
+  "budget",
+  "high_sodium",
+  "festive"
+ ],
+ "review_needed": [
+  "quantities"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

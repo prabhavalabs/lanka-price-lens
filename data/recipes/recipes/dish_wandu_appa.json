@@ -1,0 +1,301 @@
+{
+ "id": "dish_wandu_appa",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 200,
+  "description": {
+   "en": "Two small steamed cakes, soft and dark with jaggery",
+   "si": "හකුරු වලින් අඳුරු, මුදු, තැම්බූ කුඩා කේක් දෙකක්",
+   "ta": "கருப்பட்டியில் கருமையான, மென்மையான இரண்டு சிறு ஆவிப் பணியாரம்"
+  }
+ },
+ "yield_g": 800,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மா"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "2 1/2 cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "හලාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "கருப்பட்டி"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "3 pieces",
+   "preparation": {
+    "en": "melted with a little water and strained",
+    "si": "වතුර ටිකක් සමඟ දිය කර පෙරාගත්",
+    "ta": "சிறிது தண்ணீரில் உருக்கி வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල්කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගා ගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 cup grated",
+   "preparation": {
+    "en": "folded into the batter",
+    "si": "මිශ්‍රණයට එකතු කරන",
+    "ta": "மாவில் கலப்பது"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": {
+    "en": "woken in warm water with a little sugar",
+    "si": "සීනි ටිකක් සමඟ උණු වතුරේ අවදි කරගත්",
+    "ta": "சிறிது சீனியுடன் வெதுவெதுப்பான நீரில் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "batter"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "a little for the yeast, the rest for the batter",
+    "si": "ටිකක් යීස්ට් වලට, ඉතිරිය මිශ්‍රණයට",
+    "ta": "சிறிது ஈஸ்ட்டுக்கு, மீதி மாவுக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "4 pods, powdered",
+   "preparation": {
+    "en": "seeds powdered",
+    "si": "ඇට කුඩු කරගත්",
+    "ta": "விதைகளைப் பொடி செய்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wake the yeast in 50 ml of warm water with a teaspoon of the sugar until it froths on top.",
+    "minutes": 10
+   },
+   {
+    "text": "Melt the jaggery with 80 ml of water over a low flame and strain it through a cloth to leave the grit behind, then let it cool to blood warm.",
+    "minutes": 8
+   },
+   {
+    "text": "Beat the rice flour with the thick coconut milk, the cooled jaggery syrup, the rest of the sugar and the salt into a thick smooth batter with no lumps.",
+    "minutes": 8
+   },
+   {
+    "text": "Stir in the yeast water and the grated coconut, cover the bowl and leave it in a warm place until the batter has risen and is full of bubbles.",
+    "minutes": 120
+   },
+   {
+    "text": "Stir in the powdered cardamom gently, taking care not to knock all the air out.",
+    "minutes": null
+   },
+   {
+    "text": "Grease small cups or a steamer tray lightly and fill each about three quarters full, leaving room to rise.",
+    "minutes": null
+   },
+   {
+    "text": "Set them in a steamer over boiling water, cover with a cloth under the lid so drips do not fall on the cakes, and steam until a clean stick comes out dry.",
+    "minutes": 20
+   },
+   {
+    "text": "Let the cakes stand a few minutes before turning them out, and serve them warm with plain tea.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "උණු වතුර මිලි ලීටර් 50ක සීනි තේ හැන්දක් සමඟ යීස්ට් දමා, මතුපිට පෙණ නගින තුරු තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "හකුරු වතුර මිලි ලීටර් 80ක් සමඟ අඩු ගින්නේ දිය කර, රෙද්දකින් පෙරා කසට ඉවත් කර, ලේ උණුසුමට සිසිල් වන්නට තබන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "සහල් පිටි, ඝන පොල්කිරි, සිසිල් වූ හකුරු පැණි, ඉතිරි සීනි සහ ලුණු දමා, ගුලි නැති සිනිඳු ඝන මිශ්‍රණයක් වන තුරු ගසන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "යීස්ට් වතුර සහ ගා ගත් පොල් දමා කලවම් කර, බඳුන වසා උණුසුම් තැනක, මිශ්‍රණය පිම්බී බුබුලු වලින් පිරෙන තුරු තබන්න.",
+    "minutes": 120
+   },
+   {
+    "text": "වාතය මුළුමනින්ම පිට නොවන ලෙස සෙමින් එනසාල් කුඩු කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා කෝප්ප හෝ තැම්බුම් තැටිය සැහැල්ලුවෙන් තෙල් ගල්වා, පිම්බෙන්නට ඉඩ තබා හතරෙන් තුනක් පමණ පුරවන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නටන වතුර මත තැම්බුම් භාජනයේ තබා, බින්දු කේක් මතට නොවැටෙන ලෙස පියන යටින් රෙද්දක් දමා වසා, කූරක් ඇතුළට දමා පිටතට එන විට වියළිව එන තුරු තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පෙරළා ගැනීමට පෙර මිනිත්තු කිහිපයක් තිබෙන්න දී, සරල තේ එකක් සමඟ උණුසුම්ව ඉදිරිපත් කරන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "50 மில்லி வெதுவெதுப்பான நீரில் ஒரு தேக்கரண்டி சீனியுடன் ஈஸ்ட்டைக் கலந்து மேலே நுரை வரும் வரை வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கருப்பட்டியை 80 மில்லி தண்ணீரில் சிறு தீயில் உருக்கி, துணியில் வடிகட்டி கசடை நீக்கி, வெதுவெதுப்பாகும் வரை ஆறவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அரிசி மாவுடன் கெட்டித் தேங்காய்ப் பால், ஆறிய கருப்பட்டிப் பாகு, மீதி சீனி, உப்பு சேர்த்து கட்டியில்லாத மென்மையான கெட்டி மாவாக அடியுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "ஈஸ்ட் நீரையும் துருவிய தேங்காயையும் கலந்து, பாத்திரத்தை மூடி சூடான இடத்தில், மாவு பொங்கி குமிழிகள் நிறையும் வரை வையுங்கள்.",
+    "minutes": 120
+   },
+   {
+    "text": "காற்று முழுவதும் வெளியேறாதபடி மெதுவாக ஏலக்காய்ப் பொடியைக் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறு கோப்பைகளுக்கோ ஆவித் தட்டுக்கோ லேசாக எண்ணெய் தடவி, பொங்க இடம் விட்டு முக்கால் பங்கு நிரப்புங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்கும் தண்ணீரின் மேல் ஆவிப் பாத்திரத்தில் வைத்து, நீர்த்துளிகள் விழாதபடி மூடிக்கு அடியில் துணி வைத்து மூடி, குச்சி சுத்தமாக வெளிவரும் வரை அவியுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "கவிழ்த்து எடுப்பதற்கு முன் சில நிமிடங்கள் வைத்திருந்து, வெறும் தேநீருடன் சூடாகப் பரிமாறுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 25,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "mixing bowl",
+  "steamer with a tray or small cups",
+  "cloth for the lid",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Let the jaggery syrup cool before it meets the yeast, because hot syrup kills the yeast and the cakes come out flat and dense. Do not fill the cups to the brim; the batter climbs as it steams and will spill over the tray.",
+  "si": "හකුරු පැණි යීස්ට් හමු වීමට පෙර සිසිල් වන්නට දෙන්න; උණුසුම් පැණි යීස්ට් මරා දමන අතර කේක් පැතලි හා තද වේ. කෝප්ප දාරය දක්වා නොපුරවන්න; තැම්බෙන විට මිශ්‍රණය නැඟී තැටිය පුරා ඉතිරෙයි.",
+  "ta": "கருப்பட்டிப் பாகு ஈஸ்ட்டுடன் சேரும் முன் ஆறட்டும்; சூடான பாகு ஈஸ்ட்டைக் கொன்றுவிடும், பணியாரம் தட்டையாகவும் இறுக்கமாகவும் வரும். கோப்பைகளை விளிம்பு வரை நிரப்ப வேண்டாம்; ஆவியில் மாவு பொங்கி தட்டில் வழிந்துவிடும்."
+ },
+ "health_note": {
+  "en": "Steamed rather than fried, which makes it a gentler sweet than kavum or kokis, but the jaggery and coconut milk still make it sugary and rich. Two small cakes with tea is a fair share, and anyone managing diabetes should treat it as a festival food.",
+  "si": "බැදීමට වඩා තැම්බීම නිසා කැවුම් හෝ කොකිස් වලට වඩා මෘදු රසකැවිල්ලකි, එනමුත් හකුරු සහ පොල්කිරි නිසා තවමත් සීනි සහ මේදය වැඩියි. තේ සමඟ කුඩා කේක් දෙකක් සාධාරණ ප්‍රමාණයක් වන අතර දියවැඩියාව පාලනය කරන අය මෙය උත්සව කෑමක් ලෙස සලකන්න.",
+  "ta": "பொரிப்பதற்குப் பதிலாக ஆவியில் வேகவைப்பதால் கவும், கோகிஸ் போன்றவற்றை விட இது மிதமான இனிப்பு; ஆனாலும் கருப்பட்டியும் தேங்காய்ப் பாலும் இதை இனிப்பும் கொழுப்பும் நிறைந்ததாக்குகின்றன. தேநீருடன் இரண்டு சிறு பணியாரம் சரியான பங்கு; நீரிழிவு உள்ளவர்கள் இதை பண்டிகை உணவாகவே கருதட்டும்."
+ },
+ "tags": [
+  "festive",
+  "high_sugar",
+  "comfort",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

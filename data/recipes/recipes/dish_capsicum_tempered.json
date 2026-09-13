@@ -1,0 +1,312 @@
+{
+ "id": "dish_capsicum_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 65,
+  "description": {
+   "en": "A hot spoonful taken sparingly with rice or string hoppers",
+   "si": "බත් හෝ ඉඳිආප්ප සමඟ සුළු වශයෙන් ගන්නා සැර හැන්දක්",
+   "ta": "சாதம் அல்லது இடியப்பத்துடன் சிறிதளவு எடுக்கும் காரமான ஒரு ஸ்பூன்"
+  }
+ },
+ "yield_g": 280,
+ "ingredients": [
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "banana peppers (malu miris)",
+    "si": "මාළු මිරිස්",
+    "ta": "மாலுமிரிஸ் (பெரிய மிளகாய்)"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "6 thick peppers",
+   "preparation": {
+    "en": "cut into thick rings, most seeds shaken out",
+    "si": "ගන වළලු ලෙස කපා, ඇට බොහෝමයක් ඉවත් කර",
+    "ta": "தடிமனான வட்டங்களாக நறுக்கி, பெரும்பாலான விதைகளை நீக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "2 and 1/2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium tomato",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "රළු මිරිස් කුඩු",
+    "ta": "கரடு மிளகாய்த் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி (உம்பலகடா)"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp, pounded",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කොටාගෙන",
+    "ta": "கரடாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the banana peppers, cut them into thick rings and shake out most of the seeds, which is where the fiercest heat sits.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a pan and fry the rings on a medium flame until the skins blister and soften.",
+    "minutes": 6
+   },
+   {
+    "text": "Push the peppers to one side, add the big onion and curry leaves and fry until the onion turns glassy.",
+    "minutes": 3
+   },
+   {
+    "text": "Stir in the turmeric, chilli flakes and pounded maldive fish if you are using it, and let the spices catch the oil.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the chopped tomato and salt and cook until the tomato breaks down and coats the rings.",
+    "minutes": 4
+   },
+   {
+    "text": "Take the pan off the fire and squeeze in the lime juice.",
+    "minutes": null
+   },
+   {
+    "text": "Let it stand for a few minutes before serving; the oil and juices settle into a sauce.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු මිරිස් සෝදා ගන වළලු ලෙස කපා, සැර වැඩිම තැන වන ඇට බොහෝමයක් ගසා ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑනකට පොල් තෙල් දමා, වළලු මධ්‍යම ගින්නේ ලෙලි පිපිරී මෘදු වන තුරු බැදගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "මිරිස් එක් පැත්තකට තල්ලු කර, ලොකු ලූනු හා කරපිංචා දමා ලූනු පාරාන්ධ බවට එන තුරු බැදගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කහ, රළු මිරිස් කුඩු හා (භාවිත කරන්නේ නම්) කොටාගත් උම්බලකඩ දමා කුළුබඩු තෙලේ රැඳෙන්නට තබන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "කපාගත් තක්කාලි හා ලුණු දමා, තක්කාලි කැඩී වළලුවලට ඇලෙන තුරු උයන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන දෙහි යුෂ මිරිකා දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බෙදන්නට පෙර විනාඩි කිහිපයක් තබන්න; තෙල හා යුෂ එකට බැඳී සෝස් වැනි ගතියක් එයි.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாலுமிரிஸைக் கழுவி, தடிமனான வட்டங்களாக நறுக்கி, காரம் அதிகமுள்ள விதைகளில் பெரும்பாலானதை உதறி நீக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயை காயவைத்து, வட்டங்களை நடுத்தர தீயில் தோல் கொப்புளித்து மென்மையாகும் வரை வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மிளகாயை ஓரமாக ஒதுக்கி, பெரிய வெங்காயமும் கறிவேப்பிலையும் போட்டு வெங்காயம் கண்ணாடி போல மாறும் வரை வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மஞ்சள், மிளகாய்த் தூள், (சேர்ப்பதாக இருந்தால்) இடித்த மாசி சேர்த்து மசாலா எண்ணெயில் பிடிக்கும் வரை கிளறுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "நறுக்கிய தக்காளியும் உப்பும் சேர்த்து, தக்காளி கரைந்து வட்டங்களில் பிடிக்கும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி தேசிக்காய்ச் சாற்றைப் பிழியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பரிமாறும் முன் சில நிமிடம் வையுங்கள்; எண்ணெயும் சாறும் ஒன்றாகி சாஸ் போல அமையும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 15,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "frying pan",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "Malu miris varies wildly from bundle to bundle, so bite a sliver of one raw before deciding how much chilli flakes to add. Wash your hands well before you touch your eyes.",
+  "si": "මාළු මිරිස්වල සැර මිටියෙන් මිටියට වෙනස් වන නිසා, මිරිස් කුඩු කොපමණ දමනවාද තීරණය කිරීමට පෙර අමු පෙත්තක් රස බලන්න. ඇස් ස්පර්ශ කිරීමට පෙර අත් හොඳින් සෝදන්න.",
+  "ta": "மாலுமிரிஸின் காரம் கட்டுக்குக் கட்டு மாறுபடும், எனவே மிளகாய்த் தூள் எவ்வளவு சேர்ப்பது என்று முடிவெடுக்கும் முன் ஒரு சிறு துண்டைப் பச்சையாகச் சுவைத்துப் பாருங்கள். கண்களைத் தொடும் முன் கைகளை நன்கு கழுவுங்கள்."
+ },
+ "health_note": {
+  "en": "The peppers themselves are low in calories and carry good vitamin C, but this is fried in a fair amount of oil and eaten for its heat, so keep to a spoonful or two. Leave out the maldive fish if the meal is already salty.",
+  "si": "මාළු මිරිස්වල කැලරි අඩු අතර විටමින් සී හොඳින් ලැබේ; එහෙත් මෙය තෙල් ප්‍රමාණයක් සමඟ බැදෙන අතර සැර නිසා ගන්නා බැවින් හැන්දක් දෙකක් ප්‍රමාණවත්. කෑමේ ලුණු දැනටමත් වැඩි නම් උම්බලකඩ අත්හරින්න.",
+  "ta": "மிளகாயில் கலோரி குறைவு, வைட்டமின் சி நல்ல அளவில் உண்டு; ஆனால் இது நல்ல அளவு எண்ணெயில் வதக்கப்படுவதால், காரத்திற்காக ஒன்று இரண்டு ஸ்பூன் மட்டுமே எடுங்கள். உணவில் ஏற்கனவே உப்பு அதிகமெனில் மாசியை விட்டுவிடுங்கள்."
+ },
+ "tags": [
+  "low_calorie",
+  "low_carb",
+  "quick",
+  "budget",
+  "immune_support"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

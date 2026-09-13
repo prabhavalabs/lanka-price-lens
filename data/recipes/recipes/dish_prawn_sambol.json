@@ -1,0 +1,316 @@
+{
+ "id": "dish_prawn_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "condiment",
+  "portion_g": 75,
+  "description": {
+   "en": "A dark, oily spoonful of prawn relish on the side of the plate",
+   "si": "පිඟානේ පැත්තකට දමන කළු, තෙල් සහිත ඉස්සෝ සම්බෝල හැන්දක්",
+   "ta": "தட்டின் ஓரத்தில் ஒரு கரண்டி கருமையான இறால் சம்பல்"
+  }
+ },
+ "yield_g": 300,
+ "ingredients": [
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "small prawns",
+    "si": "කුඩා ඉස්සන්",
+    "ta": "சிறிய இறால்"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 cups, shelled",
+   "preparation": {
+    "en": "shelled, washed and patted dry",
+    "si": "ලෙලි ගලවා සෝදා වතුර වියළාගත්",
+    "ta": "ஓடு உரித்துக் கழுவி நீர் ஒற்றியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "whole dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "10 chillies",
+   "preparation": {
+    "en": "stems removed",
+    "si": "කරල් ඉවත් කළ",
+    "ta": "தண்டு நீக்கியது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "Maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி கருவாடு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "2 tbsp, crushed",
+   "preparation": {
+    "en": "broken into small pieces",
+    "si": "කුඩා කැබලිවලට කඩාගත්",
+    "ta": "சிறு துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a marble sized ball",
+   "preparation": {
+    "en": "soaked in a little water",
+    "si": "වතුර ටිකකින් දිය කරගත්",
+    "ta": "சிறிது நீரில் ஊறவைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime",
+   "preparation": {
+    "en": "squeezed in at the end",
+    "si": "අවසානයේ මිරිකා ගන්න",
+    "ta": "இறுதியில் பிழிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Shell the small prawns, wash them, drain them and pat them dry on a cloth so they fry rather than steam.",
+    "minutes": 12
+   },
+   {
+    "text": "Fry them in the hot coconut oil until they are dry and slightly crisp at the edges, then lift them out.",
+    "minutes": 8
+   },
+   {
+    "text": "In the same oil fry the dried chillies and the Maldive fish for less than a minute, until the chillies darken but do not blacken.",
+    "minutes": 2
+   },
+   {
+    "text": "Fry the onion and garlic in the oil until they are well browned and sweet.",
+    "minutes": 6
+   },
+   {
+    "text": "Pound the chilli, Maldive fish, onion and garlic on a grinding stone or in a mortar into a coarse dark paste.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the fried prawns and pound them only roughly, so you can still see pieces of prawn in the sambol.",
+    "minutes": 3
+   },
+   {
+    "text": "Return everything to the pan with the tamarind water and the salt and fry on a low flame until it is dark and the oil begins to separate.",
+    "minutes": 5
+   },
+   {
+    "text": "Cool it, squeeze in the lime and store it in a clean dry jar; it keeps a week in a cool cupboard.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුඩා ඉස්සන් ලෙලි ගලවා සෝදා, වතුර බේරා රෙද්දකින් වියළාගන්න; එතකොට තැම්බෙන්නේ නැතිව බැදෙනවා.",
+    "minutes": 12
+   },
+   {
+    "text": "රත් වූ පොල් තෙලේ ඒවා වියළී දාර ටිකක් කරකර ගතිය එන තුරු බැදගෙන අරගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "එම තෙලේම වියළි මිරිස් සහ උම්බලකඩ විනාඩියකට අඩුවෙන් බැදගන්න; මිරිස් පාට තද වෙන්න ඕනේ, පිළිස්සෙන්න නොවේ.",
+    "minutes": 2
+   },
+   {
+    "text": "ළූණු සහ සුදුළූණු එම තෙලේම හොඳින් රන්වන් වී මිහිරි රසය එන තුරු බැදගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "මිරිස්, උම්බලකඩ, ළූණු සහ සුදුළූණු මිරිස් ගලේ හෝ වංගෙඩියේ දමා රළු කළු තලපයක් වන තුරු තලන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බැදපු ඉස්සන් දමා රළුවට පමණක් තලන්න; සම්බෝලයේ ඉස්සන් කැබලි තවම පේන්න ඕනේ.",
+    "minutes": 3
+   },
+   {
+    "text": "සියල්ල නැවත පෑන් එකට දමා සියඹලා වතුර සහ ලුණු එකතු කර, අඩු ගින්නේ පාට තද වී තෙල් වෙන් වන තුරු බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "සිසිල් කර දෙහි මිරිකා පිරිසිදු වියළි බෝතලයක බහාලන්න; සිසිල් අල්මාරියක සතියක් තියෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிறிய இறாலை உரித்துக் கழுவி, நீர் வடித்து, துணியில் ஒற்றி உலர்த்துங்கள்; அப்போது வேகாமல் பொரியும்.",
+    "minutes": 12
+   },
+   {
+    "text": "காய்ந்த தேங்காய் எண்ணெயில் அவற்றை உலர்ந்து ஓரம் மொறுமொறுப்பாகும் வரை பொரித்து எடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அதே எண்ணெயில் வத்தல் மிளகாயையும் மாசி கருவாட்டையும் ஒரு நிமிடத்துக்கும் குறைவாகப் பொரியுங்கள்; மிளகாய் நிறம் கறுக்க வேண்டும், கருகக் கூடாது.",
+    "minutes": 2
+   },
+   {
+    "text": "அதே எண்ணெயில் வெங்காயத்தையும் பூண்டையும் நன்கு பொன்னிறமாகி இனிப்புச் சுவை வரும் வரை வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "மிளகாய், மாசி, வெங்காயம், பூண்டை அம்மியிலோ உரலிலோ இட்டு கரகரப்பான கருமையான விழுதாக இடியுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "பொரித்த இறாலைச் சேர்த்து கரகரப்பாக மட்டும் இடியுங்கள்; சம்பலில் இறால் துண்டுகள் தெரிய வேண்டும்.",
+    "minutes": 3
+   },
+   {
+    "text": "எல்லாவற்றையும் வாணலியில் திரும்பப் போட்டு, புளி நீரும் உப்பும் சேர்த்து, சிறு தீயில் நிறம் கருமையாகி எண்ணெய் பிரியும் வரை வறுக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஆறவிட்டு எலுமிச்சை பிழிந்து, சுத்தமான உலர்ந்த பாட்டிலில் வையுங்கள்; குளிர்ந்த இடத்தில் ஒரு வாரம் நிற்கும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "frying pan",
+  "grinding stone or mortar",
+  "clean glass jar"
+ ],
+ "tips": {
+  "en": "Dry the prawns properly before they go into the oil, or they spit and end up soft. Pound rather than blend: the stone leaves a texture that a machine turns into paste.",
+  "si": "ඉස්සන් තෙලට දමන්න කලින් හොඳින් වියළාගන්න, නැත්නම් තෙල් විසිරෙනවා, ඉස්සන් මෘදු වෙනවා. බ්ලෙන්ඩරයට වඩා ගලේ තලන්න: ගලෙන් එන වොනොව යන්ත්‍රයක් තලපයක් කරනවා.",
+  "ta": "இறாலை எண்ணெயில் போடுவதற்கு முன் நன்கு உலர்த்துங்கள், இல்லையேல் எண்ணெய் தெறித்து இறால் மென்மையாகிவிடும். இயந்திரத்தில் அரைப்பதைவிட அம்மியில் இடியுங்கள்: அம்மி தரும் பிசிறு இயந்திரத்தில் விழுதாகிவிடும்."
+ },
+ "health_note": {
+  "en": "A small amount goes on the plate, but it is concentrated: the oil, the Maldive fish and the salt make it heavy on sodium. Keep to a spoonful, and if pressure is a concern in the house leave out the Maldive fish.",
+  "si": "පිඟානට යන ප්‍රමාණය අඩුයි, නමුත් එය සංකේන්ද්‍රිතයි: තෙල්, උම්බලකඩ සහ ලුණු නිසා සෝඩියම් වැඩියි. හැන්දකින් නවතින්න; ගෙදර පීඩනය ප්‍රශ්නයක් නම් උම්බලකඩ අත් හරින්න.",
+  "ta": "தட்டுக்கு வரும் அளவு சிறிது, ஆனால் அது செறிவானது: எண்ணெய், மாசி, உப்பு காரணமாகச் சோடியம் அதிகம். ஒரு கரண்டியுடன் நிறுத்துங்கள்; வீட்டில் இரத்த அழுத்தம் பிரச்சினை என்றால் மாசியை விட்டுவிடுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "high_sodium",
+  "comfort",
+  "festive",
+  "low_carb"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

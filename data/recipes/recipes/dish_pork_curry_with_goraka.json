@@ -1,0 +1,454 @@
+{
+ "id": "dish_pork_curry_with_goraka",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "A ladle of dark sour pork curry with rice and a vegetable",
+   "si": "බතුත් එළවළුත් සමඟ අඳුරු ඇඹුල් ඌරු මස් හොද්දක්",
+   "ta": "சாதத்துடனும் ஒரு காய்கறியுடனும் ஒரு கரண்டி கரும் புளிப்புப் பன்றிக் கறி"
+  }
+ },
+ "yield_g": 820,
+ "ingredients": [
+  {
+   "ref": "product_pork",
+   "label": {
+    "en": "pork, curry cut with bone",
+    "si": "ඌරු මස්, කරි කැපුම",
+    "ta": "பன்றி இறைச்சி, எலும்புடன் கறி வெட்டு"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "about 600 g on the bone",
+   "preparation": {
+    "en": "cut into 4 cm pieces, washed and drained",
+    "si": "සෙන්ටිමීටර හතරක් පමණ කැබලිවලට කපා සෝදා වතුර බේරාගත්",
+    "ta": "நான்கு சென்டிமீட்டர் துண்டுகளாக வெட்டி, கழுவி நீர் வடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 small pieces",
+   "preparation": {
+    "en": "broken up, rinsed",
+    "si": "කැබලිවලට කඩා සෝදාගත්",
+    "ta": "துண்டுகளாக உடைத்து, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "8 chillies, ground",
+   "preparation": {
+    "en": "ground coarsely",
+    "si": "රළු ලෙස අඹරාගත්",
+    "ta": "கரகரப்பாக அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp, ground",
+   "preparation": {
+    "en": "roasted and ground",
+    "si": "බැදගෙන අඹරාගත්",
+    "ta": "வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp, crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලාගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the pork pieces well, drain them, and rub turmeric and a little of the salt into the meat in the pot itself.",
+    "minutes": null
+   },
+   {
+    "text": "Add the sliced onion, crushed garlic and ginger, ground chilli, roasted curry powder, coriander, cumin, fennel and pepper, and mix everything into the meat with your hand.",
+    "minutes": null
+   },
+   {
+    "text": "Tuck in the gorakka pieces, cinnamon, cloves, pandan leaf and curry leaves, pour in about a cup of water and cover the pot.",
+    "minutes": null
+   },
+   {
+    "text": "Set the pot on a medium flame and let the pork cook in its own juices with the spices, stirring now and then so nothing catches at the bottom.",
+    "minutes": 35
+   },
+   {
+    "text": "When the meat is soft and the gravy has gone dark, taste for salt and sourness and add a splash of hot water if it is drying too fast.",
+    "minutes": 10
+   },
+   {
+    "text": "Push the pieces to one side, pour the coconut oil down the side of the pot and let the gravy fry until oil shows at the edges.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir the fried gravy back through the meat and cook uncovered until it thickens and clings to every piece.",
+    "minutes": 8
+   },
+   {
+    "text": "Take the pot off the fire and let it stand a few minutes so the sour gorakka settles into the meat before serving.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "ඌරු මස් කැබලි හොඳින් සෝදා වතුර බේරා, භාජනයේම කහ කුඩු සහ ලුණු ස්වල්පයක් දමා අතින් අතුල්ලන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කපාගත් රතු ළූණු, තලාගත් සුදුළූණු හා ඉඟුරු, මිරිස්, බැදපු තුනපහ, කොත්තමල්ලි, සූදුරු, මාදුරු සහ ගම්මිරිස් දමා මස් සමඟ අතින් හොඳින් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගොරකා කැබලි, කුරුඳු, කරාබුනැටි, රම්පෙ සහ කරපිංචා දමා, කෝප්පයක් පමණ වතුර වත් කර භාජනය වසන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මධ්‍යම ගින්නේ තබා, මස් එහිම යුෂ සහ කුළුබඩු අතර මුදු වන තුරු ඉඳහිට කලවම් කරමින් උයන්න.",
+    "minutes": 35
+   },
+   {
+    "text": "මස් මෘදු වී හොද්ද තද පාට වූ විට ලුණු හා ඇඹුල රස බලන්න; ඉක්මනින් සිඳෙනවා නම් උණු වතුර ස්වල්පයක් එකතු කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මස් කැබලි පසෙකට කර, භාජනයේ පැත්තෙන් පොල් තෙල් වත් කර, දාරවල තෙල් මතුවන තුරු හොද්ද බැදෙන්න දෙන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "බැදුණු හොද්ද නැවත මස් සමඟ කලවම් කර, හොද්ද තද වී සෑම කැබැල්ලකට ම ඇලෙන තුරු වැසුමක් නැතිව උයන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගින්නෙන් ඉවත් කර මිනිත්තු කිහිපයක් තබන්න; ගොරකා ඇඹුල මස් තුළට කිඳා බැස පිළිගැන්වීමට සූදානම් වේ.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "பன்றி இறைச்சித் துண்டுகளை நன்றாகக் கழுவி நீரை வடித்து, பாத்திரத்திலேயே மஞ்சள் தூளும் கொஞ்சம் உப்பும் சேர்த்துக் கையால் தேய்த்து வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கிய சின்ன வெங்காயம், இடித்த பூண்டு, இஞ்சி, அரைத்த மிளகாய், வறுத்த கறித் தூள், மல்லி, சீரகம், பெருஞ்சீரகம், மிளகு எல்லாவற்றையும் இறைச்சியுடன் கையால் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கோரக்கா துண்டுகள், பட்டை, கிராம்பு, ரம்பை, கறிவேப்பிலை சேர்த்து, ஒரு கப் தண்ணீர் விட்டுப் பாத்திரத்தை மூடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நடுத்தர தீயில் வைத்து, இறைச்சி அதன் சொந்த சாற்றிலும் மசாலாவிலும் மென்மையாகும் வரை இடையிடையே கிளறிச் சமையுங்கள்.",
+    "minutes": 35
+   },
+   {
+    "text": "இறைச்சி வெந்து குழம்பு கருமையானதும் உப்பையும் புளிப்பையும் பார்த்துக் கொள்ளுங்கள்; வேகமாக வற்றினால் கொதிக்கும் நீர் கொஞ்சம் தெளியுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "இறைச்சியை ஓரமாக ஒதுக்கி, பாத்திரத்தின் ஓரமாகத் தேங்காய் எண்ணெய் விட்டு, ஓரங்களில் எண்ணெய் தெரியும் வரை குழம்பை வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "வதங்கிய குழம்பை இறைச்சியுடன் கலந்து, குழம்பு கெட்டியாகி ஒவ்வொரு துண்டிலும் ஒட்டும் வரை மூடாமல் சமையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அடுப்பை விட்டு இறக்கி சில நிமிடம் வைத்திருங்கள்; கோரக்காவின் புளிப்பு இறைச்சிக்குள் இறங்கியபின் பரிமாறுங்கள்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 65,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "clay pot or heavy pan with a lid",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "Pork gives out plenty of fat, so start with very little water and add it only if the pot runs dry; the gorakka needs that fat to cut through and it does the job better than lime or vinegar.",
+  "si": "ඌරු මස්වලින් තෙල් හොඳට නිකුත් වන නිසා මුලින් වතුර අඩුවෙන් දමා, භාජනය සිඳුනොත් පමණක් තව එකතු කරන්න; ගොරකාට කපා ගැනීමට ඒ තෙල් අවශ්‍ය වන අතර දෙහි හෝ විනාකිරිවලට වඩා එය හොඳින් ඉටු කරයි.",
+  "ta": "பன்றி இறைச்சி நிறைய கொழுப்பை விடுவதால் ஆரம்பத்தில் மிகக் குறைந்த நீரே சேர்க்கவும், பாத்திரம் வற்றினால் மட்டும் மேலும் விடவும்; அந்தக் கொழுப்பை வெட்டுவதற்குக் கோரக்கா தேசிக்காயையும் வினிகரையும் விடச் சிறப்பாகச் செயல்படும்."
+ },
+ "health_note": {
+  "en": "A filling plate of protein and iron, but pork carries a good deal of saturated fat, so keep the portion to one ladle and skim the floating fat before serving. The gorakka and pepper make it easier on the stomach.",
+  "si": "ප්‍රෝටීන් සහ යකඩ බහුල, බඩ පිරෙන කෑමක්; නමුත් ඌරු මස්වල සංතෘප්ත තෙල් ඉහළ බැවින් ලාඩුවක් පමණට සීමා කර, පිළිගැන්වීමට පෙර උඩ පා වන තෙල් ඉවත් කරන්න. ගොරකා සහ ගම්මිරිස් ආහාර දිරවීමට පිටුබලයක් වේ.",
+  "ta": "புரதமும் இரும்புச் சத்தும் நிறைந்த வயிறு நிறைக்கும் உணவு; ஆனால் பன்றி இறைச்சியில் நிறைவுற்ற கொழுப்பு அதிகம் என்பதால் ஒரு கரண்டிக்கு மேல் வேண்டாம், பரிமாறும் முன் மேலே மிதக்கும் கொழுப்பை நீக்குங்கள். கோரக்காவும் மிளகும் செரிமானத்திற்கு உதவும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "one_pot",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,280 @@
+{
+ "id": "dish_tea_bun",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 140,
+  "description": {
+   "en": "Two plain buns, split and buttered if you like",
+   "si": "අවශ්‍ය නම් දෙබෑ කර බටර් ගැල්වූ සරල බනිස් දෙකක්",
+   "ta": "விரும்பினால் பிளந்து வெண்ணெய் தடவிய இரண்டு சாதாரண பன்கள்"
+  }
+ },
+ "yield_g": 560,
+ "ingredients": [
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 320,
+   "unit": "g",
+   "household": "2½ cups",
+   "preparation": {
+    "en": "sieved",
+    "si": "පෙරාගත්",
+    "ta": "சலித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_butter",
+   "label": {
+    "en": "butter",
+    "si": "බටර්",
+    "ta": "வெண்ணெய்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "2 tbsp, and more to spread",
+   "preparation": {
+    "en": "soft",
+    "si": "මෘදු",
+    "ta": "மிருதுவானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_yeast",
+   "label": {
+    "en": "instant yeast",
+    "si": "යීස්ට්",
+    "ta": "ஈஸ்ட்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1¼ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_fresh_milk",
+   "label": {
+    "en": "fresh milk",
+    "si": "නැවුම් කිරි",
+    "ta": "பால்"
+   },
+   "quantity": 170,
+   "unit": "ml",
+   "household": "¾ cup, some for brushing",
+   "preparation": {
+    "en": "warmed to blood heat",
+    "si": "ලා උණුසුම් කරගත්",
+    "ta": "வெதுவெதுப்பாகச் சூடாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Warm most of the milk, stir in a spoon of the sugar and the yeast, and wait for the surface to froth.",
+    "minutes": 10
+   },
+   {
+    "text": "Mix the flour, remaining sugar and salt, then rub in the soft butter until no lumps remain.",
+    "minutes": null
+   },
+   {
+    "text": "Add the yeast milk and knead until the dough is smooth and springs back when pressed.",
+    "minutes": 12
+   },
+   {
+    "text": "Cover and leave in a warm place until doubled in size.",
+    "minutes": 60
+   },
+   {
+    "text": "Knock the dough back, divide into eight and roll each into a tight round ball, seam underneath.",
+    "minutes": null
+   },
+   {
+    "text": "Set them on a greased tray a finger apart so they touch as they rise and stay soft at the sides.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and prove until they have swelled together and feel light.",
+    "minutes": 30
+   },
+   {
+    "text": "Brush the tops with milk for shine.",
+    "minutes": null
+   },
+   {
+    "text": "Bake at 200 C until the tops are even gold and the buns sound hollow.",
+    "minutes": 18
+   },
+   {
+    "text": "Cool a little, then split and eat with butter, jam or a spoonful of sambol.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "කිරි වැඩි කොටස ලා උණුසුම් කර, සීනි හැන්දක් සහ යීස්ට් දමා කලතා, මතුපිට පෙණ නඟින තෙක් තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පිටි, ඉතිරි සීනි සහ ලුණු මිශ්‍ර කර, ගුලි නැති වන තෙක් මෘදු බටර් අතුල්ලා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "යීස්ට් කිරි එකතු කර, පිටි ගුලිය සිනිඳු වී, තද කළ විට නැවත නැඟෙන තෙක් අනන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "වසා, උණුසුම් තැනක තබා දෙගුණ වන තෙක් තිබෙන්න දෙන්න.",
+    "minutes": 60
+   },
+   {
+    "text": "පිටි ගුලිය තට්ටු කර, අටට බෙදා, එක් එක් කොටස තදින් රවුම් කර, මැහුම පහතට තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තෙල් ගෑ තැටියක ඇඟිල්ලක් පරතරයෙන් තබන්න; පිම්බෙන විට එකට ඇලී පැති මෘදුව රැඳේ.",
+    "minutes": null
+   },
+   {
+    "text": "වසා, එකට පිම්බී සැහැල්ලු වන තෙක් තිබෙන්න දෙන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "දිලිසෙන පෙනුමකට මුදුනේ කිරි ගල්වන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෙල්සියස් 200ක උඳුනක, මුදුන සමව රන්වන් වී තට්ටු කළ විට හිස් හඬක් එන තෙක් පිළිස්සෙන්න දෙන්න.",
+    "minutes": 18
+   },
+   {
+    "text": "ටිකක් සිසිල් වූ පසු දෙබෑ කර, බටර්, ජෑම් හෝ සම්බෝල හැන්දක් සමඟ කන්න.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாலின் பெரும்பகுதியை வெதுவெதுப்பாக்கி, ஒரு ஸ்பூன் சீனியும் ஈஸ்டும் கலக்கி, மேற்பரப்பில் நுரை வரும் வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மாவு, மீதி சீனி, உப்பு கலந்து, கட்டி இல்லாமல் போகும் வரை மிருதுவான வெண்ணெயைத் தேய்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "ஈஸ்ட் பாலைச் சேர்த்து, மாவு மிருதுவாகி, அழுத்தினால் திரும்பி எழும் வரை பிசையவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "மூடி, வெதுவெதுப்பான இடத்தில் இரட்டிப்பாகும் வரை வைக்கவும்.",
+    "minutes": 60
+   },
+   {
+    "text": "மாவைத் தட்டி, எட்டு பங்காகப் பிரித்து, ஒவ்வொன்றையும் இறுக்கமான உருண்டையாக உருட்டி, மூட்டு கீழாக வைக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "எண்ணெய் தடவிய தட்டில் ஒரு விரல் இடைவெளியில் வைக்கவும்; பூரிக்கும்போது ஒட்டி, பக்கங்கள் மிருதுவாக இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி, ஒன்றாகப் பூரித்து இலகுவாகும் வரை வைக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "பளபளப்புக்காக மேலே பால் தடவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "200 செல்சியஸில், மேற்பரப்பு சமமான பொன்னிறமாகி, தட்டினால் வெற்று ஒலி வரும் வரை சுடவும்.",
+    "minutes": 18
+   },
+   {
+    "text": "சற்று ஆறியபின் பிளந்து, வெண்ணெய், ஜாம் அல்லது ஒரு ஸ்பூன் சம்பலுடன் சாப்பிடவும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 35,
+  "cook_minutes": 18,
+  "passive_minutes": 90
+ },
+ "equipment": [
+  "mixing bowl",
+  "baking tray",
+  "oven"
+ ],
+ "tips": {
+  "en": "Keep the dough on the soft side, a little tacky to the hand, because a stiff dough bakes into a dry bun by evening. Day-old banis are best split, toasted on a dry pan and eaten with butter.",
+  "si": "පිටි ගුලිය තරමක් මෘදුව, අතට ලා ඇලෙන ගතියෙන් තබා ගන්න; තද පිටි ගුලියකින් සවස වන විට වියළි බනිසක් ලැබේ. දින එකක් පැරණි බනිස් දෙබෑ කර, වියළි පෑනක තැම්බා බටර් සමඟ කෑම හොඳම ය.",
+  "ta": "மாவை சற்று மிருதுவாக, கையில் லேசாக ஒட்டும் அளவில் வைக்கவும்; இறுகிய மாவு மாலையில் வறண்ட பன்னாகிவிடும். ஒரு நாள் பழைய பன்னைப் பிளந்து, வறட்டு வாணலியில் சுட்டு வெண்ணெயுடன் சாப்பிடுவது சிறந்தது."
+ },
+ "health_note": {
+  "en": "A plain banis is refined flour with a little sugar and fat, so on its own it is mostly starch. Fill it with a boiled egg, dhal or a pol sambol and it becomes a reasonable breakfast instead of just something sweet with tea.",
+  "si": "සරල බනිසක ඇත්තේ පිරිපහදු කළ පිටි, සීනි ස්වල්පයක් සහ මේදය ස්වල්පයක් පමණි; එබැවින් තනිව ගත් විට එය බොහෝ දුරට පිෂ්ටයකි. ඒ ඇතුළට තෙම්බූ බිත්තරයක්, පරිප්පු හෝ පොල් සම්බෝල දැමුවහොත්, තේ සමඟ ගන්නා පැණි කෑමක් වෙනුවට සාධාරණ උදෑසන ආහාරයක් වේ.",
+  "ta": "சாதாரண பன்னில் சுத்திகரித்த மாவு, சிறிது சீனி, சிறிது கொழுப்பு மட்டுமே; எனவே தனியாகச் சாப்பிட்டால் பெரும்பாலும் மாவுச்சத்து மட்டுமே. உள்ளே வேகவைத்த முட்டை, பருப்பு அல்லது பொல் சம்பல் வைத்தால், தேநீருடன் சாப்பிடும் இனிப்பாக இல்லாமல் நியாயமான காலை உணவாகிவிடும்."
+ },
+ "tags": [
+  "kid_friendly",
+  "comfort",
+  "budget",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

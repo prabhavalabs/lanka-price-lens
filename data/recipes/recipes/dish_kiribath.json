@@ -1,0 +1,220 @@
+{
+ "id": "dish_kiribath",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 285,
+  "description": {
+   "en": "Three or four diamonds of milk rice",
+   "si": "කිරිබත් කැට තුනක් හතරක්",
+   "ta": "மூன்று நான்கு துண்டு பால் சோறு"
+  }
+ },
+ "yield_g": 1140,
+ "ingredients": [
+  {
+   "ref": "product_rice_samba",
+   "label": {
+    "en": "samba rice",
+    "si": "සම්බා සහල්",
+    "ta": "சம்பா அரிசி"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "washed and drained",
+    "si": "සෝදා වතුර බේරාගත්",
+    "ta": "கழுவி வடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "2 cups",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "පළමු වර මිරිකාගත් ගන කිරි",
+    "ta": "முதல் பால், தடிப்பானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the rice until the water runs clear and put it in a heavy pot with three and a half cups of water and the pandan leaf.",
+    "minutes": null
+   },
+   {
+    "text": "Boil it, then cover and cook on a low flame until the rice is soft and all the water is taken up.",
+    "minutes": 20
+   },
+   {
+    "text": "Mash the hot rice lightly with the back of a wooden spoon so the grains open up.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thick coconut milk with the salt and stir it through on a low flame.",
+    "minutes": 2
+   },
+   {
+    "text": "Keep stirring from the bottom so the milk does not catch, until the rice is glossy and comes away from the sides of the pot.",
+    "minutes": 8
+   },
+   {
+    "text": "Turn the rice out onto a greased tray or a banana leaf and press it flat to about two fingers thick with a wet spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Let it stand until it is warm rather than hot and firm enough to hold a cut.",
+    "minutes": 15
+   },
+   {
+    "text": "Cut it into diamonds with a knife wiped in coconut milk and serve with lunu miris or a piece of jaggery.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වතුර පැහැදිලි වන තුරු සහල් සෝදා, කෝප්ප තුනහමාරක් වතුර සහ රම්පෙ සමඟ ඝන පතුලක් ඇති භාජනයකට දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "නටවා, පසුව වසා අඩු ගින්දරේ බත් හොඳින් තැම්බී වතුර සම්පූර්ණයෙන් අවශෝෂණය වන තුරු උයන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "උණුසුම් බත ලී හැන්දක පිටිපසින් සැහැල්ලුවෙන් තලා, ඇට ලිහිල් කරගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගන පොල් කිරි සහ ලුණු දමා, අඩු ගින්දරේ හොඳින් කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කිරි පතුලට නොඇලෙන ලෙස පතුලෙන් අවුලමින්, බත දිලිසෙන පදමට, භාජනයේ පැතිවලින් ගැලවෙන තුරු කලවම් කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බත තෙල් තැවරූ තැටියකට හෝ කෙසෙල් කොළයකට හරවා, තෙත් හැන්දකින් ඇඟිලි දෙකක් පමණ ඝනකමට තලා පැතිර වන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එය රත් නොව උණුසුම් වන තුරු, කැපුමක් රඳා ගන්නා තරමට තදවන තුරු තබන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "පොල් කිරි තැවරූ පිහියකින් කැට ලෙස කපා, ලුණු මිරිස් හෝ හකුරු කැබැල්ලක් සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "தண்ணீர் தெளிவாகும்வரை அரிசியைக் கழுவி, மூன்றரை கப் தண்ணீரும் ரம்பை இலையும் சேர்த்து தடித்த அடிப்பாகம் உள்ள பாத்திரத்தில் இடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்கவைத்து, பின்னர் மூடி குறைந்த தீயில் சாதம் நன்கு வேகுந்து தண்ணீர் முழுவதும் இழுக்கும்வரை சமைக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "சூடான சாதத்தை மரக் கரண்டியின் பின்பகுதியால் லேசாக மசித்து, அரிசி பிரியும்படி செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலையும் உப்பையும் சேர்த்து, குறைந்த தீயில் நன்கு கலக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "பால் அடியில் பிடிக்காமல் அடியிலிருந்து கிளறி, சாதம் பளபளப்பாகி பாத்திரத்தின் ஓரங்களிலிருந்து விலகும்வரை கலக்கவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "சாதத்தை எண்ணெய் தடவிய தட்டில் அல்லது வாழை இலையில் கவிழ்த்து, நனைந்த கரண்டியால் இரு விரல் கனத்திற்கு அழுத்திப் பரப்பவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அது சூடு தணிந்து, வெட்டினால் தாங்கும் அளவுக்கு இறுகும்வரை வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "தேங்காய்ப் பால் தடவிய கத்தியால் சதுரமாக வெட்டி, லுணு மிரிஸ் அல்லது ஒரு துண்டு சர்க்கரையுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 35,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "heavy pot or clay pot",
+  "wooden spoon",
+  "flat tray or banana leaf"
+ ],
+ "tips": {
+  "en": "Use only first squeeze milk and add it after the rice is cooked; if it goes in early the rice hardens and never sets properly.",
+  "si": "පළමු වර මිරිකාගත් ගන කිරි පමණක් යොදන්න, ඒත් බත් උයා අවසන් වූ පසුව; කලින් දැමුවොත් බත් තදවී හරියට තැම්බෙන්නේ නැහැ.",
+  "ta": "முதல் பால் மட்டுமே பயன்படுத்தவும், அதுவும் சாதம் வெந்த பிறகே; முன்னதாகச் சேர்த்தால் சாதம் இறுகி சரியாக வேகாது."
+ },
+ "health_note": {
+  "en": "Milk rice is rice and coconut together, so it is filling and quite high in coconut fat; a small square with sambol is the traditional portion for good reason.",
+  "si": "කිරිබත යනු බත් සහ පොල් එකට ගත් ආහාරයක් වන බැවින් එය බඩ පුරවන, පොල් තෙල් ප්‍රමාණයක් සහිත අහරක්; සම්බෝල් සමඟ කුඩා කැටයක් සම්ප්‍රදායික ප්‍රමාණය වීමට හේතුව එයයි.",
+  "ta": "பால் சோறு அரிசியும் தேங்காயும் சேர்ந்தது, எனவே வயிறு நிறைக்கும், தேங்காய்க் கொழுப்பும் நன்கு உள்ளது; சம்பலுடன் ஒரு சிறு துண்டு பாரம்பரிய அளவாக இருப்பதற்கு அதுவே காரணம்."
+ },
+ "tags": [
+  "festive",
+  "filling",
+  "comfort",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

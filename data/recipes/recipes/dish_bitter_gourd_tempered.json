@@ -1,0 +1,309 @@
+{
+ "id": "dish_bitter_gourd_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 55,
+  "description": {
+   "en": "A small mound beside the rice, eaten a spoonful at a time",
+   "si": "බතට පසෙකින් තබන කුඩා ගොඩක්, හැන්දෙන් ටිකෙන් ටික ගන්නා",
+   "ta": "சாதத்தின் ஓரத்தில் சிறிய அளவு, ஒரு ஸ்பூனாக சுவைக்க"
+  }
+ },
+ "yield_g": 230,
+ "ingredients": [
+  {
+   "ref": "product_bitter_gourd",
+   "label": {
+    "en": "bitter gourd",
+    "si": "කරවිල",
+    "ta": "பாகற்காய்"
+   },
+   "quantity": 320,
+   "unit": "g",
+   "household": "4 medium gourds",
+   "preparation": {
+    "en": "sliced into thin rings, large seeds flicked out",
+    "si": "තුනී වළලු ලෙස කපා, ලොකු ඇට ඉවත් කර",
+    "ta": "மெல்லிய வட்டங்களாக நறுக்கி, பெரிய விதைகள் நீக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp, half for salting",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනී ලෙස කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වේළූ මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "4 pods",
+   "preparation": {
+    "en": "broken in two, stalks removed",
+    "si": "දෙකට කඩා, කරල් කොට ඉවත් කර",
+    "ta": "இரண்டாக உடைத்து, தண்டு நீக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "රළු මිරිස් කුඩු",
+    "ta": "கரடு மிளகாய்த் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the bitter gourd, cut off both ends, slice into thin rings and flick out the big seeds with the tip of the knife.",
+    "minutes": null
+   },
+   {
+    "text": "Toss the rings with half the salt and the turmeric, leave them in a colander, then squeeze out the dark bitter water in handfuls.",
+    "minutes": 20
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and fry the squeezed rings in two batches over a strong flame until the edges brown and they no longer look wet. Lift onto a plate.",
+    "minutes": 12
+   },
+   {
+    "text": "In the same oil temper the sliced big onion, broken dried chillies and curry leaves until the onion softens and turns light brown.",
+    "minutes": 4
+   },
+   {
+    "text": "Return the fried gourd to the pan with the chilli flakes, the sugar and the rest of the salt, and toss over the fire so everything coats evenly.",
+    "minutes": 2
+   },
+   {
+    "text": "Take the pan off the fire and squeeze the lime over, mixing once.",
+    "minutes": null
+   },
+   {
+    "text": "Serve in a small mound; a spoonful with each mouthful of rice is enough.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කරවිල හොඳින් සෝදා, දෙකෙළවර කපා ඉවත් කර, තුනී වළලු ලෙස කපාගෙන පිහියේ තුඩෙන් ලොකු ඇට ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැපූ වළලුවලට ලුණු භාගයක් හා කහ කුඩු එකතු කර පෙරනයක දමා තබන්න. පසුව අතට අල්ලා කළු තිත්ත වතුර මිරිකා ඉවත් කරන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පළල් පෑනකට පොල් තෙල් දමා අධික ගින්නේ, මිරිකාගත් වළලු කොටස් දෙකකට බෙදා දාර දුඹුරු වන තුරු බැදගන්න. පසුව තැටියකට ගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "ඉතිරි තෙලේ කපාගත් ලොකු ලූනු, කඩාගත් වේළූ මිරිස් හා කරපිංචා දමා ලූනු මෘදු වී රන්වන් වන තුරු තෙල් දාන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "බැදගත් කරවිල නැවත පෑනට දමා, රළු මිරිස් කුඩු, සීනි හා ඉතිරි ලුණු එකතු කර හොඳින් කලවම් වන සේ ගින්නේ පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලිපෙන් ඉවතට ගෙන දෙහි යුෂ මිරිකා එක් වරක් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කුඩා ගොඩක් ලෙස බැදුම බෙදන්න; බත් පිඬකට හැන්දක් ප්‍රමාණවත්.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாகற்காயை நன்கு கழுவி, இரு முனைகளையும் நீக்கி, மெல்லிய வட்டங்களாக நறுக்கி, பெரிய விதைகளை கத்தி நுனியால் அகற்றுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கிய வட்டங்களில் பாதி உப்பும் மஞ்சள் தூளும் சேர்த்துக் கலக்கி சல்லடையில் வையுங்கள்; பிறகு கையால் பிடித்து கசப்பு நீரைப் பிழிந்து விடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "அகலமான வாணலியில் தேங்காய் எண்ணெயைக் காயவைத்து, பிழிந்த வட்டங்களை இரு தவணையாக நல்ல தீயில் ஓரங்கள் பொன்னிறமாகும் வரை வதக்கி, தட்டில் எடுங்கள்.",
+    "minutes": 12
+   },
+   {
+    "text": "அதே எண்ணெயில் நறுக்கிய பெரிய வெங்காயம், உடைத்த வத்தல் மிளகாய், கறிவேப்பிலை போட்டு வெங்காயம் மென்மையாகி பொன்னிறமாகும் வரை தாளியுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "வதக்கிய பாகற்காயை மீண்டும் சேர்த்து, மிளகாய்த் தூள், சீனி, மீதி உப்பு போட்டு எல்லாம் ஒன்றாகப் பிடிக்கும் வரை தீயில் கிளறுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "அடுப்பிலிருந்து இறக்கி, தேசிக்காய்ச் சாற்றைப் பிழிந்து ஒருமுறை கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "சிறிய அளவில் பரிமாறுங்கள்; ஒரு பிடி சாதத்திற்கு ஒரு ஸ்பூன் போதும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 20,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "wide pan or wok",
+  "colander",
+  "knife and board"
+ ],
+ "tips": {
+  "en": "The squeezing is the whole trick: the more bitter water you wring out, the more the family will eat. Fry in batches so the rings brown instead of stewing.",
+  "si": "මිරිකීම තමයි මුළු රහස; තිත්ත වතුර වැඩිපුර ඉවත් කරන තරමට ගෙදර අය වැඩිපුර කනවා. එක වර වැඩිය නොදමා කොටස් වශයෙන් බැදුවොත් වළලු හොඳින් දුඹුරු වේ.",
+  "ta": "பிழிவதே இதன் ரகசியம்; கசப்பு நீரை அதிகம் பிழிந்தால் வீட்டில் எல்லோரும் விரும்பிச் சாப்பிடுவார்கள். ஒரே தவணையில் நிரப்பாமல் கொஞ்சம் கொஞ்சமாக வதக்குங்கள்."
+ },
+ "health_note": {
+  "en": "Bitter gourd is very low in calories and carbohydrate and gives useful fibre, and households have long eaten it in small amounts for its bitterness. It does soak up oil while frying, so keep the pan measured rather than generous.",
+  "si": "කරවිලවල කැලරි හා පිටිසර ප්‍රමාණය ඉතා අඩු අතර හොඳ කෙඳි ලැබේ; තිත්ත රස නිසා ගෙවල්වල පැරණි කාලයේ සිටම සුළු ප්‍රමාණයෙන් ගනී. බදින විට තෙල් උරාගන්නා බැවින් තෙල් ප්‍රමාණය මැනගෙන දමන්න.",
+  "ta": "பாகற்காயில் கலோரியும் மாவுச்சத்தும் மிகக் குறைவு, நல்ல நார்ச்சத்து உண்டு; கசப்புக்காக வீடுகளில் நெடுங்காலமாக சிறிய அளவில் சாப்பிடுகிறார்கள். வதக்கும்போது எண்ணெயை உறிஞ்சும், எனவே எண்ணெயை அளவாகவே ஊற்றுங்கள்."
+ },
+ "tags": [
+  "low_calorie",
+  "low_carb",
+  "high_fibre",
+  "diabetic_friendly",
+  "weight_loss_friendly",
+  "budget",
+  "traditional_remedy"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

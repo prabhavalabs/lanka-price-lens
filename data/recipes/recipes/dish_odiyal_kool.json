@@ -1,0 +1,463 @@
+{
+ "id": "dish_odiyal_kool",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 400,
+  "description": {
+   "en": "A deep bowl of thick seafood broth, eaten on its own",
+   "si": "තනිවම කන ගන මුහුදු ආහාර සුප් බඳුනක්",
+   "ta": "தனியாகச் சாப்பிடும் கெட்டியான கடல் உணவுக் கூழ் ஒரு கிண்ணம்"
+  }
+ },
+ "yield_g": 1600,
+ "ingredients": [
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "prawns",
+    "si": "ඉස්සන්",
+    "ta": "இறால்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "a handful, shells on",
+   "preparation": {
+    "en": "washed, heads left on",
+    "si": "සෝදාගත්, හිස සහිතව",
+    "ta": "கழுவியது, தலையுடன்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_crab",
+   "label": {
+    "en": "crab",
+    "si": "කකුළුවෝ",
+    "ta": "நண்டு"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "1 medium crab",
+   "preparation": {
+    "en": "cleaned and broken into pieces",
+    "si": "පිරිසිදු කර කෑලිවලට කඩාගත්",
+    "ta": "சுத்தம் செய்து துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cuttlefish",
+   "label": {
+    "en": "cuttlefish",
+    "si": "දැල්ලෝ",
+    "ta": "கணவாய்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 small cuttlefish",
+   "preparation": {
+    "en": "cleaned and cut into rings",
+    "si": "පිරිසිදු කර වළලු වලට කපාගත්",
+    "ta": "சுத்தம் செய்து வளையங்களாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_manioc",
+   "label": {
+    "en": "manioc",
+    "si": "මඤ්ඤොක්කා",
+    "ta": "மரவள்ளிக் கிழங்கு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 root",
+   "preparation": {
+    "en": "peeled and cut into chunks",
+    "si": "ලෙලි ගලවා ලොකු කැබලිවලට කපාගත්",
+    "ta": "தோல் சீவி பெரிய துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_long_beans",
+   "label": {
+    "en": "long beans",
+    "si": "මෑකරල්",
+    "ta": "பயற்றங்காய்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "a small bunch",
+   "preparation": {
+    "en": "cut into finger lengths",
+    "si": "ඇඟිල්ලක දිගට කපාගත්",
+    "ta": "விரல் நீளமாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_jackfruit_seeds",
+   "label": {
+    "en": "jackfruit seeds",
+    "si": "කොස් ඇට",
+    "ta": "பலாக் கொட்டை"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "outer skin peeled, halved",
+    "si": "පිට ලෙලි ගලවා දෙකට කපාගත්",
+    "ta": "மேல் தோல் நீக்கி இரண்டாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_odiyal_flour",
+   "label": {
+    "en": "odiyal palmyrah flour",
+    "si": "ඕඩියල් පිටි",
+    "ta": "ஒடியல் மா"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 tbsp",
+   "preparation": {
+    "en": "mixed smooth with cold water",
+    "si": "සිසිල් වතුරෙන් ගුලි නැති වන ලෙස මිශ්‍ර කළ",
+    "ta": "குளிர்ந்த நீரில் கட்டியில்லாமல் கலந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_rice_raw_white",
+   "label": {
+    "en": "raw rice",
+    "si": "සහල්",
+    "ta": "பச்சை அரிசி"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "washed",
+    "si": "සෝදාගත්",
+    "ta": "கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tamarind",
+   "label": {
+    "en": "tamarind",
+    "si": "සියඹලා",
+    "ta": "புளி"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "a lime sized ball",
+   "preparation": {
+    "en": "soaked and strained",
+    "si": "වතුරේ දමා පෙරාගත්",
+    "ta": "ஊறவைத்துப் பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "தட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the crab and break it into pieces, clean the cuttlefish and cut it into rings, and wash the prawns leaving the heads on for flavour.",
+    "minutes": 25
+   },
+   {
+    "text": "Peel the manioc and cut it into chunks, peel the jackfruit seeds and halve them, and cut the long beans into finger lengths.",
+    "minutes": 15
+   },
+   {
+    "text": "Soak the tamarind in warm water, squeeze it and strain, and wash the raw rice.",
+    "minutes": 10
+   },
+   {
+    "text": "Bring about two litres of water to a boil in the biggest pot you have with the tamarind water, onion, garlic, curry leaves, turmeric, chilli powder and salt.",
+    "minutes": 10
+   },
+   {
+    "text": "Put in the manioc, jackfruit seeds and rice and boil until they are almost soft.",
+    "minutes": 20
+   },
+   {
+    "text": "Add the crab pieces and let them cook until the shells turn bright.",
+    "minutes": 10
+   },
+   {
+    "text": "Add the cuttlefish rings and the long beans and cook until the beans are just tender.",
+    "minutes": 8
+   },
+   {
+    "text": "Mix the odiyal flour smooth in a cup of cold water and pour it into the pot in a thin stream, stirring all the time so no lumps form.",
+    "minutes": 5
+   },
+   {
+    "text": "Keep stirring over a medium flame until the broth thickens enough to coat the back of the spoon.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the prawns in last and cook only until they turn orange.",
+    "minutes": 3
+   },
+   {
+    "text": "Taste for salt and sourness, then serve it straight from the pot while it is very hot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කකුළුවා සෝදා කෑලිවලට කඩන්න, දැල්ලා පිරිසිදු කර වළලු වලට කපන්න, ඉස්සන් රසය සඳහා හිස සහිතව සෝදාගන්න.",
+    "minutes": 25
+   },
+   {
+    "text": "මඤ්ඤොක්කා ලෙලි ගලවා කැබලිවලට කපා, කොස් ඇට ලෙලි ගලවා දෙකට කපා, මෑකරල් ඇඟිල්ලක දිගට කපාගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "සියඹලා උණු වතුරේ දමා මිරිකා පෙරාගන්න; සහල් සෝදාගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ගෙදර ඇති ලොකුම වළඳේ ලීටර් දෙකක් පමණ වතුර, සියඹලා වතුර, ළූණු, සුදුළූණු, කරපිංචා, කහ, මිරිස් කුඩු සහ ලුණු දමා නටවන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මඤ්ඤොක්කා, කොස් ඇට සහ සහල් දමා පාහේ මෘදු වන තුරු තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කකුළු කෑලි දමා කටු පාට දිලිසෙන තුරු පිසෙන්න දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "දැල්ලෝ වළලු සහ මෑකරල් දමා මෑකරල් මෘදු වන තුරු පිසින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ඕඩියල් පිටි සිසිල් වතුර කෝප්පයක ගුලි නැති වන ලෙස මිශ්‍ර කර, දිගටම කලවම් කරමින් තුනී දහරාවක් ලෙස වළඳට වත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මධ්‍යම ගින්නේ, සුප් හැන්දේ පිටත ආලේප වන තරමට ගන වන තුරු කලවම් කරගෙන ඉන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඉස්සන් අන්තිමට දමා තැඹිලි පාට වන තුරු පමණක් පිසින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලුණු සහ ඇඹුල රස බලා, හොඳට උණුවෙන් වළඳෙන්ම බෙදාගන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "நண்டைக் கழுவித் துண்டுகளாக உடைத்து, கணவாயைச் சுத்தம் செய்து வளையங்களாக வெட்டி, இறாலை சுவைக்காகத் தலையுடன் கழுவிக் கொள்ளுங்கள்.",
+    "minutes": 25
+   },
+   {
+    "text": "மரவள்ளியைச் சீவி துண்டுகளாக வெட்டி, பலாக் கொட்டையை உரித்து இரண்டாக வெட்டி, பயற்றங்காயை விரல் நீளமாக வெட்டுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "புளியை வெந்நீரில் ஊறவைத்துப் பிழிந்து வடிகட்டுங்கள்; அரிசியைக் கழுவுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வீட்டில் உள்ள மிகப் பெரிய பாத்திரத்தில் சுமார் இரண்டு லீட்டர் நீர், புளி நீர், வெங்காயம், பூண்டு, கறிவேப்பிலை, மஞ்சள், மிளகாய்த் தூள், உப்பு சேர்த்துக் கொதிக்க வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மரவள்ளி, பலாக் கொட்டை, அரிசி சேர்த்து கிட்டத்தட்ட மென்மையாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "நண்டுத் துண்டுகளைச் சேர்த்து, ஓடு பிரகாசமாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கணவாய் வளையங்களையும் பயற்றங்காயையும் சேர்த்து, காய் மென்மையாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "ஒடியல் மாவை ஒரு கப் குளிர்ந்த நீரில் கட்டியில்லாமல் கலந்து, தொடர்ந்து கிளறிக்கொண்டே மெல்லிய ஓட்டமாகப் பாத்திரத்தில் விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "நடுத்தர தீயில், கூழ் கரண்டியின் பின்புறத்தில் ஒட்டும் அளவுக்குக் கெட்டியாகும் வரை கிளறுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "இறாலை இறுதியில் சேர்த்து, ஆரஞ்சு நிறமாகும் வரை மட்டும் வேகவிடுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "உப்பையும் புளிப்பையும் பார்த்து, நன்கு சூடாக இருக்கும்போதே பாத்திரத்தில் இருந்தே பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 60,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "very large pot",
+  "long wooden stirrer",
+  "strainer"
+ ],
+ "tips": {
+  "en": "Odiyal flour lumps the moment it meets hot water, so always slake it cold and pour it in slowly while someone stirs. Whatever the sea gave that day goes in; the flour, the tamarind and the chilli are what make it kool.",
+  "si": "ඕඩියල් පිටි උණු වතුරට වැටුණ සැණින් ගුලි ගැහෙනවා, ඒ නිසා හැම විටම සිසිල් වතුරෙන් දිය කර, කලවම් කරන අතරේ සෙමින් වත් කරන්න. එදා මුහුදෙන් ලැබුණ ඕනෑ දෙයක් දමන්න පුළුවන්; කූල් කරන්නේ පිටි, සියඹලා සහ මිරිස්.",
+  "ta": "ஒடியல் மா சூடான நீரில் பட்டதும் கட்டியாகிவிடும், எனவே எப்போதும் குளிர்ந்த நீரில் கரைத்து, ஒருவர் கிளறும்போது மெதுவாக விடுங்கள். அன்று கடலில் கிடைத்த எதையும் சேர்க்கலாம்; கூழாக்குவது மாவும் புளியும் மிளகாயும்தான்."
+ },
+ "health_note": {
+  "en": "One bowl carries seafood protein, the starch of manioc and palmyrah flour and a plateful of vegetables, so it stands as a whole meal. It is filling and starchy, so someone watching blood sugar should take a smaller bowl with more of the seafood and vegetables.",
+  "si": "එක බඳුනකින් මුහුදු ආහාර ප්‍රෝටීන්, මඤ්ඤොක්කා සහ ඕඩියල් පිටිවල පිෂ්ටය සහ එළවළු පිඟානක් ලැබෙනවා, ඒ නිසා මේක සම්පූර්ණ කෑමක්. බර, පිෂ්ටය වැඩි කෑමක් නිසා රුධිර සීනි බලාගන්න කෙනෙක් මාළු සහ එළවළු වැඩිපුර සහිත කුඩා බඳුනක් ගන්න.",
+  "ta": "ஒரு கிண்ணத்தில் கடல் உணவுப் புரதம், மரவள்ளி மற்றும் ஒடியல் மாவின் மாச்சத்து, ஒரு தட்டு காய்கறி அடங்குவதால் இது முழு உணவாகும். வயிறு நிரம்பும் மாச்சத்து அதிக உணவு, எனவே இரத்தச் சர்க்கரை பார்ப்பவர்கள் மீன் காய்கறி அதிகமுள்ள சிறிய கிண்ணம் எடுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "filling",
+  "one_pot",
+  "festive",
+  "high_fibre",
+  "iron_rich",
+  "comfort"
+ ],
+ "review_needed": [
+  "ta",
+  "quantities"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

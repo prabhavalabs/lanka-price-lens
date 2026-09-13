@@ -1,0 +1,262 @@
+{
+ "id": "dish_rulang_kenda",
+ "base_servings": 4,
+ "serving": {
+  "role": "drink",
+  "portion_g": 275,
+  "description": {
+   "en": "A warm sweet cup, thin enough for a child to drink",
+   "si": "ළමයෙකුට බොන්නට පුළුවන් තරම් තුනී, උණුසුම් පැණි රස කෝප්පයක්",
+   "ta": "குழந்தை குடிக்கும் அளவு நீர்த்த, சூடான இனிப்பு கோப்பை"
+  }
+ },
+ "yield_g": 1100,
+ "ingredients": [
+  {
+   "ref": "pantry_semolina",
+   "label": {
+    "en": "semolina",
+    "si": "රුලං",
+    "ta": "ரவை"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "just over half a cup",
+   "preparation": {
+    "en": "dry roasted until it smells nutty",
+    "si": "සුවඳ එනතුරු වියලි ලෙස බැදගත්",
+    "ta": "வாசம் வரும் வரை வறுத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_milk_powder",
+   "label": {
+    "en": "full cream milk powder",
+    "si": "කිරි පිටි",
+    "ta": "பால் பவுடர்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "8 tbsp",
+   "preparation": {
+    "en": "mixed smooth in warm water",
+    "si": "උණුසුම් වතුරේ ගැටි නැති ලෙස මිශ්‍ර කරගත්",
+    "ta": "வெதுவெதுப்பான நீரில் கட்டியில்லாமல் கரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "5 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "2 pods, lightly crushed",
+   "preparation": {
+    "en": "crushed with the skin on",
+    "si": "පොත්ත සමඟ පොඩි කරගත්",
+    "ta": "தோலோடு உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup, in place of some of the milk",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "கெட்டியானது, முதல் பால்"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Dry roast the semolina in a pan over a low fire, stirring all the while, until it turns a shade darker and smells nutty.",
+    "minutes": 6
+   },
+   {
+    "text": "Tip it onto a plate at once so the pan does not carry on browning it.",
+    "minutes": null
+   },
+   {
+    "text": "Boil 700 ml of water in a pot with the crushed cardamom and the pinch of salt.",
+    "minutes": 4
+   },
+   {
+    "text": "Rain the roasted semolina into the boiling water little by little with one hand, stirring hard with the other so it does not seize into lumps.",
+    "minutes": 3
+   },
+   {
+    "text": "Cook it on a low fire, stirring often, until the grains have swollen and the porridge is smooth and thin enough to drink.",
+    "minutes": 8
+   },
+   {
+    "text": "Mix the milk powder smooth in 200 ml of warm water and stir it into the pot, keeping the fire low so the milk does not catch.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the sugar and stir until it has dissolved, then take the pot off the fire.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour into cups and serve warm; it thickens as it stands, so loosen it with hot water or milk for the second round.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "රුලං බඳුනක අඩු ගින්නේ, දිගටම කලතමින්, පාට ටිකක් තද වී සුවඳ එනතුරු වියලි ලෙස බැදගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "බඳුනේ තවදුරටත් බැදෙන්නේ නැති වන්නට වහාම පිඟානකට හෙළන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බඳුනක මිලිලීටර් 700ක් වතුර, පොඩි කළ එනසාල් සහ ලුණු ටිකක් සමඟ උතුරන්න තබන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "එක් අතකින් බැදගත් රුලං ටිකෙන් ටික උතුරන වතුරට වගුරුවමින්, අනෙක් අතින් තදින් කලතන්න; එවිට ගැටි වදින්නේ නැහැ.",
+    "minutes": 3
+   },
+   {
+    "text": "අඩු ගින්නේ, විටින් විට කලතමින්, ඇට ඉදිමී කැඳ සිනිඳු වී බොන්නට පුළුවන් තරම් තුනී වන තුරු තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "කිරි පිටි මිලිලීටර් 200ක උණුසුම් වතුරේ ගැටි නැති ලෙස මිශ්‍ර කර බඳුනට කලතන්න; කිරි නොපිළිස්සෙන්නට ගිනි අඩුව තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "සීනි දමා දිය වන තුරු කලතා, බඳුන ලිපෙන් බාගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කෝප්පවලට වත් කර උණුසුම්ව බෙදන්න; තිබෙන විට ඝන වන නිසා දෙවෙනි වටයට උණු වතුරෙන් හෝ කිරිවලින් තුනී කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "ரவையை ஒரு பாத்திரத்தில் குறைந்த தீயில், தொடர்ந்து கிளறியபடி, நிறம் சற்று மாறி வாசம் வரும் வரை வறுக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "பாத்திரத்தில் மேலும் கருகாமல் இருக்க உடனே ஒரு தட்டில் கொட்டுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஒரு பாத்திரத்தில் 700 மில்லி நீரை, உடைத்த ஏலக்காயுடனும் ஒரு சிட்டிகை உப்புடனும் கொதிக்க வைக்கவும்.",
+    "minutes": 4
+   },
+   {
+    "text": "ஒரு கையால் வறுத்த ரவையைக் கொஞ்சம் கொஞ்சமாகக் கொதிக்கும் நீரில் தூவியபடி, மறு கையால் வேகமாகக் கிளறுங்கள்; அப்போது கட்டி விழாது.",
+    "minutes": 3
+   },
+   {
+    "text": "குறைந்த தீயில், அடிக்கடி கிளறியபடி, ரவை வீங்கி கஞ்சி மென்மையாகி குடிக்கும் அளவு நீர்க்கும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "பால் பவுடரை 200 மில்லி வெதுவெதுப்பான நீரில் கட்டியில்லாமல் கரைத்து பாத்திரத்தில் சேர்த்துக் கலக்கவும்; பால் கருகாமல் இருக்க தீயைக் குறைவாக வைக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "சீனியைச் சேர்த்துக் கரையும் வரை கலக்கி, பிறகு பாத்திரத்தை இறக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "கோப்பைகளில் ஊற்றி சூடாகப் பரிமாறவும்; வைத்திருக்கும்போது கெட்டியாகும், எனவே இரண்டாம் முறைக்கு சூடான நீர் அல்லது பால் சேர்த்து நீர்க்கவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 15,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "heavy pot",
+  "frying pan for roasting",
+  "long spoon"
+ ],
+ "tips": {
+  "en": "Roasting the semolina is what separates this from paste: unroasted grains swell into a gluey mass and taste raw. Never pour the milk in while the pot is at a hard boil, because the milk splits and leaves grains floating on top.",
+  "si": "මේක පිටි ගුලියකින් වෙන් කරන්නේ රුලං බැදීමයි: නොබැදූ රුලං ඇලෙන ගුලියක් වී අමු රසයක් දේ. බඳුන තදින් උතුරන විට කිරි වත් කරන්න එපා, එවිට කිරි කැඩී මතුපිටින් පාවෙන කැට ඉතිරි වේ.",
+  "ta": "இதை மாவுக் கட்டியிலிருந்து வேறுபடுத்துவது ரவையை வறுப்பதே: வறுக்காத ரவை ஒட்டும் கட்டியாகி பச்சை சுவை தரும். பாத்திரம் கடுமையாகக் கொதிக்கும்போது பாலை ஊற்ற வேண்டாம், பால் திரிந்து மேலே துகள்களாக மிதக்கும்."
+ },
+ "health_note": {
+  "en": "Easy on the stomach and warm in the hand, which is why it goes to small children, to elders and to anyone just off a fever. It is mostly refined grain and sugar though, so it does not hold hunger as long as kurakkan or red rice kenda; a sliced banana alongside makes it a better breakfast.",
+  "si": "බඩට ලෙහෙසි, අතට උණුසුම් නිසා පොඩි ළමයින්ට, වැඩිහිටියන්ට සහ උණෙන් නැගිටපු අයට මේක දෙනවා. එහෙත් බොහෝ දුරට පිරිපහදු කළ ධාන්‍ය සහ සීනි නිසා, කුරක්කන් හෝ රතු සහල් කැඳ තරම් බඩගිනි නවත්වන්නේ නැහැ; පැත්තට කෙසෙල් ගෙඩියක් කපා දැමීමෙන් වඩා හොඳ උදෑසන කෑමක් වේ.",
+  "ta": "வயிற்றுக்கு எளிது, கைக்குச் சூடு, அதனால்தான் இது சிறு குழந்தைகளுக்கும், முதியவர்களுக்கும், காய்ச்சலில் இருந்து எழுந்தவர்களுக்கும் கொடுக்கப்படுகிறது. ஆனால் பெரும்பாலும் பதப்படுத்திய தானியமும் சீனியுமே, எனவே கேழ்வரகு அல்லது சிவப்பு அரிசி கஞ்சி அளவுக்குப் பசியைத் தாங்காது; பக்கத்தில் ஒரு வாழைப்பழம் நறுக்கிச் சேர்த்தால் நல்ல காலை உணவாகும்."
+ },
+ "tags": [
+  "quick",
+  "one_pot",
+  "comfort",
+  "filling",
+  "calcium_rich",
+  "kid_friendly",
+  "elderly_friendly",
+  "high_sugar"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

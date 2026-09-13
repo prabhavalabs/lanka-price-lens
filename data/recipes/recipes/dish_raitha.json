@@ -1,0 +1,279 @@
+{
+ "id": "dish_raitha",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 85,
+  "description": {
+   "en": "A small bowl of cold curd with chopped cucumber beside biriyani",
+   "si": "බුරියානි සමඟ තබන, කපාගත් පිපිඤ්ඤා දමා හදාගත් සිසිල් දී කුඩා බඳුනක්",
+   "ta": "பிரியாணியுடன் வைக்கும், நறுக்கிய வெள்ளரி கலந்த குளிர்ந்த தயிர் ஒரு சிறு கிண்ணம்"
+  }
+ },
+ "yield_g": 350,
+ "ingredients": [
+  {
+   "ref": "pantry_curd",
+   "label": {
+    "en": "curd",
+    "si": "දී",
+    "ta": "தயிர்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "1 cup",
+   "preparation": {
+    "en": "whisked smooth with a spoon",
+    "si": "හැන්දකින් හොඳින් ගසාගත්",
+    "ta": "கரண்டியால் நன்கு கலக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cucumber",
+   "label": {
+    "en": "cucumber",
+    "si": "පිපිඤ්ඤා",
+    "ta": "வெள்ளரிக்காய்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 small cucumber",
+   "preparation": {
+    "en": "peeled, watery seeds scraped out, chopped small",
+    "si": "ලෙලි ගලවා, ජලවත් ඇට සූරා ඉවත් කර කුඩාවට කපාගත්",
+    "ta": "தோல் சீவி, நீருள்ள விதைப் பகுதியை சுரண்டி நீக்கி, சிறிதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "3 small red onions",
+   "preparation": {
+    "en": "chopped very fine",
+    "si": "ඉතා සිහින්ව කපාගත්",
+    "ta": "மிக பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chilli",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 green chilli",
+   "preparation": {
+    "en": "seeds removed, chopped fine",
+    "si": "ඇට ඉවත් කර සිහින්ව කපාගත්",
+    "ta": "விதை நீக்கி பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mint_leaves",
+   "label": {
+    "en": "mint leaves",
+    "si": "මින්චි කොළ",
+    "ta": "புதினா இலை"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a few sprigs",
+   "preparation": {
+    "en": "leaves chopped fine",
+    "si": "කොළ සිහින්ව කපාගත්",
+    "ta": "இலைகளை பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "a few sprigs",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": {
+    "en": "freshly crushed",
+    "si": "අලුතින් තලාගත්",
+    "ta": "புதிதாக நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the cucumber, halve it, scrape out the watery seeds and chop the flesh small.",
+    "minutes": 4
+   },
+   {
+    "text": "Sprinkle a pinch of the salt on the cucumber, leave it a few minutes and press out the water with your palm.",
+    "minutes": 5
+   },
+   {
+    "text": "Whisk the curd in a bowl with a spoon until it is smooth and pourable, with no lumps left.",
+    "minutes": 2
+   },
+   {
+    "text": "Stir in the chopped onion, green chilli, mint and coriander.",
+    "minutes": null
+   },
+   {
+    "text": "Fold in the drained cucumber and season with the rest of the salt and the crushed pepper.",
+    "minutes": null
+   },
+   {
+    "text": "Cover and keep it in the coolest place you have until the meal is served; it should go to the table cold.",
+    "minutes": 15
+   }
+  ],
+  "si": [
+   {
+    "text": "පිපිඤ්ඤා ලෙලි ගලවා දෙකට කපා, ජලවත් ඇට සූරා ඉවත් කර ගෙඩිය කුඩාවට කපා ගන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "පිපිඤ්ඤා මතට ලුණු මදක් ඉස විනාඩි කිහිපයක් තියා, අත්ලෙන් මිරිකා වතුර ඉවත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බඳුනක දී හැන්දකින් ගසා, ගුලි නැති, වත් කළ හැකි සිනිඳු බවක් එන තුරු කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "සිහින්ව කපාගත් ලූනු, අමු මිරිස්, මින්චි සහ කොත්තමල්ලි එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වතුර ඉවත් කළ පිපිඤ්ඤා සෙමින් එකතු කර, ඉතිරි ලුණු සහ තලාගත් ගම්මිරිස් දමා රසය හදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වසා, කෑම වේල දක්වා ගෙදර ඇති සිසිලම තැනක තබන්න; මේසයට යන විට සිසිල්ව තියෙන්න ඕන.",
+    "minutes": 15
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெள்ளரிக்காயை தோல் சீவி, இரண்டாக வெட்டி, நீருள்ள விதைப் பகுதியை சுரண்டி நீக்கி, சதையை சிறிதாக நறுக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "வெள்ளரியில் ஒரு சிட்டிகை உப்பைத் தூவி சில நிமிடம் வைத்து, உள்ளங்கையால் அழுத்தி நீரை வெளியேற்றுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு கிண்ணத்தில் தயிரை கரண்டியால் கட்டியில்லாமல், ஊற்றும் பதத்திற்கு மென்மையாகக் கலக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "பொடியாக நறுக்கிய வெங்காயம், பச்சை மிளகாய், புதினா, கொத்தமல்லி ஆகியவற்றைச் சேர்த்துக் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர் வடிந்த வெள்ளரியை மெதுவாகச் சேர்த்து, மீதி உப்பும் நசுக்கிய மிளகும் போட்டு சுவையைச் சரிசெய்யுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடி, சாப்பாட்டு நேரம் வரை வீட்டில் குளிர்ச்சியான இடத்தில் வையுங்கள்; மேசைக்கு வரும்போது குளிர்ந்திருக்க வேண்டும்.",
+    "minutes": 15
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 0,
+  "passive_minutes": 15
+ },
+ "equipment": [
+  "mixing bowl",
+  "spoon or small whisk"
+ ],
+ "tips": {
+  "en": "Squeeze the cucumber before it meets the curd, otherwise the bowl turns watery by the time the rice comes to the table. Buffalo curd is thicker and needs a spoon of water to loosen; cow curd usually does not.",
+  "si": "පිපිඤ්ඤා දී සමඟ මිශ්‍ර කරන්න පෙර මිරිකා වතුර ඉවත් කරන්න; නැතිනම් බත් මේසයට එන විට බඳුන වතුර වෙනවා. මී දී ගැටිති නිසා ලිහිල් කරන්න වතුර හැන්දක් අවශ්‍ය වෙනවා; එළදෙන දී එහෙම නොවේ.",
+  "ta": "வெள்ளரியை தயிருடன் கலப்பதற்கு முன்பே பிழிந்து விடுங்கள்; இல்லையெனில் சாதம் மேசைக்கு வரும்போது கிண்ணம் நீராகிவிடும். எருமைத் தயிர் கெட்டியாக இருப்பதால் ஒரு கரண்டி நீர் தேவைப்படும்; பசுந் தயிருக்கு பொதுவாகத் தேவையில்லை."
+ },
+ "health_note": {
+  "en": "Curd brings calcium and the live bacteria that settle the stomach, and with cucumber it cools a hot biriyani plate without adding much at all. It suits children and elders well; keep it cold and eat it the same day, as curd left out in our heat turns sour quickly.",
+  "si": "දී වලින් කැල්සියම් සහ බඩට හොඳ ජීවී බැක්ටීරියා ලැබෙනවා; පිපිඤ්ඤා සමඟ එය සැර බුරියානි පිඟානක් සිසිල් කරනවා, ඒත් වැඩි කැලරි එකතු කරන්නේ නැහැ. දරුවන්ට සහ වැඩිහිටියන්ට හොඳයි; අපේ රස්නයේ දී පිට තිබුණොත් ඉක්මනින් ඇඹුල් වන නිසා සිසිල්ව තබා එදිනම කන්න.",
+  "ta": "தயிர் கால்சியமும், வயிற்றுக்கு நல்ல உயிர்ப் பாக்டீரியாவும் தருகிறது; வெள்ளரியுடன் சேர்ந்து அது காரமான பிரியாணித் தட்டை குளிர்விக்கிறது, அதிக கலோரியும் சேர்க்காது. குழந்தைகளுக்கும் முதியவர்களுக்கும் ஏற்றது; நம் வெயிலில் தயிர் வெளியே இருந்தால் விரைவில் புளித்துவிடும் என்பதால் குளிரவைத்து அதே நாளில் சாப்பிடுங்கள்."
+ },
+ "tags": [
+  "probiotic",
+  "calcium_rich",
+  "low_calorie",
+  "quick",
+  "light",
+  "kid_friendly",
+  "elderly_friendly",
+  "hydrating"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,442 @@
+{
+ "id": "dish_devilled_prawns",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 175,
+  "description": {
+   "en": "Five or six saucy prawns each, beside rice or fried rice",
+   "si": "එක් කෙනෙකුට සෝස් සහිත ඉස්සෝ පහක් හයක්, බත් හෝ ෆ්‍රයිඩ් රයිස් සමඟ",
+   "ta": "ஒருவருக்கு சாஸ் படிந்த ஐந்து ஆறு இறால், சாதத்துடன்"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_prawns",
+   "label": {
+    "en": "prawns",
+    "si": "ඉස්සෝ",
+    "ta": "இறால்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "about 20 medium prawns",
+   "preparation": {
+    "en": "peeled with tails left on, vein removed, washed",
+    "si": "පොත්ත ඉවත් කර, නහර ගලවා, සෝදාගෙන",
+    "ta": "ஓடு உரித்து, நரம்பு நீக்கி, அலசியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cornflour",
+   "label": {
+    "en": "cornflour",
+    "si": "ඉරිඟු පිටි",
+    "ta": "சோள மாவு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": {
+    "en": "for rubbing on the prawns",
+    "si": "ඉස්සන්ට ගාන්න",
+    "ta": "இறாலில் தூவுவதற்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 180,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "cut into wedges, layers separated",
+    "si": "කෑලිවලට කපා පතුරු ගලවා",
+    "ta": "துண்டுகளாக வெட்டி இதழ்கள் பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "capsicum",
+    "si": "මාළු මිරිස්",
+    "ta": "குடைமிளகாய்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "2 medium",
+   "preparation": {
+    "en": "cut into squares",
+    "si": "හතරැස් කැබලිවලට කපා",
+    "ta": "சதுரமாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "cut on the slant",
+    "si": "අතකට කපා",
+    "ta": "சாய்வாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 small",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "කෑලිවලට කපා",
+    "ta": "துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් පේස්ට්",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 25,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_tomato_sauce",
+   "label": {
+    "en": "tomato sauce",
+    "si": "තක්කාලි සෝස්",
+    "ta": "தக்காளி சாஸ்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சாஸ்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the prawns leaving the tails on, pull out the dark vein along the back, wash and drain them well.",
+    "minutes": null
+   },
+   {
+    "text": "Rub the prawns with salt, pepper and cornflour and set them aside.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the oil in a wide pan until it shimmers and sear the prawns in one layer, barely two minutes a side, then lift them out.",
+    "minutes": 5
+   },
+   {
+    "text": "Drop the garlic, ginger and curry leaves into the same oil, then add the onion wedges and green chilli and keep the flame high.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the capsicum and tomato and stir so they stay bright and a little crisp.",
+    "minutes": 2
+   },
+   {
+    "text": "Stir in the chilli paste, tomato sauce, soy sauce and sugar with two tablespoons of water and let it cook down to a glossy sauce.",
+    "minutes": 3
+   },
+   {
+    "text": "Return the prawns and toss for one minute only, because longer cooking turns them rubbery.",
+    "minutes": 1
+   },
+   {
+    "text": "Finish with the lime juice and serve at once, while the sauce is still clinging.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ඉස්සන්ගේ පොත්ත ගලවා වලිගය තබාගෙන, පිටිකොටේ කළු නහර ඉවත් කර, සෝදා වතුර හොඳින් බේරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ඉස්සන්ට ලුණු, ගම්මිරිස් සහ ඉරිඟු පිටි ගා පසෙකින් තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පළල් පෑන් එකක තෙල් හොඳින් රත් කර, ඉස්සන් එක ස්ථරයකට දමා පැත්තකට මිනිත්තු දෙකක් පමණ බැද ඉවතට ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඒ තෙලේම සුදුළූණු, ඉඟුරු සහ කරපිංචා දමා, ලොකු ලූනු කෑලි සහ අමු මිරිස් දමා ලිප ගිනි වැඩියෙන් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මාළු මිරිස් සහ තක්කාලි දමා පාට නොනැසී, තවමත් ටිකක් කැඩෙන ගතියෙන් තිබෙන්න කලවම් කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "මිරිස් පේස්ට්, තක්කාලි සෝස්, සෝයා සෝස්, සීනි සහ මේස හැඳි දෙකක් වතුර දමා සෝස් එක ඇලෙන තෙක් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ඉස්සන් නැවත දමා මිනිත්තුවක් පමණක් පෙරළන්න; වැඩිපුර පිසුවොත් රබර් වගේ තද වෙනවා.",
+    "minutes": 1
+   },
+   {
+    "text": "අන්තිමට දෙහි යුෂ දමා, සෝස් ඇලෙන ගතියෙන් තිබෙන අතරේම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இறாலின் ஓட்டை உரித்து வாலை விட்டு, முதுகில் உள்ள கருப்பு நரம்பை நீக்கி, அலசி நன்கு வடிகட்டவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறாலில் உப்பு, மிளகு, சோள மாவு தூவி ஒரு பக்கம் வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அகலமான வாணலியில் எண்ணெயை நன்கு காய்ச்சி, இறாலை ஒரே அடுக்காக பரப்பி ஒரு பக்கம் இரண்டு நிமிடம் வதக்கி எடுக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "அதே எண்ணெயில் பூண்டு, இஞ்சி, கறிவேப்பிலை போட்டு, வெங்காயத் துண்டுகளையும் பச்சை மிளகாயையும் சேர்த்து பெரும் தீயில் வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "குடைமிளகாயும் தக்காளியும் சேர்த்து, நிறம் மாறாமல் சிறிது மொறுமொறுப்புடன் இருக்கும்படி கிளறவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "மிளகாய் விழுது, தக்காளி சாஸ், சோயா சாஸ், சீனி மற்றும் இரண்டு மேசைக்கரண்டி தண்ணீர் விட்டு சாஸ் இறுகும் வரை வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "இறாலை மீண்டும் போட்டு ஒரு நிமிடம் மட்டும் புரட்டவும்; அதிகம் வேகவைத்தால் இறுகிவிடும்.",
+    "minutes": 1
+   },
+   {
+    "text": "இறுதியாக எலுமிச்சை சாறு விட்டு, சாஸ் ஒட்டியிருக்கும் போதே பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 15,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "wide pan or wok"
+ ],
+ "tips": {
+  "en": "Buy the prawns with the shell on and peel them at home; the shells and heads can be boiled for ten minutes to make a small cup of stock for the sauce instead of plain water.",
+  "si": "ඉස්සන් පොත්ත සමඟ ගෙන ගෙදර පිරිසිදු කරගන්න; පොත්තු සහ හිස් මිනිත්තු දහයක් තම්බා ගත්තොත් සෝස් එකට වතුර වෙනුවට දමන්න පොඩි කෝප්පයක් සුප් හදා ගන්න පුළුවන්.",
+  "ta": "இறாலை ஓட்டுடன் வாங்கி வீட்டில் உரியுங்கள்; ஓடுகளையும் தலைகளையும் பத்து நிமிடம் கொதிக்க வைத்தால், சாஸுக்கு வெறும் தண்ணீருக்கு பதிலாக ஒரு சிறிய கோப்பை சாறு கிடைக்கும்."
+ },
+ "health_note": {
+  "en": "Prawns are lean protein with useful iodine and zinc, though they carry cholesterol, so a normal portion is enough. The sauces are the salty part of this dish, not the prawns.",
+  "si": "ඉස්සන්ගෙන් තෙල් අඩු ප්‍රෝටීන් සහ අයඩීන්, සින්ක් ලැබෙනවා; කොලෙස්ටරෝල් තිබෙන නිසා සාමාන්‍ය ප්‍රමාණයක් ප්‍රමාණවත්. මේ කෑමේ ලුණු වැඩි කොටස සෝස් වර්ග තමයි.",
+  "ta": "இறாலில் கொழுப்பு குறைந்த புரதமும், அயோடின், துத்தநாகமும் உள்ளது; கொலஸ்ட்ரால் இருப்பதால் சாதாரண அளவு போதும். இந்த உணவில் உப்பு அதிகம் வருவது சாஸ்களில் இருந்தே."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "festive",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

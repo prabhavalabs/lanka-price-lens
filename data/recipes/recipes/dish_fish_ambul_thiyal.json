@@ -1,0 +1,370 @@
+{
+ "id": "dish_fish_ambul_thiyal",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 120,
+  "description": {
+   "en": "Two black, almost dry cubes of fish with rice",
+   "si": "බත් සමඟ කළු පාටින්, තෙතමනය අඩුවෙන් තිබෙන මාළු කෑලි දෙකක්",
+   "ta": "சாதத்துடன் கறுத்த, கிட்டத்தட்ட உலர்ந்த மீன் துண்டுகள் இரண்டு"
+  }
+ },
+ "yield_g": 480,
+ "ingredients": [
+  {
+   "ref": "product_kelawalla",
+   "label": {
+    "en": "yellowfin tuna",
+    "si": "කෙළවල්ලා",
+    "ta": "சூரை மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "4 thick steaks",
+   "preparation": {
+    "en": "cut into thick cubes with the skin left on, washed and drained",
+    "si": "හම තිබෙන්නම ඝන කැට කපා, සෝදා වතුර බේරා",
+    "ta": "தோலுடன் தடிமனான துண்டுகளாக வெட்டி, அலசி வடிகட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காப்புளி (கோரக்கா)"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 dried pieces",
+   "preparation": {
+    "en": "soaked in hot water until soft, then ground",
+    "si": "උණු වතුරේ පොඟවා මෘදු වූ පසු අඹරා",
+    "ta": "சுடுநீரில் ஊறவைத்து மென்மையானபின் அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp, freshly ground",
+   "preparation": {
+    "en": "coarsely ground",
+    "si": "රළුවට අඹරා",
+    "ta": "கரகரப்பாக அரைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed with the gorakka",
+    "si": "ගොරකා සමඟ තලා",
+    "ta": "புளியுடன் சேர்த்து நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලා",
+    "ta": "நசுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "a 5 cm stick",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "trickled in at the end",
+    "si": "අන්තිමට වත් කරන්න",
+    "ta": "இறுதியில் விடுவதற்கு"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the tuna into thick cubes leaving the skin on, wash them well, drain them and rub with the salt and turmeric.",
+    "minutes": null
+   },
+   {
+    "text": "Soak the gorakka pieces in a little hot water until they soften, then grind them with the garlic, ginger and pepper into a black paste.",
+    "minutes": 20
+   },
+   {
+    "text": "Rub the paste over the fish in a bowl so every side is coated black, and leave it to take the sourness.",
+    "minutes": 15
+   },
+   {
+    "text": "Arrange the fish in a single layer in a clay pot with the curry leaves, pandan leaf and cinnamon stick.",
+    "minutes": null
+   },
+   {
+    "text": "Add the chilli powder and just enough water to come halfway up the fish, about half a cup.",
+    "minutes": null
+   },
+   {
+    "text": "Cook over a medium fire without stirring, shaking the pot now and then, until the water reduces to a thick black coating.",
+    "minutes": 25
+   },
+   {
+    "text": "Turn each piece once with a flat spoon so the other side also takes colour.",
+    "minutes": 5
+   },
+   {
+    "text": "Trickle in the coconut oil if you are using it and cook until the pot is nearly dry and the fish glistens.",
+    "minutes": 5
+   },
+   {
+    "text": "Let it stand off the fire before serving; the dish keeps two days without a fridge and tastes better the next day.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "කෙළවල්ලා හම තිබෙන්නම ඝන කැට කපා, හොඳින් සෝදා වතුර බේරාගෙන, ලුණු සහ කහ ගාන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගොරකා කැබලි උණු වතුර ටිකක් දමා මෘදු වන තෙක් පොඟවා, සුදුළූණු, ඉඟුරු සහ ගම්මිරිස් සමඟ අඹරා කළු පේස්ට් එකක් හදා ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ඒ පේස්ට් එක බඳුනක දමා මාළු කෑලිවල හැම පැත්තටම ගා, ඇඹුල රස වදින්න තියන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වළං භාජනයක මාළු එක ස්ථරයකට අතුරා, කරපිංචා, රම්පෙ සහ කුරුඳු කූරු දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මිරිස් කුඩු දමා, මාළුවේ බාගයට එන පමණට වතුර, කෝප්පයක් බාගයක් පමණ එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "මධ්‍යම ගින්නේ, කලතන්නේ නැතිව භාජනය හෙමින් සොලවමින්, වතුර හිඳී ඝන කළු ආලේපයක් වන තෙක් පිසින්න.",
+    "minutes": 25
+   },
+   {
+    "text": "පැතලි හැන්දකින් හැම කෑල්ලක්ම වරක් හරවා අනිත් පැත්තටත් පාට වදින්න දෙන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පොල් තෙල් දමනවා නම් අන්තිමට වත් කර, භාජනය සුද්ධ වී මාළු දිලිසෙන තෙක් පිසින්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලිපෙන් ඉවත් කර මදක් තියන්න; ශීතකරණයක් නැතුව දින දෙකක් තියෙනවා, පසුදා රස තව හොඳයි.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "சூரை மீனை தோலுடன் தடிமனான துண்டுகளாக வெட்டி, நன்கு அலசி வடிகட்டி, உப்பும் மஞ்சளும் தூவவும்.",
+    "minutes": null
+   },
+   {
+    "text": "கொடுக்காப்புளியை சிறிது சுடுநீரில் மென்மையாகும் வரை ஊறவைத்து, பூண்டு, இஞ்சி, மிளகுடன் அரைத்து கறுப்பு விழுதாக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "அந்த விழுதை ஒரு பாத்திரத்தில் மீன் துண்டுகளின் எல்லா பக்கமும் தடவி, புளிப்பு ஊறும்படி வைக்கவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "மண் சட்டியில் மீனை ஒரே அடுக்காக பரப்பி, கறிவேப்பிலை, ரம்பை இலை, இலவங்கப்பட்டை சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மிளகாய்த் தூள் சேர்த்து, மீனின் பாதி உயரம் வரை வரும்படி அரை கோப்பை தண்ணீர் விடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "நடுத்தர தீயில், கிளறாமல் சட்டியை மட்டும் அசைத்து, நீர் வற்றி கறுத்த கெட்டியான பூச்சாக மாறும் வரை சமைக்கவும்.",
+    "minutes": 25
+   },
+   {
+    "text": "தட்டையான கரண்டியால் ஒவ்வொரு துண்டையும் ஒருமுறை திருப்பி மறுபக்கமும் நிறம் ஏறவிடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "தேங்காய் எண்ணெய் சேர்ப்பதாக இருந்தால் இறுதியில் விட்டு, சட்டி உலர்ந்து மீன் பளபளக்கும் வரை சமைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "அடுப்பில் இருந்து இறக்கி சிறிது நேரம் வைக்கவும்; குளிர்சாதனம் இல்லாமல் இரண்டு நாள் இருக்கும், மறுநாள் சுவை இன்னும் நன்றாக இருக்கும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 40,
+  "passive_minutes": 35
+ },
+ "equipment": [
+  "clay pot",
+  "grinding stone or blender",
+  "flat wooden spoon"
+ ],
+ "tips": {
+  "en": "Never stir ambul thiyal with a spoon; lift the pot and shake it, or the cubes break and you end up with a mash. Only a firm fish such as tuna or sailfish holds up to this long sour cooking.",
+  "si": "අඹුල් තියල් හැන්දකින් කලතන්න එපා; භාජනය අතට ගෙන සොලවන්න. නැත්නම් කෑලි කැඩිලා පොඩි වෙනවා. මෙහෙම දිගු ඇඹුල් පිසීමට ඔරොත්තු දෙන්නේ කෙළවල්ලා හෝ තලපත් වගේ තද මාළු පමණයි.",
+  "ta": "அம்புல் தியலை கரண்டியால் கிளறக் கூடாது; சட்டியை கையில் எடுத்து அசைக்கவும், இல்லையேல் துண்டுகள் உடைந்து கூழாகிவிடும். இந்த நீண்ட புளிப்பு சமையலுக்கு தாங்குவது சூரை, பாரை போன்ற இறுகிய மீன்களே."
+ },
+ "health_note": {
+  "en": "This is one of the lightest fish dishes in the island kitchen: no coconut milk and barely any oil, so what you get is protein with pepper and sour fruit. The salt is high because it is what keeps the fish, so pair it with plain rice and a fresh vegetable.",
+  "si": "මේක අපේ මුළුතැන්ගෙයේ සැහැල්ලුම මාළු කෑම අතරින් එකක්: පොල් කිරි නැහැ, තෙල් ඉතා අඩුයි. ලැබෙන්නේ ප්‍රෝටීන් එක්ක ගම්මිරිස් සහ ඇඹුල් රසය. මාළුව රැක ගන්නේ ලුණු නිසා ලුණු ප්‍රමාණය ඉහළයි, ඒ නිසා සාමාන්‍ය බත් සහ නැවුම් එළවළුවක් සමඟ ගන්න.",
+  "ta": "இது நம் சமையலில் மிக இலகுவான மீன் உணவுகளில் ஒன்று: தேங்காய்ப் பால் இல்லை, எண்ணெயும் மிகக் குறைவு. கிடைப்பது புரதம், மிளகு, புளிப்பு மட்டுமே. மீனை பாதுகாப்பது உப்பு என்பதால் உப்பு அதிகம், எனவே வெறும் சாதத்துடனும் புதிய காய்கறியுடனும் சாப்பிடுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "low_fat",
+  "diabetic_friendly",
+  "weight_loss_friendly",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

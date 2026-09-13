@@ -1,0 +1,259 @@
+{
+ "id": "dish_tomato_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 45,
+  "description": {
+   "en": "A cool fresh spoonful of chopped tomato at the side of the rice",
+   "si": "බත් පිඟානේ පසෙකට දමන සිසිල් අමු තක්කාලි සම්බෝල හැන්දක්",
+   "ta": "சாதத் தட்டின் ஓரத்தில் வைக்கும் குளிர்ந்த பச்சை தக்காளி சம்பல் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 180,
+ "ingredients": [
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 medium tomatoes",
+   "preparation": {
+    "en": "chopped small, the watery seeds shaken out",
+    "si": "කුඩාවට කපා, වතුර ඇට ඉවතට ගසාගත්",
+    "ta": "சிறிதாக நறுக்கி, நீர்ச் சத்துள்ள விதைகளை உதறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "4 small red onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 green chillies",
+   "preparation": {
+    "en": "sliced fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "grated coconut",
+    "si": "ගාගත් පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "freshly scraped",
+    "si": "අලුතින් ගාගත්",
+    "ta": "புதிதாக துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 small lime, juiced",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකාගත්",
+    "ta": "சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "நசுக்கியது"
+   },
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Choose firm tomatoes, wash them and chop them small; shake out the very watery seeds so the sambol does not run.",
+    "minutes": 5
+   },
+   {
+    "text": "Slice the onion thin and rub it with the salt in the bowl until it loses its sharp edge.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the grated coconut and the green chilli and mix with your fingers.",
+    "minutes": null
+   },
+   {
+    "text": "Fold in the chopped tomato gently so the pieces keep their shape.",
+    "minutes": null
+   },
+   {
+    "text": "Squeeze the lime over, grind in the pepper and taste for salt.",
+    "minutes": null
+   },
+   {
+    "text": "Serve it straight away, while it is still cool and fresh.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "තද තක්කාලි තෝරාගෙන සෝදා කුඩාවට කපා ගන්න; සම්බෝල වතුර නොවෙන්න ඉතා ජලවත් ඇට ඉවතට ගසන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ලූනු තුනීට කපා, බඳුනේ ලුණු සමඟ අතුල්ලා සැර ගතිය බැස යන තුරු තබන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ගාගත් පොල් සහ අමු මිරිස් එකතු කර ඇඟිලිවලින් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කපාගත් තක්කාලි කැබලි හැඩය නැති නොවන ලෙස සෙමින් එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙහි යුෂ මිරිකා, ගම්මිරිස් තලා දමා ලුණු රස බලන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සිසිල් අමු ගතිය තියෙන අතරේම වහාම ඉදිරිපත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இறுக்கமான தக்காளியைத் தேர்ந்து, கழுவி சிறிதாக நறுக்குங்கள்; சம்பல் நீராகாமல் இருக்க அதிக நீருள்ள விதைகளை உதறி விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வெங்காயத்தை மெல்லியதாக நறுக்கி, பாத்திரத்தில் உப்புடன் பிசைந்து காரம் தணியும் வரை வையுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "துருவிய தேங்காயையும் பச்சை மிளகாயையும் சேர்த்து விரல்களால் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நறுக்கிய தக்காளியை, துண்டுகள் நொறுங்காமல் மெதுவாகச் சேர்த்துக் கலக்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "எலுமிச்சை சாறு பிழிந்து, மிளகு நசுக்கிச் சேர்த்து, உப்பு சரியாக உள்ளதா பாருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "குளிர்ச்சியும் புத்துணர்வும் இருக்கும்போதே உடனே பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "knife and board",
+  "mixing bowl",
+  "coconut scraper"
+ ],
+ "tips": {
+  "en": "Salt the onion first and the tomato last; salt on the tomato too early draws out water and you end up with soup. A pinch of sugar helps when the tomatoes are the hard sour kind.",
+  "si": "මුලින් ලූනුට ලුණු දමන්න, තක්කාලි අන්තිමට එකතු කරන්න; තක්කාලිවලට කලින්ම ලුණු දැමුවොත් වතුර මතුවී සම්බෝල සුප් වගේ වෙනවා. තක්කාලි තද ඇඹුල් වර්ගයක් නම් සීනි මදක් දැමීම හොඳයි.",
+  "ta": "முதலில் வெங்காயத்திற்கு உப்பு, தக்காளியை கடைசியில் சேருங்கள்; தக்காளியில் முன்னரே உப்பு போட்டால் நீர் இறங்கி சூப் போல ஆகிவிடும். தக்காளி மிக புளிப்பான வகையாக இருந்தால் ஒரு சிட்டிகை சீனி உதவும்."
+ },
+ "health_note": {
+  "en": "Raw tomato with lime gives vitamin C and a little lycopene for almost no calories, and the small amount of coconut carries the flavour without making it heavy. It is a good side for anyone told to eat lighter with rice.",
+  "si": "දෙහි සමඟ අමු තක්කාලි කැලරි නොමැතිවම විටමින් C සහ ලයිකොපීන් ටිකක් දෙනවා; පොල් ස්වල්පය බර නොකර රස ගෙනෙනවා. බත් සමඟ සැහැල්ලු කෑමක් අවශ්‍ය අයට හොඳ අතුරු කෑමක්.",
+  "ta": "எலுமிச்சையுடன் சேர்ந்த பச்சைத் தக்காளி கிட்டத்தட்ட கலோரி இல்லாமல் வைட்டமின் சி மற்றும் சிறிது லைக்கோபீன் தருகிறது; சிறிதளவு தேங்காய் கனமில்லாமல் சுவையைக் கூட்டுகிறது. சாதத்துடன் இலகுவாகச் சாப்பிட வேண்டியவர்களுக்கு நல்ல பக்க உணவு."
+ },
+ "tags": [
+  "low_calorie",
+  "quick",
+  "light",
+  "weight_loss_friendly",
+  "budget",
+  "heart_healthy"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

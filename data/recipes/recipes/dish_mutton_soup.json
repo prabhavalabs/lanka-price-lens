@@ -1,0 +1,410 @@
+{
+ "id": "dish_mutton_soup",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 220,
+  "description": {
+   "en": "A cup of hot thin broth with a few pieces of meat in it",
+   "si": "මස් කැබලි කිහිපයක් සහිත උණුසුම් තුනී සුප් කෝප්පයක්",
+   "ta": "சில இறைச்சித் துண்டுகள் உள்ள ஒரு கோப்பை சூடான நீர்க் குழம்பு"
+  }
+ },
+ "yield_g": 900,
+ "ingredients": [
+  {
+   "ref": "product_mutton",
+   "label": {
+    "en": "mutton bones with a little meat",
+    "si": "මස් ස්වල්පයක් සහිත එළු ඇට",
+    "ta": "கொஞ்சம் இறைச்சியுள்ள ஆட்டு எலும்பு"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "about 600 g of soup bones",
+   "preparation": {
+    "en": "chopped small by the butcher, washed twice",
+    "si": "මස් කඩයෙන් කුඩාවට කපාගත්, දෙවරක් සෝදාගත්",
+    "ta": "கடையில் சிறியதாக வெட்டியது, இரு முறை கழுவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ළූණු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp, coarsely crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලාගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": {
+    "en": "lightly crushed",
+    "si": "සැහැල්ලුවෙන් තලාගත්",
+    "ta": "லேசாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cloves",
+   "label": {
+    "en": "cloves",
+    "si": "කරාබුනැටි",
+    "ta": "கிராம்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander_leaves",
+   "label": {
+    "en": "coriander leaves",
+    "si": "කොත්තමල්ලි කොළ",
+    "ta": "கொத்தமல்லி இலை"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a small handful",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "garnish"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "தேசிக்காய்ச் சாறு"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "juice of half a lime",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the chopped bones twice in cold water and drain them so the broth stays clear.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the bones in a deep pot with about a litre and a half of water, the onion, garlic, ginger and salt and bring it to the boil.",
+    "minutes": 10
+   },
+   {
+    "text": "Skim off the grey scum that rises in the first few minutes and throw it away; this one step decides whether the soup is clean or muddy.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the crushed pepper, fennel, cumin, coriander, cinnamon, cardamom, cloves and curry leaves, lower the flame and let it barely bubble.",
+    "minutes": null
+   },
+   {
+    "text": "Simmer with the lid part on until the meat falls off the bone and the broth has gone golden and tastes of the marrow.",
+    "minutes": 55
+   },
+   {
+    "text": "Lift out the bones, pull off the meat and drop the meat back into the pot, leaving the bones out.",
+    "minutes": 10
+   },
+   {
+    "text": "Strain the broth through a sieve if you want it clear, or leave it as it is for a country-style soup.",
+    "minutes": null
+   },
+   {
+    "text": "Check the salt and pepper, stir in the coriander leaves and squeeze the lime in only at the table, cup by cup.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කපාගත් ඇට සීතල වතුරේ දෙවරක් සෝදා වතුර බේරන්න; එවිට සුප් පැහැදිලිව තිබේ.",
+    "minutes": 10
+   },
+   {
+    "text": "ගැඹුරු භාජනයක ඇට දමා, ලීටර් එකහමාරක් පමණ වතුර, ළූණු, සුදුළූණු, ඉඟුරු සහ ලුණු දමා උතුරන්නට තබන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මුල් මිනිත්තු කිහිපයේ මතුවන අළු පෙණ ඉවතට ගෙන ඉවත් කරන්න; සුප් පැහැදිලිද කිලුටුද තීරණය වන්නේ මෙම එක් පියවරෙන්.",
+    "minutes": 5
+   },
+   {
+    "text": "තලාගත් ගම්මිරිස්, මාදුරු, සූදුරු, කොත්තමල්ලි, කුරුඳු, එනසාල්, කරාබුනැටි සහ කරපිංචා දමා, ගින්න අඩු කර ඉතා සෙමින් උතුරන්නට තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වැසුම අඩක් තබා, මස ඇටෙන් ගැලවී සුප් රන්වන් වී ඇට මදයේ රස දැනෙන තුරු සෙමින් උයන්න.",
+    "minutes": 55
+   },
+   {
+    "text": "ඇට ඉවතට ගෙන, මස ගලවා නැවත භාජනයට දමා, ඇට ඉවත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පැහැදිලි සුප් අවශ්‍ය නම් පෙරහනකින් පෙරන්න, නැතිනම් ගමේ සුප් ලෙස එසේම තබන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලුණු හා ගම්මිරිස් රස බලා, කොත්තමල්ලි කොළ දමා, දෙහි මිරිකන්නේ මේසයේ, කෝප්පයෙන් කෝප්පයට පමණි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெட்டிய எலும்புகளைக் குளிர்ந்த நீரில் இரு முறை கழுவி வடியுங்கள்; அப்போது சூப் தெளிவாக இருக்கும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஆழமான பாத்திரத்தில் எலும்புகளை இட்டு, ஒன்றரை லிட்டர் நீர், வெங்காயம், பூண்டு, இஞ்சி, உப்பு சேர்த்துக் கொதிக்க வையுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "முதல் சில நிமிடங்களில் மேலே வரும் சாம்பல் நுரையை அகற்றிக் கொட்டி விடுங்கள்; சூப் தெளிவாகவா சேறாகவா இருக்கும் என்பதை இந்த ஒரு படியே தீர்மானிக்கும்.",
+    "minutes": 5
+   },
+   {
+    "text": "இடித்த மிளகு, பெருஞ்சீரகம், சீரகம், மல்லி, பட்டை, ஏலக்காய், கிராம்பு, கறிவேப்பிலை சேர்த்து, தீயைக் குறைத்து மிக மெதுவாகக் கொதிக்க விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மூடியை பாதி வைத்து, இறைச்சி எலும்பிலிருந்து பிரிந்து, சாறு பொன்னிறமாகி மூளைச் சுவை வரும் வரை மெதுவாகச் சமையுங்கள்.",
+    "minutes": 55
+   },
+   {
+    "text": "எலும்புகளை எடுத்து, இறைச்சியை உருவி மீண்டும் பாத்திரத்தில் இட்டு, எலும்புகளை நீக்கி விடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "தெளிவான சூப் வேண்டுமானால் வடிகட்டுங்கள், இல்லையேல் கிராமத்துச் சூப்பாக அப்படியே வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "உப்பையும் மிளகையும் பார்த்து, கொத்தமல்லி இலை சேர்த்து, தேசிக்காயை மேசையில் கோப்பைக்குக் கோப்பையாகவே பிழியுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 75,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "deep pot with a lid",
+  "ladle for skimming",
+  "sieve if you want it clear"
+ ],
+ "tips": {
+  "en": "Ask the butcher to crack the bones so the marrow comes out into the broth; that is where the body of the soup lives. Keep the flame low, because a hard boil clouds the soup and turns the pepper bitter.",
+  "si": "ඇට කඩා දෙන්නට මස් කඩයේ ඉල්ලා සිටින්න; එවිට ඇට මදය සුප් එකට එයි, සුප් එකේ ශරීරය ඇත්තේ එහියි. ගින්න අඩුවෙන් තබන්න; තදින් උතුරන විට සුප් කිලුටු වී ගම්මිරිස් තිත්ත වේ.",
+  "ta": "எலும்புகளை உடைத்துத் தரச் சொல்லுங்கள்; அப்போது எலும்பு மூளை சாற்றுக்கு வரும், சூப்பின் உடல் அங்கேயே உள்ளது. தீயைக் குறைவாக வையுங்கள்; வலுவாகக் கொதித்தால் சூப் கலங்கி, மிளகு கசக்கும்."
+ },
+ "health_note": {
+  "en": "A thin bone broth is easy on the stomach and gives fluid, protein and minerals, which is why it is drunk at iftar and given to people getting over a fever. Skim the fat off the top before serving and it becomes one of the lightest ways to eat meat.",
+  "si": "තුනී ඇට සුප් බඩට පහසු අතර දියර, ප්‍රෝටීන් සහ ලවණ ලබා දෙන බැවින්, ඉෆ්තාර් වේලාවේ බොන අතර උණෙන් සුවවන අයටත් දෙනු ලැබේ. පිළිගැන්වීමට පෙර උඩ පා වන තෙල් ඉවත් කළ විට මස් කෑමට ඇති සැහැල්ලුම ක්‍රමයක් වේ.",
+  "ta": "நீர்க்க எலும்புச் சாறு வயிற்றுக்கு இலகுவானது, நீர்ச்சத்தும் புரதமும் தாதுக்களும் தருகிறது; இஃப்தாரில் இதைக் குடிப்பதும், காய்ச்சல் தெளிந்து வருபவர்களுக்குக் கொடுப்பதும் அதனால்தான். பரிமாறும் முன் மேலே மிதக்கும் கொழுப்பை நீக்கினால் இறைச்சியை உண்ணும் மிக இலகுவான வழிகளில் ஒன்றாகிறது."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "light",
+  "hydrating",
+  "elderly_friendly",
+  "immune_support",
+  "traditional_remedy",
+  "one_pot",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

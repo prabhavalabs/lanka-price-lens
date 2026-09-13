@@ -1,0 +1,304 @@
+{
+ "id": "dish_athirasa",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 85,
+  "description": {
+   "en": "One and a half flat chewy cakes, eaten slowly with tea",
+   "si": "තේ එකක් සමඟ සෙමෙන් කන, පැතලි අතිරස එකහමාරක්",
+   "ta": "தேநீருடன் மெதுவாகச் சாப்பிடும் ஒன்றரை அதிரசம்"
+  }
+ },
+ "yield_g": 340,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "sieved, lightly roasted",
+    "si": "හලාගත්, සැහැල්ලුවෙන් බැදගත්",
+    "ta": "சலித்து, லேசாக வறுத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 90,
+   "unit": "ml",
+   "household": "6 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "kithul jaggery",
+    "si": "කිතුල් හකුරු",
+    "ta": "கித்துல் வெல்லம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "half a block",
+   "preparation": {
+    "en": "scraped or broken small",
+    "si": "ගා ගත් හෝ කුඩාවට කඩාගත්",
+    "ta": "துருவிய அல்லது சிறிதாக உடைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_sesame_seeds",
+   "label": {
+    "en": "sesame seeds",
+    "si": "තල",
+    "ta": "எள்ளு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 and a half tbsp",
+   "preparation": {
+    "en": "dry roasted until they pop",
+    "si": "පිපිරෙන තුරු බැදගත්",
+    "ta": "வெடிக்கும்வரை வறுத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, seeds crushed",
+   "preparation": {
+    "en": "seeds pounded",
+    "si": "ඇට කොටාගත්",
+    "ta": "விதைகளை இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "about three quarters of a cup for the pan",
+   "preparation": {
+    "en": "for deep frying; what is left in the pan can be used again",
+    "si": "බැදීම සඳහා, පෑන් එකේ ඉතිරි වන තෙල් නැවත භාවිත කළ හැක",
+    "ta": "பொரிக்க; மீதமுள்ள எண்ணெயை மீண்டும் பயன்படுத்தலாம்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Melt the jaggery and treacle with two tablespoons of water in a small pan into a smooth dark syrup, then strain it to leave the grit behind.",
+    "minutes": 8
+   },
+   {
+    "text": "Roast the rice flour in a dry pan on a low flame only until it is warm and loose, then sieve it into a basin.",
+    "minutes": 8
+   },
+   {
+    "text": "Toast the sesame in the same pan until the seeds pop, and keep them aside.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour the warm syrup into the flour with the salt and crushed cardamom and work it with your hand into a soft dark dough that does not stick to the palm.",
+    "minutes": null
+   },
+   {
+    "text": "Cover the basin with a cloth and rest the dough at least two hours, better overnight, so the flour drinks in the syrup and turns chewy.",
+    "minutes": 120
+   },
+   {
+    "text": "Wet your palms, take lumps the size of a lime and flatten each into a disc about one centimetre thick, pressing sesame onto the top.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the coconut oil in a deep pan on medium; a pinch of dough dropped in should rise slowly, not hiss.",
+    "minutes": 5
+   },
+   {
+    "text": "Slide in one cake at a time and hold it under with a slotted spoon, pressing the middle gently so it cooks flat and even, turning once, until it is dark and firm.",
+    "minutes": 20
+   },
+   {
+    "text": "Lift each cake out, press it for a moment between two flat spoons to squeeze the oil back, and lay it on paper.",
+    "minutes": null
+   },
+   {
+    "text": "Cool completely before stacking; athirasa firms into its proper chew only when cold.",
+    "minutes": 30
+   }
+  ],
+  "si": [
+   {
+    "text": "හකුරු සහ කිතුල් පැණි, මේස හැඳි දෙකක වතුර සමඟ කුඩා පෑන් එකක උණු කර සිනිඳු අඳුරු පැණියක් සාදා, කසට ඉවත් වන ලෙස පෙරා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "සහල් පිටි වියළි පෑන් එකක අඩු ගින්නේ උණුසුම් වන තුරු පමණක් බැදගෙන, බඳුනකට හලා ගන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "එම පෑන් එකේම තල පිපිරෙන තුරු බැදගෙන වෙනම තියන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "උණුසුම් පැණිය පිටිවලට වත් කර, ලුණු සහ කොටාගත් එනසාල් දමා, අතට නොඇලෙන මුදු අඳුරු පිටි ගුලියක් වන තුරු අතින්ම මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බඳුන රෙද්දකින් වසා ගුලිය අඩුම තරමින් පැය දෙකක්, පුළුවන් නම් රෑ පුරාම, තියන්න, පිටි පැණිය උරාගෙන ඇලෙන ගතිය ලැබේ.",
+    "minutes": 120
+   },
+   {
+    "text": "අත් තෙමාගෙන දෙහි ගෙඩියක් පමණ ගුලි ගෙන, සෙන්ටිමීටරයක් පමණ ඝනට තැටි ලෙස තට්ටු කර, උඩට තල තද කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ගැඹුරු පෑන් එකක පොල් තෙල් මධ්‍යම ගින්නේ රත් කරන්න, පිටි ටිකක් දැමූ විට සෙමෙන් ඉහළට එන්න ඕනෑ, හිස් හඬක් නොවේ.",
+    "minutes": 5
+   },
+   {
+    "text": "එකින් එක අතිරසය තෙලට බහා, සිදුරු හැන්දකින් යටට තබාගෙන මැද සෙමෙන් තද කරමින්, එක් වරක් හරවා, අඳුරු පාට වී තදවන තුරු බදින්න.",
+    "minutes": 20
+   },
+   {
+    "text": "එකක් එකක් ඉවතට ගෙන, පැතලි හැඳි දෙකක් අතර මොහොතක් තද කර තෙල් මිරිකා, කඩදාසියක් මත තියන්න.",
+    "minutes": null
+   },
+   {
+    "text": "එකට තබන්නට පෙර හොඳින් සිසිල් වෙන්න දෙන්න, අතිරසයට හරි ඇලෙන ගතිය එන්නේ සිසිල් වූ පසුවයි.",
+    "minutes": 30
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெல்லத்தையும் பாணியையும் இரண்டு மேசைக்கரண்டி நீருடன் சிறு சட்டியில் உருக்கி கருமையான பாகாக்கி, கசடு போக வடிகட்டுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அரிசி மாவை வறண்ட வாணலியில் சிறு தீயில் சூடாகும்வரை மட்டும் வறுத்து, பாத்திரத்தில் சலித்து வையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அதே வாணலியில் எள்ளை வெடிக்கும்வரை வறுத்து தனியாக வையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "சூடான பாகை மாவில் ஊற்றி, உப்பும் இடித்த ஏலக்காயும் சேர்த்து, கையில் ஒட்டாத மென்மையான கருமாவாகப் பிசையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்தை துணியால் மூடி மாவை குறைந்தது இரண்டு மணி நேரம், முடிந்தால் இரவு முழுவதும், ஊற வையுங்கள் - மாவு பாகை உறிஞ்சி பிசுபிசுப்பான பதம் வரும்.",
+    "minutes": 120
+   },
+   {
+    "text": "கையை நனைத்து, தேசிக்காய் அளவு உருண்டைகளாக எடுத்து ஒரு சென்டிமீட்டர் தடிமனுக்கு தட்டி, மேலே எள்ளை அழுத்துங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "ஆழமான வாணலியில் தேங்காய் எண்ணெயை நடுத்தர தீயில் காயவிடுங்கள்; சிறு மாவுத்துண்டு போட்டால் மெதுவாக மேலே வர வேண்டும்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒன்றொன்றாக எண்ணெயில் விட்டு, துளைக்கரண்டியால் அழுத்திப் பிடித்து நடுவை மெதுவாகத் தட்டி, ஒருமுறை திருப்பி, கருமையாகி இறுகும்வரை பொரியுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "எடுத்த உடனே இரண்டு தட்டையான கரண்டிகளுக்கு இடையில் ஒரு நொடி அழுத்தி எண்ணெயை பிழிந்து, காகிதத்தில் வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "அடுக்கி வைப்பதற்கு முன் முழுவதும் ஆற விடுங்கள்; ஆறியபின்தான் அதிரசத்திற்கு சரியான மென்மை வரும்.",
+    "minutes": 30
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 30,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "small pan for syrup",
+  "heavy pan for roasting",
+  "deep frying pan",
+  "slotted spoon",
+  "strainer"
+ ],
+ "tips": {
+  "en": "The rest is not optional: freshly mixed dough fries into a hard biscuit, while rested dough spreads and stays chewy for days. Keep the oil at a steady medium, because in hot oil the cake browns outside and stays raw in the middle. If the dough cracks at the edge when you flatten it, wet your hand and knead in a teaspoon of warm treacle.",
+  "si": "ගුලිය නිදහන්න අත්‍යවශ්‍යයි, දැන් මිශ්‍ර කළ ගුලිය බැදුණු විට බිස්කට් වගේ තද වෙනවා, නිදාගත් ගුලිය පැතිරී දින කිහිපයක් ඇලෙන ගතිය තියාගන්නවා. තෙල් මධ්‍යම උණුසුමේ තබා ගන්න, තෙල් වැඩිපුර රත් නම් පිටත දුඹුරු වී මැද අමු වේ. තට්ටු කරන විට දාර පළුදු වේ නම්, අත තෙමා උණුසුම් පැණි තේ හැන්දක් දමා නැවත මිශ්‍ර කරන්න.",
+  "ta": "மாவை ஊற வைப்பது கட்டாயம் - உடனே பொரித்தால் பிஸ்கட் போல இறுகும், ஊறிய மாவு விரிந்து பல நாள் மென்மையாக இருக்கும். எண்ணெயை நடுத்தர சூட்டில் வையுங்கள்; அதிக சூட்டில் வெளியே கருகி உள்ளே பச்சையாக இருக்கும். தட்டும்போது ஓரம் வெடித்தால், கையை நனைத்து ஒரு தேக்கரண்டி சூடான பாணி சேர்த்துப் பிசையுங்கள்."
+ },
+ "health_note": {
+  "en": "This is a fried sweet through and through: rice flour, jaggery and coconut oil, so the calories sit high and one cake is a portion. The jaggery and sesame do bring a little iron and calcium that white sugar sweets do not, but drain the cakes well and eat them with plain tea rather than a sweet one.",
+  "si": "මෙය මුළුමනින්ම බැදපු රසකැවිල්ලක්, සහල් පිටි, හකුරු සහ පොල් තෙල් නිසා කැලරි ඉහළයි, එකක් එක කොටසක් ලෙස සලකන්න. සුදු සීනි කැවිලිවල නැති සුළු යකඩ සහ කැල්සියම් ප්‍රමාණයක් හකුරු සහ තලවලින් ලැබේ, එහෙත් තෙල් හොඳින් බේරා ගෙන සීනි නැති තේ සමඟ කන්න.",
+  "ta": "இது முழுக்க முழுக்க பொரித்த இனிப்பு - அரிசி மாவு, வெல்லம், தேங்காய் எண்ணெய் என்பதால் கலோரி அதிகம்; ஒரு அதிரசமே ஒரு பங்கு. வெல்லமும் எள்ளும் வெள்ளைச் சீனி இனிப்புகளில் இல்லாத சிறிது இரும்பையும் கால்சியத்தையும் தரும், ஆனால் எண்ணெயை நன்றாக வடித்து, சீனி இல்லாத தேநீருடன் சாப்பிடுங்கள்."
+ },
+ "tags": [
+  "high_sugar",
+  "deep_fried",
+  "festive",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

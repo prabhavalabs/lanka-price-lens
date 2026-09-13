@@ -1,0 +1,489 @@
+{
+ "id": "dish_devilled_fish",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 185,
+  "description": {
+   "en": "A heap of saucy fish pieces beside rice or fried rice",
+   "si": "බත් හෝ ෆ්‍රයිඩ් රයිස් සමඟ සෝස් සහිත මාළු කෑලි ගොඩක්",
+   "ta": "சாதம் அல்லது பொரித்த சாதத்துடன் சாஸ் படிந்த மீன் துண்டுகள்"
+  }
+ },
+ "yield_g": 740,
+ "ingredients": [
+  {
+   "ref": "product_kelawalla",
+   "label": {
+    "en": "yellowfin tuna",
+    "si": "කෙළවල්ලා",
+    "ta": "சூரை மீன்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "3 thick steaks",
+   "preparation": {
+    "en": "skin and bone removed, cut into thumb-sized cubes",
+    "si": "හම සහ කටු ඉවත් කර මාපටැඟිල්ල තරමට කපා",
+    "ta": "தோல், முள் நீக்கி கட்டைவிரல் அளவில் வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cornflour",
+   "label": {
+    "en": "cornflour",
+    "si": "ඉරිඟු පිටි",
+    "ta": "சோள மாவு"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "for dusting the fish",
+    "si": "මාළු කෑලිවල ගාන්න",
+    "ta": "மீன் துண்டுகளில் தூவுவதற்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "4 tbsp",
+   "preparation": {
+    "en": "for frying and tossing",
+    "si": "බදින්නට සහ කලවම් කරන්නට",
+    "ta": "பொரிக்கவும் தாளிக்கவும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "cut into thick wedges, layers separated",
+    "si": "ලොකු කෑලිවලට කපා පතුරු ගලවා",
+    "ta": "பெரிய துண்டுகளாக வெட்டி இதழ்களை பிரித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_capsicum",
+   "label": {
+    "en": "capsicum",
+    "si": "මාළු මිරිස්",
+    "ta": "குடைமிளகாய்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "2 medium",
+   "preparation": {
+    "en": "deseeded and cut into squares",
+    "si": "ඇට ඉවත් කර හතරැස් කැබලිවලට කපා",
+    "ta": "விதை நீக்கி சதுரமாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට ඉරා",
+    "ta": "நீளமாக கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_tomato",
+   "label": {
+    "en": "tomato",
+    "si": "තක්කාලි",
+    "ta": "தக்காளி"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 medium",
+   "preparation": {
+    "en": "cut into wedges",
+    "si": "කෑලිවලට කපා",
+    "ta": "துண்டுகளாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "finely chopped",
+    "si": "සිහින්ව කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "finely chopped",
+    "si": "සිහින්ව කපා",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_paste",
+   "label": {
+    "en": "chilli paste",
+    "si": "මිරිස් පේස්ට්",
+    "ta": "மிளகாய் விழுது"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_tomato_sauce",
+   "label": {
+    "en": "tomato sauce",
+    "si": "තක්කාලි සෝස්",
+    "ta": "தக்காளி சாஸ்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_chilli_sauce",
+   "label": {
+    "en": "chilli sauce",
+    "si": "මිරිස් සෝස්",
+    "ta": "மிளகாய் சாஸ்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சாஸ்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp, coarsely crushed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, juice only",
+   "preparation": {
+    "en": "juiced",
+    "si": "යුෂ මිරිකා",
+    "ta": "சாறு பிழிந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the tuna into thumb-sized cubes, wash and drain well, then rub with salt, turmeric and pepper and leave it to take the seasoning.",
+    "minutes": 10
+   },
+   {
+    "text": "Dust the pieces with cornflour so each cube carries a thin coating.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil in a wide pan and fry the fish in two batches over a strong flame until the edges brown, then lift the pieces onto a plate.",
+    "minutes": 10
+   },
+   {
+    "text": "Into the same oil drop the garlic, ginger and curry leaves, then add the onion wedges and green chillies.",
+    "minutes": 1
+   },
+   {
+    "text": "Keep the flame high and toss until the onion turns glossy but still snaps when you bite it.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the capsicum and tomato, stir in the chilli paste, and cook until the paste loses its raw smell.",
+    "minutes": 2
+   },
+   {
+    "text": "Pour in the tomato sauce, chilli sauce, soy sauce and sugar with a splash of water and let the sauce bubble until it thickens.",
+    "minutes": 3
+   },
+   {
+    "text": "Return the fish, toss so every piece is coated, and give it one more minute on the fire.",
+    "minutes": 1
+   },
+   {
+    "text": "Squeeze the lime over, check the salt and serve it hot.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කෙළවල්ලා මාපටැඟිල්ල තරමට කපා, හොඳින් සෝදා වතුර බේරාගෙන, ලුණු, කහ සහ ගම්මිරිස් ගා රස වදින්න තියන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඒ කෑලිවලට ඉරිඟු පිටි මදක් ගා හැම කෑල්ලක්ම තුනී ලෙස වැසෙන්න සලකන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් පෑන් එකක තෙල් රත් කර, මාළු දෙපාරකට බෙදා ලිප ගිනි වැඩියෙන් තබා මුදුනේ රතු පාට වන තෙක් බැද පිඟානකට ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "ඒ තෙලේම සුදුළූණු, ඉඟුරු සහ කරපිංචා දමා, ඉන්පසු ලොකු ලූනු කෑලි සහ අමු මිරිස් දමන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ලිප ගිනි වැඩියෙන් තබාගෙන, ලූනු දිලිසෙන නමුත් තවම කැඩෙන ගතිය ඇති තෙක් හොඳින් කලවම් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මාළු මිරිස් සහ තක්කාලි දමා, මිරිස් පේස්ට් එකත් දමා අමු ගඳ යන තුරු පිසගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "තක්කාලි සෝස්, මිරිස් සෝස්, සෝයා සෝස් සහ සීනි ටිකක් වතුර සමඟ දමා සෝස් එක උතුරා ඇලෙන තෙක් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "බැදපු මාළු නැවත දමා හැම කෑල්ලකටත් සෝස් වදින්න පෙරළා, තව මිනිත්තුවක් ලිප තියන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "දෙහි යුෂ මතට මිරිකා, ලුණු රස බලා උණුවෙන්ම බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சூரை மீனை கட்டைவிரல் அளவில் வெட்டி, நன்கு அலசி வடிகட்டி, உப்பு, மஞ்சள், மிளகு தூவி ஊறவைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "மீன் துண்டுகளில் சோள மாவை தூவி மெல்லிய பூச்சு போல ஒட்டச் செய்யவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான வாணலியில் எண்ணெயை காய்ச்சி, மீனை இரண்டு தவணையாக பெரும் தீயில் ஓரங்கள் பொன்னிறமாகும் வரை பொரித்து தட்டில் எடுக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "அதே எண்ணெயில் பூண்டு, இஞ்சி, கறிவேப்பிலை போட்டு, பின் வெங்காயத் துண்டுகளையும் பச்சை மிளகாயையும் சேர்க்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "தீயை குறைக்காமல், வெங்காயம் மினுமினுக்கும் ஆனால் மொறுமொறுப்பு போகாத நிலை வரும் வரை கிளறவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "குடைமிளகாயும் தக்காளியும் சேர்த்து, மிளகாய் விழுதையும் இட்டு பச்சை வாசனை போகும் வரை வதக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தக்காளி சாஸ், மிளகாய் சாஸ், சோயா சாஸ், சீனி மற்றும் சிறிது தண்ணீர் விட்டு சாஸ் கொதித்து இறுகும் வரை வைக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "பொரித்த மீனை மீண்டும் போட்டு, ஒவ்வொரு துண்டிலும் சாஸ் படும்படி புரட்டி ஒரு நிமிடம் சமைக்கவும்.",
+    "minutes": 1
+   },
+   {
+    "text": "எலுமிச்சை சாறு பிழிந்து, உப்பு பார்த்து சூடாக பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 20,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "wide pan or wok",
+  "slotted spoon"
+ ],
+ "tips": {
+  "en": "A devilled dish is spoiled by a crowded pan. Fry the fish in two lots and keep the flame high so the onion stays crisp instead of stewing in its own water.",
+  "si": "දෙවිල් කෑමක් නරක් වෙන්නේ පෑන් එක පිරෙන්න දැමුවොත්. මාළු දෙපාරකට බැදලා, ලිප ගිනි වැඩියෙන් තියාගෙන වැඩ කරන්න; එවිට ලූනු තමන්ගේම වතුරේ තැම්බෙන්නේ නැහැ.",
+  "ta": "ஒரே தவணையில் எல்லாவற்றையும் போட்டால் தாளிப்பு நீர்த்துவிடும். மீனை இரண்டு தவணையாக பொரித்து, தீயை பெரிதாக வைத்தால் வெங்காயம் தன் நீரில் வதங்காமல் மொறுமொறுப்பாக இருக்கும்."
+ },
+ "health_note": {
+  "en": "Tuna brings plenty of protein with very little fat, but the bottled sauces and the frying oil add salt and calories. Keep it as one item beside rice and vegetables rather than the whole plate.",
+  "si": "කෙළවල්ලාගෙන් තෙල් අඩු හොඳ ප්‍රෝටීන් ලැබෙනවා; නමුත් බෝතල් සෝස් සහ බදින තෙල් නිසා ලුණු සහ කැලරි එකතු වෙනවා. බත් සහ එළවළු සමඟ එක් කෑමක් ලෙස පමණක් තබා ගන්න.",
+  "ta": "சூரை மீனில் கொழுப்பு குறைவான நல்ல புரதம் உள்ளது; ஆனால் பாட்டில் சாஸ்களும் பொரிக்கும் எண்ணெயும் உப்பையும் கலோரியையும் கூட்டுகின்றன. சாதம், காய்கறியுடன் ஒரு பக்க உணவாக மட்டும் வைத்துக் கொள்ளுங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "comfort",
+  "festive",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

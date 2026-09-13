@@ -1,0 +1,306 @@
+{
+ "id": "dish_kavum",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 90,
+  "description": {
+   "en": "Two small domed kavum with their topknots still on",
+   "si": "කොණ්ඩය තවම කැඩී නැති කුඩා කැවුම් දෙකක්",
+   "ta": "உச்சிக் கொண்டை உடைந்திராத இரண்டு சிறு கவும்"
+  }
+ },
+ "yield_g": 360,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 cups",
+   "preparation": {
+    "en": "sieved; hand pounded flour gives the best kavum",
+    "si": "හලාගත්, කොටාගත් පිටිවලින් හොඳම කැවුම් ලැබේ",
+    "ta": "சலித்த; இடித்த மாவில் சிறந்த கவும் வரும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "half a cup",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_jaggery",
+   "label": {
+    "en": "jaggery",
+    "si": "හකුරු",
+    "ta": "வெல்லம்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "quarter block, scraped",
+   "preparation": {
+    "en": "melted with the treacle and strained",
+    "si": "පැණි සමඟ දියකර පෙරාගත්",
+    "ta": "பாணியுடன் உருக்கி வடிகட்டிய"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 60,
+   "unit": "ml",
+   "household": "quarter cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ඝන කිරි",
+    "ta": "முதல் பால், அடர்த்தியானது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "3 pods, seeds crushed",
+   "preparation": {
+    "en": "seeds pounded",
+    "si": "ඇට කොටාගත්",
+    "ta": "விதைகளை இடித்த"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 180,
+   "unit": "ml",
+   "household": "enough to stand three fingers deep in a small pan",
+   "preparation": {
+    "en": "for frying; the oil left over strains and keeps",
+    "si": "බැදීම සඳහා, ඉතිරි තෙල් පෙරා තබා ගත හැක",
+    "ta": "பொரிக்க; மீதி எண்ணெயை வடிகட்டி வைக்கலாம்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Warm the treacle with the scraped jaggery and two spoons of water until smooth, then strain it and let it cool to blood warm.",
+    "minutes": 8
+   },
+   {
+    "text": "Sieve the rice flour into a basin with the salt and crushed cardamom.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the treacle and the thick coconut milk a little at a time, beating with your hand, until you have a batter that falls off the fingers in a thick ribbon.",
+    "minutes": null
+   },
+   {
+    "text": "Cover the basin and rest the batter so the flour swells and the kavum will rise properly in the oil.",
+    "minutes": 120
+   },
+   {
+    "text": "Heat the coconut oil three fingers deep in a small deep pan, not a wide one, on a steady medium flame.",
+    "minutes": 6
+   },
+   {
+    "text": "Pour in a ladle of batter; it should sink and then float up as a puffed ball, so adjust the flame until that happens.",
+    "minutes": null
+   },
+   {
+    "text": "As the kavum rises, keep pushing the edges into the middle with a kavum stick or a long metal skewer so a topknot is drawn up from the centre.",
+    "minutes": null
+   },
+   {
+    "text": "Spin the kavum with the stick so it browns evenly all around, then lift it out when it is deep brown and firm, about four minutes each.",
+    "minutes": 30
+   },
+   {
+    "text": "Stand each one on a slotted tray or a plate of paper, topknot upwards, so the oil drains back.",
+    "minutes": null
+   },
+   {
+    "text": "Cool completely before stacking them in a tin, or the steam will soften the crust.",
+    "minutes": 30
+   }
+  ],
+  "si": [
+   {
+    "text": "කිතුල් පැණි, ගා ගත් හකුරු සහ හැඳි දෙකක වතුර සමඟ සිනිඳු වන තුරු රත් කර, පෙරා ගෙන ලේ උණුසුමට සිසිල් වෙන්න දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "සහල් පිටි, ලුණු සහ කොටාගත් එනසාල් සමඟ බඳුනකට හලා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පැණි සහ ඝන පොල් කිරි ටික ටික දමා අතින් ගසන්න, ඇඟිලිවලින් ඝන පටියක් ලෙස වැටෙන ලිහිල් පිටි මිශ්‍රණයක් වන තුරු.",
+    "minutes": null
+   },
+   {
+    "text": "බඳුන වසා මිශ්‍රණය නිදහන්න, එවිට පිටි ඉදිමී තෙලේ කැවුම හොඳින් නැඟේ.",
+    "minutes": 120
+   },
+   {
+    "text": "පළලට වඩා ගැඹුරු කුඩා පෑන් එකක ඇඟිලි තුනක් ගැඹුරට පොල් තෙල් දමා, ස්ථාවර මධ්‍යම ගින්නේ රත් කරන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "හැන්දකින් මිශ්‍රණය තෙලට වත් කරන්න, එය පහත් වී පසුව පිම්බුණු බෝලයක් ලෙස ඉහළට එන්නට ඕනෑ, එසේ වන තුරු ගින්න හදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැවුම නැඟෙන විට කැවුම් කූරකින් හෝ දිග යකඩ ඉත්තකින් දාර මැදට තල්ලු කරමින්, මැදින් කොණ්ඩයක් ඇද ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කූරෙන් කැවුම කරකවා හැම පැත්තෙන්ම එකසේ දුඹුරු කර, තද දුඹුරු වී තදවුණු පසු ඉවතට ගන්න, එකකට මිනිත්තු හතරක් පමණ.",
+    "minutes": 30
+   },
+   {
+    "text": "එකක් එකක් සිදුරු තැටියක හෝ කඩදාසි දැමූ පිඟානක කොණ්ඩය උඩට තබන්න, එවිට තෙල් බැස යනවා.",
+    "minutes": null
+   },
+   {
+    "text": "ටින් එකක එකට තබන්නට පෙර හොඳින් සිසිල් වෙන්න දෙන්න, නැත්නම් වාෂ්පයෙන් පිටත මුදු වේ.",
+    "minutes": 30
+   }
+  ],
+  "ta": [
+   {
+    "text": "பாணியை துருவிய வெல்லத்துடன், இரண்டு கரண்டி நீர் விட்டு மிருதுவாகும்வரை சூடாக்கி, வடிகட்டி, வெதுவெதுப்பாக ஆற விடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "அரிசி மாவை உப்பும் இடித்த ஏலக்காயும் சேர்த்து ஒரு பாத்திரத்தில் சலியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பாணியையும் அடர் தேங்காய்ப் பாலையும் கொஞ்சம் கொஞ்சமாகச் சேர்த்து கையால் அடியுங்கள் - விரலிலிருந்து தடித்த நாடாவாக விழும் பதம் வர வேண்டும்.",
+    "minutes": null
+   },
+   {
+    "text": "பாத்திரத்தை மூடி மாவுக் கலவையை ஊற வையுங்கள்; மாவு ஊறினால்தான் எண்ணெயில் கவும் நன்றாகப் பொங்கும்.",
+    "minutes": 120
+   },
+   {
+    "text": "அகலமானதற்குப் பதிலாக ஆழமான சிறு சட்டியில், மூன்று விரல் ஆழத்திற்கு தேங்காய் எண்ணெய் ஊற்றி நடுத்தர தீயில் காயவிடுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "ஒரு கரண்டி கலவையை ஊற்றுங்கள்; அது அடியில் போய் பிறகு பொங்கி மேலே வர வேண்டும் - அப்படி வரும்வரை தீயைச் சரி செய்யுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "கவும் பொங்கும்போது கவும் குச்சியாலோ நீண்ட இரும்புக் குச்சியாலோ ஓரங்களை நடுவுக்குத் தள்ளி, நடுவிலிருந்து ஒரு கொண்டையை இழுத்து எடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "குச்சியால் கவும்மைச் சுழற்றி எல்லாப் பக்கமும் சமமாகப் பொரித்து, அடர் பழுப்பாகி இறுகியபின் எடுங்கள் - ஒன்றுக்கு நான்கு நிமிடம்.",
+    "minutes": 30
+   },
+   {
+    "text": "ஒவ்வொன்றையும் துளைத்தட்டிலோ காகிதம் விரித்த தட்டிலோ கொண்டை மேல்நோக்கி வையுங்கள் - எண்ணெய் வடியும்.",
+    "minutes": null
+   },
+   {
+    "text": "டப்பாவில் அடுக்குவதற்கு முன் முழுவதும் ஆற விடுங்கள், இல்லையேல் ஆவியில் மேல்பரப்பு மென்மையாகிவிடும்.",
+    "minutes": 30
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 40,
+  "cook_minutes": 40,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "small deep pan or kavum pan",
+  "kavum stick or long metal skewer",
+  "ladle",
+  "basin",
+  "slotted tray"
+ ],
+ "tips": {
+  "en": "Batter thickness decides the shape: too thin and the kavum spreads flat with no topknot, too thick and it stays heavy inside, so fry one as a test and adjust with a spoon of treacle or flour. The oil must be medium and steady; hot oil browns the outside before the middle cooks. Fry one kavum at a time, because the stick needs both hands and room to work.",
+  "si": "හැඩය තීරණය වන්නේ මිශ්‍රණයේ ඝනකමෙන්, තුනී නම් කැවුම පැතිරී කොණ්ඩයක් නැති වේ, තද නම් ඇතුළත බර වේ, ඒ නිසා එකක් පරීක්ෂාවට බැදලා පැණි හෝ පිටි හැන්දක් දමා හදා ගන්න. තෙල මධ්‍යම, ස්ථාවර විය යුතුයි, තෙල් වැඩිපුර රත් නම් මැද පිසෙන්නට පෙර පිටත දුඹුරු වේ. එකවර එක කැවුමක් බදින්න, කූර හරවන්නට අත් දෙකයි ඉඩයි ඕනෑ.",
+  "ta": "மாவுக் கலவையின் கெட்டித்தன்மையே வடிவத்தைத் தீர்மானிக்கும் - நீர்மையானால் பரந்து கொண்டை வராது, அதிக கெட்டியானால் உள்ளே கனமாகும்; ஒன்றைப் பரீட்சைக்குப் பொரித்து, ஒரு கரண்டி பாணியோ மாவோ சேர்த்துச் சரி செய்யுங்கள். எண்ணெய் நடுத்தர, நிலையான சூட்டில் இருக்க வேண்டும்; அதிக சூட்டில் உள்ளே பச்சையாக இருக்கும்போதே வெளியே கருகும். ஒரு நேரத்தில் ஒரு கவும் மட்டும் பொரியுங்கள் - குச்சியை இயக்க இரு கையும் இடமும் தேவை."
+ },
+ "health_note": {
+  "en": "Kavum is rice flour and treacle fried in coconut oil, which is about as energy dense as a household sweet gets, so the plateful that appears at New Year is meant to be shared around, not finished by one person. Drain each one standing upright and eat them with plain tea rather than a sweetened one.",
+  "si": "කැවුම යනු පොල් තෙලේ බැදූ සහල් පිටි සහ පැණි නිසා, ගෙදර රසකැවිලි අතරින් වැඩිම ශක්තිය තියෙන එකක්, ඒ නිසා අවුරුද්දට හදන පිඟාන කොටස් කර බෙදා ගන්නට තියෙන එකක්, එක්කෙනෙක් ඉවර කරන එකක් නොවේ. එකක් එකක් කෙළින් තබා තෙල් බේරා, සීනි දැමූ තේ වෙනුවට සාමාන්‍ය තේ සමඟ කන්න.",
+  "ta": "கவும் என்பது தேங்காய் எண்ணெயில் பொரித்த அரிசி மாவும் பாணியும் - வீட்டு இனிப்புகளில் மிக அதிக சக்தி கொண்டது; புத்தாண்டுக்கு வைக்கும் தட்டு பலருடன் பங்கிட்டுச் சாப்பிடுவதற்கு, ஒருவரே முடிப்பதற்கு அல்ல. ஒவ்வொன்றையும் நேராக நிற்க வைத்து எண்ணெயை வடித்து, சீனி சேர்த்த தேநீருக்குப் பதிலாக சாதாரண தேநீருடன் சாப்பிடுங்கள்."
+ },
+ "tags": [
+  "high_sugar",
+  "deep_fried",
+  "festive",
+  "comfort",
+  "filling"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

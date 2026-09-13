@@ -1,0 +1,456 @@
+{
+ "id": "dish_chicken_roll",
+ "base_servings": 4,
+ "serving": {
+  "role": "snack",
+  "portion_g": 180,
+  "description": {
+   "en": "Two rolls filled with shredded curried chicken",
+   "si": "ඉරාගත් කුකුල් මස් මාලුවෙන් පිරවූ රෝල් දෙකක්",
+   "ta": "கிழித்த கறிக் கோழி இறைச்சி நிரப்பிய இரண்டு ரோல்கள்"
+  }
+ },
+ "yield_g": 720,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken, on the bone",
+    "si": "කුකුල් මස්",
+    "ta": "கோழி இறைச்சி"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "2 thighs or a small breast",
+   "preparation": {
+    "en": "boiled with a little salt, deboned and shredded",
+    "si": "ලුණු ස්වල්පයක් සමඟ තෙම්බා, ඇට ගලවා ඉරාගත්",
+    "ta": "சிறிது உப்புடன் வேகவைத்து, எலும்பு நீக்கி, கிழித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_potato",
+   "label": {
+    "en": "potato",
+    "si": "අර්තාපල්",
+    "ta": "உருளைக்கிழங்கு"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 small potatoes",
+   "preparation": {
+    "en": "boiled and mashed",
+    "si": "තෙම්බා පොඩි කරගත්",
+    "ta": "வேகவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "බී ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 100,
+   "unit": "g",
+   "household": "1 onion",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කැපූ",
+    "ta": "பொடியாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "filling"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறித் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1½ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "crushed",
+    "si": "කුඩු කරගත්",
+    "ta": "இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric",
+    "si": "කහ",
+    "ta": "மஞ்சள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "¼ tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 7,
+   "unit": "g",
+   "household": "1¼ tsp in all",
+   "preparation": {
+    "en": "for boiling the chicken, the filling and the batter",
+    "si": "කුකුල් මස් තෙම්බීමට, මාලුවට සහ පිටි මිශ්‍රණයට",
+    "ta": "கோழி வேகவைக்க, உள்ளடக்கத்திற்கு, மாவுக்கு"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for the filling",
+    "si": "මාලුවට පොල් තෙල්",
+    "ta": "உள்ளடக்கத்திற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1½ tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "filling"
+  },
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1¼ cups",
+   "preparation": {
+    "en": "for the thin pancakes",
+    "si": "සිහින් පෑන්කේක් සඳහා",
+    "ta": "மெல்லிய தோசைக்காக"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg for the batter",
+    "si": "පිටි මිශ්‍රණයට බිත්තර",
+    "ta": "மாவுக் கலவைக்கு முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "egg for coating",
+    "si": "පිටත ගැල්වීමට බිත්තර",
+    "ta": "மேற்பூச்சுக்கு முட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 egg",
+   "preparation": {
+    "en": "beaten with a spoon of water",
+    "si": "වතුර හැන්දක් සමඟ ගසාගත්",
+    "ta": "ஒரு ஸ்பூன் தண்ணீருடன் அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "pantry_breadcrumbs",
+   "label": {
+    "en": "breadcrumbs",
+    "si": "පාන් කුඩු",
+    "ta": "ரொட்டித் தூள்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1½ cups",
+   "preparation": {
+    "en": "dry",
+    "si": "වියළි",
+    "ta": "உலர்ந்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "batter"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil for deep frying",
+    "si": "බැදගැනීමට පොල් තෙල්",
+    "ta": "பொரிப்பதற்குத் தேங்காய் எண்ணெய்"
+   },
+   "quantity": 300,
+   "unit": "ml",
+   "household": "1¼ cups, most stays in the pan",
+   "preparation": {
+    "en": "for deep frying; only a part is absorbed",
+    "si": "ගැඹුරු තෙලේ බැදීමට; අවශෝෂණය වන්නේ කොටසක් පමණි",
+    "ta": "பொரிப்பதற்கு; ஒரு பகுதி மட்டுமே உறிஞ்சப்படும்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "frying"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Boil the chicken with a little salt and turmeric until it comes off the bone, then shred the meat small and keep a few spoons of the stock.",
+    "minutes": 20
+   },
+   {
+    "text": "Temper the onion, green chilli and curry leaf in coconut oil until soft.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the shredded chicken, curry powder, pepper and salt and fry until it smells roasted rather than raw.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir in the mashed potato and a spoon of the stock and cook until the filling is dry enough to shape; cool it.",
+    "minutes": 8
+   },
+   {
+    "text": "Whisk the flour, one egg, a pinch of salt and about 320 ml water into a thin batter.",
+    "minutes": null
+   },
+   {
+    "text": "Make eight thin pancakes on a lightly oiled flat pan, cooking one side only and not letting them colour.",
+    "minutes": 15
+   },
+   {
+    "text": "Lay filling along one edge of each pancake, fold the sides in and roll up tight, sealing with a smear of batter.",
+    "minutes": 10
+   },
+   {
+    "text": "Dip every roll in beaten egg and press it in breadcrumbs on all sides.",
+    "minutes": null
+   },
+   {
+    "text": "Rest the crumbed rolls so the coating sets.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the frying oil until a crumb browns quickly, then fry three or four rolls at a time, turning them for an even colour.",
+    "minutes": 12
+   },
+   {
+    "text": "Drain on a rack and serve hot; they lose their crispness once they cool.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කුකුල් මස් ලුණු හා කහ ස්වල්පයක් සමඟ ඇටයෙන් ගැලවෙන තෙක් තෙම්බා, මස් සිහින්ව ඉරාගෙන, සුප් හැඳි කීපයක් තබා ගන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "පොල් තෙලේ ලූනු, අමු මිරිස් සහ කරපිංචා මෘදු වන තෙක් තෙම්පරාදු කරන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ඉරාගත් මස්, තුනපහ, ගම්මිරිස් සහ ලුණු දමා, අමු සුවඳ යන්තම් යන තෙක් බැදගන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පොඩි කරගත් අර්තාපල් සහ සුප් හැන්දක් දමා, හැඩ ගැසිය හැකි තරම් වියළෙන තෙක් උයා සිසිල් කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "පිටි, බිත්තරයක්, ලුණු ස්වල්පයක් සහ වතුර මිලි ලීටර් 320ක් පමණ එකට ගසා තුනී පිටි මිශ්‍රණයක් සාදා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලා තෙල් ගෑ පැතලි පෑනක, එක් පැත්තක් පමණක් පිසෙන ලෙස, පාට නොවෙනස්ව තුනී පෑන්කේක් අටක් සාදා ගන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "එක් එක් පෑන්කේක් එකේ එක් දාරයක මාලුව තබා, පැති හකුළා තදින් රෝල් කර, පිටි මිශ්‍රණයෙන් අලවා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "සෑම රෝල් එකක්ම ගසාගත් බිත්තරයේ තවරා, හැම පැත්තෙන්ම පාන් කුඩුවල තද කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පාන් කුඩු ගැල්වූ රෝල් ආලේපනය තද වන තෙක් තිබෙන්න දෙන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "පාන් කුඩු ඉක්මනින් දුඹුරු වන තෙක් තෙල් රත් කර, වරකට රෝල් තුනක් හතරක් දමා, සම පාටක් එන ලෙස පෙරළමින් බැදගන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "රාක්කයක තෙල් බේරා උණුසුම්ව දෙන්න; සිසිල් වූ පසු කරකර ගතිය නැති වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கோழியைச் சிறிது உப்பும் மஞ்சளும் சேர்த்து எலும்பிலிருந்து பிரியும் வரை வேகவைத்து, இறைச்சியை மெல்லியதாகக் கிழித்து, சில ஸ்பூன் சாற்றை வைத்துக்கொள்ளவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "தேங்காய் எண்ணெயில் வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை மென்மையாகும் வரை தாளிக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "கிழித்த இறைச்சி, கறித் தூள், மிளகு, உப்பு சேர்த்து, பச்சை வாசனை போகும் வரை வதக்கவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "மசித்த உருளைக்கிழங்கும் ஒரு ஸ்பூன் சாறும் சேர்த்து, வடிவம் கொடுக்கும் அளவு வறளும் வரை வதக்கி ஆறவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "மாவு, ஒரு முட்டை, சிறிது உப்பு, சுமார் 320 மில்லி தண்ணீர் சேர்த்து மெல்லிய கலவையாக அடிக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "லேசாக எண்ணெய் தடவிய தட்டையான வாணலியில், ஒரு பக்கம் மட்டும், நிறம் மாறாமல் எட்டு மெல்லிய தோசைகள் செய்யவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "ஒவ்வொரு தோசையின் விளிம்பில் கலவையை வைத்து, பக்கங்களை மடித்து இறுக்கமாகச் சுருட்டி, மாவுக் கலவையால் ஒட்டவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒவ்வொரு ரோலையும் அடித்த முட்டையில் தோய்த்து, எல்லாப் பக்கமும் ரொட்டித் தூளில் அழுத்தவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தூள் பூசிய ரோல்களைப் பூச்சு இறுகும் வரை வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "ஒரு சிறிது தூள் விரைவில் பொன்னிறமாகும் வரை எண்ணெயைக் காயவைத்து, ஒரு முறைக்கு மூன்று நான்கு ரோல்களாகப் போட்டு, சமமான நிறம் வர திருப்பிப் பொரிக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "வலையில் எண்ணெய் வடித்து சூடாகப் பரிமாறவும்; ஆறியபின் மொறுமொறுப்பு போய்விடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 45,
+  "cook_minutes": 20,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "pot for boiling chicken",
+  "flat pan",
+  "deep pan",
+  "wire rack"
+ ],
+ "tips": {
+  "en": "Shred the chicken with your fingers rather than chopping it, so the filling holds together and does not fall out of the pancake. Use the leftover stock for the mash instead of water and nothing is wasted.",
+  "si": "කුකුල් මස් කපන්නට වඩා ඇඟිලිවලින් ඉරන්න; එවිට මාලුව එකට බැඳී පෑන්කේක් එකෙන් පිටතට නොවැටේ. ඉතිරි සුප් වතුර වෙනුවට අර්තාපල් පොඩි කිරීමට යොදාගන්න; එවිට කිසිවක් නාස්ති නොවේ.",
+  "ta": "கோழியை வெட்டுவதை விட விரலால் கிழிக்கவும்; அப்போது கலவை ஒட்டிக்கொண்டு தோசையிலிருந்து வெளியே விழாது. மீதி சாற்றைத் தண்ணீருக்குப் பதிலாக உருளைக்கிழங்கு மசிக்கப் பயன்படுத்தினால் எதுவும் வீணாகாது."
+ },
+ "health_note": {
+  "en": "Chicken makes this the most protein-rich item on the short-eats tray, and boiling the meat rather than frying it keeps the fat down. The pancake, crumbs and deep oil are still the bulk of the calories, so two rolls with plain tea is the sensible serving.",
+  "si": "කුකුල් මස් නිසා කෙටි කෑම තැටියේ වැඩිම ප්‍රෝටීන් ඇති කෑම මෙයයි; මස් බැදීම වෙනුවට තෙම්බීමෙන් මේදය අඩුවෙන් තබා ගත හැක. එහෙත් කැලරි වැඩි කොටස තවමත් එන්නේ පෑන්කේක්, පාන් කුඩු සහ තෙලෙන් ය; එබැවින් සරල තේ සමඟ රෝල් දෙකක් සාධාරණ කොටසකි.",
+  "ta": "கோழி இருப்பதால் சிற்றுண்டித் தட்டில் அதிக புரதம் உள்ள உணவு இதுவே; இறைச்சியைப் பொரிக்காமல் வேகவைப்பதால் கொழுப்பைக் குறைக்க முடியும். இருந்தாலும் கலோரியின் பெரும்பகுதி தோசை, ரொட்டித்தூள், எண்ணெயிலிருந்தே வருகிறது; எனவே சாதாரண தேநீருடன் இரண்டு ரோல் நியாயமான அளவு."
+ },
+ "tags": [
+  "deep_fried",
+  "high_protein",
+  "street_food",
+  "filling",
+  "comfort",
+  "festive"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

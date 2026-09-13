@@ -1,0 +1,351 @@
+{
+ "id": "dish_ambarella_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 170,
+  "description": {
+   "en": "A sharp, sweet-sour spoonful of ambarella in coconut gravy beside rice",
+   "si": "බතට එක්ක ඇඹුල් මිහිරි පොල් කිරි හොදියේ ඇඹරැල්ලා කැලි හැන්දක්",
+   "ta": "சாதத்துடன் இனிப்பு புளிப்பான தேங்காய்ப்பால் குழம்பில் அம்பரெல்லா ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 700,
+ "ingredients": [
+  {
+   "ref": "product_ambarella",
+   "label": {
+    "en": "green ambarella",
+    "si": "අමු ඇඹරැල්ලා",
+    "ta": "பச்சை அம்பரெல்லா"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "6 or 7 fruits",
+   "preparation": {
+    "en": "skin scraped, flesh cut off the stone in thick pieces",
+    "si": "ලෙලි සුරා, ඇටයෙන් ගණකම් කැලි කපාගත්",
+    "ta": "தோல் சீவி, கொட்டையிலிருந்து தடிமனாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "1 small handful, sliced",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනීට කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "split lengthways",
+    "si": "දිගට හෑරූ",
+    "ta": "நீளமாக கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1 tsp, ground to a paste",
+   "preparation": {
+    "en": "ground with a little water to a paste",
+    "si": "වතුර ටිකක් සමඟ ගා ගත් තලපයක්",
+    "ta": "சிறிது தண்ணீருடன் அரைத்த விழுது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "1/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "unroasted curry powder",
+    "si": "නොබැදූ තුනපහ",
+    "ta": "வறுக்காத கறி மசாலா"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_sugar_white",
+   "label": {
+    "en": "sugar",
+    "si": "සීනි",
+    "ta": "சீனி"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": {
+    "en": "to balance the sourness",
+    "si": "ඇඹුල සමතුලිත කිරීමට",
+    "ta": "புளிப்பைச் சமன் செய்ய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවෙනි කිරි",
+    "ta": "இளகிய, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 100,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ගන, මුල් කිරි",
+    "ta": "கெட்டியான, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Scrape the rough skin off the ambarella, then cut the flesh away from the spiky stone in thick pieces; keep the stones, they carry flavour into the pot.",
+    "minutes": 15
+   },
+   {
+    "text": "Grind the mustard seeds with a spoon of water to a rough paste and keep it aside.",
+    "minutes": 3
+   },
+   {
+    "text": "Put the ambarella pieces and stones in a pot with the onion, green chillies, curry leaves, pandan, turmeric, curry powder and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk and simmer covered until the fruit is tender and no longer squeaks against the teeth.",
+    "minutes": 15
+   },
+   {
+    "text": "Stir in the sugar and taste; ambarella varies a lot, so add a little more sugar if the sourness bites.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the mustard paste and the thick coconut milk on a low flame and stir until the gravy is smooth.",
+    "minutes": 4
+   },
+   {
+    "text": "Let it steam without boiling, then take it off and leave it to stand; the sourness settles as it cools.",
+    "minutes": 3
+   }
+  ],
+  "si": [
+   {
+    "text": "ඇඹරැල්ලා වල රළු ලෙලි සුරා, කටු සහිත ඇටයෙන් ගණකම් කැලි කපා ගන්න; ඇටත් තබා ගන්න, ඒවායින් රසය හොදියට එයි.",
+    "minutes": 15
+   },
+   {
+    "text": "අබ ඇට වතුර හැන්දක් සමඟ රළු තලපයක් වන තුරු ගා, පැත්තකින් තබන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ඇඹරැල්ලා කැලි හා ඇට මුට්ටියකට දමා, ලූනු, අමු මිරිස්, කරපිංචා, රම්පෙ, කහ, තුනපහ සහ ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "තුනී පොල් කිරි වත් කර, ගෙඩි මුදු වී දත්වලට කිරිච් ගතිය නැති වන තුරු වහන් දමා මද ගින්නේ තම්බන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "සීනි දමා කලවම් කර රස බලන්න; ඇඹරැල්ලා වල ඇඹුල වෙනස් වන නිසා අවශ්‍ය නම් සීනි තව ටිකක් දමන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ගින්න අඩුවෙන් තබා අබ තලපය හා මුල් කිරි දමා, හොදි සිනිඳු වන තුරු කලවම් කරන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "උතුරන්නට නොදී හුමාලය එන්න දී ගින්නෙන් අයින් කර ටික වෙලාවක් තබන්න; සිසිල් වන විට ඇඹුල සමතුලිත වේ.",
+    "minutes": 3
+   }
+  ],
+  "ta": [
+   {
+    "text": "அம்பரெல்லாவின் கரடுமுரடான தோலைச் சீவி, முள் கொட்டையிலிருந்து தடிமனான துண்டுகளாக சதையை நறுக்குங்கள்; கொட்டைகளையும் வைத்துக்கொள்ளுங்கள், அவை சுவையைத் தரும்.",
+    "minutes": 15
+   },
+   {
+    "text": "கடுகை ஒரு ஸ்பூன் தண்ணீருடன் கரகரப்பான விழுதாக அரைத்து ஒதுக்கி வையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "அம்பரெல்லா துண்டுகளையும் கொட்டைகளையும் பாத்திரத்தில் போட்டு, வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலை, ரம்பை, மஞ்சள், கறி மசாலா, உப்பு சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "இரண்டாம் தேங்காய்ப் பால் ஊற்றி, பழம் மென்மையாகி பல்லில் கறகறப்பு போகும் வரை மூடி சிறு தீயில் வேகவிடுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "சீனி சேர்த்துக் கிளறி சுவை பாருங்கள்; அம்பரெல்லாவின் புளிப்பு மாறுபடும், தேவைப்பட்டால் இன்னும் கொஞ்சம் சீனி சேர்க்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "தீயைக் குறைத்து கடுகு விழுதையும் முதல் பாலையும் சேர்த்து, குழம்பு மிருதுவாகும் வரை கிளறுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "கொதிக்க விடாமல் ஆவி வர விட்டு இறக்கி, சற்று நேரம் வையுங்கள்; ஆறும்போது புளிப்பு சமன்படும்.",
+    "minutes": 3
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "pot with a lid",
+  "grinding stone or small grinder",
+  "sturdy knife"
+ ],
+ "tips": {
+  "en": "Choose fruit that is hard and pale green; once it yellows it goes soft and the curry turns to jam. Cut around the stone rather than trying to cut through it, and warn the family that the stones in the pot are not to be bitten.",
+  "si": "තදින් ඇති, ලා කොළ පාට ගෙඩි තෝරන්න; කහ පාට වූ පසු මුදු වී කරිය ජෑම් වගේ වේ. ඇටය හරහා කපන්න නොව, ඇටය වටා කපන්න; මුට්ටියේ ඇති ඇට හපන්න එපා කියා ගෙදර අයට කියන්න.",
+  "ta": "கெட்டியாக, வெளிர் பச்சையாக இருக்கும் காயைத் தேர்ந்தெடுங்கள்; மஞ்சளானால் மென்மையாகி கறி ஜாம் போல ஆகிவிடும். கொட்டையை ஊடுருவி நறுக்காமல், அதைச் சுற்றி நறுக்குங்கள்; பாத்திரத்தில் உள்ள கொட்டையைக் கடிக்க வேண்டாம் என்று வீட்டில் சொல்லி வையுங்கள்."
+ },
+ "health_note": {
+  "en": "Ambarella is high in vitamin C and fibre, and its sourness wakes up the appetite at the end of a heavy plate. The added sugar is small but real, so a household with diabetes can leave it out and accept a sharper curry.",
+  "si": "ඇඹරැල්ලා වල විටමින් සී හා තන්තු බහුල අතර, බර පිඟානක අවසානයේ එහි ඇඹුල රුචිය අවදි කරයි. එකතු කරන සීනි ප්‍රමාණය කුඩා වුවත් සැබෑ නිසා, දියවැඩියාව ඇති ගෙදරක එය අත්හැර තව ටිකක් ඇඹුල් කරියක් බාර ගන්න පුළුවන්.",
+  "ta": "அம்பரெல்லாவில் வைட்டமின் சி-யும் நார்ச்சத்தும் அதிகம், அதன் புளிப்பு கனமான உணவின் முடிவில் பசியைத் தூண்டும். சேர்க்கும் சீனி குறைவுதான் என்றாலும் உண்மையானது, எனவே சர்க்கரை நோய் உள்ள வீட்டில் அதை விட்டுவிட்டு சற்று கூடுதல் புளிப்பான கறியை ஏற்கலாம்."
+ },
+ "tags": [
+  "high_fibre",
+  "immune_support",
+  "budget",
+  "light",
+  "one_pot"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

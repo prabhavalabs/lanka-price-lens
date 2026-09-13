@@ -1,0 +1,257 @@
+{
+ "id": "dish_cucumber_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 90,
+  "description": {
+   "en": "A cooling bowl of diced cucumber with the meal",
+   "si": "කෑම සමඟ සිසිල් පිපිඤ්ඤා සම්බෝල බඳුනක්",
+   "ta": "உணவுடன் குளிர்ச்சியான வெள்ளரிச் சம்பல் ஒரு கிண்ணம்"
+  }
+ },
+ "yield_g": 360,
+ "ingredients": [
+  {
+   "ref": "product_cucumber",
+   "label": {
+    "en": "cucumber",
+    "si": "පිපිඤ්ඤා",
+    "ta": "வெள்ளரி"
+   },
+   "quantity": 300,
+   "unit": "g",
+   "household": "1 large cucumber",
+   "preparation": {
+    "en": "washed, ends trimmed, cut into small dice",
+    "si": "සෝදා කෙළවර කපා කුඩා කැට ලෙස කපාගත්",
+    "ta": "கழுவி நுனி நீக்கி சிறு துண்டுகளாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 40,
+   "unit": "g",
+   "household": "4 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chilli",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 chilli",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණි",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, ground",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப்பால்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": {
+    "en": "thick, first squeeze, for a creamy version",
+    "si": "මිටි කිරි, පළමු මිරිකීම, මෘදු රසයට",
+    "ta": "தடித்த முதல் பால், மிருதுவான சுவைக்கு"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the cucumber, and if the skin is thick or the ends taste bitter, peel and trim them away.",
+    "minutes": 3
+   },
+   {
+    "text": "Cut it into small dice; the seedy centre of a big cucumber can be scraped out so the sambol stays crisp.",
+    "minutes": null
+   },
+   {
+    "text": "Slice the red onion thin and chop the green chilli.",
+    "minutes": null
+   },
+   {
+    "text": "Mix the cucumber, onion, chilli and salt in a bowl with your hand.",
+    "minutes": null
+   },
+   {
+    "text": "Squeeze the lime over, grind on the pepper, and stir in the coconut milk if you want it creamy rather than sharp.",
+    "minutes": null
+   },
+   {
+    "text": "Serve within half an hour; salt draws the water out of cucumber and the sambol slackens as it stands.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "පිපිඤ්ඤා සෝදා, ලෙල්ල ඝන නම් හෝ කෙළවර තිත්ත නම් ලෙලි ගසා කෙළවර ඉවත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "කුඩා කැට ලෙස කපා ගන්න; විශාල පිපිඤ්ඤාවක ඇට සහිත මැද කොටස ඉවත් කළොත් සම්බෝල හැපෙනසුලුව රැඳේ.",
+    "minutes": null
+   },
+   {
+    "text": "රතු ළූණු සිහින්ව කපා, අමු මිරිස් කපා ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පිපිඤ්ඤා, ළූණු, මිරිස් සහ ලුණු බඳුනක දමා අතින් මිශ්‍ර කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙහි මිරිකා, ගම්මිරිස් දමා, සැර වෙනුවට මෘදු රසක් අවශ්‍ය නම් පොල් කිරි ස්වල්පයක් කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පැය භාගයක් ඇතුළත ඉදිරිපත් කරන්න; ලුණු නිසා පිපිඤ්ඤාවෙන් වතුර මිදෙන බැවින් සම්බෝල ලිහිල් වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "வெள்ளரியைக் கழுவி, தோல் கெட்டியாக இருந்தால் அல்லது நுனி கசந்தால் சீவி, நுனிகளை நீக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "சிறு துண்டுகளாக நறுக்கவும்; பெரிய வெள்ளரியின் விதைப் பகுதியை நீக்கினால் சம்பல் சொறுக்காக இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "சின்ன வெங்காயத்தை மெல்லியதாக நறுக்கி, பச்சை மிளகாயையும் நறுக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வெள்ளரி, வெங்காயம், மிளகாய், உப்பை ஒரு கிண்ணத்தில் கையால் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "எலுமிச்சையைப் பிழிந்து, மிளகு சேர்த்து, காரமாக இல்லாமல் மிருதுவாக வேண்டுமானால் சிறிது தேங்காய்ப்பால் விடவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அரை மணி நேரத்துக்குள் பரிமாறவும்; உப்பு வெள்ளரியிலிருந்து நீரை இழுப்பதால் சம்பல் தளர்ந்துவிடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 8,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "knife and board",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "If the meal is going to be late, salt it at the table rather than in the kitchen, because cucumber gives up water fast. A spoon of curd instead of the coconut milk turns it into the cooling side that sits well next to biriyani.",
+  "si": "කෑම වේලාව ප්‍රමාද වේ නම් ලුණු කුස්සියේ නොව මේසයේ දමන්න, මන්ද පිපිඤ්ඤා ඉක්මනින් වතුර නිකුත් කරයි. පොල් කිරි වෙනුවට මෝරු හැන්දක් දැමූ විට එය බුරියානි සමඟ හොඳින් ගැළපෙන සිසිල් ව්‍යංජනයක් වේ.",
+  "ta": "உணவு தாமதமாகும் என்றால் உப்பை சமையலறையில் அல்ல, மேசையில் சேர்க்கவும்; வெள்ளரி விரைவில் நீர் விடும். தேங்காய்ப்பாலுக்குப் பதிலாக ஒரு கரண்டி தயிர் சேர்த்தால், பிரியாணியுடன் நன்கு பொருந்தும் குளிர்ச்சியான பக்கச் சுவையாக மாறும்."
+ },
+ "health_note": {
+  "en": "Cucumber is mostly water, so this is the lightest thing on a heavy plate and welcome on a hot day. Keep the salt light, since the dish itself adds very little in the way of calories.",
+  "si": "පිපිඤ්ඤාවේ වැඩි කොටස ජලය බැවින් බර පිඟානක සැහැල්ලුම කෑම මෙයයි; උණුසුම් දිනකට ඉතා සුදුසුය. කැලරි එකතු කරන්නේ ඉතා අල්ප බැවින් ලුණු අඩුවෙන් තබා ගන්න.",
+  "ta": "வெள்ளரியில் பெரும்பாலும் நீரே, எனவே கனமான தட்டில் இதுவே இலகுவானது, வெயில் நாளுக்கு ஏற்றது. இது கலோரியை மிகக் குறைவாகவே சேர்க்கிறது என்பதால் உப்பைக் குறைவாக வைக்கவும்."
+ },
+ "tags": [
+  "quick",
+  "low_calorie",
+  "low_carb",
+  "hydrating",
+  "light",
+  "weight_loss_friendly",
+  "budget",
+  "diabetic_friendly",
+  "kid_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,364 @@
+{
+ "id": "dish_fish_white_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 220,
+  "description": {
+   "en": "A soupy ladle of pale coconut gravy with a piece of fish in it",
+   "si": "මාළු කැබැල්ලක් සමඟ දෙන දියර සුදු පොල් කිරි හොදි හැන්දක්",
+   "ta": "ஒரு மீன் துண்டுடன் ஊற்றும் நீர்த்த வெள்ளைத் தேங்காய்ப் பால் குழம்பு"
+  }
+ },
+ "yield_g": 1150,
+ "ingredients": [
+  {
+   "ref": "product_paraw",
+   "label": {
+    "en": "paraw, trevally",
+    "si": "පරව් මාළු",
+    "ta": "பாறை மீன்"
+   },
+   "quantity": 550,
+   "unit": "g",
+   "household": "4 steaks or 8 small pieces",
+   "preparation": {
+    "en": "cut into thick pieces, rinsed",
+    "si": "තර පෙති කපා හෝදා ගත්ත",
+    "ta": "தடிமனான துண்டுகளாக வெட்டி கழுவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 400,
+   "unit": "ml",
+   "household": "2 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දෙවන මිරිකීමේ දියර කිරි",
+    "ta": "இரண்டாம் பால், நீர்ப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මුල් මිරිකීමේ ගාටි කිරි",
+    "ta": "முதல் பால், கட்டிப் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "5 small onions",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපා ගත්ත",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "split lengthwise",
+    "si": "දිගට පලා ගත්ත",
+    "ta": "நீளமாகக் கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "පෙති කපා ගත්ත",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a third of a tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon stick",
+    "si": "කුරුඳු කූරක්",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "a 3 cm piece",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "தேசிக்காய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "half a lime",
+   "preparation": {
+    "en": "juice squeezed in off the fire",
+    "si": "ලිපෙන් අයින් කර මිරිකා ගන්නා යුෂ",
+    "ta": "அடுப்பிலிருந்து இறக்கிய பின் பிழியும் சாறு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rinse the fish pieces and keep them ready in a bowl.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the thin coconut milk in a pot with the onion, garlic, green chilli, fenugreek, turmeric, curry leaves, pandan and cinnamon.",
+    "minutes": null
+   },
+   {
+    "text": "Bring it to a gentle boil and cook until the onion is soft and the fenugreek has swollen.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the salt, slide in the fish pieces, and poach them without stirring.",
+    "minutes": 8
+   },
+   {
+    "text": "Pour in the thick coconut milk and keep the flame low; stir only with a slow swirl of the pot so the milk does not split.",
+    "minutes": 4
+   },
+   {
+    "text": "Take the pot off the fire as soon as the surface trembles, and squeeze in the lime.",
+    "minutes": null
+   },
+   {
+    "text": "Let it stand covered for a few minutes before serving so the fish soaks up the milk.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "මාළු කැබලි හෝදලා බඳුනක සූදානම් කරගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මුට්ටියකට දෙවන මිරිකීමේ දියර පොල් කිරි දමලා, ලූනු, සුදුළූනු, අමු මිරිස්, උළුහාල්, කහ කුඩු, කරපිංචා, රම්පෙ සහ කුරුඳු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සෙමින් උතුරන්න තියලා ලූනු මෙලෙක් වෙලා උළුහාල් පිම්බෙන තුරු තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ලුණු දමා, මාළු කැබලි හොදියට බහාලා, කලවම් නොකර තම්බන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගාටි පොල් කිරි වත් කරලා ගිනි අඩුවෙන් තියන්න; හැන්දෙන් නොකලවම් කර මුට්ටිය සෙමින් සොලවන්න, එතකොට කිරි කැඩෙන්නේ නැහැ.",
+    "minutes": 4
+   },
+   {
+    "text": "මතුපිට සෙලවෙන්න පටන් ගත් ගමන් ලිපෙන් අයින් කරලා දෙහි යුෂ මිරිකන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බෙදන්න කලින් වහලා විනාඩි කීපයක් තියන්න; මාළුවට කිරි රසය අදිනවා.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மீன் துண்டுகளை அலசி ஒரு பாத்திரத்தில் தயாராக வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "ஒரு பாத்திரத்தில் இரண்டாம் தேங்காய்ப் பாலை ஊற்றி, வெங்காயம், பூண்டு, பச்சை மிளகாய், வெந்தயம், மஞ்சள், கறிவேப்பிலை, ரம்பை, இலவங்கப்பட்டை சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "மெதுவாகக் கொதிக்க வைத்து, வெங்காயம் மென்மையாகி வெந்தயம் ஊறும் வரை வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "உப்பு போட்டு, மீன் துண்டுகளை விட்டு, கிளறாமல் வேகவிடுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "கட்டித் தேங்காய்ப் பாலை ஊற்றி தீயைக் குறைக்கவும்; கரண்டியால் கிளறாமல் சட்டியை மெதுவாக அசையுங்கள், பால் பிரியாது.",
+    "minutes": 4
+   },
+   {
+    "text": "மேற்பரப்பு அசையத் தொடங்கியதும் அடுப்பிலிருந்து இறக்கி, தேசிக்காய் சாறு பிழியுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பரிமாறும் முன் மூடிப் போட்டு சில நிமிடம் வையுங்கள்; மீன் பாலின் சுவையை உள்வாங்கும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 25,
+  "passive_minutes": 5
+ },
+ "equipment": [
+  "wide pot or clay pot"
+ ],
+ "tips": {
+  "en": "Thick milk goes in last and never boils hard, or the gravy curdles and looks broken. Thalapath or any firm white fish suits this pot better than an oily fish, and a handful of ambarella pieces gives it a gentle sourness.",
+  "si": "ගාටි කිරි අන්තිමට දාන්න, තදින් උතුරන්න දෙන්න එපා; නැත්නම් හොදි කැඩෙනවා. තෙල් වැඩි මාළුවකට වඩා තලපත් වගේ තර සුදු මාළුවක් මේකට හොඳයි, ඇඹරැල්ලා කැබලි ටිකක් දැම්මොත් මෘදු ඇඹුල් රසක් එනවා.",
+  "ta": "கட்டிப் பால் கடைசியில்தான்; அதைக் கொதிக்கவிடக் கூடாது, இல்லையேல் குழம்பு பிரிந்துவிடும். எண்ணெய் மீனைவிட வஞ்சிரம் போன்ற இறுகிய வெள்ளை மீன் இதற்குப் பொருத்தம்; சில அம்பரெல்லா துண்டுகள் மெல்லிய புளிப்பைக் கொடுக்கும்."
+ },
+ "health_note": {
+  "en": "The mildest fish curry on a Sri Lankan table, easy for small children, elders and anyone recovering from illness. The fat comes from the thick coconut milk, so use less of it when the plate already has other coconut dishes.",
+  "si": "ශ්‍රී ලාංකික මේසයේ තියෙන අඩුම සැර මාළු කරිය මේකයි; කුඩා ළමයින්ට, වැඩිහිටියන්ට සහ අසනීපෙන් සුව වෙන අයට පහසුයි. මේදය එන්නේ ගාටි පොල් කිරියෙන් නිසා, පිඟානේ තව පොල් කෑම තියෙනවා නම් කිරි අඩු කරන්න.",
+  "ta": "இலங்கை மேசையில் காரம் மிகக் குறைந்த மீன் குழம்பு இதுவே; சிறு குழந்தைகள், முதியவர்கள், நோயில் தேறுபவர்களுக்கு ஏற்றது. கொழுப்பு கட்டித் தேங்காய்ப் பாலில் வருவதால், தட்டில் வேறு தேங்காய்க் கறிகள் இருந்தால் பாலைக் குறைக்கவும்."
+ },
+ "tags": [
+  "high_protein",
+  "kid_friendly",
+  "elderly_friendly",
+  "light",
+  "comfort",
+  "one_pot",
+  "pregnancy_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

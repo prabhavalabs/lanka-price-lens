@@ -1,0 +1,252 @@
+{
+ "id": "dish_carrot_sambol",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 70,
+  "description": {
+   "en": "A small bowl of fresh carrot sambol with rice",
+   "si": "බත් සමඟ නැවුම් කැරට් සම්බෝල කුඩා බඳුනක්",
+   "ta": "சோற்றுடன் புதிய கேரட் சம்பல் ஒரு சிறு கிண்ணம்"
+  }
+ },
+ "yield_g": 280,
+ "ingredients": [
+  {
+   "ref": "product_carrot",
+   "label": {
+    "en": "carrot",
+    "si": "කැරට්",
+    "ta": "கேரட்"
+   },
+   "quantity": 200,
+   "unit": "g",
+   "household": "2 medium carrots",
+   "preparation": {
+    "en": "washed, scraped and grated coarse",
+    "si": "සෝදා ලෙලි ගසා රළුව ගාගත්",
+    "ta": "கழுவி சீவி பெரிதாகத் துருவியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "coconut, freshly scraped",
+    "si": "සීරූ පොල්",
+    "ta": "துருவிய தேங்காய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "a third of a cup, packed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 30,
+   "unit": "g",
+   "household": "3 small onions",
+   "preparation": {
+    "en": "sliced very thin",
+    "si": "ඉතා සිහින්ව කපාගත්",
+    "ta": "மிக மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chilli",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 chilli",
+   "preparation": {
+    "en": "chopped fine",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime",
+   "preparation": {
+    "en": "juice only",
+    "si": "යුෂ පමණි",
+    "ta": "சாறு மட்டும்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 1,
+   "unit": "g",
+   "household": "a pinch, ground",
+   "preparation": null,
+   "optional": true,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash and scrape the carrots, then grate them on the coarse side of the grater into a bowl.",
+    "minutes": 5
+   },
+   {
+    "text": "Slice the red onion very thin and chop the green chilli fine, seeds and all if a little bite is wanted.",
+    "minutes": null
+   },
+   {
+    "text": "Rub the onion, chilli and salt together with your fingers until the onion loses its raw sharpness.",
+    "minutes": null
+   },
+   {
+    "text": "Add the scraped coconut and mix, then fold in the grated carrot.",
+    "minutes": null
+   },
+   {
+    "text": "Squeeze the lime over, grind on a little pepper and toss with your hand.",
+    "minutes": null
+   },
+   {
+    "text": "Serve straight away; carrot sambol left standing goes watery at the bottom of the bowl.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කැරට් සෝදා ලෙලි ගසා, ගානයේ රළු පැත්තෙන් ගා බඳුනකට දමා ගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "රතු ළූණු ඉතා සිහින්ව කපා, අමු මිරිස් සිහින්ව කපා ගන්න; සැර අවශ්‍ය නම් බීජ සමඟම දමන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ළූණු, මිරිස් සහ ලුණු ඇඟිලිවලින් මිශ්‍ර කර ළූණුවේ අමු සැරය යන තුරු මිරිකන්න.",
+    "minutes": null
+   },
+   {
+    "text": "සීරූ පොල් එකතු කර මිශ්‍ර කර, පසුව ගාගත් කැරට් එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දෙහි මිරිකා, ගම්මිරිස් ස්වල්පයක් දමා, අතින්ම කලවම් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වහාම ඉදිරිපත් කරන්න; වේලාවක් තිබුණොත් කැරට් සම්බෝල බඳුනේ පතුලේ වතුර වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கேரட்டைக் கழுவிச் சீவி, துருவியின் பெரிய பக்கத்தில் துருவி ஒரு கிண்ணத்தில் போடவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "சின்ன வெங்காயத்தை மிக மெல்லியதாகவும் பச்சை மிளகாயை நன்றாகவும் நறுக்கவும்; காரம் வேண்டுமானால் விதையுடன் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "வெங்காயம், மிளகாய், உப்பை விரல்களால் பிசைந்து, வெங்காயத்தின் பச்சை வாசம் போகும் வரை கசக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "துருவிய தேங்காயைச் சேர்த்துக் கலந்து, பிறகு துருவிய கேரட்டைச் சேர்க்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "எலுமிச்சையைப் பிழிந்து, சிறிது மிளகு சேர்த்து, கையால் கலக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "உடனே பரிமாறவும்; நேரம் கழித்தால் கேரட் சம்பல் கிண்ணத்தின் அடியில் நீர் விடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 10,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "grater",
+  "coconut scraper",
+  "mixing bowl"
+ ],
+ "tips": {
+  "en": "Grate the carrot coarse, not fine; fine shreds turn to mush the moment the lime goes in. A pinch of sugar is not traditional, but it helps when the carrots are old and woody.",
+  "si": "කැරට් සිහින්ව නොව රළුව ගාන්න; සිහින් ඉරි දෙහි දැමූ සැණින් මෝරු වේ. සීනි ස්වල්පයක් සම්ප්‍රදායික නොවේ, නමුත් කැරට් පැරණි හා දැඩි නම් එය උපකාරී වේ.",
+  "ta": "கேரட்டை நுணுக்காமல் பெரிதாகத் துருவவும்; மெல்லிய துருவல் எலுமிச்சை விழுந்ததும் கூழாகிவிடும். சிறிது சீனி பாரம்பரியம் அல்ல, ஆனால் கேரட் பழசாகவும் கெட்டியாகவும் இருந்தால் உதவும்."
+ },
+ "health_note": {
+  "en": "Raw carrot gives fibre and the orange pigment the body turns into vitamin A, and the coconut fat beside it helps that happen. Mild enough for small children, and it travels in a lunch box if the lime is squeezed in at the last moment.",
+  "si": "අමු කැරට්වලින් තන්තු සහ ශරීරය විටමින් ඒ බවට හරවන තැඹිලි වර්ණකය ලැබෙන අතර, සමඟ ඇති පොල් මේදය එයට උපකාරී වේ. කුඩා දරුවන්ටද මෘදු වන අතර, දෙහි අන්තිම මොහොතේ මිරිකන්නේ නම් දිවා ආහාර පෙට්ටියේ රැගෙන යා හැකිය.",
+  "ta": "பச்சைக் கேரட் நார்ச்சத்தையும், உடல் வைட்டமின் ஏ ஆக மாற்றும் ஆரஞ்சு நிறமியையும் தருகிறது; உடன் உள்ள தேங்காய்க் கொழுப்பு அதற்கு உதவும். சிறு குழந்தைகளுக்கும் மிதமானது, எலுமிச்சையை இறுதியில் பிழிந்தால் மதிய உணவுப் பெட்டியிலும் எடுத்துச் செல்லலாம்."
+ },
+ "tags": [
+  "quick",
+  "budget",
+  "low_calorie",
+  "high_fibre",
+  "kid_friendly",
+  "light",
+  "weight_loss_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

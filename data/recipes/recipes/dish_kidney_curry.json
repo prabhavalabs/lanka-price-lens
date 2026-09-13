@@ -1,0 +1,394 @@
+{
+ "id": "dish_kidney_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 140,
+  "description": {
+   "en": "A dry hot kidney curry, a spoonful beside rice or roti",
+   "si": "බතට හෝ රොටියට හැන්දක්, වියළි සැර වකුගඩු කරියක්",
+   "ta": "சாதத்துடனோ ரொட்டியுடனோ ஒரு ஸ்பூன், காய்ந்த காரமான கிட்னி கறி"
+  }
+ },
+ "yield_g": 580,
+ "ingredients": [
+  {
+   "ref": "pantry_kidney",
+   "label": {
+    "en": "goat or beef kidney",
+    "si": "එළු හෝ හරක් වකුගඩු",
+    "ta": "ஆட்டு அல்லது மாட்டு சிறுநீரகம்"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "half a kilo",
+   "preparation": {
+    "en": "outer skin peeled, white core cut away, cut into small pieces",
+    "si": "පිටත හම ගලවා, සුදු මැද කපා ඉවත් කර, කුඩා කැබලිවලට කපාගත්",
+    "ta": "மேல் தோலை நீக்கி, உள்ளே உள்ள வெள்ளைப் பகுதியை வெட்டி எடுத்து, சிறு துண்டுகளாக வெட்டிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "தேசிக்காய்ச் சாறு"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "juice of 1 lime",
+   "preparation": {
+    "en": "for soaking the kidney",
+    "si": "වකුගඩු පොඟවා ගැනීමට",
+    "ta": "சிறுநீரகத்தை ஊறவைக்க"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp in all",
+   "preparation": {
+    "en": "half for the soaking, half for the curry",
+    "si": "භාගයක් පොඟවා ගැනීමට, භාගයක් කරියට",
+    "ta": "பாதி ஊறவைக்க, பாதி கறிக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "5 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp, crushed",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළු ලෙස තලාගත්",
+    "ta": "கரகரப்பாக இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "7 chillies, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "3 small pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the thin skin off the kidney, cut away the pale core, and chop the rest into pieces the size of a thumbnail.",
+    "minutes": 15
+   },
+   {
+    "text": "Soak the pieces in water with the lime juice and half the turmeric, then rinse them twice in clean water; this is what takes away the smell.",
+    "minutes": 20
+   },
+   {
+    "text": "Put the drained kidney in a dry pan on a medium flame and let the water it throws out boil away completely.",
+    "minutes": 8
+   },
+   {
+    "text": "Push the kidney aside, add the coconut oil to the same pan and fry the onion, garlic, ginger and curry leaves until the onion browns.",
+    "minutes": 6
+   },
+   {
+    "text": "Stir in the ground chilli, crushed pepper, roasted curry powder and the rest of the turmeric and fry on a low flame until the smell turns from raw to toasted.",
+    "minutes": 2
+   },
+   {
+    "text": "Mix the kidney back in with the gorakka, vinegar, salt and half a cup of water and cook covered so it softens in the spice.",
+    "minutes": 15
+   },
+   {
+    "text": "Uncover the pan and fry on a higher flame until the liquid goes and the pieces are coated in a dark dry masala.",
+    "minutes": 8
+   },
+   {
+    "text": "Taste for pepper and sourness and serve it hot; kidney turns rubbery if it sits on the fire any longer.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "වකුගඩුවේ තුනී හම ගලවා, සුදු මැද කපා ඉවත් කර, ඉතිරිය නියක් තරම් කැබලිවලට කපන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "දෙහි යුෂ සහ කහ භාගයක් දැමූ වතුරේ පොඟවා, පසුව පිරිසිදු වතුරේ දෙවරක් සෝදන්න; ගඳ යන්නේ මෙයින්.",
+    "minutes": 20
+   },
+   {
+    "text": "වතුර බේරාගත් වකුගඩු වියළි පෑන් එකක මධ්‍යම ගින්නේ තබා, එයින් නිකුත් වන වතුර සම්පූර්ණයෙන් සිඳෙන්නට දෙන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "වකුගඩු පසෙකට කර, එම පෑන් එකට ම පොල් තෙල් දමා, ළූණු, සුදුළූණු, ඉඟුරු සහ කරපිංචා ළූණු දුඹුරු වන තුරු බදින්න.",
+    "minutes": 6
+   },
+   {
+    "text": "අඹරාගත් මිරිස්, තලාගත් ගම්මිරිස්, බැදපු තුනපහ සහ ඉතිරි කහ දමා, අමු ගඳ වෙනුවට බැදුණු සුවඳක් එන තුරු අඩු ගින්නේ බදින්න.",
+    "minutes": 2
+   },
+   {
+    "text": "වකුගඩු නැවත මිශ්‍ර කර, ගොරකා, විනාකිරි, ලුණු සහ කෝප්ප භාගයක් වතුර දමා, කුළුබඩු අතර මෘදු වන ලෙස වසා තබා උයන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "වැසුම ඉවත් කර, දියර සිඳී කැබලි අඳුරු වියළි මසාලාවෙන් වැසෙන තුරු ගින්න වැඩි කර බදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "ගම්මිරිස් හා ඇඹුල රස බලා උණුසුම්ව පිළිගන්වන්න; තව වෙලාවක් ගින්නේ තැබුවොත් වකුගඩු රබර් වේ.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "சிறுநீரகத்தின் மெல்லிய தோலை உரித்து, உள்ளே உள்ள வெளிர்ந்த பகுதியை வெட்டி நீக்கி, மீதியை நகத்தின் அளவு துண்டுகளாக நறுக்குங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "தேசிக்காய்ச் சாறும் பாதி மஞ்சளும் கலந்த நீரில் ஊறவைத்து, பின் சுத்தமான நீரில் இரு முறை கழுவுங்கள்; நாற்றம் போவது இதனால்தான்.",
+    "minutes": 20
+   },
+   {
+    "text": "வடித்த சிறுநீரகத்தை ஒரு காய்ந்த சட்டியில் நடுத்தர தீயில் இட்டு, அது விடும் நீர் முழுவதும் வற்றும் வரை வையுங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "சிறுநீரகத்தை ஓரமாக ஒதுக்கி, அதே சட்டியில் தேங்காய் எண்ணெய் விட்டு, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலையை வெங்காயம் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அரைத்த மிளகாய், இடித்த மிளகு, வறுத்த கறித் தூள், மீதி மஞ்சள் சேர்த்து, பச்சை வாசம் மாறி வறுபட்ட வாசம் வரும் வரை சிறு தீயில் வதக்குங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "சிறுநீரகத்தைத் திரும்பக் கலந்து, கோரக்கா, வினிகர், உப்பு, அரை கப் நீர் சேர்த்து, மசாலாவில் மென்மையாகும் வரை மூடி வைத்துச் சமையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "மூடியை நீக்கி, நீர் வற்றி துண்டுகள் கரும் காய்ந்த மசாலாவில் மூடப்படும் வரை தீயைக் கூட்டி வறுக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "மிளகுச் சுவையையும் புளிப்பையும் பார்த்துச் சூடாகப் பரிமாறுங்கள்; மேலும் நேரம் அடுப்பில் இருந்தால் சிறுநீரகம் ரப்பராகிவிடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 40,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "bowl for soaking",
+  "heavy pan",
+  "small sharp knife"
+ ],
+ "tips": {
+  "en": "Do not skip the lime and turmeric soak, and never cover the pan while the kidney is throwing off its first water, or the smell stays in the dish. Buy kidney from the morning stall and cook it the same day.",
+  "si": "දෙහි හා කහ පොඟවා ගැනීම මඟ නොහරින්න; වකුගඩු පළමු වතුර නිකුත් කරන විට පෑන් නොවසන්න, එසේ කළොත් ගඳ කෑමේ රැඳේ. උදේ කඩයෙන් ම වකුගඩු මිලදී ගෙන එදිනම උයන්න.",
+  "ta": "தேசிக்காய், மஞ்சள் ஊறவைப்பைத் தவிர்க்க வேண்டாம்; சிறுநீரகம் முதல் நீரை விடும்போது சட்டியை மூட வேண்டாம், மூடினால் நாற்றம் உணவில் தங்கிவிடும். காலைச் சந்தையிலேயே வாங்கி அதே நாளில் சமையுங்கள்."
+ },
+ "health_note": {
+  "en": "Kidney is packed with iron, B12 and protein for very little money, which is why it is cooked for people who are anaemic. It is also high in purines and cholesterol, so households with gout or kidney trouble usually eat it rarely and in small amounts.",
+  "si": "අඩු මුදලකට යකඩ, B12 සහ ප්‍රෝටීන් බහුලව ලබා දෙන බැවින් රුධිරහීනතාව ඇති අයට වකුගඩු උයනු ලැබේ. එහෙත් පියුරීන් සහ කොලෙස්ටරෝල් ද ඉහළ බැවින් ගවුට් හෝ වකුගඩු රෝග ඇති ගෙවල්වල මෙය ඉඳහිට, අඩුවෙන් ගනී.",
+  "ta": "மிகக் குறைந்த செலவில் இரும்பு, பி12, புரதம் ஆகியவற்றை நிறைவாகத் தரும் உணவு சிறுநீரகம்; இரத்தச் சோகை உள்ளவர்களுக்கு இதைச் சமைப்பது அதனால்தான். ஆனால் பியூரின்களும் கொலஸ்ட்ரோலும் அதிகம் என்பதால், கீல்வாதமோ சிறுநீரகப் பிரச்சினையோ உள்ள வீடுகளில் இதை எப்போதாவது, சிறிய அளவிலேயே எடுப்பார்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "low_carb",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

@@ -1,0 +1,342 @@
+{
+ "id": "dish_cashew_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 175,
+  "description": {
+   "en": "A small ladle of creamy cashews, served as the rich dish of the table",
+   "si": "මේසයේ සාරවත් ව්‍යංජනය ලෙස බෙදන ක්‍රීම් සහිත කජු කුඩා හැන්දක්",
+   "ta": "மேசையின் சிறப்புக் கறியாகப் பரிமாறும் கிரீம் போன்ற முந்திரி ஒரு சிறு கரண்டி"
+  }
+ },
+ "yield_g": 820,
+ "ingredients": [
+  {
+   "ref": "pantry_cashew",
+   "label": {
+    "en": "raw cashew nuts",
+    "si": "අමු කජු",
+    "ta": "பச்சை முந்திரி"
+   },
+   "quantity": 250,
+   "unit": "g",
+   "household": "2 cups, whole nuts",
+   "preparation": {
+    "en": "soaked in warm water and drained",
+    "si": "උණුසුම් වතුරේ පොඟවා, වතුර බේරාගෙන",
+    "ta": "வெதுவெதுப்பான நீரில் ஊறவைத்து, நீர் வடித்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "6 small onions",
+   "preparation": {
+    "en": "sliced fine",
+    "si": "සිහින්ව කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit",
+    "si": "පලාගෙන",
+    "ta": "கீறி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm stick",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_cardamom",
+   "label": {
+    "en": "cardamom",
+    "si": "එනසාල්",
+    "ta": "ஏலக்காய்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "3 pods, bruised",
+   "preparation": {
+    "en": "lightly crushed",
+    "si": "සැහැල්ලුවෙන් තලාගෙන",
+    "ta": "மெல்லத் தட்டி"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 5 cm piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 350,
+   "unit": "ml",
+   "household": "1 and 3/4 cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்ப் பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "தடிமன் பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cover the cashews with warm water and leave them to soak; they swell and lose the hard chalky centre.",
+    "minutes": 120
+   },
+   {
+    "text": "Drain the nuts and pick out any dark bits of shell or skin still clinging on.",
+    "minutes": 5
+   },
+   {
+    "text": "Put the cashews into a clay pot with the onion, green chillies, turmeric, cinnamon, cardamom, pandan, curry leaves and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk, bring it to a slow boil and then keep it at the gentlest simmer with the lid ajar.",
+    "minutes": 20
+   },
+   {
+    "text": "Test a nut between the teeth; it should be soft all the way through with no chalkiness left. Give it longer if it is not.",
+    "minutes": 5
+   },
+   {
+    "text": "Pour in the thick coconut milk, stir gently in one direction and let the gravy thicken on a low flame without ever boiling hard.",
+    "minutes": 8
+   },
+   {
+    "text": "Take the pot off while the gravy still flows off the spoon; it tightens as it cools.",
+    "minutes": null
+   },
+   {
+    "text": "Serve with yellow rice or string hoppers, and fish out the cinnamon stick before it goes on the table.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කජු උණුසුම් වතුරෙන් යටවන සේ දමා පොඟවන්න; ඒවා ඉදිමී මැද තිබෙන තද පිටි ගතිය නැති වේ.",
+    "minutes": 120
+   },
+   {
+    "text": "වතුර බේරා, තවම ඇලී ඇති කබල් හෝ ලෙලි කැබලි ඇත්නම් ඉවත් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "කජු මැටි වළඳකට දමා, ලූනු, අමු මිරිස්, කහ, කුරුඳු, එනසාල්, රම්පෙ, කරපිංචා හා ලුණු එකතු කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "දිය කිරි වත් කර සෙමින් උතුරන්නට තබා, පසුව වහන්න ටිකක් ඇර ඉතාම අඩු ගින්නේ තම්බන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කජු ඇටයක් දතෙන් පරීක්ෂා කරන්න; මැද පිටි ගතියක් නොමැතිව මුළුමනින් මෘදු විය යුතුයි. එසේ නොවේ නම් තවත් වෙලාවක් උයන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මිටි කිරි වත් කර එක් දිශාවකට සෙමින් කලතා, කිසිසේත් දැඩි ලෙස උතුරන්නට නොදී අඩු ගින්නේ හොදි ගනට කරන්න.",
+    "minutes": 8
+   },
+   {
+    "text": "හොදිය තවම හැන්දෙන් ගලා යන අවස්ථාවේ ලිපෙන් ඉවතට ගන්න; සිසිල් වන විට තවත් ගනට හැරේ.",
+    "minutes": null
+   },
+   {
+    "text": "කහ බත් හෝ ඉඳිආප්ප සමඟ බෙදන්න; මේසයට ගෙන යාමට පෙර කුරුඳු කෑල්ල ඉවත් කරන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "முந்திரியை வெதுவெதுப்பான நீரில் மூழ்கும்படி போட்டு ஊறவையுங்கள்; அவை பெருகி, நடுவில் உள்ள கெட்டித் தன்மை போகும்.",
+    "minutes": 120
+   },
+   {
+    "text": "நீரை வடித்து, இன்னும் ஒட்டியுள்ள ஓடு அல்லது தோல் துண்டுகளை எடுத்து விடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "முந்திரியை மண் சட்டியில் இட்டு, வெங்காயம், பச்சை மிளகாய், மஞ்சள், இலவங்கப்பட்டை, ஏலக்காய், ரம்பை, கறிவேப்பிலை, உப்பு சேர்க்குங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "நீர்ப் பாலை ஊற்றி மெதுவாகக் கொதிக்க வைத்து, பின் மூடியை சற்றே திறந்து மிக மெல்லிய தீயில் வேகவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "ஒரு பருப்பைப் பல்லால் சோதியுங்கள்; நடுவில் கெட்டித்தன்மை இல்லாமல் முழுவதும் மென்மையாக இருக்க வேண்டும். இல்லையெனில் இன்னும் சிறிது நேரம் வேகவிடுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "தடிமன் பாலை ஊற்றி ஒரே திசையில் மெல்லக் கிளறி, ஒருபோதும் பொங்க விடாமல் மெல்லிய தீயில் குழம்பைக் கெட்டியாக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "குழம்பு இன்னும் ஸ்பூனில் இருந்து வழியும் நிலையில் அடுப்பிலிருந்து இறக்குங்கள்; குளிரும்போது இன்னும் கெட்டியாகும்.",
+    "minutes": null
+   },
+   {
+    "text": "மஞ்சள் சாதம் அல்லது இடியப்பத்துடன் பரிமாறுங்கள்; மேசைக்குக் கொண்டு செல்லும் முன் இலவங்கப்பட்டையை எடுத்து விடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 20,
+  "cook_minutes": 35,
+  "passive_minutes": 120
+ },
+ "equipment": [
+  "clay pot",
+  "bowl for soaking",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Broken cashews cost much less than whole ones and cook down just as creamy, so buy the pieces for an everyday pot and keep whole nuts for a wedding table. Never let it boil hard after the thick milk, or the gravy turns oily.",
+  "si": "කැඩුණු කජු මුළු කජුවලට වඩා බොහෝ ලාභ වන අතර ඒ තරමටම ක්‍රීම් බවට උයාගත හැකි නිසා, දෛනික වළඳකට කැබලි ගන්න, මුළු කජු මංගල මේසයට තබන්න. මිටි කිරි දැමූ පසු කිසිසේත් දැඩි ලෙස උතුරන්නට නොදෙන්න; නැතිනම් හොදිය තෙල් වේ.",
+  "ta": "உடைந்த முந்திரி முழுப் பருப்பை விட மிகக் குறைந்த விலை; அதே கிரீம் தன்மையில் வேகும். எனவே அன்றாட சமையலுக்கு உடைந்ததை வாங்கி, முழுப் பருப்பை கல்யாண மேசைக்கு வையுங்கள். தடிமன் பால் சேர்த்த பிறகு பொங்க விடாதீர்கள்; குழம்பு எண்ணெயாகப் பிரியும்."
+ },
+ "health_note": {
+  "en": "Cashews bring plant protein, iron, magnesium and healthy fats, which makes this a good dish for growing children and anyone who needs to gain weight. It is also the most energy-dense pot on an almsgiving table, so one modest ladle is plenty for the rest of us.",
+  "si": "කජුවලින් පැළෑටි ප්‍රෝටීන්, යකඩ, මැග්නීසියම් හා හොඳ මේද ලැබෙන නිසා මෙය වැඩෙන දරුවන්ට හා බර වැඩිකර ගත යුතු අයට හොඳ ව්‍යංජනයකි. දානයක මේසයේ කැලරි වැඩිම වළඳ ද මෙයම නිසා, අනෙක් අයට සාමාන්‍ය හැන්දක් ප්‍රමාණවත්.",
+  "ta": "முந்திரியில் தாவரப் புரதம், இரும்பு, மக்னீசியம், நல்ல கொழுப்புகள் உள்ளன; எனவே வளரும் குழந்தைகளுக்கும் எடை கூட்ட வேண்டியவர்களுக்கும் இது நல்லது. அதே நேரம் தானமேசையில் அதிக ஆற்றல் கொண்ட கறியும் இதுவே, எனவே மற்றவர்களுக்கு ஒரு சிறு கரண்டி போதும்."
+ },
+ "tags": [
+  "festive",
+  "filling",
+  "comfort",
+  "iron_rich",
+  "high_protein"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

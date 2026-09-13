@@ -1,0 +1,318 @@
+{
+ "id": "dish_kekiri_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 155,
+  "description": {
+   "en": "A loose ladle of soft melon pieces in thin coconut gravy",
+   "si": "තුනී පොල් කිරි ඉස්මේ මෘදු කැකිරි කැබලි ලිහිල් හැන්දක්",
+   "ta": "நீர்த்த தேங்காய்க் குழம்பில் மிருதுவான கேகிரி துண்டுகள் ஒரு கரண்டி"
+  }
+ },
+ "yield_g": 620,
+ "ingredients": [
+  {
+   "ref": "product_kekiri",
+   "label": {
+    "en": "kekiri melon",
+    "si": "කැකිරි",
+    "ta": "கேகிரி"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "1 medium kekiri",
+   "preparation": {
+    "en": "peeled and cut into thick cubes",
+    "si": "ලෙලි ගලවා විශාල කැබලිවලට කපාගත්",
+    "ta": "தோல் சீவி பெரிய துண்டுகளாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ලූනු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 50,
+   "unit": "g",
+   "household": "1 handful",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 chillies",
+   "preparation": {
+    "en": "slit lengthways",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாகக் கீறிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": {
+    "en": "one sprig, leaves picked",
+    "si": "කරල් එකක්, කොළ ගලවාගත්",
+    "ta": "ஒரு கொத்து, இலைகள் பிரித்த"
+   },
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fenugreek",
+   "label": {
+    "en": "fenugreek seeds",
+    "si": "උළුහාල්",
+    "ta": "வெந்தயம்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_mustard",
+   "label": {
+    "en": "mustard seeds",
+    "si": "අබ",
+    "ta": "கடுகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "ground to a paste with a little water",
+    "si": "ස්වල්ප වතුරක් සමඟ අඹරාගත්",
+    "ta": "சிறிது நீர் விட்டு அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 200,
+   "unit": "ml",
+   "household": "1 cup",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "තුනී, දෙවන මිරිකීම",
+    "ta": "நீர்த்த, இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "1/2 cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "ඝන, පළමු මිරිකීම",
+    "ta": "தடித்த, முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "3/4 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Peel the kekiri, scrape the soft seeds out of the middle and cut the flesh into thick pieces.",
+    "minutes": 10
+   },
+   {
+    "text": "Put the pieces in a clay pot with the sliced onion, slit chillies, curry leaves, fenugreek, turmeric and salt.",
+    "minutes": null
+   },
+   {
+    "text": "Pour in the thin coconut milk, enough to come halfway up the pieces, and cook uncovered on a medium fire.",
+    "minutes": 10
+   },
+   {
+    "text": "When the edges turn glassy and a spoon passes through the flesh, stir in the ground mustard.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the thick coconut milk and shake the pot instead of stirring, so the soft pieces stay whole.",
+    "minutes": null
+   },
+   {
+    "text": "Let it come to the edge of a boil and take it off; this curry should stay loose, never thick.",
+    "minutes": 5
+   },
+   {
+    "text": "Kekiri keeps giving out water as it stands, so leave the gravy a shade thicker if you cook it early in the day.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කැකිරි ලෙලි ගලවා, මැද ඇති මෘදු ඇට සූරා ඉවත් කර, මදය ගනකමට කපා ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කැබලි මුට්ටියකට දමා, කපාගත් ලූනු, පලාගත් මිරිස්, කරපිංචා, උළුහාල්, කහ සහ ලුණු එක් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කැබලි අඩක් යටවන පමණට තුනී පොල් කිරි වත් කර, වැසුමක් නැතිව මධ්‍යම ගින්නේ උයන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කැබලිවල දාර පාරදෘශ්‍ය වී හැන්ද පහසුවෙන් ඇදෙන විට, අඹරාගත් අබ එක් කරන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ඝන පොල් කිරි එකතු කර, කලතන්නට වඩා මුට්ටිය සොලවන්න; එවිට මෘදු කැබලි කැඩෙන්නේ නැත.",
+    "minutes": null
+   },
+   {
+    "text": "උතුරන්නට ආසන්න වූ විගස ළිපෙන් ඉවත් කරන්න; මේ කරිය ලිහිල්ව තිබිය යුතුයි, ඝන නොවිය යුතුයි.",
+    "minutes": 5
+   },
+   {
+    "text": "කැකිරි නවතා තිබෙන විට වතුර මුදා හරින බැවින්, උදේ උයන්නේ නම් ඉස්ම මදක් ඝනව තබන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கேகிரியைத் தோல் சீவி, நடுவிலுள்ள மிருதுவான விதைகளைச் சுரண்டி நீக்கி, சதையை பெரிய துண்டுகளாக நறுக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "துண்டுகளை மண் சட்டியில் இட்டு, நறுக்கிய வெங்காயம், கீறிய மிளகாய், கறிவேப்பிலை, வெந்தயம், மஞ்சள், உப்பு சேருங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "துண்டுகள் பாதி மூழ்கும் அளவு நீர்த்த தேங்காய்ப் பாலை ஊற்றி, மூடாமல் நடுத்தீயில் வேகவிடுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "விளிம்புகள் கண்ணாடி போல மாறி கரண்டி எளிதாக உள்ளே போகும் போது, அரைத்த கடுகைச் சேருங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "தடித்த தேங்காய்ப் பாலைச் சேர்த்து, கிளறாமல் சட்டியை மட்டும் அசைத்துவிடுங்கள்; மிருதுவான துண்டுகள் உடையாமல் இருக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "கொதிக்கும் பதத்திற்கு வந்தவுடன் இறக்குங்கள்; இந்தக் கறி நீர்ப்பசையுடன் இருக்க வேண்டும், கெட்டியாக வேண்டாம்.",
+    "minutes": 5
+   },
+   {
+    "text": "கேகிரி வைத்திருக்கும் போது நீரை வெளியேற்றும், எனவே முன்னதாகச் சமைத்தால் குழம்பைச் சற்று கெட்டியாக விடுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 20,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay pot or heavy pan",
+  "wooden spoon"
+ ],
+ "tips": {
+  "en": "Choose a kekiri that is still firm and pale; the yellow ripe ones fall apart and are better eaten raw with a little sugar. A spoon of ground mustard is what lifts a plain kekiri curry.",
+  "si": "තවම දැඩි, සුදුමැලි කැකිරි ගෙඩියක් තෝරන්න; කහ පැහැ ඉදුණු ඒවා දිය වී යන අතර සීනි ස්වල්පයක් සමඟ අමුවෙන් කෑමට හොඳයි. සාමාන්‍ය කැකිරි කරියක් උස්සන්නේ අඹරාගත් අබ හැන්දකි.",
+  "ta": "இன்னும் இறுக்கமான, வெளிர் நிற கேகிரியைத் தேர்ந்தெடுங்கள்; மஞ்சளாகப் பழுத்தவை கரைந்துவிடும், அவற்றைச் சிறிது சீனியுடன் பச்சையாகச் சாப்பிடுவது நல்லது. சாதாரண கேகிரி கறியை உயர்த்துவது ஒரு கரண்டி அரைத்த கடுகுதான்."
+ },
+ "health_note": {
+  "en": "Kekiri is mostly water, so this is one of the lightest curries on a rice plate and good in hot weather. Most of its calories come from the coconut milk, so use a thin gravy on ordinary days.",
+  "si": "කැකිරි බොහෝ දුරට ජලය බැවින්, මෙය බත් පිඟානේ සැහැල්ලුම කරි අතරින් එකක් වන අතර රස්නය කාලයට හොඳයි. කැලරි බොහොමයක් පොල් කිරිවලින් එන බැවින්, සාමාන්‍ය දිනවල තුනී ඉස්මක් යොදන්න.",
+  "ta": "கேகிரியில் பெரும்பாலும் நீர்தான், எனவே சாதத் தட்டில் இது மிக இலகுவான கறிகளில் ஒன்று, வெயில் காலத்திற்கு ஏற்றது. கலோரி பெரும்பாலும் தேங்காய்ப் பாலில் இருந்தே வருகிறது, சாதாரண நாட்களில் நீர்த்த குழம்பாகவே வையுங்கள்."
+ },
+ "tags": [
+  "low_calorie",
+  "hydrating",
+  "light",
+  "budget",
+  "diabetic_friendly"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

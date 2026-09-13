@@ -1,0 +1,440 @@
+{
+ "id": "dish_eel_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 220,
+  "description": {
+   "en": "Dark peppery rounds of eel with gravy, over red rice",
+   "si": "රතු බත් සමඟ ගම්මිරිස් රස කළු ආඳා කරියක්",
+   "ta": "சிவப்பு அரிசி சாதத்துடன் மிளகு நிறைந்த கருமையான விலாங்கு குழம்பு"
+  }
+ },
+ "yield_g": 880,
+ "ingredients": [
+  {
+   "ref": "pantry_freshwater_eel",
+   "label": {
+    "en": "freshwater eel",
+    "si": "ආඳා",
+    "ta": "விலாங்கு மீன்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "1 medium eel",
+   "preparation": {
+    "en": "slime scrubbed off, cut into thick rounds",
+    "si": "ලිස්සන බොර ඉවත් කර ලොකු වට කෑලිවලට කපාගත්",
+    "ta": "வழுவழுப்பை நீக்கி தடிமனான வட்டங்களாக வெட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "goraka",
+    "si": "ගොරකා",
+    "ta": "கொடுக்காய்ப்புளி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 large pieces",
+   "preparation": {
+    "en": "soaked in hot water and mashed",
+    "si": "උණු වතුරේ දමා තලාගත්",
+    "ta": "வெந்நீரில் ஊறவைத்து மசித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 and a half onions",
+   "preparation": {
+    "en": "chopped",
+    "si": "කපාගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "தட்டியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": {
+    "en": "coarsely crushed",
+    "si": "රළුවට තලාගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "கொத்தமல்லி விதை"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": {
+    "en": "dry roasted and crushed",
+    "si": "වියළි ලෙස බැදා තලාගත්",
+    "ta": "வறுத்து இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ කුඩු",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk_thin",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 250,
+   "unit": "ml",
+   "household": "1 and a quarter cups",
+   "preparation": {
+    "en": "thin, second squeeze",
+    "si": "දිය කිරි, දෙවන මිරිකීම",
+    "ta": "நீர்த்த பால், இரண்டாம் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_coconut_milk",
+   "label": {
+    "en": "coconut milk",
+    "si": "පොල් කිරි",
+    "ta": "தேங்காய்ப் பால்"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarter cup",
+   "preparation": {
+    "en": "thick, first squeeze",
+    "si": "මිටි කිරි, පළමු මිරිකීම",
+    "ta": "கெட்டியான பால், முதல் பால்"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime",
+    "si": "දෙහි",
+    "ta": "எலுமிச்சை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 lime, for cleaning the eel",
+   "preparation": {
+    "en": "used with salt to clean the fish",
+    "si": "මාළුව පිරිසිදු කිරීමට ලුණු සමඟ",
+    "ta": "மீனைச் சுத்தம் செய்ய உப்புடன்"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub the eel all over with coarse salt, lime and a handful of wood ash to take off the slime, then wash it under running water until the skin feels clean and not slippery.",
+    "minutes": 20
+   },
+   {
+    "text": "Cut the eel across into thick rounds, discard the head and rub the pieces with turmeric, a little salt and some of the crushed pepper.",
+    "minutes": 5
+   },
+   {
+    "text": "Soak the goraka in a cup of hot water until soft and mash it with a spoon.",
+    "minutes": 10
+   },
+   {
+    "text": "Dry roast the coriander seed in a pan until it smells nutty and crush it coarsely.",
+    "minutes": 3
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and temper the onion, garlic and curry leaves until the onion browns at the edges.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the roasted curry powder, chilli powder, the rest of the turmeric, the crushed coriander and the remaining pepper and fry them briefly.",
+    "minutes": 1
+   },
+   {
+    "text": "Pour in the goraka water, the thin coconut milk and the salt and let it come to a boil.",
+    "minutes": 5
+   },
+   {
+    "text": "Add the eel rounds, cover and cook on a low flame until the flesh is firm and the gravy has gone dark and thick.",
+    "minutes": 20
+   },
+   {
+    "text": "Pour in the thick coconut milk and cook a few minutes more without letting it boil hard.",
+    "minutes": 4
+   },
+   {
+    "text": "Take the pot off the fire and let it stand; the gravy tastes stronger after it rests.",
+    "minutes": 10
+   }
+  ],
+  "si": [
+   {
+    "text": "ආඳාට රළු ලුණු, දෙහි සහ දර අලු අතලොස්සක් ගල්වා බොර ඉවත් කර, හම ලිස්සන ගතිය නැති වී පිරිසිදු වන තුරු ගලා යන වතුරෙන් සෝදන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "ආඳා හරස් අතට ලොකු වට කෑලිවලට කපා, හිස ඉවත් කර, කෑලිවලට කහ, ලුණු ටිකක් සහ තලාගත් ගම්මිරිස් කොටසක් ගල්වන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ගොරකා උණු වතුර කෝප්පයක දමා මෘදු වන තුරු තියා හැන්දෙන් තලාගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "කොත්තමල්ලි වියළි පෑන් එකක සුවඳ එන තුරු බැදගෙන රළුවට තලාගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මැටි වළඳක පොල් තෙල් රත් කර ළූණු, සුදුළූණු සහ කරපිංචා දමා ළූණු දාර රන්වන් වන තුරු තෙල් දාන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "බැදපු තුනපහ, මිරිස් කුඩු, ඉතිරි කහ, තලාගත් කොත්තමල්ලි සහ ඉතිරි ගම්මිරිස් දමා මොහොතක් බැදගන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "ගොරකා වතුර, දිය පොල් කිරි සහ ලුණු දමා නටවන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "ආඳා කෑලි දමා වහලා අඩු ගින්නේ, මස් තද වී හොදි කළු පැහැ වී තද වන තුරු පිසින්න.",
+    "minutes": 20
+   },
+   {
+    "text": "මිටි පොල් කිරි වත් කර, තදින් නටවන්නේ නැතිව තව විනාඩි කිහිපයක් තියන්න.",
+    "minutes": 4
+   },
+   {
+    "text": "වළඳ ලිපෙන් ඉවත් කර මඳක් තියන්න; හොදිය නිවුණාම රසය තව තියුණු වෙනවා.",
+    "minutes": 10
+   }
+  ],
+  "ta": [
+   {
+    "text": "விலாங்கு மீனில் கல் உப்பு, எலுமிச்சை, ஒரு பிடி விறகுச் சாம்பல் தேய்த்து வழுவழுப்பை நீக்கி, தோல் சுத்தமாகும் வரை ஓடும் நீரில் கழுவுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "மீனைக் குறுக்காகத் தடிமனான வட்டங்களாக வெட்டி, தலையை நீக்கி, துண்டுகளில் மஞ்சள், சிறிது உப்பு, கொஞ்சம் இடித்த மிளகு தடவுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "கொடுக்காய்ப்புளியை ஒரு கப் வெந்நீரில் ஊறவைத்து, மென்மையானதும் கரண்டியால் மசியுங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "கொத்தமல்லி விதையை வாணலியில் வாசம் வரும் வரை வறுத்து, பொடியாக இடியுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, கறிவேப்பிலை போட்டு வெங்காயம் ஓரம் பொன்னிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "வறுத்த கறித் தூள், மிளகாய்த் தூள், மீதி மஞ்சள், இடித்த கொத்தமல்லி, மீதி மிளகு சேர்த்து ஒரு நிமிடம் வறுக்குங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "புளி நீர், நீர்த்த தேங்காய்ப் பால், உப்பு சேர்த்துக் கொதிக்க வையுங்கள்.",
+    "minutes": 5
+   },
+   {
+    "text": "விலாங்கு துண்டுகளைச் சேர்த்து, மூடி, சிறு தீயில், இறைச்சி இறுகி குழம்பு கருமையாகிக் கெட்டியாகும் வரை வேகவிடுங்கள்.",
+    "minutes": 20
+   },
+   {
+    "text": "கெட்டியான தேங்காய்ப் பாலை விட்டு, பொங்க விடாமல் மேலும் சில நிமிடம் வேகவிடுங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "சட்டியை இறக்கி சிறிது நேரம் வையுங்கள்; ஆறியபின் குழம்பின் சுவை மேலும் கூடும்.",
+    "minutes": 10
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 30,
+  "cook_minutes": 40,
+  "passive_minutes": 10
+ },
+ "equipment": [
+  "clay pot",
+  "heavy knife",
+  "mortar or grinding stone"
+ ],
+ "tips": {
+  "en": "Cleaning is the whole job with eel: if any slime is left the curry tastes muddy. Wood ash or a rough coconut husk works better than a cloth, and plenty of pepper suits the oily flesh.",
+  "si": "ආඳා පිළියෙල කිරීමේ අමාරුම වැඩේ පිරිසිදු කිරීමයි: බොර ඉතිරි වුණොත් කරියට මඩ රසයක් එනවා. රෙද්දකට වඩා දර අලු හෝ පොල් කොහු හොඳින් වැඩ කරනවා, තෙල් සහිත මස්වලට ගම්මිරිස් වැඩිපුර ගැළපෙනවා.",
+  "ta": "விலாங்கில் முக்கிய வேலை சுத்தம் செய்வதே: வழுவழுப்பு மீதம் இருந்தால் குழம்புக்கு மண் வாசம் வரும். துணியைவிட விறகுச் சாம்பலோ தேங்காய் நாரோ நன்றாக வேலை செய்யும், எண்ணெய்ப் பசையுள்ள இறைச்சிக்கு மிளகு அதிகம் பொருந்தும்."
+ },
+ "health_note": {
+  "en": "Eel is an oily fish, rich in protein and in the fat soluble vitamins, which is why village households treat it as strengthening food after illness. It is heavy, so a small portion with plenty of rice and a vegetable is enough.",
+  "si": "ආඳා තෙල් සහිත මාළුවක්; ප්‍රෝටීන් සහ මේදයේ දියවන විටමින් බහුලයි, ඒ නිසා ගම්වල ලෙඩක් පසු ශක්තියට දෙන කෑමක් ලෙස සලකනවා. බර කෑමක්, ඒ නිසා බත් සහ එළවළුවක් සමඟ කුඩා කොටසක් ඇති.",
+  "ta": "விலாங்கு எண்ணெய்ப் பசையுள்ள மீன்; புரதமும் கொழுப்பில் கரையும் வைட்டமின்களும் நிறைந்தது, அதனால்தான் கிராமங்களில் நோய்க்குப் பின் பலம் தரும் உணவாகக் கருதுகிறார்கள். கனமான உணவு, எனவே சாதத்துடனும் ஒரு காய்கறியுடனும் சிறிய பங்கே போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "traditional_remedy",
+  "filling",
+  "comfort"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

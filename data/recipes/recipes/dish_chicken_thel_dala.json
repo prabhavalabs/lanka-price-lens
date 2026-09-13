@@ -1,0 +1,372 @@
+{
+ "id": "dish_chicken_thel_dala",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 130,
+  "description": {
+   "en": "A dry, glossy heap of chilli chicken on the side of the rice",
+   "si": "බත් පසෙක තියෙන වියළි, දිලිසෙන මිරිස් කුකුල් මස් ගොඩක්",
+   "ta": "சாதத்தின் ஓரத்தில் காய்ந்த, மின்னும் மிளகாய்க் கோழி ஒரு குவியல்"
+  }
+ },
+ "yield_g": 540,
+ "ingredients": [
+  {
+   "ref": "product_chicken",
+   "label": {
+    "en": "chicken, cooked or boiled",
+    "si": "කුකුල් මස්, තැම්බූ හෝ ඉතිරි වූ",
+    "ta": "கோழி இறைச்சி, வேகவைத்த அல்லது மீதமான"
+   },
+   "quantity": 500,
+   "unit": "g",
+   "household": "leftover curry, or 500 g boiled with turmeric",
+   "preparation": {
+    "en": "torn into thick shreds, bones taken out",
+    "si": "ඇට ඉවත් කර ගොරෝසු පොතුවලට ඉරා ගත්",
+    "ta": "எலும்பு நீக்கி தடிமனாகக் கிழித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "10 small onions",
+   "preparation": {
+    "en": "sliced thick",
+    "si": "ගොරෝසුවට කපා ගත්",
+    "ta": "தடிமனாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපා ගත්",
+    "ta": "நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "piece",
+   "household": "4 pods, broken",
+   "preparation": {
+    "en": "broken into pieces",
+    "si": "කැබලිවලට කඩා ගත්",
+    "ta": "துண்டுகளாக உடைத்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "මිරිස් කැබලි",
+    "ta": "நொறுக்கிய மிளகாய்"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ කොළය",
+    "ta": "ரம்பை இலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "a 10 cm length",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": {
+    "en": "coarsely cracked",
+    "si": "රළු ලෙස තලා ගත්",
+    "ta": "பொடியாக இடித்தது"
+   },
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_curry_powder",
+   "label": {
+    "en": "curry powder",
+    "si": "තුනපහ",
+    "ta": "கறித்தூள்"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_lime",
+   "label": {
+    "en": "lime juice",
+    "si": "දෙහි යුෂ",
+    "ta": "எலுமிச்சைச் சாறு"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "juice of 1 lime",
+   "preparation": {
+    "en": "squeezed at the end",
+    "si": "අන්තිමට මිරිකා දමන",
+    "ta": "இறுதியில் பிழிவது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 45,
+   "unit": "ml",
+   "household": "3 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Use last night's chicken curry, or boil chicken with turmeric and salt until just done, then tear the meat into thick shreds and take out the bones.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a wok until it shimmers and a drop of water spits.",
+    "minutes": 2
+   },
+   {
+    "text": "Drop in the broken dried chillies, curry leaves and pandan and let them crackle without burning.",
+    "minutes": 1
+   },
+   {
+    "text": "Add the sliced red onion and garlic and fry until the onion edges brown.",
+    "minutes": 4
+   },
+   {
+    "text": "Sprinkle in the chilli flakes, pepper, turmeric and curry powder and fry for a few seconds only, or the powder turns bitter.",
+    "minutes": null
+   },
+   {
+    "text": "Put in the chicken, raise the flame and keep tossing without any water until the shreds glisten and the edges dry and catch.",
+    "minutes": 6
+   },
+   {
+    "text": "Salt it to taste, squeeze the lime over and toss once more off the fire.",
+    "minutes": null
+   },
+   {
+    "text": "Serve straight from the pan, because it loses its bite and its shine as it stands.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "ඊයේ රාත්‍රියේ ඉතිරි කුකුල් මස් කරිය ගන්න, නැත්නම් කහ සහ ලුණු දමා මස් තැම්බී ගත් ගමන් ගොරෝසු පොතුවලට ඉරා ඇට ඉවත් කරන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වොක් එකක පොල් තෙල් රත් කරන්න; වතුර බින්දුවක් දැම්ම විට හිස් ගාන්න ඕන.",
+    "minutes": 2
+   },
+   {
+    "text": "කඩා ගත් වියළි මිරිස්, කරපිංචා සහ රම්පෙ දමා, පිළිස්සෙන්නට නොදී පිපිරෙන්න දෙන්න.",
+    "minutes": 1
+   },
+   {
+    "text": "කපා ගත් රතු ළූණු සහ සුදුළූණු දමා ළූණු දාර දුඹුරු වන තුරු බදින්න.",
+    "minutes": 4
+   },
+   {
+    "text": "මිරිස් කැබලි, ගම්මිරිස්, කහ සහ තුනපහ දමා තත්පර කිහිපයක් පමණක් බදින්න; වැඩි වුණොත් කුඩු තිත්ත වෙනවා.",
+    "minutes": null
+   },
+   {
+    "text": "මස් දමා ගිනි වැඩි කර, වතුර නොදමා පොතු දිලිසී දාර වියළෙන තුරු දිගටම පෙරළන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "රසට ලුණු දමා, දෙහි මිරිකා, ලිපෙන් ඉවත් කර තව වරක් පෙරළන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පෑන් එකෙන්ම කෙළින්ම පිළිගන්වන්න; තියෙන්න තියෙන්න එහි සැරත් දිලිසීමත් නැති වෙනවා.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "நேற்றிரவு மீதமான கோழிக் கறியைப் பயன்படுத்துங்கள், அல்லது மஞ்சளும் உப்பும் சேர்த்து கோழியை வேகவைத்து, இறைச்சியைத் தடிமனாகக் கிழித்து எலும்பை நீக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "வாணலியில் தேங்காய் எண்ணெயைக் காயவிடுங்கள்; ஒரு துளி நீர் இட்டால் சீற வேண்டும்.",
+    "minutes": 2
+   },
+   {
+    "text": "உடைத்த வத்தல் மிளகாய், கறிவேப்பிலை, ரம்பை இட்டு, கருகாமல் வெடிக்கவிடுங்கள்.",
+    "minutes": 1
+   },
+   {
+    "text": "நறுக்கிய சின்ன வெங்காயமும் பூண்டும் சேர்த்து வெங்காய ஓரங்கள் பழுப்பாகும் வரை வதக்குங்கள்.",
+    "minutes": 4
+   },
+   {
+    "text": "நொறுக்கிய மிளகாய், மிளகு, மஞ்சள், கறித்தூள் தூவி சில வினாடிகள் மட்டும் வதக்குங்கள்; அதிகமானால் தூள் கசக்கும்.",
+    "minutes": null
+   },
+   {
+    "text": "இறைச்சியைச் சேர்த்து தீயைக் கூட்டி, நீர் சேர்க்காமல் கீற்றுகள் மின்னி ஓரங்கள் காய்யும் வரை புரட்டிக்கொண்டே இருங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "சுவைக்கு உப்பு சேர்த்து, எலுமிச்சை பிழிந்து, அடுப்பை விட்டு இறக்கி இன்னொரு முறை புரட்டுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "வாணலியிலிருந்து நேரடியாகப் பரிமாறுங்கள்; நேரம் செல்லச் செல்ல காரமும் மின்னலும் குறையும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 15,
+  "cook_minutes": 30,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wok or heavy frying pan"
+ ],
+ "tips": {
+  "en": "This is the cook's answer to yesterday's curry, so the chicken should already be cooked and the whole job is done in ten minutes on a high flame. Drain any gravy off the leftover chicken first, or it will steam instead of frying.",
+  "si": "මේක ඊයේ කරියට ගෙදර උයන කෙනාගේ පිළිතුරයි; මස් කලින්ම තැම්බිලා තියෙන්න ඕන, මුළු වැඩේම ලොකු ගින්නේ මිනිත්තු දහයකින් ඉවරයි. ඉතිරි මසේ හොදිය මුලින්ම බේරන්න, නැත්නම් එය බැදෙන්නේ නැතුව තැම්බෙනවා.",
+  "ta": "இது நேற்றைய கறிக்கு சமையல்காரரின் பதில்; இறைச்சி ஏற்கெனவே வெந்திருக்க வேண்டும், வேலை முழுவதும் பெருந்தீயில் பத்து நிமிடத்தில் முடியும். மீதமான இறைச்சியில் உள்ள கிரேவியை முதலில் வடிக்கவும், இல்லையெனில் அது வறுபடாமல் வேகும்."
+ },
+ "health_note": {
+  "en": "Very little starch and good protein, but the frying oil and the chilli make it strong on an empty stomach or for anyone with gastritis. Reheating cooked chicken a second time is fine as long as it was kept cool and is heated right through.",
+  "si": "පිෂ්ටය ඉතා අඩුයි, ප්‍රෝටීන් හොඳයි; නමුත් බදින තෙලත් මිරිස්වල සැරත් නිසා හිස් බඩට හෝ ගැස්ට්‍රයිටිස් තියෙන කෙනෙකුට මේක තියුණුයි. තැම්බූ මස් දෙවන වර උණු කිරීම වරදක් නෑ, එය සිසිල්ව තියා තිබී මැදටම උණු වන ලෙස උණු කළොත්.",
+  "ta": "மாவுப்பொருள் மிகக் குறைவு, புரதம் நல்லது; ஆனால் வறுத்த எண்ணெயும் மிளகாய்க் காரமும் வெறும் வயிற்றுக்கோ குடல் எரிச்சல் உள்ளவருக்கோ கடுமையாக இருக்கும். வேகவைத்த கோழியை இரண்டாம் முறை சூடாக்குவது தவறில்லை, குளிர்ச்சியாக வைத்திருந்து நடுவரை நன்கு சூடாக்கினால் போதும்."
+ },
+ "tags": [
+  "high_protein",
+  "low_carb",
+  "quick",
+  "budget",
+  "comfort"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

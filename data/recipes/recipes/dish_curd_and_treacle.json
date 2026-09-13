@@ -1,0 +1,166 @@
+{
+ "id": "dish_curd_and_treacle",
+ "base_servings": 4,
+ "serving": {
+  "role": "sweet",
+  "portion_g": 180,
+  "description": {
+   "en": "A thick wedge of cold curd in a bowl with treacle poured over it",
+   "si": "බඳුනක සිසිල් මී කිරි ඝන කැබැල්ලක්, මතට කිතුල් පැණි වත් කර",
+   "ta": "கிண்ணத்தில் குளிர்ந்த தடிமனான தயிர்த் துண்டு, மேலே பாணி ஊற்றியது"
+  }
+ },
+ "yield_g": 720,
+ "ingredients": [
+  {
+   "ref": "pantry_curd",
+   "label": {
+    "en": "buffalo curd",
+    "si": "මී කිරි",
+    "ta": "எருமைத் தயிர்"
+   },
+   "quantity": 600,
+   "unit": "g",
+   "household": "1 small clay pot",
+   "preparation": {
+    "en": "well set and kept cool, not shaken",
+    "si": "හොඳින් මිදුණු, සිසිල්ව තබාගත්, කලතා නැති",
+    "ta": "நன்றாக இறுகிய, குளிர்வித்த, கலக்காத"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_kithul_treacle",
+   "label": {
+    "en": "kithul treacle",
+    "si": "කිතුල් පැණි",
+    "ta": "கித்துல் பாணி"
+   },
+   "quantity": 120,
+   "unit": "ml",
+   "household": "8 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "serving"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Lift the clay pot of curd out of the cool corner of the kitchen without tilting it, so the set surface stays unbroken.",
+    "minutes": null
+   },
+   {
+    "text": "If a little whey has gathered on top, tip it off gently or lift it away with a spoon.",
+    "minutes": null
+   },
+   {
+    "text": "Cut down through the curd with the edge of a large spoon and lift thick wedges into four bowls.",
+    "minutes": null
+   },
+   {
+    "text": "If the treacle has gone stiff in the bottle, stand it in warm water for a couple of minutes until it pours in a ribbon.",
+    "minutes": 3
+   },
+   {
+    "text": "Pour treacle generously over each bowl and let it run down the sides of the curd.",
+    "minutes": null
+   },
+   {
+    "text": "Serve at once, while the curd is still cold and the treacle still thin.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "මිදුණු මුදුන කැඩෙන්නට ඉඩ නොදී, මී කිරි මුට්ටිය කුස්සියේ සිසිල් තැනින් සෙමෙන් ගෙන එන්න.",
+    "minutes": null
+   },
+   {
+    "text": "උඩ තුනී දියරයක් එකතු වී ඇත්නම් එය සෙමෙන් බැහැර කරන්න, නැතිනම් හැන්දකින් ඉවත් කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "ලොකු හැන්දක කෙළවරෙන් කිරි කපා, ඝන කැබලි බඳුන් හතරකට වෙන් කර ගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "බෝතලයේ පැණි තදවී ඇත්නම්, ලීයක් සේ වත් වන තුරු මිනිත්තු කිහිපයක් උණු වතුරේ තියන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "සෑම බඳුනකටම කිතුල් පැණි හොඳින් වත් කර, කිරි වටේට ගලා යන්නට දෙන්න.",
+    "minutes": null
+   },
+   {
+    "text": "කිරි සිසිල්ව, පැණි තුනීව තිබෙන අතරම වහාම මේසයට දෙන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "இறுகிய மேற்பரப்பு உடையாமல், தயிர் மண் சட்டியை சமையலறையின் குளிர்ந்த ஓரத்திலிருந்து மெதுவாக எடுத்து வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "மேலே சிறிது நீர் தேங்கியிருந்தால் அதை மெதுவாகச் சாய்த்து ஊற்றி விடுங்கள், அல்லது கரண்டியால் எடுத்து விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பெரிய கரண்டியின் விளிம்பால் தயிரை வெட்டி, தடிமனான துண்டுகளாக நான்கு கிண்ணங்களில் எடுத்து வையுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "பாட்டிலில் பாணி இறுகியிருந்தால், நூல் போல ஊற்றும் பதம் வரும்வரை இரண்டு நிமிடம் வெந்நீரில் வையுங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "ஒவ்வொரு கிண்ணத்திலும் கித்துல் பாணியை நன்றாக ஊற்றி, தயிரின் ஓரங்களில் வழிய விடுங்கள்.",
+    "minutes": null
+   },
+   {
+    "text": "தயிர் குளிர்ச்சியாகவும் பாணி நீர்மையாகவும் இருக்கும்போதே உடனே பரிமாறுங்கள்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 5,
+  "cook_minutes": 0,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "clay curd pot",
+  "large spoon",
+  "serving bowls"
+ ],
+ "tips": {
+  "en": "Buy curd set in a clay pot rather than a plastic cup: the clay draws off water and leaves the curd firmer and less sour. Keep the pot upright in the coolest corner and never stir it, because once the set is broken the curd turns watery. Taste the treacle before pouring, since thin sugar syrup sold as treacle will not give the smoky kithul flavour.",
+  "si": "ප්ලාස්ටික් කෝප්පයකට වඩා මුට්ටියේ මිදූ මී කිරි ගන්න, මැටිය වතුර උරාගෙන කිරි තදව, අඩු ඇඹුල් රසෙන් තබා ගන්නා නිසා. මුට්ටිය කෙළින්ම සිසිල් තැනක තබා, කිසිසේත් කලතන්න එපා, එක වර මිදුම කැඩුණොත් කිරි දියාරු වේ. පැණි රස බලා ගන්න, පැණි නමින් විකුණන තුනී සීනි පැණියෙන් කිතුල් රසය නොලැබේ.",
+  "ta": "பிளாஸ்டிக் கோப்பையில் அடைத்த தயிரை விட மண் சட்டியில் இறுக்கிய தயிரை வாங்குங்கள்; மண் நீரை உறிஞ்சி தயிரை இறுக்கமாகவும் குறைந்த புளிப்பாகவும் வைக்கும். சட்டியை நேராக குளிர்ந்த இடத்தில் வையுங்கள், கலக்க வேண்டாம் - இறுக்கம் உடைந்தால் தயிர் நீராகிவிடும். பாணியை முதலில் சுவைத்துப் பாருங்கள்; பாணி என்ற பெயரில் விற்கும் சீனிப் பாகில் கித்துலின் மணம் இருக்காது."
+ },
+ "health_note": {
+  "en": "Curd brings calcium and live cultures that settle the stomach after a heavy rice and curry meal, and buffalo curd carries more fat than cow curd. The treacle is almost pure sugar, so two spoonfuls are plenty for anyone in the house watching their sugar; they can eat the curd plain with a little fruit instead.",
+  "si": "මී කිරි වලින් කැල්සියම් සහ බඩට හිතකර ජීවී බැක්ටීරියා ලැබෙන නිසා බත් කෑමෙන් පසු එය හොඳින් දිරවයි, එහෙත් එළකිරි කිරිවලට වඩා මී කිරිවල මේදය වැඩියි. පැණි යනු සීනි නිසා, සීනි බලාගෙන සිටින කෙනෙකුට හැඳි දෙකක් ඇති, නැත්නම් පැණි නැතිව පලතුරු ටිකක් සමඟ කිරි කන්න.",
+  "ta": "தயிரில் கால்சியமும் வயிற்றுக்கு உதவும் நல்ல பாக்டீரியாவும் உள்ளதால், சோறு சாப்பிட்ட பிறகு எளிதில் ஜீரணமாகும்; எருமைத் தயிரில் பசுந்தயிரை விட கொழுப்பு அதிகம். பாணி முழுக்க சீனி என்பதால், சர்க்கரையைக் கவனிப்பவர்களுக்கு இரண்டு கரண்டி போதும் - அல்லது பாணி இல்லாமல் கொஞ்சம் பழத்துடன் தயிரை சாப்பிடலாம்."
+ },
+ "tags": [
+  "probiotic",
+  "calcium_rich",
+  "high_sugar",
+  "kid_friendly",
+  "elderly_friendly",
+  "quick",
+  "comfort",
+  "festive"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

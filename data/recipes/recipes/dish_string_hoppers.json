@@ -1,0 +1,209 @@
+{
+ "id": "dish_string_hoppers",
+ "base_servings": 4,
+ "serving": {
+  "role": "staple",
+  "portion_g": 215,
+  "description": {
+   "en": "Four string hopper nests with gravy and sambol",
+   "si": "හොද්ද හා සම්බෝල් සමඟ ඉඳිආප්ප හතරක්",
+   "ta": "குழம்பும் சம்பலும் சேர்த்து நான்கு இடியாப்பம்"
+  }
+ },
+ "yield_g": 860,
+ "ingredients": [
+  {
+   "ref": "pantry_rice_flour",
+   "label": {
+    "en": "rice flour",
+    "si": "සහල් පිටි",
+    "ta": "அரிசி மாவு"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "3 cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 10,
+   "unit": "ml",
+   "household": "2 tsp, for the mats",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Roast the rice flour lightly in a dry pan if it is shop flour, just until it is warm to the hand.",
+    "minutes": 5
+   },
+   {
+    "text": "Mix the salt into the flour and pour in boiling water in stages, stirring with the handle of a spoon.",
+    "minutes": 3
+   },
+   {
+    "text": "When it is cool enough to touch, knead it into a smooth soft dough that does not crack when rolled.",
+    "minutes": 6
+   },
+   {
+    "text": "Fill the string hopper press with a lump of dough and screw the lid down.",
+    "minutes": null
+   },
+   {
+    "text": "Wipe the steamer mats with a little oil and squeeze the dough onto them in tight circles, one nest to a mat.",
+    "minutes": 10
+   },
+   {
+    "text": "Stack the mats in the steamer, cover and steam over boiling water until the strands turn from chalky to glossy.",
+    "minutes": 8
+   },
+   {
+    "text": "Lift the mats out and let them stand a minute so the nests come away in one piece.",
+    "minutes": 1
+   },
+   {
+    "text": "Repeat with the rest of the dough, keeping the cooked nests covered with a cloth.",
+    "minutes": 12
+   },
+   {
+    "text": "Count four or five nests onto each plate and serve with kiri hodi and pol sambol.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කඩෙන් ගත් පිටි නම්, අතට උණුසුම් දැනෙන තරමට වියළි තැටියක සැහැල්ලුවෙන් බැදගන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "පිටිවලට ලුණු මිශ්‍ර කර, හැන්දක මිටෙන් කලවම් කරමින්, නටන වතුර අදියරෙන් අදියරට වත් කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "අතට දැනෙන තරමට සිසිල් වූ විට, රෝල් කළ විට නොපැළෙන සිනිඳු මෘදු ගුලියක් සාදා අනන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ඉඳිආප්ප යන්ත්‍රයට ගුලියෙන් කොටසක් පුරවා, වැස්ම හොඳින් තද කරන්න.",
+    "minutes": null
+   },
+   {
+    "text": "වට්ටිවලට තෙල් ස්වල්පයක් තවරා, එකක් මත එකක් ලෙස කුඩා කවවලින් ගුලිය තද කර මිරිකන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "වට්ටි වාෂ්ප භාජනයේ එකක් මත එකක් තබා වසා, පට වර්ණය සුදු මැටි පාටින් දිලිසෙන පාටට හැරෙන තුරු නටන වතුරෙන් තැම්බෙන්නට හරින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "වට්ටි ඉවතට ගෙන විනාඩියක් තබන්න, එවිට ඉඳිආප්ප එක කැබැල්ලක් ලෙස ගැලවෙනවා.",
+    "minutes": 1
+   },
+   {
+    "text": "ඉතිරි ගුලියෙන් එසේම සාදා, තැම්බූ ඉඳිආප්ප රෙද්දකින් වසා තබන්න.",
+    "minutes": 12
+   },
+   {
+    "text": "එක් පිඟානකට හතරක් පහක් ගණන් කර, කිරි හොද්ද සහ පොල් සම්බෝල් සමඟ බෙදන්න.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கடையில் வாங்கிய மாவாக இருந்தால், கைக்கு வெதுவெதுப்பாக உணரும் அளவுக்கு வறட்சியான சட்டியில் லேசாக வறுக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "மாவில் உப்பைக் கலந்து, கரண்டியின் பிடியால் கிளறிக்கொண்டே, கொதிக்கும் தண்ணீரை படிப்படியாக ஊற்றவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "கையால் தொடும் அளவுக்கு குளிர்ந்ததும், உருட்டும்போது வெடிக்காத மிருதுவான மென்மையான மாவாகப் பிசையவும்.",
+    "minutes": 6
+   },
+   {
+    "text": "இடியாப்ப அச்சில் மாவின் ஒரு பிடியை நிரப்பி, மூடியை இறுக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "தட்டுகளில் சிறிது எண்ணெய் தடவி, சுற்றுச் சுற்றாக மாவைப் பிழிந்து, ஒரு தட்டுக்கு ஒரு கூடு வைக்கவும்.",
+    "minutes": 10
+   },
+   {
+    "text": "தட்டுகளை ஆவி பாத்திரத்தில் அடுக்கி மூடி, இழைகள் வெண்மையான நிறத்திலிருந்து பளபளப்பாக மாறும்வரை கொதிக்கும் நீரில் வேகவிடவும்.",
+    "minutes": 8
+   },
+   {
+    "text": "தட்டுகளை எடுத்து ஒரு நிமிடம் வைக்கவும், அப்போது இடியாப்பம் ஒன்றாக விலகி வரும்.",
+    "minutes": 1
+   },
+   {
+    "text": "மீதி மாவிலும் அதேபோல் செய்து, வேகவைத்த இடியாப்பத்தை துணியால் மூடி வைக்கவும்.",
+    "minutes": 12
+   },
+   {
+    "text": "ஒரு தட்டுக்கு நான்கு ஐந்தாக எண்ணி வைத்து, கிரி ஹொடி மற்றும் பொல் சம்பலுடன் பரிமாறவும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 25,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "string hopper press",
+  "steamer with woven mats"
+ ],
+ "tips": {
+  "en": "Boiling water, not warm, is what cooks the flour enough to press; if the strands break, the dough is too dry, so knead in a spoon of hot water.",
+  "si": "මිරිකීමට තරම් පිටි පදම් වන්නේ නටන වතුරෙන්, උණුසුම් වතුරෙන් නොවේ; පට කැඩේ නම් ගුලිය වියළියි, ඒ නිසා උණු වතුර හැන්දක් දමා අනන්න.",
+  "ta": "பிழியும் அளவுக்கு மாவு பதமாவது கொதிக்கும் நீரால், வெதுவெதுப்பான நீரால் அல்ல; இழைகள் உடைந்தால் மாவு உலர்ந்திருக்கிறது, எனவே ஒரு கரண்டி சூடான நீர் சேர்த்துப் பிசையவும்."
+ },
+ "health_note": {
+  "en": "Steamed, almost fat free and easy to digest, so string hoppers suit children and elders; the coconut gravy poured over is where the fat comes in, so keep that modest.",
+  "si": "තැම්බූ, තෙල් නොමැති තරම්, ජීරණයට පහසු බැවින් ඉඳිආප්ප දරුවන්ට හා වැඩිහිටියන්ට සුදුසුයි; තෙල් එන්නේ ඉහළින් වත් කරන කිරි හොද්දෙන්, ඒ නිසා එය මධ්‍යස්ථව තබන්න.",
+  "ta": "ஆவியில் வேகவைத்தது, கொழுப்பு கிட்டத்தட்ட இல்லாதது, செரிக்க எளிதானது, எனவே இடியாப்பம் குழந்தைகளுக்கும் முதியவர்களுக்கும் ஏற்றது; கொழுப்பு வருவது மேலே ஊற்றும் தேங்காய்க் குழம்பிலிருந்து, எனவே அதை அளவாக வைக்கவும்."
+ },
+ "tags": [
+  "light",
+  "low_fat",
+  "kid_friendly",
+  "elderly_friendly",
+  "budget"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

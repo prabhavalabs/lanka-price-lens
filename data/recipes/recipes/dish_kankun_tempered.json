@@ -1,0 +1,298 @@
+{
+ "id": "dish_kankun_tempered",
+ "base_servings": 4,
+ "serving": {
+  "role": "side",
+  "portion_g": 70,
+  "description": {
+   "en": "A small green heap beside the rice",
+   "si": "බතට පසෙකින් තබන කුඩා කොළ පැහැ ගොඩක්",
+   "ta": "சாதத்தின் ஓரத்தில் சிறிய பசுமைக் குவியல்"
+  }
+ },
+ "yield_g": 290,
+ "ingredients": [
+  {
+   "ref": "product_kankun",
+   "label": {
+    "en": "water spinach (kankun)",
+    "si": "කංකුන්",
+    "ta": "கங்குன் கீரை"
+   },
+   "quantity": 400,
+   "unit": "g",
+   "household": "2 large bunches",
+   "preparation": {
+    "en": "washed in several waters, tough stem ends removed, chopped short",
+    "si": "වතුර කිහිප වරක් මාරු කර සෝදා, තද කඳ කෙළවර ඉවත් කර, කුඩාවට කපා",
+    "ta": "பல முறை நீர் மாற்றிக் கழுவி, கெட்டியான தண்டு நுனிகளை நீக்கி, சிறியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 30,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 80,
+   "unit": "g",
+   "household": "1 medium onion",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගෙන",
+    "ta": "நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුලූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "3 cloves",
+   "preparation": {
+    "en": "sliced thin",
+    "si": "තුනී ලෙස කපා",
+    "ta": "மெல்லியதாக நறுக்கி"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වේළූ මිරිස්",
+    "ta": "வத்தல் மிளகாய்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "3 pods",
+   "preparation": {
+    "en": "broken",
+    "si": "කඩාගෙන",
+    "ta": "உடைத்து"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "pantry_chilli_flakes",
+   "label": {
+    "en": "chilli flakes",
+    "si": "රළු මිරිස් කුඩු",
+    "ta": "கரடு மிளகாய்த் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 sprig",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_maldive_fish",
+   "label": {
+    "en": "maldive fish",
+    "si": "උම්බලකඩ",
+    "ta": "மாசி (உம்பலகடா)"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 tbsp, pounded",
+   "preparation": {
+    "en": "pounded coarse",
+    "si": "රළුවට කොටාගෙන",
+    "ta": "கரடாக இடித்து"
+   },
+   "optional": true,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "1/2 tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Wash the kankun in three changes of water, because it grows in wet ditches and mud clings to the hollow stems.",
+    "minutes": 6
+   },
+   {
+    "text": "Snap off the woody bottom of each stem, then chop the stems small and the leaves roughly, keeping them separate.",
+    "minutes": 6
+   },
+   {
+    "text": "Heat the coconut oil in a wide pan and temper the garlic, dried chillies and curry leaves until the garlic turns pale gold.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the onion and fry until soft, then stir in the chilli flakes and pounded maldive fish if you are using it.",
+    "minutes": 3
+   },
+   {
+    "text": "Put in the chopped stems first with the salt and stir over a high flame so they lose their rawness.",
+    "minutes": 2
+   },
+   {
+    "text": "Throw in the leaves and keep turning the pan for barely two minutes, until they wilt but are still bright green.",
+    "minutes": 2
+   },
+   {
+    "text": "Serve at once; kankun left standing turns dark and watery.",
+    "minutes": null
+   }
+  ],
+  "si": [
+   {
+    "text": "කංකුන් වතුර තුන් වතාවක් මාරු කර සෝදන්න; එය තෙත් අගල්වල වැඩෙන නිසා හිස් කඳන්වල මඩ ඇලී තිබේ.",
+    "minutes": 6
+   },
+   {
+    "text": "සෑම කඳක්ම යටින් ඇති ලී ගතියේ කොටස කඩා ඉවත් කර, කඳන් කුඩාවට හා කොළ රළුවට කපා, වෙන් වෙන්ව තබන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "පළල් පෑනකට පොල් තෙල් දමා, සුදුලූනු, වේළූ මිරිස් හා කරපිංචා සුදුලූනු ලා රන්වන් වන තුරු තෙල් දාන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "ලූනු දමා මෘදු වන තුරු බැදගෙන, රළු මිරිස් කුඩු හා (භාවිත කරන්නේ නම්) කොටාගත් උම්බලකඩ එකතු කරන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "පළමුව කපාගත් කඳන් ලුණු සමඟ දමා, අමු ගතිය යන තුරු අධික ගින්නේ කලතන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පසුව කොළ දමා, මැලවෙන නමුත් තවම දීප්තිමත් කොළ පැහැයෙන් තිබෙන තුරු විනාඩි දෙකක් පමණක් පෑන පෙරළන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "වහාම බෙදන්න; තියාගෙන සිටියොත් කංකුන් තද පැහැයට හැරී වතුර ගසයි.",
+    "minutes": null
+   }
+  ],
+  "ta": [
+   {
+    "text": "கங்குனை மூன்று முறை நீர் மாற்றிக் கழுவுங்கள்; ஈரமான வாய்க்கால்களில் வளர்வதால் உள்ளீடற்ற தண்டுகளில் சேறு ஒட்டியிருக்கும்.",
+    "minutes": 6
+   },
+   {
+    "text": "ஒவ்வொரு தண்டின் அடிப்பகுதியிலுள்ள கெட்டியான பகுதியை ஒடித்து நீக்கி, தண்டுகளை சிறியதாகவும் இலைகளை கரடாகவும் நறுக்கி, தனித்தனியே வையுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "அகலமான வாணலியில் தேங்காய் எண்ணெயை காயவைத்து, பூண்டு, வத்தல் மிளகாய், கறிவேப்பிலை போட்டு பூண்டு பொன்னிறமாகும் வரை தாளியுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "வெங்காயம் சேர்த்து மென்மையாகும் வரை வதக்கி, மிளகாய்த் தூளும் (சேர்ப்பதாக இருந்தால்) இடித்த மாசியும் கலக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "முதலில் நறுக்கிய தண்டுகளை உப்புடன் போட்டு, பச்சைத்தன்மை போகும் வரை அதிக தீயில் கிளறுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "பின் இலைகளைப் போட்டு, வாடி ஆனால் பச்சை நிறம் மாறாமல் இருக்கும் வரை இரண்டு நிமிடம் மட்டும் புரட்டுங்கள்.",
+    "minutes": 2
+   },
+   {
+    "text": "உடனே பரிமாறுங்கள்; வைத்திருந்தால் கங்குன் கருத்து நீர் விடும்.",
+    "minutes": null
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 12,
+  "cook_minutes": 10,
+  "passive_minutes": 0
+ },
+ "equipment": [
+  "wide pan or wok",
+  "large bowl for washing"
+ ],
+ "tips": {
+  "en": "Cook the stems a couple of minutes before the leaves and the whole pan finishes at the same time. Buy bunches with firm hollow stems and no yellow leaves; kankun goes limp within a day.",
+  "si": "කඳන් කොළවලට විනාඩි දෙකකට පෙර දැමුවොත් මුළු පෑනම එකවර සකස් වේ. තද හිස් කඳන් ඇති, කහ පැහැ කොළ නැති මිටි ගන්න; කංකුන් දිනකින් මැලවේ.",
+  "ta": "தண்டுகளை இலைகளுக்கு இரண்டு நிமிடம் முன்னதாகப் போட்டால் வாணலி முழுவதும் ஒரே நேரத்தில் பதமாகும். கெட்டியான உள்ளீடற்ற தண்டுகளும் மஞ்சள் இலைகள் இல்லாத கட்டுகளையும் வாங்குங்கள்; கங்குன் ஒரு நாளில் வாடிவிடும்."
+ },
+ "health_note": {
+  "en": "Kankun is one of the cheapest leafy greens for iron, folate and vitamin A, which matters for growing children and anyone who tires easily. Because it grows in standing water, wash it thoroughly and cook it through rather than eating it raw.",
+  "si": "යකඩ, ෆෝලේට් හා විටමින් ඒ සඳහා කංකුන් ලාභම කොළ එළවළුවලින් එකකි; වැඩෙන දරුවන්ට හා ඉක්මනින් වෙහෙසෙන අයට එය වැදගත්. එය නිශ්චල ජලයේ වැඩෙන නිසා හොඳින් සෝදා, අමුවෙන් නොගෙන හොඳින් උයා ගන්න.",
+  "ta": "இரும்புச்சத்து, ஃபோலேட், வைட்டமின் ஏ ஆகியவற்றுக்கு கங்குன் மிக மலிவான கீரைகளில் ஒன்று; வளரும் குழந்தைகளுக்கும் சீக்கிரம் களைப்படைபவர்களுக்கும் இது முக்கியம். தேங்கிய நீரில் வளர்வதால் நன்கு கழுவி, பச்சையாகச் சாப்பிடாமல் நன்கு சமைத்துச் சாப்பிடுங்கள்."
+ },
+ "tags": [
+  "iron_rich",
+  "low_calorie",
+  "high_fibre",
+  "quick",
+  "budget",
+  "weight_loss_friendly"
+ ],
+ "review_needed": [
+  "ta"
+ ],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

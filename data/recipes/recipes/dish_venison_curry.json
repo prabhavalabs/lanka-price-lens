@@ -1,0 +1,482 @@
+{
+ "id": "dish_venison_curry",
+ "base_servings": 4,
+ "serving": {
+  "role": "with_rice",
+  "portion_g": 160,
+  "description": {
+   "en": "A small ladle of dark dry venison curry with rice",
+   "si": "බත් සමඟ අඳුරු වියළි මුව මස් කරි කුඩා ලාඩුවක්",
+   "ta": "சாதத்துடன் ஒரு சிறிய கரண்டி கரும் காய்ந்த மான் இறைச்சிக் கறி"
+  }
+ },
+ "yield_g": 780,
+ "ingredients": [
+  {
+   "ref": "pantry_venison",
+   "label": {
+    "en": "venison",
+    "si": "මුව මස්",
+    "ta": "மான் இறைச்சி"
+   },
+   "quantity": 700,
+   "unit": "g",
+   "household": "700 g of lean meat",
+   "preparation": {
+    "en": "cut into 3 cm pieces across the grain, washed",
+    "si": "නාරටිවලට හරහට සෙන්ටිමීටර තුනක කැබලිවලට කපා සෝදාගත්",
+    "ta": "நரம்புக்கு எதிராக மூன்று சென்டிமீட்டர் துண்டுகளாக வெட்டி, கழுவிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_vinegar",
+   "label": {
+    "en": "vinegar",
+    "si": "විනාකිරි",
+    "ta": "வினிகர்"
+   },
+   "quantity": 20,
+   "unit": "ml",
+   "household": "1 and a half tbsp",
+   "preparation": {
+    "en": "for the marinade",
+    "si": "මැරිනේඩ් එකට",
+    "ta": "ஊறவைப்புக்கு"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "marinade"
+  },
+  {
+   "ref": "product_red_onion",
+   "label": {
+    "en": "red onion",
+    "si": "රතු ළූණු",
+    "ta": "சின்ன வெங்காயம்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "2 medium onions",
+   "preparation": {
+    "en": "sliced",
+    "si": "කපාගත්",
+    "ta": "நறுக்கிய"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූණු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 20,
+   "unit": "g",
+   "household": "6 cloves",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "a thumb piece",
+   "preparation": {
+    "en": "crushed",
+    "si": "තලාගත්",
+    "ta": "இடித்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_gorakka",
+   "label": {
+    "en": "gorakka (garcinia)",
+    "si": "ගොරකා",
+    "ta": "கோரக்கா"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 small pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_dried_chillies",
+   "label": {
+    "en": "dried chillies",
+    "si": "වියළි මිරිස්",
+    "ta": "காய்ந்த மிளகாய்"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "8 chillies, ground",
+   "preparation": {
+    "en": "ground",
+    "si": "අඹරාගත්",
+    "ta": "அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறித் தூள்"
+   },
+   "quantity": 15,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 6,
+   "unit": "g",
+   "household": "1 heaped tsp, crushed",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coriander",
+   "label": {
+    "en": "coriander seed",
+    "si": "කොත්තමල්ලි",
+    "ta": "மல்லி"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp, roasted and ground",
+   "preparation": {
+    "en": "dry roasted and ground",
+    "si": "වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cumin",
+   "label": {
+    "en": "cumin seed",
+    "si": "සූදුරු",
+    "ta": "சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_fennel",
+   "label": {
+    "en": "fennel seed",
+    "si": "මාදුරු",
+    "ta": "பெருஞ்சீரகம்"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "பட்டை"
+   },
+   "quantity": 4,
+   "unit": "g",
+   "household": "2 pieces",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_pandan_leaf",
+   "label": {
+    "en": "pandan leaf",
+    "si": "රම්පෙ",
+    "ta": "ரம்பை"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "1 short piece",
+   "preparation": null,
+   "optional": false,
+   "scaling": "fixed",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut",
+   "label": {
+    "en": "roasted scraped coconut",
+    "si": "බැදගත් ගාගත් පොල්",
+    "ta": "வறுத்த துருவிய தேங்காய்"
+   },
+   "quantity": 60,
+   "unit": "g",
+   "household": "half a cup, scraped",
+   "preparation": {
+    "en": "dry roasted dark and ground",
+    "si": "අඳුරු වන තුරු වියළි ලෙස බැදගෙන අඹරාගත්",
+    "ta": "கறுக்க வறுத்து அரைத்த"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 25,
+   "unit": "ml",
+   "household": "2 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 8,
+   "unit": "g",
+   "household": "1 and a half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Cut the venison across the grain, wash it and rub it with the vinegar, turmeric, half the ground chilli and half the salt.",
+    "minutes": 15
+   },
+   {
+    "text": "Leave it to sit; the vinegar softens the lean fibres, which is the whole difficulty with deer meat.",
+    "minutes": 45
+   },
+   {
+    "text": "Dry roast the scraped coconut until it is dark brown, then grind it with the roasted coriander into a thick paste.",
+    "minutes": 10
+   },
+   {
+    "text": "Heat the coconut oil in a clay pot and fry the onion, garlic, ginger, curry leaves, pandan leaf and cinnamon until the onion is deep brown.",
+    "minutes": 8
+   },
+   {
+    "text": "Add the roasted curry powder, the rest of the chilli, the cumin, fennel and pepper and fry briefly so the spices darken.",
+    "minutes": 3
+   },
+   {
+    "text": "Put in the meat and turn it over a high flame until the outside is sealed and dry.",
+    "minutes": 6
+   },
+   {
+    "text": "Add the gorakka and enough water to just cover, put the lid on and cook slowly until the meat gives under a spoon.",
+    "minutes": 55
+   },
+   {
+    "text": "Stir in the ground coconut paste and the rest of the salt and cook uncovered until the gravy has reduced to a dark coating on the meat.",
+    "minutes": 15
+   },
+   {
+    "text": "Taste for salt and sourness and let it rest off the fire before serving with rice.",
+    "minutes": 8
+   }
+  ],
+  "si": [
+   {
+    "text": "මුව මස් නාරටිවලට හරහට කපා, සෝදා, විනාකිරි, කහ, අඹරාගත් මිරිස් භාගයක් සහ ලුණු භාගයක් අතුල්ලන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ටික වෙලාවක් තබන්න; විනාකිරි තෙල් අඩු නාරටි මුදු කරයි, මුව මස්වල ඇති එකම අමාරුව එයයි.",
+    "minutes": 45
+   },
+   {
+    "text": "ගාගත් පොල් තද දුඹුරු වන තුරු වියළි ලෙස බැදගෙන, බැදගත් කොත්තමල්ලි සමඟ අඹරා ඝන පේස්ට් එකක් කර ගන්න.",
+    "minutes": 10
+   },
+   {
+    "text": "මැටි වළඳක පොල් තෙල් රස්නේ කර, ළූණු, සුදුළූණු, ඉඟුරු, කරපිංචා, රම්පෙ සහ කුරුඳු ළූණු තද දුඹුරු වන තුරු බදින්න.",
+    "minutes": 8
+   },
+   {
+    "text": "බැදපු තුනපහ, ඉතිරි මිරිස්, සූදුරු, මාදුරු සහ ගම්මිරිස් දමා, කුළුබඩු අඳුරු වන ලෙස මොහොතක් බදින්න.",
+    "minutes": 3
+   },
+   {
+    "text": "මස දමා, විශාල ගින්නේ පිටත තද වී වියළෙන තුරු පෙරළන්න.",
+    "minutes": 6
+   },
+   {
+    "text": "ගොරකා සහ ආවරණය වන පමණට වතුර දමා, වැසුම තබා, මස හැන්දට යටත් වන තුරු සෙමින් උයන්න.",
+    "minutes": 55
+   },
+   {
+    "text": "අඹරාගත් පොල් පේස්ට් සහ ඉතිරි ලුණු දමා, හොද්ද සිඳී මස මත අඳුරු තට්ටුවක් වන තුරු වැසුමක් නැතිව උයන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "ලුණු හා ඇඹුල රස බලා, බත් සමඟ පිළිගැන්වීමට පෙර ගින්නෙන් ඉවත් කර තබන්න.",
+    "minutes": 8
+   }
+  ],
+  "ta": [
+   {
+    "text": "மான் இறைச்சியை நரம்புக்கு எதிராக வெட்டி, கழுவி, வினிகர், மஞ்சள், பாதி அரைத்த மிளகாய், பாதி உப்பு சேர்த்துத் தேய்த்து வையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "சிறிது நேரம் ஊற விடுங்கள்; வினிகர் கொழுப்பற்ற நரம்புகளை மென்மையாக்கும், மான் இறைச்சியின் ஒரே சிரமம் அதுதான்.",
+    "minutes": 45
+   },
+   {
+    "text": "துருவிய தேங்காயைக் கடுங்கபில நிறம் வரும் வரை வறுத்து, வறுத்த மல்லியுடன் அரைத்துக் கெட்டி விழுதாக்குங்கள்.",
+    "minutes": 10
+   },
+   {
+    "text": "மண் சட்டியில் தேங்காய் எண்ணெயைக் காய்ச்சி, வெங்காயம், பூண்டு, இஞ்சி, கறிவேப்பிலை, ரம்பை, பட்டையை வெங்காயம் நன்கு கபில நிறமாகும் வரை வதக்குங்கள்.",
+    "minutes": 8
+   },
+   {
+    "text": "வறுத்த கறித் தூள், மீதி மிளகாய், சீரகம், பெருஞ்சீரகம், மிளகு சேர்த்து, மசாலா கறுக்கும்படி ஒரு நிமிடம் வதக்குங்கள்.",
+    "minutes": 3
+   },
+   {
+    "text": "இறைச்சியைச் சேர்த்து, பெரிய தீயில் வெளிப்புறம் இறுகிக் காயும் வரை புரட்டுங்கள்.",
+    "minutes": 6
+   },
+   {
+    "text": "கோரக்காவும் மூழ்கும் அளவு நீரும் சேர்த்து, மூடி வைத்து, இறைச்சி கரண்டியில் பிசையும் அளவு மென்மையாகும் வரை மெதுவாகச் சமையுங்கள்.",
+    "minutes": 55
+   },
+   {
+    "text": "அரைத்த தேங்காய் விழுதையும் மீதி உப்பையும் சேர்த்து, குழம்பு வற்றி இறைச்சியில் கரும் பூச்சாக ஒட்டும் வரை மூடாமல் சமையுங்கள்.",
+    "minutes": 15
+   },
+   {
+    "text": "உப்பையும் புளிப்பையும் பார்த்து, சாதத்துடன் பரிமாறும் முன் இறக்கி வையுங்கள்.",
+    "minutes": 8
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 90,
+  "passive_minutes": 45
+ },
+ "equipment": [
+  "clay pot with a lid",
+  "pan for roasting the coconut",
+  "grinding stone or blender"
+ ],
+ "tips": {
+  "en": "Deer meat has almost no fat to protect it, so a vinegar rub and a slow covered pot are what keep it from turning to rope. Cut across the grain, never along it, and the difference in the chewing is obvious.",
+  "si": "මුව මස රැක ගැනීමට තෙල් පාහේ නැති බැවින්, විනාකිරි අතුල්ලීම සහ වසා තැබූ භාජනයක් සෙමින් උයාගැනීම එය කඹයක් වීමෙන් වළක්වයි. නාරටිවලට හරහට කපන්න, දිගට කිසිසේත් නොවේ; හපන විට වෙනස පැහැදිලිය.",
+  "ta": "மான் இறைச்சியைக் காக்கக் கொழுப்பே இல்லை; எனவே வினிகர் தேய்ப்பதும் மூடிய பாத்திரத்தில் மெதுவாகச் சமைப்பதுமே அதைக் கயிறாக மாறாமல் காக்கும். நரம்புக்கு எதிராகவே வெட்டுங்கள், நீளவாக்கில் வேண்டாம்; மெல்லும்போது வேறுபாடு தெளிவாகத் தெரியும்."
+ },
+ "health_note": {
+  "en": "Venison is very lean and high in iron and protein, so the fat on the plate comes from the roasted coconut and the oil rather than the meat. Cook wild meat right through, and check that what you are buying is legally sold.",
+  "si": "මුව මස් තෙල් ඉතා අඩු අතර යකඩ හා ප්‍රෝටීන් බහුලයි; එබැවින් පිඟානේ ඇති තෙල එන්නේ මසින් නොව බැදගත් පොල් සහ තෙලෙන්. වන මස් හොඳින් උයන්න, ඔබ මිලදී ගන්නේ නීත්‍යානුකූලව අලෙවි වන දෙයක් ද යන්නත් සොයා බලන්න.",
+  "ta": "மான் இறைச்சி மிகக் குறைந்த கொழுப்புள்ளது, இரும்பும் புரதமும் அதிகம்; எனவே தட்டில் உள்ள கொழுப்பு இறைச்சியிலிருந்து அல்ல, வறுத்த தேங்காயிலிருந்தும் எண்ணெயிலிருந்துமே வருகிறது. காட்டு இறைச்சியை நன்கு வேக வையுங்கள், நீங்கள் வாங்குவது சட்டப்படி விற்கப்படுவதா என்பதையும் பாருங்கள்."
+ },
+ "tags": [
+  "high_protein",
+  "low_fat",
+  "iron_rich",
+  "low_carb",
+  "filling"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}

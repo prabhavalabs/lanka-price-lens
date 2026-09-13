@@ -1,0 +1,487 @@
+{
+ "id": "dish_beef_kottu",
+ "base_servings": 4,
+ "serving": {
+  "role": "main",
+  "portion_g": 340,
+  "description": {
+   "en": "A heavy plate of beef kottu with gravy through it",
+   "si": "හොද්ද පෙඟුණු බර හරක් මස් කොත්තු පිඟානක්",
+   "ta": "குழம்பு ஊறிய கனமான ஒரு தட்டு மாட்டிறைச்சி கொத்து"
+  }
+ },
+ "yield_g": 1360,
+ "ingredients": [
+  {
+   "ref": "product_beef",
+   "label": {
+    "en": "beef",
+    "si": "හරක් මස්",
+    "ta": "மாட்டிறைச்சி"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "a good piece of stewing beef",
+   "preparation": {
+    "en": "cut into small cubes",
+    "si": "කුඩා කැට ලෙස කපාගත්",
+    "ta": "சிறு கனசதுரங்களாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_wheat_flour",
+   "label": {
+    "en": "wheat flour",
+    "si": "තිරිඟු පිටි",
+    "ta": "கோதுமை மாவு"
+   },
+   "quantity": 350,
+   "unit": "g",
+   "household": "about 2 and a half cups",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "dough"
+  },
+  {
+   "ref": "product_coconut_oil",
+   "label": {
+    "en": "coconut oil",
+    "si": "පොල් තෙල්",
+    "ta": "தேங்காய் எண்ணெய்"
+   },
+   "quantity": 65,
+   "unit": "ml",
+   "household": "about 4 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_salt",
+   "label": {
+    "en": "salt",
+    "si": "ලුණු",
+    "ta": "உப்பு"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 and three quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "product_big_onion",
+   "label": {
+    "en": "big onion",
+    "si": "ලොකු ලූනු",
+    "ta": "பெரிய வெங்காயம்"
+   },
+   "quantity": 120,
+   "unit": "g",
+   "household": "1 large onion",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_leeks",
+   "label": {
+    "en": "leeks",
+    "si": "ලීක්ස්",
+    "ta": "லீக்ஸ்"
+   },
+   "quantity": 150,
+   "unit": "g",
+   "household": "1 thick stalk",
+   "preparation": {
+    "en": "finely sliced",
+    "si": "සිහින්ව කපාගත්",
+    "ta": "மெல்லியதாக நறுக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_green_chillies",
+   "label": {
+    "en": "green chillies",
+    "si": "අමු මිරිස්",
+    "ta": "பச்சை மிளகாய்"
+   },
+   "quantity": 3,
+   "unit": "piece",
+   "household": "3 chillies",
+   "preparation": {
+    "en": "slit lengthwise",
+    "si": "දිගට පලාගත්",
+    "ta": "நீளமாக கீறியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_curry_leaves",
+   "label": {
+    "en": "curry leaves",
+    "si": "කරපිංචා",
+    "ta": "கறிவேப்பிலை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 sprigs",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "tempering"
+  },
+  {
+   "ref": "product_egg",
+   "label": {
+    "en": "eggs",
+    "si": "බිත්තර",
+    "ta": "முட்டை"
+   },
+   "quantity": 2,
+   "unit": "piece",
+   "household": "2 eggs",
+   "preparation": {
+    "en": "lightly beaten",
+    "si": "සැහැල්ලුවෙන් ගසාගත්",
+    "ta": "லேசாக அடித்தது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_ginger",
+   "label": {
+    "en": "ginger",
+    "si": "ඉඟුරු",
+    "ta": "இஞ்சி"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "a thumb tip",
+   "preparation": {
+    "en": "crushed to a paste",
+    "si": "තලා පේස්ට් කරගත්",
+    "ta": "நசுக்கி விழுதாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_garlic",
+   "label": {
+    "en": "garlic",
+    "si": "සුදුළූනු",
+    "ta": "பூண்டு"
+   },
+   "quantity": 12,
+   "unit": "g",
+   "household": "4 cloves",
+   "preparation": {
+    "en": "crushed to a paste",
+    "si": "තලා පේස්ට් කරගත්",
+    "ta": "நசுக்கி விழுதாக்கியது"
+   },
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_roasted_curry_powder",
+   "label": {
+    "en": "roasted curry powder",
+    "si": "බැදපු තුනපහ",
+    "ta": "வறுத்த கறி மசாலா"
+   },
+   "quantity": 10,
+   "unit": "g",
+   "household": "1 heaped tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_chilli_powder",
+   "label": {
+    "en": "chilli powder",
+    "si": "මිරිස් කුඩු",
+    "ta": "மிளகாய்த் தூள்"
+   },
+   "quantity": 5,
+   "unit": "g",
+   "household": "1 and a quarter tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_turmeric",
+   "label": {
+    "en": "turmeric powder",
+    "si": "කහ කුඩු",
+    "ta": "மஞ்சள் தூள்"
+   },
+   "quantity": 2,
+   "unit": "g",
+   "household": "half tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_pepper",
+   "label": {
+    "en": "black pepper",
+    "si": "ගම්මිරිස්",
+    "ta": "மிளகு"
+   },
+   "quantity": 3,
+   "unit": "g",
+   "household": "three quarters tsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "product_cinnamon",
+   "label": {
+    "en": "cinnamon",
+    "si": "කුරුඳු",
+    "ta": "இலவங்கப்பட்டை"
+   },
+   "quantity": 1,
+   "unit": "piece",
+   "household": "1 small stick",
+   "preparation": null,
+   "optional": false,
+   "scaling": "sublinear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_soy_sauce",
+   "label": {
+    "en": "soy sauce",
+    "si": "සෝයා සෝස්",
+    "ta": "சோயா சாஸ்"
+   },
+   "quantity": 15,
+   "unit": "ml",
+   "household": "1 tbsp",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "main"
+  },
+  {
+   "ref": "pantry_stock",
+   "label": {
+    "en": "meat stock or leftover curry gravy",
+    "si": "මස් හොද්ද හෝ ඉතිරි වූ කරි හොද්ද",
+    "ta": "இறைச்சிக் குழம்பு அல்லது மீதமான கறிக் குழம்பு"
+   },
+   "quantity": 150,
+   "unit": "ml",
+   "household": "three quarters of a cup of beef gravy",
+   "preparation": null,
+   "optional": false,
+   "scaling": "linear",
+   "part": "sauce"
+  }
+ ],
+ "steps": {
+  "en": [
+   {
+    "text": "Rub the beef with the roasted curry powder, chilli powder, turmeric, pepper, ginger, garlic and salt and leave it to take the spices.",
+    "minutes": 20
+   },
+   {
+    "text": "Cook the beef with the cinnamon and a cup of water in a covered pot, or in a pressure cooker, until it is properly soft.",
+    "minutes": 40
+   },
+   {
+    "text": "Lift the meat out, chop it small and boil the gravy down until it is thick and dark.",
+    "minutes": 5
+   },
+   {
+    "text": "While the beef cooks, knead the flour with water and a little salt into a soft dough, oil it and rest it.",
+    "minutes": 30
+   },
+   {
+    "text": "Stretch six thin roti from the dough and griddle them until brown spots come up.",
+    "minutes": 15
+   },
+   {
+    "text": "Chop the roti into shreds with two blades.",
+    "minutes": null
+   },
+   {
+    "text": "Heat the oil on a wide griddle and temper the onion, green chilli and curry leaves.",
+    "minutes": 3
+   },
+   {
+    "text": "Add the leeks and fry it hard for two minutes on a high flame.",
+    "minutes": 2
+   },
+   {
+    "text": "Push it aside, scramble the beaten eggs on the hot iron and mix them in.",
+    "minutes": 2
+   },
+   {
+    "text": "Add the chopped beef and half the thick gravy and let it sizzle.",
+    "minutes": 2
+   },
+   {
+    "text": "Tip in the roti with the soy sauce, chop and turn hard with two blades, adding the rest of the gravy so it stays moist, and serve at once.",
+    "minutes": 5
+   }
+  ],
+  "si": [
+   {
+    "text": "හරක් මස්වලට බැදපු තුනපහ, මිරිස් කුඩු, කහ, ගම්මිරිස්, ඉඟුරු, සුදුළූනු සහ ලුණු අතගා, කුළුබඩු ගැනීමට තබන්න.",
+    "minutes": 20
+   },
+   {
+    "text": "කුරුඳු සහ කෝප්පයක් වතුර සමඟ, වසන ලද භාජනයක හෝ ප්‍රෙෂර් කුකරයේ, මස් හොඳින් මෘදු වන තුරු උයන්න.",
+    "minutes": 40
+   },
+   {
+    "text": "මස් ගොඩට ගෙන කුඩාවට කපා, හොද්ද ඝන වී තද පාට වන තුරු නටවන්න.",
+    "minutes": 5
+   },
+   {
+    "text": "මස් උයන අතරතුර, පිටිවලට වතුර සහ ලුණු ස්වල්පයක් දමා මෘදු ගුලියක් අනා, තෙල් තවරා විවේකයට තබන්න.",
+    "minutes": 30
+   },
+   {
+    "text": "ගුලියෙන් තුනී රොටී හයක් ඇද, දුඹුරු ලප එන තුරු තැටියේ පුළුස්සන්න.",
+    "minutes": 15
+   },
+   {
+    "text": "රොටී කටු දෙකකින් සිහින් පටිවලට කපාගන්න.",
+    "minutes": null
+   },
+   {
+    "text": "පළල් තැටියක තෙල් රත් කර ලූනු, අමු මිරිස් සහ කරපිංචා බැදගන්න.",
+    "minutes": 3
+   },
+   {
+    "text": "ලීක්ස් දමා ලොකු ගින්දරේ විනාඩි දෙකක් හොඳින් බැදගන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "පැත්තකට තල්ලු කර, රත් වූ තැටියේ ගසාගත් බිත්තර සකසා මිශ්‍ර කරන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "කපාගත් හරක් මස් සහ ඝන හොද්දෙන් භාගයක් දමා, හොඳින් රස්නය දෙන්න.",
+    "minutes": 2
+   },
+   {
+    "text": "රොටී සහ සෝයා සෝස් දමා, කටු දෙකකින් තදින් කොටමින් පෙරළමින්, තෙත් බව රැඳෙන ලෙස ඉතිරි හොද්ද දමා, වහාම බෙදන්න.",
+    "minutes": 5
+   }
+  ],
+  "ta": [
+   {
+    "text": "மாட்டிறைச்சியில் வறுத்த கறி மசாலா, மிளகாய்த் தூள், மஞ்சள், மிளகு, இஞ்சி, பூண்டு, உப்பு தடவி, மசாலா ஏறும்வரை வைக்கவும்.",
+    "minutes": 20
+   },
+   {
+    "text": "இலவங்கப்பட்டையும் ஒரு கப் தண்ணீரும் சேர்த்து, மூடிய பாத்திரத்தில் அல்லது குக்கரில், இறைச்சி நன்கு மென்மையாகும்வரை சமைக்கவும்.",
+    "minutes": 40
+   },
+   {
+    "text": "இறைச்சியை எடுத்து சிறியதாக நறுக்கி, குழம்பு தடித்து கருமையாகும்வரை கொதிக்கவைக்கவும்.",
+    "minutes": 5
+   },
+   {
+    "text": "இறைச்சி வேகும் நேரத்தில், மாவுடன் தண்ணீரும் சிறிது உப்பும் சேர்த்து மென்மையான மாவாகப் பிசைந்து, எண்ணெய் தடவி ஓய்வெடுக்க வைக்கவும்.",
+    "minutes": 30
+   },
+   {
+    "text": "மாவில் ஆறு மெல்லிய ரொட்டிகளை விரித்து, பழுப்பு புள்ளிகள் வரும்வரை கல்லில் சுடவும்.",
+    "minutes": 15
+   },
+   {
+    "text": "ரொட்டியை இரு கத்திகளால் மெல்லிய துண்டுகளாக நறுக்கவும்.",
+    "minutes": null
+   },
+   {
+    "text": "அகலமான கல்லில் எண்ணெயைக் காய்ச்சி வெங்காயம், பச்சை மிளகாய், கறிவேப்பிலையைத் தாளிக்கவும்.",
+    "minutes": 3
+   },
+   {
+    "text": "லீக்ஸைச் சேர்த்து பெரிய தீயில் இரண்டு நிமிடம் நன்கு வதக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "ஒரு பக்கம் ஒதுக்கி, சூடான கல்லில் அடித்த முட்டையைக் கிளறி கலக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "நறுக்கிய இறைச்சியும் பாதி தடித்த குழம்பும் சேர்த்து, நன்கு சூடாக்கவும்.",
+    "minutes": 2
+   },
+   {
+    "text": "ரொட்டியும் சோயா சாஸும் சேர்த்து, இரு கத்திகளால் நன்கு வெட்டிப் புரட்டி, ஈரப்பதம் தங்க மீதி குழம்பையும் ஊற்றி, உடனே பரிமாறவும்.",
+    "minutes": 5
+   }
+  ]
+ },
+ "times": {
+  "prep_minutes": 25,
+  "cook_minutes": 30,
+  "passive_minutes": 20
+ },
+ "equipment": [
+  "pressure cooker or heavy pot",
+  "flat griddle",
+  "two kottu blades or turners"
+ ],
+ "tips": {
+  "en": "The beef must be cooked until it falls apart before it meets the roti, and it is the dark gravy, not the powder, that gives beef kottu its taste.",
+  "si": "රොටී සමඟ මිශ්‍ර වීමට පෙර හරක් මස් වෙන් වෙන්ව කැඩෙන තරමට උයා තිබිය යුතුයි, තවද හරක් මස් කොත්තුවට රසය දෙන්නේ තද හොද්දයි, කුඩු නොවේ.",
+  "ta": "ரொட்டியுடன் கலக்கும் முன் மாட்டிறைச்சி பிரிந்து வரும் அளவுக்கு வேக வேண்டும், மாட்டிறைச்சி கொத்துக்கு சுவை தருவது கருத்த குழம்பே, தூள் அல்ல."
+ },
+ "health_note": {
+  "en": "Beef brings iron and plenty of protein, which is why this fills you for the night, but it is also the fattiest kottu; a plate is a whole meal, not a snack.",
+  "si": "හරක් මස් වලින් යකඩ හා ප්‍රෝටීන් බහුලව ලැබෙන නිසා රාත්‍රිය පුරා බඩ පිරෙනවා, එහෙත් මෙය තෙල් වැඩිම කොත්තුවයි; පිඟානක් යනු සම්පූර්ණ කෑමක්, කෙටි කෑමක් නොවේ.",
+  "ta": "மாட்டிறைச்சி இரும்புச்சத்தும் புரதமும் நிறைய தருகிறது, எனவே இரவு முழுவதும் வயிறு நிறைந்திருக்கும், ஆனால் இது கொழுப்பு அதிகமான கொத்து; ஒரு தட்டு முழு உணவு, சிற்றுண்டி அல்ல."
+ },
+ "tags": [
+  "high_protein",
+  "iron_rich",
+  "filling",
+  "street_food",
+  "high_sodium"
+ ],
+ "review_needed": [],
+ "review": {
+  "en": false,
+  "si": false,
+  "ta": false
+ }
+}
