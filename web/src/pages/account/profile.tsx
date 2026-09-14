@@ -1,10 +1,11 @@
-import { RiAlertLine, RiCheckLine, RiGoogleFill } from "@remixicon/react";
+import { RiAlertLine, RiCheckLine, RiGoogleFill, RiStarFill, RiStarLine } from "@remixicon/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { accountLocales, avoidChoices, changeEmailSchema, changePasswordSchema, deleteAccountSchema, dietChoices, dishCategories, goalChoices, profilePatchSchema, type AccountLocale, type AccountPreferences, type AccountProfile, type AvoidChoice, type DietChoice, type GoalChoice } from "@lanka-pricelens/shared";
+import { accountLocales, avoidChoices, changeEmailSchema, changePasswordSchema, deleteAccountSchema, dietChoices, dishCategories, goalChoices, profilePatchSchema, type AccountLocale, type AccountPreferences, type AccountProfile, type AvoidChoice, type DietChoice, type GoalChoice, type WatchAlert, type WatchEntry } from "@lanka-pricelens/shared";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import { FormError, FormNote, SubmitButton, TextField } from "@/components/account-forms";
+import { ProductImage } from "@/components/product-image";
 import { RequireAccount } from "@/components/require-account";
 import { ResendVerificationButton } from "@/components/resend-verification";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -12,6 +13,7 @@ import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescript
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
@@ -20,10 +22,11 @@ import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { accountApi } from "@/lib/account-api";
 import { confirmError, describeUserAgent, validate, type FieldErrors } from "@/lib/account-forms";
-import { dishCategoryLabel } from "@/lib/format";
+import { changeLabel, dishCategoryLabel, rupees, unitLabel } from "@/lib/format";
 import { usePageTitle } from "@/lib/page-title";
 import { cn } from "@/lib/utils";
 import { setAccountProfile, useAccount } from "@/store/account";
+import { useWatchActions, useWatchlist } from "@/store/watchlist";
 import { languageNames, languageStore } from "@/store/language";
 
 /**
@@ -77,6 +80,7 @@ function ProfileSections() {
       ) : null}
       <AboutSection account={person} />
       <FoodPreferencesSection account={person} />
+      <WishlistSection />
       <EmailSection account={person} />
       <PasswordSection account={person} />
       <NotificationsSection account={person} />
@@ -342,13 +346,13 @@ const notificationRows: Array<{ key: NotificationKey; label: string; description
   { key: "notify_email", label: "Email from PriceLens", description: "News about the site and what is new. Mail about the account itself (verification, password changes) always comes." },
   { key: "notify_digest", label: "Daily price digest", description: "The day's supermarket deals, the cheapest store for the essentials, and the movers, every morning." },
   { key: "notify_recipes", label: "Daily recipe ideas", description: "Three recipes picked for your preferences, every morning." },
-  { key: "notify_alerts", label: "Price alerts", description: "When a product or menu you watch moves, once alerts start." },
+  { key: "notify_alerts", label: "Price alerts", description: "A morning mail when a product on your wishlist meets its rule: any drop, or a price of your own." },
 ];
 
 function NotificationsSection({ account }: { account: AccountProfile }) {
   const save = usePreferencesMutation(account);
   return (
-    <Section description="Saved as you switch them. The daily mails go out once the newsletters run; alerts come later." title="Notifications">
+    <Section description="Saved as you switch them. Each mail goes out once a morning, and every one carries a one-click unsubscribe." title="Notifications">
       <ul className="divide-y">
         {notificationRows.map((row) => (
           <li className="flex items-start justify-between gap-4 py-3 first:pt-0 last:pb-0" key={row.key}>
@@ -361,6 +365,109 @@ function NotificationsSection({ account }: { account: AccountProfile }) {
         ))}
       </ul>
       <FormError className="mt-3" error={save.error} />
+      {account.preferences.notify_alerts ? <AlertRules /> : null}
+    </Section>
+  );
+}
+
+const alertModeWords: Record<WatchAlert["mode"], string> = { any_drop: "Any drop", below: "Below a price", off: "No alert" };
+
+/** The rule behind each starred product, shown under the price alert switch once it is on. */
+function AlertRules() {
+  const { items, status } = useWatchlist();
+  const actions = useWatchActions();
+  if (status === "loading") return <p className="mt-4 text-xs text-muted-foreground">Loading your wishlist rules.</p>;
+  if (!items.length) {
+    return (
+      <div className="mt-4 rounded-lg border border-dashed p-3 text-xs text-muted-foreground">
+        Your wishlist is empty. Star a product on the board or its page and set a rule for it here.
+      </div>
+    );
+  }
+  return (
+    <div className="mt-4 space-y-2">
+      <p className="text-sm font-medium">Rules for your wishlist</p>
+      <p className="text-pretty text-xs text-muted-foreground">Any drop writes when the cheapest seller falls five percent or more against the day before. Below a price writes when the cheapest seller reaches your mark, and again a week later while it stays there.</p>
+      <ul className="divide-y rounded-lg border">
+        {items.map((entry) => <AlertRuleRow actions={actions} entry={entry} key={entry.product_id} />)}
+      </ul>
+      <FormError error={actions.error} />
+    </div>
+  );
+}
+
+function AlertRuleRow({ entry, actions }: { entry: WatchEntry; actions: ReturnType<typeof useWatchActions> }) {
+  const [mark, setMark] = useState(entry.alert.threshold_minor ? String(entry.alert.threshold_minor / 100) : "");
+  const label = entry.price?.label ?? entry.product_id.replace(/^product_/u, "").replace(/_/gu, " ");
+  const unit = entry.price?.unit ?? "kg";
+  const saveMark = () => {
+    const rupeesValue = Number(mark);
+    if (!Number.isFinite(rupeesValue) || rupeesValue <= 0) return;
+    const threshold = Math.round(rupeesValue * 100);
+    if (threshold === entry.alert.threshold_minor) return;
+    void actions.setAlert(entry.product_id, { mode: "below", threshold_minor: threshold });
+  };
+  return (
+    <li className="flex flex-wrap items-center gap-x-3 gap-y-2 px-3 py-2.5">
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-medium"><Link className="no-underline hover:text-primary" to={`/p/${entry.product_id}`}>{label}</Link></p>
+        <p className="text-[11px] text-muted-foreground">{entry.price?.cheapest ? `${rupees(entry.price.cheapest.price)} ${unitLabel(unit)} at ${entry.price.cheapest.market_label} today` : "No published price today"}</p>
+      </div>
+      <Select onValueChange={(mode) => { if (mode === "any_drop" || mode === "below" || mode === "off") void actions.setAlert(entry.product_id, { mode, threshold_minor: mode === "below" ? entry.alert.threshold_minor : null }); }} value={entry.alert.mode}>
+        <SelectTrigger aria-label={`Alert rule for ${label}`} className="w-36" size="sm"><SelectValue /></SelectTrigger>
+        <SelectContent>
+          {(Object.keys(alertModeWords) as Array<WatchAlert["mode"]>).map((mode) => <SelectItem key={mode} value={mode}>{alertModeWords[mode]}</SelectItem>)}
+        </SelectContent>
+      </Select>
+      {entry.alert.mode === "below" ? (
+        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+          <span>Rs</span>
+          <Input aria-label={`Price mark for ${label}, rupees per ${unitLabel(unit).replace(/^per /u, "")}`} className="h-8 w-24 tabular-nums" inputMode="decimal" onBlur={saveMark} onChange={(event) => setMark(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") { event.preventDefault(); saveMark(); } }} placeholder="e.g. 350" value={mark} />
+          <span>{unitLabel(unit)}</span>
+        </div>
+      ) : null}
+    </li>
+  );
+}
+
+/** The starred products with today's cheapest seller; the rules live under Notifications. */
+function WishlistSection() {
+  const { items, status, priced, error, refetch } = useWatchlist();
+  const actions = useWatchActions();
+  return (
+    <Section description="Products you star, with today's cheapest published seller. Switch on price alerts under Notifications to hear when one moves." id="wishlist" title="Wishlist">
+      {status === "loading" ? <p className="text-sm text-muted-foreground">Loading your wishlist.</p> : null}
+      {status === "error" ? <p className="text-sm text-destructive">Your wishlist could not be loaded. <button className="underline" onClick={refetch} type="button">Try again</button></p> : null}
+      {status === "ready" && !items.length ? (
+        <div className="flex items-center gap-3 rounded-lg border border-dashed p-4 text-sm text-muted-foreground">
+          <RiStarLine aria-hidden className="size-5 shrink-0 text-amber-500" />
+          <p className="text-pretty">Nothing starred yet. The star beside any product on the <Link to="/">board</Link> or its page puts it here.</p>
+        </div>
+      ) : null}
+      {items.length ? (
+        <ul className="divide-y">
+          {items.map((entry) => {
+            const label = entry.price?.label ?? entry.product_id.replace(/^product_/u, "").replace(/_/gu, " ");
+            const change = entry.price ? changeLabel(entry.price.change_pct) : null;
+            return (
+              <li className="flex items-center gap-3 py-2.5 first:pt-0 last:pb-0" key={entry.product_id}>
+                <Link className="shrink-0" to={`/p/${entry.product_id}`}><ProductImage id={entry.product_id} label={label} size="sm" /></Link>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-medium"><Link className="no-underline hover:text-primary" to={`/p/${entry.product_id}`}>{label}</Link></p>
+                  <p className="flex flex-wrap items-center gap-x-1.5 text-[11px] text-muted-foreground">
+                    {entry.price?.cheapest ? <span className="tabular-nums"><span className="font-medium text-foreground">{rupees(entry.price.cheapest.price)}</span> {unitLabel(entry.price.unit)} at {entry.price.cheapest.market_label}</span> : <span>{priced ? "No published price today" : "Prices are not available right now"}</span>}
+                    {change && change.direction !== "steady" ? <Badge className={cn("h-4 px-1 text-[10px]", change.direction === "rise" ? "bg-status-critical/10 text-status-critical" : "bg-status-good/10 text-status-good")} title="Against yesterday's cheapest" variant="outline">{change.text} vs yesterday</Badge> : null}
+                    <span>· {alertModeWords[entry.alert.mode]}{entry.alert.mode === "below" && entry.alert.threshold_minor ? ` ${rupees(entry.alert.threshold_minor / 100)}` : ""}</span>
+                  </p>
+                </div>
+                <Button aria-label={`Remove ${label} from your wishlist`} className="text-amber-500 hover:text-amber-600" disabled={actions.pending} onClick={() => void actions.remove(entry.product_id)} size="icon-sm" title="Remove from wishlist" type="button" variant="ghost"><RiStarFill className="size-4" /></Button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
+      {error ? <FormError className="mt-3" error={error} /> : null}
+      <FormError className="mt-3" error={actions.error} />
     </Section>
   );
 }

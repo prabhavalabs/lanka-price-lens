@@ -1,4 +1,4 @@
-import type { AccountLocale, AccountMenu, AccountMenuInput, AccountPreferences, AccountProfile, UserRecipe, UserRecipeInput } from "@lanka-pricelens/shared";
+import type { AccountLocale, AccountMenu, AccountMenuInput, AccountPreferences, AccountProfile, UserRecipe, UserRecipeInput, WatchAlert, WatchEntry, WatchItem } from "@lanka-pricelens/shared";
 
 import { describeFailure, type Envelope } from "./api.ts";
 
@@ -56,6 +56,12 @@ export const accountApi = {
     list: (signal?: AbortSignal) => call<AccountSessionSummary[]>("GET", "/v1/account/sessions", undefined, signal),
     /** Signs every other device out; answers how many sessions went. */
     revokeOthers: () => call<{ revoked: number }>("POST", "/v1/account/sessions/revoke-others", {}),
+  },
+  watchlist: {
+    list: (signal?: AbortSignal) => call<{ items: WatchEntry[]; total: number; limit: number; priced: boolean }>("GET", "/v1/account/watchlist", undefined, signal),
+    add: (productId: string, alert?: WatchAlert) => call<WatchItem>("PUT", `/v1/account/watchlist/${encodeURIComponent(productId)}`, alert ? { alert } : {}),
+    update: (productId: string, alert: WatchAlert) => call<WatchItem>("PATCH", `/v1/account/watchlist/${encodeURIComponent(productId)}`, { alert }),
+    remove: (productId: string) => call<null>("DELETE", `/v1/account/watchlist/${encodeURIComponent(productId)}`),
   },
   menus: {
     list: (signal?: AbortSignal) => call<{ items: AccountMenu[]; total: number; limit: number }>("GET", "/v1/account/menus", undefined, signal),

@@ -16,6 +16,7 @@ import { minutesLabel, rupees, unitLabel } from "@/lib/format";
 import { amountLabel, disambiguator, gramsLabel, ingredientName, kcalLabel, localized, macroShares, partLabel, tagLabel } from "@/lib/recipe-format";
 import { cn } from "@/lib/utils";
 import { QuantityControl } from "@/components/quantity";
+import { WatchStar } from "@/components/watch-star";
 import { basketStore, formatQuantity, useBasket } from "@/store/basket";
 import { useAccount } from "@/store/account";
 import { languageNames, languageStore, useLanguage } from "@/store/language";
@@ -177,6 +178,7 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
                         </div>
                         <div className="hidden text-right text-sm font-semibold tabular-nums sm:block">{line.cost ? rupees(line.cost.cost) : <span className="font-normal text-muted-foreground">—</span>}</div>
                         <div className="col-start-3 row-start-2 flex items-center justify-end gap-1.5 sm:col-start-6 sm:row-start-auto">
+                          {line.ref?.startsWith("product_") ? <WatchStar label={displayName} productId={line.ref} /> : null}
                           {line.ref && line.purchase ? (
                             owned ? (
                               <QuantityControl id={line.ref} label={displayName} unit={line.purchase.unit} />
