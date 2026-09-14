@@ -3,7 +3,7 @@ import { isNewsletterKind, type NewsletterRun } from "./store.ts";
 import { isDay } from "./time.ts";
 
 /**
- * `newsletter run --kind <recipes_daily|deals_daily> [--day YYYY-MM-DD] [--dry-run] [--force]`
+ * `newsletter run --kind <recipes_daily|deals_daily|price_alerts> [--day YYYY-MM-DD] [--dry-run] [--force]`
  * from a shell: the same run the scheduler and the admin start, printed as JSON. The caller
  * builds the service the way app.ts does and decides what to do with the run it gets back.
  */
@@ -14,7 +14,7 @@ export type NewsletterCommandDeps = {
   write?: ((line: string) => void) | undefined;
 };
 
-export const newsletterUsage = "Usage: newsletter run --kind <recipes_daily|deals_daily> [--day YYYY-MM-DD] [--dry-run] [--force]";
+export const newsletterUsage = "Usage: newsletter run --kind <recipes_daily|deals_daily|price_alerts> [--day YYYY-MM-DD] [--dry-run] [--force]";
 
 function valueOf(args: string[], name: string): string | undefined {
   const index = args.indexOf(name);

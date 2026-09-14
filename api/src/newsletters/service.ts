@@ -8,6 +8,8 @@ import { composeDealsMail, type DealsAccess } from "./deals.ts";
 import { composeRecipesMail, type CostLookup } from "./recipes.ts";
 import { createNewsletterStore, type NewsletterKind, type NewsletterReport, type NewsletterRun, type NewsletterStore } from "./store.ts";
 import { addDays, colomboDay, isDay } from "./time.ts";
+import type { WatchQuote, WatchStore } from "../account/watchlist.ts";
+import { composeAlertsMail, evaluateWatch, type WatchHit } from "./alerts.ts";
 import { preferenceOf, unsubscribeUrl } from "./unsubscribe.ts";
 
 /**
@@ -41,6 +43,8 @@ export type NewsletterDeps = {
       }
     | undefined;
   deals?: DealsAccess | undefined;
+  /** The wishlist rows and a pricing of every watched product, for the price alert run. */
+  watchlist?: { store: WatchStore; quotes: (productIds: string[]) => Promise<Map<string, WatchQuote> | null> } | undefined;
   now?: (() => Date) | undefined;
   log?: ((line: Record<string, unknown>) => void) | undefined;
 };
@@ -143,10 +147,16 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
       // What the run composes from: the deals day (computed and saved when missing) or the recipe index with today's costs.
       let dealsDay: Awaited<ReturnType<DealsAccess["compute"]>> = null;
       let cost: CostLookup | null = null;
+      let quotes: Map<string, WatchQuote> | null = null;
       if (kind === "deals_daily") {
         if (!deps.deals) return finish("failed", "DEALS_NOT_CONFIGURED");
         dealsDay = deps.deals.read(day) ?? (await deps.deals.compute(day));
         if (!dealsDay) return finish("failed", "DEALS_UNAVAILABLE: the warehouse did not answer");
+      } else if (kind === "price_alerts") {
+        if (!deps.watchlist) return finish("failed", "WATCHLIST_NOT_CONFIGURED");
+        const watched = [...new Set(recipients.flatMap((account) => deps.watchlist!.store.list(account.id).map((item) => item.product_id)))];
+        quotes = watched.length ? await deps.watchlist.quotes(watched) : new Map();
+        if (!quotes) return finish("failed", "PRICES_UNAVAILABLE: the warehouse did not answer");
       } else {
         if (!deps.recipes) return finish("failed", "RECIPES_NOT_CONFIGURED");
         if (recipients.length && deps.recipes.costs) {
@@ -163,7 +173,22 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
           const unsubscribe = unsubscribeUrl(siteOrigin, deps.secret, account.id, kind);
           let payload: Record<string, unknown>;
           let data;
-          if (kind === "deals_daily") {
+          let alertHits: WatchHit[] = [];
+          if (kind === "price_alerts") {
+            const at = clock();
+            alertHits = deps.watchlist!.store.list(account.id).flatMap((item) => {
+              const quote = quotes!.get(item.product_id);
+              const hit = quote ? evaluateWatch(item, quote, at) : null;
+              return hit ? [hit] : [];
+            });
+            const composed = composeAlertsMail(account, day, alertHits, { siteOrigin }, unsubscribe);
+            if (!composed) {
+              skip("no_alerts");
+              continue;
+            }
+            payload = { product_ids: composed.productIds, ...composed.summary };
+            data = composed.data;
+          } else if (kind === "deals_daily") {
             const composed = composeDealsMail(account, dealsDay!, { siteOrigin }, unsubscribe);
             if (!composed) {
               skip("nothing_to_say");
@@ -197,6 +222,8 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
             continue;
           }
           store.recordDelivery({ run_id: run.id, kind, day, account_id: account.id, payload, outbox_id: store.outboxIdFor(account.id, dedupeKey) }, clock());
+          // The next alert on these products waits for a further move from the price reported today.
+          for (const hit of alertHits) if (hit.quote.now_minor !== null) deps.watchlist!.store.markAlerted(account.id, hit.item.product_id, clock(), hit.quote.now_minor);
           counts.sent += 1;
         } catch (error) {
           counts.failed += 1;

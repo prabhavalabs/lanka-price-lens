@@ -45,7 +45,7 @@ export function newsletterAdminRoutes(deps: NewsletterAdminDeps): Hono<AdminBind
   app.get("/newsletters/runs", (context) => {
     const requested = (context.req.query("kind") ?? "").trim();
     const kind = isNewsletterKind(requested) ? requested : null;
-    if (requested && !kind) return fail(context, 400, "kind must be recipes_daily or deals_daily");
+    if (requested && !kind) return fail(context, 400, "kind must be recipes_daily, deals_daily, or price_alerts");
     const limit = Number(context.req.query("limit") ?? 20);
     return context.json(envelope(requestIdOf(context), deps.service.listRuns(kind, Number.isInteger(limit) ? Math.min(Math.max(limit, 1), 200) : 20)));
   });
@@ -53,7 +53,7 @@ export function newsletterAdminRoutes(deps: NewsletterAdminDeps): Hono<AdminBind
   app.post("/newsletters/run", bodyLimit({ maxSize: 4 * 1024 }), async (context) => {
     const body = await jsonObject(context);
     if (!body) return fail(context, 400, "Body must be JSON");
-    if (!isNewsletterKind(body.kind)) return fail(context, 400, "kind must be recipes_daily or deals_daily");
+    if (!isNewsletterKind(body.kind)) return fail(context, 400, "kind must be recipes_daily, deals_daily, or price_alerts");
     if (body.day !== undefined && !isDay(body.day)) return fail(context, 400, "day must be YYYY-MM-DD");
     try {
       const outcome = await deps.service.runNewsletter(body.kind, { day: typeof body.day === "string" ? body.day : undefined, trigger: "manual", dryRun: body.dry_run === true, force: body.force === true });
@@ -155,6 +155,14 @@ export function sampleMailData(kind: MailKind, deps: Pick<MailAdminDeps, "siteOr
       const composed = composeDealsMail(account, dealsDay, { siteOrigin: origin }, unsubscribe);
       if (composed) return composed.data;
       return { values: { name: "Amal", date: dayWords(dealsDay.day), count: 0, stores: "the supermarkets", link: `${origin}/deals` }, blocks: dealsBlocks(dealsDay, origin), unsubscribeUrl: unsubscribe };
+    }
+    case "price_alerts": {
+      // Two starred products that met their rules: a drop against yesterday and a price under the person's own mark.
+      const rows = [
+        { product: "Big Onion", store: "at Glomark Online", now: "Rs 350 / kg", was: "was Rs 380 / kg yesterday", pct: -7.9, url: `${origin}/p/product_big_onion` },
+        { product: "Chicken", store: "at Keells Online", now: "Rs 1,590 / kg", was: "under your mark of Rs 1,600 / kg; was Rs 1,635 / kg yesterday", pct: -2.8, url: `${origin}/p/product_chicken` },
+      ];
+      return { values: { name: "Amal", date: dayWords(day), count: "two products", link: `${origin}/account#wishlist` }, blocks: [{ type: "deals", heading: null, rows, note: "Prices are the cheapest published retail seller today; open markets and supermarkets count, wholesale does not." }], unsubscribeUrl: unsubscribe };
     }
     case "reset_password":
       return { values: { name: "Amal", link: `${origin}/account/reset?token=sample`, minutes: 60 } };

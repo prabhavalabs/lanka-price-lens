@@ -16,9 +16,9 @@ import { isNewsletterKind, type NewsletterKind } from "./store.ts";
  */
 
 /** Which preference each newsletter kind switches. */
-export const preferenceOf: Record<NewsletterKind, "notify_recipes" | "notify_digest"> = { recipes_daily: "notify_recipes", deals_daily: "notify_digest" };
+export const preferenceOf: Record<NewsletterKind, "notify_recipes" | "notify_digest" | "notify_alerts"> = { recipes_daily: "notify_recipes", deals_daily: "notify_digest", price_alerts: "notify_alerts" };
 
-const wording: Record<NewsletterKind, string> = { recipes_daily: "daily recipe ideas", deals_daily: "the daily deals mail" };
+const wording: Record<NewsletterKind, string> = { recipes_daily: "daily recipe ideas", deals_daily: "the daily deals mail", price_alerts: "price alerts for your wishlist" };
 
 function signature(secret: string, accountId: string, kind: NewsletterKind): string {
   return createHmac("sha256", secret).update(`${accountId}:${kind}`).digest("hex");

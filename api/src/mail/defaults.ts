@@ -5,7 +5,7 @@
  * layout stays in code (api/src/mail/layout.ts); only the words live here.
  */
 
-export const mailKinds = ["verify_email", "welcome", "reset_password", "password_changed", "change_email", "email_changed", "account_deleted", "recipes_daily", "deals_daily"] as const;
+export const mailKinds = ["verify_email", "welcome", "reset_password", "password_changed", "change_email", "email_changed", "account_deleted", "recipes_daily", "deals_daily", "price_alerts"] as const;
 export type MailKind = (typeof mailKinds)[number];
 
 export function isMailKind(value: unknown): value is MailKind {
@@ -56,6 +56,7 @@ export const mailPlaceholders: Record<MailKind, MailPlaceholder[]> = {
   account_deleted: [name],
   recipes_daily: [name, date, link, { name: "count", description: "How many recipes the mail carries" }],
   deals_daily: [name, date, link, { name: "count", description: "How many deals the mail carries" }, { name: "stores", description: "The stores with prices today, as a list" }],
+  price_alerts: [name, date, link, { name: "count", description: "How many wishlist products moved" }],
 };
 
 export const mailDefaults: Record<MailKind, MailFields> = {
@@ -139,5 +140,14 @@ export const mailDefaults: Record<MailKind, MailFields> = {
     outro: "Prices are what {{stores}} publish online each morning; a deal can be gone by the evening.",
     button_label: "See today's prices",
     reason: "You're getting this email because you switched on the daily deals mail on your PriceLens account. Unsubscribe with one click below, or change it any time under Notifications in your account.",
+  },
+  price_alerts: {
+    subject: "Price alert: {{count}} on your wishlist moved",
+    preheader: "The products you star, at today's cheapest seller.",
+    heading: "Your wishlist moved",
+    intro: "Hi {{name}}, {{count}} on your wishlist met the rule you set, as of {{date}}. Here is where each is cheapest today and what it was before.",
+    outro: "Each product keeps its own rule: any drop, or a price of your own. Change them under Notifications in your account.",
+    button_label: "Open my wishlist",
+    reason: "You're getting this email because you switched on price alerts on your PriceLens account. Unsubscribe with one click below, or change it any time under Notifications in your account.",
   },
 };

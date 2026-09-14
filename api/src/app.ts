@@ -44,6 +44,7 @@ import { createContentStore } from "./account/content.ts";
 import { googleRoutes } from "./account/google.ts";
 import { createAccountMailer } from "./account/mail.ts";
 import { readAccount, requireAccount, type AccountVariables } from "./account/middleware.ts";
+import { createWatchStore, watchPrices, watchlistRoutes } from "./account/watchlist.ts";
 import { accountRoutes } from "./account/routes.ts";
 import { createAccountService } from "./account/service.ts";
 import { createAccountStore } from "./account/store.ts";
@@ -125,6 +126,7 @@ export function createApp(
   const accountMailer = options.accounts?.mailer ?? ownMailer!;
   const accountService = createAccountService({ store: accountStore, mailer: accountMailer, config: accountConfig });
   const contentStore = createContentStore(database);
+  const watchStore = createWatchStore(database);
   const presence = options.presence ?? new Presence();
   /** The PostgreSQL warehouse behind the price explorer; null when not configured or unreachable (the routes answer 503). */
   const warehouse = async (): Promise<WarehouseClient | null> => {
@@ -221,6 +223,13 @@ export function createApp(
     markUrl: ownMailer?.markUrl,
     ...(options.recipes ? { recipes: { index: recipeIndex, costs: recipeCosts } } : {}),
     deals,
+    watchlist: {
+      store: watchStore,
+      quotes: async (productIds) => {
+        const client = await warehouse();
+        return client ? watchPrices(client, published(), productIds) : null;
+      },
+    },
     log: (line) => console.log(JSON.stringify({ level: "info", ...line })),
   });
   newsletterServices.set(app, newsletters);
@@ -439,7 +448,10 @@ export function createApp(
   // Visitor accounts: sign-up, sign-in, recovery, profile; menus and own recipes on the account; Google sign-in.
   app.route("/v1/account", accountRoutes({ store: accountStore, service: accountService, config: accountConfig }));
   const accountGuard = requireAccount(accountStore, accountConfig);
-  for (const path of ["/v1/account/menus", "/v1/account/menus/*", "/v1/account/recipes", "/v1/account/recipes/*"]) app.use(path, accountGuard);
+  for (const path of ["/v1/account/menus", "/v1/account/menus/*", "/v1/account/recipes", "/v1/account/recipes/*", "/v1/account/watchlist", "/v1/account/watchlist/*"]) app.use(path, accountGuard);
+  // The wishlist (docs/newsletters.md): starred products with today's cheapest seller and each one's alert rule.
+  // Mounted before the content routes, whose verified-address check covers menus and recipes but not stars.
+  app.route("/v1/account/watchlist", watchlistRoutes({ store: watchStore, warehouse, published }));
   app.route("/v1/account", contentRoutes({ content: contentStore, recipes: options.recipes, warehouse, published }));
   app.route("/v1/auth/google", googleRoutes({ store: accountStore, config: accountConfig, createSession: (accountId, meta) => accountStore.createSession(accountId, meta, accountConfig.sessionSeconds, new Date()) }));
 

@@ -753,6 +753,17 @@ function migrate(database: OperationalDatabase): void {
       updated_at TEXT NOT NULL
     ) STRICT;
     CREATE INDEX IF NOT EXISTS account_menu_account_idx ON account_menu(account_id, updated_at DESC);
+    CREATE TABLE IF NOT EXISTS account_watch (
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      product_id TEXT NOT NULL,
+      alert_json TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      last_alert_at TEXT,
+      last_alert_minor INTEGER,
+      PRIMARY KEY (account_id, product_id)
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS account_watch_product_idx ON account_watch(product_id);
     CREATE TABLE IF NOT EXISTS account_recipe (
       id TEXT PRIMARY KEY,
       account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
@@ -777,7 +788,7 @@ function migrate(database: OperationalDatabase): void {
     ) STRICT;
     CREATE TABLE IF NOT EXISTS newsletter_run (
       id TEXT PRIMARY KEY,
-      kind TEXT NOT NULL CHECK (kind IN ('recipes_daily', 'deals_daily')),
+      kind TEXT NOT NULL CHECK (kind IN ('recipes_daily', 'deals_daily', 'price_alerts')),
       day TEXT NOT NULL,
       trigger TEXT NOT NULL,
       status TEXT NOT NULL CHECK (status IN ('running', 'sent', 'skipped', 'failed', 'dry_run')),

@@ -7,7 +7,7 @@ import { newId, type OperationalDatabase } from "@lanka-pricelens/foundry/db";
  * the outbox entry that carries it.
  */
 
-export const newsletterKinds = ["recipes_daily", "deals_daily"] as const;
+export const newsletterKinds = ["recipes_daily", "deals_daily", "price_alerts"] as const;
 export type NewsletterKind = (typeof newsletterKinds)[number];
 
 export function isNewsletterKind(value: unknown): value is NewsletterKind {

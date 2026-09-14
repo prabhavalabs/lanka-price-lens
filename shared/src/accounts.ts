@@ -73,7 +73,45 @@ export type AccountProfile = {
   created_at: string;
 };
 
-/** A menu kept on the account: the same shape the site composes, without the client-side id and stamp. */
+/**
+ * The wishlist (docs/newsletters.md): products a person stars to watch. Each entry carries its
+ * own alert rule: any drop against the day before, or a price the cheapest seller must reach.
+ */
+export const watchAlertModes = ["off", "any_drop", "below"] as const;
+export type WatchAlertMode = (typeof watchAlertModes)[number];
+export const watchAlertSchema = z.object({
+  mode: z.enum(watchAlertModes).default("any_drop"),
+  /** Rupees in cents; only read when the mode is "below". */
+  threshold_minor: z.number().int().min(1).max(100_000_000).nullable().default(null),
+});
+export type WatchAlert = z.infer<typeof watchAlertSchema>;
+export const watchItemInputSchema = z.object({ alert: watchAlertSchema.optional() });
+export type WatchItemInput = z.infer<typeof watchItemInputSchema>;
+export const watchLimit = 100;
+export const productIdPattern = /^product_[a-z0-9]+(?:_[a-z0-9]+)*$/u;
+export type WatchItem = {
+  product_id: string;
+  alert: WatchAlert;
+  created_at: string;
+  updated_at: string;
+  last_alert_at: string | null;
+  /** The cheapest price (cents) the last alert reported, so the next one waits for a further move. */
+  last_alert_minor: number | null;
+};
+/** What the wishlist shows beside an entry: the cheapest seller today and how that compares with the day before. */
+export type WatchPrice = {
+  label: string;
+  category: string;
+  unit: string;
+  cheapest: { market_id: string; market_label: string; group: string; price: number; observed_on: string } | null;
+  /** The cheapest price the day before, in rupees; null without one. */
+  yesterday: number | null;
+  change_pct: number | null;
+  sellers: number;
+};
+export type WatchEntry = WatchItem & { price: WatchPrice | null };
+
+
 export const accountMenuInputSchema = menuSchema.omit({ id: true, created_at: true });
 export type AccountMenuInput = z.infer<typeof accountMenuInputSchema>;
 export type AccountMenu = AccountMenuInput & { id: string; account_id: string; created_at: string; updated_at: string };
