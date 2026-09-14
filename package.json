@@ -18,6 +18,7 @@
     "dev:scheduler": "pnpm --filter @lanka-pricelens/foundry cli scheduler",
     "foundry": "pnpm --filter @lanka-pricelens/foundry cli",
     "newsletter": "pnpm --filter @lanka-pricelens/api cli newsletter",
+    "mail": "pnpm --filter @lanka-pricelens/api cli mail",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",

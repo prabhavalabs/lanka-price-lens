@@ -83,7 +83,8 @@ import { productDetail, searchProducts } from "./explorer.ts";
 import { dishDetail, ingredientPrices, listDishes, pricedProducts, productLabels, readRecipeStore, recipeOverview, recommendDishes, type RecipeStore } from "./recipes.ts";
 import { dealsRoutes } from "./deals.ts";
 import { createTemplateStore } from "./mail/templates.ts";
-import { mailAdminRoutes, newsletterAdminRoutes } from "./newsletters/admin-routes.ts";
+import { mailAdminRoutes, newsletterAdminRoutes, previewMail, type MailAdminDeps } from "./newsletters/admin-routes.ts";
+import { sampleOwnerNotices, type MailServices } from "./mail/samples.ts";
 import { dealsAccessFor } from "./newsletters/deals.ts";
 import type { CostLookup } from "./newsletters/recipes.ts";
 import { startNewsletterScheduler } from "./newsletters/scheduler.ts";
@@ -545,7 +546,13 @@ export function createApp(
   app.route("/v1/admin/accounts", adminAccountRoutes({ store: accountStore, content: contentStore }));
   app.route("/v1/admin", newsletterAdminRoutes({ service: newsletters, deals }));
   app.route("/v1/admin/community", communityAdminRoutes({ store: communityStore, accounts: accountStore, recipes: options.recipes }));
-  app.route("/v1/admin/mail", mailAdminRoutes({ templates, send: ownMailer?.send, testAddress: options.newsletters?.testAddress ?? null, siteOrigin: accountConfig.siteOrigin, replyTo: ownMailer?.replyTo, markUrl: ownMailer?.markUrl, ...(options.recipes ? { recipes: { index: recipeIndex } } : {}), deals }));
+  const mailAdmin: MailAdminDeps = { templates, send: ownMailer?.send, testAddress: options.newsletters?.testAddress ?? null, siteOrigin: accountConfig.siteOrigin, replyTo: ownMailer?.replyTo, markUrl: ownMailer?.markUrl, ...(options.recipes ? { recipes: { index: recipeIndex } } : {}), deals };
+  app.route("/v1/admin/mail", mailAdminRoutes(mailAdmin));
+  mailServices.set(app, {
+    sample: (kind) => previewMail(kind, mailAdmin),
+    notices: () => sampleOwnerNotices({ siteOrigin: accountConfig.siteOrigin, replyTo: ownMailer?.replyTo, markUrl: ownMailer?.markUrl }),
+    send: ownMailer?.send ?? null,
+  });
 
   app.get("/v1/admin/events/workflows", (context) => {
     const suppliedCursor = context.req.header("Last-Event-ID") ?? context.req.query("after");
@@ -1437,6 +1444,8 @@ export function createApp(
 
 /** The newsletter service behind an app, for the CLI that runs a mail by hand without starting the server. */
 export const newsletterServices = new WeakMap<Hono<AppBindings>, NewsletterService>();
+/** The mail samples behind an app, for the CLI that mails every kind to the owner for review. */
+export const mailServices = new WeakMap<Hono<AppBindings>, MailServices>();
 
 export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono<AppBindings> {
   const database = openOperationalDatabase(resolve(process.env.LPL_DATABASE_PATH ?? "../data/runtime/operations.sqlite"));

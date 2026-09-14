@@ -181,6 +181,13 @@ export function sampleMailData(kind: MailKind, deps: Pick<MailAdminDeps, "siteOr
   }
 }
 
+/** One kind rendered with its sample data and the stored wording, any overrides on top: the admin's preview, and the samples the CLI mails. */
+export function previewMail(kind: MailKind, deps: MailAdminDeps, overrides?: unknown, now: Date = new Date()): RenderedMail {
+  const stored = deps.templates.get(kind).fields;
+  const fields = { ...stored, ...readFields(overrides) };
+  return renderMail(kind, sampleMailData(kind, deps, now), { fields, markUrl: deps.markUrl, replyTo: deps.replyTo, siteOrigin: deps.siteOrigin });
+}
+
 export function mailAdminRoutes(deps: MailAdminDeps): Hono<AdminBindings> {
   const app = new Hono<AdminBindings>();
   const clock = deps.now ?? (() => new Date());
@@ -188,11 +195,7 @@ export function mailAdminRoutes(deps: MailAdminDeps): Hono<AdminBindings> {
     const kind = context.req.param("kind");
     return isMailKind(kind) ? kind : null;
   };
-  const preview = (kind: MailKind, overrides: unknown): RenderedMail => {
-    const stored = deps.templates.get(kind).fields;
-    const fields = { ...stored, ...readFields(overrides) };
-    return renderMail(kind, sampleMailData(kind, deps, clock()), { fields, markUrl: deps.markUrl, replyTo: deps.replyTo, siteOrigin: deps.siteOrigin });
-  };
+  const preview = (kind: MailKind, overrides: unknown): RenderedMail => previewMail(kind, deps, overrides, clock());
 
   app.get("/templates", (context) => context.json(envelope(requestIdOf(context), deps.templates.list())));
 
