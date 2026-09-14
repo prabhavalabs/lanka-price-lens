@@ -816,6 +816,37 @@ function migrate(database: OperationalDatabase): void {
     CREATE INDEX IF NOT EXISTS newsletter_delivery_run_idx ON newsletter_delivery(run_id);
   `);
   database.exec(outboxSchema);
+  // The kind check on newsletter_run predates price alerts. SQLite cannot change a CHECK in place, so a
+  // database created before then gets the table rebuilt, with foreign keys off so the deliveries survive.
+  const runTable = (database.prepare("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'newsletter_run'").get() as { sql: string } | undefined)?.sql ?? "";
+  if (runTable && !runTable.includes("price_alerts")) {
+    database.pragma("foreign_keys = OFF");
+    try {
+      database.exec(`
+        CREATE TABLE newsletter_run_next (
+          id TEXT PRIMARY KEY,
+          kind TEXT NOT NULL CHECK (kind IN ('recipes_daily', 'deals_daily', 'price_alerts')),
+          day TEXT NOT NULL,
+          trigger TEXT NOT NULL,
+          status TEXT NOT NULL CHECK (status IN ('running', 'sent', 'skipped', 'failed', 'dry_run')),
+          started_at TEXT NOT NULL,
+          finished_at TEXT,
+          recipients INTEGER NOT NULL DEFAULT 0,
+          sent INTEGER NOT NULL DEFAULT 0,
+          skipped INTEGER NOT NULL DEFAULT 0,
+          failed INTEGER NOT NULL DEFAULT 0,
+          error TEXT,
+          report_json TEXT
+        ) STRICT;
+        INSERT INTO newsletter_run_next SELECT id, kind, day, trigger, status, started_at, finished_at, recipients, sent, skipped, failed, error, report_json FROM newsletter_run;
+        DROP TABLE newsletter_run;
+        ALTER TABLE newsletter_run_next RENAME TO newsletter_run;
+        CREATE INDEX IF NOT EXISTS newsletter_run_kind_day_idx ON newsletter_run(kind, day, started_at DESC);
+      `);
+    } finally {
+      database.pragma("foreign_keys = ON");
+    }
+  }
 }
 
 function addColumn(database: OperationalDatabase, table: string, column: string, definition: string): void {

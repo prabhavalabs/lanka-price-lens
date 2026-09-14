@@ -142,7 +142,7 @@ export const mailDefaults: Record<MailKind, MailFields> = {
     reason: "You're getting this email because you switched on the daily deals mail on your PriceLens account. Unsubscribe with one click below, or change it any time under Notifications in your account.",
   },
   price_alerts: {
-    subject: "Price alert: {{count}} on your wishlist moved",
+    subject: "Price alert: {{count}} moved on your wishlist",
     preheader: "The products you star, at today's cheapest seller.",
     heading: "Your wishlist moved",
     intro: "Hi {{name}}, {{count}} on your wishlist met the rule you set, as of {{date}}. Here is where each is cheapest today and what it was before.",
