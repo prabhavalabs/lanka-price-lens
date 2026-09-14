@@ -1,9 +1,10 @@
-import { RiAddLine, RiDeleteBinLine, RiEditLine, RiSearchLine, RiSubtractLine } from "@remixicon/react";
+import { RiAddLine, RiDeleteBinLine, RiEditLine, RiSearchLine, RiShoppingBasketLine, RiSubtractLine } from "@remixicon/react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { AccountActionError } from "@/components/account-notice";
+import { InBasketBadge } from "@/components/recipe-view";
 import { ErrorState } from "@/components/error-state";
 import { PeopleInput } from "@/components/people-input";
 import { RequireAccount } from "@/components/require-account";
@@ -21,7 +22,8 @@ import { computeMenu, fetchRecipes, type MenuTotals } from "@/lib/api";
 import { dishCategoryLabel, rupees, unitLabel } from "@/lib/format";
 import { usePageTitle } from "@/lib/page-title";
 import { amountLabel, gramsLabel, kcalLabel } from "@/lib/recipe-format";
-import { basketStore } from "@/store/basket";
+import { cn } from "@/lib/utils";
+import { basketStore, useBasket } from "@/store/basket";
 import { readLegacyMenus, rememberDishLabels, useMenu, useMenuActions, useMenus, writeLegacyMenus, type Menu } from "@/store/menus";
 
 const plural = (count: number, noun: string, many = `${noun}s`) => `${count} ${count === 1 ? noun : many}`;
@@ -310,6 +312,9 @@ function MenuDetail({ menu }: { menu: Menu }) {
     placeholderData: keepPreviousData,
   });
   const data: MenuTotals | undefined = totals.data;
+  const basket = useBasket();
+  const have = new Set(basket.lines.map((line) => line.id));
+  const owned = data ? data.shopping.filter((line) => line.ref && have.has(line.ref)).length : 0;
   const [editing, setEditing] = useState(false);
   const [adding, setAdding] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -342,20 +347,28 @@ function MenuDetail({ menu }: { menu: Menu }) {
       ) : null}
 
       {totals.isError ? <ErrorState error={totals.error} onRetry={() => void totals.refetch()} retrying={totals.isFetching} /> : null}
-      {menu.items.length > 0 && totals.isPending ? <div className="grid gap-3 sm:grid-cols-3"><Skeleton className="h-24 rounded-xl" /><Skeleton className="h-24 rounded-xl" /><Skeleton className="h-24 rounded-xl" /></div> : null}
+      {menu.items.length > 0 && totals.isPending ? <Skeleton className="h-36 rounded-xl" /> : null}
 
       {data ? (
-        <section className="grid gap-3 sm:grid-cols-3">
-          <Card className="border-primary/40">
-            <CardContent className="p-4">
+        <Card className="border-primary/40">
+          <CardContent className="grid gap-5 p-4 sm:grid-cols-2 sm:gap-6">
+            <div>
+              <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Per person</p>
+              <p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{kcalLabel(data.per_person.nutrition.kcal)}</p>
+              <p className="text-xs text-muted-foreground">{gramsLabel(data.per_person.nutrition.protein_g)} protein · {gramsLabel(data.per_person.nutrition.fat_g)} fat · {gramsLabel(data.per_person.nutrition.carb_g)} carbs</p>
+              <p className="mt-2 text-[11px] text-muted-foreground">{kcalLabel(data.total.nutrition.kcal)} for the whole meal{data.unknown.length ? ` · ${data.unknown.length} recipes no longer exist` : ""}</p>
+            </div>
+            <div className="border-t pt-4 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
               <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Cost for {plural(data.people, "person", "people")}</p>
               <p className="mt-1 font-heading text-3xl font-semibold tabular-nums">{data.total.cost !== null ? `${data.total.estimated ? "≈ " : ""}${rupees(data.total.cost)}` : "—"}</p>
-              <p className="text-xs text-muted-foreground">{data.total.cost !== null ? <>{rupees(data.per_person.cost ?? 0)} per person · priced items only{data.total.estimated ? " · some prices older or missing" : ""}</> : "prices are not available right now"}</p>
-            </CardContent>
-          </Card>
-          <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">Per person</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{kcalLabel(data.per_person.nutrition.kcal)}</p><p className="text-xs text-muted-foreground">{gramsLabel(data.per_person.nutrition.protein_g)} protein · {gramsLabel(data.per_person.nutrition.fat_g)} fat · {gramsLabel(data.per_person.nutrition.carb_g)} carbs</p></CardContent></Card>
-          <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">Whole meal</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{kcalLabel(data.total.nutrition.kcal)}</p><p className="text-xs text-muted-foreground">{data.shopping.length} things to buy{data.unknown.length ? ` · ${data.unknown.length} recipes no longer exist` : ""}</p></CardContent></Card>
-        </section>
+              <p className="text-xs text-muted-foreground">{data.total.cost !== null ? <><span className="font-medium text-foreground">{rupees(data.per_person.cost ?? 0)}</span> per person, at today's cheapest sellers · priced items only{data.total.estimated ? " · some prices older or missing" : ""}</> : "prices are not available right now"}</p>
+              <p className="mt-2 flex items-start gap-1.5 text-xs text-muted-foreground">
+                <RiShoppingBasketLine aria-hidden className="mt-0.5 size-3.5 shrink-0" />
+                <span>{plural(data.shopping.length, "thing")} to buy{owned ? `, ${owned} already in your basket` : ""}</span>
+              </p>
+            </div>
+          </CardContent>
+        </Card>
       ) : null}
 
       {menu.items.length ? (
@@ -415,12 +428,16 @@ function MenuDetail({ menu }: { menu: Menu }) {
         let number = 0;
         const row = (line: (typeof data.shopping)[number]) => {
           number += 1;
+          const inBasket = Boolean(line.ref && have.has(line.ref));
           return (
-            <li key={`${line.ref ?? line.label}-${line.unit}`} className="grid grid-cols-[1.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-0.5 px-4 py-2.5 sm:grid-cols-[1.75rem_minmax(0,1.4fr)_5.5rem_minmax(0,1fr)_6rem]">
+            <li key={`${line.ref ?? line.label}-${line.unit}`} className={cn("grid grid-cols-[1.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-0.5 px-4 py-2.5 sm:grid-cols-[1.75rem_minmax(0,1.4fr)_5.5rem_minmax(0,1fr)_6rem]", inBasket && "bg-primary/[0.04]")}>
               <span className="text-xs text-muted-foreground tabular-nums">{number}.</span>
               <div className="min-w-0">
                 <p className="truncate text-sm font-medium">{line.ref?.startsWith("product_") ? <Link to={`/p/${line.ref}`} className="no-underline hover:text-primary">{line.label}</Link> : line.label}</p>
-                <p className="truncate text-[11px] text-muted-foreground">{line.recipes.length > 1 ? `in ${line.recipes.length} recipes` : `in ${data.names[line.recipes[0] ?? ""]?.en ?? "1 recipe"}`}</p>
+                <p className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] text-muted-foreground">
+                  {inBasket ? <InBasketBadge /> : null}
+                  <span className="truncate">{line.recipes.length > 1 ? `in ${line.recipes.length} recipes` : `in ${data.names[line.recipes[0] ?? ""]?.en ?? "1 recipe"}`}</span>
+                </p>
               </div>
               <p className="text-right text-sm font-semibold tabular-nums">{amountLabel(line.quantity, line.unit)}</p>
               <div className="col-start-2 min-w-0 text-[11px] leading-snug text-muted-foreground sm:col-start-4 sm:text-xs">
@@ -441,9 +458,10 @@ function MenuDetail({ menu }: { menu: Menu }) {
               <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
                 <div><h2 className="font-heading text-lg font-semibold">Shopping list</h2><p className="text-xs text-muted-foreground">Everything across the recipes, summed once per ingredient, at today's cheapest published sellers. Priced products can go to your basket in these amounts.</p></div>
                 <Button
+                  disabled={main.every((line) => line.ref && have.has(line.ref))}
                   onClick={() => {
                     for (const line of data.shopping) {
-                      if (!line.ref?.startsWith("product_")) continue;
+                      if (!line.ref?.startsWith("product_") || have.has(line.ref)) continue;
                       const unit = line.unit === "piece" ? "piece" : line.unit === "ml" ? "l" : "kg";
                       const quantity = line.unit === "piece" ? Math.ceil(line.quantity) : Math.max(0.05, Math.round((line.quantity / 1000) * 100) / 100);
                       basketStore.add(line.ref, line.label, unit, quantity);
@@ -452,7 +470,7 @@ function MenuDetail({ menu }: { menu: Menu }) {
                   size="sm"
                   variant="outline"
                 >
-                  Add priced items to basket
+                  {owned ? "Add the rest to basket" : "Add priced items to basket"}
                 </Button>
               </div>
               <div className="hidden grid-cols-[1.75rem_minmax(0,1.4fr)_5.5rem_minmax(0,1fr)_6rem] gap-x-3 border-b px-4 py-2 text-[11px] font-medium uppercase text-muted-foreground sm:grid">
