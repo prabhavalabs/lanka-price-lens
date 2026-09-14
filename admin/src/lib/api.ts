@@ -244,3 +244,67 @@ export type AdminAccount = {
   recipes: number;
 };
 export type AdminAccountUpdate = AdminAccount & { sessions_revoked: number };
+
+function jsonInit(method: "POST" | "PUT" | "PATCH", body: unknown): RequestInit {
+  return { method, headers: { "content-type": "application/json" }, body: JSON.stringify(body) };
+}
+
+/** Every mail the site sends, in the order the Mail page lists them. */
+export const mailKinds = ["verify_email", "welcome", "reset_password", "password_changed", "change_email", "email_changed", "account_deleted", "recipes_daily", "deals_daily"] as const;
+export type MailKind = (typeof mailKinds)[number];
+/** The editable wording of a mail; the layout around it stays in code. */
+export type MailFields = { subject: string; preheader: string; heading: string; intro: string; outro: string; button_label: string; reason: string };
+export const mailFieldNames = ["subject", "preheader", "heading", "intro", "outro", "button_label", "reason"] as const satisfies ReadonlyArray<keyof MailFields>;
+export type MailPlaceholder = { name: string; description: string };
+export type MailTemplate = { kind: MailKind; fields: MailFields; defaults: MailFields; placeholders: MailPlaceholder[]; edited: boolean; updated_at: string | null; updated_by: string | null };
+export type MailPreview = { subject: string; html: string; text: string };
+export type MailTestResult = { ok: boolean; reference: string };
+
+export const mailTemplatesApi = {
+  list: (init?: RequestInit) => api<MailTemplate[]>("/v1/admin/mail/templates", init),
+  get: (kind: MailKind, init?: RequestInit) => api<MailTemplate>(`/v1/admin/mail/templates/${kind}`, init),
+  save: (kind: MailKind, fields: Partial<MailFields>) => api<MailTemplate>(`/v1/admin/mail/templates/${kind}`, jsonInit("PUT", { fields })),
+  reset: (kind: MailKind) => api<MailTemplate>(`/v1/admin/mail/templates/${kind}`, { method: "DELETE" }),
+  preview: (kind: MailKind, fields?: Partial<MailFields>, init?: RequestInit) => api<MailPreview>(`/v1/admin/mail/templates/${kind}/preview`, { ...jsonInit("POST", fields ? { fields } : {}), ...init }),
+  test: (kind: MailKind, fields?: Partial<MailFields>) => api<MailTestResult>(`/v1/admin/mail/templates/${kind}/test`, jsonInit("POST", fields ? { fields } : {})),
+};
+
+export const newsletterKinds = ["recipes_daily", "deals_daily"] as const satisfies ReadonlyArray<MailKind>;
+export type NewsletterKind = (typeof newsletterKinds)[number];
+export type NewsletterRun = { id: string; kind: NewsletterKind; day: string; trigger: string; status: string; started_at: string; finished_at: string | null; recipients: number; sent: number; skipped: number; failed: number; error: string | null };
+export type NewsletterDelivery = { account_id: string; email: string; subject: string };
+/** What `POST /v1/admin/newsletters/run` answers: the run row, plus who would have received it when it was a dry run. */
+export type NewsletterRunReport = NewsletterRun & { deliveries?: NewsletterDelivery[] };
+export type NewsletterRunRequest = { kind: NewsletterKind; day?: string; dry_run?: boolean; force?: boolean };
+
+export const newslettersApi = {
+  runs: (query: { kind?: NewsletterKind; limit?: number } = {}, init?: RequestInit) => {
+    const search = new URLSearchParams();
+    if (query.kind) search.set("kind", query.kind);
+    if (query.limit) search.set("limit", String(query.limit));
+    const suffix = search.size ? `?${search}` : "";
+    return api<NewsletterRun[]>(`/v1/admin/newsletters/runs${suffix}`, init);
+  },
+  run: (request: NewsletterRunRequest) => api<NewsletterRunReport>("/v1/admin/newsletters/run", jsonInit("POST", request)),
+};
+
+export type DealKind = "drop" | "offer" | "cheapest";
+export type DealBaseline = "yesterday" | "median14" | "other_stores";
+/** Prices are in minor units (cents); `pct` is signed, so -21.3 means down 21.3 %. */
+export type Deal = { product_id: string; label: string; unit: string; market_id: string; market: string; now_minor: number; was_minor: number; was_on: string; pct: number; kind: DealKind; baseline: DealBaseline; url: string };
+export type EssentialWatch = { product_id: string; label: string; unit: string; cheapest: { market_id: string; market: string; price_minor: number }; change_pct: number | null; trend: "down" | "flat" | "up" };
+export type DealsDay = {
+  day: string;
+  computed_at: string;
+  stores: Array<{ market_id: string; label: string; series: number; deals: number }>;
+  deals: Deal[];
+  movers_up: Deal[];
+  essentials: EssentialWatch[];
+  stats: { series: number; fresh: number; considered: number };
+};
+
+export const dealsApi = {
+  /** The latest computed day; a 503 with code `DEALS_UNAVAILABLE` (an `ApiError` with status 503) when there is none yet. */
+  today: (init?: RequestInit) => api<DealsDay>("/v1/admin/deals/today", init),
+  compute: () => api<DealsDay>("/v1/admin/deals/compute", { method: "POST" }),
+};

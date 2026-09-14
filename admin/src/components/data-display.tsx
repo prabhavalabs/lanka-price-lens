@@ -92,7 +92,7 @@ export function TableControls({
 
 export function Status({ value, className }: { value: string; className?: string }) {
   const bad = ["failed", "blocked", "degraded", "review_required", "quarantined"].includes(value);
-  const good = ["healthy", "succeeded", "parsed", "canonicalized", "indexed", "scheduled", "online"].includes(value);
+  const good = ["healthy", "succeeded", "sent", "parsed", "canonicalized", "indexed", "scheduled", "online"].includes(value);
   const active = ["running", "pending", "processing", "discovered", "queued", "indexing"].includes(value);
   return (
     <Badge className={cn("capitalize", className)} variant={bad ? "destructive" : good ? "default" : active ? "secondary" : "outline"}>
