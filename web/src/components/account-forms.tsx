@@ -5,7 +5,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
@@ -85,18 +85,29 @@ export function OrDivider({ label = "or" }: { label?: string }) {
   );
 }
 
-/** The narrow card the sign-in, register, and recovery pages share. */
+/**
+ * The narrow card the sign-in, register, and recovery pages share. Everything sits inside it:
+ * the mark at the top, the form, and at the foot the way to the other page and the way back
+ * for someone who only came to read prices.
+ */
 export function AuthCard({ title, description, children, footer }: { title: string; description?: ReactNode; children: ReactNode; footer?: ReactNode }) {
   return (
-    <div className="mx-auto w-full max-w-sm space-y-4 py-4 sm:py-8">
+    <div className="mx-auto w-full max-w-sm py-4 sm:py-8">
       <Card>
         <CardHeader>
+          <Link aria-label="PriceLens, home" className="mb-3 flex items-center gap-2.5 no-underline" to="/">
+            <span aria-hidden className="grid size-9 place-items-center rounded-xl bg-primary font-heading text-lg font-bold text-primary-foreground shadow-sm">₨</span>
+            <span className="font-heading text-lg font-semibold tracking-tight">PriceLens</span>
+          </Link>
           <CardTitle className="text-balance text-xl">{title}</CardTitle>
           {description ? <CardDescription className="text-pretty text-sm">{description}</CardDescription> : null}
         </CardHeader>
         <CardContent className="space-y-4">{children}</CardContent>
+        <CardFooter className="flex-col items-start gap-1 border-t text-sm text-muted-foreground [&_a]:font-medium [&_a]:text-foreground">
+          {footer ? <p className="text-pretty">{footer}</p> : null}
+          <p className="text-pretty">Only here for prices? <Link to="/">Continue as a guest</Link></p>
+        </CardFooter>
       </Card>
-      {footer ? <p className="text-pretty text-center text-sm text-muted-foreground [&_a]:font-medium [&_a]:text-foreground">{footer}</p> : null}
     </div>
   );
 }
