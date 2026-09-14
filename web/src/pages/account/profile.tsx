@@ -32,7 +32,7 @@ import { languageNames, languageStore } from "@/store/language";
 export function ProfilePage() {
   usePageTitle("Your account · PriceLens");
   return (
-    <RequireAccount description="Your name, email, password, and what mail you want live here." title="Sign in to see your account">
+    <RequireAccount>
       <ProfileSections />
     </RequireAccount>
   );
@@ -54,7 +54,7 @@ function ProfileSections() {
   if (account.status !== "signed_in") return null;
   const person = account.account;
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-6">
+    <div className="space-y-6">
       <header>
         <h1 className="text-balance font-heading text-3xl font-semibold tracking-tight">Your account</h1>
         <p className="mt-1 text-pretty text-muted-foreground">With PriceLens since {formatWhen(person.created_at, dayFormat)}.</p>
