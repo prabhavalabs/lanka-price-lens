@@ -1,4 +1,4 @@
-import { isMailKind, mailDefaults, mailFieldNames, mailKinds, mailPlaceholders, type MailFields, type MailKind, type MailTemplate } from "./defaults.ts";
+import { isMailKind, mailDefaults, mailFieldNames, mailKindLabels, mailKinds, mailPlaceholders, mailReasonStyles, type MailFields, type MailKind, type MailTemplate } from "./defaults.ts";
 import { defaultMarkUrl, renderLayout, type ContentBlock, type RenderedMail } from "./layout.ts";
 
 /**
@@ -181,18 +181,23 @@ export function renderMail(kind: MailKind, data: MailData, options: RenderMailOp
   const link = data.values.link;
   const label = fill("button_label").trim();
   const button = label && typeof link === "string" && link.trim() ? { label, url: link.trim() } : null;
+  // The daily mails say which day they are for beside the kind; account mail names the kind alone.
+  const date = data.values.date;
+  const kicker = mailReasonStyles[kind] === "footer" && date !== null && date !== undefined && String(date).trim() ? `${mailKindLabels[kind]} · ${String(date).trim()}` : mailKindLabels[kind];
   return renderLayout(
     {
       subject: fill("subject").replace(/\s+/gu, " ").trim(),
       preheader: fill("preheader").replace(/\s+/gu, " ").trim(),
+      kicker,
       headline: fill("heading").replace(/\s+/gu, " ").trim(),
       intro: paragraphsOf(fill("intro")),
       blocks: data.blocks ?? [],
       outro: paragraphsOf(fill("outro")),
       button,
       reason: fill("reason").replace(/\s+/gu, " ").trim(),
+      reasonStyle: mailReasonStyles[kind],
       unsubscribeUrl: data.unsubscribeUrl ?? null,
     },
-    { markUrl: options.markUrl ?? markUrlFor(options.siteOrigin), ...(options.replyTo !== undefined ? { replyTo: options.replyTo } : {}) },
+    { markUrl: options.markUrl ?? markUrlFor(options.siteOrigin), siteOrigin: options.siteOrigin, ...(options.replyTo !== undefined ? { replyTo: options.replyTo } : {}) },
   );
 }

@@ -23,7 +23,7 @@ export type MailFields = {
   outro: string;
   /** Blank hides the button. */
   button_label: string;
-  /** The footer line saying why the mail came. */
+  /** The line saying why the mail came: boxed in the card for account mail, in the footer for the daily mails. */
   reason: string;
 };
 
@@ -57,6 +57,34 @@ export const mailPlaceholders: Record<MailKind, MailPlaceholder[]> = {
   recipes_daily: [name, date, link, { name: "count", description: "How many recipes the mail carries" }],
   deals_daily: [name, date, link, { name: "count", description: "How many deals the mail carries" }, { name: "stores", description: "The stores with prices today, as a list" }],
   price_alerts: [name, date, link, { name: "count", description: "How many wishlist products moved" }],
+};
+
+/** The kicker above the headline: what kind of mail this is. The daily mails add the day after it. */
+export const mailKindLabels: Record<MailKind, string> = {
+  verify_email: "Confirm your address",
+  welcome: "Welcome",
+  reset_password: "Account security",
+  password_changed: "Account security",
+  change_email: "Your account",
+  email_changed: "Account security",
+  account_deleted: "Your account",
+  recipes_daily: "Daily recipes",
+  deals_daily: "Daily deals",
+  price_alerts: "Price alert",
+};
+
+/** Where the reason line sits: boxed in the card for account mail (amber for a security notice), in the footer for the daily mails. */
+export const mailReasonStyles: Record<MailKind, "note" | "warning" | "footer"> = {
+  verify_email: "note",
+  welcome: "note",
+  reset_password: "warning",
+  password_changed: "warning",
+  change_email: "note",
+  email_changed: "warning",
+  account_deleted: "warning",
+  recipes_daily: "footer",
+  deals_daily: "footer",
+  price_alerts: "footer",
 };
 
 export const mailDefaults: Record<MailKind, MailFields> = {
