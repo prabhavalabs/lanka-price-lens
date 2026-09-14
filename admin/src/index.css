@@ -185,4 +185,8 @@
   button:disabled, [aria-disabled="true"], select:disabled, input:disabled {
     cursor: not-allowed;
   }
+  html {
+    /* Keep the scrollbar's column whether or not a page is long enough to scroll, so nothing shifts sideways when it appears. */
+    scrollbar-gutter: stable;
+  }
 }

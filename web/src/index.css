@@ -148,6 +148,8 @@
   html {
     @apply bg-background font-sans;
     -webkit-text-size-adjust: 100%;
+    /* Keep the scrollbar's column whether or not a page is long enough to scroll, so nothing shifts sideways when it appears. */
+    scrollbar-gutter: stable;
   }
   body {
     @apply m-0 min-h-screen bg-background font-sans text-foreground antialiased;
