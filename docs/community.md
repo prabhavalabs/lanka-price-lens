@@ -18,7 +18,8 @@ Nothing here changes the served catalogue on its own: the corpus stays the revie
    reference until the owner approves and maps it.
 
 The owner is mailed (and told on Discord) for every submission, request, translation
-feedback, and product proposal through the owner notifier; reactions are quiet.
+feedback, and product proposal through the owner notifier, in the site's mail layout with
+the details as fact rows and a "Review in the admin" button; reactions are quiet.
 
 ## Shared (`shared/src/community.ts`)
 

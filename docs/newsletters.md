@@ -190,13 +190,25 @@ deals_json)` through `foundry/src/deals/store.ts` (`saveDealsDay`, `readDealsDay
 
 ## Mail templates (`api/src/mail/`)
 
-The branded layout that account mail uses today (`api/src/account/mail.ts`) moves to
-`api/src/mail/layout.ts` and learns two blocks: **recipe cards** (image, name, one line,
-kcal, minutes, cost, link) and **deal rows** (product, store, now, was, a percentage badge).
+One branded layout, `api/src/mail/layout.ts`, for every mail the site sends: a white card
+with a green top edge; the mark and wordmark as a letterhead with the tagline "Sri Lanka's
+food prices, every day"; a small green kicker naming the kind ("Daily deals · Monday 14
+September"); the headline and paragraphs; content blocks; one green button with its link
+written out beneath; and, for account mail, the reason line boxed in the card (amber for
+security notices). The footer under the card links Prices, Recipes, Wishlist, and Guide,
+carries the one-click unsubscribe and "Notification settings" for the daily mails, the reply
+address, "Made in Sri Lanka", and Privacy and Terms. Three blocks: **recipe cards** (the
+site's OG picture full width, name, one line, kcal / minutes / cost as chips, link), **deal
+rows** (product, store, and the comparison on the left; price and a green or red percentage
+badge on the right), and **fact rows** (label and value, for the owner's notices). Tables and
+inline styles only, light only, no external CSS; every mail has a plain-text part. The
+owner's own notices (feedback, community) go through `renderOwnerNotice` in
+`api/src/notify.ts` and wear the same layout.
+
 Every mail the site sends is a *kind* with editable *fields*:
 
 ```ts
-export const mailKinds = ["verify_email", "welcome", "reset_password", "password_changed", "change_email", "email_changed", "account_deleted", "recipes_daily", "deals_daily"] as const;
+export const mailKinds = ["verify_email", "welcome", "reset_password", "password_changed", "change_email", "email_changed", "account_deleted", "recipes_daily", "deals_daily", "price_alerts"] as const;
 export type MailFields = { subject: string; preheader: string; heading: string; intro: string; outro: string; button_label: string; reason: string };
 export type MailTemplate = { kind: MailKind; fields: MailFields; defaults: MailFields; placeholders: Array<{ name: string; description: string }>; edited: boolean; updated_at: string | null; updated_by: string | null };
 ```
@@ -220,6 +232,11 @@ Admin routes (owner only, mounted at `/v1/admin/mail`):
 | `DELETE /templates/:kind` | | reset to defaults |
 | `POST /templates/:kind/preview` | `{ fields? }` | `{ subject, html, text }` rendered with sample data (today's deals or three real recipes when available) |
 | `POST /templates/:kind/test` | `{ fields? }` | sends the preview to the owner's address; `{ ok, reference }` |
+
+From a shell, `pnpm mail samples --to <address> [--kind verify_email,deals_daily,notices]
+[--origin https://price.prabhavalabs.com]` mails every kind with its sample data (and the
+owner's two notices) to one address for review; `--origin` points links and pictures at the
+production site so they load from anywhere.
 
 ## Newsletters (`api/src/newsletters/`)
 

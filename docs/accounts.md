@@ -165,18 +165,28 @@ Links in mail point at the site: `/account/verify?token=`, `/account/reset?token
 
 Templates in `api/src/account/mail.ts`: verification, welcome (after verification), password
 reset, password changed, email change confirmation (to the new address), email changed notice
-(to the old address), account deleted. One layout: the PriceLens mark, a headline, one clear
-button, the same link in plain text under it, and a footer saying why the mail was sent. Text
-alternative for every message. Sent through the notify package's Resend channel
-(`notify/src/channels/email.ts`), `LPL_RESEND_API_KEY` and `LPL_MAIL_FROM`
-("PriceLens <hello@prabhavalabs.com>").
+(to the old address), account deleted. One layout (`api/src/mail/layout.ts`): a white card
+with a green top edge, the PriceLens mark and wordmark as a letterhead, a small kicker naming
+the kind of mail ("Account security"), a headline, one clear button with the same link in
+plain text under it, and a boxed note saying why the mail was sent (amber for the security
+notices: password reset, password changed, email changed, account deleted). Under the card a
+footer links Prices, Recipes, Wishlist, and Guide, names the reply address, and says "Made in
+Sri Lanka". Text alternative for every message. Sent through the notify package's Resend
+channel (`notify/src/channels/email.ts`), `LPL_RESEND_API_KEY` and `LPL_MAIL_FROM`
+("PriceLens <hello@prabhavalabs.com>"). The owner's own notices (feedback, community
+contributions) wear the same layout through `renderOwnerNotice` in `api/src/notify.ts`.
+
+To look at every mail with sample data, `pnpm mail samples --to <address> [--kind …]
+[--origin https://price.prabhavalabs.com]` sends each kind (and the owner's notices) to one
+address; `--origin` points the links and pictures at the production site.
 
 ### Mail wording
 
-Every mail the site sends (the seven account mails and the two daily newsletters) is a kind
+Every mail the site sends (the seven account mails and the three daily mails) is a kind
 with editable fields: subject, preheader, heading, intro, outro, button label, and the reason
-line in the footer. The owner edits them on the admin's Mail page with a live preview and a
-test send; the layout stays in code. Details in docs/newsletters.md.
+line (boxed in the card for account mail, in the footer for the daily mails). The owner edits
+them on the admin's Mail page with a live preview and a test send; the layout stays in code.
+Details in docs/newsletters.md.
 
 ## Resend and the domain (owner steps)
 
