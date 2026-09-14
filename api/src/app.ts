@@ -50,7 +50,9 @@ import { createAccountStore } from "./account/store.ts";
 import { defaultAccountConfig, type AccountConfig, type AccountMailer } from "./account/types.ts";
 import { Presence, presenceIdPattern } from "./presence.ts";
 import { publicBasket, publicOverview } from "./public.ts";
+import { loadEssentials } from "@lanka-pricelens/foundry/deals";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
+import { createSqliteOutbox } from "@lanka-pricelens/notify";
 import {
   enqueueWorkflow,
   ensureWorkflowSchedules,
@@ -75,6 +77,14 @@ import { streamSSE } from "hono/streaming";
 
 import { productDetail, searchProducts } from "./explorer.ts";
 import { dishDetail, ingredientPrices, listDishes, pricedProducts, productLabels, readRecipeStore, recipeOverview, recommendDishes, type RecipeStore } from "./recipes.ts";
+import { dealsRoutes } from "./deals.ts";
+import { createTemplateStore } from "./mail/templates.ts";
+import { mailAdminRoutes, newsletterAdminRoutes } from "./newsletters/admin-routes.ts";
+import { dealsAccessFor } from "./newsletters/deals.ts";
+import type { CostLookup } from "./newsletters/recipes.ts";
+import { startNewsletterScheduler } from "./newsletters/scheduler.ts";
+import { createNewsletterService, type NewsletterService } from "./newsletters/service.ts";
+import { unsubscribeRoutes } from "./newsletters/unsubscribe.ts";
 import { surpriseRoutes } from "./surprise.ts";
 import { buildRecipeIndex, computeMenu, parseRecipeQuery, priceLookupFor, priceOptions, pricedProductIds, queryRecipes, recipeView, type RecipeIndexEntry } from "./recipe-views.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
@@ -102,14 +112,17 @@ export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
-  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; ownerNotifier?: OwnerNotifier; presence?: Presence; accounts?: { config?: Partial<AccountConfig> | undefined; mailer?: AccountMailer | undefined } | undefined } = {},
+  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; ownerNotifier?: OwnerNotifier; presence?: Presence; accounts?: { config?: Partial<AccountConfig> | undefined; mailer?: AccountMailer | undefined } | undefined; /** Present in production: starts the daily mail timer (docs/newsletters.md); absent in tests. */ newsletters?: { enabled: boolean; hour?: string | undefined; scheduler?: boolean | undefined; testAddress?: string | null | undefined } | undefined } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
   const owner = options.ownerNotifier ?? createOwnerNotifier();
   // Visitor accounts: the store and service live on the operational database; mail goes through the account mailer.
   const accountConfig: AccountConfig = { ...defaultAccountConfig, siteOrigin: null, google: null, stateSecret: randomBytes(32).toString("base64url"), secureCookies: process.env.NODE_ENV === "production", ...options.accounts?.config };
   const accountStore = createAccountStore(database);
-  const accountMailer = options.accounts?.mailer ?? createAccountMailer();
+  // Mail wording the owner edits in the admin; the defaults apply until a kind is edited.
+  const templates = createTemplateStore(database);
+  const ownMailer = options.accounts?.mailer ? null : createAccountMailer(process.env, undefined, { templates });
+  const accountMailer = options.accounts?.mailer ?? ownMailer!;
   const accountService = createAccountService({ store: accountStore, mailer: accountMailer, config: accountConfig });
   const contentStore = createContentStore(database);
   const presence = options.presence ?? new Presence();
@@ -182,6 +195,42 @@ export function createApp(
       return null;
     }
   };
+
+  // The daily mails (docs/newsletters.md): the outbox they queue into, the deals engine over the warehouse, and a cost per serving for the recipe cards.
+  const outbox = createSqliteOutbox(database);
+  const siteOrigin = accountConfig.siteOrigin ?? "https://price.prabhavalabs.com";
+  const deals = dealsAccessFor({ database, warehouse, essentials: () => loadEssentials() });
+  const recipeCosts = async (): Promise<CostLookup | null> => {
+    if (!options.recipes) return null;
+    const prices = await recipePrices([...recipeIndex.values()]);
+    if (!prices) return null;
+    const store = options.recipes;
+    return (entry) => {
+      const view = recipeView(store, recipeIndex, entry.dish.id, entry.recipe.base_servings, prices);
+      return view?.cost?.lines.length ? view.cost.per_serving : null;
+    };
+  };
+  const newsletters: NewsletterService = createNewsletterService({
+    database,
+    accounts: accountStore,
+    outbox,
+    templates,
+    siteOrigin,
+    secret: accountConfig.stateSecret,
+    replyTo: ownMailer?.replyTo ?? "hello@prabhavalabs.com",
+    markUrl: ownMailer?.markUrl,
+    ...(options.recipes ? { recipes: { index: recipeIndex, costs: recipeCosts } } : {}),
+    deals,
+    log: (line) => console.log(JSON.stringify({ level: "info", ...line })),
+  });
+  newsletterServices.set(app, newsletters);
+  if (options.newsletters && options.newsletters.scheduler !== false) {
+    if (ownMailer?.channels) {
+      startNewsletterScheduler({ service: newsletters, outbox, channels: ownMailer.channels, enabled: options.newsletters.enabled, hour: options.newsletters.hour, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) });
+    } else {
+      console.warn("Daily mails are not running: set LPL_RESEND_API_KEY and LPL_MAIL_FROM so the API can send them.");
+    }
+  }
   app.use("/v1/public/*", async (context, next) => {
     await next();
     context.header("Access-Control-Allow-Origin", "*");
@@ -344,6 +393,11 @@ export function createApp(
     const prices = client ? await ingredientPrices(client, wanted).catch(() => new Map()) : new Map();
     return context.json(envelope(context.get("requestId"), { recommendations, labels: Object.fromEntries(labels), prices: Object.fromEntries(prices) }));
   });
+  // The deals engine's latest day (docs/newsletters.md); the daily deals mail and the admin page read the same table.
+  app.route("/v1/public/deals", dealsRoutes({ database }));
+  // One-click unsubscribe from a daily mail: the token in the mail is the only credential, so no session and no origin check.
+  app.route("/v1/newsletter/unsubscribe", unsubscribeRoutes({ store: accountStore, secret: accountConfig.stateSecret, siteOrigin: accountConfig.siteOrigin }));
+
   // A random pick shaped by the signed-in person's preferences; registered before /:id so the word "surprise" is not read as a dish id.
   if (options.recipes) {
     app.use("/v1/public/recipes/surprise", readAccount(accountStore, accountConfig));
@@ -462,6 +516,8 @@ export function createApp(
   });
   app.use("/v1/admin/*", requireOwner);
   app.route("/v1/admin/accounts", adminAccountRoutes({ store: accountStore, content: contentStore }));
+  app.route("/v1/admin", newsletterAdminRoutes({ service: newsletters, deals }));
+  app.route("/v1/admin/mail", mailAdminRoutes({ templates, send: ownMailer?.send, testAddress: options.newsletters?.testAddress ?? null, siteOrigin: accountConfig.siteOrigin, replyTo: ownMailer?.replyTo, markUrl: ownMailer?.markUrl, ...(options.recipes ? { recipes: { index: recipeIndex } } : {}), deals }));
 
   app.get("/v1/admin/events/workflows", (context) => {
     const suppliedCursor = context.req.header("Last-Event-ID") ?? context.req.query("after");
@@ -1351,7 +1407,10 @@ export function createApp(
   return app;
 }
 
-export function createProductionApp(): Hono<AppBindings> {
+/** The newsletter service behind an app, for the CLI that runs a mail by hand without starting the server. */
+export const newsletterServices = new WeakMap<Hono<AppBindings>, NewsletterService>();
+
+export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono<AppBindings> {
   const database = openOperationalDatabase(resolve(process.env.LPL_DATABASE_PATH ?? "../data/runtime/operations.sqlite"));
   const email = process.env.ADMIN_EMAIL;
   const passwordHash = process.env.ADMIN_PASSWORD_HASH;
@@ -1384,7 +1443,13 @@ export function createProductionApp(): Hono<AppBindings> {
       ...(process.env.LPL_ACCOUNT_STATE_SECRET?.trim() ? { stateSecret: process.env.LPL_ACCOUNT_STATE_SECRET.trim() } : {}),
     },
   };
-  const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}), ...(recipes ? { recipes } : {}), accounts });
+  const newsletters = {
+    enabled: (process.env.LPL_NEWSLETTERS_ENABLED ?? "false").trim().toLowerCase() === "true",
+    hour: process.env.LPL_NEWSLETTER_HOUR?.trim() || undefined,
+    scheduler: runtime.scheduler !== false,
+    testAddress: email,
+  };
+  const app = createApp(database, manifest, mappingBundle, { catalog, ...(warehouseUrl ? { warehouse: lazyWarehouse(warehouseUrl) } : {}), ...(recipes ? { recipes } : {}), accounts, newsletters });
   // Product photos and store logos, shared by the admin and the public site.
   const imagesRoot = defaultImagesRoot();
   app.use("/images/*", async (context, next) => {

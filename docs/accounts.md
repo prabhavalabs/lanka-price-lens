@@ -170,7 +170,14 @@ alternative for every message. Sent through the notify package's Resend channel
 (`notify/src/channels/email.ts`), `LPL_RESEND_API_KEY` and `LPL_MAIL_FROM`
 ("PriceLens <hello@prabhavalabs.com>").
 
-### Resend and the domain (owner steps)
+### Mail wording
+
+Every mail the site sends (the seven account mails and the two daily newsletters) is a kind
+with editable fields: subject, preheader, heading, intro, outro, button label, and the reason
+line in the footer. The owner edits them on the admin's Mail page with a live preview and a
+test send; the layout stays in code. Details in docs/newsletters.md.
+
+## Resend and the domain (owner steps)
 
 prabhavalabs.com is already verified in Resend (DKIM `resend._domainkey`, and the SPF MX and
 TXT records on `send.prabhavalabs.com`), and `_dmarc.prabhavalabs.com` publishes

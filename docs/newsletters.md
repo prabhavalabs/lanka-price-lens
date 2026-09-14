@@ -133,8 +133,9 @@ export type EssentialWatch = {
 export type DealsDay = {
   day: string;                      // YYYY-MM-DD, Asia/Colombo
   computed_at: string;
-  stores: Array<{ market_id: string; label: string; series: number; deals: number }>;
-  deals: Deal[];                    // best first, one per product, at most 12
+  stores: Array<{ market_id: string; label: string; series: number; deals: number }>;   // deals counts both lists
+  deals: Deal[];                    // kinds "drop" and "offer" only, best first, one per product, at most 12
+  cheapest: Deal[];                 // kind "cheapest", largest gap first, one per product, at most 8
   movers_up: Deal[];                // at most 5, kind "drop" with positive pct
   essentials: EssentialWatch[];     // every essential with a price today
   stats: { series: number; fresh: number; considered: number };
@@ -154,13 +155,32 @@ fake client):
 - **Cheapest store**: for a product two or more stores sell in the same unit, the cheapest
   is a deal when it is at least 15 % under the next cheapest (`baseline: other_stores`,
   `was_minor` = the next store's price).
-- One deal per product (the best percentage), best first, at most 12. `movers_up` holds the
+- `deals` carries the drops and offers alone, one per product (the best percentage), best
+  first, at most 12; the cheapest-store picks are their own list, `cheapest`, largest gap
+  first, one per product, at most 8, so they never crowd out a real fall (a day with nine
+  cheapest-store picks among twelve deals is what prompted the split). `movers_up` holds the
   largest rises (≥ 15 %) for context.
 - **Essentials** are the product ids in `data/deals/essentials.json` (about 25 common
   household items chosen from `data/mappings/*.json`: rice, dhal, sugar, wheat flour,
   coconut, coconut oil, big onion, potato, eggs, chicken, milk powder, tea, garlic, green
   chillies, tomato, carrot, beans, sprats, salt, and the like); each reports the cheapest
   store today and how that compares.
+
+Where the rules leave a choice, the code takes it this way. A series is one item at one
+store in one unit (the `daily_item_price` grain without the source); a by-variety product is
+read on its base variety alone when it has one, as the product page opens and the basket
+totals. Drops and rises are judged per series, because a price fall happens to one shelf
+item; the cheapest-store rule and the essentials watch use the store's pooled price, the
+average of its items that day, as the explorer shows per seller. `was_on` for the fortnight
+median is the oldest day the median covers. Rises qualify at 15 % against either baseline,
+one per product. An essential is watched in the unit most stores sell it in; `change_pct` is
+null without a price on the day before its latest fresh day, and `trend` is `down` or `up`
+when the cheapest price is 5 % or more under or over the median of the cheapest price across
+at least three prior days in the fortnight, otherwise `flat`. `stores[].series` and
+`stats.series` count series with a price in the window, `stats.fresh` those whose latest day
+counts, `stats.considered` fresh series with a usable baseline. The essentials list is read
+from the repository's `data/deals/essentials.json` unless `LPL_DEALS_ESSENTIALS_PATH` points
+elsewhere, so a container image must carry `data/deals` beside `data/mappings`.
 
 Results are kept in the operational SQLite as `deal_day(day TEXT PRIMARY KEY, computed_at,
 deals_json)` through `foundry/src/deals/store.ts` (`saveDealsDay`, `readDealsDay(day)`,
@@ -234,7 +254,8 @@ Two kinds, `recipes_daily` and `deals_daily`, each one run per Colombo day:
   `POST /v1/admin/newsletters/run` `{ kind, day?, dry_run?, force? }` runs on demand and
   answers the run report; `GET /v1/admin/newsletters/runs?kind=&limit=` lists runs;
   `GET /v1/admin/deals/today` and `POST /v1/admin/deals/compute` cover the engine. The CLI
-  `pnpm foundry newsletter run --kind <kind> [--day] [--dry-run]` does the same from a shell.
+  `pnpm newsletter run --kind <kind> [--day] [--dry-run]` (the API package's own command, so
+  it shares the server's configuration) does the same from a shell.
 
 ## Admin portal
 
