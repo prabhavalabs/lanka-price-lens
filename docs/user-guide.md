@@ -135,9 +135,9 @@ Sri Lankan dishes, best fit first: how many of a dish's key ingredients you alre
 much of your basket it uses, and what is still to buy.
 
 1. Each card names the dish, its kind, time, and difficulty, and what it still needs.
-2. A dish page splits its ingredients into "From your basket" and "Still to buy", the latter
-   at today's cheapest price per unit with an "Add" for each, then pantry items, variants, and
-   what it goes well with, with a rough extra cost.
+2. A dish page marks the ingredients already in your basket and prices the rest at today's
+   cheapest seller, with an "Add" for each; the cost card says how many you have and what the
+   rest would cost. Then pantry items, variants, and what it goes well with.
 3. "Recipes" in the header browses the whole catalogue by name in any language or by
    ingredient.
 
@@ -147,7 +147,7 @@ much of your basket it uses, and what is still to buy.
 
 ![A dish page](../web/public/guide/recipe.png)
 
-*A dish: what you have, what is still to buy at today's cheapest price, and the rough extra cost.*
+*A dish: every ingredient at today's cheapest price, the ones already in your basket marked, and the cost for the table.*
 
 ![The recipe catalogue](../web/public/guide/recipes.png)
 
@@ -168,9 +168,10 @@ twenty simmers as long as a pot for four.
    one person's portion, computed from each ingredient's edible weight against a
    nutrition table built for Sri Lankan foods and checked against published
    composition tables.
-3. "Cost per serving" prices the ingredients at today's cheapest published
-   seller. A "≈" means something is not priced yet or a price is older than a
-   week; the card says which.
+3. The cost card prices the ingredients for the headcount at today's cheapest
+   published seller, with the per-serving figure under it and how many
+   ingredients are already in your basket. A "≈" means something is not priced
+   yet or a price is older than a week; the card says which.
 4. "Read in" switches the method between English, Sinhala, and Tamil. Sinhala
    and Tamil text is machine drafted until a person has reviewed it, and the
    page says so.
@@ -196,7 +197,8 @@ one shopping list summed across every recipe.
    back.
 3. Change the number of people and everything recomputes. "Add priced items to
    basket" moves the shopping list into your basket in real amounts, so the
-   store comparison prices the whole meal.
+   store comparison prices the whole meal; lines already in your basket are
+   marked and left alone.
 4. Menus are kept on your account, so they follow you to another phone. Menus
    made before you signed in are offered for saving the first time you open the
    page signed in.
