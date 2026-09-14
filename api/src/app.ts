@@ -1496,6 +1496,8 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
     if (context.res.ok) context.header("Cache-Control", "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800");
   });
   app.use("/images/*", serveStatic({ root: imagesRoot, rewriteRequestPath: (path) => path.replace(/^\/images/u, "") }));
+  // A picture the site does not have is a plain 404, never the site's HTML: browsers and mail clients then treat it as missing.
+  app.get("/images/*", (context) => context.text("Not found", 404));
   const adminRoot = resolve(process.env.LPL_ADMIN_ROOT ?? "../admin/dist");
   // The site's build lives next to the API in the repository and the image alike, so the default is relative to this file, not the working directory.
   const webRoot = resolve(process.env.LPL_WEB_ROOT ?? fileURLToPath(new URL("../../web/dist/", import.meta.url)));
