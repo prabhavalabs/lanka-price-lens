@@ -18,7 +18,8 @@ import { useSiteConfig } from "@/lib/site-config";
  * recipes, menus, the basket, the account. Everything else sits behind the overflow menu, so
  * the bar never wraps under the search box as sections are added. On a phone the search box
  * takes its own row under the icons. The footer is one quiet line: where the site is made,
- * the small print, and who else is here; the disclaimers live on the Terms page.
+ * the small print, and who else is here; the disclaimers live on the Terms page. Its right
+ * side stays clear of the standing community button in the corner.
  */
 export function Layout({ children }: { children: ReactNode }) {
   const invite = useSiteConfig().community.discord_invite_url;
@@ -47,7 +48,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <VerifyBanner />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:py-8">{children}</main>
       <footer className="border-t border-border/70">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-5 text-xs text-muted-foreground">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 py-5 pl-4 pr-16 text-xs text-muted-foreground sm:pr-60">
           <p className="inline-flex items-center gap-1.5">
             <span aria-label="Sri Lankan flag" className="text-base leading-none" role="img">🇱🇰</span>
             Made in Sri Lanka by Prabhava Labs
