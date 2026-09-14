@@ -1,4 +1,5 @@
 import {
+  RiChatSmile2Line,
   RiDashboardLine,
   RiDatabase2Line,
   RiFeedbackLine,
@@ -60,6 +61,7 @@ const intelligence: NavigationItem[] = [
 ];
 const community: NavigationItem[] = [
   { to: "/accounts", label: "Accounts", icon: RiGroupLine, end: false },
+  { to: "/community", label: "Community", icon: RiChatSmile2Line, end: false },
 ];
 const navigation = [...operations, ...intelligence, ...community];
 

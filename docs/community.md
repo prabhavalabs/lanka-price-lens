@@ -84,7 +84,7 @@ Admin (owner), mounted at `/v1/admin/community`:
 | `GET /products?status=&page=` | paged, with `email`, `display_name` |
 | `PATCH /products/:id` | `{ status, review_note? }` |
 | `GET /reactions?page=&sort=score\|dislikes\|recent` | per dish: `{ dish_id, name, likes, dislikes, score, last_at }` |
-| `GET /reactions/:dishId` | who reacted: `{ email, display_name, value, updated_at }[]` |
+| `GET /reactions/:dishId` | `{ dish_id, name, reactions: { email, display_name, value, updated_at }[] }`: who reacted |
 
 ## Site
 

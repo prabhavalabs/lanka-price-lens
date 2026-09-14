@@ -19,6 +19,7 @@ const RecipesPage = lazy(() => import("@/pages/recipes-page").then((module) => (
 const FeedbackPage = lazy(() => import("@/pages/feedback-page").then((module) => ({ default: module.FeedbackPage })));
 const MailPage = lazy(() => import("@/pages/mail-page").then((module) => ({ default: module.MailPage })));
 const AccountsPage = lazy(() => import("@/pages/accounts-page").then((module) => ({ default: module.AccountsPage })));
+const CommunityPage = lazy(() => import("@/pages/community-page").then((module) => ({ default: module.CommunityPage })));
 
 const router = createBrowserRouter(
   [
@@ -42,6 +43,7 @@ const router = createBrowserRouter(
             { path: "feedback", element: <FeedbackPage /> },
             { path: "mail", element: <MailPage /> },
             { path: "accounts", element: <AccountsPage /> },
+            { path: "community", element: <CommunityPage /> },
           ],
         },
       ],
