@@ -1,4 +1,4 @@
-import { RiAddLine, RiCheckLine, RiTimeLine, RiToolsLine } from "@remixicon/react";
+import { RiAddLine, RiCheckLine, RiShoppingBasketLine, RiTimeLine, RiToolsLine } from "@remixicon/react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -41,7 +41,6 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
   const inBasket = buyable.filter((line) => have.has(line.ref!));
   const toBuy = buyable.filter((line) => !have.has(line.ref!));
   const toBuyCost = toBuy.reduce((sum, line) => sum + (line.cost?.cost ?? 0), 0);
-  const toBuyUnpriced = toBuy.filter((line) => !line.cost).length;
   const addAll = () => {
     for (const line of toBuy) if (line.ref && line.purchase) basketStore.add(line.ref, line.names?.en ?? line.label.en, line.purchase.unit, line.purchase.quantity);
   };
@@ -73,33 +72,42 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
       </Card>
 
       <section className="grid gap-3 sm:grid-cols-3">
-        <Card>
-          <CardContent className="p-4">
-            <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Per serving</p>
-            <p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{kcalLabel(nutrition.kcal)}</p>
-            <p className="text-xs text-muted-foreground">{recipe.serving.portion_g} g cooked{localized(recipe.serving.description, language) ? ` · ${localized(recipe.serving.description, language)}` : ""}</p>
-            <div className="mt-3 flex h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden="true">
-              <span className="bg-primary" style={{ width: `${shares.protein}%` }} />
-              <span className="bg-amber-500/80" style={{ width: `${shares.fat}%` }} />
-              <span className="bg-sky-500/70" style={{ width: `${shares.carb}%` }} />
+        <Card className="sm:col-span-2">
+          <CardContent className="grid gap-5 p-4 sm:grid-cols-2 sm:gap-6">
+            <div>
+              <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Per serving</p>
+              <p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{kcalLabel(nutrition.kcal)}</p>
+              <p className="text-xs text-muted-foreground">{recipe.serving.portion_g} g cooked{localized(recipe.serving.description, language) ? ` · ${localized(recipe.serving.description, language)}` : ""}</p>
+              <div className="mt-3 flex h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden="true">
+                <span className="bg-primary" style={{ width: `${shares.protein}%` }} />
+                <span className="bg-amber-500/80" style={{ width: `${shares.fat}%` }} />
+                <span className="bg-sky-500/70" style={{ width: `${shares.carb}%` }} />
+              </div>
+              <dl className="mt-2 grid grid-cols-3 gap-1 text-xs tabular-nums">
+                <div><dt className="text-muted-foreground">Protein</dt><dd className="font-medium">{gramsLabel(nutrition.protein_g)}</dd></div>
+                <div><dt className="text-muted-foreground">Fat</dt><dd className="font-medium">{gramsLabel(nutrition.fat_g)}</dd></div>
+                <div><dt className="text-muted-foreground">Carbs</dt><dd className="font-medium">{gramsLabel(nutrition.carb_g)}</dd></div>
+                {nutrition.fibre_g !== null ? <div><dt className="text-muted-foreground">Fibre</dt><dd className="font-medium">{gramsLabel(nutrition.fibre_g)}</dd></div> : null}
+                {nutrition.sodium_mg !== null ? <div><dt className="text-muted-foreground">Sodium</dt><dd className="font-medium">{gramsLabel(nutrition.sodium_mg, "mg")}</dd></div> : null}
+              </dl>
+              {recipe.nutrition.coverage.missing.length ? <p className="mt-2 text-[11px] text-muted-foreground">Not counted: {recipe.nutrition.coverage.missing.join(", ")}</p> : null}
             </div>
-            <dl className="mt-2 grid grid-cols-3 gap-1 text-xs tabular-nums">
-              <div><dt className="text-muted-foreground">Protein</dt><dd className="font-medium">{gramsLabel(nutrition.protein_g)}</dd></div>
-              <div><dt className="text-muted-foreground">Fat</dt><dd className="font-medium">{gramsLabel(nutrition.fat_g)}</dd></div>
-              <div><dt className="text-muted-foreground">Carbs</dt><dd className="font-medium">{gramsLabel(nutrition.carb_g)}</dd></div>
-              {nutrition.fibre_g !== null ? <div><dt className="text-muted-foreground">Fibre</dt><dd className="font-medium">{gramsLabel(nutrition.fibre_g)}</dd></div> : null}
-              {nutrition.sodium_mg !== null ? <div><dt className="text-muted-foreground">Sodium</dt><dd className="font-medium">{gramsLabel(nutrition.sodium_mg, "mg")}</dd></div> : null}
-            </dl>
-            {recipe.nutrition.coverage.missing.length ? <p className="mt-2 text-[11px] text-muted-foreground">Not counted: {recipe.nutrition.coverage.missing.join(", ")}</p> : null}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-4">
-            <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Cost per serving</p>
-            <p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{cost?.lines.length ? `${cost.estimated ? "≈ " : ""}${rupees(cost.per_serving)}` : "—"}</p>
-            <p className="text-xs text-muted-foreground">{cost?.lines.length ? `${rupees(cost.total)} for ${servings}, at today's cheapest sellers${cost.unpriced.length ? ", priced items only" : ""}` : cost ? "none of the ingredients has a published price yet" : "prices are not available right now"}</p>
-            {cost?.unpriced.length ? <p className="mt-2 text-[11px] text-muted-foreground">Not priced yet: {cost.unpriced.join(", ")}</p> : null}
-            {cost?.lines.some((line) => line.stale) ? <p className="mt-1 text-[11px] text-muted-foreground">Some prices are older than a week.</p> : null}
+            <div className="border-t pt-4 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
+              <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Cost for {servings} {servings === 1 ? "person" : "people"}</p>
+              <p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{cost?.lines.length ? `${cost.estimated ? "≈ " : ""}${rupees(cost.total)}` : "—"}</p>
+              <p className="text-xs text-muted-foreground">{cost?.lines.length ? <><span className="font-medium text-foreground">{rupees(cost.per_serving)}</span> per serving, at today's cheapest sellers{cost.unpriced.length ? ", priced items only" : ""}</> : cost ? "none of the ingredients has a published price yet" : "prices are not available right now"}</p>
+              {buyable.length ? (
+                <p className="mt-2 flex items-start gap-1.5 text-xs text-muted-foreground">
+                  <RiShoppingBasketLine aria-hidden className="mt-0.5 size-3.5 shrink-0" />
+                  <span>
+                    {inBasket.length ? `${inBasket.length} of ${buyable.length} priced ingredients already in your basket` : `none of the ${buyable.length} priced ingredients in your basket yet`}
+                    {toBuy.length === 0 ? "; nothing left to buy" : inBasket.length && toBuy.some((line) => line.cost) ? `; ≈ ${rupees(toBuyCost)} still to buy` : ""}
+                  </span>
+                </p>
+              ) : null}
+              {cost?.unpriced.length ? <p className="mt-2 text-[11px] text-muted-foreground">Not priced yet: {cost.unpriced.join(", ")}</p> : null}
+              {cost?.lines.some((line) => line.stale) ? <p className="mt-1 text-[11px] text-muted-foreground">Some prices are older than a week.</p> : null}
+            </div>
           </CardContent>
         </Card>
         <Card>
@@ -112,18 +120,12 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
         </Card>
       </section>
 
-      <section className="grid gap-3 sm:grid-cols-3">
-        <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">In your basket</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{inBasket.length} <span className="text-sm font-normal text-muted-foreground">of {buyable.length}</span></p><p className="text-xs text-muted-foreground">priced ingredients; pantry items are assumed at home</p></CardContent></Card>
-        <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">Still to buy</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{toBuy.length}</p><p className="text-xs text-muted-foreground">{toBuy.length ? `for ${servings} ${servings === 1 ? "person" : "people"}, in the amounts below` : "you have every priced ingredient"}</p></CardContent></Card>
-        <Card><CardContent className="p-4"><p className="text-[11px] uppercase tracking-wide text-muted-foreground">To buy the rest</p><p className="mt-1 font-heading text-2xl font-semibold tabular-nums">{toBuy.length && toBuy.some((line) => line.cost) ? `${toBuyUnpriced || cost?.estimated ? "≈ " : ""}${rupees(toBuyCost)}` : "—"}</p><p className="text-xs text-muted-foreground">{toBuy.length ? `the missing amounts at today's cheapest sellers${toBuyUnpriced ? `; ${toBuyUnpriced} without a price yet` : ""}` : "nothing missing"}</p></CardContent></Card>
-      </section>
-
       <Card>
         <CardContent className="p-0">
           <div className="flex flex-wrap items-start justify-between gap-3 border-b px-4 py-4 sm:px-5">
             <div>
               <h2 className="text-balance font-heading text-lg font-semibold">Ingredients for {servings}</h2>
-              <p className="text-pretty text-xs text-muted-foreground">{recipe.ingredients.length} items · {buyable.length} priced today{cost?.lines.length ? ` · ${cost.estimated ? "≈ " : ""}${rupees(cost.total)} for ${servings} (${rupees(cost.per_serving)} per person), priced items only` : ""}. Amounts as bought, before trimming.</p>
+              <p className="text-pretty text-xs text-muted-foreground">{recipe.ingredients.length} items · {buyable.length} priced today{inBasket.length ? ` · ${inBasket.length} in your basket` : ""}{cost?.lines.length ? ` · ${cost.estimated ? "≈ " : ""}${rupees(cost.total)} for ${servings} (${rupees(cost.per_serving)} per person), priced items only` : ""}. Amounts as bought, before trimming.</p>
             </div>
             <div className="flex flex-wrap gap-2">
               {toBuy.length ? <Button onClick={addAll} size="sm">Add {toBuy.length === buyable.length ? "all" : "the rest"} to basket</Button> : null}
@@ -148,13 +150,14 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
                     const owned = Boolean(line.ref && have.has(line.ref));
                     const displayName = line.names?.en ?? line.label.en;
                     return (
-                      <li key={index} className="grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1.5 px-4 py-3 sm:grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_6rem_8.5rem] sm:gap-x-4 sm:px-5">
+                      <li key={index} className={cn("grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1.5 px-4 py-3 sm:grid-cols-[2.75rem_minmax(0,1.3fr)_6rem_minmax(0,1fr)_6rem_8.5rem] sm:gap-x-4 sm:px-5", owned && "bg-primary/[0.04]")}>
                         <IngredientImage id={line.ref} label={name} size="md" className="row-span-2 self-start sm:row-span-1 sm:self-center" />
                         <div className="min-w-0">
                           <p className="truncate text-sm font-medium leading-tight">
                             {line.ref?.startsWith("product_") ? <Link to={`/p/${line.ref}`} className="no-underline hover:text-primary">{name}</Link> : name}
                           </p>
                           <p className="mt-0.5 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] text-muted-foreground">
+                            {owned ? <InBasketBadge /> : null}
                             {preparation ? <span className="truncate">{preparation}</span> : null}
                             {line.optional ? <Badge variant="outline" className="h-4 px-1 text-[10px] font-normal">optional</Badge> : null}
                             {line.part === "frying" ? <Badge variant="outline" className="h-4 px-1 text-[10px] font-normal">absorbed share counted</Badge> : null}
@@ -176,10 +179,7 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
                         <div className="col-start-3 row-start-2 flex items-center justify-end gap-1.5 sm:col-start-6 sm:row-start-auto">
                           {line.ref && line.purchase ? (
                             owned ? (
-                              <>
-                                <RiCheckLine aria-label="In your basket" className="size-4 shrink-0 text-primary" />
-                                <QuantityControl id={line.ref} label={displayName} unit={line.purchase.unit} />
-                              </>
+                              <QuantityControl id={line.ref} label={displayName} unit={line.purchase.unit} />
                             ) : (
                               <Button aria-label={`Add ${formatQuantity(line.purchase.quantity, line.purchase.unit)} of ${displayName} to basket`} className="tabular-nums" onClick={() => basketStore.add(line.ref!, displayName, line.purchase!.unit, line.purchase!.quantity)} size="sm" variant="outline">
                                 <RiAddLine className="size-3.5" />
@@ -272,6 +272,16 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
 }
 
 /** "Add to a menu": a visitor is asked to sign in; a signed-in person picks one of the account's menus or starts a new one from here. */
+/** A small mark on an ingredient line that is already in the basket, next to its name so it reads on a phone too. */
+export function InBasketBadge({ className }: { className?: string | undefined }) {
+  return (
+    <Badge className={cn("h-4 gap-0.5 border-primary/40 bg-primary/10 px-1 text-[10px] font-medium text-primary", className)} variant="outline">
+      <RiCheckLine aria-hidden className="size-3" />
+      In your basket
+    </Badge>
+  );
+}
+
 function AddToMenu({ dishId, dishName }: { dishId: string; dishName: string }) {
   const account = useAccount();
   const location = useLocation();
