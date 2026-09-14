@@ -161,6 +161,9 @@ importers:
       '@lanka-pricelens/archive':
         specifier: workspace:*
         version: link:../archive
+      '@lanka-pricelens/notify':
+        specifier: workspace:*
+        version: link:../notify
       '@lanka-pricelens/shared':
         specifier: workspace:*
         version: link:../shared

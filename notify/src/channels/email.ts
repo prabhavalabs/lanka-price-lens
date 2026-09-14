@@ -4,9 +4,22 @@ import { emailContent } from "../render/email.ts";
 
 /**
  * Email through Resend's HTTP API. The address is the recipient; `meta.reply_to` sets the
- * reply address, `meta.subject` overrides the title as subject, and `meta.html` with
- * `meta.text` carry a finished template through unchanged.
+ * reply address, `meta.subject` overrides the title as subject, `meta.html` with `meta.text`
+ * carry a finished template through unchanged, and `meta.headers` (a record of header names
+ * to values, such as `List-Unsubscribe`) goes out on the message as given.
  */
+
+/** The custom headers a target asks for: string values only, header names trimmed, nothing else. */
+export function headersOf(meta: Record<string, unknown> | undefined): Record<string, string> | null {
+  const given = meta?.headers;
+  if (typeof given !== "object" || given === null || Array.isArray(given)) return null;
+  const headers: Record<string, string> = {};
+  for (const [name, value] of Object.entries(given as Record<string, unknown>)) {
+    const key = name.trim();
+    if (key && /^[!#$%&'*+.^_`|~0-9A-Za-z-]+$/u.test(key) && typeof value === "string" && !/[\r\n]/u.test(value)) headers[key] = value;
+  }
+  return Object.keys(headers).length ? headers : null;
+}
 
 export type EmailConfig = {
   apiKey: string;
@@ -36,12 +49,13 @@ export function createEmailChannel(config: EmailConfig): Channel {
       if (!isEmailAddress(target.address)) return failure("EMAIL_ADDRESS_INVALID", { gone: true });
       const content = emailContent(message, target.meta);
       const replyTo = typeof target.meta?.reply_to === "string" && isEmailAddress(target.meta.reply_to) ? target.meta.reply_to : null;
+      const headers = headersOf(target.meta);
       let response: Response;
       try {
         response = await request(endpoint, {
           method: "POST",
           headers: { authorization: `Bearer ${config.apiKey}`, "content-type": "application/json" },
-          body: JSON.stringify({ from: config.from, to: [target.address], subject: content.subject, text: content.text, html: content.html, ...(replyTo ? { reply_to: replyTo } : {}) }),
+          body: JSON.stringify({ from: config.from, to: [target.address], subject: content.subject, text: content.text, html: content.html, ...(replyTo ? { reply_to: replyTo } : {}), ...(headers ? { headers } : {}) }),
           signal: AbortSignal.timeout(15_000),
         });
       } catch (error) {

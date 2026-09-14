@@ -117,6 +117,10 @@ test("email goes through Resend with text and html; a bad key is not retried", a
   assert.equal(calls[0]!.body.subject, "Big onion down 12%");
   assert.equal(calls[0]!.body.reply_to, "owner@example.com");
   assert.ok(String(calls[0]!.body.html).includes("<h1"));
+  assert.equal(calls[0]!.body.headers, undefined, "no custom headers unless the target asks");
+  // A newsletter target carries its list headers through; anything that is not a clean header is dropped.
+  await email.send({ kind: "email", address: "reader@example.com", meta: { headers: { "List-Unsubscribe": "<mailto:hello@example.com>, <https://price.example/u?token=x>", "List-Unsubscribe-Post": "List-Unsubscribe=One-Click", "X-Bad": "a\r\nb", "": "x", "X-Number": 4 } } }, short);
+  assert.deepEqual(calls[1]!.body.headers, { "List-Unsubscribe": "<mailto:hello@example.com>, <https://price.example/u?token=x>", "List-Unsubscribe-Post": "List-Unsubscribe=One-Click" });
   const rejected = createEmailChannel({ apiKey: "bad", from: "x <x@example.com>", fetch: recorder(() => new Response("API key is invalid", { status: 401 })).request });
   const failed = await rejected.send({ kind: "email", address: "reader@example.com" }, short);
   assert.equal(failed.ok, false);

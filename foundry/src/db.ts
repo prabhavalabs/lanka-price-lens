@@ -4,6 +4,7 @@ import { dirname } from "node:path";
 
 import Database from "better-sqlite3";
 
+import { outboxSchema } from "@lanka-pricelens/notify";
 import type { RunStatus, SourceManifest, StageName, WorkflowName } from "@lanka-pricelens/shared";
 
 export type OperationalDatabase = Database.Database;
@@ -764,6 +765,46 @@ function migrate(database: OperationalDatabase): void {
     ) STRICT;
     CREATE INDEX IF NOT EXISTS account_recipe_account_idx ON account_recipe(account_id, updated_at DESC);
   `);
+
+  // Mail wording edited in the admin, the daily newsletters (docs/newsletters.md), and the
+  // notify outbox they are delivered through. The deals engine keeps its own table elsewhere.
+  database.exec(`
+    CREATE TABLE IF NOT EXISTS mail_template (
+      kind TEXT PRIMARY KEY,
+      fields_json TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      updated_by TEXT
+    ) STRICT;
+    CREATE TABLE IF NOT EXISTS newsletter_run (
+      id TEXT PRIMARY KEY,
+      kind TEXT NOT NULL CHECK (kind IN ('recipes_daily', 'deals_daily')),
+      day TEXT NOT NULL,
+      trigger TEXT NOT NULL,
+      status TEXT NOT NULL CHECK (status IN ('running', 'sent', 'skipped', 'failed', 'dry_run')),
+      started_at TEXT NOT NULL,
+      finished_at TEXT,
+      recipients INTEGER NOT NULL DEFAULT 0,
+      sent INTEGER NOT NULL DEFAULT 0,
+      skipped INTEGER NOT NULL DEFAULT 0,
+      failed INTEGER NOT NULL DEFAULT 0,
+      error TEXT,
+      report_json TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS newsletter_run_kind_day_idx ON newsletter_run(kind, day, started_at DESC);
+    CREATE TABLE IF NOT EXISTS newsletter_delivery (
+      id TEXT PRIMARY KEY,
+      run_id TEXT NOT NULL REFERENCES newsletter_run(id) ON DELETE CASCADE,
+      kind TEXT NOT NULL,
+      day TEXT NOT NULL,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      payload_json TEXT NOT NULL,
+      outbox_id TEXT,
+      created_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS newsletter_delivery_account_idx ON newsletter_delivery(account_id, kind, day DESC);
+    CREATE INDEX IF NOT EXISTS newsletter_delivery_run_idx ON newsletter_delivery(run_id);
+  `);
+  database.exec(outboxSchema);
 }
 
 function addColumn(database: OperationalDatabase, table: string, column: string, definition: string): void {
