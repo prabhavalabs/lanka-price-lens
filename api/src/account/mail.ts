@@ -19,7 +19,12 @@ export type RenderedMail = { subject: string; html: string; text: string };
 export type RenderOptions = {
   /** The address the footer invites replies to; the sender's address by default. */
   replyTo?: string | undefined;
+  /** Where the mark at the top of every mail is fetched from; the production site by default. */
+  markUrl?: string | undefined;
 };
+
+/** The mark as served by the public site; mail needs an absolute address a mail client can fetch. */
+export const defaultMarkUrl = "https://price.prabhavalabs.com/mark.png";
 
 /** What a template decides; the layout turns it into html and text. Everything here is plain text and gets escaped. */
 type MailContent = {
@@ -94,10 +99,12 @@ const fonts = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
 /**
  * The one layout: the PriceLens mark, a headline, a sentence or two, one button with its link
  * written out beneath, and a footer saying why the mail came. Tables and inline styles so it
- * reads the same in Gmail, Outlook, and Apple Mail; nothing has to load.
+ * reads the same in Gmail, Outlook, and Apple Mail; the mark is the only thing that loads, and
+ * the wordmark beside it carries the name when a client blocks images.
  */
 function layout(content: MailContent, options: RenderOptions): RenderedMail {
   const replyTo = options.replyTo ?? parseMailbox(defaultAccountMailFrom).email;
+  const markUrl = options.markUrl ?? defaultMarkUrl;
   const font = `font-family:${fonts};`;
   const paragraphs = content.paragraphs.map((paragraph) => `<p style="margin:0 0 14px 0;${font}font-size:16px;line-height:1.55;color:${ink};">${escapeHtml(paragraph)}</p>`).join("\n");
   const button = content.button
@@ -131,7 +138,7 @@ function layout(content: MailContent, options: RenderOptions): RenderedMail {
           <td style="padding:0 0 20px 4px;">
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td width="36" height="36" align="center" valign="middle" bgcolor="${green}" style="width:36px;height:36px;border-radius:10px;background:${green};${font}font-size:18px;font-weight:700;line-height:36px;color:#ffffff;">₨</td>
+                <td width="36" height="36" align="center" valign="middle" style="width:36px;height:36px;"><img alt="" height="36" src="${escapeHtml(markUrl)}" style="display:block;width:36px;height:36px;border:0;" width="36"></td>
                 <td style="padding-left:10px;${font}font-size:18px;font-weight:700;color:${ink};">PriceLens</td>
               </tr>
             </table>
@@ -184,12 +191,15 @@ export function createAccountMailer(environment: Record<string, string | undefin
   const apiKey = resendKey || sendgridKey || "";
   const channels: ChannelRegistry | null = provider ? createChannels({ email: { provider, apiKey, from }, fetch: request }) : null;
   const replyTo = parseMailbox(from).email;
+  // Mail clients fetch the mark over the network, so a local origin is no use there; production serves it.
+  const siteOrigin = environment.LPL_SITE_ORIGIN?.trim().replace(/\/+$/u, "");
+  const markUrl = siteOrigin?.startsWith("https://") ? `${siteOrigin}/mark.png` : defaultMarkUrl;
   let warned = false;
 
   const send = async <K extends AccountMailKind>(kind: K, input: AccountMailInput<K>): Promise<MailResult> => {
     let rendered: RenderedMail;
     try {
-      rendered = renderAccountMail(kind, input, { replyTo });
+      rendered = renderAccountMail(kind, input, { replyTo, markUrl });
     } catch (error) {
       return { ok: false, error: `MAIL_RENDER: ${error instanceof Error ? error.message : String(error)}` };
     }
