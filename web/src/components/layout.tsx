@@ -28,7 +28,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-30 border-b border-border/70 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-4 py-2.5 sm:flex-nowrap sm:gap-3">
           <Link aria-label="PriceLens, home" className="flex shrink-0 items-center gap-2.5 no-underline" to="/">
-            <span aria-hidden className="grid size-9 place-items-center rounded-xl bg-primary font-heading text-lg font-bold text-primary-foreground shadow-sm">₨</span>
+            <img alt="" className="size-9 shrink-0 select-none" decoding="async" draggable={false} height={36} src="/mark.png" width={36} />
             <span className="hidden font-heading text-lg font-semibold tracking-tight lg:block">PriceLens</span>
           </Link>
           <div className="order-last w-full min-w-0 sm:order-none sm:ml-2 sm:w-auto sm:max-w-lg sm:flex-1"><SearchBox /></div>

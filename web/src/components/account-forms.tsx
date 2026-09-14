@@ -96,7 +96,7 @@ export function AuthCard({ title, description, children, footer }: { title: stri
       <Card>
         <CardHeader>
           <Link aria-label="PriceLens, home" className="mb-3 flex items-center gap-2.5 no-underline" to="/">
-            <span aria-hidden className="grid size-9 place-items-center rounded-xl bg-primary font-heading text-lg font-bold text-primary-foreground shadow-sm">₨</span>
+            <img alt="" className="size-9 shrink-0 select-none" decoding="async" draggable={false} height={36} src="/mark.png" width={36} />
             <span className="font-heading text-lg font-semibold tracking-tight">PriceLens</span>
           </Link>
           <CardTitle className="text-balance text-xl">{title}</CardTitle>
