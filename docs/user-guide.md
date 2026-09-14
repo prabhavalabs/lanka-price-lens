@@ -228,15 +228,20 @@ in with an email and a password, or with Google.
    address already has a PriceLens account, Google joins it.
 4. Your picture or initials in the header open the account menu: Account, Menus, My recipes,
    Sign out. The account page holds your name and language, your food preferences, your
-   email and password, which mail you want, every device signed in (with "Sign out
-   everywhere else"), and, at the bottom, deleting the account.
+   wishlist, your email and password, which mail you want, every device signed in (with
+   "Sign out everywhere else"), and, at the bottom, deleting the account.
 5. Food preferences shape "Surprise me" and the daily recipe ideas: what you eat
    (everything, vegetarian, vegan, pescatarian), what you avoid (egg, dairy, fish, meat,
    gluten), what you are after (weight loss, high protein, quick, budget, and so on), and
    the kinds of dish you like. Each choice saves as you make it. Under Notifications, switch
    on the daily recipe ideas or the daily price digest; the mails go out once the
    newsletters run.
-6. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
+6. The star beside a product on the board, its page, or a recipe's ingredient line puts it
+   on your wishlist. The Wishlist section on the account page shows each starred product at
+   today's cheapest seller with the move since yesterday. Switch on Price alerts under
+   Notifications and each product gets a rule: any drop, or a price of your own; a morning
+   mail arrives when one is met.
+7. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
    hour; using it signs every other device out.
 
 Five wrong passwords in a row lock sign-in for fifteen minutes; the wait is the same whether

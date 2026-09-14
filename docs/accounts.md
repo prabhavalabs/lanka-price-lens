@@ -141,6 +141,7 @@ context; `requireVerified` additionally needs a verified address.
 | `GET /v1/auth/google/callback` | none | | 302 to the site: `return_to` on success, `/account/login?error=google` otherwise |
 | `GET/POST /v1/account/menus`, `GET/PUT/DELETE /v1/account/menus/:id` | verified | `accountMenuInputSchema` | menus of the account |
 | `GET/POST /v1/account/recipes`, `GET/PUT/DELETE /v1/account/recipes/:id` | verified | `userRecipeInputSchema` | recipes of the account; `GET :id?servings=` adds the computed `view` (scaled lines, nutrition, cost) as the corpus recipe endpoint does |
+| `GET /v1/account/watchlist`, `PUT/PATCH/DELETE /v1/account/watchlist/:productId` | session | `watchItemInputSchema` | the wishlist: starred products with today's cheapest seller and each one's alert rule (docs/newsletters.md); up to 100 |
 | `GET /v1/admin/accounts`, `PATCH /v1/admin/accounts/:id` | owner | `{status}` | list with search and paging; disable or enable |
 
 Links in mail point at the site: `/account/verify?token=`, `/account/reset?token=`,

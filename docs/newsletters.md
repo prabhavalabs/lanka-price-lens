@@ -257,6 +257,26 @@ Two kinds, `recipes_daily` and `deals_daily`, each one run per Colombo day:
   `pnpm newsletter run --kind <kind> [--day] [--dry-run]` (the API package's own command, so
   it shares the server's configuration) does the same from a shell.
 
+## Wishlist and price alerts
+
+A star beside a product (board card, product page, recipe ingredient line) puts it on the
+account's wishlist: one row per account and product in `account_watch`, with its own rule
+(`watchAlertSchema` in `shared/src/accounts.ts`: `mode` `any_drop` | `below` | `off`,
+`threshold_minor` for `below`), at most 100 per account. `GET /v1/account/watchlist` answers
+the entries with today's cheapest published retail seller (open markets and supermarkets,
+never wholesale) and the cheapest price the day before; `PUT /:productId` adds or re-rules,
+`PATCH /:productId` changes the rule, `DELETE /:productId` removes. The routes sit behind the
+session only, so an unverified account can star; the mail itself needs a verified address.
+
+`price_alerts` is the third newsletter kind (`notify_alerts`). The run prices every watched
+product once, then evaluates each account's rules (`api/src/newsletters/alerts.ts`):
+**any drop** fires when the cheapest price is at least 5 % under the day before, or under
+what the last alert reported; **below** fires when the cheapest price is at or under the
+mark, and again after seven days while it stays there. One mail per account lists the
+products that fired (deal rows: product, seller, now, was, change), and `account_watch`
+records the price each alert reported so the next waits for a further move. A day with no
+hits sends nothing.
+
 ## Admin portal
 
 A **Mail** page (`/mail`, nav under Public site) with two tabs. **Templates**: the kinds in
