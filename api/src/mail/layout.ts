@@ -8,9 +8,10 @@ import { escapeHtml, formatChange } from "@lanka-pricelens/notify";
  * account mail, a boxed note saying why the mail came (amber when it is a security notice).
  * Under the card a footer carries the site's links, the unsubscribe link for the daily mails,
  * the reply address, and "Made in Sri Lanka". Tables and inline styles so it reads the same in
- * Gmail, Outlook, and Apple Mail; light only; no external CSS; the mark and the recipe card
- * pictures are the only remote images, and the wordmark beside the mark carries the name when
- * a client blocks images. Every block also has a plain-text rendering.
+ * Gmail, Outlook, and Apple Mail; light only; no external CSS; the mark, the recipe card
+ * pictures, and the product thumbnails on deal rows are the only remote images, and the
+ * wordmark beside the mark carries the name when a client blocks images. Every block also has
+ * a plain-text rendering.
  */
 
 /** The sender account mail goes out as when the environment names none. */
@@ -40,6 +41,8 @@ export type RecipeCard = {
 export type DealRow = {
   product: string;
   store: string;
+  /** An absolute URL of the product's photo (the site's /images/products), or null for a lettered tile. */
+  image?: string | null | undefined;
   /** Already worded: "Rs 370 / kg". */
   now: string;
   /** The comparison, as a whole phrase: "was Rs 420 / kg yesterday", "next store Rs 440 / kg". Null when there is none. */
@@ -207,7 +210,12 @@ function dealRowsHtml(block: Extract<ContentBlock, { type: "deals" }>): string {
       const product = row.url ? link(row.url, row.product, `color:${ink};font-weight:700;text-decoration:none;`) : `<span style="font-weight:700;">${escapeHtml(row.product)}</span>`;
       const was = row.was ? `<div style="margin:2px 0 0 0;${font}font-size:12px;line-height:1.4;color:${faint};">${escapeHtml(row.was)}</div>` : "";
       const top = index === 0 ? "" : `border-top:1px solid ${rule};`;
+      const picture = row.image
+        ? `<img alt="" src="${escapeHtml(row.image)}" width="52" height="52" style="display:block;width:52px;height:52px;border:0;border-radius:10px;background:${chip};object-fit:cover;">`
+        : `<div style="width:52px;height:52px;border-radius:10px;background:${chip};${font}font-size:20px;font-weight:700;line-height:52px;text-align:center;color:${muted};">${escapeHtml(row.product.slice(0, 1).toUpperCase())}</div>`;
+      const thumb = row.url ? `<a href="${escapeHtml(row.url)}" style="display:block;text-decoration:none;">${picture}</a>` : picture;
       return `        <tr>
+          <td valign="middle" width="52" style="padding:10px 12px 10px 0;${top}width:52px;">${thumb}</td>
           <td valign="middle" style="padding:12px 12px 12px 0;${top}${font}font-size:15px;line-height:1.4;color:${ink};">${product}<div style="${font}font-size:13px;color:${muted};">${escapeHtml(row.store)}</div>${was}</td>
           <td valign="middle" align="right" style="padding:12px 0;${top}${font}font-size:16px;line-height:1.4;color:${ink};white-space:nowrap;"><strong>${escapeHtml(row.now)}</strong>${row.pct === null ? "" : `<div style="margin:4px 0 0 0;">${badge(row.pct)}</div>`}</td>
         </tr>`;

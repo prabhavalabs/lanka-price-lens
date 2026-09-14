@@ -3,7 +3,7 @@ import type { WatchItem } from "@lanka-pricelens/shared";
 import type { WatchQuote } from "../account/watchlist.ts";
 import type { ContentBlock, DealRow } from "../mail/layout.ts";
 import type { MailData } from "../mail/templates.ts";
-import { formatMinor } from "./deals.ts";
+import { formatMinor, productPhotoUrl, type PhotoLookup } from "./deals.ts";
 import { countWords, dayWords } from "./time.ts";
 
 /**
@@ -50,7 +50,7 @@ export function evaluateWatch(item: WatchItem, quote: WatchQuote, now: Date): Wa
   return { item, quote, was_minor: baseline, pct: percent(current, baseline), reason: "drop" };
 }
 
-function rowOf(hit: WatchHit, origin: string): DealRow {
+function rowOf(hit: WatchHit, origin: string, hasPhoto: PhotoLookup): DealRow {
   const { quote } = hit;
   const now = quote.now_minor === null ? "—" : formatMinor(quote.now_minor, quote.unit);
   const store = quote.cheapest ? `at ${quote.cheapest.market_label}` : "at the cheapest seller";
@@ -60,7 +60,7 @@ function rowOf(hit: WatchHit, origin: string): DealRow {
   } else if (hit.was_minor !== null) {
     was = `was ${formatMinor(hit.was_minor, quote.unit)}${hit.was_minor === quote.yesterday_minor ? " yesterday" : " when we last wrote"}`;
   }
-  return { product: quote.label, store, now, was, pct: hit.pct, url: `${origin}/p/${quote.product_id}` };
+  return { product: quote.label, store, image: hasPhoto?.(quote.product_id) ? productPhotoUrl(origin, quote.product_id) : null, now, was, pct: hit.pct, url: `${origin}/p/${quote.product_id}` };
 }
 
 export type AlertsMail = {
@@ -70,11 +70,11 @@ export type AlertsMail = {
 };
 
 /** One mail per account listing every product whose rule fired; null when none did. */
-export function composeAlertsMail(account: { display_name: string }, day: string, hits: WatchHit[], deps: { siteOrigin: string }, unsubscribeUrl: string | null = null): AlertsMail | null {
+export function composeAlertsMail(account: { display_name: string }, day: string, hits: WatchHit[], deps: { siteOrigin: string; hasPhoto?: PhotoLookup }, unsubscribeUrl: string | null = null): AlertsMail | null {
   if (!hits.length) return null;
   const origin = deps.siteOrigin.replace(/\/+$/u, "");
   const ordered = [...hits].sort((left, right) => (left.pct ?? 0) - (right.pct ?? 0));
-  const block: ContentBlock = { type: "deals", heading: null, rows: ordered.map((hit) => rowOf(hit, origin)), note: "Prices are the cheapest published retail seller today; open markets and supermarkets count, wholesale does not." };
+  const block: ContentBlock = { type: "deals", heading: null, rows: ordered.map((hit) => rowOf(hit, origin, deps.hasPhoto)), note: "Prices are the cheapest published retail seller today; open markets and supermarkets count, wholesale does not." };
   return {
     productIds: ordered.map((hit) => hit.item.product_id),
     data: {

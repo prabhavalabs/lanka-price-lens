@@ -67,17 +67,28 @@ function productUrl(url: string, siteOrigin: string): string {
   return url.startsWith("/") ? `${siteOrigin}${url}` : url;
 }
 
-export function dealRowOf(deal: Deal, siteOrigin: string): DealRow {
-  return { product: deal.label, store: storeWords(deal), now: formatMinor(deal.now_minor, deal.unit), was: baselineWords(deal), pct: deal.pct, url: productUrl(deal.url, siteOrigin) };
+/** Whether the site has a photo of a product (data/images/products); rows without one show a lettered tile. */
+export type PhotoLookup = ((productId: string) => boolean) | null | undefined;
+
+/** The product's photo as the site serves it. */
+export function productPhotoUrl(siteOrigin: string, productId: string): string {
+  return `${siteOrigin}/images/products/${productId.replace(/^product_/u, "")}.jpg`;
+}
+
+const photoOf = (siteOrigin: string, productId: string, hasPhoto: PhotoLookup): string | null => (hasPhoto?.(productId) ? productPhotoUrl(siteOrigin, productId) : null);
+
+export function dealRowOf(deal: Deal, siteOrigin: string, hasPhoto?: PhotoLookup): DealRow {
+  return { product: deal.label, store: storeWords(deal), image: photoOf(siteOrigin, deal.product_id, hasPhoto), now: formatMinor(deal.now_minor, deal.unit), was: baselineWords(deal), pct: deal.pct, url: productUrl(deal.url, siteOrigin) };
 }
 
 const trendWords: Record<EssentialWatch["trend"], string | null> = { down: "below its usual price this fortnight", up: "above its usual price this fortnight", flat: null };
 
 /** An essential row: the cheapest store today, the change against yesterday as the badge, the fortnight trend as the note. */
-export function essentialRowOf(essential: EssentialWatch, siteOrigin: string): DealRow {
+export function essentialRowOf(essential: EssentialWatch, siteOrigin: string, hasPhoto?: PhotoLookup): DealRow {
   return {
     product: essential.label,
     store: essential.cheapest.market,
+    image: photoOf(siteOrigin, essential.product_id, hasPhoto),
     now: formatMinor(essential.cheapest.price_minor, essential.unit),
     was: trendWords[essential.trend],
     pct: essential.change_pct,
@@ -95,17 +106,17 @@ export function hasSomethingToSay(day: DealsDay): boolean {
   return day.deals.length > 0 || day.cheapest.length > 0 || day.essentials.some(essentialMoved);
 }
 
-export function dealsBlocks(day: DealsDay, siteOrigin: string): ContentBlock[] {
+export function dealsBlocks(day: DealsDay, siteOrigin: string, hasPhoto?: PhotoLookup): ContentBlock[] {
   const origin = siteOrigin.replace(/\/+$/u, "");
   const blocks: ContentBlock[] = [];
-  if (day.deals.length) blocks.push({ type: "deals", heading: "Biggest drops today", rows: day.deals.map((deal) => dealRowOf(deal, origin)), note: "Against yesterday's price or the usual price of the last two weeks." });
-  if (day.cheapest.length) blocks.push({ type: "deals", heading: "Cheapest store today", rows: day.cheapest.map((deal) => dealRowOf(deal, origin)), note: "Products several stores sell in the same unit, where one store is well under the next." });
+  if (day.deals.length) blocks.push({ type: "deals", heading: "Biggest drops today", rows: day.deals.map((deal) => dealRowOf(deal, origin, hasPhoto)), note: "Against yesterday's price or the usual price of the last two weeks." });
+  if (day.cheapest.length) blocks.push({ type: "deals", heading: "Cheapest store today", rows: day.cheapest.map((deal) => dealRowOf(deal, origin, hasPhoto)), note: "Products several stores sell in the same unit, where one store is well under the next." });
   if (day.essentials.length) {
     // Moved items first, so the eye lands on what changed; the rest keep the engine's order.
     const rows = [...day.essentials].sort((left, right) => Number(essentialMoved(right)) - Number(essentialMoved(left)));
-    blocks.push({ type: "deals", heading: "Household essentials", rows: rows.map((essential) => essentialRowOf(essential, origin)), note: "The cheapest store for each item today; the badge is the change against yesterday's cheapest price." });
+    blocks.push({ type: "deals", heading: "Household essentials", rows: rows.map((essential) => essentialRowOf(essential, origin, hasPhoto)), note: "The cheapest store for each item today; the badge is the change against yesterday's cheapest price." });
   }
-  if (day.movers_up.length) blocks.push({ type: "deals", heading: "Going up", rows: day.movers_up.map((deal) => dealRowOf(deal, origin)), note: null });
+  if (day.movers_up.length) blocks.push({ type: "deals", heading: "Going up", rows: day.movers_up.map((deal) => dealRowOf(deal, origin, hasPhoto)), note: null });
   return blocks;
 }
 
@@ -115,7 +126,7 @@ export type DealsMail = {
 };
 
 /** Composes the mail for one account, or null when the day has nothing to say. */
-export function composeDealsMail(account: { display_name: string }, day: DealsDay, deps: { siteOrigin: string }, unsubscribeUrl: string | null = null): DealsMail | null {
+export function composeDealsMail(account: { display_name: string }, day: DealsDay, deps: { siteOrigin: string; hasPhoto?: PhotoLookup }, unsubscribeUrl: string | null = null): DealsMail | null {
   if (!hasSomethingToSay(day)) return null;
   const origin = deps.siteOrigin.replace(/\/+$/u, "");
   const stores = day.stores.map((store) => store.label);
@@ -123,7 +134,7 @@ export function composeDealsMail(account: { display_name: string }, day: DealsDa
     summary: { deals: day.deals.length, cheapest: day.cheapest.length, movers: day.movers_up.length, essentials: day.essentials.length, moved: day.essentials.filter(essentialMoved).length },
     data: {
       values: { name: account.display_name, date: dayWords(day.day), count: day.deals.length, stores: stores.length ? listWords(stores) : "the supermarkets", link: `${origin}/deals` },
-      blocks: dealsBlocks(day, origin),
+      blocks: dealsBlocks(day, origin, deps.hasPhoto),
       unsubscribeUrl,
     },
   };

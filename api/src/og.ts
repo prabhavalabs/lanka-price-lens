@@ -246,9 +246,14 @@ export function recipeCard(dish: CardDish, overview: PublicOverview | null, phot
   };
 }
 
+/** Where a product's photo lives when the site has one: data/images/products/<slug>.jpg. */
+export function productPhotoPath(imagesRoot: string, productId: string): string {
+  return resolve(imagesRoot, "products", `${productId.replace(/^product_/u, "")}.jpg`);
+}
+
 /** The photo for a product, when the site has one. */
 export function productPhoto(imagesRoot: string, productId: string): Buffer | undefined {
-  const file = resolve(imagesRoot, "products", `${productId.replace(/^product_/u, "")}.jpg`);
+  const file = productPhotoPath(imagesRoot, productId);
   return existsSync(file) ? readFileSync(file) : undefined;
 }
 

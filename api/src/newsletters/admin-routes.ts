@@ -9,7 +9,7 @@ import type { RenderedMail } from "../mail/layout.ts";
 import { readFields, renderMail, type MailData, type TemplateStore } from "../mail/templates.ts";
 import { envelope, jsonObject } from "../http.ts";
 import type { RecipeIndexEntry } from "../recipe-views.ts";
-import { composeDealsMail, dealsBlocks, type DealsAccess } from "./deals.ts";
+import { composeDealsMail, dealsBlocks, productPhotoUrl, type DealsAccess } from "./deals.ts";
 import { composeRecipesMail } from "./recipes.ts";
 import { NewsletterRunningError, type NewsletterService } from "./service.ts";
 import { isNewsletterKind } from "./store.ts";
@@ -104,6 +104,8 @@ export type MailAdminDeps = {
   markUrl?: string | undefined;
   recipes?: { index: Map<string, RecipeIndexEntry>; hasPhoto?: ((dishId: string) => boolean) | undefined } | undefined;
   deals?: DealsAccess | undefined;
+  /** Whether the site has a photo of a product, for the thumbnails on deal and alert rows. */
+  hasProductPhoto?: ((productId: string) => boolean) | undefined;
   now?: (() => Date) | undefined;
 };
 
@@ -133,7 +135,7 @@ export function sampleDealsDay(day: string): DealsDay {
 }
 
 /** What the preview of each kind is rendered with: fixed names and links, real recipes when the index has them, today's deals when saved. */
-export function sampleMailData(kind: MailKind, deps: Pick<MailAdminDeps, "siteOrigin" | "recipes" | "deals">, now: Date): MailData {
+export function sampleMailData(kind: MailKind, deps: Pick<MailAdminDeps, "siteOrigin" | "recipes" | "deals" | "hasProductPhoto">, now: Date): MailData {
   const origin = (deps.siteOrigin ?? "https://price.prabhavalabs.com").replace(/\/+$/u, "");
   const day = colomboDay(now);
   const unsubscribe = `${origin}/v1/newsletter/unsubscribe?token=sample`;
@@ -152,15 +154,16 @@ export function sampleMailData(kind: MailKind, deps: Pick<MailAdminDeps, "siteOr
     }
     case "deals_daily": {
       const dealsDay = deps.deals?.latest() ?? sampleDealsDay(day);
-      const composed = composeDealsMail(account, dealsDay, { siteOrigin: origin }, unsubscribe);
+      const composed = composeDealsMail(account, dealsDay, { siteOrigin: origin, hasPhoto: deps.hasProductPhoto }, unsubscribe);
       if (composed) return composed.data;
-      return { values: { name: "Amal", date: dayWords(dealsDay.day), count: 0, stores: "the supermarkets", link: `${origin}/deals` }, blocks: dealsBlocks(dealsDay, origin), unsubscribeUrl: unsubscribe };
+      return { values: { name: "Amal", date: dayWords(dealsDay.day), count: 0, stores: "the supermarkets", link: `${origin}/deals` }, blocks: dealsBlocks(dealsDay, origin, deps.hasProductPhoto), unsubscribeUrl: unsubscribe };
     }
     case "price_alerts": {
       // Two starred products that met their rules: a drop against yesterday and a price under the person's own mark.
+      const photo = (productId: string) => (deps.hasProductPhoto?.(productId) ? productPhotoUrl(origin, productId) : null);
       const rows = [
-        { product: "Big Onion", store: "at Glomark Online", now: "Rs 350 / kg", was: "was Rs 380 / kg yesterday", pct: -7.9, url: `${origin}/p/product_big_onion` },
-        { product: "Chicken", store: "at Keells Online", now: "Rs 1,590 / kg", was: "under your mark of Rs 1,600 / kg; was Rs 1,635 / kg yesterday", pct: -2.8, url: `${origin}/p/product_chicken` },
+        { product: "Big Onion", store: "at Glomark Online", image: photo("product_big_onion"), now: "Rs 350 / kg", was: "was Rs 380 / kg yesterday", pct: -7.9, url: `${origin}/p/product_big_onion` },
+        { product: "Chicken", store: "at Keells Online", image: photo("product_chicken"), now: "Rs 1,590 / kg", was: "under your mark of Rs 1,600 / kg; was Rs 1,635 / kg yesterday", pct: -2.8, url: `${origin}/p/product_chicken` },
       ];
       return { values: { name: "Amal", date: dayWords(day), count: "two products", link: `${origin}/account#wishlist` }, blocks: [{ type: "deals", heading: null, rows, note: "Prices are the cheapest published retail seller today; open markets and supermarkets count, wholesale does not." }], unsubscribeUrl: unsubscribe };
     }

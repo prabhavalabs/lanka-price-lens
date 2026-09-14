@@ -30,6 +30,8 @@ export type NewsletterDeps = {
   templates?: TemplateStore | undefined;
   /** "https://price.prabhavalabs.com": where every link in the mail points. */
   siteOrigin: string;
+  /** Whether the site has a photo of a product, for the thumbnails on deal and alert rows. */
+  hasProductPhoto?: ((productId: string) => boolean) | undefined;
   /** LPL_ACCOUNT_STATE_SECRET: signs the unsubscribe tokens. */
   secret: string;
   /** The footer's reply address and the mailto: part of List-Unsubscribe; the sender's address. */
@@ -183,7 +185,7 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
               const hit = quote ? evaluateWatch(item, quote, at) : null;
               return hit ? [hit] : [];
             });
-            const composed = composeAlertsMail(account, day, alertHits, { siteOrigin }, unsubscribe);
+            const composed = composeAlertsMail(account, day, alertHits, { siteOrigin, hasPhoto: deps.hasProductPhoto }, unsubscribe);
             if (!composed) {
               skip("no_alerts");
               continue;
@@ -191,7 +193,7 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
             payload = { product_ids: composed.productIds, ...composed.summary };
             data = composed.data;
           } else if (kind === "deals_daily") {
-            const composed = composeDealsMail(account, dealsDay!, { siteOrigin }, unsubscribe);
+            const composed = composeDealsMail(account, dealsDay!, { siteOrigin, hasPhoto: deps.hasProductPhoto }, unsubscribe);
             if (!composed) {
               skip("nothing_to_say");
               continue;

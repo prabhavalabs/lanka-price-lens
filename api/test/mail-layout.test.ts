@@ -42,7 +42,7 @@ test("deal rows stack the comparison under the store and the badge under the pri
       headline: "h",
       intro: [],
       blocks: [
-        { type: "deals", heading: "Drops", rows: [{ product: "Big onion", store: "21% off at Keells", now: "Rs 370 / kg", was: "was Rs 470 / kg yesterday", pct: -21.3, url: "https://x.example/p/onion" }, { product: "Eggs", store: "Cargills", now: "Rs 45", was: null, pct: 18.4, url: null }], note: "Against yesterday." },
+        { type: "deals", heading: "Drops", rows: [{ product: "Big onion", store: "21% off at Keells", image: "https://x.example/images/products/big_onion.jpg", now: "Rs 370 / kg", was: "was Rs 470 / kg yesterday", pct: -21.3, url: "https://x.example/p/onion" }, { product: "Eggs", store: "Cargills", now: "Rs 45", was: null, pct: 18.4, url: null }], note: "Against yesterday." },
         { type: "recipes", heading: null, cards: [{ image: "https://x.example/og.png", name: "Dhal curry", summary: "Lentils.", kcal: 281, minutes: 35, cost: "Rs 95 per serving", url: "https://x.example/r/dhal" }] },
         { type: "facts", heading: "Details", rows: [{ label: "Page", value: "https://x.example/p/onion", url: "https://x.example/p/onion", note: null }, { label: "From", value: "Amal", url: null, note: "+2.5%" }] },
       ],
@@ -57,6 +57,8 @@ test("deal rows stack the comparison under the store and the badge under the pri
   assert.ok(rendered.html.includes(">-21.3%</span>") && rendered.html.includes("#e4f3ec"), "a drop is a green badge");
   assert.ok(rendered.html.includes(">+18.4%</span>") && rendered.html.includes("#fdecea"), "a rise is a red badge");
   assert.ok(rendered.html.includes("was Rs 470 / kg yesterday"));
+  assert.ok(rendered.html.includes('src="https://x.example/images/products/big_onion.jpg" width="52"'), "a row with a photo shows the thumbnail");
+  assert.ok(rendered.html.includes(">E</div>"), "a row without a photo shows a lettered tile");
   assert.ok(rendered.html.includes('src="https://x.example/og.png"') && rendered.html.includes(">281 kcal</span>") && rendered.html.includes(">See the recipe →</a>"));
   assert.ok(rendered.html.includes(">Page</td>") && rendered.html.includes('href="https://x.example/p/onion"') && rendered.html.includes("+2.5%"));
   assert.ok(rendered.text.includes("Big onion at 21% off at Keells: Rs 370 / kg (was Rs 470 / kg yesterday, -21.3%)"));
