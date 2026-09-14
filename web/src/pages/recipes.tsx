@@ -7,6 +7,7 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { ErrorState } from "@/components/error-state";
 import { RecipeCard } from "@/components/recipe-card";
 import { RecipeSearchBar } from "@/components/recipe-search";
+import { RequestDish } from "@/components/request-dish";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -100,7 +101,7 @@ export function RecipesPage() {
           {list.data.items.length ? (
             <div className={cn("grid gap-3 sm:grid-cols-2 lg:grid-cols-3 transition-opacity", list.isFetching && "opacity-70")}>
               {list.data.items.map((item) => (
-                <RecipeCard key={item.dish.id} dish={item.dish}>
+                <RecipeCard key={item.dish.id} dish={item.dish} score={item.score}>
                   <div className="flex flex-wrap gap-1.5">
                     <Badge variant="secondary" className="text-[10px] tabular-nums">{kcalLabel(item.metrics.kcal)} / serving</Badge>
                     <Badge variant="outline" className="text-[10px] tabular-nums">{Math.round(item.metrics.protein_g)} g protein</Badge>
@@ -113,6 +114,7 @@ export function RecipesPage() {
             <div className="py-12 text-center text-muted-foreground">
               <p>Nothing matches. Try another spelling, an ingredient, or fewer filters.</p>
               <p className="mt-2 text-sm">Or browse everything on the <Link to="/basket" className="underline">basket</Link> page from what you already have.</p>
+              <p className="mt-4 text-sm"><RequestDish query={effective.q} /></p>
             </div>
           )}
           {list.data.pages > 1 ? (
@@ -122,6 +124,7 @@ export function RecipesPage() {
               <Button disabled={list.data.page >= list.data.pages} onClick={() => goToPage(list.data.page + 1)} size="sm" variant="outline">Next</Button>
             </div>
           ) : null}
+          {list.data.items.length ? <p className="text-center text-sm text-muted-foreground"><RequestDish query={effective.q} /></p> : null}
         </>
       ) : null}
     </div>

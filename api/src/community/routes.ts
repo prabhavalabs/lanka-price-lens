@@ -90,6 +90,7 @@ export function communityRoutes(deps: CommunityDeps): Hono<CommunityBindings> {
     return context.json(envelope(context.get("requestId"), { value: parsed.data.value, ...score }, true, parsed.data.value === "none" ? "Reaction removed" : "Thanks"));
   });
 
+  app.get("/translations", (context) => context.json(envelope(context.get("requestId"), deps.store.listTranslationFeedbackOf(context.get("account").id))));
   app.post("/translations", async (context) => {
     const body = await jsonObject(context);
     if (!body) return fail(context, 400, "Body must be JSON");

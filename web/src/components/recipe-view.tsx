@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { TranslationFeedbackLine } from "@/components/translation-feedback";
 import type { Lang, RecipeView } from "@/lib/api";
 import { minutesLabel, rupees, unitLabel } from "@/lib/format";
 import { amountLabel, disambiguator, gramsLabel, ingredientName, kcalLabel, localized, macroShares, partLabel, tagLabel } from "@/lib/recipe-format";
@@ -26,9 +27,9 @@ import { useMenuActions, useMenus } from "@/store/menus";
  * The full recipe: pick how many people, and every quantity, the nutrition, and the cost follow.
  * Times stay put: a pot for twenty simmers as long as a pot for four. The method reads in the
  * language the reader chooses; machine-drafted Sinhala or Tamil says so until a person has
- * reviewed it.
+ * reviewed it, and a line under the method takes the reader's verdict on the translation.
  */
-export function RecipeViewSection({ dishId, dishName, recipe, servings, onServings, loading, addToMenu = true }: { dishId: string; dishName: string; recipe: RecipeView; servings: number; onServings: (value: number) => void; loading: boolean; /** False for a person's own recipe, which a menu cannot hold yet. */ addToMenu?: boolean | undefined }) {
+export function RecipeViewSection({ dishId, dishName, recipe, servings, onServings, loading, addToMenu = true, translationFeedback = true }: { dishId: string; dishName: string; recipe: RecipeView; servings: number; onServings: (value: number) => void; loading: boolean; /** False for a person's own recipe, which a menu cannot hold yet. */ addToMenu?: boolean | undefined; /** False for a person's own recipe, whose translations nobody else reviews. */ translationFeedback?: boolean | undefined }) {
   const lang = useLanguage();
   const language: Lang = recipe.languages.includes(lang) ? lang : "en";
   const steps = recipe.steps[language] ?? recipe.steps.en;
@@ -258,6 +259,11 @@ export function RecipeViewSection({ dishId, dishName, recipe, servings, onServin
               <RiToolsLine className="size-3.5" />
               <span>You need</span>
               {recipe.equipment.map((item) => <Badge key={item} variant="outline" className="font-normal">{item}</Badge>)}
+            </div>
+          ) : null}
+          {translationFeedback && (language === "si" || language === "ta") ? (
+            <div className="mt-5 border-t pt-4">
+              <TranslationFeedbackLine key={`${dishId}-${language}`} dishId={dishId} dishName={dishName} language={language} />
             </div>
           ) : null}
         </CardContent>

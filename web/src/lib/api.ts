@@ -1,5 +1,7 @@
 /** The public read API, as the site consumes it. Shapes mirror `api/src/public.ts` and `api/src/explorer.ts`. */
 
+import type { RecipeScore } from "@lanka-pricelens/shared";
+
 export type Group = "wholesale" | "retail_market" | "supermarket";
 
 export type GroupPrice = { group: Group; unit: string; sellers: number; low: number; high: number; mid: number; observed_on: string; change_30d_pct: number | null };
@@ -176,11 +178,21 @@ export type RecipeView = {
   languages: Lang[];
 };
 
-export const fetchRecipe = (id: string, servings?: number | undefined): Promise<DishDetail & { recipe: RecipeView | null }> =>
-  get<DishDetail & { recipe: RecipeView | null }>(`/v1/public/recipes/${encodeURIComponent(id)}${servings ? `?servings=${servings}` : ""}`);
+/** A dish's page: the catalogue entry, its full recipe when it has one, and what signed-in readers made of it. */
+export type RecipeDetail = DishDetail & { recipe: RecipeView | null; /** Thumbs from signed-in readers; the site shows `score`, never the dislikes. */ reactions: RecipeScore };
+
+export const fetchRecipe = (id: string, servings?: number | undefined): Promise<RecipeDetail> =>
+  get<RecipeDetail>(`/v1/public/recipes/${encodeURIComponent(id)}${servings ? `?servings=${servings}` : ""}`);
+
+/** The route answers at most this many dishes at once. */
+export const scoresLimit = 100;
+
+/** The public score (likes less dislikes, never below zero) of up to a hundred dishes, keyed by id. */
+export const fetchScores = (ids: string[], signal?: AbortSignal): Promise<Record<string, number>> =>
+  ids.length ? get<Record<string, number>>(`/v1/public/recipes/scores?ids=${encodeURIComponent(ids.slice(0, scoresLimit).join(","))}`, signal) : Promise.resolve({});
 
 export type RecipeMetrics = { kcal: number; protein_g: number; fat_g: number; carb_g: number; fibre_g: number | null; minutes: number; tags: string[]; role: string; portion_g: number; languages: Lang[] };
-export type RecipeQueryItem = { dish: Dish; metrics: RecipeMetrics; cost_per_serving: number | null; cost_estimated: boolean | null };
+export type RecipeQueryItem = { dish: Dish; metrics: RecipeMetrics; cost_per_serving: number | null; cost_estimated: boolean | null; /** Likes less dislikes from signed-in readers, never below zero. */ score: number };
 export type RecipeQueryList = { items: RecipeQueryItem[]; page: number; pageSize: number; total: number; pages: number };
 export type RecipeQueryParams = { q?: string | undefined; category?: string | undefined; tags?: string[] | undefined; diet?: string[] | undefined; max_kcal?: number | undefined; min_protein?: number | undefined; max_minutes?: number | undefined; max_cost?: number | undefined; sort?: string | undefined; page?: number | undefined; cost?: boolean | undefined };
 

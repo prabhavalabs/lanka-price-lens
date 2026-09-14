@@ -1,4 +1,4 @@
-import { RiTimeLine } from "@remixicon/react";
+import { RiThumbUpLine, RiTimeLine } from "@remixicon/react";
 import type React from "react";
 import { Link } from "react-router-dom";
 
@@ -8,8 +8,11 @@ import type { Dish } from "@/lib/api";
 import { dishCategoryLabel, minutesLabel, titleCase } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
-/** A dish at a glance: name, category, time, and, when it comes from the basket, how much of it the shopper already has. */
-export function RecipeCard({ dish, matched, missing, labels, className, children }: { dish: Dish; matched?: string[] | undefined; missing?: string[] | undefined; labels?: Record<string, string> | undefined; className?: string | undefined; children?: React.ReactNode }) {
+/**
+ * A dish at a glance: name, category, time, the readers' score when it is above zero, and,
+ * when it comes from the basket, how much of it the shopper already has.
+ */
+export function RecipeCard({ dish, score, matched, missing, labels, className, children }: { dish: Dish; /** Likes less dislikes from signed-in readers; shown only above zero. */ score?: number | undefined; matched?: string[] | undefined; missing?: string[] | undefined; labels?: Record<string, string> | undefined; className?: string | undefined; children?: React.ReactNode }) {
   const total = dish.key_ingredients.length;
   const have = matched?.length ?? 0;
   const names = [dish.names.si, dish.names.ta_latn && !dish.names.si ? dish.names.ta_latn : null].filter(Boolean).join(" · ");
@@ -26,6 +29,7 @@ export function RecipeCard({ dish, matched, missing, labels, className, children
             <Badge variant="secondary" className="text-[10px]">{dishCategoryLabel(dish.category)}</Badge>
             <Badge variant="outline" className="gap-1 text-[10px]"><RiTimeLine className="size-3" />{minutesLabel(dish.prep_minutes + dish.cook_minutes)}</Badge>
             <Badge variant="outline" className="text-[10px]">{titleCase(dish.difficulty)}</Badge>
+            {score ? <Badge aria-label={`${score} more thumbs up than down`} className="gap-1 border-primary/40 bg-primary/10 text-[10px] text-primary tabular-nums" title="Thumbs up from readers, less thumbs down" variant="outline"><RiThumbUpLine aria-hidden className="size-3" />{score}</Badge> : null}
           </div>
           {children}
           {matched ? (

@@ -3,6 +3,7 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 
 import { ProductImage } from "@/components/product-image";
+import { RecipeReactions } from "@/components/reactions";
 import { RecipeViewSection } from "@/components/recipe-view";
 import { QuantityControl } from "@/components/quantity";
 import { ShareButtons } from "@/components/share";
@@ -68,7 +69,10 @@ export function RecipePage() {
           {dish.meal_slots.map((slot) => <Badge key={slot} variant="outline">{titleCase(slot)}</Badge>)}
           {dish.diet.map((tag) => <Badge key={tag} variant="outline">{titleCase(tag)}</Badge>)}
         </div>
-        <ShareButtons title={dish.names.en} text={shareText} />
+        <div className="flex flex-wrap items-center gap-2">
+          <ShareButtons title={dish.names.en} text={shareText} />
+          <RecipeReactions dishId={dish.id} score={dish.reactions} />
+        </div>
       </header>
 
       {dish.recipe ? <RecipeViewSection dishId={dish.id} dishName={dish.names.en} loading={recipe.isFetching} onServings={setServings} recipe={dish.recipe} servings={dish.recipe.servings} /> : null}

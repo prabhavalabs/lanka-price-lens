@@ -1,4 +1,4 @@
-import { RiAlertLine, RiCheckLine, RiGoogleFill, RiStarFill, RiStarLine } from "@remixicon/react";
+import { RiAlertLine, RiCheckLine, RiGoogleFill, RiHandHeartLine, RiStarFill, RiStarLine } from "@remixicon/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { accountLocales, avoidChoices, changeEmailSchema, changePasswordSchema, deleteAccountSchema, dietChoices, dishCategories, goalChoices, profilePatchSchema, type AccountLocale, type AccountPreferences, type AccountProfile, type AvoidChoice, type DietChoice, type GoalChoice, type WatchAlert, type WatchEntry } from "@lanka-pricelens/shared";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
@@ -22,10 +22,12 @@ import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { accountApi } from "@/lib/account-api";
 import { confirmError, describeUserAgent, validate, type FieldErrors } from "@/lib/account-forms";
+import { contributionRows, type ContributionRow } from "@/lib/contributions";
 import { changeLabel, dishCategoryLabel, rupees, unitLabel } from "@/lib/format";
 import { usePageTitle } from "@/lib/page-title";
 import { cn } from "@/lib/utils";
 import { setAccountProfile, useAccount } from "@/store/account";
+import { useProposals, useSentTranslations, useSubmissions } from "@/store/community";
 import { useWatchActions, useWatchlist } from "@/store/watchlist";
 import { languageNames, languageStore } from "@/store/language";
 
@@ -81,6 +83,7 @@ function ProfileSections() {
       <AboutSection account={person} />
       <FoodPreferencesSection account={person} />
       <WishlistSection />
+      <ContributionsSection />
       <EmailSection account={person} />
       <PasswordSection account={person} />
       <NotificationsSection account={person} />
@@ -468,6 +471,50 @@ function WishlistSection() {
       ) : null}
       {error ? <FormError className="mt-3" error={error} /> : null}
       <FormError className="mt-3" error={actions.error} />
+    </Section>
+  );
+}
+
+const contributionKindWords: Record<ContributionRow["kind"], string> = { recipe: "Recipe", request: "Request", ingredient: "Ingredient", translation: "Translation" };
+const contributionToneClass: Record<ContributionRow["tone"], string> = {
+  pending: "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-400",
+  good: "border-primary/40 bg-primary/10 text-primary",
+  bad: "border-destructive/40 bg-destructive/10 text-destructive",
+};
+
+/** Everything sent back on the recipes, newest first, with where the owner's review stands and any note left on it. */
+function ContributionsSection() {
+  const submissions = useSubmissions();
+  const proposals = useProposals();
+  const translations = useSentTranslations();
+  const rows = contributionRows({ submissions: submissions.submissions, proposals: proposals.proposals, translations });
+  const loading = submissions.status === "loading" || proposals.status === "loading";
+  const error = submissions.error ?? proposals.error;
+  return (
+    <Section description="Recipes and requests for the catalogue, ingredients you proposed, and translation feedback from this visit, each with where the owner's review stands." id="contributions" title="Contributions">
+      {loading ? <p className="text-sm text-muted-foreground">Loading your contributions.</p> : null}
+      {error ? <p className="text-sm text-destructive">Your contributions could not be loaded. <button className="underline" onClick={() => { submissions.refetch(); proposals.refetch(); }} type="button">Try again</button></p> : null}
+      {!loading && !error && !rows.length ? (
+        <div className="flex items-center gap-3 rounded-lg border border-dashed p-4 text-sm text-muted-foreground">
+          <RiHandHeartLine aria-hidden className="size-5 shrink-0 text-primary" />
+          <p className="text-pretty">Nothing sent yet. In the <Link to="/recipes">recipes</Link> section you can give a dish a thumbs up, correct a Sinhala or Tamil translation, request a dish that is missing, or send <Link to="/account/recipes">a recipe of your own</Link> for the catalogue.</p>
+        </div>
+      ) : null}
+      {rows.length ? (
+        <ul className="divide-y">
+          {rows.map((row) => (
+            <li className="flex flex-wrap items-start gap-x-3 gap-y-1 py-2.5 first:pt-0 last:pb-0" key={row.key}>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium"><span className="text-muted-foreground">{contributionKindWords[row.kind]} · </span>{row.title}</p>
+                {row.detail ? <p className="truncate text-xs text-muted-foreground">{row.detail}</p> : null}
+                {row.note ? <p className="mt-1 text-pretty text-xs"><span className="font-medium">From the owner:</span> {row.note}</p> : null}
+              </div>
+              <Badge className={cn("text-[10px]", contributionToneClass[row.tone])} variant="outline">{row.status}</Badge>
+              <span className="text-[11px] text-muted-foreground tabular-nums">{formatWhen(row.created_at, dayFormat)}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </Section>
   );
 }

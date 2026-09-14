@@ -61,6 +61,7 @@ needs a verified address, 403 `EMAIL_NOT_VERIFIED`), same-origin on writes:
 | --- | --- | --- |
 | `GET /reactions` | | `{ [dish_id]: "up" \| "down" }` for the account |
 | `PUT /reactions/:dishId` | `reactionSchema` | `{ value, ...RecipeScore }`; `none` removes |
+| `GET /translations` | | the account's `TranslationFeedback[]` |
 | `POST /translations` | `translationFeedbackInputSchema` | 201 `TranslationFeedback` |
 | `GET /submissions` | | the account's `RecipeSubmission[]` (recipe JSON omitted) |
 | `POST /submissions` | `submissionInputSchema` | 201 `RecipeSubmission`; 404 when the own recipe is not the account's; 413 at the open limit |

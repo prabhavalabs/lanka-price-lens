@@ -1,4 +1,4 @@
-import type { AccountLocale, AccountMenu, AccountMenuInput, AccountPreferences, AccountProfile, UserRecipe, UserRecipeInput, WatchAlert, WatchEntry, WatchItem } from "@lanka-pricelens/shared";
+import type { AccountLocale, AccountMenu, AccountMenuInput, AccountPreferences, AccountProfile, ProductProposal, ProductProposalInput, ReactionValue, RecipeScore, RecipeSubmission, SubmissionInput, TranslationFeedback, TranslationFeedbackInput, UserRecipe, UserRecipeInput, WatchAlert, WatchEntry, WatchItem } from "@lanka-pricelens/shared";
 
 import { describeFailure, type Envelope } from "./api.ts";
 
@@ -13,6 +13,12 @@ export type AccountSessionSummary = { id: string; created_at: string; expires_at
 
 /** A row of the recipe list: the recipe's own columns plus what the cards show without loading it. */
 export type UserRecipeSummary = Pick<UserRecipe, "id" | "account_id" | "name" | "category" | "visibility" | "created_at" | "updated_at" | "base_servings" | "summary"> & { ingredient_count: number; minutes: number };
+
+/** The account's thumb on a dish, as the reactions map holds it; a dish it has not reacted to is simply absent. */
+export type OwnReaction = Exclude<ReactionValue, "none">;
+
+/** The answer to setting a reaction: the account's value and the dish's counts as they now stand. */
+export type ReactionAnswer = { value: ReactionValue } & RecipeScore;
 
 export class AccountApiError extends Error {
   readonly status: number;
@@ -76,6 +82,32 @@ export const accountApi = {
     create: (input: UserRecipeInput) => call<UserRecipe>("POST", "/v1/account/recipes", input),
     update: (id: string, input: UserRecipeInput) => call<UserRecipe>("PUT", `/v1/account/recipes/${encodeURIComponent(id)}`, input),
     remove: (id: string) => call<null>("DELETE", `/v1/account/recipes/${encodeURIComponent(id)}`),
+  },
+  /**
+   * What a signed-in person gives back on the recipes (docs/community.md). A reaction needs only a
+   * session; everything the owner reviews needs a verified address (403 EMAIL_NOT_VERIFIED).
+   */
+  community: {
+    reactions: {
+      list: (signal?: AbortSignal) => call<Record<string, OwnReaction>>("GET", "/v1/account/community/reactions", undefined, signal),
+      /** Sets or switches the account's thumb; "none" removes it. Answers the dish's new counts. */
+      set: (dishId: string, value: ReactionValue) => call<ReactionAnswer>("PUT", `/v1/account/community/reactions/${encodeURIComponent(dishId)}`, { value }),
+    },
+    translations: {
+      list: (signal?: AbortSignal) => call<TranslationFeedback[]>("GET", "/v1/account/community/translations", undefined, signal),
+      /** One verdict per dish and language a day; a second the same day answers 409 ALREADY_SENT. */
+      send: (input: TranslationFeedbackInput) => call<TranslationFeedback>("POST", "/v1/account/community/translations", input),
+    },
+    submissions: {
+      /** The account's requests and submitted recipes, newest first, without the recipe JSON. */
+      list: (signal?: AbortSignal) => call<RecipeSubmission[]>("GET", "/v1/account/community/submissions", undefined, signal),
+      /** A request by name, or one of the account's own recipes by id; 413 at the open limit. */
+      send: (input: SubmissionInput) => call<RecipeSubmission>("POST", "/v1/account/community/submissions", input),
+    },
+    products: {
+      list: (signal?: AbortSignal) => call<ProductProposal[]>("GET", "/v1/account/community/products", undefined, signal),
+      send: (input: ProductProposalInput) => call<ProductProposal>("POST", "/v1/account/community/products", input),
+    },
   },
   /** Where the browser goes to sign in with Google; the API redirects back to `/account?linked=google` or `/`. */
   googleStartUrl: (returnTo = "/") => `/v1/auth/google/start?return_to=${encodeURIComponent(returnTo)}`,
