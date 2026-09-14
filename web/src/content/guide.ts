@@ -47,7 +47,7 @@ export const guideSections: GuideSection[] = [
       "Use the arrow keys and Enter, or tap a result, to open the product.",
     ],
     figures: [
-      { file: "search", alt: "The search box open with “b onion” typed and Big Onion suggested with its price range", caption: "Search understands rough spelling and store wording: “b onion” finds Big Onion.", width: 1920, height: 281 },
+      { file: "search", alt: "The search box open with “b onion” typed and Big Onion suggested with its price range", caption: "Search understands rough spelling and store wording: “b onion” finds Big Onion.", width: 1898, height: 281 },
     ],
   },
   {
@@ -61,7 +61,7 @@ export const guideSections: GuideSection[] = [
     ],
     figures: [
       { file: "product", alt: "The Big Onion page: photo, varieties, the quantity control, and summary cards for open markets, supermarkets, and wholesale", caption: "A product: sellers by group with the cheapest marked, and the supermarket average against wholesale.", width: 1920, height: 1200 },
-      { file: "outdated", alt: "An open-markets table where one seller's price is struck through and marked outdated, seen three months ago", caption: "A price older than its source allows is struck through and marked outdated.", width: 1680, height: 452 },
+      { file: "outdated", alt: "An open-markets table where one seller's price is struck through and marked outdated, seen three months ago", caption: "A price older than its source allows is struck through and marked outdated.", width: 1682, height: 452 },
     ],
     tips: [
       "Open-market prices come from surveys of selected markets and may differ at another stall on the same day.",
@@ -79,7 +79,7 @@ export const guideSections: GuideSection[] = [
       "The range and the groups are kept in the page address, so copying the link, or using “Share”, shows someone exactly the view you have.",
     ],
     figures: [
-      { file: "history", alt: "The price history chart over 90 days with open markets and supermarkets on, a day hovered, and a tooltip listing each seller's price", caption: "The history: pick a range, switch groups, hover or tap a day for every seller's price.", width: 1680, height: 1049 },
+      { file: "history", alt: "The price history chart over 90 days with open markets and supermarkets on, a day hovered, and a tooltip listing each seller's price", caption: "The history: pick a range, switch groups, hover or tap a day for every seller's price.", width: 1682, height: 1049 },
     ],
   },
   {
@@ -94,7 +94,7 @@ export const guideSections: GuideSection[] = [
     ],
     figures: [
       { file: "quantity", alt: "The quantity control on the Big Onion page opened to presets from 100 g to 5 kg and a field for an exact amount", caption: "Tap the amount for presets or an exact figure in grams or kilos.", width: 1920, height: 735 },
-      { file: "quick-basket", alt: "The basket dropdown in the header listing seven items with − and + controls and a button to compare stores", caption: "The basket from any page: adjust, remove, clear, or compare stores.", width: 1920, height: 732 },
+      { file: "quick-basket", alt: "The basket dropdown in the header listing seven items with − and + controls and a button to compare stores", caption: "The basket from any page: adjust, remove, clear, or compare stores.", width: 1898, height: 732 },
     ],
   },
   {
@@ -120,7 +120,7 @@ export const guideSections: GuideSection[] = [
       "“Recipes” in the header browses the whole catalogue by name in any language or by ingredient.",
     ],
     figures: [
-      { file: "cook", alt: "Dish cards under the basket, each with its category, time, difficulty, and what it still needs", caption: "Dishes that fit what you have, best fit first, each saying what is still to buy.", width: 1680, height: 1061 },
+      { file: "cook", alt: "Dish cards under the basket, each with its category, time, difficulty, and what it still needs", caption: "Dishes that fit what you have, best fit first, each saying what is still to buy.", width: 1682, height: 1061 },
       { file: "recipe", alt: "A dish page with ingredients still to buy at today's cheapest price and the ingredients already in the basket", caption: "A dish: every ingredient at today's cheapest price, the ones already in your basket marked, and the cost for the table.", width: 1920, height: 1200 },
       { file: "recipes", alt: "The recipe catalogue filtered by “curry”, one card per dish", caption: "The whole catalogue, searchable by name in any language or by ingredient.", width: 1920, height: 1200 },
     ],
@@ -203,7 +203,7 @@ export const guideSections: GuideSection[] = [
       "The Discord button in the bottom corner joins the Prabhava Labs community, where PriceLens updates land first; the same link sits in the ⋯ menu and the footer.",
     ],
     figures: [
-      { file: "feedback", alt: "The feedback dialog with a choice between feedback and a bug report, a message field, and an optional email", caption: "Feedback or a bug report, with the page you were on attached automatically.", width: 672, height: 546, half: true },
+      { file: "feedback", alt: "The feedback dialog with a choice between feedback and a bug report, a message field, and an optional email", caption: "Feedback or a bug report, with the page you were on attached automatically.", width: 674, height: 546, half: true },
     ],
   },
 ];
