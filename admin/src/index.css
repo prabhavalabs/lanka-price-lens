@@ -178,4 +178,11 @@
   ::selection {
     @apply bg-emerald-500/30 text-white;
   }
+  /* Everything that answers a click says so; Tailwind's reset leaves buttons with the arrow cursor. */
+  button:not(:disabled), [role="button"]:not([aria-disabled="true"]), [role="menuitem"], [role="tab"], [role="option"], [role="switch"], [role="checkbox"], [role="radio"], [role="combobox"], summary, select:not(:disabled), label[for], a[href] {
+    cursor: pointer;
+  }
+  button:disabled, [aria-disabled="true"], select:disabled, input:disabled {
+    cursor: not-allowed;
+  }
 }
