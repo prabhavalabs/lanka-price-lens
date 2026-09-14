@@ -45,6 +45,9 @@ import { googleRoutes } from "./account/google.ts";
 import { createAccountMailer } from "./account/mail.ts";
 import { readAccount, requireAccount, type AccountVariables } from "./account/middleware.ts";
 import { createWatchStore, watchPrices, watchlistRoutes } from "./account/watchlist.ts";
+import { communityAdminRoutes } from "./community/admin-routes.ts";
+import { communityRoutes } from "./community/routes.ts";
+import { createCommunityStore } from "./community/store.ts";
 import { accountRoutes } from "./account/routes.ts";
 import { createAccountService } from "./account/service.ts";
 import { createAccountStore } from "./account/store.ts";
@@ -127,6 +130,7 @@ export function createApp(
   const accountService = createAccountService({ store: accountStore, mailer: accountMailer, config: accountConfig });
   const contentStore = createContentStore(database);
   const watchStore = createWatchStore(database);
+  const communityStore = createCommunityStore(database);
   const presence = options.presence ?? new Presence();
   /** The PostgreSQL warehouse behind the price explorer; null when not configured or unreachable (the routes answer 503). */
   const warehouse = async (): Promise<WarehouseClient | null> => {
@@ -370,7 +374,9 @@ export function createApp(
     if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
     const query = parseRecipeQuery((name) => context.req.query(name));
     const prices = query.max_cost !== null || query.sort === "cost" || context.req.query("cost") === "1" ? await recipePrices([...recipeIndex.values()]) : null;
-    return context.json(envelope(context.get("requestId"), queryRecipes(options.recipes, recipeIndex, query, prices)));
+    const result = queryRecipes(options.recipes, recipeIndex, query, prices);
+    const scores = communityStore.scoresFor(result.items.map((item) => item.dish.id));
+    return context.json(envelope(context.get("requestId"), { ...result, items: result.items.map((item) => ({ ...item, score: scores.get(item.dish.id)?.score ?? 0 })) }));
   });
   // A household's menu, totalled: every recipe scaled to the headcount, nutrition and cost per person, one shopping list.
   app.post("/v1/public/menus/compute", bodyLimit({ maxSize: 32 * 1024 }), async (context) => {
@@ -407,6 +413,12 @@ export function createApp(
   // One-click unsubscribe from a daily mail: the token in the mail is the only credential, so no session and no origin check.
   app.route("/v1/newsletter/unsubscribe", unsubscribeRoutes({ store: accountStore, secret: accountConfig.stateSecret, siteOrigin: accountConfig.siteOrigin }));
 
+  // What the public sees of reactions: likes minus dislikes, never below zero (docs/community.md).
+  app.get("/v1/public/recipes/scores", (context) => {
+    const ids = (context.req.query("ids") ?? "").split(",").map((id) => id.trim()).filter((id) => /^dish_[a-z0-9_]+$/u.test(id)).slice(0, 100);
+    const scores = communityStore.scoresFor(ids);
+    return context.json(envelope(context.get("requestId"), Object.fromEntries(ids.map((id) => [id, scores.get(id)?.score ?? 0]))));
+  });
   // A random pick shaped by the signed-in person's preferences; registered before /:id so the word "surprise" is not read as a dish id.
   if (options.recipes) {
     app.use("/v1/public/recipes/surprise", readAccount(accountStore, accountConfig));
@@ -423,7 +435,8 @@ export function createApp(
     const entry = recipeIndex.get(dishId);
     const servings = Math.min(500, Math.max(1, Math.round(Number(context.req.query("servings") ?? entry?.recipe.base_servings ?? 4) || entry?.recipe.base_servings || 4)));
     const recipe = entry ? recipeView(options.recipes, recipeIndex, dishId, servings, await recipePrices([entry])) : null;
-    return context.json(envelope(context.get("requestId"), { ...dishDetail(options.recipes, dishId, labels, prices), recipe }));
+    const reactions = communityStore.scoresFor([dishId]).get(dishId) ?? { likes: 0, dislikes: 0, score: 0 };
+    return context.json(envelope(context.get("requestId"), { ...dishDetail(options.recipes, dishId, labels, prices), recipe, reactions }));
   });
   app.get("/v1/public/basket", async (context) => {
     const client = await warehouse();
@@ -448,10 +461,12 @@ export function createApp(
   // Visitor accounts: sign-up, sign-in, recovery, profile; menus and own recipes on the account; Google sign-in.
   app.route("/v1/account", accountRoutes({ store: accountStore, service: accountService, config: accountConfig }));
   const accountGuard = requireAccount(accountStore, accountConfig);
-  for (const path of ["/v1/account/menus", "/v1/account/menus/*", "/v1/account/recipes", "/v1/account/recipes/*", "/v1/account/watchlist", "/v1/account/watchlist/*"]) app.use(path, accountGuard);
+  for (const path of ["/v1/account/menus", "/v1/account/menus/*", "/v1/account/recipes", "/v1/account/recipes/*", "/v1/account/watchlist", "/v1/account/watchlist/*", "/v1/account/community", "/v1/account/community/*"]) app.use(path, accountGuard);
   // The wishlist (docs/newsletters.md): starred products with today's cheapest seller and each one's alert rule.
   // Mounted before the content routes, whose verified-address check covers menus and recipes but not stars.
   app.route("/v1/account/watchlist", watchlistRoutes({ store: watchStore, warehouse, published }));
+  // Reactions, translation feedback, submissions, and product proposals (docs/community.md); before the content routes for the same reason.
+  app.route("/v1/account/community", communityRoutes({ store: communityStore, content: contentStore, recipes: options.recipes, notifier: owner, siteOrigin: accountConfig.siteOrigin }));
   app.route("/v1/account", contentRoutes({ content: contentStore, recipes: options.recipes, warehouse, published }));
   app.route("/v1/auth/google", googleRoutes({ store: accountStore, config: accountConfig, createSession: (accountId, meta) => accountStore.createSession(accountId, meta, accountConfig.sessionSeconds, new Date()) }));
 
@@ -529,6 +544,7 @@ export function createApp(
   app.use("/v1/admin/*", requireOwner);
   app.route("/v1/admin/accounts", adminAccountRoutes({ store: accountStore, content: contentStore }));
   app.route("/v1/admin", newsletterAdminRoutes({ service: newsletters, deals }));
+  app.route("/v1/admin/community", communityAdminRoutes({ store: communityStore, accounts: accountStore, recipes: options.recipes }));
   app.route("/v1/admin/mail", mailAdminRoutes({ templates, send: ownMailer?.send, testAddress: options.newsletters?.testAddress ?? null, siteOrigin: accountConfig.siteOrigin, replyTo: ownMailer?.replyTo, markUrl: ownMailer?.markUrl, ...(options.recipes ? { recipes: { index: recipeIndex } } : {}), deals }));
 
   app.get("/v1/admin/events/workflows", (context) => {

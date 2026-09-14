@@ -764,6 +764,60 @@ function migrate(database: OperationalDatabase): void {
       PRIMARY KEY (account_id, product_id)
     ) STRICT;
     CREATE INDEX IF NOT EXISTS account_watch_product_idx ON account_watch(product_id);
+    CREATE TABLE IF NOT EXISTS recipe_reaction (
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      dish_id TEXT NOT NULL,
+      value INTEGER NOT NULL CHECK (value IN (1, -1)),
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY (account_id, dish_id)
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS recipe_reaction_dish_idx ON recipe_reaction(dish_id);
+    CREATE TABLE IF NOT EXISTS translation_feedback (
+      id TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      dish_id TEXT NOT NULL,
+      language TEXT NOT NULL CHECK (language IN ('si', 'ta')),
+      verdict TEXT NOT NULL CHECK (verdict IN ('correct', 'incorrect')),
+      correction TEXT,
+      note TEXT,
+      status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'reviewed', 'applied')),
+      created_at TEXT NOT NULL,
+      reviewed_at TEXT,
+      reviewed_by TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS translation_feedback_status_idx ON translation_feedback(status, created_at DESC);
+    CREATE TABLE IF NOT EXISTS recipe_submission (
+      id TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      kind TEXT NOT NULL CHECK (kind IN ('request', 'recipe')),
+      name TEXT NOT NULL,
+      notes TEXT,
+      source_recipe_id TEXT,
+      recipe_json TEXT,
+      status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+      review_note TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      reviewed_at TEXT,
+      reviewed_by TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS recipe_submission_status_idx ON recipe_submission(status, created_at DESC);
+    CREATE INDEX IF NOT EXISTS recipe_submission_account_idx ON recipe_submission(account_id, created_at DESC);
+    CREATE TABLE IF NOT EXISTS product_proposal (
+      id TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      label TEXT NOT NULL,
+      category TEXT,
+      unit_hint TEXT,
+      note TEXT,
+      status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+      review_note TEXT,
+      created_at TEXT NOT NULL,
+      reviewed_at TEXT,
+      reviewed_by TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS product_proposal_status_idx ON product_proposal(status, created_at DESC);
     CREATE TABLE IF NOT EXISTS account_recipe (
       id TEXT PRIMARY KEY,
       account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,

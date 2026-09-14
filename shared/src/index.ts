@@ -442,4 +442,5 @@ export type RecipeReferences = z.infer<typeof recipeReferencesSchema>;
 export * from "./recipes.ts";
 export * from "./recipe-math.ts";
 export * from "./accounts.ts";
+export * from "./community.ts";
 export * from "./recommend.ts";
