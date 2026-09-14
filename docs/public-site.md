@@ -118,8 +118,11 @@ the live site, and an "on this page" list that follows the reader. The text live
 `web/public/guide/`. The same guide is in the repository as [user-guide.md](user-guide.md).
 
 To refresh the screenshots after a visible change, run `web/scripts/guide-screenshots.js` from
-the repository root with playwright-cli (it seeds a basket and shoots the public site at 1280
-wide, in dark, and on a phone), then compress them:
+the repository root with playwright-cli (it seeds a basket, signs in with the account named at
+the top of the script since menus live on the account, creates the guide's menu there once, and
+shoots the site at 1280 wide, in dark, and on a phone), then compress them. Fill in `account`
+with a throwaway before running and never commit it; to shoot a local build, point `origin` at
+it in a copy of the script:
 
 ```bash
 playwright-cli open

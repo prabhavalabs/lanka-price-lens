@@ -47,7 +47,7 @@ export const guideSections: GuideSection[] = [
       "Use the arrow keys and Enter, or tap a result, to open the product.",
     ],
     figures: [
-      { file: "search", alt: "The search box open with “b onion” typed and Big Onion suggested with its price range", caption: "Search understands rough spelling and store wording: “b onion” finds Big Onion.", width: 1920, height: 285 },
+      { file: "search", alt: "The search box open with “b onion” typed and Big Onion suggested with its price range", caption: "Search understands rough spelling and store wording: “b onion” finds Big Onion.", width: 1920, height: 281 },
     ],
   },
   {
@@ -79,7 +79,7 @@ export const guideSections: GuideSection[] = [
       "The range and the groups are kept in the page address, so copying the link, or using “Share”, shows someone exactly the view you have.",
     ],
     figures: [
-      { file: "history", alt: "The price history chart over 90 days with open markets and supermarkets on, a day hovered, and a tooltip listing each seller's price", caption: "The history: pick a range, switch groups, hover or tap a day for every seller's price.", width: 1680, height: 1047 },
+      { file: "history", alt: "The price history chart over 90 days with open markets and supermarkets on, a day hovered, and a tooltip listing each seller's price", caption: "The history: pick a range, switch groups, hover or tap a day for every seller's price.", width: 1680, height: 1049 },
     ],
   },
   {
@@ -93,8 +93,8 @@ export const guideSections: GuideSection[] = [
       "The basket icon in the header opens a small dropdown from any page: adjust or remove items, clear the list (the bin asks once), or go to the comparison.",
     ],
     figures: [
-      { file: "quantity", alt: "The quantity control on the Big Onion page opened to presets from 100 g to 5 kg and a field for an exact amount", caption: "Tap the amount for presets or an exact figure in grams or kilos.", width: 1920, height: 744 },
-      { file: "quick-basket", alt: "The basket dropdown in the header listing seven items with − and + controls and a button to compare stores", caption: "The basket from any page: adjust, remove, clear, or compare stores.", width: 1920, height: 735 },
+      { file: "quantity", alt: "The quantity control on the Big Onion page opened to presets from 100 g to 5 kg and a field for an exact amount", caption: "Tap the amount for presets or an exact figure in grams or kilos.", width: 1920, height: 735 },
+      { file: "quick-basket", alt: "The basket dropdown in the header listing seven items with − and + controls and a button to compare stores", caption: "The basket from any page: adjust, remove, clear, or compare stores.", width: 1920, height: 732 },
     ],
   },
   {
@@ -120,7 +120,7 @@ export const guideSections: GuideSection[] = [
       "“Recipes” in the header browses the whole catalogue by name in any language or by ingredient.",
     ],
     figures: [
-      { file: "cook", alt: "Dish cards under the basket, each with its category, time, difficulty, and what it still needs", caption: "Dishes that fit what you have, best fit first, each saying what is still to buy.", width: 1680, height: 1059 },
+      { file: "cook", alt: "Dish cards under the basket, each with its category, time, difficulty, and what it still needs", caption: "Dishes that fit what you have, best fit first, each saying what is still to buy.", width: 1680, height: 1061 },
       { file: "recipe", alt: "A dish page with ingredients still to buy at today's cheapest price and the ingredients already in the basket", caption: "A dish: what you have, what is still to buy at today's cheapest price, and the rough extra cost.", width: 1920, height: 1200 },
       { file: "recipes", alt: "The recipe catalogue filtered by “curry”, one card per dish", caption: "The whole catalogue, searchable by name in any language or by ingredient.", width: 1920, height: 1200 },
     ],
