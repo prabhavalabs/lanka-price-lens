@@ -105,8 +105,13 @@ test("contributions: translation feedback, requests, own-recipe submissions, and
     await expectStatus(feedback, 201);
     await expectStatus(await app.request("/v1/account/community/translations", { method: "POST", headers: { ...json, cookie }, body: JSON.stringify({ dish_id: dish, language: "si", verdict: "correct" }) }), 409);
     await expectStatus(await app.request("/v1/account/community/translations", { method: "POST", headers: { ...json, cookie }, body: JSON.stringify({ dish_id: dish, language: "en", verdict: "correct" }) }), 400);
-    const mineFeedback = (await (await app.request("/v1/account/community/translations", { headers: { cookie } })).json()) as Envelope<Array<{ language: string; status: string }>>;
+    const mineFeedback = (await (await app.request("/v1/account/community/translations", { headers: { cookie } })).json()) as Envelope<Array<{ id: string; language: string; status: string }>>;
     assert.deepEqual(mineFeedback.payload.map((row) => [row.language, row.status]), [["si", "new"]]);
+    // Taken back, the day's rule frees up and the feedback can be sent again with details.
+    const feedbackId = mineFeedback.payload[0]!.id;
+    await expectStatus(await app.request(`/v1/account/community/translations/${feedbackId}`, { method: "DELETE", headers: { ...json, cookie } }), 200);
+    await expectStatus(await app.request(`/v1/account/community/translations/${feedbackId}`, { method: "DELETE", headers: { ...json, cookie } }), 404);
+    await expectStatus(await app.request("/v1/account/community/translations", { method: "POST", headers: { ...json, cookie }, body: JSON.stringify({ dish_id: dish, language: "si", verdict: "incorrect", correction: "නිවැරදි පෙළ", note: "Step 2 reads oddly" }) }), 201);
 
     // A request, then a recipe of the account's own.
     const request = await app.request("/v1/account/community/submissions", { method: "POST", headers: { ...json, cookie }, body: JSON.stringify({ kind: "request", name: "Kiribath with lunu miris", notes: "The New Year one" }) });

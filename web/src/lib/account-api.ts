@@ -97,6 +97,8 @@ export const accountApi = {
       list: (signal?: AbortSignal) => call<TranslationFeedback[]>("GET", "/v1/account/community/translations", undefined, signal),
       /** One verdict per dish and language a day; a second the same day answers 409 ALREADY_SENT. */
       send: (input: TranslationFeedbackInput) => call<TranslationFeedback>("POST", "/v1/account/community/translations", input),
+      /** Takes back feedback that nobody has reviewed yet. */
+      remove: (id: string) => call<null>("DELETE", `/v1/account/community/translations/${encodeURIComponent(id)}`),
     },
     submissions: {
       /** The account's requests and submitted recipes, newest first, without the recipe JSON. */

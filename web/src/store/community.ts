@@ -209,6 +209,10 @@ export function rememberProposal(client: QueryClient, accountId: string, proposa
   client.setQueryData<ProductProposal[]>(proposalsQueryKey(accountId), (current) => [proposal, ...(current ?? []).filter((entry) => entry.id !== proposal.id)]);
 }
 
+export function forgetTranslation(client: QueryClient, accountId: string, id: string): void {
+  client.setQueryData<SentTranslation[]>(translationsQueryKey(accountId), (current) => (current ?? []).filter((entry) => entry.id !== id));
+}
+
 export function rememberTranslation(client: QueryClient, accountId: string, feedback: TranslationFeedback, dishName: string): void {
   client.setQueryData<SentTranslation[]>(translationsQueryKey(accountId), (current) => [{ ...feedback, dish_name: dishName }, ...(current ?? []).filter((entry) => entry.id !== feedback.id)]);
 }

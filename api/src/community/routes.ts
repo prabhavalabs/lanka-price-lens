@@ -106,6 +106,12 @@ export function communityRoutes(deps: CommunityDeps): Hono<CommunityBindings> {
     return context.json(envelope(context.get("requestId"), feedback, true, "Thanks, the translation team will look at it"), 201);
   });
 
+  // A verdict sent by mistake can be taken back while nobody has looked at it; the day's one-per-dish rule frees up with it.
+  app.delete("/translations/:id", (context) => {
+    const id = (context.req.param("id") ?? "").slice(0, 80);
+    if (!deps.store.removeTranslationFeedback(context.get("account").id, id)) return fail(context, 404, "That feedback is not yours or has already been reviewed", "NOT_FOUND");
+    return context.json(envelope(context.get("requestId"), null, true, "Feedback taken back"));
+  });
   app.get("/submissions", (context) => context.json(envelope(context.get("requestId"), deps.store.listSubmissionsOf(context.get("account").id))));
   app.post("/submissions", async (context) => {
     const body = await jsonObject(context);

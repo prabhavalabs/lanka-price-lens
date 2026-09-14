@@ -31,6 +31,8 @@ export type CommunityStore = {
   translationFeedbackToday: (accountId: string, dishId: string, language: string, day: string) => boolean;
   listTranslationFeedback: (status: TranslationStatus | null, request: PageRequest) => Page<TranslationFeedback>;
   listTranslationFeedbackOf: (accountId: string) => TranslationFeedback[];
+  /** Takes back the account's own feedback while it is still new; false once reviewed or not theirs. */
+  removeTranslationFeedback: (accountId: string, id: string) => boolean;
   setTranslationStatus: (id: string, status: TranslationStatus, by: string | null, now: Date) => TranslationFeedback | undefined;
   countTranslationFeedback: (status: TranslationStatus) => number;
 
@@ -153,6 +155,7 @@ export function createCommunityStore(database: OperationalDatabase): CommunitySt
       return { items, page, pageSize, total, pages: Math.max(1, Math.ceil(total / pageSize)) };
     },
     listTranslationFeedbackOf: (accountId) => database.prepare(`SELECT ${feedbackColumns} FROM translation_feedback WHERE account_id = ? ORDER BY created_at DESC`).all(accountId) as FeedbackRow[],
+    removeTranslationFeedback: (accountId, id) => database.prepare("DELETE FROM translation_feedback WHERE id = ? AND account_id = ? AND status = 'new'").run(id, accountId).changes > 0,
     setTranslationStatus: (id, status, by, now) => {
       const changed = database.prepare("UPDATE translation_feedback SET status = ?, reviewed_at = ?, reviewed_by = ? WHERE id = ?").run(status, status === "new" ? null : now.toISOString(), status === "new" ? null : by, id).changes;
       return changed ? getFeedback(id) : undefined;

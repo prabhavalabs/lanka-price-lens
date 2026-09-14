@@ -13,7 +13,7 @@ import { accountApi } from "@/lib/account-api";
 import { locationPath } from "@/lib/account-forms";
 import { describeContributionError } from "@/lib/contributions";
 import { useAccount } from "@/store/account";
-import { rememberTranslation } from "@/store/community";
+import { forgetTranslation, rememberTranslation } from "@/store/community";
 import { languageNames } from "@/store/language";
 
 const lineClass = "flex flex-wrap items-center gap-x-2 gap-y-1.5 text-xs text-muted-foreground";
@@ -39,6 +39,22 @@ export function TranslationFeedbackLine({ dishId, dishName, language }: { dishId
       setOpen(false);
     },
   });
+  // A verdict pressed by mistake can be taken back while nobody has read it; "Add details" takes it back and opens the form.
+  const undo = useMutation({
+    mutationFn: (id: string) => accountApi.community.translations.remove(id),
+    onSuccess: (_result, id) => forgetTranslation(client, accountId, id),
+  });
+  const takeBack = async (thenOpen: boolean) => {
+    const sent = send.data;
+    if (!sent) return;
+    try {
+      await undo.mutateAsync(sent.id);
+    } catch {
+      return;
+    }
+    send.reset();
+    if (thenOpen) setOpen(true);
+  };
   if (account.status === "loading") return null;
   if (account.status === "signed_out") {
     return (
@@ -49,11 +65,15 @@ export function TranslationFeedbackLine({ dishId, dishName, language }: { dishId
       </p>
     );
   }
-  if (send.isSuccess) {
+  if (send.isSuccess && send.data) {
+    const sentCorrect = send.data.verdict === "correct";
     return (
       <p className={lineClass} role="status">
         <RiTranslate2 aria-hidden className="size-3.5 shrink-0 text-primary" />
         <span>Thanks, the translation team will look at it.</span>
+        <Button disabled={undo.isPending} onClick={() => void takeBack(false)} size="xs" type="button" variant="ghost">Undo</Button>
+        {sentCorrect ? <Button disabled={undo.isPending} onClick={() => void takeBack(true)} size="xs" type="button" variant="ghost">Add details instead</Button> : null}
+        {undo.isError ? <span className="text-destructive" role="alert">{describeContributionError(undo.error)}</span> : null}
       </p>
     );
   }
