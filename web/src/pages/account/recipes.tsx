@@ -40,7 +40,7 @@ function useAccountId(): string {
 export function MyRecipesPage() {
   usePageTitle("My recipes · PriceLens");
   return (
-    <RequireAccount description="Your own recipes are kept on your account, counted and priced like the catalogue's." title="Sign in to see your recipes">
+    <RequireAccount>
       <MyRecipesList />
     </RequireAccount>
   );
@@ -149,7 +149,7 @@ function DeleteRecipeDialog({ recipe, onOpenChange, onDeleted }: { recipe: Pick<
 export function MyRecipePage() {
   const { id = "" } = useParams();
   return (
-    <RequireAccount description="Your recipes are kept on your account. Sign in to open this one." title="Sign in to open this recipe">
+    <RequireAccount>
       <MyRecipeDetail id={id} />
     </RequireAccount>
   );
@@ -239,7 +239,7 @@ export function MyRecipeEditorPage() {
   const { id } = useParams();
   usePageTitle(id ? "Edit recipe · PriceLens" : "New recipe · PriceLens");
   return (
-    <RequireAccount description="Sign in to write recipes of your own; they are kept on your account and counted like the catalogue's." title={id ? "Sign in to edit this recipe" : "Sign in to write a recipe"}>
+    <RequireAccount>
       <MyRecipeEditor id={id ?? null} />
     </RequireAccount>
   );

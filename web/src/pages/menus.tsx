@@ -30,7 +30,7 @@ const plural = (count: number, noun: string, many = `${noun}s`) => `${count} ${c
 export function MenusPage() {
   usePageTitle("Your menus · PriceLens");
   return (
-    <RequireAccount description="Menus are kept on your account, so they are there on any device you sign in from." title="Sign in to see your menus">
+    <RequireAccount>
       <MenusIndex />
     </RequireAccount>
   );
@@ -281,7 +281,7 @@ function AddRecipesDialog({ menu, open, onOpenChange }: { menu: Menu; open: bool
 export function MenuPage() {
   const { id = "" } = useParams();
   return (
-    <RequireAccount description="Menus are kept on your account. Sign in to open this one." title="Sign in to open this menu">
+    <RequireAccount>
       <MenuLoader id={id} />
     </RequireAccount>
   );
