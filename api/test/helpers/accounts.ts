@@ -1,3 +1,4 @@
+import { preferencesSchema } from "@lanka-pricelens/shared";
 import type { OperationalDatabase } from "@lanka-pricelens/foundry/db";
 
 import type { Account } from "../../src/account/types.ts";
@@ -59,7 +60,7 @@ export function accountFixture(overrides: Partial<Account> & Pick<Account, "id" 
     status: "active",
     failed_login_count: 0,
     locked_until: null,
-    preferences: { notify_email: true, notify_digest: false, notify_alerts: false },
+    preferences: preferencesSchema.parse({}),
     created_at: "2026-09-01T00:00:00.000Z",
     updated_at: "2026-09-01T00:00:00.000Z",
     ...overrides,

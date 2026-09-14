@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { preferencesSchema } from "@lanka-pricelens/shared";
 import test from "node:test";
 
 import { openOperationalDatabase } from "@lanka-pricelens/foundry/db";
@@ -112,13 +113,13 @@ test("accounts are found by address regardless of case, updated in part, and lis
     assert.throws(() => store.createAccount({ email: "Nimal@example.com", passwordHash: null, displayName: "Twin", emailVerified: false }, base), /UNIQUE/u, "the address is unique regardless of case");
 
     const nimal = store.findAccountByEmail("nimal@example.com")!;
-    assert.deepEqual({ locale: nimal.locale, verified: nimal.email_verified_at, preferences: nimal.preferences }, { locale: "ta", verified: "2026-09-13T10:00:00.000Z", preferences: { notify_email: true, notify_digest: false, notify_alerts: false } });
-    const updated = store.updateAccount(nimal.id, { display_name: "Nimal P.", preferences: { notify_email: false, notify_digest: true, notify_alerts: false }, avatar_url: "https://img.example/n.png" }, at("2026-09-13T11:00:00.000Z"));
-    assert.deepEqual({ name: updated.display_name, avatar: updated.avatar_url, locale: updated.locale, updated: updated.updated_at, preferences: updated.preferences }, { name: "Nimal P.", avatar: "https://img.example/n.png", locale: "ta", updated: "2026-09-13T11:00:00.000Z", preferences: { notify_email: false, notify_digest: true, notify_alerts: false } });
+    assert.deepEqual({ locale: nimal.locale, verified: nimal.email_verified_at, preferences: nimal.preferences }, { locale: "ta", verified: "2026-09-13T10:00:00.000Z", preferences: preferencesSchema.parse({}) });
+    const updated = store.updateAccount(nimal.id, { display_name: "Nimal P.", preferences: preferencesSchema.parse({ notify_email: false, notify_digest: true }), avatar_url: "https://img.example/n.png" }, at("2026-09-13T11:00:00.000Z"));
+    assert.deepEqual({ name: updated.display_name, avatar: updated.avatar_url, locale: updated.locale, updated: updated.updated_at, preferences: updated.preferences }, { name: "Nimal P.", avatar: "https://img.example/n.png", locale: "ta", updated: "2026-09-13T11:00:00.000Z", preferences: preferencesSchema.parse({ notify_email: false, notify_digest: true }) });
     assert.equal(store.updateAccount(nimal.id, { avatar_url: null, status: "disabled" }, base).avatar_url, null, "null clears a nullable column");
     assert.throws(() => store.updateAccount("account_missing", { display_name: "x" }, base), /Account not found/u);
     database.prepare("UPDATE account SET preferences_json = 'not json' WHERE id = ?").run(nimal.id);
-    assert.deepEqual(store.findAccountById(nimal.id)?.preferences, { notify_email: true, notify_digest: false, notify_alerts: false }, "unreadable preferences fall back to the defaults");
+    assert.deepEqual(store.findAccountById(nimal.id)?.preferences, preferencesSchema.parse({}), "unreadable preferences fall back to the defaults");
 
     const all = store.listAccounts({ search: "", status: "", page: 1, pageSize: 2 });
     assert.deepEqual({ total: all.total, pages: all.pages, page: all.page, pageSize: all.pageSize, emails: all.items.map((item) => item.email) }, { total: 5, pages: 3, page: 1, pageSize: 2, emails: ["a_b@example.com", "sunil@example.com"] });

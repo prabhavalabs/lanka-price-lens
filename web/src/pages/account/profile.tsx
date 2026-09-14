@@ -242,7 +242,8 @@ function PasswordSection({ account }: { account: AccountProfile }) {
   );
 }
 
-const notificationRows: Array<{ key: keyof AccountPreferences; label: string; description: string }> = [
+type NotificationKey = "notify_email" | "notify_digest" | "notify_alerts";
+const notificationRows: Array<{ key: NotificationKey; label: string; description: string }> = [
   { key: "notify_email", label: "Email from PriceLens", description: "News about the site and what is new. Mail about the account itself (verification, password changes) always comes." },
   { key: "notify_digest", label: "Daily price digest", description: "The morning's movers in one mail, once digests start." },
   { key: "notify_alerts", label: "Price alerts", description: "When a product or menu you watch moves, once alerts start." },

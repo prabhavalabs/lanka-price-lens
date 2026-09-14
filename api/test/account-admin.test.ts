@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { preferencesSchema } from "@lanka-pricelens/shared";
 import test from "node:test";
 
 import { openOperationalDatabase } from "@lanka-pricelens/foundry/db";
@@ -101,7 +102,7 @@ test("the admin list shows every account without secrets, with what each keeps, 
     for (const row of all.payload.items) {
       assert.equal("password_hash" in row, false, "the hash never leaves the server");
       assert.ok(row.email && row.display_name && row.status && row.created_at);
-      assert.deepEqual(row.preferences, { notify_email: true, notify_digest: false, notify_alerts: false });
+      assert.deepEqual(row.preferences, preferencesSchema.parse({}));
     }
     assert.equal(all.payload.items[1]!.email_verified_at, null);
 
