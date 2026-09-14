@@ -234,7 +234,10 @@ editor). Decisions taken at integration:
 
 ## Local testing
 
-- **Mail through Resend.** Set `LPL_RESEND_API_KEY` (the same key as production, or a free one):
+- **Mail through Resend.** Set `LPL_RESEND_API_KEY` in the repository's `.env` (gitignored; the
+  API and the foundry CLI load it with `--env-file-if-exists`). Make the local key in the Resend
+  dashboard with *sending access* only, limited to the verified domain, so a leaked development
+  key cannot read or change anything there; production keeps its own key.
   `createAccountMailer` in `api/src/account/mail.ts` sends the templates through Resend.
   `LPL_MAIL_FROM` must be a sender Resend accepts: an address on a domain verified there, or its shared `PriceLens <onboarding@resend.dev>`, which only delivers
   to the address the Resend account was opened with. With no key set the API logs
