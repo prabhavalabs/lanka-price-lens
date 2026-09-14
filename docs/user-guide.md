@@ -209,9 +209,13 @@ Reading prices never needs an account. One keeps your menus and your own recipes
 server, so they follow you to another phone or browser, and later carries price alerts. Sign
 in with an email and a password, or with Google.
 
-1. "Sign in" at the right of the header opens the sign-in page; "Create an account" asks for
-   a name, an email, and a password of ten characters or more. Long beats complicated: a few
-   words you will remember are better than a short jumble.
+1. "Sign in" at the right of the header opens the sign-in page, on its own without the header
+   and footer; "Create an account" asks for a name, an email, and a password of ten characters
+   or more. Long beats complicated: a few words you will remember are better than a short
+   jumble. "Continue as a guest" under the form goes back to the prices. Menus, your own
+   recipes, and the account page need an account: open one signed out and the sign-in page
+   appears, and once you are in you land straight back on the page you were opening. Prices,
+   recipes, and the basket never ask.
 2. A verification link goes to the address. Until you open it you can sign in and read
    everything, but menus and recipes wait; the thin bar under the header resends the link.
 3. "Continue with Google" signs in with a Google account and needs no password. If the
@@ -254,9 +258,12 @@ page you were on is attached automatically and the message is forwarded to the s
 The footer quietly counts how many people are on the site right now, using a random id kept
 only for the open tab; no cookies. Your basket and theme stay in your browser. Where the site
 runs Google Analytics it does so with IP anonymisation and respects the browser's "do not
-track" setting. Sources, permissions, and method are on the About page. The Discord button in
-the bottom corner joins the Prabhava Labs community, where PriceLens updates land first; the
-same link sits in the ⋯ menu and the footer.
+track" setting. The footer is one line: where the site is made (Sri Lanka), then Guide,
+Sources, Privacy, Terms, Feedback, and Discord. The privacy policy (`/privacy`) says what the
+site keeps about you and the terms of use (`/terms`) carry the disclaimers about prices;
+sources, permissions, and method are on the About page. The Discord button in the bottom
+corner joins the Prabhava Labs community, where PriceLens updates land first; the same link
+sits in the ⋯ menu and the footer.
 
 ![The feedback form](../web/public/guide/feedback.png)
 

@@ -180,7 +180,7 @@ SendGrid remains a fallback in the code (`notify/src/channels/sendgrid.ts`, used
 ### Google sign-in (owner steps)
 
 1. Google Cloud Console → APIs & Services → OAuth consent screen: external, app name PriceLens,
-   support and developer email, the site's home page, privacy policy `/about`; scopes `openid`,
+   support and developer email, the site's home page, privacy policy `/privacy`, terms `/terms`; scopes `openid`,
    `email`, `profile`. Publish it.
 2. Credentials → Create OAuth client ID → Web application. Authorised JavaScript origin
    `https://price.prabhavalabs.com`; authorised redirect URI
