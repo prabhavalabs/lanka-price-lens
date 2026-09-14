@@ -106,6 +106,14 @@ calories, protein, carbohydrate, time, tags, and cost per serving (the
 "recipes for weight loss" question is `tags=weight_loss_friendly&sort=kcal`);
 the admin overview counts recipes, languages, and reviews.
 
+**Surprise me**: `GET /v1/public/recipes/surprise?exclude=dish_a,dish_b&seed=&diet=` answers
+`{ id, name, reasons }` for one dish that has a full recipe, drawn at random with the better
+fits weighted up: a signed-in person's food preferences apply (the route runs behind
+`readAccount`), a guest gets the catalogue defaults narrowed by `diet` (a `dietChoices` value);
+`exclude` (up to 50 ids) keeps "another one" from repeating and `seed` makes the draw repeat;
+404 `NO_MATCH` when nothing qualifies. The engine is `shared/src/recommend.ts` and the route
+`api/src/surprise.ts`, both specified in [docs/newsletters.md](newsletters.md).
+
 ### Drafting and checking
 
 The registry and the recipes were drafted in batches by model assistance from

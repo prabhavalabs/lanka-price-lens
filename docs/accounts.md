@@ -103,6 +103,16 @@ CREATE INDEX IF NOT EXISTS account_recipe_account_idx ON account_recipe(account_
 Types and the store interface: `api/src/account/types.ts`. Request and content schemas:
 `shared/src/accounts.ts`.
 
+## Preferences
+
+`account.preferences_json` holds `preferencesSchema` (`shared/src/accounts.ts`): the mail
+switches (`notify_email`, `notify_digest`, `notify_alerts`, `notify_recipes`) and what the person
+eats (`diet`, `avoid`, `goals`, `likes`). Rows saved before a field existed parse with its default,
+and `PATCH /v1/account/me` merges any subset under `preferences` with the current values. How the
+food preferences meet the dish catalogue, the recommendation functions in
+`shared/src/recommend.ts`, the Surprise me route, and the daily recipe mail are all specified in
+[docs/newsletters.md](newsletters.md).
+
 ## Routes
 
 All under the same origin; bodies are JSON validated with the shared schemas; answers use the

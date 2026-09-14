@@ -43,7 +43,7 @@ import { contentRoutes } from "./account/content-routes.ts";
 import { createContentStore } from "./account/content.ts";
 import { googleRoutes } from "./account/google.ts";
 import { createAccountMailer } from "./account/mail.ts";
-import { requireAccount, type AccountVariables } from "./account/middleware.ts";
+import { readAccount, requireAccount, type AccountVariables } from "./account/middleware.ts";
 import { accountRoutes } from "./account/routes.ts";
 import { createAccountService } from "./account/service.ts";
 import { createAccountStore } from "./account/store.ts";
@@ -75,6 +75,7 @@ import { streamSSE } from "hono/streaming";
 
 import { productDetail, searchProducts } from "./explorer.ts";
 import { dishDetail, ingredientPrices, listDishes, pricedProducts, productLabels, readRecipeStore, recipeOverview, recommendDishes, type RecipeStore } from "./recipes.ts";
+import { surpriseRoutes } from "./surprise.ts";
 import { buildRecipeIndex, computeMenu, parseRecipeQuery, priceLookupFor, priceOptions, pricedProductIds, queryRecipes, recipeView, type RecipeIndexEntry } from "./recipe-views.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
 import {
@@ -343,6 +344,11 @@ export function createApp(
     const prices = client ? await ingredientPrices(client, wanted).catch(() => new Map()) : new Map();
     return context.json(envelope(context.get("requestId"), { recommendations, labels: Object.fromEntries(labels), prices: Object.fromEntries(prices) }));
   });
+  // A random pick shaped by the signed-in person's preferences; registered before /:id so the word "surprise" is not read as a dish id.
+  if (options.recipes) {
+    app.use("/v1/public/recipes/surprise", readAccount(accountStore, accountConfig));
+    app.route("/v1/public/recipes/surprise", surpriseRoutes({ recipes: options.recipes, index: recipeIndex }));
+  }
   app.get("/v1/public/recipes/:id", async (context) => {
     if (!options.recipes) return context.json(envelope(context.get("requestId"), null, false, "Recipes are not available"), 503);
     const dishId = context.req.param("id").slice(0, 120);
