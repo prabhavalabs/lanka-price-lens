@@ -132,6 +132,16 @@ pngquant --quality=65-85 --speed 1 --force --ext .png web/public/guide/*.png
 declared in the content file, so a re-shoot that changes a size fails the build until the
 content is updated.
 
+## Brand
+
+The mark (a green magnifying lens holding leaves and rice grains, amber accents) is a raster
+PNG for now: `web/public/mark.png` (256 px, transparent) for the header and the sign-in card,
+`favicon.png` (64 px) and `favicon.svg` (the same PNG wrapped) for the tab, `apple-touch-icon.png`
+(180 px on the light ground) for home screens, and `api/assets/brand/mark.png` embedded in the
+social cards. Account mail links to `https://price.prabhavalabs.com/mark.png` (or the same path
+on `LPL_SITE_ORIGIN` when that is an https origin), since mail clients fetch images over the
+network. Source renders and larger sizes live outside the repository in `marketing/brand/`.
+
 ## Search engines and previews
 
 `web/scripts/prerender.mjs` runs after `vite build` and writes one page per product
