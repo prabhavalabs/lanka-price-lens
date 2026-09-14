@@ -38,22 +38,25 @@ export class ApiError extends Error {
   /** HTTP status, or 0 when the request never got an answer. */
   readonly status: number;
   readonly retryable: boolean;
-  constructor(status: number, message: string, retryable: boolean) {
+  /** The API's own code for the failure (NO_MATCH, DEALS_UNAVAILABLE), when it sent one. */
+  readonly code: string | null;
+  constructor(status: number, message: string, retryable: boolean, code: string | null = null) {
     super(message);
     this.name = "ApiError";
     this.status = status;
     this.retryable = retryable;
+    this.code = code;
   }
 }
 
 /** Turns a failed response into what to tell the visitor. The API's own message wins for a plain "not found". */
-export function describeFailure(status: number, message: string | null | undefined): ApiError {
+export function describeFailure(status: number, message: string | null | undefined, code: string | null = null): ApiError {
   if (status === 0) return new ApiError(0, "Could not reach PriceLens. Check your connection and try again.", true);
-  if (status === 404) return new ApiError(404, message ?? "Nothing here.", false);
-  if (status === 429) return new ApiError(429, "Too many requests at once. Wait a moment and try again.", true);
-  if (status === 502 || status === 503 || status === 504) return new ApiError(status, "PriceLens is restarting or briefly unavailable. It is usually back within a minute.", true);
-  if (status >= 500) return new ApiError(status, "Something went wrong on our side. Try again in a moment.", true);
-  return new ApiError(status, message ?? `Request failed (${status})`, false);
+  if (status === 404) return new ApiError(404, message ?? "Nothing here.", false, code);
+  if (status === 429) return new ApiError(429, "Too many requests at once. Wait a moment and try again.", true, code);
+  if (status === 502 || status === 503 || status === 504) return new ApiError(status, "PriceLens is restarting or briefly unavailable. It is usually back within a minute.", true, code);
+  if (status >= 500) return new ApiError(status, "Something went wrong on our side. Try again in a moment.", true, code);
+  return new ApiError(status, message ?? `Request failed (${status})`, false, code);
 }
 
 async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
@@ -65,8 +68,8 @@ async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
     if (error instanceof DOMException && error.name === "AbortError") throw error;
     throw describeFailure(0, null);
   }
-  const body = (await response.json().catch(() => null)) as Envelope<T> | null;
-  if (!response.ok || !body || body.success === false) throw describeFailure(response.status, body?.message);
+  const body = (await response.json().catch(() => null)) as (Envelope<T> & { code?: string }) | null;
+  if (!response.ok || !body || body.success === false) throw describeFailure(response.status, body?.message, body?.code ?? null);
   return body.payload;
 }
 
@@ -197,6 +200,25 @@ export const fetchRecipeQuery = (params: RecipeQueryParams, signal?: AbortSignal
   if (params.cost) search.set("cost", "1");
   search.set("pageSize", "24");
   return get<RecipeQueryList>(`/v1/public/recipes/query?${search}`, signal);
+};
+
+/** One dish drawn for the reader, with why it was chosen in plain words ("vegetarian", "under 30 minutes"). */
+export type SurprisePick = { id: string; name: string; reasons: string[] };
+
+/** The route takes at most this many ids to leave out; the site sends the most recent ones. */
+export const surpriseExcludeLimit = 50;
+
+/**
+ * A random dish with a full recipe, weighted by the signed-in person's food preferences (the
+ * session cookie carries them). Signed out, `diet` may narrow the draw. 404 with code NO_MATCH
+ * when nothing qualifies.
+ */
+export const fetchSurprise = ({ exclude, diet }: { exclude: string[]; diet?: string | undefined }, signal?: AbortSignal): Promise<SurprisePick> => {
+  const search = new URLSearchParams();
+  if (exclude.length) search.set("exclude", exclude.slice(-surpriseExcludeLimit).join(","));
+  if (diet) search.set("diet", diet);
+  const query = search.toString();
+  return get<SurprisePick>(`/v1/public/recipes/surprise${query ? `?${query}` : ""}`, signal);
 };
 
 export type MenuInput = { id: string; name: string; occasion: string | null; people: number; items: Array<{ recipe_id: string; servings: number | null }>; created_at: string };

@@ -1,16 +1,18 @@
 import { RiCheckLine, RiFireLine, RiTimeLine } from "@remixicon/react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 
 import { ProductImage } from "@/components/product-image";
 import { RecipeViewSection } from "@/components/recipe-view";
 import { QuantityControl } from "@/components/quantity";
 import { ShareButtons } from "@/components/share";
+import { SurpriseBanner } from "@/components/surprise-banner";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchRecipe } from "@/lib/api";
 import { dishCategoryLabel, minutesLabel, rupees, titleCase, unitLabel } from "@/lib/format";
+import { readReasons } from "@/lib/surprise";
 import { useBasket } from "@/store/basket";
 import { usePageTitle } from "@/lib/page-title";
 import { ErrorState } from "@/components/error-state";
@@ -18,11 +20,14 @@ import { ErrorState } from "@/components/error-state";
 /**
  * One dish: what it is, what it needs, and what is still to buy. Ingredients the shopper already has
  * are ticked; the rest show today's cheapest price and can be added to the basket in the amount the
- * shopper wants. Pantry items the price vocabulary does not carry are listed plainly.
+ * shopper wants. Pantry items the price vocabulary does not carry are listed plainly. Opened by
+ * Surprise me (`?surprise=1`), a banner above says why this dish and offers another.
  */
 export function RecipePage() {
   const { id = "" } = useParams();
   const [params, setParams] = useSearchParams();
+  const location = useLocation();
+  const surprised = params.get("surprise") === "1";
   const requested = Number(params.get("people"));
   // One person unless the address says otherwise: the recipe is written for four, the reader usually cooks for themselves first.
   const servings = Number.isFinite(requested) && requested >= 1 ? Math.min(500, Math.round(requested)) : 1;
@@ -47,6 +52,7 @@ export function RecipePage() {
 
   return (
     <div className="space-y-6">
+      {surprised ? <SurpriseBanner key={id} reasons={readReasons(location.state)} /> : null}
       <nav className="text-sm text-muted-foreground"><Link to="/recipes" className="hover:text-primary">Recipes</Link> › {dishCategoryLabel(dish.category)}</nav>
       <header className="space-y-3">
         <div>

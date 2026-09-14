@@ -1,8 +1,8 @@
 import { RiAlertLine, RiCheckLine, RiGoogleFill } from "@remixicon/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { accountLocales, changeEmailSchema, changePasswordSchema, deleteAccountSchema, profilePatchSchema, type AccountLocale, type AccountPreferences, type AccountProfile } from "@lanka-pricelens/shared";
-import { useState, type FormEvent, type ReactNode } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { accountLocales, avoidChoices, changeEmailSchema, changePasswordSchema, deleteAccountSchema, dietChoices, dishCategories, goalChoices, profilePatchSchema, type AccountLocale, type AccountPreferences, type AccountProfile, type AvoidChoice, type DietChoice, type GoalChoice } from "@lanka-pricelens/shared";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import { FormError, FormNote, SubmitButton, TextField } from "@/components/account-forms";
 import { RequireAccount } from "@/components/require-account";
@@ -17,17 +17,19 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { accountApi } from "@/lib/account-api";
 import { confirmError, describeUserAgent, validate, type FieldErrors } from "@/lib/account-forms";
+import { dishCategoryLabel } from "@/lib/format";
 import { usePageTitle } from "@/lib/page-title";
 import { cn } from "@/lib/utils";
 import { setAccountProfile, useAccount } from "@/store/account";
 import { languageNames, languageStore } from "@/store/language";
 
 /**
- * The account page: who you are, how you sign in, what mail you want, where you are signed in,
- * and the way out. Each section is its own small form that saves on its own, so a typo in one
- * never blocks another.
+ * The account page: who you are, what you eat, how you sign in, what mail you want, where you
+ * are signed in, and the way out. Each section is its own small form that saves on its own, so
+ * a typo in one never blocks another.
  */
 export function ProfilePage() {
   usePageTitle("Your account · PriceLens");
@@ -50,7 +52,14 @@ const isLocale = (value: string): value is AccountLocale => (accountLocales as r
 
 function ProfileSections() {
   const [params] = useSearchParams();
+  const location = useLocation();
   const account = useAccount();
+  const ready = account.status === "signed_in";
+  // A link to a section (the banner's "Change preferences") has to scroll once the sections exist.
+  useEffect(() => {
+    const id = location.hash.replace(/^#/u, "");
+    if (ready && id) document.getElementById(id)?.scrollIntoView();
+  }, [location.hash, ready]);
   if (account.status !== "signed_in") return null;
   const person = account.account;
   return (
@@ -67,6 +76,7 @@ function ProfileSections() {
         </Alert>
       ) : null}
       <AboutSection account={person} />
+      <FoodPreferencesSection account={person} />
       <EmailSection account={person} />
       <PasswordSection account={person} />
       <NotificationsSection account={person} />
@@ -76,9 +86,9 @@ function ProfileSections() {
   );
 }
 
-function Section({ title, description, children, destructive = false }: { title: string; description?: string; children: ReactNode; destructive?: boolean }) {
+function Section({ id, title, description, children, destructive = false }: { id?: string; title: string; description?: string; children: ReactNode; destructive?: boolean }) {
   return (
-    <Card className={cn(destructive && "border-destructive/40")}>
+    <Card className={cn("scroll-mt-20", destructive && "border-destructive/40")} {...(id ? { id } : {})}>
       <CardHeader>
         <h2 className={cn("font-heading text-base font-semibold leading-5 tracking-tight", destructive && "text-destructive")}>{title}</h2>
         {description ? <CardDescription className="text-pretty text-sm">{description}</CardDescription> : null}
@@ -133,6 +143,91 @@ function AboutSection({ account }: { account: AccountProfile }) {
   );
 }
 
+/**
+ * Saves part of the preferences the moment it changes: the profile in the cache takes the new
+ * value at once, the server merges the patch with the rest, and a refusal puts the old profile
+ * back. Shared by the food preferences and the notification switches.
+ */
+function usePreferencesMutation(account: AccountProfile) {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (patch: Partial<AccountPreferences>) => accountApi.updateProfile({ preferences: patch }),
+    onMutate: (patch) => {
+      setAccountProfile(client, { ...account, preferences: { ...account.preferences, ...patch } });
+      return { previous: account };
+    },
+    onSuccess: (profile) => setAccountProfile(client, profile),
+    onError: (_error, _patch, context) => {
+      if (context) setAccountProfile(client, context.previous);
+    },
+  });
+}
+
+const dietLabels: Record<DietChoice, string> = { everything: "Everything", vegetarian: "Vegetarian", vegan: "Vegan", pescatarian: "Pescatarian" };
+const avoidLabels: Record<AvoidChoice, string> = { egg: "Egg", dairy: "Dairy", fish: "Fish", meat: "Meat", gluten: "Gluten" };
+const goalLabels: Record<GoalChoice, string> = { weight_loss: "Weight loss", high_protein: "High protein", diabetic_friendly: "Diabetic friendly", heart_healthy: "Heart healthy", budget: "Budget", quick: "Quick", kid_friendly: "Kid friendly", comfort: "Comfort food" };
+
+const isDietChoice = (value: string): value is DietChoice => (dietChoices as readonly string[]).includes(value);
+
+/** A row of chips that toggle: the label above, the choices wrapping below, the chosen ones filled. */
+function ChipField<T extends string>({ label, hint, choices, labels, value, onChange, disabled }: { label: string; hint?: string; choices: readonly T[]; labels: (choice: T) => string; value: readonly T[]; onChange: (next: T[]) => void; disabled: boolean }) {
+  const chosen = new Set(value);
+  return (
+    <div className="space-y-1.5">
+      <p className="text-sm font-medium" id={`pref-${label.toLowerCase().replace(/\W+/gu, "-")}`}>{label}</p>
+      <ToggleGroup
+        aria-labelledby={`pref-${label.toLowerCase().replace(/\W+/gu, "-")}`}
+        className="flex-wrap"
+        disabled={disabled}
+        onValueChange={(next) => onChange(choices.filter((choice) => next.includes(choice)))}
+        type="multiple"
+        value={choices.filter((choice) => chosen.has(choice))}
+        variant="outline"
+      >
+        {choices.map((choice) => (
+          <ToggleGroupItem className="h-8 rounded-full px-3 text-xs data-[state=on]:border-primary data-[state=on]:bg-primary data-[state=on]:text-primary-foreground" key={choice} value={choice}>
+            {labels(choice)}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
+      {hint ? <p className="text-xs text-muted-foreground">{hint}</p> : null}
+    </div>
+  );
+}
+
+function FoodPreferencesSection({ account }: { account: AccountProfile }) {
+  const save = usePreferencesMutation(account);
+  const preferences = account.preferences;
+  return (
+    <Section description="What you eat and what you are after. Surprise me and the daily recipe ideas follow these; each choice saves as you make it." id="preferences" title="Food preferences">
+      <div className="space-y-5">
+        <div className="space-y-1.5">
+          <p className="text-sm font-medium" id="pref-diet">Diet</p>
+          <ToggleGroup
+            aria-labelledby="pref-diet"
+            className="flex-wrap"
+            disabled={save.isPending}
+            onValueChange={(value) => { if (isDietChoice(value) && value !== preferences.diet) save.mutate({ diet: value }); }}
+            type="single"
+            value={preferences.diet}
+            variant="outline"
+          >
+            {dietChoices.map((choice) => (
+              <ToggleGroupItem className="h-8 rounded-full px-3 text-xs data-[state=on]:border-primary data-[state=on]:bg-primary data-[state=on]:text-primary-foreground" key={choice} value={choice}>
+                {dietLabels[choice]}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+        </div>
+        <ChipField choices={avoidChoices} disabled={save.isPending} hint="Dishes with these are left out of the picks." label="I avoid" labels={(choice) => avoidLabels[choice]} onChange={(avoid) => save.mutate({ avoid })} value={preferences.avoid} />
+        <ChipField choices={goalChoices} disabled={save.isPending} hint="Dishes that fit these come up more often." label="Goals" labels={(choice) => goalLabels[choice]} onChange={(goals) => save.mutate({ goals })} value={preferences.goals} />
+        <ChipField choices={dishCategories} disabled={save.isPending} label="Favourite kinds" labels={dishCategoryLabel} onChange={(likes) => save.mutate({ likes })} value={preferences.likes} />
+      </div>
+      <FormError className="mt-3" error={save.error} />
+    </Section>
+  );
+}
+
 function EmailSection({ account }: { account: AccountProfile }) {
   const [open, setOpen] = useState(false);
   const [newEmail, setNewEmail] = useState("");
@@ -154,7 +249,7 @@ function EmailSection({ account }: { account: AccountProfile }) {
     change.reset();
   };
   return (
-    <Section description="Where sign-in links and resets go, and digests and alerts if you want them." title="Email">
+    <Section description="Where sign-in links and resets go, and the daily mails and alerts if you want them." title="Email">
       <div className="flex flex-wrap items-center gap-2">
         <p className="font-medium">{account.email}</p>
         {account.email_verified ? <Badge variant="secondary"><RiCheckLine />Verified</Badge> : <Badge variant="outline">Not verified</Badge>}
@@ -242,28 +337,18 @@ function PasswordSection({ account }: { account: AccountProfile }) {
   );
 }
 
-type NotificationKey = "notify_email" | "notify_digest" | "notify_alerts";
+type NotificationKey = "notify_email" | "notify_digest" | "notify_recipes" | "notify_alerts";
 const notificationRows: Array<{ key: NotificationKey; label: string; description: string }> = [
   { key: "notify_email", label: "Email from PriceLens", description: "News about the site and what is new. Mail about the account itself (verification, password changes) always comes." },
-  { key: "notify_digest", label: "Daily price digest", description: "The morning's movers in one mail, once digests start." },
+  { key: "notify_digest", label: "Daily price digest", description: "The day's supermarket deals, the cheapest store for the essentials, and the movers, every morning." },
+  { key: "notify_recipes", label: "Daily recipe ideas", description: "Three recipes picked for your preferences, every morning." },
   { key: "notify_alerts", label: "Price alerts", description: "When a product or menu you watch moves, once alerts start." },
 ];
 
 function NotificationsSection({ account }: { account: AccountProfile }) {
-  const client = useQueryClient();
-  const save = useMutation({
-    mutationFn: (preferences: AccountPreferences) => accountApi.updateProfile({ preferences }),
-    onMutate: (preferences) => {
-      setAccountProfile(client, { ...account, preferences });
-      return { previous: account };
-    },
-    onSuccess: (profile) => setAccountProfile(client, profile),
-    onError: (_error, _preferences, context) => {
-      if (context) setAccountProfile(client, context.previous);
-    },
-  });
+  const save = usePreferencesMutation(account);
   return (
-    <Section description="Saved as you switch them. Nothing is sent until each kind of mail exists." title="Notifications">
+    <Section description="Saved as you switch them. The daily mails go out once the newsletters run; alerts come later." title="Notifications">
       <ul className="divide-y">
         {notificationRows.map((row) => (
           <li className="flex items-start justify-between gap-4 py-3 first:pt-0 last:pb-0" key={row.key}>
@@ -271,16 +356,7 @@ function NotificationsSection({ account }: { account: AccountProfile }) {
               <Label className="text-sm" htmlFor={`pref-${row.key}`}>{row.label}</Label>
               <p className="text-pretty text-xs text-muted-foreground">{row.description}</p>
             </div>
-            <Switch
-              checked={account.preferences[row.key]}
-              disabled={save.isPending}
-              id={`pref-${row.key}`}
-              onCheckedChange={(checked) => {
-                const preferences = { ...account.preferences };
-                preferences[row.key] = checked;
-                save.mutate(preferences);
-              }}
-            />
+            <Switch checked={account.preferences[row.key]} disabled={save.isPending} id={`pref-${row.key}`} onCheckedChange={(checked) => save.mutate({ [row.key]: checked })} />
           </li>
         ))}
       </ul>

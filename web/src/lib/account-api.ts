@@ -1,4 +1,4 @@
-import type { AccountMenu, AccountMenuInput, AccountProfile, UserRecipe, UserRecipeInput } from "@lanka-pricelens/shared";
+import type { AccountLocale, AccountMenu, AccountMenuInput, AccountPreferences, AccountProfile, UserRecipe, UserRecipeInput } from "@lanka-pricelens/shared";
 
 import { describeFailure, type Envelope } from "./api.ts";
 
@@ -42,7 +42,8 @@ export const accountApi = {
   register: (input: { email: string; password: string; display_name: string }) => call<AccountProfile>("POST", "/v1/account/register", input),
   login: (input: { email: string; password: string; remember: boolean }) => call<AccountProfile>("POST", "/v1/account/login", input),
   logout: () => call<null>("POST", "/v1/account/logout", {}),
-  updateProfile: (input: { display_name?: string; locale?: "en" | "si" | "ta"; preferences?: Partial<AccountProfile["preferences"]> }) => call<AccountProfile>("PATCH", "/v1/account/me", input),
+  /** Any subset of the profile; a partial `preferences` (a switch, the diet, the goals) is merged with the rest on the server. */
+  updateProfile: (input: { display_name?: string; locale?: AccountLocale; preferences?: Partial<AccountPreferences> }) => call<AccountProfile>("PATCH", "/v1/account/me", input),
   verifyEmail: (token: string) => call<AccountProfile>("POST", "/v1/account/verify-email", { token }),
   resendVerification: () => call<null>("POST", "/v1/account/resend-verification", {}),
   forgotPassword: (email: string) => call<null>("POST", "/v1/account/forgot-password", { email }),

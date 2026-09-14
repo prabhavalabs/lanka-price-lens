@@ -178,6 +178,10 @@ twenty simmers as long as a pot for four.
 5. On the recipes page the chips and the calorie cap ask a question of the whole
    catalogue: weight loss, high protein, low calorie, quick, budget, and so on,
    sorted by fewest calories, most protein, quickest, or cheapest.
+6. "Surprise me" beside the search, or in the ⋯ menu, opens one dish at random.
+   Signed in, it follows the food preferences on your account and the banner
+   above the recipe says why it was picked; "Another one" draws again without
+   repeating a dish this tab has shown, and the banner links to the preferences.
 
 ![A recipe scaled to ten](../web/public/guide/servings.png)
 
@@ -223,10 +227,16 @@ in with an email and a password, or with Google.
 3. "Continue with Google" signs in with a Google account and needs no password. If the
    address already has a PriceLens account, Google joins it.
 4. Your picture or initials in the header open the account menu: Account, Menus, My recipes,
-   Sign out. The account page holds your name and language, your email and password, which
-   mail you want, every device signed in (with "Sign out everywhere else"), and, at the
-   bottom, deleting the account.
-5. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
+   Sign out. The account page holds your name and language, your food preferences, your
+   email and password, which mail you want, every device signed in (with "Sign out
+   everywhere else"), and, at the bottom, deleting the account.
+5. Food preferences shape "Surprise me" and the daily recipe ideas: what you eat
+   (everything, vegetarian, vegan, pescatarian), what you avoid (egg, dairy, fish, meat,
+   gluten), what you are after (weight loss, high protein, quick, budget, and so on), and
+   the kinds of dish you like. Each choice saves as you make it. Under Notifications, switch
+   on the daily recipe ideas or the daily price digest; the mails go out once the
+   newsletters run.
+6. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
    hour; using it signs every other device out.
 
 Five wrong passwords in a row lock sign-in for fifteen minutes; the wait is the same whether

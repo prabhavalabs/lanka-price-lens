@@ -135,6 +135,7 @@ export const guideSections: GuideSection[] = [
       "The cost card prices the ingredients for the headcount at today's cheapest published seller, with the per-serving figure under it and how many ingredients are already in your basket. A “≈” means something is not priced yet or a price is older than a week; the card says which.",
       "“Read in” switches the method between English, Sinhala, and Tamil. Sinhala and Tamil text is machine drafted until a person has reviewed it, and the page says so.",
       "On the recipes page the chips and the calorie cap ask a question of the whole catalogue: weight loss, high protein, low calorie, quick, budget, and so on, sorted by fewest calories, most protein, quickest, or cheapest.",
+      "“Surprise me” beside the search, or in the ⋯ menu, opens one dish at random. Signed in, it follows the food preferences on your account and the banner above the recipe says why it was picked; “Another one” draws again without repeating a dish this tab has shown, and the banner links to the preferences.",
     ],
     figures: [
       { file: "servings", alt: "A hoppers recipe scaled to ten people, with calories, cost, and time per serving and the ingredient list in grams", caption: "One recipe for ten: every amount, the calories, and the cost follow the headcount; the time stays.", width: 1920, height: 1200 },
@@ -164,7 +165,8 @@ export const guideSections: GuideSection[] = [
       "Menus, your own recipes, and the account page need an account: open one signed out and the sign-in page appears, and once you are in you land straight back on the page you were opening. Prices, recipes, and the basket never ask.",
       "A verification link goes to the address. Until you open it you can sign in and read everything, but menus and recipes wait; the thin bar under the header resends the link.",
       "“Continue with Google” signs in with a Google account and needs no password. If the address already has a PriceLens account, Google joins it.",
-      "Your picture or initials in the header open the account menu: Account, Menus, My recipes, Sign out. The account page holds your name and language, your email and password, which mail you want, every device signed in (with “Sign out everywhere else”), and, at the bottom, deleting the account.",
+      "Your picture or initials in the header open the account menu: Account, Menus, My recipes, Sign out. The account page holds your name and language, your food preferences, your email and password, which mail you want, every device signed in (with “Sign out everywhere else”), and, at the bottom, deleting the account.",
+      "Food preferences shape “Surprise me” and the daily recipe ideas: what you eat (everything, vegetarian, vegan, pescatarian), what you avoid (egg, dairy, fish, meat, gluten), what you are after (weight loss, high protein, quick, budget, and so on), and the kinds of dish you like. Each choice saves as you make it. Under Notifications, switch on the daily recipe ideas or the daily price digest; the mails go out once the newsletters run.",
       "Forgot the password? “Forgot password?” on the sign-in page mails a link that works for an hour; using it signs every other device out.",
     ],
     figures: [],
