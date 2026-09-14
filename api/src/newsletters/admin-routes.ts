@@ -102,7 +102,7 @@ export type MailAdminDeps = {
   siteOrigin: string | null;
   replyTo?: string | undefined;
   markUrl?: string | undefined;
-  recipes?: { index: Map<string, RecipeIndexEntry> } | undefined;
+  recipes?: { index: Map<string, RecipeIndexEntry>; hasPhoto?: ((dishId: string) => boolean) | undefined } | undefined;
   deals?: DealsAccess | undefined;
   now?: (() => Date) | undefined;
 };
@@ -140,13 +140,13 @@ export function sampleMailData(kind: MailKind, deps: Pick<MailAdminDeps, "siteOr
   const account = { id: "account_sample", display_name: "Amal", preferences: preferencesSchema.parse({}) };
   switch (kind) {
     case "recipes_daily": {
-      const composed = deps.recipes ? composeRecipesMail(account, day, [], { index: deps.recipes.index, siteOrigin: origin, cost: (entry) => (entry.dish.popularity === 1 ? 145 : 210) }, unsubscribe) : null;
+      const composed = deps.recipes ? composeRecipesMail(account, day, [], { index: deps.recipes.index, siteOrigin: origin, cost: (entry) => (entry.dish.popularity === 1 ? 145 : 210), hasPhoto: deps.recipes.hasPhoto }, unsubscribe) : null;
       if (composed) return composed.data;
       // No catalogue on this machine: fixed cards, so the layout can still be seen.
       const cards = [
-        { image: `${origin}/og/r/dish_parippu.png`, name: "Dhal curry", summary: "Red lentils simmered in coconut milk with turmeric and a tempered onion finish.", kcal: 281, minutes: 35, cost: "Rs 95 per serving", url: `${origin}/r/dish_parippu` },
-        { image: `${origin}/og/r/dish_pol_sambol.png`, name: "Pol sambol", summary: "Freshly grated coconut pounded with chilli, onion, lime, and Maldive fish.", kcal: 160, minutes: 15, cost: "Rs 60 per serving", url: `${origin}/r/dish_pol_sambol` },
-        { image: `${origin}/og/r/dish_chicken_curry.png`, name: "Chicken curry", summary: "Chicken pieces braised in a roasted curry powder gravy finished with thick coconut milk.", kcal: 420, minutes: 60, cost: "Rs 310 per serving", url: `${origin}/r/dish_chicken_curry` },
+        { image: `${origin}/images/recipes/parippu.jpg`, name: "Dhal curry", summary: "Red lentils simmered in coconut milk with turmeric and a tempered onion finish.", kcal: 281, minutes: 35, cost: "Rs 95 per serving", url: `${origin}/r/dish_parippu` },
+        { image: `${origin}/images/recipes/pol_sambol.jpg`, name: "Pol sambol", summary: "Freshly grated coconut pounded with chilli, onion, lime, and Maldive fish.", kcal: 160, minutes: 15, cost: "Rs 60 per serving", url: `${origin}/r/dish_pol_sambol` },
+        { image: `${origin}/images/recipes/chicken_curry.jpg`, name: "Chicken curry", summary: "Chicken pieces braised in a roasted curry powder gravy finished with thick coconut milk.", kcal: 420, minutes: 60, cost: "Rs 310 per serving", url: `${origin}/r/dish_chicken_curry` },
       ];
       return { values: { name: "Amal", date: dayWords(day), count: "three", link: `${origin}/recipes` }, blocks: [{ type: "recipes", heading: null, cards }], unsubscribeUrl: unsubscribe };
     }

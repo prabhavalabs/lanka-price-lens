@@ -116,12 +116,14 @@ export function cardSvg(card: Card): string {
   if (card.stats?.length) {
     const tiles = card.stats.slice(0, 3);
     const tileWidth = Math.min(320, Math.floor((contentWidth - 24 * (tiles.length - 1)) / tiles.length));
+    // Beside a photo the tiles are narrow, so their figures shrink to fit.
+    const narrow = tileWidth < 240;
     const top = y + 30;
     tiles.forEach((stat, index) => {
       const x = left + index * (tileWidth + 24);
       parts.push(`<rect x="${x}" y="${top}" width="${tileWidth}" height="104" rx="18" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.09"/>`);
-      parts.push(text(x + 26, top + 50, stat.value, 38, colours.text, 600));
-      parts.push(text(x + 26, top + 82, stat.label, 18, colours.muted));
+      parts.push(text(x + (narrow ? 20 : 26), top + 50, stat.value, narrow ? 30 : 38, colours.text, 600));
+      parts.push(text(x + (narrow ? 20 : 26), top + 82, stat.label, narrow ? 16 : 18, colours.muted));
     });
   }
   // Body copy.
@@ -227,7 +229,7 @@ export function productCard(product: PublicProductCard, overview: PublicOverview
 
 export type CardDish = { id: string; names: { en?: string | undefined }; summary?: string | undefined; category?: string | undefined; difficulty?: string | undefined; prep_minutes?: number | undefined; cook_minutes?: number | undefined; key_ingredients?: unknown[] | undefined; other_ingredients?: unknown[] | undefined };
 
-export function recipeCard(dish: CardDish, overview: PublicOverview | null): Card {
+export function recipeCard(dish: CardDish, overview: PublicOverview | null, photo?: Buffer | undefined): Card {
   const minutes = (dish.prep_minutes ?? 0) + (dish.cook_minutes ?? 0);
   const ingredients = (dish.key_ingredients?.length ?? 0) + (dish.other_ingredients?.length ?? 0);
   const stats: CardStat[] = [];
@@ -240,12 +242,23 @@ export function recipeCard(dish: CardDish, overview: PublicOverview | null): Car
     subtitle: dish.summary,
     stats,
     footer: asOfFooter(overview),
+    image: photo ? { data: photo, mime: "image/jpeg" } : undefined,
   };
 }
 
 /** The photo for a product, when the site has one. */
 export function productPhoto(imagesRoot: string, productId: string): Buffer | undefined {
   const file = resolve(imagesRoot, "products", `${productId.replace(/^product_/u, "")}.jpg`);
+  return existsSync(file) ? readFileSync(file) : undefined;
+}
+
+/** Where a dish's photograph lives when the site has one: data/images/recipes/<slug>.jpg, made by scripts/recipes/photos.mjs. */
+export function recipePhotoPath(imagesRoot: string, dishId: string): string {
+  return resolve(imagesRoot, "recipes", `${dishId.replace(/^dish_/u, "")}.jpg`);
+}
+
+export function recipePhoto(imagesRoot: string, dishId: string): Buffer | undefined {
+  const file = recipePhotoPath(imagesRoot, dishId);
   return existsSync(file) ? readFileSync(file) : undefined;
 }
 

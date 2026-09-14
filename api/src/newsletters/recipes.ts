@@ -25,6 +25,8 @@ export type RecipeMailDeps = {
   siteOrigin: string;
   cost?: CostLookup | null | undefined;
   count?: number | undefined;
+  /** Whether the site has a photograph of the dish (data/images/recipes); without it the card shows the OG picture. */
+  hasPhoto?: ((dishId: string) => boolean) | null | undefined;
 };
 
 export type RecipeMail = {
@@ -42,14 +44,20 @@ export function recipeUrl(siteOrigin: string, dishId: string): string {
   return `${siteOrigin}/r/${dishId}`;
 }
 
+/** The OG card of a dish: the fallback picture when no photograph exists. */
 export function recipeImageUrl(siteOrigin: string, dishId: string): string {
   return `${siteOrigin}/og/r/${dishId}.png`;
 }
 
-export function recipeCardOf(entry: RecipeIndexEntry, siteOrigin: string, cost: CostLookup | null | undefined): RecipeCard {
+/** The dish's photograph as the site serves it (scripts/recipes/photos.mjs makes them). */
+export function recipePhotoUrl(siteOrigin: string, dishId: string): string {
+  return `${siteOrigin}/images/recipes/${dishId.replace(/^dish_/u, "")}.jpg`;
+}
+
+export function recipeCardOf(entry: RecipeIndexEntry, siteOrigin: string, cost: CostLookup | null | undefined, hasPhoto?: ((dishId: string) => boolean) | null | undefined): RecipeCard {
   const perServing = cost ? cost(entry) : null;
   return {
-    image: recipeImageUrl(siteOrigin, entry.dish.id),
+    image: hasPhoto?.(entry.dish.id) ? recipePhotoUrl(siteOrigin, entry.dish.id) : recipeImageUrl(siteOrigin, entry.dish.id),
     name: entry.dish.names.en,
     summary: entry.dish.summary,
     kcal: entry.metrics.kcal,
@@ -60,8 +68,8 @@ export function recipeCardOf(entry: RecipeIndexEntry, siteOrigin: string, cost: 
 }
 
 /** The recipe cards block for a set of entries, in the order given. */
-export function recipeBlock(entries: RecipeIndexEntry[], siteOrigin: string, cost: CostLookup | null | undefined, heading: string | null = null): Extract<ContentBlock, { type: "recipes" }> {
-  return { type: "recipes", heading, cards: entries.map((entry) => recipeCardOf(entry, siteOrigin, cost)) };
+export function recipeBlock(entries: RecipeIndexEntry[], siteOrigin: string, cost: CostLookup | null | undefined, heading: string | null = null, hasPhoto?: ((dishId: string) => boolean) | null | undefined): Extract<ContentBlock, { type: "recipes" }> {
+  return { type: "recipes", heading, cards: entries.map((entry) => recipeCardOf(entry, siteOrigin, cost, hasPhoto)) };
 }
 
 /**
@@ -83,7 +91,7 @@ export function composeRecipesMail(
   const picks = pickDaily(facts, account.preferences, { exclude, count, seed: `${day}:${account.id}` });
   if (picks.length === 0) return null;
   const entries = picks.map((pick) => deps.index.get(pick.id)).filter((entry): entry is RecipeIndexEntry => entry !== undefined);
-  const block = recipeBlock(entries, origin, deps.cost);
+  const block = recipeBlock(entries, origin, deps.cost, null, deps.hasPhoto);
   return {
     dishIds: entries.map((entry) => entry.dish.id),
     cards: block.cards,

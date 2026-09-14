@@ -36,7 +36,7 @@ import {
 import { runWithRetry } from "@lanka-pricelens/foundry/retry";
 import { listFeedback, parseFeedback, RateLimiter, submitFeedback, updateFeedbackStatus } from "./feedback.ts";
 import { createOwnerNotifier, feedbackMessage, type OwnerNotifier } from "./notify.ts";
-import { CardCache, pageCard, productCard, productPhoto, recipeCard, renderCard, siteCard } from "./og.ts";
+import { CardCache, pageCard, productCard, productPhoto, recipeCard, recipePhotoPath, recipePhoto, renderCard, siteCard } from "./og.ts";
 import { envelope, jsonObject, sameOrigin } from "./http.ts";
 import { adminAccountRoutes } from "./account/admin-routes.ts";
 import { contentRoutes } from "./account/content-routes.ts";
@@ -217,6 +217,8 @@ export function createApp(
       return view?.cost?.lines.length ? view.cost.per_serving : null;
     };
   };
+  // Mail shows a dish's photograph when data/images/recipes has one; the check is a stat per card, so new pictures count without a restart.
+  const hasRecipePhoto = (dishId: string): boolean => existsSync(recipePhotoPath(defaultImagesRoot(), dishId));
   const newsletters: NewsletterService = createNewsletterService({
     database,
     accounts: accountStore,
@@ -226,7 +228,7 @@ export function createApp(
     secret: accountConfig.stateSecret,
     replyTo: ownMailer?.replyTo ?? "hello@prabhavalabs.com",
     markUrl: ownMailer?.markUrl,
-    ...(options.recipes ? { recipes: { index: recipeIndex, costs: recipeCosts } } : {}),
+    ...(options.recipes ? { recipes: { index: recipeIndex, costs: recipeCosts, hasPhoto: hasRecipePhoto } } : {}),
     deals,
     watchlist: {
       store: watchStore,
@@ -329,7 +331,7 @@ export function createApp(
     return cardResponse(context, await cards.get(`recipe:${id}`, async () => {
       const overview = await overviewForCards();
       const dish = options.recipes?.catalogue.dishes.find((candidate) => candidate.id === id);
-      return renderCard(dish ? recipeCard(dish, overview) : siteCard(overview));
+      return renderCard(dish ? recipeCard(dish, overview, recipePhoto(defaultImagesRoot(), id)) : siteCard(overview));
     }));
   });
   // Who is here now: a beat per open tab per minute, counted for three minutes. No cookies, no account.
@@ -546,7 +548,7 @@ export function createApp(
   app.route("/v1/admin/accounts", adminAccountRoutes({ store: accountStore, content: contentStore }));
   app.route("/v1/admin", newsletterAdminRoutes({ service: newsletters, deals }));
   app.route("/v1/admin/community", communityAdminRoutes({ store: communityStore, accounts: accountStore, recipes: options.recipes }));
-  const mailAdmin: MailAdminDeps = { templates, send: ownMailer?.send, testAddress: options.newsletters?.testAddress ?? null, siteOrigin: accountConfig.siteOrigin, replyTo: ownMailer?.replyTo, markUrl: ownMailer?.markUrl, ...(options.recipes ? { recipes: { index: recipeIndex } } : {}), deals };
+  const mailAdmin: MailAdminDeps = { templates, send: ownMailer?.send, testAddress: options.newsletters?.testAddress ?? null, siteOrigin: accountConfig.siteOrigin, replyTo: ownMailer?.replyTo, markUrl: ownMailer?.markUrl, ...(options.recipes ? { recipes: { index: recipeIndex, hasPhoto: hasRecipePhoto } } : {}), deals };
   app.route("/v1/admin/mail", mailAdminRoutes(mailAdmin));
   mailServices.set(app, {
     sample: (kind) => previewMail(kind, mailAdmin),

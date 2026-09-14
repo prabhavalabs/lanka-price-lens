@@ -40,6 +40,8 @@ export type NewsletterDeps = {
         index: Map<string, RecipeIndexEntry>;
         /** Today's cost per serving, built once per run; null when the warehouse is away. */
         costs?: (() => Promise<CostLookup | null>) | undefined;
+        /** Whether the site has a photograph of a dish, for the card picture. */
+        hasPhoto?: ((dishId: string) => boolean) | undefined;
       }
     | undefined;
   deals?: DealsAccess | undefined;
@@ -198,7 +200,7 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
             data = composed.data;
           } else {
             const exclude = store.recentDishIds(account.id, addDays(day, -exclusionDays));
-            const composed = composeRecipesMail(account, day, exclude, { index: deps.recipes!.index, siteOrigin, cost }, unsubscribe);
+            const composed = composeRecipesMail(account, day, exclude, { index: deps.recipes!.index, siteOrigin, cost, hasPhoto: deps.recipes!.hasPhoto }, unsubscribe);
             if (!composed) {
               skip("no_recipes");
               continue;

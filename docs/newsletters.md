@@ -198,7 +198,8 @@ written out beneath; and, for account mail, the reason line boxed in the card (a
 security notices). The footer under the card links Prices, Recipes, Wishlist, and Guide,
 carries the one-click unsubscribe and "Notification settings" for the daily mails, the reply
 address, "Made in Sri Lanka", and Privacy and Terms. Three blocks: **recipe cards** (the
-site's OG picture full width, name, one line, kcal / minutes / cost as chips, link), **deal
+dish's photograph full width, or the site's OG picture when there is none; name, one line,
+kcal / minutes / cost as chips, link), **deal
 rows** (product, store, and the comparison on the left; price and a green or red percentage
 badge on the right), and **fact rows** (label and value, for the owner's notices). Tables and
 inline styles only, light only, no external CSS; every mail has a plain-text part. The

@@ -2,6 +2,7 @@ import { RiCheckLine, RiFireLine, RiTimeLine } from "@remixicon/react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 
+import { DishPhoto } from "@/components/dish-photo";
 import { ProductImage } from "@/components/product-image";
 import { RecipeReactions } from "@/components/reactions";
 import { RecipeViewSection } from "@/components/recipe-view";
@@ -55,6 +56,7 @@ export function RecipePage() {
     <div className="space-y-6">
       {surprised ? <SurpriseBanner key={id} reasons={readReasons(location.state)} /> : null}
       <nav className="text-sm text-muted-foreground"><Link to="/recipes" className="hover:text-primary">Recipes</Link> › {dishCategoryLabel(dish.category)}</nav>
+      <DishPhoto alt={dish.names.en} className="aspect-[2/1] max-h-80 rounded-xl border" dishId={dish.id} loading="eager" />
       <header className="space-y-3">
         <div>
           <h1 className="text-balance font-heading text-3xl font-semibold tracking-tight">{dish.names.en}</h1>

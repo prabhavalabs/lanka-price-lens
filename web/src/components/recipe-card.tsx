@@ -2,6 +2,7 @@ import { RiThumbUpLine, RiTimeLine } from "@remixicon/react";
 import type React from "react";
 import { Link } from "react-router-dom";
 
+import { DishPhoto } from "@/components/dish-photo";
 import { RecipeReactions } from "@/components/reactions";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,7 +11,7 @@ import { dishCategoryLabel, minutesLabel, titleCase } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 /**
- * A dish at a glance, laid out like a social card: the name and summary link to the recipe,
+ * A dish at a glance, laid out like a social card: the photograph on top, the name and summary link to the recipe,
  * the readers' score sits in the top corner when it is above zero, and a footer carries the
  * thumbs so a reader can react from the list. From the basket the card shows instead how much
  * of the dish the shopper already has.
@@ -20,10 +21,11 @@ export function RecipeCard({ dish, score, matched, missing, labels, className, c
   const have = matched?.length ?? 0;
   const names = [dish.names.si, dish.names.ta_latn && !dish.names.si ? dish.names.ta_latn : null].filter(Boolean).join(" · ");
   return (
-    <Card className={cn("relative flex h-full flex-col transition-colors hover:border-primary/50", className)}>
-      {score ? <Badge aria-label={`${score} more thumbs up than down`} className="absolute right-3 top-3 gap-1 border-primary/40 bg-primary/10 text-[10px] text-primary tabular-nums" title="Thumbs up from readers, less thumbs down" variant="outline"><RiThumbUpLine aria-hidden className="size-3" />{score}</Badge> : null}
-      <Link to={`/r/${dish.id}`} className="block flex-1 no-underline">
-        <CardContent className={cn("flex h-full flex-col gap-2 p-4", score ? "pr-14" : "")}>
+    <Card className={cn("relative flex h-full flex-col overflow-hidden transition-colors hover:border-primary/50", className)}>
+      {score ? <Badge aria-label={`${score} more thumbs up than down`} className="absolute right-3 top-3 z-10 gap-1 border-primary/40 bg-background/90 text-[10px] text-primary tabular-nums backdrop-blur" title="Thumbs up from readers, less thumbs down" variant="outline"><RiThumbUpLine aria-hidden className="size-3" />{score}</Badge> : null}
+      <Link to={`/r/${dish.id}`} className="flex flex-1 flex-col no-underline">
+        <DishPhoto className="aspect-[3/2] w-full" dishId={dish.id} />
+        <CardContent className={cn("flex flex-1 flex-col gap-2 p-4", score ? "pr-14" : "")}>
           <div>
             <h3 className="font-heading text-base font-semibold leading-tight">{dish.names.en}</h3>
             {names ? <p className="truncate text-xs text-muted-foreground">{names}</p> : null}

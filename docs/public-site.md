@@ -106,9 +106,19 @@ Every price carries the date it was observed and the site says so on every page.
 
 ## Images
 
-Product photos (`data/images/products/<slug>.jpg`, one per product) and store logos
-(`data/images/sellers/`) are shared by the admin and the site; the API serves them at
-`/images/…` with a day of browser cache and a week at the edge. The image copies `data/images`.
+Product photos (`data/images/products/<slug>.jpg`, one per product), pantry photos
+(`data/images/pantry/`), dish photographs (`data/images/recipes/<slug>.jpg`, one per dish,
+slug = dish id without `dish_`), and store logos (`data/images/sellers/`) are shared by the
+admin and the site; the API serves them at `/images/…` with a day of browser cache and a week
+at the edge. The image copies `data/images`.
+
+Dish photographs are made by `node scripts/recipes/photos.mjs` with the Codex CLI's built-in
+image tool (the owner's ChatGPT subscription, no API key): one ultra-realistic 3:2 picture per
+dish from its name, summary, ingredient lines, and serving description, in parallel batches,
+then a 900 px JPEG each. Re-running fills in only the dishes still without a picture. The site
+shows them on recipe cards and at the top of the recipe page (`DishPhoto`), the recipe OG
+card carries the photo beside the title, and the daily recipe mail uses the photo instead of
+the OG card when the dish has one.
 
 ## The guide
 
