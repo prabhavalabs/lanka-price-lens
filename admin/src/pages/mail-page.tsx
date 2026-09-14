@@ -51,6 +51,7 @@ const kindCopy: Record<MailKind, { label: string; when: string }> = {
   account_deleted: { label: "Account deleted", when: "When an account is deleted." },
   recipes_daily: { label: "Daily recipes", when: "Every morning to people who switched on daily recipe ideas: three recipes picked for their preferences." },
   deals_daily: { label: "Daily deals", when: "Every morning to people who switched on the price digest: today's supermarket deals and the essentials watch." },
+  price_alerts: { label: "Price alerts", when: "Every morning to people with price alerts on, listing the starred products whose rule fired." },
 };
 
 const fieldCopy: Record<keyof MailFields, { label: string; hint: string; long: boolean }> = {
@@ -60,10 +61,10 @@ const fieldCopy: Record<keyof MailFields, { label: string; hint: string; long: b
   intro: { label: "Intro", hint: "The paragraph before the button, the recipe cards, or the deal rows. Blank lines start new paragraphs.", long: true },
   outro: { label: "Outro", hint: "The paragraph after the button or the cards.", long: true },
   button_label: { label: "Button label", hint: "The wording on the button, where the mail has one.", long: false },
-  reason: { label: "Reason", hint: "The small print in the footer saying why the person received this mail.", long: true },
+  reason: { label: "Reason", hint: "Why the person received this mail: a boxed note in account mail (amber for security notices), the footer's small print in the daily mails.", long: true },
 };
 
-const newsletterOrder: NewsletterKind[] = ["recipes_daily", "deals_daily"];
+const newsletterOrder: NewsletterKind[] = ["recipes_daily", "deals_daily", "price_alerts"];
 const baselineCopy: Record<DealBaseline, string> = { yesterday: "yesterday", median14: "the 14-day median", other_stores: "the next cheapest store" };
 const dealKindCopy: Record<DealKind, { label: string; variant: "default" | "secondary" | "outline" }> = {
   offer: { label: "Offer", variant: "default" },
@@ -349,23 +350,27 @@ function NewslettersTab() {
     queryKey: ["newsletter-runs", "deals_daily"],
     queryFn: ({ signal }) => newslettersApi.runs({ kind: "deals_daily", limit: 20 }, { signal }),
   });
-  const queries: Record<NewsletterKind, UseQueryResult<NewsletterRun[]>> = { recipes_daily: recipes, deals_daily: deals };
-  const runs = [...(recipes.data ?? []), ...(deals.data ?? [])].sort((a, b) => b.started_at.localeCompare(a.started_at)).slice(0, 20);
-  const loading = recipes.isPending || deals.isPending;
+  const alerts = useQuery({
+    queryKey: ["newsletter-runs", "price_alerts"],
+    queryFn: ({ signal }) => newslettersApi.runs({ kind: "price_alerts", limit: 20 }, { signal }),
+  });
+  const queries: Record<NewsletterKind, UseQueryResult<NewsletterRun[]>> = { recipes_daily: recipes, deals_daily: deals, price_alerts: alerts };
+  const runs = [...(recipes.data ?? []), ...(deals.data ?? []), ...(alerts.data ?? [])].sort((a, b) => b.started_at.localeCompare(a.started_at)).slice(0, 20);
+  const loading = recipes.isPending || deals.isPending || alerts.isPending;
 
   return (
     <>
-      <div className="grid gap-4 xl:grid-cols-2">
+      <div className="grid gap-4 xl:grid-cols-3">
         {newsletterOrder.map((kind) => <NewsletterCard key={kind} kind={kind} runs={queries[kind]} />)}
       </div>
       <Card>
         <CardHeader>
           <CardTitle>Runs</CardTitle>
-          <CardDescription>The last 20 runs of both newsletters, newest first. A kind with a sent run for the day does not run again that day unless forced.</CardDescription>
+          <CardDescription>The last 20 runs of the daily mails, newest first. A kind with a sent run for the day does not run again that day unless forced.</CardDescription>
         </CardHeader>
         <CardContent className="p-0">
-          {loading ? <div className="space-y-2 p-4">{Array.from({ length: 4 }, (_, index) => <Skeleton className="h-9" key={index} />)}</div> : recipes.isError || deals.isError ? (
-            <Alert className="m-4" variant="destructive"><AlertTitle>Runs unavailable</AlertTitle><AlertDescription>{message(recipes.error ?? deals.error, "The runs list did not load.")}</AlertDescription></Alert>
+          {loading ? <div className="space-y-2 p-4">{Array.from({ length: 4 }, (_, index) => <Skeleton className="h-9" key={index} />)}</div> : recipes.isError || deals.isError || alerts.isError ? (
+            <Alert className="m-4" variant="destructive"><AlertTitle>Runs unavailable</AlertTitle><AlertDescription>{message(recipes.error ?? deals.error ?? alerts.error, "The runs list did not load.")}</AlertDescription></Alert>
           ) : (
             <Table>
               <TableHeader>

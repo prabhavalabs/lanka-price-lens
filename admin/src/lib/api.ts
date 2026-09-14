@@ -250,7 +250,7 @@ function jsonInit(method: "POST" | "PUT" | "PATCH", body: unknown): RequestInit 
 }
 
 /** Every mail the site sends, in the order the Mail page lists them. */
-export const mailKinds = ["verify_email", "welcome", "reset_password", "password_changed", "change_email", "email_changed", "account_deleted", "recipes_daily", "deals_daily"] as const;
+export const mailKinds = ["verify_email", "welcome", "reset_password", "password_changed", "change_email", "email_changed", "account_deleted", "recipes_daily", "deals_daily", "price_alerts"] as const;
 export type MailKind = (typeof mailKinds)[number];
 /** The editable wording of a mail; the layout around it stays in code. */
 export type MailFields = { subject: string; preheader: string; heading: string; intro: string; outro: string; button_label: string; reason: string };
@@ -269,7 +269,7 @@ export const mailTemplatesApi = {
   test: (kind: MailKind, fields?: Partial<MailFields>) => api<MailTestResult>(`/v1/admin/mail/templates/${kind}/test`, jsonInit("POST", fields ? { fields } : {})),
 };
 
-export const newsletterKinds = ["recipes_daily", "deals_daily"] as const satisfies ReadonlyArray<MailKind>;
+export const newsletterKinds = ["recipes_daily", "deals_daily", "price_alerts"] as const satisfies ReadonlyArray<MailKind>;
 export type NewsletterKind = (typeof newsletterKinds)[number];
 export type NewsletterRun = { id: string; kind: NewsletterKind; day: string; trigger: string; status: string; started_at: string; finished_at: string | null; recipients: number; sent: number; skipped: number; failed: number; error: string | null };
 export type NewsletterDelivery = { account_id: string; email: string; subject: string };
