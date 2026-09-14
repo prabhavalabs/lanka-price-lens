@@ -71,7 +71,7 @@ export function RecipePage() {
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <ShareButtons title={dish.names.en} text={shareText} />
-          <RecipeReactions dishId={dish.id} score={dish.reactions} />
+          <RecipeReactions dishId={dish.id} score={dish.reactions.score} />
         </div>
       </header>
 

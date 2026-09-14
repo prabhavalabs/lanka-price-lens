@@ -1,5 +1,4 @@
 import { RiThumbDownFill, RiThumbDownLine, RiThumbUpFill, RiThumbUpLine } from "@remixicon/react";
-import type { RecipeScore } from "@lanka-pricelens/shared";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
@@ -16,7 +15,7 @@ import { useReact, useReaction } from "@/store/community";
  * here, since a reaction lives on the account. Signed in, the score moves at once and settles
  * with the server behind the scenes.
  */
-export function RecipeReactions({ dishId, score, className }: { dishId: string; score: RecipeScore; className?: string | undefined }) {
+export function RecipeReactions({ dishId, score, className }: { dishId: string; /** Likes less dislikes, never below zero. */ score: number; className?: string | undefined }) {
   const { value, status } = useReaction(dishId);
   const actions = useReact();
   const navigate = useNavigate();
@@ -52,7 +51,7 @@ export function RecipeReactions({ dishId, score, className }: { dishId: string; 
           </TooltipTrigger>
           <TooltipContent>{up ? "You liked this" : "Worked for me"}</TooltipContent>
         </Tooltip>
-        <span aria-label={`Score ${score.score}`} aria-live="polite" className="min-w-7 border-x border-border px-1.5 text-center text-sm font-semibold tabular-nums">{score.score}</span>
+        <span aria-label={`Score ${score}`} aria-live="polite" className="min-w-7 border-x border-border px-1.5 text-center text-sm font-semibold tabular-nums">{score}</span>
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
