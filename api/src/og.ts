@@ -140,7 +140,7 @@ export function cardSvg(card: Card): string {
   // Footer.
   parts.push(`<line x1="${left}" y1="548" x2="${cardWidth - left}" y2="548" stroke="#ffffff" stroke-opacity="0.08"/>`);
   parts.push(text(left, 590, card.footer, 21, colours.muted));
-  parts.push(text(cardWidth - left, 590, "Free · Open source · Made in Sri Lanka", 21, colours.muted, 400, 'text-anchor="end"'));
+  parts.push(text(cardWidth - left, 590, "Free · Made in Sri Lanka", 21, colours.muted, 400, 'text-anchor="end"'));
   parts.push("</svg>");
   return parts.join("");
 }
