@@ -764,6 +764,13 @@ function migrate(database: OperationalDatabase): void {
       PRIMARY KEY (account_id, product_id)
     ) STRICT;
     CREATE INDEX IF NOT EXISTS account_watch_product_idx ON account_watch(product_id);
+    CREATE TABLE IF NOT EXISTS account_favourite (
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      dish_id TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      PRIMARY KEY (account_id, dish_id)
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS account_favourite_dish_idx ON account_favourite(dish_id);
     CREATE TABLE IF NOT EXISTS recipe_reaction (
       account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
       dish_id TEXT NOT NULL,
