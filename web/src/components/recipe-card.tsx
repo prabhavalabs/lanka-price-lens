@@ -21,11 +21,14 @@ export function RecipeCard({ dish, score, matched, missing, labels, className, c
   const have = matched?.length ?? 0;
   const names = [dish.names.si, dish.names.ta_latn && !dish.names.si ? dish.names.ta_latn : null].filter(Boolean).join(" · ");
   return (
-    <Card className={cn("relative flex h-full flex-col overflow-hidden transition-colors hover:border-primary/50", className)}>
+    <Card className={cn("relative flex h-full flex-col gap-0 overflow-hidden py-0 transition-colors hover:border-primary/50", className)}>
       {score ? <Badge aria-label={`${score} more thumbs up than down`} className="absolute right-3 top-3 z-10 gap-1 border-primary/40 bg-background/90 text-[10px] text-primary tabular-nums backdrop-blur" title="Thumbs up from readers, less thumbs down" variant="outline"><RiThumbUpLine aria-hidden className="size-3" />{score}</Badge> : null}
+      <div className="relative">
+        <Link to={`/r/${dish.id}`} className="block no-underline"><DishPhoto className="aspect-[3/2] w-full" dishId={dish.id} placeholder /></Link>
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-card via-card/60 to-transparent" />
+      </div>
       <Link to={`/r/${dish.id}`} className="flex flex-1 flex-col no-underline">
-        <DishPhoto className="aspect-[3/2] w-full" dishId={dish.id} />
-        <CardContent className={cn("flex flex-1 flex-col gap-2 p-4", score ? "pr-14" : "")}>
+        <CardContent className={cn("flex flex-1 flex-col gap-2 px-4 pb-4 pt-1", score ? "pr-14" : "")}>
           <div>
             <h3 className="font-heading text-base font-semibold leading-tight">{dish.names.en}</h3>
             {names ? <p className="truncate text-xs text-muted-foreground">{names}</p> : null}
