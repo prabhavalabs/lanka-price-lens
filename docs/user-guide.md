@@ -217,9 +217,10 @@ one shopping list summed across every recipe.
 
 ## 10. Your account
 
-Reading prices never needs an account. One keeps your menus and your own recipes on the
-server, so they follow you to another phone or browser, and later carries price alerts. Sign
-in with an email and a password, or with Google.
+Reading prices never needs an account. One keeps your menus, your own recipes, your
+favourites, and your wishlist on the server, so they follow you to another phone or browser,
+and sends the morning mails and price alerts you switch on, by email or in Telegram. Sign in
+with an email and a password, or with Google.
 
 1. "Sign in" at the right of the header opens the sign-in page, on its own without the header
    and footer; "Create an account" asks for a name, an email, and a password of ten characters
@@ -233,7 +234,7 @@ in with an email and a password, or with Google.
 3. "Continue with Google" signs in with a Google account and needs no password. If the
    address already has a PriceLens account, Google joins it.
 4. Your picture or initials in the header open the account menu: Account, Menus, My recipes,
-   Sign out. The account page holds your name and language, your food preferences, your
+   Favourites, Wishlist, Sign out. The account page holds your name and language, your food preferences, your
    favourite recipes, your wishlist, your email and password, which mail you want, every device signed in (with
    "Sign out everywhere else"), and, at the bottom, deleting the account.
 5. Food preferences shape "Surprise me" and the daily recipe ideas: what you eat
@@ -246,9 +247,15 @@ in with an email and a password, or with Google.
    on your wishlist. The Wishlist section on the account page shows each starred product at
    today's cheapest seller with the move since yesterday. Switch on Price alerts under
    Notifications and each product gets a rule: any drop, or a price of your own; a morning
-   mail arrives when one is met. Connect Telegram under Notifications and
-   every daily mail you have on arrives in the chat as well.
-7. Your own recipes can be offered for the catalogue: "Submit to PriceLens" on a recipe's
+   mail arrives when one is met.
+7. "Connect Telegram" under Notifications opens the site's bot, @LankaPriceLensBot, with a
+   one-time link that works for fifteen minutes; press Start in the chat and the page says
+   Connected as you. From then on every morning mail you have on also arrives in the chat, as
+   a message with the same picks, prices, and links; "Send them to Telegram too" switches
+   that off without disconnecting. Send /stop to the bot, or press Disconnect, to unlink the
+   chat. The public channel t.me/lankapricelens posts the day's supermarket deals every
+   morning, account or not.
+8. Your own recipes can be offered for the catalogue: "Submit to PriceLens" on a recipe's
    page sends it for review, and the recipe shows Submitted with pending, approved, or
    rejected and the owner's note. In the editor, an ingredient the registry does not carry
    can be proposed from the picker with "Add '…' as a new ingredient": say its kind and
@@ -256,8 +263,12 @@ in with an email and a password, or with Google.
    on the account page lists everything you sent and where its review stands.
    The heart in the photo's other corner keeps the recipe among your favourites, listed
    on your account page.
-8. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
+9. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
    hour; using it signs every other device out.
+
+![Notifications: the three morning mails, and Telegram under them](../web/public/guide/notifications.png)
+
+![Telegram connected: the chat named, Disconnect, and the switch](../web/public/guide/telegram.png)
 
 Five wrong passwords in a row lock sign-in for fifteen minutes; the wait is the same whether
 the address has an account or not. Deleting the account removes your menus and recipes with

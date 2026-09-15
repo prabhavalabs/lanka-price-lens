@@ -180,6 +180,20 @@ async (page) => {
   await settle(tab, "h2:has-text('Shopping list')");
   await shot(tab, "menu");
 
+  // The account page's Notifications: the three morning mails and Telegram under them. Once the account's chat
+  // is linked the same card is the connected shot instead, so link a chat (or seed account_telegram) between runs.
+  await tab.goto(`${origin}/account`);
+  await settle(tab, "h2:has-text('Notifications')");
+  await tab.waitForSelector("text=Telegram", { timeout: 30_000 });
+  const notifications = tab.locator("[data-slot='card']").filter({ has: tab.getByRole("heading", { name: "Notifications" }) });
+  await notifications.evaluate((element) => window.scrollTo(0, element.getBoundingClientRect().top + window.scrollY - 24));
+  await tab.waitForTimeout(400);
+  const chrome = await tab.addStyleTag({ content: "header, a[aria-label='Join the community'] { visibility: hidden !important; }" });
+  const telegram = (await (await context.request.get(`${origin}/v1/account/telegram`)).json()).payload?.linked ? "telegram" : "notifications";
+  await notifications.screenshot({ path: `${out}/${telegram}.png`, animations: "disabled" });
+  log.push(telegram);
+  await chrome.evaluate((element) => element.remove());
+
   await tab.goto(`${origin}/`);
   await settle(tab, "h1");
   await tab.locator("header button[aria-label='More']").click();
