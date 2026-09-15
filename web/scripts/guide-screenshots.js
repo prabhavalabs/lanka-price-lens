@@ -146,11 +146,14 @@ async (page) => {
   await settle(tab, "tbody tr");
   await tab.waitForSelector("a[href^='/r/']", { timeout: 30_000 });
   await shot(tab, "basket");
+  // The section's heading and its first row of dish cards: the cards carry photos now, so the whole section
+  // runs past one screen, and the sticky header and the community pill would sit over an element screenshot.
   const cook = tab.locator("section").filter({ has: tab.getByRole("heading", { name: "Cook with your basket" }) });
-  await cook.scrollIntoViewIfNeeded();
+  await cook.evaluate((element) => window.scrollTo(0, element.getBoundingClientRect().top + window.scrollY - 12));
   await clearHeader(tab);
-  await cook.screenshot({ path: `${out}/cook.png`, animations: "disabled" });
-  log.push("cook");
+  const hidden = await tab.addStyleTag({ content: "header, a[aria-label='Join the community'] { visibility: hidden !important; }" });
+  await shot(tab, "cook", { clip: await around([cook.getByRole("heading", { name: "Cook with your basket" }), ...[0, 1, 2].map((index) => cook.locator("a[href^='/r/']").nth(index))], 8) });
+  await hidden.evaluate((element) => element.remove());
 
   await cook.locator("a[href^='/r/']").first().click();
   await settle(tab, "h2:has-text('Ingredients for'), h2:has-text('Still to buy')");
