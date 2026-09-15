@@ -79,6 +79,7 @@ export const priceSeriesRanges = [30, 90, 180, 365] as const;
 export const maximumCustomRangeDays = 730;
 const indexStatuses = ["indexed", "indexing", "failed", "not_indexed"] as const;
 const activeObservations = "price_observation observation JOIN item ON item.id = observation.item_id";
+const activeWholesale = "status = 'active' AND price_type = 'wholesale_observed'";
 const midPriceMinor = "(observation.normalized_min_value_minor + observation.normalized_max_value_minor) / 2.0";
 const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/u;
 
@@ -118,19 +119,7 @@ export function insightsSummary(database: OperationalDatabase, now = new Date())
       .prepare(`SELECT ${knowledgeIndexStatus} AS status, COUNT(*) AS count FROM source_publication publication ${knowledgeJoins} GROUP BY 1`)
       .all() as InsightsIndexStatus[]).map((row) => [row.status, row.count]),
   );
-  const observationTotals = database
-    .prepare(
-      `SELECT COUNT(*) AS total, COUNT(DISTINCT item.product_id) AS products, COUNT(DISTINCT observation.market_id) AS markets,
-       MIN(observation.observed_from) AS first_observed, MAX(observation.observed_from) AS last_observed
-       FROM ${activeObservations} WHERE observation.status = 'active' AND observation.price_type = 'wholesale_observed'`,
-    )
-    .get() as { total: number; products: number; markets: number; first_observed: string | null; last_observed: string | null };
-  const byWeek = (database
-    .prepare(
-      `SELECT date(observed_from, 'weekday 0', '-6 days') AS week, COUNT(*) AS count
-       FROM price_observation WHERE status = 'active' AND price_type = 'wholesale_observed' GROUP BY week ORDER BY week DESC LIMIT 26`,
-    )
-    .all() as Array<{ week: string; count: number }>).reverse();
+  const facts = observationFacts(database);
   const windowStart = isoDate(addDays(now, -29));
   const runRows = database
     .prepare(
@@ -152,14 +141,6 @@ export function insightsSummary(database: OperationalDatabase, now = new Date())
   const qualityCount = (status: string) => qualityRows.find((row) => row.status === status)?.count ?? 0;
   const assessed = qualityRows.reduce((sum, row) => sum + row.count, 0);
   const averageScore = assessed ? qualityRows.reduce((sum, row) => sum + row.average * row.count, 0) / assessed : null;
-  const markets = database
-    .prepare(
-      `SELECT market.id, market.label_en AS label, COUNT(observation.id) AS observations, COUNT(DISTINCT item.product_id) AS products
-       FROM market LEFT JOIN price_observation observation ON observation.market_id = market.id AND observation.status = 'active' AND observation.price_type = 'wholesale_observed'
-       LEFT JOIN item ON item.id = observation.item_id
-       WHERE market.status = 'active' GROUP BY market.id ORDER BY observations DESC, label`,
-    )
-    .all() as InsightsMarket[];
 
   return {
     documents: {
@@ -167,7 +148,7 @@ export function insightsSummary(database: OperationalDatabase, now = new Date())
       by_month: byMonth,
       index_status: indexStatuses.map((status) => ({ status, count: indexCounts.get(status) ?? 0 })),
     },
-    observations: { ...observationTotals, by_week: byWeek },
+    observations: { ...facts.totals, by_week: facts.by_week },
     runs: {
       by_day: byDay,
       succeeded_30d: byDay.reduce((sum, row) => sum + row.succeeded, 0),
@@ -180,19 +161,73 @@ export function insightsSummary(database: OperationalDatabase, now = new Date())
       not_configured: qualityCount("not_configured"),
       average_score: averageScore === null ? null : round(averageScore, 3),
     },
-    markets,
-    products: canonicalProducts(database),
-    varieties: canonicalVarieties(database),
+    markets: facts.markets,
+    products: facts.products,
+    varieties: facts.varieties,
   };
+}
+
+type ObservationFacts = {
+  totals: { total: number; products: number; markets: number; first_observed: string | null; last_observed: string | null };
+  by_week: Array<{ week: string; count: number }>;
+  markets: InsightsMarket[];
+  products: InsightsProduct[];
+  varieties: InsightsVariety[];
+};
+
+const observationFactsCache = new WeakMap<OperationalDatabase, { stamp: string | null; facts: ObservationFacts }>();
+
+/** The newest write to price_observation: every insert and every supersession stamps a row, so this changes whenever the facts below can. */
+function observationStamp(database: OperationalDatabase): string | null {
+  return (database.prepare("SELECT MAX(COALESCE(updated_at, created_at)) AS stamp FROM price_observation").get() as { stamp: string | null }).stamp;
+}
+
+/**
+ * Everything the summary derives from the whole body of active wholesale observations. Each figure
+ * is grouped inside price_observation first, walking one covering index, and only then joined to
+ * the small tables; the result is kept until an observation changes, so the admin can refresh
+ * freely while nothing has been ingested.
+ */
+export function observationFacts(database: OperationalDatabase): ObservationFacts {
+  const stamp = observationStamp(database);
+  const cached = observationFactsCache.get(database);
+  if (cached && cached.stamp === stamp) return cached.facts;
+  const totals = database
+    .prepare(
+      `SELECT COUNT(*) AS total,
+       (SELECT COUNT(DISTINCT product_id) FROM item WHERE id IN (SELECT DISTINCT item_id FROM price_observation WHERE ${activeWholesale})) AS products,
+       COUNT(DISTINCT market_id) AS markets, MIN(observed_from) AS first_observed, MAX(observed_from) AS last_observed
+       FROM price_observation WHERE ${activeWholesale}`,
+    )
+    .get() as ObservationFacts["totals"];
+  const byWeek = (database
+    .prepare(
+      `SELECT date(day, 'weekday 0', '-6 days') AS week, SUM(n) AS count
+       FROM (SELECT observed_from AS day, COUNT(*) AS n FROM price_observation WHERE ${activeWholesale} GROUP BY observed_from)
+       GROUP BY week ORDER BY week DESC LIMIT 26`,
+    )
+    .all() as ObservationFacts["by_week"]).reverse();
+  const markets = database
+    .prepare(
+      `SELECT market.id, market.label_en AS label, COALESCE(SUM(pair.observations), 0) AS observations, COUNT(DISTINCT item.product_id) AS products
+       FROM market
+       LEFT JOIN (SELECT market_id, item_id, COUNT(*) AS observations FROM price_observation WHERE ${activeWholesale} GROUP BY market_id, item_id) pair ON pair.market_id = market.id
+       LEFT JOIN item ON item.id = pair.item_id
+       WHERE market.status = 'active' GROUP BY market.id ORDER BY observations DESC, label`,
+    )
+    .all() as InsightsMarket[];
+  const facts: ObservationFacts = { totals, by_week: byWeek, markets, products: canonicalProducts(database), varieties: canonicalVarieties(database) };
+  observationFactsCache.set(database, { stamp, facts });
+  return facts;
 }
 
 export function canonicalProducts(database: OperationalDatabase): InsightsProduct[] {
   return database
     .prepare(
-      `SELECT product.id, product.canonical_label_en AS label, product.category, COUNT(observation.id) AS observations
-       FROM product LEFT JOIN item ON item.product_id = product.id
-       LEFT JOIN price_observation observation ON observation.item_id = item.id AND observation.status = 'active' AND observation.price_type = 'wholesale_observed'
-       WHERE product.status = 'active' GROUP BY product.id HAVING observations > 0
+      `SELECT product.id, product.canonical_label_en AS label, product.category, SUM(pair.observations) AS observations
+       FROM product JOIN item ON item.product_id = product.id
+       JOIN (SELECT item_id, COUNT(*) AS observations FROM price_observation WHERE ${activeWholesale} GROUP BY item_id) pair ON pair.item_id = item.id
+       WHERE product.status = 'active' GROUP BY product.id
        ORDER BY observations DESC, label`,
     )
     .all() as InsightsProduct[];
@@ -201,12 +236,12 @@ export function canonicalProducts(database: OperationalDatabase): InsightsProduc
 export function canonicalVarieties(database: OperationalDatabase, productId?: string): InsightsVariety[] {
   return database
     .prepare(
-      `SELECT item.id, item.product_id, item.canonical_label_en AS label, product.category,
-       COUNT(observation.id) AS observations, COALESCE(AVG(${midPriceMinor}) / 100.0, 0) AS average
+      `SELECT item.id, item.product_id, item.canonical_label_en AS label, product.category, pair.observations, pair.average
        FROM item JOIN product ON product.id = item.product_id
-       LEFT JOIN price_observation observation ON observation.item_id = item.id AND observation.status = 'active' AND observation.price_type = 'wholesale_observed'
+       JOIN (SELECT item_id, COUNT(*) AS observations, AVG((normalized_min_value_minor + normalized_max_value_minor) / 2.0) / 100.0 AS average
+             FROM price_observation WHERE ${activeWholesale} GROUP BY item_id) pair ON pair.item_id = item.id
        WHERE item.status = 'active' AND product.status = 'active'${productId ? " AND item.product_id = ?" : ""}
-       GROUP BY item.id HAVING observations > 0 ORDER BY observations DESC, label`,
+       ORDER BY observations DESC, label`,
     )
     .all(...(productId ? [productId] : [])) as InsightsVariety[];
 }

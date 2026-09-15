@@ -445,6 +445,20 @@ function migrate(database: OperationalDatabase): void {
       ON price_observation(lineage_key) WHERE status = 'active';
     CREATE INDEX IF NOT EXISTS price_observation_series_idx
       ON price_observation(comparability_key, observed_from, status);
+    -- The admin's insights and source counts read the active wholesale observations whole; these
+    -- partial indexes keep those reads off the table and out of SQLite's automatic transient indexes.
+    CREATE INDEX IF NOT EXISTS price_observation_wholesale_item_idx
+      ON price_observation(item_id, market_id, observed_from, normalized_min_value_minor, normalized_max_value_minor)
+      WHERE status = 'active' AND price_type = 'wholesale_observed';
+    CREATE INDEX IF NOT EXISTS price_observation_wholesale_market_idx
+      ON price_observation(market_id, item_id)
+      WHERE status = 'active' AND price_type = 'wholesale_observed';
+    CREATE INDEX IF NOT EXISTS price_observation_wholesale_date_idx
+      ON price_observation(observed_from)
+      WHERE status = 'active' AND price_type = 'wholesale_observed';
+    CREATE INDEX IF NOT EXISTS price_observation_active_publication_idx
+      ON price_observation(source_publication_id)
+      WHERE status = 'active';
 
     CREATE TABLE IF NOT EXISTS release_observation (
       data_version TEXT NOT NULL REFERENCES data_release(data_version),
@@ -635,6 +649,8 @@ function migrate(database: OperationalDatabase): void {
       ON ingest_run(archive_id, workflow, started_at DESC, id DESC);
     CREATE INDEX IF NOT EXISTS ingest_run_dispatch_idx
       ON ingest_run(dispatch_id);
+    CREATE INDEX IF NOT EXISTS source_publication_source_idx
+      ON source_publication(source_id);
     CREATE INDEX IF NOT EXISTS source_publication_timeline_idx
       ON source_publication(published_at DESC, first_seen_at DESC);
     CREATE INDEX IF NOT EXISTS source_artifact_publication_fetched_idx
