@@ -3,6 +3,7 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 
 import { DishPhoto } from "@/components/dish-photo";
+import { FavouriteHeart } from "@/components/favourite-heart";
 import { ProductImage } from "@/components/product-image";
 import { RecipeReactions } from "@/components/reactions";
 import { RecipeViewSection } from "@/components/recipe-view";
@@ -56,7 +57,10 @@ export function RecipePage() {
     <div className="space-y-6">
       {surprised ? <SurpriseBanner key={id} reasons={readReasons(location.state)} /> : null}
       <nav className="text-sm text-muted-foreground"><Link to="/recipes" className="hover:text-primary">Recipes</Link> › {dishCategoryLabel(dish.category)}</nav>
-      <DishPhoto alt={dish.names.en} className="aspect-[2/1] max-h-80 rounded-xl border" dishId={dish.id} loading="eager" />
+      <div className="relative">
+        <DishPhoto alt={dish.names.en} className="aspect-[2/1] max-h-80 rounded-xl" dishId={dish.id} loading="eager" />
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 rounded-b-xl bg-gradient-to-t from-background via-background/60 to-transparent" />
+      </div>
       <header className="space-y-3">
         <div>
           <h1 className="text-balance font-heading text-3xl font-semibold tracking-tight">{dish.names.en}</h1>
@@ -74,6 +78,7 @@ export function RecipePage() {
         <div className="flex flex-wrap items-center gap-2">
           <ShareButtons title={dish.names.en} text={shareText} />
           <RecipeReactions dishId={dish.id} score={dish.reactions.score} />
+          <FavouriteHeart dishId={dish.id} label={dish.names.en} size="md" />
         </div>
       </header>
 

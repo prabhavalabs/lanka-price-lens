@@ -45,6 +45,7 @@ import { googleRoutes } from "./account/google.ts";
 import { createAccountMailer } from "./account/mail.ts";
 import { readAccount, requireAccount, type AccountVariables } from "./account/middleware.ts";
 import { createWatchStore, watchPrices, watchlistRoutes } from "./account/watchlist.ts";
+import { createFavouriteStore, favouriteRoutes } from "./account/favourites.ts";
 import { communityAdminRoutes } from "./community/admin-routes.ts";
 import { communityRoutes } from "./community/routes.ts";
 import { createCommunityStore } from "./community/store.ts";
@@ -131,6 +132,7 @@ export function createApp(
   const accountService = createAccountService({ store: accountStore, mailer: accountMailer, config: accountConfig });
   const contentStore = createContentStore(database);
   const watchStore = createWatchStore(database);
+  const favouriteStore = createFavouriteStore(database);
   const communityStore = createCommunityStore(database);
   const presence = options.presence ?? new Presence();
   /** The PostgreSQL warehouse behind the price explorer; null when not configured or unreachable (the routes answer 503). */
@@ -466,10 +468,11 @@ export function createApp(
   // Visitor accounts: sign-up, sign-in, recovery, profile; menus and own recipes on the account; Google sign-in.
   app.route("/v1/account", accountRoutes({ store: accountStore, service: accountService, config: accountConfig }));
   const accountGuard = requireAccount(accountStore, accountConfig);
-  for (const path of ["/v1/account/menus", "/v1/account/menus/*", "/v1/account/recipes", "/v1/account/recipes/*", "/v1/account/watchlist", "/v1/account/watchlist/*", "/v1/account/community", "/v1/account/community/*"]) app.use(path, accountGuard);
+  for (const path of ["/v1/account/menus", "/v1/account/menus/*", "/v1/account/recipes", "/v1/account/recipes/*", "/v1/account/watchlist", "/v1/account/watchlist/*", "/v1/account/favourites", "/v1/account/favourites/*", "/v1/account/community", "/v1/account/community/*"]) app.use(path, accountGuard);
   // The wishlist (docs/newsletters.md): starred products with today's cheapest seller and each one's alert rule.
   // Mounted before the content routes, whose verified-address check covers menus and recipes but not stars.
   app.route("/v1/account/watchlist", watchlistRoutes({ store: watchStore, warehouse, published }));
+  app.route("/v1/account/favourites", favouriteRoutes({ store: favouriteStore, recipes: options.recipes }));
   // Reactions, translation feedback, submissions, and product proposals (docs/community.md); before the content routes for the same reason.
   app.route("/v1/account/community", communityRoutes({ store: communityStore, content: contentStore, recipes: options.recipes, notifier: owner, siteOrigin: accountConfig.siteOrigin }));
   app.route("/v1/account", contentRoutes({ content: contentStore, recipes: options.recipes, warehouse, published }));

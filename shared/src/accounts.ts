@@ -88,6 +88,13 @@ export type WatchAlert = z.infer<typeof watchAlertSchema>;
 export const watchItemInputSchema = z.object({ alert: watchAlertSchema.optional() });
 export type WatchItemInput = z.infer<typeof watchItemInputSchema>;
 export const watchLimit = 100;
+
+/** Favourite recipes: dishes a person hearts to find again. One row per account and dish; the list is on the account page. */
+export const favouriteLimit = 300;
+export const favouriteDishIdPattern = /^dish_[a-z0-9]+(?:_[a-z0-9]+)*$/u;
+export type FavouriteRecipe = { dish_id: string; created_at: string };
+/** A favourite with what the catalogue says about the dish, for the account page; `dish` is null when the dish left the catalogue. */
+export type FavouriteEntry = FavouriteRecipe & { dish: { id: string; name: string; category: string; summary: string; minutes: number; difficulty: string } | null };
 export const productIdPattern = /^product_[a-z0-9]+(?:_[a-z0-9]+)*$/u;
 export type WatchItem = {
   product_id: string;

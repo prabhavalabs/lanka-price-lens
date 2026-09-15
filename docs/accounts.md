@@ -142,6 +142,7 @@ context; `requireVerified` additionally needs a verified address.
 | `GET/POST /v1/account/menus`, `GET/PUT/DELETE /v1/account/menus/:id` | verified | `accountMenuInputSchema` | menus of the account |
 | `GET/POST /v1/account/recipes`, `GET/PUT/DELETE /v1/account/recipes/:id` | verified | `userRecipeInputSchema` | recipes of the account; `GET :id?servings=` adds the computed `view` (scaled lines, nutrition, cost) as the corpus recipe endpoint does |
 | `GET /v1/account/watchlist`, `PUT/PATCH/DELETE /v1/account/watchlist/:productId` | session | `watchItemInputSchema` | the wishlist: starred products with today's cheapest seller and each one's alert rule (docs/newsletters.md); up to 100 |
+| `GET /v1/account/favourites`, `PUT/DELETE /v1/account/favourites/:dishId` | session | | favourite recipes: hearted dishes, newest first, each with its name and card facts from the catalogue (`FavouriteEntry`); up to 300; 404 for a dish the catalogue lacks |
 | `GET /v1/admin/accounts`, `PATCH /v1/admin/accounts/:id` | owner | `{status}` | list with search and paging; disable or enable |
 
 Links in mail point at the site: `/account/verify?token=`, `/account/reset?token=`,

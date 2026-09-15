@@ -1,8 +1,9 @@
-import { RiThumbUpLine, RiTimeLine } from "@remixicon/react";
+import { RiArrowRightUpLine, RiTimeLine } from "@remixicon/react";
 import type React from "react";
 import { Link } from "react-router-dom";
 
 import { DishPhoto } from "@/components/dish-photo";
+import { FavouriteHeart } from "@/components/favourite-heart";
 import { RecipeReactions } from "@/components/reactions";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,21 +12,26 @@ import { dishCategoryLabel, minutesLabel, titleCase } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 /**
- * A dish at a glance, laid out like a social card: the photograph on top, the name and summary link to the recipe,
- * the readers' score sits in the top corner when it is above zero, and a footer carries the
- * thumbs so a reader can react from the list. From the basket the card shows instead how much
- * of the dish the shopper already has.
+ * A dish at a glance: the photograph on top with the favourite heart and "Open recipe" in its
+ * top corners and the thumbs in its bottom corner, then the name, the summary, and the facts,
+ * all linking to the recipe.
+ * From the basket the card shows instead how much of the dish the shopper already has.
  */
 export function RecipeCard({ dish, score, matched, missing, labels, className, children }: { dish: Dish; /** Likes less dislikes from signed-in readers; with it the card gets its thumbs footer. */ score?: number | undefined; matched?: string[] | undefined; missing?: string[] | undefined; labels?: Record<string, string> | undefined; className?: string | undefined; children?: React.ReactNode }) {
   const total = dish.key_ingredients.length;
   const have = matched?.length ?? 0;
   const names = [dish.names.si, dish.names.ta_latn && !dish.names.si ? dish.names.ta_latn : null].filter(Boolean).join(" · ");
   return (
-    <Card className={cn("relative flex h-full flex-col overflow-hidden transition-colors hover:border-primary/50", className)}>
-      {score ? <Badge aria-label={`${score} more thumbs up than down`} className="absolute right-3 top-3 z-10 gap-1 border-primary/40 bg-background/90 text-[10px] text-primary tabular-nums backdrop-blur" title="Thumbs up from readers, less thumbs down" variant="outline"><RiThumbUpLine aria-hidden className="size-3" />{score}</Badge> : null}
+    <Card className={cn("relative flex h-full flex-col gap-0 overflow-hidden py-0 transition-colors hover:border-primary/50", className)}>
+      <div className="relative">
+        <Link to={`/r/${dish.id}`} className="block no-underline"><DishPhoto className="aspect-[3/2] w-full" dishId={dish.id} placeholder /></Link>
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-card via-card/60 to-transparent" />
+        <FavouriteHeart className="absolute left-3 top-3" dishId={dish.id} label={dish.names.en} tone="overlay" />
+        <Link className="absolute right-3 top-3 inline-flex h-7 items-center gap-1 rounded-full border border-border/60 bg-background/85 pl-2.5 pr-2 text-xs font-medium text-foreground no-underline shadow-md backdrop-blur transition-colors hover:border-primary hover:text-primary" to={`/r/${dish.id}`}>Open recipe<RiArrowRightUpLine aria-hidden className="size-3.5" /></Link>
+        {score !== undefined ? <RecipeReactions className="absolute bottom-3 right-3" dishId={dish.id} score={score} tone="overlay" /> : null}
+      </div>
       <Link to={`/r/${dish.id}`} className="flex flex-1 flex-col no-underline">
-        <DishPhoto className="aspect-[3/2] w-full" dishId={dish.id} />
-        <CardContent className={cn("flex flex-1 flex-col gap-2 p-4", score ? "pr-14" : "")}>
+        <CardContent className="flex flex-1 flex-col gap-2 px-4 pb-4 pt-1">
           <div>
             <h3 className="font-heading text-base font-semibold leading-tight">{dish.names.en}</h3>
             {names ? <p className="truncate text-xs text-muted-foreground">{names}</p> : null}
@@ -48,12 +54,6 @@ export function RecipeCard({ dish, score, matched, missing, labels, className, c
           ) : null}
         </CardContent>
       </Link>
-      {score !== undefined ? (
-        <div className="flex items-center justify-between gap-2 border-t px-3 py-2">
-          <RecipeReactions dishId={dish.id} score={score} />
-          <Link className="text-xs text-muted-foreground no-underline hover:text-primary" to={`/r/${dish.id}`}>Open recipe</Link>
-        </div>
-      ) : null}
     </Card>
   );
 }

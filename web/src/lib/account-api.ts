@@ -1,4 +1,4 @@
-import type { AccountLocale, AccountMenu, AccountMenuInput, AccountPreferences, AccountProfile, ProductProposal, ProductProposalInput, ReactionValue, RecipeScore, RecipeSubmission, SubmissionInput, TranslationFeedback, TranslationFeedbackInput, UserRecipe, UserRecipeInput, WatchAlert, WatchEntry, WatchItem } from "@lanka-pricelens/shared";
+import type { AccountLocale, AccountMenu, AccountMenuInput, AccountPreferences, AccountProfile, FavouriteEntry, ProductProposal, ProductProposalInput, ReactionValue, RecipeScore, RecipeSubmission, SubmissionInput, TranslationFeedback, TranslationFeedbackInput, UserRecipe, UserRecipeInput, WatchAlert, WatchEntry, WatchItem } from "@lanka-pricelens/shared";
 
 import { describeFailure, type Envelope } from "./api.ts";
 
@@ -68,6 +68,11 @@ export const accountApi = {
     add: (productId: string, alert?: WatchAlert) => call<WatchItem>("PUT", `/v1/account/watchlist/${encodeURIComponent(productId)}`, alert ? { alert } : {}),
     update: (productId: string, alert: WatchAlert) => call<WatchItem>("PATCH", `/v1/account/watchlist/${encodeURIComponent(productId)}`, { alert }),
     remove: (productId: string) => call<null>("DELETE", `/v1/account/watchlist/${encodeURIComponent(productId)}`),
+  },
+  favourites: {
+    list: (signal?: AbortSignal) => call<{ items: FavouriteEntry[]; total: number; limit: number }>("GET", "/v1/account/favourites", undefined, signal),
+    add: (dishId: string) => call<FavouriteEntry>("PUT", `/v1/account/favourites/${encodeURIComponent(dishId)}`, {}),
+    remove: (dishId: string) => call<null>("DELETE", `/v1/account/favourites/${encodeURIComponent(dishId)}`),
   },
   menus: {
     list: (signal?: AbortSignal) => call<{ items: AccountMenu[]; total: number; limit: number }>("GET", "/v1/account/menus", undefined, signal),

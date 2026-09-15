@@ -15,7 +15,7 @@ import { useReact, useReaction } from "@/store/community";
  * here, since a reaction lives on the account. Signed in, the score moves at once and settles
  * with the server behind the scenes.
  */
-export function RecipeReactions({ dishId, score, className }: { dishId: string; /** Likes less dislikes, never below zero. */ score: number; className?: string | undefined }) {
+export function RecipeReactions({ dishId, score, className, tone = "default" }: { dishId: string; /** Likes less dislikes, never below zero. */ score: number; className?: string | undefined; /** "overlay" sits on a photograph: a solid, blurred backing and no error line. */ tone?: "default" | "overlay" | undefined }) {
   const { value, status } = useReaction(dishId);
   const actions = useReact();
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export function RecipeReactions({ dishId, score, className }: { dishId: string; 
   const down = value === "down";
   return (
     <div className={cn("flex flex-wrap items-center gap-2", className)}>
-      <div aria-label="Did this recipe work for you?" className="inline-flex h-8 items-center overflow-hidden rounded-lg border border-border bg-input/20 dark:bg-input/30" role="group">
+      <div aria-label="Did this recipe work for you?" className={cn("inline-flex h-8 items-center overflow-hidden rounded-lg border border-border", tone === "overlay" ? "border-border/60 bg-background/85 shadow-md backdrop-blur" : "bg-input/20 dark:bg-input/30")} role="group">
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -70,7 +70,7 @@ export function RecipeReactions({ dishId, score, className }: { dishId: string; 
           <TooltipContent>{down ? "You marked this down" : "Not for me"}</TooltipContent>
         </Tooltip>
       </div>
-      {actions.error ? <span className="text-xs text-destructive" role="alert">{describeContributionError(actions.error)}</span> : null}
+      {actions.error && tone !== "overlay" ? <span className="text-xs text-destructive" role="alert">{describeContributionError(actions.error)}</span> : null}
     </div>
   );
 }

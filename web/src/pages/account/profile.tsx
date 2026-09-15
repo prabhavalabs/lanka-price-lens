@@ -1,10 +1,11 @@
-import { RiAlertLine, RiCheckLine, RiGoogleFill, RiHandHeartLine, RiStarFill, RiStarLine } from "@remixicon/react";
+import { RiAlertLine, RiCheckLine, RiGoogleFill, RiHandHeartLine, RiHeartFill, RiHeartLine, RiStarFill, RiStarLine } from "@remixicon/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { accountLocales, avoidChoices, changeEmailSchema, changePasswordSchema, deleteAccountSchema, dietChoices, dishCategories, goalChoices, profilePatchSchema, type AccountLocale, type AccountPreferences, type AccountProfile, type AvoidChoice, type DietChoice, type GoalChoice, type WatchAlert, type WatchEntry } from "@lanka-pricelens/shared";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import { FormError, FormNote, SubmitButton, TextField } from "@/components/account-forms";
+import { DishPhoto } from "@/components/dish-photo";
 import { ProductImage } from "@/components/product-image";
 import { RequireAccount } from "@/components/require-account";
 import { ResendVerificationButton } from "@/components/resend-verification";
@@ -23,11 +24,12 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { accountApi } from "@/lib/account-api";
 import { confirmError, describeUserAgent, validate, type FieldErrors } from "@/lib/account-forms";
 import { contributionRows, type ContributionRow } from "@/lib/contributions";
-import { changeLabel, dishCategoryLabel, rupees, unitLabel } from "@/lib/format";
+import { changeLabel, dishCategoryLabel, minutesLabel, rupees, titleCase, unitLabel } from "@/lib/format";
 import { usePageTitle } from "@/lib/page-title";
 import { cn } from "@/lib/utils";
 import { setAccountProfile, useAccount } from "@/store/account";
 import { useProposals, useSentTranslations, useSubmissions } from "@/store/community";
+import { useFavouriteActions, useFavourites } from "@/store/favourites";
 import { useWatchActions, useWatchlist } from "@/store/watchlist";
 import { languageNames, languageStore } from "@/store/language";
 
@@ -82,6 +84,7 @@ function ProfileSections() {
       ) : null}
       <AboutSection account={person} />
       <FoodPreferencesSection account={person} />
+      <FavouritesSection />
       <WishlistSection />
       <ContributionsSection />
       <EmailSection account={person} />
@@ -434,6 +437,42 @@ function AlertRuleRow({ entry, actions }: { entry: WatchEntry; actions: ReturnTy
 }
 
 /** The starred products with today's cheapest seller; the rules live under Notifications. */
+function FavouritesSection() {
+  const { items, status, error, refetch } = useFavourites();
+  const actions = useFavouriteActions();
+  return (
+    <Section description="Recipes you hearted on a card or a recipe page, newest first, so they are one tap away." id="favourites" title="Favourite recipes">
+      {status === "loading" ? <p className="text-sm text-muted-foreground">Loading your favourites.</p> : null}
+      {status === "error" ? <p className="text-sm text-destructive">Your favourites could not be loaded. <button className="underline" onClick={refetch} type="button">Try again</button></p> : null}
+      {status === "ready" && !items.length ? (
+        <div className="flex items-center gap-3 rounded-lg border border-dashed p-4 text-sm text-muted-foreground">
+          <RiHeartLine aria-hidden className="size-5 shrink-0 text-rose-500" />
+          <p className="text-pretty">No favourites yet. The heart on any card in the <Link to="/recipes">recipes</Link> list or on a recipe page keeps it here.</p>
+        </div>
+      ) : null}
+      {items.length ? (
+        <ul className="grid gap-3 sm:grid-cols-2">
+          {items.map((entry) => {
+            const name = entry.dish?.name ?? entry.dish_id.replace(/^dish_/u, "").replace(/_/gu, " ");
+            return (
+              <li className="flex items-center gap-3 rounded-lg border p-2" key={entry.dish_id}>
+                <Link className="shrink-0 no-underline" to={`/r/${entry.dish_id}`}><DishPhoto alt="" className="aspect-[3/2] w-24 rounded-md" dishId={entry.dish_id} placeholder /></Link>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-medium"><Link className="no-underline hover:text-primary" to={`/r/${entry.dish_id}`}>{name}</Link></p>
+                  {entry.dish ? <p className="truncate text-[11px] text-muted-foreground">{dishCategoryLabel(entry.dish.category)} · {minutesLabel(entry.dish.minutes)} · {titleCase(entry.dish.difficulty)}</p> : <p className="text-[11px] text-muted-foreground">No longer in the catalogue</p>}
+                </div>
+                <Button aria-label={`Remove ${name} from your favourites`} className="text-rose-500 hover:text-rose-600" disabled={actions.pending} onClick={() => void actions.remove(entry.dish_id)} size="icon-sm" title="Remove from favourites" type="button" variant="ghost"><RiHeartFill className="size-4" /></Button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
+      {error ? <FormError className="mt-3" error={error} /> : null}
+      <FormError className="mt-3" error={actions.error} />
+    </Section>
+  );
+}
+
 function WishlistSection() {
   const { items, status, priced, error, refetch } = useWatchlist();
   const actions = useWatchActions();

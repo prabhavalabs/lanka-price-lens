@@ -1,4 +1,4 @@
-import { RiBookletLine, RiCalendarEventLine, RiLogoutBoxRLine, RiStarLine, RiUserLine } from "@remixicon/react";
+import { RiBookletLine, RiCalendarEventLine, RiHeartLine, RiLogoutBoxRLine, RiStarLine, RiUserLine } from "@remixicon/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -56,6 +56,7 @@ export function AccountMenu() {
         <DropdownMenuItem asChild><Link className="no-underline" to="/account"><RiUserLine />Account</Link></DropdownMenuItem>
         <DropdownMenuItem asChild><Link className="no-underline" to="/menus"><RiCalendarEventLine />Menus</Link></DropdownMenuItem>
         <DropdownMenuItem asChild><Link className="no-underline" to="/account/recipes"><RiBookletLine />My recipes</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link className="no-underline" to="/account#favourites"><RiHeartLine />Favourites</Link></DropdownMenuItem>
         <DropdownMenuItem asChild><Link className="no-underline" to="/account#wishlist"><RiStarLine />Wishlist</Link></DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem disabled={signOut.isPending} onSelect={() => signOut.mutate()}><RiLogoutBoxRLine />{signOut.isPending ? "Signing out" : "Sign out"}</DropdownMenuItem>
