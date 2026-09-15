@@ -182,8 +182,8 @@ twenty simmers as long as a pot for four.
    Signed in, it follows the food preferences on your account and the banner
    above the recipe says why it was picked; "Another one" draws again without
    repeating a dish this tab has shown, and the banner links to the preferences.
-7. Thumbs up or thumbs down beside "Share" says whether a recipe worked for you;
-   the number between them, and the small thumbs-up badge on recipe cards, is
+7. Thumbs up or thumbs down, on a recipe card's photo or beside "Share" on the recipe
+   page, says whether a recipe worked for you; the number between them is
    likes less dislikes. Reading in Sinhala or Tamil, "Is this translation right?"
    under the method takes Correct or Needs work with your corrected text. When a
    dish is missing, "Can't find a dish? Request it" under the results sends its
@@ -234,7 +234,7 @@ in with an email and a password, or with Google.
    address already has a PriceLens account, Google joins it.
 4. Your picture or initials in the header open the account menu: Account, Menus, My recipes,
    Sign out. The account page holds your name and language, your food preferences, your
-   wishlist, your email and password, which mail you want, every device signed in (with
+   favourite recipes, your wishlist, your email and password, which mail you want, every device signed in (with
    "Sign out everywhere else"), and, at the bottom, deleting the account.
 5. Food preferences shape "Surprise me" and the daily recipe ideas: what you eat
    (everything, vegetarian, vegan, pescatarian), what you avoid (egg, dairy, fish, meat,
@@ -253,6 +253,8 @@ in with an email and a password, or with Google.
    can be proposed from the picker with "Add '…' as a new ingredient": say its kind and
    unit, and the line keeps the name until the owner approves it. The Contributions section
    on the account page lists everything you sent and where its review stands.
+   The heart in the photo's other corner keeps the recipe among your favourites, listed
+   on your account page.
 8. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
    hour; using it signs every other device out.
 
