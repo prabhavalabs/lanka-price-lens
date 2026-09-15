@@ -133,7 +133,7 @@ export function composeDealsMail(account: { display_name: string }, day: DealsDa
   return {
     summary: { deals: day.deals.length, cheapest: day.cheapest.length, movers: day.movers_up.length, essentials: day.essentials.length, moved: day.essentials.filter(essentialMoved).length },
     data: {
-      values: { name: account.display_name, date: dayWords(day.day), count: day.deals.length, stores: stores.length ? listWords(stores) : "the supermarkets", link: `${origin}/deals` },
+      values: { name: account.display_name, date: dayWords(day.day), count: day.deals.length, stores: stores.length ? listWords(stores) : "the supermarkets", link: `${origin}/` },
       blocks: dealsBlocks(day, origin, deps.hasPhoto),
       unsubscribeUrl,
     },
