@@ -275,6 +275,17 @@ Two kinds, `recipes_daily` and `deals_daily`, each one run per Colombo day:
   `pnpm newsletter run --kind <kind> [--day] [--dry-run]` (the API package's own command, so
   it shares the server's configuration) does the same from a shell.
 
+## Telegram delivery
+
+A person with a Telegram chat linked to their account (docs/accounts.md) gets each daily mail
+they switched on as a Telegram message too: `api/src/newsletters/telegram.ts` turns the mail's
+data into a notify `Message` (subject as the title, the intro paragraph as the summary, the
+recipe cards or deal rows as lines with value, change and link, the button as the action, the
+first recipe photo as the picture) and the run queues it in the same outbox with the dedupe key
+`<mail key>:telegram`. The run report counts them as `telegram`. When `LPL_TELEGRAM_CHANNEL`
+is set, the deals run also queues one digest for that public channel (`channel:deals_daily:<day>`,
+`report.channel_post`), whoever is subscribed by mail.
+
 ## Wishlist and price alerts
 
 A star beside a product (board card, product page, recipe ingredient line) puts it on the

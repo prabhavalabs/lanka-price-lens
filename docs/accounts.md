@@ -143,6 +143,10 @@ context; `requireVerified` additionally needs a verified address.
 | `GET/POST /v1/account/recipes`, `GET/PUT/DELETE /v1/account/recipes/:id` | verified | `userRecipeInputSchema` | recipes of the account; `GET :id?servings=` adds the computed `view` (scaled lines, nutrition, cost) as the corpus recipe endpoint does |
 | `GET /v1/account/watchlist`, `PUT/PATCH/DELETE /v1/account/watchlist/:productId` | session | `watchItemInputSchema` | the wishlist: starred products with today's cheapest seller and each one's alert rule (docs/newsletters.md); up to 100 |
 | `GET /v1/account/favourites`, `PUT/DELETE /v1/account/favourites/:dishId` | session | | favourite recipes: hearted dishes, newest first, each with its name and card facts from the catalogue (`FavouriteEntry`); up to 300; 404 for a dish the catalogue lacks |
+| `GET /v1/account/telegram` | session | | `TelegramStatus`: the bot's handle when `LPL_TELEGRAM_BOT_TOKEN` is set, and the linked chat (`TelegramLink`) when there is one |
+| `POST /v1/account/telegram/link` | session | | `TelegramLinkStart`: a `t.me/<bot>?start=<code>` link; the code lives 15 minutes and binds the chat that presses Start to this account; 503 `TELEGRAM_UNAVAILABLE` without a bot |
+| `DELETE /v1/account/telegram` | session | | unlinks the chat and tells it; 404 when none is linked |
+| `POST /v1/telegram/webhook` | Telegram, `X-Telegram-Bot-Api-Secret-Token` (an HMAC of the state secret) | Telegram update | `/start <code>` links the chat, `/stop` unlinks it, anything else gets the help text; channel posts are ignored; 403 on a wrong secret |
 | `GET /v1/admin/accounts`, `PATCH /v1/admin/accounts/:id` | owner | `{status}` | list with search and paging; disable or enable |
 
 Links in mail point at the site: `/account/verify?token=`, `/account/reset?token=`,
@@ -176,6 +180,17 @@ Sri Lanka". Text alternative for every message. Sent through the notify package'
 channel (`notify/src/channels/email.ts`), `LPL_RESEND_API_KEY` and `LPL_MAIL_FROM`
 ("PriceLens <hello@prabhavalabs.com>"). The owner's own notices (feedback, community
 contributions) wear the same layout through `renderOwnerNotice` in `api/src/notify.ts`.
+
+### Telegram
+
+With `LPL_TELEGRAM_BOT_TOKEN` set, "Connect Telegram" under Notifications on the account page
+opens the bot with a one-time code; pressing Start binds that chat to the account
+(`account_telegram`, one chat per account and one account per chat). From then on every daily
+mail the person has switched on (recipes, deals, price alerts) also arrives in the chat as a
+Telegram message (the `notify_telegram` preference, on by default, turns that side off), until
+`/stop` in the chat or Disconnect on the page. The API installs the bot's webhook at start when
+the site origin is https. `LPL_TELEGRAM_CHANNEL` names a public channel the bot administers;
+the deals run posts the day's digest there once. Details of the messages in docs/newsletters.md.
 
 To look at every mail with sample data, `pnpm mail samples --to <address> [--kind …]
 [--origin https://price.prabhavalabs.com]` sends each kind (and the owner's notices) to one

@@ -21,6 +21,10 @@ export type NewsletterReport = {
   dry_run: boolean;
   reasons: Record<string, number>;
   samples: Array<{ account_id: string; email: string; subject: string }>;
+  /** How many linked Telegram chats got the mail as a message. */
+  telegram?: number | undefined;
+  /** 1 when the day's deals digest was queued for the public Telegram channel. */
+  channel_post?: number | undefined;
 };
 
 export type NewsletterRun = {

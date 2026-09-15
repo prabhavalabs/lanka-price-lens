@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate, useSearchParams } from "react-router-do
 
 import { FormError, FormNote, SubmitButton, TextField } from "@/components/account-forms";
 import { DishPhoto } from "@/components/dish-photo";
+import { TelegramConnect } from "@/components/telegram-connect";
 import { ProductImage } from "@/components/product-image";
 import { RequireAccount } from "@/components/require-account";
 import { ResendVerificationButton } from "@/components/resend-verification";
@@ -371,6 +372,7 @@ function NotificationsSection({ account }: { account: AccountProfile }) {
         ))}
       </ul>
       <FormError className="mt-3" error={save.error} />
+      <TelegramConnect account={account} onPreference={(value) => save.mutate({ notify_telegram: value })} saving={save.isPending} />
       {account.preferences.notify_alerts ? <AlertRules /> : null}
     </Section>
   );

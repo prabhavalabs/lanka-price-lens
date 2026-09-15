@@ -6,6 +6,8 @@ import { renderMail, type TemplateStore } from "../mail/templates.ts";
 import type { RecipeIndexEntry } from "../recipe-views.ts";
 import { composeDealsMail, type DealsAccess } from "./deals.ts";
 import { composeRecipesMail, type CostLookup } from "./recipes.ts";
+import { channelDealsMessage, telegramMessageOf } from "./telegram.ts";
+import type { TelegramStore } from "../account/telegram.ts";
 import { createNewsletterStore, type NewsletterKind, type NewsletterReport, type NewsletterRun, type NewsletterStore } from "./store.ts";
 import { addDays, colomboDay, isDay } from "./time.ts";
 import type { WatchQuote, WatchStore } from "../account/watchlist.ts";
@@ -49,6 +51,8 @@ export type NewsletterDeps = {
   deals?: DealsAccess | undefined;
   /** The wishlist rows and a pricing of every watched product, for the price alert run. */
   watchlist?: { store: WatchStore; quotes: (productIds: string[]) => Promise<Map<string, WatchQuote> | null> } | undefined;
+  /** Linked Telegram chats get the same mail as a message; `channel` is the public channel the deals digest is posted to (LPL_TELEGRAM_CHANNEL). */
+  telegram?: { store: TelegramStore; channel: string | null } | undefined;
   now?: (() => Date) | undefined;
   log?: ((line: Record<string, unknown>) => void) | undefined;
 };
@@ -156,6 +160,15 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
         if (!deps.deals) return finish("failed", "DEALS_NOT_CONFIGURED");
         dealsDay = deps.deals.read(day) ?? (await deps.deals.compute(day));
         if (!dealsDay) return finish("failed", "DEALS_UNAVAILABLE: the warehouse did not answer");
+        // The public Telegram channel gets the day's digest once, whoever is subscribed by mail.
+        const channel = deps.telegram?.channel;
+        if (channel && !dryRun) {
+          const post = channelDealsMessage(dealsDay, siteOrigin);
+          if (post) {
+            const queued = deps.outbox.enqueue([{ targetId: "telegram-channel", target: { kind: "telegram", address: channel }, message: post, dedupeKey: post.dedupe_key ?? null }], clock());
+            report.channel_post = queued.queued;
+          }
+        }
       } else if (kind === "price_alerts") {
         if (!deps.watchlist) return finish("failed", "WATCHLIST_NOT_CONFIGURED");
         const watched = [...new Set(recipients.flatMap((account) => deps.watchlist!.store.list(account.id).map((item) => item.product_id)))];
@@ -172,6 +185,7 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
         }
       }
 
+      const chats = deps.telegram?.store.chatsFor(recipients.map((account) => account.id)) ?? new Map<string, string>();
       for (const account of recipients) {
         try {
           const unsubscribe = unsubscribeUrl(siteOrigin, deps.secret, account.id, kind);
@@ -226,6 +240,13 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
             continue;
           }
           store.recordDelivery({ run_id: run.id, kind, day, account_id: account.id, payload, outbox_id: store.outboxIdFor(account.id, dedupeKey) }, clock());
+          // The same mail to the linked Telegram chat, when the person wants it there.
+          const chatId = chats.get(account.id);
+          if (chatId && account.preferences.notify_telegram) {
+            const telegram = telegramMessageOf(kind, data, fields, `${dedupeKey}:telegram`);
+            deps.outbox.enqueue([{ targetId: account.id, target: { kind: "telegram", address: chatId }, message: telegram, dedupeKey: `${dedupeKey}:telegram` }], clock());
+            report.telegram = (report.telegram ?? 0) + 1;
+          }
           // The next alert on these products waits for a further move from the price reported today.
           for (const hit of alertHits) if (hit.quote.now_minor !== null) deps.watchlist!.store.markAlerted(account.id, hit.item.product_id, clock(), hit.quote.now_minor);
           counts.sent += 1;

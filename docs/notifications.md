@@ -57,11 +57,13 @@ application runs `outboxSchema` in its own migrations; the store never creates t
 
 ## In the API today
 
-Feedback and bug reports from the site are forwarded to the owner through this package
-(`api/src/notify.ts`): the Discord webhook in `LPL_FEEDBACK_DISCORD_WEBHOOK` and, when
-`LPL_RESEND_API_KEY` is set, mail to `LPL_FEEDBACK_EMAIL_TO` from `LPL_MAIL_FROM`. Sends are
-direct (no outbox) and never block the request; failures are logged as `Feedback forward
-failed` with the masked target.
+- Feedback and community notices to the owner (`api/src/notify.ts`): mail through Resend in the
+  site's layout, and the Discord staff inbox.
+- The daily mails (docs/newsletters.md): recipes, supermarket deals, price alerts, queued in
+  the SQLite outbox and dispatched by the scheduler tick inside the API.
+- Telegram for readers (docs/accounts.md): a chat linked from the account page gets the same
+  daily mails as messages; the public channel gets the deals digest. The account mailer's
+  registry carries the `email` and `telegram` channels, so one outbox serves both.
 
 ## What comes next
 

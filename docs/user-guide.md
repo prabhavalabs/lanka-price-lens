@@ -246,7 +246,8 @@ in with an email and a password, or with Google.
    on your wishlist. The Wishlist section on the account page shows each starred product at
    today's cheapest seller with the move since yesterday. Switch on Price alerts under
    Notifications and each product gets a rule: any drop, or a price of your own; a morning
-   mail arrives when one is met.
+   mail arrives when one is met. Connect Telegram under Notifications and
+   every daily mail you have on arrives in the chat as well.
 7. Your own recipes can be offered for the catalogue: "Submit to PriceLens" on a recipe's
    page sends it for review, and the recipe shows Submitted with pending, approved, or
    rejected and the owner's note. In the editor, an ingredient the registry does not carry
