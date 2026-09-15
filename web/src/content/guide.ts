@@ -120,7 +120,7 @@ export const guideSections: GuideSection[] = [
       "“Recipes” in the header browses the whole catalogue by name in any language or by ingredient.",
     ],
     figures: [
-      { file: "cook", alt: "Dish cards under the basket, each with its photo, category, time, difficulty, and what it still needs", caption: "Dishes that fit what you have, best fit first, each saying what is still to buy.", width: 1703, height: 765 },
+      { file: "cook", alt: "Dish cards under the basket, each with its photo, category, time, difficulty, and what it still needs", caption: "Dishes that fit what you have, best fit first, each saying what is still to buy.", width: 1704, height: 725 },
       { file: "recipe", alt: "A dish page with ingredients still to buy at today's cheapest price and the ingredients already in the basket", caption: "A dish: every ingredient at today's cheapest price, the ones already in your basket marked, and the cost for the table.", width: 1920, height: 1200 },
       { file: "recipes", alt: "The recipe catalogue filtered by “curry”, one photo card per dish", caption: "The whole catalogue, searchable by name in any language or by ingredient.", width: 1920, height: 1200 },
     ],
