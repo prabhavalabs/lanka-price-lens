@@ -3,6 +3,7 @@ import type React from "react";
 import { Link } from "react-router-dom";
 
 import { DishPhoto } from "@/components/dish-photo";
+import { FavouriteHeart } from "@/components/favourite-heart";
 import { RecipeReactions } from "@/components/reactions";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,8 +12,9 @@ import { dishCategoryLabel, minutesLabel, titleCase } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 /**
- * A dish at a glance: the photograph on top with "Open recipe" in its top corner and the thumbs
- * in its bottom corner, then the name, the summary, and the facts, all linking to the recipe.
+ * A dish at a glance: the photograph on top with the favourite heart and "Open recipe" in its
+ * top corners and the thumbs in its bottom corner, then the name, the summary, and the facts,
+ * all linking to the recipe.
  * From the basket the card shows instead how much of the dish the shopper already has.
  */
 export function RecipeCard({ dish, score, matched, missing, labels, className, children }: { dish: Dish; /** Likes less dislikes from signed-in readers; with it the card gets its thumbs footer. */ score?: number | undefined; matched?: string[] | undefined; missing?: string[] | undefined; labels?: Record<string, string> | undefined; className?: string | undefined; children?: React.ReactNode }) {
@@ -24,6 +26,7 @@ export function RecipeCard({ dish, score, matched, missing, labels, className, c
       <div className="relative">
         <Link to={`/r/${dish.id}`} className="block no-underline"><DishPhoto className="aspect-[3/2] w-full" dishId={dish.id} placeholder /></Link>
         <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-card via-card/60 to-transparent" />
+        <FavouriteHeart className="absolute left-3 top-3" dishId={dish.id} label={dish.names.en} tone="overlay" />
         <Link className="absolute right-3 top-3 inline-flex h-7 items-center gap-1 rounded-full border border-border/60 bg-background/85 pl-2.5 pr-2 text-xs font-medium text-foreground no-underline shadow-md backdrop-blur transition-colors hover:border-primary hover:text-primary" to={`/r/${dish.id}`}>Open recipe<RiArrowRightUpLine aria-hidden className="size-3.5" /></Link>
         {score !== undefined ? <RecipeReactions className="absolute bottom-3 right-3" dishId={dish.id} score={score} tone="overlay" /> : null}
       </div>
