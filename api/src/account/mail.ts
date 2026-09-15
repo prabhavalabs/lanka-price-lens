@@ -78,14 +78,16 @@ export function createAccountMailer(environment: Record<string, string | undefin
   // Resend is the mail provider (prabhavalabs.com is verified there); SendGrid stays as an alternative when only its key is set.
   const provider = resendKey ? "resend" : sendgridKey ? "sendgrid" : null;
   const apiKey = resendKey || sendgridKey || "";
-  const channels: ChannelRegistry | null = provider ? createChannels({ email: { provider, apiKey, from }, fetch: request }) : null;
+  // Telegram rides in the same registry (LPL_TELEGRAM_BOT_TOKEN), so the outbox that carries the daily mails can deliver to a linked chat as well.
+  const telegramToken = environment.LPL_TELEGRAM_BOT_TOKEN?.trim();
+  const channels: ChannelRegistry | null = provider || telegramToken ? createChannels({ email: provider ? { provider, apiKey, from } : null, telegram: telegramToken ? { token: telegramToken } : null, fetch: request }) : null;
   const replyTo = parseMailbox(from).email;
   // Mail clients fetch the mark over the network, so a local origin is no use there; production serves it.
   const markUrl = markUrlFor(environment.LPL_SITE_ORIGIN);
   let warned = false;
 
   const send: MailSender = async (to, rendered, sendOptions = {}) => {
-    if (!channels) {
+    if (!channels || !provider) {
       if (!warned) {
         warned = true;
         log(`Account mail is not configured: set LPL_RESEND_API_KEY and LPL_MAIL_FROM (a sender on a domain verified in Resend). Not sending "${rendered.subject}" to ${maskAddress(to)}.`);
@@ -115,7 +117,7 @@ export function createAccountMailer(environment: Record<string, string | undefin
   };
 
   return {
-    configured: channels !== null,
+    configured: provider !== null,
     describe: () => (provider ? `${provider} as ${from} (key ${mask(apiKey)})` : "not configured"),
     replyTo,
     markUrl,

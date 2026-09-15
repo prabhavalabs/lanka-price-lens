@@ -46,6 +46,7 @@ import { createAccountMailer } from "./account/mail.ts";
 import { readAccount, requireAccount, type AccountVariables } from "./account/middleware.ts";
 import { createWatchStore, watchPrices, watchlistRoutes } from "./account/watchlist.ts";
 import { createFavouriteStore, favouriteRoutes } from "./account/favourites.ts";
+import { createTelegramStore, installTelegramWebhook, telegramAccountRoutes, telegramBot, telegramWebhookRoutes } from "./account/telegram.ts";
 import { communityAdminRoutes } from "./community/admin-routes.ts";
 import { communityRoutes } from "./community/routes.ts";
 import { createCommunityStore } from "./community/store.ts";
@@ -133,6 +134,11 @@ export function createApp(
   const contentStore = createContentStore(database);
   const watchStore = createWatchStore(database);
   const favouriteStore = createFavouriteStore(database);
+  // Telegram (docs/accounts.md): the bot behind LPL_TELEGRAM_BOT_TOKEN, chats linked from the account page, the public channel for the deals digest.
+  const telegramStore = createTelegramStore(database);
+  const telegramToken = process.env.LPL_TELEGRAM_BOT_TOKEN?.trim();
+  const bot = telegramToken ? telegramBot(telegramToken) : null;
+  const telegramChannel = process.env.LPL_TELEGRAM_CHANNEL?.trim() || null;
   const communityStore = createCommunityStore(database);
   const presence = options.presence ?? new Presence();
   /** The PostgreSQL warehouse behind the price explorer; null when not configured or unreachable (the routes answer 503). */
@@ -241,6 +247,7 @@ export function createApp(
         return client ? watchPrices(client, published(), productIds) : null;
       },
     },
+    telegram: { store: telegramStore, channel: bot ? telegramChannel : null },
     log: (line) => console.log(JSON.stringify({ level: "info", ...line })),
   });
   newsletterServices.set(app, newsletters);
@@ -468,11 +475,16 @@ export function createApp(
   // Visitor accounts: sign-up, sign-in, recovery, profile; menus and own recipes on the account; Google sign-in.
   app.route("/v1/account", accountRoutes({ store: accountStore, service: accountService, config: accountConfig }));
   const accountGuard = requireAccount(accountStore, accountConfig);
-  for (const path of ["/v1/account/menus", "/v1/account/menus/*", "/v1/account/recipes", "/v1/account/recipes/*", "/v1/account/watchlist", "/v1/account/watchlist/*", "/v1/account/favourites", "/v1/account/favourites/*", "/v1/account/community", "/v1/account/community/*"]) app.use(path, accountGuard);
+  for (const path of ["/v1/account/menus", "/v1/account/menus/*", "/v1/account/recipes", "/v1/account/recipes/*", "/v1/account/watchlist", "/v1/account/watchlist/*", "/v1/account/favourites", "/v1/account/favourites/*", "/v1/account/telegram", "/v1/account/telegram/*", "/v1/account/community", "/v1/account/community/*"]) app.use(path, accountGuard);
   // The wishlist (docs/newsletters.md): starred products with today's cheapest seller and each one's alert rule.
   // Mounted before the content routes, whose verified-address check covers menus and recipes but not stars.
   app.route("/v1/account/watchlist", watchlistRoutes({ store: watchStore, warehouse, published }));
   app.route("/v1/account/favourites", favouriteRoutes({ store: favouriteStore, recipes: options.recipes }));
+  const telegramDeps = { store: telegramStore, accounts: accountStore, bot, channels: ownMailer?.channels ?? null, stateSecret: accountConfig.stateSecret, siteOrigin: accountConfig.siteOrigin, log: (line: Record<string, unknown>) => console.warn(JSON.stringify(line)) };
+  app.route("/v1/account/telegram", telegramAccountRoutes(telegramDeps));
+  app.route("/v1/telegram", telegramWebhookRoutes(telegramDeps));
+  // Production points the bot at this site once at start; a local http origin is skipped with a log line.
+  if (options.newsletters && options.newsletters.scheduler !== false) void installTelegramWebhook({ bot, siteOrigin: accountConfig.siteOrigin, stateSecret: accountConfig.stateSecret, log: (line) => console.log(JSON.stringify(line)) });
   // Reactions, translation feedback, submissions, and product proposals (docs/community.md); before the content routes for the same reason.
   app.route("/v1/account/community", communityRoutes({ store: communityStore, content: contentStore, recipes: options.recipes, notifier: owner, siteOrigin: accountConfig.siteOrigin }));
   app.route("/v1/account", contentRoutes({ content: contentStore, recipes: options.recipes, warehouse, published }));

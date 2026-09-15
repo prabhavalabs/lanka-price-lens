@@ -44,6 +44,8 @@ export const preferencesSchema = z.object({
   notify_alerts: z.boolean().default(false),
   /** The daily recipe mail: three recipes picked for these preferences. */
   notify_recipes: z.boolean().default(false),
+  /** With a Telegram chat linked, the daily mails and alerts above also arrive there. */
+  notify_telegram: z.boolean().default(true),
   diet: z.enum(dietChoices).default("everything"),
   avoid: z.array(z.enum(avoidChoices)).max(5).default([]),
   goals: z.array(z.enum(goalChoices)).max(8).default([]),
@@ -88,6 +90,13 @@ export type WatchAlert = z.infer<typeof watchAlertSchema>;
 export const watchItemInputSchema = z.object({ alert: watchAlertSchema.optional() });
 export type WatchItemInput = z.infer<typeof watchItemInputSchema>;
 export const watchLimit = 100;
+
+/** A Telegram chat linked to the account: the person pressed Start on the bot with a code from their account page. */
+export type TelegramLink = { chat_id: string; username: string | null; first_name: string | null; linked_at: string };
+/** What the account page asks: the bot's handle when Telegram is configured, and the linked chat when there is one. */
+export type TelegramStatus = { bot: string | null; linked: TelegramLink | null };
+/** A fresh deep link to the bot; the code inside it binds the chat that presses Start to the account until it expires. */
+export type TelegramLinkStart = { url: string; expires_at: string };
 
 /** Favourite recipes: dishes a person hearts to find again. One row per account and dish; the list is on the account page. */
 export const favouriteLimit = 300;

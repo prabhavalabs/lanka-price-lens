@@ -771,6 +771,20 @@ function migrate(database: OperationalDatabase): void {
       PRIMARY KEY (account_id, dish_id)
     ) STRICT;
     CREATE INDEX IF NOT EXISTS account_favourite_dish_idx ON account_favourite(dish_id);
+    CREATE TABLE IF NOT EXISTS account_telegram (
+      account_id TEXT PRIMARY KEY REFERENCES account(id) ON DELETE CASCADE,
+      chat_id TEXT NOT NULL UNIQUE,
+      username TEXT,
+      first_name TEXT,
+      linked_at TEXT NOT NULL
+    ) STRICT;
+    CREATE TABLE IF NOT EXISTS account_telegram_link (
+      code TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      created_at TEXT NOT NULL,
+      expires_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS account_telegram_link_account_idx ON account_telegram_link(account_id);
     CREATE TABLE IF NOT EXISTS recipe_reaction (
       account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
       dish_id TEXT NOT NULL,
