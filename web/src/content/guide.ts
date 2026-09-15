@@ -47,7 +47,7 @@ export const guideSections: GuideSection[] = [
       "Use the arrow keys and Enter, or tap a result, to open the product.",
     ],
     figures: [
-      { file: "search", alt: "The search box open with “b onion” typed and Big Onion suggested with its price range", caption: "Search understands rough spelling and store wording: “b onion” finds Big Onion.", width: 1920, height: 285 },
+      { file: "search", alt: "The search box open with “b onion” typed and Big Onion suggested with its price range", caption: "Search understands rough spelling and store wording: “b onion” finds Big Onion.", width: 1898, height: 281 },
     ],
   },
   {
@@ -61,7 +61,7 @@ export const guideSections: GuideSection[] = [
     ],
     figures: [
       { file: "product", alt: "The Big Onion page: photo, varieties, the quantity control, and summary cards for open markets, supermarkets, and wholesale", caption: "A product: sellers by group with the cheapest marked, and the supermarket average against wholesale.", width: 1920, height: 1200 },
-      { file: "outdated", alt: "An open-markets table where one seller's price is struck through and marked outdated, seen three months ago", caption: "A price older than its source allows is struck through and marked outdated.", width: 1680, height: 452 },
+      { file: "outdated", alt: "An open-markets table where one seller's price is struck through and marked outdated, seen three months ago", caption: "A price older than its source allows is struck through and marked outdated.", width: 1682, height: 452 },
     ],
     tips: [
       "Open-market prices come from surveys of selected markets and may differ at another stall on the same day.",
@@ -79,7 +79,7 @@ export const guideSections: GuideSection[] = [
       "The range and the groups are kept in the page address, so copying the link, or using “Share”, shows someone exactly the view you have.",
     ],
     figures: [
-      { file: "history", alt: "The price history chart over 90 days with open markets and supermarkets on, a day hovered, and a tooltip listing each seller's price", caption: "The history: pick a range, switch groups, hover or tap a day for every seller's price.", width: 1680, height: 1047 },
+      { file: "history", alt: "The price history chart over 90 days with open markets and supermarkets on, a day hovered, and a tooltip listing each seller's price", caption: "The history: pick a range, switch groups, hover or tap a day for every seller's price.", width: 1682, height: 1049 },
     ],
   },
   {
@@ -93,8 +93,8 @@ export const guideSections: GuideSection[] = [
       "The basket icon in the header opens a small dropdown from any page: adjust or remove items, clear the list (the bin asks once), or go to the comparison.",
     ],
     figures: [
-      { file: "quantity", alt: "The quantity control on the Big Onion page opened to presets from 100 g to 5 kg and a field for an exact amount", caption: "Tap the amount for presets or an exact figure in grams or kilos.", width: 1920, height: 744 },
-      { file: "quick-basket", alt: "The basket dropdown in the header listing seven items with − and + controls and a button to compare stores", caption: "The basket from any page: adjust, remove, clear, or compare stores.", width: 1920, height: 735 },
+      { file: "quantity", alt: "The quantity control on the Big Onion page opened to presets from 100 g to 5 kg and a field for an exact amount", caption: "Tap the amount for presets or an exact figure in grams or kilos.", width: 1920, height: 735 },
+      { file: "quick-basket", alt: "The basket dropdown in the header listing seven items with − and + controls and a button to compare stores", caption: "The basket from any page: adjust, remove, clear, or compare stores.", width: 1898, height: 732 },
     ],
   },
   {
@@ -116,13 +116,13 @@ export const guideSections: GuideSection[] = [
     summary: "Under the store comparison, “Cook with your basket” suggests dishes from a catalogue of 363 Sri Lankan dishes, best fit first: how many of a dish's key ingredients you already have, how much of your basket it uses, and what is still to buy.",
     steps: [
       "Each card names the dish, its kind, time, and difficulty, and what it still needs.",
-      "A dish page splits its key ingredients into “From your basket” and “Still to buy”, the latter at today's cheapest price per unit with an “Add” for each, then variants and what it goes well with.",
+      "A dish page marks the ingredients already in your basket and prices the rest at today's cheapest seller, with an “Add” for each; the cost card says how many you have and what the rest would cost. Then variants and what it goes well with.",
       "“Recipes” in the header browses the whole catalogue by name in any language or by ingredient.",
     ],
     figures: [
-      { file: "cook", alt: "Dish cards under the basket, each with its category, time, difficulty, and what it still needs", caption: "Dishes that fit what you have, best fit first, each saying what is still to buy.", width: 1680, height: 1059 },
-      { file: "recipe", alt: "A dish page with ingredients still to buy at today's cheapest price and the ingredients already in the basket", caption: "A dish: what you have, what is still to buy at today's cheapest price, and the rough extra cost.", width: 1920, height: 1200 },
-      { file: "recipes", alt: "The recipe catalogue filtered by “curry”, one card per dish", caption: "The whole catalogue, searchable by name in any language or by ingredient.", width: 1920, height: 1200 },
+      { file: "cook", alt: "Dish cards under the basket, each with its photo, category, time, difficulty, and what it still needs", caption: "Dishes that fit what you have, best fit first, each saying what is still to buy.", width: 1703, height: 765 },
+      { file: "recipe", alt: "A dish page with ingredients still to buy at today's cheapest price and the ingredients already in the basket", caption: "A dish: every ingredient at today's cheapest price, the ones already in your basket marked, and the cost for the table.", width: 1920, height: 1200 },
+      { file: "recipes", alt: "The recipe catalogue filtered by “curry”, one photo card per dish", caption: "The whole catalogue, searchable by name in any language or by ingredient.", width: 1920, height: 1200 },
     ],
   },
   {
@@ -132,9 +132,11 @@ export const guideSections: GuideSection[] = [
     steps: [
       "Use the “Cooking for” control or the 4, 6, 10, and 20 buttons. Salt, oil for tempering, and whole spices grow a little slower than the headcount, as they do in a real kitchen.",
       "“Per serving” gives energy, protein, fat, carbohydrate, fibre, and sodium for one person's portion, computed from each ingredient's edible weight against a nutrition table built for Sri Lankan foods and checked against published composition tables.",
-      "“Cost per serving” prices the ingredients at today's cheapest published seller. A “≈” means something is not priced yet or a price is older than a week; the card says which.",
+      "The cost card prices the ingredients for the headcount at today's cheapest published seller, with the per-serving figure under it and how many ingredients are already in your basket. A “≈” means something is not priced yet or a price is older than a week; the card says which.",
       "“Read in” switches the method between English, Sinhala, and Tamil. Sinhala and Tamil text is machine drafted until a person has reviewed it, and the page says so.",
       "On the recipes page the chips and the calorie cap ask a question of the whole catalogue: weight loss, high protein, low calorie, quick, budget, and so on, sorted by fewest calories, most protein, quickest, or cheapest.",
+      "“Surprise me” beside the search, or in the ⋯ menu, opens one dish at random. Signed in, it follows the food preferences on your account and the banner above the recipe says why it was picked; “Another one” draws again without repeating a dish this tab has shown, and the banner links to the preferences.",
+      "Thumbs up or thumbs down beside “Share” says whether a recipe worked for you; the number between them, and the small thumbs-up badge on recipe cards, is likes less dislikes. Reading in Sinhala or Tamil, “Is this translation right?” under the method takes Correct or Needs work with your corrected text. When a dish is missing, “Can't find a dish? Request it” under the results sends its name to the owner. All three need an account; the last two a verified address.",
     ],
     figures: [
       { file: "servings", alt: "A hoppers recipe scaled to ten people, with calories, cost, and time per serving and the ingredient list in grams", caption: "One recipe for ten: every amount, the calories, and the cost follow the headcount; the time stays.", width: 1920, height: 1200 },
@@ -148,7 +150,7 @@ export const guideSections: GuideSection[] = [
     steps: [
       "On any recipe, “Add to a menu” adds it to a menu you have or starts a new one. “Menus” in the header lists them.",
       "Each recipe follows the headcount unless you set its own servings: a sambol made for the table, a sweet for half the guests. “Follow headcount” puts it back.",
-      "Change the number of people and everything recomputes. “Add priced items to basket” moves the shopping list into your basket in real amounts, so the store comparison prices the whole meal.",
+      "Change the number of people and everything recomputes. “Add priced items to basket” moves the shopping list into your basket in real amounts, so the store comparison prices the whole meal; lines already in your basket are marked and left alone.",
       "Menus are kept on your account, so they follow you to another phone. Menus made before you signed in are offered for saving the first time you open the page signed in.",
     ],
     figures: [
@@ -160,10 +162,14 @@ export const guideSections: GuideSection[] = [
     title: "Your account",
     summary: "Reading prices never needs an account. One keeps your menus and your own recipes on the server, so they follow you to another phone or browser, and later carries price alerts. Sign in with an email and a password, or with Google.",
     steps: [
-      "“Sign in” at the right of the header opens the sign-in page; “Create an account” asks for a name, an email, and a password of ten characters or more. Long beats complicated: a few words you will remember are better than a short jumble.",
+      "“Sign in” at the right of the header opens the sign-in page, on its own without the header and footer; “Create an account” asks for a name, an email, and a password of ten characters or more. Long beats complicated: a few words you will remember are better than a short jumble. “Continue as a guest” under the form goes back to the prices.",
+      "Menus, your own recipes, and the account page need an account: open one signed out and the sign-in page appears, and once you are in you land straight back on the page you were opening. Prices, recipes, and the basket never ask.",
       "A verification link goes to the address. Until you open it you can sign in and read everything, but menus and recipes wait; the thin bar under the header resends the link.",
       "“Continue with Google” signs in with a Google account and needs no password. If the address already has a PriceLens account, Google joins it.",
-      "Your picture or initials in the header open the account menu: Account, Menus, My recipes, Sign out. The account page holds your name and language, your email and password, which mail you want, every device signed in (with “Sign out everywhere else”), and, at the bottom, deleting the account.",
+      "Your picture or initials in the header open the account menu: Account, Menus, My recipes, Sign out. The account page holds your name and language, your food preferences, your wishlist, your email and password, which mail you want, every device signed in (with “Sign out everywhere else”), and, at the bottom, deleting the account.",
+      "Food preferences shape “Surprise me” and the daily recipe ideas: what you eat (everything, vegetarian, vegan, pescatarian), what you avoid (egg, dairy, fish, meat, gluten), what you are after (weight loss, high protein, quick, budget, and so on), and the kinds of dish you like. Each choice saves as you make it. Under Notifications, switch on the daily recipe ideas or the daily price digest; the mails go out once the newsletters run.",
+      "The star beside a product on the board, its page, or a recipe's ingredient line puts it on your wishlist. The Wishlist section on the account page shows each starred product at today's cheapest seller with the move since yesterday. Switch on Price alerts under Notifications and each product gets a rule: any drop, or a price of your own; a morning mail arrives when one is met.",
+      "Your own recipes can be offered for the catalogue: “Submit to PriceLens” on a recipe's page sends it for review, and the recipe shows Submitted with pending, approved, or rejected and the owner's note. In the editor, an ingredient the registry does not carry can be proposed from the picker with “Add ‘…’ as a new ingredient”: say its kind and unit, and the line keeps the name until the owner approves it. The Contributions section on the account page lists everything you sent and where its review stands.",
       "Forgot the password? “Forgot password?” on the sign-in page mails a link that works for an hour; using it signs every other device out.",
     ],
     figures: [],
@@ -193,11 +199,11 @@ export const guideSections: GuideSection[] = [
     steps: [
       "The footer quietly counts how many people are on the site right now, using a random id kept only for the open tab; no cookies.",
       "Your basket and theme stay in your browser. Where the site runs Google Analytics it does so with IP anonymisation and respects the browser's “do not track” setting.",
-      "Sources, permissions, and method are on the About page.",
+      "The footer is one line: where the site is made (Sri Lanka), then Guide, Sources, Privacy, Terms, Feedback, and Discord. The privacy policy says what the site keeps about you and the terms of use carry the disclaimers about prices; sources, permissions, and method are on the About page.",
       "The Discord button in the bottom corner joins the Prabhava Labs community, where PriceLens updates land first; the same link sits in the ⋯ menu and the footer.",
     ],
     figures: [
-      { file: "feedback", alt: "The feedback dialog with a choice between feedback and a bug report, a message field, and an optional email", caption: "Feedback or a bug report, with the page you were on attached automatically.", width: 672, height: 546, half: true },
+      { file: "feedback", alt: "The feedback dialog with a choice between feedback and a bug report, a message field, and an optional email", caption: "Feedback or a bug report, with the page you were on attached automatically.", width: 674, height: 546, half: true },
     ],
   },
 ];

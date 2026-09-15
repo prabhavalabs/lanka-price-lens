@@ -103,6 +103,16 @@ CREATE INDEX IF NOT EXISTS account_recipe_account_idx ON account_recipe(account_
 Types and the store interface: `api/src/account/types.ts`. Request and content schemas:
 `shared/src/accounts.ts`.
 
+## Preferences
+
+`account.preferences_json` holds `preferencesSchema` (`shared/src/accounts.ts`): the mail
+switches (`notify_email`, `notify_digest`, `notify_alerts`, `notify_recipes`) and what the person
+eats (`diet`, `avoid`, `goals`, `likes`). Rows saved before a field existed parse with its default,
+and `PATCH /v1/account/me` merges any subset under `preferences` with the current values. How the
+food preferences meet the dish catalogue, the recommendation functions in
+`shared/src/recommend.ts`, the Surprise me route, and the daily recipe mail are all specified in
+[docs/newsletters.md](newsletters.md).
+
 ## Routes
 
 All under the same origin; bodies are JSON validated with the shared schemas; answers use the
@@ -131,6 +141,7 @@ context; `requireVerified` additionally needs a verified address.
 | `GET /v1/auth/google/callback` | none | | 302 to the site: `return_to` on success, `/account/login?error=google` otherwise |
 | `GET/POST /v1/account/menus`, `GET/PUT/DELETE /v1/account/menus/:id` | verified | `accountMenuInputSchema` | menus of the account |
 | `GET/POST /v1/account/recipes`, `GET/PUT/DELETE /v1/account/recipes/:id` | verified | `userRecipeInputSchema` | recipes of the account; `GET :id?servings=` adds the computed `view` (scaled lines, nutrition, cost) as the corpus recipe endpoint does |
+| `GET /v1/account/watchlist`, `PUT/PATCH/DELETE /v1/account/watchlist/:productId` | session | `watchItemInputSchema` | the wishlist: starred products with today's cheapest seller and each one's alert rule (docs/newsletters.md); up to 100 |
 | `GET /v1/admin/accounts`, `PATCH /v1/admin/accounts/:id` | owner | `{status}` | list with search and paging; disable or enable |
 
 Links in mail point at the site: `/account/verify?token=`, `/account/reset?token=`,
@@ -154,13 +165,30 @@ Links in mail point at the site: `/account/verify?token=`, `/account/reset?token
 
 Templates in `api/src/account/mail.ts`: verification, welcome (after verification), password
 reset, password changed, email change confirmation (to the new address), email changed notice
-(to the old address), account deleted. One layout: the PriceLens mark, a headline, one clear
-button, the same link in plain text under it, and a footer saying why the mail was sent. Text
-alternative for every message. Sent through the notify package's Resend channel
-(`notify/src/channels/email.ts`), `LPL_RESEND_API_KEY` and `LPL_MAIL_FROM`
-("PriceLens <hello@prabhavalabs.com>").
+(to the old address), account deleted. One layout (`api/src/mail/layout.ts`): a white card
+with a green top edge, the PriceLens mark and wordmark as a letterhead, a small kicker naming
+the kind of mail ("Account security"), a headline, one clear button with the same link in
+plain text under it, and a boxed note saying why the mail was sent (amber for the security
+notices: password reset, password changed, email changed, account deleted). Under the card a
+footer links Prices, Recipes, Wishlist, and Guide, names the reply address, and says "Made in
+Sri Lanka". Text alternative for every message. Sent through the notify package's Resend
+channel (`notify/src/channels/email.ts`), `LPL_RESEND_API_KEY` and `LPL_MAIL_FROM`
+("PriceLens <hello@prabhavalabs.com>"). The owner's own notices (feedback, community
+contributions) wear the same layout through `renderOwnerNotice` in `api/src/notify.ts`.
 
-### Resend and the domain (owner steps)
+To look at every mail with sample data, `pnpm mail samples --to <address> [--kind …]
+[--origin https://price.prabhavalabs.com]` sends each kind (and the owner's notices) to one
+address; `--origin` points the links and pictures at the production site.
+
+### Mail wording
+
+Every mail the site sends (the seven account mails and the three daily mails) is a kind
+with editable fields: subject, preheader, heading, intro, outro, button label, and the reason
+line (boxed in the card for account mail, in the footer for the daily mails). The owner edits
+them on the admin's Mail page with a live preview and a test send; the layout stays in code.
+Details in docs/newsletters.md.
+
+## Resend and the domain (owner steps)
 
 prabhavalabs.com is already verified in Resend (DKIM `resend._domainkey`, and the SPF MX and
 TXT records on `send.prabhavalabs.com`), and `_dmarc.prabhavalabs.com` publishes
@@ -180,7 +208,7 @@ SendGrid remains a fallback in the code (`notify/src/channels/sendgrid.ts`, used
 ### Google sign-in (owner steps)
 
 1. Google Cloud Console → APIs & Services → OAuth consent screen: external, app name PriceLens,
-   support and developer email, the site's home page, privacy policy `/about`; scopes `openid`,
+   support and developer email, the site's home page, privacy policy `/privacy`, terms `/terms`; scopes `openid`,
    `email`, `profile`. Publish it.
 2. Credentials → Create OAuth client ID → Web application. Authorised JavaScript origin
    `https://price.prabhavalabs.com`; authorised redirect URI
@@ -234,7 +262,10 @@ editor). Decisions taken at integration:
 
 ## Local testing
 
-- **Mail through Resend.** Set `LPL_RESEND_API_KEY` (the same key as production, or a free one):
+- **Mail through Resend.** Set `LPL_RESEND_API_KEY` in the repository's `.env` (gitignored; the
+  API and the foundry CLI load it with `--env-file-if-exists`). Make the local key in the Resend
+  dashboard with *sending access* only, limited to the verified domain, so a leaked development
+  key cannot read or change anything there; production keeps its own key.
   `createAccountMailer` in `api/src/account/mail.ts` sends the templates through Resend.
   `LPL_MAIL_FROM` must be a sender Resend accepts: an address on a domain verified there, or its shared `PriceLens <onboarding@resend.dev>`, which only delivers
   to the address the Resend account was opened with. With no key set the API logs

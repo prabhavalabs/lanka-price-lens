@@ -135,9 +135,9 @@ Sri Lankan dishes, best fit first: how many of a dish's key ingredients you alre
 much of your basket it uses, and what is still to buy.
 
 1. Each card names the dish, its kind, time, and difficulty, and what it still needs.
-2. A dish page splits its ingredients into "From your basket" and "Still to buy", the latter
-   at today's cheapest price per unit with an "Add" for each, then pantry items, variants, and
-   what it goes well with, with a rough extra cost.
+2. A dish page marks the ingredients already in your basket and prices the rest at today's
+   cheapest seller, with an "Add" for each; the cost card says how many you have and what the
+   rest would cost. Then pantry items, variants, and what it goes well with.
 3. "Recipes" in the header browses the whole catalogue by name in any language or by
    ingredient.
 
@@ -147,7 +147,7 @@ much of your basket it uses, and what is still to buy.
 
 ![A dish page](../web/public/guide/recipe.png)
 
-*A dish: what you have, what is still to buy at today's cheapest price, and the rough extra cost.*
+*A dish: every ingredient at today's cheapest price, the ones already in your basket marked, and the cost for the table.*
 
 ![The recipe catalogue](../web/public/guide/recipes.png)
 
@@ -168,15 +168,26 @@ twenty simmers as long as a pot for four.
    one person's portion, computed from each ingredient's edible weight against a
    nutrition table built for Sri Lankan foods and checked against published
    composition tables.
-3. "Cost per serving" prices the ingredients at today's cheapest published
-   seller. A "≈" means something is not priced yet or a price is older than a
-   week; the card says which.
+3. The cost card prices the ingredients for the headcount at today's cheapest
+   published seller, with the per-serving figure under it and how many
+   ingredients are already in your basket. A "≈" means something is not priced
+   yet or a price is older than a week; the card says which.
 4. "Read in" switches the method between English, Sinhala, and Tamil. Sinhala
    and Tamil text is machine drafted until a person has reviewed it, and the
    page says so.
 5. On the recipes page the chips and the calorie cap ask a question of the whole
    catalogue: weight loss, high protein, low calorie, quick, budget, and so on,
    sorted by fewest calories, most protein, quickest, or cheapest.
+6. "Surprise me" beside the search, or in the ⋯ menu, opens one dish at random.
+   Signed in, it follows the food preferences on your account and the banner
+   above the recipe says why it was picked; "Another one" draws again without
+   repeating a dish this tab has shown, and the banner links to the preferences.
+7. Thumbs up or thumbs down beside "Share" says whether a recipe worked for you;
+   the number between them, and the small thumbs-up badge on recipe cards, is
+   likes less dislikes. Reading in Sinhala or Tamil, "Is this translation right?"
+   under the method takes Correct or Needs work with your corrected text. When a
+   dish is missing, "Can't find a dish? Request it" under the results sends its
+   name to the owner. All three need an account; the last two a verified address.
 
 ![A recipe scaled to ten](../web/public/guide/servings.png)
 
@@ -196,7 +207,8 @@ one shopping list summed across every recipe.
    back.
 3. Change the number of people and everything recomputes. "Add priced items to
    basket" moves the shopping list into your basket in real amounts, so the
-   store comparison prices the whole meal.
+   store comparison prices the whole meal; lines already in your basket are
+   marked and left alone.
 4. Menus are kept on your account, so they follow you to another phone. Menus
    made before you signed in are offered for saving the first time you open the
    page signed in.
@@ -209,18 +221,39 @@ Reading prices never needs an account. One keeps your menus and your own recipes
 server, so they follow you to another phone or browser, and later carries price alerts. Sign
 in with an email and a password, or with Google.
 
-1. "Sign in" at the right of the header opens the sign-in page; "Create an account" asks for
-   a name, an email, and a password of ten characters or more. Long beats complicated: a few
-   words you will remember are better than a short jumble.
+1. "Sign in" at the right of the header opens the sign-in page, on its own without the header
+   and footer; "Create an account" asks for a name, an email, and a password of ten characters
+   or more. Long beats complicated: a few words you will remember are better than a short
+   jumble. "Continue as a guest" under the form goes back to the prices. Menus, your own
+   recipes, and the account page need an account: open one signed out and the sign-in page
+   appears, and once you are in you land straight back on the page you were opening. Prices,
+   recipes, and the basket never ask.
 2. A verification link goes to the address. Until you open it you can sign in and read
    everything, but menus and recipes wait; the thin bar under the header resends the link.
 3. "Continue with Google" signs in with a Google account and needs no password. If the
    address already has a PriceLens account, Google joins it.
 4. Your picture or initials in the header open the account menu: Account, Menus, My recipes,
-   Sign out. The account page holds your name and language, your email and password, which
-   mail you want, every device signed in (with "Sign out everywhere else"), and, at the
-   bottom, deleting the account.
-5. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
+   Sign out. The account page holds your name and language, your food preferences, your
+   wishlist, your email and password, which mail you want, every device signed in (with
+   "Sign out everywhere else"), and, at the bottom, deleting the account.
+5. Food preferences shape "Surprise me" and the daily recipe ideas: what you eat
+   (everything, vegetarian, vegan, pescatarian), what you avoid (egg, dairy, fish, meat,
+   gluten), what you are after (weight loss, high protein, quick, budget, and so on), and
+   the kinds of dish you like. Each choice saves as you make it. Under Notifications, switch
+   on the daily recipe ideas or the daily price digest; the mails go out once the
+   newsletters run.
+6. The star beside a product on the board, its page, or a recipe's ingredient line puts it
+   on your wishlist. The Wishlist section on the account page shows each starred product at
+   today's cheapest seller with the move since yesterday. Switch on Price alerts under
+   Notifications and each product gets a rule: any drop, or a price of your own; a morning
+   mail arrives when one is met.
+7. Your own recipes can be offered for the catalogue: "Submit to PriceLens" on a recipe's
+   page sends it for review, and the recipe shows Submitted with pending, approved, or
+   rejected and the owner's note. In the editor, an ingredient the registry does not carry
+   can be proposed from the picker with "Add '…' as a new ingredient": say its kind and
+   unit, and the line keeps the name until the owner approves it. The Contributions section
+   on the account page lists everything you sent and where its review stands.
+8. Forgot the password? "Forgot password?" on the sign-in page mails a link that works for an
    hour; using it signs every other device out.
 
 Five wrong passwords in a row lock sign-in for fifteen minutes; the wait is the same whether
@@ -254,9 +287,12 @@ page you were on is attached automatically and the message is forwarded to the s
 The footer quietly counts how many people are on the site right now, using a random id kept
 only for the open tab; no cookies. Your basket and theme stay in your browser. Where the site
 runs Google Analytics it does so with IP anonymisation and respects the browser's "do not
-track" setting. Sources, permissions, and method are on the About page. The Discord button in
-the bottom corner joins the Prabhava Labs community, where PriceLens updates land first; the
-same link sits in the ⋯ menu and the footer.
+track" setting. The footer is one line: where the site is made (Sri Lanka), then Guide,
+Sources, Privacy, Terms, Feedback, and Discord. The privacy policy (`/privacy`) says what the
+site keeps about you and the terms of use (`/terms`) carry the disclaimers about prices;
+sources, permissions, and method are on the About page. The Discord button in the bottom
+corner joins the Prabhava Labs community, where PriceLens updates land first; the same link
+sits in the ⋯ menu and the footer.
 
 ![The feedback form](../web/public/guide/feedback.png)
 

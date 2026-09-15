@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { preferencesSchema } from "@lanka-pricelens/shared";
 import test from "node:test";
 
 import { openOperationalDatabase } from "@lanka-pricelens/foundry/db";
@@ -89,7 +90,7 @@ test("register signs in, mails a verification link, and /me answers the profile"
     assert.equal(me.status, 200);
     assert.equal(me.body.payload.id, registered.body.payload.id);
     assert.equal(me.body.payload.display_name, "Nimal");
-    assert.deepEqual(me.body.payload.preferences, { notify_email: true, notify_digest: false, notify_alerts: false });
+    assert.deepEqual(me.body.payload.preferences, preferencesSchema.parse({}));
 
     assert.equal(h.mail.sent.length, 1);
     assert.equal(h.mail.sent[0]!.kind, "verifyEmail");
@@ -476,7 +477,7 @@ test("the profile patch changes the name, the language, and single preferences",
     assert.equal(named.body.payload.display_name, "Nimal Perera");
     assert.equal(named.body.payload.locale, "si");
     const prefs = await patch({ preferences: { notify_digest: true } });
-    assert.deepEqual(prefs.body.payload.preferences, { notify_email: true, notify_digest: true, notify_alerts: false }, "the other preferences keep their values");
+    assert.deepEqual(prefs.body.payload.preferences, preferencesSchema.parse({ notify_digest: true }), "the other preferences keep their values");
     assert.equal((await patch({ locale: "fr" })).status, 400);
     assert.equal((await patch({ display_name: "" })).status, 400);
     const unchanged = await h.call("/v1/account/me", { cookie: registered.cookie });

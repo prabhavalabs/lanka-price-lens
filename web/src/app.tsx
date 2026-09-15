@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 
+import { AuthLayout } from "@/components/auth-layout";
 import { CommunityInvite } from "@/components/community-invite";
 import { Layout } from "@/components/layout";
 import { startAnalytics, trackPageView } from "@/lib/analytics";
@@ -17,6 +18,7 @@ import { VerifyEmailPage } from "@/pages/account/verify";
 import { BasketPage } from "@/pages/basket";
 import { BoardPage } from "@/pages/board";
 import { GuidePage } from "@/pages/guide";
+import { PrivacyPage, TermsPage } from "@/pages/legal";
 import { ProductPage } from "@/pages/product";
 import { RecipePage } from "@/pages/recipe";
 import { MenuPage, MenusPage } from "@/pages/menus";
@@ -49,13 +51,30 @@ function useAnalytics(id: string | null): void {
   }, [id, location.pathname, location.search]);
 }
 
+/** The site proper: header, footer, the community invite, and the page. */
+function SiteFrame({ invite }: { invite: string | null }) {
+  return (
+    <Layout>
+      <CommunityInvite url={invite} />
+      <Outlet />
+    </Layout>
+  );
+}
+
 export function App() {
   const config = useSiteConfig();
   useAnalytics(config.analytics.ga_measurement_id);
   return (
-    <Layout>
-      <CommunityInvite url={config.community.discord_invite_url} />
-      <Routes>
+    <Routes>
+      <Route element={<AuthLayout />}>
+        <Route path="/account/login" element={<LoginPage />} />
+        <Route path="/account/register" element={<RegisterPage />} />
+        <Route path="/account/forgot" element={<ForgotPasswordPage />} />
+        <Route path="/account/reset" element={<ResetPasswordPage />} />
+        <Route path="/account/verify" element={<VerifyEmailPage />} />
+        <Route path="/account/confirm-email" element={<ConfirmEmailPage />} />
+      </Route>
+      <Route element={<SiteFrame invite={config.community.discord_invite_url} />}>
         <Route path="/" element={<BoardPage />} />
         <Route path="/p/:id" element={<ProductPage />} />
         <Route path="/basket" element={<BasketPage />} />
@@ -64,20 +83,16 @@ export function App() {
         <Route path="/menus" element={<MenusPage />} />
         <Route path="/menus/:id" element={<MenuPage />} />
         <Route path="/account" element={<ProfilePage />} />
-        <Route path="/account/login" element={<LoginPage />} />
-        <Route path="/account/register" element={<RegisterPage />} />
-        <Route path="/account/forgot" element={<ForgotPasswordPage />} />
-        <Route path="/account/reset" element={<ResetPasswordPage />} />
-        <Route path="/account/verify" element={<VerifyEmailPage />} />
-        <Route path="/account/confirm-email" element={<ConfirmEmailPage />} />
         <Route path="/account/recipes" element={<MyRecipesPage />} />
         <Route path="/account/recipes/new" element={<MyRecipeEditorPage />} />
         <Route path="/account/recipes/:id" element={<MyRecipePage />} />
         <Route path="/account/recipes/:id/edit" element={<MyRecipeEditorPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/guide" element={<GuidePage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
         <Route path="*" element={<p className="py-16 text-center text-muted-foreground">This page does not exist.</p>} />
-      </Routes>
-    </Layout>
+      </Route>
+    </Routes>
   );
 }

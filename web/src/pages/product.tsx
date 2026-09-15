@@ -6,6 +6,7 @@ import { Link, useParams, useSearchParams } from "react-router-dom";
 import { PriceChart, type ChartSeries } from "@/components/chart";
 import { ProductImage } from "@/components/product-image";
 import { QuantityControl } from "@/components/quantity";
+import { WatchStar } from "@/components/watch-star";
 import { SellerMark, sellerColor } from "@/components/seller-mark";
 import { ShareButtons } from "@/components/share";
 import { Badge } from "@/components/ui/badge";
@@ -96,6 +97,7 @@ export function ProductPage() {
           ) : null}
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <QuantityControl id={data.product.id} label={data.product.label} size="md" unit={unitOf(data.latest)} />
+            <WatchStar label={data.product.label} productId={data.product.id} size="md" />
             <ShareButtons title={`${data.product.label} price today`} text={shareText} />
           </div>
         </div>

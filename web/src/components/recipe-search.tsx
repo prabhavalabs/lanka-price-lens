@@ -17,9 +17,10 @@ const categories = ["rice_and_grains", "vegetable", "pulses_and_eggs", "sambol_a
  * One search bar for the recipes: the text, a Filters panel (category, what the dish is good
  * for, calories, protein, time, cost per serving), and the sort, with every active filter shown
  * as a chip that can be taken off. The bar only edits the search object; the page owns the
- * address and the request.
+ * address and the request. `action` sits at the end of the row for a button that is not a
+ * filter (Surprise me).
  */
-export function RecipeSearchBar({ search, onChange, total, fetching }: { search: RecipeSearch; onChange: (next: RecipeSearch) => void; total: number | null; fetching: boolean }) {
+export function RecipeSearchBar({ search, onChange, total, fetching, action }: { search: RecipeSearch; onChange: (next: RecipeSearch) => void; total: number | null; fetching: boolean; action?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const filters = activeFilterCount(search);
   const set = (patch: Partial<RecipeSearch>) => onChange({ ...search, ...patch, page: 1 });
@@ -90,9 +91,10 @@ export function RecipeSearchBar({ search, onChange, total, fetching }: { search:
             </PopoverContent>
           </Popover>
           <Select onValueChange={(value) => set({ sort: value === "relevance" ? "" : value })} value={search.sort || "relevance"}>
-            <SelectTrigger aria-label="Sort" className="w-40 px-3 text-sm data-[size=default]:h-10"><SelectValue /></SelectTrigger>
+            <SelectTrigger aria-label="Sort" className="min-w-0 flex-1 px-3 text-sm data-[size=default]:h-10 sm:w-40 sm:flex-none"><SelectValue /></SelectTrigger>
             <SelectContent>{sortOptions.map((option) => <SelectItem key={option.value || "relevance"} value={option.value || "relevance"}>{option.label}</SelectItem>)}</SelectContent>
           </Select>
+          {action}
         </div>
       </div>
       <div className="flex min-h-6 flex-wrap items-center gap-1.5 text-xs text-muted-foreground">

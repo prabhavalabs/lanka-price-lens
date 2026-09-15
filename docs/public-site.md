@@ -106,9 +106,19 @@ Every price carries the date it was observed and the site says so on every page.
 
 ## Images
 
-Product photos (`data/images/products/<slug>.jpg`, one per product) and store logos
-(`data/images/sellers/`) are shared by the admin and the site; the API serves them at
-`/images/…` with a day of browser cache and a week at the edge. The image copies `data/images`.
+Product photos (`data/images/products/<slug>.jpg`, one per product), pantry photos
+(`data/images/pantry/`), dish photographs (`data/images/recipes/<slug>.jpg`, one per dish,
+slug = dish id without `dish_`), and store logos (`data/images/sellers/`) are shared by the
+admin and the site; the API serves them at `/images/…` with a day of browser cache and a week
+at the edge. The image copies `data/images`.
+
+Dish photographs are made by `node scripts/recipes/photos.mjs` with the Codex CLI's built-in
+image tool (the owner's ChatGPT subscription, no API key): one ultra-realistic 3:2 picture per
+dish from its name, summary, ingredient lines, and serving description, in parallel batches,
+then a 900 px JPEG each. Re-running fills in only the dishes still without a picture. The site
+shows them on recipe cards and at the top of the recipe page (`DishPhoto`), the recipe OG
+card carries the photo beside the title, and the daily recipe mail uses the photo instead of
+the OG card when the dish has one.
 
 ## The guide
 
@@ -118,8 +128,11 @@ the live site, and an "on this page" list that follows the reader. The text live
 `web/public/guide/`. The same guide is in the repository as [user-guide.md](user-guide.md).
 
 To refresh the screenshots after a visible change, run `web/scripts/guide-screenshots.js` from
-the repository root with playwright-cli (it seeds a basket and shoots the public site at 1280
-wide, in dark, and on a phone), then compress them:
+the repository root with playwright-cli (it seeds a basket, signs in with the account named at
+the top of the script since menus live on the account, creates the guide's menu there once, and
+shoots the site at 1280 wide, in dark, and on a phone), then compress them. Fill in `account`
+with a throwaway before running and never commit it; to shoot a local build, point `origin` at
+it in a copy of the script:
 
 ```bash
 playwright-cli open
@@ -131,6 +144,16 @@ pngquant --quality=65-85 --speed 1 --force --ext .png web/public/guide/*.png
 `web/test/guide.test.ts` checks that every screenshot the guide refers to exists at the size
 declared in the content file, so a re-shoot that changes a size fails the build until the
 content is updated.
+
+## Brand
+
+The mark (a green magnifying lens holding leaves and rice grains, amber accents) is a raster
+PNG for now: `web/public/mark.png` (256 px, transparent) for the header and the sign-in card,
+`favicon.png` (64 px) and `favicon.svg` (the same PNG wrapped) for the tab, `apple-touch-icon.png`
+(180 px on the light ground) for home screens, and `api/assets/brand/mark.png` embedded in the
+social cards. Account mail links to `https://price.prabhavalabs.com/mark.png` (or the same path
+on `LPL_SITE_ORIGIN` when that is an https origin), since mail clients fetch images over the
+network. Source renders and larger sizes live outside the repository in `marketing/brand/`.
 
 ## Search engines and previews
 

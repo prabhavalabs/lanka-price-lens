@@ -148,6 +148,8 @@
   html {
     @apply bg-background font-sans;
     -webkit-text-size-adjust: 100%;
+    /* Keep the scrollbar's column whether or not a page is long enough to scroll, so nothing shifts sideways when it appears. */
+    scrollbar-gutter: stable;
   }
   body {
     @apply m-0 min-h-screen bg-background font-sans text-foreground antialiased;
@@ -159,6 +161,13 @@
   }
   button, a {
     @apply outline-offset-2;
+  }
+  /* Everything that answers a click says so; Tailwind's reset leaves buttons with the arrow cursor. */
+  button:not(:disabled), [role="button"]:not([aria-disabled="true"]), [role="menuitem"], [role="tab"], [role="option"], [role="switch"], [role="checkbox"], [role="radio"], [role="combobox"], summary, select:not(:disabled), label[for], a[href] {
+    cursor: pointer;
+  }
+  button:disabled, [aria-disabled="true"], select:disabled, input:disabled {
+    cursor: not-allowed;
   }
   code, kbd, pre, samp {
     @apply font-mono;

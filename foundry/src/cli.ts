@@ -9,6 +9,7 @@ import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceC
 import { processPendingArchives, recoverFailedProcessing, runSourceSync } from "./pipeline.ts";
 import { exportSnapshot, remapRecentSnapshots, retailAdapterFor, runRetailCapture, snapshotFileSchema } from "./retail/index.ts";
 import { retryPolicyFor, runWithRetry } from "./retry.ts";
+import { dealsCommand } from "./deals/index.ts";
 import { connectWarehouse, migrateWarehouse, renderReportMarkdown, syncWarehouse, warehouseReport } from "./warehouse/index.ts";
 import { buildRelease } from "./release.ts";
 import { startScheduler } from "./scheduler.ts";
@@ -203,6 +204,16 @@ if (command === "hash-password") {
       console.log(JSON.stringify({ source: entry.manifest.id, ...result }));
       if (result.status === "failed") process.exitCode = 1;
     }
+  } finally {
+    database.close();
+  }
+} else if (command === "deals") {
+  // deals compute [--day YYYY-MM-DD] [--save]: the supermarket deals engine (docs/newsletters.md) over the warehouse.
+  const url = valueOf("--url") ?? process.env.LPL_POSTGRES_URL;
+  if (!url) throw new Error("Set LPL_POSTGRES_URL or pass --url postgres://…");
+  const database = openOperationalDatabase(databasePath());
+  try {
+    await dealsCommand(arguments_, { database, warehouse: () => connectWarehouse(url) });
   } finally {
     database.close();
   }

@@ -9,17 +9,20 @@ import { ErrorState } from "@/components/error-state";
 import { RecipeEditor } from "@/components/recipe-editor";
 import { RecipeViewSection } from "@/components/recipe-view";
 import { RequireAccount } from "@/components/require-account";
+import { SubmissionBadge, SubmissionNote, SubmitRecipe } from "@/components/submit-recipe";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { accountApi, AccountApiError, type UserRecipeSummary } from "@/lib/account-api";
+import { latestSubmissionFor, latestSubmissions } from "@/lib/contributions";
 import { dishCategoryLabel, minutesLabel, relativeDay } from "@/lib/format";
 import { draftFromRecipe, emptyDraft, toRecipeView } from "@/lib/own-recipes";
 import { usePageTitle } from "@/lib/page-title";
 import { amountLabel, tagLabel } from "@/lib/recipe-format";
 import { useAccount } from "@/store/account";
+import { useSubmissions } from "@/store/community";
 
 /**
  * A person's own recipes: private to the account, filed under the catalogue's categories,
@@ -40,7 +43,7 @@ function useAccountId(): string {
 export function MyRecipesPage() {
   usePageTitle("My recipes · PriceLens");
   return (
-    <RequireAccount description="Your own recipes are kept on your account, counted and priced like the catalogue's." title="Sign in to see your recipes">
+    <RequireAccount>
       <MyRecipesList />
     </RequireAccount>
   );
@@ -63,6 +66,8 @@ function MyRecipesList() {
     staleTime: 60_000,
   });
   const [deleting, setDeleting] = useState<RecipeListItem | null>(null);
+  const { submissions } = useSubmissions();
+  const submitted = latestSubmissions(submissions);
   const recipes = list.data ?? [];
   return (
     <div className="space-y-6">
@@ -97,6 +102,7 @@ function MyRecipesList() {
                   <div className="mt-auto flex flex-wrap items-center gap-1.5">
                     <Badge variant="secondary" className="text-[10px]">{dishCategoryLabel(recipe.category)}</Badge>
                     {minutes ? <Badge variant="outline" className="gap-1 text-[10px]"><RiTimeLine className="size-3" />{minutesLabel(minutes)}</Badge> : null}
+                    <SubmissionBadge submission={submitted.get(recipe.id) ?? null} />
                   </div>
                 </CardContent>
               </Card>
@@ -149,7 +155,7 @@ function DeleteRecipeDialog({ recipe, onOpenChange, onDeleted }: { recipe: Pick<
 export function MyRecipePage() {
   const { id = "" } = useParams();
   return (
-    <RequireAccount description="Your recipes are kept on your account. Sign in to open this one." title="Sign in to open this recipe">
+    <RequireAccount>
       <MyRecipeDetail id={id} />
     </RequireAccount>
   );
@@ -162,6 +168,7 @@ function MyRecipeDetail({ id }: { id: string }) {
   // The recipe's own headcount unless the address says otherwise; the API answers at base servings when none is given.
   const servings = Number.isFinite(requested) && requested >= 1 ? Math.min(500, Math.round(requested)) : undefined;
   const recipe = useQuery({ queryKey: ["account", "recipe", id, servings ?? "base"], queryFn: ({ signal }) => accountApi.recipes.get(id, servings, signal), enabled: Boolean(id), placeholderData: keepPreviousData, retry: false });
+  const { submissions } = useSubmissions();
   const [deleting, setDeleting] = useState(false);
   const setServings = (value: number) => {
     const next = new URLSearchParams(params);
@@ -174,6 +181,7 @@ function MyRecipeDetail({ id }: { id: string }) {
   const own = recipe.data;
   const view = toRecipeView(own.view, own.id);
   const minutes = own.times.prep_minutes + own.times.cook_minutes;
+  const submission = latestSubmissionFor(submissions, own.id);
   return (
     <div className="space-y-6">
       <nav className="text-sm text-muted-foreground"><Link to="/account/recipes" className="hover:text-primary">My recipes</Link> › {dishCategoryLabel(own.category)}</nav>
@@ -185,17 +193,21 @@ function MyRecipeDetail({ id }: { id: string }) {
             <Badge variant="secondary">{dishCategoryLabel(own.category)}</Badge>
             {minutes ? <Badge variant="outline" className="gap-1"><RiTimeLine className="size-3" />{minutesLabel(minutes)}</Badge> : null}
             <Badge variant="outline">Private</Badge>
+            <SubmissionBadge className="h-5 text-[0.625rem]" submission={submission} />
             {view ? null : own.tags.map((tag) => <Badge key={tag} variant="outline">{tagLabel(tag)}</Badge>)}
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
+          <SubmitRecipe recipe={own} submission={submission} />
           <Button asChild size="sm" variant="outline"><Link to={`/account/recipes/${own.id}/edit`}><RiEditLine className="size-4" />Edit</Link></Button>
           <Button aria-label="Delete recipe" onClick={() => setDeleting(true)} size="icon-sm" variant="ghost"><RiDeleteBinLine className="size-4" /></Button>
         </div>
       </header>
 
+      <SubmissionNote submission={submission} />
+
       {view ? (
-        <RecipeViewSection addToMenu={false} dishId={own.id} dishName={own.name} loading={recipe.isFetching} onServings={setServings} recipe={view} servings={view.servings} />
+        <RecipeViewSection addToMenu={false} dishId={own.id} dishName={own.name} loading={recipe.isFetching} onServings={setServings} recipe={view} servings={view.servings} translationFeedback={false} />
       ) : (
         <PlainRecipe recipe={own} />
       )}
@@ -239,7 +251,7 @@ export function MyRecipeEditorPage() {
   const { id } = useParams();
   usePageTitle(id ? "Edit recipe · PriceLens" : "New recipe · PriceLens");
   return (
-    <RequireAccount description="Sign in to write recipes of your own; they are kept on your account and counted like the catalogue's." title={id ? "Sign in to edit this recipe" : "Sign in to write a recipe"}>
+    <RequireAccount>
       <MyRecipeEditor id={id ?? null} />
     </RequireAccount>
   );

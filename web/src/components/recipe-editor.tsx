@@ -1,4 +1,4 @@
-import { RiAddLine, RiArrowDownLine, RiArrowUpLine, RiCloseLine, RiDeleteBinLine, RiSearchLine } from "@remixicon/react";
+import { RiAddLine, RiArrowDownLine, RiArrowUpLine, RiCloseLine, RiDeleteBinLine, RiLightbulbLine, RiSearchLine, RiTimeLine } from "@remixicon/react";
 import { ingredientParts, recipeTags, servingRoles, userRecipeCategories, type UserRecipe, type UserRecipeInput } from "@lanka-pricelens/shared";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
@@ -14,16 +14,19 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { ProposeIngredientDialog } from "@/components/propose-ingredient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
 import { accountApi } from "@/lib/account-api";
+import { matchingProposals, pendingProposalFor } from "@/lib/contributions";
 import { dishCategoryLabel } from "@/lib/format";
 import { fetchIngredients, type IngredientSummary } from "@/lib/ingredients";
 import { emptyIngredient, emptyStep, hasErrorUnder, validateDraft, type IngredientDraft, type RecipeDraft, type StepDraft, type Text3 } from "@/lib/own-recipes";
 import { partLabel, tagLabel } from "@/lib/recipe-format";
 import { cn } from "@/lib/utils";
+import { useProposals } from "@/store/community";
 import { languageNames, type Lang } from "@/store/language";
 
 /**
@@ -371,54 +374,94 @@ function StepRow({ step, index, last, lang, error, minutesError, onChange, onMov
   );
 }
 
-/** Search the ingredient registry and add a line; what the registry does not carry can be added as written. */
+/**
+ * Search the ingredient registry and add a line. What the registry does not carry can be added
+ * as written, or proposed for the registry: the proposal goes to the owner and the line keeps
+ * the typed name with no reference until it is approved. Proposals still waiting are listed so
+ * the same ingredient is not proposed twice.
+ */
 function IngredientPicker({ onPick }: { onPick: (line: IngredientDraft) => void }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [proposing, setProposing] = useState<string | null>(null);
   const debounced = useDebouncedValue(query.trim(), 250);
   const results = useQuery({ queryKey: ["ingredients", debounced], queryFn: ({ signal }) => fetchIngredients(debounced, signal), enabled: open, placeholderData: keepPreviousData, staleTime: 5 * 60_000, retry: false });
-  const pick = (item: IngredientSummary | null) => {
-    onPick(item ? emptyIngredient({ ref: item.id, name: item.names.en, names: item.names, unit: item.unit_hint }) : emptyIngredient({ ref: null, name: query.trim() }));
+  const { proposals } = useProposals();
+  const pick = (item: IngredientSummary | null, name = query.trim()) => {
+    onPick(item ? emptyIngredient({ ref: item.id, name: item.names.en, names: item.names, unit: item.unit_hint }) : emptyIngredient({ ref: null, name }));
     setQuery("");
     setOpen(false);
   };
   const typed = query.trim();
+  const noMatch = Boolean(typed && results.data && !results.data.length);
+  const proposed = matchingProposals(proposals, typed);
+  const alreadyProposed = pendingProposalFor(proposals, typed) !== null;
   return (
-    <Popover onOpenChange={setOpen} open={open}>
-      <PopoverTrigger asChild>
-        <Button size="sm" type="button"><RiSearchLine className="size-3.5" />Add ingredient</Button>
-      </PopoverTrigger>
-      <PopoverContent align="end" className="w-80 p-0">
-        <Command shouldFilter={false}>
-          <CommandInput autoFocus onValueChange={setQuery} placeholder="Search: coconut, dhal, karapincha…" value={query} />
-          <CommandList>
-            {results.isPending ? <div className="p-3 text-xs text-muted-foreground">Looking…</div> : null}
-            {results.isError ? <div className="p-3 text-xs text-muted-foreground">The registry search did not answer. You can still add the ingredient as written.</div> : null}
-            {results.data && !results.data.length && typed ? <CommandEmpty>Nothing in the registry matches.</CommandEmpty> : null}
-            {results.data?.length ? (
-              <CommandGroup heading={results.isFetching ? "Registry · updating" : "Registry"}>
-                {results.data.map((item) => (
-                  <CommandItem key={item.id} onSelect={() => pick(item)} value={item.id}>
-                    <IngredientImage id={item.id} label={item.names.en} size="xs" />
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-medium">{item.names.en}{item.names.si ? <span className="ml-1.5 text-xs font-normal text-muted-foreground">{item.names.si}</span> : null}</p>
-                      <p className="truncate text-[11px] text-muted-foreground">{item.group.replaceAll("_", " ")}{item.priced ? " · priced" : ""}</p>
-                    </div>
+    <>
+      <Popover onOpenChange={setOpen} open={open}>
+        <PopoverTrigger asChild>
+          <Button size="sm" type="button"><RiSearchLine className="size-3.5" />Add ingredient</Button>
+        </PopoverTrigger>
+        <PopoverContent align="end" className="w-80 p-0">
+          <Command shouldFilter={false}>
+            <CommandInput autoFocus onValueChange={setQuery} placeholder="Search: coconut, dhal, karapincha…" value={query} />
+            <CommandList>
+              {results.isPending ? <div className="p-3 text-xs text-muted-foreground">Looking…</div> : null}
+              {results.isError ? <div className="p-3 text-xs text-muted-foreground">The registry search did not answer. You can still add the ingredient as written.</div> : null}
+              {noMatch ? <CommandEmpty>Nothing in the registry matches.</CommandEmpty> : null}
+              {results.data?.length ? (
+                <CommandGroup heading={results.isFetching ? "Registry · updating" : "Registry"}>
+                  {results.data.map((item) => (
+                    <CommandItem key={item.id} onSelect={() => pick(item)} value={item.id}>
+                      <IngredientImage id={item.id} label={item.names.en} size="xs" />
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-medium">{item.names.en}{item.names.si ? <span className="ml-1.5 text-xs font-normal text-muted-foreground">{item.names.si}</span> : null}</p>
+                        <p className="truncate text-[11px] text-muted-foreground">{item.group.replaceAll("_", " ")}{item.priced ? " · priced" : ""}</p>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              ) : null}
+              {proposed.length ? (
+                <CommandGroup heading="Proposed · awaiting review">
+                  {proposed.map((proposal) => (
+                    <CommandItem key={proposal.id} onSelect={() => pick(null, proposal.label)} value={`__proposed__${proposal.id}`}>
+                      <RiTimeLine className="size-3.5 text-muted-foreground" />
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-medium">{proposal.label}</p>
+                        <p className="truncate text-[11px] text-muted-foreground">{proposal.category ?? "kind not said"} · listed once the owner approves it</p>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              ) : null}
+              {typed ? (
+                <CommandGroup heading="Not in the registry">
+                  {noMatch && !alreadyProposed ? (
+                    <CommandItem onSelect={() => { setOpen(false); setProposing(typed); }} value={`__propose__${typed}`}>
+                      <RiLightbulbLine className="size-3.5" />
+                      <span className="truncate">Add “{typed}” as a new ingredient</span>
+                    </CommandItem>
+                  ) : null}
+                  <CommandItem onSelect={() => pick(null)} value={`__typed__${typed}`}>
+                    <RiAddLine className="size-3.5" />
+                    <span className="truncate">Add “{typed}” as written</span>
                   </CommandItem>
-                ))}
-              </CommandGroup>
-            ) : null}
-            {typed ? (
-              <CommandGroup heading="Not in the registry">
-                <CommandItem onSelect={() => pick(null)} value={`__typed__${typed}`}>
-                  <RiAddLine className="size-3.5" />
-                  <span className="truncate">Add “{typed}” as written</span>
-                </CommandItem>
-              </CommandGroup>
-            ) : null}
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+                </CommandGroup>
+              ) : null}
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
+      {proposing !== null ? (
+        <ProposeIngredientDialog
+          key={proposing}
+          label={proposing}
+          onOpenChange={(next) => { if (!next) setProposing(null); }}
+          onProposed={(proposal) => { onPick(emptyIngredient({ ref: null, name: proposal.label })); setQuery(""); }}
+          open
+        />
+      ) : null}
+    </>
   );
 }

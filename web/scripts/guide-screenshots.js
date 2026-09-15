@@ -7,9 +7,12 @@
 //   playwright-cli close
 //   pngquant --quality=65-85 --speed 1 --force --ext .png web/public/guide/*.png
 //
-// Change `origin` below to shoot another deployment. The runner has no `process`, so there is no env override.
+// Change `origin` below to shoot another deployment, and put a real account in `account` (menus live on the
+// account, so the menu shot needs one; use a throwaway, never commit credentials). The runner has no
+// `process`, so there is no env override.
 async (page) => {
   const origin = "https://price.prabhavalabs.com";
+  const account = { email: "", password: "" };
   const out = "web/public/guide";
   const desktop = { width: 1280, height: 800 };
   const browser = page.context().browser();
@@ -28,18 +31,32 @@ async (page) => {
     lines.push({ id, label: payload.product.label, quantity: unit === "kg" || unit === "l" ? quantity : Math.max(1, Math.round(quantity)), unit });
   }
 
-  // One menu in every shot: a Sunday lunch for eight, three recipes, the sambol made for the table.
-  const stamp = "2026-09-13T06:00:00.000Z";
-  const menus = [{ id: "menu_guide", name: "Sunday lunch", occasion: "Family", people: 8, items: [{ recipe_id: "dish_plain_red_rice", label: "Plain red rice", servings: null }, { recipe_id: "dish_chicken_kottu", label: "Chicken kottu roti", servings: null }, { recipe_id: "dish_onion_sambol", label: "Onion sambol", servings: 4 }], created_at: stamp, updated_at: stamp }];
-
+  // Every context is signed in (the API call shares the context's cookie jar), with the same basket seeded.
   const contextFor = async (options, theme) => {
     const context = await browser.newContext({ colorScheme: theme, deviceScaleFactor: 1.5, locale: "en-LK", timezoneId: "Asia/Colombo", ...options });
-    await context.addInitScript(({ basket, choice, menus }) => {
+    await context.addInitScript(({ basket, choice }) => {
       window.localStorage.setItem("pricelens.basket.v2", JSON.stringify(basket));
       window.localStorage.setItem("pricelens.theme", choice);
-      window.localStorage.setItem("pricelens.menus.v1", JSON.stringify(menus));
-    }, { basket: lines, choice: theme, menus });
+    }, { basket: lines, choice: theme });
+    if (account.email) {
+      const signIn = await context.request.post(`${origin}/v1/account/login`, { data: { email: account.email, password: account.password, remember: true }, headers: { origin } });
+      if (!signIn.ok()) throw new Error(`sign-in failed: ${signIn.status()} ${await signIn.text()}`);
+    }
     return context;
+  };
+
+  // One menu in every shot: a Sunday lunch for eight, three recipes, the sambol made for the table. Kept on the account.
+  const menuName = "Sunday lunch";
+  const menuFor = async (context) => {
+    const listing = await context.request.get(`${origin}/v1/account/menus`);
+    const existing = (await listing.json()).payload?.items?.find((menu) => menu.name === menuName);
+    if (existing) return existing.id;
+    const created = await context.request.post(`${origin}/v1/account/menus`, {
+      headers: { origin },
+      data: { name: menuName, occasion: "Family", people: 8, items: [{ recipe_id: "dish_plain_red_rice", servings: null }, { recipe_id: "dish_chicken_kottu", servings: null }, { recipe_id: "dish_onion_sambol", servings: 4 }], updated_at: new Date().toISOString() },
+    });
+    if (!created.ok()) throw new Error(`menu failed: ${created.status()} ${await created.text()}`);
+    return (await created.json()).payload.id;
   };
 
   const settle = async (tab, selector) => {
@@ -129,14 +146,17 @@ async (page) => {
   await settle(tab, "tbody tr");
   await tab.waitForSelector("a[href^='/r/']", { timeout: 30_000 });
   await shot(tab, "basket");
+  // The section's heading and its first row of dish cards: the cards carry photos now, so the whole section
+  // runs past one screen, and the sticky header and the community pill would sit over an element screenshot.
   const cook = tab.locator("section").filter({ has: tab.getByRole("heading", { name: "Cook with your basket" }) });
-  await cook.scrollIntoViewIfNeeded();
+  await cook.evaluate((element) => window.scrollTo(0, element.getBoundingClientRect().top + window.scrollY - 12));
   await clearHeader(tab);
-  await cook.screenshot({ path: `${out}/cook.png`, animations: "disabled" });
-  log.push("cook");
+  const hidden = await tab.addStyleTag({ content: "header, a[aria-label='Join the community'] { visibility: hidden !important; }" });
+  await shot(tab, "cook", { clip: await around([cook.getByRole("heading", { name: "Cook with your basket" }), ...[0, 1, 2].map((index) => cook.locator("a[href^='/r/']").nth(index))], 8) });
+  await hidden.evaluate((element) => element.remove());
 
   await cook.locator("a[href^='/r/']").first().click();
-  await settle(tab, "h2:has-text('Still to buy'), h2:has-text('From your basket')");
+  await settle(tab, "h2:has-text('Ingredients for'), h2:has-text('Still to buy')");
   await shot(tab, "recipe");
 
   await tab.goto(`${origin}/recipes?q=curry`);
@@ -156,13 +176,14 @@ async (page) => {
   await shot(tab, "recipes-filters");
 
   // A menu for eight: per-person totals, each recipe's servings, the shopping list.
-  await tab.goto(`${origin}/menus/menu_guide`);
+  await tab.goto(`${origin}/menus/${await menuFor(context)}`);
   await settle(tab, "h2:has-text('Shopping list')");
   await shot(tab, "menu");
 
   await tab.goto(`${origin}/`);
   await settle(tab, "h1");
-  await tab.locator("header button:has-text('Feedback')").click();
+  await tab.locator("header button[aria-label='More']").click();
+  await tab.getByRole("menuitem", { name: "Send feedback" }).click();
   await tab.waitForTimeout(500);
   await tab.locator("[role='dialog']").last().screenshot({ path: `${out}/feedback.png`, animations: "disabled" });
   log.push("feedback");

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { preferencesSchema } from "@lanka-pricelens/shared";
 import { createHash, generateKeyPairSync, sign, type KeyObject } from "node:crypto";
 import test from "node:test";
 
@@ -154,7 +155,7 @@ function memoryStore() {
   const store: AccountStore = {
     createAccount: (input, at) => {
       sequence += 1;
-      const account: Account = { id: `account_${sequence}`, email: input.email, email_verified_at: input.emailVerified ? at.toISOString() : null, password_hash: input.passwordHash, display_name: input.displayName, avatar_url: input.avatarUrl ?? null, locale: input.locale ?? "en", status: "active", failed_login_count: 0, locked_until: null, preferences: { notify_email: true, notify_digest: false, notify_alerts: false }, created_at: at.toISOString(), updated_at: at.toISOString() };
+      const account: Account = { id: `account_${sequence}`, email: input.email, email_verified_at: input.emailVerified ? at.toISOString() : null, password_hash: input.passwordHash, display_name: input.displayName, avatar_url: input.avatarUrl ?? null, locale: input.locale ?? "en", status: "active", failed_login_count: 0, locked_until: null, preferences: preferencesSchema.parse({}), created_at: at.toISOString(), updated_at: at.toISOString() };
       accounts.set(account.id, account);
       return account;
     },

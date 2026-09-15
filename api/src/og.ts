@@ -16,6 +16,9 @@ export const cardWidth = 1200;
 export const cardHeight = 630;
 
 const fontsDirectory = fileURLToPath(new URL("../assets/fonts/", import.meta.url));
+const markFile = fileURLToPath(new URL("../assets/brand/mark.png", import.meta.url));
+/** The PriceLens mark (lens over leaves and rice grains), embedded so the card needs no network. */
+const markData = existsSync(markFile) ? readFileSync(markFile).toString("base64") : null;
 const fontFiles = ["400", "500", "600", "700"].map((weight) => resolve(fontsDirectory, `IBMPlexSans-${weight}.ttf`));
 
 const colours = { background: "#0b1411", text: "#f3f7f4", muted: "#9fb3a8", green: "#3ddc97", greenDeep: "#0f7a54", up: "#ff7b7b", down: "#3ddc97" };
@@ -76,7 +79,7 @@ export function cardSvg(card: Card): string {
   parts.push(`<defs><radialGradient id="glow" cx="1050" cy="-80" r="700" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${colours.green}" stop-opacity="0.22"/><stop offset="1" stop-color="${colours.green}" stop-opacity="0"/></radialGradient><clipPath id="photo"><rect x="760" y="120" width="368" height="368" rx="32"/></clipPath></defs>`);
   parts.push(`<rect width="${cardWidth}" height="${cardHeight}" fill="${colours.background}"/><rect width="${cardWidth}" height="${cardHeight}" fill="url(#glow)"/><rect x="0" y="0" width="${cardWidth}" height="6" fill="${colours.greenDeep}"/>`);
   // Brand.
-  parts.push(`<g transform="translate(${left} 62)"><rect width="44" height="44" rx="11" fill="${colours.greenDeep}"/><path d="M11 28.9l6.9-8.3 5.5 5.5 9.6-12.4" fill="none" stroke="#fff" stroke-width="4.1" stroke-linecap="round" stroke-linejoin="round"/></g>`);
+  parts.push(markData ? `<image x="${left}" y="58" width="48" height="48" xlink:href="data:image/png;base64,${markData}"/>` : `<g transform="translate(${left} 62)"><rect width="44" height="44" rx="11" fill="${colours.greenDeep}"/></g>`);
   parts.push(text(left + 60, 94, "PriceLens", 30, colours.text, 600));
   parts.push(text(left + 214, 94, "price.prabhavalabs.com", 22, colours.muted));
   // Eyebrow and title. Cards with stat tiles run a little tighter so the tiles clear the footer.
@@ -113,12 +116,14 @@ export function cardSvg(card: Card): string {
   if (card.stats?.length) {
     const tiles = card.stats.slice(0, 3);
     const tileWidth = Math.min(320, Math.floor((contentWidth - 24 * (tiles.length - 1)) / tiles.length));
+    // Beside a photo the tiles are narrow, so their figures shrink to fit.
+    const narrow = tileWidth < 240;
     const top = y + 30;
     tiles.forEach((stat, index) => {
       const x = left + index * (tileWidth + 24);
       parts.push(`<rect x="${x}" y="${top}" width="${tileWidth}" height="104" rx="18" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.09"/>`);
-      parts.push(text(x + 26, top + 50, stat.value, 38, colours.text, 600));
-      parts.push(text(x + 26, top + 82, stat.label, 18, colours.muted));
+      parts.push(text(x + (narrow ? 20 : 26), top + 50, stat.value, narrow ? 30 : 38, colours.text, 600));
+      parts.push(text(x + (narrow ? 20 : 26), top + 82, stat.label, narrow ? 16 : 18, colours.muted));
     });
   }
   // Body copy.
@@ -137,7 +142,7 @@ export function cardSvg(card: Card): string {
   // Footer.
   parts.push(`<line x1="${left}" y1="548" x2="${cardWidth - left}" y2="548" stroke="#ffffff" stroke-opacity="0.08"/>`);
   parts.push(text(left, 590, card.footer, 21, colours.muted));
-  parts.push(text(cardWidth - left, 590, "Free · No account · Open source", 21, colours.muted, 400, 'text-anchor="end"'));
+  parts.push(text(cardWidth - left, 590, "Free · Made in Sri Lanka", 21, colours.muted, 400, 'text-anchor="end"'));
   parts.push("</svg>");
   return parts.join("");
 }
@@ -224,7 +229,7 @@ export function productCard(product: PublicProductCard, overview: PublicOverview
 
 export type CardDish = { id: string; names: { en?: string | undefined }; summary?: string | undefined; category?: string | undefined; difficulty?: string | undefined; prep_minutes?: number | undefined; cook_minutes?: number | undefined; key_ingredients?: unknown[] | undefined; other_ingredients?: unknown[] | undefined };
 
-export function recipeCard(dish: CardDish, overview: PublicOverview | null): Card {
+export function recipeCard(dish: CardDish, overview: PublicOverview | null, photo?: Buffer | undefined): Card {
   const minutes = (dish.prep_minutes ?? 0) + (dish.cook_minutes ?? 0);
   const ingredients = (dish.key_ingredients?.length ?? 0) + (dish.other_ingredients?.length ?? 0);
   const stats: CardStat[] = [];
@@ -237,12 +242,28 @@ export function recipeCard(dish: CardDish, overview: PublicOverview | null): Car
     subtitle: dish.summary,
     stats,
     footer: asOfFooter(overview),
+    image: photo ? { data: photo, mime: "image/jpeg" } : undefined,
   };
+}
+
+/** Where a product's photo lives when the site has one: data/images/products/<slug>.jpg. */
+export function productPhotoPath(imagesRoot: string, productId: string): string {
+  return resolve(imagesRoot, "products", `${productId.replace(/^product_/u, "")}.jpg`);
 }
 
 /** The photo for a product, when the site has one. */
 export function productPhoto(imagesRoot: string, productId: string): Buffer | undefined {
-  const file = resolve(imagesRoot, "products", `${productId.replace(/^product_/u, "")}.jpg`);
+  const file = productPhotoPath(imagesRoot, productId);
+  return existsSync(file) ? readFileSync(file) : undefined;
+}
+
+/** Where a dish's photograph lives when the site has one: data/images/recipes/<slug>.jpg, made by scripts/recipes/photos.mjs. */
+export function recipePhotoPath(imagesRoot: string, dishId: string): string {
+  return resolve(imagesRoot, "recipes", `${dishId.replace(/^dish_/u, "")}.jpg`);
+}
+
+export function recipePhoto(imagesRoot: string, dishId: string): Buffer | undefined {
+  const file = recipePhotoPath(imagesRoot, dishId);
   return existsSync(file) ? readFileSync(file) : undefined;
 }
 

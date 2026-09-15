@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node --env-file-if-exists=../.env --watch src/index.ts",
     "start": "node src/index.ts",
+    "cli": "node --env-file-if-exists=../.env src/cli.ts",
     "build": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
     "test": "node --test test/*.test.ts"

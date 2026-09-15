@@ -4,6 +4,7 @@ import { dirname } from "node:path";
 
 import Database from "better-sqlite3";
 
+import { outboxSchema } from "@lanka-pricelens/notify";
 import type { RunStatus, SourceManifest, StageName, WorkflowName } from "@lanka-pricelens/shared";
 
 export type OperationalDatabase = Database.Database;
@@ -752,6 +753,71 @@ function migrate(database: OperationalDatabase): void {
       updated_at TEXT NOT NULL
     ) STRICT;
     CREATE INDEX IF NOT EXISTS account_menu_account_idx ON account_menu(account_id, updated_at DESC);
+    CREATE TABLE IF NOT EXISTS account_watch (
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      product_id TEXT NOT NULL,
+      alert_json TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      last_alert_at TEXT,
+      last_alert_minor INTEGER,
+      PRIMARY KEY (account_id, product_id)
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS account_watch_product_idx ON account_watch(product_id);
+    CREATE TABLE IF NOT EXISTS recipe_reaction (
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      dish_id TEXT NOT NULL,
+      value INTEGER NOT NULL CHECK (value IN (1, -1)),
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY (account_id, dish_id)
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS recipe_reaction_dish_idx ON recipe_reaction(dish_id);
+    CREATE TABLE IF NOT EXISTS translation_feedback (
+      id TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      dish_id TEXT NOT NULL,
+      language TEXT NOT NULL CHECK (language IN ('si', 'ta')),
+      verdict TEXT NOT NULL CHECK (verdict IN ('correct', 'incorrect')),
+      correction TEXT,
+      note TEXT,
+      status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'reviewed', 'applied')),
+      created_at TEXT NOT NULL,
+      reviewed_at TEXT,
+      reviewed_by TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS translation_feedback_status_idx ON translation_feedback(status, created_at DESC);
+    CREATE TABLE IF NOT EXISTS recipe_submission (
+      id TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      kind TEXT NOT NULL CHECK (kind IN ('request', 'recipe')),
+      name TEXT NOT NULL,
+      notes TEXT,
+      source_recipe_id TEXT,
+      recipe_json TEXT,
+      status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+      review_note TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      reviewed_at TEXT,
+      reviewed_by TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS recipe_submission_status_idx ON recipe_submission(status, created_at DESC);
+    CREATE INDEX IF NOT EXISTS recipe_submission_account_idx ON recipe_submission(account_id, created_at DESC);
+    CREATE TABLE IF NOT EXISTS product_proposal (
+      id TEXT PRIMARY KEY,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      label TEXT NOT NULL,
+      category TEXT,
+      unit_hint TEXT,
+      note TEXT,
+      status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+      review_note TEXT,
+      created_at TEXT NOT NULL,
+      reviewed_at TEXT,
+      reviewed_by TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS product_proposal_status_idx ON product_proposal(status, created_at DESC);
     CREATE TABLE IF NOT EXISTS account_recipe (
       id TEXT PRIMARY KEY,
       account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
@@ -764,6 +830,77 @@ function migrate(database: OperationalDatabase): void {
     ) STRICT;
     CREATE INDEX IF NOT EXISTS account_recipe_account_idx ON account_recipe(account_id, updated_at DESC);
   `);
+
+  // Mail wording edited in the admin, the daily newsletters (docs/newsletters.md), and the
+  // notify outbox they are delivered through. The deals engine keeps its own table elsewhere.
+  database.exec(`
+    CREATE TABLE IF NOT EXISTS mail_template (
+      kind TEXT PRIMARY KEY,
+      fields_json TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      updated_by TEXT
+    ) STRICT;
+    CREATE TABLE IF NOT EXISTS newsletter_run (
+      id TEXT PRIMARY KEY,
+      kind TEXT NOT NULL CHECK (kind IN ('recipes_daily', 'deals_daily', 'price_alerts')),
+      day TEXT NOT NULL,
+      trigger TEXT NOT NULL,
+      status TEXT NOT NULL CHECK (status IN ('running', 'sent', 'skipped', 'failed', 'dry_run')),
+      started_at TEXT NOT NULL,
+      finished_at TEXT,
+      recipients INTEGER NOT NULL DEFAULT 0,
+      sent INTEGER NOT NULL DEFAULT 0,
+      skipped INTEGER NOT NULL DEFAULT 0,
+      failed INTEGER NOT NULL DEFAULT 0,
+      error TEXT,
+      report_json TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS newsletter_run_kind_day_idx ON newsletter_run(kind, day, started_at DESC);
+    CREATE TABLE IF NOT EXISTS newsletter_delivery (
+      id TEXT PRIMARY KEY,
+      run_id TEXT NOT NULL REFERENCES newsletter_run(id) ON DELETE CASCADE,
+      kind TEXT NOT NULL,
+      day TEXT NOT NULL,
+      account_id TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+      payload_json TEXT NOT NULL,
+      outbox_id TEXT,
+      created_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS newsletter_delivery_account_idx ON newsletter_delivery(account_id, kind, day DESC);
+    CREATE INDEX IF NOT EXISTS newsletter_delivery_run_idx ON newsletter_delivery(run_id);
+  `);
+  database.exec(outboxSchema);
+  // The kind check on newsletter_run predates price alerts. SQLite cannot change a CHECK in place, so a
+  // database created before then gets the table rebuilt, with foreign keys off so the deliveries survive.
+  const runTable = (database.prepare("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'newsletter_run'").get() as { sql: string } | undefined)?.sql ?? "";
+  if (runTable && !runTable.includes("price_alerts")) {
+    database.pragma("foreign_keys = OFF");
+    try {
+      database.exec(`
+        CREATE TABLE newsletter_run_next (
+          id TEXT PRIMARY KEY,
+          kind TEXT NOT NULL CHECK (kind IN ('recipes_daily', 'deals_daily', 'price_alerts')),
+          day TEXT NOT NULL,
+          trigger TEXT NOT NULL,
+          status TEXT NOT NULL CHECK (status IN ('running', 'sent', 'skipped', 'failed', 'dry_run')),
+          started_at TEXT NOT NULL,
+          finished_at TEXT,
+          recipients INTEGER NOT NULL DEFAULT 0,
+          sent INTEGER NOT NULL DEFAULT 0,
+          skipped INTEGER NOT NULL DEFAULT 0,
+          failed INTEGER NOT NULL DEFAULT 0,
+          error TEXT,
+          report_json TEXT
+        ) STRICT;
+        INSERT INTO newsletter_run_next SELECT id, kind, day, trigger, status, started_at, finished_at, recipients, sent, skipped, failed, error, report_json FROM newsletter_run;
+        DROP TABLE newsletter_run;
+        ALTER TABLE newsletter_run_next RENAME TO newsletter_run;
+        CREATE INDEX IF NOT EXISTS newsletter_run_kind_day_idx ON newsletter_run(kind, day, started_at DESC);
+      `);
+    } finally {
+      database.pragma("foreign_keys = ON");
+    }
+  }
 }
 
 function addColumn(database: OperationalDatabase, table: string, column: string, definition: string): void {

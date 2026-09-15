@@ -6,6 +6,7 @@
   "exports": {
     "./archive-storage": "./src/archive-storage.ts",
     "./db": "./src/db.ts",
+    "./deals": "./src/deals/index.ts",
     "./intake": "./src/intake.ts",
     "./manifest": "./src/manifest.ts",
     "./pipeline": "./src/pipeline.ts",
@@ -23,6 +24,7 @@
   "dependencies": {
     "@firecrawl/pdf-inspector": "1.14.2",
     "@lanka-pricelens/archive": "workspace:*",
+    "@lanka-pricelens/notify": "workspace:*",
     "@lanka-pricelens/shared": "workspace:*",
     "better-sqlite3": "13.0.3",
     "cron-parser": "5.1.1",

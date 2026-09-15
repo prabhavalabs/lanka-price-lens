@@ -1,4 +1,5 @@
 import {
+  RiChatSmile2Line,
   RiDashboardLine,
   RiDatabase2Line,
   RiFeedbackLine,
@@ -10,6 +11,7 @@ import {
   RiRestaurantLine,
   RiSearchEyeLine,
   RiLogoutBoxRLine,
+  RiMailLine,
   RiShieldUserLine,
   type RemixiconComponentType,
 } from "@remixicon/react";
@@ -55,9 +57,11 @@ const intelligence: NavigationItem[] = [
   { to: "/explorer", label: "Price explorer", icon: RiSearchEyeLine, end: false },
   { to: "/recipes", label: "Recipes", icon: RiRestaurantLine, end: false },
   { to: "/feedback", label: "Feedback", icon: RiFeedbackLine, end: false, detail: "Public site" },
+  { to: "/mail", label: "Mail", icon: RiMailLine, end: false, detail: "Public site" },
 ];
 const community: NavigationItem[] = [
   { to: "/accounts", label: "Accounts", icon: RiGroupLine, end: false },
+  { to: "/community", label: "Community", icon: RiChatSmile2Line, end: false },
 ];
 const navigation = [...operations, ...intelligence, ...community];
 

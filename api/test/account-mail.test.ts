@@ -44,13 +44,13 @@ test("every template has a subject, addresses the person by name, shows the butt
     } else {
       assert.ok(!rendered.html.includes("copy this link"), `${kind} has no button`);
     }
-    // The one layout: doctype, a 600 px table, the mark, the footer with the reply address, and nothing that must load.
+    // The one layout: doctype, a 600 px table, the mark (the only image), the footer with the reply address, and nothing else that must load.
     assert.ok(rendered.html.startsWith("<!doctype html>"));
     assert.ok(rendered.html.includes('width="600"'));
-    assert.ok(rendered.html.includes(">₨</td>"));
+    assert.ok(rendered.html.includes('src="https://price.prabhavalabs.com/mark.png"'));
     assert.ok(rendered.html.includes("You're getting this email"));
     assert.ok(rendered.html.includes("mailto:hello@prabhavalabs.com"));
-    assert.ok(!/<img\b/u.test(rendered.html), "no images");
+    assert.equal(rendered.html.match(/<img\b/gu)?.length, 1, "the mark is the only image, no tracking pixels");
     assert.ok(!/<link\b|<script\b/u.test(rendered.html), "no external resources");
     assert.ok(rendered.text.includes("Reply to this email or write to hello@prabhavalabs.com"));
     assert.ok(!/<[a-z]/u.test(rendered.text), `${kind} text has no markup`);

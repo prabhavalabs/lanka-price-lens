@@ -56,6 +56,7 @@ COPY api/assets api/assets
 COPY data/manifests data/manifests
 COPY data/mappings data/mappings
 COPY data/recipes data/recipes
+COPY data/deals data/deals
 COPY data/images data/images
 COPY --from=build /app/admin/dist admin/dist
 COPY --from=build /app/web/dist web/dist

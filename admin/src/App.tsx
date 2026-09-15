@@ -17,7 +17,9 @@ const InsightsPage = lazy(() => import("@/pages/insights-page").then((module) =>
 const PriceExplorerPage = lazy(() => import("@/pages/price-explorer-page").then((module) => ({ default: module.PriceExplorerPage })));
 const RecipesPage = lazy(() => import("@/pages/recipes-page").then((module) => ({ default: module.RecipesPage })));
 const FeedbackPage = lazy(() => import("@/pages/feedback-page").then((module) => ({ default: module.FeedbackPage })));
+const MailPage = lazy(() => import("@/pages/mail-page").then((module) => ({ default: module.MailPage })));
 const AccountsPage = lazy(() => import("@/pages/accounts-page").then((module) => ({ default: module.AccountsPage })));
+const CommunityPage = lazy(() => import("@/pages/community-page").then((module) => ({ default: module.CommunityPage })));
 
 const router = createBrowserRouter(
   [
@@ -39,7 +41,9 @@ const router = createBrowserRouter(
             { path: "explorer", element: <PriceExplorerPage /> },
             { path: "recipes", element: <RecipesPage /> },
             { path: "feedback", element: <FeedbackPage /> },
+            { path: "mail", element: <MailPage /> },
             { path: "accounts", element: <AccountsPage /> },
+            { path: "community", element: <CommunityPage /> },
           ],
         },
       ],
