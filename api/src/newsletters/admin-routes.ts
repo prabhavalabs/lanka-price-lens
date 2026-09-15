@@ -156,7 +156,7 @@ export function sampleMailData(kind: MailKind, deps: Pick<MailAdminDeps, "siteOr
       const dealsDay = deps.deals?.latest() ?? sampleDealsDay(day);
       const composed = composeDealsMail(account, dealsDay, { siteOrigin: origin, hasPhoto: deps.hasProductPhoto }, unsubscribe);
       if (composed) return composed.data;
-      return { values: { name: "Amal", date: dayWords(dealsDay.day), count: 0, stores: "the supermarkets", link: `${origin}/deals` }, blocks: dealsBlocks(dealsDay, origin, deps.hasProductPhoto), unsubscribeUrl: unsubscribe };
+      return { values: { name: "Amal", date: dayWords(dealsDay.day), count: 0, stores: "the supermarkets", link: `${origin}/` }, blocks: dealsBlocks(dealsDay, origin, deps.hasProductPhoto), unsubscribeUrl: unsubscribe };
     }
     case "price_alerts": {
       // Two starred products that met their rules: a drop against yesterday and a price under the person's own mark.
