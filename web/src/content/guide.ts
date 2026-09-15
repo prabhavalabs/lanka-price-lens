@@ -1,5 +1,5 @@
 /**
- * The "How to use" guide: eleven sections of steps with screenshots of the live site. The screenshots
+ * The "How to use" guide: twelve sections of steps with screenshots of the live site. The screenshots
  * live in public/guide and are refreshed by scripts/guide-screenshots.js; the test checks that every
  * file here exists at the declared size. The same guide is docs/user-guide.md in the repository.
  */
@@ -160,7 +160,7 @@ export const guideSections: GuideSection[] = [
   {
     id: "account",
     title: "Your account",
-    summary: "Reading prices never needs an account. One keeps your menus and your own recipes on the server, so they follow you to another phone or browser, and later carries price alerts. Sign in with an email and a password, or with Google.",
+    summary: "Reading prices never needs an account. One keeps your menus, your own recipes, your favourites, and your wishlist on the server, so they follow you to another phone or browser, and sends the morning mails and price alerts you switch on, by email or in Telegram. Sign in with an email and a password, or with Google.",
     steps: [
       "“Sign in” at the right of the header opens the sign-in page, on its own without the header and footer; “Create an account” asks for a name, an email, and a password of ten characters or more. Long beats complicated: a few words you will remember are better than a short jumble. “Continue as a guest” under the form goes back to the prices.",
       "Menus, your own recipes, and the account page need an account: open one signed out and the sign-in page appears, and once you are in you land straight back on the page you were opening. Prices, recipes, and the basket never ask.",
@@ -168,11 +168,15 @@ export const guideSections: GuideSection[] = [
       "“Continue with Google” signs in with a Google account and needs no password. If the address already has a PriceLens account, Google joins it.",
       "Your picture or initials in the header open the account menu: Account, Menus, My recipes, Favourites, Wishlist, Sign out. The account page holds your name and language, your food preferences, your favourite recipes, your wishlist, your email and password, which mail you want, every device signed in (with “Sign out everywhere else”), and, at the bottom, deleting the account.",
       "Food preferences shape “Surprise me” and the daily recipe ideas: what you eat (everything, vegetarian, vegan, pescatarian), what you avoid (egg, dairy, fish, meat, gluten), what you are after (weight loss, high protein, quick, budget, and so on), and the kinds of dish you like. Each choice saves as you make it. Under Notifications, switch on the daily recipe ideas or the daily price digest; the mails go out once the newsletters run.",
-      "The star beside a product on the board, its page, or a recipe's ingredient line puts it on your wishlist. The Wishlist section on the account page shows each starred product at today's cheapest seller with the move since yesterday. Switch on Price alerts under Notifications and each product gets a rule: any drop, or a price of your own; a morning mail arrives when one is met. Connect Telegram under Notifications and every daily mail you have on arrives in the chat as well.",
+      "The star beside a product on the board, its page, or a recipe's ingredient line puts it on your wishlist. The Wishlist section on the account page shows each starred product at today's cheapest seller with the move since yesterday. Switch on Price alerts under Notifications and each product gets a rule: any drop, or a price of your own; a morning mail arrives when one is met.",
+      "“Connect Telegram” under Notifications opens the site's bot, @LankaPriceLensBot, with a one-time link that works for fifteen minutes; press Start in the chat and the page says Connected as you. From then on every morning mail you have on also arrives in the chat, as a message with the same picks, prices, and links; “Send them to Telegram too” switches that off without disconnecting. Send /stop to the bot, or press Disconnect, to unlink the chat. The public channel t.me/lankapricelens posts the day's supermarket deals every morning, account or not.",
       "Your own recipes can be offered for the catalogue: “Submit to PriceLens” on a recipe's page sends it for review, and the recipe shows Submitted with pending, approved, or rejected and the owner's note. In the editor, an ingredient the registry does not carry can be proposed from the picker with “Add ‘…’ as a new ingredient”: say its kind and unit, and the line keeps the name until the owner approves it. The Contributions section on the account page lists everything you sent and where its review stands.",
       "Forgot the password? “Forgot password?” on the sign-in page mails a link that works for an hour; using it signs every other device out.",
     ],
-    figures: [],
+    figures: [
+      { file: "notifications", alt: "The Notifications section of the account page: switches for mail from PriceLens, the daily price digest, daily recipe ideas, and price alerts, a Telegram row with a Connect Telegram button, and the alert rule for each wishlist product", caption: "Notifications: the morning mails, Telegram under them, and each wishlist product's rule.", width: 1682, height: 876 },
+      { file: "telegram", alt: "The Telegram row once connected: the chat named, a Disconnect button, and a switch to send the mails to Telegram too", caption: "Connected: every mail you have on arrives in the chat as well.", width: 1682, height: 971 },
+    ],
     tips: [
       "Five wrong passwords in a row lock sign-in for fifteen minutes; the wait is the same whether the address has an account or not.",
       "Deleting the account removes your menus and recipes with it. The basket in this browser stays, since it was never uploaded.",
