@@ -57,7 +57,10 @@ export function RecipePage() {
     <div className="space-y-6">
       {surprised ? <SurpriseBanner key={id} reasons={readReasons(location.state)} /> : null}
       <nav className="text-sm text-muted-foreground"><Link to="/recipes" className="hover:text-primary">Recipes</Link> › {dishCategoryLabel(dish.category)}</nav>
-      <DishPhoto alt={dish.names.en} className="aspect-[2/1] max-h-80 rounded-xl border" dishId={dish.id} loading="eager" />
+      <div className="relative">
+        <DishPhoto alt={dish.names.en} className="aspect-[2/1] max-h-80 rounded-xl" dishId={dish.id} loading="eager" />
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 rounded-b-xl bg-gradient-to-t from-background via-background/60 to-transparent" />
+      </div>
       <header className="space-y-3">
         <div>
           <h1 className="text-balance font-heading text-3xl font-semibold tracking-tight">{dish.names.en}</h1>
