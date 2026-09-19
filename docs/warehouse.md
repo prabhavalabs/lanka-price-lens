@@ -30,6 +30,29 @@ Indexes on `price_observation`:
 Prices are stored as integer minor units (cents of LKR) exactly as in SQLite; the
 warehouse never re-derives a price, so both stores agree to the cent.
 
+## Store offers
+
+Migration 8 adds `store_offer`: one row per retail snapshot row that carries the store's own
+offer (`raw.offer`, see [retail-capture.md](retail-capture.md#store-offers)), whether or not
+its label maps to a canonical item. Columns: `staging_id` (key), `observed_on`, `source_id`,
+`market_id`, `market_label`, `row_ref`, `label` and `category` (the store's wording), the pack,
+`price_minor` (what every shopper pays), `list_minor`, `offer_minor`, `pct`, `kind`,
+`audience`, `offer_label`, `max_quantity`, and for a mapped row `item_id`, `normalized_unit`,
+`normalized_list_minor`, `normalized_offer_minor`: the offer carried to the item's unit
+through the observation's own ratio, so it compares with the product's prices.
+
+Migration 9 adds `url` (the item's page on the store's site: the row's own link, else the
+item's last known one from `store_product`) and `image_path` (the stored picture's path under
+the store-images root, only when it has the shape the downloader writes). The sync brings
+`store_product` up to date before it reads.
+
+Offers are a view of the recent snapshots, not a ledger. `syncOffers`
+(`foundry/src/warehouse/offers.ts`) runs inside every sync after the observations: it reads
+the last three days (`offerSync.windowDays`) of non-stale retail staging rows, replaces those
+days in one transaction, and drops anything older than 35 days (`retentionDays`). A re-capture,
+a wider bundle, or an offer ending is therefore reflected at the next sync. The operational
+store keeps a partial index on `staging_observation(source_date)` for that read.
+
 ## Sync
 
 `foundry warehouse sync` copies changes from SQLite:

@@ -45,6 +45,30 @@ export type EssentialWatch = {
   trend: "down" | "flat" | "up";
 };
 
+/**
+ * What a store itself marks down on a catalogue product: its list price beside the price with the
+ * offer, both on the product's unit (the warehouse's `store_offer`, from `raw.offer` on the
+ * snapshot row). Unlike a drop this needs no history, so an offer that has run for weeks still shows.
+ */
+export type DeclaredOffer = {
+  product_id: string;
+  label: string;
+  /** The store's own name for the pack on offer. */
+  store_label: string;
+  unit: string;
+  market_id: string;
+  market: string;
+  now_minor: number;
+  was_minor: number;
+  /** Signed, one decimal: -20 is 20 % off. */
+  pct: number;
+  /** "members" when only the store's loyalty members get the price (Keells Nexus). */
+  audience: "everyone" | "members";
+  offer_label: string | null;
+  observed_on: string;
+  url: string;
+};
+
 export type DealsDay = {
   /** YYYY-MM-DD in Asia/Colombo. */
   day: string;
@@ -57,6 +81,8 @@ export type DealsDay = {
   cheapest: Deal[];
   /** The largest rises, kind "drop" with a positive pct, at most five. */
   movers_up: Deal[];
+  /** The stores' own offers on catalogue products, deepest cut first, one per product, at most twelve. Absent on days saved before the engine read them. */
+  store_offers?: DeclaredOffer[];
   /** Every essential with a price today. */
   essentials: EssentialWatch[];
   stats: { series: number; fresh: number; considered: number };
@@ -78,6 +104,9 @@ export const dealRules = {
   maxDeals: 12,
   maxCheapest: 8,
   maxMovers: 5,
+  /** A store's own offer is listed from this cut up; smaller ones are shelf noise beside the day's drops. */
+  storeOfferPct: 10,
+  maxStoreOffers: 12,
   /** An essential's cheapest price counts as moving when it sits this far from its fortnight median. */
   essentialTrendPct: 5,
 } as const;
@@ -133,6 +162,7 @@ export async function computeDeals(client: WarehouseClient, options: DealsOption
     deals,
     cheapest,
     movers_up: moversUp,
+    store_offers: rankStoreOffers(await loadStoreOffers(client, day)),
     essentials: essentialsWatch(products, options.essentials, day),
     stats: { series: series.length, fresh: fresh.length, considered: considered.length },
   };
@@ -158,6 +188,56 @@ async function loadWindow(client: WarehouseClient, day: string): Promise<DealsRo
      ORDER BY item.product_id, daily.market_id, daily.item_id, daily.normalized_unit, daily.observed_on`,
     [day],
   );
+}
+
+type StoreOfferRow = { product_id: string; label: string; store_label: string; unit: string; market_id: string; market: string; now_minor: string | number; was_minor: string | number; pct: string | number; audience: string; offer_label: string | null; observed_on: string };
+
+/**
+ * The stores' own offers on catalogue products for the day and the day before (the freshness
+ * every series gets). A warehouse that has not been migrated to carry them yet has none: the
+ * offers are an addition to the day and never take it down.
+ */
+async function loadStoreOffers(client: WarehouseClient, day: string): Promise<StoreOfferRow[]> {
+  try {
+    return await client.query<StoreOfferRow>(
+      `SELECT item.product_id, product.label_en AS label, offer.label AS store_label, offer.normalized_unit AS unit, offer.market_id, market.label_en AS market,
+              offer.normalized_offer_minor::TEXT AS now_minor, offer.normalized_list_minor::TEXT AS was_minor, offer.pct::TEXT AS pct,
+              offer.audience, offer.offer_label, offer.observed_on::TEXT AS observed_on
+       FROM store_offer offer
+       JOIN item ON item.id = offer.item_id AND item.status = 'active'
+       JOIN product ON product.id = item.product_id AND product.status = 'active'
+       JOIN market ON market.id = offer.market_id AND market.type = 'online_store'
+       WHERE offer.observed_on BETWEEN $1::date - 1 AND $1::date AND offer.normalized_offer_minor IS NOT NULL
+         -- The same base-variety rule as the price window, so an offer names what the product page shows.
+         AND (product.comparison = 'pooled' OR item.variety IS NULL OR NOT EXISTS (SELECT 1 FROM item base WHERE base.product_id = product.id AND base.variety IS NULL AND base.status = 'active'))
+       ORDER BY offer.pct, item.product_id, offer.market_id, offer.label`,
+      [day],
+    );
+  } catch (error) {
+    if ((error as { code?: string }).code === "42P01") return [];
+    throw error;
+  }
+}
+
+/** Each store on its own newest day, cuts of ten percent and more, the deepest cut per product, an offer for everyone before a members' one at the same cut. */
+function rankStoreOffers(rows: StoreOfferRow[]): DeclaredOffer[] {
+  const newest = new Map<string, string>();
+  for (const row of rows) if (row.market_id && row.observed_on && row.observed_on > (newest.get(row.market_id) ?? "")) newest.set(row.market_id, row.observed_on);
+  const best = new Map<string, DeclaredOffer>();
+  for (const row of rows) {
+    const now = Number(row.now_minor);
+    const was = Number(row.was_minor);
+    if (!(now > 0) || !(was > now) || newest.get(row.market_id) !== row.observed_on) continue;
+    if (!atMostPercentOf(now, was, 100 - dealRules.storeOfferPct)) continue;
+    const offer: DeclaredOffer = {
+      product_id: row.product_id, label: row.label, store_label: row.store_label, unit: row.unit, market_id: row.market_id, market: row.market,
+      now_minor: now, was_minor: was, pct: -Math.round((1 - now / was) * 1000) / 10, audience: row.audience === "members" ? "members" : "everyone",
+      offer_label: row.offer_label ?? null, observed_on: row.observed_on, url: productUrl(row.product_id),
+    };
+    const current = best.get(row.product_id);
+    if (!current || offer.pct < current.pct || (offer.pct === current.pct && current.audience === "members" && offer.audience === "everyone")) best.set(row.product_id, offer);
+  }
+  return [...best.values()].sort((left, right) => left.pct - right.pct || left.label.localeCompare(right.label)).slice(0, dealRules.maxStoreOffers);
 }
 
 function groupSeries(rows: DealsRow[]): Series[] {

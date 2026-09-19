@@ -269,6 +269,94 @@ re-promotes the stored snapshots of the last days through the current bundles
 without touching the retailers at all (each source under its own run lease, as an
 audited run).
 
+### Store offers
+
+Every store says when a price is an offer, each in its own way, and the adapters keep it
+(`foundry/src/retail/offer.ts`). A record whose store marks it down carries `raw.offer`:
+
+```ts
+type RecordOffer = {
+  list_minor: number;    // the store's regular price for the pack
+  offer_minor: number;   // the price with the offer; always under list_minor
+  pct: number;           // signed, one decimal: -20 is 20 % off
+  kind: "mrp" | "promo_price" | "discount" | "compare_at";
+  audience: "everyone" | "members";
+  label?: string;        // the store's name for it ("Nexus")
+  max_quantity?: number; // the most packs one shopper may buy at the offer price
+};
+```
+
+| Store | What it sends | Read as |
+| --- | --- | --- |
+| Cargills | `Mrp` above `Price` | `mrp`: the pack's maximum retail price beside Cargills' own price |
+| Glomark | `price` above `promoPrice` / `applicablePrice` | `promo_price`: the list price beside the price Glomark sells at |
+| SPAR | Shopify `compare_at_price` above `price` | `compare_at` |
+| Keells | `isPromotionApplied`, `promotionDiscountValue`, and a `promotionItemDetailsList` beside the items | `discount`: the shelf price less the rupees off; `members` with label `Nexus` when the promotion is a Nexus deal |
+
+The record's **price never changes because of an offer**: it stays what the store charges every
+shopper, so a series never moves for this reason. For Cargills, Glomark, and SPAR that price is
+already the offer price; for Keells it is the shelf price, and a Nexus deal is recorded as a
+members' price beside it. One guarded helper (`storeOffer`) builds every offer: a cut under
+1 % is rounding and one over 90 % is a price keyed for another pack, and neither is kept.
+Keells promotions tied to a payment card, a promo code, or buying several at once are left
+out, as is a promotion the listing does not describe. Keells snapshots store the promotion
+list; stores do not publish end dates, so an offer is simply present or absent each morning.
+
+`raw.offer` rides in the staging row's `raw_json`. The warehouse sync turns the last three
+days of those rows into `store_offer` (see [warehouse.md](warehouse.md#store-offers)), which
+`GET /v1/public/offers`, the deals engine, and the site's Deals page read.
+
+### The deal's own link and the store's picture
+
+Every record also carries where the store shows the item and the original address of its
+picture (`foundry/src/retail/links.ts`), built from fields the adapters already receive:
+
+| Store | `raw.url` | `raw.image` |
+| --- | --- | --- |
+| Keells | `https://www.keellssuper.com/productDetail?itemcode=<code>&<Name_with_underscores>`, as the web app links a guest | `imageUrl` (Azure blob, 350 px) |
+| Cargills | `/ProductDetails/<category>/<name>?ID=<EnId>`; only the encoded id selects the item | `ItemImage`, a path on cargillsonline.com |
+| Glomark | `/<name>/p/<id>`; only the id selects the item | the `image` file name on the store's object storage, at 600 px |
+| SPAR | `/products/<handle>` | the first of Shopify's `images`, at 600 px wide |
+
+Each pattern was opened in a browser and lands on the item. An address is kept only when it
+is https, has no credentials, and its host is on `storePageHosts` or `storeImageHosts`; the
+same check runs again wherever a stored address is read back, and before anything is fetched,
+so nothing outside the stores' own hosts is ever linked or requested.
+
+**`store_product`** (operational SQLite) is one row per store and the store's own id for an
+item that has been on offer: `page_url`, `image_source_url`, and the stored copy
+(`image_status` `pending | stored | failed | missing | none`, `image_path`, hash, size, type,
+`image_via` `direct | proxy`, attempts, error, retry time, first and last seen). It is filled
+by `syncStoreProducts` from the last three days of staging rows that carry an offer, so it grows
+with the deals and not with the stores' whole catalogues. A new picture address puts the row
+back to `pending` while the old copy keeps showing; a missing link never erases a known one.
+
+**Pictures** (`foundry/src/retail/images.ts`) are fetched once and kept under
+`LPL_STORE_IMAGES_DIR` (default `store-images` beside the database, `/data/store-images` in
+the containers, on the volume the API serves from), as `<source>/<two hex>/<sha256>.<ext>`:
+content-addressed, written through a rename, stored once however many items share them. This
+tree is separate from the site's generated product photos in `data/images`, which nothing here
+reads, writes, or replaces.
+
+- **Direct first.** Only after a failure a proxy could cure (a block, a timeout, a server
+  error) is a picture tried once through the source's proxy (`proxyEnv`), since proxies are
+  metered and the image hosts are open. A 404 or 410 is `missing` and looked for again in two
+  weeks; other failures back off and stop after five attempts.
+- **Only images.** The body must start as a JPEG, PNG, WebP, GIF, or AVIF and fit under 4 MB;
+  the address and the content-type header are never trusted on their own.
+- **When.** `foundry capture` fetches after each source's successful capture, within
+  `LPL_STORE_IMAGES_SECONDS` (180) and `LPL_STORE_IMAGES_PER_RUN` (400), and never fails the
+  capture (`--no-images` skips it). `foundry images fetch [--source <id>] [--limit N]` has no
+  time budget and is how to catch up after the first deploy; `foundry images status` counts
+  items and bytes per source and status.
+- **Holding a store back.** `LPL_STORE_IMAGES_DISABLED=source_a,source_b` stops fetching for
+  those sources, and `foundry images purge --source <id>` deletes that store's pictures from
+  the server and clears the record of them, keeping its links. The pictures are the stores'
+  and brands' own; this is the switch for the day one of them asks.
+
+On the site a deal shows the store's picture once a copy is kept, the generated photo of the
+mapped product until then, and the store's mark otherwise; "View at <store>" opens `page_url`.
+
 ### Store quirks handled by the adapters
 
 - **SPAR** lists every product once per outlet as a Shopify variant (`WT`, `GL`,

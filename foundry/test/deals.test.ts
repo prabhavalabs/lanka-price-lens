@@ -65,7 +65,11 @@ test("the window query covers the day and the fortnight before it over the onlin
   const client = fakeWarehouse([]);
   const result = await computeDeals(client, { day: at, essentials: ["product_potato"] });
   assert.equal(result.day, day);
-  assert.equal(client.calls.length, 1);
+  assert.equal(client.calls.length, 2, "the price window, then the stores' own offers");
+  assert.match(client.calls[1]?.sql ?? "", /FROM store_offer offer/u);
+  assert.match(client.calls[1]?.sql ?? "", /\$1::date - 1 AND \$1::date/u);
+  assert.deepEqual(client.calls[1]?.params, [day]);
+  assert.deepEqual(result.store_offers, []);
   const call = client.calls[0];
   assert.deepEqual(call?.params, [day]);
   assert.match(call?.sql ?? "", /market\.type = 'online_store'/u);
@@ -390,6 +394,35 @@ function seededWarehouse(): { database: OperationalDatabase; cleanup: () => void
   add("pub_h", "art_h", "item_big_onion", "market_dambulla", "wholesale_observed", day, 150);
   return { database, cleanup: () => { database.close(); rmSync(root, { recursive: true, force: true }); } };
 }
+
+test("the stores' own offers come from the snapshot rows: newest day per store, ten percent and more, the deepest per product, base varieties only", async () => {
+  const { database, cleanup } = seededWarehouse();
+  const client = await embeddedWarehouse();
+  try {
+    database.exec(`INSERT INTO source_market_mapping (source_id, source_label, market_id, mapping_version, reviewed_by, reviewed_at, evidence_ref)
+      VALUES ('keells', 'market_keells_online', 'market_keells_online', 'v1', 't', '2026-09-01', 'd'), ('cargills', 'market_cargills_online', 'market_cargills_online', 'v1', 't', '2026-09-01', 'd')`);
+    const offer = database.prepare("UPDATE staging_observation SET source_item_label = ?, raw_json = ? WHERE id = ?");
+    const raw = (list: number, price: number, extra: Record<string, unknown> = {}) => JSON.stringify({ offer: { list_minor: list, offer_minor: price, kind: "mrp", audience: "everyone", ...extra } });
+    offer.run("Big Onion 1kg", raw(30_000, 24_000), "stg_2");
+    offer.run("Big Onion Imported 1kg", raw(25_600, 17_920, { kind: "discount", audience: "members", label: "Nexus" }), "stg_4");
+    offer.run("B Onion", raw(40_000, 38_000), "stg_5");
+    offer.run("Banana yesterday", raw(40_000, 20_000), "stg_6");
+    offer.run("Ambul Banana 1kg", raw(25_000, 20_000), "stg_7");
+    offer.run("Kolikuttu 1kg", raw(20_000, 10_000), "stg_9");
+    const synced = await syncWarehouse(database, client, { now: at });
+    assert.deepEqual([synced.offers.rows, synced.offers.mapped], [6, 6]);
+
+    const result = await computeDeals(client, { day: at, essentials: [] });
+    assert.deepEqual(result.store_offers, [
+      { product_id: "product_big_onion", label: "Big Onion", store_label: "Big Onion Imported 1kg", unit: "kg", market_id: "market_keells_online", market: "Keells Online", now_minor: 17_920, was_minor: 25_600, pct: -30, audience: "members", offer_label: "Nexus", observed_on: day, url: "/p/product_big_onion" },
+      { product_id: "product_banana", label: "Banana", store_label: "Ambul Banana 1kg", unit: "kg", market_id: "market_keells_online", market: "Keells Online", now_minor: 20_000, was_minor: 25_000, pct: -20, audience: "everyone", offer_label: null, observed_on: day, url: "/p/product_banana" },
+    ], "the Cargills cut is under ten percent, yesterday's banana is not Keells' newest day, and the Kolikuttu is not the variety the product page opens on");
+    assert.equal(result.deals.length, 1, "the day's drops are untouched");
+  } finally {
+    await client.close();
+    cleanup();
+  }
+});
 
 test("the window query runs against a real warehouse, reads the stores only, and pools a store's items", async () => {
   const { database, cleanup } = seededWarehouse();

@@ -1,5 +1,6 @@
 import type { OperationalDatabase } from "../db.ts";
 import { valuesPlaceholders, type WarehouseClient } from "./client.ts";
+import { syncOffers, type OfferSyncResult } from "./offers.ts";
 import { migrateWarehouse, refreshAggregates } from "./schema.ts";
 
 export type SyncLog = (level: "info" | "warning", message: string, data?: Record<string, unknown>) => void;
@@ -17,6 +18,7 @@ export type SyncResult = {
   migrations: number[];
   references: Record<string, number>;
   observations: { scanned: number; upserted: number; batches: number; cursor: { stamp: string; id: string } | null };
+  offers: OfferSyncResult;
   refreshed: string[];
   durationMs: number;
 };
@@ -124,8 +126,12 @@ export async function syncWarehouse(database: OperationalDatabase, client: Wareh
   }
   log("info", "Observations synced", { scanned, upserted, batches });
 
+  // Offers reference items and markets, so they follow the reference tables and the observations they sit beside.
+  const offers = await withRetry(() => syncOffers(database, client, { now: options.now, batchSize }));
+  log("info", "Store offers synced", offers);
+
   const refreshed = await refreshAggregates(client);
-  return { migrations, references, observations: { scanned, upserted, batches, cursor: cursor.stamp ? cursor : null }, refreshed, durationMs: Date.now() - started };
+  return { migrations, references, observations: { scanned, upserted, batches, cursor: cursor.stamp ? cursor : null }, offers, refreshed, durationMs: Date.now() - started };
 }
 
 async function syncReferences(database: OperationalDatabase, client: WarehouseClient, batchSize: number): Promise<Record<string, number>> {

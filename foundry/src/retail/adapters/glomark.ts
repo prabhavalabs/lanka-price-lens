@@ -1,6 +1,8 @@
 import { z } from "zod";
 
 import { decodeText, fetchWithPolicy } from "../http.ts";
+import { slugOf, storeImageUrl, storePageUrl } from "../links.ts";
+import { minorOrNull, storeOffer } from "../offer.ts";
 import { baseSettingsSchema, categoryAllowed, compilePattern, patternSetting } from "../settings.ts";
 import { dedupeRecords, normalizeUnit, packFromLabel, priceToMinor, trimNumber, type AdapterContext, type NormalizedRecord, type RetailAdapter } from "../types.ts";
 
@@ -28,6 +30,8 @@ export type GlomarkProduct = {
   price: number;
   promoPrice?: number | null;
   applicablePrice?: number | null;
+  /** The picture's file name on the store's image host. */
+  image?: string | null;
   isOutOfStock?: boolean;
   stock?: number;
   erpCode?: string | null;
@@ -37,6 +41,9 @@ export type GlomarkProduct = {
   brand?: number | null;
 };
 type PageSnapshot = { path: string; products: GlomarkProduct[] };
+
+/** Where glomark.lk serves its product pictures from, by file name; the pages use the 140 px rendition, the 600 px one is the picture we keep. */
+export const glomarkImageBase = "https://objectstorage.ap-mumbai-1.oraclecloud.com/n/softlogicbicloud/b/cdn/o/products/600-600/";
 
 export const glomarkAdapter: RetailAdapter<GlomarkSettings> = {
   kind: "glomark_html",
@@ -111,6 +118,9 @@ export const glomarkAdapter: RetailAdapter<GlomarkSettings> = {
         const name = (product.name ?? "").replace(/\s+/gu, " ").trim();
         if (!name) continue;
         const pack = glomarkPack(product.unit, product.displayQuantity, name);
+        // The record carries the price Glomark sells at; its list price above that is the store's own "was".
+        const list = minorOrNull(product.price);
+        const offer = list === null ? null : storeOffer({ listMinor: list, offerMinor: priceToMinor(price), kind: "promo_price" });
         records.push({
           rowRef: String(product.id),
           itemLabel: name,
@@ -132,6 +142,10 @@ export const glomarkAdapter: RetailAdapter<GlomarkSettings> = {
             display_quantity: product.displayQuantity,
             out_of_stock: Boolean(product.isOutOfStock),
             stock: product.stock ?? null,
+            // The site links a product as /<name>/p/<id>; only the id selects it. Pictures sit on the store's object storage by file name.
+            url: storePageUrl(`${settings.baseUrl.replace(/\/+$/u, "")}/${slugOf(name)}/p/${product.id}`),
+            image: product.image && /^[\w.-]+$/u.test(product.image) ? storeImageUrl(`${glomarkImageBase}${product.image}`) : null,
+            ...(offer ? { offer } : {}),
           },
         });
       }

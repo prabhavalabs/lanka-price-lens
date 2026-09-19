@@ -32,6 +32,7 @@ import {
   settingsJsonSchema,
   snapshotFileSchema,
   type AnyRetailAdapter,
+  storeImagesRoot,
 } from "@lanka-pricelens/foundry/retail";
 import { runWithRetry } from "@lanka-pricelens/foundry/retry";
 import { listFeedback, parseFeedback, RateLimiter, submitFeedback, updateFeedbackStatus } from "./feedback.ts";
@@ -95,6 +96,7 @@ import { unsubscribeRoutes } from "./newsletters/unsubscribe.ts";
 import { surpriseRoutes } from "./surprise.ts";
 import { buildRecipeIndex, computeMenu, parseRecipeQuery, priceLookupFor, priceOptions, pricedProductIds, queryRecipes, recipeView, type RecipeIndexEntry } from "./recipe-views.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
+import { parseOfferQuery, productOffers, publicOffers, type PublicOffer } from "./offers.ts";
 import {
   archivedKnowledgePdf,
   knowledgeIndexStatus,
@@ -459,6 +461,12 @@ export function createApp(
     if (!ids.length) return context.json(envelope(context.get("requestId"), null, false, "products is required: a comma-separated list of product ids"), 400);
     return context.json(envelope(context.get("requestId"), await publicBasket(client, published(), ids)));
   });
+  // Store offers (docs/retail-capture.md, "Store offers"): what each supermarket itself marks down today.
+  app.get("/v1/public/offers", async (context) => {
+    const client = await warehouse();
+    if (!client) return context.json(envelope(context.get("requestId"), null, false, "Offers are not available right now"), 503);
+    return context.json(envelope(context.get("requestId"), await publicOffers(client, published(), parseOfferQuery(context.req.query()), new Date(), { hasProductPhoto })));
+  });
   app.get("/v1/public/products/:id", async (context) => {
     const client = await warehouse();
     if (!client) return context.json(envelope(context.get("requestId"), null, false, "Prices are not available right now"), 503);
@@ -469,7 +477,9 @@ export function createApp(
     const sources = published().map((manifest) => manifest.id);
     const detail = await productDetail(client, context.req.param("id").slice(0, 100), range, { varieties, sources, cadence: sourceCadence() });
     if (!detail) return context.json(envelope(context.get("requestId"), null, false, "Product not found"), 404);
-    return context.json(envelope(context.get("requestId"), detail));
+    // What the stores themselves mark down on this product today; the prices in the detail stay what every shopper pays.
+    const offers = (await productOffers(client, published(), [detail.product.id], new Date(), { hasProductPhoto }).catch(() => new Map<string, PublicOffer[]>())).get(detail.product.id) ?? [];
+    return context.json(envelope(context.get("requestId"), { ...detail, offers }));
   });
 
   // Visitor accounts: sign-up, sign-in, recovery, profile; menus and own recipes on the account; Google sign-in.
@@ -1515,6 +1525,16 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
   app.use("/images/*", serveStatic({ root: imagesRoot, rewriteRequestPath: (path) => path.replace(/^\/images/u, "") }));
   // A picture the site does not have is a plain 404, never the site's HTML: browsers and mail clients then treat it as missing.
   app.get("/images/*", (context) => context.text("Not found", 404));
+  // The stores' own pictures of the items on offer, fetched once by the foundry (retail/images.ts) into a tree of their own beside the
+  // database. Content-addressed, so a file never changes; the generated photos above are a different tree and are never written here.
+  const storeImages = storeImagesRoot();
+  app.use("/store-images/*", async (context, next) => {
+    if (!/^\/store-images\/[a-z0-9_]+\/[0-9a-f]{2}\/[0-9a-f]{64}\.(?:jpg|png|webp|gif|avif)$/u.test(context.req.path)) return context.text("Not found", 404);
+    await next();
+    if (context.res.ok) context.header("Cache-Control", "public, max-age=31536000, immutable");
+  });
+  app.use("/store-images/*", serveStatic({ root: storeImages, rewriteRequestPath: (path) => path.replace(/^\/store-images/u, "") }));
+  app.get("/store-images/*", (context) => context.text("Not found", 404));
   const adminRoot = resolve(process.env.LPL_ADMIN_ROOT ?? "../admin/dist");
   // The site's build lives next to the API in the repository and the image alike, so the default is relative to this file, not the working directory.
   const webRoot = resolve(process.env.LPL_WEB_ROOT ?? fileURLToPath(new URL("../../web/dist/", import.meta.url)));

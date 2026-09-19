@@ -1,6 +1,8 @@
 import { z } from "zod";
 
 import { CookieJar, fetchWithPolicy, parseJsonBody } from "../http.ts";
+import { storeImageUrl, storePageUrl } from "../links.ts";
+import { storeOffer, type RecordOffer } from "../offer.ts";
 import { baseSettingsSchema, categoryAllowed, compilePattern, patternSetting } from "../settings.ts";
 import { dedupeRecords, normalizeUnit, packFromLabel, priceToMinor, type NormalizedRecord, type RetailAdapter } from "../types.ts";
 
@@ -28,15 +30,32 @@ type KeellsItem = {
   uom: string;
   stockInHand: number;
   isAvailable: boolean;
+  imageUrl?: string | null;
   isPromotionApplied: boolean;
+  /** Rupees off one unit while the promotion runs; the listing keeps `amount` at the shelf price. */
+  promotionDiscountValue?: number | null;
   discountedTotal: number;
   departmentCode?: string;
   subDepartmentCode?: string;
   categoryCode?: string;
 };
-type ItemDetailsResponse = { statusCode: number; result?: { itemDetailResult?: { pageCount: number; itemDetails: KeellsItem[] } } };
+/** One promotion on one item, as the listing sends it beside the items: who it is for, its size, and its limits. */
+export type KeellsPromotion = {
+  promotionDetailID: number;
+  itemID: number;
+  isNexusDeal?: boolean;
+  minimumQuantity?: number;
+  maximumQuantity?: number;
+  discountValue?: number;
+  isValuePromotion?: boolean;
+  discountPercentage?: number;
+  isPercentagePromotion?: boolean;
+  checkPaymentMode?: boolean;
+  promoCode?: string | null;
+};
+type ItemDetailsResponse = { statusCode: number; result?: { itemDetailResult?: { pageCount: number; itemDetails: KeellsItem[] }; promotionItemDetailsList?: KeellsPromotion[] | null } };
 type GuestLoginResponse = { statusCode: number; result?: { userSessionID?: string } };
-type DepartmentSnapshot = { departmentId: number | null; pages: number; truncated: boolean; items: KeellsItem[] };
+type DepartmentSnapshot = { departmentId: number | null; pages: number; truncated: boolean; items: KeellsItem[]; promotions?: KeellsPromotion[] };
 
 export const keellsAdapter: RetailAdapter<KeellsSettings> = {
   kind: "keells_api",
@@ -67,6 +86,7 @@ export const keellsAdapter: RetailAdapter<KeellsSettings> = {
     const departments: DepartmentSnapshot[] = [];
     for (const departmentId of scopes) {
       const items: KeellsItem[] = [];
+      const promotions = new Map<number, KeellsPromotion>();
       const seen = new Set<string>();
       let pages = 1;
       let fetched = 0;
@@ -102,7 +122,9 @@ export const keellsAdapter: RetailAdapter<KeellsSettings> = {
         requests += result.attempts;
         fetched += 1;
         jar.absorb(result.setCookies);
-        const listing = parseJsonBody<ItemDetailsResponse>(result.body, url).result?.itemDetailResult;
+        const body = parseJsonBody<ItemDetailsResponse>(result.body, url).result;
+        const listing = body?.itemDetailResult;
+        for (const promotion of body?.promotionItemDetailsList ?? []) promotions.set(promotion.promotionDetailID, promotion);
         if (!listing) throw new Error(`KEELLS_LISTING_MISSING:${departmentId ?? "all"}`);
         pages = Math.max(1, listing.pageCount ?? 1);
         let fresh = 0;
@@ -117,7 +139,7 @@ export const keellsAdapter: RetailAdapter<KeellsSettings> = {
         // A page with nothing new means the listing is exhausted even if pageCount says otherwise.
         if (fresh === 0 && (listing.itemDetails?.length ?? 0) > 0) break;
       }
-      departments.push({ departmentId, pages: fetched, truncated, items });
+      departments.push({ departmentId, pages: fetched, truncated, items, promotions: [...promotions.values()] });
     }
     return { fetchedAt: context.now.toISOString(), requests, data: { outletCode: settings.outletCode, departments } };
   },
@@ -127,6 +149,8 @@ export const keellsAdapter: RetailAdapter<KeellsSettings> = {
     const exclude = compilePattern(settings.excludeDepartments);
     const records: NormalizedRecord[] = [];
     for (const department of data.departments ?? []) {
+      const promotions = new Map<number, KeellsPromotion[]>();
+      for (const promotion of department.promotions ?? []) promotions.set(promotion.itemID, [...(promotions.get(promotion.itemID) ?? []), promotion]);
       for (const item of department.items) {
         if (!item.isAvailable && !settings.includeUnavailable) continue;
         const departmentPath = `${item.departmentCode ?? ""}/${item.subDepartmentCode ?? ""}`;
@@ -136,6 +160,7 @@ export const keellsAdapter: RetailAdapter<KeellsSettings> = {
         const name = item.name.replace(/\s+/gu, " ").trim();
         if (!name) continue;
         const pack = keellsPack(item.uom, name);
+        const offer = keellsOffer(item, promotions.get(item.itemID) ?? []);
         records.push({
           rowRef: String(item.itemCode || item.itemID),
           itemLabel: name,
@@ -152,12 +177,16 @@ export const keellsAdapter: RetailAdapter<KeellsSettings> = {
             stock_in_hand: item.stockInHand,
             is_available: item.isAvailable,
             promotion: item.isPromotionApplied,
+            promotion_discount: item.promotionDiscountValue ?? null,
             discounted_total: item.discountedTotal,
             department_id: department.departmentId,
             category: departmentPath,
             department_code: item.departmentCode ?? null,
             sub_department_code: item.subDepartmentCode ?? null,
             category_code: item.categoryCode ?? null,
+            url: keellsPageUrl(settings.storefrontOrigin, item.itemCode, name),
+            image: storeImageUrl(item.imageUrl),
+            ...(offer ? { offer } : {}),
           },
         });
       }
@@ -165,6 +194,43 @@ export const keellsAdapter: RetailAdapter<KeellsSettings> = {
     return dedupeRecords(records);
   },
 };
+
+/** The product's page as the web app links to it for a guest: `productDetail?itemcode=<code>&<Name_with_underscores>`. */
+export function keellsPageUrl(storefrontOrigin: string, itemCode: string, name: string): string | null {
+  if (!itemCode) return null;
+  const origin = storefrontOrigin.replace(/^https:\/\/keellssuper\.com/u, "https://www.keellssuper.com").replace(/\/+$/u, "");
+  return storePageUrl(`${origin}/productDetail?itemcode=${encodeURIComponent(itemCode)}&${encodeURIComponent(name.replace(/ /gu, "_"))}`);
+}
+
+/**
+ * Keells leaves `amount` at the shelf price and lists the rupees a promotion takes off one unit. Who gets that price is on the
+ * promotion: Nexus deals are for loyalty members, the rest for every shopper. Promotions tied to a payment card, a promo code,
+ * or buying several at once are not a price for the pack, and an item whose promotion cannot be found is left without an offer.
+ */
+export function keellsOffer(item: Pick<KeellsItem, "amount" | "isPromotionApplied" | "promotionDiscountValue">, promotions: KeellsPromotion[]): RecordOffer | null {
+  const amount = Number(item.amount);
+  const discount = Number(item.promotionDiscountValue);
+  if (!item.isPromotionApplied || !(discount > 0) || !(amount > discount)) return null;
+  const plain = promotions.filter((promotion) => !promotion.checkPaymentMode && !promotion.promoCode && (promotion.minimumQuantity ?? 0) <= 1);
+  // The promotion whose own arithmetic gives the listed discount is the one the listing priced.
+  const priced = plain.find((promotion) => Math.abs(keellsDiscount(promotion, amount) - discount) < 0.51) ?? plain[0];
+  if (!priced) return null;
+  const cap = priced.maximumQuantity ?? 0;
+  return storeOffer({
+    listMinor: priceToMinor(amount),
+    offerMinor: priceToMinor(amount - discount),
+    kind: "discount",
+    audience: priced.isNexusDeal ? "members" : "everyone",
+    label: priced.isNexusDeal ? "Nexus" : undefined,
+    maxQuantity: cap > 0 && cap < 100 ? cap : undefined,
+  });
+}
+
+function keellsDiscount(promotion: KeellsPromotion, amount: number): number {
+  if (promotion.isPercentagePromotion && promotion.discountPercentage) return (amount * promotion.discountPercentage) / 100;
+  if (promotion.isValuePromotion && promotion.discountValue) return promotion.discountValue;
+  return Number.NaN;
+}
 
 /** Keells sells loose produce per kilogram (uom KG) and packs per unit (uom NO); packs carry their size in the name. */
 export function keellsPack(uom: string, name: string): { quantity: string; unit: string } {

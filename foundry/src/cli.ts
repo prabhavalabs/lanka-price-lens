@@ -7,7 +7,9 @@ import { openOperationalDatabase } from "./db.ts";
 import { canonicalizeRun, syncMappingBundle } from "./mapping.ts";
 import { readMappingBundle, readSourceCatalog, readSourceManifest, singleSourceCatalog, type SourceCatalog } from "./manifest.ts";
 import { processPendingArchives, recoverFailedProcessing, runSourceSync } from "./pipeline.ts";
-import { exportSnapshot, remapRecentSnapshots, retailAdapterFor, runRetailCapture, snapshotFileSchema } from "./retail/index.ts";
+import { disabledImageSources, exportSnapshot, fetchStoreImages, purgeStoreImages, remapRecentSnapshots, resolveAdapterSettings, retailAdapterFor, runRetailCapture, snapshotFileSchema, storeImagesRoot, syncStoreProducts } from "./retail/index.ts";
+import { proxiedNodeHttpsFetch } from "./retail/http.ts";
+import { proxyUrlFor } from "./retail/settings.ts";
 import { retryPolicyFor, runWithRetry } from "./retry.ts";
 import { dealsCommand } from "./deals/index.ts";
 import { connectWarehouse, migrateWarehouse, renderReportMarkdown, syncWarehouse, warehouseReport } from "./warehouse/index.ts";
@@ -109,6 +111,14 @@ if (command === "hash-password") {
       console.log(JSON.stringify({ source: entry.manifest.id, ...result, attempts }));
       // A paused source is expected to skip; anything else short of success fails the command.
       if (result.status !== "succeeded" && result.code !== "CAPTURE_PAUSED") process.exitCode = 1;
+      // The pictures of what is on offer follow the capture; they are an addition and never fail it.
+      if (result.status === "succeeded" && !arguments_.includes("--no-images")) {
+        try {
+          console.log(JSON.stringify({ source: entry.manifest.id, store_images: await fetchImagesFor(database, catalog, entry.manifest.id, imagesPerRun(), imagesBudgetMs()) }));
+        } catch (error) {
+          console.error(JSON.stringify({ level: "warning", message: "Store pictures skipped", source: entry.manifest.id, error: error instanceof Error ? error.message : String(error) }));
+        }
+      }
     }
   } finally {
     database.close();
@@ -207,6 +217,26 @@ if (command === "hash-password") {
   } finally {
     database.close();
   }
+} else if (command === "images") {
+  // Store pictures for the items on offer: images fetch [--source <id>] [--limit N] | images status | images purge --source <id>
+  const catalog = await loadCatalog();
+  const database = openOperationalDatabase(databasePath());
+  try {
+    const action = arguments_[0];
+    if (action === "fetch") {
+      const source = optionalValue("--source");
+      const limit = Number(optionalValue("--limit") ?? imagesPerRun());
+      console.log(JSON.stringify({ store_images: await fetchImagesFor(database, catalog, source, Number.isInteger(limit) && limit > 0 ? limit : imagesPerRun()) }));
+    } else if (action === "status") {
+      console.log(JSON.stringify({ root: storeImagesRoot(process.env, databasePath()), disabled: disabledImageSources(), by_status: database.prepare("SELECT source_id, image_status, COUNT(*) AS items, COALESCE(SUM(image_bytes), 0) AS bytes FROM store_product GROUP BY source_id, image_status ORDER BY source_id, image_status").all() }));
+    } else if (action === "purge") {
+      console.log(JSON.stringify({ purged: requiredValue("--source"), ...purgeStoreImages(database, storeImagesRoot(process.env, databasePath()), requiredValue("--source")) }));
+    } else {
+      throw new Error("Usage: foundry images <fetch [--source <id>] [--limit N] | status | purge --source <id>>");
+    }
+  } finally {
+    database.close();
+  }
 } else if (command === "deals") {
   // deals compute [--day YYYY-MM-DD] [--save]: the supermarket deals engine (docs/newsletters.md) over the warehouse.
   const url = valueOf("--url") ?? process.env.LPL_POSTGRES_URL;
@@ -273,7 +303,7 @@ if (command === "hash-password") {
     database.close();
   }
 } else {
-  console.error("Usage: foundry <init|sync|ingest|process|capture|remap|snapshot|warehouse|scheduler|canonicalize|release build|hash-password> [options]");
+  console.error("Usage: foundry <init|sync|ingest|process|capture|remap|snapshot|images|warehouse|scheduler|canonicalize|release build|hash-password> [options]");
   process.exitCode = 1;
 }
 
@@ -286,6 +316,55 @@ function retryOverrides(): { attempts?: number | undefined; cooldownMinutes?: nu
 
 function logRetry(message: string, data: Record<string, unknown>): void {
   console.error(JSON.stringify({ level: "warning", message, ...data }));
+}
+
+function optionalValue(name: string): string | undefined {
+  const index = arguments_.indexOf(name);
+  const value = index >= 0 ? arguments_[index + 1] : undefined;
+  return value && !value.startsWith("--") ? value : undefined;
+}
+
+/** How many pictures one run may fetch per source (`LPL_STORE_IMAGES_PER_RUN`); the first days catch up, then only new items remain. */
+function imagesPerRun(): number {
+  const configured = Number(process.env.LPL_STORE_IMAGES_PER_RUN);
+  return Number.isInteger(configured) && configured > 0 ? configured : 400;
+}
+
+/** How long the pictures may take after one source's capture (`LPL_STORE_IMAGES_SECONDS`, 180): the prices never wait long for them. */
+function imagesBudgetMs(): number {
+  const configured = Number(process.env.LPL_STORE_IMAGES_SECONDS);
+  return (Number.isFinite(configured) && configured > 0 ? configured : 180) * 1000;
+}
+
+/** Brings the store items up to date from the recent snapshots, then fetches what is pending: directly, and through the source's proxy only after a failure. */
+async function fetchImagesFor(database: ReturnType<typeof openOperationalDatabase>, catalog: SourceCatalog, sourceId: string | undefined, limit: number, budgetMs?: number): Promise<Record<string, unknown>> {
+  const items = syncStoreProducts(database, { sourceId });
+  const proxies = new Map<string, ReturnType<typeof proxiedNodeHttpsFetch> | null>();
+  const proxyFor = (id: string) => {
+    if (!proxies.has(id)) {
+      let client: ReturnType<typeof proxiedNodeHttpsFetch> | null = null;
+      try {
+        const entry = catalog.find(id);
+        const adapter = entry ? retailAdapterFor(entry.manifest) : null;
+        const proxy = entry && adapter ? proxyUrlFor(resolveAdapterSettings(database, entry.manifest, adapter)) : null;
+        client = proxy ? proxiedNodeHttpsFetch(proxy) : null;
+      } catch {
+        client = null;
+      }
+      proxies.set(id, client);
+    }
+    return proxies.get(id) ?? null;
+  };
+  const pictures = await fetchStoreImages(database, {
+    root: storeImagesRoot(process.env, databasePath()),
+    sourceId,
+    limit,
+    skipSources: disabledImageSources(),
+    budgetMs,
+    proxyFor,
+    log: (level, message, data) => { if (level === "warning" && process.env.LPL_STORE_IMAGES_VERBOSE) console.error(JSON.stringify({ level, message, ...data })); },
+  });
+  return { items, pictures };
 }
 
 function requiredValue(name: string): string {

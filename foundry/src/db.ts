@@ -459,6 +459,36 @@ function migrate(database: OperationalDatabase): void {
     CREATE INDEX IF NOT EXISTS price_observation_active_publication_idx
       ON price_observation(source_publication_id)
       WHERE status = 'active';
+    -- One row per store item that has been on offer: where the store shows it, the original address of its
+    -- picture, and the copy kept under the store-images root (retail/store-products.ts, retail/images.ts).
+    -- The site's own generated product photos live elsewhere and are never touched by this.
+    CREATE TABLE IF NOT EXISTS store_product (
+      source_id TEXT NOT NULL REFERENCES source(id),
+      row_ref TEXT NOT NULL,
+      label TEXT NOT NULL,
+      page_url TEXT,
+      image_source_url TEXT,
+      image_status TEXT NOT NULL DEFAULT 'pending' CHECK (image_status IN ('pending', 'stored', 'failed', 'missing', 'none')),
+      image_path TEXT,
+      image_sha256 TEXT,
+      image_bytes INTEGER,
+      image_content_type TEXT,
+      image_via TEXT CHECK (image_via IS NULL OR image_via IN ('direct', 'proxy')),
+      image_attempts INTEGER NOT NULL DEFAULT 0,
+      image_error TEXT,
+      image_fetched_at TEXT,
+      next_attempt_at TEXT,
+      first_seen_at TEXT NOT NULL,
+      last_seen_at TEXT NOT NULL,
+      PRIMARY KEY (source_id, row_ref)
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS store_product_image_queue_idx
+      ON store_product(image_status, next_attempt_at) WHERE image_source_url IS NOT NULL;
+
+    -- The warehouse sync reads the last few days of store rows for their offers.
+    CREATE INDEX IF NOT EXISTS staging_observation_retail_day_idx
+      ON staging_observation(source_date)
+      WHERE price_type = 'retail_online_store';
 
     CREATE TABLE IF NOT EXISTS release_observation (
       data_version TEXT NOT NULL REFERENCES data_release(data_version),

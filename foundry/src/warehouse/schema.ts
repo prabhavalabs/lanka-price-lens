@@ -203,6 +203,45 @@ export const warehouseMigrations: ReadonlyArray<{ version: number; name: string;
     // 'pooled': items differ only by origin, grade, or size and pool in a consumer view; 'by_variety': different things under one name.
     statements: [`ALTER TABLE product ADD COLUMN IF NOT EXISTS comparison TEXT NOT NULL DEFAULT 'pooled'`],
   },
+  {
+    version: 8,
+    name: "store offers",
+    statements: [
+      // What a store says about its own price that day: list price, offer price, who it is for. Mapped rows carry their item and the offer in its unit.
+      `CREATE TABLE IF NOT EXISTS store_offer (
+        staging_id TEXT PRIMARY KEY,
+        observed_on DATE NOT NULL,
+        source_id TEXT NOT NULL REFERENCES source(id),
+        market_id TEXT REFERENCES market(id),
+        market_label TEXT NOT NULL,
+        row_ref TEXT NOT NULL,
+        label TEXT NOT NULL,
+        category TEXT,
+        pack_quantity TEXT NOT NULL,
+        pack_unit TEXT NOT NULL,
+        price_minor BIGINT NOT NULL CHECK (price_minor > 0),
+        list_minor BIGINT NOT NULL CHECK (list_minor > 0),
+        offer_minor BIGINT NOT NULL CHECK (offer_minor > 0 AND offer_minor < list_minor),
+        pct NUMERIC(5,1) NOT NULL,
+        kind TEXT NOT NULL,
+        audience TEXT NOT NULL CHECK (audience IN ('everyone', 'members')),
+        offer_label TEXT,
+        max_quantity INTEGER,
+        item_id TEXT REFERENCES item(id),
+        normalized_unit TEXT,
+        normalized_list_minor BIGINT,
+        normalized_offer_minor BIGINT
+      )`,
+      `CREATE INDEX IF NOT EXISTS store_offer_day_market_idx ON store_offer (observed_on DESC, market_id, pct)`,
+      `CREATE INDEX IF NOT EXISTS store_offer_item_idx ON store_offer (item_id, observed_on DESC) WHERE item_id IS NOT NULL`,
+    ],
+  },
+  {
+    version: 9,
+    name: "store offer links and pictures",
+    // Where the store shows the item, and the copy of the store's picture kept under the store-images root (a path relative to it).
+    statements: [`ALTER TABLE store_offer ADD COLUMN IF NOT EXISTS url TEXT`, `ALTER TABLE store_offer ADD COLUMN IF NOT EXISTS image_path TEXT`],
+  },
 ];
 
 export const materializedViews = ["daily_item_price", "latest_item_price"] as const;

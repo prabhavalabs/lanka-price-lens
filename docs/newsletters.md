@@ -182,6 +182,21 @@ counts, `stats.considered` fresh series with a usable baseline. The essentials l
 from the repository's `data/deals/essentials.json` unless `LPL_DEALS_ESSENTIALS_PATH` points
 elsewhere, so a container image must carry `data/deals` beside `data/mappings`.
 
+**Store offers.** Beside the inferred drops the day carries `store_offers: DeclaredOffer[]`:
+what the stores themselves mark down on catalogue products, read from the warehouse's
+`store_offer` (see [retail-capture.md](retail-capture.md#store-offers)). Unlike a drop this
+needs no history, so an offer that has run for weeks still shows. Rules: the day or the day
+before, each store on its own newest day; cuts of 10 % and more (`storeOfferPct`); the deepest
+cut per product, an offer for everyone before a members' one at the same cut; the same
+base-variety rule as the price window; at most twelve (`maxStoreOffers`). Each carries the
+product, the store's own label for the pack, `now_minor` and `was_minor` on the product's
+unit, `pct`, `audience` (`members` for Keells Nexus) with `offer_label`, and the product
+page. Days saved before the engine read them lack the field, and a warehouse not yet migrated
+yields none rather than failing the day. The mail shows them as "Store offers today" after the
+drops ("20% off at Keells with Nexus", the store's label, and its regular price), each
+person's Telegram copy follows the mail, the channel digest gains a "Store offers" section,
+and a day with offers alone is worth sending.
+
 Results are kept in the operational SQLite as `deal_day(day TEXT PRIMARY KEY, computed_at,
 deals_json)` through `foundry/src/deals/store.ts` (`saveDealsDay`, `readDealsDay(day)`,
 `latestDealsDay()`), and exposed by `GET /v1/public/deals/today` (the latest day; 503
