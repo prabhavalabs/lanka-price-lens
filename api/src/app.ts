@@ -95,6 +95,7 @@ import { unsubscribeRoutes } from "./newsletters/unsubscribe.ts";
 import { surpriseRoutes } from "./surprise.ts";
 import { buildRecipeIndex, computeMenu, parseRecipeQuery, priceLookupFor, priceOptions, pricedProductIds, queryRecipes, recipeView, type RecipeIndexEntry } from "./recipe-views.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
+import { parseOfferQuery, publicOffers } from "./offers.ts";
 import {
   archivedKnowledgePdf,
   knowledgeIndexStatus,
@@ -458,6 +459,12 @@ export function createApp(
     const ids = (context.req.query("products") ?? "").split(",").map((id) => id.trim()).filter(Boolean);
     if (!ids.length) return context.json(envelope(context.get("requestId"), null, false, "products is required: a comma-separated list of product ids"), 400);
     return context.json(envelope(context.get("requestId"), await publicBasket(client, published(), ids)));
+  });
+  // Store offers (docs/retail-capture.md, "Store offers"): what each supermarket itself marks down today.
+  app.get("/v1/public/offers", async (context) => {
+    const client = await warehouse();
+    if (!client) return context.json(envelope(context.get("requestId"), null, false, "Offers are not available right now"), 503);
+    return context.json(envelope(context.get("requestId"), await publicOffers(client, published(), parseOfferQuery(context.req.query()))));
   });
   app.get("/v1/public/products/:id", async (context) => {
     const client = await warehouse();
