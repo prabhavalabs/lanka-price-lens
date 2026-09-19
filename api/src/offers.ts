@@ -31,6 +31,14 @@ export type PublicOffer = {
   offer_label: string | null;
   max_quantity: number | null;
   observed_on: string;
+  /** The item's own page on the store's site, so a deal leads to the shelf it came from. */
+  url: string | null;
+  /**
+   * A picture for the card, as a path on this site: the store's own picture of the item once a copy is kept
+   * (`/store-images/…`), else the site's generated photo of the product the label maps to (`/images/products/…`), else none.
+   */
+  image: string | null;
+  image_origin: "store" | "generated" | null;
   /** The catalogue product the label maps to, with the offer on the product's unit so it compares with other sellers. */
   product: { id: string; label: string; unit: string; list: number; offer: number } | null;
 };
@@ -65,7 +73,11 @@ type OfferRow = {
   price_minor: string; list_minor: string; offer_minor: string; pct: string; kind: PublicOffer["kind"]; audience: PublicOffer["audience"];
   offer_label: string | null; max_quantity: number | null; observed_on: string;
   product_id: string | null; product_label: string | null; normalized_unit: string | null; normalized_list_minor: string | null; normalized_offer_minor: string | null;
+  url: string | null; image_path: string | null;
 };
+
+/** How a card finds a picture when the store's own is not kept yet: whether the site has a generated photo of a product. */
+export type OfferPictures = { hasProductPhoto?: ((productId: string) => boolean) | null | undefined };
 
 export function parseOfferQuery(query: Record<string, string | undefined>): OfferQuery {
   const audience = query.audience === "everyone" || query.audience === "members" ? query.audience : undefined;
@@ -81,7 +93,7 @@ export function parseOfferQuery(query: Record<string, string | undefined>): Offe
   };
 }
 
-export async function publicOffers(client: WarehouseClient, sources: SourceManifest[], query: OfferQuery = {}, today = new Date()): Promise<OffersPage> {
+export async function publicOffers(client: WarehouseClient, sources: SourceManifest[], query: OfferQuery = {}, today = new Date(), pictures: OfferPictures = {}): Promise<OffersPage> {
   const sourceIds = sources.map((source) => source.id);
   const page = query.page ?? 1;
   const pageSize = query.pageSize ?? offerRules.defaultPageSize;
@@ -119,7 +131,7 @@ export async function publicOffers(client: WarehouseClient, sources: SourceManif
      SELECT offer.staging_id, offer.market_id, COALESCE(market.label_en, offer.market_label) AS market, offer.label, offer.category, offer.pack_quantity, offer.pack_unit,
             offer.price_minor::TEXT, offer.list_minor::TEXT, offer.offer_minor::TEXT, offer.pct::TEXT, offer.kind, offer.audience, offer.offer_label, offer.max_quantity,
             offer.observed_on::TEXT AS observed_on, product.id AS product_id, product.label_en AS product_label, offer.normalized_unit,
-            offer.normalized_list_minor::TEXT, offer.normalized_offer_minor::TEXT
+            offer.normalized_list_minor::TEXT, offer.normalized_offer_minor::TEXT, offer.url, offer.image_path
      ${from} ${where}
      -- The deepest cut first; a catalogue product before a shelf item at the same cut, then by name so pages are stable.
      ORDER BY offer.pct, (product.id IS NULL), offer.label, offer.staging_id
@@ -133,12 +145,12 @@ export async function publicOffers(client: WarehouseClient, sources: SourceManif
     total,
     page,
     page_size: pageSize,
-    items: rows.map(offerOf),
+    items: rows.map((row) => offerOf(row, pictures)),
   };
 }
 
 /** The offers on one product's items, newest day per store, cheapest offer first: what the product page and the deals engine read. */
-export async function productOffers(client: WarehouseClient, sources: SourceManifest[], productIds: string[], today = new Date()): Promise<Map<string, PublicOffer[]>> {
+export async function productOffers(client: WarehouseClient, sources: SourceManifest[], productIds: string[], today = new Date(), pictures: OfferPictures = {}): Promise<Map<string, PublicOffer[]>> {
   const sourceIds = sources.map((source) => source.id);
   const ids = [...new Set(productIds)].filter((id) => /^[a-z0-9_]+$/u.test(id));
   const byProduct = new Map<string, PublicOffer[]>();
@@ -149,7 +161,7 @@ export async function productOffers(client: WarehouseClient, sources: SourceMani
      SELECT offer.staging_id, offer.market_id, COALESCE(market.label_en, offer.market_label) AS market, offer.label, offer.category, offer.pack_quantity, offer.pack_unit,
             offer.price_minor::TEXT, offer.list_minor::TEXT, offer.offer_minor::TEXT, offer.pct::TEXT, offer.kind, offer.audience, offer.offer_label, offer.max_quantity,
             offer.observed_on::TEXT AS observed_on, product.id AS product_id, product.label_en AS product_label, offer.normalized_unit,
-            offer.normalized_list_minor::TEXT, offer.normalized_offer_minor::TEXT
+            offer.normalized_list_minor::TEXT, offer.normalized_offer_minor::TEXT, offer.url, offer.image_path
      FROM store_offer offer
      JOIN latest ON latest.source_id = offer.source_id AND latest.market_label = offer.market_label AND latest.day = offer.observed_on
      LEFT JOIN market ON market.id = offer.market_id
@@ -161,13 +173,21 @@ export async function productOffers(client: WarehouseClient, sources: SourceMani
   );
   for (const row of rows) {
     if (!row.product_id) continue;
-    byProduct.set(row.product_id, [...(byProduct.get(row.product_id) ?? []), offerOf(row)]);
+    byProduct.set(row.product_id, [...(byProduct.get(row.product_id) ?? []), offerOf(row, pictures)]);
   }
   return byProduct;
 }
 
-function offerOf(row: OfferRow): PublicOffer {
+const storedPicture = /^[a-z0-9_]+\/[0-9a-f]{2}\/[0-9a-f]{64}\.(?:jpg|png|webp|gif|avif)$/u;
+
+function offerOf(row: OfferRow, pictures: OfferPictures): PublicOffer {
   const rupees = (minor: string) => Number(minor) / 100;
+  // The store's own picture first; the site's generated photo of the product only stands in for it, and is never replaced by it.
+  const picture: Pick<PublicOffer, "image" | "image_origin"> = row.image_path && storedPicture.test(row.image_path)
+    ? { image: `/store-images/${row.image_path}`, image_origin: "store" }
+    : row.product_id && pictures.hasProductPhoto?.(row.product_id)
+      ? { image: `/images/products/${row.product_id.replace(/^product_/u, "")}.jpg`, image_origin: "generated" }
+      : { image: null, image_origin: null };
   return {
     id: row.staging_id,
     market_id: row.market_id,
@@ -184,6 +204,8 @@ function offerOf(row: OfferRow): PublicOffer {
     offer_label: row.offer_label,
     max_quantity: row.max_quantity,
     observed_on: row.observed_on,
+    url: row.url && /^https:\/\//u.test(row.url) ? row.url : null,
+    ...picture,
     product: row.product_id && row.product_label && row.normalized_unit && row.normalized_list_minor && row.normalized_offer_minor
       ? { id: row.product_id, label: row.product_label, unit: row.normalized_unit, list: rupees(row.normalized_list_minor), offer: rupees(row.normalized_offer_minor) }
       : null,

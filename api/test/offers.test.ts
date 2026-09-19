@@ -7,7 +7,7 @@ import test from "node:test";
 
 import { filesystemArchiveStorage } from "@lanka-pricelens/foundry/archive-storage";
 import { openOperationalDatabase } from "@lanka-pricelens/foundry/db";
-import { embeddedWarehouse } from "@lanka-pricelens/foundry/warehouse";
+import { embeddedWarehouse, syncWarehouse } from "@lanka-pricelens/foundry/warehouse";
 import { mappingBundleSchema, sourceManifestSchema } from "@lanka-pricelens/shared";
 
 import { createApp } from "../src/app.ts";
@@ -67,9 +67,9 @@ const snapshot = {
   captured_at: `${today}T02:24:00.000Z`,
   adapter: "keells_api",
   records: [
-    record(0, "Carrot", 36_000, { category: "V/VWM", offer: { list_minor: 36_000, offer_minor: 28_800, kind: "discount", audience: "members", label: "Nexus", max_quantity: 3 } }),
+    record(0, "Carrot", 36_000, { category: "V/VWM", url: "https://www.keellssuper.com/productDetail?itemcode=row-0&Carrot", image: "https://essstr.blob.core.windows.net/essimg/350x/Small/Pic0.jpg", offer: { list_minor: 36_000, offer_minor: 28_800, kind: "discount", audience: "members", label: "Nexus", max_quantity: 3 } }),
     record(1, "Washing Powder 1kg", 90_000, { category: "H/HLA", offer: { list_minor: 100_000, offer_minor: 90_000, kind: "mrp", audience: "everyone" } }),
-    record(2, "Dish Soap 500ml", 45_000, { category: "H/HDW", offer: { list_minor: 60_000, offer_minor: 45_000, kind: "promo_price", audience: "everyone" } }),
+    record(2, "Dish Soap 500ml", 45_000, { category: "H/HDW", url: "javascript:alert(1)", image: "https://evil.example/soap.jpg", offer: { list_minor: 60_000, offer_minor: 45_000, kind: "promo_price", audience: "everyone" } }),
     ...Array.from({ length: 10 }, (_, index) => record(index + 3, `Shelf item ${index + 1}`, 10_000 + index * 100, { category: "G/GSN" })),
   ],
 };
@@ -108,6 +108,21 @@ test("store offers are public: each store on its newest day, deepest cut first, 
     const paged = await read("?pageSize=2&page=2");
     assert.deepEqual([paged.page, paged.page_size, paged.items.map((item) => item.label)], [2, 2, ["Washing Powder 1kg"]]);
     assert.deepEqual(parseOfferQuery({ page: "-4", pageSize: "100000", audience: "staff", market: "Robert'); DROP" }), { market: undefined, search: undefined, audience: undefined, catalogue: undefined, page: 1, pageSize: 200 });
+
+    // Every deal leads to its shelf, and shows the store's own picture once a copy is kept; until then a tracked product borrows the site's photo.
+    assert.equal(carrot.url, "https://www.keellssuper.com/productDetail?itemcode=row-0&Carrot");
+    assert.deepEqual([carrot.image, carrot.image_origin], ["/images/products/carrot.jpg", "generated"]);
+    assert.deepEqual([all.items[0]!.url, all.items[0]!.image, all.items[0]!.image_origin], [null, null, null], "an address that is not a store's page or picture never reaches a card");
+    assert.deepEqual(database.prepare("SELECT row_ref, image_status, image_source_url FROM store_product ORDER BY row_ref").all(), [
+      { row_ref: "row-0", image_status: "pending", image_source_url: "https://essstr.blob.core.windows.net/essimg/350x/Small/Pic0.jpg" },
+      { row_ref: "row-1", image_status: "none", image_source_url: null },
+      { row_ref: "row-2", image_status: "none", image_source_url: null },
+    ], "the items on offer are kept with the original address of their picture, waiting to be fetched");
+    const stored = `keells_test/ab/${"ab".padEnd(64, "1")}.jpg`;
+    database.prepare("UPDATE store_product SET image_status = 'stored', image_path = ? WHERE row_ref = 'row-0'").run(stored);
+    await syncWarehouse(database, client);
+    const pictured = (await read("?catalogue=1")).items[0]!;
+    assert.deepEqual([pictured.image, pictured.image_origin], [`/store-images/${stored}`, "store"], "the store's own picture takes over; the generated photo itself is untouched");
 
     const page = await app.request("http://localhost/v1/public/products/product_carrot");
     assert.equal(page.status, 200, await page.clone().text());

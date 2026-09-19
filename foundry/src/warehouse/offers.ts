@@ -1,5 +1,7 @@
 import type { OperationalDatabase } from "../db.ts";
+import { readStoreLinks } from "../retail/links.ts";
 import { readOffer } from "../retail/offer.ts";
+import { syncStoreProducts } from "../retail/store-products.ts";
 import { valuesPlaceholders, type WarehouseClient } from "./client.ts";
 
 /**
@@ -17,7 +19,7 @@ export const offerSync = { windowDays: 3, retentionDays: 35 } as const;
 const OFFER_COLUMNS = [
   "staging_id", "observed_on", "source_id", "market_id", "market_label", "row_ref", "label", "category", "pack_quantity", "pack_unit",
   "price_minor", "list_minor", "offer_minor", "pct", "kind", "audience", "offer_label", "max_quantity",
-  "item_id", "normalized_unit", "normalized_list_minor", "normalized_offer_minor",
+  "item_id", "normalized_unit", "normalized_list_minor", "normalized_offer_minor", "url", "image_path",
 ] as const;
 
 type OfferSourceRow = {
@@ -36,6 +38,8 @@ type OfferSourceRow = {
   normalized_unit: string | null;
   observed_min: number | null;
   normalized_min: number | null;
+  page_url: string | null;
+  image_path: string | null;
 };
 
 export type OfferSyncResult = { from: string; rows: number; mapped: number };
@@ -43,16 +47,20 @@ export type OfferSyncResult = { from: string; rows: number; mapped: number };
 export async function syncOffers(database: OperationalDatabase, client: WarehouseClient, options: { now?: Date | undefined; windowDays?: number | undefined; batchSize?: number | undefined } = {}): Promise<OfferSyncResult> {
   const now = options.now ?? new Date();
   const from = shiftDay(now, -(options.windowDays ?? offerSync.windowDays));
+  // The store items behind the offers (page link, stored picture) are brought up to date first, so a new offer has its link at once.
+  syncStoreProducts(database, { days: options.windowDays ?? offerSync.windowDays, now });
   const rows = database
     .prepare(
       `SELECT staging.id AS staging_id, staging.source_date, publication.source_id, mapping.market_id, staging.source_market_label,
               staging.source_row_ref, staging.source_item_label, staging.source_quantity, staging.source_unit, staging.min_value_minor, staging.raw_json,
-              observation.item_id, observation.normalized_unit, observation.min_value_minor AS observed_min, observation.normalized_min_value_minor AS normalized_min
+              observation.item_id, observation.normalized_unit, observation.min_value_minor AS observed_min, observation.normalized_min_value_minor AS normalized_min,
+              product.page_url, CASE WHEN product.image_path IS NOT NULL THEN product.image_path END AS image_path
        FROM staging_observation staging
        JOIN source_artifact artifact ON artifact.id = staging.artifact_id
        JOIN source_publication publication ON publication.id = artifact.publication_id
        LEFT JOIN source_market_mapping mapping ON mapping.source_id = publication.source_id AND mapping.source_label = staging.source_market_label
        LEFT JOIN price_observation observation ON observation.staging_id = staging.id AND observation.status = 'active'
+       LEFT JOIN store_product product ON product.source_id = publication.source_id AND product.row_ref = staging.source_row_ref
        WHERE staging.price_type = 'retail_online_store' AND staging.source_date >= ? AND staging.status != 'stale'
          AND json_extract(staging.raw_json, '$.offer.kind') IS NOT NULL`,
     )
@@ -77,6 +85,8 @@ export async function syncOffers(database: OperationalDatabase, client: Warehous
       row.min_value_minor, offer.list_minor, offer.offer_minor, offer.pct, offer.kind, offer.audience, offer.label ?? null, offer.max_quantity ?? null,
       scale === null ? null : row.item_id, scale === null ? null : row.normalized_unit,
       scale === null ? null : Math.round(offer.list_minor * scale), scale === null ? null : Math.round(offer.offer_minor * scale),
+      // The row's own link when it has one, else the last one known for the item; the picture only once a copy is stored.
+      readStoreLinks(raw).url ?? row.page_url, storedImagePath(row.image_path),
     ]);
   }
 
@@ -89,6 +99,11 @@ export async function syncOffers(database: OperationalDatabase, client: Warehous
     }
   });
   return { from, rows: values.length, mapped };
+}
+
+/** A stored picture's path as images.ts writes it: `<source>/<two hex>/<sha256>.<ext>`; anything else is not one. */
+export function storedImagePath(path: string | null): string | null {
+  return path && /^[a-z0-9_]+\/[0-9a-f]{2}\/[0-9a-f]{64}\.(?:jpg|png|webp|gif|avif)$/u.test(path) ? path : null;
 }
 
 function shiftDay(date: Date, days: number): string {

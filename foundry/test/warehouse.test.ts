@@ -47,7 +47,7 @@ async function count(client: WarehouseClient, sql: string, params: unknown[] = [
 test("warehouse schema migrates once and stays idempotent", async () => {
   const client = await embeddedWarehouse();
   try {
-    assert.deepEqual(await migrateWarehouse(client), [1, 2, 3, 4, 5, 6, 7, 8]);
+    assert.deepEqual(await migrateWarehouse(client), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
     assert.deepEqual(await migrateWarehouse(client), []);
     const tables = await client.query<{ table_name: string }>("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name");
     for (const expected of ["source", "market", "product", "item", "unit_rule", "publication", "price_observation", "sync_state", "schema_migration"]) {
@@ -65,7 +65,7 @@ test("sync copies the canonical layer, resumes from its cursor, and propagates s
   const client = await embeddedWarehouse();
   try {
     const first = await syncWarehouse(database, client, { batchSize: 1 });
-    assert.deepEqual(first.migrations, [1, 2, 3, 4, 5, 6, 7, 8]);
+    assert.deepEqual(first.migrations, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
     assert.deepEqual(first.references, { source: 2, market: 2, product: 1, item: 1, unit_rule: 1, publication: 2, item_alias: 2 });
     assert.equal(first.observations.upserted, 2);
     assert.equal(first.observations.batches, 2, "batches follow the batch size");
@@ -126,8 +126,18 @@ test("store offers follow the recent snapshots: mapped rows land in the item's u
     stage.run("stg_5", "r5", "No Offer Tea 100g", 40_000, 40_000, "validated", JSON.stringify({ category: "Beverages" }));
     stage.run("stg_6", "r6", "Broken Offer 1kg", 40_000, 40_000, "validated", JSON.stringify({ offer: { list_minor: 40_000, offer_minor: 40_000, kind: "mrp" } }));
 
+    // The carrot carries the store's page and picture address; its picture has been stored, the car wash's has not.
+    database.prepare("UPDATE staging_observation SET raw_json = json_set(raw_json, '$.url', 'https://www.keellssuper.com/productDetail?itemcode=r2&Carrot', '$.image', 'https://essstr.blob.core.windows.net/essimg/350x/Small/Picr2.jpg') WHERE id = 'stg_2'").run();
+    database.prepare("UPDATE staging_observation SET raw_json = json_set(raw_json, '$.url', 'https://evil.example/carwash') WHERE id = 'stg_3'").run();
+    const sha = "ab".padEnd(64, "0");
+    database.prepare("INSERT INTO store_product (source_id, row_ref, label, page_url, image_source_url, image_status, image_path, first_seen_at, last_seen_at) VALUES ('keells', 'r2', 'Carrot', NULL, 'https://essstr.blob.core.windows.net/essimg/350x/Small/Picr2.jpg', 'stored', ?, '2026-09-02', '2026-09-02'), ('keells', 'r3', 'Car Wash 500ml', 'https://www.keellssuper.com/productDetail?itemcode=r3&Car_Wash', NULL, 'none', '../../etc/passwd', '2026-09-02', '2026-09-02')").run(`keells/ab/${sha}.jpg`);
+
     const synced = await syncWarehouse(database, client, { now: new Date("2026-09-03T02:00:00.000Z") });
     assert.deepEqual(synced.offers, { from: "2026-08-31", rows: 2, mapped: 1 });
+    assert.deepEqual(await client.query("SELECT staging_id, url, image_path FROM store_offer ORDER BY staging_id"), [
+      { staging_id: "stg_2", url: "https://www.keellssuper.com/productDetail?itemcode=r2&Carrot", image_path: `keells/ab/${sha}.jpg` },
+      { staging_id: "stg_3", url: "https://www.keellssuper.com/productDetail?itemcode=r3&Car_Wash", image_path: null },
+    ], "a row's own link wins, an address off the stores' sites falls back to the item's last known link, and only a real stored path is a picture");
     const rows = await client.query<Record<string, unknown>>(
       "SELECT staging_id, observed_on::TEXT, market_id, label, category, price_minor::INT, list_minor::INT, offer_minor::INT, pct::FLOAT, kind, audience, offer_label, max_quantity, item_id, normalized_unit, normalized_list_minor::INT, normalized_offer_minor::INT FROM store_offer ORDER BY staging_id",
     );

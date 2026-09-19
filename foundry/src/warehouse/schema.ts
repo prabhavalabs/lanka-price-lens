@@ -236,6 +236,12 @@ export const warehouseMigrations: ReadonlyArray<{ version: number; name: string;
       `CREATE INDEX IF NOT EXISTS store_offer_item_idx ON store_offer (item_id, observed_on DESC) WHERE item_id IS NOT NULL`,
     ],
   },
+  {
+    version: 9,
+    name: "store offer links and pictures",
+    // Where the store shows the item, and the copy of the store's picture kept under the store-images root (a path relative to it).
+    statements: [`ALTER TABLE store_offer ADD COLUMN IF NOT EXISTS url TEXT`, `ALTER TABLE store_offer ADD COLUMN IF NOT EXISTS image_path TEXT`],
+  },
 ];
 
 export const materializedViews = ["daily_item_price", "latest_item_price"] as const;
