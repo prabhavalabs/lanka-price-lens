@@ -9,6 +9,8 @@ coverage/
 
 # Runtime data and source artifacts
 data/raw/
+# The stores' pictures fetched beside a local database; they are the stores' files and never belong in the repository.
+store-images/
 data/state/
 data/releases/
 data/quarantine/
