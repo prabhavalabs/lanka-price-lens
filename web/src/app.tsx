@@ -23,6 +23,7 @@ import { ProductPage } from "@/pages/product";
 import { RecipePage } from "@/pages/recipe";
 import { MenuPage, MenusPage } from "@/pages/menus";
 import { RecipesPage } from "@/pages/recipes";
+import { DealsPage } from "@/pages/deals";
 
 /** Loads analytics when the deployment has an id, and reports a page view on every route change. */
 function useAnalytics(id: string | null): void {
@@ -78,6 +79,7 @@ export function App() {
         <Route path="/" element={<BoardPage />} />
         <Route path="/p/:id" element={<ProductPage />} />
         <Route path="/basket" element={<BasketPage />} />
+        <Route path="/deals" element={<DealsPage />} />
         <Route path="/recipes" element={<RecipesPage />} />
         <Route path="/r/:id" element={<RecipePage />} />
         <Route path="/menus" element={<MenusPage />} />

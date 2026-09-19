@@ -79,6 +79,42 @@ export const fetchOverview = (): Promise<Overview> => get<Overview>("/v1/public/
 
 export const fetchProduct = (id: string, days: number): Promise<Detail> => get<Detail>(`/v1/public/products/${encodeURIComponent(id)}?days=${days}`);
 
+export type Offer = {
+  id: string;
+  market_id: string | null;
+  market: string;
+  label: string;
+  category: string | null;
+  pack: string;
+  price: number;
+  list: number;
+  offer: number;
+  pct: number;
+  kind: "mrp" | "promo_price" | "discount" | "compare_at";
+  audience: "everyone" | "members";
+  offer_label: string | null;
+  max_quantity: number | null;
+  observed_on: string;
+  product: { id: string; label: string; unit: string; list: number; offer: number } | null;
+};
+
+export type OffersPage = { generated_at: string; as_of: string | null; stores: Array<{ market_id: string; market: string; observed_on: string; offers: number }>; total: number; page: number; page_size: number; items: Offer[] };
+
+export type OfferFilters = { market?: string; audience?: "everyone" | "members" | ""; catalogue?: boolean; q?: string; page?: number; pageSize?: number };
+
+/** What the stores themselves mark down today; every filter is optional. */
+export function fetchOffers(filters: OfferFilters = {}, signal?: AbortSignal): Promise<OffersPage> {
+  const query = new URLSearchParams();
+  if (filters.market) query.set("market", filters.market);
+  if (filters.audience) query.set("audience", filters.audience);
+  if (filters.catalogue) query.set("catalogue", "1");
+  if (filters.q) query.set("q", filters.q);
+  if (filters.page && filters.page > 1) query.set("page", String(filters.page));
+  if (filters.pageSize) query.set("pageSize", String(filters.pageSize));
+  const suffix = query.toString();
+  return get<OffersPage>(`/v1/public/offers${suffix ? `?${suffix}` : ""}`, signal);
+}
+
 export type BasketSeller = { market_id: string; market_label: string; group: Group; unit: string; low: number; high: number; mid: number; observed_on: string };
 
 export type BasketProduct = { id: string; label: string; category: string; sellers: BasketSeller[] };

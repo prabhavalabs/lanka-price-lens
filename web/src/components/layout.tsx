@@ -1,4 +1,4 @@
-import { RiCalendarEventLine, RiRestaurantLine } from "@remixicon/react";
+import { RiCalendarEventLine, RiPriceTag3Line, RiRestaurantLine } from "@remixicon/react";
 import type { ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
 
@@ -33,6 +33,9 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
           <div className="order-last w-full min-w-0 sm:order-none sm:ml-2 sm:w-auto sm:max-w-lg sm:flex-1"><SearchBox /></div>
           <nav aria-label="Site" className="ml-auto flex shrink-0 items-center gap-0 sm:gap-0.5">
+            <NavLink to="/deals" className={({ isActive }) => cn("no-underline", isActive && "text-primary")}>
+              <Button className="gap-1.5 px-1.5 md:px-2.5" size="sm" variant="ghost"><RiPriceTag3Line className="size-4" /><span className="hidden md:inline">Deals</span></Button>
+            </NavLink>
             <NavLink to="/recipes" className={({ isActive }) => cn("no-underline", isActive && "text-primary")}>
               <Button className="gap-1.5 px-1.5 md:px-2.5" size="sm" variant="ghost"><RiRestaurantLine className="size-4" /><span className="hidden md:inline">Recipes</span></Button>
             </NavLink>
