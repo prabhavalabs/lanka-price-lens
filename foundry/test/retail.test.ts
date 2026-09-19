@@ -11,9 +11,10 @@ import { filesystemArchiveStorage } from "../src/archive-storage.ts";
 import { openOperationalDatabase, type OperationalDatabase } from "../src/db.ts";
 import { cargillsAdapter, cargillsPack } from "../src/retail/adapters/cargills.ts";
 import { discoverGlomarkCategories, extractGlomarkProducts, glomarkAdapter, glomarkPack } from "../src/retail/adapters/glomark.ts";
-import { keellsAdapter, keellsPack } from "../src/retail/adapters/keells.ts";
+import { keellsAdapter, keellsOffer, keellsPack } from "../src/retail/adapters/keells.ts";
 import { outletCode, sparAdapter, sparLabel, sparPack } from "../src/retail/adapters/spar.ts";
 import { pauseHours } from "../src/retail/capture.ts";
+import { readOffer, storeOffer } from "../src/retail/offer.ts";
 import { remapRecentSnapshots } from "../src/retail/remap.ts";
 import { exportSnapshot, snapshotFileSchema } from "../src/retail/snapshot.ts";
 import { runWithRetry } from "../src/retry.ts";
@@ -205,6 +206,55 @@ test("adapters normalise captured payloads into the unified record shape", () =>
   const categories = discoverGlomarkCategories(fixture("glomark-home.html"));
   assert.ok(categories.length >= 100 && categories.includes("/fresh/vegetable/c/145") && categories.every((path) => /\/c\/\d+$/u.test(path)));
   assert.deepEqual(discoverGlomarkCategories('<a href="/Beverages/Malt/c/573">x</a><a href="/beverages/malt/c/573">y</a><a href="/Beverages/Milk%2520Foods/c/129">z</a>'), ["/Beverages/Milk%2520Foods/c/129", "/beverages/malt/c/573"], "one path per category id, plain lower-case preferred");
+});
+
+test("adapters keep each store's own offer beside the price, and the price stays what every shopper pays", () => {
+  assert.deepEqual(storeOffer({ listMinor: 120_000, offerMinor: 102_000, kind: "mrp" }), { list_minor: 120_000, offer_minor: 102_000, pct: -15, kind: "mrp", audience: "everyone" });
+  assert.equal(storeOffer({ listMinor: 100_000, offerMinor: 99_500, kind: "mrp" }), null, "half a percent is rounding");
+  assert.equal(storeOffer({ listMinor: 100_000, offerMinor: 5_000, kind: "mrp" }), null, "ninety-five percent off is a price keyed for another pack");
+  assert.equal(storeOffer({ listMinor: 100_000, offerMinor: 100_000, kind: "mrp" }), null);
+  assert.equal(readOffer({ offer: { list_minor: 3_500, offer_minor: 2_750, kind: "compare_at", audience: "everyone" } })?.pct, -21.4);
+  assert.equal(readOffer({ offer: { list_minor: 3_500, offer_minor: 2_750, kind: "coupon" } }), null);
+  assert.equal(readOffer({ mrp: "120.00" }), null);
+
+  const cargills = cargillsAdapter.normalize({ fetchedAt: "", requests: 1, data: { categories: [{ categoryId: "x", name: "Dairy", pages: 1, truncated: false, items: [
+    { Id: 1, ItemName: "Milk Powder 400g", Price: "1,020.00", Mrp: "1,200.00", UnitSize: 400, UOM: "g" },
+    { Id: 2, ItemName: "Nadu Rice 1kg", Price: "250.00", Mrp: "250.00", UnitSize: 1, UOM: "kg" },
+  ] }] } }, cargillsAdapter.settingsSchema.parse({}), "2026-09-19");
+  assert.deepEqual(cargills[0]?.raw.offer, { list_minor: 120_000, offer_minor: 102_000, pct: -15, kind: "mrp", audience: "everyone" });
+  assert.equal(cargills[0]?.minValueMinor, 102_000);
+  assert.equal(cargills[1]?.raw.offer, undefined, "a price at its MRP is no offer");
+
+  const glomark = glomarkAdapter.normalize({ fetchedAt: "", requests: 1, data: { discovered: 1, pages: [{ path: "/meat/c/1", products: [
+    { id: 7, name: "Chicken Sausage 500G", unit: "g", displayQuantity: 500, price: 1050, promoPrice: 787.5, applicablePrice: 787.5 },
+    { id: 8, name: "Red Lentils 1Kg", unit: "kg", displayQuantity: 1, price: 480, promoPrice: null, applicablePrice: 480 },
+  ] }] } }, glomarkAdapter.settingsSchema.parse({}), "2026-09-19");
+  assert.deepEqual([glomark[0]?.minValueMinor, glomark[0]?.raw.offer], [78_750, { list_minor: 105_000, offer_minor: 78_750, pct: -25, kind: "promo_price", audience: "everyone" }]);
+  assert.equal(glomark[1]?.raw.offer, undefined);
+
+  const spar = sparAdapter.normalize({ fetchedAt: "", requests: 1, data: { feeds: [{ handle: null, pages: 1, truncated: false, products: [
+    { id: 1, title: "CUCUMBER", handle: "cucumber", product_type: "Vegetables", variants: [{ id: 11, title: "WT / 1000", price: "27.50", compare_at_price: "35.00", available: true }] },
+    { id: 2, title: "LEEKS", handle: "leeks", product_type: "Vegetables", variants: [{ id: 21, title: "WT / 1000", price: "40.00", compare_at_price: null, available: true }] },
+  ] }] } }, sparAdapter.settingsSchema.parse({}), "2026-09-19");
+  assert.deepEqual(spar[0]?.raw.offer, { list_minor: 3_500, offer_minor: 2_750, pct: -21.4, kind: "compare_at", audience: "everyone" });
+  assert.equal(spar[1]?.raw.offer, undefined);
+
+  const item = (itemID: number, name: string, amount: number, discount: number | null) => ({ itemID, itemCode: String(itemID), name, amount, uom: "NO", stockInHand: 5, isAvailable: true, isPromotionApplied: discount !== null, promotionDiscountValue: discount, discountedTotal: 0, departmentCode: "G", subDepartmentCode: "GSN" });
+  const keells = keellsAdapter.normalize({ fetchedAt: "", requests: 1, data: { departments: [{ departmentId: null, pages: 1, truncated: false,
+    items: [item(1, "Popcorn Butter 25g", 265, 53), item(2, "Washing Powder 1kg", 1000, 100), item(3, "Body Wash 250ml", 530, 53), item(4, "Tea 100g", 400, 40), item(5, "Biscuits 100g", 200, null)],
+    promotions: [
+      { promotionDetailID: 10, itemID: 1, isNexusDeal: true, isPercentagePromotion: true, discountPercentage: 20, maximumQuantity: 3 },
+      { promotionDetailID: 20, itemID: 2, isNexusDeal: true, isPercentagePromotion: true, discountPercentage: 15 },
+      { promotionDetailID: 21, itemID: 2, isNexusDeal: false, isValuePromotion: true, discountValue: 100, maximumQuantity: 5 },
+      { promotionDetailID: 30, itemID: 3, isNexusDeal: false, isPercentagePromotion: true, discountPercentage: 10, checkPaymentMode: true },
+    ],
+  }] } }, keellsAdapter.settingsSchema.parse({}), "2026-09-19");
+  assert.deepEqual([keells[0]?.minValueMinor, keells[0]?.raw.offer], [26_500, { list_minor: 26_500, offer_minor: 21_200, pct: -20, kind: "discount", audience: "members", label: "Nexus", max_quantity: 3 }], "a Nexus deal leaves the shelf price alone");
+  assert.deepEqual(keells[1]?.raw.offer, { list_minor: 100_000, offer_minor: 90_000, pct: -10, kind: "discount", audience: "everyone", max_quantity: 5 }, "the promotion whose arithmetic gives the listed discount says who it is for");
+  assert.equal(keells[2]?.raw.offer, undefined, "a payment-card promotion is not a price for the pack");
+  assert.equal(keells[3]?.raw.offer, undefined, "a promotion the listing does not describe is left out");
+  assert.equal(keells[4]?.raw.offer, undefined);
+  assert.equal(keellsOffer({ amount: 300, isPromotionApplied: true, promotionDiscountValue: 60 }, [{ promotionDetailID: 1, itemID: 9, minimumQuantity: 2, isPercentagePromotion: true, discountPercentage: 20 }]), null, "buy two is not a price for one");
 });
 
 test("http policy retries transient failures, stops on client errors, and keeps cookies", async () => {

@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { decodeText, fetchWithPolicy } from "../http.ts";
+import { minorOrNull, storeOffer } from "../offer.ts";
 import { baseSettingsSchema, categoryAllowed, compilePattern, patternSetting } from "../settings.ts";
 import { dedupeRecords, normalizeUnit, packFromLabel, priceToMinor, trimNumber, type AdapterContext, type NormalizedRecord, type RetailAdapter } from "../types.ts";
 
@@ -111,6 +112,9 @@ export const glomarkAdapter: RetailAdapter<GlomarkSettings> = {
         const name = (product.name ?? "").replace(/\s+/gu, " ").trim();
         if (!name) continue;
         const pack = glomarkPack(product.unit, product.displayQuantity, name);
+        // The record carries the price Glomark sells at; its list price above that is the store's own "was".
+        const list = minorOrNull(product.price);
+        const offer = list === null ? null : storeOffer({ listMinor: list, offerMinor: priceToMinor(price), kind: "promo_price" });
         records.push({
           rowRef: String(product.id),
           itemLabel: name,
@@ -132,6 +136,7 @@ export const glomarkAdapter: RetailAdapter<GlomarkSettings> = {
             display_quantity: product.displayQuantity,
             out_of_stock: Boolean(product.isOutOfStock),
             stock: product.stock ?? null,
+            ...(offer ? { offer } : {}),
           },
         });
       }

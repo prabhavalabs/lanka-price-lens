@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { CookieJar, fetchWithPolicy, parseJsonBody } from "../http.ts";
+import { minorOrNull, storeOffer } from "../offer.ts";
 import { baseSettingsSchema, categoryAllowed, compilePattern, patternSetting } from "../settings.ts";
 import { dedupeRecords, normalizeUnit, packFromLabel, priceToMinor, trimNumber, type NormalizedRecord, type RetailAdapter } from "../types.ts";
 
@@ -154,6 +155,9 @@ export const cargillsAdapter: RetailAdapter<CargillsSettings> = {
         const name = (item.ItemName ?? "").replace(/\s+/gu, " ").trim();
         if (!name) continue;
         const pack = cargillsPack(item.UnitSize, item.UOM, name);
+        // Cargills prints the pack's maximum retail price beside its own; a lower own price is the store's saving, for every shopper.
+        const mrp = minorOrNull(item.Mrp);
+        const offer = mrp === null ? null : storeOffer({ listMinor: mrp, offerMinor: priceToMinor(price), kind: "mrp" });
         records.push({
           rowRef: String(item.SKUCODE || item.Id),
           itemLabel: name,
@@ -175,6 +179,7 @@ export const cargillsAdapter: RetailAdapter<CargillsSettings> = {
             category_id: category.categoryId,
             category: category.name,
             category_code: item.CategoryCode ?? null,
+            ...(offer ? { offer } : {}),
           },
         });
       }
