@@ -45,7 +45,10 @@ taken to zero removes the line.
   that product (up to six, cheapest first): the store's label and pack, the offer beside the regular
   price, the offer per kilo (or litre, or piece), and the cut. The sellers' prices above it stay what
   every shopper pays.
-- **Deals (`/deals`):** what each supermarket itself marks down today, from `GET /v1/public/offers`:
+- **Deals (`/deals`):** what each supermarket itself marks down today, from `GET /v1/public/offers`,
+  each with the store's own picture of the item (served from `/store-images/*`, immutable; the generated
+  product photo stands in until a copy is kept, the store's mark when there is neither) and "View at
+  <store>", which opens the item on the store's site in a new tab:
   the store's own product name and pack, the offer price with the store's regular price struck
   through, the cut, and who it is for (a Keells Nexus price is badged and shows the shelf price
   beside it; a store's cap per shopper is stated). Chips filter by store (with counts), "Food we
@@ -185,7 +188,7 @@ cacheable (`Cache-Control: public, max-age=300, s-maxage=900`) and readable from
 | `GET /v1/public/products/:id?days=30\|90\|180\|365&varieties=` | The explorer detail (latest by seller, summary, markup, series), published sources only, with `offers`: what the stores themselves mark down on the product today |
 | `GET /v1/public/search?q=` | Products matching a label, variety, or a source's own wording (two characters or more) |
 | `GET /v1/public/basket?products=a,b,c` | The latest price of each product at every published seller (up to 60 products) |
-| `GET /v1/public/offers?market=&audience=everyone\|members&catalogue=1&q=&page=&pageSize=` | What each supermarket itself marks down: the store's label, pack, list and offer price, percent, who it is for, and the product it maps to. Each store on its newest day (left out past three days), deepest cut first, 48 a page (200 at most) |
+| `GET /v1/public/offers?market=&audience=everyone\|members&catalogue=1&q=&page=&pageSize=` | What each supermarket itself marks down: the store's label, pack, list and offer price, percent, who it is for, and the product it maps to. Each store on its newest day (left out past three days), deepest cut first, 48 a page (200 at most). Every offer carries `url` (the item on the store's site) and `image` with `image_origin`: the store's picture under `/store-images/…` once a copy is kept, else the generated photo of the mapped product, else null |
 | `POST /v1/public/feedback` | `{ kind: "feedback" \| "bug", message, email?, page?, website? }`; 201, 400 on a bad message, 429 past five an hour |
 | `GET /v1/public/recipes?q=&category=&meal=&page=` | Browse the dish catalogue (24 per page) |
 | `GET /v1/public/recipes/recommend?products=a,b,c&limit=` | Dishes ranked by fit to those products, with names and cheapest prices of every ingredient involved |

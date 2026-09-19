@@ -41,6 +41,11 @@ its label maps to a canonical item. Columns: `staging_id` (key), `observed_on`, 
 `normalized_list_minor`, `normalized_offer_minor`: the offer carried to the item's unit
 through the observation's own ratio, so it compares with the product's prices.
 
+Migration 9 adds `url` (the item's page on the store's site: the row's own link, else the
+item's last known one from `store_product`) and `image_path` (the stored picture's path under
+the store-images root, only when it has the shape the downloader writes). The sync brings
+`store_product` up to date before it reads.
+
 Offers are a view of the recent snapshots, not a ledger. `syncOffers`
 (`foundry/src/warehouse/offers.ts`) runs inside every sync after the observations: it reads
 the last three days (`offerSync.windowDays`) of non-stale retail staging rows, replaces those

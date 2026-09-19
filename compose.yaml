@@ -118,6 +118,10 @@ services:
       LPL_ACCOUNT_STATE_SECRET: ${LPL_ACCOUNT_STATE_SECRET:-}
       LPL_NEWSLETTERS_ENABLED: "false"
       LPL_NEWSLETTER_HOUR: ${LPL_NEWSLETTER_HOUR:-07:30}
+      # The stores' pictures of the items on offer are kept in /data/store-images, on the volume the API serves them from.
+      LPL_STORE_IMAGES_DISABLED: ${LPL_STORE_IMAGES_DISABLED:-}
+      LPL_STORE_IMAGES_PER_RUN: ${LPL_STORE_IMAGES_PER_RUN:-}
+      LPL_STORE_IMAGES_SECONDS: ${LPL_STORE_IMAGES_SECONDS:-}
     entrypoint: ["node", "foundry/src/cli.ts"]
     volumes:
       - operations:/data
