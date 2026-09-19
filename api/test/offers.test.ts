@@ -109,6 +109,12 @@ test("store offers are public: each store on its newest day, deepest cut first, 
     assert.deepEqual([paged.page, paged.page_size, paged.items.map((item) => item.label)], [2, 2, ["Washing Powder 1kg"]]);
     assert.deepEqual(parseOfferQuery({ page: "-4", pageSize: "100000", audience: "staff", market: "Robert'); DROP" }), { market: undefined, search: undefined, audience: undefined, catalogue: undefined, page: 1, pageSize: 200 });
 
+    const page = await app.request("http://localhost/v1/public/products/product_carrot");
+    assert.equal(page.status, 200, await page.clone().text());
+    const detail = ((await page.json()) as { payload: { latest: Array<{ mid: number }>; offers: Array<{ offer: number; list: number; audience: string }> } }).payload;
+    assert.deepEqual(detail.offers.map((entry) => [entry.offer, entry.list, entry.audience]), [[288, 360, "members"]], "the product page carries the store's offer");
+    assert.equal(detail.latest[0]?.mid, 360, "and the seller's price stays what every shopper pays");
+
     const forCarrot = await productOffers(client, [manifest], ["product_carrot", "product_missing"]);
     assert.deepEqual([...forCarrot.keys()], ["product_carrot"]);
     assert.equal(forCarrot.get("product_carrot")?.[0]?.offer, 288);

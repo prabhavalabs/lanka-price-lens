@@ -31,6 +31,8 @@ export type Detail = {
   summary: Summary[];
   markup_pct: number | null;
   series: Series[];
+  /** What the stores themselves mark down on this product today, cheapest first; absent from an older API. */
+  offers?: Offer[];
 };
 
 export type Envelope<T> = { success: boolean; message: string; payload: T };

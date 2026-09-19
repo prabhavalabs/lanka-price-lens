@@ -41,6 +41,10 @@ taken to zero removes the line.
   through `GET /v1/public/basket?products=`: sellers that carry the whole list first, then by
   total, with what each one is missing; quantities per item; share the result. Sellers whose
   newest price is older than 30 days are left out of the totals.
+- **Store offers on a product:** under the seller tables, "Store offers today" lists what the stores mark down on
+  that product (up to six, cheapest first): the store's label and pack, the offer beside the regular
+  price, the offer per kilo (or litre, or piece), and the cut. The sellers' prices above it stay what
+  every shopper pays.
 - **Deals (`/deals`):** what each supermarket itself marks down today, from `GET /v1/public/offers`:
   the store's own product name and pack, the offer price with the store's regular price struck
   through, the cut, and who it is for (a Keells Nexus price is badged and shows the shelf price
@@ -178,7 +182,7 @@ cacheable (`Cache-Control: public, max-age=300, s-maxage=900`) and readable from
 | Path | Purpose |
 | --- | --- |
 | `GET /v1/public/overview` | Sources with attribution and one card per product with a price line per seller group |
-| `GET /v1/public/products/:id?days=30\|90\|180\|365&varieties=` | The explorer detail (latest by seller, summary, markup, series), published sources only |
+| `GET /v1/public/products/:id?days=30\|90\|180\|365&varieties=` | The explorer detail (latest by seller, summary, markup, series), published sources only, with `offers`: what the stores themselves mark down on the product today |
 | `GET /v1/public/search?q=` | Products matching a label, variety, or a source's own wording (two characters or more) |
 | `GET /v1/public/basket?products=a,b,c` | The latest price of each product at every published seller (up to 60 products) |
 | `GET /v1/public/offers?market=&audience=everyone\|members&catalogue=1&q=&page=&pageSize=` | What each supermarket itself marks down: the store's label, pack, list and offer price, percent, who it is for, and the product it maps to. Each store on its newest day (left out past three days), deepest cut first, 48 a page (200 at most) |

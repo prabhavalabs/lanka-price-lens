@@ -15,8 +15,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { fetchProduct, type Group, type Latest } from "@/lib/api";
+import { fetchProduct, type Group, type Latest, type Offer } from "@/lib/api";
 import { ageLabel, categoryLabel, groupLabel, groupNotes, relativeDay, rupeeRange, rupees, shortDate, unitLabel } from "@/lib/format";
+import { labelWords, packWords } from "@/lib/offers";
 import { cn } from "@/lib/utils";
 import { usePageTitle } from "@/lib/page-title";
 import { ErrorState } from "@/components/error-state";
@@ -111,6 +112,8 @@ export function ProductPage() {
 
       {groups.map((group) => <SellerTable key={group} group={group} rows={data.latest.filter((row) => row.group === group)} />)}
 
+      {data.offers?.length ? <StoreOffers offers={data.offers} /> : null}
+
       <Card id="history" className={cn("transition-opacity duration-300", detail.isFetching && "opacity-70")}>
         <CardContent className="p-4 sm:p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -151,6 +154,38 @@ export function ProductPage() {
 
       {data.product.aliases.length ? <p className="text-xs text-muted-foreground">Also listed as: {data.product.aliases.join(", ")}.</p> : null}
     </div>
+  );
+}
+
+/** What the stores themselves mark down on this product today, on the product's unit so it reads beside the sellers above. */
+function StoreOffers({ offers }: { offers: Offer[] }) {
+  const shown = offers.slice(0, 6);
+  return (
+    <Card>
+      <CardContent className="p-4 sm:p-5">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 className="font-heading text-lg font-semibold">Store offers today</h2>
+          <Link className="text-sm" to="/deals?catalogue=1">All offers</Link>
+        </div>
+        <ul className="mt-3 divide-y">
+          {shown.map((offer) => (
+            <li className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2.5 first:pt-0 last:pb-0" key={offer.id}>
+              {offer.market_id ? <SellerMark label={offer.market} marketId={offer.market_id} size="xs" type="online_store" /> : null}
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-medium">{labelWords(offer.label)}</p>
+                <p className="text-xs text-muted-foreground">
+                  {sellerName({ market_label: offer.market })} · {rupees(offer.offer)} <span className="line-through">{rupees(offer.list)}</span> {packWords(offer.pack)}
+                  {offer.audience === "members" ? ` · ${offer.offer_label ?? "members"} price` : ""}
+                </p>
+              </div>
+              {offer.product ? <span className="text-sm font-semibold tabular-nums">{rupees(offer.product.offer)} <span className="text-xs font-normal text-muted-foreground">{unitLabel(offer.product.unit)}</span></span> : null}
+              <Badge className="tabular-nums" variant="default">{Math.round(Math.abs(offer.pct))}% off</Badge>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-pretty text-xs text-muted-foreground">The store's own claim: its regular price beside the price with the offer. The sellers' prices above are what every shopper pays{offers.some((offer) => offer.audience === "members") ? "; a members' price needs the store's loyalty card" : ""}.</p>
+      </CardContent>
+    </Card>
   );
 }
 

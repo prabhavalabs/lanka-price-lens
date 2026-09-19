@@ -95,7 +95,7 @@ import { unsubscribeRoutes } from "./newsletters/unsubscribe.ts";
 import { surpriseRoutes } from "./surprise.ts";
 import { buildRecipeIndex, computeMenu, parseRecipeQuery, priceLookupFor, priceOptions, pricedProductIds, queryRecipes, recipeView, type RecipeIndexEntry } from "./recipe-views.ts";
 import { basketIndex, insightsSummary, parseRangeRequest, priceSeries } from "./insights.ts";
-import { parseOfferQuery, publicOffers } from "./offers.ts";
+import { parseOfferQuery, productOffers, publicOffers, type PublicOffer } from "./offers.ts";
 import {
   archivedKnowledgePdf,
   knowledgeIndexStatus,
@@ -476,7 +476,9 @@ export function createApp(
     const sources = published().map((manifest) => manifest.id);
     const detail = await productDetail(client, context.req.param("id").slice(0, 100), range, { varieties, sources, cadence: sourceCadence() });
     if (!detail) return context.json(envelope(context.get("requestId"), null, false, "Product not found"), 404);
-    return context.json(envelope(context.get("requestId"), detail));
+    // What the stores themselves mark down on this product today; the prices in the detail stay what every shopper pays.
+    const offers = (await productOffers(client, published(), [detail.product.id]).catch(() => new Map<string, PublicOffer[]>())).get(detail.product.id) ?? [];
+    return context.json(envelope(context.get("requestId"), { ...detail, offers }));
   });
 
   // Visitor accounts: sign-up, sign-in, recovery, profile; menus and own recipes on the account; Google sign-in.
