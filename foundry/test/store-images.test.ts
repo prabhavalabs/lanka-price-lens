@@ -95,7 +95,7 @@ test("pictures are fetched directly first, through the proxy only after a failur
     const direct = transport({ [`${host}a.jpg`]: jpeg(7), [`${host}same-as-a.jpg`]: jpeg(7), [`${host}gone.jpg`]: 404, [`${host}blocked.jpg`]: 403, [`${host}html.jpg`]: new TextEncoder().encode("<html>blocked, sorry, this is not a picture</html>"), [`${host}down.jpg`]: new Error("ECONNRESET"), [`${host}p.png`]: png });
     const proxy = transport({ [`${host}blocked.jpg`]: jpeg(9), [`${host}down.jpg`]: new Error("ECONNRESET") });
     const result = await fetchStoreImages(database, { root, http: direct, proxyFor: () => proxy, now: at, gapMs: 0 });
-    assert.deepEqual(result, { attempted: 8, stored: 3, reused: 1, missing: 1, failed: 3, via_proxy: 1, bytes: jpeg(7).byteLength * 2 + jpeg(9).byteLength + png.byteLength });
+    assert.deepEqual(result, { attempted: 8, stored: 3, reused: 1, missing: 1, failed: 3, via_proxy: 1, bytes: jpeg(7).byteLength * 2 + jpeg(9).byteLength + png.byteLength, left: 0 });
     assert.deepEqual(proxy.calls.sort(), [`${host}blocked.jpg`, `${host}down.jpg`], "the proxy is asked only after a block or an outage, never for a picture that is simply not there");
     assert.ok(!direct.calls.includes("https://evil.example/x.jpg"), "an address off the stores' image hosts is never requested");
 
@@ -135,6 +135,7 @@ test("a disabled source is left alone, failures stop after the attempt cap, and 
     const url = "https://cdn.shopify.com/s/files/1/x/a.jpg";
     database.prepare("INSERT INTO store_product (source_id, row_ref, label, image_source_url, image_status, image_attempts, first_seen_at, last_seen_at) VALUES ('spar', '1', 'A', ?, 'pending', ?, ?, ?)").run(url, imageRules.maxAttempts - 1, at.toISOString(), at.toISOString());
     assert.equal((await fetchStoreImages(database, { root, http: transport({ [url]: jpeg(1) }), skipSources: ["spar"], now: at, gapMs: 0 })).attempted, 0);
+    assert.deepEqual([(await fetchStoreImages(database, { root, http: transport({ [url]: jpeg(1) }), budgetMs: 0, now: at, gapMs: 0 })).attempted, (await fetchStoreImages(database, { root, http: transport({}), budgetMs: 0, now: at, gapMs: 0 })).left], [0, 1], "a spent budget takes nothing and says what is left");
     await fetchStoreImages(database, { root, http: transport({ [url]: 500 }), now: at, gapMs: 0 });
     assert.deepEqual(database.prepare("SELECT image_status, image_attempts, next_attempt_at FROM store_product").get(), { image_status: "failed", image_attempts: imageRules.maxAttempts, next_attempt_at: null }, "after the last attempt it is not queued again");
 

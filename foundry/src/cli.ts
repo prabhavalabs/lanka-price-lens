@@ -114,7 +114,7 @@ if (command === "hash-password") {
       // The pictures of what is on offer follow the capture; they are an addition and never fail it.
       if (result.status === "succeeded" && !arguments_.includes("--no-images")) {
         try {
-          console.log(JSON.stringify({ source: entry.manifest.id, store_images: await fetchImagesFor(database, catalog, entry.manifest.id, imagesPerRun()) }));
+          console.log(JSON.stringify({ source: entry.manifest.id, store_images: await fetchImagesFor(database, catalog, entry.manifest.id, imagesPerRun(), imagesBudgetMs()) }));
         } catch (error) {
           console.error(JSON.stringify({ level: "warning", message: "Store pictures skipped", source: entry.manifest.id, error: error instanceof Error ? error.message : String(error) }));
         }
@@ -327,11 +327,17 @@ function optionalValue(name: string): string | undefined {
 /** How many pictures one run may fetch per source (`LPL_STORE_IMAGES_PER_RUN`); the first days catch up, then only new items remain. */
 function imagesPerRun(): number {
   const configured = Number(process.env.LPL_STORE_IMAGES_PER_RUN);
-  return Number.isInteger(configured) && configured > 0 ? configured : 800;
+  return Number.isInteger(configured) && configured > 0 ? configured : 400;
+}
+
+/** How long the pictures may take after one source's capture (`LPL_STORE_IMAGES_SECONDS`, 180): the prices never wait long for them. */
+function imagesBudgetMs(): number {
+  const configured = Number(process.env.LPL_STORE_IMAGES_SECONDS);
+  return (Number.isFinite(configured) && configured > 0 ? configured : 180) * 1000;
 }
 
 /** Brings the store items up to date from the recent snapshots, then fetches what is pending: directly, and through the source's proxy only after a failure. */
-async function fetchImagesFor(database: ReturnType<typeof openOperationalDatabase>, catalog: SourceCatalog, sourceId: string | undefined, limit: number): Promise<Record<string, unknown>> {
+async function fetchImagesFor(database: ReturnType<typeof openOperationalDatabase>, catalog: SourceCatalog, sourceId: string | undefined, limit: number, budgetMs?: number): Promise<Record<string, unknown>> {
   const items = syncStoreProducts(database, { sourceId });
   const proxies = new Map<string, ReturnType<typeof proxiedNodeHttpsFetch> | null>();
   const proxyFor = (id: string) => {
@@ -354,6 +360,7 @@ async function fetchImagesFor(database: ReturnType<typeof openOperationalDatabas
     sourceId,
     limit,
     skipSources: disabledImageSources(),
+    budgetMs,
     proxyFor,
     log: (level, message, data) => { if (level === "warning" && process.env.LPL_STORE_IMAGES_VERBOSE) console.error(JSON.stringify({ level, message, ...data })); },
   });

@@ -38,10 +38,12 @@ export type ImageFetchOptions = {
   userAgent?: string | undefined;
   now?: Date | undefined;
   gapMs?: number | undefined;
+  /** Stop taking new pictures after this long, so a run that follows a capture never holds the morning's prices up; what is left waits for the next run. */
+  budgetMs?: number | undefined;
   log?: ((level: "info" | "warning", message: string, data?: Record<string, unknown>) => void) | undefined;
 };
 
-export type ImageFetchResult = { attempted: number; stored: number; reused: number; missing: number; failed: number; via_proxy: number; bytes: number };
+export type ImageFetchResult = { attempted: number; stored: number; reused: number; missing: number; failed: number; via_proxy: number; bytes: number; left: number };
 
 type Pending = { source_id: string; row_ref: string; image_source_url: string; image_attempts: number };
 
@@ -94,10 +96,15 @@ export async function fetchStoreImages(database: OperationalDatabase, options: I
   const failed = database.prepare(
     "UPDATE store_product SET image_status = ?, image_attempts = image_attempts + 1, image_error = ?, next_attempt_at = ? WHERE source_id = ? AND row_ref = ?",
   );
-  const result: ImageFetchResult = { attempted: 0, stored: 0, reused: 0, missing: 0, failed: 0, via_proxy: 0, bytes: 0 };
+  const result: ImageFetchResult = { attempted: 0, stored: 0, reused: 0, missing: 0, failed: 0, via_proxy: 0, bytes: 0, left: 0 };
+  const started = Date.now();
   const policy = { attempts: 2, timeoutMs: imageRules.timeoutMs, maxBytes: imageRules.maxBytes, userAgent };
 
   for (const [index, item] of queue.entries()) {
+    if (options.budgetMs !== undefined && Date.now() - started >= options.budgetMs) {
+      result.left = queue.length - index;
+      break;
+    }
     if (index > 0 && (options.gapMs ?? imageRules.requestGapMs) > 0) await new Promise((done) => setTimeout(done, options.gapMs ?? imageRules.requestGapMs));
     result.attempted += 1;
     const url = storeImageUrl(item.image_source_url);
