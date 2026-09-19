@@ -1,9 +1,10 @@
-import { RiArrowLeftSLine, RiArrowRightSLine, RiPriceTag3Line, RiSearchLine, RiVipCrownLine } from "@remixicon/react";
+import { RiArrowLeftSLine, RiArrowRightSLine, RiExternalLinkLine, RiPriceTag3Line, RiSearchLine, RiVipCrownLine } from "@remixicon/react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
 import { ErrorState } from "@/components/error-state";
+import { OfferPicture } from "@/components/offer-picture";
 import { SellerMark } from "@/components/seller-mark";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,8 +21,9 @@ import { cn } from "@/lib/utils";
 const pageSize = 48;
 
 /**
- * What each supermarket itself marks down today, in the store's own wording: the offer price,
- * the store's regular price struck through, the cut, and who the price is for. Filters live in
+ * What each supermarket itself marks down today, in the store's own wording: the store's picture
+ * of the item, the offer price, the regular price struck through, the cut, who the price is
+ * for, and the item's own page on the store's site. Filters live in
  * the address, so a view can be shared; the search waits for a pause before it asks the server.
  */
 export function DealsPage() {
@@ -129,7 +131,7 @@ export function DealsPage() {
 
       <p className="max-w-2xl text-pretty text-xs text-muted-foreground">
         Offers are the stores' own claims, read from keellssuper.com, cargillsonline.com, glomark.lk, and spar2u.lk: a regular price beside the price with the offer. Cargills compares with the pack's maximum retail price.
-        A members' price needs the store's loyalty card. Card-only, promo-code, and buy-several offers are left out. Check the store before you travel for one.
+        A members' price needs the store's loyalty card. Card-only, promo-code, and buy-several offers are left out. “View at” opens the item on the store's own site; check it there before you travel for one. Product pictures are the stores'.
       </p>
     </div>
   );
@@ -137,32 +139,49 @@ export function DealsPage() {
 
 function OfferCard({ offer }: { offer: Offer }) {
   const members = offer.audience === "members";
-  const body = (
-    <CardContent className="flex h-full flex-col gap-2 p-4">
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex min-w-0 items-center gap-2">
-          {offer.market_id ? <SellerMark label={offer.market} marketId={offer.market_id} type="online_store" /> : null}
-          <span className="truncate text-xs text-muted-foreground">{offer.market.replace(/ Online$/u, "")}</span>
-        </div>
-        <Badge className="shrink-0 tabular-nums" variant="default">{Math.round(Math.abs(offer.pct))}% off</Badge>
-      </div>
-      <p className="line-clamp-2 text-pretty text-sm font-medium leading-snug">{labelWords(offer.label)}</p>
-      <div className="mt-auto flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-        <span className="font-heading text-lg font-semibold tabular-nums">{rupees(offer.offer)}</span>
-        <span className="text-sm tabular-nums text-muted-foreground line-through">{rupees(offer.list)}</span>
-        <span className="text-xs text-muted-foreground">{packWords(offer.pack)}</span>
-      </div>
-      <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-        {members ? <Badge className="gap-1" variant="secondary"><RiVipCrownLine aria-hidden className="size-3" />{offer.offer_label ?? "Members"} price</Badge> : null}
-        {members ? <span>Shelf price {rupees(offer.price)}</span> : null}
-        {offer.max_quantity ? <span>Up to {offer.max_quantity} a shopper</span> : null}
-        {offer.product ? <span className="inline-flex items-center gap-1 text-primary"><RiPriceTag3Line aria-hidden className="size-3" />{offer.product.label}: {rupees(offer.product.offer)} {unitLabel(offer.product.unit)}</span> : null}
-      </div>
-    </CardContent>
-  );
+  const store = offer.market.replace(/ Online$/u, "");
   return (
-    <Card className={cn("h-full gap-0 py-0", offer.product && "transition-colors hover:border-primary/40")}>
-      {offer.product ? <Link aria-label={`${labelWords(offer.label)}: compare ${offer.product.label} across stores`} className="block h-full no-underline" to={`/p/${offer.product.id}`}>{body}</Link> : body}
+    <Card className="h-full gap-0 py-0">
+      <CardContent className="flex h-full flex-col gap-3 p-4">
+        <div className="flex gap-3">
+          <OfferPicture className="size-20" offer={offer} />
+          <div className="min-w-0 flex-1 space-y-1.5">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex min-w-0 items-center gap-1.5">
+                {offer.market_id ? <SellerMark label={offer.market} marketId={offer.market_id} size="xs" type="online_store" /> : null}
+                <span className="truncate text-xs text-muted-foreground">{store}</span>
+              </div>
+              <Badge className="shrink-0 tabular-nums" variant="default">{Math.round(Math.abs(offer.pct))}% off</Badge>
+            </div>
+            <p className="line-clamp-2 text-pretty text-sm font-medium leading-snug">{labelWords(offer.label)}</p>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+          <span className="font-heading text-lg font-semibold tabular-nums">{rupees(offer.offer)}</span>
+          <span className="text-sm tabular-nums text-muted-foreground line-through">{rupees(offer.list)}</span>
+          <span className="text-xs text-muted-foreground">{packWords(offer.pack)}</span>
+        </div>
+        {members || offer.max_quantity ? (
+          <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
+            {members ? <Badge className="gap-1" variant="secondary"><RiVipCrownLine aria-hidden className="size-3" />{offer.offer_label ?? "Members"} price</Badge> : null}
+            {members ? <span>Shelf price {rupees(offer.price)}</span> : null}
+            {offer.max_quantity ? <span>Up to {offer.max_quantity} a shopper</span> : null}
+          </div>
+        ) : null}
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t pt-2.5 text-xs">
+          {offer.product ? (
+            <Link className="inline-flex min-w-0 items-center gap-1 text-primary no-underline hover:underline" to={`/p/${offer.product.id}`}>
+              <RiPriceTag3Line aria-hidden className="size-3.5 shrink-0" />
+              <span className="truncate">{offer.product.label} {rupees(offer.product.offer)} {unitLabel(offer.product.unit)} · compare</span>
+            </Link>
+          ) : <span />}
+          {offer.url ? (
+            <a aria-label={`${labelWords(offer.label)} at ${store}, opens the store's site`} className="inline-flex shrink-0 items-center gap-1 font-medium text-foreground no-underline hover:underline" href={offer.url} rel="noopener noreferrer nofollow" target="_blank">
+              View at {store}<RiExternalLinkLine aria-hidden className="size-3.5" />
+            </a>
+          ) : null}
+        </div>
+      </CardContent>
     </Card>
   );
 }

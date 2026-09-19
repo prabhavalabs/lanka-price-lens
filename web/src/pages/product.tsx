@@ -21,6 +21,7 @@ import { labelWords, packWords } from "@/lib/offers";
 import { cn } from "@/lib/utils";
 import { usePageTitle } from "@/lib/page-title";
 import { ErrorState } from "@/components/error-state";
+import { OfferPicture } from "@/components/offer-picture";
 
 const ranges = ["30", "90", "365"] as const;
 type Range = (typeof ranges)[number];
@@ -170,9 +171,9 @@ function StoreOffers({ offers }: { offers: Offer[] }) {
         <ul className="mt-3 divide-y">
           {shown.map((offer) => (
             <li className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2.5 first:pt-0 last:pb-0" key={offer.id}>
-              {offer.market_id ? <SellerMark label={offer.market} marketId={offer.market_id} size="xs" type="online_store" /> : null}
+              <OfferPicture className="size-12" offer={offer} />
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium">{labelWords(offer.label)}</p>
+                <p className="truncate text-sm font-medium">{offer.url ? <a className="text-foreground no-underline hover:underline" href={offer.url} rel="noopener noreferrer nofollow" target="_blank">{labelWords(offer.label)}</a> : labelWords(offer.label)}</p>
                 <p className="text-xs text-muted-foreground">
                   {sellerName({ market_label: offer.market })} · {rupees(offer.offer)} <span className="line-through">{rupees(offer.list)}</span> {packWords(offer.pack)}
                   {offer.audience === "members" ? ` · ${offer.offer_label ?? "members"} price` : ""}

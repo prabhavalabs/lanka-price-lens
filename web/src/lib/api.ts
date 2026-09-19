@@ -97,6 +97,11 @@ export type Offer = {
   offer_label: string | null;
   max_quantity: number | null;
   observed_on: string;
+  /** The item's own page on the store's site. */
+  url: string | null;
+  /** A picture on this site: the store's own once a copy is kept, else the generated photo of the mapped product, else none. */
+  image: string | null;
+  image_origin: "store" | "generated" | null;
   product: { id: string; label: string; unit: string; list: number; offer: number } | null;
 };
 
