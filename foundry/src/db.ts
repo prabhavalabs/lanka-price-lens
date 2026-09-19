@@ -459,6 +459,10 @@ function migrate(database: OperationalDatabase): void {
     CREATE INDEX IF NOT EXISTS price_observation_active_publication_idx
       ON price_observation(source_publication_id)
       WHERE status = 'active';
+    -- The warehouse sync reads the last few days of store rows for their offers.
+    CREATE INDEX IF NOT EXISTS staging_observation_retail_day_idx
+      ON staging_observation(source_date)
+      WHERE price_type = 'retail_online_store';
 
     CREATE TABLE IF NOT EXISTS release_observation (
       data_version TEXT NOT NULL REFERENCES data_release(data_version),

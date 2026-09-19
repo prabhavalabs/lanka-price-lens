@@ -5,7 +5,7 @@ import { join } from "node:path";
 import test from "node:test";
 
 import { openOperationalDatabase, type OperationalDatabase } from "../src/db.ts";
-import { embeddedWarehouse, migrateWarehouse, renderReportMarkdown, syncWarehouse, warehouseReport, type WarehouseClient } from "../src/warehouse/index.ts";
+import { embeddedWarehouse, migrateWarehouse, offerSync, renderReportMarkdown, syncWarehouse, warehouseReport, type WarehouseClient } from "../src/warehouse/index.ts";
 
 function seededDatabase(): { database: OperationalDatabase; cleanup: () => void } {
   const root = mkdtempSync(join(tmpdir(), "lpl-warehouse-"));
@@ -47,7 +47,7 @@ async function count(client: WarehouseClient, sql: string, params: unknown[] = [
 test("warehouse schema migrates once and stays idempotent", async () => {
   const client = await embeddedWarehouse();
   try {
-    assert.deepEqual(await migrateWarehouse(client), [1, 2, 3, 4, 5, 6, 7]);
+    assert.deepEqual(await migrateWarehouse(client), [1, 2, 3, 4, 5, 6, 7, 8]);
     assert.deepEqual(await migrateWarehouse(client), []);
     const tables = await client.query<{ table_name: string }>("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name");
     for (const expected of ["source", "market", "product", "item", "unit_rule", "publication", "price_observation", "sync_state", "schema_migration"]) {
@@ -65,7 +65,7 @@ test("sync copies the canonical layer, resumes from its cursor, and propagates s
   const client = await embeddedWarehouse();
   try {
     const first = await syncWarehouse(database, client, { batchSize: 1 });
-    assert.deepEqual(first.migrations, [1, 2, 3, 4, 5, 6, 7]);
+    assert.deepEqual(first.migrations, [1, 2, 3, 4, 5, 6, 7, 8]);
     assert.deepEqual(first.references, { source: 2, market: 2, product: 1, item: 1, unit_rule: 1, publication: 2, item_alias: 2 });
     assert.equal(first.observations.upserted, 2);
     assert.equal(first.observations.batches, 2, "batches follow the batch size");
@@ -102,6 +102,50 @@ test("sync copies the canonical layer, resumes from its cursor, and propagates s
     const full = await syncWarehouse(database, client, { full: true });
     assert.equal(full.observations.scanned, 3, "a full sync resends everything and stays consistent");
     assert.equal(await count(client, "SELECT COUNT(*) AS count FROM price_observation"), 3);
+  } finally {
+    await client.close();
+    cleanup();
+  }
+});
+
+test("store offers follow the recent snapshots: mapped rows land in the item's unit, unmapped rows keep the store's label, and old days fall away", async () => {
+  const { database, cleanup } = seededDatabase();
+  const client = await embeddedWarehouse();
+  try {
+    const offer = (list: number, price: number, extra: Record<string, unknown> = {}) => JSON.stringify({ category: "Vegetables", offer: { list_minor: list, offer_minor: price, pct: -20, kind: "mrp", audience: "everyone", ...extra } });
+    database.exec("INSERT INTO source_market_mapping (source_id, source_label, market_id, mapping_version, reviewed_by, reviewed_at, evidence_ref) VALUES ('keells', 'Keells Online', 'market_keells_online', 'v1', 'tests', '2026-09-01', 'docs')");
+    // The mapped carrot is a 500 g pack here: the observation normalizes it to a kilo, and the offer must follow.
+    database.prepare("UPDATE staging_observation SET source_quantity = '500', source_unit = 'g', min_value_minor = 18000, max_value_minor = 18000, raw_json = ? WHERE id = 'stg_2'").run(offer(22_500, 18_000));
+    database.prepare("UPDATE price_observation SET min_value_minor = 18000, max_value_minor = 18000 WHERE id = 'obs_2'").run();
+    const stage = database.prepare(
+      `INSERT INTO staging_observation (id, run_id, artifact_id, source_row_ref, source_item_label, source_market_label, source_date, price_type, currency, source_quantity, source_unit, min_value_minor, max_value_minor, status, raw_json)
+       VALUES (?, 'run_1', 'art_2', ?, ?, 'Keells Online', '2026-09-02', 'retail_online_store', 'LKR', '1', 'piece', ?, ?, ?, ?)`,
+    );
+    stage.run("stg_3", "r3", "Car Wash 500ml", 54_000, 54_000, "validated", JSON.stringify({ category: "Household", offer: { list_minor: 54_000, offer_minor: 43_200, kind: "discount", audience: "members", label: "Nexus", max_quantity: 3 } }));
+    stage.run("stg_4", "r4", "Stale Soap 100g", 9_000, 9_000, "stale", offer(12_000, 9_000));
+    stage.run("stg_5", "r5", "No Offer Tea 100g", 40_000, 40_000, "validated", JSON.stringify({ category: "Beverages" }));
+    stage.run("stg_6", "r6", "Broken Offer 1kg", 40_000, 40_000, "validated", JSON.stringify({ offer: { list_minor: 40_000, offer_minor: 40_000, kind: "mrp" } }));
+
+    const synced = await syncWarehouse(database, client, { now: new Date("2026-09-03T02:00:00.000Z") });
+    assert.deepEqual(synced.offers, { from: "2026-08-31", rows: 2, mapped: 1 });
+    const rows = await client.query<Record<string, unknown>>(
+      "SELECT staging_id, observed_on::TEXT, market_id, label, category, price_minor::INT, list_minor::INT, offer_minor::INT, pct::FLOAT, kind, audience, offer_label, max_quantity, item_id, normalized_unit, normalized_list_minor::INT, normalized_offer_minor::INT FROM store_offer ORDER BY staging_id",
+    );
+    assert.deepEqual(rows, [
+      { staging_id: "stg_2", observed_on: "2026-09-02", market_id: "market_keells_online", label: "Carrot", category: "Vegetables", price_minor: 18_000, list_minor: 22_500, offer_minor: 18_000, pct: -20, kind: "mrp", audience: "everyone", offer_label: null, max_quantity: null, item_id: "item_carrot", normalized_unit: "kg", normalized_list_minor: 45_000, normalized_offer_minor: 36_000 },
+      { staging_id: "stg_3", observed_on: "2026-09-02", market_id: "market_keells_online", label: "Car Wash 500ml", category: "Household", price_minor: 54_000, list_minor: 54_000, offer_minor: 43_200, pct: -20, kind: "discount", audience: "members", offer_label: "Nexus", max_quantity: 3, item_id: null, normalized_unit: null, normalized_list_minor: null, normalized_offer_minor: null },
+    ]);
+
+    // The offer ends: the next sync inside the window takes the row away again.
+    database.prepare("UPDATE staging_observation SET raw_json = '{}' WHERE id = 'stg_3'").run();
+    assert.equal((await syncWarehouse(database, client, { now: new Date("2026-09-03T08:00:00.000Z") })).offers.rows, 1);
+    assert.equal(await count(client, "SELECT COUNT(*) AS count FROM store_offer"), 1);
+    // Past the window the day is left as it was; past retention it goes.
+    assert.equal((await syncWarehouse(database, client, { now: new Date("2026-09-20T02:00:00.000Z") })).offers.rows, 0);
+    assert.equal(await count(client, "SELECT COUNT(*) AS count FROM store_offer"), 1);
+    const late = new Date(Date.parse("2026-09-02T00:00:00.000Z") + (offerSync.retentionDays + 1) * 86_400_000);
+    await syncWarehouse(database, client, { now: late });
+    assert.equal(await count(client, "SELECT COUNT(*) AS count FROM store_offer"), 0);
   } finally {
     await client.close();
     cleanup();
