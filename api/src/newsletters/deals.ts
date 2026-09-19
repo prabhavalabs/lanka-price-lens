@@ -1,4 +1,4 @@
-import { computeDeals, latestDealsDay, readDealsDay, saveDealsDay, type Deal, type DealsDay, type EssentialWatch } from "@lanka-pricelens/foundry/deals";
+import { computeDeals, latestDealsDay, readDealsDay, saveDealsDay, type Deal, type DealsDay, type DeclaredOffer, type EssentialWatch } from "@lanka-pricelens/foundry/deals";
 import type { OperationalDatabase } from "@lanka-pricelens/foundry/db";
 import type { WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 
@@ -8,9 +8,10 @@ import { dayWords, listWords } from "./time.ts";
 
 /**
  * The daily deals mail from a `DealsDay` the deals engine computed, in this order: the drops
- * and offers, the cheapest store for products several stores sell, the household essentials
- * watch, and what went up. A day with no deals, no cheapest-store picks, and no essential
- * moving against its fortnight has nothing to say and is skipped rather than sent empty.
+ * and offers, what the stores themselves mark down, the cheapest store for products several
+ * stores sell, the household essentials watch, and what went up. A day with no deals, no store
+ * offers, no cheapest-store picks, and no essential moving against its fortnight has nothing
+ * to say and is skipped rather than sent empty.
  */
 
 /** How the newsletters reach the deals engine; built in app.ts over the warehouse and the operational database. */
@@ -63,6 +64,12 @@ export function baselineWords(deal: Deal): string {
   }
 }
 
+/** "30% off at Keells Online", and for a members' price the card that gets it: "30% off at Keells Online with Nexus". */
+export function offerStoreWords(offer: DeclaredOffer): string {
+  const cut = `${Math.round(Math.abs(offer.pct))}% off at ${offer.market}`;
+  return offer.audience === "members" ? `${cut} with ${offer.offer_label ?? "the store's loyalty card"}` : cut;
+}
+
 function productUrl(url: string, siteOrigin: string): string {
   return url.startsWith("/") ? `${siteOrigin}${url}` : url;
 }
@@ -79,6 +86,19 @@ const photoOf = (siteOrigin: string, productId: string, hasPhoto: PhotoLookup): 
 
 export function dealRowOf(deal: Deal, siteOrigin: string, hasPhoto?: PhotoLookup): DealRow {
   return { product: deal.label, store: storeWords(deal), image: photoOf(siteOrigin, deal.product_id, hasPhoto), now: formatMinor(deal.now_minor, deal.unit), was: baselineWords(deal), pct: deal.pct, url: productUrl(deal.url, siteOrigin) };
+}
+
+/** A store's own offer: the offer price, the store's regular price beside it, and the store's wording for the pack. */
+export function offerRowOf(offer: DeclaredOffer, siteOrigin: string, hasPhoto?: PhotoLookup): DealRow {
+  return {
+    product: offer.label,
+    store: offerStoreWords(offer),
+    image: photoOf(siteOrigin, offer.product_id, hasPhoto),
+    now: formatMinor(offer.now_minor, offer.unit),
+    was: `${offer.store_label}, regular price ${formatMinor(offer.was_minor, offer.unit)}`,
+    pct: offer.pct,
+    url: productUrl(offer.url, siteOrigin),
+  };
 }
 
 const trendWords: Record<EssentialWatch["trend"], string | null> = { down: "below its usual price this fortnight", up: "above its usual price this fortnight", flat: null };
@@ -101,15 +121,16 @@ export function essentialMoved(essential: EssentialWatch): boolean {
   return essential.trend !== "flat";
 }
 
-/** A day worth a mail: a deal, a cheapest-store pick, or an essential that moved. */
+/** A day worth a mail: a deal, a store's own offer, a cheapest-store pick, or an essential that moved. */
 export function hasSomethingToSay(day: DealsDay): boolean {
-  return day.deals.length > 0 || day.cheapest.length > 0 || day.essentials.some(essentialMoved);
+  return day.deals.length > 0 || (day.store_offers?.length ?? 0) > 0 || day.cheapest.length > 0 || day.essentials.some(essentialMoved);
 }
 
 export function dealsBlocks(day: DealsDay, siteOrigin: string, hasPhoto?: PhotoLookup): ContentBlock[] {
   const origin = siteOrigin.replace(/\/+$/u, "");
   const blocks: ContentBlock[] = [];
   if (day.deals.length) blocks.push({ type: "deals", heading: "Biggest drops today", rows: day.deals.map((deal) => dealRowOf(deal, origin, hasPhoto)), note: "Against yesterday's price or the usual price of the last two weeks." });
+  if (day.store_offers?.length) blocks.push({ type: "deals", heading: "Store offers today", rows: day.store_offers.map((offer) => offerRowOf(offer, origin, hasPhoto)), note: "What the stores themselves mark down, against their own regular price. A price with Nexus needs the Keells loyalty card." });
   if (day.cheapest.length) blocks.push({ type: "deals", heading: "Cheapest store today", rows: day.cheapest.map((deal) => dealRowOf(deal, origin, hasPhoto)), note: "Products several stores sell in the same unit, where one store is well under the next." });
   if (day.essentials.length) {
     // Moved items first, so the eye lands on what changed; the rest keep the engine's order.
@@ -121,7 +142,7 @@ export function dealsBlocks(day: DealsDay, siteOrigin: string, hasPhoto?: PhotoL
 }
 
 export type DealsMail = {
-  summary: { deals: number; cheapest: number; movers: number; essentials: number; moved: number };
+  summary: { deals: number; offers: number; cheapest: number; movers: number; essentials: number; moved: number };
   data: MailData;
 };
 
@@ -131,7 +152,7 @@ export function composeDealsMail(account: { display_name: string }, day: DealsDa
   const origin = deps.siteOrigin.replace(/\/+$/u, "");
   const stores = day.stores.map((store) => store.label);
   return {
-    summary: { deals: day.deals.length, cheapest: day.cheapest.length, movers: day.movers_up.length, essentials: day.essentials.length, moved: day.essentials.filter(essentialMoved).length },
+    summary: { deals: day.deals.length, offers: day.store_offers?.length ?? 0, cheapest: day.cheapest.length, movers: day.movers_up.length, essentials: day.essentials.length, moved: day.essentials.filter(essentialMoved).length },
     data: {
       values: { name: account.display_name, date: dayWords(day.day), count: day.deals.length, stores: stores.length ? listWords(stores) : "the supermarkets", link: `${origin}/` },
       blocks: dealsBlocks(day, origin, deps.hasPhoto),

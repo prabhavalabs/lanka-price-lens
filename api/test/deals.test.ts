@@ -48,3 +48,23 @@ test("deals today answers 503 until a day is saved, then the latest day in the e
     database.close();
   }
 });
+
+test("the deals mail carries the stores' own offers after the drops, words a members' price, and a day with offers alone is worth sending", async () => {
+  const { composeDealsMail, dealsBlocks, hasSomethingToSay, offerRowOf } = await import("../src/newsletters/deals.ts");
+  const { sampleDealsDay } = await import("../src/newsletters/admin-routes.ts");
+  const sample = sampleDealsDay("2026-09-19");
+  const blocks = dealsBlocks(sample, "https://price.example/");
+  assert.deepEqual(blocks.map((block) => (block.type === "deals" ? block.heading : block.type)), ["Biggest drops today", "Store offers today", "Cheapest store today", "Household essentials", "Going up"]);
+  assert.deepEqual(offerRowOf(sample.store_offers![1]!, "https://price.example"), {
+    product: "Chicken, whole", store: "20% off at Keells with Nexus", image: null, now: "Rs 1,120 / kg", was: "Whole Chicken Skinless, regular price Rs 1,400 / kg", pct: -20, url: "https://price.example/p/product_chicken",
+  });
+  assert.equal(offerRowOf(sample.store_offers![0]!, "https://price.example").store, "16% off at Cargills");
+
+  const offersOnly: DealsDay = { ...sample, deals: [], cheapest: [], movers_up: [], essentials: [] };
+  assert.equal(hasSomethingToSay(offersOnly), true);
+  assert.equal(composeDealsMail({ display_name: "Nimal" }, offersOnly, { siteOrigin: "https://price.example" })?.summary.offers, 2);
+  // A day saved before the engine read store offers has no such list, and still composes.
+  const { store_offers: _none, ...older } = sample;
+  assert.deepEqual(dealsBlocks(older, "https://price.example").map((block) => (block.type === "deals" ? block.heading : "")), ["Biggest drops today", "Cheapest store today", "Household essentials", "Going up"]);
+  assert.equal(hasSomethingToSay({ ...older, deals: [], cheapest: [], essentials: [] }), false);
+});

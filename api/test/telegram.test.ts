@@ -161,7 +161,10 @@ test("the daily mails become Telegram messages with the same lines, the recipe p
   assert.equal(channel.title, "Today's supermarket deals · Tuesday 15 September");
   assert.equal(channel.dedupe_key, "channel:deals_daily:2026-09-15");
   assert.equal(channel.sections[0]?.lines[0]?.url, "https://price.example/p/product_big_onion");
-  assert.equal(channelDealsMessage({ ...sampleDealsDay("2026-09-15"), deals: [], cheapest: [] }, "https://price.example"), null);
+  assert.deepEqual(channel.sections.map((section) => section.heading), ["Biggest drops", "Store offers", "Cheapest store today"]);
+  assert.deepEqual(channel.sections[1]?.lines[1], { text: "Chicken, whole", value: "Rs 1,120 / kg", change: -20, note: "20% off at Keells with Nexus", url: "https://price.example/p/product_chicken" });
+  assert.equal(channelDealsMessage({ ...sampleDealsDay("2026-09-15"), deals: [], cheapest: [], store_offers: [] }, "https://price.example"), null);
+  assert.ok(channelDealsMessage({ ...sampleDealsDay("2026-09-15"), deals: [], cheapest: [] }, "https://price.example"), "the stores' own offers alone are worth a post");
 });
 
 test("a run queues the mail for the linked chat as well as the address, unless the person switched Telegram off", async () => {
