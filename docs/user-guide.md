@@ -95,21 +95,24 @@ Below the sellers, the history chart draws every seller's price over time.
 ## 5. Catch the offers
 
 "Deals" in the header lists what each supermarket itself marks down today: the store's own
-product name, the offer price, the store's regular price struck through, and the cut. It is
+picture and name for the item, the offer price, the store's regular price struck through, and
+the cut. It is
 read from the online shelves of Keells, Cargills, Glomark, and SPAR every morning, and covers
 their whole range, not only the food PriceLens tracks.
 
 1. The chips at the top pick one store; each says how many offers it has today. Offers are
    listed deepest cut first.
-2. "Food we track" keeps the offers on products the site prices everywhere. Those cards link
-   to the product's page and give the offer per kilo (or litre, or piece), so it compares with
-   the other sellers.
-3. A crown badge marks a members' price: at Keells that is a Nexus deal, and the card shows
+2. "View at Keells" (or Cargills, Glomark, SPAR) on a card opens that very item on the store's
+   own site, in a new tab, so you can check it or buy it there.
+3. "Food we track" keeps the offers on products the site prices everywhere. Those cards also say
+   the offer per kilo (or litre, or piece) with a "compare" link to the product's page, so it
+   reads against the other sellers.
+4. A crown badge marks a members' price: at Keells that is a Nexus deal, and the card shows
    the ordinary shelf price beside it. "For everyone" hides those; "Members' prices" shows
    only them. A limit per shopper is stated when the store sets one.
-4. Search the offers by the store's wording: a brand, a pack, a product. Filters and the page
+5. Search the offers by the store's wording: a brand, a pack, a product. Filters and the page
    are kept in the address, so a view can be shared.
-5. The daily price digest carries the day's best store offers on tracked food as well, under
+6. The daily price digest carries the day's best store offers on tracked food as well, under
    "Store offers today", and so do the Telegram messages.
 
 ![Deals: what each store marks down today](../web/public/guide/deals.png)
