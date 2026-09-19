@@ -1,5 +1,5 @@
 /**
- * The "How to use" guide: twelve sections of steps with screenshots of the live site. The screenshots
+ * The "How to use" guide: thirteen sections of steps with screenshots of the live site. The screenshots
  * live in public/guide and are refreshed by scripts/guide-screenshots.js; the test checks that every
  * file here exists at the declared size. The same guide is docs/user-guide.md in the repository.
  */
@@ -80,6 +80,25 @@ export const guideSections: GuideSection[] = [
     ],
     figures: [
       { file: "history", alt: "The price history chart over 90 days with open markets and supermarkets on, a day hovered, and a tooltip listing each seller's price", caption: "The history: pick a range, switch groups, hover or tap a day for every seller's price.", width: 1682, height: 1049 },
+    ],
+  },
+  {
+    id: "deals",
+    title: "Catch the offers",
+    summary: "“Deals” in the header lists what each supermarket itself marks down today: the store's own product name, the offer price, the store's regular price struck through, and the cut. It is read from the online shelves of Keells, Cargills, Glomark, and SPAR every morning, and covers their whole range, not only the food PriceLens tracks.",
+    steps: [
+      "The chips at the top pick one store; each says how many offers it has today. Offers are listed deepest cut first.",
+      "“Food we track” keeps the offers on products the site prices everywhere. Those cards link to the product's page and give the offer per kilo (or litre, or piece), so it compares with the other sellers.",
+      "A crown badge marks a members' price: at Keells that is a Nexus deal, and the card shows the ordinary shelf price beside it. “For everyone” hides those; “Members' prices” shows only them. A limit per shopper is stated when the store sets one.",
+      "Search the offers by the store's wording: a brand, a pack, a product. Filters and the page are kept in the address, so a view can be shared.",
+      "The daily price digest carries the day's best store offers on tracked food as well, under “Store offers today”, and so do the Telegram messages.",
+    ],
+    figures: [
+      { file: "deals", alt: "The Deals page: store chips with offer counts, filters, and offer cards with the store, the cut, the offer price, the regular price struck through, and the price per kilo for tracked food", caption: "Deals: what each store marks down today, the food PriceLens tracks first.", width: 1920, height: 1200 },
+    ],
+    tips: [
+      "An offer is the store's own claim, read from its site: a regular price beside the price with the offer. Cargills compares with the maximum retail price printed on the pack.",
+      "Card-only, promo-code, and buy-several offers are left out, and stores do not publish end dates: check the store before you travel for one.",
     ],
   },
   {

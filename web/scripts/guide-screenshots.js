@@ -129,6 +129,11 @@ async (page) => {
   await ((await staleCard.count()) ? staleCard : outdated.locator("xpath=ancestor::table[1]")).screenshot({ path: `${out}/outdated.png`, animations: "disabled" });
   log.push("outdated");
 
+  // What the stores themselves mark down today, the tracked food first.
+  await tab.goto(`${origin}/deals`);
+  await settle(tab, "[data-slot='card']");
+  await shot(tab, "deals");
+
   await tab.goto(`${origin}/p/product_big_onion?days=30`);
   await settle(tab, "h1");
   const amount = tab.locator("button[aria-label^='Change Big Onion quantity']");

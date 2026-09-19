@@ -10,14 +10,15 @@ screenshots, is on the site at [price.prabhavalabs.com/guide](https://price.prab
 2. [Find a product](#2-find-a-product)
 3. [Read a price](#3-read-a-price)
 4. [Follow the history](#4-follow-the-history)
-5. [Build a basket](#5-build-a-basket)
-6. [Compare stores](#6-compare-stores)
-7. [Cook from your basket](#7-cook-from-your-basket)
-8. [Cook for any number](#8-cook-for-any-number)
-9. [Plan a menu](#9-plan-a-menu)
-10. [Your account](#10-your-account)
-11. [Phone and theme](#11-phone-and-theme)
-12. [Feedback and privacy](#12-feedback-and-privacy)
+5. [Catch the offers](#5-catch-the-offers)
+6. [Build a basket](#6-build-a-basket)
+7. [Compare stores](#7-compare-stores)
+8. [Cook from your basket](#8-cook-from-your-basket)
+9. [Cook for any number](#9-cook-for-any-number)
+10. [Plan a menu](#10-plan-a-menu)
+11. [Your account](#11-your-account)
+12. [Phone and theme](#12-phone-and-theme)
+13. [Feedback and privacy](#13-feedback-and-privacy)
 
 ## 1. Start here
 
@@ -91,7 +92,34 @@ Below the sellers, the history chart draws every seller's price over time.
 
 *The history: pick a range, switch groups, hover or tap a day for every seller's price.*
 
-## 5. Build a basket
+## 5. Catch the offers
+
+"Deals" in the header lists what each supermarket itself marks down today: the store's own
+product name, the offer price, the store's regular price struck through, and the cut. It is
+read from the online shelves of Keells, Cargills, Glomark, and SPAR every morning, and covers
+their whole range, not only the food PriceLens tracks.
+
+1. The chips at the top pick one store; each says how many offers it has today. Offers are
+   listed deepest cut first.
+2. "Food we track" keeps the offers on products the site prices everywhere. Those cards link
+   to the product's page and give the offer per kilo (or litre, or piece), so it compares with
+   the other sellers.
+3. A crown badge marks a members' price: at Keells that is a Nexus deal, and the card shows
+   the ordinary shelf price beside it. "For everyone" hides those; "Members' prices" shows
+   only them. A limit per shopper is stated when the store sets one.
+4. Search the offers by the store's wording: a brand, a pack, a product. Filters and the page
+   are kept in the address, so a view can be shared.
+5. The daily price digest carries the day's best store offers on tracked food as well, under
+   "Store offers today", and so do the Telegram messages.
+
+![Deals: what each store marks down today](../web/public/guide/deals.png)
+
+An offer is the store's own claim, read from its site: a regular price beside the price with
+the offer. Cargills compares with the maximum retail price printed on the pack. Card-only,
+promo-code, and buy-several offers are left out, and stores do not publish end dates: check
+the store before you travel for one.
+
+## 6. Build a basket
 
 The basket is your shopping list, in real amounts. It lives only in your browser: nothing is
 uploaded and there is no account.
@@ -113,7 +141,7 @@ uploaded and there is no account.
 
 *The basket from any page: adjust, remove, clear, or compare stores.*
 
-## 6. Compare stores
+## 7. Compare stores
 
 "Compare stores for this basket" opens the basket page, which prices the list at every
 seller with observations from the last 30 days, in the amounts you set.
@@ -128,7 +156,7 @@ seller with observations from the last 30 days, in the amounts you set.
 
 *The basket page: stores that carry the whole list first, then by total; your list with amounts.*
 
-## 7. Cook from your basket
+## 8. Cook from your basket
 
 Under the store comparison, "Cook with your basket" suggests dishes from a catalogue of 363
 Sri Lankan dishes, best fit first: how many of a dish's key ingredients you already have, how
@@ -153,7 +181,7 @@ much of your basket it uses, and what is still to buy.
 
 *The whole catalogue, searchable by name in any language or by ingredient.*
 
-## 8. Cook for any number
+## 9. Cook for any number
 
 Every dish carries a full recipe: quantities as you buy them, the method step by
 step, and the numbers that follow from them. Set how many you are cooking for
@@ -193,7 +221,7 @@ twenty simmers as long as a pot for four.
 
 ![The recipes page filtered for weight loss](../web/public/guide/recipes-filters.png)
 
-## 9. Plan a menu
+## 10. Plan a menu
 
 A menu is a meal for an occasion: a Sunday lunch, a poya dana, a birthday tea.
 Name it, say how many are coming, add recipes from their pages, and the whole
@@ -215,7 +243,7 @@ one shopping list summed across every recipe.
 
 ![A menu for eight](../web/public/guide/menu.png)
 
-## 10. Your account
+## 11. Your account
 
 Reading prices never needs an account. One keeps your menus, your own recipes, your
 favourites, and your wishlist on the server, so they follow you to another phone or browser,
@@ -274,7 +302,7 @@ Five wrong passwords in a row lock sign-in for fifteen minutes; the wait is the 
 the address has an account or not. Deleting the account removes your menus and recipes with
 it. The basket in this browser stays, since it was never uploaded.
 
-## 11. Phone and theme
+## 12. Phone and theme
 
 Everything works on a phone: the header keeps the search box, recipes, menus, the basket, and
 your account, with the rest behind the ⋯ menu; cards stack in one column; the chart answers to
@@ -292,7 +320,7 @@ a tap instead of a hover.
 | --- | --- |
 | ![The board on a phone](../web/public/guide/phone-board.png) | ![The basket on a phone](../web/public/guide/phone-basket.png) |
 
-## 12. Feedback and privacy
+## 13. Feedback and privacy
 
 "Send feedback" in the ⋯ menu at the right of the header, or the link in the footer, opens a
 short form: choose Feedback or Report a bug, write at least ten characters, and leave an email only if you want a reply. The

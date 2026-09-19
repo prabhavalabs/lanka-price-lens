@@ -269,6 +269,43 @@ re-promotes the stored snapshots of the last days through the current bundles
 without touching the retailers at all (each source under its own run lease, as an
 audited run).
 
+### Store offers
+
+Every store says when a price is an offer, each in its own way, and the adapters keep it
+(`foundry/src/retail/offer.ts`). A record whose store marks it down carries `raw.offer`:
+
+```ts
+type RecordOffer = {
+  list_minor: number;    // the store's regular price for the pack
+  offer_minor: number;   // the price with the offer; always under list_minor
+  pct: number;           // signed, one decimal: -20 is 20 % off
+  kind: "mrp" | "promo_price" | "discount" | "compare_at";
+  audience: "everyone" | "members";
+  label?: string;        // the store's name for it ("Nexus")
+  max_quantity?: number; // the most packs one shopper may buy at the offer price
+};
+```
+
+| Store | What it sends | Read as |
+| --- | --- | --- |
+| Cargills | `Mrp` above `Price` | `mrp`: the pack's maximum retail price beside Cargills' own price |
+| Glomark | `price` above `promoPrice` / `applicablePrice` | `promo_price`: the list price beside the price Glomark sells at |
+| SPAR | Shopify `compare_at_price` above `price` | `compare_at` |
+| Keells | `isPromotionApplied`, `promotionDiscountValue`, and a `promotionItemDetailsList` beside the items | `discount`: the shelf price less the rupees off; `members` with label `Nexus` when the promotion is a Nexus deal |
+
+The record's **price never changes because of an offer**: it stays what the store charges every
+shopper, so a series never moves for this reason. For Cargills, Glomark, and SPAR that price is
+already the offer price; for Keells it is the shelf price, and a Nexus deal is recorded as a
+members' price beside it. One guarded helper (`storeOffer`) builds every offer: a cut under
+1 % is rounding and one over 90 % is a price keyed for another pack, and neither is kept.
+Keells promotions tied to a payment card, a promo code, or buying several at once are left
+out, as is a promotion the listing does not describe. Keells snapshots store the promotion
+list; stores do not publish end dates, so an offer is simply present or absent each morning.
+
+`raw.offer` rides in the staging row's `raw_json`. The warehouse sync turns the last three
+days of those rows into `store_offer` (see [warehouse.md](warehouse.md#store-offers)), which
+`GET /v1/public/offers`, the deals engine, and the site's Deals page read.
+
 ### Store quirks handled by the adapters
 
 - **SPAR** lists every product once per outlet as a Shopify variant (`WT`, `GL`,
