@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { CookieJar, fetchWithPolicy, parseJsonBody } from "../http.ts";
+import { slugOf, storeImageUrl, storePageUrl } from "../links.ts";
 import { minorOrNull, storeOffer } from "../offer.ts";
 import { baseSettingsSchema, categoryAllowed, compilePattern, patternSetting } from "../settings.ts";
 import { dedupeRecords, normalizeUnit, packFromLabel, priceToMinor, trimNumber, type NormalizedRecord, type RetailAdapter } from "../types.ts";
@@ -32,6 +33,9 @@ type CargillsItem = {
   PackSize?: number | string | null;
   CategoryCode?: string | null;
   SearchTerm?: string | null;
+  /** The encoded id the site's own product links carry. */
+  EnId?: string | null;
+  ItemImage?: string | null;
 };
 type StoreInfo = { PinCode: string; StoreId: string; DeliveryOption: string; Address?: string };
 type MenuCategory = { EnId: string; MenuCategoryName: string; Abbreviation?: string; IsAgeRestrict?: string };
@@ -145,8 +149,9 @@ export const cargillsAdapter: RetailAdapter<CargillsSettings> = {
       },
     };
   },
-  normalize(payload, _settings, date) {
+  normalize(payload, settings, date) {
     const data = payload.data as { categories?: CategorySnapshot[] };
+    const origin = settings.baseUrl.replace(/\/+$/u, "");
     const records: NormalizedRecord[] = [];
     for (const category of data.categories ?? []) {
       for (const item of category.items) {
@@ -179,6 +184,9 @@ export const cargillsAdapter: RetailAdapter<CargillsSettings> = {
             category_id: category.categoryId,
             category: category.name,
             category_code: item.CategoryCode ?? null,
+            // The site's own link: /ProductDetails/<category>/<name>?ID=<encoded id>; only the id selects the product.
+            url: item.EnId ? storePageUrl(`${origin}/ProductDetails/${slugOf(category.name ?? "products")}/${slugOf(name)}?ID=${encodeURIComponent(item.EnId)}`) : null,
+            image: item.ItemImage?.startsWith("/") ? storeImageUrl(`${origin}${item.ItemImage}`) : null,
             ...(offer ? { offer } : {}),
           },
         });

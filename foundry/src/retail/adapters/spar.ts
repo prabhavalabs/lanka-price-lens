@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { fetchWithPolicy, parseJsonBody } from "../http.ts";
+import { storeImageUrl, storePageUrl } from "../links.ts";
 import { minorOrNull, storeOffer } from "../offer.ts";
 import { baseSettingsSchema, categoryAllowed, compilePattern, patternSetting } from "../settings.ts";
 import { dedupeRecords, packFromLabel, priceToMinor, trimNumber, type NormalizedRecord, type RetailAdapter } from "../types.ts";
@@ -23,7 +24,7 @@ export const sparSettingsSchema = baseSettingsSchema.extend({
 export type SparSettings = z.infer<typeof sparSettingsSchema>;
 
 type ShopifyVariant = { id: number; title: string; price: string; compare_at_price?: string | null; available: boolean; grams?: number; sku?: string | null };
-type ShopifyProduct = { id: number; title: string; handle: string; updated_at?: string; product_type?: string; vendor?: string; variants: ShopifyVariant[] };
+type ShopifyProduct = { id: number; title: string; handle: string; updated_at?: string; product_type?: string; vendor?: string; variants: ShopifyVariant[]; images?: Array<{ src?: string | null }> | null };
 type FeedSnapshot = { handle: string | null; pages: number; truncated: boolean; products: ShopifyProduct[] };
 
 export const sparAdapter: RetailAdapter<SparSettings> = {
@@ -114,6 +115,8 @@ export const sparAdapter: RetailAdapter<SparSettings> = {
               sku: variant.sku ?? null,
               updated_at: product.updated_at ?? null,
               compare_at_price: variant.compare_at_price ?? null,
+              url: storePageUrl(`${settings.baseUrl.replace(/\/+$/u, "")}/products/${encodeURIComponent(product.handle)}`),
+              image: sparPicture(product.images?.[0]?.src),
               ...(offer ? { offer } : {}),
             },
           });
@@ -123,6 +126,15 @@ export const sparAdapter: RetailAdapter<SparSettings> = {
     return dedupeRecords(records);
   },
 };
+
+/** The product's first picture from Shopify's CDN at 600 px wide: the originals run to megabytes, and this is what the store's own pages show. */
+export function sparPicture(source: string | null | undefined): string | null {
+  const safe = storeImageUrl(source);
+  if (!safe) return null;
+  const url = new URL(safe);
+  url.searchParams.set("width", "600");
+  return url.toString();
+}
 
 /** Variant titles are "<outlet> / <grams>" or just "<outlet>", where the outlet is a short code such as WT, GL, or GP. */
 export function outletCode(variantTitle: string): string | null {

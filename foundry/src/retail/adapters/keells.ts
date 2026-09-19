@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { CookieJar, fetchWithPolicy, parseJsonBody } from "../http.ts";
+import { storeImageUrl, storePageUrl } from "../links.ts";
 import { storeOffer, type RecordOffer } from "../offer.ts";
 import { baseSettingsSchema, categoryAllowed, compilePattern, patternSetting } from "../settings.ts";
 import { dedupeRecords, normalizeUnit, packFromLabel, priceToMinor, type NormalizedRecord, type RetailAdapter } from "../types.ts";
@@ -29,6 +30,7 @@ type KeellsItem = {
   uom: string;
   stockInHand: number;
   isAvailable: boolean;
+  imageUrl?: string | null;
   isPromotionApplied: boolean;
   /** Rupees off one unit while the promotion runs; the listing keeps `amount` at the shelf price. */
   promotionDiscountValue?: number | null;
@@ -182,6 +184,8 @@ export const keellsAdapter: RetailAdapter<KeellsSettings> = {
             department_code: item.departmentCode ?? null,
             sub_department_code: item.subDepartmentCode ?? null,
             category_code: item.categoryCode ?? null,
+            url: keellsPageUrl(settings.storefrontOrigin, item.itemCode, name),
+            image: storeImageUrl(item.imageUrl),
             ...(offer ? { offer } : {}),
           },
         });
@@ -190,6 +194,13 @@ export const keellsAdapter: RetailAdapter<KeellsSettings> = {
     return dedupeRecords(records);
   },
 };
+
+/** The product's page as the web app links to it for a guest: `productDetail?itemcode=<code>&<Name_with_underscores>`. */
+export function keellsPageUrl(storefrontOrigin: string, itemCode: string, name: string): string | null {
+  if (!itemCode) return null;
+  const origin = storefrontOrigin.replace(/^https:\/\/keellssuper\.com/u, "https://www.keellssuper.com").replace(/\/+$/u, "");
+  return storePageUrl(`${origin}/productDetail?itemcode=${encodeURIComponent(itemCode)}&${encodeURIComponent(name.replace(/ /gu, "_"))}`);
+}
 
 /**
  * Keells leaves `amount` at the shelf price and lists the rupees a promotion takes off one unit. Who gets that price is on the

@@ -10,10 +10,11 @@ import { mappingBundleSchema, sourceManifestSchema } from "@lanka-pricelens/shar
 import { filesystemArchiveStorage } from "../src/archive-storage.ts";
 import { openOperationalDatabase, type OperationalDatabase } from "../src/db.ts";
 import { cargillsAdapter, cargillsPack } from "../src/retail/adapters/cargills.ts";
-import { discoverGlomarkCategories, extractGlomarkProducts, glomarkAdapter, glomarkPack } from "../src/retail/adapters/glomark.ts";
-import { keellsAdapter, keellsOffer, keellsPack } from "../src/retail/adapters/keells.ts";
-import { outletCode, sparAdapter, sparLabel, sparPack } from "../src/retail/adapters/spar.ts";
+import { discoverGlomarkCategories, extractGlomarkProducts, glomarkAdapter, glomarkImageBase, glomarkPack } from "../src/retail/adapters/glomark.ts";
+import { keellsAdapter, keellsOffer, keellsPack, keellsPageUrl } from "../src/retail/adapters/keells.ts";
+import { outletCode, sparAdapter, sparLabel, sparPack, sparPicture } from "../src/retail/adapters/spar.ts";
 import { pauseHours } from "../src/retail/capture.ts";
+import { readStoreLinks, slugOf, storeImageUrl, storePageUrl } from "../src/retail/links.ts";
 import { readOffer, storeOffer } from "../src/retail/offer.ts";
 import { remapRecentSnapshots } from "../src/retail/remap.ts";
 import { exportSnapshot, snapshotFileSchema } from "../src/retail/snapshot.ts";
@@ -255,6 +256,44 @@ test("adapters keep each store's own offer beside the price, and the price stays
   assert.equal(keells[3]?.raw.offer, undefined, "a promotion the listing does not describe is left out");
   assert.equal(keells[4]?.raw.offer, undefined);
   assert.equal(keellsOffer({ amount: 300, isPromotionApplied: true, promotionDiscountValue: 60 }, [{ promotionDetailID: 1, itemID: 9, minimumQuantity: 2, isPercentagePromotion: true, discountPercentage: 20 }]), null, "buy two is not a price for one");
+});
+
+test("records keep the product's page on the store's site and the original address of its picture, on known hosts only", () => {
+  assert.equal(storePageUrl("https://glomark.lk/chinese-cabbage/p/12720"), "https://glomark.lk/chinese-cabbage/p/12720");
+  assert.equal(storePageUrl("http://glomark.lk/x/p/1"), null, "https only");
+  assert.equal(storePageUrl("https://glomark.lk.evil.example/x/p/1"), null);
+  assert.equal(storePageUrl("https://user:secret@glomark.lk/x/p/1"), null);
+  assert.equal(storeImageUrl("https://cdn.shopify.com/s/files/1/0703/files/Cucumber.jpg?v=1"), "https://cdn.shopify.com/s/files/1/0703/files/Cucumber.jpg?v=1");
+  assert.equal(storeImageUrl("https://169.254.169.254/latest/meta-data"), null, "nothing outside the stores' image hosts is ever fetched");
+  assert.equal(storeImageUrl("javascript:alert(1)"), null);
+  assert.deepEqual(readStoreLinks({ url: "https://spar2u.lk/products/leeks", image: "https://example.com/a.jpg" }), { url: "https://spar2u.lk/products/leeks", image: null });
+  assert.equal(slugOf("Mum`S Joy Pure Refined Coconut Oil 1L"), "mum-s-joy-pure-refined-coconut-oil-1l");
+
+  const cargills = cargillsAdapter.normalize({ fetchedAt: "", requests: 1, data: { categories: [{ categoryId: "x", name: "Dairy & Eggs", pages: 1, truncated: false, items: [
+    { Id: 1, ItemName: "Milk Powder 400g", Price: "1,020.00", Mrp: "1,200.00", UnitSize: 400, UOM: "g", EnId: "9BYHrWAN30rFBOeWzGa39A==", ItemImage: "/VendorItems/MenuItems/MP0401_1.jpg" },
+    { Id: 2, ItemName: "Nadu Rice 1kg", Price: "250.00", UnitSize: 1, UOM: "kg", ItemImage: "https://elsewhere.example/x.jpg" },
+  ] }] } }, cargillsAdapter.settingsSchema.parse({}), "2026-09-19");
+  assert.deepEqual([cargills[0]?.raw.url, cargills[0]?.raw.image], ["https://cargillsonline.com/ProductDetails/dairy-eggs/milk-powder-400g?ID=9BYHrWAN30rFBOeWzGa39A%3D%3D", "https://cargillsonline.com/VendorItems/MenuItems/MP0401_1.jpg"]);
+  assert.deepEqual([cargills[1]?.raw.url, cargills[1]?.raw.image], [null, null], "no encoded id, no link; a picture that is not a path on the store is not taken");
+
+  const glomark = glomarkAdapter.normalize({ fetchedAt: "", requests: 1, data: { discovered: 1, pages: [{ path: "/meat/c/1", products: [
+    { id: 7, name: "Chicken Sausage 500G", unit: "g", displayQuantity: 500, price: 1050, image: "350534--01--1737527525.jpeg" },
+    { id: 8, name: "Red Lentils 1Kg", unit: "kg", displayQuantity: 1, price: 480, image: "../../secret" },
+  ] }] } }, glomarkAdapter.settingsSchema.parse({}), "2026-09-19");
+  assert.deepEqual([glomark[0]?.raw.url, glomark[0]?.raw.image], ["https://glomark.lk/chicken-sausage-500g/p/7", `${glomarkImageBase}350534--01--1737527525.jpeg`]);
+  assert.equal(glomark[1]?.raw.image, null, "a file name that is not a plain file name is not a picture");
+
+  const spar = sparAdapter.normalize({ fetchedAt: "", requests: 1, data: { feeds: [{ handle: null, pages: 1, truncated: false, products: [
+    { id: 1, title: "CUCUMBER", handle: "cucumber", product_type: "Vegetables", images: [{ src: "https://cdn.shopify.com/s/files/1/0703/files/Cucumber.jpg?v=17" }], variants: [{ id: 11, title: "WT / 1000", price: "27.50", available: true }] },
+  ] }] } }, sparAdapter.settingsSchema.parse({}), "2026-09-19");
+  assert.deepEqual([spar[0]?.raw.url, spar[0]?.raw.image], ["https://spar2u.lk/products/cucumber", "https://cdn.shopify.com/s/files/1/0703/files/Cucumber.jpg?v=17&width=600"]);
+  assert.equal(sparPicture("https://example.com/a.jpg"), null);
+
+  const keells = keellsAdapter.normalize({ fetchedAt: "", requests: 1, data: { departments: [{ departmentId: null, pages: 1, truncated: false, items: [
+    { itemID: 1, itemCode: "128298", name: "4700Bc Popcorn Butter 25g", amount: 265, uom: "NO", stockInHand: 5, isAvailable: true, isPromotionApplied: false, discountedTotal: 0, imageUrl: "https://essstr.blob.core.windows.net/essimg/350x/Small/Pic128298.jpg", departmentCode: "G", subDepartmentCode: "GSN" },
+  ] }] } }, keellsAdapter.settingsSchema.parse({}), "2026-09-19");
+  assert.deepEqual([keells[0]?.raw.url, keells[0]?.raw.image], ["https://www.keellssuper.com/productDetail?itemcode=128298&4700Bc_Popcorn_Butter_25g", "https://essstr.blob.core.windows.net/essimg/350x/Small/Pic128298.jpg"]);
+  assert.equal(keellsPageUrl("https://keellssuper.com", "", "x"), null);
 });
 
 test("http policy retries transient failures, stops on client errors, and keeps cookies", async () => {
