@@ -115,6 +115,7 @@ test("the connect state is signed, short-lived, and bound to its purpose", () =>
 /** A Graph API that knows one code, one person, and one Page, and records what was posted. */
 function fakeFacebook() {
   const posted: Array<{ path: string; form: URLSearchParams }> = [];
+  const mood = { limited: false };
   const answer = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json" } });
   const request = (async (input: string | URL | Request, init?: RequestInit) => {
     const url = new URL(String(input));
@@ -122,13 +123,14 @@ function fakeFacebook() {
     if (url.pathname.endsWith("/me")) return answer({ name: "Nipun" });
     if (url.pathname.endsWith("/me/accounts")) return answer({ data: [{ id: "1234567890", name: "PriceLens", access_token: "PAGE-TOKEN", link: "https://www.facebook.com/pricelens", tasks: ["CREATE_CONTENT"] }] });
     if (url.pathname.endsWith("/debug_token")) return answer({ data: { is_valid: true, expires_at: 0, scopes: ["pages_manage_posts"] } });
+    if (init?.method === "POST" && mood.limited) return answer({ error: { message: "(#32) Page request limit reached", code: 32 } }, 400);
     if (init?.method === "POST") {
       posted.push({ path: url.pathname, form: new URLSearchParams(String(init.body)) });
       return answer({ id: "777", post_id: "1234567890_777" });
     }
     return answer({ error: { message: "unknown", code: 100 } }, 400);
   }) as typeof fetch;
-  return { posted, request };
+  return { posted, request, mood };
 }
 
 test("the admin connects a Page through Facebook Login, previews the day, and posts it", async () => {
@@ -194,6 +196,15 @@ test("the admin connects a Page through Facebook Login, previews the day, and po
     assert.equal(facebook.posted[0]!.path, "/v25.0/1234567890/photos");
     assert.equal(facebook.posted[0]!.form.get("access_token"), "PAGE-TOKEN");
     assert.equal(facebook.posted[0]!.form.get("caption"), preview.payload.caption);
+
+    // Facebook's refusal reaches the owner, and a post made by hand is not tried again later on its own.
+    facebook.mood.limited = true;
+    const limited = await app.request("/v1/admin/facebook/post", { method: "POST", headers: { ...json, cookie: admin }, body: JSON.stringify({ day: "2026-09-20" }) });
+    assert.equal(limited.status, 502);
+    const refusal = (await limited.json()) as { success: boolean; message: string; payload: { posts: Array<{ status: string }> } };
+    assert.deepEqual([refusal.success, refusal.message], [false, "Not posted: FACEBOOK_32: (#32) Page request limit reached"]);
+    assert.deepEqual(refusal.payload.posts.map((entry) => entry.status), ["dead", "sent"]);
+    facebook.mood.limited = false;
 
     // Paused, then disconnected.
     const paused = await app.request("/v1/admin/facebook/pages/1234567890/pause", { method: "POST", headers: { ...json, cookie: admin }, body: JSON.stringify({ paused: true }) });

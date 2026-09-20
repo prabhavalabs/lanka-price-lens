@@ -188,7 +188,10 @@ export function facebookAdminRoutes(deps: FacebookDeps): Hono<Bindings> {
     deps.outbox.enqueue([{ targetId: facebookTargetId, target: { kind: "facebook", address: page.page_id }, message: { ...found.post, dedupe_key: dedupeKey }, dedupeKey }], stamp);
     const report = await dispatchOutbox(deps.outbox, deps.channels(), { now, only: "facebook", onGone: (entry, error) => deps.store.markToken(entry.target.address, { valid: false, error }, now()) });
     const post = deps.store.posts(10).find((entry) => entry.dedupe_key === dedupeKey);
-    return ok(context, { ...status(context), report, post: post ?? null }, post?.status === "sent" ? "Posted to the Page" : `Not posted: ${post?.error ?? "queued for another try"}`);
+    if (post?.status === "sent") return ok(context, { ...status(context), report, post }, "Posted to the Page");
+    // A post made by hand is not tried again behind the owner's back an hour later: it went now or it did not go.
+    if (post && post.status !== "dead") deps.outbox.markDead(post.id, post.error ?? "FACEBOOK_NOT_POSTED: given up, posted by hand", now());
+    return context.json(envelope(context.get("requestId") ?? "unknown", { ...status(context), report, post: post ?? null }, false, `Not posted: ${post?.error ?? "queued for another try"}`), 502);
   });
 
   return app;
