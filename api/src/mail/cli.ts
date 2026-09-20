@@ -8,7 +8,7 @@ import type { MailServices } from "./samples.ts";
  * so the sends are spaced out.
  */
 
-export const mailUsage = "Usage: mail samples --to <address> [--kind verify_email,deals_daily,notices] [--origin https://price.prabhavalabs.com]";
+export const mailUsage = "Usage: mail samples --to <address> [--kind verify_email,deals_daily,notices] [--origin https://badumila.com]";
 
 export type MailCommandOptions = {
   out?: ((line: string) => void) | undefined;

@@ -3,7 +3,7 @@ import { message, type Message } from "@lanka-pricelens/notify";
 
 import { formatMinor } from "../newsletters/deals.ts";
 import { dayWords } from "../newsletters/time.ts";
-import { colours, escape, fontFamily, markData, renderSvg, textWidth } from "../og.ts";
+import { colours, escape, fontFamily, markData, renderSvg, siteHost, textWidth } from "../og.ts";
 
 /**
  * The day's deals as a Facebook Page post (docs/facebook.md): a picture drawn here and a short
@@ -101,7 +101,7 @@ export function dealsCardSvg(day: string, deals: PostDeal[]): string {
   }
   // Footer.
   parts.push(`<line x1="${left}" y1="1268" x2="${postCardWidth - left}" y2="1268" stroke="#ffffff" stroke-opacity="0.08"/>`);
-  parts.push(text(left, 1312, "price.prabhavalabs.com/deals", 26, colours.text, 600));
+  parts.push(text(left, 1312, `${siteHost}/deals`, 26, colours.text, 600));
   parts.push(text(postCardWidth - left, 1312, "Prices as the stores list them", 22, colours.muted, 400, 'text-anchor="end"'));
   parts.push("</svg>");
   return parts.join("");

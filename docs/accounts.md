@@ -193,7 +193,7 @@ the site origin is https. `LPL_TELEGRAM_CHANNEL` names a public channel the bot 
 the deals run posts the day's digest there once. Details of the messages in docs/newsletters.md.
 
 To look at every mail with sample data, `pnpm mail samples --to <address> [--kind …]
-[--origin https://price.prabhavalabs.com]` sends each kind (and the owner's notices) to one
+[--origin https://badumila.com]` sends each kind (and the owner's notices) to one
 address; `--origin` points the links and pictures at the production site.
 
 ### Mail wording
@@ -227,11 +227,11 @@ SendGrid remains a fallback in the code (`notify/src/channels/sendgrid.ts`, used
    support and developer email, the site's home page, privacy policy `/privacy`, terms `/terms`; scopes `openid`,
    `email`, `profile`. Publish it.
 2. Credentials → Create OAuth client ID → Web application. Authorised JavaScript origin
-   `https://price.prabhavalabs.com`; authorised redirect URI
-   `https://price.prabhavalabs.com/v1/auth/google/callback` (and
+   `https://badumila.com`; authorised redirect URI
+   `https://badumila.com/v1/auth/google/callback` (and
    `http://localhost:3000/v1/auth/google/callback` for local work).
 3. Put the client id and secret in app.env as `LPL_GOOGLE_CLIENT_ID` and
-   `LPL_GOOGLE_CLIENT_SECRET`, and `LPL_SITE_ORIGIN=https://price.prabhavalabs.com`.
+   `LPL_GOOGLE_CLIENT_SECRET`, and `LPL_SITE_ORIGIN=https://badumila.com`.
 
 ## Settings
 

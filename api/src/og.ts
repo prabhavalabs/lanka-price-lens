@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 import { Resvg } from "@resvg/resvg-js";
 
+import { defaultSiteOrigin } from "./mail/layout.ts";
 import type { PublicOverview, PublicProductCard } from "./public.ts";
 
 /**
@@ -23,6 +24,8 @@ const fontFiles = ["400", "500", "600", "700"].map((weight) => resolve(fontsDire
 
 export const colours = { background: "#0b1411", text: "#f3f7f4", muted: "#9fb3a8", green: "#3ddc97", greenDeep: "#0f7a54", up: "#ff7b7b", down: "#3ddc97" };
 export const fontFamily = "IBM Plex Sans";
+/** The site's address as the cards print it: LPL_SITE_ORIGIN without its scheme. */
+export const siteHost = (process.env.LPL_SITE_ORIGIN?.trim() || defaultSiteOrigin).replace(/^https?:\/\//u, "").replace(/\/+$/u, "");
 
 export type CardRow = { label: string; value: string; note?: string | undefined; noteColour?: string | undefined };
 export type CardStat = { value: string; label: string };
@@ -81,7 +84,7 @@ export function cardSvg(card: Card): string {
   // Brand.
   parts.push(markData ? `<image x="${left}" y="58" width="48" height="48" xlink:href="data:image/png;base64,${markData}"/>` : `<g transform="translate(${left} 62)"><rect width="44" height="44" rx="11" fill="${colours.greenDeep}"/></g>`);
   parts.push(text(left + 60, 94, "PriceLens", 30, colours.text, 600));
-  parts.push(text(left + 214, 94, "price.prabhavalabs.com", 22, colours.muted));
+  parts.push(text(left + 214, 94, siteHost, 22, colours.muted));
   // Eyebrow and title. Cards with stat tiles run a little tighter so the tiles clear the footer.
   const compact = Boolean(card.stats?.length);
   let y = compact ? 176 : 190;

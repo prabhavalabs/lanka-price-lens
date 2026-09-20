@@ -5,6 +5,7 @@ import { Hono, type Context } from "hono";
 import type { ContentStore } from "../account/content.ts";
 import type { Account, AccountErrorCode } from "../account/types.ts";
 import { envelope, jsonObject, sameOrigin } from "../http.ts";
+import { defaultSiteOrigin } from "../mail/layout.ts";
 import type { OwnerNotifier } from "../notify.ts";
 import type { RecipeStore } from "../recipes.ts";
 import { CommunityLimitError, type CommunityStore } from "./store.ts";
@@ -47,7 +48,7 @@ const dishPattern = /^dish_[a-z0-9]+(?:_[a-z0-9]+)*$/u;
 
 /** The note the owner gets for a contribution: what, who, and where to review it. */
 export function communityNotice(kind: "submission" | "request" | "translation" | "proposal", account: Pick<Account, "email" | "display_name">, detail: { title: string; lines: Array<{ text: string; value: string }>; body?: string | undefined }, siteOrigin: string | null): Message {
-  const admin = `${(siteOrigin ?? "https://price.prabhavalabs.com").replace(/\/+$/u, "")}/admin/community`;
+  const admin = `${(siteOrigin ?? defaultSiteOrigin).replace(/\/+$/u, "")}/admin/community`;
   const heading = { submission: "Recipe submission", request: "Recipe request", translation: "Translation feedback", proposal: "New ingredient proposed" }[kind];
   return message({
     title: `[PriceLens] ${heading}: ${detail.title.slice(0, 80)}`,

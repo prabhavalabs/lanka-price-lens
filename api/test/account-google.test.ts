@@ -248,9 +248,9 @@ test("start redirects to Google with PKCE and keeps the state in a signed HttpOn
   assert.equal(createHash("sha256").update(saved.verifier).digest("base64url"), location.searchParams.get("code_challenge"));
 
   // The configured origin wins over the request's.
-  const fixed = googleRoutes({ store: memoryStore().store, config: { ...config, siteOrigin: "https://price.prabhavalabs.com/" }, createSession: () => "tok", fetch: fakeGoogle().request });
+  const fixed = googleRoutes({ store: memoryStore().store, config: { ...config, siteOrigin: "https://badumila.com/" }, createSession: () => "tok", fetch: fakeGoogle().request });
   const production = await fixed.request("/start", { headers: { host: "localhost:3000" } });
-  assert.equal(new URL(production.headers.get("location")!).searchParams.get("redirect_uri"), "https://price.prabhavalabs.com/v1/auth/google/callback");
+  assert.equal(new URL(production.headers.get("location")!).searchParams.get("redirect_uri"), "https://badumila.com/v1/auth/google/callback");
 
   // Without a client there is nothing to start.
   const unconfigured = googleRoutes({ store: memoryStore().store, config: { ...config, google: null }, createSession: () => "tok", log: (line) => lines.push(line) });

@@ -4,7 +4,7 @@ Sri Lanka's food prices, every day, in one place: open markets and supermarkets 
 with history, a basket that prices your shopping list at every store, and recipes matched to what
 you have.
 
-**Public site:** [price.prabhavalabs.com](https://price.prabhavalabs.com)
+**Public site:** [badumila.com](https://badumila.com)
 
 | | |
 | --- | --- |
@@ -29,7 +29,7 @@ you have.
 ## Using the site
 
 The site has its own guide with screenshots at
-[price.prabhavalabs.com/guide](https://price.prabhavalabs.com/guide): finding a product, reading
+[badumila.com/guide](https://badumila.com/guide): finding a product, reading
 a price and its history, building a basket in real amounts, comparing stores, cooking from the
 basket, phone and theme, feedback and privacy. The same guide is in the repository as
 [docs/user-guide.md](docs/user-guide.md); the screenshots live in `web/public/guide/` and are
@@ -39,7 +39,7 @@ refreshed from the live site with `web/scripts/guide-screenshots.js`.
 
 | Topic | Where |
 | --- | --- |
-| Using the site | [docs/user-guide.md](docs/user-guide.md), live at [/guide](https://price.prabhavalabs.com/guide) |
+| Using the site | [docs/user-guide.md](docs/user-guide.md), live at [/guide](https://badumila.com/guide) |
 | How the site works and its public API | [docs/public-site.md](docs/public-site.md) |
 | Architecture and the separation of operational data from public views | [docs/architecture.md](docs/architecture.md) |
 | Official PDF sources and their parsers | [docs/official-sources.md](docs/official-sources.md), [docs/pdf-archive.md](docs/pdf-archive.md), [docs/pdf-intake.md](docs/pdf-intake.md) |

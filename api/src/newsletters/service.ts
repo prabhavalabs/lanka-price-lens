@@ -31,7 +31,7 @@ export type NewsletterDeps = {
   outbox: OutboxStore;
   /** Edited wording from the admin; the defaults apply without it. */
   templates?: TemplateStore | undefined;
-  /** "https://price.prabhavalabs.com": where every link in the mail points. */
+  /** "https://badumila.com": where every link in the mail points. */
   siteOrigin: string;
   /** Whether the site has a photo of a product, for the thumbnails on deal and alert rows. */
   hasProductPhoto?: ((productId: string) => boolean) | undefined;

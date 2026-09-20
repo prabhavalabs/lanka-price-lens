@@ -94,6 +94,7 @@ import { startNewsletterScheduler } from "./newsletters/scheduler.ts";
 import { postDeals, renderDealsCard } from "./facebook/post.ts";
 import { facebookAdminRoutes, facebookCallbackPath, facebookCallbackRoute, type FacebookDeps } from "./facebook/routes.ts";
 import { createFacebookStore } from "./facebook/store.ts";
+import { defaultSiteOrigin } from "./mail/layout.ts";
 import { createNewsletterService, type NewsletterService } from "./newsletters/service.ts";
 import { unsubscribeRoutes } from "./newsletters/unsubscribe.ts";
 import { surpriseRoutes } from "./surprise.ts";
@@ -218,7 +219,7 @@ export function createApp(
 
   // The daily mails (docs/newsletters.md): the outbox they queue into, the deals engine over the warehouse, and a cost per serving for the recipe cards.
   const outbox = createSqliteOutbox(database);
-  const siteOrigin = accountConfig.siteOrigin ?? "https://price.prabhavalabs.com";
+  const siteOrigin = accountConfig.siteOrigin ?? defaultSiteOrigin;
   const deals = dealsAccessFor({ database, warehouse, essentials: () => loadEssentials() });
   // The Facebook Page (docs/facebook.md): connected from the admin, its token sealed under the state secret, posted to through the same outbox as the mails.
   const facebookStore = createFacebookStore(database, accountConfig.stateSecret);

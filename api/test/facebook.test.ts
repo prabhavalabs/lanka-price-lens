@@ -93,7 +93,7 @@ test("the post's picture is drawn here: the day, the rows, the site's address, a
   const rows = postDeals(day);
   const svg = dealsCardSvg(day.day, rows);
   assert.match(svg, /Sunday 20 September/u);
-  assert.match(svg, /price\.prabhavalabs\.com\/deals/u);
+  assert.match(svg, /badumila\.com\/deals/u);
   assert.ok(svg.includes(rows[0]!.now));
   assert.equal((svg.match(/<image /gu) ?? []).length <= 1, true, "the only image is the site's own mark");
   const png = renderDealsCard(day.day, rows);
