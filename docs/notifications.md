@@ -28,6 +28,7 @@ the first problem by field name instead of throwing.
 | `discord` | webhook URL | none | One embed; a headed section becomes one field, a bare section becomes one inline field per line. Mentions are never parsed. |
 | `slack` | incoming webhook URL | none | Block Kit: header, sections, image, link buttons, context footer, plus a plain-text fallback. |
 | `email` | recipient address | Resend API key and a from address | Text and HTML parts; `meta.reply_to` sets the reply address, `meta.subject` overrides the title. |
+| `facebook` | Page id (digits) | `pageToken(pageId)`, a lookup the application supplies; optionally the app secret | A message with an image is published as a Page photo with the text as its caption (Facebook fetches the picture from the address), one without goes to the feed with the first action as the previewed link. Plain text: lines go without their own links, the actions carry them at the foot. The token travels in the request body, never in the address, and never enters the outbox. Graph errors are read by code: 190, 102, 10 and 200 to 299 are `gone` (connect the Page again), rate limits wait an hour, a refused or duplicate post is final. Beside the channel: `facebookLoginUrl`, `exchangeFacebookCode`, `extendFacebookToken`, `listFacebookPages`, `inspectFacebookToken`. |
 | `webpush` | subscription endpoint, keys in `meta` | VAPID key pair and a subject | RFC 8291 `aes128gcm` encryption and RFC 8292 VAPID on `node:crypto` alone, no dependency. `generateVapidKeys()` makes the pair once; the public key is what the page passes to `pushManager.subscribe`. |
 
 `createChannels(config)` builds the registry: Discord and Slack are always present (the
@@ -48,6 +49,9 @@ the provider's own `retry-after`), or marks it dead after the last attempt (five
 A dead target is reported through `onGone` before the entry dies. Entries stuck in `sending`
 (a crash mid-run) are claimed again after ten minutes. Sends on the same channel are paced.
 
+`dispatchOutbox(..., { only: "facebook" })` delivers one channel's entries and leaves the rest
+queued for the regular run: a "send it now" from an admin does not claim the waiting mails.
+
 A dedupe key (the message's own or one given at enqueue) makes a repeat for the same target
 a no-op while an earlier copy is queued or sent, so a tick that runs twice sends once.
 
@@ -64,6 +68,8 @@ application runs `outboxSchema` in its own migrations; the store never creates t
 - Telegram for readers (docs/accounts.md): a chat linked from the account page gets the same
   daily mails as messages; the public channel gets the deals digest. The account mailer's
   registry carries the `email` and `telegram` channels, so one outbox serves both.
+- The Facebook Page (docs/facebook.md): connected from the admin, it gets the day's deals as
+  one post through the same outbox.
 
 ## What comes next
 
