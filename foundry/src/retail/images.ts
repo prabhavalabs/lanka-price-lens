@@ -76,7 +76,7 @@ export async function fetchStoreImages(database: OperationalDatabase, options: I
   const now = options.now ?? new Date();
   const log = options.log ?? (() => undefined);
   const http = options.http ?? fetch;
-  const userAgent = options.userAgent ?? "LankaPriceLens/1.0 (+https://price.prabhavalabs.com; price transparency research)";
+  const userAgent = options.userAgent ?? "LankaPriceLens/1.0 (+https://badumila.com; price transparency research)";
   const root = resolve(options.root);
   const skipped = (options.skipSources ?? []).filter((id) => /^[a-z0-9_]+$/u.test(id));
   const queue = database

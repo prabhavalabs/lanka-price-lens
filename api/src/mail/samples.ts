@@ -2,7 +2,7 @@ import type { MailSender } from "../account/mail.ts";
 import { communityNotice } from "../community/routes.ts";
 import { feedbackMessage, renderOwnerNotice, type OwnerNoticeOptions } from "../notify.ts";
 import type { MailKind } from "./defaults.ts";
-import type { RenderedMail } from "./layout.ts";
+import { defaultSiteOrigin, type RenderedMail } from "./layout.ts";
 
 /**
  * Every mail the site can send, rendered with sample data so the owner can look at each one:
@@ -21,7 +21,7 @@ export type MailServices = {
 
 /** The owner's notices with made-up but plausible content: a bug report from the site and a translation verdict from the community. */
 export function sampleOwnerNotices(options: OwnerNoticeOptions & { siteOrigin: string | null }): Array<{ name: string; mail: RenderedMail }> {
-  const origin = (options.siteOrigin ?? "https://price.prabhavalabs.com").replace(/\/+$/u, "");
+  const origin = (options.siteOrigin ?? defaultSiteOrigin).replace(/\/+$/u, "");
   const now = new Date().toISOString();
   const bug = feedbackMessage({
     id: "fb_sample",

@@ -21,7 +21,7 @@ export type CostLookup = (entry: RecipeIndexEntry) => number | null;
 
 export type RecipeMailDeps = {
   index: Map<string, RecipeIndexEntry>;
-  /** "https://price.prabhavalabs.com": where the links and the card images point. */
+  /** "https://badumila.com": where the links and the card images point. */
   siteOrigin: string;
   cost?: CostLookup | null | undefined;
   count?: number | undefined;

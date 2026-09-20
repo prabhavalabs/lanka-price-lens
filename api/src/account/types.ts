@@ -89,7 +89,7 @@ export type AccountStore = {
 
 /** Settings the accounts system needs, read from the environment by app.ts. */
 export type AccountConfig = {
-  /** "https://price.prabhavalabs.com": where links in mail and OAuth redirects point. Read from the request when empty. */
+  /** "https://badumila.com": where links in mail and OAuth redirects point. Read from the request when empty. */
   siteOrigin: string | null;
   cookieName: string;
   /** Session length for "remember me" sign-ins and the sliding renewal window. */

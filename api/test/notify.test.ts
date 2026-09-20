@@ -4,7 +4,7 @@ import test from "node:test";
 import type { FeedbackItem } from "../src/feedback.ts";
 import { createOwnerNotifier, feedbackMessage } from "../src/notify.ts";
 
-const item: FeedbackItem = { id: "fb_1", kind: "bug", message: "The chart shows nothing for coconut", email: "someone@example.com", page: "https://price.prabhavalabs.com/p/product_coconut", user_agent: "test", status: "new", created_at: "2026-09-07T05:00:00.000Z", updated_at: "2026-09-07T05:00:00.000Z" };
+const item: FeedbackItem = { id: "fb_1", kind: "bug", message: "The chart shows nothing for coconut", email: "someone@example.com", page: "https://badumila.com/p/product_coconut", user_agent: "test", status: "new", created_at: "2026-09-07T05:00:00.000Z", updated_at: "2026-09-07T05:00:00.000Z" };
 
 type Call = { url: string; body: Record<string, unknown>; headers: Record<string, string> };
 
@@ -70,7 +70,7 @@ test("mail goes through Resend to the owner's address with the reader as reply-t
   assert.equal(body.from, "PriceLens <feedback@example.com>");
   assert.deepEqual(body.to, ["owner@example.com"]);
   assert.equal(body.subject, "[PriceLens] Bug report: The chart shows nothing for coconut");
-  assert.match(body.text, /Page: https:\/\/price\.prabhavalabs\.com\/p\/product_coconut/u);
+  assert.match(body.text, /Page: https:\/\/badumila\.com\/p\/product_coconut/u);
   assert.ok(body.html.includes("<h1"));
   assert.equal(body.reply_to, "someone@example.com");
 

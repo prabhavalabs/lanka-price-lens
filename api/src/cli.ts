@@ -7,7 +7,7 @@ import { newsletterCommand, newsletterUsage } from "./newsletters/cli.ts";
  * the operational database, the warehouse) without starting the server or its timers:
  *
  *   node src/cli.ts newsletter run --kind recipes_daily [--day YYYY-MM-DD] [--dry-run] [--force]
- *   node src/cli.ts mail samples --to owner@example.com [--kind verify_email,deals_daily,notices] [--origin https://price.prabhavalabs.com]
+ *   node src/cli.ts mail samples --to owner@example.com [--kind verify_email,deals_daily,notices] [--origin https://badumila.com]
  */
 const [command, ...arguments_] = process.argv.slice(2);
 
