@@ -8,7 +8,7 @@
 // A fake cursor is drawn on the page (Playwright's recording has none) and every move, click,
 // and scroll is eased so the footage reads like a person using the site.
 async (page) => {
-  const origin = "https://price.prabhavalabs.com";
+  const origin = "https://badumila.com";
   const out = "marketing/promo/public/clips";
   // The page is zoomed 1.2x so a 1728x1080 recording lays out like 1440x900 (phone: 468x1013 like 390x844)
   // and lands 1:1 in the 2560x1440 video. Playwright captures at CSS pixels and never upscales.

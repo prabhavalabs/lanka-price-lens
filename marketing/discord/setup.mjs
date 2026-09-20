@@ -29,7 +29,7 @@ const teamPermissions = sum(P.KICK_MEMBERS, P.MODERATE_MEMBERS, P.MANAGE_MESSAGE
 // channels; the rest share one section with a chat channel each plus a common updates feed and feedback
 // forum. Each project has a role people can pick to be pinged about it.
 const projects = [
-  { key: "pricelens", name: "PriceLens", role: "PriceLens", color: 0x3ddc97, repo: "lanka-price-lens", url: "https://price.prabhavalabs.com", blurb: "Sri Lanka's food prices every day: open markets, supermarkets, and wholesale side by side, with history, a basket that finds the cheapest store, and recipes." },
+  { key: "pricelens", name: "PriceLens", role: "PriceLens", color: 0x3ddc97, repo: "lanka-price-lens", url: "https://badumila.com", blurb: "Sri Lanka's food prices every day: open markets, supermarkets, and wholesale side by side, with history, a basket that finds the cheapest store, and recipes." },
   { key: "lanka-newspaper", name: "Lanka Newspaper", role: "Lanka Newspaper", color: 0xf28c38, repo: "lanka-news-paper", url: "https://github.com/prabhavalabs/lanka-news-paper", blurb: "Sri Lankan news aggregation, intelligence, and editorial control." },
   { key: "lanka-data-layer", name: "Lanka Data Layer", role: "Lanka Data Layer", color: 0x5fb3f2, repo: "lanka-data-layer", url: "https://github.com/prabhavalabs/lanka-data-layer", blurb: "Open geo-data infrastructure for Sri Lanka: the API and the visualisation platform." },
   { key: "agentmeter", name: "AgentMeter", role: "AgentMeter", color: 0xe5c07b, repo: "agentmeter", url: "https://github.com/prabhavalabs/agentmeter", blurb: "An ESP32 desk display for live coding-agent usage windows, reset countdowns, and alerts." },

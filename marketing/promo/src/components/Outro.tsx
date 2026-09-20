@@ -16,7 +16,7 @@ export const Outro = () => {
         <Logo size={118} />
       </div>
       <div style={{ marginTop: 64, padding: "28px 64px", borderRadius: 999, border: `2px solid rgba(61,220,151,0.55)`, background: "rgba(61,220,151,0.08)", color: theme.text, fontSize: 84, fontWeight: 600, letterSpacing: -2, opacity: url, transform: `translateY(${(1 - url) * 20}px)` }}>
-        price.prabhavalabs.com
+        badumila.com
       </div>
       <div style={{ display: "flex", gap: 54, marginTop: 58 }}>
         {points.map((point, index) => {
