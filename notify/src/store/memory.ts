@@ -24,11 +24,12 @@ export function createMemoryOutbox(): OutboxStore & { entries: () => OutboxEntry
       }
       return { queued, duplicates };
     },
-    claimDue: (limit, now, staleAfterMs) => {
+    claimDue: (limit, now, staleAfterMs, only) => {
       const stamp = now.toISOString();
       const stale = new Date(now.getTime() - staleAfterMs).toISOString();
       const due = [...rows.values()]
         .filter((row) => (row.status === "queued" && row.nextAttemptAt <= stamp) || (row.status === "sending" && row.updatedAt <= stale))
+        .filter((row) => !only || row.target.kind === only)
         .sort((left, right) => left.nextAttemptAt.localeCompare(right.nextAttemptAt) || left.createdAt.localeCompare(right.createdAt))
         .slice(0, limit);
       for (const row of due) rows.set(row.id, { ...row, status: "sending", updatedAt: stamp });

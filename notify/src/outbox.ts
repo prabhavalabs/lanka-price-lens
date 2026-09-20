@@ -33,8 +33,8 @@ export type EnqueueEntry = { targetId: string; target: Target; message: Message;
 export type OutboxStore = {
   /** Queues the entries; one with a dedupe key already queued or sent for the same target is dropped and counted as a duplicate. */
   enqueue: (entries: EnqueueEntry[], now: Date) => { queued: number; duplicates: number };
-  /** Marks up to `limit` due entries as sending and returns them; entries stuck in sending longer than `staleAfterMs` are claimed again. */
-  claimDue: (limit: number, now: Date, staleAfterMs: number) => OutboxEntry[];
+  /** Marks up to `limit` due entries as sending and returns them; entries stuck in sending longer than `staleAfterMs` are claimed again. With `only`, entries of other channels are left alone. */
+  claimDue: (limit: number, now: Date, staleAfterMs: number, only?: ChannelKind | undefined) => OutboxEntry[];
   markSent: (id: string, reference: string | null, now: Date) => void;
   reschedule: (id: string, error: string, nextAttemptAt: Date, now: Date) => void;
   markDead: (id: string, error: string, now: Date) => void;
@@ -59,6 +59,8 @@ export type DispatchOptions = {
   /** Wait before attempt n+1, indexed by attempts made so far; the last value repeats. */
   backoffMs?: number[] | undefined;
   staleSendingMs?: number | undefined;
+  /** Deliver this channel's entries only and leave the rest queued for the regular run: for a "send it now" from an admin. */
+  only?: ChannelKind | undefined;
   /** Called once per entry whose target is gone, before it is marked dead. */
   onGone?: ((entry: OutboxEntry, error: string) => void | Promise<void>) | undefined;
   onEvent?: ((event: DispatchEvent) => void) | undefined;
@@ -78,7 +80,7 @@ export async function dispatchOutbox(store: OutboxStore, channels: ChannelRegist
   const backoff = options.backoffMs?.length ? options.backoffMs : defaultBackoffMs;
   const pause = { ...defaultPauseMs, ...options.pauseMs };
   const sleep = options.sleep ?? ((ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms)));
-  const entries = store.claimDue(options.limit ?? 200, now(), options.staleSendingMs ?? 10 * 60_000);
+  const entries = store.claimDue(options.limit ?? 200, now(), options.staleSendingMs ?? 10 * 60_000, options.only);
   const report: DispatchReport = { claimed: entries.length, sent: 0, retried: 0, dead: 0 };
   let lastKind: ChannelKind | null = null;
   for (const entry of entries) {
