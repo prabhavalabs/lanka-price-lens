@@ -2,9 +2,9 @@
 
 PriceLens shows what food costs today across Sri Lanka's open markets and supermarkets, how
 prices are moving, what a shopping list would cost at each store, and what to cook from it. It
-is at [price.prabhavalabs.com](https://price.prabhavalabs.com), needs no account to read, and
+is at [badumila.com](https://badumila.com), needs no account to read, and
 works the same on a phone; an account keeps your menus and recipes. The same guide, with these
-screenshots, is on the site at [price.prabhavalabs.com/guide](https://price.prabhavalabs.com/guide).
+screenshots, is on the site at [badumila.com/guide](https://badumila.com/guide).
 
 1. [Start here](#1-start-here)
 2. [Find a product](#2-find-a-product)

@@ -165,7 +165,7 @@ The mark (a green magnifying lens holding leaves and rice grains, amber accents)
 PNG for now: `web/public/mark.png` (256 px, transparent) for the header and the sign-in card,
 `favicon.png` (64 px) and `favicon.svg` (the same PNG wrapped) for the tab, `apple-touch-icon.png`
 (180 px on the light ground) for home screens, and `api/assets/brand/mark.png` embedded in the
-social cards. Account mail links to `https://price.prabhavalabs.com/mark.png` (or the same path
+social cards. Account mail links to `https://badumila.com/mark.png` (or the same path
 on `LPL_SITE_ORIGIN` when that is an https origin), since mail clients fetch images over the
 network. Source renders and larger sizes live outside the repository in `marketing/brand/`.
 
@@ -201,21 +201,34 @@ All three answer 503 when the warehouse is unavailable.
 ## Hosting
 
 The API container serves both sites and picks by host name: `LPL_WEB_HOSTS`
-(`price.prabhavalabs.com`) gets the public site at `/`, `LPL_ADMIN_HOSTS`
-(`admin.price.prabhavalabs.com`, and the original `lanka-price-lens.prabhavalabs.com`) get the
+(`badumila.com`, `www.badumila.com`) gets the public site at `/`, `LPL_ADMIN_HOSTS`
+(`admin.badumila.com`, and the original `lanka-price-lens.prabhavalabs.com`) get the
 admin at `/admin/` with `/` redirecting there. On the public host `/admin/*` redirects to the
-first admin host. With neither variable set (a single-host or local install) the public site
-answers at `/` wherever `web/dist` exists and the admin stays at `/admin/`.
+first admin host, so the new admin host leads the list. With neither variable set (a
+single-host or local install) the public site answers at `/` wherever `web/dist` exists and the
+admin stays at `/admin/`. `LPL_SITE_ORIGIN` (`https://badumila.com`) is the address every link
+in mail, Telegram, the social cards, and the OAuth redirects is built from.
+
+The site lived at `price.prabhavalabs.com` and `admin.price.prabhavalabs.com` until
+2026-09-20. Both stay in the host lists and in nginx: pages answer 301 to the same path and
+query on `badumila.com` (bookmarks, search results, and links in mail already sent keep
+working), while `/v1/` on the old public host is still served in place, because a one-click
+unsubscribe from an old mail is a POST and a redirected POST arrives as a GET. Accounts sign
+in again once after the move (a session cookie belongs to its host), and a basket kept in the
+browser stays with the old address.
 
 `deploy/nginx/lanka-price-lens.conf` is the reference configuration: one server block for the
-two new hosts, and the original host kept for `/v1/` (the deploy health check) with browsers
-redirected to the admin. On the production VPS (2026-09-05) the hosts live in two certbot-managed
-site files, because the original host's file already carried its TLS blocks:
-`/etc/nginx/sites-available/lanka-price-lens` (original host) and
-`/etc/nginx/sites-available/lanka-price-lens-public` (`price` and `admin.price`, one certificate
-covering both, HTTP redirected to HTTPS). Both proxy to the API container on 127.0.0.1:8651.
-Adding a host is a one-time operation outside the deploy workflow: write the server block, enable
-it, `nginx -t`, reload, then `certbot --nginx --redirect -d <host>`.
+two new hosts, `www` redirected to the bare domain, the two earlier hosts redirected as above,
+and the original host kept for `/v1/` (the deploy health check) with browsers redirected to the
+admin. On the production VPS the hosts live in certbot-managed site files:
+`/etc/nginx/sites-available/lanka-price-lens` (original host),
+`/etc/nginx/sites-available/lanka-price-lens-public` (the two earlier hosts, one certificate),
+and `/etc/nginx/sites-available/lanka-price-lens-badumila` (`badumila.com`, `www`, and `admin`,
+one certificate). All proxy to the API container on 127.0.0.1:8651. Adding a host is a one-time
+operation outside the deploy workflow: point its DNS record at the server, write the server
+block, enable it, `nginx -t`, reload, then `certbot --nginx --redirect -d <host>`. DNS is at
+Cloudflare with the records set to DNS only, so the certificate challenge and the visitor's
+address reach nginx directly.
 
 ## Development
 

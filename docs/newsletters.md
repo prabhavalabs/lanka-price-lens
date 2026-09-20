@@ -250,7 +250,7 @@ Admin routes (owner only, mounted at `/v1/admin/mail`):
 | `POST /templates/:kind/test` | `{ fields? }` | sends the preview to the owner's address; `{ ok, reference }` |
 
 From a shell, `pnpm mail samples --to <address> [--kind verify_email,deals_daily,notices]
-[--origin https://price.prabhavalabs.com]` mails every kind with its sample data (and the
+[--origin https://badumila.com]` mails every kind with its sample data (and the
 owner's two notices) to one address for review; `--origin` points links and pictures at the
 production site so they load from anywhere.
 
