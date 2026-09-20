@@ -396,3 +396,22 @@ export const communityApi = {
     api<Page<DishReactionRow>>(`/v1/admin/community/reactions${communityQuery(query)}`, init),
   reactionsOf: (dishId: string, init?: RequestInit) => api<DishReactions>(`/v1/admin/community/reactions/${encodeURIComponent(dishId)}`, init),
 };
+
+// The Facebook Page (docs/facebook.md): connected through Facebook Login, posted to once a day.
+export type FacebookPageRow = { page_id: string; name: string; link: string | null; can_post: boolean; active: boolean; paused: boolean; token_status: "ok" | "invalid"; token_error: string | null; token_checked_at: string | null; token_expires_at: string | null; connected_by: string | null; connected_at: string };
+export type FacebookPost = { id: string; page_id: string; status: "queued" | "sending" | "sent" | "dead"; title: string; attempts: number; created_at: string; sent_at: string | null; next_attempt_at: string | null; error: string | null; url: string | null };
+export type FacebookStatus = { configured: boolean; app_id: string | null; redirect_uri: string; pages: FacebookPageRow[]; posts: FacebookPost[] };
+export type FacebookPreview = { day: string; requested_day: string; ready: boolean; caption: string | null; image_url: string | null; rows: Array<{ label: string; store: string; note: string; now: string; was: string | null; pct: number }> };
+
+/** Where the browser goes to open Facebook's consent screen; a navigation, not a fetch. */
+export const facebookConnectPath = "/v1/admin/facebook/connect";
+
+export const facebookApi = {
+  status: (init?: RequestInit) => api<FacebookStatus>("/v1/admin/facebook", init),
+  preview: (init?: RequestInit) => api<FacebookPreview>("/v1/admin/facebook/preview", init),
+  activate: (pageId: string) => api<FacebookStatus>(`/v1/admin/facebook/pages/${encodeURIComponent(pageId)}/activate`, { method: "POST" }),
+  pause: (pageId: string, paused: boolean) => api<FacebookStatus>(`/v1/admin/facebook/pages/${encodeURIComponent(pageId)}/pause`, jsonInit("POST", { paused })),
+  disconnect: (pageId: string) => api<FacebookStatus>(`/v1/admin/facebook/pages/${encodeURIComponent(pageId)}`, { method: "DELETE" }),
+  check: () => api<FacebookStatus>("/v1/admin/facebook/check", { method: "POST" }),
+  postNow: () => api<FacebookStatus & { post: FacebookPost | null }>("/v1/admin/facebook/post", jsonInit("POST", {})),
+};
