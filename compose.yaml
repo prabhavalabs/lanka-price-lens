@@ -34,8 +34,8 @@ services:
       LPL_DATABASE_PATH: /data/operations.sqlite
       LPL_ADMIN_ROOT: /app/admin/dist
       LPL_WEB_ROOT: /app/web/dist
-      LPL_ADMIN_HOSTS: ${LPL_ADMIN_HOSTS:-admin.price.prabhavalabs.com,lanka-price-lens.prabhavalabs.com}
-      LPL_WEB_HOSTS: ${LPL_WEB_HOSTS:-price.prabhavalabs.com}
+      LPL_ADMIN_HOSTS: ${LPL_ADMIN_HOSTS:-admin.badumila.com,admin.price.prabhavalabs.com,lanka-price-lens.prabhavalabs.com}
+      LPL_WEB_HOSTS: ${LPL_WEB_HOSTS:-badumila.com,www.badumila.com,price.prabhavalabs.com}
       LPL_SOURCE_MANIFEST_PATH: /app/data/manifests/harti_daily_food_prices.json
       LPL_MAPPING_BUNDLE_PATH: /app/data/mappings/harti_daily_food_prices.json
       LPL_MANIFESTS_DIR: /app/data/manifests
@@ -52,7 +52,7 @@ services:
       LPL_FEEDBACK_DISCORD_WEBHOOK: ${LPL_FEEDBACK_DISCORD_WEBHOOK:-}
       LPL_RESEND_API_KEY: ${LPL_RESEND_API_KEY:-}
       LPL_MAIL_FROM: ${LPL_MAIL_FROM:-}
-      LPL_SITE_ORIGIN: ${LPL_SITE_ORIGIN:-https://price.prabhavalabs.com}
+      LPL_SITE_ORIGIN: ${LPL_SITE_ORIGIN:-https://badumila.com}
       LPL_GOOGLE_CLIENT_ID: ${LPL_GOOGLE_CLIENT_ID:-}
       LPL_GOOGLE_CLIENT_SECRET: ${LPL_GOOGLE_CLIENT_SECRET:-}
       LPL_ACCOUNT_STATE_SECRET: ${LPL_ACCOUNT_STATE_SECRET:-}
@@ -112,7 +112,7 @@ services:
       LPL_FEEDBACK_DISCORD_WEBHOOK: ${LPL_FEEDBACK_DISCORD_WEBHOOK:-}
       LPL_RESEND_API_KEY: ${LPL_RESEND_API_KEY:-}
       LPL_MAIL_FROM: ${LPL_MAIL_FROM:-}
-      LPL_SITE_ORIGIN: ${LPL_SITE_ORIGIN:-https://price.prabhavalabs.com}
+      LPL_SITE_ORIGIN: ${LPL_SITE_ORIGIN:-https://badumila.com}
       LPL_GOOGLE_CLIENT_ID: ${LPL_GOOGLE_CLIENT_ID:-}
       LPL_GOOGLE_CLIENT_SECRET: ${LPL_GOOGLE_CLIENT_SECRET:-}
       LPL_ACCOUNT_STATE_SECRET: ${LPL_ACCOUNT_STATE_SECRET:-}
@@ -167,7 +167,7 @@ services:
       LPL_FEEDBACK_DISCORD_WEBHOOK: ${LPL_FEEDBACK_DISCORD_WEBHOOK:-}
       LPL_RESEND_API_KEY: ${LPL_RESEND_API_KEY:-}
       LPL_MAIL_FROM: ${LPL_MAIL_FROM:-}
-      LPL_SITE_ORIGIN: ${LPL_SITE_ORIGIN:-https://price.prabhavalabs.com}
+      LPL_SITE_ORIGIN: ${LPL_SITE_ORIGIN:-https://badumila.com}
       LPL_GOOGLE_CLIENT_ID: ${LPL_GOOGLE_CLIENT_ID:-}
       LPL_GOOGLE_CLIENT_SECRET: ${LPL_GOOGLE_CLIENT_SECRET:-}
       LPL_ACCOUNT_STATE_SECRET: ${LPL_ACCOUNT_STATE_SECRET:-}

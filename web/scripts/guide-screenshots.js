@@ -11,7 +11,7 @@
 // account, so the menu shot needs one; use a throwaway, never commit credentials). The runner has no
 // `process`, so there is no env override.
 async (page) => {
-  const origin = "https://price.prabhavalabs.com";
+  const origin = "https://badumila.com";
   const account = { email: "", password: "" };
   const out = "web/public/guide";
   const desktop = { width: 1280, height: 800 };

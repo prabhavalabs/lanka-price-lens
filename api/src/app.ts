@@ -91,6 +91,7 @@ import { sampleOwnerNotices, type MailServices } from "./mail/samples.ts";
 import { dealsAccessFor } from "./newsletters/deals.ts";
 import type { CostLookup } from "./newsletters/recipes.ts";
 import { startNewsletterScheduler } from "./newsletters/scheduler.ts";
+import { defaultSiteOrigin } from "./mail/layout.ts";
 import { createNewsletterService, type NewsletterService } from "./newsletters/service.ts";
 import { unsubscribeRoutes } from "./newsletters/unsubscribe.ts";
 import { surpriseRoutes } from "./surprise.ts";
@@ -215,7 +216,7 @@ export function createApp(
 
   // The daily mails (docs/newsletters.md): the outbox they queue into, the deals engine over the warehouse, and a cost per serving for the recipe cards.
   const outbox = createSqliteOutbox(database);
-  const siteOrigin = accountConfig.siteOrigin ?? "https://price.prabhavalabs.com";
+  const siteOrigin = accountConfig.siteOrigin ?? defaultSiteOrigin;
   const deals = dealsAccessFor({ database, warehouse, essentials: () => loadEssentials() });
   const recipeCosts = async (): Promise<CostLookup | null> => {
     if (!options.recipes) return null;

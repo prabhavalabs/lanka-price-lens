@@ -62,7 +62,7 @@ export function channelDealsMessage(day: DealsDay, siteOrigin: string): Message 
     summary: `What moved on the shelves of ${stores.length ? stores.join(", ") : "the supermarkets"} this morning.`,
     sections: [...(drops.length ? [{ heading: "Biggest drops", lines: drops }] : []), ...(offers.length ? [{ heading: "Store offers", lines: offers }] : []), ...(cheapest.length ? [{ heading: "Cheapest store today", lines: cheapest }] : [])],
     actions: [{ label: "See today's prices", url: `${origin}/` }],
-    footer: "Free, no account needed. price.prabhavalabs.com",
+    footer: `Free, no account needed. ${origin.replace(/^https?:\/\//u, "")}`,
     dedupe_key: `channel:deals_daily:${day.day}`,
     tags: ["newsletter", "deals_daily", "channel"],
   });

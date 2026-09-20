@@ -9,7 +9,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = resolve(root, "dist");
 const mappings = resolve(root, "../data/mappings");
 const recipesFile = resolve(root, "../data/recipes/catalogue.json");
-const origin = process.env.LPL_PUBLIC_ORIGIN ?? "https://price.prabhavalabs.com";
+const origin = process.env.LPL_PUBLIC_ORIGIN ?? "https://badumila.com";
 
 const shell = readFileSync(resolve(dist, "index.html"), "utf8");
 const products = new Map();

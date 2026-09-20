@@ -47,7 +47,7 @@ test("every template has a subject, addresses the person by name, shows the butt
     // The one layout: doctype, a 600 px table, the mark (the only image), the footer with the reply address, and nothing else that must load.
     assert.ok(rendered.html.startsWith("<!doctype html>"));
     assert.ok(rendered.html.includes('width="600"'));
-    assert.ok(rendered.html.includes('src="https://price.prabhavalabs.com/mark.png"'));
+    assert.ok(rendered.html.includes('src="https://badumila.com/mark.png"'));
     assert.ok(rendered.html.includes("You're getting this email"));
     assert.ok(rendered.html.includes("mailto:hello@prabhavalabs.com"));
     assert.equal(rendered.html.match(/<img\b/gu)?.length, 1, "the mark is the only image, no tracking pixels");

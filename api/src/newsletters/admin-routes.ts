@@ -5,7 +5,7 @@ import { bodyLimit } from "hono/body-limit";
 
 import type { MailSender } from "../account/mail.ts";
 import { isMailKind, type MailKind } from "../mail/defaults.ts";
-import type { RenderedMail } from "../mail/layout.ts";
+import { defaultSiteOrigin, type RenderedMail } from "../mail/layout.ts";
 import { readFields, renderMail, type MailData, type TemplateStore } from "../mail/templates.ts";
 import { envelope, jsonObject } from "../http.ts";
 import type { RecipeIndexEntry } from "../recipe-views.ts";
@@ -140,7 +140,7 @@ export function sampleDealsDay(day: string): DealsDay {
 
 /** What the preview of each kind is rendered with: fixed names and links, real recipes when the index has them, today's deals when saved. */
 export function sampleMailData(kind: MailKind, deps: Pick<MailAdminDeps, "siteOrigin" | "recipes" | "deals" | "hasProductPhoto">, now: Date): MailData {
-  const origin = (deps.siteOrigin ?? "https://price.prabhavalabs.com").replace(/\/+$/u, "");
+  const origin = (deps.siteOrigin ?? defaultSiteOrigin).replace(/\/+$/u, "");
   const day = colomboDay(now);
   const unsubscribe = `${origin}/v1/newsletter/unsubscribe?token=sample`;
   const account = { id: "account_sample", display_name: "Amal", preferences: preferencesSchema.parse({}) };

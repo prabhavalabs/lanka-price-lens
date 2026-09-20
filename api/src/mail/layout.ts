@@ -19,7 +19,7 @@ export const defaultMailFrom = "PriceLens <hello@prabhavalabs.com>";
 /** The address the footer invites replies to when the sender is the default. */
 export const defaultReplyTo = "hello@prabhavalabs.com";
 /** Where the site lives; the footer's links point there unless the layout is told otherwise. */
-export const defaultSiteOrigin = "https://price.prabhavalabs.com";
+export const defaultSiteOrigin = "https://badumila.com";
 /** The mark as served by the public site; mail needs an absolute address a mail client can fetch. */
 export const defaultMarkUrl = `${defaultSiteOrigin}/mark.png`;
 

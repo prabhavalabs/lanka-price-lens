@@ -67,7 +67,7 @@ test("deal rows stack the comparison under the store and the badge under the pri
 });
 
 test("owner notices wear the same layout: tags as the kicker, the kind as the headline when the title excerpts the summary, lines as fact rows, the action as the button", () => {
-  const item = { id: "fb_1", kind: "bug" as const, message: "The chart shows nothing for coconut since Monday morning, whichever range I pick.", email: "someone@example.com", page: "https://price.prabhavalabs.com/p/product_coconut", user_agent: "Firefox", status: "new" as const, created_at: "2026-09-14T10:00:00.000Z", updated_at: "2026-09-14T10:00:00.000Z" };
+  const item = { id: "fb_1", kind: "bug" as const, message: "The chart shows nothing for coconut since Monday morning, whichever range I pick.", email: "someone@example.com", page: "https://badumila.com/p/product_coconut", user_agent: "Firefox", status: "new" as const, created_at: "2026-09-14T10:00:00.000Z", updated_at: "2026-09-14T10:00:00.000Z" };
   const rendered = renderOwnerNotice(feedbackMessage(item), { siteOrigin: "https://price.example", replyTo: "someone@example.com" });
   assert.ok(rendered.subject.startsWith("[PriceLens] Bug report: The chart shows nothing"));
   assert.ok(rendered.html.includes(">Feedback · Bug</p>"), "the tags are the kicker");
@@ -76,7 +76,7 @@ test("owner notices wear the same layout: tags as the kicker, the kind as the he
   assert.ok(rendered.html.includes(">Page</td>") && rendered.html.includes("product_coconut"));
   assert.ok(rendered.html.includes("mailto:someone@example.com"), "replies go to the reader");
   assert.ok(rendered.html.includes('src="https://price.example/mark.png"'));
-  assert.match(rendered.text, /Page: https:\/\/price\.prabhavalabs\.com\/p\/product_coconut/u);
+  assert.match(rendered.text, /Page: https:\/\/badumila\.com\/p\/product_coconut/u);
 
   const plain = renderOwnerNotice(message({ title: "Nightly sync finished", summary: "All good.", actions: [{ label: "Open the admin", url: "https://price.example/admin" }] }));
   assert.ok(plain.html.includes(">For the owner</p>") && plain.html.includes(">Nightly sync finished</h1>") && plain.html.includes(">Open the admin</a>"));
