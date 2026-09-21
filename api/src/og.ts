@@ -269,6 +269,11 @@ export function productPhotoPath(imagesRoot: string, productId: string): string 
 }
 
 /** The photo for a product, when the site has one. */
+/** Product photographs of ours: an env override, else the repository's data/images beside the api. */
+export function defaultImagesRoot(): string {
+  return resolve(process.env.LPL_IMAGES_ROOT ?? fileURLToPath(new URL("../../data/images/", import.meta.url)));
+}
+
 export function productPhoto(imagesRoot: string, productId: string): Buffer | undefined {
   const file = productPhotoPath(imagesRoot, productId);
   return existsSync(file) ? readFileSync(file) : undefined;

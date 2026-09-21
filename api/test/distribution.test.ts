@@ -106,7 +106,10 @@ test("the post's picture is drawn here: the day, the rows, the site's address, a
   assert.ok(!/[\u0D80-\u0DFF]/u.test(svg), "no Sinhala is drawn into the picture");
   assert.match(svg, /badumila\.com\/deals/u);
   assert.ok(svg.includes(rows[0]!.now));
-  assert.equal((svg.match(/<image /gu) ?? []).length <= 1, true, "the only image is the site's own mark");
+  // The rule is not "no pictures", it is "none of the stores'". Our own mark and our own product
+  // photographs are drawn; nothing from the tree the stores' pictures are downloaded into ever is.
+  assert.ok(!svg.includes("store-images"), "no store picture is drawn into the card");
+  assert.ok(!/<image[^>]+xlink:href="(?!data:)/u.test(svg), "every picture is embedded, so the card fetches nothing when it is rendered");
   const png = renderDealsCard(day.day, rows);
   assert.deepEqual([...png.subarray(0, 4)], [0x89, 0x50, 0x4e, 0x47]);
   assert.equal(png.readUInt32BE(16), postCardWidth);
