@@ -42,9 +42,15 @@ test("the card routes answer with PNGs, falling back to the site card for unknow
       const response = await app.request(`http://localhost${path}`);
       assert.equal(response.status, 200, path);
       assert.equal(response.headers.get("content-type"), "image/png", path);
-      assert.match(response.headers.get("cache-control") ?? "", /max-age=3600/u);
+      assert.match(response.headers.get("cache-control") ?? "", /public, max-age=\d+/u);
       const bytes = Buffer.from(await response.arrayBuffer());
       assert.deepEqual(pngSize(bytes), { width: cardWidth, height: cardHeight }, path);
+      // The drawing is the tag, so a card redrawn under the same address is fetched again and an
+      // unchanged one costs a 304 rather than a second render.
+      const tag = response.headers.get("etag") ?? "";
+      assert.match(tag, /^"[\w-]{10,}"$/u, path);
+      const again = await app.request(`http://localhost${path}`, { headers: { "if-none-match": tag } });
+      assert.equal(again.status, 304, path);
     }
   } finally {
     database.close();

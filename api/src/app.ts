@@ -1,4 +1,4 @@
-import { randomBytes } from "node:crypto";
+import { createHash, randomBytes } from "node:crypto";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -369,9 +369,18 @@ export function createApp(
     const client = await warehouse();
     return client ? publicOverview(client, published()).catch(() => null) : null;
   };
+  /**
+   * A card, with the drawing itself as its tag. The address of a card never changes — the day's
+   * card is always /og/deals/<day>.png — so a browser told to keep it for an hour goes on showing
+   * the old drawing after the card is redrawn, which is how a change to the card reads as no
+   * change at all. The tag is the bytes, so a redraw is fetched and an unchanged one costs a 304.
+   */
   const cardResponse = (context: Context, png: Buffer) => {
+    const etag = `"${createHash("sha256").update(png).digest("base64url").slice(0, 27)}"`;
+    context.header("ETag", etag);
+    context.header("Cache-Control", "public, max-age=60, s-maxage=3600, stale-while-revalidate=86400");
+    if (context.req.header("if-none-match") === etag) return context.body(null, 304);
     context.header("Content-Type", "image/png");
-    context.header("Cache-Control", "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400");
     return context.body(new Uint8Array(png));
   };
   const cardId = (file: string) => file.replace(/\.png$/u, "").slice(0, 100);
