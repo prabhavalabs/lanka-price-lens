@@ -25,6 +25,8 @@ export type NewsletterReport = {
   telegram?: number | undefined;
   /** 1 when the day's deals digest was queued for the public Telegram channel. */
   channel_post?: number | undefined;
+  /** 1 when the day's deals were queued as a post for the connected Facebook Page. */
+  facebook_post?: number | undefined;
 };
 
 export type NewsletterRun = {

@@ -2,12 +2,13 @@ import type { Message } from "./message.ts";
 
 /**
  * A channel delivers one Message to one Target. Targets are addresses in the channel's own
- * terms (a Telegram chat id, a webhook URL, an email address, a push endpoint with its keys);
+ * terms (a Telegram chat id, a webhook URL, an email address, a push endpoint with its keys,
+ * a Facebook Page id);
  * the application owns the table that maps subscribers to targets, the channel only knows how
  * to reach one.
  */
 
-export const channelKinds = ["telegram", "discord", "slack", "email", "webpush"] as const;
+export const channelKinds = ["telegram", "discord", "slack", "email", "webpush", "facebook"] as const;
 export type ChannelKind = (typeof channelKinds)[number];
 
 export function isChannelKind(value: unknown): value is ChannelKind {
@@ -16,7 +17,7 @@ export function isChannelKind(value: unknown): value is ChannelKind {
 
 export type Target = {
   kind: ChannelKind;
-  /** Chat id, webhook URL, email address, or push endpoint. */
+  /** Chat id, webhook URL, email address, push endpoint, or Facebook Page id. */
   address: string;
   /** Channel-specific extras: push keys (`p256dh`, `auth`), an email display name, a Telegram thread id. */
   meta?: Record<string, unknown> | undefined;

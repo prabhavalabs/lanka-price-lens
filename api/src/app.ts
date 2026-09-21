@@ -59,7 +59,7 @@ import { Presence, presenceIdPattern } from "./presence.ts";
 import { publicBasket, publicOverview } from "./public.ts";
 import { loadEssentials } from "@lanka-pricelens/foundry/deals";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
-import { createSqliteOutbox } from "@lanka-pricelens/notify";
+import { createFacebookChannel, createSqliteOutbox, type ChannelRegistry, type FacebookApp, type FetchLike } from "@lanka-pricelens/notify";
 import {
   enqueueWorkflow,
   ensureWorkflowSchedules,
@@ -91,6 +91,9 @@ import { sampleOwnerNotices, type MailServices } from "./mail/samples.ts";
 import { dealsAccessFor } from "./newsletters/deals.ts";
 import type { CostLookup } from "./newsletters/recipes.ts";
 import { startNewsletterScheduler } from "./newsletters/scheduler.ts";
+import { postDeals, renderDealsCard } from "./facebook/post.ts";
+import { facebookAdminRoutes, facebookCallbackPath, facebookCallbackRoute, type FacebookDeps } from "./facebook/routes.ts";
+import { createFacebookStore } from "./facebook/store.ts";
 import { defaultSiteOrigin } from "./mail/layout.ts";
 import { createNewsletterService, type NewsletterService } from "./newsletters/service.ts";
 import { unsubscribeRoutes } from "./newsletters/unsubscribe.ts";
@@ -122,7 +125,7 @@ export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
-  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; ownerNotifier?: OwnerNotifier; presence?: Presence; accounts?: { config?: Partial<AccountConfig> | undefined; mailer?: AccountMailer | undefined } | undefined; /** Present in production: starts the daily mail timer (docs/newsletters.md); absent in tests. */ newsletters?: { enabled: boolean; hour?: string | undefined; scheduler?: boolean | undefined; testAddress?: string | null | undefined } | undefined } = {},
+  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; ownerNotifier?: OwnerNotifier; presence?: Presence; accounts?: { config?: Partial<AccountConfig> | undefined; mailer?: AccountMailer | undefined } | undefined; /** Present in production: starts the daily mail timer (docs/newsletters.md); absent in tests. */ newsletters?: { enabled: boolean; hour?: string | undefined; scheduler?: boolean | undefined; testAddress?: string | null | undefined } | undefined; /** The Meta app the Facebook Page is connected through (docs/facebook.md); read from the environment when absent. */ facebook?: { app?: FacebookApp | null | undefined; fetch?: FetchLike | undefined } | undefined } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
   const owner = options.ownerNotifier ?? createOwnerNotifier();
@@ -218,6 +221,15 @@ export function createApp(
   const outbox = createSqliteOutbox(database);
   const siteOrigin = accountConfig.siteOrigin ?? defaultSiteOrigin;
   const deals = dealsAccessFor({ database, warehouse, essentials: () => loadEssentials() });
+  // The Facebook Page (docs/facebook.md): connected from the admin, its token sealed under the state secret, posted to through the same outbox as the mails.
+  const facebookStore = createFacebookStore(database, accountConfig.stateSecret);
+  const facebookAppId = process.env.LPL_FACEBOOK_APP_ID?.trim();
+  const facebookAppSecret = process.env.LPL_FACEBOOK_APP_SECRET?.trim();
+  const facebookApp: FacebookApp | null = options.facebook?.app !== undefined ? options.facebook.app : facebookAppId && facebookAppSecret ? { appId: facebookAppId, appSecret: facebookAppSecret } : null;
+  const facebookChannel = createFacebookChannel({ pageToken: (pageId) => facebookStore.tokenFor(pageId), appSecret: facebookApp?.appSecret, fetch: options.facebook?.fetch });
+  const markFacebookGone = (entry: { target: { kind: string; address: string } }, error: string): void => {
+    if (entry.target.kind === "facebook") facebookStore.markToken(entry.target.address, { valid: false, error }, new Date());
+  };
   const recipeCosts = async (): Promise<CostLookup | null> => {
     if (!options.recipes) return null;
     const prices = await recipePrices([...recipeIndex.values()]);
@@ -251,12 +263,20 @@ export function createApp(
       },
     },
     telegram: { store: telegramStore, channel: bot ? telegramChannel : null },
+    facebook: {
+      page: () => {
+        const page = facebookStore.active();
+        return page && !page.paused && page.can_post && page.token_status === "ok" ? page.page_id : null;
+      },
+    },
     log: (line) => console.log(JSON.stringify({ level: "info", ...line })),
   });
   newsletterServices.set(app, newsletters);
+  /** Everything the outbox can deliver through: the mailer's channels and the Facebook Page. */
+  const deliveryChannels = (): ChannelRegistry => new Map([...(ownMailer?.channels ?? []), ["facebook", facebookChannel]]);
   if (options.newsletters && options.newsletters.scheduler !== false) {
     if (ownMailer?.channels) {
-      startNewsletterScheduler({ service: newsletters, outbox, channels: ownMailer.channels, enabled: options.newsletters.enabled, hour: options.newsletters.hour, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) });
+      startNewsletterScheduler({ service: newsletters, outbox, channels: deliveryChannels(), enabled: options.newsletters.enabled, hour: options.newsletters.hour, onGone: markFacebookGone, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) });
     } else {
       console.warn("Daily mails are not running: set LPL_RESEND_API_KEY and LPL_MAIL_FROM so the API can send them.");
     }
@@ -339,6 +359,13 @@ export function createApp(
       const product = overview?.products.find((candidate) => candidate.id === id);
       return renderCard(product ? productCard(product, overview, productPhoto(defaultImagesRoot(), id)) : siteCard(overview));
     }));
+  });
+  // The picture of the day's Facebook post (docs/facebook.md); Facebook fetches it from here when the post is published.
+  app.get("/og/deals/:file", async (context) => {
+    const day = cardId(context.req.param("file"));
+    const dealsDay = /^\d{4}-\d{2}-\d{2}$/u.test(day) ? (deals.read(day) ?? deals.latest()) : deals.latest();
+    if (!dealsDay) return cardResponse(context, await cards.get("site", async () => renderCard(siteCard(await overviewForCards()))));
+    return cardResponse(context, await cards.get(`deals:${dealsDay.day}:${dealsDay.computed_at}`, async () => renderDealsCard(dealsDay.day, postDeals(dealsDay))));
   });
   app.get("/og/r/:file", async (context) => {
     const id = cardId(context.req.param("file"));
@@ -572,7 +599,11 @@ export function createApp(
     deleteCookie(context, adminSessionCookie, { path: "/", secure: process.env.NODE_ENV === "production" });
     return context.json(envelope(context.get("requestId"), null, true, "Signed out"));
   });
+  // Facebook's redirect cannot carry the admin's SameSite=Strict session, so the callback answers to its own signed cookie; it is registered ahead of the session check on purpose.
+  const facebookDeps: FacebookDeps = { store: facebookStore, app: facebookApp, outbox, channels: deliveryChannels, deals, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
+  app.get(facebookCallbackPath, facebookCallbackRoute(facebookDeps));
   app.use("/v1/admin/*", requireOwner);
+  app.route("/v1/admin/facebook", facebookAdminRoutes(facebookDeps));
   app.route("/v1/admin/accounts", adminAccountRoutes({ store: accountStore, content: contentStore }));
   app.route("/v1/admin", newsletterAdminRoutes({ service: newsletters, deals }));
   app.route("/v1/admin/community", communityAdminRoutes({ store: communityStore, accounts: accountStore, recipes: options.recipes }));

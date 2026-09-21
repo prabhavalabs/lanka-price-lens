@@ -86,16 +86,16 @@ export function createSqliteOutbox(database: SqliteLike): OutboxStore {
       }
       return { queued, duplicates };
     },
-    claimDue: (limit, now, staleAfterMs) => {
+    claimDue: (limit, now, staleAfterMs, only) => {
       const stamp = now.toISOString();
       const stale = new Date(now.getTime() - staleAfterMs).toISOString();
       const rows = database
         .prepare(
           `SELECT * FROM notify_outbox
-           WHERE (status = 'queued' AND next_attempt_at <= ?) OR (status = 'sending' AND updated_at <= ?)
+           WHERE ((status = 'queued' AND next_attempt_at <= ?) OR (status = 'sending' AND updated_at <= ?)) AND (? IS NULL OR channel = ?)
            ORDER BY next_attempt_at, created_at LIMIT ?`,
         )
-        .all(stamp, stale, limit) as Row[];
+        .all(stamp, stale, only ?? null, only ?? null, limit) as Row[];
       const claim = database.prepare("UPDATE notify_outbox SET status = 'sending', updated_at = ? WHERE id = ? AND status IN ('queued', 'sending')");
       const claimed: OutboxEntry[] = [];
       for (const row of rows) {

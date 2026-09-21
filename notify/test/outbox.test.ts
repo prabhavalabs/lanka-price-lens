@@ -137,6 +137,18 @@ for (const { name, create } of stores) {
     assert.deepEqual(report, { claimed: 1, sent: 0, retried: 1, dead: 0 });
     assert.match(store.recent(1)[0]!.lastError ?? "", /CHANNEL_THREW: socket hang up/u);
   });
+
+  test(`${name}: a dispatch for one channel leaves the others queued`, async () => {
+    const store = create();
+    const time = clock();
+    store.enqueue([{ targetId: "page", target: { kind: "facebook", address: "1234567890" }, message: note("Post") }, { targetId: "t1", target, message: note("Digest") }], time.now());
+    const facebook = scripted("facebook", [{ ok: true, reference: "1234567890_1" }]);
+    // The registry holds only the one channel: an entry of another channel claimed here would die as unavailable.
+    const report = await dispatchOutbox(store, registry(facebook.channel), { now: time.now, only: "facebook", sleep: async () => undefined });
+    assert.deepEqual(report, { claimed: 1, sent: 1, retried: 0, dead: 0 });
+    assert.deepEqual(store.counts(), { queued: 1, sending: 0, sent: 1, dead: 0 });
+    assert.equal(store.recent(5).find((entry) => entry.target.kind === "facebook")?.reference, "1234567890_1");
+  });
 }
 
 test("sends on the same channel are paced, different channels are not", async () => {

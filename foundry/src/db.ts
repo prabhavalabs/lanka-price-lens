@@ -935,8 +935,29 @@ function migrate(database: OperationalDatabase): void {
     ) STRICT;
     CREATE INDEX IF NOT EXISTS newsletter_delivery_account_idx ON newsletter_delivery(account_id, kind, day DESC);
     CREATE INDEX IF NOT EXISTS newsletter_delivery_run_idx ON newsletter_delivery(run_id);
+    -- The Facebook Pages the owner connected from the admin. The Page's access token is kept sealed
+    -- (AES-256-GCM under a key the database never holds); at most one Page is the one posted to.
+    CREATE TABLE IF NOT EXISTS facebook_page (
+      page_id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      link TEXT,
+      token_sealed TEXT NOT NULL,
+      can_post INTEGER NOT NULL DEFAULT 1 CHECK (can_post IN (0, 1)),
+      active INTEGER NOT NULL DEFAULT 0 CHECK (active IN (0, 1)),
+      paused INTEGER NOT NULL DEFAULT 0 CHECK (paused IN (0, 1)),
+      token_status TEXT NOT NULL DEFAULT 'ok' CHECK (token_status IN ('ok', 'invalid')),
+      token_error TEXT,
+      token_checked_at TEXT,
+      token_expires_at TEXT,
+      connected_by TEXT,
+      connected_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    ) STRICT;
+    CREATE UNIQUE INDEX IF NOT EXISTS facebook_page_active_idx ON facebook_page(active) WHERE active = 1;
   `);
   database.exec(outboxSchema);
+  // The admin lists one channel's posts (the Facebook Page's); without this it would read every queued mail to find them.
+  database.exec("CREATE INDEX IF NOT EXISTS notify_outbox_channel_idx ON notify_outbox(channel, created_at DESC)");
   // The kind check on newsletter_run predates price alerts. SQLite cannot change a CHECK in place, so a
   // database created before then gets the table rebuilt, with foreign keys off so the deliveries survive.
   const runTable = (database.prepare("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'newsletter_run'").get() as { sql: string } | undefined)?.sql ?? "";

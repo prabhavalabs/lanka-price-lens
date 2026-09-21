@@ -2,6 +2,7 @@ import {
   RiChatSmile2Line,
   RiDashboardLine,
   RiDatabase2Line,
+  RiFacebookCircleLine,
   RiFeedbackLine,
   RiExpandUpDownLine,
   RiFilePdf2Line,
@@ -58,6 +59,7 @@ const intelligence: NavigationItem[] = [
   { to: "/recipes", label: "Recipes", icon: RiRestaurantLine, end: false },
   { to: "/feedback", label: "Feedback", icon: RiFeedbackLine, end: false, detail: "Public site" },
   { to: "/mail", label: "Mail", icon: RiMailLine, end: false, detail: "Public site" },
+  { to: "/facebook", label: "Facebook Page", icon: RiFacebookCircleLine, end: false, detail: "Public site" },
 ];
 const community: NavigationItem[] = [
   { to: "/accounts", label: "Accounts", icon: RiGroupLine, end: false },
