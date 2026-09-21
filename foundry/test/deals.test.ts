@@ -414,8 +414,10 @@ test("the stores' own offers come from the snapshot rows: newest day per store, 
 
     const result = await computeDeals(client, { day: at, essentials: [] });
     assert.deepEqual(result.store_offers, [
-      { product_id: "product_big_onion", label: "Big Onion", store_label: "Big Onion Imported 1kg", unit: "kg", market_id: "market_keells_online", market: "Keells Online", now_minor: 17_920, was_minor: 25_600, pct: -30, audience: "members", offer_label: "Nexus", observed_on: day, url: "/p/product_big_onion" },
-      { product_id: "product_banana", label: "Banana", store_label: "Ambul Banana 1kg", unit: "kg", market_id: "market_keells_online", market: "Keells Online", now_minor: 20_000, was_minor: 25_000, pct: -20, audience: "everyone", offer_label: null, observed_on: day, url: "/p/product_banana" },
+      // image_path is the store's own picture of the pack, which the card draws beside the row; these
+      // rows were never captured with one, so it comes through as null.
+      { product_id: "product_big_onion", label: "Big Onion", store_label: "Big Onion Imported 1kg", unit: "kg", market_id: "market_keells_online", market: "Keells Online", now_minor: 17_920, was_minor: 25_600, pct: -30, audience: "members", offer_label: "Nexus", observed_on: day, url: "/p/product_big_onion", image_path: null },
+      { product_id: "product_banana", label: "Banana", store_label: "Ambul Banana 1kg", unit: "kg", market_id: "market_keells_online", market: "Keells Online", now_minor: 20_000, was_minor: 25_000, pct: -20, audience: "everyone", offer_label: null, observed_on: day, url: "/p/product_banana", image_path: null },
     ], "the Cargills cut is under ten percent, yesterday's banana is not Keells' newest day, and the Kolikuttu is not the variety the product page opens on");
     assert.equal(result.deals.length, 1, "the day's drops are untouched");
   } finally {
