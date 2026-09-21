@@ -78,7 +78,7 @@ test("the scheduler obeys the hour it is given, which is now the one from the ta
   assert.equal(shouldRun(justAfter, "08:00", null), false);
   assert.equal(shouldRun(new Date("2026-09-22T02:31:00.000Z"), "08:00", null), true);
   // A day already sent is not sent again, whatever the hour says.
-  assert.equal(shouldRun(justAfter, "07:30", { status: "sent", started_at: justAfter.toISOString() }), false);
+  assert.equal(shouldRun(justAfter, "07:30", { status: "sent", started_at: justAfter.toISOString(), finished_at: justAfter.toISOString() }), false);
 });
 
 test("the channels and the zone are named once, where everything else reads them", () => {
