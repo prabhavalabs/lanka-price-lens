@@ -141,6 +141,27 @@ test("a job runs when its expression matches the minute, and a failure is retrie
   assert.equal(jobIsDue(failed, new Date(failedAt.getTime() + retryAfterMs + 60_000)), true, "then retries, off its own clock");
 });
 
+test("a minute the server spent restarting is still owed, for a while", () => {
+  const at = (iso: string) => new Date(iso);
+  const schedule = (patch: Record<string, unknown> = {}) => ({
+    channel: "email" as const, job: "deals_daily", label: "Daily deals mail", description: "", enabled: true,
+    cron: "30 7 * * *", recurrence: "Every day at 07:30", next_run_at: null, last_run_at: null,
+    last_status: null as "ran" | "failed" | "skipped" | null, last_error: null, updated_by: null,
+    updated_at: "2026-09-14T00:00:00.000Z", ...patch,
+  });
+  // The deploy took 07:30 with it; yesterday's run is the last one on record.
+  const missed = schedule({ last_run_at: "2026-09-13T02:00:03Z", last_status: "ran" });
+  assert.equal(jobIsDue(missed, at("2026-09-14T02:40:00Z")), true, "ten minutes late, and still worth sending");
+  assert.equal(jobIsDue(missed, at("2026-09-14T03:50:00Z")), true, "an hour and a half late, still worth sending");
+  assert.equal(jobIsDue(missed, at("2026-09-14T06:00:00Z")), false, "four hours late is not a morning mail any more");
+  // Once it has run, the same minute is not owed twice.
+  const served = schedule({ last_run_at: "2026-09-14T02:40:05Z", last_status: "ran" });
+  assert.equal(jobIsDue(served, at("2026-09-14T03:00:00Z")), false);
+  // A job that has never run waits for its own minute: a deploy does not send a morning's mail in the evening.
+  assert.equal(jobIsDue(schedule(), at("2026-09-14T14:00:00Z")), false, "the first run is never caught up");
+  assert.equal(jobIsDue(schedule(), at("2026-09-14T02:00:00Z")), true, "it waits for the minute itself");
+});
+
 test("the daily recipe mail reaches opted-in verified accounts, runs once a day, and one click unsubscribes", async () => {
   const database = openOperationalDatabase(":memory:");
   try {

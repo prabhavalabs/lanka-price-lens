@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { clockParts, cronFromForm, cronMatches, describeCron, isCron, nextRun, parseCron } from "../src/social/recurrence.ts";
+import { clockParts, cronFromForm, cronMatches, describeCron, isCron, nextRun, parseCron, previousRun } from "../src/social/recurrence.ts";
 
 /** A moment written in Colombo time, which is UTC+5:30 and has been since 2006. */
 const colombo = (text: string): Date => new Date(`${text}+05:30`);
@@ -47,6 +47,16 @@ test("the next run is found, and an expression that never fires says so", () => 
   // The 30th of February never comes.
   assert.equal(nextRun("0 9 30 2 *", from), null);
   assert.equal(nextRun("nonsense", from), null);
+});
+
+test("the last minute an expression fired is found, or said not to be in the window", () => {
+  const now = colombo("2026-09-22T09:15:00");
+  assert.equal(previousRun("30 7 * * *", now)?.toISOString(), colombo("2026-09-22T07:30:00").toISOString());
+  // Yesterday's, when today's has not come round yet.
+  assert.equal(previousRun("30 7 * * *", colombo("2026-09-22T06:00:00"))?.toISOString(), colombo("2026-09-21T07:30:00").toISOString());
+  // A window too short to reach back to it says so, which is how a missed run stops being owed.
+  assert.equal(previousRun("30 7 * * *", now, 60), null);
+  assert.equal(previousRun("nonsense", now), null);
 });
 
 test("an expression says itself in words the owner can check", () => {

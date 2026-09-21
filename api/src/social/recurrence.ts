@@ -127,6 +127,20 @@ export function nextRun(expression: string, from: Date, zone?: string): Date | n
   return null;
 }
 
+/**
+ * The last minute at or before `from` that the expression fired, within `withinMinutes`; null when
+ * it did not fire in that window. What a scheduler needs to know whether it owes a run it missed.
+ */
+export function previousRun(expression: string, from: Date, withinMinutes = 24 * 60, zone?: string): Date | null {
+  if (!parseCron(expression)) return null;
+  const start = new Date(Math.floor(from.getTime() / 60_000) * 60_000);
+  for (let minutes = 0; minutes <= withinMinutes; minutes += 1) {
+    const at = new Date(start.getTime() - minutes * 60_000);
+    if (cronMatches(expression, at, zone)) return at;
+  }
+  return null;
+}
+
 // --- Saying it in words ------------------------------------------------------------------------
 
 const weekdayWords = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
