@@ -397,21 +397,70 @@ export const communityApi = {
   reactionsOf: (dishId: string, init?: RequestInit) => api<DishReactions>(`/v1/admin/community/reactions/${encodeURIComponent(dishId)}`, init),
 };
 
-// The Facebook Page (docs/facebook.md): connected through Facebook Login, posted to once a day.
-export type FacebookPageRow = { page_id: string; name: string; link: string | null; can_post: boolean; active: boolean; paused: boolean; token_status: "ok" | "invalid"; token_error: string | null; token_checked_at: string | null; token_expires_at: string | null; connected_by: string | null; connected_at: string };
-export type FacebookPost = { id: string; page_id: string; status: "queued" | "sending" | "sent" | "dead"; title: string; attempts: number; created_at: string; sent_at: string | null; next_attempt_at: string | null; error: string | null; url: string | null };
-export type FacebookStatus = { configured: boolean; app_id: string | null; redirect_uri: string; pages: FacebookPageRow[]; posts: FacebookPost[] };
-export type FacebookPreview = { day: string; requested_day: string; ready: boolean; caption: string | null; image_url: string | null; rows: Array<{ label: string; store: string; note: string; now: string; was: string | null; pct: number }> };
+// The distribution channels (docs/distribution.md): Facebook and Instagram, the content library, the calendar.
+export type Platform = "facebook" | "instagram";
+export type ConnectedAccount = {
+  platform: Platform;
+  account_id: string;
+  name: string;
+  username: string | null;
+  link: string | null;
+  picture: string | null;
+  parent_id: string | null;
+  can_post: boolean;
+  active: boolean;
+  paused: boolean;
+  token_status: "ok" | "invalid";
+  token_error: string | null;
+  token_checked_at: string | null;
+  token_expires_at: string | null;
+  connected_by: string | null;
+  connected_at: string;
+};
+export type ChannelPost = { id: string; platform: Platform; account_id: string; status: "queued" | "sending" | "sent" | "dead"; title: string; attempts: number; created_at: string; sent_at: string | null; next_attempt_at: string | null; error: string | null; url: string | null };
+export type DistributionStatus = { configured: boolean; app_id: string | null; redirect_uri: string; accounts: ConnectedAccount[]; posts: ChannelPost[]; publishing_limit?: { used: number; cap: number } | null };
+export type DealsPreview = { day: string; requested_day: string; platform: Platform; ready: boolean; caption: string | null; image_url: string | null; rows: Array<{ label: string; store: string; note: string; now: string; was: string | null; pct: number }> };
+
+export type ContentAsset = { id: string; position: number; file: string; media_type: string; width: number; height: number; bytes: number; url: string };
+export type ContentSchedule = { id: string; item_id: string; platform: Platform; scheduled_for: string; status: "scheduled" | "queued" | "published" | "failed" | "cancelled"; outbox_id: string | null; post_url: string | null; error: string | null; published_at: string | null; created_at: string };
+export type ContentItem = { id: string; kind: "image" | "carousel" | "text"; title: string; caption: string; link: string | null; status: "draft" | "ready" | "archived"; tags: string[]; assets: ContentAsset[]; schedules: ContentSchedule[]; created_by: string | null; created_at: string; updated_at: string };
+export type ContentPreview = { facebook: { caption: string; blocker: string | null }; instagram: { caption: string; blocker: string | null }; pictures: string[] };
+export type CalendarEntry = ContentSchedule & { title: string; kind: ContentItem["kind"]; thumbnail: string | null };
+export type ContentDraft = { title: string; caption: string; link: string | null; status?: ContentItem["status"]; tags: string[] };
 
 /** Where the browser goes to open Facebook's consent screen; a navigation, not a fetch. */
-export const facebookConnectPath = "/v1/admin/facebook/connect";
+export const distributionConnectPath = "/v1/admin/distribution/connect";
 
-export const facebookApi = {
-  status: (init?: RequestInit) => api<FacebookStatus>("/v1/admin/facebook", init),
-  preview: (init?: RequestInit) => api<FacebookPreview>("/v1/admin/facebook/preview", init),
-  activate: (pageId: string) => api<FacebookStatus>(`/v1/admin/facebook/pages/${encodeURIComponent(pageId)}/activate`, { method: "POST" }),
-  pause: (pageId: string, paused: boolean) => api<FacebookStatus>(`/v1/admin/facebook/pages/${encodeURIComponent(pageId)}/pause`, jsonInit("POST", { paused })),
-  disconnect: (pageId: string) => api<FacebookStatus>(`/v1/admin/facebook/pages/${encodeURIComponent(pageId)}`, { method: "DELETE" }),
-  check: () => api<FacebookStatus>("/v1/admin/facebook/check", { method: "POST" }),
-  postNow: () => api<FacebookStatus & { post: FacebookPost | null }>("/v1/admin/facebook/post", jsonInit("POST", {})),
+const libraryQuery = (query: { status?: string; search?: string; limit?: number; offset?: number }): string => {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(query)) if (value !== undefined && value !== "") params.set(key, String(value));
+  const text = params.toString();
+  return text ? `?${text}` : "";
+};
+
+export const distributionApi = {
+  status: (init?: RequestInit) => api<DistributionStatus>("/v1/admin/distribution", init),
+  activate: (platform: Platform, accountId: string) => api<DistributionStatus>(`/v1/admin/distribution/accounts/${platform}/${encodeURIComponent(accountId)}/activate`, { method: "POST" }),
+  pause: (platform: Platform, accountId: string, paused: boolean) => api<DistributionStatus>(`/v1/admin/distribution/accounts/${platform}/${encodeURIComponent(accountId)}/pause`, jsonInit("POST", { paused })),
+  disconnect: (platform: Platform, accountId: string) => api<DistributionStatus>(`/v1/admin/distribution/accounts/${platform}/${encodeURIComponent(accountId)}`, { method: "DELETE" }),
+  check: (platform: Platform) => api<DistributionStatus>(`/v1/admin/distribution/accounts/${platform}/check`, { method: "POST" }),
+  dealsPreview: (platform: Platform, init?: RequestInit) => api<DealsPreview>(`/v1/admin/distribution/deals/preview?platform=${platform}`, init),
+  postDeals: (platform: Platform) => api<DistributionStatus & { post: ChannelPost | null }>("/v1/admin/distribution/deals/post", jsonInit("POST", { platform })),
+
+  library: (query: { status?: string; search?: string; limit?: number; offset?: number } = {}, init?: RequestInit) =>
+    api<{ rows: ContentItem[]; total: number; carousel_max: number }>(`/v1/admin/distribution/library${libraryQuery(query)}`, init),
+  item: (id: string, init?: RequestInit) => api<ContentItem>(`/v1/admin/distribution/library/${encodeURIComponent(id)}`, init),
+  createItem: (draft: ContentDraft) => api<ContentItem>("/v1/admin/distribution/library", jsonInit("POST", draft)),
+  saveItem: (id: string, draft: ContentDraft) => api<ContentItem>(`/v1/admin/distribution/library/${encodeURIComponent(id)}`, jsonInit("PUT", draft)),
+  deleteItem: (id: string) => api<null>(`/v1/admin/distribution/library/${encodeURIComponent(id)}`, { method: "DELETE" }),
+  // The picture is the body itself; the server re-encodes it, so the browser sends the file untouched.
+  addPicture: (id: string, file: File) => api<ContentItem>(`/v1/admin/distribution/library/${encodeURIComponent(id)}/assets`, { method: "POST", headers: { "content-type": file.type || "application/octet-stream" }, body: file }),
+  removePicture: (id: string, assetId: string) => api<ContentItem>(`/v1/admin/distribution/library/${encodeURIComponent(id)}/assets/${encodeURIComponent(assetId)}`, { method: "DELETE" }),
+  preview: (id: string, init?: RequestInit) => api<ContentPreview>(`/v1/admin/distribution/library/${encodeURIComponent(id)}/preview`, init),
+
+  schedule: (id: string, platform: Platform, scheduledFor: string) => api<ContentItem>(`/v1/admin/distribution/library/${encodeURIComponent(id)}/schedule`, jsonInit("POST", { platform, scheduled_for: scheduledFor })),
+  cancelSchedule: (scheduleId: string) => api<null>(`/v1/admin/distribution/schedules/${encodeURIComponent(scheduleId)}`, { method: "DELETE" }),
+  postSchedule: (scheduleId: string) => api<ContentItem>(`/v1/admin/distribution/schedules/${encodeURIComponent(scheduleId)}/post`, { method: "POST" }),
+  calendar: (from: string, to: string, init?: RequestInit) => api<{ from: string; to: string; entries: CalendarEntry[] }>(`/v1/admin/distribution/calendar?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`, init),
+  tick: () => api<{ due: number; published: number; failed: number }>("/v1/admin/distribution/tick", { method: "POST" }),
 };

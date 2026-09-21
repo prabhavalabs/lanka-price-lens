@@ -68,7 +68,7 @@ application runs `outboxSchema` in its own migrations; the store never creates t
 - Telegram for readers (docs/accounts.md): a chat linked from the account page gets the same
   daily mails as messages; the public channel gets the deals digest. The account mailer's
   registry carries the `email` and `telegram` channels, so one outbox serves both.
-- The Facebook Page (docs/facebook.md): connected from the admin, it gets the day's deals as
+- The Facebook Page (docs/distribution.md): connected from the admin, it gets the day's deals as
   one post through the same outbox.
 
 ## What comes next

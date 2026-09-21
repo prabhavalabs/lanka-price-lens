@@ -43,6 +43,8 @@ export const messageSchema = z.object({
   /** Links the reader can follow; the first one is where a push notification opens. */
   actions: z.array(actionSchema).max(5).default([]),
   image: z.object({ url: z.url().max(2000), alt: z.string().trim().max(200).optional() }).optional(),
+  /** More pictures for a channel that posts a set of them at once (an Instagram carousel, a Facebook album). A channel that shows only one uses `image`. */
+  images: z.array(z.object({ url: z.url().max(2000), alt: z.string().trim().max(200).optional() })).max(10).optional(),
   footer: z.string().trim().max(500).optional(),
   severity: z.enum(severities).default("info"),
   /** Two messages with the same key for the same target are one message; the outbox drops the repeat. */

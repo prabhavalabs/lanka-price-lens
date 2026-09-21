@@ -72,7 +72,7 @@ export type DispatchOptions = {
 export type DispatchReport = { claimed: number; sent: number; retried: number; dead: number };
 
 export const defaultBackoffMs = [60_000, 5 * 60_000, 30 * 60_000, 2 * 3_600_000, 12 * 3_600_000];
-export const defaultPauseMs: Partial<Record<ChannelKind, number>> = { telegram: 50, discord: 250, slack: 250, email: 100, webpush: 20, facebook: 2000 };
+export const defaultPauseMs: Partial<Record<ChannelKind, number>> = { telegram: 50, discord: 250, slack: 250, email: 100, webpush: 20, facebook: 2000, instagram: 3000 };
 
 export async function dispatchOutbox(store: OutboxStore, channels: ChannelRegistry, options: DispatchOptions = {}): Promise<DispatchReport> {
   const now = options.now ?? (() => new Date());

@@ -144,3 +144,22 @@ test("connecting a Page: Facebook's refusal is an error with its code, and never
   const offline = { appId: "4242", appSecret: "very-secret", fetch: (async (url: string | URL | Request) => { throw new Error(`fetch failed for ${String(url)}`); }) as typeof fetch };
   await assert.rejects(extendFacebookToken(offline, "SHORT"), (error: unknown) => error instanceof FacebookGraphError && !error.message.includes("very-secret"));
 });
+
+test("several pictures make one post holding all of them: each uploaded unpublished, then named by the post", async () => {
+  let uploaded = 0;
+  const { calls, request } = recorder((call) => json(call.url.endsWith("/photos") ? { id: `PHOTO-${(uploaded += 1)}` } : { id: "1234567890_9100" }));
+  const facebook = createFacebookChannel({ pageToken: () => "PAGE-TOKEN", appSecret: "shh", fetch: request });
+  const slides = ["one", "two", "three"].map((name) => ({ url: `https://price.example/content/${name}.jpg` }));
+  const sent = await facebook.send({ kind: "facebook", address: "1234567890" }, message({ ...digest, images: slides }));
+
+  assert.deepEqual(sent, { ok: true, reference: "1234567890_9100" });
+  const photos = calls.filter((call) => call.url.endsWith("/photos"));
+  assert.equal(photos.length, 3);
+  assert.ok(photos.every((call) => call.form.get("published") === "false"), "a picture on its own is never shown");
+  assert.ok(photos.every((call) => !call.form.get("caption")), "the words belong to the post, not to each picture");
+  const feed = calls.at(-1);
+  assert.ok(feed?.url.endsWith("/feed"));
+  assert.equal(feed?.form.get("attached_media[0]"), JSON.stringify({ media_fbid: "PHOTO-1" }));
+  assert.equal(feed?.form.get("attached_media[2]"), JSON.stringify({ media_fbid: "PHOTO-3" }));
+  assert.ok(feed?.form.get("message")?.startsWith("Today's supermarket deals"));
+});

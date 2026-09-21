@@ -9,8 +9,8 @@ import { facebookPostLimit, facebookText } from "../render/facebook.ts";
  * token is looked up when a post is sent, so connecting or reconnecting a Page in the
  * application takes effect without a restart and no token ever rides in the outbox. A message
  * with an image is published as a photo with the text as its caption (Facebook fetches the
- * picture from the address given); one without goes to the feed, with the first action as
- * the link Facebook previews.
+ * picture from the address given), several images make one post holding all of them, and one
+ * without goes to the feed, with the first action as the link Facebook previews.
  *
  * Only a Page is ever posted to. The Graph API offers no publishing to a person's profile,
  * and an application in development mode publishes posts only its own team can see.
@@ -42,6 +42,8 @@ const retryCodes = new Set([1, 2, 4, 17, 32, 341, 613, 80001]);
 /** The picture could not be fetched from its address; ours is rendered on demand and may have been slow. */
 const pictureCodes = new Set([324]);
 const rateLimitWaitMs = 3_600_000;
+/** How many pictures one post carries; Facebook takes more, but this is what the library offers. */
+export const facebookAlbumLimit = 10;
 
 const graphBase = (config: { apiBase?: string | undefined; version?: string | undefined }): string => `${config.apiBase ?? "https://graph.facebook.com"}/${config.version ?? facebookGraphVersion}`;
 
@@ -83,6 +85,13 @@ export function createFacebookChannel(config: FacebookConfig): Channel {
     const label = code === undefined ? `FACEBOOK_HTTP_${response.status}` : `FACEBOOK_${code}${payload?.error?.error_subcode ? `_${payload.error.error_subcode}` : ""}`;
     return failure(`${label}: ${detail}`.slice(0, 500), classifyGraphError(payload?.error, response.status, response.headers));
   };
+  /** A call whose answer is the id of what it made, for the steps of an album that are not the post itself. */
+  const make = async (path: string, token: string, fields: Record<string, string>): Promise<{ ok: true; id: string } | { ok: false; delivery: Delivery }> => {
+    const delivery = await call(path, token, fields);
+    if (delivery.ok && delivery.reference) return { ok: true, id: delivery.reference };
+    return { ok: false, delivery: delivery.ok ? failure("FACEBOOK_NO_ID: Facebook took the picture but named no id") : delivery };
+  };
+
   return {
     kind: "facebook",
     describe: (target) => `facebook:${mask(target.address, 3)}`,
@@ -91,7 +100,20 @@ export function createFacebookChannel(config: FacebookConfig): Channel {
       const token = await config.pageToken(target.address);
       if (!token) return failure("FACEBOOK_NOT_CONNECTED: no access token for this Page", { gone: true });
       const text = facebookText(message, facebookPostLimit);
-      if (message.image) return call(`${target.address}/photos`, token, { url: message.image.url, caption: text, published: "true" });
+      const pictures = (message.images?.length ? message.images : message.image ? [message.image] : []).slice(0, facebookAlbumLimit);
+      // Several pictures make one post with all of them: each is uploaded unpublished first, then the
+      // post names them. A picture that is uploaded but never named costs nothing and is not shown.
+      if (pictures.length > 1) {
+        const attached: Record<string, string> = {};
+        for (const [index, picture] of pictures.entries()) {
+          const uploaded = await make(`${target.address}/photos`, token, { url: picture.url, published: "false" });
+          if (!uploaded.ok) return uploaded.delivery;
+          attached[`attached_media[${index}]`] = JSON.stringify({ media_fbid: uploaded.id });
+        }
+        return call(`${target.address}/feed`, token, { message: text, ...attached });
+      }
+      const single = pictures[0];
+      if (single) return call(`${target.address}/photos`, token, { url: single.url, caption: text, published: "true" });
       const link = message.actions[0]?.url;
       return call(`${target.address}/feed`, token, { message: text, ...(link ? { link } : {}) });
     },

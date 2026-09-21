@@ -24,7 +24,7 @@ export function retailAdapterFor(manifest: Pick<SourceManifest, "adapter">): Any
 }
 
 export { colomboDay, pendingCanonicalization, resumeSourceCapture, runRetailCapture, type RetailCaptureOptions, type RetailCaptureResult, type RetailCaptureStatus } from "./capture.ts";
-export { disabledImageSources, fetchStoreImages, imageKind, imageRules, purgeStoreImages, storeImagesRoot, type ImageFetchOptions, type ImageFetchResult } from "./images.ts";
+export { disabledImageSources, fetchStoreImages, imageKind, imageRules, purgeStoreImages, storeImagesRoot, contentRoot, type ImageFetchOptions, type ImageFetchResult } from "./images.ts";
 export { readStoreLinks, storeImageHosts, storeImageUrl, storePageHosts, storePageUrl } from "./links.ts";
 export { readOffer, storeOffer, type RecordOffer } from "./offer.ts";
 export { remapRecentSnapshots, type RemapOptions, type RemapResult } from "./remap.ts";

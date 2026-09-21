@@ -1,9 +1,18 @@
-# The Facebook Page
+# Distribution channels
 
-The owner connects a Facebook Page from the admin, and every morning the deals run posts the
-day's supermarket deals to it: one picture and a short caption. Everything goes through
-Facebook's own Graph API with the owner's consent; nothing logs in as a person, scrapes
-Facebook, or posts to a profile or a group.
+The owner connects a Facebook Page and the Instagram account linked to it from the admin, under
+**Distribution Channels**. Two things go out: the day's supermarket deals, which the morning run
+posts on its own, and anything written in the **Library** and given a time in the **Calendar**.
+
+Everything goes through Meta's own Graph API with the owner's consent; nothing logs in as a
+person, scrapes either site, or posts to a profile or a group.
+
+| Screen | What it is for |
+| --- | --- |
+| Facebook | The Page: connect it, check its token, see what has gone out, post the day's deals now |
+| Instagram | The same for the Instagram account, which is reached through its Page |
+| Library | The posts written for the channels: words, pictures, and when each goes out |
+| Calendar | A month at a time, everything planned and everything already posted |
 
 ## What Facebook allows, and what this does
 
@@ -22,11 +31,29 @@ Facebook, or posts to a profile or a group.
   drawn by PriceLens from corner to corner: the stores appear as words, the prices are the ones
   they list, and the caption says the site is independent and not affiliated with any store.
 
+## What Instagram allows
+
+- Publishing needs an Instagram **professional** account (Business or Creator) **linked to a
+  Facebook Page**. A personal account cannot be posted to by any API.
+- The permissions are `instagram_basic` and `instagram_content_publish`, asked for in the same
+  consent screen as the Page's. The token that publishes is the Page's own.
+- Those permissions need App Review before anyone else could use them. The owner does not: a
+  person with a role on the app may use them without review, which is the case here.
+- Instagram takes **JPEG only**, at most 8 MB, between 4:5 and 1.91:1. Every picture added to
+  the library is re-encoded to a JPEG no wider than 1440 px for exactly this reason; what was
+  uploaded does not matter.
+- There is no text-only post: Instagram will not take one without a picture.
+- At most 100 API posts in 24 hours per account. A carousel counts as one. The **Check token**
+  button reads how much of that has been used.
+- A caption cannot carry a tappable link. A post's link is therefore named in words, the way
+  "link in bio" is meant.
+
 ## Setting it up
 
 1. At developers.facebook.com create an app with the use case **Manage everything on your
    Page**. Add the permissions `pages_manage_posts` and `pages_read_engagement`
-   (`pages_show_list` and `business_management` come with the use case).
+   (`pages_show_list` and `business_management` come with the use case). For Instagram add
+   `instagram_basic` and `instagram_content_publish`.
 2. Under the use case's Facebook Login settings, list the redirect address the admin shows
    on its Facebook page: `https://<admin host>/v1/admin/facebook/callback`.
 3. Under App settings, Basic: the app domains, a privacy policy address, a data deletion
@@ -34,8 +61,15 @@ Facebook, or posts to a profile or a group.
 4. On the server set `LPL_FACEBOOK_APP_ID` and `LPL_FACEBOOK_APP_SECRET` and recreate the API
    container (a restart does not read a changed env file). `LPL_ACCOUNT_STATE_SECRET` must be
    set as well: the Page's token is sealed under it.
-5. In the admin open **Facebook Page**, press **Connect a Facebook Page**, choose the Page on
-   Facebook's screen, and come back. **Post now** publishes the day's post straight away.
+5. In the admin open **Distribution Channels, Facebook**, press **Connect a Facebook Page**,
+   choose the Page on Facebook's screen, and come back. **Post now** publishes the day's post
+   straight away.
+6. For Instagram, make the account professional (Instagram, Settings, Account type) and link it
+   to the Page (the Page's Linked accounts). Then connect again from the admin: the accounts
+   behind the shared Pages are read on the way back, and the Instagram screen shows the handle.
+
+The redirect address keeps the path `/v1/admin/facebook/callback` even though the screens moved
+under `/distribution`, so the Meta app does not have to be edited again.
 
 ## How a Page is connected
 
@@ -111,3 +145,38 @@ Pause the Page in the admin to stop posting at once. Disconnect to forget the to
 still queued for a forgotten Page dies in the outbox, because there is no token to send it
 with. Unsetting `LPL_FACEBOOK_APP_ID` only stops new connections and token checks: a Page that
 is already connected keeps being posted to until it is paused or disconnected.
+
+
+## The library
+
+A post is a name (for the owner's own list), a caption (exactly what the platforms show), an
+optional link, hashtags, and up to ten pictures in the order Instagram will show them.
+
+Pictures are the reason the library exists rather than a folder somewhere. Each one is uploaded
+as the file itself, re-encoded to a JPEG no wider than 1440 px, flattened onto white if it had
+transparency, and written to the data volume under a random 32-character name. They are served
+at `https://<site>/content/<name>.jpg` **without a session**, because Facebook and Instagram
+fetch a picture themselves from the address a post names; they never see an admin cookie. The
+random name is what keeps the library from being read by anyone who has seen one picture, and
+the route refuses any path that is not exactly that shape.
+
+Opening a post shows its caption as each platform will render it, and what stands in the way of
+sending it there: no account connected, a token that needs renewing, or, for Instagram, no
+picture.
+
+## The calendar
+
+A schedule is one post, one platform, one time. The same post can therefore go to the Page in
+the morning and to Instagram in the evening, and both show on the calendar.
+
+A timer in the API checks every minute and publishes what is due. Each one is enqueued with a
+key built from its own schedule id, so a tick that overlaps another cannot send the post twice.
+What became of it is read from the dispatch itself, and the row records where the post landed or
+why it did not go.
+
+A post the owner asked for by hand — **Post now**, on a channel or on a planned row — is never
+retried quietly an hour later. It went now or it did not, and the row says which, with the
+platform's own words. A failed row can be called off, or planned again for another time.
+
+The day's deals post is not in the library: it is drawn and composed when the morning run sends
+it, so it always carries that day's prices.
