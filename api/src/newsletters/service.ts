@@ -7,6 +7,7 @@ import type { RecipeIndexEntry } from "../recipe-views.ts";
 import { composeDealsMail, type DealsAccess } from "./deals.ts";
 import { composeRecipesMail, type CostLookup } from "./recipes.ts";
 import { channelDealsMessage, telegramMessageOf } from "./telegram.ts";
+import { facebookDealsPost } from "../social/post.ts";
 import type { TelegramStore } from "../account/telegram.ts";
 import { createNewsletterStore, type NewsletterKind, type NewsletterReport, type NewsletterRun, type NewsletterStore } from "./store.ts";
 import { addDays, colomboDay, isDay } from "./time.ts";
@@ -53,6 +54,8 @@ export type NewsletterDeps = {
   watchlist?: { store: WatchStore; quotes: (productIds: string[]) => Promise<Map<string, WatchQuote> | null> } | undefined;
   /** Linked Telegram chats get the same mail as a message; `channel` is the public channel the deals digest is posted to (LPL_TELEGRAM_CHANNEL). */
   telegram?: { store: TelegramStore; channel: string | null } | undefined;
+  /** The Facebook Page the day's deals are posted to (docs/distribution.md): the connected Page's id, or null while none is connected, it is paused, or it needs connecting again. */
+  facebook?: { page: () => string | null } | undefined;
   now?: (() => Date) | undefined;
   log?: ((line: Record<string, unknown>) => void) | undefined;
 };
@@ -167,6 +170,15 @@ export function createNewsletterService(deps: NewsletterDeps): NewsletterService
           if (post) {
             const queued = deps.outbox.enqueue([{ targetId: "telegram-channel", target: { kind: "telegram", address: channel }, message: post, dedupeKey: post.dedupe_key ?? null }], clock());
             report.channel_post = queued.queued;
+          }
+        }
+        // The Facebook Page gets the day as one post, with the same once-a-day guarantee from the outbox.
+        const page = deps.facebook?.page() ?? null;
+        if (page && !dryRun) {
+          const post = facebookDealsPost(dealsDay, siteOrigin);
+          if (post) {
+            const queued = deps.outbox.enqueue([{ targetId: "facebook-page", target: { kind: "facebook", address: page }, message: post, dedupeKey: post.dedupe_key ?? null }], clock());
+            report.facebook_post = queued.queued;
           }
         }
       } else if (kind === "price_alerts") {

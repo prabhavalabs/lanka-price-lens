@@ -935,8 +935,98 @@ function migrate(database: OperationalDatabase): void {
     ) STRICT;
     CREATE INDEX IF NOT EXISTS newsletter_delivery_account_idx ON newsletter_delivery(account_id, kind, day DESC);
     CREATE INDEX IF NOT EXISTS newsletter_delivery_run_idx ON newsletter_delivery(run_id);
+    -- The places the owner distributes to, connected from the admin (docs/distribution.md): a Facebook
+    -- Page, or an Instagram account reached through the Page it is linked to. The access token is kept
+    -- sealed (AES-256-GCM under a key the database never holds). One account per platform is the active
+    -- one, the one the daily post and anything scheduled goes to.
+    CREATE TABLE IF NOT EXISTS social_account (
+      platform TEXT NOT NULL CHECK (platform IN ('facebook', 'instagram')),
+      account_id TEXT NOT NULL,
+      name TEXT NOT NULL,
+      -- The Instagram handle; null for a Page.
+      username TEXT,
+      link TEXT,
+      picture TEXT,
+      -- Instagram publishes with the token of the Page it is linked to, and this names that Page.
+      parent_id TEXT,
+      token_sealed TEXT NOT NULL,
+      can_post INTEGER NOT NULL DEFAULT 1 CHECK (can_post IN (0, 1)),
+      active INTEGER NOT NULL DEFAULT 0 CHECK (active IN (0, 1)),
+      paused INTEGER NOT NULL DEFAULT 0 CHECK (paused IN (0, 1)),
+      token_status TEXT NOT NULL DEFAULT 'ok' CHECK (token_status IN ('ok', 'invalid')),
+      token_error TEXT,
+      token_checked_at TEXT,
+      token_expires_at TEXT,
+      connected_by TEXT,
+      connected_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY (platform, account_id)
+    ) STRICT;
+    CREATE UNIQUE INDEX IF NOT EXISTS social_account_active_idx ON social_account(platform) WHERE active = 1;
+    -- The content library: one row per post the owner has written, with its pictures beside it and a
+    -- row in content_schedule for every time it is to go out. A post drawn by PriceLens itself (the
+    -- day's deals) is not kept here; it is composed when it is sent.
+    CREATE TABLE IF NOT EXISTS content_item (
+      id TEXT PRIMARY KEY,
+      kind TEXT NOT NULL CHECK (kind IN ('image', 'carousel', 'text')),
+      title TEXT NOT NULL,
+      caption TEXT NOT NULL,
+      -- The address Facebook previews under a text post; Instagram cannot follow a link in a caption.
+      link TEXT,
+      status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'ready', 'archived')),
+      tags TEXT NOT NULL DEFAULT '',
+      created_by TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS content_item_updated_idx ON content_item(updated_at DESC);
+    -- The pictures of one post, in the order they appear. The file sits under the content directory in
+    -- the data volume under a name that cannot be guessed, because the platforms fetch it over the
+    -- open internet.
+    CREATE TABLE IF NOT EXISTS content_asset (
+      id TEXT PRIMARY KEY,
+      item_id TEXT NOT NULL REFERENCES content_item(id) ON DELETE CASCADE,
+      position INTEGER NOT NULL,
+      file TEXT NOT NULL,
+      media_type TEXT NOT NULL,
+      width INTEGER NOT NULL,
+      height INTEGER NOT NULL,
+      bytes INTEGER NOT NULL,
+      created_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS content_asset_item_idx ON content_asset(item_id, position);
+    -- When a post goes where. One row per platform per time, so the same post can go to the Page in the
+    -- morning and to Instagram in the evening, and the calendar can show both.
+    CREATE TABLE IF NOT EXISTS content_schedule (
+      id TEXT PRIMARY KEY,
+      item_id TEXT NOT NULL REFERENCES content_item(id) ON DELETE CASCADE,
+      platform TEXT NOT NULL CHECK (platform IN ('facebook', 'instagram')),
+      scheduled_for TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'scheduled' CHECK (status IN ('scheduled', 'queued', 'published', 'failed', 'cancelled')),
+      outbox_id TEXT,
+      post_url TEXT,
+      error TEXT,
+      published_at TEXT,
+      created_by TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS content_schedule_due_idx ON content_schedule(status, scheduled_for);
+    CREATE INDEX IF NOT EXISTS content_schedule_item_idx ON content_schedule(item_id);
   `);
+  // A database from before the accounts were held per platform carries the Facebook-only table; its
+  // Pages move across with their sealed tokens, which stay readable because the secret has not changed.
+  const hadPages = database.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'facebook_page'").get();
+  if (hadPages) {
+    database.exec(`
+      INSERT OR IGNORE INTO social_account (platform, account_id, name, link, token_sealed, can_post, active, paused, token_status, token_error, token_checked_at, token_expires_at, connected_by, connected_at, updated_at)
+        SELECT 'facebook', page_id, name, link, token_sealed, can_post, active, paused, token_status, token_error, token_checked_at, token_expires_at, connected_by, connected_at, updated_at FROM facebook_page;
+      DROP TABLE facebook_page;
+    `);
+  }
   database.exec(outboxSchema);
+  // The admin lists one channel's posts (the Facebook Page's); without this it would read every queued mail to find them.
+  database.exec("CREATE INDEX IF NOT EXISTS notify_outbox_channel_idx ON notify_outbox(channel, created_at DESC)");
   // The kind check on newsletter_run predates price alerts. SQLite cannot change a CHECK in place, so a
   // database created before then gets the table rebuilt, with foreign keys off so the deliveries survive.
   const runTable = (database.prepare("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'newsletter_run'").get() as { sql: string } | undefined)?.sql ?? "";

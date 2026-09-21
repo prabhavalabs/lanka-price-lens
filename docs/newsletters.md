@@ -299,7 +299,9 @@ recipe cards or deal rows as lines with value, change and link, the button as th
 first recipe photo as the picture) and the run queues it in the same outbox with the dedupe key
 `<mail key>:telegram`. The run report counts them as `telegram`. When `LPL_TELEGRAM_CHANNEL`
 is set, the deals run also queues one digest for that public channel (`channel:deals_daily:<day>`,
-`report.channel_post`), whoever is subscribed by mail.
+`report.channel_post`), whoever is subscribed by mail. With a Facebook Page connected in the
+admin (docs/distribution.md), the same run queues the day's post for it
+(`facebook:deals_daily:<day>`, `report.facebook_post`).
 
 ## Wishlist and price alerts
 

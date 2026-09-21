@@ -1,6 +1,8 @@
 import type { Channel, ChannelKind, FetchLike } from "./channel.ts";
 import { createDiscordChannel, type DiscordConfig } from "./channels/discord.ts";
 import { createEmailChannel, type EmailConfig } from "./channels/email.ts";
+import { createFacebookChannel, type FacebookConfig } from "./channels/facebook.ts";
+import { createInstagramChannel, type InstagramConfig } from "./channels/instagram.ts";
 import { createSendGridChannel } from "./channels/sendgrid.ts";
 import { createSlackChannel, type SlackConfig } from "./channels/slack.ts";
 import { createTelegramChannel, type TelegramConfig } from "./channels/telegram.ts";
@@ -9,10 +11,10 @@ import type { ChannelRegistry } from "./outbox.ts";
 
 /**
  * Builds the channels an application has credentials for. Discord and Slack need none (the
- * webhook URL is the address) and are always present; Telegram, email, and Web Push appear
- * only when configured, so a message for an unconfigured channel dies in the outbox with a
- * clear error instead of failing silently. Email goes through Resend, or SendGrid when the
- * config names it as the provider.
+ * webhook URL is the address) and are always present; Telegram, email, Web Push, Facebook, and
+ * Instagram appear only when configured, so a message for an unconfigured channel dies in the
+ * outbox with a clear error instead of failing silently. Email goes through Resend, or SendGrid
+ * when the config names it as the provider.
  */
 export type ChannelsConfig = {
   telegram?: Omit<TelegramConfig, "fetch"> | null | undefined;
@@ -20,6 +22,8 @@ export type ChannelsConfig = {
   slack?: Omit<SlackConfig, "fetch"> | undefined;
   email?: Omit<EmailConfig, "fetch"> | null | undefined;
   webpush?: Omit<WebPushConfig, "fetch"> | null | undefined;
+  facebook?: Omit<FacebookConfig, "fetch"> | null | undefined;
+  instagram?: Omit<InstagramConfig, "fetch"> | null | undefined;
   fetch?: FetchLike | undefined;
 };
 
@@ -34,6 +38,8 @@ export function createChannels(config: ChannelsConfig = {}): ChannelRegistry {
     channels.set("email", provider === "sendgrid" ? createSendGridChannel({ ...email, fetch: request }) : createEmailChannel({ ...email, fetch: request }));
   }
   if (config.webpush?.vapid.publicKey && config.webpush.vapid.privateKey && config.webpush.subject) channels.set("webpush", createWebPushChannel({ ...config.webpush, fetch: request }));
+  if (config.facebook?.pageToken) channels.set("facebook", createFacebookChannel({ ...config.facebook, fetch: request }));
+  if (config.instagram?.accountToken) channels.set("instagram", createInstagramChannel({ ...config.instagram, fetch: request }));
   return channels;
 }
 

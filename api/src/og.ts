@@ -19,13 +19,13 @@ export const cardHeight = 630;
 const fontsDirectory = fileURLToPath(new URL("../assets/fonts/", import.meta.url));
 const markFile = fileURLToPath(new URL("../assets/brand/mark.png", import.meta.url));
 /** The PriceLens mark (lens over leaves and rice grains), embedded so the card needs no network. */
-const markData = existsSync(markFile) ? readFileSync(markFile).toString("base64") : null;
+export const markData = existsSync(markFile) ? readFileSync(markFile).toString("base64") : null;
 const fontFiles = ["400", "500", "600", "700"].map((weight) => resolve(fontsDirectory, `IBMPlexSans-${weight}.ttf`));
 
-const colours = { background: "#0b1411", text: "#f3f7f4", muted: "#9fb3a8", green: "#3ddc97", greenDeep: "#0f7a54", up: "#ff7b7b", down: "#3ddc97" };
-const fontFamily = "IBM Plex Sans";
+export const colours = { background: "#0b1411", text: "#f3f7f4", muted: "#9fb3a8", green: "#3ddc97", greenDeep: "#0f7a54", up: "#ff7b7b", down: "#3ddc97" };
+export const fontFamily = "IBM Plex Sans";
 /** The site's address as the cards print it: LPL_SITE_ORIGIN without its scheme. */
-const siteHost = (process.env.LPL_SITE_ORIGIN?.trim() || defaultSiteOrigin).replace(/^https?:\/\//u, "").replace(/\/+$/u, "");
+export const siteHost = (process.env.LPL_SITE_ORIGIN?.trim() || defaultSiteOrigin).replace(/^https?:\/\//u, "").replace(/\/+$/u, "");
 
 export type CardRow = { label: string; value: string; note?: string | undefined; noteColour?: string | undefined };
 export type CardStat = { value: string; label: string };
@@ -40,7 +40,7 @@ export type Card = {
   image?: { data: Buffer; mime: "image/jpeg" | "image/png" } | undefined;
 };
 
-const escape = (text: string): string => text.replace(/[&<>"']/gu, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character] ?? character);
+export const escape = (text: string): string => text.replace(/[&<>"']/gu, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character] ?? character);
 
 /** Roughly how wide a run of text is in this font, enough to wrap and place things. */
 export function textWidth(text: string, size: number, weight = 400): number {
@@ -150,9 +150,14 @@ export function cardSvg(card: Card): string {
   return parts.join("");
 }
 
-export function renderCard(card: Card): Buffer {
-  const renderer = new Resvg(cardSvg(card), { font: { loadSystemFonts: false, fontFiles, defaultFontFamily: fontFamily }, fitTo: { mode: "width", value: cardWidth } });
+/** Any SVG drawn with the site's font, as a PNG of the given width. */
+export function renderSvg(svg: string, width: number): Buffer {
+  const renderer = new Resvg(svg, { font: { loadSystemFonts: false, fontFiles, defaultFontFamily: fontFamily }, fitTo: { mode: "width", value: width } });
   return Buffer.from(renderer.render().asPng());
+}
+
+export function renderCard(card: Card): Buffer {
+  return renderSvg(cardSvg(card), cardWidth);
 }
 
 // --- The cards themselves -----------------------------------------------------------------

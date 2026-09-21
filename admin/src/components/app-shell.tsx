@@ -2,6 +2,10 @@ import {
   RiChatSmile2Line,
   RiDashboardLine,
   RiDatabase2Line,
+  RiCalendarScheduleLine,
+  RiFacebookCircleLine,
+  RiFolderImageLine,
+  RiInstagramLine,
   RiFeedbackLine,
   RiExpandUpDownLine,
   RiFilePdf2Line,
@@ -59,11 +63,18 @@ const intelligence: NavigationItem[] = [
   { to: "/feedback", label: "Feedback", icon: RiFeedbackLine, end: false, detail: "Public site" },
   { to: "/mail", label: "Mail", icon: RiMailLine, end: false, detail: "Public site" },
 ];
+// Where the site's own words go out: the platforms, the posts written for them, and when each goes.
+const distribution: NavigationItem[] = [
+  { to: "/distribution/facebook", label: "Facebook", icon: RiFacebookCircleLine, end: false, detail: "Channel" },
+  { to: "/distribution/instagram", label: "Instagram", icon: RiInstagramLine, end: false, detail: "Channel" },
+  { to: "/distribution/library", label: "Library", icon: RiFolderImageLine, end: false, detail: "Content" },
+  { to: "/distribution/calendar", label: "Calendar", icon: RiCalendarScheduleLine, end: false, detail: "Content" },
+];
 const community: NavigationItem[] = [
   { to: "/accounts", label: "Accounts", icon: RiGroupLine, end: false },
   { to: "/community", label: "Community", icon: RiChatSmile2Line, end: false },
 ];
-const navigation = [...operations, ...intelligence, ...community];
+const navigation = [...operations, ...intelligence, ...distribution, ...community];
 
 function sidebarPreference(): boolean {
   return typeof document === "undefined" || !document.cookie.split("; ").includes("sidebar_state=false");
@@ -95,6 +106,7 @@ export function AppShell() {
         <SidebarContent>
           <NavigationGroup items={operations} label="Operations" pathname={location.pathname} />
           <NavigationGroup items={intelligence} label="Intelligence" pathname={location.pathname} />
+          <NavigationGroup items={distribution} label="Distribution Channels" pathname={location.pathname} />
           <NavigationGroup items={community} label="Community" pathname={location.pathname} />
         </SidebarContent>
         <SidebarFooter>
