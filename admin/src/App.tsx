@@ -20,6 +20,7 @@ const FeedbackPage = lazy(() => import("@/pages/feedback-page").then((module) =>
 const MailPage = lazy(() => import("@/pages/mail-page").then((module) => ({ default: module.MailPage })));
 const ChannelPage = lazy(() => import("@/pages/channel-page").then((module) => ({ default: module.ChannelPage })));
 const LibraryPage = lazy(() => import("@/pages/library-page").then((module) => ({ default: module.LibraryPage })));
+const AgentAccessPage = lazy(() => import("@/pages/agent-access-page").then((module) => ({ default: module.AgentAccessPage })));
 const CalendarPage = lazy(() => import("@/pages/calendar-page").then((module) => ({ default: module.CalendarPage })));
 const AccountsPage = lazy(() => import("@/pages/accounts-page").then((module) => ({ default: module.AccountsPage })));
 const CommunityPage = lazy(() => import("@/pages/community-page").then((module) => ({ default: module.CommunityPage })));
@@ -49,6 +50,7 @@ const router = createBrowserRouter(
             { path: "distribution/instagram", element: <ChannelPage platform="instagram" /> },
             { path: "distribution/library", element: <LibraryPage /> },
             { path: "distribution/calendar", element: <CalendarPage /> },
+            { path: "distribution/access", element: <AgentAccessPage /> },
             { path: "accounts", element: <AccountsPage /> },
             { path: "community", element: <CommunityPage /> },
           ],
