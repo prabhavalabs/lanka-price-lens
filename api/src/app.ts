@@ -93,6 +93,7 @@ import { dealsAccessFor } from "./newsletters/deals.ts";
 import type { CostLookup } from "./newsletters/recipes.ts";
 import { startNewsletterScheduler } from "./newsletters/scheduler.ts";
 import { createSocialStore, type Platform } from "./social/accounts.ts";
+import { createSettingsStore, isClock, isSettingChannel, postingZone } from "./social/settings.ts";
 import { createLibraryStore } from "./social/library.ts";
 import { postDeals, renderDealsCard } from "./social/post.ts";
 import { runDueSchedules } from "./social/publish.ts";
@@ -235,6 +236,7 @@ export function createApp(
   // The distribution channels (docs/distribution.md): connected from the admin, each token sealed under
   // the state secret, posted to through the same outbox as the mails.
   const socialStore = createSocialStore(database, accountConfig.stateSecret);
+  const settingsStore = createSettingsStore(database, { enabled: options.newsletters?.enabled ?? true, sendAt: options.newsletters?.hour ?? process.env.LPL_NEWSLETTER_HOUR?.trim() ?? "07:30" });
   const contentFiles = contentDirectory();
   const libraryStore = createLibraryStore(database, contentFiles, siteOrigin);
   const facebookAppId = process.env.LPL_FACEBOOK_APP_ID?.trim();
@@ -281,6 +283,7 @@ export function createApp(
     facebook: {
       page: () => {
         const page = socialStore.active("facebook");
+        if (!settingsStore.of("facebook").enabled) return null;
         return page && !page.paused && page.can_post && page.token_status === "ok" ? page.account_id : null;
       },
     },
@@ -291,7 +294,7 @@ export function createApp(
   const deliveryChannels = (): ChannelRegistry => new Map([...(ownMailer?.channels ?? []), ["facebook", facebookChannel], ["instagram", instagramChannel]]);
   if (options.newsletters && options.newsletters.scheduler !== false) {
     if (ownMailer?.channels) {
-      startNewsletterScheduler({ service: newsletters, outbox, channels: deliveryChannels(), enabled: options.newsletters.enabled, hour: options.newsletters.hour, onGone: markSocialGone, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) });
+      startNewsletterScheduler({ service: newsletters, outbox, channels: deliveryChannels(), settings: () => { const mail = settingsStore.of("email"); return { enabled: mail.enabled, sendAt: mail.send_at }; }, onGone: markSocialGone, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) });
     } else {
       console.warn("Daily mails are not running: set LPL_RESEND_API_KEY and LPL_MAIL_FROM so the API can send them.");
     }
@@ -645,7 +648,7 @@ export function createApp(
     return context.json(envelope(context.get("requestId"), null, true, "Signed out"));
   });
   // Facebook's redirect cannot carry the admin's SameSite=Strict session, so the callback answers to its own signed cookie; it is registered ahead of the session check on purpose.
-  const distributionDeps: DistributionDeps = { accounts: socialStore, content: libraryStore, app: facebookApp, outbox, channels: deliveryChannels, deals, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
+  const distributionDeps: DistributionDeps = { accounts: socialStore, content: libraryStore, settings: settingsStore, app: facebookApp, outbox, channels: deliveryChannels, deals, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
   app.get(facebookCallbackPath, facebookCallbackRoute(distributionDeps));
   app.use("/v1/admin/*", requireOwner);
   /**

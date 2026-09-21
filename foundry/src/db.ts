@@ -1028,6 +1028,17 @@ function migrate(database: OperationalDatabase): void {
       updated_at TEXT NOT NULL
     ) STRICT;
     CREATE INDEX IF NOT EXISTS content_schedule_due_idx ON content_schedule(status, scheduled_for);
+    -- What each channel does and when (docs/distribution.md). This is the setting the admin edits;
+    -- the environment only seeds it the first time, so a send time can be changed without touching
+    -- the server. The send time is a clock on the wall in Colombo, because that is where readers are
+    -- and what the owner sets; everything else in the database stays UTC.
+    CREATE TABLE IF NOT EXISTS channel_setting (
+      channel TEXT PRIMARY KEY CHECK (channel IN ('email', 'facebook', 'instagram', 'telegram')),
+      enabled INTEGER NOT NULL DEFAULT 1 CHECK (enabled IN (0, 1)),
+      send_at TEXT NOT NULL DEFAULT '07:30',
+      updated_by TEXT,
+      updated_at TEXT NOT NULL
+    ) STRICT;
     CREATE INDEX IF NOT EXISTS content_schedule_item_idx ON content_schedule(item_id);
   `);
   // A database from before the accounts were held per platform carries the Facebook-only table; its

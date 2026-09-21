@@ -24,6 +24,7 @@ import { envelope, jsonObject, requestOrigin } from "../http.ts";
 import type { DealsAccess } from "../newsletters/deals.ts";
 import { colomboDay, isDay } from "../newsletters/time.ts";
 import { isPlatform, type Platform, type SocialStore } from "./accounts.ts";
+import { isClock, isSettingChannel, postingZone, settingChannels, type SettingsStore } from "./settings.ts";
 import { carouselMax, contentStatuses, uploadMaxBytes, type ContentStatus, type LibraryStore } from "./library.ts";
 import { facebookDealsPost, postDeals } from "./post.ts";
 import { contentMessage, publishBlocker, publishSchedule, runDueSchedules, type PublishDeps } from "./publish.ts";
@@ -53,6 +54,7 @@ const connectScopes = [...facebookScopes, ...instagramScopes];
 export type DistributionDeps = {
   accounts: SocialStore;
   content: LibraryStore;
+  settings: SettingsStore;
   /** LPL_FACEBOOK_APP_ID and LPL_FACEBOOK_APP_SECRET; null until the owner sets them. */
   app: FacebookApp | null;
   outbox: OutboxStore;
@@ -148,7 +150,26 @@ export function distributionAdminRoutes(deps: DistributionDeps): Hono<Bindings> 
     posts: deps.accounts.posts(30),
   });
 
-  app.get("/", (context) => ok(context, status(context)));
+  app.get("/", (context) => ok(context, { ...status(context), zone: postingZone, settings: deps.settings.all() }));
+
+  // --- What each channel does and when -----------------------------------------------------------
+
+  app.get("/settings", (context) => ok(context, { zone: postingZone, channels: settingChannels, settings: deps.settings.all() }));
+
+  app.put("/settings/:channel", bodyLimit({ maxSize: 1024 }), async (context) => {
+    const channel = context.req.param("channel");
+    if (!isSettingChannel(channel)) return refuse(context, 404, "No such channel");
+    const body = await jsonObject(context);
+    if (body?.send_at !== undefined && !isClock(body.send_at)) return refuse(context, 400, "A send time reads as 07:30, on the 24-hour clock");
+    if (body?.enabled !== undefined && typeof body.enabled !== "boolean") return refuse(context, 400, "enabled must be true or false");
+    const saved = deps.settings.save(
+      channel,
+      { ...(typeof body?.enabled === "boolean" ? { enabled: body.enabled } : {}), ...(isClock(body?.send_at) ? { send_at: body.send_at } : {}) },
+      who(context),
+      now(),
+    );
+    return ok(context, { zone: postingZone, settings: deps.settings.all(), saved }, `${channel} saved`);
+  });
 
   app.get("/connect", (context) => {
     if (!deps.app) return context.redirect(`${adminPage}?facebook=not_configured`, 302);

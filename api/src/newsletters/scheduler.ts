@@ -34,10 +34,12 @@ export type SchedulerDeps = {
   service: NewsletterService;
   outbox: OutboxStore;
   channels: ChannelRegistry;
-  /** LPL_NEWSLETTERS_ENABLED: when false the timer only dispatches the outbox and never starts a run. */
-  enabled: boolean;
-  /** LPL_NEWSLETTER_HOUR, "07:30" by default. */
-  hour?: string | undefined;
+  /**
+   * What the mail channel is set to, read at every tick rather than at start, so a change made in
+   * the admin takes effect on the next minute instead of on the next deploy. When it says off, the
+   * timer still dispatches the outbox and simply never starts a run.
+   */
+  settings: () => { enabled: boolean; sendAt: string };
   intervalMs?: number | undefined;
   now?: (() => Date) | undefined;
   log?: ((line: Record<string, unknown>) => void) | undefined;
@@ -53,7 +55,6 @@ export type TickReport = { at: string; dispatch: DispatchReport | null; runs: Ne
 export function startNewsletterScheduler(deps: SchedulerDeps): () => void {
   const clock = deps.now ?? (() => new Date());
   const log = deps.log ?? ((line: Record<string, unknown>) => console.error(JSON.stringify(line)));
-  const hour = deps.hour?.trim() || defaultNewsletterHour;
   let ticking = false;
   let stopped = false;
 
@@ -63,7 +64,9 @@ export function startNewsletterScheduler(deps: SchedulerDeps): () => void {
     const report: TickReport = { at: clock().toISOString(), dispatch: null, runs: [], error: null };
     try {
       report.dispatch = await dispatchOutbox(deps.outbox, deps.channels, { now: clock, onGone: deps.onGone });
-      if (deps.enabled) {
+      const setting = deps.settings();
+      const hour = setting.sendAt?.trim() || defaultNewsletterHour;
+      if (setting.enabled) {
         for (const kind of newsletterKinds) {
           if (stopped) break;
           const now = clock();
