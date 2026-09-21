@@ -155,7 +155,7 @@ const pctWords = (pct: number): string => `${pct < 0 ? "−" : "+"}${Math.round(
  */
 export const cardWords = {
   eyebrow: "අද සුපර්මාර්කට් ඕෆර්",
-  headline: ["අද උදේ කඩවල", "මිල අඩු කළ භාණ්ඩ"],
+  headline: ["අද උදේ", "මිල අඩු කළ භාණ්ඩ"],
   footer: "මිල කඩවලම නිල වෙබ් අඩවි වලින්",
 } as const;
 

@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 
 import { date, EmptyTableRow, PageFrame } from "@/components/data-display";
+import { ImageLightbox } from "@/components/image-lightbox";
 import { PostPreviewFrame, type DeviceKind } from "@/components/post-preview";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -206,7 +207,14 @@ export function ChannelPage({ platform }: { platform: Platform }) {
           {preview.isError ? <Alert className="lg:col-span-2" variant="destructive"><AlertTitle>No preview</AlertTitle><AlertDescription>{message(preview.error, "The preview route did not answer.")}</AlertDescription></Alert> : null}
           {preview.data?.ready ? (
             <>
-              <img alt={`The post's picture for ${preview.data.day}`} className="w-full rounded-lg border" height={1350} loading="lazy" src={`/og/deals/${preview.data.day}.png`} width={1080} />
+              <ImageLightbox
+                alt={`The post's picture for ${preview.data.day}`}
+                caption={`The card as it goes out: 1080 × 1350, for ${preview.data.day}.`}
+                className="self-start"
+                src={`/og/deals/${preview.data.day}.png`}
+              >
+                <img alt={`The post's picture for ${preview.data.day}`} className="w-full" height={1350} loading="lazy" src={`/og/deals/${preview.data.day}.png`} width={1080} />
+              </ImageLightbox>
               <div className="grid content-start gap-3">
                 <pre className="max-h-[26rem] overflow-auto whitespace-pre-wrap rounded-lg border bg-background/40 p-3 text-xs leading-relaxed">{preview.data.caption}</pre>
                 <div className="flex flex-wrap items-center gap-3">
