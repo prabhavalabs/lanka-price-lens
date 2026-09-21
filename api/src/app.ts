@@ -32,6 +32,7 @@ import {
   settingsJsonSchema,
   snapshotFileSchema,
   type AnyRetailAdapter,
+  contentRoot as contentDirectory,
   storeImagesRoot,
 } from "@lanka-pricelens/foundry/retail";
 import { runWithRetry } from "@lanka-pricelens/foundry/retry";
@@ -59,7 +60,7 @@ import { Presence, presenceIdPattern } from "./presence.ts";
 import { publicBasket, publicOverview } from "./public.ts";
 import { loadEssentials } from "@lanka-pricelens/foundry/deals";
 import { connectWarehouse, syncWarehouse, type WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
-import { createFacebookChannel, createSqliteOutbox, type ChannelRegistry, type FacebookApp, type FetchLike } from "@lanka-pricelens/notify";
+import { createFacebookChannel, createInstagramChannel, createSqliteOutbox, type ChannelRegistry, type FacebookApp, type FetchLike } from "@lanka-pricelens/notify";
 import {
   enqueueWorkflow,
   ensureWorkflowSchedules,
@@ -91,9 +92,11 @@ import { sampleOwnerNotices, type MailServices } from "./mail/samples.ts";
 import { dealsAccessFor } from "./newsletters/deals.ts";
 import type { CostLookup } from "./newsletters/recipes.ts";
 import { startNewsletterScheduler } from "./newsletters/scheduler.ts";
-import { postDeals, renderDealsCard } from "./facebook/post.ts";
-import { facebookAdminRoutes, facebookCallbackPath, facebookCallbackRoute, type FacebookDeps } from "./facebook/routes.ts";
-import { createFacebookStore } from "./facebook/store.ts";
+import { createSocialStore, type Platform } from "./social/accounts.ts";
+import { createLibraryStore } from "./social/library.ts";
+import { postDeals, renderDealsCard } from "./social/post.ts";
+import { runDueSchedules } from "./social/publish.ts";
+import { distributionAdminRoutes, facebookCallbackPath, facebookCallbackRoute, type DistributionDeps } from "./social/routes.ts";
 import { defaultSiteOrigin } from "./mail/layout.ts";
 import { createNewsletterService, type NewsletterService } from "./newsletters/service.ts";
 import { unsubscribeRoutes } from "./newsletters/unsubscribe.ts";
@@ -221,14 +224,18 @@ export function createApp(
   const outbox = createSqliteOutbox(database);
   const siteOrigin = accountConfig.siteOrigin ?? defaultSiteOrigin;
   const deals = dealsAccessFor({ database, warehouse, essentials: () => loadEssentials() });
-  // The Facebook Page (docs/facebook.md): connected from the admin, its token sealed under the state secret, posted to through the same outbox as the mails.
-  const facebookStore = createFacebookStore(database, accountConfig.stateSecret);
+  // The distribution channels (docs/distribution.md): connected from the admin, each token sealed under
+  // the state secret, posted to through the same outbox as the mails.
+  const socialStore = createSocialStore(database, accountConfig.stateSecret);
+  const contentFiles = contentDirectory();
+  const libraryStore = createLibraryStore(database, contentFiles, siteOrigin);
   const facebookAppId = process.env.LPL_FACEBOOK_APP_ID?.trim();
   const facebookAppSecret = process.env.LPL_FACEBOOK_APP_SECRET?.trim();
   const facebookApp: FacebookApp | null = options.facebook?.app !== undefined ? options.facebook.app : facebookAppId && facebookAppSecret ? { appId: facebookAppId, appSecret: facebookAppSecret } : null;
-  const facebookChannel = createFacebookChannel({ pageToken: (pageId) => facebookStore.tokenFor(pageId), appSecret: facebookApp?.appSecret, fetch: options.facebook?.fetch });
-  const markFacebookGone = (entry: { target: { kind: string; address: string } }, error: string): void => {
-    if (entry.target.kind === "facebook") facebookStore.markToken(entry.target.address, { valid: false, error }, new Date());
+  const facebookChannel = createFacebookChannel({ pageToken: (pageId) => socialStore.tokenFor("facebook", pageId), appSecret: facebookApp?.appSecret, fetch: options.facebook?.fetch });
+  const instagramChannel = createInstagramChannel({ accountToken: (accountId) => socialStore.tokenFor("instagram", accountId), appSecret: facebookApp?.appSecret, fetch: options.facebook?.fetch });
+  const markSocialGone = (entry: { target: { kind: string; address: string } }, error: string): void => {
+    if (entry.target.kind === "facebook" || entry.target.kind === "instagram") socialStore.markToken(entry.target.kind as Platform, entry.target.address, { valid: false, error }, new Date());
   };
   const recipeCosts = async (): Promise<CostLookup | null> => {
     if (!options.recipes) return null;
@@ -265,21 +272,30 @@ export function createApp(
     telegram: { store: telegramStore, channel: bot ? telegramChannel : null },
     facebook: {
       page: () => {
-        const page = facebookStore.active();
-        return page && !page.paused && page.can_post && page.token_status === "ok" ? page.page_id : null;
+        const page = socialStore.active("facebook");
+        return page && !page.paused && page.can_post && page.token_status === "ok" ? page.account_id : null;
       },
     },
     log: (line) => console.log(JSON.stringify({ level: "info", ...line })),
   });
   newsletterServices.set(app, newsletters);
-  /** Everything the outbox can deliver through: the mailer's channels and the Facebook Page. */
-  const deliveryChannels = (): ChannelRegistry => new Map([...(ownMailer?.channels ?? []), ["facebook", facebookChannel]]);
+  /** Everything the outbox can deliver through: the mailer's channels and the distribution channels. */
+  const deliveryChannels = (): ChannelRegistry => new Map([...(ownMailer?.channels ?? []), ["facebook", facebookChannel], ["instagram", instagramChannel]]);
   if (options.newsletters && options.newsletters.scheduler !== false) {
     if (ownMailer?.channels) {
-      startNewsletterScheduler({ service: newsletters, outbox, channels: deliveryChannels(), enabled: options.newsletters.enabled, hour: options.newsletters.hour, onGone: markFacebookGone, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) });
+      startNewsletterScheduler({ service: newsletters, outbox, channels: deliveryChannels(), enabled: options.newsletters.enabled, hour: options.newsletters.hour, onGone: markSocialGone, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) });
     } else {
       console.warn("Daily mails are not running: set LPL_RESEND_API_KEY and LPL_MAIL_FROM so the API can send them.");
     }
+    // The calendar's own beat (docs/distribution.md). A minute is close enough for a post planned to
+    // the hour, and a tick with nothing due reads one indexed row. The timer does not hold the
+    // process open, so a container that is stopping is not kept alive by it.
+    const distributionTick = setInterval(() => {
+      void runDueSchedules({ accounts: socialStore, content: libraryStore, outbox, channels: deliveryChannels, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) }).catch((error: unknown) =>
+        console.warn(JSON.stringify({ level: "warn", message: "The distribution tick failed", detail: error instanceof Error ? error.message : String(error) })),
+      );
+    }, 60_000);
+    distributionTick.unref();
   }
   app.use("/v1/public/*", async (context, next) => {
     await next();
@@ -600,10 +616,10 @@ export function createApp(
     return context.json(envelope(context.get("requestId"), null, true, "Signed out"));
   });
   // Facebook's redirect cannot carry the admin's SameSite=Strict session, so the callback answers to its own signed cookie; it is registered ahead of the session check on purpose.
-  const facebookDeps: FacebookDeps = { store: facebookStore, app: facebookApp, outbox, channels: deliveryChannels, deals, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
-  app.get(facebookCallbackPath, facebookCallbackRoute(facebookDeps));
+  const distributionDeps: DistributionDeps = { accounts: socialStore, content: libraryStore, app: facebookApp, outbox, channels: deliveryChannels, deals, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
+  app.get(facebookCallbackPath, facebookCallbackRoute(distributionDeps));
   app.use("/v1/admin/*", requireOwner);
-  app.route("/v1/admin/facebook", facebookAdminRoutes(facebookDeps));
+  app.route("/v1/admin/distribution", distributionAdminRoutes(distributionDeps));
   app.route("/v1/admin/accounts", adminAccountRoutes({ store: accountStore, content: contentStore }));
   app.route("/v1/admin", newsletterAdminRoutes({ service: newsletters, deals }));
   app.route("/v1/admin/community", communityAdminRoutes({ store: communityStore, accounts: accountStore, recipes: options.recipes }));
@@ -1567,6 +1583,17 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
   });
   app.use("/store-images/*", serveStatic({ root: storeImages, rewriteRequestPath: (path) => path.replace(/^\/store-images/u, "") }));
   app.get("/store-images/*", (context) => context.text("Not found", 404));
+  // The content library's pictures (docs/distribution.md). Public on purpose: Facebook and Instagram
+  // fetch a picture themselves from the address the post names, so it cannot sit behind the admin
+  // session. The file names are random, which is what keeps the library from being read by anyone
+  // who happens to have seen one of them.
+  app.use("/content/*", async (context, next) => {
+    if (!/^\/content\/[0-9a-f]{32}\.jpg$/u.test(context.req.path)) return context.text("Not found", 404);
+    await next();
+    if (context.res.ok) context.header("Cache-Control", "public, max-age=31536000, immutable");
+  });
+  app.use("/content/*", serveStatic({ root: contentDirectory(), rewriteRequestPath: (path) => path.replace(/^\/content/u, "") }));
+  app.get("/content/*", (context) => context.text("Not found", 404));
   const adminRoot = resolve(process.env.LPL_ADMIN_ROOT ?? "../admin/dist");
   // The site's build lives next to the API in the repository and the image alike, so the default is relative to this file, not the working directory.
   const webRoot = resolve(process.env.LPL_WEB_ROOT ?? fileURLToPath(new URL("../../web/dist/", import.meta.url)));

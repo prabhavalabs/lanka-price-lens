@@ -7,7 +7,7 @@ import type { RecipeIndexEntry } from "../recipe-views.ts";
 import { composeDealsMail, type DealsAccess } from "./deals.ts";
 import { composeRecipesMail, type CostLookup } from "./recipes.ts";
 import { channelDealsMessage, telegramMessageOf } from "./telegram.ts";
-import { facebookDealsPost } from "../facebook/post.ts";
+import { facebookDealsPost } from "../social/post.ts";
 import type { TelegramStore } from "../account/telegram.ts";
 import { createNewsletterStore, type NewsletterKind, type NewsletterReport, type NewsletterRun, type NewsletterStore } from "./store.ts";
 import { addDays, colomboDay, isDay } from "./time.ts";

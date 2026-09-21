@@ -196,3 +196,15 @@ export function purgeStoreImages(database: OperationalDatabase, root: string, so
 function addDays(date: Date, days: number): string {
   return new Date(date.getTime() + days * 86_400_000).toISOString();
 }
+
+/**
+ * Where the content library keeps its pictures: beside the database, like the store pictures, and
+ * inside the data volume so the read-only container can still write there. Both platforms fetch
+ * these over the open internet, which is why the files are named at random.
+ */
+export function contentRoot(environment: Record<string, string | undefined> = process.env, databasePath?: string): string {
+  const configured = environment.LPL_CONTENT_DIR?.trim();
+  if (configured) return resolve(configured);
+  const database = databasePath ?? environment.LPL_DATABASE_PATH?.trim();
+  return resolve(database && database !== ":memory:" ? dirname(database) : "data/runtime", "content");
+}
