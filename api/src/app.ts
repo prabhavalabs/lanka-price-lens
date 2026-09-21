@@ -135,6 +135,9 @@ import {
 
 type AppBindings = { Variables: { adminUser: AdminUser } & Partial<AccountVariables> };
 
+/** The routes that hand out a public picture: the photographs, the stores' own, the library's, and the drawn cards. */
+const publicPicturePath = /^\/(?:images|store-images|content|og)\//u;
+
 export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
@@ -209,7 +212,21 @@ export function createApp(
     if (!run) return context.json(envelope(context.get("requestId"), null, false, "Capture did not start"), 500);
     return context.json(envelope(context.get("requestId"), run, true, "Capture started"), 202);
   };
-  app.use("*", requestId(), secureHeaders());
+  app.use("*", requestId(), secureHeaders({ crossOriginResourcePolicy: false }));
+  /**
+   * Who may embed what this server answers with. Everything is same-origin, as the secure-headers
+   * default has it, except the pictures and the drawn cards: those are public and exist to be shown
+   * elsewhere — in the admin, which is served from a host of its own; inside the mail preview, whose
+   * sandboxed frame has an origin belonging to nobody; in a mail client; on a platform that fetched
+   * one from a post. A refused picture is the broken-image box, which is what this was.
+   *
+   * It is set here rather than on each route because the secure headers are written on the way out
+   * and would overwrite anything a route had set on the way up.
+   */
+  app.use("*", async (context, next) => {
+    await next();
+    context.header("Cross-Origin-Resource-Policy", publicPicturePath.test(context.req.path) ? "cross-origin" : "same-origin");
+  });
   app.get("/v1/health", (context) => context.json(envelope(context.get("requestId"), { status: "ok" })));
 
   // The public read API behind the consumer site: no sign-in, only sources whose rights allow publication,
@@ -1657,7 +1674,8 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
   const imagesRoot = defaultImagesRoot();
   app.use("/images/*", async (context, next) => {
     await next();
-    if (context.res.ok) context.header("Cache-Control", "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800");
+    if (!context.res.ok) return;
+    context.header("Cache-Control", "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800");
   });
   app.use("/images/*", serveStatic({ root: imagesRoot, rewriteRequestPath: (path) => path.replace(/^\/images/u, "") }));
   // A picture the site does not have is a plain 404, never the site's HTML: browsers and mail clients then treat it as missing.
@@ -1668,7 +1686,8 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
   app.use("/store-images/*", async (context, next) => {
     if (!/^\/store-images\/[a-z0-9_]+\/[0-9a-f]{2}\/[0-9a-f]{64}\.(?:jpg|png|webp|gif|avif)$/u.test(context.req.path)) return context.text("Not found", 404);
     await next();
-    if (context.res.ok) context.header("Cache-Control", "public, max-age=31536000, immutable");
+    if (!context.res.ok) return;
+    context.header("Cache-Control", "public, max-age=31536000, immutable");
   });
   app.use("/store-images/*", serveStatic({ root: storeImages, rewriteRequestPath: (path) => path.replace(/^\/store-images/u, "") }));
   app.get("/store-images/*", (context) => context.text("Not found", 404));
@@ -1679,7 +1698,8 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
   app.use("/content/*", async (context, next) => {
     if (!/^\/content\/[0-9a-f]{32}\.jpg$/u.test(context.req.path)) return context.text("Not found", 404);
     await next();
-    if (context.res.ok) context.header("Cache-Control", "public, max-age=31536000, immutable");
+    if (!context.res.ok) return;
+    context.header("Cache-Control", "public, max-age=31536000, immutable");
   });
   app.use("/content/*", serveStatic({ root: contentDirectory(), rewriteRequestPath: (path) => path.replace(/^\/content/u, "") }));
   app.get("/content/*", (context) => context.text("Not found", 404));

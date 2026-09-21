@@ -61,6 +61,18 @@ makes a copy for the screen: the mark is embedded, and the pictures under `/imag
 and `/content` — the routes the API answers whatever host asked — become paths. What is sent is
 never touched.
 
+**A frame that previews HTML keeps this origin.** `sandbox=""` sounds like the safe choice and is
+the wrong one: a frame sandboxed all the way has an origin belonging to nobody, and a browser hands
+such a frame no subresource at all — not a picture from this server, not one the development server
+serves itself. Every picture in the mail preview came out as the broken-image box because of it.
+The preview frame is `sandbox="allow-same-origin"`: scripts stay forbidden, which is what keeps the
+frame from reaching out, and pictures load.
+
+The pictures themselves say `Cross-Origin-Resource-Policy: cross-origin` (everything else on the
+server stays `same-origin`). They are public and exist to be shown elsewhere — in the admin on its
+own host, in a mail client, on a platform that fetched one from a post — and the default refuses
+exactly that.
+
 ## Cards drawn by the server
 
 `/og/…` addresses never change when the drawing behind them does — the day's card is always
