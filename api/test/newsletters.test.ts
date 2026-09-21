@@ -11,7 +11,7 @@ import { createApp } from "../src/app.ts";
 import { seedAdminUser } from "../src/auth.ts";
 import { mailDefaults } from "../src/mail/defaults.ts";
 import { createTemplateStore, renderMail } from "../src/mail/templates.ts";
-import { defaultNewsletterHour, retryAfterMs, shouldRun } from "../src/newsletters/scheduler.ts";
+import { jobIsDue, retryAfterMs } from "../src/social/jobs.ts";
 import { signUnsubscribeToken, verifyUnsubscribeToken } from "../src/newsletters/unsubscribe.ts";
 import { readRecipeStore } from "../src/recipes.ts";
 
@@ -122,16 +122,23 @@ test("unsubscribe tokens round-trip and refuse tampering", () => {
   assert.equal(verifyUnsubscribeToken(secret, "not-a-token"), null);
 });
 
-test("the scheduler runs once a day after the hour and retries a failure after a wait", () => {
+test("a job runs when its expression matches the minute, and a failure is retried after a wait", () => {
   const at = (iso: string) => new Date(iso);
+  const schedule = (patch: Partial<Parameters<typeof jobIsDue>[0]> = {}) => ({
+    channel: "email" as const, job: "deals_daily", label: "Daily deals mail", description: "", enabled: true,
+    cron: "30 7 * * *", recurrence: "Every day at 07:30", next_run_at: null, last_run_at: null,
+    last_status: null, last_error: null, updated_by: null, updated_at: "2026-09-14T00:00:00.000Z", ...patch,
+  });
   // 07:29 and 07:30 in Colombo are 01:59 and 02:00 UTC.
-  assert.equal(shouldRun(at("2026-09-14T01:59:00Z"), defaultNewsletterHour, null), false, "before the hour");
-  assert.equal(shouldRun(at("2026-09-14T02:00:00Z"), defaultNewsletterHour, null), true, "at the hour with no run yet");
-  assert.equal(shouldRun(at("2026-09-14T05:00:00Z"), defaultNewsletterHour, { status: "sent", started_at: "2026-09-14T02:00:05Z", finished_at: "2026-09-14T02:00:09Z" }), false, "already sent today");
-  assert.equal(shouldRun(at("2026-09-14T05:00:00Z"), defaultNewsletterHour, { status: "skipped", started_at: "2026-09-14T02:00:05Z", finished_at: "2026-09-14T02:00:09Z" }), false, "a skipped day is done too");
+  assert.equal(jobIsDue(schedule(), at("2026-09-14T01:59:00Z")), false, "before the minute");
+  assert.equal(jobIsDue(schedule(), at("2026-09-14T02:00:00Z")), true, "on the minute");
+  assert.equal(jobIsDue(schedule({ cron: "0 8 * * *" }), at("2026-09-14T02:00:00Z")), false, "moved to eight, this minute is not it");
+  // A job that just ran is not run again inside the same minute, however slow the tick was.
+  assert.equal(jobIsDue(schedule({ last_run_at: "2026-09-14T02:00:10Z", last_status: "ran" }), at("2026-09-14T02:00:40Z")), false, "not twice in a minute");
   const failedAt = at("2026-09-14T02:00:05Z");
-  assert.equal(shouldRun(new Date(failedAt.getTime() + retryAfterMs - 60_000), defaultNewsletterHour, { status: "failed", started_at: failedAt.toISOString(), finished_at: failedAt.toISOString() }), false, "a failure waits before retrying");
-  assert.equal(shouldRun(new Date(failedAt.getTime() + retryAfterMs + 60_000), defaultNewsletterHour, { status: "failed", started_at: failedAt.toISOString(), finished_at: failedAt.toISOString() }), true, "then retries");
+  const failed = schedule({ last_run_at: failedAt.toISOString(), last_status: "failed" });
+  assert.equal(jobIsDue(failed, new Date(failedAt.getTime() + retryAfterMs - 60_000)), false, "a failure waits before retrying");
+  assert.equal(jobIsDue(failed, new Date(failedAt.getTime() + retryAfterMs + 60_000)), true, "then retries, off its own clock");
 });
 
 test("the daily recipe mail reaches opted-in verified accounts, runs once a day, and one click unsubscribes", async () => {

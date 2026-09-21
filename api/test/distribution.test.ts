@@ -8,6 +8,7 @@ import { createMemoryOutbox, facebookText, instagramText } from "@lanka-pricelen
 
 import { createApp } from "../src/app.ts";
 import { seedAdminUser } from "../src/auth.ts";
+import { runChannelJob } from "../src/social/jobs.ts";
 import { cardWords, dealsCardSvg, facebookDealsPost, postCardHeight, postCardWidth, postDeals, renderDealsCard } from "../src/social/post.ts";
 import { facebookStateCookie, readConnectState, signConnectState } from "../src/social/routes.ts";
 import { openToken, sealToken } from "../src/social/seal.ts";
@@ -236,24 +237,77 @@ test("the admin connects a Page through Facebook Login, previews the day, and po
   }
 });
 
-test("the deals run queues the Page's post once a day, and not while the Page is paused", async () => {
+test("the day's post is a job of its own: queued once a day, and never while the account is paused", async () => {
+  const outbox = createMemoryOutbox();
+  const day = sampleDealsDay("2026-09-20");
+  let account: { account_id: string; name: string; paused: boolean; can_post: boolean; token_status: string } | undefined = {
+    account_id: "1234567890", name: "PriceLens Sri Lanka", paused: false, can_post: true, token_status: "ok",
+  };
+  const runners = {
+    deals: { read: () => day, latest: () => day, compute: async () => day },
+    outbox,
+    accounts: { active: () => account } as unknown as Parameters<typeof runChannelJob>[2]["accounts"],
+    siteOrigin: "https://price.example",
+    now: () => now,
+  };
+
+  const first = await runChannelJob("facebook", "deals_post", runners, "2026-09-20");
+  assert.equal(first.status, "ran");
+  assert.equal((await runChannelJob("facebook", "deals_post", runners, "2026-09-20")).status, "skipped", "the outbox keeps the day to one post");
+  const queued = outbox.recent(10).filter((entry) => entry.target.kind === "facebook");
+  assert.equal(queued.length, 1);
+  assert.deepEqual([queued[0]!.target.address, queued[0]!.dedupeKey, queued[0]!.message.image?.url], ["1234567890", "facebook:deals_daily:2026-09-20", "https://price.example/og/deals/2026-09-20.png"]);
+
+  // Instagram is the same post to its own account, under a key of its own.
+  assert.equal((await runChannelJob("instagram", "deals_post", runners, "2026-09-20")).status, "ran");
+  assert.equal(outbox.recent(10).find((entry) => entry.target.kind === "instagram")?.dedupeKey, "instagram:deals_daily:2026-09-20");
+
+  account = { ...account, paused: true };
+  assert.equal((await runChannelJob("facebook", "deals_post", runners, "2026-09-21")).status, "skipped", "a paused account is left alone");
+  account = undefined;
+  assert.equal((await runChannelJob("facebook", "deals_post", runners, "2026-09-21")).status, "skipped", "and so is a channel with nothing connected");
+});
+
+test("the mail run no longer posts to the platforms, so a day cannot go out twice", async () => {
   const database = openOperationalDatabase(":memory:");
   try {
     const outbox = createMemoryOutbox();
-    let pageId: string | null = "1234567890";
     const day = sampleDealsDay("2026-09-20");
-    const service = createNewsletterService({ database, accounts: createAccountStore(database), outbox, siteOrigin: "https://price.example", secret: "state-secret", replyTo: "hello@example.com", deals: { read: () => day, latest: () => day, compute: async () => day }, facebook: { page: () => pageId }, now: () => now, log: () => undefined });
-    const first = await service.runNewsletter("deals_daily", { day: "2026-09-20", trigger: "test" });
-    assert.equal(first.run.report?.facebook_post, 1);
-    const again = await service.runNewsletter("deals_daily", { day: "2026-09-20", trigger: "test", force: true });
-    assert.equal(again.run.report?.facebook_post, 0, "the outbox keeps the day to one post");
-    const queued = outbox.recent(10).filter((entry) => entry.target.kind === "facebook");
-    assert.equal(queued.length, 1);
-    assert.deepEqual([queued[0]!.target.address, queued[0]!.dedupeKey, queued[0]!.message.image?.url], ["1234567890", "facebook:deals_daily:2026-09-20", "https://price.example/og/deals/2026-09-20.png"]);
+    const service = createNewsletterService({ database, accounts: createAccountStore(database), outbox, siteOrigin: "https://price.example", secret: "state-secret", replyTo: "hello@example.com", deals: { read: () => day, latest: () => day, compute: async () => day }, now: () => now, log: () => undefined });
+    await service.runNewsletter("deals_daily", { day: "2026-09-20", trigger: "test" });
+    assert.equal(outbox.recent(20).filter((entry) => entry.target.kind === "facebook" || entry.target.kind === "telegram").length, 0);
+  } finally {
+    database.close();
+  }
+});
 
-    pageId = null;
-    const paused = await service.runNewsletter("deals_daily", { day: "2026-09-21", trigger: "test" });
-    assert.equal(paused.run.report?.facebook_post, undefined);
+test("the schedules are read and written through the admin, and a bad expression is refused", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    const salt = "0123456789abcdef0123456789abcdef";
+    seedAdminUser(database, "owner@example.com", `scrypt$${salt}$${scryptSync("correct horse battery staple", salt, 64).toString("hex")}`);
+    const app = createApp(database, undefined, undefined, { accounts: { config: { siteOrigin: "https://price.example.test", stateSecret: "state-secret" } } });
+    const login = await app.request("/v1/auth/login", { method: "POST", headers: json, body: JSON.stringify({ email: "owner@example.com", password: "correct horse battery staple" }) });
+    const admin = /lpl_admin_session=([^;]+)/u.exec(login.headers.get("set-cookie") ?? "")?.[0] ?? "";
+
+    const read = (await (await app.request("/v1/admin/distribution/settings", { headers: { ...json, cookie: admin } })).json()) as { payload: { zone: string; jobs: Array<{ channel: string; job: string; enabled: boolean; recurrence: string }> } };
+    assert.equal(read.payload.zone, "Asia/Colombo");
+    assert.equal(read.payload.jobs.length, 6, "every channel's jobs, from the catalogue");
+    assert.equal(read.payload.jobs.find((job) => job.channel === "instagram")?.enabled, false, "Instagram waits to be switched on by hand");
+
+    const saved = await app.request("/v1/admin/distribution/settings/facebook/jobs/deals_post", { method: "PUT", headers: { ...json, cookie: admin }, body: JSON.stringify({ cron: "0 9 * * 1-5" }) });
+    assert.equal(saved.status, 200);
+    const body = (await saved.json()) as { payload: { saved: { cron: string; recurrence: string; next_run_at: string | null } } };
+    assert.equal(body.payload.saved.cron, "0 9 * * 1-5");
+    assert.equal(body.payload.saved.recurrence, "Every Monday, Tuesday, Wednesday, Thursday and Friday at 09:00");
+    assert.ok(body.payload.saved.next_run_at, "and it says when that next falls");
+
+    const refused = await app.request("/v1/admin/distribution/settings/facebook/jobs/deals_post", { method: "PUT", headers: { ...json, cookie: admin }, body: JSON.stringify({ cron: "every tuesday please" }) });
+    assert.equal(refused.status, 400);
+    assert.equal((await app.request("/v1/admin/distribution/settings/facebook/jobs/nothing_like_it", { method: "PUT", headers: { ...json, cookie: admin }, body: JSON.stringify({ enabled: false }) })).status, 404);
+    assert.equal((await app.request("/v1/admin/distribution/settings/whatsapp/jobs/deals_post", { method: "PUT", headers: { ...json, cookie: admin }, body: JSON.stringify({ enabled: false }) })).status, 404);
+    // The schedules are the owner's alone, like everything else under /v1/admin.
+    assert.equal((await app.request("/v1/admin/distribution/settings", { headers: json })).status, 401);
   } finally {
     database.close();
   }

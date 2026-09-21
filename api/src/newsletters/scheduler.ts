@@ -1,45 +1,32 @@
 import { dispatchOutbox, type ChannelRegistry, type DispatchReport, type OutboxEntry, type OutboxStore } from "@lanka-pricelens/notify";
 
-import type { NewsletterService } from "./service.ts";
-import { newsletterKinds, type NewsletterKind, type NewsletterRunStatus } from "./store.ts";
-import { colomboDay, colomboMinutes, parseClock } from "./time.ts";
+import { dueJobs, runChannelJob, type DueJob, type JobRunners } from "../social/jobs.ts";
+import type { SettingsStore } from "../social/settings.ts";
+import { colomboDay } from "./time.ts";
+import type { NewsletterRunStatus } from "./store.ts";
 
 /**
- * The timer inside the API process: every minute it dispatches the notify outbox, and once
- * the Colombo clock passes the send hour it runs each newsletter kind once for the day. A
- * tick that is still going when the next is due is skipped, so two runs never overlap; a
- * failed run is tried again after half an hour, and a run left "running" by a crash is
- * retried after the same wait.
+ * The timer inside the API process: every minute it dispatches the notify outbox, then runs
+ * whatever the channels are due to send (api/src/social/jobs.ts). Each channel holds jobs of its
+ * own — the deals mail, the recipes mail, the alerts, a platform's post, the Telegram digest —
+ * and each job its own recurrence, read from the database at every tick, so a change made in the
+ * admin takes effect on the next minute rather than on the next deploy.
+ *
+ * A tick still going when the next is due is skipped, so two runs never overlap, and a job that
+ * failed is tried again after half an hour whatever its recurrence says.
  */
 
 export const defaultNewsletterHour = "07:30";
-/** How long after a failed or abandoned run the scheduler tries the kind again. */
-export const retryAfterMs = 30 * 60_000;
 
 export type LastRun = { status: NewsletterRunStatus; started_at: string; finished_at: string | null };
 
-/**
- * Whether a kind should run now: the clock has passed the hour and the day has no completed
- * run; a failed run (or one abandoned mid-way) is retried once enough time has passed.
- */
-export function shouldRun(now: Date, hour: string, lastRun: LastRun | null): boolean {
-  if (colomboMinutes(now) < parseClock(hour, defaultNewsletterHour)) return false;
-  if (!lastRun || lastRun.status === "dry_run") return true;
-  if (lastRun.status === "sent" || lastRun.status === "skipped") return false;
-  const since = Date.parse(lastRun.finished_at ?? lastRun.started_at);
-  return Number.isFinite(since) ? now.getTime() - since >= retryAfterMs : true;
-}
-
 export type SchedulerDeps = {
-  service: NewsletterService;
   outbox: OutboxStore;
   channels: ChannelRegistry;
-  /**
-   * What the mail channel is set to, read at every tick rather than at start, so a change made in
-   * the admin takes effect on the next minute instead of on the next deploy. When it says off, the
-   * timer still dispatches the outbox and simply never starts a run.
-   */
-  settings: () => { enabled: boolean; sendAt: string };
+  /** What each channel sends and when; read at every tick, never cached. */
+  settings: SettingsStore;
+  /** What a due job actually does; the runners for mail, the platforms, and the digest. */
+  runners: JobRunners;
   intervalMs?: number | undefined;
   now?: (() => Date) | undefined;
   log?: ((line: Record<string, unknown>) => void) | undefined;
@@ -49,7 +36,7 @@ export type SchedulerDeps = {
   onTick?: ((tick: TickReport) => void) | undefined;
 };
 
-export type TickReport = { at: string; dispatch: DispatchReport | null; runs: NewsletterKind[]; error: string | null };
+export type TickReport = { at: string; dispatch: DispatchReport | null; runs: DueJob[]; error: string | null };
 
 /** Starts the timer and returns the function that stops it. The first tick runs straight away. */
 export function startNewsletterScheduler(deps: SchedulerDeps): () => void {
@@ -64,22 +51,26 @@ export function startNewsletterScheduler(deps: SchedulerDeps): () => void {
     const report: TickReport = { at: clock().toISOString(), dispatch: null, runs: [], error: null };
     try {
       report.dispatch = await dispatchOutbox(deps.outbox, deps.channels, { now: clock, onGone: deps.onGone });
-      const setting = deps.settings();
-      const hour = setting.sendAt?.trim() || defaultNewsletterHour;
-      if (setting.enabled) {
-        for (const kind of newsletterKinds) {
-          if (stopped) break;
-          const now = clock();
-          const day = colomboDay(now);
-          if (!shouldRun(now, hour, deps.service.latestRun(kind, day) ?? null)) continue;
-          report.runs.push(kind);
-          const outcome = await deps.service.runNewsletter(kind, { day, trigger: "scheduled" });
-          log({ level: outcome.run.status === "failed" ? "error" : "info", message: "Newsletter run", kind, day, status: outcome.run.status, recipients: outcome.run.recipients, sent: outcome.run.sent, skipped: outcome.run.skipped, failed: outcome.run.failed, error: outcome.run.error });
+      for (const due of dueJobs(deps.settings, clock())) {
+        if (stopped) break;
+        const now = clock();
+        const day = colomboDay(now);
+        report.runs.push(due);
+        // Marked before it runs, so a job that throws is not tried again on the very next minute.
+        deps.settings.markJobRun(due.channel, due.job, { status: "ran", error: null }, now);
+        try {
+          const outcome = await runChannelJob(due.channel, due.job, { ...deps.runners, now: clock }, day);
+          deps.settings.markJobRun(due.channel, due.job, { status: outcome.status, error: outcome.status === "ran" ? null : outcome.detail }, clock());
+          log({ level: outcome.status === "failed" ? "error" : "info", message: "Channel job", channel: due.channel, job: due.job, day, status: outcome.status, detail: outcome.detail });
+        } catch (error) {
+          const detail = error instanceof Error ? error.message : String(error);
+          deps.settings.markJobRun(due.channel, due.job, { status: "failed", error: detail }, clock());
+          log({ level: "error", message: "Channel job threw", channel: due.channel, job: due.job, day, detail });
         }
       }
     } catch (error) {
       report.error = error instanceof Error ? error.message : String(error);
-      log({ level: "error", message: "Newsletter scheduler tick failed", detail: report.error });
+      log({ level: "error", message: "Scheduler tick failed", detail: report.error });
     } finally {
       ticking = false;
       deps.onTick?.(report);

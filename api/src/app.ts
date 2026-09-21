@@ -94,6 +94,8 @@ import type { CostLookup } from "./newsletters/recipes.ts";
 import { startNewsletterScheduler } from "./newsletters/scheduler.ts";
 import { createSocialStore, type Platform } from "./social/accounts.ts";
 import { createSettingsStore, isClock, isSettingChannel, postingZone } from "./social/settings.ts";
+import type { JobRunners } from "./social/jobs.ts";
+import { channelDealsMessage } from "./newsletters/telegram.ts";
 import { createLibraryStore } from "./social/library.ts";
 import { postDeals, renderDealsCard } from "./social/post.ts";
 import { runDueSchedules } from "./social/publish.ts";
@@ -279,22 +281,41 @@ export function createApp(
         return client ? watchPrices(client, published(), productIds) : null;
       },
     },
-    telegram: { store: telegramStore, channel: bot ? telegramChannel : null },
-    facebook: {
-      page: () => {
-        const page = socialStore.active("facebook");
-        if (!settingsStore.of("facebook").enabled) return null;
-        return page && !page.paused && page.can_post && page.token_status === "ok" ? page.account_id : null;
-      },
-    },
+    telegram: { store: telegramStore },
     log: (line) => console.log(JSON.stringify({ level: "info", ...line })),
   });
   newsletterServices.set(app, newsletters);
+  /**
+   * What a due channel job does (api/src/social/jobs.ts). Built fresh on every use so a token
+   * connected a minute ago, or a channel switched off, is seen without a restart.
+   */
+  const channelJobRunners = (): JobRunners => ({
+    newsletter: async (kind, day) => {
+      const outcome = await newsletters.runNewsletter(kind, { day, trigger: "scheduled" });
+      const run = outcome.run;
+      if (run.status === "failed") return { status: "failed", detail: run.error ?? "The run failed" };
+      if (run.status === "skipped") return { status: "skipped", detail: run.error ?? "Nothing to send" };
+      return { status: "ran", detail: `${run.sent} sent, ${run.skipped} skipped, ${run.failed} failed` };
+    },
+    deals,
+    outbox,
+    accounts: socialStore,
+    siteOrigin,
+    telegramChannel: bot ? telegramChannel : null,
+    telegramDigest: channelDealsMessage,
+  });
   /** Everything the outbox can deliver through: the mailer's channels and the distribution channels. */
   const deliveryChannels = (): ChannelRegistry => new Map([...(ownMailer?.channels ?? []), ["facebook", facebookChannel], ["instagram", instagramChannel]]);
   if (options.newsletters && options.newsletters.scheduler !== false) {
     if (ownMailer?.channels) {
-      startNewsletterScheduler({ service: newsletters, outbox, channels: deliveryChannels(), settings: () => { const mail = settingsStore.of("email"); return { enabled: mail.enabled, sendAt: mail.send_at }; }, onGone: markSocialGone, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) });
+      startNewsletterScheduler({
+        outbox,
+        channels: deliveryChannels(),
+        settings: settingsStore,
+        runners: channelJobRunners(),
+        onGone: markSocialGone,
+        log: (line) => console.log(JSON.stringify({ level: "info", ...line })),
+      });
     } else {
       console.warn("Daily mails are not running: set LPL_RESEND_API_KEY and LPL_MAIL_FROM so the API can send them.");
     }
@@ -657,7 +678,7 @@ export function createApp(
     return context.json(envelope(context.get("requestId"), null, true, "Signed out"));
   });
   // Facebook's redirect cannot carry the admin's SameSite=Strict session, so the callback answers to its own signed cookie; it is registered ahead of the session check on purpose.
-  const distributionDeps: DistributionDeps = { accounts: socialStore, content: libraryStore, settings: settingsStore, app: facebookApp, outbox, channels: deliveryChannels, deals, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
+  const distributionDeps: DistributionDeps = { accounts: socialStore, content: libraryStore, settings: settingsStore, app: facebookApp, outbox, channels: deliveryChannels, deals, runners: channelJobRunners, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
   app.get(facebookCallbackPath, facebookCallbackRoute(distributionDeps));
   app.use("/v1/admin/*", requireOwner);
   /**

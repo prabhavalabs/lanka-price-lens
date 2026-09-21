@@ -493,8 +493,37 @@ export const tokensApi = {
 export type SettingChannel = "email" | "facebook" | "instagram" | "telegram";
 export type ChannelSetting = { channel: SettingChannel; enabled: boolean; send_at: string; updated_by: string | null; updated_at: string };
 
+/**
+ * What a channel sends, and when. A channel holds several of these — the mail channel carries the
+ * deals mail, the recipes mail and the alerts — and each one keeps its own recurrence, written as
+ * five cron fields read in Colombo time.
+ */
+export type ChannelJobSchedule = {
+  channel: SettingChannel;
+  job: string;
+  label: string;
+  description: string;
+  enabled: boolean;
+  cron: string;
+  /** The expression in words: "Every day at 07:30". */
+  recurrence: string;
+  next_run_at: string | null;
+  last_run_at: string | null;
+  last_status: "ran" | "failed" | "skipped" | null;
+  last_error: string | null;
+  updated_by: string | null;
+  updated_at: string;
+};
+
+export type DistributionSettings = { zone: string; channels: SettingChannel[]; settings: ChannelSetting[]; jobs: ChannelJobSchedule[] };
+
 export const distributionSettingsApi = {
-  read: (init?: RequestInit) => api<{ zone: string; channels: SettingChannel[]; settings: ChannelSetting[] }>("/v1/admin/distribution/settings", init),
+  read: (init?: RequestInit) => api<DistributionSettings>("/v1/admin/distribution/settings", init),
   save: (channel: SettingChannel, patch: { enabled?: boolean; send_at?: string }) =>
-    api<{ zone: string; settings: ChannelSetting[]; saved: ChannelSetting }>(`/v1/admin/distribution/settings/${channel}`, jsonInit("PUT", patch)),
+    api<DistributionSettings & { saved: ChannelSetting }>(`/v1/admin/distribution/settings/${channel}`, jsonInit("PUT", patch)),
+  saveJob: (channel: SettingChannel, job: string, patch: { enabled?: boolean; cron?: string }) =>
+    api<DistributionSettings & { saved: ChannelJobSchedule }>(`/v1/admin/distribution/settings/${channel}/jobs/${encodeURIComponent(job)}`, jsonInit("PUT", patch)),
+  /** Runs one job now. Safe to press twice: the day's own guard keeps a second one from going out. */
+  runJob: (channel: SettingChannel, job: string) =>
+    api<DistributionSettings & { outcome: { status: "ran" | "failed" | "skipped"; detail: string } }>(`/v1/admin/distribution/settings/${channel}/jobs/${encodeURIComponent(job)}/run`, { method: "POST" }),
 };
