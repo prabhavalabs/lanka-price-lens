@@ -1,0 +1,26 @@
+{
+  "name": "@lanka-pricelens/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "An MCP server for the distribution channels: write posts, add their pictures, and fill the calendar from a coding agent",
+  "bin": {
+    "lanka-pricelens-mcp": "./src/server.ts"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "start": "node src/server.ts",
+    "test": "node --test test/*.test.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "typescript": "7.0.2"
+  }
+}

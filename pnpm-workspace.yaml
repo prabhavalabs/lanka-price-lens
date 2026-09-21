@@ -4,6 +4,7 @@ packages:
   - foundry
   - notify
   - api
+  - mcp
   - admin
   - web
 
