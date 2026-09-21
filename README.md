@@ -51,7 +51,7 @@ refreshed from the live site with `web/scripts/guide-screenshots.js`.
 | Source rights and policy | [docs/source-permission.md](docs/source-permission.md), [docs/source-policy.md](docs/source-policy.md) |
 | Running it yourself | [docs/self-hosting.md](docs/self-hosting.md) |
 | Notifications | [docs/notifications.md](docs/notifications.md) |
-| The Facebook Page and its daily post | [docs/facebook.md](docs/facebook.md) |
+| Facebook and Instagram: connecting, the library, the calendar | [docs/distribution.md](docs/distribution.md) |
 
 ## Repository layout
 

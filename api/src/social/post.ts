@@ -6,7 +6,7 @@ import { dayWords } from "../newsletters/time.ts";
 import { colours, escape, fontFamily, markData, renderSvg, siteHost, textWidth } from "../og.ts";
 
 /**
- * The day's deals as a Facebook Page post (docs/facebook.md): a picture drawn here and a short
+ * The day's deals as a Facebook Page post (docs/distribution.md): a picture drawn here and a short
  * caption. The picture is ours from corner to corner: the site's colours, the store's name as
  * words, the prices the store itself lists. No store logo and no store photograph goes to
  * Facebook, where a rights complaint takes a post down and repeated ones take the Page.

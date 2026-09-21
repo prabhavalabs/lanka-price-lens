@@ -128,7 +128,7 @@ export function createApp(
   database: OperationalDatabase,
   sourceManifest?: SourceManifest,
   mappingBundle?: MappingBundle,
-  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; ownerNotifier?: OwnerNotifier; presence?: Presence; accounts?: { config?: Partial<AccountConfig> | undefined; mailer?: AccountMailer | undefined } | undefined; /** Present in production: starts the daily mail timer (docs/newsletters.md); absent in tests. */ newsletters?: { enabled: boolean; hour?: string | undefined; scheduler?: boolean | undefined; testAddress?: string | null | undefined } | undefined; /** The Meta app the Facebook Page is connected through (docs/facebook.md); read from the environment when absent. */ facebook?: { app?: FacebookApp | null | undefined; fetch?: FetchLike | undefined } | undefined } = {},
+  options: { archiveStorage?: ArchiveStorage; catalog?: SourceCatalog; warehouse?: () => Promise<WarehouseClient>; recipes?: RecipeStore; ownerNotifier?: OwnerNotifier; presence?: Presence; accounts?: { config?: Partial<AccountConfig> | undefined; mailer?: AccountMailer | undefined } | undefined; /** Present in production: starts the daily mail timer (docs/newsletters.md); absent in tests. */ newsletters?: { enabled: boolean; hour?: string | undefined; scheduler?: boolean | undefined; testAddress?: string | null | undefined } | undefined; /** The Meta app the Facebook Page is connected through (docs/distribution.md); read from the environment when absent. */ facebook?: { app?: FacebookApp | null | undefined; fetch?: FetchLike | undefined } | undefined } = {},
 ): Hono<AppBindings> {
   const app = new Hono<AppBindings>();
   const owner = options.ownerNotifier ?? createOwnerNotifier();
@@ -376,7 +376,7 @@ export function createApp(
       return renderCard(product ? productCard(product, overview, productPhoto(defaultImagesRoot(), id)) : siteCard(overview));
     }));
   });
-  // The picture of the day's Facebook post (docs/facebook.md); Facebook fetches it from here when the post is published.
+  // The picture of the day's Facebook post (docs/distribution.md); Facebook fetches it from here when the post is published.
   app.get("/og/deals/:file", async (context) => {
     const day = cardId(context.req.param("file"));
     const dealsDay = /^\d{4}-\d{2}-\d{2}$/u.test(day) ? (deals.read(day) ?? deals.latest()) : deals.latest();
