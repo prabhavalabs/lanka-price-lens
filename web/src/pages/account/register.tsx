@@ -8,6 +8,7 @@ import { useReturnTo } from "@/components/require-account";
 import { accountApi } from "@/lib/account-api";
 import { validate, withReturnTo, type FieldErrors } from "@/lib/account-forms";
 import { usePageTitle } from "@/lib/page-title";
+import { trackPixelEvent } from "@/lib/meta-pixel";
 import { setAccountProfile, useAccount } from "@/store/account";
 
 export function RegisterPage() {
@@ -24,6 +25,7 @@ export function RegisterPage() {
     mutationFn: (input: { email: string; password: string; display_name: string }) => accountApi.register(input),
     onSuccess: (profile) => {
       setAccountProfile(client, profile);
+      trackPixelEvent("CompleteRegistration");
       navigate(returnTo, { replace: true });
     },
   });

@@ -26,6 +26,7 @@ import { accountApi } from "@/lib/account-api";
 import { confirmError, describeUserAgent, validate, type FieldErrors } from "@/lib/account-forms";
 import { contributionRows, type ContributionRow } from "@/lib/contributions";
 import { changeLabel, dishCategoryLabel, minutesLabel, rupees, titleCase, unitLabel } from "@/lib/format";
+import { trackPixelEvent } from "@/lib/meta-pixel";
 import { usePageTitle } from "@/lib/page-title";
 import { cn } from "@/lib/utils";
 import { setAccountProfile, useAccount } from "@/store/account";
@@ -367,7 +368,7 @@ function NotificationsSection({ account }: { account: AccountProfile }) {
               <Label className="text-sm" htmlFor={`pref-${row.key}`}>{row.label}</Label>
               <p className="text-pretty text-xs text-muted-foreground">{row.description}</p>
             </div>
-            <Switch checked={account.preferences[row.key]} disabled={save.isPending} id={`pref-${row.key}`} onCheckedChange={(checked) => save.mutate({ [row.key]: checked })} />
+            <Switch checked={account.preferences[row.key]} disabled={save.isPending} id={`pref-${row.key}`} onCheckedChange={(checked) => { if (checked) trackPixelEvent("Subscribe", { content_name: row.key }); save.mutate({ [row.key]: checked }); }} />
           </li>
         ))}
       </ul>

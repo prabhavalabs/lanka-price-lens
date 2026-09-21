@@ -33,19 +33,25 @@ test("public presence and config routes answer without sign-in and are never cac
 
     const config = await app.request("http://localhost/v1/public/config");
     assert.equal(config.status, 200);
-    assert.deepEqual(((await config.json()) as { payload: unknown }).payload, { analytics: { ga_measurement_id: null }, community: { discord_invite_url: null } }, "no analytics id and no invite without the settings");
+    assert.deepEqual(((await config.json()) as { payload: unknown }).payload, { analytics: { ga_measurement_id: null, meta_pixel_id: null }, community: { discord_invite_url: null } }, "no analytics id and no invite without the settings");
 
-    const previous = { id: process.env.LPL_GA_MEASUREMENT_ID, invite: process.env.LPL_DISCORD_INVITE_URL };
+    const previous = { id: process.env.LPL_GA_MEASUREMENT_ID, pixel: process.env.LPL_META_PIXEL_ID, invite: process.env.LPL_DISCORD_INVITE_URL };
     try {
       process.env.LPL_GA_MEASUREMENT_ID = "G-ABCD1234";
+      process.env.LPL_META_PIXEL_ID = "123456789012345";
       process.env.LPL_DISCORD_INVITE_URL = "https://discord.gg/abc-DEF_1";
       const set = (await (await app.request("http://localhost/v1/public/config")).json()) as { payload: unknown };
-      assert.deepEqual(set.payload, { analytics: { ga_measurement_id: "G-ABCD1234" }, community: { discord_invite_url: "https://discord.gg/abc-DEF_1" } }, "both settings pass through");
+      assert.deepEqual(set.payload, { analytics: { ga_measurement_id: "G-ABCD1234", meta_pixel_id: "123456789012345" }, community: { discord_invite_url: "https://discord.gg/abc-DEF_1" } }, "both settings pass through");
+      process.env.LPL_META_PIXEL_ID = "not-a-pixel";
+      const badPixel = (await (await app.request("http://localhost/v1/public/config")).json()) as { payload: { analytics: { meta_pixel_id: string | null } } };
+      assert.equal(badPixel.payload.analytics.meta_pixel_id, null, "only a numeric pixel id is handed to the site");
+      process.env.LPL_META_PIXEL_ID = "123456789012345";
       process.env.LPL_DISCORD_INVITE_URL = "https://example.com/not-discord";
       const rejected = (await (await app.request("http://localhost/v1/public/config")).json()) as { payload: { community: { discord_invite_url: string | null } } };
       assert.equal(rejected.payload.community.discord_invite_url, null, "only a Discord invite is handed to the site");
     } finally {
       if (previous.id === undefined) delete process.env.LPL_GA_MEASUREMENT_ID; else process.env.LPL_GA_MEASUREMENT_ID = previous.id;
+      if (previous.pixel === undefined) delete process.env.LPL_META_PIXEL_ID; else process.env.LPL_META_PIXEL_ID = previous.pixel;
       if (previous.invite === undefined) delete process.env.LPL_DISCORD_INVITE_URL; else process.env.LPL_DISCORD_INVITE_URL = previous.invite;
     }
   } finally {
