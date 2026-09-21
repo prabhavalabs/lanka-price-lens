@@ -24,7 +24,12 @@ export function facebookLine(line: Line): string {
  */
 export function facebookText(message: Message, limit = facebookPostLimit): string {
   const head = [message.title, ...(message.summary ? [message.summary] : [])];
-  const tail = [...(message.actions.length ? [message.actions.map((action) => `${action.label}: ${action.url}`).join("\n")] : []), ...(message.footer ? [message.footer] : [])];
+  const hashtags = message.tags.length ? message.tags.map((tag) => (tag.startsWith("#") ? tag : `#${tag}`)).join(" ") : "";
+  const tail = [
+    ...(message.actions.length ? [message.actions.map((action) => `${action.label}: ${action.url}`).join("\n")] : []),
+    ...(message.footer ? [message.footer] : []),
+    ...(hashtags ? [hashtags] : []),
+  ];
   const size = (blocks: string[]): number => blocks.reduce((sum, block, index) => sum + block.length + (index ? 2 : 0), 0);
   const kept = [...head];
   const tailKept = size([...head, ...tail]) <= limit ? tail : [];
