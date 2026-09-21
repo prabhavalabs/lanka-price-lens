@@ -2,6 +2,7 @@ import type { WatchAlert, WatchEntry } from "@lanka-pricelens/shared";
 import { useMutation, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 
 import { accountApi, AccountApiError } from "../lib/account-api.ts";
+import { trackPixelEvent } from "../lib/meta-pixel.ts";
 import { useAccount } from "./account.ts";
 
 /**
@@ -85,7 +86,10 @@ export function useWatchActions(): WatchActions {
     onError: (_error, _productId, context) => {
       if (context) client.setQueryData(key, context.previous);
     },
-    onSuccess: () => void client.invalidateQueries({ queryKey: key }),
+    onSuccess: (_item, productId) => {
+      trackPixelEvent("AddToWishlist", { content_ids: productId });
+      void client.invalidateQueries({ queryKey: key });
+    },
   });
   const remove = useMutation({
     mutationFn: (productId: string) => accountApi.watchlist.remove(productId),

@@ -349,9 +349,13 @@ export function createApp(
   // What the site needs to know about this deployment: the analytics id and the community invite, when set.
   app.get("/v1/public/config", (context) => {
     const measurementId = process.env.LPL_GA_MEASUREMENT_ID?.trim();
+    const pixelId = process.env.LPL_META_PIXEL_ID?.trim();
     const invite = process.env.LPL_DISCORD_INVITE_URL?.trim();
     return context.json(envelope(context.get("requestId"), {
-      analytics: { ga_measurement_id: measurementId && /^G-[A-Z0-9]{4,16}$/u.test(measurementId) ? measurementId : null },
+      analytics: {
+        ga_measurement_id: measurementId && /^G-[A-Z0-9]{4,16}$/u.test(measurementId) ? measurementId : null,
+        meta_pixel_id: pixelId && /^\d{15,16}$/u.test(pixelId) ? pixelId : null,
+      },
       community: { discord_invite_url: invite && /^https:\/\/(?:discord\.gg|discord\.com\/invite)\/[\w-]+$/u.test(invite) ? invite : null },
     }));
   });

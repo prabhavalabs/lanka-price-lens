@@ -1,6 +1,6 @@
 import { RiCheckLine, RiTimeLine } from "@remixicon/react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 
 import { PriceChart, type ChartSeries } from "@/components/chart";
@@ -17,6 +17,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchProduct, type Group, type Latest, type Offer } from "@/lib/api";
 import { ageLabel, categoryLabel, groupLabel, groupNotes, relativeDay, rupeeRange, rupees, shortDate, unitLabel } from "@/lib/format";
+import { trackPixelEvent } from "@/lib/meta-pixel";
 import { labelWords, packWords } from "@/lib/offers";
 import { cn } from "@/lib/utils";
 import { usePageTitle } from "@/lib/page-title";
@@ -56,6 +57,12 @@ export function ProductPage() {
   };
   const detail = useQuery({ queryKey: ["product", id, days], queryFn: () => fetchProduct(id, Number(days)), enabled: Boolean(id), placeholderData: keepPreviousData });
   usePageTitle(detail.data ? `${detail.data.product.label} price today in Sri Lanka · PriceLens` : undefined);
+  // The history chart is what a product page is for; report the view once its data is in, so the ad
+  // platform learns which visitors read one. Once per product, not once per range change.
+  const loaded = Boolean(detail.data);
+  useEffect(() => {
+    if (loaded && id) trackPixelEvent("ViewContent", { content_ids: id, content_type: "product" });
+  }, [loaded, id]);
 
   if (detail.isError) return <ErrorState error={detail.error} fallback={{ to: "/", label: "All prices" }} onRetry={() => void detail.refetch()} retrying={detail.isFetching} />;
   if (detail.isPending) return <div className="space-y-4"><Skeleton className="h-24 w-full rounded-xl" /><Skeleton className="h-64 w-full rounded-xl" /></div>;

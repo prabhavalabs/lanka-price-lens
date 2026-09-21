@@ -5,6 +5,7 @@ import { AuthLayout } from "@/components/auth-layout";
 import { CommunityInvite } from "@/components/community-invite";
 import { Layout } from "@/components/layout";
 import { startAnalytics, trackPageView } from "@/lib/analytics";
+import { startPixel, trackPixelPageView } from "@/lib/meta-pixel";
 import { useSiteConfig } from "@/lib/site-config";
 import { AboutPage } from "@/pages/about";
 import { ConfirmEmailPage } from "@/pages/account/confirm-email";
@@ -24,6 +25,19 @@ import { RecipePage } from "@/pages/recipe";
 import { MenuPage, MenusPage } from "@/pages/menus";
 import { RecipesPage } from "@/pages/recipes";
 import { DealsPage } from "@/pages/deals";
+
+/** Loads the Meta pixel when the deployment has an id, and reports a page view on every route change. */
+function useMetaPixel(id: string | null): void {
+  const location = useLocation();
+  useEffect(() => {
+    if (!id) return;
+    let left = false;
+    void startPixel(id).then((active) => {
+      if (active && !left) trackPixelPageView();
+    });
+    return () => { left = true; };
+  }, [id, location.pathname, location.search]);
+}
 
 /** Loads analytics when the deployment has an id, and reports a page view on every route change. */
 function useAnalytics(id: string | null): void {
@@ -65,6 +79,7 @@ function SiteFrame({ invite }: { invite: string | null }) {
 export function App() {
   const config = useSiteConfig();
   useAnalytics(config.analytics.ga_measurement_id);
+  useMetaPixel(config.analytics.meta_pixel_id);
   return (
     <Routes>
       <Route element={<AuthLayout />}>
