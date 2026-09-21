@@ -464,3 +464,13 @@ export const distributionApi = {
   calendar: (from: string, to: string, init?: RequestInit) => api<{ from: string; to: string; entries: CalendarEntry[] }>(`/v1/admin/distribution/calendar?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`, init),
   tick: () => api<{ due: number; published: number; failed: number }>("/v1/admin/distribution/tick", { method: "POST" }),
 };
+
+// Tokens that let a program act as the owner (docs/mcp.md). Managed only from a browser session.
+export type AdminToken = { id: string; name: string; scope: "distribution" | "full"; created_at: string; last_used_at: string | null; expires_at: string | null; revoked_at: string | null };
+
+export const tokensApi = {
+  list: (init?: RequestInit) => api<AdminToken[]>("/v1/admin/tokens", init),
+  /** The answer carries the token itself; it is the only time the server sends it. */
+  create: (input: { name: string; scope: AdminToken["scope"]; days?: number }) => api<{ token: string; row: AdminToken; tokens: AdminToken[] }>("/v1/admin/tokens", jsonInit("POST", input)),
+  revoke: (id: string) => api<AdminToken[]>(`/v1/admin/tokens/${encodeURIComponent(id)}`, { method: "DELETE" }),
+};

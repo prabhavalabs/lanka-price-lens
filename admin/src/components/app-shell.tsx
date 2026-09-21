@@ -5,6 +5,7 @@ import {
   RiCalendarScheduleLine,
   RiFacebookCircleLine,
   RiFolderImageLine,
+  RiKey2Line,
   RiInstagramLine,
   RiFeedbackLine,
   RiExpandUpDownLine,
@@ -69,6 +70,7 @@ const distribution: NavigationItem[] = [
   { to: "/distribution/instagram", label: "Instagram", icon: RiInstagramLine, end: false, detail: "Channel" },
   { to: "/distribution/library", label: "Library", icon: RiFolderImageLine, end: false, detail: "Content" },
   { to: "/distribution/calendar", label: "Calendar", icon: RiCalendarScheduleLine, end: false, detail: "Content" },
+  { to: "/distribution/access", label: "Agent access", icon: RiKey2Line, end: false, detail: "Tokens" },
 ];
 const community: NavigationItem[] = [
   { to: "/accounts", label: "Accounts", icon: RiGroupLine, end: false },
