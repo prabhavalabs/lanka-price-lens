@@ -210,7 +210,13 @@ each one says. A job switched off stops only itself.
 
 The timer in the API wakes once a minute, dispatches the outbox, and runs whatever is due. A job
 never runs twice inside one minute, and one that failed is tried again half an hour later whatever
-its recurrence says. Every job is idempotent within its day — a mail run is guarded by the
+its recurrence says.
+
+A minute the server spent restarting is still owed: a job whose minute passed while nobody was
+listening runs when the server comes back, for up to two hours afterwards — long enough that a
+deploy over the morning still sends the morning's mail, short enough that it never turns up at
+midnight. A job that has never run is not caught up; the first one waits for its own minute, so
+switching one on does not fire it at once. Every job is idempotent within its day — a mail run is guarded by the
 newsletter's own record and a post by the outbox's dedupe key — which is what makes that retry
 safe and **Run now** safe to press.
 

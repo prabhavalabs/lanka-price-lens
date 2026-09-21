@@ -6,7 +6,7 @@ import type { NewsletterKind } from "../newsletters/store.ts";
 import { colomboDay } from "../newsletters/time.ts";
 import type { SocialStore } from "./accounts.ts";
 import { facebookDealsPost } from "./post.ts";
-import { cronMatches } from "./recurrence.ts";
+import { cronMatches, previousRun } from "./recurrence.ts";
 import type { ChannelJobSchedule, SettingChannel, SettingsStore } from "./settings.ts";
 
 /**
@@ -83,17 +83,31 @@ export async function runChannelJob(channel: SettingChannel, job: string, deps: 
 
 /** How long after a failure a job is tried again, whatever its recurrence says. */
 export const retryAfterMs = 30 * 60_000;
+/**
+ * How late a missed run may still go out. A minute the server spent restarting is a minute its
+ * jobs did not get, and a mail an hour late is worth having; one that turns up at midnight is not.
+ */
+export const catchUpMs = 2 * 60 * 60_000;
 
 /**
- * Whether a job runs at this minute: its expression matches, or its last attempt failed long
- * enough ago to be worth another try. A job that already ran inside this minute never runs twice,
- * which is what keeps a slow tick from doubling a post.
+ * Whether a job runs at this minute.
+ *
+ * Its expression matches, or the minute it should have run passed while nobody was listening — a
+ * deploy, a restart, a machine asleep — and that minute is recent enough to be worth serving now.
+ * A job that has never run is not caught up: the first one waits for its own minute, so a deploy
+ * does not send a morning's mail in the evening. A failure is retried off its own clock.
+ *
+ * A job that already ran inside this minute never runs twice, which keeps a slow tick from
+ * doubling a post.
  */
 export function jobIsDue(schedule: ChannelJobSchedule, now: Date, zone?: string): boolean {
   const last = schedule.last_run_at ? Date.parse(schedule.last_run_at) : Number.NaN;
   if (Number.isFinite(last) && now.getTime() - last < 60_000) return false;
   if (cronMatches(schedule.cron, now, zone)) return true;
-  return schedule.last_status === "failed" && Number.isFinite(last) && now.getTime() - last >= retryAfterMs;
+  if (!Number.isFinite(last)) return false;
+  const missed = previousRun(schedule.cron, now, Math.ceil(catchUpMs / 60_000), zone);
+  if (missed && missed.getTime() > last && now.getTime() - missed.getTime() <= catchUpMs) return true;
+  return schedule.last_status === "failed" && now.getTime() - last >= retryAfterMs;
 }
 
 export type DueJob = { channel: SettingChannel; job: string; label: string };
