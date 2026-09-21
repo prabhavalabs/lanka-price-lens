@@ -1,7 +1,8 @@
 export { channelKinds, isChannelKind, classifyStatus, mask, type Channel, type ChannelKind, type Delivery, type FetchLike, type Target } from "./channel.ts";
 export { createDiscordChannel, isDiscordWebhook, type DiscordConfig } from "./channels/discord.ts";
 export { createEmailChannel, isEmailAddress, type EmailConfig } from "./channels/email.ts";
-export { classifyGraphError, createFacebookChannel, exchangeFacebookCode, extendFacebookToken, facebookGraphVersion, facebookLoginUrl, facebookPostUrl, facebookProof, facebookScopes, FacebookGraphError, inspectFacebookToken, listFacebookPages, type FacebookApp, type FacebookConfig, type FacebookPage, type FacebookTokenHealth } from "./channels/facebook.ts";
+export { classifyGraphError, createFacebookChannel, exchangeFacebookCode, facebookAlbumLimit, extendFacebookToken, facebookGraphVersion, facebookLoginUrl, facebookPostUrl, facebookProof, facebookScopes, FacebookGraphError, inspectFacebookToken, listFacebookPages, type FacebookApp, type FacebookConfig, type FacebookPage, type FacebookTokenHealth } from "./channels/facebook.ts";
+export { classifyInstagramError, createInstagramChannel, instagramCarouselLimit, instagramGraphVersion, instagramPictures, instagramPostUrl, instagramPublishingLimit, instagramScopes, listInstagramAccounts, type InstagramAccount, type InstagramConfig, type InstagramPublishingLimit } from "./channels/instagram.ts";
 export { createSendGridChannel, parseMailbox, sendGridEndpoint, type SendGridConfig } from "./channels/sendgrid.ts";
 export { createSlackChannel, isSlackWebhook, type SlackConfig } from "./channels/slack.ts";
 export { createTelegramChannel, parseTelegramUpdate, setTelegramWebhook, telegramDeepLink, telegramIdentity, type TelegramConfig, type TelegramInbound } from "./channels/telegram.ts";
@@ -12,6 +13,7 @@ export { createChannels, sendDirect, type ChannelsConfig } from "./registry.ts";
 export { discordEmbed, discordColours, type DiscordEmbed } from "./render/discord.ts";
 export { emailContent, emailHtml, emailParts, escapeHtml } from "./render/email.ts";
 export { facebookLine, facebookPostLimit, facebookText } from "./render/facebook.ts";
+export { instagramCaptionLimit, instagramLine, instagramText } from "./render/instagram.ts";
 export { slackBlocks, slackPayload, type SlackBlock } from "./render/slack.ts";
 export { telegramHtml, telegramCaptionLimit, telegramMessageLimit } from "./render/telegram.ts";
 export { lineText, plainText, shortText } from "./render/text.ts";
