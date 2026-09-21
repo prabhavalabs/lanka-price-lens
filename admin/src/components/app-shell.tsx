@@ -95,7 +95,7 @@ export function AppShell() {
             <SidebarMenuItem>
               <SidebarMenuButton asChild size="lg" tooltip="Lanka PriceLens">
                 <Link to="/">
-                  <img alt="" className="size-8 shrink-0 rounded-lg" src="/admin/app-icon.svg" />
+                  <img alt="" className="size-8 shrink-0 select-none" decoding="async" draggable={false} height={32} src="/admin/mark.png" width={32} />
                   <div className="grid flex-1 text-left leading-tight">
                     <span className="truncate font-heading text-sm font-semibold">Lanka PriceLens</span>
                     <span className="truncate font-mono text-[10px] text-muted-foreground">Foundry operations</span>
