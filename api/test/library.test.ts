@@ -98,6 +98,24 @@ test("the message a post makes is the caption as written, with every picture in 
   }
 });
 
+test("a caption of the length a real post runs to goes out whole", async () => {
+  const kit = await bench();
+  try {
+    // What the owner actually writes: a few hundred words of Sinhala, well past a headline's length.
+    const caption = `දෙහි මිල තව ඉහළ යනවා.\n\n${"අවුරුදු දහයක තොග මිල දත්ත බැලුවම පැහැදිලි රටාවක් තියෙනවා. ".repeat(12)}`;
+    assert.ok(caption.length > 200, "the case this guards is a caption longer than a headline");
+    const item = kit.library.create({ title: "Lime season", caption, link: "https://badumila.com", tags: ["badumila"] }, null, now);
+    await kit.library.addAsset(item.id, await png(1080, 1350), now);
+    const rendered = contentMessage(kit.library.read(item.id)!, "content:long");
+
+    assert.equal(rendered.title, caption.trim(), "nothing is reworded or cut on the way out");
+    assert.ok(facebookText(rendered).startsWith("දෙහි මිල තව ඉහළ යනවා."));
+    assert.ok(instagramText(rendered).startsWith("දෙහි මිල තව ඉහළ යනවා."));
+  } finally {
+    await kit.close();
+  }
+});
+
 test("what stands between a post and a platform is said plainly", async () => {
   const kit = await bench();
   try {
