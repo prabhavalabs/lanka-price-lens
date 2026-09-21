@@ -79,10 +79,10 @@ test("the day's post: the stores' own offers lead, one row per product, a pictur
   assert.ok(post);
   assert.equal(post.image?.url, "https://price.example/og/deals/2026-09-20.png");
   assert.equal(post.dedupe_key, "facebook:deals_daily:2026-09-20");
-  assert.deepEqual(post.actions, [{ label: "හැම ඕෆර් එකක්ම, කඩේට යන link එකත් එක්ක", url: "https://price.example/deals" }]);
+  assert.deepEqual(post.actions, [{ label: "හැම ඕෆර් එකක්ම බලන්න පිවිසෙන්න", url: "https://price.example/deals" }]);
   const caption = facebookText(post);
   assert.match(caption, /^අද සුපර්මාර්කට් ඕෆර් · සැප්තැම්බර් 20, ඉරිදා\n\n/u);
-  assert.match(caption, /PriceLens ස්වාධීනයි; කිසිම කඩයක් සමඟ සම්බන්ධයක් නැහැ\./u);
+  assert.match(caption, /PriceLens ස්වාධීන සේවාවකි\. අපි ඉහත කිසිදු ආයතනයක් සමඟ සම්බන්ධතාවක් නොමැත\./u);
   assert.equal((caption.match(/https?:\/\//gu) ?? []).length, 1, "one link, to the deals page");
   assert.ok(caption.length < 1800);
   // The hashtags are the reader's, and the words that route the post are not among them.

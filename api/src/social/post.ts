@@ -152,9 +152,9 @@ export function facebookDealsPost(day: DealsDay, siteOrigin: string, options: { 
     title: `අද සුපර්මාර්කට් ඕෆර් · ${words}`,
     summary: openings[dayNumber(day.day) % openings.length],
     sections: [...(offers.length ? [{ heading: "කඩවල ඕෆර්", lines: offers.map(line) }] : []), ...(moves.length ? [{ heading: offers.length ? "තවත් මිල අඩු වුණු" : "අද හොඳම මිල", lines: moves.map(line) }] : [])],
-    actions: [{ label: "හැම ඕෆර් එකක්ම, කඩේට යන link එකත් එක්ක", url: `${origin}/deals` }],
+    actions: [{ label: "හැම ඕෆර් එකක්ම බලන්න පිවිසෙන්න", url: `${origin}/deals` }],
     image: { url: dealsCardUrl(origin, day.day), alt: `${words} දින සුපර්මාර්කට් ඕෆර්` },
-    footer: `${words} දින එක් එක් කඩේ නිල වෙබ් අඩවියේ තිබූ මිල${stores.length ? ` (${stores.join(", ")})` : ""}. PriceLens ස්වාධීනයි; කිසිම කඩයක් සමඟ සම්බන්ධයක් නැහැ.`,
+    footer: `${words} දින එක් එක් කඩේ නිල වෙබ් අඩවියේ තිබූ මිල${stores.length ? ` (${stores.join(", ")})` : ""}. PriceLens ස්වාධීන සේවාවකි. අපි ඉහත කිසිදු ආයතනයක් සමඟ සම්බන්ධතාවක් නොමැත.`,
     dedupe_key: options.dedupeKey ?? `facebook:deals_daily:${day.day}`,
     // These are published as hashtags, so they are the reader's words, not ours for routing; what
     // this post is and where it goes is already in the dedupe key and the outbox's own channel.
