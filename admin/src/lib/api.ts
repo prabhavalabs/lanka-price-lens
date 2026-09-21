@@ -427,6 +427,17 @@ export type ContentItem = { id: string; kind: "image" | "carousel" | "text"; tit
 export type ContentPreview = { facebook: { caption: string; blocker: string | null }; instagram: { caption: string; blocker: string | null }; pictures: string[] };
 export type CalendarEntry = ContentSchedule & { title: string; kind: ContentItem["kind"]; thumbnail: string | null };
 export type ContentDraft = { title: string; caption: string; link: string | null; status?: ContentItem["status"]; tags: string[] };
+/** A post that has gone through the outbox, as the admin previews it. */
+export type PostPreview = {
+  post: ChannelPost;
+  text: string;
+  /** The picture's address as the post carries it, which is the live site's. */
+  image_url: string | null;
+  /** The picture's path on whichever server the admin is being served from, so a card is checked against the code running here. */
+  preview_image_path: string | null;
+  image_alt: string | null;
+  account: { name: string; username: string | null; picture: string | null; link: string | null } | null;
+};
 
 /** Where the browser goes to open Facebook's consent screen; a navigation, not a fetch. */
 export const distributionConnectPath = "/v1/admin/distribution/connect";
@@ -446,6 +457,8 @@ export const distributionApi = {
   check: (platform: Platform) => api<DistributionStatus>(`/v1/admin/distribution/accounts/${platform}/check`, { method: "POST" }),
   dealsPreview: (platform: Platform, init?: RequestInit) => api<DealsPreview>(`/v1/admin/distribution/deals/preview?platform=${platform}`, init),
   postDeals: (platform: Platform) => api<DistributionStatus & { post: ChannelPost | null }>("/v1/admin/distribution/deals/post", jsonInit("POST", { platform })),
+  /** One post as its platform will show it: the caption that channel renders, the account, the picture. */
+  post: (id: string, init?: RequestInit) => api<PostPreview>(`/v1/admin/distribution/posts/${encodeURIComponent(id)}`, init),
 
   library: (query: { status?: string; search?: string; limit?: number; offset?: number } = {}, init?: RequestInit) =>
     api<{ rows: ContentItem[]; total: number; carousel_max: number }>(`/v1/admin/distribution/library${libraryQuery(query)}`, init),

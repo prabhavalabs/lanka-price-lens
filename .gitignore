@@ -11,6 +11,8 @@ coverage/
 data/raw/
 # The stores' pictures fetched beside a local database; they are the stores' files and never belong in the repository.
 store-images/
+# Pictures uploaded to the library, which live beside the database wherever it runs.
+data/runtime/content/
 data/state/
 data/releases/
 data/quarantine/

@@ -152,6 +152,30 @@ export function distributionAdminRoutes(deps: DistributionDeps): Hono<Bindings> 
 
   app.get("/", (context) => ok(context, { ...status(context), zone: postingZone, settings: deps.settings.all() }));
 
+  /**
+   * One post as its platform will show it: the caption rendered the way that channel renders it,
+   * the account it goes out as, and its picture. The picture is also offered on this server's own
+   * address, so a post can be looked at against the code running here rather than against the
+   * card production happens to be serving.
+   */
+  app.get("/posts/:id", (context) => {
+    const found = deps.accounts.readPost(context.req.param("id"));
+    if (!found) return refuse(context, 404, "No such post");
+    const account = deps.accounts.list(found.post.platform).find((entry) => entry.account_id === found.post.account_id);
+    const image = found.message.image?.url ?? null;
+    // A path rather than an address: the admin reads it from whichever origin is serving it, which
+    // is this server in production and the development server's proxy while working on it.
+    const path = image?.match(/^https?:\/\/[^/]+(\/.*)$/u)?.[1] ?? null;
+    return ok(context, {
+      post: found.post,
+      text: found.post.platform === "instagram" ? instagramText(found.message) : facebookText(found.message),
+      image_url: image,
+      preview_image_path: path,
+      image_alt: found.message.image?.alt ?? null,
+      account: account ? { name: account.name, username: account.username, picture: account.picture, link: account.link } : null,
+    });
+  });
+
   // --- What each channel does and when -----------------------------------------------------------
 
   app.get("/settings", (context) => ok(context, { zone: postingZone, channels: settingChannels, settings: deps.settings.all() }));

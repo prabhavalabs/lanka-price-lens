@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RiExternalLinkLine, RiFacebookCircleLine, RiInstagramLine, RiLinkUnlinkM, RiRefreshLine, RiSendPlaneLine, RiShieldCheckLine } from "@remixicon/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 
 import { date, EmptyTableRow, PageFrame } from "@/components/data-display";
+import { PostPreviewFrame, type DeviceKind } from "@/components/post-preview";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { ApiError, distributionApi, distributionConnectPath, type ChannelPost, type ConnectedAccount, type DistributionStatus, type Platform } from "@/lib/api";
 
 /** What Facebook's redirect left in the address, in the owner's words. */
@@ -70,6 +73,18 @@ export function ChannelPage({ platform }: { platform: Platform }) {
   const posts = (status.data?.posts ?? []).filter((entry) => entry.platform === platform);
   const preview = useQuery({ queryKey: ["distribution", "deals", platform], queryFn: ({ signal }) => distributionApi.dealsPreview(platform, { signal }), retry: false });
   const [confirm, setConfirm] = useState<{ kind: "post" } | { kind: "disconnect"; account: ConnectedAccount } | null>(null);
+  // The posts table: ten to a page, and one opened in the platform's own frame.
+  const [page, setPage] = useState(0);
+  const [openPost, setOpenPost] = useState<string | null>(null);
+  const [device, setDevice] = useState<DeviceKind>("desktop");
+  const [pictureFailed, setPictureFailed] = useState(false);
+  const pageSize = 10;
+  const pages = Math.max(1, Math.ceil(posts.length / pageSize));
+  const first = Math.min(page, pages - 1) * pageSize;
+  const shown = posts.slice(first, first + pageSize);
+  const opened = useQuery({ queryKey: ["distribution", "post", openPost], queryFn: ({ signal }) => distributionApi.post(openPost as string, { signal }), enabled: openPost !== null });
+  useEffect(() => setPictureFailed(false), [openPost]);
+  useEffect(() => setPage(0), [platform]);
 
   const refresh = (data?: DistributionStatus) => {
     if (data) queryClient.setQueryData(["distribution"], { configured: data.configured, app_id: data.app_id, redirect_uri: data.redirect_uri, accounts: data.accounts, posts: data.posts });
@@ -205,28 +220,87 @@ export function ChannelPage({ platform }: { platform: Platform }) {
       </Card>
 
       <Card>
-        <CardHeader><CardTitle>Posts</CardTitle><CardDescription>The last thirty on this channel, newest first. A post the platform could not take yet is tried again, five times at most.</CardDescription></CardHeader>
+        <CardHeader><CardTitle>Posts</CardTitle><CardDescription>The last thirty on this channel, newest first. Open one to see it as {words.title} shows it. A post the platform could not take yet is tried again, five times at most.</CardDescription></CardHeader>
         <CardContent className="p-0">
-          <Table>
+          <Table className="table-fixed">
             <TableHeader><TableRow><TableHead className="w-44">Queued</TableHead><TableHead>Post</TableHead><TableHead className="w-28">Status</TableHead><TableHead className="w-20 text-right">Tries</TableHead></TableRow></TableHeader>
             <TableBody>
               {status.data && !posts.length ? <EmptyTableRow columns={4} /> : null}
-              {posts.map((entry) => (
-                <TableRow key={entry.id}>
+              {shown.map((entry) => (
+                <TableRow className="cursor-pointer" key={entry.id} onClick={() => setOpenPost(entry.id)}>
                   <TableCell className="text-xs text-muted-foreground">{date(entry.created_at)}</TableCell>
-                  <TableCell>
-                    {entry.url ? <a className="inline-flex items-center gap-1 text-sm hover:text-primary" href={entry.url} rel="noreferrer" target="_blank">{entry.title}<RiExternalLinkLine className="size-3" /></a> : <span className="text-sm">{entry.title}</span>}
-                    {entry.error ? <p className="mt-0.5 break-words text-xs text-destructive">{entry.error}</p> : null}
+                  <TableCell className="max-w-0">
+                    {/* One line, whatever the post's length: the rest is read on hover or in the
+                        preview, and the columns after this one stay where the eye expects them. */}
+                    <Tooltip>
+                      <TooltipTrigger asChild><p className="truncate text-sm">{entry.title}</p></TooltipTrigger>
+                      <TooltipContent className="max-h-72 max-w-sm overflow-auto whitespace-pre-wrap text-left" side="bottom">{entry.title}</TooltipContent>
+                    </Tooltip>
+                    {entry.error ? <p className="mt-0.5 truncate text-xs text-destructive">{entry.error}</p> : null}
                     {entry.next_attempt_at ? <p className="mt-0.5 text-xs text-muted-foreground">Next try {date(entry.next_attempt_at)}</p> : null}
                   </TableCell>
-                  <TableCell><Badge variant={postBadge[entry.status].variant}>{postBadge[entry.status].label}</Badge></TableCell>
+                  <TableCell>
+                    <span className="flex items-center gap-1.5">
+                      <Badge variant={postBadge[entry.status].variant}>{postBadge[entry.status].label}</Badge>
+                      {entry.url ? <a aria-label="Open on the platform" className="text-muted-foreground hover:text-primary" href={entry.url} onClick={(event) => event.stopPropagation()} rel="noreferrer" target="_blank"><RiExternalLinkLine className="size-3.5" /></a> : null}
+                    </span>
+                  </TableCell>
                   <TableCell className="text-right font-mono text-xs">{entry.attempts}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
+          {pages > 1 ? (
+            <div className="flex items-center justify-between gap-3 border-t p-3">
+              <p className="text-xs text-muted-foreground">{first + 1}–{Math.min(first + pageSize, posts.length)} of {posts.length}</p>
+              <div className="flex items-center gap-2">
+                <Button disabled={page === 0} onClick={() => setPage((current) => current - 1)} size="sm" variant="outline">Newer</Button>
+                <span className="text-xs text-muted-foreground">Page {page + 1} of {pages}</span>
+                <Button disabled={page >= pages - 1} onClick={() => setPage((current) => current + 1)} size="sm" variant="outline">Older</Button>
+              </div>
+            </div>
+          ) : null}
         </CardContent>
       </Card>
+
+      <Dialog onOpenChange={(isOpen) => { if (!isOpen) setOpenPost(null); }} open={openPost !== null}>
+        <DialogContent className="max-h-[92vh] overflow-auto sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>On {words.title}</DialogTitle>
+            <DialogDescription>
+              {opened.data ? `${postBadge[opened.data.post.status].label} · ${date(opened.data.post.created_at)}` : "The post as the platform shows it."}
+            </DialogDescription>
+          </DialogHeader>
+          {opened.isPending ? <p className="py-8 text-center text-sm text-muted-foreground">Opening the post…</p> : null}
+          {opened.isError ? <Alert variant="destructive"><AlertTitle>The post did not open</AlertTitle><AlertDescription>{message(opened.error, "The server did not answer.")}</AlertDescription></Alert> : null}
+          {opened.data ? (
+            <>
+              <PostPreviewFrame
+                device={device}
+                onDevice={setDevice}
+                post={{
+                  platform: opened.data.post.platform,
+                  text: opened.data.text,
+                  // The picture is taken from this server first, so what is checked is the card this
+                  // code draws; a post whose picture this machine does not hold falls back to the live one.
+                  image: pictureFailed ? opened.data.image_url : (opened.data.preview_image_path ?? opened.data.image_url),
+                  imageAlt: opened.data.image_alt,
+                  account: opened.data.account,
+                  createdAt: opened.data.post.created_at,
+                }}
+              />
+              {opened.data.post.error ? <p className="break-words text-sm text-destructive">{opened.data.post.error}</p> : null}
+              <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                <span>{opened.data.text.length} characters</span>
+                {opened.data.post.sent_at ? <span>Posted {date(opened.data.post.sent_at)}</span> : null}
+                {opened.data.post.url ? <a className="inline-flex items-center gap-1 hover:text-primary" href={opened.data.post.url} rel="noreferrer" target="_blank">Open on {words.title}<RiExternalLinkLine className="size-3" /></a> : null}
+              </div>
+              {/* Loaded out of sight, only to learn whether this server holds the picture. */}
+              {opened.data.preview_image_path && !pictureFailed ? <img alt="" className="hidden" onError={() => setPictureFailed(true)} src={opened.data.preview_image_path} /> : null}
+            </>
+          ) : null}
+        </DialogContent>
+      </Dialog>
 
       <AlertDialog onOpenChange={(open) => { if (!open) setConfirm(null); }} open={confirm !== null}>
         <AlertDialogContent>

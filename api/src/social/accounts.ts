@@ -1,5 +1,5 @@
 import type { OperationalDatabase } from "@lanka-pricelens/foundry/db";
-import { facebookPostUrl, instagramPostUrl, type FacebookPage, type InstagramAccount } from "@lanka-pricelens/notify";
+import { facebookPostUrl, instagramPostUrl, type FacebookPage, type InstagramAccount, type Message } from "@lanka-pricelens/notify";
 
 import { openToken, sealToken } from "./seal.ts";
 
@@ -76,9 +76,28 @@ export type SocialStore = {
   tokenFor: (platform: Platform, accountId: string) => string | null;
   markToken: (platform: Platform, accountId: string, health: { valid: boolean; error?: string | null | undefined; expiresAt?: string | null | undefined }, now: Date) => void;
   posts: (limit: number, platform?: Platform) => ChannelPost[];
+  /** One post with the message it was built from, for the preview in the admin. */
+  readPost: (id: string) => { post: ChannelPost; message: Message } | null;
 };
 
 type AccountRow = Omit<ConnectedAccount, "can_post" | "active" | "paused"> & { can_post: number; active: number; paused: number };
+
+const postColumns = "id, channel, address, dedupe_key, status, json_extract(message_json, '$.title') AS title, attempts, created_at, sent_at, next_attempt_at, last_error, reference";
+type PostRow = { id: string; channel: Platform; address: string; dedupe_key: string | null; status: ChannelPost["status"]; title: string | null; attempts: number; created_at: string; sent_at: string | null; next_attempt_at: string; last_error: string | null; reference: string | null };
+const toPost = (row: PostRow): ChannelPost => ({
+  id: row.id,
+  platform: row.channel,
+  account_id: row.address,
+  dedupe_key: row.dedupe_key,
+  status: row.status,
+  title: row.title ?? "",
+  attempts: row.attempts,
+  created_at: row.created_at,
+  sent_at: row.sent_at,
+  next_attempt_at: row.status === "queued" ? row.next_attempt_at : null,
+  error: row.status === "sent" ? null : row.last_error,
+  url: row.status === "sent" && row.reference ? postUrl(row.channel, row.reference) : null,
+});
 const columns = "platform, account_id, name, username, link, picture, parent_id, can_post, active, paused, token_status, token_error, token_checked_at, token_expires_at, connected_by, connected_at";
 const toAccount = (row: AccountRow): ConnectedAccount => ({ ...row, can_post: row.can_post === 1, active: row.active === 1, paused: row.paused === 1 });
 
@@ -156,31 +175,23 @@ export function createSocialStore(database: OperationalDatabase, secret: string)
         .prepare("UPDATE social_account SET token_status = ?, token_error = ?, token_checked_at = ?, token_expires_at = COALESCE(?, token_expires_at), updated_at = ? WHERE platform = ? AND account_id = ?")
         .run(health.valid ? "ok" : "invalid", health.valid ? null : (health.error ?? "The platform no longer accepts this token").slice(0, 500), now.toISOString(), health.expiresAt ?? null, now.toISOString(), platform, accountId);
     },
+    readPost: (id) => {
+      const row = database.prepare(`SELECT ${postColumns}, message_json FROM notify_outbox WHERE id = ? AND channel IN ('facebook', 'instagram')`).get(id) as (PostRow & { message_json: string }) | undefined;
+      if (!row) return null;
+      try {
+        return { post: toPost(row), message: JSON.parse(row.message_json) as Message };
+      } catch {
+        return null;
+      }
+    },
     posts: (limit, platform) => {
       const size = Math.max(1, Math.min(limit, 100));
       const rows = (
         platform
-          ? database
-              .prepare("SELECT id, channel, address, dedupe_key, status, json_extract(message_json, '$.title') AS title, attempts, created_at, sent_at, next_attempt_at, last_error, reference FROM notify_outbox WHERE channel = ? ORDER BY created_at DESC LIMIT ?")
-              .all(platform, size)
-          : database
-              .prepare("SELECT id, channel, address, dedupe_key, status, json_extract(message_json, '$.title') AS title, attempts, created_at, sent_at, next_attempt_at, last_error, reference FROM notify_outbox WHERE channel IN ('facebook', 'instagram') ORDER BY created_at DESC LIMIT ?")
-              .all(size)
-      ) as Array<{ id: string; channel: Platform; address: string; dedupe_key: string | null; status: ChannelPost["status"]; title: string | null; attempts: number; created_at: string; sent_at: string | null; next_attempt_at: string; last_error: string | null; reference: string | null }>;
-      return rows.map((row) => ({
-        id: row.id,
-        platform: row.channel,
-        account_id: row.address,
-        dedupe_key: row.dedupe_key,
-        status: row.status,
-        title: row.title ?? "",
-        attempts: row.attempts,
-        created_at: row.created_at,
-        sent_at: row.sent_at,
-        next_attempt_at: row.status === "queued" ? row.next_attempt_at : null,
-        error: row.status === "sent" ? null : row.last_error,
-        url: row.status === "sent" && row.reference ? postUrl(row.channel, row.reference) : null,
-      }));
+          ? database.prepare(`SELECT ${postColumns} FROM notify_outbox WHERE channel = ? ORDER BY created_at DESC LIMIT ?`).all(platform, size)
+          : database.prepare(`SELECT ${postColumns} FROM notify_outbox WHERE channel IN ('facebook', 'instagram') ORDER BY created_at DESC LIMIT ?`).all(size)
+      ) as PostRow[];
+      return rows.map(toPost);
     },
   };
 }
