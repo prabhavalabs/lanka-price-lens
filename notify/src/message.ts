@@ -36,7 +36,13 @@ export const actionSchema = z.object({
 });
 
 export const messageSchema = z.object({
-  title: z.string().trim().min(1).max(200),
+  /**
+   * The headline. A social post carries its whole caption here so the words the owner wrote are
+   * the words the platform shows, so the room allowed is a caption's, not a headline's: the
+   * largest any channel takes (Instagram's 2,200). Channels that want something shorter cut it
+   * to their own measure — a Discord embed title, a push notification, a mail subject.
+   */
+  title: z.string().trim().min(1).max(2200),
   /** One or two plain-text paragraphs under the title. */
   summary: z.string().trim().max(4000).optional(),
   sections: z.array(sectionSchema).max(20).default([]),

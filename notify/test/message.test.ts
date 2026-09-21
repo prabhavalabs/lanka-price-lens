@@ -22,6 +22,14 @@ test("network input is checked without throwing and the first problem is named",
   if (good.ok) assert.equal(good.message.severity, "good");
 });
 
+test("a title carries a whole social caption, and stops at the largest a channel takes", () => {
+  const caption = "අද සුපිරි වෙළඳසැලක දෙහි කිලෝ එකක් රු. 1,490යි. ".repeat(20);
+  assert.ok(caption.length > 200);
+  assert.equal(message({ title: caption }).title, caption.trim());
+  assert.equal(parseMessage({ title: "x".repeat(2200) }).ok, true);
+  assert.equal(parseMessage({ title: "x".repeat(2201) }).ok, false);
+});
+
 test("changes always show a sign and at most one decimal", () => {
   assert.equal(formatChange(12.34), "+12.3%");
   assert.equal(formatChange(-3), "-3%");
