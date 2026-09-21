@@ -474,3 +474,13 @@ export const tokensApi = {
   create: (input: { name: string; scope: AdminToken["scope"]; days?: number }) => api<{ token: string; row: AdminToken; tokens: AdminToken[] }>("/v1/admin/tokens", jsonInit("POST", input)),
   revoke: (id: string) => api<AdminToken[]>(`/v1/admin/tokens/${encodeURIComponent(id)}`, { method: "DELETE" }),
 };
+
+// What each channel does and when (docs/distribution.md). The send time is a Colombo wall clock.
+export type SettingChannel = "email" | "facebook" | "instagram" | "telegram";
+export type ChannelSetting = { channel: SettingChannel; enabled: boolean; send_at: string; updated_by: string | null; updated_at: string };
+
+export const distributionSettingsApi = {
+  read: (init?: RequestInit) => api<{ zone: string; channels: SettingChannel[]; settings: ChannelSetting[] }>("/v1/admin/distribution/settings", init),
+  save: (channel: SettingChannel, patch: { enabled?: boolean; send_at?: string }) =>
+    api<{ zone: string; settings: ChannelSetting[]; saved: ChannelSetting }>(`/v1/admin/distribution/settings/${channel}`, jsonInit("PUT", patch)),
+};
