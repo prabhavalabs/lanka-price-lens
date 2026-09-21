@@ -52,6 +52,7 @@ refreshed from the live site with `web/scripts/guide-screenshots.js`.
 | Running it yourself | [docs/self-hosting.md](docs/self-hosting.md) |
 | Notifications | [docs/notifications.md](docs/notifications.md) |
 | Facebook and Instagram: connecting, the library, the calendar | [docs/distribution.md](docs/distribution.md) |
+| Driving the channels from a coding agent (tokens, the MCP server) | [docs/mcp.md](docs/mcp.md) |
 
 ## Repository layout
 
