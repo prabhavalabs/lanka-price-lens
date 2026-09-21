@@ -2,8 +2,8 @@ import type { DealsDay } from "@lanka-pricelens/foundry/deals";
 import { message, type Message } from "@lanka-pricelens/notify";
 
 import { formatMinor } from "../newsletters/deals.ts";
-import { dayWords } from "../newsletters/time.ts";
-import { colours, escape, fontFamily, markData, renderSvg, siteHost, textWidth } from "../og.ts";
+import { dayWords, dayWordsSinhala } from "../newsletters/time.ts";
+import { colours, defaultImagesRoot, escape, fontFamily, markData, productPhoto, renderSvg, siteHost, textWidth } from "../og.ts";
 
 /**
  * The day's deals as a Facebook Page post (docs/distribution.md): a picture drawn here and a short
@@ -13,10 +13,16 @@ import { colours, escape, fontFamily, markData, renderSvg, siteHost, textWidth }
  */
 
 export type PostDeal = {
+  /** Which product this is, so the card can look for our own photograph of it. */
+  productId: string;
   label: string;
   store: string;
-  /** "for everyone", "Nexus members", "down since yesterday", "cheapest of 4 stores". */
+  /** What kind of row this is. The caption groups on this, not on the words, which are Sinhala and would break the grouping if they changed. */
+  kind: "offer" | "drop" | "cheapest";
+  /** The Sinhala words under the product in the caption: "හැමෝටම", "ඊයේට වඩා අඩුයි". */
   note: string;
+  /** The same thing in English, for the picture: resvg cannot shape Sinhala (see dealsCardSvg). */
+  noteEnglish: string;
   now: string;
   was: string | null;
   /** Signed: -30 is 30 % off. */
@@ -35,14 +41,14 @@ export function postDeals(day: DealsDay, limit = postRules.cardRows): PostDeal[]
     rows.push(deal);
   };
   for (const offer of day.store_offers ?? []) {
-    push(offer.product_id, { label: offer.store_label || offer.label, store: offer.market, note: offer.audience === "members" ? `${offer.offer_label ?? "loyalty"} members` : "for everyone", now: formatMinor(offer.now_minor), was: formatMinor(offer.was_minor), pct: offer.pct });
+    push(offer.product_id, { productId: offer.product_id, label: offer.store_label || offer.label, store: offer.market, kind: "offer", note: offer.audience === "members" ? `${offer.offer_label ?? "loyalty"} සාමාජිකයන්ට` : "හැමෝටම", noteEnglish: offer.audience === "members" ? `${offer.offer_label ?? "loyalty"} members` : "for everyone", now: formatMinor(offer.now_minor), was: formatMinor(offer.was_minor), pct: offer.pct });
   }
   for (const deal of day.deals) {
     if (deal.pct >= 0) continue;
-    push(deal.product_id, { label: deal.label, store: deal.market, note: deal.baseline === "yesterday" ? "down since yesterday" : "below its two-week price", now: formatMinor(deal.now_minor, deal.unit), was: formatMinor(deal.was_minor), pct: deal.pct });
+    push(deal.product_id, { productId: deal.product_id, label: deal.label, store: deal.market, kind: "drop", note: deal.baseline === "yesterday" ? "ඊයේට වඩා අඩුයි" : "සති දෙකේ මිලට වඩා අඩුයි", noteEnglish: deal.baseline === "yesterday" ? "down since yesterday" : "below its two-week price", now: formatMinor(deal.now_minor, deal.unit), was: formatMinor(deal.was_minor), pct: deal.pct });
   }
   for (const deal of day.cheapest) {
-    push(deal.product_id, { label: deal.label, store: deal.market, note: "cheapest store today", now: formatMinor(deal.now_minor, deal.unit), was: null, pct: deal.pct });
+    push(deal.product_id, { productId: deal.product_id, label: deal.label, store: deal.market, kind: "cheapest", note: "අද අඩුම මිල මෙතන", noteEnglish: "cheapest store today", now: formatMinor(deal.now_minor, deal.unit), was: null, pct: deal.pct });
   }
   return rows;
 }
@@ -61,6 +67,32 @@ function fit(label: string, size: number, width: number, weight: number): string
   while (cut.length > 1 && textWidth(`${cut}…`, size, weight) > width) cut = cut.slice(0, -1);
   const space = cut.lastIndexOf(" ");
   return `${(space > cut.length * 0.6 ? cut.slice(0, space) : cut).trimEnd()}…`;
+}
+
+const thumbSize = 96;
+
+/**
+ * The little picture beside a row. It is **ours**: the photographs in data/images/products, made
+ * for the site. The stores' own product pictures are never used here, whatever the coverage costs
+ * us — they are the stores' property, and on Facebook a rights complaint takes the post down and
+ * repeated ones take the Page. A product we have no photograph of gets a lettered tile instead,
+ * which reads as a deliberate mark rather than a hole.
+ */
+function thumb(deal: PostDeal, x: number, y: number): string {
+  const photo = productPhoto(defaultImagesRoot(), deal.productId);
+  const clip = `thumb-${deal.productId.replace(/[^a-z0-9]/giu, "")}`;
+  if (photo) {
+    return (
+      `<defs><clipPath id="${clip}"><rect x="${x}" y="${y}" width="${thumbSize}" height="${thumbSize}" rx="18"/></clipPath></defs>` +
+      `<image x="${x}" y="${y}" width="${thumbSize}" height="${thumbSize}" preserveAspectRatio="xMidYMid slice" clip-path="url(#${clip})" xlink:href="data:image/jpeg;base64,${photo.toString("base64")}"/>` +
+      `<rect x="${x}" y="${y}" width="${thumbSize}" height="${thumbSize}" rx="18" fill="none" stroke="#ffffff" stroke-opacity="0.12"/>`
+    );
+  }
+  const letter = (deal.label.trim()[0] ?? "?").toUpperCase();
+  return (
+    `<rect x="${x}" y="${y}" width="${thumbSize}" height="${thumbSize}" rx="18" fill="${colours.greenDeep}" fill-opacity="0.35" stroke="#ffffff" stroke-opacity="0.10"/>` +
+    text(x + thumbSize / 2, y + thumbSize / 2 + 15, letter, 42, colours.green, 600, 'text-anchor="middle"')
+  );
 }
 
 const pctWords = (pct: number): string => `${pct < 0 ? "−" : "+"}${Math.round(Math.abs(pct))}%`;
@@ -90,11 +122,13 @@ export function dealsCardSvg(day: string, deals: PostDeal[]): string {
     const badge = pctWords(deal.pct);
     const badgeWidth = Math.ceil(textWidth(badge, 26, 700)) + 36;
     const priceWidth = Math.max(textWidth(deal.now, 38, 600), deal.was ? textWidth(deal.was, 24) : 0);
-    const labelRoom = width - 56 - priceWidth - 40;
-    parts.push(text(left + 28, inset + 54, fit(deal.label, 31, labelRoom, 600), 31, colours.text, 600));
-    parts.push(`<rect x="${left + 28}" y="${inset + 74}" width="${badgeWidth}" height="36" rx="18" fill="${deal.pct < 0 ? colours.green : colours.up}" fill-opacity="0.16"/>`);
-    parts.push(text(left + 28 + badgeWidth / 2, inset + 100, badge, 24, deal.pct < 0 ? colours.green : colours.up, 700, 'text-anchor="middle"'));
-    parts.push(text(left + 28 + badgeWidth + 16, inset + 100, fit(`${deal.store} · ${deal.note}`, 24, labelRoom - badgeWidth - 16, 400), 24, colours.muted));
+    const textLeft = left + 28 + thumbSize + 24;
+    const labelRoom = width - 56 - thumbSize - 24 - priceWidth - 40;
+    parts.push(thumb(deal, left + 28, inset + Math.floor((128 - thumbSize) / 2) + 8));
+    parts.push(text(textLeft, inset + 54, fit(deal.label, 31, labelRoom, 600), 31, colours.text, 600));
+    parts.push(`<rect x="${textLeft}" y="${inset + 74}" width="${badgeWidth}" height="36" rx="18" fill="${deal.pct < 0 ? colours.green : colours.up}" fill-opacity="0.16"/>`);
+    parts.push(text(textLeft + badgeWidth / 2, inset + 100, badge, 24, deal.pct < 0 ? colours.green : colours.up, 700, 'text-anchor="middle"'));
+    parts.push(text(textLeft + badgeWidth + 16, inset + 100, fit(`${deal.store} · ${deal.noteEnglish}`, 24, labelRoom - badgeWidth - 16, 400), 24, colours.muted));
     parts.push(text(left + width - 28, inset + 58, deal.now, 38, colours.text, 600, 'text-anchor="end"'));
     if (deal.was) parts.push(text(left + width - 28, inset + 100, deal.was, 24, colours.muted, 400, 'text-anchor="end" text-decoration="line-through"'));
     top += rowHeight + gap;
@@ -120,11 +154,11 @@ export function dealsCardUrl(siteOrigin: string, day: string): string {
 
 /** The same post every morning reads as a machine, to readers and to Facebook alike; the opening line turns with the day. */
 const openings = [
-  "What the supermarkets marked down this morning, read from their own online shelves.",
-  "This morning's markdowns at the supermarkets, straight from the prices they list online.",
-  "Before you shop today: the offers the supermarkets are listing on their own sites.",
-  "The supermarkets' own offers for today, checked against their regular shelf prices.",
-  "Today's shelf prices are in. These are the biggest cuts the stores themselves are listing.",
+  "අද උදේ සුපර්මාර්කට් වල මිල අඩු කළ භාණ්ඩ, ඒ කඩවලම නිල වෙබ් අඩවි වලින්.",
+  "කඩේ යන්න කලින් බලන්න: අද සුපර්මාර්කට් වල තියෙන ඕෆර්.",
+  "අද උදේ මිල ගණන් ආවා. සුපර්මාර්කට් වල ලොකුම මිල අඩු කිරීම් මෙන්න.",
+  "සුපර්මාර්කට් වලම නිල මිල අනුව, අද මිල අඩු වුණු භාණ්ඩ.",
+  "අද බඩු ගන්න කලින් මේක බලන්න: කඩවල් ම දාලා තියෙන අද ඕෆර්.",
 ];
 
 function dayNumber(day: string): number {
@@ -137,18 +171,23 @@ export function facebookDealsPost(day: DealsDay, siteOrigin: string, options: { 
   const origin = siteOrigin.replace(/\/+$/u, "");
   const rows = postDeals(day, postRules.captionOffers + postRules.captionDrops);
   if (rows.length < 3) return null;
-  const line = (deal: PostDeal) => ({ text: deal.label, value: deal.now, change: deal.pct, note: deal.was ? `was ${deal.was} at ${deal.store}, ${deal.note}` : `${deal.store}, ${deal.note}` });
-  const offers = rows.filter((deal) => deal.note === "for everyone" || deal.note.endsWith("members")).slice(0, postRules.captionOffers);
+  // The product name is left exactly as the store writes it on its own shelf label, which is how a
+  // reader finds it in the aisle; everything the post says around it is ours, and is Sinhala.
+  const line = (deal: PostDeal) => ({ text: deal.label, value: deal.now, change: deal.pct, note: deal.was ? `කලින් ${deal.was} · ${deal.store} · ${deal.note}` : `${deal.store} · ${deal.note}` });
+  const offers = rows.filter((deal) => deal.kind === "offer").slice(0, postRules.captionOffers);
   const moves = rows.filter((deal) => !offers.includes(deal)).slice(0, postRules.captionDrops);
   const stores = day.stores.map((store) => store.label.replace(/\s+Online$/u, ""));
+  const words = dayWordsSinhala(day.day);
   return message({
-    title: `Supermarket deals · ${dayWords(day.day)}`,
+    title: `අද සුපර්මාර්කට් ඕෆර් · ${words}`,
     summary: openings[dayNumber(day.day) % openings.length],
-    sections: [...(offers.length ? [{ heading: "Store offers", lines: offers.map(line) }] : []), ...(moves.length ? [{ heading: offers.length ? "Also moving" : "Best prices today", lines: moves.map(line) }] : [])],
-    actions: [{ label: "Every offer, with the link to the store", url: `${origin}/deals` }],
-    image: { url: dealsCardUrl(origin, day.day), alt: `Supermarket deals on ${dayWords(day.day)}` },
-    footer: `Prices as listed on each store's own site on ${dayWords(day.day)}${stores.length ? ` (${stores.join(", ")})` : ""}. PriceLens is independent and not affiliated with any store.\n#SriLanka #GroceryPrices #PriceLens`,
+    sections: [...(offers.length ? [{ heading: "කඩවල ඕෆර්", lines: offers.map(line) }] : []), ...(moves.length ? [{ heading: offers.length ? "තවත් මිල අඩු වුණු" : "අද හොඳම මිල", lines: moves.map(line) }] : [])],
+    actions: [{ label: "හැම ඕෆර් එකක්ම බලන්න පිවිසෙන්න", url: `${origin}/deals` }],
+    image: { url: dealsCardUrl(origin, day.day), alt: `${words} දින සුපර්මාර්කට් ඕෆර්` },
+    footer: `${words} දින එක් එක් කඩේ නිල වෙබ් අඩවියේ තිබූ මිල${stores.length ? ` (${stores.join(", ")})` : ""}. PriceLens ස්වාධීන සේවාවකි. අපි ඉහත කිසිදු ආයතනයක් සමඟ සම්බන්ධතාවක් නොමැත.`,
     dedupe_key: options.dedupeKey ?? `facebook:deals_daily:${day.day}`,
-    tags: ["newsletter", "deals_daily", "facebook"],
+    // These are published as hashtags, so they are the reader's words, not ours for routing; what
+    // this post is and where it goes is already in the dedupe key and the outbox's own channel.
+    tags: ["බඩුමිල", "SriLanka", "GroceryPrices", "PriceLens"],
   });
 }

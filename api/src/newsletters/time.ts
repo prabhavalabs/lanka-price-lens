@@ -52,6 +52,17 @@ export function dayWords(day: string): string {
   return `${weekdays[date.getUTCDay()]} ${date.getUTCDate()} ${months[date.getUTCMonth()]}`;
 }
 
+/** The Sinhala weekday and month names the Page post and its picture are written in. */
+const sinhalaWeekdays = ["ඉරිදා", "සඳුදා", "අඟහරුවාදා", "බදාදා", "බ්‍රහස්පතින්දා", "සිකුරාදා", "සෙනසුරාදා"];
+const sinhalaMonths = ["ජනවාරි", "පෙබරවාරි", "මාර්තු", "අප්‍රේල්", "මැයි", "ජූනි", "ජූලි", "අගෝස්තු", "සැප්තැම්බර්", "ඔක්තෝබර්", "නොවැම්බර්", "දෙසැම්බර්"];
+
+/** "සැප්තැම්බර් 21, සඳුදා": the date first, the weekday after it, as Sinhala writes it. */
+export function dayWordsSinhala(day: string): string {
+  const date = new Date(`${day}T00:00:00Z`);
+  if (Number.isNaN(date.valueOf())) return day;
+  return `${sinhalaMonths[date.getUTCMonth()]} ${date.getUTCDate()}, ${sinhalaWeekdays[date.getUTCDay()]}`;
+}
+
 const smallNumbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
 
 /** "three" for 3; larger counts stay as digits. */

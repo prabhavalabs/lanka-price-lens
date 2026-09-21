@@ -38,7 +38,7 @@ import {
 import { runWithRetry } from "@lanka-pricelens/foundry/retry";
 import { listFeedback, parseFeedback, RateLimiter, submitFeedback, updateFeedbackStatus } from "./feedback.ts";
 import { createOwnerNotifier, feedbackMessage, type OwnerNotifier } from "./notify.ts";
-import { CardCache, pageCard, productCard, productPhoto, productPhotoPath, recipeCard, recipePhotoPath, recipePhoto, renderCard, siteCard } from "./og.ts";
+import { CardCache, defaultImagesRoot, pageCard, productCard, productPhoto, productPhotoPath, recipeCard, recipePhotoPath, recipePhoto, renderCard, siteCard } from "./og.ts";
 import { envelope, jsonObject, sameOrigin } from "./http.ts";
 import { adminAccountRoutes } from "./account/admin-routes.ts";
 import { contentRoutes } from "./account/content-routes.ts";
@@ -1691,10 +1691,6 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
   return app;
 }
 
-/** Product photos and store logos: an env override, else the repository's data/images beside the api. */
-function defaultImagesRoot(): string {
-  return resolve(process.env.LPL_IMAGES_ROOT ?? fileURLToPath(new URL("../../data/images/", import.meta.url)));
-}
 
 function hostList(value: string | undefined): string[] {
   return (value ?? "").split(",").map((host) => host.trim().toLowerCase()).filter(Boolean);

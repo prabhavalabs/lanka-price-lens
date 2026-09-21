@@ -4,7 +4,7 @@ import test from "node:test";
 
 import { saveDealsDay } from "@lanka-pricelens/foundry/deals";
 import { openOperationalDatabase } from "@lanka-pricelens/foundry/db";
-import { createMemoryOutbox, facebookText } from "@lanka-pricelens/notify";
+import { createMemoryOutbox, facebookText, instagramText } from "@lanka-pricelens/notify";
 
 import { createApp } from "../src/app.ts";
 import { seedAdminUser } from "../src/auth.ts";
@@ -70,19 +70,27 @@ test("the day's post: the stores' own offers lead, one row per product, a pictur
   const day = sampleDealsDay("2026-09-20");
   const rows = postDeals(day);
   assert.ok(rows.length >= 3 && rows.length <= 6);
-  assert.equal(rows[0]!.note === "for everyone" || rows[0]!.note.endsWith("members"), true, "a store offer leads");
+  assert.equal(rows[0]!.kind, "offer", "a store offer leads");
+  assert.equal(rows[0]!.note, "හැමෝටම", "the caption's words are Sinhala");
+  assert.equal(rows[0]!.noteEnglish, "for everyone", "the picture's are not, because it cannot shape them");
   assert.equal(new Set(rows.map((row) => row.label)).size, rows.length);
 
   const post = facebookDealsPost(day, "https://price.example/");
   assert.ok(post);
   assert.equal(post.image?.url, "https://price.example/og/deals/2026-09-20.png");
   assert.equal(post.dedupe_key, "facebook:deals_daily:2026-09-20");
-  assert.deepEqual(post.actions, [{ label: "Every offer, with the link to the store", url: "https://price.example/deals" }]);
+  assert.deepEqual(post.actions, [{ label: "හැම ඕෆර් එකක්ම බලන්න පිවිසෙන්න", url: "https://price.example/deals" }]);
   const caption = facebookText(post);
-  assert.match(caption, /^Supermarket deals · Sunday 20 September\n\n/u);
-  assert.match(caption, /not affiliated with any store/u);
+  assert.match(caption, /^අද සුපර්මාර්කට් ඕෆර් · සැප්තැම්බර් 20, ඉරිදා\n\n/u);
+  assert.match(caption, /PriceLens ස්වාධීන සේවාවකි\. අපි ඉහත කිසිදු ආයතනයක් සමඟ සම්බන්ධතාවක් නොමැත\./u);
   assert.equal((caption.match(/https?:\/\//gu) ?? []).length, 1, "one link, to the deals page");
   assert.ok(caption.length < 1800);
+  // The hashtags are the reader's, and the words that route the post are not among them.
+  assert.match(caption, /#බඩුමිල #SriLanka #GroceryPrices #PriceLens$/u);
+  for (const routing of ["#newsletter", "#deals_daily", "#facebook"]) assert.ok(!caption.includes(routing), `${routing} is ours, not the reader's`);
+  assert.equal(instagramText(post).includes("#newsletter"), false, "and Instagram does not publish them either");
+  // The product name stays exactly as the store writes it, which is how a reader finds it in the aisle.
+  assert.ok(caption.includes(rows[0]!.label));
   // The opening line turns with the day, so two mornings do not read the same.
   assert.notEqual(facebookDealsPost(sampleDealsDay("2026-09-21"), "https://price.example")?.summary, post.summary);
   assert.equal(facebookDealsPost({ ...day, deals: [], cheapest: [], store_offers: [] }, "https://price.example"), null);
@@ -93,13 +101,22 @@ test("the post's picture is drawn here: the day, the rows, the site's address, a
   const rows = postDeals(day);
   const svg = dealsCardSvg(day.day, rows);
   assert.match(svg, /Sunday 20 September/u);
+  // The picture stays English on purpose: resvg does not reorder Sinhala pre-base vowel signs, so a
+  // word holding one is drawn with the mark in the wrong place. The caption carries the Sinhala.
+  assert.ok(!/[\u0D80-\u0DFF]/u.test(svg), "no Sinhala is drawn into the picture");
   assert.match(svg, /badumila\.com\/deals/u);
   assert.ok(svg.includes(rows[0]!.now));
-  assert.equal((svg.match(/<image /gu) ?? []).length <= 1, true, "the only image is the site's own mark");
+  // The rule is not "no pictures", it is "none of the stores'". Our own mark and our own product
+  // photographs are drawn; nothing from the tree the stores' pictures are downloaded into ever is.
+  assert.ok(!svg.includes("store-images"), "no store picture is drawn into the card");
+  assert.ok(!/<image[^>]+xlink:href="(?!data:)/u.test(svg), "every picture is embedded, so the card fetches nothing when it is rendered");
   const png = renderDealsCard(day.day, rows);
   assert.deepEqual([...png.subarray(0, 4)], [0x89, 0x50, 0x4e, 0x47]);
   assert.equal(png.readUInt32BE(16), postCardWidth);
   assert.equal(png.readUInt32BE(20), postCardHeight);
+  // Sinhala has no glyphs in the Latin face, and the renderer is told to ignore the system's fonts,
+  // so a card drawn without the Sinhala file beside it comes out markedly emptier than this.
+  assert.ok(png.byteLength > renderDealsCard(day.day, []).byteLength, "the rows add ink");
 });
 
 test("the connect state is signed, short-lived, and bound to its purpose", () => {

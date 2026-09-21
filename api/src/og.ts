@@ -20,10 +20,19 @@ const fontsDirectory = fileURLToPath(new URL("../assets/fonts/", import.meta.url
 const markFile = fileURLToPath(new URL("../assets/brand/mark.png", import.meta.url));
 /** The PriceLens mark (lens over leaves and rice grains), embedded so the card needs no network. */
 export const markData = existsSync(markFile) ? readFileSync(markFile).toString("base64") : null;
-const fontFiles = ["400", "500", "600", "700"].map((weight) => resolve(fontsDirectory, `IBMPlexSans-${weight}.ttf`));
+const fontFiles = [
+  ...["400", "500", "600", "700"].map((weight) => resolve(fontsDirectory, `IBMPlexSans-${weight}.ttf`)),
+  // Sinhala has no glyphs in IBM Plex, and the renderer is told not to look at the system's fonts,
+  // so the cards would draw empty boxes for every Sinhala word without this beside it.
+  ...["400", "500", "600", "700"].map((weight) => resolve(fontsDirectory, `NotoSansSinhala-${weight}.ttf`)),
+].filter((file) => existsSync(file));
 
 export const colours = { background: "#0b1411", text: "#f3f7f4", muted: "#9fb3a8", green: "#3ddc97", greenDeep: "#0f7a54", up: "#ff7b7b", down: "#3ddc97" };
-export const fontFamily = "IBM Plex Sans";
+/**
+ * Latin first, Sinhala behind it: a renderer takes the first family that has the glyph, so English
+ * words keep the brand's face and Sinhala words fall through to the one that can draw them.
+ */
+export const fontFamily = "IBM Plex Sans, Noto Sans Sinhala";
 /** The site's address as the cards print it: LPL_SITE_ORIGIN without its scheme. */
 export const siteHost = (process.env.LPL_SITE_ORIGIN?.trim() || defaultSiteOrigin).replace(/^https?:\/\//u, "").replace(/\/+$/u, "");
 
@@ -260,6 +269,11 @@ export function productPhotoPath(imagesRoot: string, productId: string): string 
 }
 
 /** The photo for a product, when the site has one. */
+/** Product photographs of ours: an env override, else the repository's data/images beside the api. */
+export function defaultImagesRoot(): string {
+  return resolve(process.env.LPL_IMAGES_ROOT ?? fileURLToPath(new URL("../../data/images/", import.meta.url)));
+}
+
 export function productPhoto(imagesRoot: string, productId: string): Buffer | undefined {
   const file = productPhotoPath(imagesRoot, productId);
   return existsSync(file) ? readFileSync(file) : undefined;
