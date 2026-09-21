@@ -125,8 +125,8 @@ export function sampleDealsDay(day: string): DealsDay {
     ],
     cheapest: [{ product_id: "product_chicken", label: "Chicken, whole", unit: "kg", market_id: "market_keells_online", market: "Keells", now_minor: 119_000, was_minor: 142_000, was_on: day, pct: -16.2, kind: "cheapest", baseline: "other_stores", url: "/p/product_chicken" }],
     store_offers: [
-      { product_id: "product_red_dhal", label: "Red dhal", store_label: "Mysoor Dhal 1kg", unit: "kg", market_id: "market_cargills_online", market: "Cargills", now_minor: 38_500, was_minor: 46_000, pct: -16.3, audience: "everyone", offer_label: null, observed_on: day, url: "/p/product_red_dhal" },
-      { product_id: "product_chicken", label: "Chicken, whole", store_label: "Whole Chicken Skinless", unit: "kg", market_id: "market_keells_online", market: "Keells", now_minor: 112_000, was_minor: 140_000, pct: -20, audience: "members", offer_label: "Nexus", observed_on: day, url: "/p/product_chicken" },
+      { product_id: "product_red_dhal", label: "Red dhal", store_label: "Mysoor Dhal 1kg", unit: "kg", market_id: "market_cargills_online", market: "Cargills", now_minor: 38_500, was_minor: 46_000, pct: -16.3, audience: "everyone", offer_label: null, observed_on: day, url: "/p/product_red_dhal", image_path: null },
+      { product_id: "product_chicken", label: "Chicken, whole", store_label: "Whole Chicken Skinless", unit: "kg", market_id: "market_keells_online", market: "Keells", now_minor: 112_000, was_minor: 140_000, pct: -20, audience: "members", offer_label: "Nexus", observed_on: day, url: "/p/product_chicken", image_path: null },
     ],
     movers_up: [{ product_id: "product_egg", label: "Eggs", unit: "piece", market_id: "market_cargills_online", market: "Cargills", now_minor: 4_500, was_minor: 3_800, was_on: day, pct: 18.4, kind: "drop", baseline: "yesterday", url: "/p/product_egg" }],
     essentials: [

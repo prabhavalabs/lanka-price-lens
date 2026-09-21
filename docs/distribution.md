@@ -26,10 +26,17 @@ person, scrapes either site, or posts to a profile or a group.
 - Facebook's spam rules still apply to a Page: the same text every day, many posts a day,
   engagement bait, or misleading links reduce reach and can restrict the Page. The post goes
   out once a day, its opening line turns with the day, and it carries one link.
-- Store logos and store photographs are the stores' property. On Facebook a rights complaint
-  removes the post, and repeated complaints unpublish the Page. The post's picture is therefore
-  drawn by PriceLens from corner to corner: the stores appear as words, the prices are the ones
-  they list, and the caption says the site is independent and not affiliated with any store.
+- The post's picture is drawn by PriceLens: its layout, its colours, its words. Beside each row
+  it shows the store's own picture of the pack on offer, the one the reader will recognise on the
+  shelf, taken from the capture (`store_offer.image_path`); a product with no store picture falls
+  to our own photograph, and a product with neither gets a lettered tile. Those pictures are the
+  stores' property. They are shown unaltered, beside the store's name, with the prices the store
+  itself lists, and the caption says the site is independent and not affiliated with any store.
+  A store that objects is added to `LPL_STORE_IMAGES_DISABLED`, which stops its pictures being
+  taken at all; the cards then fall back on their own. No store logo is ever drawn.
+- The words on the card are Sinhala, like the caption. The renderer cannot shape Sinhala on its
+  own — it draws the vowel signs in the wrong place — so every string is shaped with HarfBuzz and
+  drawn as outlines (`api/src/shape.ts`). A product keeps the store's own spelling of the pack.
 
 ## What Instagram allows
 

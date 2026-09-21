@@ -44,7 +44,7 @@ const wording = {
     icon: RiFacebookCircleLine,
     noun: "Page",
     plural: "Pages",
-    description: "The Page PriceLens posts to: the day's supermarket deals every morning after the deals run, and anything you plan in the library. The picture is drawn by PriceLens and names the stores in words; no store logo or photograph is sent.",
+    description: "The Page PriceLens posts to: the day's supermarket deals every morning after the deals run, and anything you plan in the library. The picture is drawn by PriceLens in Sinhala, and beside each row it shows the store's own picture of the pack, our own photograph when the store has none.",
     connect: "Connect a Facebook Page",
   },
   instagram: {

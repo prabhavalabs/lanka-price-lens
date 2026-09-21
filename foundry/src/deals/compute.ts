@@ -67,6 +67,8 @@ export type DeclaredOffer = {
   offer_label: string | null;
   observed_on: string;
   url: string;
+  /** The store's own picture of the pack, as `store_product` filed it: "<source>/ab/<sha>.jpg" under the store-image root, or null when none was taken. */
+  image_path: string | null;
 };
 
 export type DealsDay = {
@@ -190,7 +192,7 @@ async function loadWindow(client: WarehouseClient, day: string): Promise<DealsRo
   );
 }
 
-type StoreOfferRow = { product_id: string; label: string; store_label: string; unit: string; market_id: string; market: string; now_minor: string | number; was_minor: string | number; pct: string | number; audience: string; offer_label: string | null; observed_on: string };
+type StoreOfferRow = { product_id: string; label: string; store_label: string; unit: string; market_id: string; market: string; now_minor: string | number; was_minor: string | number; pct: string | number; audience: string; offer_label: string | null; observed_on: string; image_path: string | null };
 
 /**
  * The stores' own offers on catalogue products for the day and the day before (the freshness
@@ -202,7 +204,7 @@ async function loadStoreOffers(client: WarehouseClient, day: string): Promise<St
     return await client.query<StoreOfferRow>(
       `SELECT item.product_id, product.label_en AS label, offer.label AS store_label, offer.normalized_unit AS unit, offer.market_id, market.label_en AS market,
               offer.normalized_offer_minor::TEXT AS now_minor, offer.normalized_list_minor::TEXT AS was_minor, offer.pct::TEXT AS pct,
-              offer.audience, offer.offer_label, offer.observed_on::TEXT AS observed_on
+              offer.audience, offer.offer_label, offer.observed_on::TEXT AS observed_on, offer.image_path
        FROM store_offer offer
        JOIN item ON item.id = offer.item_id AND item.status = 'active'
        JOIN product ON product.id = item.product_id AND product.status = 'active'
@@ -232,7 +234,7 @@ function rankStoreOffers(rows: StoreOfferRow[]): DeclaredOffer[] {
     const offer: DeclaredOffer = {
       product_id: row.product_id, label: row.label, store_label: row.store_label, unit: row.unit, market_id: row.market_id, market: row.market,
       now_minor: now, was_minor: was, pct: -Math.round((1 - now / was) * 1000) / 10, audience: row.audience === "members" ? "members" : "everyone",
-      offer_label: row.offer_label ?? null, observed_on: row.observed_on, url: productUrl(row.product_id),
+      offer_label: row.offer_label ?? null, observed_on: row.observed_on, url: productUrl(row.product_id), image_path: row.image_path ?? null,
     };
     const current = best.get(row.product_id);
     if (!current || offer.pct < current.pct || (offer.pct === current.pct && current.audience === "members" && offer.audience === "everyone")) best.set(row.product_id, offer);
