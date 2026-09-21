@@ -25,6 +25,8 @@ import type { DealsAccess } from "../newsletters/deals.ts";
 import { colomboDay, isDay } from "../newsletters/time.ts";
 import { isPlatform, type Platform, type SocialStore } from "./accounts.ts";
 import { isClock, isSettingChannel, postingZone, settingChannels, type SettingsStore } from "./settings.ts";
+import { runChannelJob, type JobRunners } from "./jobs.ts";
+import { isCron } from "./recurrence.ts";
 import { carouselMax, contentStatuses, uploadMaxBytes, type ContentStatus, type LibraryStore } from "./library.ts";
 import { facebookDealsPost, postDeals } from "./post.ts";
 import { contentMessage, publishBlocker, publishSchedule, runDueSchedules, type PublishDeps } from "./publish.ts";
@@ -60,6 +62,8 @@ export type DistributionDeps = {
   outbox: OutboxStore;
   channels: () => ChannelRegistry;
   deals: DealsAccess;
+  /** What a channel's job does when the admin presses Run now; absent in tests that do not run jobs. */
+  runners?: (() => JobRunners) | undefined;
   siteOrigin: string;
   stateSecret: string;
   secureCookies: boolean;
@@ -152,9 +156,33 @@ export function distributionAdminRoutes(deps: DistributionDeps): Hono<Bindings> 
 
   app.get("/", (context) => ok(context, { ...status(context), zone: postingZone, settings: deps.settings.all() }));
 
+  /**
+   * One post as its platform will show it: the caption rendered the way that channel renders it,
+   * the account it goes out as, and its picture. The picture is also offered on this server's own
+   * address, so a post can be looked at against the code running here rather than against the
+   * card production happens to be serving.
+   */
+  app.get("/posts/:id", (context) => {
+    const found = deps.accounts.readPost(context.req.param("id"));
+    if (!found) return refuse(context, 404, "No such post");
+    const account = deps.accounts.list(found.post.platform).find((entry) => entry.account_id === found.post.account_id);
+    const image = found.message.image?.url ?? null;
+    // A path rather than an address: the admin reads it from whichever origin is serving it, which
+    // is this server in production and the development server's proxy while working on it.
+    const path = image?.match(/^https?:\/\/[^/]+(\/.*)$/u)?.[1] ?? null;
+    return ok(context, {
+      post: found.post,
+      text: found.post.platform === "instagram" ? instagramText(found.message) : facebookText(found.message),
+      image_url: image,
+      preview_image_path: path,
+      image_alt: found.message.image?.alt ?? null,
+      account: account ? { name: account.name, username: account.username, picture: account.picture, link: account.link } : null,
+    });
+  });
+
   // --- What each channel does and when -----------------------------------------------------------
 
-  app.get("/settings", (context) => ok(context, { zone: postingZone, channels: settingChannels, settings: deps.settings.all() }));
+  app.get("/settings", (context) => ok(context, { zone: postingZone, channels: settingChannels, settings: deps.settings.all(), jobs: deps.settings.jobs() }));
 
   app.put("/settings/:channel", bodyLimit({ maxSize: 1024 }), async (context) => {
     const channel = context.req.param("channel");
@@ -168,7 +196,48 @@ export function distributionAdminRoutes(deps: DistributionDeps): Hono<Bindings> 
       who(context),
       now(),
     );
-    return ok(context, { zone: postingZone, settings: deps.settings.all(), saved }, `${channel} saved`);
+    return ok(context, { zone: postingZone, settings: deps.settings.all(), jobs: deps.settings.jobs(), saved }, `${channel} saved`);
+  });
+
+  /** One job of one channel: whether it runs at all, and the expression that says when. */
+  app.put("/settings/:channel/jobs/:job", bodyLimit({ maxSize: 1024 }), async (context) => {
+    const channel = context.req.param("channel");
+    if (!isSettingChannel(channel)) return refuse(context, 404, "No such channel");
+    const body = await jsonObject(context);
+    if (body?.enabled !== undefined && typeof body.enabled !== "boolean") return refuse(context, 400, "enabled must be true or false");
+    if (body?.cron !== undefined && !isCron(body.cron)) {
+      return refuse(context, 400, "A recurrence reads as five cron fields in Colombo time, such as \"30 7 * * *\" for every day at 07:30");
+    }
+    const saved = deps.settings.saveJob(
+      channel,
+      context.req.param("job"),
+      { ...(typeof body?.enabled === "boolean" ? { enabled: body.enabled } : {}), ...(isCron(body?.cron) ? { cron: body.cron } : {}) },
+      who(context),
+      now(),
+    );
+    if (!saved) return refuse(context, 404, "No such job on this channel");
+    return ok(context, { zone: postingZone, settings: deps.settings.all(), jobs: deps.settings.jobs(), saved }, `${saved.label} saved`);
+  });
+
+  /**
+   * Runs one job now, whatever its recurrence says. Safe to press twice: a mail run is guarded by
+   * the newsletter's own record of the day and a post by the outbox's dedupe key, so a second
+   * press reports that the day already has its post rather than sending another.
+   */
+  app.post("/settings/:channel/jobs/:job/run", async (context) => {
+    const channel = context.req.param("channel");
+    if (!isSettingChannel(channel)) return refuse(context, 404, "No such channel");
+    const job = context.req.param("job");
+    const schedule = deps.settings.job(channel, job);
+    if (!schedule) return refuse(context, 404, "No such job on this channel");
+    if (!deps.runners) return refuse(context, 503, "This server does not run the channels' jobs");
+    const at = now();
+    const outcome = await runChannelJob(channel, job, { ...deps.runners(), now }, colomboDay(at));
+    deps.settings.markJobRun(channel, job, { status: outcome.status, error: outcome.status === "ran" ? null : outcome.detail }, at);
+    log({ level: outcome.status === "failed" ? "error" : "info", message: "Channel job run by hand", channel, job, status: outcome.status, detail: outcome.detail });
+    const payload = { zone: postingZone, settings: deps.settings.all(), jobs: deps.settings.jobs(), outcome };
+    if (outcome.status === "failed") return context.json(envelope(context.get("requestId") ?? "unknown", payload, false, outcome.detail), 502);
+    return ok(context, payload, outcome.detail);
   });
 
   app.get("/connect", (context) => {

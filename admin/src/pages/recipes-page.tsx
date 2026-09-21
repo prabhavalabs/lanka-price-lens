@@ -107,8 +107,8 @@ export function RecipesPage() {
       <Card size="sm">
         <CardContent className="flex flex-col gap-2 lg:flex-row lg:items-center">
           <form className="flex flex-1 items-center gap-2" onSubmit={(event) => { event.preventDefault(); update({ search: (new FormData(event.currentTarget).get("search") as string).trim(), page: "" }); }}>
-            <Input aria-label="Search dishes" className="h-9 lg:max-w-sm" defaultValue={search} key={search} name="search" placeholder="Search a dish in any name or an ingredient" />
-            <Button size="sm" type="submit" variant="secondary">Search</Button>
+            <Input aria-label="Search dishes" className="lg:max-w-sm" defaultValue={search} key={search} name="search" placeholder="Search a dish in any name or an ingredient" />
+            <Button type="submit" variant="secondary">Search</Button>
           </form>
           <div className="flex flex-wrap gap-2">
             <FilterSelect label="Category" onChange={(value) => update({ category: value, page: "" })} options={Object.keys(categoryLabels).map((value) => [value, categoryLabels[value]!])} value={filters.category} />
@@ -240,7 +240,7 @@ function PagedList<T>({ items, pageSize, render }: { items: T[]; pageSize: numbe
 function FilterSelect({ label: name, value, options, onChange }: { label: string; value: string; options: Array<[string, string]>; onChange: (value: string) => void }) {
   return (
     <Select onValueChange={(next) => onChange(next === "all" ? "" : next)} value={value || "all"}>
-      <SelectTrigger aria-label={name} className="h-9 w-40" size="sm"><SelectValue placeholder={name} /></SelectTrigger>
+      <SelectTrigger aria-label={name} className="w-40"><SelectValue placeholder={name} /></SelectTrigger>
       <SelectContent>
         <SelectItem value="all">{name}: all</SelectItem>
         {options.map(([option, text]) => <SelectItem key={option} value={option}>{text}</SelectItem>)}
@@ -289,7 +289,7 @@ function DishSheet({ dish, onOpen }: { dish: DishDetail; onOpen: (id: string) =>
       {dish.pairs.length ? (
         <section className="space-y-2">
           <h3 className="text-sm font-semibold">Usually served with</h3>
-          <div className="flex flex-wrap gap-1.5">{dish.pairs.map((pair) => <Button className="h-7 rounded-full px-3 text-xs" key={pair.id} onClick={() => onOpen(pair.id)} size="sm" variant="outline">{pair.label}</Button>)}</div>
+          <div className="flex flex-wrap gap-1.5">{dish.pairs.map((pair) => <Button className="rounded-full" key={pair.id} onClick={() => onOpen(pair.id)} size="sm" variant="outline">{pair.label}</Button>)}</div>
         </section>
       ) : null}
     </div>

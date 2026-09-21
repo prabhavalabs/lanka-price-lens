@@ -26,10 +26,17 @@ person, scrapes either site, or posts to a profile or a group.
 - Facebook's spam rules still apply to a Page: the same text every day, many posts a day,
   engagement bait, or misleading links reduce reach and can restrict the Page. The post goes
   out once a day, its opening line turns with the day, and it carries one link.
-- Store logos and store photographs are the stores' property. On Facebook a rights complaint
-  removes the post, and repeated complaints unpublish the Page. The post's picture is therefore
-  drawn by PriceLens from corner to corner: the stores appear as words, the prices are the ones
-  they list, and the caption says the site is independent and not affiliated with any store.
+- The post's picture is drawn by PriceLens: its layout, its colours, its words. Beside each row
+  it shows the store's own picture of the pack on offer, the one the reader will recognise on the
+  shelf, taken from the capture (`store_offer.image_path`); a product with no store picture falls
+  to our own photograph, and a product with neither gets a lettered tile. Those pictures are the
+  stores' property. They are shown unaltered, beside the store's name, with the prices the store
+  itself lists, and the caption says the site is independent and not affiliated with any store.
+  A store that objects is added to `LPL_STORE_IMAGES_DISABLED`, which stops its pictures being
+  taken at all; the cards then fall back on their own. No store logo is ever drawn.
+- The words on the card are Sinhala, like the caption. The renderer cannot shape Sinhala on its
+  own — it draws the vowel signs in the wrong place — so every string is shaped with HarfBuzz and
+  drawn as outlines (`api/src/shape.ts`). A product keeps the store's own spelling of the pack.
 
 ## What Instagram allows
 
@@ -178,5 +185,38 @@ A post the owner asked for by hand — **Post now**, on a channel or on a planne
 retried quietly an hour later. It went now or it did not, and the row says which, with the
 platform's own words. A failed row can be called off, or planned again for another time.
 
-The day's deals post is not in the library: it is drawn and composed when the morning run sends
-it, so it always carries that day's prices.
+The day's deals post is not in the library: it is drawn and composed by its own job when that job
+runs, so it always carries that day's prices.
+
+## What a channel sends, and when
+
+A channel is not one thing on one clock. Each one holds a **job** per thing it sends, and each job
+keeps its own recurrence:
+
+| Channel | Jobs |
+| --- | --- |
+| Email | the daily deals mail, the daily recipes mail, the price alerts |
+| Telegram | the deals digest to the public channel |
+| Facebook | the day's deals post on the Page |
+| Instagram | the same post on the account |
+
+A recurrence is five cron fields read in Colombo time (`api/src/social/recurrence.ts`), so a job can
+run every day at half past seven, every Monday and Thursday at nine, every six hours, or on the
+first and the fifteenth. The admin offers those shapes as fields and shows the expression it
+compiled, under **Settings**; the expression itself is there for anything the fields do not cover.
+
+The channel's own switch is the master one: a channel switched off holds all of its jobs, whatever
+each one says. A job switched off stops only itself.
+
+The timer in the API wakes once a minute, dispatches the outbox, and runs whatever is due. A job
+never runs twice inside one minute, and one that failed is tried again half an hour later whatever
+its recurrence says. Every job is idempotent within its day — a mail run is guarded by the
+newsletter's own record and a post by the outbox's dedupe key — which is what makes that retry
+safe and **Run now** safe to press.
+
+Each job owns exactly one thing. The deals mail run used to also put the Telegram digest and the
+Page's post out; they are jobs of their own now, because two owners for one post is how a day ends
+up posted twice.
+
+Instagram's post has never gone out automatically, so its job arrives switched off: a deploy is no
+moment to start writing to a live account. Switch it on under Settings when you want it.

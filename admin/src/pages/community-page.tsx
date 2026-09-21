@@ -158,7 +158,7 @@ function FilterBar({ children }: { children: ReactNode }) {
 function FilterSelect({ label, value, options, onChange }: { label: string; value: string; options: Array<{ value: string; label: string }>; onChange: (value: string) => void }) {
   return (
     <Select onValueChange={onChange} value={value}>
-      <SelectTrigger aria-label={label} className="h-8 w-full sm:w-44"><SelectValue /></SelectTrigger>
+      <SelectTrigger aria-label={label} className="w-full sm:w-44"><SelectValue /></SelectTrigger>
       <SelectContent position="popper"><SelectGroup>{options.map((option) => <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>)}</SelectGroup></SelectContent>
     </Select>
   );

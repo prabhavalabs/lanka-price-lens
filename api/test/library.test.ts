@@ -217,7 +217,10 @@ test("the calendar answers for a span of time and carries enough of each post to
     assert.equal(week.length, 2);
     assert.deepEqual(week.map((entry) => entry.platform), ["facebook", "instagram"]);
     assert.deepEqual([week[0]!.title, week[0]!.kind, week[0]!.status], ["Planting", "image", "scheduled"]);
-    assert.equal(week[0]!.thumbnail, asset.url, "the calendar shows the post's first picture");
+    // The calendar is read in the admin, which is served from a host of its own, so the picture
+    // comes as a path rather than the site's absolute address (docs/ui-conventions.md).
+    assert.equal(week[0]!.thumbnail, asset.path, "the calendar shows the post's first picture");
+    assert.match(asset.url, /^https?:\/\/[^/]+\/content\//u, "what the platforms fetch stays absolute");
     assert.equal(kit.library.calendar("2026-10-01T00:00:00.000Z", "2026-12-01T00:00:00.000Z").length, 1);
   } finally {
     await kit.close();

@@ -123,7 +123,7 @@ export function LibraryPage() {
           return (
             <button className="grid gap-3 rounded-xl border p-3 text-left transition-colors hover:border-primary/40 hover:bg-muted/40" key={row.id} onClick={() => { save.reset(); setCreating(false); setOpenId(row.id); setDraft(asDraft(row)); }} type="button">
               {row.assets[0] ? (
-                <img alt="" className="aspect-[4/5] w-full rounded-lg border object-cover" loading="lazy" src={row.assets[0].url} />
+                <img alt="" className="aspect-[4/5] w-full rounded-lg border object-cover" loading="lazy" src={row.assets[0].path} />
               ) : (
                 <div className="grid aspect-[4/5] w-full place-items-center rounded-lg border bg-muted/30 text-xs text-muted-foreground">Words only</div>
               )}
@@ -200,7 +200,7 @@ export function LibraryPage() {
                 <div className="flex flex-wrap gap-2">
                   {item.assets.map((asset) => (
                     <figure className="relative" key={asset.id}>
-                      <img alt="" className="h-32 w-auto rounded-lg border" src={asset.url} />
+                      <img alt="" className="h-32 w-auto rounded-lg border" src={asset.path} />
                       <Button className="absolute right-1 top-1 size-6 rounded-full p-0" disabled={dropPicture.isPending} onClick={() => dropPicture.mutate(asset.id)} size="sm" variant="destructive">×</Button>
                       <figcaption className="mt-1 text-center font-mono text-[10px] text-muted-foreground">{asset.width}×{asset.height}</figcaption>
                     </figure>

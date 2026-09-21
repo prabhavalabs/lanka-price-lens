@@ -421,12 +421,24 @@ export type ChannelPost = { id: string; platform: Platform; account_id: string; 
 export type DistributionStatus = { configured: boolean; app_id: string | null; redirect_uri: string; accounts: ConnectedAccount[]; posts: ChannelPost[]; publishing_limit?: { used: number; cap: number } | null };
 export type DealsPreview = { day: string; requested_day: string; platform: Platform; ready: boolean; caption: string | null; image_url: string | null; rows: Array<{ label: string; store: string; note: string; now: string; was: string | null; pct: number }> };
 
-export type ContentAsset = { id: string; position: number; file: string; media_type: string; width: number; height: number; bytes: number; url: string };
+/** `url` is the public address the platforms fetch; `path` is the same picture on the host serving the admin, which is what an <img> here uses. */
+export type ContentAsset = { id: string; position: number; file: string; media_type: string; width: number; height: number; bytes: number; url: string; path: string };
 export type ContentSchedule = { id: string; item_id: string; platform: Platform; scheduled_for: string; status: "scheduled" | "queued" | "published" | "failed" | "cancelled"; outbox_id: string | null; post_url: string | null; error: string | null; published_at: string | null; created_at: string };
 export type ContentItem = { id: string; kind: "image" | "carousel" | "text"; title: string; caption: string; link: string | null; status: "draft" | "ready" | "archived"; tags: string[]; assets: ContentAsset[]; schedules: ContentSchedule[]; created_by: string | null; created_at: string; updated_at: string };
 export type ContentPreview = { facebook: { caption: string; blocker: string | null }; instagram: { caption: string; blocker: string | null }; pictures: string[] };
 export type CalendarEntry = ContentSchedule & { title: string; kind: ContentItem["kind"]; thumbnail: string | null };
 export type ContentDraft = { title: string; caption: string; link: string | null; status?: ContentItem["status"]; tags: string[] };
+/** A post that has gone through the outbox, as the admin previews it. */
+export type PostPreview = {
+  post: ChannelPost;
+  text: string;
+  /** The picture's address as the post carries it, which is the live site's. */
+  image_url: string | null;
+  /** The picture's path on whichever server the admin is being served from, so a card is checked against the code running here. */
+  preview_image_path: string | null;
+  image_alt: string | null;
+  account: { name: string; username: string | null; picture: string | null; link: string | null } | null;
+};
 
 /** Where the browser goes to open Facebook's consent screen; a navigation, not a fetch. */
 export const distributionConnectPath = "/v1/admin/distribution/connect";
@@ -446,6 +458,8 @@ export const distributionApi = {
   check: (platform: Platform) => api<DistributionStatus>(`/v1/admin/distribution/accounts/${platform}/check`, { method: "POST" }),
   dealsPreview: (platform: Platform, init?: RequestInit) => api<DealsPreview>(`/v1/admin/distribution/deals/preview?platform=${platform}`, init),
   postDeals: (platform: Platform) => api<DistributionStatus & { post: ChannelPost | null }>("/v1/admin/distribution/deals/post", jsonInit("POST", { platform })),
+  /** One post as its platform will show it: the caption that channel renders, the account, the picture. */
+  post: (id: string, init?: RequestInit) => api<PostPreview>(`/v1/admin/distribution/posts/${encodeURIComponent(id)}`, init),
 
   library: (query: { status?: string; search?: string; limit?: number; offset?: number } = {}, init?: RequestInit) =>
     api<{ rows: ContentItem[]; total: number; carousel_max: number }>(`/v1/admin/distribution/library${libraryQuery(query)}`, init),
@@ -479,8 +493,37 @@ export const tokensApi = {
 export type SettingChannel = "email" | "facebook" | "instagram" | "telegram";
 export type ChannelSetting = { channel: SettingChannel; enabled: boolean; send_at: string; updated_by: string | null; updated_at: string };
 
+/**
+ * What a channel sends, and when. A channel holds several of these — the mail channel carries the
+ * deals mail, the recipes mail and the alerts — and each one keeps its own recurrence, written as
+ * five cron fields read in Colombo time.
+ */
+export type ChannelJobSchedule = {
+  channel: SettingChannel;
+  job: string;
+  label: string;
+  description: string;
+  enabled: boolean;
+  cron: string;
+  /** The expression in words: "Every day at 07:30". */
+  recurrence: string;
+  next_run_at: string | null;
+  last_run_at: string | null;
+  last_status: "ran" | "failed" | "skipped" | null;
+  last_error: string | null;
+  updated_by: string | null;
+  updated_at: string;
+};
+
+export type DistributionSettings = { zone: string; channels: SettingChannel[]; settings: ChannelSetting[]; jobs: ChannelJobSchedule[] };
+
 export const distributionSettingsApi = {
-  read: (init?: RequestInit) => api<{ zone: string; channels: SettingChannel[]; settings: ChannelSetting[] }>("/v1/admin/distribution/settings", init),
+  read: (init?: RequestInit) => api<DistributionSettings>("/v1/admin/distribution/settings", init),
   save: (channel: SettingChannel, patch: { enabled?: boolean; send_at?: string }) =>
-    api<{ zone: string; settings: ChannelSetting[]; saved: ChannelSetting }>(`/v1/admin/distribution/settings/${channel}`, jsonInit("PUT", patch)),
+    api<DistributionSettings & { saved: ChannelSetting }>(`/v1/admin/distribution/settings/${channel}`, jsonInit("PUT", patch)),
+  saveJob: (channel: SettingChannel, job: string, patch: { enabled?: boolean; cron?: string }) =>
+    api<DistributionSettings & { saved: ChannelJobSchedule }>(`/v1/admin/distribution/settings/${channel}/jobs/${encodeURIComponent(job)}`, jsonInit("PUT", patch)),
+  /** Runs one job now. Safe to press twice: the day's own guard keeps a second one from going out. */
+  runJob: (channel: SettingChannel, job: string) =>
+    api<DistributionSettings & { outcome: { status: "ran" | "failed" | "skipped"; detail: string } }>(`/v1/admin/distribution/settings/${channel}/jobs/${encodeURIComponent(job)}/run`, { method: "POST" }),
 };

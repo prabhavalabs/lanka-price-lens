@@ -7,6 +7,7 @@ import type { MailSender } from "../account/mail.ts";
 import { isMailKind, type MailKind } from "../mail/defaults.ts";
 import { defaultSiteOrigin, type RenderedMail } from "../mail/layout.ts";
 import { readFields, renderMail, type MailData, type TemplateStore } from "../mail/templates.ts";
+import { markData } from "../og.ts";
 import { envelope, jsonObject } from "../http.ts";
 import type { RecipeIndexEntry } from "../recipe-views.ts";
 import { composeDealsMail, dealsBlocks, productPhotoUrl, type DealsAccess } from "./deals.ts";
@@ -125,8 +126,8 @@ export function sampleDealsDay(day: string): DealsDay {
     ],
     cheapest: [{ product_id: "product_chicken", label: "Chicken, whole", unit: "kg", market_id: "market_keells_online", market: "Keells", now_minor: 119_000, was_minor: 142_000, was_on: day, pct: -16.2, kind: "cheapest", baseline: "other_stores", url: "/p/product_chicken" }],
     store_offers: [
-      { product_id: "product_red_dhal", label: "Red dhal", store_label: "Mysoor Dhal 1kg", unit: "kg", market_id: "market_cargills_online", market: "Cargills", now_minor: 38_500, was_minor: 46_000, pct: -16.3, audience: "everyone", offer_label: null, observed_on: day, url: "/p/product_red_dhal" },
-      { product_id: "product_chicken", label: "Chicken, whole", store_label: "Whole Chicken Skinless", unit: "kg", market_id: "market_keells_online", market: "Keells", now_minor: 112_000, was_minor: 140_000, pct: -20, audience: "members", offer_label: "Nexus", observed_on: day, url: "/p/product_chicken" },
+      { product_id: "product_red_dhal", label: "Red dhal", store_label: "Mysoor Dhal 1kg", unit: "kg", market_id: "market_cargills_online", market: "Cargills", now_minor: 38_500, was_minor: 46_000, pct: -16.3, audience: "everyone", offer_label: null, observed_on: day, url: "/p/product_red_dhal", image_path: null },
+      { product_id: "product_chicken", label: "Chicken, whole", store_label: "Whole Chicken Skinless", unit: "kg", market_id: "market_keells_online", market: "Keells", now_minor: 112_000, was_minor: 140_000, pct: -20, audience: "members", offer_label: "Nexus", observed_on: day, url: "/p/product_chicken", image_path: null },
     ],
     movers_up: [{ product_id: "product_egg", label: "Eggs", unit: "piece", market_id: "market_cargills_online", market: "Cargills", now_minor: 4_500, was_minor: 3_800, was_on: day, pct: 18.4, kind: "drop", baseline: "yesterday", url: "/p/product_egg" }],
     essentials: [
@@ -195,6 +196,25 @@ export function previewMail(kind: MailKind, deps: MailAdminDeps, overrides?: unk
   return renderMail(kind, sampleMailData(kind, deps, now), { fields, markUrl: deps.markUrl, replyTo: deps.replyTo, siteOrigin: deps.siteOrigin });
 }
 
+/**
+ * The same mail, made readable in a browser rather than in a mail client.
+ *
+ * A mail carries absolute addresses on the site's own host, which is what a mail client needs and
+ * what the admin cannot show: the admin is served from a host of its own, and the API answers for
+ * pictures with Cross-Origin-Resource-Policy: same-origin, so every one of them is refused and the
+ * preview shows the broken-picture box instead of the letterhead. The mark is embedded, and the
+ * pictures the API serves whatever the host asked for (docs/ui-conventions.md) become paths, which
+ * resolve wherever the preview is being read. What is sent is never touched.
+ */
+export function mailForBrowser(rendered: RenderedMail, options: { siteOrigin: string | null; markUrl?: string | undefined }): RenderedMail {
+  const origin = (options.siteOrigin || defaultSiteOrigin).replace(/\/+$/u, "");
+  const mark = options.markUrl ?? `${(process.env.LPL_SITE_ORIGIN?.trim() || defaultSiteOrigin).replace(/\/+$/u, "")}/mark.png`;
+  let html = rendered.html;
+  if (markData) html = html.replaceAll(mark, `data:image/png;base64,${markData}`);
+  for (const route of ["/images/", "/store-images/", "/content/"]) html = html.replaceAll(`src="${origin}${route}`, `src="${route}`);
+  return { ...rendered, html };
+}
+
 export function mailAdminRoutes(deps: MailAdminDeps): Hono<AdminBindings> {
   const app = new Hono<AdminBindings>();
   const clock = deps.now ?? (() => new Date());
@@ -234,7 +254,7 @@ export function mailAdminRoutes(deps: MailAdminDeps): Hono<AdminBindings> {
     if (!kind) return fail(context, 404, "Unknown mail kind", "NOT_FOUND");
     const body = await jsonObject(context);
     if (!body) return fail(context, 400, "Body must be JSON");
-    return context.json(envelope(requestIdOf(context), preview(kind, body.fields)));
+    return context.json(envelope(requestIdOf(context), mailForBrowser(preview(kind, body.fields), { siteOrigin: deps.siteOrigin, markUrl: deps.markUrl })));
   });
 
   app.post("/templates/:kind/test", bodyLimit({ maxSize: 64 * 1024 }), async (context) => {

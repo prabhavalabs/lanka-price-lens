@@ -42,6 +42,11 @@ export default defineConfig({
   server: {
     proxy: {
       "/images": { target: apiTarget, changeOrigin: true },
+      // The stores' own pictures and the drawn cards, both served by the API beside the database:
+      // without them the day's post preview shows a broken picture in development.
+      "/store-images": { target: apiTarget, changeOrigin: true },
+      "/og": { target: apiTarget, changeOrigin: true },
+      "/content": { target: apiTarget, changeOrigin: true },
       "/v1": {
         target: apiTarget,
         changeOrigin: true,

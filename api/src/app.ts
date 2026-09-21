@@ -1,4 +1,4 @@
-import { randomBytes } from "node:crypto";
+import { createHash, randomBytes } from "node:crypto";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -94,6 +94,8 @@ import type { CostLookup } from "./newsletters/recipes.ts";
 import { startNewsletterScheduler } from "./newsletters/scheduler.ts";
 import { createSocialStore, type Platform } from "./social/accounts.ts";
 import { createSettingsStore, isClock, isSettingChannel, postingZone } from "./social/settings.ts";
+import type { JobRunners } from "./social/jobs.ts";
+import { channelDealsMessage } from "./newsletters/telegram.ts";
 import { createLibraryStore } from "./social/library.ts";
 import { postDeals, renderDealsCard } from "./social/post.ts";
 import { runDueSchedules } from "./social/publish.ts";
@@ -132,6 +134,9 @@ import {
 } from "./auth.ts";
 
 type AppBindings = { Variables: { adminUser: AdminUser } & Partial<AccountVariables> };
+
+/** The routes that hand out a public picture: the photographs, the stores' own, the library's, and the drawn cards. */
+const publicPicturePath = /^\/(?:images|store-images|content|og)\//u;
 
 export function createApp(
   database: OperationalDatabase,
@@ -207,7 +212,21 @@ export function createApp(
     if (!run) return context.json(envelope(context.get("requestId"), null, false, "Capture did not start"), 500);
     return context.json(envelope(context.get("requestId"), run, true, "Capture started"), 202);
   };
-  app.use("*", requestId(), secureHeaders());
+  app.use("*", requestId(), secureHeaders({ crossOriginResourcePolicy: false }));
+  /**
+   * Who may embed what this server answers with. Everything is same-origin, as the secure-headers
+   * default has it, except the pictures and the drawn cards: those are public and exist to be shown
+   * elsewhere — in the admin, which is served from a host of its own; inside the mail preview, whose
+   * sandboxed frame has an origin belonging to nobody; in a mail client; on a platform that fetched
+   * one from a post. A refused picture is the broken-image box, which is what this was.
+   *
+   * It is set here rather than on each route because the secure headers are written on the way out
+   * and would overwrite anything a route had set on the way up.
+   */
+  app.use("*", async (context, next) => {
+    await next();
+    context.header("Cross-Origin-Resource-Policy", publicPicturePath.test(context.req.path) ? "cross-origin" : "same-origin");
+  });
   app.get("/v1/health", (context) => context.json(envelope(context.get("requestId"), { status: "ok" })));
 
   // The public read API behind the consumer site: no sign-in, only sources whose rights allow publication,
@@ -279,22 +298,41 @@ export function createApp(
         return client ? watchPrices(client, published(), productIds) : null;
       },
     },
-    telegram: { store: telegramStore, channel: bot ? telegramChannel : null },
-    facebook: {
-      page: () => {
-        const page = socialStore.active("facebook");
-        if (!settingsStore.of("facebook").enabled) return null;
-        return page && !page.paused && page.can_post && page.token_status === "ok" ? page.account_id : null;
-      },
-    },
+    telegram: { store: telegramStore },
     log: (line) => console.log(JSON.stringify({ level: "info", ...line })),
   });
   newsletterServices.set(app, newsletters);
+  /**
+   * What a due channel job does (api/src/social/jobs.ts). Built fresh on every use so a token
+   * connected a minute ago, or a channel switched off, is seen without a restart.
+   */
+  const channelJobRunners = (): JobRunners => ({
+    newsletter: async (kind, day) => {
+      const outcome = await newsletters.runNewsletter(kind, { day, trigger: "scheduled" });
+      const run = outcome.run;
+      if (run.status === "failed") return { status: "failed", detail: run.error ?? "The run failed" };
+      if (run.status === "skipped") return { status: "skipped", detail: run.error ?? "Nothing to send" };
+      return { status: "ran", detail: `${run.sent} sent, ${run.skipped} skipped, ${run.failed} failed` };
+    },
+    deals,
+    outbox,
+    accounts: socialStore,
+    siteOrigin,
+    telegramChannel: bot ? telegramChannel : null,
+    telegramDigest: channelDealsMessage,
+  });
   /** Everything the outbox can deliver through: the mailer's channels and the distribution channels. */
   const deliveryChannels = (): ChannelRegistry => new Map([...(ownMailer?.channels ?? []), ["facebook", facebookChannel], ["instagram", instagramChannel]]);
   if (options.newsletters && options.newsletters.scheduler !== false) {
     if (ownMailer?.channels) {
-      startNewsletterScheduler({ service: newsletters, outbox, channels: deliveryChannels(), settings: () => { const mail = settingsStore.of("email"); return { enabled: mail.enabled, sendAt: mail.send_at }; }, onGone: markSocialGone, log: (line) => console.log(JSON.stringify({ level: "info", ...line })) });
+      startNewsletterScheduler({
+        outbox,
+        channels: deliveryChannels(),
+        settings: settingsStore,
+        runners: channelJobRunners(),
+        onGone: markSocialGone,
+        log: (line) => console.log(JSON.stringify({ level: "info", ...line })),
+      });
     } else {
       console.warn("Daily mails are not running: set LPL_RESEND_API_KEY and LPL_MAIL_FROM so the API can send them.");
     }
@@ -369,9 +407,18 @@ export function createApp(
     const client = await warehouse();
     return client ? publicOverview(client, published()).catch(() => null) : null;
   };
+  /**
+   * A card, with the drawing itself as its tag. The address of a card never changes — the day's
+   * card is always /og/deals/<day>.png — so a browser told to keep it for an hour goes on showing
+   * the old drawing after the card is redrawn, which is how a change to the card reads as no
+   * change at all. The tag is the bytes, so a redraw is fetched and an unchanged one costs a 304.
+   */
   const cardResponse = (context: Context, png: Buffer) => {
+    const etag = `"${createHash("sha256").update(png).digest("base64url").slice(0, 27)}"`;
+    context.header("ETag", etag);
+    context.header("Cache-Control", "public, max-age=60, s-maxage=3600, stale-while-revalidate=86400");
+    if (context.req.header("if-none-match") === etag) return context.body(null, 304);
     context.header("Content-Type", "image/png");
-    context.header("Cache-Control", "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400");
     return context.body(new Uint8Array(png));
   };
   const cardId = (file: string) => file.replace(/\.png$/u, "").slice(0, 100);
@@ -648,7 +695,7 @@ export function createApp(
     return context.json(envelope(context.get("requestId"), null, true, "Signed out"));
   });
   // Facebook's redirect cannot carry the admin's SameSite=Strict session, so the callback answers to its own signed cookie; it is registered ahead of the session check on purpose.
-  const distributionDeps: DistributionDeps = { accounts: socialStore, content: libraryStore, settings: settingsStore, app: facebookApp, outbox, channels: deliveryChannels, deals, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
+  const distributionDeps: DistributionDeps = { accounts: socialStore, content: libraryStore, settings: settingsStore, app: facebookApp, outbox, channels: deliveryChannels, deals, runners: channelJobRunners, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
   app.get(facebookCallbackPath, facebookCallbackRoute(distributionDeps));
   app.use("/v1/admin/*", requireOwner);
   /**
@@ -1627,7 +1674,8 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
   const imagesRoot = defaultImagesRoot();
   app.use("/images/*", async (context, next) => {
     await next();
-    if (context.res.ok) context.header("Cache-Control", "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800");
+    if (!context.res.ok) return;
+    context.header("Cache-Control", "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800");
   });
   app.use("/images/*", serveStatic({ root: imagesRoot, rewriteRequestPath: (path) => path.replace(/^\/images/u, "") }));
   // A picture the site does not have is a plain 404, never the site's HTML: browsers and mail clients then treat it as missing.
@@ -1638,7 +1686,8 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
   app.use("/store-images/*", async (context, next) => {
     if (!/^\/store-images\/[a-z0-9_]+\/[0-9a-f]{2}\/[0-9a-f]{64}\.(?:jpg|png|webp|gif|avif)$/u.test(context.req.path)) return context.text("Not found", 404);
     await next();
-    if (context.res.ok) context.header("Cache-Control", "public, max-age=31536000, immutable");
+    if (!context.res.ok) return;
+    context.header("Cache-Control", "public, max-age=31536000, immutable");
   });
   app.use("/store-images/*", serveStatic({ root: storeImages, rewriteRequestPath: (path) => path.replace(/^\/store-images/u, "") }));
   app.get("/store-images/*", (context) => context.text("Not found", 404));
@@ -1649,7 +1698,8 @@ export function createProductionApp(runtime: { scheduler?: boolean } = {}): Hono
   app.use("/content/*", async (context, next) => {
     if (!/^\/content\/[0-9a-f]{32}\.jpg$/u.test(context.req.path)) return context.text("Not found", 404);
     await next();
-    if (context.res.ok) context.header("Cache-Control", "public, max-age=31536000, immutable");
+    if (!context.res.ok) return;
+    context.header("Cache-Control", "public, max-age=31536000, immutable");
   });
   app.use("/content/*", serveStatic({ root: contentDirectory(), rewriteRequestPath: (path) => path.replace(/^\/content/u, "") }));
   app.get("/content/*", (context) => context.text("Not found", 404));

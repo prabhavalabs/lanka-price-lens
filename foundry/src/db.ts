@@ -1040,6 +1040,24 @@ function migrate(database: OperationalDatabase): void {
       updated_at TEXT NOT NULL
     ) STRICT;
     CREATE INDEX IF NOT EXISTS content_schedule_item_idx ON content_schedule(item_id);
+
+    -- What a channel actually sends, and when. A channel holds several of these: the mail channel
+    -- has the deals mail, the recipes mail and the price alerts; a platform has the day's post.
+    -- The cron column is a five-field expression read in Colombo time (api/src/social/recurrence.ts):
+    -- a job can run every day, every Monday, every six hours, or anything else a crontab can say.
+    -- The channel's own row above is the master switch: a job runs only when both are on.
+    CREATE TABLE IF NOT EXISTS channel_job (
+      channel TEXT NOT NULL CHECK (channel IN ('email', 'facebook', 'instagram', 'telegram')),
+      job TEXT NOT NULL,
+      enabled INTEGER NOT NULL DEFAULT 1 CHECK (enabled IN (0, 1)),
+      cron TEXT NOT NULL,
+      last_run_at TEXT,
+      last_status TEXT CHECK (last_status IN ('ran', 'failed', 'skipped')),
+      last_error TEXT,
+      updated_by TEXT,
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY (channel, job)
+    ) STRICT;
   `);
   // A database from before the accounts were held per platform carries the Facebook-only table; its
   // Pages move across with their sealed tokens, which stay readable because the secret has not changed.

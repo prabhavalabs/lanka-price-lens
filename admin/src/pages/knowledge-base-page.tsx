@@ -338,7 +338,7 @@ function KnowledgeControls({ state }: { state: TableState }) {
   };
   return (
     <form className="grid gap-2 border-b px-4 py-4 sm:grid-cols-[minmax(18rem,1fr)_11rem_8rem]" onSubmit={form.handleSubmit(({ search }) => state.update({ page: 1, search: search.trim() }))} role="search">
-      <InputGroup className="h-11 sm:h-10">
+      <InputGroup>
         <InputGroupAddon><RiSearchLine /></InputGroupAddon>
         <InputGroupInput aria-label="Search knowledge base documents" autoComplete="off" enterKeyHint="search" placeholder="Search documents by name or ID…" type="search" {...form.register("search")} />
         <InputGroupAddon align="inline-end">
@@ -347,11 +347,11 @@ function KnowledgeControls({ state }: { state: TableState }) {
         </InputGroupAddon>
       </InputGroup>
       <Select onValueChange={(value) => state.update({ page: 1, status: value === "all" ? "" : value })} value={state.status || "all"}>
-        <SelectTrigger aria-label="Filter by index status" className="w-full data-[size=default]:h-11 sm:data-[size=default]:h-10"><SelectValue /></SelectTrigger>
+        <SelectTrigger aria-label="Filter by index status" className="w-full"><SelectValue /></SelectTrigger>
         <SelectContent position="popper"><SelectGroup><SelectItem value="all">All bulletins</SelectItem>{knowledgeIndexStatuses.map((option) => <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>)}</SelectGroup></SelectContent>
       </Select>
       <Select onValueChange={(value) => state.update({ page: 1, pageSize: Number(value) })} value={String(state.pageSize)}>
-        <SelectTrigger aria-label="Documents per page" className="w-full data-[size=default]:h-11 sm:data-[size=default]:h-10"><SelectValue /></SelectTrigger>
+        <SelectTrigger aria-label="Documents per page" className="w-full"><SelectValue /></SelectTrigger>
         <SelectContent position="popper"><SelectGroup>{[10, 20, 50, 100].map((size) => <SelectItem key={size} value={String(size)}>{size} rows</SelectItem>)}</SelectGroup></SelectContent>
       </Select>
     </form>

@@ -41,6 +41,14 @@ import {
 } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
+/**
+ * What the preview frame may do. Scripts stay forbidden — a mail carries none, and without
+ * allow-scripts nothing inside the frame can reach out of it — but the frame keeps this origin. A
+ * frame sandboxed all the way has an origin belonging to nobody, and a browser hands such a frame
+ * no subresource at all: every picture in the mail came out as the broken-image box.
+ */
+const previewSandbox = "allow-same-origin";
+
 const kindCopy: Record<MailKind, { label: string; when: string }> = {
   verify_email: { label: "Verify email", when: "After sign-up, asking the person to confirm their address." },
   welcome: { label: "Welcome", when: "Once the address is verified." },
@@ -283,7 +291,7 @@ function TemplateEditor({ template }: { template: MailTemplate }) {
             ) : preview.data ? plain ? (
               <pre className="max-h-[42rem] overflow-auto whitespace-pre-wrap bg-background/40 p-3 font-mono text-[11px] leading-relaxed">{preview.data.text}</pre>
             ) : (
-              <iframe className="h-[42rem] w-full bg-white" sandbox="" srcDoc={preview.data.html} title={`Preview of the ${kindCopy[template.kind].label} mail`} />
+              <iframe className="h-[42rem] w-full bg-white" sandbox={previewSandbox} srcDoc={preview.data.html} title={`Preview of the ${kindCopy[template.kind].label} mail`} />
             ) : <Skeleton className="h-[42rem] rounded-none" />}
           </div>
           <p className="text-[11px] text-muted-foreground">Rendered with sample data (today's deals or three real recipes when available) and refreshed as you type.</p>

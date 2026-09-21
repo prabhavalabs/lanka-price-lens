@@ -86,14 +86,14 @@ function AmountPicker({ id, label, quantity, unit, size }: { id: string; label: 
           ))}
         </div>
         <form className="mt-3 flex items-center gap-1.5" onSubmit={(event) => { event.preventDefault(); apply(); }}>
-          <Input aria-label="Exact amount" className="h-8 flex-1 tabular-nums" inputMode="decimal" min="0" onChange={(event) => setDraft(event.target.value)} placeholder={metric ? (draftUnit === "small" ? "e.g. 300" : "e.g. 1.5") : "e.g. 4"} step="any" type="number" value={draft} />
+          <Input aria-label="Exact amount" className="flex-1 tabular-nums" size="sm" inputMode="decimal" min="0" onChange={(event) => setDraft(event.target.value)} placeholder={metric ? (draftUnit === "small" ? "e.g. 300" : "e.g. 1.5") : "e.g. 4"} step="any" type="number" value={draft} />
           {metric ? (
             <ToggleGroup aria-label="Unit" onValueChange={(value) => { if (value === "small" || value === "large") setDraftUnit(value); }} size="sm" type="single" value={draftUnit} variant="outline">
               <ToggleGroupItem className="px-2 text-xs" value="small">{smallUnit}</ToggleGroupItem>
               <ToggleGroupItem className="px-2 text-xs" value="large">{unit}</ToggleGroupItem>
             </ToggleGroup>
           ) : <span className="text-xs text-muted-foreground">{unit === "piece" ? "pcs" : unit}</span>}
-          <Button className="h-8" disabled={!draft} size="sm" type="submit">Set</Button>
+          <Button disabled={!draft} size="sm" type="submit">Set</Button>
         </form>
       </PopoverContent>
     </Popover>

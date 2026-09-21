@@ -31,7 +31,13 @@ export const pictureMaxBytes = 8 * 1024 * 1024;
 export const uploadMaxBytes = 25 * 1024 * 1024;
 export const carouselMax = 10;
 
-export type ContentAsset = { id: string; position: number; file: string; media_type: string; width: number; height: number; bytes: number; url: string };
+export type ContentAsset = {
+  id: string; position: number; file: string; media_type: string; width: number; height: number; bytes: number;
+  /** The public address the platforms fetch the picture from, which is the site's. */
+  url: string;
+  /** The same picture under whichever host is asking for it, so the admin shows it from its own origin. */
+  path: string;
+};
 export type ContentItem = {
   id: string;
   kind: ContentKind;
@@ -59,7 +65,7 @@ export type ScheduleRow = {
   created_at: string;
 };
 /** A schedule with enough of its post to show in the calendar without reading every item. */
-export type CalendarEntry = ScheduleRow & { title: string; kind: ContentKind; thumbnail: string | null };
+export type CalendarEntry = ScheduleRow & { title: string; kind: ContentKind; /** The picture's path, read from whichever host is serving the admin. */ thumbnail: string | null };
 
 export type ContentInput = { kind?: ContentKind; title: string; caption: string; link?: string | null; status?: ContentStatus; tags?: string[] };
 
@@ -92,7 +98,7 @@ export const assetPath = (file: string): string => `/content/${file}`;
 
 export function createLibraryStore(database: OperationalDatabase, directory: string, origin: string): LibraryStore {
   const url = (file: string): string => `${origin.replace(/\/+$/u, "")}${assetPath(file)}`;
-  const toAsset = (row: AssetRow): ContentAsset => ({ id: row.id, position: row.position, file: row.file, media_type: row.media_type, width: row.width, height: row.height, bytes: row.bytes, url: url(row.file) });
+  const toAsset = (row: AssetRow): ContentAsset => ({ id: row.id, position: row.position, file: row.file, media_type: row.media_type, width: row.width, height: row.height, bytes: row.bytes, url: url(row.file), path: assetPath(row.file) });
 
   const assetsOf = (itemId: string): ContentAsset[] =>
     (database.prepare("SELECT id, item_id, position, file, media_type, width, height, bytes FROM content_asset WHERE item_id = ? ORDER BY position").all(itemId) as AssetRow[]).map(toAsset);
@@ -183,7 +189,7 @@ export function createLibraryStore(database: OperationalDatabase, directory: str
         .prepare("INSERT INTO content_asset (id, item_id, position, file, media_type, width, height, bytes, created_at) VALUES (?, ?, ?, ?, 'image/jpeg', ?, ?, ?, ?)")
         .run(assetId, id, held, file, width, height, jpeg.byteLength, stamp);
       settleKind(id, now);
-      return { id: assetId, position: held, file, media_type: "image/jpeg", width, height, bytes: jpeg.byteLength, url: url(file) };
+      return { id: assetId, position: held, file, media_type: "image/jpeg", width, height, bytes: jpeg.byteLength, url: url(file), path: assetPath(file) };
     },
     removeAsset: async (id, assetId) => {
       const row = database.prepare("SELECT file FROM content_asset WHERE id = ? AND item_id = ?").get(assetId, id) as { file: string } | undefined;
@@ -219,7 +225,7 @@ export function createLibraryStore(database: OperationalDatabase, directory: str
             WHERE s.scheduled_for >= ? AND s.scheduled_for < ? ORDER BY s.scheduled_for`,
         )
         .all(from, to) as Array<CalendarEntry & { thumbnail: string | null }>;
-      return rows.map((row) => ({ ...row, thumbnail: row.thumbnail ? url(row.thumbnail) : null }));
+      return rows.map((row) => ({ ...row, thumbnail: row.thumbnail ? assetPath(row.thumbnail) : null }));
     },
     due: (now, limit) => {
       const rows = database
