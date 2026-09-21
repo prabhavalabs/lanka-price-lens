@@ -113,6 +113,14 @@ import {
 } from "./knowledge-sql.ts";
 import {
   adminSessionCookie,
+  adminTokenScopes,
+  bearerToken,
+  createAdminToken,
+  findAdminToken,
+  isAdminTokenScope,
+  listAdminTokens,
+  revokeAdminToken,
+  scopeAllows,
   adminSessionSeconds,
   authenticateAdmin,
   createAdminSession,
@@ -600,7 +608,24 @@ export function createApp(
     return context.json(envelope(context.get("requestId"), user, true, "Signed in"));
   });
 
+  /**
+   * The owner, by browser session or by token (docs/mcp.md). A session is a cookie, so it carries
+   * the same-origin check that keeps another site from acting through it; a token is presented
+   * deliberately in a header, where that attack does not exist, and is checked against its scope
+   * instead.
+   */
   const requireOwner = async (context: Context<AppBindings>, next: Next) => {
+    const presented = bearerToken(context.req.header("authorization"));
+    if (presented) {
+      const identity = findAdminToken(database, presented);
+      if (!identity) return context.json(envelope(context.get("requestId"), null, false, "Authentication required"), 401);
+      if (!scopeAllows(identity.scope, context.req.path)) {
+        return context.json(envelope(context.get("requestId"), null, false, `This token reaches the ${identity.scope} part of the admin only`), 403);
+      }
+      context.set("adminUser", identity.user);
+      await next();
+      return;
+    }
     const user = findAdminSession(database, getCookie(context, adminSessionCookie));
     if (!user) return context.json(envelope(context.get("requestId"), null, false, "Authentication required"), 401);
     if (!sameOrigin(context)) return context.json(envelope(context.get("requestId"), null, false, "Cross-origin request rejected"), 403);
@@ -619,6 +644,33 @@ export function createApp(
   const distributionDeps: DistributionDeps = { accounts: socialStore, content: libraryStore, app: facebookApp, outbox, channels: deliveryChannels, deals, siteOrigin, stateSecret: accountConfig.stateSecret, secureCookies: accountConfig.secureCookies, log: (line) => console.log(JSON.stringify(line)) };
   app.get(facebookCallbackPath, facebookCallbackRoute(distributionDeps));
   app.use("/v1/admin/*", requireOwner);
+  /**
+   * Tokens for programs acting as the owner (docs/mcp.md). Only a browser session may manage them:
+   * a token cannot mint another, which keeps a leaked one from making itself permanent.
+   */
+  const sessionOnly = async (context: Context<AppBindings>, next: Next) => {
+    if (bearerToken(context.req.header("authorization"))) {
+      return context.json(envelope(context.get("requestId"), null, false, "Tokens are managed from the admin, not with a token"), 403);
+    }
+    await next();
+  };
+  app.get("/v1/admin/tokens", sessionOnly, (context) => context.json(envelope(context.get("requestId"), listAdminTokens(database, context.get("adminUser").id))));
+  app.post("/v1/admin/tokens", sessionOnly, bodyLimit({ maxSize: 2048 }), async (context) => {
+    const body = await jsonObject(context);
+    const name = typeof body?.name === "string" ? body.name.trim() : "";
+    if (!name) return context.json(envelope(context.get("requestId"), null, false, "Give the token a name, so you know later what it is for"), 400);
+    const scope = isAdminTokenScope(body?.scope) ? body.scope : "distribution";
+    const days = typeof body?.days === "number" && Number.isFinite(body.days) ? Math.max(1, Math.min(Math.trunc(body.days), 3650)) : null;
+    const expiresAt = days ? new Date(Date.now() + days * 86_400_000).toISOString() : null;
+    const made = createAdminToken(database, { userId: context.get("adminUser").id, name, scope, expiresAt });
+    // The only time the token itself is ever sent anywhere.
+    return context.json(envelope(context.get("requestId"), { token: made.token, row: made.row, tokens: listAdminTokens(database, context.get("adminUser").id) }, true, "Copy it now: it is not shown again"));
+  });
+  app.delete("/v1/admin/tokens/:tokenId", sessionOnly, (context) => {
+    const gone = revokeAdminToken(database, context.get("adminUser").id, context.req.param("tokenId") ?? "");
+    return context.json(envelope(context.get("requestId"), listAdminTokens(database, context.get("adminUser").id), gone, gone ? "Token revoked" : "No such token"), gone ? 200 : 404);
+  });
+  app.get("/v1/admin/whoami", (context) => context.json(envelope(context.get("requestId"), { email: context.get("adminUser").email, scopes: adminTokenScopes })));
   app.route("/v1/admin/distribution", distributionAdminRoutes(distributionDeps));
   app.route("/v1/admin/accounts", adminAccountRoutes({ store: accountStore, content: contentStore }));
   app.route("/v1/admin", newsletterAdminRoutes({ service: newsletters, deals }));

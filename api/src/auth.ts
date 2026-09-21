@@ -122,3 +122,90 @@ function normalizeEmail(email: string): string | undefined {
   const normalized = email.trim().toLowerCase();
   return normalized.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/u.test(normalized) ? normalized : undefined;
 }
+
+// --- Tokens for programs acting as the owner (docs/mcp.md) ------------------------------------
+
+/** Every token starts with this, so one that leaks into a log or a paste is recognisable at a glance. */
+export const adminTokenPrefix = "lpl_";
+export const adminTokenScopes = ["distribution", "full"] as const;
+export type AdminTokenScope = (typeof adminTokenScopes)[number];
+
+export function isAdminTokenScope(value: unknown): value is AdminTokenScope {
+  return typeof value === "string" && (adminTokenScopes as readonly string[]).includes(value);
+}
+
+export type AdminTokenRow = {
+  id: string;
+  name: string;
+  scope: AdminTokenScope;
+  created_at: string;
+  last_used_at: string | null;
+  expires_at: string | null;
+  revoked_at: string | null;
+};
+
+/** What a bearer token proves: who it acts as, and how far it reaches. */
+export type AdminTokenIdentity = { user: AdminUser; tokenId: string; scope: AdminTokenScope };
+
+/**
+ * Makes a token and returns it once. Only its hash is stored (the same hashing the sessions use),
+ * so this is the only moment the value exists anywhere but in the owner's hands.
+ */
+export function createAdminToken(
+  database: OperationalDatabase,
+  input: { userId: string; name: string; scope: AdminTokenScope; expiresAt?: string | null },
+  now = new Date(),
+): { token: string; row: AdminTokenRow } {
+  const token = `${adminTokenPrefix}${randomBytes(32).toString("base64url")}`;
+  const id = `token_${randomUUID()}`;
+  database
+    .prepare("INSERT INTO admin_token (id, user_id, name, token_hash, scope, created_at, expires_at) VALUES (?, ?, ?, ?, ?, ?, ?)")
+    .run(id, input.userId, input.name.slice(0, 120), hashToken(token), input.scope, now.toISOString(), input.expiresAt ?? null);
+  return { token, row: database.prepare("SELECT id, name, scope, created_at, last_used_at, expires_at, revoked_at FROM admin_token WHERE id = ?").get(id) as AdminTokenRow };
+}
+
+export function listAdminTokens(database: OperationalDatabase, userId: string): AdminTokenRow[] {
+  return database
+    .prepare("SELECT id, name, scope, created_at, last_used_at, expires_at, revoked_at FROM admin_token WHERE user_id = ? ORDER BY created_at DESC")
+    .all(userId) as AdminTokenRow[];
+}
+
+export function revokeAdminToken(database: OperationalDatabase, userId: string, tokenId: string, now = new Date()): boolean {
+  return database.prepare("UPDATE admin_token SET revoked_at = ? WHERE id = ? AND user_id = ? AND revoked_at IS NULL").run(now.toISOString(), tokenId, userId).changes > 0;
+}
+
+/**
+ * The owner behind a bearer token, or null when it is unknown, revoked, or past its day. The
+ * lookup is by hash, so a token that is not in the database leaves no trace of what was tried.
+ * `last_used_at` is written on every accepted call, which is what makes a forgotten token visible.
+ */
+export function findAdminToken(database: OperationalDatabase, presented: string | undefined, now = new Date()): AdminTokenIdentity | null {
+  if (!presented || !presented.startsWith(adminTokenPrefix)) return null;
+  const row = database
+    .prepare(
+      `SELECT t.id, t.user_id, t.scope, t.expires_at, t.revoked_at, u.email
+         FROM admin_token t JOIN admin_user u ON u.id = t.user_id
+        WHERE t.token_hash = ? AND u.status = 'active'`,
+    )
+    .get(hashToken(presented)) as { id: string; user_id: string; scope: AdminTokenScope; expires_at: string | null; revoked_at: string | null; email: string } | undefined;
+  if (!row || row.revoked_at) return null;
+  if (row.expires_at && new Date(row.expires_at) <= now) return null;
+  database.prepare("UPDATE admin_token SET last_used_at = ? WHERE id = ?").run(now.toISOString(), row.id);
+  return { user: { id: row.user_id, email: row.email }, tokenId: row.id, scope: row.scope };
+}
+
+/** The `Authorization: Bearer …` value, if the header carries one. */
+export function bearerToken(header: string | undefined): string | undefined {
+  const match = /^Bearer\s+(\S+)$/u.exec(header ?? "");
+  return match?.[1];
+}
+
+/**
+ * What a scope may reach. `distribution` is the one the MCP server gets: the library, the calendar
+ * and the channels, and nothing else, so a token on a laptop cannot read the prices, the accounts,
+ * or the sources even though the owner's own browser can.
+ */
+export function scopeAllows(scope: AdminTokenScope, path: string): boolean {
+  if (scope === "full") return true;
+  return path.startsWith("/v1/admin/distribution");
+}

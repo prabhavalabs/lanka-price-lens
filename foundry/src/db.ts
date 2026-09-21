@@ -90,6 +90,22 @@ function migrate(database: OperationalDatabase): void {
 
     CREATE INDEX IF NOT EXISTS admin_session_user_expiry_idx
       ON admin_session(user_id, expires_at DESC);
+    -- Tokens for programs acting as the owner (docs/mcp.md): the MCP server, a script, a scheduled job.
+    -- Only the hash is kept, so a token cannot be read back out of the database; it is shown once when
+    -- it is made and never again. A scope narrows what it may reach, because a token sitting on a laptop
+    -- should not be able to do everything the owner's own browser can.
+    CREATE TABLE IF NOT EXISTS admin_token (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL REFERENCES admin_user(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      token_hash TEXT NOT NULL UNIQUE,
+      scope TEXT NOT NULL DEFAULT 'distribution' CHECK (scope IN ('distribution', 'full')),
+      created_at TEXT NOT NULL,
+      last_used_at TEXT,
+      expires_at TEXT,
+      revoked_at TEXT
+    ) STRICT;
+    CREATE INDEX IF NOT EXISTS admin_token_user_idx ON admin_token(user_id, created_at DESC);
 
     CREATE TABLE IF NOT EXISTS run_stage (
       id INTEGER PRIMARY KEY,
