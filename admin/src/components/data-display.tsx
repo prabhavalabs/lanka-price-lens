@@ -78,11 +78,11 @@ export function TableControls({
       </InputGroup>
       <Button type="submit" variant="outline"><RiSearchLine data-icon="inline-start" />Search</Button>
       <Select onValueChange={(value) => state.update({ page: 1, status: value === "all" ? "" : value })} value={state.status || "all"}>
-        <SelectTrigger aria-label="Filter by status" className="h-10 w-full sm:w-44"><SelectValue /></SelectTrigger>
+        <SelectTrigger aria-label="Filter by status" className="w-full sm:w-44"><SelectValue /></SelectTrigger>
         <SelectContent position="popper"><SelectGroup><SelectItem value="all">All statuses</SelectItem>{statuses.map((option) => <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>)}</SelectGroup></SelectContent>
       </Select>
       <Select onValueChange={(value) => state.update({ page: 1, pageSize: Number(value) })} value={String(state.pageSize)}>
-        <SelectTrigger aria-label="Rows per page" className="h-10 w-full sm:w-32"><SelectValue /></SelectTrigger>
+        <SelectTrigger aria-label="Rows per page" className="w-full sm:w-32"><SelectValue /></SelectTrigger>
         <SelectContent position="popper"><SelectGroup>{[10, 20, 50, 100].map((size) => <SelectItem key={size} value={String(size)}>{size} rows</SelectItem>)}</SelectGroup></SelectContent>
       </Select>
       {filtered ? <Button onClick={() => state.update({ page: 1, search: "", status: "" })} type="button" variant="ghost"><RiCloseLine data-icon="inline-start" />Clear</Button> : null}

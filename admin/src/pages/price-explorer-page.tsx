@@ -109,11 +109,11 @@ export function PriceExplorerPage() {
           {data.product.varieties.length > 1 ? (
             <div className="flex flex-wrap items-center gap-1.5">
               <span className="mr-1 text-xs text-muted-foreground">{data.product.comparison === "pooled" ? "Varieties pooled per seller:" : "Different products under one name; compare one at a time:"}</span>
-              <Button className="h-7 rounded-full px-3 text-xs" onClick={() => update({ varieties: "all" })} size="sm" variant={allSelected ? "default" : "outline"}>All varieties</Button>
+              <Button className="rounded-full" onClick={() => update({ varieties: "all" })} size="sm" variant={allSelected ? "default" : "outline"}>All varieties</Button>
               {data.product.varieties.map((variety) => {
                 const active = !allSelected && data.selected.length === 1 && data.selected[0] === variety.id;
                 return (
-                  <Button className="h-7 rounded-full px-3 text-xs" key={variety.id} onClick={() => update({ varieties: variety.id })} size="sm" variant={active ? "default" : "outline"}>
+                  <Button className="rounded-full" key={variety.id} onClick={() => update({ varieties: variety.id })} size="sm" variant={active ? "default" : "outline"}>
                     {variety.qualifier}
                     <span className={cn("ml-1 font-mono text-[10px]", active ? "text-primary-foreground/70" : "text-muted-foreground")}>{variety.sellers}</span>
                   </Button>

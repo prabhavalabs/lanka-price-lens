@@ -41,6 +41,7 @@ refreshed from the live site with `web/scripts/guide-screenshots.js`.
 | --- | --- |
 | Using the site | [docs/user-guide.md](docs/user-guide.md), live at [/guide](https://badumila.com/guide) |
 | How the site works and its public API | [docs/public-site.md](docs/public-site.md) |
+| Interface conventions the admin and the site both follow | [docs/ui-conventions.md](docs/ui-conventions.md) |
 | Architecture and the separation of operational data from public views | [docs/architecture.md](docs/architecture.md) |
 | Official PDF sources and their parsers | [docs/official-sources.md](docs/official-sources.md), [docs/pdf-archive.md](docs/pdf-archive.md), [docs/pdf-intake.md](docs/pdf-intake.md) |
 | Supermarket capture, mapping rules, proxies, snapshots | [docs/retail-capture.md](docs/retail-capture.md) |

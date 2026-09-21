@@ -70,14 +70,14 @@ export function ProposeIngredientDialog({ label, open, onOpenChange, onProposed 
             <div className="space-y-1.5">
               <Label htmlFor="proposal-kind">Kind</Label>
               <Select onValueChange={(value) => { if (isKind(value)) setKind(value); }} value={kind}>
-                <SelectTrigger className="w-full data-[size=default]:h-9" id="proposal-kind"><SelectValue /></SelectTrigger>
+                <SelectTrigger className="w-full" id="proposal-kind"><SelectValue /></SelectTrigger>
                 <SelectContent position="popper">{kinds.map((entry) => <SelectItem key={entry} value={entry}>{kindWords[entry]}</SelectItem>)}</SelectContent>
               </Select>
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="proposal-unit">Usually measured in</Label>
               <Select onValueChange={(value) => { if (isUnitChoice(value)) setUnit(value); }} value={unit}>
-                <SelectTrigger className="w-full data-[size=default]:h-9" id="proposal-unit"><SelectValue /></SelectTrigger>
+                <SelectTrigger className="w-full" id="proposal-unit"><SelectValue /></SelectTrigger>
                 <SelectContent position="popper">
                   <SelectItem value="unsure">Not sure</SelectItem>
                   {proposalUnitHints.map((entry) => <SelectItem key={entry} value={entry}>{unitWords[entry]}</SelectItem>)}

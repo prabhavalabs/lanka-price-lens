@@ -66,7 +66,7 @@ export function DateRangeControl({ value, onChange, earliest, latest, className 
       </ToggleGroup>
       <Popover onOpenChange={(next) => { setOpen(next); if (next) setDraft(custom ? { from: parseDate(custom.from), to: parseDate(custom.to) } : undefined); }} open={open}>
         <PopoverTrigger asChild>
-          <Button aria-label={custom ? `Custom range ${describeRange(custom)}` : "Choose a custom date range"} className="h-9" variant={custom ? "default" : "outline"}>
+          <Button aria-label={custom ? `Custom range ${describeRange(custom)}` : "Choose a custom date range"} variant={custom ? "default" : "outline"}>
             <RiCalendarLine data-icon="inline-start" />
             {custom ? describeRange(custom) : "Custom range"}
           </Button>

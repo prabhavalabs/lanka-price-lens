@@ -421,7 +421,8 @@ export type ChannelPost = { id: string; platform: Platform; account_id: string; 
 export type DistributionStatus = { configured: boolean; app_id: string | null; redirect_uri: string; accounts: ConnectedAccount[]; posts: ChannelPost[]; publishing_limit?: { used: number; cap: number } | null };
 export type DealsPreview = { day: string; requested_day: string; platform: Platform; ready: boolean; caption: string | null; image_url: string | null; rows: Array<{ label: string; store: string; note: string; now: string; was: string | null; pct: number }> };
 
-export type ContentAsset = { id: string; position: number; file: string; media_type: string; width: number; height: number; bytes: number; url: string };
+/** `url` is the public address the platforms fetch; `path` is the same picture on the host serving the admin, which is what an <img> here uses. */
+export type ContentAsset = { id: string; position: number; file: string; media_type: string; width: number; height: number; bytes: number; url: string; path: string };
 export type ContentSchedule = { id: string; item_id: string; platform: Platform; scheduled_for: string; status: "scheduled" | "queued" | "published" | "failed" | "cancelled"; outbox_id: string | null; post_url: string | null; error: string | null; published_at: string | null; created_at: string };
 export type ContentItem = { id: string; kind: "image" | "carousel" | "text"; title: string; caption: string; link: string | null; status: "draft" | "ready" | "archived"; tags: string[]; assets: ContentAsset[]; schedules: ContentSchedule[]; created_by: string | null; created_at: string; updated_at: string };
 export type ContentPreview = { facebook: { caption: string; blocker: string | null }; instagram: { caption: string; blocker: string | null }; pictures: string[] };

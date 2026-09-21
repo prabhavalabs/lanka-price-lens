@@ -83,7 +83,7 @@ export function InsightsPage() {
         <CardContent className="flex flex-col gap-2 lg:flex-row lg:items-center">
           <ProductCombobox itemId={data?.variety?.id ?? item} loading={insights.isPending} onSelect={(next) => update({ product: next.product, item: next.item })} productId={selected} products={products} varieties={insights.data?.varieties ?? []} />
           <Select disabled={varieties.length <= 1} onValueChange={(value) => update({ item: value === "all" ? "" : value })} value={varieties.length <= 1 ? "all" : data?.variety?.id ?? "all"}>
-            <SelectTrigger aria-label="Variety" className="w-full data-[size=default]:h-9 lg:w-56"><SelectValue placeholder="Variety">{varieties.length <= 1 ? "Single variety" : data?.variety ? data.variety.label.replace(`${data.product.label} — `, "") : "All varieties combined"}</SelectValue></SelectTrigger>
+            <SelectTrigger aria-label="Variety" className="w-full lg:w-56"><SelectValue placeholder="Variety">{varieties.length <= 1 ? "Single variety" : data?.variety ? data.variety.label.replace(`${data.product.label} — `, "") : "All varieties combined"}</SelectValue></SelectTrigger>
             <SelectContent position="popper">
               <SelectGroup>
                 <SelectLabel>Variety</SelectLabel>

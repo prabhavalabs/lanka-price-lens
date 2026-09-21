@@ -83,7 +83,7 @@ export function RecipeEditor({ initial, recipeId, onSaved, onCancel }: { initial
             </Field>
             <Field error={errors.category} id="recipe-category" label="Category">
               <Select onValueChange={(value) => patch((current) => ({ ...current, category: value }))} value={draft.category}>
-                <SelectTrigger aria-invalid={errors.category ? true : undefined} className="h-10 w-full" id="recipe-category"><SelectValue /></SelectTrigger>
+                <SelectTrigger aria-invalid={errors.category ? true : undefined} className="w-full" id="recipe-category"><SelectValue /></SelectTrigger>
                 <SelectContent position="popper">{userRecipeCategories.map((category) => <SelectItem key={category} value={category}>{dishCategoryLabel(category)}</SelectItem>)}</SelectContent>
               </Select>
             </Field>
@@ -125,7 +125,7 @@ export function RecipeEditor({ initial, recipeId, onSaved, onCancel }: { initial
             </div>
             <Field error={errors["serving.role"]} id="recipe-role" label="Served as">
               <Select onValueChange={(value) => patch((current) => ({ ...current, serving: { ...current.serving, role: value } }))} value={draft.serving.role}>
-                <SelectTrigger className="h-10 w-full" id="recipe-role"><SelectValue /></SelectTrigger>
+                <SelectTrigger className="w-full" id="recipe-role"><SelectValue /></SelectTrigger>
                 <SelectContent position="popper">{servingRoles.map((role) => <SelectItem key={role} value={role}>{roleLabels[role] ?? role}</SelectItem>)}</SelectContent>
               </Select>
             </Field>
@@ -318,7 +318,7 @@ function IngredientRow({ line, index, last, errors, onChange, onMove, onRemove }
         <NumberField className="col-start-2 sm:col-start-auto" error={at("quantity")} id={`ingredient-${line.key}-quantity`} label="Amount" onChange={(value) => set("quantity", value)} placeholder="250" value={line.quantity} />
         <Field className="col-start-2 sm:col-start-auto" error={at("unit")} id={`ingredient-${line.key}-unit`} label="Unit">
           <Select onValueChange={(value) => { if (value === "g" || value === "ml" || value === "piece") set("unit", value); }} value={line.unit}>
-            <SelectTrigger className="h-10 w-full" id={`ingredient-${line.key}-unit`}><SelectValue /></SelectTrigger>
+            <SelectTrigger className="w-full" id={`ingredient-${line.key}-unit`}><SelectValue /></SelectTrigger>
             <SelectContent position="popper">{(Object.keys(unitLabels) as Array<keyof typeof unitLabels>).map((unit) => <SelectItem key={unit} value={unit}>{unitLabels[unit]}</SelectItem>)}</SelectContent>
           </Select>
         </Field>
@@ -332,13 +332,13 @@ function IngredientRow({ line, index, last, errors, onChange, onMove, onRemove }
         </Field>
         <Field error={at("scaling")} id={`ingredient-${line.key}-scaling`} label="With more servings">
           <Select onValueChange={(value) => { if (value === "linear" || value === "sublinear" || value === "fixed") set("scaling", value); }} value={line.scaling}>
-            <SelectTrigger className="h-10 w-full" id={`ingredient-${line.key}-scaling`}><SelectValue /></SelectTrigger>
+            <SelectTrigger className="w-full" id={`ingredient-${line.key}-scaling`}><SelectValue /></SelectTrigger>
             <SelectContent position="popper">{(Object.keys(scalingLabels) as Array<keyof typeof scalingLabels>).map((mode) => <SelectItem key={mode} value={mode}>{scalingLabels[mode]}</SelectItem>)}</SelectContent>
           </Select>
         </Field>
         <Field error={at("part")} id={`ingredient-${line.key}-part`} label="Part of the dish">
           <Select onValueChange={(value) => set("part", value)} value={line.part}>
-            <SelectTrigger className="h-10 w-full" id={`ingredient-${line.key}-part`}><SelectValue /></SelectTrigger>
+            <SelectTrigger className="w-full" id={`ingredient-${line.key}-part`}><SelectValue /></SelectTrigger>
             <SelectContent position="popper">{ingredientParts.map((part) => <SelectItem key={part} value={part}>{partLabel(part)}</SelectItem>)}</SelectContent>
           </Select>
         </Field>
