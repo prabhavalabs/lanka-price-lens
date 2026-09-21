@@ -55,6 +55,12 @@ API answers with `Cross-Origin-Resource-Policy: same-origin`, so an absolute add
 blocked by the browser and the picture never appears. Both hosts proxy to the same API, so the
 relative path resolves for whichever one is asking, in production and in development alike.
 
+The same rule bites in the mail preview, where the mail's own addresses are absolute because a
+mail client has to fetch them from the open web. `mailForBrowser` (api/src/newsletters/admin-routes.ts)
+makes a copy for the screen: the mark is embedded, and the pictures under `/images`, `/store-images`
+and `/content` — the routes the API answers whatever host asked — become paths. What is sent is
+never touched.
+
 ## Cards drawn by the server
 
 `/og/…` addresses never change when the drawing behind them does — the day's card is always

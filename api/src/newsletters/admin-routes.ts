@@ -7,6 +7,7 @@ import type { MailSender } from "../account/mail.ts";
 import { isMailKind, type MailKind } from "../mail/defaults.ts";
 import { defaultSiteOrigin, type RenderedMail } from "../mail/layout.ts";
 import { readFields, renderMail, type MailData, type TemplateStore } from "../mail/templates.ts";
+import { markData } from "../og.ts";
 import { envelope, jsonObject } from "../http.ts";
 import type { RecipeIndexEntry } from "../recipe-views.ts";
 import { composeDealsMail, dealsBlocks, productPhotoUrl, type DealsAccess } from "./deals.ts";
@@ -195,6 +196,25 @@ export function previewMail(kind: MailKind, deps: MailAdminDeps, overrides?: unk
   return renderMail(kind, sampleMailData(kind, deps, now), { fields, markUrl: deps.markUrl, replyTo: deps.replyTo, siteOrigin: deps.siteOrigin });
 }
 
+/**
+ * The same mail, made readable in a browser rather than in a mail client.
+ *
+ * A mail carries absolute addresses on the site's own host, which is what a mail client needs and
+ * what the admin cannot show: the admin is served from a host of its own, and the API answers for
+ * pictures with Cross-Origin-Resource-Policy: same-origin, so every one of them is refused and the
+ * preview shows the broken-picture box instead of the letterhead. The mark is embedded, and the
+ * pictures the API serves whatever the host asked for (docs/ui-conventions.md) become paths, which
+ * resolve wherever the preview is being read. What is sent is never touched.
+ */
+export function mailForBrowser(rendered: RenderedMail, options: { siteOrigin: string | null; markUrl?: string | undefined }): RenderedMail {
+  const origin = (options.siteOrigin || defaultSiteOrigin).replace(/\/+$/u, "");
+  const mark = options.markUrl ?? `${(process.env.LPL_SITE_ORIGIN?.trim() || defaultSiteOrigin).replace(/\/+$/u, "")}/mark.png`;
+  let html = rendered.html;
+  if (markData) html = html.replaceAll(mark, `data:image/png;base64,${markData}`);
+  for (const route of ["/images/", "/store-images/", "/content/"]) html = html.replaceAll(`src="${origin}${route}`, `src="${route}`);
+  return { ...rendered, html };
+}
+
 export function mailAdminRoutes(deps: MailAdminDeps): Hono<AdminBindings> {
   const app = new Hono<AdminBindings>();
   const clock = deps.now ?? (() => new Date());
@@ -234,7 +254,7 @@ export function mailAdminRoutes(deps: MailAdminDeps): Hono<AdminBindings> {
     if (!kind) return fail(context, 404, "Unknown mail kind", "NOT_FOUND");
     const body = await jsonObject(context);
     if (!body) return fail(context, 400, "Body must be JSON");
-    return context.json(envelope(requestIdOf(context), preview(kind, body.fields)));
+    return context.json(envelope(requestIdOf(context), mailForBrowser(preview(kind, body.fields), { siteOrigin: deps.siteOrigin, markUrl: deps.markUrl })));
   });
 
   app.post("/templates/:kind/test", bodyLimit({ maxSize: 64 * 1024 }), async (context) => {
