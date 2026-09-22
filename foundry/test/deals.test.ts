@@ -6,7 +6,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { openOperationalDatabase, type OperationalDatabase } from "../src/db.ts";
-import { computeDeals, dealsCommand, latestDealsDay, loadEssentials, readDealsDay, saveDealsDay, shiftDay, type DealsDay, type DealsRow } from "../src/deals/index.ts";
+import { computeDeals, currentDealsDay, dealsCommand, dealsEngine, isCurrentDealsDay, latestDealsDay, loadEssentials, readDealsDay, saveDealsDay, shiftDay, type DealsDay, type DealsRow } from "../src/deals/index.ts";
 import { colomboDay } from "../src/retail/capture.ts";
 import { embeddedWarehouse, syncWarehouse, type WarehouseClient } from "../src/warehouse/index.ts";
 
@@ -277,6 +277,29 @@ test("a computed day round-trips through the operational store and the newest da
     saveDealsDay(database, recomputed);
     assert.deepEqual(readDealsDay(database, day), recomputed, "saving the same day again replaces it");
     assert.equal((database.prepare("SELECT COUNT(*) AS count FROM deal_day").get() as { count: number }).count, 2);
+  } finally {
+    database.close();
+  }
+});
+
+test("a day carries the engine that wrote it, and a day an older engine saved reads as one to compute again", async () => {
+  const database = openOperationalDatabase(":memory:");
+  try {
+    const today = await compute([row("product_potato", "market_keells_online", ago(1), 300), row("product_potato", "market_keells_online", day, 264)]);
+    assert.equal(today.engine, dealsEngine, "the engine stamps every day it computes");
+    // The shape of a saved day follows the code: a day saved before a field the card or the mail
+    // reads was added is still the day's answer for readers, and a recompute for everyone else.
+    const { engine: _older, ...stale } = today;
+    saveDealsDay(database, stale);
+    assert.equal(isCurrentDealsDay(stale), false);
+    assert.deepEqual(readDealsDay(database, day), stale, "the saved day is served as it stands");
+    assert.deepEqual(latestDealsDay(database), stale);
+    assert.equal(currentDealsDay(database, day), null, "a reader that can recompute is told there is no day yet");
+
+    saveDealsDay(database, today);
+    assert.equal(isCurrentDealsDay(today), true);
+    assert.deepEqual(currentDealsDay(database, day), today);
+    assert.equal(currentDealsDay(database, ago(1)), null, "a day that was never computed is still none");
   } finally {
     database.close();
   }

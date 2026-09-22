@@ -203,6 +203,16 @@ deals_json)` through `foundry/src/deals/store.ts` (`saveDealsDay`, `readDealsDay
 `DEALS_UNAVAILABLE` when there is none) from `api/src/deals.ts` (`dealsRoutes`). The CLI
 `pnpm foundry deals compute [--day YYYY-MM-DD] [--save]` prints the day as JSON.
 
+A saved day is a snapshot, and nothing recomputes it once it is saved: a deploy that adds to
+what a day carries leaves the day already computed that morning short of the new field, and
+whatever reads it — the mail, the Telegram digest, the Facebook card — goes without for the
+rest of the day. So every day carries `engine`, the `dealsEngine` stamp in
+`foundry/src/deals/compute.ts`, bumped whenever a day gains or changes a field a reader
+depends on. `isCurrentDealsDay(day)` says whether this engine wrote it and
+`currentDealsDay(database, day)` reads only such a day; the API's `DealsAccess.read` uses it,
+so the mail and the post compute the day afresh, while `latestDealsDay()` still serves the
+older day to the site and the card rather than leaving them empty.
+
 ## Mail templates (`api/src/mail/`)
 
 One branded layout, `api/src/mail/layout.ts`, for every mail the site sends: a white card
