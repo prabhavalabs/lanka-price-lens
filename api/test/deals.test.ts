@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { openOperationalDatabase } from "@lanka-pricelens/foundry/db";
-import { saveDealsDay, type DealsDay } from "@lanka-pricelens/foundry/deals";
+import { dealsEngine, saveDealsDay, type DealsDay } from "@lanka-pricelens/foundry/deals";
 import { Hono } from "hono";
 import { requestId } from "hono/request-id";
 
@@ -19,6 +19,7 @@ const sample: DealsDay = {
   movers_up: [],
   essentials: [{ product_id: "product_potato", label: "Potato", unit: "kg", cheapest: { market_id: "market_keells_online", market: "Keells Online", price_minor: 26400 }, change_pct: -12, trend: "down" }],
   stats: { series: 97, fresh: 90, considered: 80 },
+  engine: dealsEngine,
 };
 
 test("deals today answers 503 until a day is saved, then the latest day in the envelope", async () => {
@@ -67,4 +68,24 @@ test("the deals mail carries the stores' own offers after the drops, words a mem
   const { store_offers: _none, ...older } = sample;
   assert.deepEqual(dealsBlocks(older, "https://price.example").map((block) => (block.type === "deals" ? block.heading : "")), ["Biggest drops today", "Cheapest store today", "Household essentials", "Going up"]);
   assert.equal(hasSomethingToSay({ ...older, deals: [], cheapest: [], essentials: [] }), false);
+});
+
+test("a day an older engine saved still answers the site, and the mail and the post compute it again", async () => {
+  const { dealsAccessFor } = await import("../src/newsletters/deals.ts");
+  const database = openOperationalDatabase(":memory:");
+  try {
+    // The engine gained the store's picture of the pack after this day was saved; the card draws
+    // from the saved day, so a reader that can recompute must not be handed the older shape.
+    const { engine: _older, ...stale } = sample;
+    saveDealsDay(database, stale);
+    const deals = dealsAccessFor({ database, warehouse: async () => null, essentials: () => [] });
+    assert.deepEqual(deals.latest(), stale, "the site keeps the morning's day rather than going empty");
+    assert.equal(deals.read(sample.day), null, "the mail and the post are told to compute the day");
+    assert.equal(await deals.compute(sample.day), null, "and without a warehouse they say so rather than posting the older day");
+
+    saveDealsDay(database, sample);
+    assert.deepEqual(deals.read(sample.day), sample);
+  } finally {
+    database.close();
+  }
 });

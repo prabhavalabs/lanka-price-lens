@@ -85,12 +85,24 @@ export type DealsDay = {
   movers_up: Deal[];
   /** The stores' own offers on catalogue products, deepest cut first, one per product, at most twelve. Absent on days saved before the engine read them. */
   store_offers?: DeclaredOffer[];
+  /** Which engine wrote the day; see `dealsEngine`. Absent on days saved before the stamp. */
+  engine?: number;
   /** Every essential with a price today. */
   essentials: EssentialWatch[];
   stats: { series: number; fresh: number; considered: number };
 };
 
 export type DealsOptions = { day?: Date | undefined; essentials: string[] };
+
+/**
+ * The engine that writes a day, stamped on it. A saved day is a snapshot the site, the mails, and
+ * the post all read back, and nothing recomputes a day once it is saved: a deploy that adds to
+ * what the engine puts in a day (a field the card draws from, say) leaves the day already computed
+ * that morning short of it, and the feature reads as broken for the rest of the day. Bumped
+ * whenever a day gains or changes a field a reader depends on, so a reader that can recompute
+ * treats an older day as one it has not got yet.
+ */
+export const dealsEngine = 1;
 
 /** The thresholds and caps in one place. Percentages are whole numbers; comparisons run on integer minor units, never on rounded percentages. */
 export const dealRules = {
@@ -160,6 +172,7 @@ export async function computeDeals(client: WarehouseClient, options: DealsOption
   return {
     day,
     computed_at: new Date().toISOString(),
+    engine: dealsEngine,
     stores: storeSummary(series, [...deals, ...cheapest]),
     deals,
     cheapest,

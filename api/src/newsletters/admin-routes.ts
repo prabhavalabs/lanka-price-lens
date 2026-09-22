@@ -1,4 +1,4 @@
-import type { DealsDay } from "@lanka-pricelens/foundry/deals";
+import { dealsEngine, type DealsDay } from "@lanka-pricelens/foundry/deals";
 import { preferencesSchema } from "@lanka-pricelens/shared";
 import { Hono, type Context } from "hono";
 import { bodyLimit } from "hono/body-limit";
@@ -110,12 +110,13 @@ export type MailAdminDeps = {
   now?: (() => Date) | undefined;
 };
 
-/** A deals day for the preview when none has been computed: enough rows to show every block. */
+/** A deals day for the preview when none has been computed: enough rows to show every block, stamped as this engine writes one. */
 export function sampleDealsDay(day: string): DealsDay {
   const computedAt = `${day}T01:30:00.000Z`;
   return {
     day,
     computed_at: computedAt,
+    engine: dealsEngine,
     stores: [
       { market_id: "market_keells_online", label: "Keells", series: 120, deals: 2 },
       { market_id: "market_cargills_online", label: "Cargills", series: 110, deals: 1 },

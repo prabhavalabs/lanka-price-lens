@@ -1,4 +1,4 @@
-import { computeDeals, latestDealsDay, readDealsDay, saveDealsDay, type Deal, type DealsDay, type DeclaredOffer, type EssentialWatch } from "@lanka-pricelens/foundry/deals";
+import { computeDeals, currentDealsDay, latestDealsDay, saveDealsDay, type Deal, type DealsDay, type DeclaredOffer, type EssentialWatch } from "@lanka-pricelens/foundry/deals";
 import type { OperationalDatabase } from "@lanka-pricelens/foundry/db";
 import type { WarehouseClient } from "@lanka-pricelens/foundry/warehouse";
 
@@ -16,6 +16,7 @@ import { dayWords, listWords } from "./time.ts";
 
 /** How the newsletters reach the deals engine; built in app.ts over the warehouse and the operational database. */
 export type DealsAccess = {
+  /** The saved day, but only when this engine wrote it; a day an older engine saved reads as missing so the caller computes it afresh. */
   read: (day: string) => DealsDay | null;
   latest: () => DealsDay | null;
   /** Computes the day from the warehouse and saves it; null when the warehouse is away. */
@@ -25,7 +26,7 @@ export type DealsAccess = {
 /** The engine over the app's warehouse handle and essentials list: reads and saves in the operational database, computes against the warehouse. */
 export function dealsAccessFor(deps: { database: OperationalDatabase; warehouse: () => Promise<WarehouseClient | null>; essentials: () => string[] }): DealsAccess {
   return {
-    read: (day) => readDealsDay(deps.database, day),
+    read: (day) => currentDealsDay(deps.database, day),
     latest: () => latestDealsDay(deps.database),
     compute: async (day) => {
       const client = await deps.warehouse();
