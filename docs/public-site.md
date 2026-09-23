@@ -81,7 +81,9 @@ taken to zero removes the line.
 - **Analytics:** with `LPL_GA_MEASUREMENT_ID` set (a GA4 id, `G-…`), `GET /v1/public/config`
   hands it to the site, which loads gtag with IP anonymisation, sends a page view on every route
   change, `add_to_basket` and `feedback_sent` events, and stays silent for visitors whose browser
-  says "do not track". Without the id nothing is loaded.
+  says "do not track". Without the id nothing is loaded. `LPL_META_PIXEL_ID` (digits only) works
+  the same way for the Meta pixel: a `PageView` on every route change plus the standard events
+  in `web/src/lib/meta-pixel.ts`, nothing without the id or under "do not track".
 - **Link previews:** every page carries the full Open Graph and Twitter card set (site name,
   locale, type, title, description, canonical url, a 1200×630 image with type, size and alt,
   `summary_large_image`, `@PrabhavaLabs`). The shell holds the site's own block between
