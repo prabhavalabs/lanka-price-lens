@@ -12,14 +12,14 @@
     "test": "node --test test/*.test.ts"
   },
   "dependencies": {
-    "@hono/node-server": "2.1.1",
+    "@hono/node-server": "2.1.5",
     "@lanka-pricelens/foundry": "workspace:*",
     "@lanka-pricelens/notify": "workspace:*",
     "@lanka-pricelens/shared": "workspace:*",
     "@resvg/resvg-js": "2.6.2",
     "harfbuzzjs": "^1.6.1",
-    "hono": "4.13.6",
-    "sharp": "^0.35.4"
+    "hono": "4.13.14",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@types/node": "24.13.3",
