@@ -129,8 +129,8 @@ permanent configuration: overlap leases are safe, but duplicate source checks
 are unnecessary. During cutover, stop and disable the timer, enable the
 scheduler container, and confirm its heartbeat in the Cron monitor.
 
-Cloudflare credentials remain external environment secrets. Production must use
-`LPL_ARCHIVE_DRIVER=cloudflare`; local validation should use `filesystem`.
+Production and local validation both use `LPL_ARCHIVE_DRIVER=filesystem`;
+production keeps the archive in the `lanka-price-lens-local-archive` volume.
 
 ## Retail price capture
 

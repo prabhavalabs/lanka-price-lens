@@ -1,26 +1,4 @@
 services:
-  postgres:
-    image: postgres:18.4-alpine
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: pricelens
-      POSTGRES_USER: pricelens
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
-    volumes:
-      - postgres:/var/lib/postgresql
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U pricelens -d pricelens"]
-      interval: 10s
-      timeout: 5s
-      retries: 6
-      start_period: 15s
-    cpus: "0.75"
-    mem_limit: 768m
-    pids_limit: 256
-    security_opt:
-      - no-new-privileges:true
-    stop_grace_period: 30s
-
   api:
     image: ${LPL_IMAGE:-lanka-price-lens:local}
     build:
@@ -41,8 +19,10 @@ services:
       LPL_MANIFESTS_DIR: /app/data/manifests
       LPL_MAPPINGS_DIR: /app/data/mappings
       LPL_RECIPES_DIR: /app/data/recipes
-      LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@postgres:5432/pricelens
+      LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@${LPL_POSTGRES_HOST:-platform-postgres}:5432/pricelens
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
+      LPL_ARCHIVE_DRIVER: ${LPL_ARCHIVE_DRIVER:-filesystem}
+      LPL_LOCAL_ARCHIVE_ROOT: /archive
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
       LPL_KEELLS_PROXY_URL: ${LPL_KEELLS_PROXY_URL:-}
@@ -67,11 +47,10 @@ services:
       ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:?set ADMIN_PASSWORD_HASH}
     ports:
       - "${APP_BIND:?set APP_BIND}:${APP_PORT}:${APP_PORT}"
-    depends_on:
-      postgres:
-        condition: service_healthy
     volumes:
       - operations:/data
+      - local_archive:/archive
+    networks: [default, platform]
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:'+process.env.PORT+'/v1/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
       interval: 15s
@@ -104,8 +83,10 @@ services:
       LPL_MANIFESTS_DIR: /app/data/manifests
       LPL_MAPPINGS_DIR: /app/data/mappings
       LPL_RECIPES_DIR: /app/data/recipes
-      LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@postgres:5432/pricelens
+      LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@${LPL_POSTGRES_HOST:-platform-postgres}:5432/pricelens
       LPL_R2_BUCKET: ${LPL_R2_BUCKET:-lanka-price-lens-pdfs}
+      LPL_ARCHIVE_DRIVER: ${LPL_ARCHIVE_DRIVER:-filesystem}
+      LPL_LOCAL_ARCHIVE_ROOT: /archive
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
       LPL_KEELLS_PROXY_URL: ${LPL_KEELLS_PROXY_URL:-}
@@ -129,6 +110,8 @@ services:
     entrypoint: ["node", "foundry/src/cli.ts"]
     volumes:
       - operations:/data
+      - local_archive:/archive
+    networks: [default, platform]
     cpus: "1.00"
     mem_limit: 1536m
     pids_limit: 256
@@ -155,8 +138,8 @@ services:
       LPL_MANIFESTS_DIR: /app/data/manifests
       LPL_MAPPINGS_DIR: /app/data/mappings
       LPL_RECIPES_DIR: /app/data/recipes
-      LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@postgres:5432/pricelens
-      LPL_ARCHIVE_DRIVER: ${LPL_ARCHIVE_DRIVER:-cloudflare}
+      LPL_POSTGRES_URL: postgres://pricelens:${POSTGRES_PASSWORD}@${LPL_POSTGRES_HOST:-platform-postgres}:5432/pricelens
+      LPL_ARCHIVE_DRIVER: ${LPL_ARCHIVE_DRIVER:-filesystem}
       LPL_LOCAL_ARCHIVE_ROOT: /archive
       LPL_ENVIRONMENT: ${LPL_ENVIRONMENT:-production}
       LPL_SCHEDULER_ENABLED: ${LPL_SCHEDULER_ENABLED:-true}
@@ -182,6 +165,7 @@ services:
     volumes:
       - operations:/data
       - local_archive:/archive
+    networks: [default, platform]
     cpus: "1.00"
     mem_limit: 1536m
     pids_limit: 256
@@ -193,9 +177,13 @@ services:
       - no-new-privileges:true
 
 volumes:
-  postgres:
-    name: ${LPL_POSTGRES_VOLUME:-lanka-price-lens-postgres}
   operations:
     name: ${LPL_OPERATIONS_VOLUME:-lanka-price-lens-operations}
   local_archive:
     name: ${LPL_LOCAL_ARCHIVE_VOLUME:-lanka-price-lens-local-archive}
+
+# Shared data services on the VPS (one Postgres for every app). Created outside this project.
+networks:
+  platform:
+    name: ${LPL_PLATFORM_NETWORK:-platform}
+    external: true

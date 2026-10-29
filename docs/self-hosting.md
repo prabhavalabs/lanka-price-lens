@@ -39,9 +39,17 @@ systemctl list-timers lanka-pricelens-foundry.timer lanka-pricelens-retail.timer
 
 The timer is persistent, so a missed run executes after the VPS returns. The
 source-sync lease rejects overlaps and expires abandoned runs after 30 minutes.
-Set `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN`, and `LPL_R2_BUCKET` in
-`/etc/lanka-price-lens/app.env`; the token needs access only to the archive R2
-bucket.
+The PDF archive is kept on the VPS in the `lanka-price-lens-local-archive`
+volume (`LPL_ARCHIVE_DRIVER=filesystem`, the default). The API, the foundry
+jobs and the scheduler mount it at `/archive`. Set `LPL_ARCHIVE_DRIVER=cloudflare`
+with `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN` and `LPL_R2_BUCKET` in
+`/etc/lanka-price-lens/app.env` only to read the old R2 bucket.
+
+The warehouse lives in the host's shared Postgres (`platform-postgres` on the
+external `platform` Docker network), in the `pricelens` database owned by the
+`pricelens` role, with the password from `POSTGRES_PASSWORD`. Set
+`LPL_POSTGRES_HOST` to point the services at another server. The shared server
+is backed up nightly with every other database on the host.
 
 ## Backfill
 
